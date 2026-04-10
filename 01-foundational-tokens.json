@@ -1,0 +1,197 @@
+{
+  "$schema": "design-tokens",
+  "$description": "Foundational design tokens for Evergreen financial data visualization system. Covers color primitives, semantic colors, data value semantics, chart palettes, and typography. Light + Dark modes.",
+  "color": {
+    "gray": {
+      "50":  { "light": "#F9FAF9", "dark": "#0E0E0E", "usage": "Lightest surface" },
+      "100": { "light": "#EEEFEE", "dark": "#202220", "usage": "Subtle background" },
+      "200": { "light": "#D8D9D8", "dark": "#3B3E3C", "usage": "Borders, dividers" },
+      "300": { "light": "#B6B9B7", "dark": "#6B6F6C", "usage": "Disabled fills" },
+      "400": { "light": "#949895", "dark": "#7E8480", "usage": "Placeholder text" },
+      "500": { "light": "#727874", "dark": "#7E8480", "usage": "Secondary text" },
+      "600": { "light": "#575B58", "dark": "#949895", "usage": "Body text" },
+      "700": { "light": "#3B3E3C", "dark": "#B6B9B7", "usage": "Primary text" },
+      "800": { "light": "#202220", "dark": "#D8D9D8", "usage": "Headings" },
+      "900": { "light": "#0E0E0E", "dark": "#EEEFEE", "usage": "High-emphasis text" }
+    },
+    "blue": {
+      "100": { "value": "#EBF0FE", "usage": "Lightest blue (selected backgrounds in light mode)" },
+      "200": { "value": "#C8D6FD", "usage": "Very light backgrounds, subtle highlights" },
+      "300": { "value": "#A3BCFC", "usage": "Lighter blue" },
+      "400": { "value": "#9BB3FC", "usage": "Light blue (hover states in dark mode)" },
+      "500": { "value": "#7094FB", "usage": "Medium blue (primary accent in dark mode)" },
+      "600": { "value": "#3A6AF8", "usage": "Primary accent (CTAs, interactive elements in light mode)" },
+      "700": { "value": "#295CCC", "usage": "Dark blue (hover states in light mode)" },
+      "800": { "value": "#152354", "usage": "Darkest blue (subtle backgrounds in dark mode)" }
+    },
+    "surface": {
+      "primary":   { "light": "#FFFFFF", "dark": "#111111", "usage": "Main background" },
+      "secondary": { "light": "#F5F5F5", "dark": "#1A1A1A", "usage": "Card/panel background" },
+      "tertiary":  { "light": "#EBEBEB", "dark": "#242424", "usage": "Nested surfaces" },
+      "overlay":   { "light": "rgba(0,0,0,0.5)", "dark": "rgba(0,0,0,0.7)", "usage": "Modal/dropdown backdrops" }
+    },
+    "border": {
+      "default": { "light": "#E5E5E5", "dark": "#4A4D4B", "usage": "Default borders" },
+      "strong":  { "light": "#D4D4D4", "dark": "#626562", "usage": "Emphasized borders" },
+      "focus":   { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Focus rings" }
+    },
+    "text": {
+      "primary":   { "light": "#171717", "dark": "#F5F5F5", "usage": "Primary text" },
+      "secondary": { "light": "#525252", "dark": "#A3A3A3", "usage": "Secondary/helper text" },
+      "tertiary":  { "light": "#737373", "dark": "#8A8A8A", "usage": "Placeholder, caption" },
+      "inverse":   { "light": "#FFFFFF", "dark": "#111111", "usage": "Text on filled surfaces" },
+      "link":      { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Interactive links" }
+    },
+    "accent": {
+      "primary":        { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Primary actions, active states" },
+      "primary-hover":  { "light": "#295CCC", "dark": "#9BB3FC", "usage": "Primary hover" },
+      "primary-subtle": { "light": "#EBF0FE", "dark": "#152354", "usage": "Selected backgrounds" }
+    },
+    "status": {
+      "error":          { "light": "#B91C1C", "dark": "#F87171", "usage": "Error states" },
+      "error-subtle":   { "light": "#FEE2E2", "dark": "#450A0A", "usage": "Error background" },
+      "warning":        { "light": "#C25700", "dark": "#FBBF24", "usage": "Warning states" },
+      "warning-subtle": { "light": "#FFF7ED", "dark": "#451A03", "usage": "Warning background" },
+      "success":        { "light": "#15803D", "dark": "#4ADE80", "usage": "Success states" },
+      "success-subtle": { "light": "#F0FDF4", "dark": "#052E16", "usage": "Success background" },
+      "info":           { "light": "#2563EB", "dark": "#60A5FA", "usage": "Informational states" },
+      "info-subtle":    { "light": "#EFF6FF", "dark": "#172554", "usage": "Informational background" }
+    },
+    "data": {
+      "$description": "Financial meaning colors (gains/losses). Separate from status colors to avoid visual confusion when UI state and data value overlap.",
+      "positive":        { "light": "#15803D", "dark": "#4ADE80", "usage": "Gains, positive returns" },
+      "negative":        { "light": "#B91C1C", "dark": "#F87171", "usage": "Losses, negative returns" },
+      "neutral":         { "light": "#525252", "dark": "#A3A3A3", "usage": "Zero change, breakeven" },
+      "positive-subtle": { "light": "rgba(21,128,61,0.08)", "dark": "rgba(74,222,128,0.10)", "usage": "Positive badge/cell bg" },
+      "negative-subtle": { "light": "rgba(185,28,28,0.08)", "dark": "rgba(248,113,113,0.10)", "usage": "Negative badge/cell bg" }
+    },
+    "chart": {
+      "categorical": {
+        "$description": "15-series priority-ordered palette. Always assign in order: cat.1 first, cat.2 second, etc. Dark-mode overrides ensure ≥ 3:1 contrast on #111111.",
+        "1":  { "light": "#8951F0", "dark": "#8951F0" },
+        "2":  { "light": "#06B6D4", "dark": "#06B6D4" },
+        "3":  { "light": "#312E81", "dark": "#4338CA" },
+        "4":  { "light": "#3B82F6", "dark": "#3B82F6" },
+        "5":  { "light": "#0F766E", "dark": "#14B8A6" },
+        "6":  { "light": "#38BDF8", "dark": "#38BDF8" },
+        "7":  { "light": "#2DD4BF", "dark": "#2DD4BF" },
+        "8":  { "light": "#A78BFA", "dark": "#A78BFA" },
+        "9":  { "light": "#C026D3", "dark": "#C026D3" },
+        "10": { "light": "#E73CAE", "dark": "#E73CAE" },
+        "11": { "light": "#E879A8", "dark": "#E879A8" },
+        "12": { "light": "#92400E", "dark": "#EA580C" },
+        "13": { "light": "#FB923C", "dark": "#FB923C" },
+        "14": { "light": "#CA8A04", "dark": "#EAB308" },
+        "15": { "light": "#FACC15", "dark": "#FDE68A" }
+      },
+      "sequential": {
+        "$description": "Single-hue blue ramp for area charts and heatmaps.",
+        "100": "#EBF0FE",
+        "200": "#C8D6FD",
+        "300": "#A5BCFC",
+        "400": "#7094FB",
+        "500": "#5A82F9",
+        "600": "#3A6AF8",
+        "700": "#2952CC"
+      }
+    }
+  },
+  "font": {
+    "family": {
+      "primary":   { "value": "Heebo", "usage": "Primary UI font — body copy, numbers, labels (sans-serif, Google Fonts)" },
+      "secondary": { "value": "Cormorant Garamond", "usage": "Headings, editorial content (serif, Google Fonts)", "rules": ["Never set below font-weight 500", "Use 600 (semibold) as default for all headings", "500 (medium) only for deliberately lighter display"] }
+    },
+    "size": {
+      "$breakpoint": "Mobile sizes apply below 768px. Desktop sizes apply at and above 768px.",
+      "2xs":  { "mobile": "10px", "desktop": "10px",  "usage": "Micro labels, legal fine print" },
+      "xs":   { "mobile": "10px", "desktop": "12px",  "usage": "Chart tick labels, fine print" },
+      "sm":   { "mobile": "12px", "desktop": "14px",  "usage": "Axis labels, table cells, helper text" },
+      "base": { "mobile": "14px", "desktop": "16px",  "usage": "Body text, input values" },
+      "md":   { "mobile": "16px", "desktop": "18px",  "usage": "Emphasized body, dropdown items" },
+      "lg":   { "mobile": "18px", "desktop": "20px",  "usage": "Section titles, card headers" },
+      "xl":   { "mobile": "20px", "desktop": "24px",  "usage": "Page titles, large KPI values" },
+      "2xl":  { "mobile": "24px", "desktop": "30px",  "usage": "Large headings" },
+      "3xl":  { "mobile": "30px", "desktop": "36px",  "usage": "Hero headings" },
+      "4xl":  { "mobile": "36px", "desktop": "48px",  "usage": "Hero numbers, dashboard KPIs" },
+      "5xl":  { "mobile": "48px", "desktop": "60px",  "usage": "Display text" },
+      "6xl":  { "mobile": "60px", "desktop": "72px",  "usage": "Extra-large display" },
+      "7xl":  { "mobile": "72px", "desktop": "96px",  "usage": "Jumbo display" },
+      "8xl":  { "mobile": "96px", "desktop": "112px", "usage": "Maximum display" }
+    },
+    "weight": {
+      "light":    { "css": 300, "usage": "Decorative, large display text (Heebo only)" },
+      "regular":  { "css": 400, "usage": "Body, labels (Heebo only)" },
+      "semibold": { "css": 600, "usage": "Subtitles, emphasis, all Cormorant Garamond headings" },
+      "bold":     { "css": 700, "usage": "Section headers, table headers" }
+    },
+    "lineHeight": {
+      "2xs":  { "mobile": "12px", "desktop": "12px" },
+      "xs":   { "mobile": "12px", "desktop": "16px" },
+      "sm":   { "mobile": "16px", "desktop": "20px" },
+      "base": { "mobile": "20px", "desktop": "24px" },
+      "md":   { "mobile": "24px", "desktop": "28px" },
+      "lg":   { "mobile": "28px", "desktop": "28px" },
+      "xl":   { "mobile": "28px", "desktop": "32px" },
+      "2xl":  { "mobile": "32px", "desktop": "36px" },
+      "3xl":  { "mobile": "36px", "desktop": "40px" },
+      "4xl":  { "mobile": "40px", "desktop": "48px" },
+      "5xl":  { "mobile": "48px", "desktop": "60px" },
+      "6xl":  { "mobile": "60px", "desktop": "72px" },
+      "7xl":  { "mobile": "72px", "desktop": "96px" },
+      "8xl":  { "mobile": "96px", "desktop": "112px" }
+    },
+    "letterSpacing": {
+      "tight":  { "value": "-0.01em", "usage": "Large headings" },
+      "normal": { "value": "0em",     "usage": "Body" },
+      "wide":   { "value": "0.05em",  "usage": "All-caps labels, overlines" }
+    }
+  },
+  "type": {
+    "$description": "11 semantic type styles. Font key: primary = Heebo, secondary = Cormorant Garamond. Use font-variant-numeric: tabular-nums when numbers are stacked vertically.",
+    "page-title":    { "font": "secondary", "size": "2xl",  "weight": "semibold", "lineHeight": "2xl",  "letterSpacing": "tight",  "color": "text.primary" },
+    "section-title": { "font": "primary",   "size": "lg",   "weight": "semibold", "lineHeight": "lg",   "letterSpacing": "normal", "color": "text.primary" },
+    "subtitle":      { "font": "primary",   "size": "md",   "weight": "semibold", "lineHeight": "md",   "letterSpacing": "normal", "color": "text.secondary" },
+    "body":          { "font": "primary",   "size": "base", "weight": "regular",  "lineHeight": "base", "letterSpacing": "normal", "color": "text.primary" },
+    "caption":       { "font": "primary",   "size": "sm",   "weight": "regular",  "lineHeight": "sm",   "letterSpacing": "normal", "color": "text.secondary" },
+    "overline":      { "font": "primary",   "size": "xs",   "weight": "semibold", "lineHeight": "xs",   "letterSpacing": "wide",   "color": "text.tertiary" },
+    "label":         { "font": "primary",   "size": "sm",   "weight": "semibold", "lineHeight": "sm",   "letterSpacing": "normal", "color": "text.primary" },
+    "helper":        { "font": "primary",   "size": "xs",   "weight": "regular",  "lineHeight": "xs",   "letterSpacing": "normal", "color": "text.secondary" },
+    "kpi-value":     { "font": "primary",   "size": "4xl",  "weight": "bold",     "lineHeight": "4xl",  "letterSpacing": "tight",  "color": "text.primary" },
+    "data-value":    { "font": "primary",   "size": "sm",   "weight": "regular",  "lineHeight": "sm",   "letterSpacing": "normal", "color": "text.primary" },
+    "code":          { "font": "primary",   "size": "sm",   "weight": "regular",  "lineHeight": "sm",   "letterSpacing": "normal", "color": "text.primary" }
+  },
+  "numberFormatting": {
+    "$description": "Conventions for formatting numeric data in financial UIs.",
+    "currency":          { "format": "$#,###",           "example": "$1,234" },
+    "currencyCompact":   { "format": "$#.#K / $#.#M",   "example": "$1.2M" },
+    "currencyCents":     { "format": "$#,###.##",        "example": "$1,234.56" },
+    "percentage":        { "format": "#.#%",             "example": "12.4%" },
+    "changePercentage":  { "format": "±#.#%",            "example": "+12.4% / −3.2%" },
+    "basisPoints":       { "format": "###bp",            "example": "125bp" },
+    "probability":       { "format": "#%",               "example": "87%" },
+    "ratio":             { "format": "#.##x",            "example": "1.25x" },
+    "largeInteger":      { "format": "#,###",            "example": "1,234,567" },
+    "largeIntegerCompact": { "format": "#.#K / #.#M",   "example": "1.2M" },
+    "decimal":           { "format": "#.##",             "example": "3.14" },
+    "year":              { "format": "####",             "example": "2025" },
+    "age":               { "format": "##",               "example": "65" },
+    "abbreviationThreshold": "> 9,999",
+    "signConvention": {
+      "positive": { "prefix": "+", "color": "data.positive" },
+      "negative": { "prefix": "−", "color": "data.negative" },
+      "zero":     { "prefix": "none", "color": "data.neutral" }
+    },
+    "font": "font.family.primary (Heebo). In stacked/tabular contexts add font-variant-numeric: tabular-nums."
+  },
+  "dateFormatting": {
+    "intraday":  { "full": "h:mm A",              "compact": "h:mm",      "axisExample": "9:30 AM" },
+    "daily":     { "full": "MMM D, YYYY",         "compact": "MMM D",     "axisExample": "Jan 15" },
+    "weekly":    { "full": "MMM D",               "compact": "M/D",       "axisExample": "Jan 15" },
+    "monthly":   { "full": "MMMM YYYY",           "compact": "MMM 'YY",   "axisExample": "Jan '26" },
+    "quarterly": { "full": "Q# YYYY",             "compact": "Q#'YY",     "axisExample": "Q1 '26" },
+    "annual":    { "full": "YYYY",                "compact": "'YY",       "axisExample": "2026" },
+    "range":     { "full": "MMM D – MMM D, YYYY", "compact": "M/D – M/D", "axisExample": "Jan 1 – Mar 31, 2026" },
+    "ageBased":  { "full": "Age ##",              "compact": "##",        "axisExample": "Age 65" },
+    "zoomRules": "> 10 years → annual. 2–10 years → quarterly or MMM 'YY. < 2 years → monthly or daily. < 1 month → daily or intraday. Tooltip always shows full format."
+  }
+}

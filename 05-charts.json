@@ -1,0 +1,477 @@
+{
+  "$schema": "design-tokens",
+  "$description": "Chart and data visualization tokens for Evergreen financial system. Covers all chart types (area, bar, line, donut, sparkline, scatter, histogram, heatmap, grouped/stacked bar, waterfall, gauge, projected/actual, benchmark, candlestick, Sankey, treemap), shared chart tokens (axes, grid, tooltip, legend), threshold lines, vertical event markers, confidence bands, data point states, and interaction tokens.",
+  "$rules": {
+    "chartBackground": "Light mode: #FFFFFF (surface.primary). Dark mode: dark surface.primary. Chart containers always use background: var(--surface-primary) — never gray or tinted.",
+    "chartTextScaling": "Chart text (axis labels, titles, annotations) must NEVER scale with the chart. Use fixed pixel dimensions on SVGs instead of width:100%;height:auto. Wrap in overflow-x:auto if chart may exceed container.",
+    "rendering": "Never use SVG for standard charts. Use pure HTML/CSS: clip-path polygon for fills/strokes, div elements for dots/bars/gridlines. Exceptions: donut, gauge (fixed-size SVG), Sankey (fixed-size in scroll wrapper), sparklines (tiny inline SVG), icons."
+  },
+  "chart": {
+    "area": {
+      "strokeWidth": "2px",
+      "fillOpacity": 0.15,
+      "fillOpacityHover": 0.25,
+      "gradientStartOpacity": 0.25,
+      "gradientEndOpacity": 0.02,
+      "dots": "none",
+      "curveType": "monotoneX"
+    },
+    "bar": {
+      "radius": "0px",
+      "gapRatio": 0.3,
+      "groupGapRatio": 0.15,
+      "minWidth": "4px",
+      "hoverOpacity": 0.8,
+      "inactiveOpacity": 0.3
+    },
+    "line": {
+      "$description": "No fill below the line. Supports multiple series with varied stroke styles.",
+      "strokeWidth": "2px",
+      "strokeWidthThin": "1.5px",
+      "strokeWidthThick": "3px",
+      "strokeStyles": {
+        "solid": "solid",
+        "dashed": "dashed (6 4)",
+        "dotted": "dotted (2 3)"
+      },
+      "curveType": "monotoneX",
+      "endpointDot": { "radius": "4px", "fill": "series color", "stroke": "surface.primary", "strokeWidth": "2px" },
+      "hoverStrokeWidth": "3px",
+      "inactiveOpacity": 0.15,
+      "markerRadius": "0 (hidden by default)",
+      "markerRadiusHover": "4px"
+    },
+    "donut": {
+      "innerRadiusRatio": 0.6,
+      "segmentCornerRadius": "1px",
+      "segmentGap": "2.5deg",
+      "segmentStrokeWidth": "1px",
+      "segmentStrokeOpacity": 1.0,
+      "segmentFillOpacity": { "default": 0.1, "selected": 1.0, "hover": 0.25 },
+      "hoverScale": 1.03,
+      "hoverShadow": "shadow.sm",
+      "centerValue": { "fontSize": "font.size.2xl", "fontWeight": "font.weight.bold", "fontFamily": "font.family.primary", "color": "text.primary" },
+      "centerLabel": { "fontSize": "font.size.sm", "color": "text.secondary" },
+      "segmentLabelFontSize": "font.size.xs",
+      "animation": { "duration": "600ms", "easing": "motion.easing.out" }
+    },
+    "sparkline": {
+      "$description": "Small inline charts for table cells, KPI cards, or widgets. Minimal ornamentation.",
+      "strokeWidth": "1.5px",
+      "height": "32px",
+      "areaFillOpacity": 0.07,
+      "areaGradient": "linear: fill-color → transparent",
+      "endpointDotRadius": "3px",
+      "endpointDotFill": "series color",
+      "curveType": "monotoneX",
+      "margin": "space.1",
+      "positiveColor": "data.positive",
+      "negativeColor": "data.negative"
+    },
+    "scatter": {
+      "dotSizeMin": "6px",
+      "dotSizeMax": "48px",
+      "dotOpacity": 0.75,
+      "dotBorderWidth": "1.5px",
+      "dotBorderColor": "surface.primary",
+      "hoverScale": 1.2,
+      "activeOpacity": 1.0,
+      "inactiveOpacity": 0.15,
+      "crosshair": true,
+      "quadrantLineColor": "gray.300",
+      "quadrantLineStyle": "dashed"
+    },
+    "histogram": {
+      "binGapRatio": 0.05,
+      "barRadius": "0px",
+      "barFill": "accent.primary",
+      "barHoverOpacity": 0.85,
+      "barInactiveOpacity": 0.3,
+      "goalFillAbove": "data.positive at 0.75 opacity",
+      "goalFillBelow": "gray.400 at 0.5 opacity",
+      "distributionLine": "2px solid accent.primary-hover",
+      "distributionFill": "accent.primary at 0.08"
+    },
+    "heatmap": {
+      "cellGap": "1px",
+      "cellRadius": "radius.sm",
+      "cellMinSize": "32px",
+      "textFontSize": "font.size.xs",
+      "textFontWeight": "font.weight.semibold",
+      "textColorOnLight": "#171717",
+      "textColorOnDark": "#FFFFFF",
+      "textContrastThreshold": 0.5,
+      "colorScalePositive": "sequential ramp seq.100→seq.700",
+      "colorScaleNegative": "#FEE2E2→#B91C1C (red ramp)",
+      "colorScaleDiverging": "red → gray.100 → blue (accent)",
+      "labelFontSize": "font.size.xs",
+      "labelColor": "text.secondary"
+    },
+    "groupedBar": {
+      "gapBetweenGroups": 0.3,
+      "gapWithinGroup": 0.05
+    },
+    "stackedBar": {
+      "segmentGap": "0px",
+      "segmentRadius": "0px",
+      "valueLabel": {
+        "fontSize": "font.size.xs",
+        "fontFamily": "font.family.primary",
+        "colorInside": "auto (light on dark, dark on light)",
+        "colorOutside": "text.secondary",
+        "minSegment": "24px (hide label if smaller)"
+      },
+      "totalLabel": { "fontSize": "font.size.sm", "fontWeight": "font.weight.semibold" }
+    },
+    "waterfall": {
+      "$description": "Cash flow analysis, cumulative gain/loss decomposition.",
+      "connector": { "width": "1px", "style": "dashed", "color": "gray.400", "dash": "4 3" },
+      "positiveFill": "data.positive",
+      "negativeFill": "data.negative",
+      "totalFill": "accent.primary",
+      "subtotalFill": "accent.primary at 0.6",
+      "barRadius": "0px",
+      "barWidthRatio": 0.6,
+      "valueLabel": { "fontSize": "font.size.xs", "fontFamily": "font.family.primary", "offset": "space.1 above bar" }
+    },
+    "gauge": {
+      "$description": "Risk score, portfolio health, probability meters.",
+      "arcAngle": "240deg (start 150°, end 390°)",
+      "arcWidth": "12px",
+      "trackColor": { "light": "gray.200", "dark": "gray.700" },
+      "trackOpacity": 0.3,
+      "fillColor": "accent.primary",
+      "fillColorWarning": "status.warning",
+      "fillColorError": "status.error",
+      "needle": { "width": "2px", "color": "text.primary", "capRadius": "4px" },
+      "centerValue": { "fontSize": "font.size.2xl", "fontWeight": "font.weight.bold", "fontFamily": "font.family.primary" },
+      "scaleLabel": { "fontSize": "font.size.2xs", "color": "text.tertiary" },
+      "minMaxLabel": { "fontSize": "font.size.xs" },
+      "animation": { "duration": "800ms", "easing": "motion.easing.out" }
+    },
+    "projectedVsActual": {
+      "$description": "Forecast paths overlaid on historical data.",
+      "projected": {
+        "strokeStyle": "dashed (10 5)",
+        "strokeWidth": "2px",
+        "strokeOpacity": 0.7,
+        "fillOpacity": 0.05,
+        "color": "status.warning",
+        "transitionDot": { "radius": "4px", "fill": "series color", "stroke": "surface.primary", "strokeWidth": "2px" },
+        "label": { "text": "Projected", "fontWeight": "font.weight.medium", "color": "status.warning", "fontSize": "font.size.xs", "placement": "top: 2%; right: 0" }
+      },
+      "actual": {
+        "strokeStyle": "solid",
+        "strokeWidth": "2px",
+        "strokeColor": "cat-1",
+        "fillOpacity": 0.12,
+        "label": { "text": "Actual", "fontWeight": "font.weight.medium", "color": "cat-1", "fontSize": "font.size.xs", "placement": "top: 80%; left: 6%" }
+      }
+    },
+    "benchmark": {
+      "$description": "Reference lines for indices, targets, or peer averages.",
+      "strokeColor": "text.tertiary",
+      "strokeWidth": "1.5px",
+      "strokeStyle": "dotted (2 3)",
+      "label": {
+        "fontSize": "font.size.xs",
+        "fontFamily": "font.family.primary",
+        "color": "text.tertiary",
+        "placement": "right-end",
+        "bg": "surface.primary at 0.8",
+        "padding": "2px 6px",
+        "radius": "radius.sm"
+      },
+      "hoverStrokeWidth": "2.5px",
+      "hoverLabelFontWeight": "font.weight.semibold"
+    },
+    "candlestick": {
+      "$description": "Market data — open, high, low, close per time period.",
+      "bodyWidthRatio": 0.6,
+      "bodyRadius": "0px",
+      "wickWidth": "1px",
+      "upFill": "data.positive",
+      "upStroke": "data.positive",
+      "downFill": "data.negative",
+      "downStroke": "data.negative",
+      "flatColor": "data.neutral",
+      "hoverOpacity": 1.0,
+      "inactiveOpacity": 0.4,
+      "volume": { "barOpacity": 0.2, "heightRatio": 0.2, "gap": "space.2" }
+    },
+    "sankey": {
+      "$description": "Money movement — income → expense → savings, account transfers, tax-lot flows.",
+      "node": {
+        "width": "14px",
+        "radius": "2px",
+        "gap": "space.4 (16px)",
+        "color": "Categorical palette (auto-assigned by index)",
+        "label": { "fontSize": "font.size.sm", "fontFamily": "font.family.primary", "color": "text.primary", "gap": "space.2" },
+        "value": { "fontFamily": "font.family.primary", "fontSize": "font.size.xs", "color": "text.secondary" }
+      },
+      "link": {
+        "opacity": 0.25,
+        "hoverOpacity": 0.6,
+        "colorMethod": "Inherit from source node",
+        "curve": "Cubic Bézier (horizontal)",
+        "minWidth": "1px"
+      },
+      "layoutPadding": "space.6",
+      "animation": { "duration": "500ms", "easing": "motion.easing.inOut" },
+      "$rules": "All outgoing flows from a source node must stack contiguously from top with no gaps. Sum of outgoing stroke widths must equal node bar height."
+    },
+    "treemap": {
+      "$description": "Hierarchical allocation breakdown — portfolio → sector → industry → holding.",
+      "cell": {
+        "padding": "clamp(6px, 1vw, 16px)",
+        "radius": "radius.sm",
+        "stroke": "surface.primary, 2px",
+        "color": "Categorical palette (by top-level group)"
+      },
+      "depthOpacityScale": { "0": 1.0, "1": 0.7, "2": 0.45 },
+      "height": "clamp(160px, 22vw, 240px)",
+      "label": {
+        "fontSizeLg": "clamp(15px, 2.5vw, 24px)",
+        "fontSizeMd": "clamp(12px, 2vw, 18px)",
+        "fontSizeSm": "clamp(11px, 1.6vw, 16px)",
+        "hiddenThreshold": "Cell width < 30px",
+        "color": "#FFFFFF",
+        "fontWeight": "font.weight.medium"
+      },
+      "value": {
+        "fontFamily": "font.family.primary",
+        "fontSize": "Same as label tier",
+        "fontWeight": "font.weight.semibold (600)",
+        "color": "rgba(255,255,255,0.9)"
+      },
+      "hoverStroke": "#FFFFFF, 2px",
+      "selectedStroke": "accent.primary, 2px",
+      "breadcrumb": { "fontSize": "font.size.sm", "color": "text.secondary", "separator": "›", "activeColor": "text.primary" },
+      "animation": { "duration": "400ms", "easing": "motion.easing.inOut" }
+    }
+  },
+  "shared": {
+    "axis": {
+      "lineColor": { "light": "gray.300", "dark": "gray.600" },
+      "lineWidth": "1px",
+      "label": { "fontSize": "font.size.xs", "color": "text.secondary", "fontWeight": "font.weight.regular" },
+      "title": { "fontSize": "font.size.sm", "fontWeight": "font.weight.medium", "color": "text.primary" },
+      "secondary": {
+        "$description": "Dual Y-Axis. Visually subordinate to primary axis.",
+        "lineColor": { "light": "gray.200", "dark": "gray.700" },
+        "lineWidth": "1px",
+        "lineStyle": "dashed",
+        "lineDash": "4 3",
+        "label": { "fontSize": "font.size.xs", "color": "text.tertiary", "fontWeight": "font.weight.regular" },
+        "title": { "fontSize": "font.size.xs", "color": "text.tertiary", "fontWeight": "font.weight.regular" },
+        "position": "right",
+        "$rules": "Grid lines are drawn from primary axis only — never both."
+      }
+    },
+    "grid": {
+      "lineColor": { "light": "gray.100", "dark": "gray.800" },
+      "lineWidth": "1px",
+      "lineStyle": "dashed",
+      "lineDash": "4 4"
+    },
+    "tick": {
+      "length": "4px",
+      "color": { "light": "gray.300", "dark": "gray.600" }
+    },
+    "padding": {
+      "top": "space.4",
+      "right": "space.4",
+      "bottom": "space.8",
+      "left": "space.10"
+    },
+    "tooltip": {
+      "bg": { "light": "surface.primary", "dark": "gray.100" },
+      "text": { "light": "text.primary", "dark": "gray.900" },
+      "border": { "light": "border.default", "dark": "gray.200" },
+      "fontSize": "font.size.sm",
+      "lineHeight": 1.2,
+      "padding": "6px 10px",
+      "radius": "radius.md (6px)",
+      "shadow": "shadow.tooltip",
+      "maxWidth": "240px",
+      "maxHeight": "240px (scrollable)",
+      "swatch": { "size": "8px", "radius": "radius.full", "alignment": "flex center" },
+      "seriesRowGap": "2px",
+      "seriesLabel": { "color": "text.secondary" },
+      "seriesValue": { "fontFamily": "font.family.primary", "fontWeight": "font.weight.semibold" },
+      "header": { "fontSize": "font.size.xs", "color": "text.tertiary", "marginBottom": "3px" },
+      "divider": { "value": "1px solid border.default", "marginBottom": "4px" },
+      "totalRow": { "fontWeight": "font.weight.bold", "gap": "space.2 (8px)", "borderTop": "1px solid border.default" },
+      "offset": { "x": "12px", "y": "8px" },
+      "pointer": "none (no caret)",
+      "$rules": "Tooltips must never overflow chart container. If right-positioning would overflow, position to LEFT of scrubber instead."
+    },
+    "legend": {
+      "fontSize": "font.size.sm",
+      "fontWeight": "font.weight.regular",
+      "color": "text.secondary",
+      "gap": "space.4",
+      "swatch": { "size": "12px", "radius": "radius.sm", "gap": "space.2" },
+      "placement": "bottom (default), right, top",
+      "maxRows": 2,
+      "itemCursor": "pointer (click-to-toggle)",
+      "itemHoverColor": "text.primary",
+      "inactiveOpacity": 0.35,
+      "inactiveSwatch": "Series color at 0.35 opacity",
+      "inactiveTextDecoration": "line-through",
+      "toggleTransition": "150ms ease-out",
+      "value": { "fontFamily": "font.family.primary", "fontSize": "font.size.xs", "color": "text.tertiary" }
+    }
+  },
+  "threshold": {
+    "$description": "Three distinct line types for financial overlays.",
+    "goal": {
+      "lineColor": "status.warning",
+      "lineWidth": "1.5px",
+      "lineStyle": "dashed",
+      "dashArray": "6 4",
+      "label": { "fontSize": "font.size.xs", "color": "status.warning", "bg": "surface.primary", "padding": "space.1 space.2" }
+    },
+    "benchmark": {
+      "lineColor": "accent.primary",
+      "lineWidth": "1.5px",
+      "lineStyle": "dotted",
+      "dashArray": "3 3",
+      "label": { "fontSize": "font.size.xs", "color": "accent.primary", "bg": "surface.primary", "padding": "space.1 space.2" }
+    },
+    "limit": {
+      "lineColor": "status.error",
+      "lineWidth": "2px",
+      "lineStyle": "solid",
+      "dashArray": "none",
+      "label": { "fontSize": "font.size.xs", "color": "status.error", "bg": "surface.primary", "padding": "space.1 space.2" }
+    }
+  },
+  "annotation": {
+    "calloutBg": "surface.primary",
+    "calloutBorder": "border.default",
+    "calloutRadius": "radius.md",
+    "calloutShadow": "shadow.sm",
+    "calloutPadding": "space.2 space.3",
+    "calloutFontSize": "font.size.xs",
+    "connector": { "width": "1px", "color": "gray.400", "style": "solid" },
+    "dot": { "radius": "4px", "fill": "accent.primary" }
+  },
+  "verticalEventMarkers": {
+    "$description": "Full-height dashed vertical lines marking time-based events. Inherits color from timeline.handle event type mapping.",
+    "lineWidth": "1px",
+    "lineStyle": "dashed",
+    "lineDash": "4 3",
+    "lineOpacity": 0.50,
+    "label": {
+      "fontSize": "font.size.xs (11px)",
+      "fontWeight": "font.weight.medium",
+      "padding": "space.1 space.2 (4px 8px)",
+      "radius": "radius.sm (6px)",
+      "offsetY": "Top of chart plot area",
+      "bg": "Event color at 0.10",
+      "border": "Event color at 0.25, 1px",
+      "textColor": "Event color (full)"
+    },
+    "dot": { "radius": "3px", "fill": "Event color", "stroke": "surface.primary", "strokeWidth": "2px" },
+    "$rules": "Labels use position: absolute at same left% as marker line, top: -18px, transform: translateX(-50%). Line extends downward to timeline scrubber."
+  },
+  "confidence": {
+    "$description": "Maps statistical percentile ranges to visual opacity. Used in Monte Carlo simulations, probability cones, and forecast bands.",
+    "bands": {
+      "99": { "fillOpacity": 0.06, "borderOpacity": 0 },
+      "95": { "fillOpacity": 0.08, "borderOpacity": 0 },
+      "90": { "fillOpacity": 0.12, "borderOpacity": 0.15 },
+      "75": { "fillOpacity": 0.18, "borderOpacity": 0.20 },
+      "50": { "fillOpacity": 0.25, "borderOpacity": 0.30 }
+    },
+    "median": { "width": "2.5px", "style": "solid" },
+    "endpointDot": { "radius": "5px", "fill": "accent.primary", "stroke": "surface.primary" },
+    "layerOrder": "widest first (99 → 50)",
+    "band": {
+      "fillColor": "accent.primary",
+      "strokeColor": "accent.primary",
+      "curveType": "monotoneX",
+      "label": { "fontSize": "font.size.xs", "fontFamily": "font.family.primary", "color": "text.secondary", "offset": "6px (outside right edge)" }
+    }
+  },
+  "datapoint": {
+    "$description": "Universal states for any interactive chart element — dots, bars, bubbles.",
+    "states": {
+      "default":  { "opacity": 1.0, "scale": 1.0, "strokeWidth": "0",  "strokeColor": "none",           "shadow": "none",      "cursor": "default",     "transition": "none" },
+      "hover":    { "opacity": 1.0, "scale": 1.2, "strokeWidth": "2px", "strokeColor": "surface.primary", "shadow": "shadow.sm", "cursor": "pointer",     "transition": "150ms ease-out" },
+      "selected": { "opacity": 1.0, "scale": 1.0, "strokeWidth": "2px", "strokeColor": "accent.primary",  "shadow": "shadow.sm", "cursor": "pointer",     "transition": "150ms ease-out" },
+      "disabled": { "opacity": 0.38, "scale": 1.0, "strokeWidth": "0",  "strokeColor": "none",           "shadow": "none",      "cursor": "not-allowed", "transition": "none" }
+    }
+  },
+  "interactions": {
+    "crosshair": {
+      "width": "1px",
+      "color": "gray.400",
+      "opacity": 0.6,
+      "style": "solid",
+      "snap": true,
+      "vertical": true,
+      "horizontal": "false (opt-in)"
+    },
+    "brush": {
+      "selectionFill": "accent.primary-subtle",
+      "selectionOpacity": 0.20,
+      "handle": { "width": "4px", "color": "accent.primary", "radius": "radius.sm", "height": "24px" },
+      "maskOpacity": 0.06,
+      "borderColor": "accent.primary"
+    },
+    "animations": {
+      "barGrow": "300ms ease-out (from baseline)",
+      "barStagger": "30ms (per bar)",
+      "lineDraw": "500ms ease-out (path reveal)",
+      "areaFade": "200ms ease-out (after line)",
+      "dotPop": "150ms ease-out (scale 0→1)",
+      "fanReveal": "400ms ease-out (band by band)",
+      "fanStagger": "80ms (per band)",
+      "donutSpin": "600ms ease-out",
+      "gaugeSweep": "800ms ease-out",
+      "numberCount": "400ms (value counter)"
+    },
+    "seriesToggle": {
+      "inactiveLineOpacity": 0.15,
+      "inactiveAreaOpacity": 0.05,
+      "inactiveBarOpacity": 0.20,
+      "inactiveDotOpacity": 0.15,
+      "transitionDuration": "200ms",
+      "transitionEasing": "motion.easing.default"
+    },
+    "zoom": {
+      "minScale": 1.0,
+      "maxScale": 5.0,
+      "buttonSize": "32px",
+      "buttonRadius": "radius.md",
+      "buttonBg": "surface.secondary",
+      "buttonBorder": "border.default",
+      "buttonIconSize": "16px",
+      "buttonGap": "space.1",
+      "animationDuration": "200ms"
+    }
+  },
+  "canvasRendering": {
+    "$description": "Guide for LLM code generation using Canvas 2D with design tokens from CSS custom properties.",
+    "readTokens": "Cache at chart init via getComputedStyle(document.documentElement). Do NOT call per frame.",
+    "themeDetection": "document.documentElement.dataset.theme === 'dark'",
+    "dprScaling": "canvas.width = rect.width * dpr; canvas.height = rect.height * dpr; ctx.scale(dpr, dpr). All subsequent coordinates use CSS pixels.",
+    "fontStrings": {
+      "primary": "400 14px \"Heebo\", -apple-system, sans-serif",
+      "secondary": "600 18px \"Cormorant Garamond\", Georgia, serif",
+      "axisLabels": "400 11px \"Heebo\", -apple-system, sans-serif",
+      "chartTitle": "600 16px \"Heebo\", -apple-system, sans-serif",
+      "tooltipValue": "600 13px \"Heebo\", -apple-system, sans-serif"
+    },
+    "colorHelper": "function hexToRgba(hex, alpha) { const r = parseInt(hex.slice(1,3),16); const g = parseInt(hex.slice(3,5),16); const b = parseInt(hex.slice(5,7),16); return `rgba(${r},${g},${b},${alpha})`; }",
+    "dashPatterns": {
+      "solid": "[]",
+      "dashed": "[6, 4]",
+      "dotted": "[2, 3]",
+      "longDash": "[10, 5]"
+    },
+    "padding": { "top": 24, "right": 60, "bottom": 48, "left": 64 }
+  }
+}

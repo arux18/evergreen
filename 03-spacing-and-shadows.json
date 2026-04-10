@@ -1,0 +1,85 @@
+{
+  "$schema": "design-tokens",
+  "$description": "Spacing, border radius, elevation/shadows, motion/easing, opacity, responsive breakpoints, and rendering rules for Evergreen financial data visualization system.",
+  "space": {
+    "$base": "4px",
+    "1":  { "value": "4px",  "usage": "Tight internal gaps" },
+    "2":  { "value": "8px",  "usage": "Icon-to-label, checkbox gap" },
+    "3":  { "value": "12px", "usage": "Input padding, cell padding" },
+    "4":  { "value": "16px", "usage": "Card padding, section gaps" },
+    "5":  { "value": "20px", "usage": "Component spacing" },
+    "6":  { "value": "24px", "usage": "Group spacing" },
+    "8":  { "value": "32px", "usage": "Section dividers" },
+    "10": { "value": "40px", "usage": "Major section gaps" },
+    "12": { "value": "48px", "usage": "Page-level spacing" }
+  },
+  "radius": {
+    "none": { "value": "0px",    "usage": "Table cells, chart areas" },
+    "sm":   { "value": "4px",    "usage": "Inputs, tags, small rects" },
+    "md":   { "value": "6px",    "usage": "Cards, dropdowns" },
+    "lg":   { "value": "8px",    "usage": "Modals, panels" },
+    "xl":   { "value": "12px",   "usage": "Large containers" },
+    "full": { "value": "9999px", "usage": "Buttons, pills, toggle thumbs" }
+  },
+  "shadow": {
+    "sm": {
+      "light": "0 1px 2px rgba(0,0,0,0.05)",
+      "dark": "0 1px 3px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)"
+    },
+    "md": {
+      "light": "0 4px 6px rgba(0,0,0,0.07)",
+      "dark": "0 4px 8px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05)"
+    },
+    "lg": {
+      "light": "0 10px 15px rgba(0,0,0,0.1)",
+      "dark": "0 10px 20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06)"
+    },
+    "dropdown": {
+      "light": "0 4px 12px rgba(0,0,0,0.12)",
+      "dark": "0 4px 16px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)"
+    },
+    "tooltip": {
+      "light": "0 2px 8px rgba(0,0,0,0.15)",
+      "dark": "0 2px 10px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)"
+    }
+  },
+  "motion": {
+    "duration": {
+      "fast":   { "value": "100ms", "usage": "Hover states, toggles" },
+      "normal": { "value": "200ms", "usage": "Dropdowns, tooltips" },
+      "slow":   { "value": "300ms", "usage": "Modals, chart transitions" }
+    },
+    "easing": {
+      "default": { "value": "cubic-bezier(0.4, 0, 0.2, 1)",      "usage": "Standard ease" },
+      "in":      { "value": "cubic-bezier(0.4, 0, 1, 1)",         "usage": "Exiting elements" },
+      "out":     { "value": "cubic-bezier(0, 0, 0.2, 1)",         "usage": "Entering elements" },
+      "spring":  { "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",  "usage": "Playful bounces" }
+    }
+  },
+  "opacity": {
+    "disabled":            { "value": 0.38, "usage": "Disabled elements" },
+    "hoverOverlay":        { "value": 0.04, "usage": "Hover tint" },
+    "pressedOverlay":      { "value": 0.08, "usage": "Active/pressed tint" },
+    "chartAreaFill":       { "value": 0.15, "usage": "Area chart fill" },
+    "chartAreaFillHover":  { "value": 0.25, "usage": "Area chart fill on hover" }
+  },
+  "breakpoints": {
+    "sm": { "value": "390px",  "behavior": "Single-column stack; collapse multi-column grids" },
+    "md": { "value": "768px",  "behavior": "Side-by-side layout; mobile font sizes below" },
+    "lg": { "value": "1024px", "behavior": "Full dashboard grid" },
+    "xl": { "value": "1280px", "behavior": "Extended chart widths" }
+  },
+  "responsive": {
+    "columnCollapse": "Multi-column grids collapse to single column at breakpoint.sm (390px) only — NOT at 768px.",
+    "chartBehavior": {
+      "lg": { "minWidth": "1024px", "chartHeight": "380px", "fontScale": "1.0×", "paddingReduction": "None" },
+      "md": { "range": "768–1023px", "chartHeight": "320px", "fontScale": "0.9×", "paddingReduction": "Reduce right/left by 25%" },
+      "sm": { "maxWidth": "767px",   "chartHeight": "260px", "fontScale": "0.85×", "paddingReduction": "Reduce all by 30%, hide y-axis title" }
+    },
+    "minimumWidth": "All extended chart components (Timeline Scrubber, Dual Y-Axis + Event Markers) must set min-width: 390px.",
+    "horizontalScroll": {
+      "use": "Data tables with many columns, Sankey / flow diagrams with fixed spatial relationships, charts where reflowing would misrepresent data.",
+      "doNotUse": "Standard line, area, bar, donut, scatter, histogram, waterfall, candlestick, gauge, sparkline, or confidence-band charts — these must use pure HTML/CSS approach."
+    }
+  }
+}

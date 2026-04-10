@@ -1,0 +1,69 @@
+{
+  "$schema": "design-tokens",
+  "$description": "Table tokens for Evergreen financial data visualization system. Covers header, row, cell, pagination, expand/collapse, sort, and event-highlighted rows.",
+  "table": {
+    "header": {
+      "bg":              { "light": "surface.secondary", "dark": "surface.secondary" },
+      "text":            "text.primary",
+      "fontSize":        "font.size.sm",
+      "fontWeight":      "font.weight.semibold",
+      "padding":         "space.3 space.4",
+      "borderBottom":    "2px solid border.strong",
+      "sort": {
+        "iconSize":      "14px",
+        "iconColor":     "text.tertiary",
+        "iconActive":    "accent.primary"
+      },
+      "stickyShadow":    "shadow.sm"
+    },
+    "row": {
+      "bg":              "surface.primary",
+      "bgAlt":           "surface.secondary",
+      "bgHover":         "accent.primary-subtle",
+      "bgSelected":      "accent.primary-subtle",
+      "borderBottom":    "1px solid border.default"
+    },
+    "cell": {
+      "padding":         "space.3 space.4",
+      "fontSize":        "font.size.sm",
+      "text":            "text.primary",
+      "numeric": {
+        "fontFamily":    "font.family.primary",
+        "textAlign":     "right"
+      }
+    },
+    "pagination": {
+      "height":          "48px",
+      "fontSize":        "font.size.sm"
+    },
+    "expand": {
+      "iconSize":        "16px",
+      "indent":          "space.6"
+    },
+    "collapse": {
+      "$description": "Show/hide toggle for large data tables. Placed directly above or below the table.",
+      "toggleFontSize":   "font.size.sm",
+      "toggleFontWeight": "font.weight.medium",
+      "toggleColor":      "accent.primary",
+      "toggleCursor":     "pointer",
+      "toggleIconSize":   "14px",
+      "toggleIconGap":    "space.1 (4px)",
+      "animation":        "200ms ease-out"
+    },
+    "eventHighlightedRows": {
+      "$description": "Row highlighting for time-based events (exercise date, sale date). Each event type uses its own color from timeline.handle mapping.",
+      "eventBg":           "Event color at 0.08 opacity",
+      "eventBorderLeft":   "3px solid event color",
+      "eventTextWeight":   "font.weight.medium",
+      "colorMapping": {
+        "$note": "Reuses timeline.handle.* event types",
+        "exercise":  "accent.primary",
+        "sale":      "cat-5",
+        "conversion": "cat-2",
+        "rebalance": "cat-3",
+        "vest":      "cat-7",
+        "custom":    "cat-8"
+      }
+    }
+  }
+}

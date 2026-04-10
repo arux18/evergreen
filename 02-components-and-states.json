@@ -1,0 +1,516 @@
+{
+  "$schema": "design-tokens",
+  "$description": "UI component and form tokens for Evergreen financial data visualization system. Covers form layout, inputs, dropdowns, sliders, toggles, cards, KPI cards, badges, buttons, alerts, modals, popovers, tabs, step indicators, comparison tables, sparkline-in-table, timeline scrubber, and states (empty, skeleton, focus).",
+  "formLayout": {
+    "$description": "Horizontal/vertical groupings of labeled form fields. Used for parameter bars and settings panels.",
+    "group": {
+      "gap": "space.4 (16px)",
+      "direction": "row (horizontal default) or column",
+      "wrap": "wrap"
+    },
+    "field": {
+      "minWidth": "120px",
+      "label": {
+        "fontSize": "font.size.xs (11px)",
+        "fontWeight": "font.weight.medium",
+        "color": "text.secondary",
+        "textTransform": "uppercase",
+        "letterSpacing": "wide (0.05em)",
+        "marginBottom": "space.1 (4px)"
+      }
+    },
+    "action": { "align": "flex-end" }
+  },
+  "section": {
+    "$description": "Repeating card-like content blocks that organize a page into distinct sections.",
+    "bg": "surface.primary",
+    "radius": "radius.lg (12px)",
+    "padding": "space.6 (24px)",
+    "shadow": "shadow.sm",
+    "gap": "space.6 (24px)",
+    "title": {
+      "fontSize": "font.size.lg (18px)",
+      "fontWeight": "font.weight.semibold",
+      "fontFamily": "font.family.primary",
+      "color": "text.primary",
+      "marginBottom": "space.2 (8px)"
+    },
+    "subtitle": {
+      "fontSize": "font.size.sm (13px)",
+      "color": "text.secondary",
+      "marginBottom": "space.4 (16px)"
+    },
+    "pageBg": "surface.secondary"
+  },
+  "input": {
+    "states": {
+      "default":  { "bg": "surface.primary",   "border": "border.default", "borderWidth": "1px", "text": "text.primary",  "placeholder": "text.tertiary", "icon": "text.secondary" },
+      "hover":    { "bg": "surface.primary",   "border": "border.strong",  "borderWidth": "1px", "text": "text.primary",  "placeholder": "text.tertiary", "icon": "text.primary" },
+      "focus":    { "bg": "surface.primary",   "border": "accent.primary", "borderWidth": "2px", "text": "text.primary",  "placeholder": "text.tertiary", "icon": "accent.primary" },
+      "disabled": { "bg": "surface.secondary", "border": "border.default", "borderWidth": "1px", "text": "text.tertiary", "placeholder": "text.tertiary", "icon": "text.tertiary" },
+      "error":    { "bg": "surface.primary",   "border": "status.error",   "borderWidth": "2px", "text": "text.primary",  "placeholder": "text.tertiary", "icon": "status.error" }
+    },
+    "radius": "radius.md",
+    "paddingX": "space.3",
+    "paddingY": "space.2",
+    "height": "36px",
+    "fontSize": "font.size.md",
+    "label": { "fontSize": "font.size.sm", "fontWeight": "font.weight.medium" },
+    "helper": { "fontSize": "font.size.xs", "color": "text.secondary", "errorColor": "status.error" }
+  },
+  "dropdown": {
+    "trigger": "Inherits all input.* tokens",
+    "chevron": { "size": "16px", "color": "text.secondary" },
+    "menu": {
+      "bg": "surface.primary",
+      "border": "border.default",
+      "radius": "radius.md",
+      "shadow": "shadow.dropdown",
+      "maxHeight": "280px",
+      "padding": "space.1"
+    },
+    "item": {
+      "paddingX": "space.3",
+      "paddingY": "space.2",
+      "radius": "radius.sm",
+      "fontSize": "font.size.md",
+      "color": "text.primary",
+      "hoverBg": "accent.primary-subtle",
+      "selectedBg": "accent.primary-subtle",
+      "selectedColor": "accent.primary",
+      "selectedIcon": "Checkmark, accent.primary",
+      "disabledColor": "text.tertiary"
+    },
+    "divider": { "color": "border.default", "marginY": "space.1" }
+  },
+  "slider": {
+    "track": {
+      "height": "4px",
+      "radius": "radius.full",
+      "bg": { "light": "gray.200", "dark": "gray.700" },
+      "fill": "accent.primary",
+      "fillDisabled": "gray.300",
+      "marginX": "space.2"
+    },
+    "thumb": {
+      "size": "18px",
+      "bg": "accent.primary",
+      "border": "2px solid surface.primary",
+      "shadow": "shadow.sm",
+      "hoverScale": 1.15,
+      "activeScale": 1.0,
+      "focusRing": "0 0 0 3px accent.primary-subtle",
+      "disabledBg": "gray.300"
+    },
+    "label": { "fontSize": "font.size.sm" },
+    "value": { "fontSize": "font.size.sm", "fontWeight": "font.weight.semibold" },
+    "tick": { "height": "6px", "width": "1px", "color": "gray.300" },
+    "thumbLabel": {
+      "position": "above thumb (absolute, centered)",
+      "font": "type.body (primary, base, regular)",
+      "color": "text.primary"
+    },
+    "endpoint": {
+      "font": "type.overline (primary, xs, semibold, wide)",
+      "color": "text.tertiary",
+      "textTransform": "uppercase"
+    }
+  },
+  "toggle": {
+    "track": {
+      "width": "36px",
+      "height": "20px",
+      "radius": "radius.full",
+      "bgOff": "gray.300",
+      "bgOn": "accent.primary",
+      "bgDisabled": "gray.200"
+    },
+    "thumb": {
+      "size": "16px",
+      "bg": "surface.primary",
+      "bgDisabled": "gray.100",
+      "shadow": "shadow.sm",
+      "shadowDisabled": "none",
+      "offsetXOff": "2px",
+      "offsetXOn": "18px"
+    }
+  },
+  "checkbox": {
+    "size": "18px",
+    "radius": { "checkbox": "radius.sm", "radio": "radius.full" },
+    "border": "1.5px solid border.strong",
+    "borderChecked": "1.5px solid accent.primary",
+    "bg": "surface.primary",
+    "bgChecked": "accent.primary",
+    "iconColor": "surface.primary",
+    "iconSize": "12px",
+    "focusRing": "0 0 0 3px accent.primary-subtle",
+    "gap": "space.2",
+    "labelFontSize": "font.size.md"
+  },
+  "segmented": {
+    "bg": "surface.secondary",
+    "radius": "radius.md",
+    "padding": "space.1",
+    "item": {
+      "paddingX": "space.4",
+      "paddingY": "space.2",
+      "radius": "radius.sm",
+      "fontSize": "font.size.sm",
+      "fontWeight": "font.weight.medium",
+      "color": "text.secondary",
+      "activeBg": "surface.primary",
+      "activeColor": "text.primary",
+      "activeShadow": "shadow.sm"
+    }
+  },
+  "datepicker": {
+    "trigger": "Inherits input.* tokens",
+    "calendar": {
+      "bg": "surface.primary",
+      "shadow": "shadow.dropdown",
+      "radius": "radius.lg",
+      "padding": "space.4"
+    },
+    "header": { "fontSize": "font.size.md", "fontWeight": "font.weight.semibold" },
+    "navIconSize": "20px",
+    "day": {
+      "size": "32px",
+      "fontSize": "font.size.sm",
+      "radius": "radius.full",
+      "hoverBg": "accent.primary-subtle",
+      "selectedBg": "accent.primary",
+      "selectedColor": "text.inverse",
+      "todayBorder": "1px solid accent.primary",
+      "outsideColor": "text.tertiary"
+    },
+    "rangeBg": "accent.primary-subtle"
+  },
+  "card": {
+    "$description": "Base container for dashboard panels, chart wrappers, and content groups.",
+    "bg": "surface.secondary",
+    "border": "1px solid border.default",
+    "radius": "radius.lg",
+    "shadow": "shadow.md",
+    "padding": "space.6",
+    "hoverBorder": "border.strong",
+    "hoverShadow": "shadow.lg",
+    "transition": "200ms ease",
+    "header": {
+      "paddingBottom": "space.4",
+      "borderBottom": "1px solid border.default",
+      "title": { "fontSize": "font.size.lg", "fontWeight": "font.weight.semibold" }
+    },
+    "body": { "paddingY": "space.4" },
+    "footer": { "paddingTop": "space.4", "borderTop": "1px solid border.default" }
+  },
+  "kpi": {
+    "$description": "Hero metric display with trend indicator. Extends card.* tokens.",
+    "value": {
+      "fontSize": "font.size.4xl",
+      "fontWeight": "font.weight.bold",
+      "fontFamily": "font.family.primary",
+      "color": "text.primary",
+      "colorPositive": "data.positive",
+      "colorNegative": "data.negative",
+      "colorAccent": "accent.primary",
+      "colorWarning": "status.warning",
+      "letterSpacing": "tight"
+    },
+    "subtitle": { "fontSize": "font.size.sm", "color": "text.secondary", "marginTop": "space.1" },
+    "trend": {
+      "fontSize": "font.size.xs",
+      "fontWeight": "font.weight.semibold",
+      "fontFamily": "font.family.primary",
+      "positiveColor": "data.positive",
+      "negativeColor": "data.negative",
+      "neutralColor": "data.neutral",
+      "arrowSize": "12px",
+      "badgePadding": "space.1 space.2 (4px 8px)",
+      "badgeRadius": "radius.sm (4px)",
+      "badgeBgPositive": "data.positive-subtle",
+      "badgeBgNegative": "data.negative-subtle"
+    },
+    "sparkline": { "height": "chart.sparkline.height", "marginTop": "space.3" }
+  },
+  "badge": {
+    "$description": "Shape rule: Badges use radius.sm (4px) rounded rectangles, never pills. This distinguishes non-interactive indicators from pill-shaped interactive buttons.",
+    "heights": { "sm": "20px", "md": "24px", "lg": "28px" },
+    "padding": "space.1 space.2 (4px 8px)",
+    "radius": "radius.sm (4px)",
+    "fontSize": "font.size.xs",
+    "fontWeight": "font.weight.semibold",
+    "iconSize": "12px",
+    "iconGap": "space.1",
+    "variants": {
+      "positive": { "bg": "data.positive-subtle", "text": "data.positive" },
+      "negative": { "bg": "data.negative-subtle", "text": "data.negative" },
+      "neutral":  { "bg": "surface.tertiary",     "text": "text.secondary" },
+      "accent":   { "bg": "accent.primary-subtle", "text": "accent.primary" }
+    }
+  },
+  "button": {
+    "variants": {
+      "primary":   { "bg": "accent.primary",  "text": "text.inverse",    "border": "none",                    "hoverBg": "accent.primary-hover",  "activeBg": "accent.primary" },
+      "secondary": { "bg": "transparent",      "text": "accent.primary",  "border": "1px solid accent.primary", "hoverBg": "accent.primary-subtle", "activeBg": "accent.primary-subtle" },
+      "ghost":     { "bg": "transparent",      "text": "text.tertiary",   "border": "none",                    "hoverBg": "surface.tertiary",      "activeBg": "surface.tertiary" }
+    },
+    "disabledOpacity": 0.38,
+    "heights": { "sm": "28px", "md": "36px", "lg": "44px" },
+    "padding": { "sm": "space.2 space.3", "md": "space.2 space.4", "lg": "space.3 space.6" },
+    "radius": "radius.full",
+    "fontSizes": { "sm": "font.size.sm", "md": "font.size.base", "lg": "font.size.md" },
+    "fontWeight": "font.weight.semibold",
+    "iconSize": "16px",
+    "iconGap": "space.2",
+    "focusRing": "0 0 0 3px accent.primary-subtle",
+    "activeScale": 0.98,
+    "transition": "150ms ease"
+  },
+  "numberInput": {
+    "height": "36px",
+    "fontFamily": "font.family.primary",
+    "fontSize": "font.size.base",
+    "textAlign": "right",
+    "border": "inherits input.border",
+    "radius": "radius.md",
+    "padding": "space.2 space.3",
+    "stepper": {
+      "width": "28px",
+      "bg": "transparent",
+      "hoverBg": "surface.tertiary",
+      "iconSize": "12px",
+      "iconColor": "text.secondary",
+      "border": "1px solid border.default",
+      "radius": "radius.sm"
+    }
+  },
+  "progress": {
+    "height": "6px",
+    "heightLg": "10px",
+    "radius": "radius.full",
+    "trackBg": { "light": "gray.200", "dark": "gray.700" },
+    "fillBg": "accent.primary",
+    "fillPositive": "data.positive",
+    "fillWarning": "status.warning",
+    "fillError": "status.error",
+    "fillAnimation": "300ms ease-out",
+    "label": {
+      "fontSize": "font.size.xs",
+      "fontFamily": "font.family.primary",
+      "color": "text.secondary",
+      "placement": "right"
+    },
+    "milestone": { "size": "4px", "color": "gray.400", "radius": "radius.full" }
+  },
+  "alert": {
+    "shared": {
+      "padding": "space.3 space.4 (12px 16px)",
+      "radius": "radius.md (8px)",
+      "borderLeftWidth": "4px",
+      "fontSize": "font.size.sm (13px)",
+      "title": { "fontWeight": "weight.semibold (500)", "marginBottom": "2px" },
+      "body": { "fontSize": "12px", "color": "text.secondary" },
+      "iconSize": "16px",
+      "iconGap": "space.3 (12px)",
+      "dismissSize": "16px",
+      "dismissColor": "text.tertiary",
+      "button": { "padding": "4px 12px", "fontSize": "12px", "radius": "radius.full", "border": "1px solid matching status color" }
+    },
+    "variants": {
+      "info":    { "bg": "status.info-subtle",    "border": "status.info",    "iconColor": "status.info",    "buttonColor": "status.info" },
+      "success": { "bg": "status.success-subtle", "border": "status.success", "iconColor": "status.success", "buttonColor": "status.success" },
+      "warning": { "bg": "status.warning-subtle", "border": "status.warning", "iconColor": "status.warning", "buttonColor": "status.warning" },
+      "error":   { "bg": "status.error-subtle",   "border": "status.error",   "iconColor": "status.error",   "buttonColor": "status.error" }
+    },
+    "iconMapping": "Info → circled i, Success → circled checkmark, Warning → triangle, Error → circled ×. All 16×16 SVG, 1.5px stroke."
+  },
+  "modal": {
+    "widths": { "sm": "400px", "md": "560px", "lg": "720px" },
+    "padding": "space.6",
+    "radius": "radius.xl",
+    "shadow": "shadow.lg",
+    "bg": "surface.primary",
+    "backdropBg": "surface.overlay",
+    "backdropBlur": "4px",
+    "header": {
+      "fontSize": "font.size.lg",
+      "fontWeight": "font.weight.semibold",
+      "paddingBottom": "space.4",
+      "borderBottom": "1px solid border.default"
+    },
+    "body": { "paddingY": "space.4" },
+    "footer": { "paddingTop": "space.4", "borderTop": "1px solid border.default" },
+    "closeIcon": { "size": "20px", "color": "text.tertiary" },
+    "animation": { "entrance": "200ms ease-out (fade + scale 0.95→1)", "exit": "150ms ease-in" }
+  },
+  "popover": {
+    "maxWidth": "320px",
+    "padding": "space.3",
+    "radius": "radius.md",
+    "shadow": "shadow.dropdown",
+    "bg": "surface.primary",
+    "border": "1px solid border.default",
+    "arrowSize": "8px",
+    "arrowOffset": "12px",
+    "animation": "150ms ease-out (fade + translate-y 4px→0)",
+    "zIndex": 1000
+  },
+  "tabs": {
+    "$description": "Full-width navigation tabs with underline indicator. Distinct from segmented (pill-style toggle).",
+    "borderBottom": "1px solid border.default",
+    "indicator": { "height": "2px", "color": "accent.primary", "radius": "radius.full", "animation": "200ms ease" },
+    "item": {
+      "paddingX": "space.4",
+      "paddingY": "space.3",
+      "fontSize": "font.size.sm",
+      "fontWeight": "font.weight.regular",
+      "color": "text.secondary",
+      "hoverColor": "text.primary",
+      "activeColor": "accent.primary",
+      "activeFontWeight": "font.weight.semibold",
+      "gap": "space.1",
+      "iconSize": "16px"
+    }
+  },
+  "stepper": {
+    "$description": "Multi-step flows: onboarding, contribution setup, rebalance confirmation, account opening.",
+    "orientation": "horizontal (default) or vertical",
+    "stepSize": "32px",
+    "stepFontSize": "font.size.sm",
+    "stepFontWeight": "font.weight.semibold",
+    "connectorHeight": "2px",
+    "connectorGap": "0px",
+    "stepGap": "space.2",
+    "label": { "fontSize": "font.size.sm", "maxWidth": "120px" },
+    "states": {
+      "pending":  { "bg": "surface.tertiary", "border": "border.default", "text": "text.tertiary",   "connector": "border.default" },
+      "active":   { "bg": "accent.primary",   "border": "accent.primary", "text": "#FFFFFF",          "labelColor": "text.primary", "labelWeight": "font.weight.semibold", "connector": "accent.primary" },
+      "complete": { "bg": "accent.primary",   "border": "accent.primary", "icon": "#FFFFFF (checkmark, 14px)", "connector": "accent.primary", "labelColor": "text.secondary" },
+      "error":    { "bg": "status.error",     "border": "status.error",   "icon": "#FFFFFF (×, 14px)" }
+    }
+  },
+  "comparison": {
+    "$description": "Side-by-side scenario analysis: Roth conversion vs. no conversion, portfolio A vs. B, tax strategy outcomes.",
+    "header": { "bg": "surface.secondary", "fontWeight": "font.weight.semibold" },
+    "scenarioLabel": { "fontSize": "font.size.md", "fontWeight": "font.weight.bold" },
+    "divider": "2px solid border.strong",
+    "deltaColumn": { "width": "80px", "bg": "surface.tertiary" },
+    "delta": {
+      "positiveColor": "data.positive",
+      "negativeColor": "data.negative",
+      "neutralColor": "data.neutral",
+      "positiveBg": "data.positive-subtle",
+      "negativeBg": "data.negative-subtle",
+      "fontFamily": "font.family.primary",
+      "fontSize": "font.size.sm"
+    },
+    "highlightRow": { "bg": "accent.primary-subtle" },
+    "winnerBadge": { "radius": "radius.sm (4px)", "fontSize": "font.size.xs", "color": "data.positive", "bg": "data.positive-subtle" }
+  },
+  "sparklineInTable": {
+    "$description": "Inline mini-charts embedded in table cells for per-row trend visualization.",
+    "width": "64px",
+    "height": "24px",
+    "strokeWidth": "1.5px",
+    "positiveColor": "data.positive",
+    "negativeColor": "data.negative",
+    "neutralColor": "text.tertiary",
+    "areaFillOpacity": 0.05,
+    "endpointDot": "2px radius",
+    "cellPadding": "space.2 space.3",
+    "align": "center"
+  },
+  "timeline": {
+    "$description": "Dual-handle range component for time-based chart events (stock option exercise/sale, Roth conversion, rebalance). A chart companion component linked to the x-axis.",
+    "track": {
+      "height": "4px",
+      "bg": { "light": "gray.200", "dark": "gray.600" },
+      "radius": "radius.full",
+      "marginTop": "space.4"
+    },
+    "range": {
+      "fill": "accent.primary-subtle or cat-N at 0.20",
+      "fillOpacity": 0.25,
+      "border": "none",
+      "height": "matches track"
+    },
+    "handle": {
+      "size": "14px",
+      "border": "2px solid surface.primary",
+      "shadow": "shadow.sm",
+      "radius": "radius.full",
+      "hoverScale": 1.2,
+      "activeScale": 1.0,
+      "focusRing": "0 0 0 3px handle-color at 0.25",
+      "cursor": "grab / grabbing"
+    },
+    "handleColors": {
+      "exercise": "accent.primary",
+      "sale": "cat-5",
+      "conversion": "cat-2",
+      "rebalance": "cat-3",
+      "vest": "cat-7",
+      "custom": "cat-8"
+    },
+    "label": {
+      "fontSize": "font.size.xs (11px)",
+      "fontWeight": "font.weight.medium",
+      "padding": "space.1 space.2 (4px 8px)",
+      "radius": "radius.sm (6px)",
+      "bg": "handle color at 0.10 opacity",
+      "border": "handle color at 0.25 opacity, 1px",
+      "textColor": "handle color (full)",
+      "offsetY": "-24px (above) or 8px (below)",
+      "connector": { "width": "1px", "color": "handle color at 0.30", "style": "solid" },
+      "fontFamily": "font.family.primary",
+      "format": "Stacked two-line pill — event name on line 1, date on line 2"
+    },
+    "phase": {
+      "fontSize": "font.size.xs (11px)",
+      "fontWeight": "font.weight.regular",
+      "color": "text.tertiary",
+      "textTransform": "none",
+      "align": "center (within phase span)",
+      "offsetY": "12px (below track)"
+    },
+    "connector": {
+      "width": "1px",
+      "color": "handle color at 0.40",
+      "style": "dashed",
+      "dashArray": "4 3"
+    },
+    "layout": {
+      "width": "100% (matches chart plot area)",
+      "paddingX": "Aligns with chart.padding.left / chart.padding.right",
+      "gapToChart": "space.3 (12px)",
+      "minWidth": "390px"
+    }
+  },
+  "states": {
+    "empty": {
+      "layout": { "align": "center", "justify": "center" },
+      "iconSize": "48px",
+      "iconColor": "text.tertiary",
+      "iconStyle": "linear (1.5px)",
+      "title": { "fontSize": "font.size.lg", "color": "text.secondary" },
+      "description": { "fontSize": "font.size.md", "color": "text.tertiary", "maxWidth": "320px" }
+    },
+    "skeleton": {
+      "bg": { "light": "gray.100", "dark": "gray.800" },
+      "gradient": {
+        "light": "linear-gradient(91.58deg, #F2F3F2 0.12%, #FFFFFF 43.3%, #F2F3F2 100%)",
+        "dark": "linear-gradient(91.58deg, gray.800 0.12%, gray.700 43.3%, gray.800 100%)"
+      },
+      "gradientSize": "200% 100%",
+      "radius": "radius.sm",
+      "animation": "skeleton-sweep 1.5s ease-in-out infinite",
+      "keyframes": "0% { background-position: 200% 0 } → 100% { background-position: -200% 0 }"
+    },
+    "focus": {
+      "ringWidth": "2px",
+      "ringOffset": "2px",
+      "ringColor": "color.border.focus"
+    }
+  }
+}
