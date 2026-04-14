@@ -115,12 +115,12 @@ def run_cli():
 
     # Resolve directories
     tokens_dir = str(Path(args.tokens_dir).resolve())
-    base_dir = Path(tokens_dir).parent
-    
-    commands_dir = str(Path(args.commands_dir).resolve()) if args.commands_dir else str(base_dir / "commands")
-    rules_dir = str(Path(args.rules_dir).resolve()) if args.rules_dir else str(base_dir / "rules")
-    skills_dir = str(Path(args.skills_dir).resolve()) if args.skills_dir else str(base_dir / "skills")
-    users_dir = str(Path(args.users_dir).resolve()) if args.users_dir else str(base_dir / "users")
+    script_dir = Path(__file__).parent
+
+    commands_dir = str(Path(args.commands_dir).resolve()) if args.commands_dir else str(script_dir / "commands")
+    rules_dir = str(Path(args.rules_dir).resolve()) if args.rules_dir else str(script_dir / "rules")
+    skills_dir = str(Path(args.skills_dir).resolve()) if args.skills_dir else str(script_dir / "skills")
+    users_dir = str(Path(args.users_dir).resolve()) if args.users_dir else str(script_dir / "users")
 
     # Set up console
     console = Console(theme=VEGA_THEME) if HAS_RICH else None

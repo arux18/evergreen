@@ -345,20 +345,21 @@ TOOL_DEFINITIONS = [
 class DesignSystemTools:
     """Executes Vega's design system tools against loaded token and config data."""
 
-    def __init__(self, tokens_dir: str, commands_dir: str = None, rules_dir: str = None, 
+    def __init__(self, tokens_dir: str, commands_dir: str = None, rules_dir: str = None,
                  skills_dir: str = None, users_dir: str = None):
         self.tokens_dir = tokens_dir
         self.raw_tokens = load_token_files(tokens_dir)
         self.flat_tokens = {}
         for filename, data in self.raw_tokens.items():
             self.flat_tokens[filename] = flatten_tokens(data)
-        
-        # Load configuration folders
-        self.commands_dir = commands_dir or str(Path(tokens_dir).parent / "commands")
-        self.rules_dir = rules_dir or str(Path(tokens_dir).parent / "rules")
-        self.skills_dir = skills_dir or str(Path(tokens_dir).parent / "skills")
-        self.users_dir = users_dir or str(Path(tokens_dir).parent / "users")
-        
+
+        # Load configuration folders (default to subfolders within vega/)
+        vega_dir = Path(__file__).parent
+        self.commands_dir = commands_dir or str(vega_dir / "commands")
+        self.rules_dir = rules_dir or str(vega_dir / "rules")
+        self.skills_dir = skills_dir or str(vega_dir / "skills")
+        self.users_dir = users_dir or str(vega_dir / "users")
+
         self.commands = load_markdown_files(self.commands_dir)
         self.rules = load_markdown_files(self.rules_dir)
         self.skills = load_markdown_files(self.skills_dir)
