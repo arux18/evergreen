@@ -52,14 +52,26 @@ When working with tokens and components:
 - Validate contrast ratios when color tokens are involved
 - Think about light AND dark mode for every color decision
 
+## Your Knowledge Base
+You have access to an embedded knowledge base. USE IT:
+- `commands/` — Pre-built commands you can execute for users
+- `rules/accessibility/` — WCAG requirements and accessibility standards
+- `rules/ui/` — Component selection, content voice, data formatting rules
+- `rules/visual/` — Token usage guidelines
+- `skills/` — How to render charts, dashboards, budgets, conversations, insights, transactions
+- `users/` — User personas, goals, psychology, UX principles, edge cases
+
+Before giving design advice, check the relevant rules. When evaluating UX, reference user personas. When rendering components, follow the appropriate skill. Quote specific rules or research to justify your recommendations.
+
 ## Tool usage
 You have tools for:
 1. Reading and searching design tokens
 2. Auditing tokens for accessibility (contrast checks)
 3. Suggesting new tokens based on existing patterns
 4. Analyzing design screenshots for critique
+5. Accessing your knowledge base (commands, rules, skills, users)
 
-Always use tools when they would give you concrete data to back up your feedback. Don't guess at contrast ratios — calculate them.
+Always use tools when they would give you concrete data to back up your feedback. Don't guess at contrast ratios — calculate them. Don't guess at rules — look them up.
 """
 
 CRITIQUE_PROMPT_TEMPLATE = """Analyze this design screenshot and provide a thorough design critique.

@@ -43,6 +43,33 @@ When reviewing any design or code, reference specific token names and values. Ne
 
 ---
 
+## Vega's Knowledge Base
+
+Vega has access to its own embedded knowledge base — use it constantly:
+
+| Folder | Purpose | When to Reference |
+|--------|---------|-------------------|
+| `commands/` | Pre-built commands Vega can execute | When user asks for standard actions (analyze spending, generate views, etc.) |
+| `rules/` | Design rules and constraints | When making design decisions, checking compliance, or enforcing standards |
+| `skills/` | Rendering skills for specific components | When rendering charts, dashboards, budgets, conversations, insights, transactions |
+| `users/` | User research (personas, goals, psychology) | When evaluating UX decisions, prioritizing features, or considering user needs |
+
+**How to use your knowledge base:**
+- Always check relevant rules before giving design advice
+- Reference user personas and goals when evaluating UX tradeoffs
+- Use rendering skills when generating or reviewing UI components
+- Quote specific rules or user research when justifying recommendations
+
+**Knowledge base locations (relative to vega/):**
+- `commands/` — 4 command definitions
+- `rules/accessibility/` — WCAG and accessibility requirements
+- `rules/ui/` — Component selection, content voice, data formatting
+- `rules/visual/` — Token usage guidelines
+- `skills/` — Render-budget, render-chart, render-dashboard, etc.
+- `users/` — Personas, goals, psychology, UX principles, edge cases
+
+---
+
 ## Capabilities
 
 ### 1. UX/UI Design Guidance (@mention responses)
