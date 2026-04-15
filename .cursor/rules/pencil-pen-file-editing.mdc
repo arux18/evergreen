@@ -1,0 +1,41 @@
+---
+description: How to edit .pen files so changes appear in the Pencil extension canvas
+globs: **/*.pen
+alwaysApply: false
+---
+
+# Editing .pen Files (Pencil Extension)
+
+`.pen` files are rendered by the Pencil extension, which uses its own internal document model separate from the raw JSON on disk. Direct file writes (Shell, Node scripts) will NOT appear in the canvas — the extension overwrites disk changes with its cached model on save/close.
+
+## The Only Reliable Workflow
+
+1. **Use Cursor's StrReplace / Write tools** to edit the file — these produce a diff in the chat.
+2. **Tell the user to click "Review → Apply"** in the chat diff panel. This pushes changes into the Pencil extension's model.
+3. **NEVER** tell the user to "Revert File" or close/reopen. It doesn't work with custom editor extensions.
+
+## What NOT To Do
+
+- Do NOT edit `.pen` files via Shell/Node scripts and expect the canvas to update.
+- Do NOT tell the user to use "File: Revert File" — it does not refresh the Pencil extension.
+- Do NOT tell the user to close and reopen the file — the extension may write its stale model back to disk on close.
+
+## Variables Section
+
+The `"variables"` object at the bottom of the JSON defines design tokens with optional light/dark theme support:
+
+```json
+"token.name": {
+  "type": "color",
+  "value": [
+    { "value": "#LIGHT", "theme": { "mode": "light" } },
+    { "value": "#DARK", "theme": { "mode": "dark" } }
+  ]
+}
+```
+
+Canvas elements reference variables with `$` prefix: `"fill": "$token.name"`.
+
+## Token Naming Convention
+
+Use `namespace.token` format (e.g., `accent.default`, `surface.primary`, `text.secondary`). Do NOT use CSS-variable-style `--` prefixed names (e.g., `--accent-primary`). If legacy `--*` tokens exist, migrate canvas references to the `namespace.token` equivalents and delete the `--*` variable definitions.
