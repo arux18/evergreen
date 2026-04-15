@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FinSim Pro — Monte Carlo</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --panel: #ffffff;
+      --border: #e4e4e7;
+      --border-subtle: #f4f4f5;
+      --text: #18181b;
+      --text-secondary: #52525b;
+      --text-muted: #a1a1aa;
+      --accent: #9333ea;
+      --accent-soft: rgba(147, 51, 234, 0.12);
+      --positive: #16a34a;
+      --negative: #dc2626;
+      --input-bg: #fafafa;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+    [data-theme="dark"] {
+      --bg: #0a0a0a;
+      --panel: #0a0a0a;
+      --border: #27272a;
+      --border-subtle: #1e1e22;
+      --text: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #a855f7;
+      --accent-soft: rgba(168, 85, 247, 0.15);
+      --positive: #22c55e;
+      --negative: #ef4444;
+      --input-bg: #27272a;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+    .app {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+    }
+    aside {
+      width: 380px;
+      flex-shrink: 0;
+      border-right: 1px solid var(--border);
+      background: var(--panel);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      overflow-y: auto;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 1.5rem;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0.25rem 0;
+    }
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+    label.field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+    label.field > span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 0.625rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--input-bg);
+      color: var(--text);
+      font-family: ui-monospace, "Cascadia Code", monospace;
+      font-size: 0.875rem;
+    }
+    input:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+    button {
+      font-family: inherit;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.625rem 1rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    button.primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    button.secondary {
+      background: var(--border-subtle);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .theme-toggle {
+      margin-left: auto;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.375rem 0.625rem;
+    }
+    .chart-wrap {
+      flex: 1;
+      min-height: 320px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .chart-wrap h2 {
+      margin: 0 0 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    svg {
+      width: 100%;
+      flex: 1;
+      min-height: 280px;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.875rem 1rem;
+      box-shadow: var(--shadow);
+    }
+    .metric k {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .metric v {
+      display: block;
+      margin-top: 0.25rem;
+      font-family: ui-monospace, monospace;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .metric v.pos {
+      color: var(--positive);
+    }
+    .metric v.neg {
+      color: var(--negative);
+    }
+    .metric v.acc {
+      color: var(--accent);
+    }
+    .hint {
+      font-size: 0.6875rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    @media (max-width: 900px) {
+      .app {
+        flex-direction: column;
+      }
+      aside {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <div class="brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <div>
+          <h1>FinSim Pro</h1>
+          <p class="subtitle">Monte Carlo Financial Simulator</p>
+        </div>
+        <button type="button" class="secondary theme-toggle" id="themeBtn" title="Toggle theme">Dark</button>
+      </div>
+      <div class="divider"></div>
+      <div class="section-label">Model parameters</div>
+      <label class="field">
+        <span>Initial investment ($)</span>
+        <input type="number" id="startValue" min="0" step="1000" value="100000" />
+      </label>
+      <label class="field">
+        <span>Annual contribution ($)</span>
+        <input type="number" id="annualContribution" min="0" step="500" value="12000" />
+      </label>
+      <div class="row">
+        <label class="field">
+          <span>Expected return (annual)</span>
+          <input type="number" id="annualReturn" min="-0.5" max="0.5" step="0.005" value="0.085" />
+        </label>
+        <label class="field">
+          <span>Volatility (annual σ)</span>
+          <input type="number" id="volatility" min="0.01" max="1" step="0.001" value="0.152" />
+        </label>
+      </div>
+      <div class="row">
+        <label class="field">
+          <span>Horizon (years)</span>
+          <input type="number" id="years" min="1" max="60" step="1" value="30" />
+        </label>
+        <label class="field">
+          <span>Simulation paths</span>
+          <input type="number" id="numPaths" min="10" max="500" step="10" value="100" />
+        </label>
+      </div>
+      <p class="hint">Uses geometric Brownian motion (quarterly steps), same structure as the Pencil script. Press Run to re-randomize paths.</p>
+      <div class="actions">
+        <button type="button" class="primary" id="runBtn">Run simulation</button>
+        <button type="button" class="secondary" id="resetBtn">Reset defaults</button>
+      </div>
+    </aside>
+    <main>
+      <div class="chart-wrap">
+        <h2>Projected wealth — percentile fan</h2>
+        <svg id="chart" viewBox="0 0 880 380" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Monte Carlo wealth simulation chart"></svg>
+      </div>
+      <div class="metrics" id="metrics"></div>
+    </main>
+  </div>
+  <script>
+    const defaults = {
+      startValue: 100000,
+      annualContribution: 12000,
+      annualReturn: 0.085,
+      volatility: 0.152,
+      years: 30,
+      numPaths: 100,
+    };
+
+    const chart = document.getElementById("chart");
+    const metricsEl = document.getElementById("metrics");
+    const themeBtn = document.getElementById("themeBtn");
+
+    function readInputs() {
+      return {
+        startValue: Math.max(0, Number(document.getElementById("startValue").value) || 0),
+        annualContribution: Math.max(0, Number(document.getElementById("annualContribution").value) || 0),
+        annualReturn: Number(document.getElementById("annualReturn").value) || 0,
+        volatility: Math.max(0.001, Number(document.getElementById("volatility").value) || 0.15),
+        years: Math.max(1, Math.floor(Number(document.getElementById("years").value) || 30)),
+        numPaths: Math.max(10, Math.floor(Number(document.getElementById("numPaths").value) || 100)),
+      };
+    }
+
+    function withAlpha(hex, alpha) {
+      const base = hex.replace(/^#/, "").substring(0, 6);
+      const a = Math.round(alpha * 255)
+        .toString(16)
+        .padStart(2, "0");
+      return "#" + base + a;
+    }
+
+    function cssVar(name, fallback) {
+      const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    }
+
+    function getColors() {
+      const root = document.documentElement;
+      const accent = cssVar("--accent", "#9333ea");
+      const positive = cssVar("--positive", "#16a34a");
+      const negative = cssVar("--negative", "#dc2626");
+      const grid = cssVar("--border-subtle", "#f4f4f5");
+      return { accent, positive, negative, grid };
+    }
+
+    function simulate(inp) {
+      const numPaths = inp.numPaths;
+      const years = inp.years;
+      const startVal = inp.startValue;
+      const mu = inp.annualReturn;
+      const sigma = inp.volatility;
+      const contrib = inp.annualContribution;
+      const stepsPerYear = 4;
+      const totalSteps = years * stepsPerYear;
+      const dt = 1 / stepsPerYear;
+      const paths = [];
+
+      for (let p = 0; p < numPaths; p++) {
+        const values = [startVal];
+        let current = startVal;
+        for (let t = 1; t <= totalSteps; t++) {
+          const u1 = Math.random();
+          const u2 = Math.random();
+          const z =
+            Math.sqrt(-2 * Math.log(Math.max(u1, 0.0001))) * Math.cos(2 * Math.PI * u2);
+          const drift = (mu - 0.5 * sigma * sigma) * dt;
+          const diffusion = sigma * Math.sqrt(dt) * z;
+          current = current * Math.exp(drift + diffusion);
+          current += contrib * dt;
+          values.push(current);
+        }
+        paths.push(values);
+      }
+
+      function getPercentilePath(paths, percentile) {
+        const result = [];
+        const numSteps = paths[0].length;
+        for (let t = 0; t < numSteps; t++) {
+          const vals = paths.map((p) => p[t]).sort((a, b) => a - b);
+          const idx = Math.min(Math.floor(percentile * vals.length), vals.length - 1);
+          result.push(vals[idx]);
+        }
+        return result;
+      }
+
+      const p5 = getPercentilePath(paths, 0.05);
+      const p25 = getPercentilePath(paths, 0.25);
+      const p50 = getPercentilePath(paths, 0.5);
+      const p75 = getPercentilePath(paths, 0.75);
+      const p95 = getPercentilePath(paths, 0.95);
+      const finals = paths.map((p) => p[p.length - 1]);
+      const sortedFinal = [...finals].sort((a, b) => a - b);
+      const lossCount = finals.filter((v) => v < startVal).length;
+      const probLoss = (lossCount / finals.length) * 100;
+      const var95 = sortedFinal[Math.floor(0.05 * sortedFinal.length)];
+
+      return { paths, p5, p25, p50, p75, p95, totalSteps, finals, probLoss, var95 };
+    }
+
+    function fmtMoney(n) {
+      const sign = n < 0 ? "-" : "";
+      const v = Math.abs(Math.round(n));
+      return sign + "$" + v.toLocaleString("en-US");
+    }
+
+    function fmtPct(n) {
+      return (n * 100).toFixed(1) + "%";
+    }
+
+    function renderChart(result, w, h) {
+      const { paths, p5, p25, p50, p75, p95, totalSteps } = result;
+      const { accent, positive, negative, grid } = getColors();
+      const allMax = Math.max(...p95) * 1.1;
+      const pad = 16;
+
+      function toX(step) {
+        return pad + (step / totalSteps) * (w - pad * 2);
+      }
+      function toY(value) {
+        return h - pad - (value / allMax) * (h - pad * 2);
+      }
+      function pathToSVG(values) {
+        let d = `M${toX(0).toFixed(1)},${toY(values[0]).toFixed(1)}`;
+        for (let i = 1; i < values.length; i++) {
+          d += ` L${toX(i).toFixed(1)},${toY(values[i]).toFixed(1)}`;
+        }
+        return d;
+      }
+      function bandToSVG(upper, lower) {
+        let d = `M${toX(0).toFixed(1)},${toY(upper[0]).toFixed(1)}`;
+        for (let i = 1; i < upper.length; i++) {
+          d += ` L${toX(i).toFixed(1)},${toY(upper[i]).toFixed(1)}`;
+        }
+        for (let i = lower.length - 1; i >= 0; i--) {
+          d += ` L${toX(i).toFixed(1)},${toY(lower[i]).toFixed(1)}`;
+        }
+        d += " Z";
+        return d;
+      }
+
+      const parts = [];
+
+      const gridSteps = 5;
+      for (let g = 1; g < gridSteps; g++) {
+        const gy = pad + (g / gridSteps) * (h - pad * 2);
+        parts.push(
+          `<line x1="${pad}" y1="${gy}" x2="${w - pad}" y2="${gy}" stroke="${grid}" stroke-width="1" />`
+        );
+      }
+
+      parts.push(
+        `<path d="${bandToSVG(p95, p5)}" fill="${withAlpha(accent, 0.08)}" stroke="none" />`
+      );
+      parts.push(
+        `<path d="${bandToSVG(p75, p25)}" fill="${withAlpha(accent, 0.14)}" stroke="none" />`
+      );
+
+      const ghostCount = Math.min(paths.length, 14);
+      for (let p = 0; p < ghostCount; p++) {
+        parts.push(
+          `<path d="${pathToSVG(paths[p])}" fill="none" stroke="${withAlpha(accent, 0.12)}" stroke-width="1" stroke-linecap="round" />`
+        );
+      }
+
+      parts.push(
+        `<path d="${pathToSVG(p5)}" fill="none" stroke="${negative}" stroke-width="2" stroke-linecap="round" />`
+      );
+      parts.push(
+        `<path d="${pathToSVG(p50)}" fill="none" stroke="${accent}" stroke-width="2.5" stroke-linecap="round" />`
+      );
+      parts.push(
+        `<path d="${pathToSVG(p95)}" fill="none" stroke="${positive}" stroke-width="2" stroke-linecap="round" />`
+      );
+
+      const endX = toX(totalSteps);
+      for (const { values, color } of [
+        { values: p95, color: positive },
+        { values: p50, color: accent },
+        { values: p5, color: negative },
+      ]) {
+        const ey = toY(values[values.length - 1]);
+        parts.push(`<circle cx="${endX}" cy="${ey}" r="4" fill="${color}" />`);
+      }
+
+      chart.innerHTML = parts.join("");
+    }
+
+    function renderMetrics(result, inp) {
+      const end = result.p50[result.p50.length - 1];
+      const endP5 = result.p5[result.p5.length - 1];
+      const endP95 = result.p95[result.p95.length - 1];
+      const rows = [
+        { k: "Median ending value", v: fmtMoney(end), cls: "acc" },
+        { k: "5th percentile", v: fmtMoney(endP5), cls: "neg" },
+        { k: "95th percentile", v: fmtMoney(endP95), cls: "pos" },
+        { k: "Prob. below start", v: result.probLoss.toFixed(1) + "%", cls: result.probLoss > 10 ? "neg" : "" },
+        { k: "5% VaR (terminal)", v: fmtMoney(result.var95), cls: "neg" },
+        { k: "Paths simulated", v: String(inp.numPaths), cls: "" },
+      ];
+      metricsEl.innerHTML = rows
+        .map(
+          (r) =>
+            `<div class="metric"><k>${r.k}</k><v class="${r.cls}">${r.v}</v></div>`
+        )
+        .join("");
+    }
+
+    function run() {
+      const inp = readInputs();
+      const result = simulate(inp);
+      renderChart(result, 880, 380);
+      renderMetrics(result, inp);
+    }
+
+    document.getElementById("runBtn").addEventListener("click", run);
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      document.getElementById("startValue").value = defaults.startValue;
+      document.getElementById("annualContribution").value = defaults.annualContribution;
+      document.getElementById("annualReturn").value = defaults.annualReturn;
+      document.getElementById("volatility").value = defaults.volatility;
+      document.getElementById("years").value = defaults.years;
+      document.getElementById("numPaths").value = defaults.numPaths;
+      run();
+    });
+
+    let debounce;
+    ["startValue", "annualContribution", "annualReturn", "volatility", "years", "numPaths"].forEach((id) => {
+      document.getElementById(id).addEventListener("input", () => {
+        clearTimeout(debounce);
+        debounce = setTimeout(run, 400);
+      });
+    });
+
+    themeBtn.addEventListener("click", () => {
+      const dark = document.body.dataset.theme === "dark";
+      if (dark) {
+        delete document.body.dataset.theme;
+        themeBtn.textContent = "Dark";
+      } else {
+        document.body.dataset.theme = "dark";
+        themeBtn.textContent = "Light";
+      }
+      run();
+    });
+
+    run();
+  </script>
+</body>
+</html>
