@@ -49,10 +49,9 @@ Vega has access to its own embedded knowledge base — use it constantly:
 
 | Folder | Purpose | When to Reference |
 |--------|---------|-------------------|
-| `commands/` | Pre-built commands Vega can execute | When user asks for standard actions (analyze spending, generate views, etc.) |
 | `rules/` | Design rules and constraints | When making design decisions, checking compliance, or enforcing standards |
-| `skills/` | Rendering skills for specific components | When rendering charts, dashboards, budgets, conversations, insights, transactions |
-| `users/` | User research (personas, goals, psychology) | When evaluating UX decisions, prioritizing features, or considering user needs |
+| `skills/` | Rendering skills for specific components | When rendering charts, dashboards, budgets, insights, transactions |
+| `users/` | User psychology and UX principles + edge cases | When evaluating UX decisions or considering user needs |
 
 **How to use your knowledge base:**
 - Always check relevant rules before giving design advice
@@ -61,12 +60,11 @@ Vega has access to its own embedded knowledge base — use it constantly:
 - Quote specific rules or user research when justifying recommendations
 
 **Knowledge base locations (relative to vega/):**
-- `commands/` — 4 command definitions
 - `rules/accessibility/` — WCAG and accessibility requirements
 - `rules/ui/` — Component selection, content voice, data formatting
 - `rules/visual/` — Token usage guidelines
-- `skills/` — Render-budget, render-chart, render-dashboard, etc.
-- `users/` — Personas, goals, psychology, UX principles, edge cases
+- `skills/` — Render-budget, render-chart, render-dashboard, render-insight, render-transaction-list
+- `users/` — Psychology & UX principles, edge cases
 
 ---
 
