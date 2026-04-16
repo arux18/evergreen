@@ -1,69 +1,56 @@
-# Edge Cases — Every State the UI Must Handle
+# Edge Cases — State → Component
 
-If an edge case isn't designed, an AI will generate the happy path and skip it. This document ensures every state is accounted for. Each maps to a component in the design system.
-
-## Data Loading States
-
-| State | Component | Rule |
-|---|---|---|
-| Initial load | `GenUI/Skeleton/Card`, individual skeleton primitives | Always skeleton screens, never spinners for data-heavy views |
-| AI generating | `GenUI/AI Thinking State`, `GenUI/AI Progress Bar` | Show what the AI is doing in plain language |
-| Streaming response | `GenUI/Streaming Line` | Show text as it arrives with cursor indicator |
-| Partial load | Show loaded sections immediately | Never hold the full screen for the slowest API |
-
-## Empty States
-
-| State | Component | Rule |
-|---|---|---|
-| Empty portfolio (new user) | `GenUI/Empty State` | Show encouraging copy + CTA, never a blank screen |
-| Zero balance account | `GenUI/Zero Balance State` | Never show $0.00 prominently — provide context ("You just opened this account") |
-| No transactions in range | `GenUI/Empty State` (variant) | Suggest adjusting date range or filters |
-| No AI insights available | Calm empty variant | "Not enough data yet — check back after your first month" |
-
-## Error States
-
-| State | Component | Rule |
-|---|---|---|
-| API failure | `GenUI/Error State` | Always explain what happened + what to do next |
-| Partial API failure | `GenUI/AI Error State` | Show what loaded, explain what didn't |
-| Bank connection lost | `GenUI/Partial Data State` | Show which accounts are affected + reconnect CTAs |
-| AI analysis failed | `GenUI/AI Error State` | "Analysis couldn't complete" — never "Error" |
-| Rate limited | `GenUI/Rate Limited State` | Show usage, time until reset, upgrade option |
-
-## Data Integrity States
-
-| State | Component | Rule |
-|---|---|---|
-| Stale data (>1hr old) | `GenUI/Stale Data Indicator` | Show last sync time + refresh action |
-| Conflicting data | `GenUI/Conflicting Data State` | Explain both values, recommend bank value |
-| Partial account data | `GenUI/Partial Data State` | "Showing 3 of 5 accounts" — never silently omit |
-| Data freshness | `GenUI/Data Freshness Badge` | Live (green dot), Recent (no indicator), Stale (yellow dot) |
-
-## Permission & Access States
-
-| State | Component | Rule |
-|---|---|---|
-| Premium feature gated | `GenUI/Permission Gated Card` | Show blurred preview + what they'll get |
-| Requires re-auth | Inline reconnect banner | Never block the whole screen for one account |
-| Rate limited | `GenUI/Rate Limited State` | Show quota usage + time remaining |
-
-## Financial Edge Cases
-
-| State | Rule |
+## Loading
+| State | Component |
 |---|---|
-| Negative net worth | Show factually, never judgmentally. No alarming colors on the total. |
-| Very large numbers (>$1M) | Still show precise to cents unless user chose summary mode |
-| Very small changes (<$1) | Don't highlight trivially — use `$text.tertiary` |
-| Pending transactions | Use `GenUI/Transaction Item/Pending` with reduced opacity + "Pending" badge |
-| Disputed transactions | Show flag icon + "Under review" status |
-| Recurring vs. one-time | Visually distinguish with a recurring icon indicator |
+| Initial load | `GenUI/Skeleton/Card` + skeleton primitives (never spinners) |
+| AI generating | `GenUI/AI Thinking State`, `GenUI/AI Progress Bar` |
+| Streaming | `GenUI/Streaming Line` |
+| Partial load | Show loaded sections immediately; never block on slowest API |
 
-## AI-Specific Edge Cases
-
-| State | Rule |
+## Empty
+| State | Component |
 |---|---|
-| Low confidence prediction | Always show `GenUI/AI Confidence/Low` + disclaimer |
-| Contradictory insight | "Based on available data" qualifier — never assert certainty |
-| Outdated analysis | Show when it was generated + offer to re-run |
-| Recommendation the user already declined | Don't re-show for 30 days |
-| Multiple competing recommendations | Rank by impact, show max 3, "See all" for more |
+| New user, no portfolio | `GenUI/Empty State` — encouraging copy + CTA |
+| Zero balance | `GenUI/Zero Balance State` — never prominent $0.00 |
+| No transactions in range | `GenUI/Empty State` variant — suggest adjusting range |
+| No AI insights yet | Calm variant — "Not enough data yet" |
+
+## Error
+| State | Component |
+|---|---|
+| API failure | `GenUI/Error State` — explain + recovery |
+| Partial API failure | `GenUI/AI Error State` — show what loaded |
+| Bank connection lost | `GenUI/Partial Data State` + reconnect CTAs |
+| AI analysis failed | `GenUI/AI Error State` — "Analysis couldn't complete" (never "Error") |
+| Rate limited | `GenUI/Rate Limited State` — usage + reset time |
+
+## Data integrity
+| State | Component |
+|---|---|
+| Stale data (>1hr) | `GenUI/Stale Data Indicator` + refresh |
+| Conflicting data | `GenUI/Conflicting Data State` — recommend bank value |
+| Partial accounts | `GenUI/Partial Data State` — "3 of 5 accounts" |
+| Freshness | `GenUI/Data Freshness Badge` — Live/Recent/Stale |
+
+## Permission & access
+| State | Component |
+|---|---|
+| Premium-gated | `GenUI/Permission Gated Card` — blurred preview + what they get |
+| Requires re-auth | Inline reconnect banner (never full-screen block) |
+| Rate limited | `GenUI/Rate Limited State` |
+
+## Financial edge cases
+- Negative net worth: factual, never alarming colors on the total
+- >$1M: still precise to cents unless user chose summary mode
+- <$1 changes: `$text.tertiary`, don't highlight
+- Pending: `GenUI/Transaction Item/Pending` — 0.6 opacity + "Pending" badge
+- Disputed: flag icon + "Under review"
+- Recurring vs one-time: recurring-icon indicator
+
+## AI edge cases
+- Low confidence: always `GenUI/AI Confidence/Low` + disclaimer
+- Contradictory insight: qualify with "Based on available data"
+- Outdated analysis: show generation time + offer re-run
+- Dismissed recommendation: don't re-show for 30 days
+- Multiple competing recommendations: rank by impact, max 3, "See all" for more

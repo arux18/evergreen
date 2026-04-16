@@ -1,88 +1,67 @@
-# Component Selection Rules
+# Component Selection — Data → Component
 
-When the agent generates UI, it must select components based on data type, user intent, and context. These rules are deterministic — not suggestions.
+Deterministic rules. Not suggestions.
 
-## Data Type → Component Mapping
+## Single value
+| Data | Component |
+|---|---|
+| Currency with trend | `Component/KPI Card/Value Up` or `Value Down` |
+| Currency with sparkline | `KPI Sparkline Card` |
+| Currency neutral (no trend) | `Component/KPI Card/Neutral` |
+| Percentage with direction | KPI card + badge row |
 
-### Single Value Display
-| Data characteristic | Component | Example |
-|---|---|---|
-| Currency with trend | `Component/KPI Card/Value Up` or `Value Down` | Portfolio value with daily change |
-| Currency with sparkline | `KPI Sparkline Card` | Monthly revenue with mini trend |
-| Currency neutral (no trend) | `Component/KPI Card/Neutral` | Total return since inception |
-| Percentage with direction | Use KPI card + badge row | "18.7% total return" |
-
-### Comparisons
+## Comparisons
 | Scenario | Component | Rule |
 |---|---|---|
-| Two time periods | `GenUI/Comparison Metric` | Always label both periods explicitly |
-| Before/after a change | `GenUI/Comparison Metric` | Show delta badge with direction |
-| Budget vs. actual | `GenUI/Budget Category Row` | Progress bar required |
-| Multiple metrics side-by-side | KPI card row (3-4 cards) | Use horizontal layout, fill_container width |
+| Two time periods | `GenUI/Comparison Metric` | Label both periods |
+| Before/after change | `GenUI/Comparison Metric` | Delta badge with direction |
+| Budget vs actual | `GenUI/Budget Category Row` | Progress bar required |
+| Multi-metric side-by-side | KPI card row (3–4) | Horizontal, `fill_container` |
 
-### Lists & Tables
+## Lists & tables
 | Data | Component | Rule |
 |---|---|---|
-| Recent transactions | `GenUI/Transaction Item` variants | Always show category icon + merchant + amount |
-| Holdings/positions | `Component/Holdings Table` | Must include asset name, price, change, value |
-| Budget categories | `GenUI/Budget Category Row` | Must include progress bar + remaining amount |
-| Account list | `Component/Account Card` or Accordion | Group by account type |
+| Recent transactions | `GenUI/Transaction Item` variants | Category icon + merchant + amount |
+| Holdings / positions | `Component/Holdings Table` | Asset, price, change, value |
+| Budget categories | `GenUI/Budget Category Row` | Progress bar + remaining |
+| Account list | `Component/Account Card` or Accordion | Group by type |
 
-### Charts & Visualizations
-| Data shape | Component | When to use |
+## Charts (data shape → chart)
+| Shape | Component |
+|---|---|
+| Part-of-whole | `Donut Chart`, `Pie Chart Card` |
+| Time series (1 metric) | `Area Chart`, `Sparkline Pattern` |
+| Time series (multi) | `Multi-Series Area Chart` |
+| Categorical comparison | `Bar Chart`, `Horizontal Bar Chart` |
+| Composition over time | `Stacked Bar Chart` |
+| Flow / movement | `Sankey Flow Diagram` |
+| Projection / forecast | `Monte Carlo Chart` |
+| Threshold / gauge | `Gauge Chart` |
+| Hierarchical | `Treemap Chart` |
+| Market data | `Candlestick Chart` |
+| Waterfall / attribution | `Waterfall Chart` |
+
+## AI-generated content
+| Content | Component | Rule |
 |---|---|---|
-| Part-of-whole | `Donut Chart`, `Pie Chart Card` | Spending by category, asset allocation |
-| Time series (1 metric) | `Area Chart`, `Sparkline Pattern` | Portfolio value over time |
-| Time series (multi) | `Multi-Series Area Chart` | Comparing multiple accounts |
-| Categorical comparison | `Bar Chart`, `Horizontal Bar Chart` | Monthly spending by category |
-| Composition over time | `Stacked Bar Chart` | Income vs. expense by month |
-| Flow/movement | `Sankey Flow Diagram` | Money flow between accounts |
-| Projection/forecast | `Monte Carlo Chart` | Retirement projections |
-| Threshold/gauge | `Gauge Chart` | Budget utilization |
-| Hierarchical | `Treemap Chart` | Spending hierarchy |
-| Market data | `Candlestick Chart` | Stock/crypto price action |
-| Waterfall/attribution | `Waterfall Chart` | Net worth change attribution |
+| Proactive insight | `GenUI/AI Insight Card` | Data highlight + actions |
+| Actionable recommendation | `GenUI/AI Recommendation Card` | Impact metrics + CTA |
+| Conversational text | `GenUI/Chat Bubble/AI` | Text only |
+| Response with data | `GenUI/Chat Bubble/AI Rich` | Embeds charts/tables |
+| Thinking (<5s) | `GenUI/AI Thinking State` | |
+| Long processing (>5s) | `GenUI/AI Progress Bar` | |
 
-### AI-Generated Content
-| Content type | Component | Rule |
-|---|---|---|
-| Proactive insight | `GenUI/AI Insight Card` | Must include data highlight + actions |
-| Actionable recommendation | `GenUI/AI Recommendation Card` | Must include impact metrics + CTA |
-| Conversational response | `GenUI/Chat Bubble/AI` | For text-only responses |
-| Response with data | `GenUI/Chat Bubble/AI Rich` | For responses that include charts/tables |
-| Thinking/processing | `GenUI/AI Thinking State` | For operations <5s |
-| Long processing | `GenUI/AI Progress Bar` | For operations >5s |
+## Quick action chips on `$ai.surface`
+- Fill: `$ai.chip-surface` (not `$surface.secondary`)
+- 1px inside stroke: `$ai.chip-border`
+- Leading icon in `$ai.accent`
+- Label: `$text.primary`, `$font.size.sm`, weight 500
+- Shape: `$radius.full`
 
-## Quick Action Chips
+For action buttons NOT on `$ai.surface` → use standard `Btn/*` components.
 
-When placing interactive chips on an `$ai.surface` background (inside chat bubbles, insight cards, etc.):
-- Use `$ai.chip-surface` fill (not `$surface.secondary` — insufficient contrast on ai.surface)
-- Use `$ai.chip-border` as a 1px inside stroke
-- Include a leading icon in `$ai.accent` to signal interactivity
-- Use `$text.primary` for label text, `$font.size.sm`, weight 500
-- Pill shape: `$radius.full`
-
-For action buttons NOT on ai.surface (on cards, dialogs, pages), use the standard `Btn/*` components instead.
-
-## Composition Rules
-
-### KPI Row
-- Always 3 or 4 cards, never 1 or 2 or 5+
-- First card should be the primary metric (portfolio total, net worth)
-- Cards must use `fill_container` width for equal distribution
-
-### Transaction List
-- Always preceded by a `GenUI/Filter Row`
-- Group by date with date headers
-- Maximum 20 visible transactions before pagination/load-more
-- Pending transactions appear at top, visually distinguished
-
-### AI Insights Section
-- Maximum 3 visible insights before "See all"
-- Highest confidence/impact first
-- Always include a `GenUI/Financial Disclaimer` below AI projections
-
-### Dashboard Layout
-- Sidebar (280px) + Main content (fill_container)
-- Main content order: KPI row → Primary chart → AI insights → Recent transactions
-- Never show more than 2 chart components visible simultaneously without scrolling
+## Composition rules
+- **KPI row:** always 3 or 4 cards (never 1, 2, or 5+). Primary metric first. `fill_container` width.
+- **Transaction list:** preceded by `GenUI/Filter Row`. Group by date. Max 20 visible → pagination. Pending at top.
+- **AI insights section:** max 3 visible → "See all". Highest confidence/impact first. `GenUI/Financial Disclaimer` below projections.
+- **Dashboard:** Sidebar (280px) + Main (`fill_container`). Order: KPI row → primary chart → AI insights → recent transactions. Max 2 chart components visible without scrolling.

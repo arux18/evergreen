@@ -1,101 +1,71 @@
 # Skill: Render Budget
 
-Generates budget tracking views with category breakdowns, progress indicators, and AI-powered spending analysis.
+Budget tracking with category breakdowns, progress, and AI analysis.
 
-## When to Use
-- User asks about budget, spending limits, or categories
-- User asks "Am I on track?"
-- Agent needs to show budget utilization in any context
+## When
+User asks about budget / spending limits / categories. User asks "Am I on track?"
 
-## Required Reading Before Execution
-1. `rules/ui/component-selection.md` — budget component selection
-2. `users/psychology.md` — over-budget anxiety, calm presentation
-3. `users/edge-cases.md` — zero budget, over-budget, no budget set
-4. `rules/ui/data-formatting.md` — currency and percentage formatting
-
-## Layout Structure
-
-### Full Budget Page
+## Full page layout
 ```
 Budget Page (fill_container)
-├── Header Row
-│   ├── Page Title ("Budget") + Month selector
-│   └── "Edit Budget" button (secondary)
+├── Header: Title "Budget" + Month selector + "Edit Budget" (secondary)
 ├── Summary Card
-│   ├── GenUI/Progressive Disclosure Summary
-│   │   ├── Summary: "Monthly Spending: $4,280 of $5,500 budget"
-│   │   ├── Percentage: "78%"
-│   │   └── Expandable detail slot
+│   ├── GenUI/Progressive Disclosure Summary ("Monthly Spending: $4,280 of $5,500 budget", 78%)
 │   └── Gain First Summary (if comparing to last month)
 ├── Category Breakdown
 │   ├── Section Header ("By Category" + sort toggle)
-│   ├── Budget Category Rows (sorted by % used, descending)
-│   │   ├── Over-budget categories FIRST (GenUI/Budget Category Row/Over Budget)
-│   │   ├── Near-budget categories (>80%) — use $status.warning for fill
-│   │   ├── On-track categories — use $accent.default for fill
-│   │   └── Under-utilized categories (<30%) — use $text.tertiary for fill
-│   └── "Add Category" button (if <10 categories)
-├── AI Analysis Section
-│   ├── AI Insight Card (spending trend analysis)
-│   └── Suggested Prompts ("What's driving my food spending?", etc.)
-└── Financial Disclaimer (if any projections shown)
+│   └── Budget Category Rows (sorted by % used desc)
+│       ├── Over-budget FIRST → `GenUI/Budget Category Row/Over Budget`
+│       ├── Near-budget (>80%)  → fill `$status.warning`
+│       ├── On-track           → fill `$accent.default`
+│       └── Under-utilized (<30%) → fill `$text.tertiary`
+├── AI Analysis: AI Insight Card + Suggested Prompts
+└── Financial Disclaimer (if projections)
 ```
 
-### Embedded in Dashboard
+## Embedded in dashboard (right column)
 ```
-Budget Card (in right column)
-├── Card Header ("Budget" + progress ring or percentage)
-├── Top 4-5 Budget Category Rows (sorted by % used, desc)
-├── Over-budget count: "2 categories over budget" (if applicable)
+Budget Card
+├── Card Header (Budget + overall % / progress ring)
+├── Top 4–5 Budget Category Rows (sorted by % used desc)
+├── Over-budget count (if any): "2 categories over budget"
 └── "View Full Budget" link
 ```
 
-## Component Selection
-
-### Progress Bar Colors by Utilization
-| Utilization | Fill Color | Text Treatment |
+## Progress bar color by utilization
+| Utilization | Fill | Text |
 |---|---|---|
-| 0-60% | `$accent.default` | Normal |
-| 61-80% | `$accent.default` | Normal |
-| 81-99% | `$status.warning` | "Almost at limit" footnote |
+| 0–80% | `$accent.default` | Normal |
+| 81–99% | `$status.warning` | "Almost at limit" footnote |
 | 100%+ | `$status.error` | Use Over Budget variant |
 
-### Category Icon Mapping
-Same as transaction category icons in `render-transaction-list.md`. Budget categories and transaction categories share the same icon set.
-
-## Budget Row Data Binding
-
+## Data binding
 ```
-Budget Category Row fields:
-  budgetCatIcon: fill color (fin.expense-bg or status.error-bg if over)
-  catIcon: lucide icon name matching category
-  budgetCategory: category name
-  budgetSpent: "$X,XXX" current spend
-  budgetLimit: "$X,XXX" budget limit
-  budgetFill: width proportional to utilization (capped at container width)
+Budget Category Row:
+  budgetCatIcon: $fin.expense-bg (or $status.error-bg if over)
+  catIcon: lucide name (see render-transaction-list for mapping)
+  budgetCategory, budgetSpent, budgetLimit
+  budgetFill: width proportional to utilization (capped at container)
   budgetRemaining: "$XXX remaining" or "$XXX over budget"
   budgetPctUsed: "XX% used" or "XXX%"
 ```
 
-## Sorting Rules
-- Default sort: percentage used, descending (over-budget first)
-- Over-budget categories always appear first, regardless of sort
-- Within over-budget group: sort by dollar amount over, descending
-- User can toggle: by % used, by $ spent, by category name
+## Sorting
+- Default: % used descending (over-budget first)
+- Over-budget always first regardless of sort; within that group, by $ over desc
+- User can toggle: % used / $ spent / name
 
 ## States
-
 | State | Display |
 |---|---|
-| Loading | Skeleton: summary bar + 5 skeleton rows |
-| No budget set | `GenUI/Empty State`: "Set up your first budget to start tracking spending. We'll suggest categories based on your transactions." |
-| Budget set, no transactions yet | Show budget categories with $0 spent, encouraging messaging |
-| All categories on track | Celebratory but calm: "All categories on track this month" (green check, not confetti) |
-| Multiple over-budget | Show count prominently but not alarmingly: "2 of 8 categories are over budget" |
-| Near end of month | Add context: "5 days remaining in this budget period" |
+| Loading | Skeleton summary bar + 5 skeleton rows |
+| No budget | `GenUI/Empty State`: "Set up your first budget to start tracking spending." |
+| Budget set, no transactions | Categories at $0 with encouraging copy |
+| All on track | Calm win: "All categories on track this month" (check, not confetti) |
+| Multiple over | "2 of 8 categories over budget" (non-alarming) |
+| Near month-end | "5 days remaining in this budget period" |
 
-## Psychology Rules
-- Over-budget is information, not failure. Never use language like "failed" or "broken"
-- Show the remaining amount before the over amount when possible
-- If user is under budget overall, lead with that even if individual categories are over
-- Don't send push notifications for approaching budget limits unless user opted in
+## Psychology
+- Over-budget is information, not failure — never "failed" or "broken"
+- Show remaining amount before over amount when possible
+- If overall under-budget, lead with that even if individual categories are over

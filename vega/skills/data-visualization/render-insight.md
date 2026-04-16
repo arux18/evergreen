@@ -1,126 +1,73 @@
 # Skill: Render Insight
 
-Generates AI-powered financial insight displays. Used when the agent surfaces a proactive observation, anomaly, or pattern.
+AI-powered proactive observations, anomalies, savings opportunities.
 
-## When to Use
-- Agent detects a spending anomaly
-- Agent identifies a savings opportunity
-- Agent completes a portfolio analysis
-- User asks "What should I know?" or "Any insights?"
+## When
+Spending anomaly detected · savings opportunity found · portfolio analysis complete · user asks "What should I know?"
 
-## Required Reading Before Execution
-1. `rules/ui/content-voice.md` — AI language patterns, confidence language
-2. `users/psychology.md` — never alarm, always empower
-3. `rules/ui/data-formatting.md` — precise numbers, always
-4. `users/edge-cases.md` — confidence levels, disclaimers
+## Insight types
 
-## Insight Types & Components
-
-### Type 1: Spending Anomaly
-**Component**: `GenUI/AI Insight Card`
-**Pattern**: Observation + comparison + driver
-
+### 1. Spending anomaly → `GenUI/AI Insight Card`
 ```
-Layout:
-├── Insight Header (sparkle icon + "Spending Insight" + "Just now")
-├── Body text: "[Category] expenses increased [X]% this month compared to your [baseline]. This is primarily driven by [N] transactions over $[threshold]."
-├── Highlight Row (3 metrics):
-│   ├── This Month: $X,XXX (fin.expense color)
-│   ├── [Baseline]: $X,XXX (text.primary)
-│   └── Change: +XX% (data.negative)
+├── Header: sparkle icon + "Spending Insight" + timestamp
+├── Body: "[Category] expenses increased [X]% this [period] vs. [baseline]. Driven by [N] transactions over $[threshold]."
+├── Highlight Row (3 metrics): This [period] · [Baseline] · Change (+XX%)
 ├── Actions: "View Details" + "Dismiss"
-└── AI Confidence indicator (if <80% confidence)
+└── AI Confidence (if <80%)
 ```
 
-### Type 2: Savings Opportunity
-**Component**: `GenUI/AI Recommendation Card`
-**Pattern**: Action + quantified impact + reasoning
-
+### 2. Savings opportunity → `GenUI/AI Recommendation Card`
 ```
-Layout:
-├── Recommendation Header (lightbulb icon + impact badge)
-├── Title: "[Specific action verb] [specific target]"
-├── Body: "Based on [data source], [action] could [quantified benefit]. [Additional context]."
-├── Impact Row (2-3 metrics):
-│   ├── Primary benefit: $X,XXX/yr (status.success)
-│   ├── Secondary benefit: description (status.success)
-│   └── Cost/trade-off: $XXX/mo (text.primary)
-├── Actions: "Apply Recommendation" (primary) + "Learn More" (secondary)
+├── Header: lightbulb icon + impact badge
+├── Title: "[Action verb] [specific target]"
+├── Body: "Based on [data source], [action] could [quantified benefit]."
+├── Impact Row (2–3): Primary $X,XXX/yr ($status.success) · Secondary · Cost/trade-off
+├── Actions: "Apply Recommendation" (primary) + "Learn More"
 └── Financial Disclaimer
 ```
 
-### Type 3: Trend Analysis
-**Component**: `GenUI/AI Insight Card` + embedded chart
-**Pattern**: Observation + visualization + suggested action
-
+### 3. Trend analysis → `GenUI/AI Insight Card` + embedded chart
 ```
-Layout:
-├── Insight Header (sparkle icon + "Trend Analysis")
-├── Body text: summary of trend
-├── Embedded chart (Area Chart or Bar Chart — use component-selection rules)
+├── Header: sparkle + "Trend Analysis"
+├── Body: trend summary
+├── Embedded chart (use render-chart decision tree)
 ├── Inline Data Mentions for key figures
 └── Actions: "Explore Trend" + "Dismiss"
 ```
 
-### Type 4: Portfolio Alert
-**Component**: `GenUI/AI Insight Card` (with `$status.info-bg` highlight)
-**Pattern**: What changed + impact + what to do
-
+### 4. Portfolio alert → `GenUI/AI Insight Card` (`$status.info-bg`)
 ```
-Layout:
-├── Insight Header (sparkle icon + "Portfolio Update")
-├── Body: factual description, never alarming
-├── Comparison Metric (before vs. after)
-├── AI Confidence indicator
+├── Header: sparkle + "Portfolio Update"
+├── Body: factual, never alarming
+├── Comparison Metric (before vs after)
+├── AI Confidence
 └── Actions: "View Portfolio" + "Dismiss"
 ```
 
-## Content Generation Rules
-
-### Language
-- Observation, not judgment: "increased 23%" not "spending is too high"
-- Specific, not vague: "4 transactions over $75 in the last two weeks" not "several large purchases recently"
-- Empowering, not directive: "could save $3,200" not "you need to save"
-- See `rules/ui/content-voice.md` for full patterns
-
-### Confidence Levels
-| Data Available | Confidence | Display |
+## Confidence levels
+| Data available | Confidence | Display |
 |---|---|---|
-| 24+ months of transactions | High | `GenUI/AI Confidence/High` |
-| 6-24 months | Medium | `GenUI/AI Confidence/Medium` |
-| <6 months | Low | `GenUI/AI Confidence/Low` + qualifier text |
-| Projection/forecast | Always low-medium | Always show `GenUI/Financial Disclaimer` |
+| 24+ months | High | `GenUI/AI Confidence/High` |
+| 6–24 months | Medium | `GenUI/AI Confidence/Medium` |
+| <6 months | Low | `GenUI/AI Confidence/Low` + qualifier |
+| Projection/forecast | Always show `GenUI/Financial Disclaimer` |
 
-### Numbers
-- Always show the exact comparison: "+23% vs. 3-month average"
-- Always show transaction count: "across 12 transactions"
-- Always show the time period: "this month (Mar 1 – Apr 9)"
-- Never round: $1,847.50 not "about $1,850"
+## Numbers
+- Exact comparison: "+23% vs. 3-month average"
+- Transaction count: "across 12 transactions"
+- Period: "this month (Mar 1 – Apr 9)"
+- Never round
 
 ## States
+| State | Behavior |
+|---|---|
+| Generating | `GenUI/AI Thinking State` — "Analyzing your spending patterns…" |
+| Streaming | `GenUI/Streaming Line` |
+| Failed | `GenUI/AI Error State` — "Analysis couldn't complete" |
+| None available | Calm empty — "Not enough data for insights yet." |
+| Dismissed | Remove from view; don't re-show for 30 days |
 
-| State | Component | Behavior |
-|---|---|---|
-| Generating insight | `GenUI/AI Thinking State` | "Analyzing your spending patterns..." |
-| Streaming response | `GenUI/Streaming Line` | Text appears word by word |
-| Analysis failed | `GenUI/AI Error State` | "Analysis couldn't complete — partial results shown below" |
-| No insights available | Calm empty text | "Not enough data for insights yet. Check back after your first full month." |
-| User dismissed insight | Remove from view | Don't re-show for 30 days |
-
-## Composition in Context
-
-### In Dashboard
-- Maximum 2 insight cards visible, then "See all insights"
-- Highest confidence/impact first
-- Always below the KPI row (never above — show the money first)
-
-### In Conversation
-- Wrap in `GenUI/Chat Bubble/AI Rich` with content slot
-- Add `GenUI/Suggested Prompts` below for follow-up questions
-- Quick actions: "Show by week", "Compare to last month", "Set a budget alert"
-
-### Standalone Detail View
-- Full-width insight card
-- Expanded chart below
-- Related transactions list
-- Related recommendations
+## Composition context
+- **Dashboard:** max 2 cards → "See all insights". Highest confidence/impact first. Always below KPI row.
+- **Conversation:** wrap in `GenUI/Chat Bubble/AI Rich`; add `GenUI/Suggested Prompts` below.
+- **Detail view:** full-width card + expanded chart + related transactions + related recommendations.
