@@ -1,0 +1,391 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "9T619",
+      "x": 0,
+      "y": 75,
+      "name": "card",
+      "width": 800,
+      "height": 500,
+      "fill": "$j:surface.primary",
+      "cornerRadius": "$j:radius.xl",
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$j:border.primary"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "$j:shadow.color",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 8
+      },
+      "layout": "vertical",
+      "gap": "$j:space.4",
+      "padding": "$j:space.6",
+      "children": [
+        {
+          "type": "frame",
+          "id": "QxldQ",
+          "name": "header",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": "$j:space.1",
+          "children": [
+            {
+              "type": "text",
+              "id": "tqero",
+              "name": "title",
+              "fill": "$j:text.primary",
+              "content": "AAPL - Apple Inc.",
+              "fontFamily": "$j:font.primary",
+              "fontSize": "$j:font.size.xl",
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "B3Ifd",
+              "name": "subtitle",
+              "fill": "$j:text.secondary",
+              "content": "Last 30 Days",
+              "fontFamily": "$j:font.primary",
+              "fontSize": "$j:font.size.sm",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "JAeDL",
+              "name": "priceRow",
+              "width": "fill_container",
+              "gap": "$j:space.2",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "U1MMK",
+                  "name": "price",
+                  "fill": "$j:text.primary",
+                  "content": "$198.52",
+                  "fontFamily": "$j:font.primary",
+                  "fontSize": 28,
+                  "fontWeight": "700"
+                },
+                {
+                  "id": "3UlmJ",
+                  "type": "ref",
+                  "ref": "j:6gYoY",
+                  "name": "badge",
+                  "descendants": {
+                    "j:m7PnO": {
+                      "content": "+2.34 (1.19%)"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "MHuCq",
+              "type": "ref",
+              "ref": "j:E1RlJ",
+              "name": "fresh"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "pGgNF",
+          "name": "divider",
+          "width": "fill_container",
+          "height": 0,
+          "stroke": {
+            "align": "center",
+            "thickness": 1,
+            "fill": "$j:border.primary"
+          }
+        },
+        {
+          "type": "frame",
+          "id": "03Oih",
+          "name": "chartArea",
+          "width": "fill_container",
+          "height": "fill_container",
+          "gap": "$j:space.2",
+          "children": [
+            {
+              "type": "script",
+              "id": "dsTyR",
+              "name": "chart",
+              "width": "fill_container",
+              "height": "fill_container",
+              "scriptUri": "apple-stock-line-chart.js",
+              "inputs": {
+                "showDots": false,
+                "showFill": true,
+                "showGrid": true,
+                "lineColor": "#3A6AF8",
+                "dotColor": "#3A6AF8",
+                "gridColor": "#E5E5E5",
+                "labelColor": "#525252",
+                "axisColor": "#D4D4D4"
+              }
+            }
+          ]
+        },
+        {
+          "id": "7VKFa",
+          "type": "ref",
+          "ref": "j:aJxD7",
+          "name": "legend",
+          "descendants": {
+            "j:5O1kq": {
+              "fill": "$j:accent.default"
+            },
+            "j:xJbye": {
+              "content": "AAPL Price"
+            },
+            "j:bAsby": {
+              "enabled": false
+            },
+            "j:HQeJD": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Pd4g1",
+      "x": 858,
+      "y": 75,
+      "name": "Hover State",
+      "gap": 60,
+      "children": [
+        {
+          "type": "frame",
+          "id": "tfcy8",
+          "name": "Chart — Hover State",
+          "clip": true,
+          "width": 800,
+          "height": 500,
+          "fill": "$j:surface.primary",
+          "cornerRadius": "$j:radius.xl",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$j:border.primary"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "$j:shadow.color",
+            "offset": {
+              "x": 0,
+              "y": 2
+            },
+            "blur": 8
+          },
+          "layout": "vertical",
+          "gap": "$j:space.4",
+          "padding": "$j:space.6",
+          "children": [
+            {
+              "type": "frame",
+              "id": "BQsi0",
+              "name": "header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "n7tGb",
+                  "name": "title",
+                  "fill": "$j:text.primary",
+                  "content": "AAPL - Apple Inc.",
+                  "fontFamily": "$j:font.primary",
+                  "fontSize": "$j:font.size.xl",
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "fknvI",
+                  "name": "subtitle",
+                  "fill": "$j:text.secondary",
+                  "content": "Last 30 Days",
+                  "fontFamily": "$j:font.primary",
+                  "fontSize": "$j:font.size.sm",
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "2IZkH",
+                  "name": "priceRow",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "oBpcB",
+                      "name": "price",
+                      "fill": "$j:text.primary",
+                      "content": "$198.52",
+                      "fontFamily": "$j:font.primary",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "id": "PZrdL",
+                      "type": "ref",
+                      "ref": "j:6gYoY",
+                      "name": "badge",
+                      "descendants": {
+                        "j:m7PnO": {
+                          "content": "+2.34 (1.19%)"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "Ri5Fj",
+                  "type": "ref",
+                  "ref": "j:E1RlJ",
+                  "name": "freshness"
+                }
+              ]
+            },
+            {
+              "type": "line",
+              "id": "6gr5t",
+              "name": "divider",
+              "width": "fill_container",
+              "height": 0,
+              "stroke": {
+                "align": "center",
+                "thickness": 1,
+                "fill": "$j:border.primary"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "X1CBs",
+              "name": "chartArea",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "none",
+              "children": [
+                {
+                  "type": "script",
+                  "id": "qNdAx",
+                  "x": 0,
+                  "y": 0,
+                  "name": "chart",
+                  "width": 752,
+                  "height": 347,
+                  "scriptUri": "apple-stock-line-chart.js",
+                  "inputs": {
+                    "showDots": false,
+                    "showFill": true,
+                    "showGrid": true,
+                    "lineColor": "#3A6AF8",
+                    "dotColor": "#3A6AF8",
+                    "gridColor": "#E5E5E5",
+                    "labelColor": "#525252",
+                    "axisColor": "#D4D4D4"
+                  }
+                },
+                {
+                  "type": "line",
+                  "id": "NVIB2",
+                  "x": 405,
+                  "y": 12,
+                  "name": "indicator-line",
+                  "width": 0,
+                  "height": 303,
+                  "stroke": {
+                    "align": "center",
+                    "thickness": 1,
+                    "fill": "$j:accent.default"
+                  }
+                },
+                {
+                  "type": "ellipse",
+                  "id": "R8co5",
+                  "x": 399,
+                  "y": 74,
+                  "name": "dot-inner",
+                  "fill": "$j:accent.default",
+                  "width": 12,
+                  "height": 12
+                },
+                {
+                  "id": "avf01",
+                  "type": "ref",
+                  "ref": "j:BRIlT",
+                  "name": "tooltip",
+                  "x": 415,
+                  "y": 60,
+                  "descendants": {
+                    "j:KQQXa": {
+                      "content": "Mar 25, 2026"
+                    },
+                    "j:3nmbQ": {
+                      "enabled": false
+                    },
+                    "j:5sLVU": {
+                      "content": "AAPL"
+                    },
+                    "j:SqjLA": {
+                      "content": "$197.30"
+                    },
+                    "j:JyJeN": {
+                      "fill": "$j:data.positive",
+                      "enabled": false
+                    },
+                    "j:3FSQQ": {
+                      "content": "Change"
+                    },
+                    "j:gLPIr": {
+                      "content": "+$1.40 (+0.71%)"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ndlSI",
+              "type": "ref",
+              "ref": "j:aJxD7",
+              "name": "legend",
+              "descendants": {
+                "j:5O1kq": {
+                  "fill": "$j:accent.default"
+                },
+                "j:xJbye": {
+                  "content": "AAPL Price"
+                },
+                "j:bAsby": {
+                  "enabled": false
+                },
+                "j:HQeJD": {
+                  "enabled": false
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "imports": {
+    "j": "../.design-system/gen-ui-design-system.lib.pen"
+  }
+}
