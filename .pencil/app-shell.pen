@@ -6477,21 +6477,425 @@
                   ]
                 },
                 {
-                  "id": "edSC1",
-                  "type": "ref",
-                  "ref": "G:3NIej",
-                  "name": "segCtrl",
-                  "descendants": {
-                    "G:r5lnU": {
-                      "content": "1M"
+                  "type": "frame",
+                  "id": "edVC1",
+                  "name": "viewsControl",
+                  "layout": "none",
+                  "clip": false,
+                  "width": 260,
+                  "height": 40,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "edVP1",
+                      "x": 100,
+                      "y": 0,
+                      "name": "viewsTriggerPill",
+                      "width": 160,
+                      "height": 40,
+                      "fill": "$G:surface.primary",
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$G:border.primary"
+                      },
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "edVPL",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "edVPE",
+                              "width": 14,
+                              "height": 14,
+                              "iconFontName": "eye",
+                              "iconFontFamily": "lucide",
+                              "fill": "$G:text.primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "edVPT",
+                              "fill": "$G:text.primary",
+                              "content": "My View",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "edVPC",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "chevron-down",
+                          "iconFontFamily": "lucide",
+                          "fill": "$G:text.tertiary"
+                        }
+                      ]
                     },
-                    "G:LF8X5": {
-                      "content": "3M"
-                    },
-                    "G:sB56L": {
-                      "content": "1Y"
+                    {
+                      "type": "frame",
+                      "id": "edVM1",
+                      "x": 0,
+                      "y": 48,
+                      "name": "viewsMenu",
+                      "width": 260,
+                      "fill": "$G:surface.primary",
+                      "cornerRadius": "$G:radius.lg",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$G:border.primary"
+                      },
+                      "layout": "vertical",
+                      "gap": 0,
+                      "padding": 6,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "edVH1",
+                          "width": "fill_container",
+                          "padding": [
+                            10,
+                            10,
+                            6,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "edVH1t",
+                              "fill": "$G:text.tertiary",
+                              "content": "SYSTEM",
+                              "fontFamily": "Heebo",
+                              "fontSize": 10,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVR1",
+                          "name": "row_default",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "padding": [
+                            8,
+                            10
+                          ],
+                          "cornerRadius": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "edVR1c",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "text",
+                              "id": "edVR1t",
+                              "fill": "$G:text.primary",
+                              "content": "Default",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVR2",
+                          "name": "row_compact",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "padding": [
+                            8,
+                            10
+                          ],
+                          "cornerRadius": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "edVR2c",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "text",
+                              "id": "edVR2t",
+                              "fill": "$G:text.primary",
+                              "content": "Compact",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVD1",
+                          "width": "fill_container",
+                          "padding": [
+                            6,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "edVD1l",
+                              "width": "fill_container",
+                              "height": 1,
+                              "fill": "$G:border.primary"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVH2",
+                          "width": "fill_container",
+                          "padding": [
+                            4,
+                            10,
+                            6,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "edVH2t",
+                              "fill": "$G:text.tertiary",
+                              "content": "MY VIEWS",
+                              "fontFamily": "Heebo",
+                              "fontSize": 10,
+                              "fontWeight": "600",
+                              "letterSpacing": 1
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVR3",
+                          "name": "row_myview",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "padding": [
+                            8,
+                            10
+                          ],
+                          "cornerRadius": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "edVR3c",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "check",
+                              "iconFontFamily": "lucide",
+                              "fill": "$G:accent.default"
+                            },
+                            {
+                              "type": "text",
+                              "id": "edVR3t",
+                              "fill": "$G:text.primary",
+                              "content": "My View",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVR4",
+                          "name": "row_retirement",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "padding": [
+                            8,
+                            10
+                          ],
+                          "cornerRadius": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "edVR4c",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "text",
+                              "id": "edVR4t",
+                              "fill": "$G:text.primary",
+                              "content": "Retirement focus",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVR5",
+                          "name": "row_tax",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "padding": [
+                            8,
+                            10
+                          ],
+                          "cornerRadius": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "edVR5c",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "text",
+                              "id": "edVR5t",
+                              "fill": "$G:text.primary",
+                              "content": "Tax season",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVR6",
+                          "name": "row_thismonth",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "padding": [
+                            8,
+                            10
+                          ],
+                          "cornerRadius": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "edVR6c",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "text",
+                              "id": "edVR6t",
+                              "fill": "$G:text.primary",
+                              "content": "This month",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVD2",
+                          "width": "fill_container",
+                          "padding": [
+                            6,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "edVD2l",
+                              "width": "fill_container",
+                              "height": 1,
+                              "fill": "$G:border.primary"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVA1",
+                          "name": "action_save",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "padding": [
+                            8,
+                            10
+                          ],
+                          "cornerRadius": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "edVA1i",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "plus",
+                              "iconFontFamily": "lucide",
+                              "fill": "$G:accent.default"
+                            },
+                            {
+                              "type": "text",
+                              "id": "edVA1t",
+                              "fill": "$G:accent.default",
+                              "content": "Save current as view…",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "edVA2",
+                          "name": "action_manage",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "padding": [
+                            8,
+                            10
+                          ],
+                          "cornerRadius": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "edVA2i",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "settings-2",
+                              "iconFontFamily": "lucide",
+                              "fill": "$G:accent.default"
+                            },
+                            {
+                              "type": "text",
+                              "id": "edVA2t",
+                              "fill": "$G:accent.default",
+                              "content": "Manage views…",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
                     }
-                  }
+                  ]
                 }
               ]
             },
