@@ -4,7 +4,7 @@
 >
 > **Scope:** Monte Carlo simulations, stock option calculators, retirement planners, portfolio dashboards, tax planning tools, and any data-rich financial interface.
 >
-> **Modes:** Light + Dark. **Fonts:** Heebo (UI + numbers), Cormorant Garamond (headings). **Palette:** Warm/cool categorical, green-tinted grays, Blue accent (#3A6AF8).
+> **Modes:** Light + Dark. **Fonts:** Heebo (UI + numbers), Cormorant Garamond (headings). **Palette:** Warm/cool categorical, neutral gray ramp (Gen UI lib.pen), Blue accent (#3A6AF8 light / #7094FB dark).
 
 ---
 
@@ -26,22 +26,29 @@
 
 ### Color Primitives
 
+Foundation JSON and `gen-ui-design-system.lib.pen` share these resolved values.
+
+| Token | Light Value | Dark Value | Usage |
+| ----- | ----------- | ---------- | ----- |
+| `color.base.canvas` | `#FFFFFF` | `#0E0E0E` | App canvas (Pencil: `base.canvas`; dark matches `gray.50` dark) |
+| `color.base.white` | `#FFFFFF` | — | Absolute white (`white`; not theme-swapped) |
 
 | Token            | Light Value | Dark Value | Usage              |
 | ---------------- | ----------- | ---------- | ------------------ |
-| `color.gray.50`  | `#F9FAF9`   | `#0E0E0E`  | Lightest surface   |
-| `color.gray.100` | `#EEEFEE`   | `#202220`  | Subtle background  |
-| `color.gray.200` | `#D8D9D8`   | `#3B3E3C`  | Borders, dividers  |
-| `color.gray.300` | `#B6B9B7`   | `#6B6F6C`  | Disabled fills (3.7:1 on #111) |
-| `color.gray.400` | `#949895`   | `#7E8480`  | Placeholder text (4.9:1 on #111) |
-| `color.gray.500` | `#727874`   | `#7E8480`  | Secondary text (4.9:1 on #111) |
-| `color.gray.600` | `#575B58`   | `#949895`  | Body text          |
-| `color.gray.700` | `#3B3E3C`   | `#B6B9B7`  | Primary text       |
-| `color.gray.800` | `#202220`   | `#D8D9D8`  | Headings           |
-| `color.gray.900` | `#0E0E0E`   | `#EEEFEE`  | High-emphasis text |
+| `color.gray.50`  | `#F7F7F8`   | `#0E0E0E`  | Lightest neutral / dark base   |
+| `color.gray.100` | `#E8E8EA`   | `#1A1A1A`  | Subtle background / dark card    |
+| `color.gray.200` | `#D1D1D6`   | `#3A3A3C`  | Borders / dark nested            |
+| `color.gray.300` | `#AEAEB2`   | `#535356`  | Disabled / dark border           |
+| `color.gray.400` | `#8E8E93`   | `#6C6C70`  | Muted UI                         |
+| `color.gray.500` | `#6C6C70`   | `#8E8E93`  | Tertiary text                    |
+| `color.gray.600` | `#535356`   | `#AEAEB2`  | Secondary text, data.neutral     |
+| `color.gray.700` | `#3A3A3C`   | `#D1D1D6`  | Emphasis                         |
+| `color.gray.800` | `#2C2C2E`   | `#E8E8EA`  | Strong borders                 |
+| `color.gray.900` | `#0E0E0E`   | `#F7F7F8`  | Primary text (theme-resolved)  |
 
 | Token             | Value       | Usage                                            |
 | ----------------- | ----------- | ------------------------------------------------ |
+| `color.blue.50`   | `#F5F8FF`   | Lightest tint                                    |
 | `color.blue.100`  | `#EBF0FE`   | Lightest blue (selected backgrounds in light mode) |
 | `color.blue.200`  | `#C8D6FD`   | Very light backgrounds, subtle highlights        |
 | `color.blue.300`  | `#A3BCFC`   | Lighter blue                                     |
@@ -49,7 +56,8 @@
 | `color.blue.500`  | `#7094FB`   | Medium blue (primary accent in dark mode)        |
 | `color.blue.600`  | `#3A6AF8`   | Primary accent (CTAs, interactive elements in light mode) |
 | `color.blue.700`  | `#295CCC`   | Dark blue (hover states in light mode)           |
-| `color.blue.800`  | `#152354`   | Darkest blue (subtle backgrounds in dark mode)   |
+| `color.blue.800`  | `#1E3A8A`   | Dark blue surfaces (accent subtle, AI, surfaces)   |
+| `color.blue.900`  | `#152354`   | Deepest accent / pressed                         |
 
 
 ### Semantic Colors
@@ -57,21 +65,24 @@
 
 | Token                        | Light Value         | Dark Value          | Usage                          |
 | ---------------------------- | ------------------- | ------------------- | ------------------------------ |
-| `color.surface.primary`      | `#FFFFFF`           | `#111111`           | Main background                |
-| `color.surface.secondary`    | `#F5F5F5`           | `#1A1A1A`           | Card/panel background          |
-| `color.surface.tertiary`     | `#EBEBEB`           | `#242424`           | Nested surfaces                |
+| `color.surface.primary`      | `#FFFFFF`           | `#0E0E0E`           | Main background (`base.canvas` + `gray.50`) |
+| `color.surface.secondary`    | `#F7F7F8`           | `#1A1A1A`           | Card/panel (`gray.50` / `gray.100`) |
+| `color.surface.tertiary`     | `#E8E8EA`           | `#3A3A3C`           | Nested surfaces (`gray.100` / `gray.200`) |
+| `color.surface.elevated`     | `#FFFFFF`           | `#3A3A3C`           | Raised (`base.canvas` / `gray.200` dark) |
+| `color.surface.inverse`      | `#0E0E0E`           | `#F7F7F8`           | Inverse bars (`gray.900` both) |
+| `color.surface.accent`       | `#EBF0FE`           | `#1E3A8A`           | Accent wash (`blue.100` / `blue.800`) |
 | `color.surface.overlay`      | `rgba(0,0,0,0.5)`  | `rgba(0,0,0,0.7)`  | Modal/dropdown backdrops       |
-| `color.border.default`       | `#E5E5E5`           | `#4A4D4B`           | Default borders                |
-| `color.border.strong`        | `#D4D4D4`           | `#626562`           | Emphasized borders             |
-| `color.border.focus`         | `#3A6AF8`           | `#7094FB`           | Focus rings                    |
-| `color.text.primary`         | `#171717`           | `#F5F5F5`           | Primary text                   |
-| `color.text.secondary`       | `#525252`           | `#A3A3A3`           | Secondary/helper text          |
-| `color.text.tertiary`        | `#737373`           | `#8A8A8A`           | Placeholder, caption           |
-| `color.text.inverse`         | `#FFFFFF`           | `#111111`           | Text on filled surfaces        |
+| `color.border.default`       | `#E8E8EA`           | `#535356`           | Default (`gray.100` / `gray.300`) |
+| `color.border.strong`        | `#D1D1D6`           | `#6C6C70`           | Emphasized (`gray.200` / `gray.400`) |
+| `color.border.focus`         | `#3A6AF8`           | `#7094FB`           | Focus rings (`blue.600` / `blue.500`) |
+| `color.text.primary`         | `#0E0E0E`           | `#F7F7F8`           | Primary text (`gray.900`)      |
+| `color.text.secondary`       | `#535356`           | `#AEAEB2`           | Secondary/helper (`gray.600`)  |
+| `color.text.tertiary`        | `#6C6C70`           | `#8E8E93`           | Placeholder, caption (`gray.500`) |
+| `color.text.inverse`         | `#FFFFFF`           | `#0E0E0E`           | On inverse (`white` / `gray.50` dark) |
 | `color.text.link`            | `#3A6AF8`           | `#7094FB`           | Interactive links              |
 | `color.accent.primary`       | `#3A6AF8`           | `#7094FB`           | Primary actions, active states |
 | `color.accent.primary-hover` | `#295CCC`           | `#9BB3FC`           | Primary hover                  |
-| `color.accent.primary-subtle`| `#EBF0FE`           | `#152354`           | Selected backgrounds           |
+| `color.accent.primary-subtle`| `#EBF0FE`           | `#1E3A8A`           | Selected backgrounds (`blue.100` / `blue.800`) |
 | `color.status.error`           | `#B91C1C`           | `#F87171`           | Error states                   |
 | `color.status.error-subtle`    | `#FEE2E2`           | `#450A0A`           | Error background               |
 | `color.status.warning`         | `#C25700`           | `#FBBF24`           | Warning states                 |
@@ -89,13 +100,13 @@
 | ---------------------------- | ------------------- | ------------------- | ------------------------------ |
 | `color.data.positive`        | `#15803D`           | `#4ADE80`           | Gains, positive returns        |
 | `color.data.negative`        | `#B91C1C`           | `#F87171`           | Losses, negative returns       |
-| `color.data.neutral`         | `#525252`           | `#A3A3A3`           | Zero change, breakeven         |
+| `color.data.neutral`         | `#535356`           | `#AEAEB2`           | Zero change, breakeven (`gray.600`) |
 | `color.data.positive-subtle` | `rgba(21,128,61,0.08)` | `rgba(74,222,128,0.10)` | Positive badge/cell bg    |
 | `color.data.negative-subtle` | `rgba(185,28,28,0.08)` | `rgba(248,113,113,0.10)` | Negative badge/cell bg   |
 
 ### Chart Categorical Palette (15 Series, Priority-Ordered)
 
-> **Usage rule:** Always assign colors in priority order — cat.1 first, cat.2 second, and so on. These are high-saturation colors designed for maximum distinguishability. Some have dark-mode overrides for contrast accessibility (≥ 3:1 on `#111111`).
+> **Usage rule:** Always assign colors in priority order — cat.1 first, cat.2 second, and so on. These are high-saturation colors designed for maximum distinguishability. Some have dark-mode overrides for contrast accessibility on the dark canvas (~`#0E0E0E`).
 
 | Token                | Light Value | Dark Value | Usage priority |
 | -------------------- | ----------- | ---------- | -------------- |
@@ -117,15 +128,20 @@
 
 ### Chart Sequential Ramp (Single-Hue for Area Charts)
 
+Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` at some steps).
+
 | Token                  | Value     | Usage         |
 | ---------------------- | --------- | ------------- |
+| `color.chart.seq.50`  | `#F5F8FF` | Lightest tint |
 | `color.chart.seq.100` | `#EBF0FE` | Lightest fill |
 | `color.chart.seq.200` | `#C8D6FD` | Light fill    |
 | `color.chart.seq.300` | `#A5BCFC` | Medium-light  |
 | `color.chart.seq.400` | `#7094FB` | Medium        |
 | `color.chart.seq.500` | `#5A82F9` | Medium-strong |
 | `color.chart.seq.600` | `#3A6AF8` | Strong        |
-| `color.chart.seq.700` | `#2952CC` | Darkest fill  |
+| `color.chart.seq.700` | `#2952CC` | Dark fill     |
+| `color.chart.seq.800` | `#1E3F8F` | Darker fill   |
+| `color.chart.seq.900` | `#152B60` | Darkest fill  |
 
 ### Typography Scale
 
