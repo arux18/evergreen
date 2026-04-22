@@ -22,13 +22,61 @@
       "50":  { "value": "#F5F8FF", "usage": "Lightest tint" },
       "100": { "value": "#EBF0FE", "usage": "Lightest blue (selected backgrounds in light mode)" },
       "200": { "value": "#C8D6FD", "usage": "Very light backgrounds, subtle highlights" },
-      "300": { "value": "#A3BCFC", "usage": "Lighter blue" },
-      "400": { "value": "#9BB3FC", "usage": "Light blue (hover states in dark mode)" },
+      "300": { "value": "#A3BCFC", "usage": "Lighter blue (text/icon accent pressed in dark mode)" },
+      "400": { "value": "#9BB3FC", "usage": "Light blue (text/icon accent hover in dark mode)" },
       "500": { "value": "#7094FB", "usage": "Medium blue (primary accent in dark mode)" },
       "600": { "value": "#3A6AF8", "usage": "Primary accent (CTAs, interactive elements in light mode)" },
-      "700": { "value": "#295CCC", "usage": "Dark blue (hover states in light mode)" },
+      "700": { "value": "#295CCC", "usage": "Dark blue (text/icon accent hover in light mode)" },
       "800": { "value": "#1E3A8A", "usage": "Dark blue surfaces (accent.subtle, AI, surface.accent in dark)" },
       "900": { "value": "#152354", "usage": "Darkest blue (pressed, deep accent)" }
+    },
+    "red": {
+      "50":  { "value": "#FEF2F2", "usage": "Lightest red wash (destructive.subtle light, status.error-bg light, fin.expense-bg light)" },
+      "200": { "value": "#FECACA", "usage": "Very light red (icon/text destructive-pressed in dark mode)" },
+      "300": { "value": "#FCA5A5", "usage": "Light red (destructive.pressed in dark mode)" },
+      "400": { "value": "#F87171", "usage": "Status error / icon destructive / data.negative in dark mode" },
+      "500": { "value": "#EF4444", "usage": "Destructive default in dark mode" },
+      "700": { "value": "#B91C1C", "usage": "Destructive default in light mode (status.error / data.negative / fin.expense light)" },
+      "800": { "value": "#991B1B", "usage": "Destructive hover in light mode (icon/text destructive-hover light)" },
+      "900": { "value": "#450A0A", "usage": "Destructive pressed in light mode (destructive.subtle dark, fin.expense-bg dark)" }
+    },
+    "green": {
+      "50":  { "value": "#F0FDF4", "usage": "Lightest green wash (status.success-bg light, fin.income-bg light)" },
+      "400": { "value": "#4ADE80", "usage": "Status success / data.positive / fin.income in dark mode" },
+      "700": { "value": "#15803D", "usage": "Status success / data.positive / fin.income in light mode" },
+      "800": { "value": "#166534", "usage": "Strong green (reserved future use, swatch only)" },
+      "900": { "value": "#052E16", "usage": "Status success-bg / fin.income-bg dark" }
+    },
+    "orange": {
+      "50":  { "value": "#FFF7ED", "usage": "Lightest orange wash (status.warning-bg light, fin.debt-bg light)" },
+      "400": { "value": "#FB923C", "usage": "Orange tint dark (fin.debt dark, chart.cat.13)" },
+      "700": { "value": "#C2410C", "usage": "Strong orange light (fin.debt light)" },
+      "800": { "value": "#9A3412", "usage": "Strong orange (reserved future use, swatch only)" },
+      "900": { "value": "#451A03", "usage": "Status warning-bg / fin.debt-bg dark" }
+    },
+    "amber": {
+      "400": { "value": "#FBBF24", "usage": "Status warning in dark mode" },
+      "700": { "value": "#C25700", "usage": "Status warning in light mode" }
+    },
+    "purple": {
+      "50":  { "value": "#F5F3FF", "usage": "Lightest purple wash (fin.investment-bg light)" },
+      "400": { "value": "#A78BFA", "usage": "fin.investment dark (chart.cat.8)" },
+      "700": { "value": "#7C3AED", "usage": "fin.investment light" },
+      "800": { "value": "#5B21B6", "usage": "Strong purple (reserved future use, swatch only)" },
+      "900": { "value": "#2E1065", "usage": "fin.investment-bg dark" }
+    },
+    "sky": {
+      "50":  { "value": "#F0F9FF", "usage": "Lightest sky wash (fin.savings-bg light)" },
+      "400": { "value": "#38BDF8", "usage": "fin.savings dark (chart.cat.6)" },
+      "700": { "value": "#0369A1", "usage": "fin.savings light" },
+      "800": { "value": "#075985", "usage": "Strong sky (reserved future use, swatch only)" },
+      "900": { "value": "#082F49", "usage": "fin.savings-bg dark" }
+    },
+    "info": {
+      "50":  { "value": "#EFF6FF", "usage": "Status info-bg light" },
+      "400": { "value": "#60A5FA", "usage": "Status info in dark mode" },
+      "700": { "value": "#2563EB", "usage": "Status info in light mode" },
+      "950": { "value": "#172554", "usage": "Status info-bg dark" }
     },
     "surface": {
       "primary":   { "light": "#FFFFFF", "dark": "#0E0E0E", "usage": "Main background = base.canvas + gray.50 dark" },
@@ -42,29 +90,67 @@
     "border": {
       "default": { "light": "#E8E8EA", "dark": "#535356", "usage": "Default = gray.100 / gray.300 (border.primary in Pencil)" },
       "strong":  { "light": "#D1D1D6", "dark": "#6C6C70", "usage": "Emphasized = gray.200 / gray.400" },
-      "focus":   { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Focus rings = blue.600 / blue.500" }
+      "focus":   { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Focus rings = blue.600 / blue.500" },
+      "accent":  { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Accent borders (selected, active inputs) = blue.600 / blue.500" }
     },
     "text": {
-      "primary":   { "light": "#0E0E0E", "dark": "#F7F7F8", "usage": "Primary text = gray.900" },
-      "secondary": { "light": "#535356", "dark": "#AEAEB2", "usage": "Secondary/helper = gray.600" },
-      "tertiary":  { "light": "#6C6C70", "dark": "#8E8E93", "usage": "Placeholder, caption = gray.500" },
-      "inverse":   { "light": "#FFFFFF", "dark": "#0E0E0E", "usage": "On inverse / chips: white / gray.50 dark" },
-      "link":      { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Interactive links" }
+      "primary":           { "light": "#0E0E0E", "dark": "#F7F7F8", "usage": "Primary text = gray.900" },
+      "secondary":         { "light": "#535356", "dark": "#AEAEB2", "usage": "Secondary/helper = gray.600" },
+      "tertiary":          { "light": "#6C6C70", "dark": "#8E8E93", "usage": "Placeholder, caption = gray.500" },
+      "inverse":           { "light": "#FFFFFF", "dark": "#0E0E0E", "usage": "On inverse / chips: white / gray.50 dark" },
+      "link":              { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Interactive links = blue.600 / blue.500" },
+      "accent":            { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Accent text (links, ghost-button labels) = blue.600 / blue.500" },
+      "accent-hover":      { "light": "#295CCC", "dark": "#9BB3FC", "usage": "Accent text hover = blue.700 / blue.400" },
+      "accent-pressed":    { "light": "#152354", "dark": "#A3BCFC", "usage": "Accent text pressed = blue.900 / blue.300" },
+      "on-accent":         { "value": "#FFFFFF", "usage": "Text on accent fill (primary buttons) — absolute white, not theme-swapped" },
+      "destructive":       { "light": "#B91C1C", "dark": "#F87171", "usage": "Destructive text = red.700 / red.400" },
+      "destructive-hover": { "light": "#991B1B", "dark": "#FCA5A5", "usage": "Destructive text hover = red.800 / red.300" },
+      "destructive-pressed": { "light": "#450A0A", "dark": "#FECACA", "usage": "Destructive text pressed = red.900 / red.200" },
+      "on-destructive":    { "value": "#FFFFFF", "usage": "Text on destructive fill (destructive primary button) — absolute white" }
+    },
+    "icon": {
+      "accent":             { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Accent icons (ghost button icon) = blue.600 / blue.500" },
+      "accent-hover":       { "light": "#295CCC", "dark": "#9BB3FC", "usage": "Accent icon hover = blue.700 / blue.400" },
+      "accent-pressed":     { "light": "#152354", "dark": "#A3BCFC", "usage": "Accent icon pressed = blue.900 / blue.300" },
+      "destructive":        { "light": "#B91C1C", "dark": "#F87171", "usage": "Destructive icons = red.700 / red.400" },
+      "destructive-hover":  { "light": "#991B1B", "dark": "#FCA5A5", "usage": "Destructive icon hover = red.800 / red.300" },
+      "destructive-pressed":{ "light": "#450A0A", "dark": "#FECACA", "usage": "Destructive icon pressed = red.900 / red.200" },
+      "on-destructive":     { "value": "#FFFFFF", "usage": "Icon on destructive fill — absolute white" }
     },
     "accent": {
-      "primary":        { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Primary actions = blue.600 / blue.500" },
-      "primary-hover":  { "light": "#295CCC", "dark": "#9BB3FC", "usage": "Primary hover = blue.700 / blue.400" },
-      "primary-subtle": { "light": "#EBF0FE", "dark": "#1E3A8A", "usage": "Selected backgrounds = blue.100 / blue.800" }
+      "default": { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Primary actions, active states = blue.600 / blue.500" },
+      "hover":   { "light": "#295CCC", "dark": "#9BB3FC", "usage": "Primary hover = blue.700 / blue.400" },
+      "pressed": { "light": "#152354", "dark": "#A3BCFC", "usage": "Primary pressed = blue.900 / blue.300" },
+      "subtle":  { "light": "#EBF0FE", "dark": "#1E3A8A", "usage": "Selected backgrounds, accent wash = blue.100 / blue.800" }
+    },
+    "destructive": {
+      "default": { "light": "#B91C1C", "dark": "#EF4444", "usage": "Destructive primary fill = red.700 / red.500" },
+      "hover":   { "light": "#991B1B", "dark": "#F87171", "usage": "Destructive hover = red.800 / red.400" },
+      "pressed": { "light": "#450A0A", "dark": "#FCA5A5", "usage": "Destructive pressed = red.900 / red.300" },
+      "subtle":  { "light": "#FEF2F2", "dark": "#450A0A", "usage": "Destructive subtle background = red.50 / red.900" }
     },
     "status": {
-      "error":          { "light": "#B91C1C", "dark": "#F87171", "usage": "Error states" },
-      "error-subtle":   { "light": "#FEE2E2", "dark": "#450A0A", "usage": "Error background" },
-      "warning":        { "light": "#C25700", "dark": "#FBBF24", "usage": "Warning states" },
-      "warning-subtle": { "light": "#FFF7ED", "dark": "#451A03", "usage": "Warning background" },
-      "success":        { "light": "#15803D", "dark": "#4ADE80", "usage": "Success states" },
-      "success-subtle": { "light": "#F0FDF4", "dark": "#052E16", "usage": "Success background" },
-      "info":           { "light": "#2563EB", "dark": "#60A5FA", "usage": "Informational states" },
-      "info-subtle":    { "light": "#EFF6FF", "dark": "#172554", "usage": "Informational background" }
+      "error":      { "light": "#B91C1C", "dark": "#F87171", "usage": "Error states (= red.700 / red.400)" },
+      "error-bg":   { "light": "#FEF2F2", "dark": "#450A0A", "usage": "Error background (= red.50 / red.900)" },
+      "warning":    { "light": "#C25700", "dark": "#FBBF24", "usage": "Warning states (= amber.700 / amber.400)" },
+      "warning-bg": { "light": "#FFF7ED", "dark": "#451A03", "usage": "Warning background (= orange.50 / orange.900)" },
+      "success":    { "light": "#15803D", "dark": "#4ADE80", "usage": "Success states (= green.700 / green.400)" },
+      "success-bg": { "light": "#F0FDF4", "dark": "#052E16", "usage": "Success background (= green.50 / green.900)" },
+      "info":       { "light": "#2563EB", "dark": "#60A5FA", "usage": "Informational states (= info.700 / info.400)" },
+      "info-bg":    { "light": "#EFF6FF", "dark": "#172554", "usage": "Informational background (= info.50 / info.950)" }
+    },
+    "fin": {
+      "$description": "Financial-context semantic colors (income, expense, savings, debt, investment). FG + bg pair per category.",
+      "income":           { "light": "#15803D", "dark": "#4ADE80", "usage": "Income / inflow (= green.700 / green.400)" },
+      "income-bg":        { "light": "#F0FDF4", "dark": "#052E16", "usage": "Income chip/badge bg (= green.50 / green.900)" },
+      "expense":          { "light": "#B91C1C", "dark": "#F87171", "usage": "Expense / outflow (= red.700 / red.400)" },
+      "expense-bg":       { "light": "#FEF2F2", "dark": "#450A0A", "usage": "Expense chip/badge bg (= red.50 / red.900)" },
+      "savings":          { "light": "#0369A1", "dark": "#38BDF8", "usage": "Savings (= sky.700 / sky.400)" },
+      "savings-bg":       { "light": "#F0F9FF", "dark": "#082F49", "usage": "Savings chip/badge bg (= sky.50 / sky.900)" },
+      "debt":             { "light": "#C2410C", "dark": "#FB923C", "usage": "Debt (= orange.700 / orange.400)" },
+      "debt-bg":          { "light": "#FFF7ED", "dark": "#451A03", "usage": "Debt chip/badge bg (= orange.50 / orange.900)" },
+      "investment":       { "light": "#7C3AED", "dark": "#A78BFA", "usage": "Investment (= purple.700 / purple.400)" },
+      "investment-bg":    { "light": "#F5F3FF", "dark": "#2E1065", "usage": "Investment chip/badge bg (= purple.50 / purple.900)" }
     },
     "data": {
       "$description": "Financial meaning colors (gains/losses). Separate from status colors to avoid visual confusion when UI state and data value overlap.",

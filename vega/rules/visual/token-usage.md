@@ -19,8 +19,35 @@ Hardcoded values are never acceptable. All selections below.
 | Body, descriptions | `$text.secondary` |
 | Labels, metadata, timestamps | `$text.tertiary` |
 | Links, interactive text | `$text.accent` |
+| Accent text hover | `$text.accent-hover` |
+| Accent text pressed | `$text.accent-pressed` |
+| Destructive text (delete labels, error) | `$text.destructive` |
+| Destructive text hover | `$text.destructive-hover` |
+| Destructive text pressed | `$text.destructive-pressed` |
 | On accent background | `$text.on-accent` |
+| On destructive background | `$text.on-destructive` |
 | On dark/inverse | `$text.inverse` |
+
+## Icons
+| Context | Token |
+|---|---|
+| Default icon (matches text colour) | `$text.secondary` / `$text.primary` |
+| Accent icon (ghost / link) | `$icon.accent` |
+| Accent icon hover | `$icon.accent-hover` |
+| Accent icon pressed | `$icon.accent-pressed` |
+| Destructive icon | `$icon.destructive` |
+| Destructive icon hover | `$icon.destructive-hover` |
+| Destructive icon pressed | `$icon.destructive-pressed` |
+| Icon on destructive fill | `$icon.on-destructive` |
+
+## Accent / Destructive fills (buttons, selections)
+| Context | Accent | Destructive |
+|---|---|---|
+| Default fill | `$accent.default` | `$destructive.default` |
+| Hover fill | `$accent.hover` | `$destructive.hover` |
+| Pressed fill | `$accent.pressed` | `$destructive.pressed` |
+| Subtle wash / selected bg | `$accent.subtle` | `$destructive.subtle` |
+| Border | `$border.accent` | `$destructive.default` |
 
 ## Financial semantics
 | Type | FG | BG |
@@ -48,6 +75,8 @@ Hardcoded values are never acceptable. All selections below.
 | Warning | `$status.warning` | `$status.warning-bg` |
 | Error | `$status.error` | `$status.error-bg` |
 | Info | `$status.info` | `$status.info-bg` |
+
+> Status tokens describe UI state (validation / system messages). Use `$destructive.*` for destructive UI actions (delete buttons), and `$data.*` / `$fin.*` for financial value semantics. Never reuse `$status.error` for delete-button fills or losses.
 
 ## Typography
 | Element | Family | Size | Weight |

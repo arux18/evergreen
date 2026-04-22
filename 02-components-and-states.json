@@ -46,7 +46,7 @@
     "states": {
       "default":  { "bg": "surface.primary",   "border": "border.default", "borderWidth": "1px", "text": "text.primary",  "placeholder": "text.tertiary", "icon": "text.secondary" },
       "hover":    { "bg": "surface.primary",   "border": "border.strong",  "borderWidth": "1px", "text": "text.primary",  "placeholder": "text.tertiary", "icon": "text.primary" },
-      "focus":    { "bg": "surface.primary",   "border": "accent.primary", "borderWidth": "2px", "text": "text.primary",  "placeholder": "text.tertiary", "icon": "accent.primary" },
+      "focus":    { "bg": "surface.primary",   "border": "accent.default", "borderWidth": "2px", "text": "text.primary",  "placeholder": "text.tertiary", "icon": "accent.default" },
       "disabled": { "bg": "surface.secondary", "border": "border.default", "borderWidth": "1px", "text": "text.tertiary", "placeholder": "text.tertiary", "icon": "text.tertiary" },
       "error":    { "bg": "surface.primary",   "border": "status.error",   "borderWidth": "2px", "text": "text.primary",  "placeholder": "text.tertiary", "icon": "status.error" }
     },
@@ -75,10 +75,10 @@
       "radius": "radius.sm",
       "fontSize": "font.size.md",
       "color": "text.primary",
-      "hoverBg": "accent.primary-subtle",
-      "selectedBg": "accent.primary-subtle",
-      "selectedColor": "accent.primary",
-      "selectedIcon": "Checkmark, accent.primary",
+      "hoverBg": "accent.subtle",
+      "selectedBg": "accent.subtle",
+      "selectedColor": "accent.default",
+      "selectedIcon": "Checkmark, accent.default",
       "disabledColor": "text.tertiary"
     },
     "divider": { "color": "border.default", "marginY": "space.1" }
@@ -88,18 +88,18 @@
       "height": "4px",
       "radius": "radius.full",
       "bg": { "light": "gray.200", "dark": "gray.700" },
-      "fill": "accent.primary",
+      "fill": "accent.default",
       "fillDisabled": "gray.300",
       "marginX": "space.2"
     },
     "thumb": {
       "size": "18px",
-      "bg": "accent.primary",
+      "bg": "accent.default",
       "border": "2px solid surface.primary",
       "shadow": "shadow.sm",
       "hoverScale": 1.15,
       "activeScale": 1.0,
-      "focusRing": "0 0 0 3px accent.primary-subtle",
+      "focusRing": "0 0 0 3px accent.subtle",
       "disabledBg": "gray.300"
     },
     "label": { "fontSize": "font.size.sm" },
@@ -122,7 +122,7 @@
       "height": "20px",
       "radius": "radius.full",
       "bgOff": "gray.300",
-      "bgOn": "accent.primary",
+      "bgOn": "accent.default",
       "bgDisabled": "gray.200"
     },
     "thumb": {
@@ -139,12 +139,12 @@
     "size": "18px",
     "radius": { "checkbox": "radius.sm", "radio": "radius.full" },
     "border": "1.5px solid border.strong",
-    "borderChecked": "1.5px solid accent.primary",
+    "borderChecked": "1.5px solid accent.default",
     "bg": "surface.primary",
-    "bgChecked": "accent.primary",
+    "bgChecked": "accent.default",
     "iconColor": "surface.primary",
     "iconSize": "12px",
-    "focusRing": "0 0 0 3px accent.primary-subtle",
+    "focusRing": "0 0 0 3px accent.subtle",
     "gap": "space.2",
     "labelFontSize": "font.size.md"
   },
@@ -178,13 +178,13 @@
       "size": "32px",
       "fontSize": "font.size.sm",
       "radius": "radius.full",
-      "hoverBg": "accent.primary-subtle",
-      "selectedBg": "accent.primary",
+      "hoverBg": "accent.subtle",
+      "selectedBg": "accent.default",
       "selectedColor": "text.inverse",
-      "todayBorder": "1px solid accent.primary",
+      "todayBorder": "1px solid accent.default",
       "outsideColor": "text.tertiary"
     },
-    "rangeBg": "accent.primary-subtle"
+    "rangeBg": "accent.subtle"
   },
   "card": {
     "$description": "Base container for dashboard panels, chart wrappers, and content groups.",
@@ -213,7 +213,7 @@
       "color": "text.primary",
       "colorPositive": "data.positive",
       "colorNegative": "data.negative",
-      "colorAccent": "accent.primary",
+      "colorAccent": "accent.default",
       "colorWarning": "status.warning",
       "letterSpacing": "tight"
     },
@@ -246,14 +246,15 @@
       "positive": { "bg": "data.positive-subtle", "text": "data.positive" },
       "negative": { "bg": "data.negative-subtle", "text": "data.negative" },
       "neutral":  { "bg": "surface.tertiary",     "text": "text.secondary" },
-      "accent":   { "bg": "accent.primary-subtle", "text": "accent.primary" }
+      "accent":   { "bg": "accent.subtle", "text": "accent.default" }
     }
   },
   "button": {
     "variants": {
-      "primary":   { "bg": "accent.primary",  "text": "text.inverse",    "border": "none",                    "hoverBg": "accent.primary-hover",  "activeBg": "accent.primary" },
-      "secondary": { "bg": "transparent",      "text": "accent.primary",  "border": "1px solid accent.primary", "hoverBg": "accent.primary-subtle", "activeBg": "accent.primary-subtle" },
-      "ghost":     { "bg": "transparent",      "text": "text.tertiary",   "border": "none",                    "hoverBg": "surface.tertiary",      "activeBg": "surface.tertiary" }
+      "primary":     { "bg": "accent.default",   "text": "text.on-accent",      "icon": "text.on-accent",     "border": "none",                       "hoverBg": "accent.hover",       "hoverIcon": "text.on-accent",      "activeBg": "accent.pressed",      "activeIcon": "text.on-accent" },
+      "secondary":   { "bg": "transparent",       "text": "text.accent",         "icon": "icon.accent",        "border": "1px solid border.accent",     "hoverBg": "accent.subtle",      "hoverText": "text.accent-hover",    "hoverIcon": "icon.accent-hover",   "activeBg": "accent.subtle",      "activeText": "text.accent-pressed", "activeIcon": "icon.accent-pressed" },
+      "ghost":       { "bg": "transparent",       "text": "text.secondary",      "icon": "text.secondary",     "border": "none",                       "hoverBg": "surface.tertiary",   "hoverText": "text.accent-hover",    "hoverIcon": "icon.accent-hover",   "activeBg": "surface.tertiary",   "activeText": "text.accent-pressed", "activeIcon": "icon.accent-pressed" },
+      "destructive": { "bg": "destructive.default", "text": "text.on-destructive", "icon": "icon.on-destructive", "border": "none",                       "hoverBg": "destructive.hover",  "hoverIcon": "icon.on-destructive", "activeBg": "destructive.pressed", "activeIcon": "icon.on-destructive" }
     },
     "disabledOpacity": 0.38,
     "heights": { "sm": "28px", "md": "36px", "lg": "44px" },
@@ -263,7 +264,7 @@
     "fontWeight": "font.weight.semibold",
     "iconSize": "16px",
     "iconGap": "space.2",
-    "focusRing": "0 0 0 3px accent.primary-subtle",
+    "focusRing": "0 0 0 3px accent.subtle",
     "activeScale": 0.98,
     "transition": "150ms ease"
   },
@@ -290,7 +291,7 @@
     "heightLg": "10px",
     "radius": "radius.full",
     "trackBg": { "light": "gray.200", "dark": "gray.700" },
-    "fillBg": "accent.primary",
+    "fillBg": "accent.default",
     "fillPositive": "data.positive",
     "fillWarning": "status.warning",
     "fillError": "status.error",
@@ -318,10 +319,10 @@
       "button": { "padding": "4px 12px", "fontSize": "12px", "radius": "radius.full", "border": "1px solid matching status color" }
     },
     "variants": {
-      "info":    { "bg": "status.info-subtle",    "border": "status.info",    "iconColor": "status.info",    "buttonColor": "status.info" },
-      "success": { "bg": "status.success-subtle", "border": "status.success", "iconColor": "status.success", "buttonColor": "status.success" },
-      "warning": { "bg": "status.warning-subtle", "border": "status.warning", "iconColor": "status.warning", "buttonColor": "status.warning" },
-      "error":   { "bg": "status.error-subtle",   "border": "status.error",   "iconColor": "status.error",   "buttonColor": "status.error" }
+      "info":    { "bg": "status.info-bg",    "border": "status.info",    "iconColor": "status.info",    "buttonColor": "status.info" },
+      "success": { "bg": "status.success-bg", "border": "status.success", "iconColor": "status.success", "buttonColor": "status.success" },
+      "warning": { "bg": "status.warning-bg", "border": "status.warning", "iconColor": "status.warning", "buttonColor": "status.warning" },
+      "error":   { "bg": "status.error-bg",   "border": "status.error",   "iconColor": "status.error",   "buttonColor": "status.error" }
     },
     "iconMapping": "Info → circled i, Success → circled checkmark, Warning → triangle, Error → circled ×. All 16×16 SVG, 1.5px stroke."
   },
@@ -359,7 +360,7 @@
   "tabs": {
     "$description": "Full-width navigation tabs with underline indicator. Distinct from segmented (pill-style toggle).",
     "borderBottom": "1px solid border.default",
-    "indicator": { "height": "2px", "color": "accent.primary", "radius": "radius.full", "animation": "200ms ease" },
+    "indicator": { "height": "2px", "color": "accent.default", "radius": "radius.full", "animation": "200ms ease" },
     "item": {
       "paddingX": "space.4",
       "paddingY": "space.3",
@@ -367,7 +368,7 @@
       "fontWeight": "font.weight.regular",
       "color": "text.secondary",
       "hoverColor": "text.primary",
-      "activeColor": "accent.primary",
+      "activeColor": "accent.default",
       "activeFontWeight": "font.weight.semibold",
       "gap": "space.1",
       "iconSize": "16px"
@@ -385,8 +386,8 @@
     "label": { "fontSize": "font.size.sm", "maxWidth": "120px" },
     "states": {
       "pending":  { "bg": "surface.tertiary", "border": "border.default", "text": "text.tertiary",   "connector": "border.default" },
-      "active":   { "bg": "accent.primary",   "border": "accent.primary", "text": "#FFFFFF",          "labelColor": "text.primary", "labelWeight": "font.weight.semibold", "connector": "accent.primary" },
-      "complete": { "bg": "accent.primary",   "border": "accent.primary", "icon": "#FFFFFF (checkmark, 14px)", "connector": "accent.primary", "labelColor": "text.secondary" },
+      "active":   { "bg": "accent.default",   "border": "accent.default", "text": "#FFFFFF",          "labelColor": "text.primary", "labelWeight": "font.weight.semibold", "connector": "accent.default" },
+      "complete": { "bg": "accent.default",   "border": "accent.default", "icon": "#FFFFFF (checkmark, 14px)", "connector": "accent.default", "labelColor": "text.secondary" },
       "error":    { "bg": "status.error",     "border": "status.error",   "icon": "#FFFFFF (×, 14px)" }
     }
   },
@@ -405,7 +406,7 @@
       "fontFamily": "font.family.primary",
       "fontSize": "font.size.sm"
     },
-    "highlightRow": { "bg": "accent.primary-subtle" },
+    "highlightRow": { "bg": "accent.subtle" },
     "winnerBadge": { "radius": "radius.sm (4px)", "fontSize": "font.size.xs", "color": "data.positive", "bg": "data.positive-subtle" }
   },
   "sparklineInTable": {
@@ -430,7 +431,7 @@
       "marginTop": "space.4"
     },
     "range": {
-      "fill": "accent.primary-subtle or cat-N at 0.20",
+      "fill": "accent.subtle or cat-N at 0.20",
       "fillOpacity": 0.25,
       "border": "none",
       "height": "matches track"
@@ -446,7 +447,7 @@
       "cursor": "grab / grabbing"
     },
     "handleColors": {
-      "exercise": "accent.primary",
+      "exercise": "accent.default",
       "sale": "cat-5",
       "conversion": "cat-2",
       "rebalance": "cat-3",

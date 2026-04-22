@@ -24,10 +24,34 @@
     --blue-50: #F5F8FF;
     --blue-100: #EBF0FE; --blue-200: #C8D6FD; --blue-300: #A3BCFC; --blue-400: #9BB3FC;
     --blue-500: #7094FB; --blue-600: #3A6AF8; --blue-700: #295CCC; --blue-800: #1E3A8A; --blue-900: #152354;
-    --accent-primary: var(--blue-600); --accent-primary-hover: var(--blue-700); --accent-primary-subtle: var(--blue-100);
+    --red-50: #FEF2F2; --red-200: #FECACA; --red-300: #FCA5A5; --red-400: #F87171; --red-500: #EF4444;
+    --red-700: #B91C1C; --red-800: #991B1B; --red-900: #450A0A;
+    --green-50: #F0FDF4; --green-400: #4ADE80; --green-700: #15803D; --green-800: #166534; --green-900: #052E16;
+    --orange-50: #FFF7ED; --orange-400: #FB923C; --orange-700: #C2410C; --orange-800: #9A3412; --orange-900: #451A03;
+    --amber-400: #FBBF24; --amber-700: #C25700;
+    --purple-50: #F5F3FF; --purple-400: #A78BFA; --purple-700: #7C3AED; --purple-800: #5B21B6; --purple-900: #2E1065;
+    --sky-50: #F0F9FF; --sky-400: #38BDF8; --sky-700: #0369A1; --sky-800: #075985; --sky-900: #082F49;
+    --info-50: #EFF6FF; --info-400: #60A5FA; --info-700: #2563EB; --info-950: #172554;
+    --accent-default: var(--blue-600); --accent-hover: var(--blue-700); --accent-pressed: var(--blue-900); --accent-subtle: var(--blue-100);
+    --border-accent: var(--blue-600);
+    --text-accent: var(--blue-600); --text-accent-hover: var(--blue-700); --text-accent-pressed: var(--blue-900);
+    --text-on-accent: #FFFFFF;
+    --text-destructive: var(--red-700); --text-destructive-hover: var(--red-800); --text-destructive-pressed: var(--red-900);
+    --text-on-destructive: #FFFFFF;
+    --icon-accent: var(--blue-600); --icon-accent-hover: var(--blue-700); --icon-accent-pressed: var(--blue-900);
+    --icon-destructive: var(--red-700); --icon-destructive-hover: var(--red-800); --icon-destructive-pressed: var(--red-900);
+    --icon-on-destructive: #FFFFFF;
+    --destructive-default: var(--red-700); --destructive-hover: var(--red-800); --destructive-pressed: var(--red-900); --destructive-subtle: var(--red-50);
     --surface-overlay: rgba(0,0,0,0.5);
-    --status-error: #B91C1C; --status-error-subtle: #FEE2E2; --status-warning: #C25700; --status-warning-subtle: #FFF7ED; --status-success: #15803D; --status-success-subtle: #F0FDF4;
-    --status-info: #2563EB; --status-info-subtle: #EFF6FF;
+    --status-error: var(--red-700); --status-error-bg: var(--red-50);
+    --status-warning: var(--amber-700); --status-warning-bg: var(--orange-50);
+    --status-success: var(--green-700); --status-success-bg: var(--green-50);
+    --status-info: var(--info-700); --status-info-bg: var(--info-50);
+    --fin-income: var(--green-700); --fin-income-bg: var(--green-50);
+    --fin-expense: var(--red-700); --fin-expense-bg: var(--red-50);
+    --fin-savings: var(--sky-700); --fin-savings-bg: var(--sky-50);
+    --fin-debt: var(--orange-700); --fin-debt-bg: var(--orange-50);
+    --fin-investment: var(--purple-700); --fin-investment-bg: var(--purple-50);
     --cat-1: #8951F0; --cat-2: #06B6D4; --cat-3: #312E81; --cat-4: #3B82F6; --cat-5: #0F766E;
     --cat-6: #38BDF8; --cat-7: #2DD4BF; --cat-8: #A78BFA; --cat-9: #C026D3; --cat-10: #E73CAE;
     --cat-11: #E879A8; --cat-12: #92400E; --cat-13: #FB923C; --cat-14: #CA8A04; --cat-15: #FACC15;
@@ -73,10 +97,26 @@
     --border-default: #535356; --border-strong: #6C6C70; --border-focus: #7094FB;
     --text-primary: #F7F7F8; --text-secondary: #AEAEB2; --text-tertiary: #8E8E93; --text-inverse: #0E0E0E;
     --text-link: #7094FB;
-    --accent-primary: var(--blue-500); --accent-primary-hover: var(--blue-400); --accent-primary-subtle: var(--blue-800);
+    --accent-default: var(--blue-500); --accent-hover: var(--blue-400); --accent-pressed: var(--blue-300); --accent-subtle: var(--blue-800);
+    --border-accent: var(--blue-500);
+    --text-accent: var(--blue-500); --text-accent-hover: var(--blue-400); --text-accent-pressed: var(--blue-300);
+    --text-on-accent: #FFFFFF;
+    --text-destructive: var(--red-400); --text-destructive-hover: var(--red-300); --text-destructive-pressed: var(--red-200);
+    --text-on-destructive: #FFFFFF;
+    --icon-accent: var(--blue-500); --icon-accent-hover: var(--blue-400); --icon-accent-pressed: var(--blue-300);
+    --icon-destructive: var(--red-400); --icon-destructive-hover: var(--red-300); --icon-destructive-pressed: var(--red-200);
+    --icon-on-destructive: #FFFFFF;
+    --destructive-default: var(--red-500); --destructive-hover: var(--red-400); --destructive-pressed: var(--red-300); --destructive-subtle: var(--red-900);
     --surface-overlay: rgba(0,0,0,0.7);
-    --status-error: #F87171; --status-error-subtle: #450A0A; --status-warning: #FBBF24; --status-warning-subtle: #451A03; --status-success: #4ADE80; --status-success-subtle: #052E16;
-    --status-info: #60A5FA; --status-info-subtle: #172554;
+    --status-error: var(--red-400); --status-error-bg: var(--red-900);
+    --status-warning: var(--amber-400); --status-warning-bg: var(--orange-900);
+    --status-success: var(--green-400); --status-success-bg: var(--green-900);
+    --status-info: var(--info-400); --status-info-bg: var(--info-950);
+    --fin-income: var(--green-400); --fin-income-bg: var(--green-900);
+    --fin-expense: var(--red-400); --fin-expense-bg: var(--red-900);
+    --fin-savings: var(--sky-400); --fin-savings-bg: var(--sky-900);
+    --fin-debt: var(--orange-400); --fin-debt-bg: var(--orange-900);
+    --fin-investment: var(--purple-400); --fin-investment-bg: var(--purple-900);
     --cat-1: #8951F0; --cat-2: #06B6D4; --cat-3: #4338CA; --cat-4: #3B82F6; --cat-5: #14B8A6;
     --cat-6: #38BDF8; --cat-7: #2DD4BF; --cat-8: #A78BFA; --cat-9: #C026D3; --cat-10: #E73CAE;
     --cat-11: #E879A8; --cat-12: #EA580C; --cat-13: #FB923C; --cat-14: #EAB308; --cat-15: #FDE68A;
@@ -97,7 +137,7 @@
   .theme-toggle button { border: none; padding: 6px 16px; border-radius: 9999px; font-size: 13px; font-family: inherit; font-weight: 500; cursor: pointer; background: transparent; color: var(--text-secondary); transition: all 0.2s; }
   .theme-toggle button.active { background: var(--surface-primary); color: var(--text-primary); box-shadow: var(--shadow-sm); }
   /* TOC links */
-  .toc-link:hover { background: var(--accent-primary-subtle); border-color: var(--accent-primary); color: var(--accent-primary); }
+  .toc-link:hover { background: var(--accent-subtle); border-color: var(--accent-default); color: var(--accent-default); }
 
   /* Sections & Accordion */
   .section { margin: 40px 0; }
@@ -113,7 +153,7 @@
   .section-accordion .accordion-chevron { font-size: 18px; color: var(--text-tertiary); transition: transform 0.2s; flex-shrink: 0; margin-left: 12px; }
   .section-accordion[open] .accordion-chevron { transform: rotate(180deg); }
   .section-accordion .section-content { padding: 20px; }
-  .section-accordion summary:hover { background: var(--accent-primary-subtle); }
+  .section-accordion summary:hover { background: var(--accent-subtle); }
 
   /* Color swatches */
   .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
@@ -143,7 +183,7 @@
   .input-preview .input-field { height: 36px; border-radius: 6px; padding: 0 12px; font-size: 14px; font-family: inherit; display: flex; align-items: center; background: var(--surface-primary); transition: all 0.2s; }
   .input-field.default { border: 1px solid var(--border-default); color: var(--text-tertiary); }
   .input-field.hover { border: 1px solid var(--border-strong); color: var(--text-primary); }
-  .input-field.focus { border: 2px solid var(--accent-primary); color: var(--text-primary); padding: 0 11px; }
+  .input-field.focus { border: 2px solid var(--accent-default); color: var(--text-primary); padding: 0 11px; }
   .input-field.disabled { border: 1px solid var(--border-default); color: var(--text-tertiary); background: var(--surface-secondary); opacity: 0.6; }
   .input-field.error { border: 2px solid var(--status-error); color: var(--text-primary); padding: 0 11px; }
   .helper-text { font-size: 11px; color: var(--text-secondary); }
@@ -155,15 +195,15 @@
   .dropdown-trigger .chevron { color: var(--text-secondary); font-size: 12px; }
   .dropdown-menu { margin-top: 4px; background: var(--surface-primary); border: 1px solid var(--border-default); border-radius: 6px; box-shadow: var(--shadow-dropdown); padding: 4px; }
   .dropdown-item { padding: 8px 12px; border-radius: 4px; font-size: 14px; color: var(--text-primary); }
-  .dropdown-item.hover { background: var(--accent-primary-subtle); }
-  .dropdown-item.selected { background: var(--accent-primary-subtle); color: var(--accent-primary); font-weight: 500; display: flex; justify-content: space-between; }
+  .dropdown-item.hover { background: var(--accent-subtle); }
+  .dropdown-item.selected { background: var(--accent-subtle); color: var(--accent-default); font-weight: 500; display: flex; justify-content: space-between; }
   .dropdown-item.disabled { color: var(--text-tertiary); }
 
   /* Slider preview */
   .slider-preview { padding: 4px 0; }
   .slider-track { height: 4px; background: var(--gray-200); border-radius: 9999px; position: relative; margin: 28px 0 4px; max-width: 400px; }
-  .slider-fill { height: 100%; width: 60%; background: var(--accent-primary); border-radius: 9999px; }
-  .slider-thumb { width: 18px; height: 18px; background: var(--accent-primary); border: 2px solid var(--surface-primary); border-radius: 50%; position: absolute; top: 50%; left: 60%; transform: translate(-50%, -50%); box-shadow: var(--shadow-sm); }
+  .slider-fill { height: 100%; width: 60%; background: var(--accent-default); border-radius: 9999px; }
+  .slider-thumb { width: 18px; height: 18px; background: var(--accent-default); border: 2px solid var(--surface-primary); border-radius: 50%; position: absolute; top: 50%; left: 60%; transform: translate(-50%, -50%); box-shadow: var(--shadow-sm); }
   .slider-thumb-label { position: absolute; left: 60%; top: -26px; transform: translateX(-50%); font-size: var(--font-base); font-weight: var(--weight-regular); line-height: var(--lh-base); color: var(--text-primary); font-family: var(--font-primary); white-space: nowrap; }
   .slider-endpoints { display: flex; justify-content: space-between; font-size: var(--font-xs); font-weight: var(--weight-semibold); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: var(--ls-wide); max-width: 400px; }
 
@@ -171,7 +211,7 @@
   .toggle-row { display: flex; align-items: center; gap: 12px; }
   .toggle-track { width: 36px; height: 20px; border-radius: 9999px; position: relative; transition: background 0.2s; flex-shrink: 0; }
   .toggle-track.off { background: var(--gray-300); }
-  .toggle-track.on { background: var(--accent-primary); }
+  .toggle-track.on { background: var(--accent-default); }
   .toggle-track.disabled { background: var(--gray-200); opacity: 0.6; }
   .toggle-thumb { width: 16px; height: 16px; background: var(--surface-primary); border-radius: 50%; position: absolute; top: 2px; box-shadow: var(--shadow-sm); transition: left 0.2s; }
   .toggle-track.off .toggle-thumb { left: 2px; }
@@ -182,10 +222,10 @@
   /* Checkbox preview */
   .check-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
   .checkbox { width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid var(--border-strong); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .checkbox.checked { background: var(--accent-primary); border-color: var(--accent-primary); color: white; font-size: 12px; }
+  .checkbox.checked { background: var(--accent-default); border-color: var(--accent-default); color: white; font-size: 12px; }
   .radio { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--border-strong); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .radio.checked { border-color: var(--accent-primary); }
-  .radio.checked::after { content: ''; width: 10px; height: 10px; background: var(--accent-primary); border-radius: 50%; }
+  .radio.checked { border-color: var(--accent-default); }
+  .radio.checked::after { content: ''; width: 10px; height: 10px; background: var(--accent-default); border-radius: 50%; }
   .check-label { font-size: 14px; color: var(--text-primary); }
 
   /* Segmented control */
@@ -214,9 +254,9 @@
   .table-preview th.num { text-align: right; }
   .table-preview td { padding: 10px 12px; border-bottom: 1px solid var(--border-default); }
   .table-preview td.num { text-align: right; font-family: var(--font-primary); }
-  .table-preview tr:hover td { background: var(--accent-primary-subtle); }
+  .table-preview tr:hover td { background: var(--accent-subtle); }
   .table-preview .sort-icon { color: var(--text-tertiary); font-size: 10px; margin-left: 4px; }
-  .table-preview .sort-icon.active { color: var(--accent-primary); }
+  .table-preview .sort-icon.active { color: var(--accent-default); }
 
   /* Tooltip demo */
   .tooltip-demo { display: inline-block; background: var(--surface-primary); color: var(--text-primary); padding: 6px 10px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); font-size: 12px; line-height: 1.2; border: 1px solid var(--border-default); }
@@ -242,7 +282,7 @@
   .skeleton-bar-dark::after { content: ''; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: linear-gradient(91.58deg, #202220 0.12%, #3B3E3C 43.3%, #202220 100%); background-size: 200% 100%; animation: skeleton-sweep 1.5s ease-in-out infinite; }
 
   /* Focus ring demo */
-  .focus-demo { display: inline-block; padding: 8px 20px; border-radius: 9999px; background: var(--accent-primary); color: white; border: none; outline: 2px solid var(--border-focus); outline-offset: 2px; font-size: 14px; font-weight: 500; }
+  .focus-demo { display: inline-block; padding: 8px 20px; border-radius: 9999px; background: var(--accent-default); color: white; border: none; outline: 2px solid var(--border-focus); outline-offset: 2px; font-size: 14px; font-weight: 500; }
 
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 390px) { .two-col { grid-template-columns: 1fr; } }
@@ -319,6 +359,85 @@
     <div class="palette-chip"><div class="chip-color" style="background:var(--gray-900)"></div><div class="chip-info"><div class="chip-name">900</div><div class="chip-hex" data-light="#0E0E0E" data-dark="#F7F7F8">#0E0E0E</div></div></div>
   </div>
 
+  <!-- Blue Ramp -->
+  <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Blue (accent)</h4>
+  <div class="palette-row" style="grid-template-columns: repeat(10, 1fr);">
+    <div class="palette-chip"><div class="chip-color" style="background:var(--blue-50)"></div><div class="chip-info"><div class="chip-name">50</div><div class="chip-hex">#F5F8FF</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--blue-100)"></div><div class="chip-info"><div class="chip-name">100</div><div class="chip-hex">#EBF0FE</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--blue-200)"></div><div class="chip-info"><div class="chip-name">200</div><div class="chip-hex">#C8D6FD</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--blue-300)"></div><div class="chip-info"><div class="chip-name">300</div><div class="chip-hex">#A3BCFC</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--blue-400)"></div><div class="chip-info"><div class="chip-name">400</div><div class="chip-hex">#9BB3FC</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--blue-500)"></div><div class="chip-info"><div class="chip-name">500</div><div class="chip-hex">#7094FB</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--blue-600)"></div><div class="chip-info"><div class="chip-name">600</div><div class="chip-hex">#3A6AF8</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--blue-700)"></div><div class="chip-info"><div class="chip-name">700</div><div class="chip-hex">#295CCC</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--blue-800)"></div><div class="chip-info"><div class="chip-name">800</div><div class="chip-hex">#1E3A8A</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--blue-900)"></div><div class="chip-info"><div class="chip-name">900</div><div class="chip-hex">#152354</div></div></div>
+  </div>
+
+  <!-- Red Ramp -->
+  <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Red (destructive / error)</h4>
+  <div class="palette-row" style="grid-template-columns: repeat(8, 1fr);">
+    <div class="palette-chip"><div class="chip-color" style="background:var(--red-50)"></div><div class="chip-info"><div class="chip-name">50</div><div class="chip-hex">#FEF2F2</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--red-200)"></div><div class="chip-info"><div class="chip-name">200</div><div class="chip-hex">#FECACA</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--red-300)"></div><div class="chip-info"><div class="chip-name">300</div><div class="chip-hex">#FCA5A5</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--red-400)"></div><div class="chip-info"><div class="chip-name">400</div><div class="chip-hex">#F87171</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--red-500)"></div><div class="chip-info"><div class="chip-name">500</div><div class="chip-hex">#EF4444</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--red-700)"></div><div class="chip-info"><div class="chip-name">700</div><div class="chip-hex">#B91C1C</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--red-800)"></div><div class="chip-info"><div class="chip-name">800</div><div class="chip-hex">#991B1B</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--red-900)"></div><div class="chip-info"><div class="chip-name">900</div><div class="chip-hex">#450A0A</div></div></div>
+  </div>
+
+  <!-- Green Ramp -->
+  <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Green (success / income)</h4>
+  <div class="palette-row" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="palette-chip"><div class="chip-color" style="background:var(--green-50)"></div><div class="chip-info"><div class="chip-name">50</div><div class="chip-hex">#F0FDF4</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--green-400)"></div><div class="chip-info"><div class="chip-name">400</div><div class="chip-hex">#4ADE80</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--green-700)"></div><div class="chip-info"><div class="chip-name">700</div><div class="chip-hex">#15803D</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--green-800)"></div><div class="chip-info"><div class="chip-name">800</div><div class="chip-hex">#166534</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--green-900)"></div><div class="chip-info"><div class="chip-name">900</div><div class="chip-hex">#052E16</div></div></div>
+  </div>
+
+  <!-- Amber + Orange Ramp -->
+  <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Amber (warning) + Orange (debt)</h4>
+  <div class="palette-row" style="grid-template-columns: repeat(7, 1fr);">
+    <div class="palette-chip"><div class="chip-color" style="background:var(--amber-700)"></div><div class="chip-info"><div class="chip-name">amber.700</div><div class="chip-hex">#C25700</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--amber-400)"></div><div class="chip-info"><div class="chip-name">amber.400</div><div class="chip-hex">#FBBF24</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--orange-50)"></div><div class="chip-info"><div class="chip-name">orange.50</div><div class="chip-hex">#FFF7ED</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--orange-400)"></div><div class="chip-info"><div class="chip-name">orange.400</div><div class="chip-hex">#FB923C</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--orange-700)"></div><div class="chip-info"><div class="chip-name">orange.700</div><div class="chip-hex">#C2410C</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--orange-800)"></div><div class="chip-info"><div class="chip-name">orange.800</div><div class="chip-hex">#9A3412</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--orange-900)"></div><div class="chip-info"><div class="chip-name">orange.900</div><div class="chip-hex">#451A03</div></div></div>
+  </div>
+
+  <!-- Purple Ramp -->
+  <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Purple (investment)</h4>
+  <div class="palette-row" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="palette-chip"><div class="chip-color" style="background:var(--purple-50)"></div><div class="chip-info"><div class="chip-name">50</div><div class="chip-hex">#F5F3FF</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--purple-400)"></div><div class="chip-info"><div class="chip-name">400</div><div class="chip-hex">#A78BFA</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--purple-700)"></div><div class="chip-info"><div class="chip-name">700</div><div class="chip-hex">#7C3AED</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--purple-800)"></div><div class="chip-info"><div class="chip-name">800</div><div class="chip-hex">#5B21B6</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--purple-900)"></div><div class="chip-info"><div class="chip-name">900</div><div class="chip-hex">#2E1065</div></div></div>
+  </div>
+
+  <!-- Sky Ramp -->
+  <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Sky (savings)</h4>
+  <div class="palette-row" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="palette-chip"><div class="chip-color" style="background:var(--sky-50)"></div><div class="chip-info"><div class="chip-name">50</div><div class="chip-hex">#F0F9FF</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--sky-400)"></div><div class="chip-info"><div class="chip-name">400</div><div class="chip-hex">#38BDF8</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--sky-700)"></div><div class="chip-info"><div class="chip-name">700</div><div class="chip-hex">#0369A1</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--sky-800)"></div><div class="chip-info"><div class="chip-name">800</div><div class="chip-hex">#075985</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--sky-900)"></div><div class="chip-info"><div class="chip-name">900</div><div class="chip-hex">#082F49</div></div></div>
+  </div>
+
+  <!-- Info Ramp -->
+  <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Info (informational)</h4>
+  <div class="palette-row" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="palette-chip"><div class="chip-color" style="background:var(--info-50)"></div><div class="chip-info"><div class="chip-name">50</div><div class="chip-hex">#EFF6FF</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--info-400)"></div><div class="chip-info"><div class="chip-name">400</div><div class="chip-hex">#60A5FA</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--info-700)"></div><div class="chip-info"><div class="chip-name">700</div><div class="chip-hex">#2563EB</div></div></div>
+    <div class="palette-chip"><div class="chip-color" style="background:var(--info-950)"></div><div class="chip-info"><div class="chip-name">950</div><div class="chip-hex">#172554</div></div></div>
+  </div>
+
   <!-- Surfaces -->
   <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Surfaces</h4>
   <div class="swatch-grid" style="grid-template-columns: repeat(4, 1fr);">
@@ -330,10 +449,11 @@
 
   <!-- Borders -->
   <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Borders</h4>
-  <div class="swatch-grid" style="grid-template-columns: repeat(3, 1fr);">
+  <div class="swatch-grid" style="grid-template-columns: repeat(4, 1fr);">
     <div class="swatch"><div class="swatch-color" style="background:var(--border-default)"></div><div class="swatch-info"><div class="name">border.default</div><div class="hex" data-light="#E8E8EA" data-dark="#535356">#E8E8EA</div></div></div>
     <div class="swatch"><div class="swatch-color" style="background:var(--border-strong)"></div><div class="swatch-info"><div class="name">border.strong</div><div class="hex" data-light="#D1D1D6" data-dark="#6C6C70">#D1D1D6</div></div></div>
     <div class="swatch"><div class="swatch-color" style="background:var(--border-focus)"></div><div class="swatch-info"><div class="name">border.focus</div><div class="hex" data-light="#3A6AF8" data-dark="#7094FB">#3A6AF8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--border-accent)"></div><div class="swatch-info"><div class="name">border.accent</div><div class="hex" data-light="#3A6AF8" data-dark="#7094FB">#3A6AF8</div></div></div>
   </div>
 
   <!-- Text -->
@@ -344,27 +464,72 @@
     <div class="swatch"><div class="swatch-color" style="background:var(--text-tertiary)"></div><div class="swatch-info"><div class="name">text.tertiary</div><div class="hex" data-light="#6C6C70" data-dark="#8E8E93">#6C6C70</div></div></div>
     <div class="swatch"><div class="swatch-color" style="background:var(--text-inverse);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">text.inverse</div><div class="hex" data-light="#FFFFFF" data-dark="#0E0E0E">#FFFFFF</div></div></div>
     <div class="swatch"><div class="swatch-color" style="background:var(--text-link)"></div><div class="swatch-info"><div class="name">text.link</div><div class="hex" data-light="#3A6AF8" data-dark="#7094FB">#3A6AF8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--text-accent)"></div><div class="swatch-info"><div class="name">text.accent</div><div class="hex" data-light="#3A6AF8" data-dark="#7094FB">#3A6AF8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--text-accent-hover)"></div><div class="swatch-info"><div class="name">text.accent-hover</div><div class="hex" data-light="#295CCC" data-dark="#9BB3FC">#295CCC</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--text-accent-pressed)"></div><div class="swatch-info"><div class="name">text.accent-pressed</div><div class="hex" data-light="#152354" data-dark="#A3BCFC">#152354</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--text-on-accent);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">text.on-accent</div><div class="hex" data-light="#FFFFFF" data-dark="#FFFFFF">#FFFFFF</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--text-destructive)"></div><div class="swatch-info"><div class="name">text.destructive</div><div class="hex" data-light="#B91C1C" data-dark="#F87171">#B91C1C</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--text-destructive-hover)"></div><div class="swatch-info"><div class="name">text.destructive-hover</div><div class="hex" data-light="#991B1B" data-dark="#FCA5A5">#991B1B</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--text-destructive-pressed)"></div><div class="swatch-info"><div class="name">text.destructive-pressed</div><div class="hex" data-light="#450A0A" data-dark="#FECACA">#450A0A</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--text-on-destructive);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">text.on-destructive</div><div class="hex" data-light="#FFFFFF" data-dark="#FFFFFF">#FFFFFF</div></div></div>
+  </div>
+
+  <!-- Icon -->
+  <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Icon</h4>
+  <div class="swatch-grid" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="swatch"><div class="swatch-color" style="background:var(--icon-accent)"></div><div class="swatch-info"><div class="name">icon.accent</div><div class="hex" data-light="#3A6AF8" data-dark="#7094FB">#3A6AF8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--icon-accent-hover)"></div><div class="swatch-info"><div class="name">icon.accent-hover</div><div class="hex" data-light="#295CCC" data-dark="#9BB3FC">#295CCC</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--icon-accent-pressed)"></div><div class="swatch-info"><div class="name">icon.accent-pressed</div><div class="hex" data-light="#152354" data-dark="#A3BCFC">#152354</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--icon-destructive)"></div><div class="swatch-info"><div class="name">icon.destructive</div><div class="hex" data-light="#B91C1C" data-dark="#F87171">#B91C1C</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--icon-destructive-hover)"></div><div class="swatch-info"><div class="name">icon.destructive-hover</div><div class="hex" data-light="#991B1B" data-dark="#FCA5A5">#991B1B</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--icon-destructive-pressed)"></div><div class="swatch-info"><div class="name">icon.destructive-pressed</div><div class="hex" data-light="#450A0A" data-dark="#FECACA">#450A0A</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--icon-on-destructive);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">icon.on-destructive</div><div class="hex" data-light="#FFFFFF" data-dark="#FFFFFF">#FFFFFF</div></div></div>
   </div>
 
   <!-- Accent -->
   <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Accent</h4>
-  <div class="swatch-grid" style="grid-template-columns: repeat(3, 1fr);">
-    <div class="swatch"><div class="swatch-color" style="background:var(--accent-primary)"></div><div class="swatch-info"><div class="name">accent.primary</div><div class="hex" data-light="#3A6AF8" data-dark="#7094FB">#3A6AF8</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:var(--accent-primary-hover)"></div><div class="swatch-info"><div class="name">accent.primary-hover</div><div class="hex" data-light="#295CCC" data-dark="#9BB3FC">#295CCC</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:var(--accent-primary-subtle);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">accent.primary-subtle</div><div class="hex" data-light="#EBF0FE" data-dark="#1E3A8A">#EBF0FE</div></div></div>
+  <div class="swatch-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="swatch"><div class="swatch-color" style="background:var(--accent-default)"></div><div class="swatch-info"><div class="name">accent.default</div><div class="hex" data-light="#3A6AF8" data-dark="#7094FB">#3A6AF8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--accent-hover)"></div><div class="swatch-info"><div class="name">accent.hover</div><div class="hex" data-light="#295CCC" data-dark="#9BB3FC">#295CCC</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--accent-pressed)"></div><div class="swatch-info"><div class="name">accent.pressed</div><div class="hex" data-light="#152354" data-dark="#A3BCFC">#152354</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--accent-subtle);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">accent.subtle</div><div class="hex" data-light="#EBF0FE" data-dark="#1E3A8A">#EBF0FE</div></div></div>
+  </div>
+
+  <!-- Destructive -->
+  <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Destructive</h4>
+  <div class="swatch-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="swatch"><div class="swatch-color" style="background:var(--destructive-default)"></div><div class="swatch-info"><div class="name">destructive.default</div><div class="hex" data-light="#B91C1C" data-dark="#EF4444">#B91C1C</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--destructive-hover)"></div><div class="swatch-info"><div class="name">destructive.hover</div><div class="hex" data-light="#991B1B" data-dark="#F87171">#991B1B</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--destructive-pressed)"></div><div class="swatch-info"><div class="name">destructive.pressed</div><div class="hex" data-light="#450A0A" data-dark="#FCA5A5">#450A0A</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--destructive-subtle);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">destructive.subtle</div><div class="hex" data-light="#FEF2F2" data-dark="#450A0A">#FEF2F2</div></div></div>
+  </div>
+
+  <!-- Financial Semantic -->
+  <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Financial Semantic</h4>
+  <div class="swatch-grid" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="swatch"><div class="swatch-color" style="background:var(--fin-income)"></div><div class="swatch-info"><div class="name">fin.income</div><div class="hex" data-light="#15803D" data-dark="#4ADE80">#15803D</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--fin-expense)"></div><div class="swatch-info"><div class="name">fin.expense</div><div class="hex" data-light="#B91C1C" data-dark="#F87171">#B91C1C</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--fin-savings)"></div><div class="swatch-info"><div class="name">fin.savings</div><div class="hex" data-light="#0369A1" data-dark="#38BDF8">#0369A1</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--fin-debt)"></div><div class="swatch-info"><div class="name">fin.debt</div><div class="hex" data-light="#C2410C" data-dark="#FB923C">#C2410C</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--fin-investment)"></div><div class="swatch-info"><div class="name">fin.investment</div><div class="hex" data-light="#7C3AED" data-dark="#A78BFA">#7C3AED</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--fin-income-bg);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">fin.income-bg</div><div class="hex" data-light="#F0FDF4" data-dark="#052E16">#F0FDF4</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--fin-expense-bg);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">fin.expense-bg</div><div class="hex" data-light="#FEF2F2" data-dark="#450A0A">#FEF2F2</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--fin-savings-bg);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">fin.savings-bg</div><div class="hex" data-light="#F0F9FF" data-dark="#082F49">#F0F9FF</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--fin-debt-bg);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">fin.debt-bg</div><div class="hex" data-light="#FFF7ED" data-dark="#451A03">#FFF7ED</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--fin-investment-bg);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">fin.investment-bg</div><div class="hex" data-light="#F5F3FF" data-dark="#2E1065">#F5F3FF</div></div></div>
   </div>
 
   <!-- Status -->
   <h4 style="font-size:13px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin:24px 0 12px;">Status</h4>
   <div class="swatch-grid" style="grid-template-columns: repeat(4, 1fr);">
     <div class="swatch"><div class="swatch-color" style="background:var(--status-error)"></div><div class="swatch-info"><div class="name">status.error</div><div class="hex" data-light="#B91C1C" data-dark="#F87171">#B91C1C</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:var(--status-error-subtle);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">status.error-subtle</div><div class="hex" data-light="#FEE2E2" data-dark="#450A0A">#FEE2E2</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--status-error-bg);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">status.error-bg</div><div class="hex" data-light="#FEF2F2" data-dark="#450A0A">#FEF2F2</div></div></div>
     <div class="swatch"><div class="swatch-color" style="background:var(--status-warning)"></div><div class="swatch-info"><div class="name">status.warning</div><div class="hex" data-light="#C25700" data-dark="#FBBF24">#C25700</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:var(--status-warning-subtle);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">status.warning-subtle</div><div class="hex" data-light="#FFF7ED" data-dark="#451A03">#FFF7ED</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--status-warning-bg);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">status.warning-bg</div><div class="hex" data-light="#FFF7ED" data-dark="#451A03">#FFF7ED</div></div></div>
     <div class="swatch"><div class="swatch-color" style="background:var(--status-success)"></div><div class="swatch-info"><div class="name">status.success</div><div class="hex" data-light="#15803D" data-dark="#4ADE80">#15803D</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:var(--status-success-subtle);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">status.success-subtle</div><div class="hex" data-light="#F0FDF4" data-dark="#052E16">#F0FDF4</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--status-success-bg);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">status.success-bg</div><div class="hex" data-light="#F0FDF4" data-dark="#052E16">#F0FDF4</div></div></div>
     <div class="swatch"><div class="swatch-color" style="background:var(--status-info)"></div><div class="swatch-info"><div class="name">status.info</div><div class="hex" data-light="#2563EB" data-dark="#60A5FA">#2563EB</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:var(--status-info-subtle);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">status.info-subtle</div><div class="hex" data-light="#EFF6FF" data-dark="#172554">#EFF6FF</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--status-info-bg);border:1px solid var(--border-default)"></div><div class="swatch-info"><div class="name">status.info-bg</div><div class="hex" data-light="#EFF6FF" data-dark="#172554">#EFF6FF</div></div></div>
   </div>
 
   <!-- Categorical Chart Colors -->
@@ -489,8 +654,8 @@
           <div style="height:1.5px;background:repeating-linear-gradient(to right, var(--status-warning) 0, var(--status-warning) 6px, transparent 6px, transparent 10px)"></div>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:500;color:var(--accent-primary);margin-bottom:8px">Benchmark — dotted, accent.primary</div>
-          <div style="height:1.5px;background:repeating-linear-gradient(to right, var(--accent-primary) 0, var(--accent-primary) 3px, transparent 3px, transparent 6px)"></div>
+          <div style="font-size:11px;font-weight:500;color:var(--accent-default);margin-bottom:8px">Benchmark — dotted, accent.default</div>
+          <div style="height:1.5px;background:repeating-linear-gradient(to right, var(--accent-default) 0, var(--accent-default) 3px, transparent 3px, transparent 6px)"></div>
         </div>
         <div>
           <div style="font-size:11px;font-weight:500;color:var(--status-error);margin-bottom:8px">Limit — solid, status.error</div>
@@ -504,23 +669,23 @@
     <div class="state-label" style="margin-bottom:12px">Confidence Bands (opacity scale)</div>
     <div style="display:flex;gap:4px;align-items:flex-end;height:120px">
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px">
-        <div style="width:100%;height:100px;background:var(--accent-primary);opacity:0.06;border-radius:4px"></div>
+        <div style="width:100%;height:100px;background:var(--accent-default);opacity:0.06;border-radius:4px"></div>
         <span style="font-size:10px;color:var(--text-tertiary)">99% (0.06)</span>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px">
-        <div style="width:100%;height:90px;background:var(--accent-primary);opacity:0.08;border-radius:4px"></div>
+        <div style="width:100%;height:90px;background:var(--accent-default);opacity:0.08;border-radius:4px"></div>
         <span style="font-size:10px;color:var(--text-tertiary)">95% (0.08)</span>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px">
-        <div style="width:100%;height:80px;background:var(--accent-primary);opacity:0.12;border-radius:4px"></div>
+        <div style="width:100%;height:80px;background:var(--accent-default);opacity:0.12;border-radius:4px"></div>
         <span style="font-size:10px;color:var(--text-tertiary)">90% (0.12)</span>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px">
-        <div style="width:100%;height:60px;background:var(--accent-primary);opacity:0.18;border-radius:4px"></div>
+        <div style="width:100%;height:60px;background:var(--accent-default);opacity:0.18;border-radius:4px"></div>
         <span style="font-size:10px;color:var(--text-tertiary)">75% (0.18)</span>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px">
-        <div style="width:100%;height:40px;background:var(--accent-primary);opacity:0.25;border-radius:4px"></div>
+        <div style="width:100%;height:40px;background:var(--accent-default);opacity:0.25;border-radius:4px"></div>
         <span style="font-size:10px;color:var(--text-tertiary)">50% (0.25)</span>
       </div>
     </div>
@@ -530,19 +695,19 @@
     <div class="state-label" style="margin-bottom:12px">Data Point States</div>
     <div style="display:flex;gap:32px;align-items:center">
       <div style="text-align:center">
-        <div style="width:12px;height:12px;border-radius:50%;background:var(--accent-primary);margin:0 auto"></div>
+        <div style="width:12px;height:12px;border-radius:50%;background:var(--accent-default);margin:0 auto"></div>
         <div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">Default</div>
       </div>
       <div style="text-align:center">
-        <div style="width:15px;height:15px;border-radius:50%;background:var(--accent-primary);margin:0 auto;box-shadow:var(--shadow-sm);outline:2px solid var(--surface-primary)"></div>
+        <div style="width:15px;height:15px;border-radius:50%;background:var(--accent-default);margin:0 auto;box-shadow:var(--shadow-sm);outline:2px solid var(--surface-primary)"></div>
         <div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">Hover (1.2×)</div>
       </div>
       <div style="text-align:center">
-        <div style="width:12px;height:12px;border-radius:50%;background:var(--accent-primary);margin:0 auto;outline:2px solid var(--accent-primary);outline-offset:2px"></div>
+        <div style="width:12px;height:12px;border-radius:50%;background:var(--accent-default);margin:0 auto;outline:2px solid var(--accent-default);outline-offset:2px"></div>
         <div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">Selected</div>
       </div>
       <div style="text-align:center">
-        <div style="width:12px;height:12px;border-radius:50%;background:var(--accent-primary);opacity:0.38;margin:0 auto"></div>
+        <div style="width:12px;height:12px;border-radius:50%;background:var(--accent-default);opacity:0.38;margin:0 auto"></div>
         <div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">Disabled</div>
       </div>
     </div>
@@ -630,13 +795,13 @@
     <div>
       <div class="state-label" style="margin-bottom:12px">Spacing Scale</div>
       <div style="display:flex;flex-direction:column;gap:6px">
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.1</span><div style="width:4px;height:16px;background:var(--accent-primary);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">4px</span></div>
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.2</span><div style="width:8px;height:16px;background:var(--accent-primary);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">8px</span></div>
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.3</span><div style="width:12px;height:16px;background:var(--accent-primary);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">12px</span></div>
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.4</span><div style="width:16px;height:16px;background:var(--accent-primary);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">16px</span></div>
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.6</span><div style="width:24px;height:16px;background:var(--accent-primary);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">24px</span></div>
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.8</span><div style="width:32px;height:16px;background:var(--accent-primary);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">32px</span></div>
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.12</span><div style="width:48px;height:16px;background:var(--accent-primary);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">48px</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.1</span><div style="width:4px;height:16px;background:var(--accent-default);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">4px</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.2</span><div style="width:8px;height:16px;background:var(--accent-default);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">8px</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.3</span><div style="width:12px;height:16px;background:var(--accent-default);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">12px</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.4</span><div style="width:16px;height:16px;background:var(--accent-default);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">16px</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.6</span><div style="width:24px;height:16px;background:var(--accent-default);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">24px</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.8</span><div style="width:32px;height:16px;background:var(--accent-default);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">32px</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:11px;color:var(--text-tertiary);width:60px">space.12</span><div style="width:48px;height:16px;background:var(--accent-default);border-radius:2px"></div><span style="font-size:11px;color:var(--text-secondary)">48px</span></div>
       </div>
     </div>
     <div>
@@ -650,12 +815,12 @@
 
       <div class="state-label" style="margin:24px 0 12px">Border Radius</div>
       <div style="display:flex;gap:12px;align-items:flex-end">
-        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-primary);border-radius:0px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">none</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-primary);border-radius:4px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">sm 4px</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-primary);border-radius:6px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">md 6px</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-primary);border-radius:8px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">lg 8px</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-primary);border-radius:12px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">xl 12px</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-primary);border-radius:9999px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">full</div></div>
+        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-default);border-radius:0px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">none</div></div>
+        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-default);border-radius:4px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">sm 4px</div></div>
+        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-default);border-radius:6px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">md 6px</div></div>
+        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-default);border-radius:8px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">lg 8px</div></div>
+        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-default);border-radius:12px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">xl 12px</div></div>
+        <div style="text-align:center"><div style="width:40px;height:40px;border:2px solid var(--accent-default);border-radius:9999px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">full</div></div>
       </div>
     </div>
   </div>
@@ -695,13 +860,13 @@
       <div style="display:flex;flex-direction:column;gap:12px">
         <div style="display:flex;gap:8px;align-items:center">
           <span style="font-size:10px;color:var(--text-tertiary);width:60px;text-align:right">Primary</span>
-          <button style="height:28px;padding:4px 12px;background:var(--accent-primary);color:var(--text-inverse);border:none;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer">Small</button>
-          <button style="height:36px;padding:8px 16px;background:var(--accent-primary);color:var(--text-inverse);border:none;border-radius:9999px;font-size:14px;font-weight:500;cursor:pointer">Medium</button>
-          <button style="height:44px;padding:12px 24px;background:var(--accent-primary);color:var(--text-inverse);border:none;border-radius:9999px;font-size:16px;font-weight:500;cursor:pointer">Large</button>
+          <button style="height:28px;padding:4px 12px;background:var(--accent-default);color:var(--text-inverse);border:none;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer">Small</button>
+          <button style="height:36px;padding:8px 16px;background:var(--accent-default);color:var(--text-inverse);border:none;border-radius:9999px;font-size:14px;font-weight:500;cursor:pointer">Medium</button>
+          <button style="height:44px;padding:12px 24px;background:var(--accent-default);color:var(--text-inverse);border:none;border-radius:9999px;font-size:16px;font-weight:500;cursor:pointer">Large</button>
         </div>
         <div style="display:flex;gap:8px;align-items:center">
           <span style="font-size:10px;color:var(--text-tertiary);width:60px;text-align:right">Secondary</span>
-          <button style="height:36px;padding:8px 16px;background:transparent;color:var(--accent-primary);border:1px solid var(--accent-primary);border-radius:9999px;font-size:14px;font-weight:500;cursor:pointer">Secondary</button>
+          <button style="height:36px;padding:8px 16px;background:transparent;color:var(--accent-default);border:1px solid var(--accent-default);border-radius:9999px;font-size:14px;font-weight:500;cursor:pointer">Secondary</button>
         </div>
         <div style="display:flex;gap:8px;align-items:center">
           <span style="font-size:10px;color:var(--text-tertiary);width:60px;text-align:right">Ghost</span>
@@ -722,7 +887,7 @@
         <span style="display:inline-flex;align-items:center;height:20px;padding:4px 8px;border-radius:4px;background:var(--data-positive-subtle);color:var(--data-positive);font-size:11px;font-weight:500">+12.4%</span>
         <span style="display:inline-flex;align-items:center;height:24px;padding:4px 8px;border-radius:4px;background:var(--data-negative-subtle);color:var(--data-negative);font-size:11px;font-weight:500">▼ −3.2%</span>
         <span style="display:inline-flex;align-items:center;height:24px;padding:4px 8px;border-radius:4px;background:var(--surface-tertiary);color:var(--text-secondary);font-size:11px;font-weight:500">Neutral</span>
-        <span style="display:inline-flex;align-items:center;height:28px;padding:4px 8px;border-radius:4px;background:var(--accent-primary-subtle);color:var(--accent-primary);font-size:11px;font-weight:500">Accent</span>
+        <span style="display:inline-flex;align-items:center;height:28px;padding:4px 8px;border-radius:4px;background:var(--accent-subtle);color:var(--accent-default);font-size:11px;font-weight:500">Accent</span>
       </div>
       <div style="font-size:11px;color:var(--text-secondary);line-height:1.8;margin-top:8px">
         sm: 20px | md: 24px | lg: 28px | radius.sm (4px) | space.1 space.2 padding | xs semibold
@@ -735,7 +900,7 @@
       <div style="display:flex;flex-direction:column;gap:12px">
         <div>
           <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--text-secondary)">Retirement Goal</span><span style="color:var(--text-primary);font-weight:500">72%</span></div>
-          <div style="height:6px;background:var(--surface-tertiary);border-radius:9999px;overflow:hidden"><div style="width:72%;height:100%;background:var(--accent-primary);border-radius:9999px;transition:width 300ms ease-out"></div></div>
+          <div style="height:6px;background:var(--surface-tertiary);border-radius:9999px;overflow:hidden"><div style="width:72%;height:100%;background:var(--accent-default);border-radius:9999px;transition:width 300ms ease-out"></div></div>
         </div>
         <div>
           <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--text-secondary)">Emergency Fund</span><span style="color:var(--data-positive);font-weight:500">100%</span></div>
@@ -760,62 +925,62 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
 
       <!-- Informational — title + description -->
-      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-info);background:var(--status-info-subtle);font-size:13px;color:var(--text-primary)">
+      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-info);background:var(--status-info-bg);font-size:13px;color:var(--text-primary)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="7" stroke="var(--status-info)" stroke-width="1.5" fill="none"/><circle cx="8" cy="5" r="1" fill="var(--status-info)"/><rect x="7.25" y="7" width="1.5" height="4" rx="0.75" fill="var(--status-info)"/></svg>
         <div><div style="font-weight:500;margin-bottom:2px">Rebalancing recommended</div><div style="color:var(--text-secondary);font-size:12px">Target allocations have drifted 5% from their benchmark.</div></div>
       </div>
 
       <!-- Success — title + description -->
-      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-success);background:var(--status-success-subtle);font-size:13px;color:var(--text-primary)">
+      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-success);background:var(--status-success-bg);font-size:13px;color:var(--text-primary)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="7" stroke="var(--status-success)" stroke-width="1.5" fill="none"/><path d="M5.5 8.5L7 10L10.5 6" stroke="var(--status-success)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div><div style="font-weight:500;margin-bottom:2px">Transfer complete</div><div style="color:var(--text-secondary);font-size:12px">$25,000 has been deposited into your taxable account.</div></div>
       </div>
 
       <!-- Warning — title + description -->
-      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-warning);background:var(--status-warning-subtle);font-size:13px;color:var(--text-primary)">
+      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-warning);background:var(--status-warning-bg);font-size:13px;color:var(--text-primary)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><path d="M8 2L14.5 13.5H1.5L8 2Z" stroke="var(--status-warning)" stroke-width="1.5" stroke-linejoin="round" fill="none"/><rect x="7.25" y="6" width="1.5" height="3.5" rx="0.75" fill="var(--status-warning)"/><circle cx="8" cy="11.25" r="0.85" fill="var(--status-warning)"/></svg>
         <div><div style="font-weight:500;margin-bottom:2px">Market data delayed</div><div style="color:var(--text-secondary);font-size:12px">Prices are delayed by 15 minutes. Last updated 3:45 PM ET.</div></div>
       </div>
 
       <!-- Error — title + description -->
-      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-error);background:var(--status-error-subtle);font-size:13px;color:var(--text-primary)">
+      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-error);background:var(--status-error-bg);font-size:13px;color:var(--text-primary)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="7" stroke="var(--status-error)" stroke-width="1.5" fill="none"/><path d="M6 6L10 10M10 6L6 10" stroke="var(--status-error)" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div><div style="font-weight:500;margin-bottom:2px">Account sync failed</div><div style="color:var(--text-secondary);font-size:12px">Unable to retrieve account data. Please try again.</div></div>
       </div>
 
       <!-- Informational — description only -->
-      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-info);background:var(--status-info-subtle);font-size:13px;color:var(--text-primary)">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-info);background:var(--status-info-bg);font-size:13px;color:var(--text-primary)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><circle cx="8" cy="8" r="7" stroke="var(--status-info)" stroke-width="1.5" fill="none"/><circle cx="8" cy="5" r="1" fill="var(--status-info)"/><rect x="7.25" y="7" width="1.5" height="4" rx="0.75" fill="var(--status-info)"/></svg>
         <span style="color:var(--text-secondary)">Portfolio rebalancing recommended — allocations drifted 5%.</span>
       </div>
 
       <!-- Success — description only -->
-      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-success);background:var(--status-success-subtle);font-size:13px;color:var(--text-primary)">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-success);background:var(--status-success-bg);font-size:13px;color:var(--text-primary)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><circle cx="8" cy="8" r="7" stroke="var(--status-success)" stroke-width="1.5" fill="none"/><path d="M5.5 8.5L7 10L10.5 6" stroke="var(--status-success)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span style="color:var(--text-secondary)">Transfer of $25,000 completed successfully.</span>
       </div>
 
       <!-- Warning — with button -->
-      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-warning);background:var(--status-warning-subtle);font-size:13px;color:var(--text-primary)">
+      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-warning);background:var(--status-warning-bg);font-size:13px;color:var(--text-primary)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><path d="M8 2L14.5 13.5H1.5L8 2Z" stroke="var(--status-warning)" stroke-width="1.5" stroke-linejoin="round" fill="none"/><rect x="7.25" y="6" width="1.5" height="3.5" rx="0.75" fill="var(--status-warning)"/><circle cx="8" cy="11.25" r="0.85" fill="var(--status-warning)"/></svg>
         <div style="flex:1"><div style="font-weight:500;margin-bottom:2px">RMD deadline approaching</div><div style="color:var(--text-secondary);font-size:12px;margin-bottom:8px">Required minimum distribution due by Dec 31.</div><button style="padding:4px 12px;font-size:12px;font-weight:500;border-radius:9999px;border:1px solid var(--status-warning);background:transparent;color:var(--status-warning);cursor:pointer">Review distribution</button></div>
       </div>
 
       <!-- Error — with button -->
-      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-error);background:var(--status-error-subtle);font-size:13px;color:var(--text-primary)">
+      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-error);background:var(--status-error-bg);font-size:13px;color:var(--text-primary)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="7" stroke="var(--status-error)" stroke-width="1.5" fill="none"/><path d="M6 6L10 10M10 6L6 10" stroke="var(--status-error)" stroke-width="1.5" stroke-linecap="round"/></svg>
         <div style="flex:1"><div style="font-weight:500;margin-bottom:2px">Sync error</div><div style="color:var(--text-secondary);font-size:12px;margin-bottom:8px">We couldn't connect to your brokerage account.</div><button style="padding:4px 12px;font-size:12px;font-weight:500;border-radius:9999px;border:1px solid var(--status-error);background:transparent;color:var(--status-error);cursor:pointer">Retry connection</button></div>
       </div>
 
       <!-- Informational — with close icon -->
-      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-info);background:var(--status-info-subtle);font-size:13px;color:var(--text-primary)">
+      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-info);background:var(--status-info-bg);font-size:13px;color:var(--text-primary)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="7" stroke="var(--status-info)" stroke-width="1.5" fill="none"/><circle cx="8" cy="5" r="1" fill="var(--status-info)"/><rect x="7.25" y="7" width="1.5" height="4" rx="0.75" fill="var(--status-info)"/></svg>
         <div style="flex:1"><div style="font-weight:500;margin-bottom:2px">Tax-loss harvesting available</div><div style="color:var(--text-secondary);font-size:12px">3 positions have unrealized losses eligible for harvesting.</div></div>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;cursor:pointer;margin-top:2px"><path d="M4 4L12 12M12 4L4 12" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
 
       <!-- Success — with close icon -->
-      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-success);background:var(--status-success-subtle);font-size:13px;color:var(--text-primary)">
+      <div style="display:flex;gap:12px;padding:12px 16px;border-radius:8px;border-left:4px solid var(--status-success);background:var(--status-success-bg);font-size:13px;color:var(--text-primary)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="7" stroke="var(--status-success)" stroke-width="1.5" fill="none"/><path d="M5.5 8.5L7 10L10.5 6" stroke="var(--status-success)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div style="flex:1"><div style="font-weight:500;margin-bottom:2px">Rebalance executed</div><div style="color:var(--text-secondary);font-size:12px">12 trades placed across 3 accounts. Settlement in T+1.</div></div>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;cursor:pointer;margin-top:2px"><path d="M4 4L12 12M12 4L4 12" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -833,13 +998,13 @@
     <div>
       <div class="state-label" style="margin-bottom:12px">Tab Bar (underline style)</div>
       <div style="border-bottom:1px solid var(--border-default);display:flex;gap:0">
-        <div style="padding:12px 16px;font-size:14px;font-weight:500;color:var(--accent-primary);border-bottom:2px solid var(--accent-primary);margin-bottom:-1px;cursor:pointer">Overview</div>
+        <div style="padding:12px 16px;font-size:14px;font-weight:500;color:var(--accent-default);border-bottom:2px solid var(--accent-default);margin-bottom:-1px;cursor:pointer">Overview</div>
         <div style="padding:12px 16px;font-size:14px;color:var(--text-secondary);cursor:pointer">Holdings</div>
         <div style="padding:12px 16px;font-size:14px;color:var(--text-secondary);cursor:pointer">Performance</div>
         <div style="padding:12px 16px;font-size:14px;color:var(--text-secondary);cursor:pointer">Tax</div>
       </div>
       <div style="font-size:11px;color:var(--text-secondary);line-height:1.8;margin-top:8px">
-        indicator: 2px accent.primary, radius.full | active: semibold + accent | inactive: regular + text.secondary
+        indicator: 2px accent.default, radius.full | active: semibold + accent | inactive: regular + text.secondary
       </div>
     </div>
   </div>
@@ -899,7 +1064,7 @@
     </table>
   </div>
   <div style="margin-top:12px;font-size:11px;color:var(--text-secondary);line-height:1.8;">
-    Header: surface.secondary, sm semibold, 2px bottom border &nbsp;|&nbsp; Cell: sm, 12px 16px padding &nbsp;|&nbsp; Numeric: Heebo, right-aligned &nbsp;|&nbsp; Hover: accent.primary-subtle
+    Header: surface.secondary, sm semibold, 2px bottom border &nbsp;|&nbsp; Cell: sm, 12px 16px padding &nbsp;|&nbsp; Numeric: Heebo, right-aligned &nbsp;|&nbsp; Hover: accent.subtle
   </div>
 
   <!-- Comparison Table + Sparkline-in-Table -->
@@ -911,7 +1076,7 @@
           <tr style="background:var(--surface-secondary);font-weight:500;color:var(--text-secondary)">
             <th style="padding:8px 12px;border-bottom:1px solid var(--border-default);text-align:left;font-weight:500"></th>
             <th style="padding:8px 12px;border-bottom:1px solid var(--border-default);text-align:right;font-weight:500">Conservative</th>
-            <th style="padding:8px 12px;border-bottom:1px solid var(--border-default);text-align:right;font-weight:500;background:var(--accent-primary-subtle);color:var(--accent-primary)">Moderate ★</th>
+            <th style="padding:8px 12px;border-bottom:1px solid var(--border-default);text-align:right;font-weight:500;background:var(--accent-subtle);color:var(--accent-default)">Moderate ★</th>
             <th style="padding:8px 12px;border-bottom:1px solid var(--border-default);text-align:right;font-weight:500">Aggressive</th>
           </tr>
         </thead>
@@ -919,19 +1084,19 @@
           <tr>
             <td style="padding:8px 12px;color:var(--text-secondary);border-bottom:1px solid var(--border-default)">Return</td>
             <td style="padding:8px 12px;text-align:right;border-bottom:1px solid var(--border-default);color:var(--text-primary);font-family:var(--font-primary)">6.2%</td>
-            <td style="padding:8px 12px;text-align:right;border-bottom:1px solid var(--border-default);background:var(--accent-primary-subtle);color:var(--text-primary);font-weight:500;font-family:var(--font-primary)">8.4%</td>
+            <td style="padding:8px 12px;text-align:right;border-bottom:1px solid var(--border-default);background:var(--accent-subtle);color:var(--text-primary);font-weight:500;font-family:var(--font-primary)">8.4%</td>
             <td style="padding:8px 12px;text-align:right;border-bottom:1px solid var(--border-default);color:var(--text-primary);font-family:var(--font-primary)">11.1%</td>
           </tr>
           <tr>
             <td style="padding:8px 12px;color:var(--text-secondary);border-bottom:1px solid var(--border-default)">Risk</td>
             <td style="padding:8px 12px;text-align:right;border-bottom:1px solid var(--border-default);color:var(--data-positive)">Low</td>
-            <td style="padding:8px 12px;text-align:right;border-bottom:1px solid var(--border-default);background:var(--accent-primary-subtle);color:var(--status-warning)">Medium</td>
+            <td style="padding:8px 12px;text-align:right;border-bottom:1px solid var(--border-default);background:var(--accent-subtle);color:var(--status-warning)">Medium</td>
             <td style="padding:8px 12px;text-align:right;border-bottom:1px solid var(--border-default);color:var(--data-negative)">High</td>
           </tr>
           <tr>
             <td style="padding:8px 12px;color:var(--text-secondary)">Success</td>
             <td style="padding:8px 12px;text-align:right;color:var(--text-primary);font-family:var(--font-primary)">92%</td>
-            <td style="padding:8px 12px;text-align:right;background:var(--accent-primary-subtle);color:var(--text-primary);font-weight:500;font-family:var(--font-primary)">87%</td>
+            <td style="padding:8px 12px;text-align:right;background:var(--accent-subtle);color:var(--text-primary);font-weight:500;font-family:var(--font-primary)">87%</td>
             <td style="padding:8px 12px;text-align:right;color:var(--text-primary);font-family:var(--font-primary)">74%</td>
           </tr>
         </tbody>
@@ -1546,14 +1711,14 @@
       <div class="state-label" style="margin-bottom:12px">Gauge / Meter</div>
       <svg viewBox="0 18 200 135" style="width:200px;height:135px;display:block;margin:0 auto">
         <path d="M 39.4 135 A 70 70 0 1 1 160.6 135" fill="none" stroke="var(--surface-tertiary)" stroke-width="12" stroke-linecap="round"/>
-        <path d="M 39.4 135 A 70 70 0 1 1 170.0 98.5" fill="none" stroke="var(--accent-primary)" stroke-width="12" stroke-linecap="round"/>
+        <path d="M 39.4 135 A 70 70 0 1 1 170.0 98.5" fill="none" stroke="var(--accent-default)" stroke-width="12" stroke-linecap="round"/>
         <text x="100" y="108" text-anchor="middle" font-size="28" font-weight="500" fill="var(--text-primary)">87</text>
         <text x="100" y="124" text-anchor="middle" font-size="11" fill="var(--text-secondary)">Portfolio Health</text>
         <text x="34" y="148" text-anchor="middle" font-size="10" fill="var(--text-tertiary)">0</text>
         <text x="166" y="148" text-anchor="middle" font-size="10" fill="var(--text-tertiary)">100</text>
       </svg>
       <div style="font-size:11px;color:var(--text-secondary);line-height:1.8;margin-top:8px;text-align:center">
-        arc: 240deg | track: 12px | fill: accent.primary | value: numbers 2xl bold
+        arc: 240deg | track: 12px | fill: accent.default | value: numbers 2xl bold
       </div>
     </div>
 
@@ -1574,7 +1739,7 @@
         <div style="display:flex;gap:4px;height:120px;position:relative">
           <!-- Start: $100K = 80px -->
           <div style="flex:1;height:100%;position:relative">
-            <div style="position:absolute;left:0;right:0;bottom:0;height:80px;background:var(--accent-primary)"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;height:80px;background:var(--accent-default)"></div>
           </div>
           <!-- Income: +$30K, bottom at $100K=80px, top at $130K=104px, height=24px -->
           <div style="flex:1;height:100%;position:relative">
@@ -1590,7 +1755,7 @@
           </div>
           <!-- Total: $140K = 112px -->
           <div style="flex:1;height:100%;position:relative">
-            <div style="position:absolute;left:0;right:0;bottom:0;height:112px;background:var(--accent-primary);opacity:0.85"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;height:112px;background:var(--accent-default);opacity:0.85"></div>
           </div>
           <!-- Connectors: dashed lines bridging bar junctions (center-to-center) -->
           <div style="position:absolute;left:10%;width:20%;top:40px;border-top:1px dashed var(--text-tertiary)"></div>
@@ -1608,7 +1773,7 @@
         </div>
       </div>
       <div style="font-size:11px;color:var(--text-secondary);line-height:1.8;margin-top:4px">
-        connector: 1px dashed gray.400 | positive: data.positive | negative: data.negative | total: accent.primary
+        connector: 1px dashed gray.400 | positive: data.positive | negative: data.negative | total: accent.default
       </div>
     </div>
   </div>
@@ -2012,19 +2177,19 @@
       <div style="display:flex;align-items:center;gap:0;padding:8px 0">
         <!-- Step 1: Complete -->
         <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
-          <div style="width:28px;height:28px;border-radius:50%;background:var(--accent-primary);display:flex;align-items:center;justify-content:center">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--accent-default);display:flex;align-items:center;justify-content:center">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7.5L5.5 10L11 4" stroke="var(--text-inverse)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <span style="font-size:10px;color:var(--accent-primary);font-weight:500">Account</span>
+          <span style="font-size:10px;color:var(--accent-default);font-weight:500">Account</span>
         </div>
         <!-- Connector: complete -->
-        <div style="flex:1;height:2px;background:var(--accent-primary);margin:0 4px;margin-bottom:18px"></div>
+        <div style="flex:1;height:2px;background:var(--accent-default);margin:0 4px;margin-bottom:18px"></div>
         <!-- Step 2: Active -->
         <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
-          <div style="width:28px;height:28px;border-radius:50%;background:var(--accent-primary);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px var(--accent-primary-subtle)">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--accent-default);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px var(--accent-subtle)">
             <span style="font-size:12px;font-weight:500;color:var(--text-inverse)">2</span>
           </div>
-          <span style="font-size:10px;color:var(--accent-primary);font-weight:500">Goals</span>
+          <span style="font-size:10px;color:var(--accent-default);font-weight:500">Goals</span>
         </div>
         <!-- Connector: pending -->
         <div style="flex:1;height:2px;background:var(--border-default);margin:0 4px;margin-bottom:18px"></div>
@@ -2046,7 +2211,7 @@
         </div>
       </div>
       <div style="font-size:11px;color:var(--text-secondary);line-height:1.8;margin-top:8px">
-        step: 28px circle | complete: accent.primary + check | active: accent + 3px ring | pending: border.default + tertiary
+        step: 28px circle | complete: accent.default + check | active: accent + 3px ring | pending: border.default + tertiary
       </div>
     </div>
   </div>
@@ -2059,19 +2224,19 @@
         <!-- Mini area chart preview: pure CSS, no SVG -->
         <div style="position:relative;width:100%;height:80px;margin-bottom:16px;overflow:visible">
           <!-- Event labels — inside chart area, pinned to event marker x-positions -->
-          <span style="position:absolute;left:70%;top:-18px;transform:translateX(-50%);font-size:11px;font-weight:500;color:var(--accent-primary);white-space:nowrap">Exercise</span>
+          <span style="position:absolute;left:70%;top:-18px;transform:translateX(-50%);font-size:11px;font-weight:500;color:var(--accent-default);white-space:nowrap">Exercise</span>
           <span style="position:absolute;left:90%;top:-18px;transform:translateX(-50%);font-size:11px;font-weight:500;color:var(--cat-5);white-space:nowrap">Sale</span>
           <!-- Area fill (CSS clip-path) -->
-          <div style="position:absolute;left:0;top:0;width:100%;height:100%;clip-path:polygon(0% 90%, 10% 87.5%, 20% 81.25%, 30% 62.5%, 40% 43.75%, 50% 27.5%, 60% 17.5%, 70% 22.5%, 80% 30%, 90% 25%, 100% 32.5%, 100% 100%, 0% 100%);background:var(--accent-primary);opacity:0.12"></div>
+          <div style="position:absolute;left:0;top:0;width:100%;height:100%;clip-path:polygon(0% 90%, 10% 87.5%, 20% 81.25%, 30% 62.5%, 40% 43.75%, 50% 27.5%, 60% 17.5%, 70% 22.5%, 80% 30%, 90% 25%, 100% 32.5%, 100% 100%, 0% 100%);background:var(--accent-default);opacity:0.12"></div>
           <!-- Area stroke (CSS clip-path) -->
-          <div style="position:absolute;left:0;top:0;width:100%;height:100%;clip-path:polygon(0% 89%, 10% 86.5%, 20% 80.25%, 30% 61.5%, 40% 42.75%, 50% 26.5%, 60% 16.5%, 70% 21.5%, 80% 29%, 90% 24%, 100% 31.5%, 100% 33.5%, 90% 26%, 80% 31%, 70% 23.5%, 60% 18.5%, 50% 28.5%, 40% 44.75%, 30% 63.5%, 20% 82.25%, 10% 88.5%, 0% 91%);background:var(--accent-primary)"></div>
+          <div style="position:absolute;left:0;top:0;width:100%;height:100%;clip-path:polygon(0% 89%, 10% 86.5%, 20% 80.25%, 30% 61.5%, 40% 42.75%, 50% 26.5%, 60% 16.5%, 70% 21.5%, 80% 29%, 90% 24%, 100% 31.5%, 100% 33.5%, 90% 26%, 80% 31%, 70% 23.5%, 60% 18.5%, 50% 28.5%, 40% 44.75%, 30% 63.5%, 20% 82.25%, 10% 88.5%, 0% 91%);background:var(--accent-default)"></div>
           <!-- Stock price dashed line (CSS clip-path + repeating-gradient) -->
           <div style="position:absolute;left:0;top:0;width:100%;height:100%;clip-path:polygon(0% 84%, 10% 79%, 20% 67.75%, 30% 51.5%, 40% 46.5%, 50% 36.5%, 60% 30.25%, 70% 34%, 80% 39%, 90% 35.25%, 100% 37.75%, 100% 39.75%, 90% 37.25%, 80% 41%, 70% 36%, 60% 32.25%, 50% 38.5%, 40% 48.5%, 30% 53.5%, 20% 69.75%, 10% 81%, 0% 86%);background:repeating-linear-gradient(to right, var(--text-tertiary) 0, var(--text-tertiary) 3px, transparent 3px, transparent 5px)"></div>
           <!-- Event marker lines (CSS dashed) -->
-          <div style="position:absolute;left:70%;top:0;width:1px;height:100%;background:repeating-linear-gradient(to bottom, var(--accent-primary) 0, var(--accent-primary) 4px, transparent 4px, transparent 7px);opacity:0.5"></div>
+          <div style="position:absolute;left:70%;top:0;width:1px;height:100%;background:repeating-linear-gradient(to bottom, var(--accent-default) 0, var(--accent-default) 4px, transparent 4px, transparent 7px);opacity:0.5"></div>
           <div style="position:absolute;left:90%;top:0;width:1px;height:100%;background:repeating-linear-gradient(to bottom, var(--cat-5) 0, var(--cat-5) 4px, transparent 4px, transparent 7px);opacity:0.5"></div>
           <!-- Event dots (CSS circles) -->
-          <div style="position:absolute;left:70%;top:22.5%;width:6px;height:6px;border-radius:50%;background:var(--accent-primary);transform:translate(-50%,-50%)"></div>
+          <div style="position:absolute;left:70%;top:22.5%;width:6px;height:6px;border-radius:50%;background:var(--accent-default);transform:translate(-50%,-50%)"></div>
           <div style="position:absolute;left:90%;top:25%;width:6px;height:6px;border-radius:50%;background:var(--cat-5);transform:translate(-50%,-50%)"></div>
         </div>
 
@@ -2080,14 +2245,14 @@
           <!-- Track baseline -->
           <div style="position:absolute;top:18px;left:0;right:0;height:4px;background:var(--border-default);border-radius:9999px"></div>
           <!-- Range fill between handles -->
-          <div style="position:absolute;top:16px;left:70%;right:10%;height:8px;background:var(--accent-primary);opacity:0.15;border-radius:9999px"></div>
+          <div style="position:absolute;top:16px;left:70%;right:10%;height:8px;background:var(--accent-default);opacity:0.15;border-radius:9999px"></div>
           <!-- Phase labels below track -->
           <span style="position:absolute;top:28px;left:15%;font-size:11px;color:var(--text-tertiary)">Cliff</span>
           <span style="position:absolute;top:28px;left:42%;font-size:11px;color:var(--text-tertiary)">Vesting</span>
           <span style="position:absolute;top:28px;left:73%;font-size:11px;color:var(--text-tertiary)">Hold</span>
           <!-- Exercise handle -->
           <div style="position:absolute;top:12px;left:70%;transform:translateX(-50%)">
-            <div style="width:14px;height:14px;border-radius:50%;background:var(--accent-primary);border:2px solid var(--surface-primary);box-shadow:0 1px 3px rgba(0,0,0,0.15)"></div>
+            <div style="width:14px;height:14px;border-radius:50%;background:var(--accent-default);border:2px solid var(--surface-primary);box-shadow:0 1px 3px rgba(0,0,0,0.15)"></div>
           </div>
           <!-- Sale handle -->
           <div style="position:absolute;top:12px;left:90%;transform:translateX(-50%)">
@@ -2095,7 +2260,7 @@
           </div>
           <!-- Event label pills above handles — centered on markers, stacked text -->
           <div style="position:absolute;bottom:21px;left:70%;transform:translateX(-50%)">
-            <span style="font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px;background:color-mix(in srgb, var(--accent-primary) 10%, transparent);border:1px solid color-mix(in srgb, var(--accent-primary) 25%, transparent);color:var(--accent-primary);text-align:center;line-height:1.3;display:inline-block;white-space:nowrap">Exercise:<br>Sep&nbsp;'27</span>
+            <span style="font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px;background:color-mix(in srgb, var(--accent-default) 10%, transparent);border:1px solid color-mix(in srgb, var(--accent-default) 25%, transparent);color:var(--accent-default);text-align:center;line-height:1.3;display:inline-block;white-space:nowrap">Exercise:<br>Sep&nbsp;'27</span>
           </div>
           <div style="position:absolute;bottom:21px;left:90%;transform:translateX(-50%)">
             <span style="font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px;background:color-mix(in srgb, var(--cat-5) 10%, transparent);border:1px solid color-mix(in srgb, var(--cat-5) 25%, transparent);color:var(--cat-5);text-align:center;line-height:1.3;display:inline-block;white-space:nowrap">Sale:<br>Jun&nbsp;'28</span>
@@ -2103,9 +2268,9 @@
         </div>
       </div>
       <div style="font-size:11px;color:var(--text-secondary);line-height:1.8;margin-top:4px">
-        track: 4px, radius.full, border.default bg | range: accent.primary @ 0.15 | handle: 14px circle, 2px surface border, shadow.sm<br>
+        track: 4px, radius.full, border.default bg | range: accent.default @ 0.15 | handle: 14px circle, 2px surface border, shadow.sm<br>
         label: 11px pill, 4px 8px padding, radius.sm, event color @ 0.10 bg | phase: 11px, text.tertiary, centered below<br>
-        area: accent.primary @ 0.12 fill, 1.5px stroke | event line: 1px dashed 4-3, event color @ 0.50 | event dot: 3px solid fill
+        area: accent.default @ 0.12 fill, 1.5px stroke | event line: 1px dashed 4-3, event color @ 0.50 | event dot: 3px solid fill
       </div>
     </div>
   </div>
@@ -2123,7 +2288,7 @@
         <!-- Accent value -->
         <div style="background:var(--surface-secondary);border:1px solid var(--border-default);border-radius:8px;padding:12px 16px">
           <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-secondary);margin-bottom:4px">Cash Net of Tax</div>
-          <div style="font-size:24px;font-weight:500;color:var(--accent-primary);letter-spacing:-0.02em">$201,822</div>
+          <div style="font-size:24px;font-weight:500;color:var(--accent-default);letter-spacing:-0.02em">$201,822</div>
         </div>
         <!-- Warning value -->
         <div style="background:var(--surface-secondary);border:1px solid var(--border-default);border-radius:8px;padding:12px 16px">
@@ -2137,7 +2302,7 @@
         </div>
       </div>
       <div style="font-size:11px;color:var(--text-secondary);line-height:1.8;margin-top:4px">
-        kpi.value.color variants: data.positive | accent.primary | status.warning | text.primary (neutral)<br>
+        kpi.value.color variants: data.positive | accent.default | status.warning | text.primary (neutral)<br>
         label: 10px uppercase, text.secondary | value: Heebo, 24px, weight.medium, tracking tight
       </div>
     </div>
@@ -2157,7 +2322,7 @@
         <!-- Chart area -->
         <div style="flex:1;height:176px;position:relative;border-left:1px solid var(--border-default);border-bottom:1px solid var(--border-default);border-right:1px dashed var(--border-default);overflow:visible">
           <!-- Event labels — inside chart area, pinned to event marker x-positions -->
-          <span style="position:absolute;left:75%;top:-18px;transform:translateX(-50%);font-size:11px;font-weight:500;color:var(--accent-primary);white-space:nowrap">Exercise</span>
+          <span style="position:absolute;left:75%;top:-18px;transform:translateX(-50%);font-size:11px;font-weight:500;color:var(--accent-default);white-space:nowrap">Exercise</span>
           <span style="position:absolute;left:93.7%;top:-18px;transform:translateX(-50%);font-size:11px;font-weight:500;color:var(--cat-5);white-space:nowrap">Sale</span>
           <!-- Grid lines (dashed, CSS) -->
           <div style="position:absolute;left:0;right:0;top:0;height:1px;background:repeating-linear-gradient(to right, var(--border-default) 0, var(--border-default) 4px, transparent 4px, transparent 8px);opacity:0.5"></div>
@@ -2165,16 +2330,16 @@
           <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:repeating-linear-gradient(to right, var(--border-default) 0, var(--border-default) 4px, transparent 4px, transparent 8px);opacity:0.5"></div>
           <div style="position:absolute;left:0;right:0;top:75%;height:1px;background:repeating-linear-gradient(to right, var(--border-default) 0, var(--border-default) 4px, transparent 4px, transparent 8px);opacity:0.5"></div>
           <!-- Pure CSS: area fill via clip-path -->
-          <div style="position:absolute;left:0;top:0;width:100%;height:100%;clip-path:polygon(0% 100%, 12.4% 96.6%, 25% 86.4%, 37.4% 62.5%, 50% 34.1%, 62.6% 17%, 75% 27.3%, 87.4% 23.9%, 100% 29.5%, 100% 100%);background:var(--accent-primary);opacity:0.15"></div>
+          <div style="position:absolute;left:0;top:0;width:100%;height:100%;clip-path:polygon(0% 100%, 12.4% 96.6%, 25% 86.4%, 37.4% 62.5%, 50% 34.1%, 62.6% 17%, 75% 27.3%, 87.4% 23.9%, 100% 29.5%, 100% 100%);background:var(--accent-default);opacity:0.15"></div>
           <!-- Area stroke (CSS clip-path — 1% gap ≈ 1.5px for even line weight) -->
-          <div style="position:absolute;left:0;top:0;width:100%;height:100%;clip-path:polygon(0% 99.5%, 12.4% 96.1%, 25% 85.9%, 37.4% 62%, 50% 33.6%, 62.6% 16.5%, 75% 26.8%, 87.4% 23.4%, 100% 29%, 100% 30%, 87.4% 24.4%, 75% 27.8%, 62.6% 17.5%, 50% 34.6%, 37.4% 63%, 25% 86.9%, 12.4% 97.1%, 0% 100.5%);background:var(--accent-primary)"></div>
+          <div style="position:absolute;left:0;top:0;width:100%;height:100%;clip-path:polygon(0% 99.5%, 12.4% 96.1%, 25% 85.9%, 37.4% 62%, 50% 33.6%, 62.6% 16.5%, 75% 26.8%, 87.4% 23.4%, 100% 29%, 100% 30%, 87.4% 24.4%, 75% 27.8%, 62.6% 17.5%, 50% 34.6%, 37.4% 63%, 25% 86.9%, 12.4% 97.1%, 0% 100.5%);background:var(--accent-default)"></div>
           <!-- Stock price dashed line (CSS clip-path — 1% gap for even weight) -->
           <div style="position:absolute;left:0;top:0;width:100%;height:100%;clip-path:polygon(0% 84.7%, 12.4% 79%, 25% 67.7%, 37.4% 51.8%, 50% 39.3%, 62.6% 30.8%, 75% 33.7%, 87.4% 32%, 100% 32.6%, 100% 33.6%, 87.4% 33%, 75% 34.7%, 62.6% 31.8%, 50% 40.3%, 37.4% 52.8%, 25% 68.7%, 12.4% 80%, 0% 85.7%);background:repeating-linear-gradient(to right, var(--text-tertiary) 0, var(--text-tertiary) 4px, transparent 4px, transparent 7px)"></div>
           <!-- Event marker lines (CSS dashed) -->
-          <div style="position:absolute;left:75%;top:0;width:1px;height:100%;background:repeating-linear-gradient(to bottom, var(--accent-primary) 0, var(--accent-primary) 4px, transparent 4px, transparent 7px);opacity:0.5"></div>
+          <div style="position:absolute;left:75%;top:0;width:1px;height:100%;background:repeating-linear-gradient(to bottom, var(--accent-default) 0, var(--accent-default) 4px, transparent 4px, transparent 7px);opacity:0.5"></div>
           <div style="position:absolute;left:93.7%;top:0;width:1px;height:100%;background:repeating-linear-gradient(to bottom, var(--cat-5) 0, var(--cat-5) 4px, transparent 4px, transparent 7px);opacity:0.5"></div>
           <!-- Event dots (CSS circles — always perfect circles) -->
-          <div style="position:absolute;left:75%;top:27.3%;width:8px;height:8px;border-radius:50%;background:var(--accent-primary);transform:translate(-50%,-50%)"></div>
+          <div style="position:absolute;left:75%;top:27.3%;width:8px;height:8px;border-radius:50%;background:var(--accent-default);transform:translate(-50%,-50%)"></div>
           <div style="position:absolute;left:93.7%;top:25.6%;width:8px;height:8px;border-radius:50%;background:var(--cat-5);transform:translate(-50%,-50%)"></div>
         </div>
         <!-- Right Y-axis labels (secondary, tertiary color) -->
@@ -2196,7 +2361,7 @@
       </div>
       <div style="font-size:11px;color:var(--text-secondary);line-height:1.8;margin-top:4px">
         primary axis: text.secondary labels, 1px solid | secondary: text.tertiary, dashed 4-3, right-aligned<br>
-        area: accent.primary @ 0.15 fill, 1.5px stroke | event line: 1px dashed 4-3 @ 0.50 | dot: 3px solid fill | label: plain text at chart top
+        area: accent.default @ 0.15 fill, 1.5px stroke | event line: 1px dashed 4-3 @ 0.50 | dot: 3px solid fill | label: plain text at chart top
       </div>
     </div>
   </div>
