@@ -45,7 +45,7 @@ Hardcoded values are never acceptable. All selections below.
 |---|---|---|
 | Default fill | `$accent.default` | `$destructive.default` |
 | Hover fill | `$accent.hover` | `$destructive.hover` |
-| Pressed fill | `$accent.pressed` | `$destructive.pressed` |
+| Pressed fill | `$accent.pressed` (fill: `blue.900` in light and dark — matches `gen-ui-design-system.lib.pen`) | `$destructive.pressed` |
 | Subtle wash / selected bg | `$accent.subtle` | `$destructive.subtle` |
 | Border | `$border.accent` | `$destructive.default` |
 

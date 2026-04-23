@@ -161,10 +161,12 @@ Foundation JSON and `gen-ui-design-system.lib.pen` share these resolved values.
 | ---------------------- | ----------- | ---------- | ------------------------------ |
 | `color.accent.default` | `#3A6AF8`   | `#7094FB`  | Primary actions, active states (`blue.600` / `blue.500`) |
 | `color.accent.hover`   | `#295CCC`   | `#9BB3FC`  | Primary hover (`blue.700` / `blue.400`) |
-| `color.accent.pressed` | `#152354`   | `#A3BCFC`  | Primary pressed (`blue.900` / `blue.300`) |
+| `color.accent.pressed` | `#152354`   | `#152354`  | Primary pressed **fill** — `blue.900` in both themes (`gen-ui-design-system.lib.pen`) |
 | `color.accent.subtle`  | `#EBF0FE`   | `#1E3A8A`  | Selected backgrounds, accent wash (`blue.100` / `blue.800`) |
 
 > **Renamed (legacy → current):** `accent.primary` → `accent.default`, `accent.primary-hover` → `accent.hover`, `accent.primary-subtle` → `accent.subtle`. New: `accent.pressed`.
+
+> **Pressed semantics:** Fill token `accent.pressed` is `$blue.900` for light and dark. For pressed **text** and **icons** on ghost/link controls, use `text.accent-pressed` / `icon.accent-pressed` (`blue.900` / `blue.300`).
 
 #### Destructive (delete / dangerous actions)
 
