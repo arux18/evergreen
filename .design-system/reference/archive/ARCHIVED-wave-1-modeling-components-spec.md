@@ -1,8 +1,10 @@
-# Wave 1 Modeling Components — Design Spec
+# Wave 1 Modeling Components — Design Spec [ARCHIVED]
+
+> **ARCHIVED:** This spec has been folded into the canonical compendium at `.design-system/design-system.md` (§06 Slider, §06 Table, §13 invocation schema). This file is kept for historical reference only. Do not edit.
 
 > **Purpose:** Spec the two highest-leverage blocker components for gen-UI financial modeling output.
 > **Author:** Vega (Visual Design)
-> **Status:** Draft — awaiting human approval before tokens/components are added to `gen-ui-design-system.lib.pen`
+> **Status:** ARCHIVED — folded into design-system.md
 > **Scope:** `Slider` family and `Table/Cell` family
 > **Blocks:** Gen-UI generation of financial modeling tools (scenario calculators, assumption panels, scenario comparison, amortization schedules, sensitivity matrices)
 

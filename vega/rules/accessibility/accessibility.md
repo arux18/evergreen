@@ -8,11 +8,13 @@
 
 ### Contrast (minimum)
 
-| Element | Ratio |
-|---|---|
-| Body text | 4.5:1 |
-| Large text (18px+ or 14px+ bold) | 3:1 |
-| UI components, borders, non-text icons | 3:1 |
+
+| Element                                | Ratio |
+| -------------------------------------- | ----- |
+| Body text                              | 4.5:1 |
+| Large text (18px+ or 14px+ bold)       | 3:1   |
+| UI components, borders, non-text icons | 3:1   |
+
 
 ### Color is never the only indicator
 
@@ -23,34 +25,40 @@
 
 ### Typography minimums
 
-| Context | Min | Token |
-|---|---|---|
-| Body text | 14px | `$font.size.md` |
-| Small labels | 11px | `$font.size.xs` |
-| Absolute floor | 10px | — |
-| Financial values | 14px | — |
+
+| Context          | Min  | Token           |
+| ---------------- | ---- | --------------- |
+| Body text        | 14px | `$font.size.md` |
+| Small labels     | 11px | `$font.size.xs` |
+| Absolute floor   | 10px | —               |
+| Financial values | 14px | —               |
+
 
 Line height: body 1.4–1.5; multi-line descriptions always `lineHeight: 1.5`.
 
 ### Touch / click targets
 
-| Element | Min |
-|---|---|
+
+| Element               | Min                                       |
+| --------------------- | ----------------------------------------- |
 | Buttons, icon buttons | 44×44px (tap target; icon can be smaller) |
-| List items | 44px height (whole row is target) |
-| Filter chips | 32px height with adequate padding |
-| Checkboxes / toggles | 44×44px tap target |
+| List items            | 44px height (whole row is target)         |
+| Filter chips          | 32px height with adequate padding         |
+| Checkboxes / toggles  | 44×44px tap target                        |
+
 
 Gaps: 8px min between adjacent interactive elements; 12px+ between destructive and safe actions.
 
 ### Screen reader patterns
 
-| Visual | Announcement |
-|---|---|
-| +2.4% | "increased by two point four percent" |
-| -$1,247.80 | "decreased by one thousand two hundred forty-seven dollars and eighty cents" |
-| 84% (budget) | "eighty-four percent of budget used" |
-| Green up arrow | "trending up" (via aria-label) |
+
+| Visual         | Announcement                                                                 |
+| -------------- | ---------------------------------------------------------------------------- |
+| +2.4%          | "increased by two point four percent"                                        |
+| -$1,247.80     | "decreased by one thousand two hundred forty-seven dollars and eighty cents" |
+| 84% (budget)   | "eighty-four percent of budget used"                                         |
+| Green up arrow | "trending up" (via aria-label)                                               |
+
 
 Component announcement patterns: `KPI Card` → "[Label]: [Value], [trend] [change]". `Transaction Item` → "[Merchant], [category], [amount], [date]". `AI Insight` → "AI Insight: [title]. [body]". Loading → "Loading [content type]…". Error → "Error: [title]. [description]. [actions]".
 
@@ -62,7 +70,7 @@ Component announcement patterns: `KPI Card` → "[Label]: [Value], [trend] [chan
 ### Motion
 
 - All animations respect `prefers-reduced-motion: reduce` → instant transitions, no shimmer
-- Use `$motion.*` tokens so motion can be globally disabled
+- Use `$motion.`* tokens so motion can be globally disabled
 - Never use motion as the only way to convey information
 - Loading: subtle shimmer only (never pulse). Chart transitions: fade (never bounce/spring). Values: brief highlight (never flash).
 
@@ -77,6 +85,7 @@ Not all WCAG violations carry equal user impact. Vega classifies every finding i
 A violation is must-fix when it affects a user's ability to **understand critical information, complete a task, or make a financial decision**.
 
 **Applies when the element is:**
+
 - Financial data (balances, returns, projections, transaction amounts)
 - Interactive (buttons, links, form inputs, toggles, sliders)
 - Navigation (menus, tabs, breadcrumbs, skip links)
@@ -85,6 +94,7 @@ A violation is must-fix when it affects a user's ability to **understand critica
 - Any element where misreading or missing it could lead to a wrong financial decision
 
 **Thresholds:**
+
 - Text contrast below **3.0:1** on any element → always must-fix
 - Text contrast below **4.5:1** on financial data, interactive elements, or primary content → must-fix
 - Missing keyboard access on any interactive element → must-fix
@@ -99,12 +109,14 @@ A violation is must-fix when it affects a user's ability to **understand critica
 A violation is should-fix when it's a **real accessibility gap** but the user impact is lower — they can still complete their task, the information is available through other means, or the element is secondary.
 
 **Applies when the element is:**
+
 - Secondary/supporting text (captions, metadata, timestamps, helper text)
 - Decorative or supplementary UI (badges, tags, section dividers)
 - Redundant information (text that duplicates what's already conveyed elsewhere)
 - Non-critical illustrations or decorative images
 
 **Thresholds:**
+
 - Text contrast between **3.0:1 and 4.5:1** on secondary content → should-fix
 - Large text (18px+ or 14px+ bold) between **3.0:1 and 4.5:1** → should-fix (AA-large still passes)
 - Missing alt text on decorative images (should be `alt=""`) → should-fix
@@ -118,6 +130,7 @@ A violation is should-fix when it's a **real accessibility gap** but the user im
 A known exception is an **intentional deviation** from WCAG that the team has reviewed and accepted. Vega does not flag, nag, or re-report these. They exist in the Exception Registry below.
 
 **An exception must have:**
+
 1. A unique ID (EX-001, EX-002, etc.)
 2. The specific WCAG criterion being violated
 3. What element/component is affected
@@ -131,25 +144,7 @@ A known exception is an **intentional deviation** from WCAG that the team has re
 
 ## Exception Registry
 
-<!-- 
-To add a new exception:
-1. Copy the template below
-2. Fill in all fields
-3. Get human approval
-4. Add it to this section
 
-Template:
-| ID | EX-XXX |
-|---|---|
-| **WCAG Criterion** | e.g., 1.4.3 Contrast (Minimum) |
-| **Element** | e.g., `.splash-hero-subtitle` |
-| **Measured** | e.g., 3.8:1 contrast ratio |
-| **Required** | e.g., 4.5:1 for AA normal text |
-| **Rationale** | Why this deviation is intentional |
-| **Mitigation** | Alternative access provided, if any |
-| **Review date** | YYYY-MM-DD — when to reconsider |
-| **Approved by** | Name of human approver |
--->
 
 *No exceptions registered yet. Use the template above to add the first one.*
 
@@ -210,7 +205,9 @@ Is it in the Exception Registry?
 Ask Vega: *"Register an accessibility exception for [element/component]"*
 
 Vega will:
+
 1. Measure the actual violation (contrast ratio, missing attribute, etc.)
 2. Draft the exception entry using the template above
 3. Post it for human approval
 4. **Only after human approval:** add it to the Exception Registry in this file
+
