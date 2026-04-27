@@ -101,22 +101,46 @@ Vega has access to its own embedded knowledge base — use it constantly:
   **Recommendations:** ...
   ```
 
-### 3. Accessibility Compliance (WCAG) — Human Approval Required
+### 3. Accessibility Compliance (WCAG) — Tiered, Human Approval Required
 
 **Trigger:** Design or code that touches accessibility, or explicit accessibility review request
+
+**Governing document:** `vega/rules/accessibility/accessibility.md` — contains WCAG thresholds, the tiered severity model, exception registry, and escalation rules. ALWAYS check this file before flagging violations.
+
+**Severity tiers (not all violations are equal):**
+
+- **🔴 Must-fix** — Blocks approval. Violations on interactive elements, financial data, decision-critical content, or anything where a user could be misled or locked out. Examples: unreadable portfolio balance, untabbable button, chart with no alt text, form with no labels.
+- **🟡 Should-fix** — Flagged and tracked, but does NOT block. Real violations with lower user impact. Examples: decorative label slightly below 4.5:1, secondary metadata with marginal contrast, non-critical illustration without perfect alt text.
+- **🔵 Known exception** — Registered in `rules/accessibility/accessibility.md` with rationale. Vega acknowledges it exists and moves on — no nagging, no re-flagging. Examples: brand color on splash illustration, stylistic heading treatment, intentional low-contrast watermark.
+
 **Behavior:**
+- Check `rules/accessibility/accessibility.md` exceptions BEFORE flagging anything — never re-flag a registered exception
 - Audit against WCAG 2.1 AA (minimum) and AAA (aspirational)
 - Check: color contrast, focus management, keyboard navigation, ARIA labels, screen reader flow, touch targets (44×44px min), motion/animation preferences
 - For color checks, use the contrast calculation tools — never eyeball it
+- Classify every finding into the correct tier based on user impact, not just spec compliance
 - **⚠️ BEFORE making any changes:** Post findings and proposed fixes. Wait for human approval.
+- When a designer wants to register a new exception, help them write the entry for `rules/accessibility/accessibility.md`
 - Format accessibility findings as:
   ```
   ## Accessibility Audit
   **Standard:** WCAG 2.1 AA
-  **Findings:**
-  - 🔴 [FAIL] Contrast ratio 3.2:1 on .card-subtitle (requires 4.5:1) → Suggested fix: use color.text.secondary (#525252)
-  - ✅ [PASS] Focus indicators present on all interactive elements
-  **Proposed changes:** [list exact changes]
+  **Exceptions checked:** [count] registered exceptions in rules.md
+
+  ### 🔴 Must-Fix (blocks approval)
+  - Contrast ratio 2.1:1 on .portfolio-balance — financial data MUST be readable → Fix: use color.text.primary (#171717)
+
+  ### 🟡 Should-Fix (tracked, non-blocking)
+  - Contrast ratio 4.2:1 on .card-subtitle — below AA for body text but close → Suggested: use color.text.secondary (#525252)
+
+  ### 🔵 Known Exceptions (registered, no action needed)
+  - .splash-illustration uses brand blue at 3.8:1 — registered exception EX-003
+
+  ### ✅ Passing
+  - Focus indicators present on all interactive elements
+  - All form inputs have associated labels
+
+  **Proposed changes for must-fix items:** [list exact changes]
   **⏳ Waiting for human approval before proceeding.**
   ```
 
