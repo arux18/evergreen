@@ -102,15 +102,16 @@
         background: var(--nav-hover-bg);
       }
 
-      /* messages area: vertical, center, padding 16/20, gap 14 */
+      /* messages area: vertical, top-anchored so the greeting stays put as
+         the chip below it changes size. Greeting + chip flow downward. */
       .chat-messages {
         flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 14px;
-        padding: 16px 20px;
+        padding: 200px 20px 16px;
       }
 
       .greeting {
@@ -187,8 +188,8 @@
         line-height: 1.25;
         color: var(--text-secondary);
         text-align: center;
-        opacity: 0;
-        transform: translateY(8px);
+        /* Default: parked below the visible chip area, ready to slide up. */
+        transform: translateY(60px);
         transition:
           transform 300ms ease-out,
           color 150ms ease;
@@ -196,13 +197,11 @@
       }
 
       .chip-text.is-current {
-        opacity: 1;
         transform: translateY(0);
       }
 
       .chip-text.is-leaving {
-        opacity: 0;
-        transform: translateY(-8px);
+        transform: translateY(-60px);
       }
 
       /* input — sketched to fit the aesthetic */
@@ -404,14 +403,20 @@
         if (paused) return;
         index = (index + 1) % SUGGESTIONS.length;
 
-        // Prep the incoming layer below, invisible.
-        next.textContent = SUGGESTIONS[index];
+        // Reset the incoming layer to the default below-view position WITHOUT
+        // animating — otherwise it would slide back down through the visible
+        // area before sliding up again, breaking the upward-only rolodex feel.
+        next.style.transition = "none";
         next.classList.remove("is-current", "is-leaving");
-        // Force reflow so the starting state takes effect before we transition in.
+        next.textContent = SUGGESTIONS[index];
+        // Force reflow so the reset takes effect before re-enabling transitions.
         // eslint-disable-next-line no-unused-expressions
         next.offsetHeight;
+        next.style.transition = "";
 
-        // Animate: outgoing slides up + fades out, incoming slides up + fades in.
+        // Both layers now slide upward together: outgoing exits out the top,
+        // incoming enters from the bottom. overflow:hidden on the chip clips
+        // them outside the visible area.
         current.classList.add("is-leaving");
         next.classList.add("is-current");
 
@@ -420,8 +425,8 @@
         current = next;
         next = justLeft;
 
-        // Clear the outgoing layer's text once it's invisible so the chip's
-        // fit-content width settles to the new question instead of max(both).
+        // Clear the outgoing layer's text once it's off-screen so the chip's
+        // width settles to the new question instead of max(both).
         window.setTimeout(() => {
           if (justLeft.classList.contains("is-leaving")) {
             justLeft.textContent = "";
