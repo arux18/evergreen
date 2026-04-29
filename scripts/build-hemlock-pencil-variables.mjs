@@ -9,6 +9,12 @@
  * Full replace (optional): node scripts/push-hemlock-full-replace.mjs
  *
  * Typography uses desktop scales from tokens/typography.ts (not typography.css).
+ *
+ * Colors: only primitives from colors.css (`color-{name}`). Semantic roles from
+ * tokens/colors.ts are NOT emitted as separate Theme variables — Pencil variables are
+ * literal hex only (no alias primitive→semantic). Designers pick primitives on the
+ * canvas (`$color-gray-50`); semantic names stay in colors.ts for dev handoff.
+ * Set INCLUDE_SEMANTIC_COLOR_VARS=1 to restore denormalized `colors-*` duplicates.
  */
 
 import fs from 'fs'
@@ -128,15 +134,18 @@ function main() {
     variables[`color-${name}`] = { type: 'color', value: hex }
   }
 
-  // Semantic colors from colors.ts
-  const colorsTs = path.join(ROOT, 'tokens/colors.ts')
-  const colorsObj = evalObjectLiteralFromFile(colorsTs, 'colors')
-  const flatColors = flattenColorsObj(colorsObj)
-  for (const [semanticKey, val] of Object.entries(flatColors)) {
-    if (typeof val !== 'string') continue
-    const hex = parseRgbVar(val, primitives)
-    if (hex) {
-      variables[`colors-${semanticKey}`] = { type: 'color', value: hex }
+  // Optional: duplicate semantics as resolved hex (`colors-*`). Default off — keeps
+  // Theme aligned with code (single primitive layer + colors.ts for semantics).
+  if (process.env.INCLUDE_SEMANTIC_COLOR_VARS === '1') {
+    const colorsTs = path.join(ROOT, 'tokens/colors.ts')
+    const colorsObj = evalObjectLiteralFromFile(colorsTs, 'colors')
+    const flatColors = flattenColorsObj(colorsObj)
+    for (const [semanticKey, val] of Object.entries(flatColors)) {
+      if (typeof val !== 'string') continue
+      const hex = parseRgbVar(val, primitives)
+      if (hex) {
+        variables[`colors-${semanticKey}`] = { type: 'color', value: hex }
+      }
     }
   }
 
