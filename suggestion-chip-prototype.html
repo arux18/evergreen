@@ -125,7 +125,7 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        align-items: stretch;
+        align-items: center;
         width: 100%;
       }
 
@@ -144,6 +144,8 @@
         cursor: pointer;
         overflow: hidden;
         min-height: 44px;
+        width: max-content;
+        max-width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -188,7 +190,6 @@
         opacity: 0;
         transform: translateY(8px);
         transition:
-          opacity 300ms ease-out,
           transform 300ms ease-out,
           color 150ms ease;
         pointer-events: none;
@@ -360,7 +361,7 @@
       </section>
 
       <p class="meta">
-        <strong>Suggestion Chip / Default</strong> — slide-up + fade · 300ms ease-out · auto-cycles every 4s · pauses on hover.
+        <strong>Suggestion Chip / Default</strong> — slide-up + fade · 300ms ease-out · auto-cycles every 3s · pauses on hover.
       </p>
     </main>
 
@@ -374,7 +375,7 @@
         "Should I do a Roth conversion?",
       ];
 
-      const CYCLE_MS = 4000;
+      const CYCLE_MS = 3000;
       const TRANSITION_MS = 300;
 
       const stack = document.getElementById("chipStack");
@@ -418,6 +419,14 @@
         const justLeft = current;
         current = next;
         next = justLeft;
+
+        // Clear the outgoing layer's text once it's invisible so the chip's
+        // fit-content width settles to the new question instead of max(both).
+        window.setTimeout(() => {
+          if (justLeft.classList.contains("is-leaving")) {
+            justLeft.textContent = "";
+          }
+        }, TRANSITION_MS);
       }
 
       function start() {
