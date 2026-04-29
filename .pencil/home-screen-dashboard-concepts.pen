@@ -554034,7 +554034,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 260,
-                  "content": "Suggestion Chip\nradius 24 · $chat.chip.bg · border $chat.chip.border\nGeist 14 center · $chat.text.secondary · pad 12/16",
+                  "content": "Suggestion Chip / Default\nradius 24 · $chat.chip.bg · border $chat.chip.border\nGeist 14 center · $chat.text.secondary · pad 12/16\ncursor: pointer · single chip visible at a time\ntext rotation: slide-up + fade · 300ms ease-out\nauto-cycles every ~5s · pauses on hover",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -554073,9 +554073,7 @@
                   "reusable": true,
                   "cornerRadius": 9999,
                   "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "$chat.border"
+                    "thickness": 0
                   },
                   "gap": 4,
                   "padding": [
@@ -554124,6 +554122,150 @@
                   "textGrowth": "fixed-width",
                   "width": 220,
                   "content": "Attachment Chip\npill · lucide paperclip 14 · Geist 11\n$chat.text.secondary · border $chat.border · pad 6/14",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bHVDc",
+              "name": "cardChipHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "f3rdE",
+                  "fill": "#8A8680",
+                  "content": "Suggestion Chip / Hover",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "frame",
+                  "id": "OEGjn",
+                  "name": "Chat / Suggestion Chip Hover",
+                  "reusable": true,
+                  "fill": "$chat.chip.hover.bg",
+                  "cornerRadius": "$chat.chip.radius",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$chat.chip.border"
+                  },
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YScVl",
+                      "name": "label",
+                      "fill": "$chat.text.primary",
+                      "content": "What's a donor-advised fund?",
+                      "lineHeight": 1.25,
+                      "textAlign": "center",
+                      "fontFamily": "Geist",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "zXYxV",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 260,
+                  "content": "Suggestion Chip / Hover\nradius 24 · $chat.chip.hover.bg (#EDEAE3)\nGeist 14 center · $chat.text.primary · pad 12/16\ncursor: pointer · transition: bg 150ms ease",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jtXjG",
+              "name": "cardChipPressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "B2Ir3b",
+                  "fill": "#8A8680",
+                  "content": "Suggestion Chip / Pressed",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "frame",
+                  "id": "s7g9un",
+                  "name": "Chat / Suggestion Chip Pressed",
+                  "reusable": true,
+                  "fill": "$chat.chip.pressed.bg",
+                  "cornerRadius": "$chat.chip.radius",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$chat.chip.border"
+                  },
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "whw4N",
+                      "name": "label",
+                      "fill": "$chat.text.primary",
+                      "content": "What's a donor-advised fund?",
+                      "lineHeight": 1.25,
+                      "textAlign": "center",
+                      "fontFamily": "Geist",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "ecCac",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 260,
+                  "content": "Suggestion Chip / Pressed\nradius 24 · $chat.chip.pressed.bg (#E3DFD6)\nGeist 14 center · $chat.text.primary · pad 12/16\nsends current question to chat input",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -556412,7 +556554,7 @@
     {
       "type": "frame",
       "id": "JHTQS",
-      "x": 27623,
+      "x": 28297,
       "y": 6731,
       "name": "Chat Design System (No Attach / Advisor)",
       "fill": "#FFFFFF",
@@ -557348,7 +557490,15 @@
                 {
                   "id": "ugrWO",
                   "type": "ref",
-                  "ref": "L5bc2"
+                  "ref": "L5bc2",
+                  "name": "Chat / Suggestion Chip / Default",
+                  "descendants": {
+                    "oJE2e": {
+                      "x": 16.01327931492265,
+                      "y": 11.999999999999998,
+                      "rotation": -0.04226937605053072
+                    }
+                  }
                 },
                 {
                   "type": "text",
@@ -557357,7 +557507,97 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 260,
-                  "content": "Suggestion Chip\nradius 24 · $chat.chip.bg · border $chat.chip.border\nGeist 14 center · $chat.text.secondary · pad 12/16",
+                  "content": "Suggestion Chip / Default\nradius 24 · $chat.chip.bg · border $chat.chip.border\nGeist 14 center · $chat.text.secondary · pad 12/16\ncursor: pointer · single chip visible at a time\ntext rotation: slide-up + fade · 300ms ease-out\nauto-cycles every 4s · pauses on hover",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KiEZx",
+              "name": "cardChipHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "oYDSJ",
+                  "fill": "#8A8680",
+                  "content": "Suggestion Chip / Hover",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "G84Hs",
+                  "type": "ref",
+                  "ref": "OEGjn",
+                  "name": "Chat / Suggestion Chip / Hover"
+                },
+                {
+                  "type": "text",
+                  "id": "qk30t",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 260,
+                  "content": "Suggestion Chip / Hover\nradius 24 · $chat.chip.hover.bg (#EDEAE3)\nGeist 14 center · $chat.text.primary · pad 12/16\ncursor: pointer · transition: bg 150ms ease",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rxPoy",
+              "name": "cardChipPressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "q4dh2",
+                  "fill": "#8A8680",
+                  "content": "Suggestion Chip / Pressed",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "xn9Fo",
+                  "type": "ref",
+                  "ref": "s7g9un",
+                  "name": "Chat / Suggestion Chip / Pressed"
+                },
+                {
+                  "type": "text",
+                  "id": "RjGt7",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 260,
+                  "content": "Suggestion Chip / Pressed\nradius 24 · $chat.chip.pressed.bg (#E3DFD6)\nGeist 14 center · $chat.text.primary · pad 12/16\nsends current question to chat input",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -557651,6 +557891,61 @@
                   "textGrowth": "fixed-width",
                   "width": 280,
                   "content": "AI Message\naligned left · transparent bg · full width\nGeist 14 · $chat.text.primary · fixed-width fill",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sckdF",
+              "name": "cardAiThinking",
+              "width": 320,
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lBnD8",
+                  "name": "title",
+                  "fill": "#8A8680",
+                  "content": "AI Thinking",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "WWsru",
+                  "type": "ref",
+                  "ref": "mViUs",
+                  "width": "fill_container",
+                  "name": "inst",
+                  "descendants": {
+                    "g3LqFE": {
+                      "x": 14.044097421894026,
+                      "y": 0,
+                      "rotation": -0.31582611960462426
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "rTE4o",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 280,
+                  "content": "AI Thinking\naligned left · transparent bg · full width\nthree dot indicator · $chat.text.placeholder\nshown while LLM is processing",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -558001,100 +558296,16 @@
                           "alignItems": "center",
                           "children": [
                             {
-                              "type": "frame",
-                              "id": "jo2TM",
-                              "name": "button / secondary",
-                              "fill": "#f7f5f0ff",
-                              "cornerRadius": 24,
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "#dcd8cb"
-                              },
-                              "padding": [
-                                12,
-                                16
-                              ],
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "B991U",
-                                  "name": "Button Label",
-                                  "fill": "#5e5954",
-                                  "content": "What’s a donor-advised fund?",
-                                  "lineHeight": 1.25,
-                                  "textAlign": "center",
-                                  "fontFamily": "Geist",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
+                              "id": "FU6Qf",
+                              "type": "ref",
+                              "ref": "L5bc2",
+                              "name": "chip1",
+                              "width": "fit_content",
+                              "descendants": {
+                                "oJE2e": {
+                                  "content": "What's a donor-advised fund?"
                                 }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "d1giM",
-                              "name": "button / secondary",
-                              "fill": "#f7f5f0ff",
-                              "cornerRadius": 24,
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "#dcd8cb"
-                              },
-                              "padding": [
-                                12,
-                                16
-                              ],
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "Y9ENkc",
-                                  "name": "Button Label",
-                                  "fill": "#5e5954",
-                                  "content": "How can I offset large capital gains?",
-                                  "lineHeight": 1.25,
-                                  "textAlign": "center",
-                                  "fontFamily": "Geist",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "U1WmU",
-                              "name": "button / secondary",
-                              "fill": "#f7f5f0ff",
-                              "cornerRadius": 24,
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "#dcd8cb"
-                              },
-                              "padding": [
-                                12,
-                                16
-                              ],
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "gU1rf",
-                                  "name": "Button Label",
-                                  "fill": "#5e5954",
-                                  "content": "Should I rent or buy in today’s market?",
-                                  "lineHeight": 1.25,
-                                  "textAlign": "center",
-                                  "fontFamily": "Geist",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                              }
                             }
                           ]
                         }
@@ -615466,6 +615677,66 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "mViUs",
+      "x": 0,
+      "y": 0,
+      "name": "Chat / AI Thinking",
+      "reusable": true,
+      "width": "fill_container(0)",
+      "layout": "vertical",
+      "gap": 8,
+      "children": [
+        {
+          "type": "frame",
+          "id": "S6fl56",
+          "name": "bubble",
+          "fill": "$chat.bubble.ai.bg",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            12,
+            0
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "maQSP",
+              "name": "dotsRow",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "lizda",
+                  "name": "dot1",
+                  "fill": "$chat.text.placeholder",
+                  "width": 8,
+                  "height": 8
+                },
+                {
+                  "type": "ellipse",
+                  "id": "g3LqFE",
+                  "name": "dot2",
+                  "fill": "$chat.text.secondary",
+                  "width": 8,
+                  "height": 8
+                },
+                {
+                  "type": "ellipse",
+                  "id": "xnRxi",
+                  "name": "dot3",
+                  "fill": "$chat.text.placeholder",
+                  "width": 8,
+                  "height": 8
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "themes": {
@@ -616148,6 +616419,14 @@
     "chat.input.border.active": {
       "type": "color",
       "value": "#C0BAB2"
+    },
+    "chat.chip.hover.bg": {
+      "type": "color",
+      "value": "$nav.hover.bg"
+    },
+    "chat.chip.pressed.bg": {
+      "type": "color",
+      "value": "$nav.pressed.bg"
     }
   },
   "fonts": [
