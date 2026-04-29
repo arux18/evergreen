@@ -9636,7 +9636,10 @@
                 {
                   "type": "frame",
                   "id": "c6Djb",
+                  "x": 1207.9561071762828,
+                  "y": 0,
                   "name": "pill",
+                  "enabled": false,
                   "cornerRadius": 9999,
                   "stroke": {
                     "align": "inside",
@@ -9654,6 +9657,7 @@
                       "type": "text",
                       "id": "EY16w",
                       "name": "pillText",
+                      "rotation": -0.15783196265119692,
                       "fill": "#2D2926",
                       "content": "My View",
                       "fontFamily": "Geist",
@@ -560001,6 +560005,7 @@
                     6,
                     14
                   ],
+                  "alignItems": "center",
                   "children": [
                     {
                       "type": "icon_font",
@@ -560021,6 +560026,16 @@
                       "fontFamily": "Geist",
                       "fontSize": 11,
                       "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "LWzno",
+                      "name": "closeIcon",
+                      "width": 10,
+                      "height": 10,
+                      "iconFontName": "x",
+                      "iconFontFamily": "lucide",
+                      "fill": "$chat.text.placeholder"
                     }
                   ]
                 },
@@ -560566,13 +560581,13 @@
                               "id": "GVCEV",
                               "type": "ref",
                               "ref": "Z0aUQ",
-                              "width": "fill_container",
+                              "width": "fit_content",
                               "name": "chip1",
                               "descendants": {
                                 "yOrNN": {
                                   "content": "March-2026-statement.pdf",
-                                  "textGrowth": "fixed-width",
-                                  "width": "fill_container"
+                                  "textGrowth": "auto",
+                                  "width": "fit_content(0)"
                                 }
                               }
                             },
@@ -560581,6 +560596,7 @@
                               "type": "ref",
                               "ref": "Z0aUQ",
                               "name": "chip2",
+                              "width": "fit_content",
                               "descendants": {
                                 "yOrNN": {
                                   "content": "February-2026-statement.pdf"
@@ -561071,13 +561087,13 @@
                               "id": "Kfc3T",
                               "type": "ref",
                               "ref": "Z0aUQ",
-                              "width": "fill_container",
+                              "width": "fit_content",
                               "name": "ac1",
                               "descendants": {
                                 "yOrNN": {
                                   "content": "WellsFargo-March-2026-statement.pdf",
-                                  "textGrowth": "fixed-width",
-                                  "width": "fill_container"
+                                  "textGrowth": "auto",
+                                  "width": "fit_content(0)"
                                 }
                               }
                             },
@@ -561086,6 +561102,7 @@
                               "type": "ref",
                               "ref": "Z0aUQ",
                               "name": "ac2",
+                              "width": "fit_content",
                               "descendants": {
                                 "yOrNN": {
                                   "content": "WellsFargo-February-2026-statement.pdf"
@@ -561097,6 +561114,7 @@
                               "type": "ref",
                               "ref": "Z0aUQ",
                               "name": "ac3",
+                              "width": "fit_content",
                               "descendants": {
                                 "yOrNN": {
                                   "content": "WellsFargo-January-2026-statement.pdf"
@@ -580222,8 +580240,8 @@
             },
             {
               "type": "frame",
-              "id": "nSHSR",
-              "name": "msgArea",
+              "id": "k93s0k",
+              "name": "newMsgArea",
               "width": "fill_container",
               "height": "fill_container",
               "layout": "vertical",
@@ -580232,80 +580250,126 @@
                 16,
                 20
               ],
-              "justifyContent": "end",
+              "justifyContent": "center",
+              "alignItems": "center",
               "children": [
                 {
-                  "type": "frame",
-                  "id": "JtOFE",
-                  "name": "greet",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": 12,
-                  "padding": [
-                    0,
-                    0,
-                    8,
-                    0
-                  ],
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "nL7Ob",
-                      "name": "greetT",
-                      "fill": "$chat.text.primary",
-                      "content": "Ask me any financial question...",
-                      "fontFamily": "Noto Serif",
-                      "fontSize": 20,
-                      "fontWeight": "normal"
-                    }
-                  ]
+                  "type": "text",
+                  "id": "fB6oo",
+                  "name": "greeting",
+                  "fill": "#2D2926",
+                  "content": "Ask me any financial question...",
+                  "fontFamily": "Noto Serif",
+                  "fontSize": 20,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "frame",
-                  "id": "bLyiv",
-                  "name": "chips",
-                  "width": "fill_container",
+                  "id": "JyEtd",
+                  "name": "Chips",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
                   "layout": "vertical",
-                  "gap": 8,
+                  "gap": 16,
+                  "alignItems": "center",
                   "children": [
                     {
-                      "id": "tbPdl",
-                      "type": "ref",
-                      "ref": "L5bc2",
-                      "width": "fit_content",
-                      "name": "ch1",
-                      "descendants": {
-                        "oJE2e": {
-                          "content": "How am I tracking against my savings goal?",
-                          "textAlign": "left"
+                      "type": "frame",
+                      "id": "D5BpbU",
+                      "name": "button / secondary",
+                      "fill": "#f7f5f0ff",
+                      "cornerRadius": 24,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#dcd8cb"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "PRv2a",
+                          "name": "Button Label",
+                          "fill": "#5e5954",
+                          "content": "What’s a donor-advised fund?",
+                          "lineHeight": 1.25,
+                          "textAlign": "center",
+                          "fontFamily": "Geist",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
-                      }
+                      ]
                     },
                     {
-                      "id": "Lz7Tp",
-                      "type": "ref",
-                      "ref": "L5bc2",
-                      "width": "fit_content",
-                      "name": "ch2",
-                      "descendants": {
-                        "oJE2e": {
-                          "content": "What does my spending look like this month?",
-                          "textAlign": "left"
+                      "type": "frame",
+                      "id": "u0waE",
+                      "name": "button / secondary",
+                      "fill": "#f7f5f0ff",
+                      "cornerRadius": 24,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#dcd8cb"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "YW1Xn",
+                          "name": "Button Label",
+                          "fill": "#5e5954",
+                          "content": "How can I offset large capital gains?",
+                          "lineHeight": 1.25,
+                          "textAlign": "center",
+                          "fontFamily": "Geist",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
-                      }
+                      ]
                     },
                     {
-                      "id": "CmcM8",
-                      "type": "ref",
-                      "ref": "L5bc2",
-                      "width": "fit_content",
-                      "name": "ch3",
-                      "descendants": {
-                        "oJE2e": {
-                          "content": "Show me my portfolio performance",
-                          "textAlign": "left"
+                      "type": "frame",
+                      "id": "We1d1",
+                      "name": "button / secondary",
+                      "fill": "#f7f5f0ff",
+                      "cornerRadius": 24,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#dcd8cb"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Vq0hi",
+                          "name": "Button Label",
+                          "fill": "#5e5954",
+                          "content": "Should I rent or buy in today’s market?",
+                          "lineHeight": 1.25,
+                          "textAlign": "center",
+                          "fontFamily": "Geist",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
-                      }
+                      ]
                     }
                   ]
                 }
