@@ -553733,7 +553733,7 @@
                   "type": "frame",
                   "id": "o4iVPb",
                   "name": "Chat / Close Button",
-                  "context": "Close button for the chat panel. 34×34 pill shape, transparent background with border. Use in the chat header to dismiss the panel. States: default.",
+                  "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
                   "reusable": true,
                   "width": 28,
                   "height": 28,
@@ -553866,7 +553866,7 @@
                   "type": "frame",
                   "id": "BlHbw",
                   "name": "Chat / Send Button",
-                  "context": "Primary send button for submitting chat messages. 34×34 pill, dark fill ($chat.send.bg) with white arrow-up icon. Place at the right end of the input field button row. States: default, disabled.",
+                  "context": "Primary send button for submitting chat messages. 34×34 pill, dark fill ($chat.send.bg) with white arrow-up icon. Place at the right end of the input field button row. States: default, hover, pressed, disabled.",
                   "reusable": true,
                   "width": 34,
                   "height": 34,
@@ -554371,7 +554371,7 @@
                   "type": "frame",
                   "id": "QLjZi",
                   "name": "Chat / Stop Button",
-                  "context": "Stop button to cancel an in-progress AI response. 34×34 pill, dark fill ($chat.send.bg) with white stop icon. Replaces the send button while the AI is generating a response. States: default.",
+                  "context": "Stop button to cancel an in-progress AI response. 34×34 pill, dark fill ($chat.send.bg) with white stop icon. Replaces the send button while the AI is generating. States: default, hover, pressed.",
                   "reusable": true,
                   "width": 34,
                   "height": 34,
@@ -554436,7 +554436,7 @@
                   "type": "frame",
                   "id": "jOKwk",
                   "name": "Chat / New Chat Button",
-                  "context": "New chat button to start a fresh conversation. 34×34 pill, transparent background with border and label. Place in the input field secondary buttons area. States: default.",
+                  "context": "New chat button to start a fresh conversation. h34 pill, transparent background with border and label. Place in the input field secondary buttons area. States: default, hover, pressed.",
                   "reusable": true,
                   "height": 34,
                   "fill": "#00000000",
@@ -554508,7 +554508,7 @@
                   "type": "frame",
                   "id": "SUCQH",
                   "name": "Chat / Voice Button",
-                  "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in the input field secondary buttons area. States: default, hover, active (recording).",
+                  "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
                   "reusable": true,
                   "width": 34,
                   "height": 34,
@@ -558045,6 +558045,393 @@
                   "fontWeight": "500"
                 }
               ]
+            },
+            {
+              "type": "frame",
+              "id": "U2cvH",
+              "name": "cardSendHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "e2Q0C",
+                  "fill": "#8A8680",
+                  "content": "Send Button Hover",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "gfxWW",
+                  "type": "ref",
+                  "ref": "I5oHzJ"
+                },
+                {
+                  "type": "text",
+                  "id": "ZX8aC",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "34×34 · pill · $chat.send.bg.hover\nphosphor arrow-up-bold · white",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "o0xUj",
+              "name": "cardSendPressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "eVKWu",
+                  "fill": "#8A8680",
+                  "content": "Send Button Pressed",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "DxZhZ",
+                  "type": "ref",
+                  "ref": "VNNsD"
+                },
+                {
+                  "type": "text",
+                  "id": "Qijt9",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "34×34 · pill · $chat.send.bg.pressed\nphosphor arrow-up-bold · white",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kg5Ey",
+              "name": "cardStopHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "uP6VZ",
+                  "fill": "#8A8680",
+                  "content": "Stop Button Hover",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "JDu4C",
+                  "type": "ref",
+                  "ref": "I4Aogq"
+                },
+                {
+                  "type": "text",
+                  "id": "RlRxQ",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "34×34 · pill · $chat.send.bg.hover\nphosphor stop-bold · white",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bXUvQ",
+              "name": "cardStopPressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vtIPe",
+                  "fill": "#8A8680",
+                  "content": "Stop Button Pressed",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "O2yeUk",
+                  "type": "ref",
+                  "ref": "M1675P"
+                },
+                {
+                  "type": "text",
+                  "id": "ivYoH",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "34×34 · pill · $chat.send.bg.pressed\nphosphor stop-bold · white",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "raT1L",
+              "name": "cardNewChatHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "g3aIQZ",
+                  "fill": "#8A8680",
+                  "content": "New Chat Hover",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "sBKn7",
+                  "type": "ref",
+                  "ref": "xC6Sc"
+                },
+                {
+                  "type": "text",
+                  "id": "SEkAK",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "h34 · pill · $chat.chip.hover.bg\nborder $chat.chip.border\nGeist 12 medium · $chat.text.secondary",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aJjwM",
+              "name": "cardNewChatPressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FEqtL",
+                  "fill": "#8A8680",
+                  "content": "New Chat Pressed",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "aOiEH",
+                  "type": "ref",
+                  "ref": "cKUEa"
+                },
+                {
+                  "type": "text",
+                  "id": "NQiY7",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "h34 · pill · $chat.chip.pressed.bg\nborder $chat.chip.border\nGeist 12 medium · $chat.text.secondary",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "o9MRK",
+              "name": "cardVoicePressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "RriXa",
+                  "fill": "#8A8680",
+                  "content": "Voice Button Pressed",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "NQATb",
+                  "type": "ref",
+                  "ref": "B6eXL3"
+                },
+                {
+                  "type": "text",
+                  "id": "u0sk4",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "34×34 · pill · $chat.chip.pressed.bg\nphosphor microphone · $chat.icon\nborder $chat.chip.border",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Znk1A",
+              "name": "cardVoiceCancelHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mSn9r",
+                  "fill": "#8A8680",
+                  "content": "Voice Cancel Hover",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "T9V1hA",
+                  "type": "ref",
+                  "ref": "ZBKrL"
+                },
+                {
+                  "type": "text",
+                  "id": "Wdl2Z",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "34×34 · pill · $chat.chip.hover.bg\nphosphor x · $chat.voice.cancel.icon\nborder $chat.chip.border",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "c5vy8n",
+              "name": "cardVoiceCancelPressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Pc4NS",
+                  "fill": "#8A8680",
+                  "content": "Voice Cancel Pressed",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "haR8f",
+                  "type": "ref",
+                  "ref": "FSaq0"
+                },
+                {
+                  "type": "text",
+                  "id": "C5rdyi",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "34×34 · pill · $chat.chip.pressed.bg\nphosphor x · $chat.voice.cancel.icon\nborder $chat.chip.border",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
             }
           ]
         },
@@ -559266,7 +559653,7 @@
               "type": "frame",
               "id": "c8b4MZ",
               "name": "Chat / Voice Cancel Button",
-              "context": "Voice cancel button. 34×34 pill, transparent with border, X icon. Discards the current voice recording without transcribing. Only appears during the recording state.",
+              "context": "Voice cancel button (default state). 34×34 pill, transparent with border, X icon. Discards the current voice recording. Only appears during recording state. States: default, hover, pressed.",
               "reusable": true,
               "width": 34,
               "height": 34,
