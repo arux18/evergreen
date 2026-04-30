@@ -1,5 +1,5 @@
 export const fontFamily = {
-  open: ['Heebo Variable', 'sans-serif'],
+  open: ['Heebo', 'sans-serif'],
   noto: ['"Cormorant Garamond"', 'serif'],
 }
 

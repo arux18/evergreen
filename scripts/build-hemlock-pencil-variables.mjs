@@ -154,7 +154,7 @@ function main() {
   // Font families (match typography.ts)
   variables['font-family-primary'] = {
     type: 'string',
-    value: 'Heebo Variable',
+    value: 'Heebo',
   }
   variables['font-family-secondary'] = {
     type: 'string',
@@ -208,7 +208,7 @@ function main() {
       type: 'string',
       value:
         familyVar === 'font-family-primary'
-          ? 'Heebo Variable'
+          ? 'Heebo'
           : 'Cormorant Garamond',
     }
   }
