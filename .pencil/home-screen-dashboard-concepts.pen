@@ -553733,6 +553733,7 @@
                   "type": "frame",
                   "id": "o4iVPb",
                   "name": "Chat / Close Button",
+                  "context": "Close button for the chat panel. 34×34 pill shape, transparent background with border. Use in the chat header to dismiss the panel. States: default.",
                   "reusable": true,
                   "width": 28,
                   "height": 28,
@@ -553865,6 +553866,7 @@
                   "type": "frame",
                   "id": "BlHbw",
                   "name": "Chat / Send Button",
+                  "context": "Primary send button for submitting chat messages. 34×34 pill, dark fill ($chat.send.bg) with white arrow-up icon. Place at the right end of the input field button row. States: default, disabled.",
                   "reusable": true,
                   "width": 34,
                   "height": 34,
@@ -553998,6 +554000,7 @@
                   "type": "frame",
                   "id": "L5bc2",
                   "name": "Chat / Suggestion Chip",
+                  "context": "Prompt chip (default state). Pill-shaped suggestion button shown below the input field. Displays a pre-written financial question the user can tap to send. Font: 14px Geist, fill $chat.chip.bg, border $chat.chip.border, radius $chat.chip.radius. States: default, hover, pressed.",
                   "reusable": true,
                   "fill": "$chat.chip.bg",
                   "cornerRadius": "$chat.chip.radius",
@@ -554157,6 +554160,7 @@
                   "type": "frame",
                   "id": "OEGjn",
                   "name": "Chat / Suggestion Chip Hover",
+                  "context": "Prompt chip (hover state). Background changes to $chat.chip.hover.bg on pointer hover. All other properties match default.",
                   "reusable": true,
                   "fill": "$chat.chip.hover.bg",
                   "cornerRadius": "$chat.chip.radius",
@@ -554229,6 +554233,7 @@
                   "type": "frame",
                   "id": "s7g9un",
                   "name": "Chat / Suggestion Chip Pressed",
+                  "context": "Prompt chip (pressed state). Background changes to $chat.chip.pressed.bg on tap/click. All other properties match default.",
                   "reusable": true,
                   "fill": "$chat.chip.pressed.bg",
                   "cornerRadius": "$chat.chip.radius",
@@ -554301,6 +554306,7 @@
                   "type": "frame",
                   "id": "JxTJs",
                   "name": "Chat / Send Button Disabled",
+                  "context": "Disabled state of the send button. Shown when the input field is empty or processing. 34×34 pill, muted fill ($chat.send.bg.disabled) with white icon. States: disabled.",
                   "reusable": true,
                   "width": 34,
                   "height": 34,
@@ -554365,6 +554371,7 @@
                   "type": "frame",
                   "id": "QLjZi",
                   "name": "Chat / Stop Button",
+                  "context": "Stop button to cancel an in-progress AI response. 34×34 pill, dark fill ($chat.send.bg) with white stop icon. Replaces the send button while the AI is generating a response. States: default.",
                   "reusable": true,
                   "width": 34,
                   "height": 34,
@@ -554429,6 +554436,7 @@
                   "type": "frame",
                   "id": "jOKwk",
                   "name": "Chat / New Chat Button",
+                  "context": "New chat button to start a fresh conversation. 34×34 pill, transparent background with border and label. Place in the input field secondary buttons area. States: default.",
                   "reusable": true,
                   "height": 34,
                   "fill": "#00000000",
@@ -554500,6 +554508,7 @@
                   "type": "frame",
                   "id": "SUCQH",
                   "name": "Chat / Voice Button",
+                  "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in the input field secondary buttons area. States: default, hover, active (recording).",
                   "reusable": true,
                   "width": 34,
                   "height": 34,
@@ -554597,6 +554606,7 @@
                   "type": "frame",
                   "id": "uTENT",
                   "name": "Chat / User Message",
+                  "context": "User message bubble. Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
                   "reusable": true,
                   "width": "fill_container",
                   "justifyContent": "end",
@@ -554677,6 +554687,7 @@
                   "type": "frame",
                   "id": "Dvxep",
                   "name": "Chat / AI Message",
+                  "context": "AI message bubble. Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
                   "reusable": true,
                   "width": "fill_container",
                   "children": [
@@ -554898,6 +554909,7 @@
                   "type": "frame",
                   "id": "dZHCb",
                   "name": "Chat / Header",
+                  "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
                   "reusable": true,
                   "width": 360,
                   "stroke": {
@@ -554988,6 +555000,7 @@
                   "type": "frame",
                   "id": "TdYxI",
                   "name": "Chat / Input Empty",
+                  "context": "Chat input field (empty state). Shown when no text has been entered. Contains placeholder text and the button row (voice, new chat, send disabled). Outer padding: 12t/20r/20b/20l. Inner field: $chat.input.bg, border $chat.input.border, radius $chat.input.radius.",
                   "reusable": true,
                   "width": 360,
                   "stroke": {
@@ -555121,6 +555134,7 @@
                   "type": "frame",
                   "id": "juIZl",
                   "name": "Chat / Input Typing",
+                  "context": "Chat input field (typing state). Shown when the user has entered text. Border thickens to 1.5px $chat.input.border.active. Send button becomes enabled. Text displays in $chat.text.secondary.",
                   "reusable": true,
                   "width": 360,
                   "stroke": {
@@ -557541,7 +557555,7 @@
           "id": "TIZSg",
           "name": "atomsLabel",
           "fill": "$chat.text.primary",
-          "content": "Atoms",
+          "content": "Touch Targets — Buttons",
           "fontFamily": "Geist",
           "fontSize": 16,
           "fontWeight": "600",
@@ -557635,148 +557649,6 @@
                   "textGrowth": "fixed-width",
                   "width": 200,
                   "content": "Send Button\n34×34 · pill · $chat.send.bg\nphosphor arrow-up-bold · $chat.send.icon",
-                  "fontFamily": "Geist",
-                  "fontSize": 11,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "t8TJR",
-              "name": "cardChip",
-              "fill": "#FAFAF8",
-              "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
-              "layout": "vertical",
-              "gap": 12,
-              "padding": 20,
-              "children": [
-                {
-                  "type": "text",
-                  "id": "J9BXSK",
-                  "fill": "#8A8680",
-                  "content": "Suggestion Chip",
-                  "fontFamily": "Geist",
-                  "fontSize": 11,
-                  "fontWeight": "600",
-                  "letterSpacing": 0.5
-                },
-                {
-                  "id": "ugrWO",
-                  "type": "ref",
-                  "ref": "L5bc2",
-                  "name": "Chat / Suggestion Chip / Default",
-                  "descendants": {
-                    "oJE2e": {
-                      "x": 16.01327931492265,
-                      "y": 11.999999999999998,
-                      "rotation": -0.04226937605053072
-                    }
-                  }
-                },
-                {
-                  "type": "text",
-                  "id": "m1q1x",
-                  "name": "lbl",
-                  "fill": "#8A8680",
-                  "textGrowth": "fixed-width",
-                  "width": 260,
-                  "content": "Suggestion Chip / Default\nradius 24 · $chat.chip.bg · border $chat.chip.border\nGeist 14 center · $chat.text.secondary · pad 12/16\ncursor: pointer · single chip visible at a time\ntext rotation: slide-up + fade · 300ms ease-out\nauto-cycles every 3s · pauses on hover",
-                  "fontFamily": "Geist",
-                  "fontSize": 11,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "KiEZx",
-              "name": "cardChipHover",
-              "fill": "#FAFAF8",
-              "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
-              "layout": "vertical",
-              "gap": 12,
-              "padding": 20,
-              "children": [
-                {
-                  "type": "text",
-                  "id": "oYDSJ",
-                  "fill": "#8A8680",
-                  "content": "Suggestion Chip / Hover",
-                  "fontFamily": "Geist",
-                  "fontSize": 11,
-                  "fontWeight": "600",
-                  "letterSpacing": 0.5
-                },
-                {
-                  "id": "G84Hs",
-                  "type": "ref",
-                  "ref": "OEGjn",
-                  "name": "Chat / Suggestion Chip / Hover"
-                },
-                {
-                  "type": "text",
-                  "id": "qk30t",
-                  "name": "lbl",
-                  "fill": "#8A8680",
-                  "textGrowth": "fixed-width",
-                  "width": 260,
-                  "content": "Suggestion Chip / Hover\nradius 24 · $chat.chip.hover.bg (#EDEAE3)\nGeist 14 center · $chat.text.primary · pad 12/16\ncursor: pointer · transition: bg 150ms ease",
-                  "fontFamily": "Geist",
-                  "fontSize": 11,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "rxPoy",
-              "name": "cardChipPressed",
-              "fill": "#FAFAF8",
-              "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
-              "layout": "vertical",
-              "gap": 12,
-              "padding": 20,
-              "children": [
-                {
-                  "type": "text",
-                  "id": "q4dh2",
-                  "fill": "#8A8680",
-                  "content": "Suggestion Chip / Pressed",
-                  "fontFamily": "Geist",
-                  "fontSize": 11,
-                  "fontWeight": "600",
-                  "letterSpacing": 0.5
-                },
-                {
-                  "id": "xn9Fo",
-                  "type": "ref",
-                  "ref": "s7g9un",
-                  "name": "Chat / Suggestion Chip / Pressed"
-                },
-                {
-                  "type": "text",
-                  "id": "RjGt7",
-                  "name": "lbl",
-                  "fill": "#8A8680",
-                  "textGrowth": "fixed-width",
-                  "width": 260,
-                  "content": "Suggestion Chip / Pressed\nradius 24 · $chat.chip.pressed.bg (#E3DFD6)\nGeist 14 center · $chat.text.primary · pad 12/16\nsends current question to chat input",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -558087,23 +557959,109 @@
                   "fontWeight": "500"
                 }
               ]
+            },
+            {
+              "type": "frame",
+              "id": "IgqnI",
+              "name": "cardCloseHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "CfjHl",
+                  "fill": "#8A8680",
+                  "content": "Close Button Hover",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "V75en",
+                  "type": "ref",
+                  "ref": "f3uqW"
+                },
+                {
+                  "type": "text",
+                  "id": "hFgm6",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "28×28 · r6 · $chat.close.hover.bg\nlucide x · $chat.icon",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "m53NB",
+              "name": "cardClosePressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FN00T",
+                  "fill": "#8A8680",
+                  "content": "Close Button Pressed",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "ONHOk",
+                  "type": "ref",
+                  "ref": "F8w3y3"
+                },
+                {
+                  "type": "text",
+                  "id": "n6XPx",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "28×28 · r6 · $chat.close.pressed.bg\nlucide x · $chat.icon",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
             }
           ]
         },
         {
           "type": "frame",
-          "id": "T98PRu",
-          "name": "divMsgs",
+          "id": "NywVU",
+          "name": "divChips",
           "width": "fill_container",
           "height": 1,
           "fill": "#E8E6E0"
         },
         {
           "type": "text",
-          "id": "TokLZ",
-          "name": "msgsLabel",
+          "id": "mHqrR",
+          "name": "chipsLabel",
           "fill": "$chat.text.primary",
-          "content": "Messages",
+          "content": "Touch Targets — Prompt Chips",
           "fontFamily": "Geist",
           "fontSize": 16,
           "fontWeight": "600",
@@ -558111,15 +558069,14 @@
         },
         {
           "type": "frame",
-          "id": "fPtFs",
-          "name": "msgsRow",
+          "id": "g2Gm1",
+          "name": "chipsRow",
           "gap": 32,
           "children": [
             {
               "type": "frame",
-              "id": "nrrvb",
-              "name": "cardUserMsg",
-              "width": 320,
+              "id": "t8TJR",
+              "name": "cardChip",
               "fill": "#FAFAF8",
               "cornerRadius": 8,
               "stroke": {
@@ -558133,36 +558090,35 @@
               "children": [
                 {
                   "type": "text",
-                  "id": "xppFj",
+                  "id": "J9BXSK",
                   "fill": "#8A8680",
-                  "content": "User Message",
+                  "content": "Suggestion Chip",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "600",
                   "letterSpacing": 0.5
                 },
                 {
-                  "id": "RVdjM",
+                  "id": "ugrWO",
                   "type": "ref",
-                  "ref": "uTENT",
+                  "ref": "L5bc2",
+                  "name": "Chat / Suggestion Chip / Default",
                   "descendants": {
-                    "q0uPcr": {
-                      "fill": {
-                        "type": "color",
-                        "color": "$chat.bubble.user.bg",
-                        "enabled": false
-                      }
+                    "oJE2e": {
+                      "x": 16.01327931492265,
+                      "y": 11.999999999999998,
+                      "rotation": -0.04226937605053072
                     }
                   }
                 },
                 {
                   "type": "text",
-                  "id": "j9UXH2",
+                  "id": "m1q1x",
                   "name": "lbl",
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
-                  "width": 280,
-                  "content": "User Message\naligned right · radius 12 · $chat.bubble.user.bg\nborder $chat.bubble.user.border · pad 12/16\nGeist 14 · $chat.text.secondary · fixed-width 210",
+                  "width": 260,
+                  "content": "Suggestion Chip / Default\nradius 24 · $chat.chip.bg · border $chat.chip.border\nGeist 14 center · $chat.text.secondary · pad 12/16\ncursor: pointer · single chip visible at a time\ntext rotation: slide-up + fade · 300ms ease-out\nauto-cycles every 3s · pauses on hover",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -558171,9 +558127,8 @@
             },
             {
               "type": "frame",
-              "id": "xYWrW",
-              "name": "cardAiMsg",
-              "width": 320,
+              "id": "KiEZx",
+              "name": "cardChipHover",
               "fill": "#FAFAF8",
               "cornerRadius": 8,
               "stroke": {
@@ -558187,27 +558142,28 @@
               "children": [
                 {
                   "type": "text",
-                  "id": "NGjv2",
+                  "id": "oYDSJ",
                   "fill": "#8A8680",
-                  "content": "AI Message",
+                  "content": "Suggestion Chip / Hover",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "600",
                   "letterSpacing": 0.5
                 },
                 {
-                  "id": "o8Auoz",
+                  "id": "G84Hs",
                   "type": "ref",
-                  "ref": "Dvxep"
+                  "ref": "OEGjn",
+                  "name": "Chat / Suggestion Chip / Hover"
                 },
                 {
                   "type": "text",
-                  "id": "iBAE2",
+                  "id": "qk30t",
                   "name": "lbl",
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
-                  "width": 280,
-                  "content": "AI Message\naligned left · transparent bg · full width\nGeist 14 · $chat.text.primary · fixed-width fill",
+                  "width": 260,
+                  "content": "Suggestion Chip / Hover\nradius 24 · $chat.chip.hover.bg (#EDEAE3)\nGeist 14 center · $chat.text.primary · pad 12/16\ncursor: pointer · transition: bg 150ms ease",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -558216,9 +558172,8 @@
             },
             {
               "type": "frame",
-              "id": "sckdF",
-              "name": "cardAiThinking",
-              "width": 320,
+              "id": "rxPoy",
+              "name": "cardChipPressed",
               "fill": "#FAFAF8",
               "cornerRadius": 8,
               "stroke": {
@@ -558232,37 +558187,28 @@
               "children": [
                 {
                   "type": "text",
-                  "id": "lBnD8",
-                  "name": "title",
+                  "id": "q4dh2",
                   "fill": "#8A8680",
-                  "content": "AI Thinking",
+                  "content": "Suggestion Chip / Pressed",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "600",
                   "letterSpacing": 0.5
                 },
                 {
-                  "id": "WWsru",
+                  "id": "xn9Fo",
                   "type": "ref",
-                  "ref": "mViUs",
-                  "width": "fill_container",
-                  "name": "inst",
-                  "descendants": {
-                    "g3LqFE": {
-                      "x": 14.044097421894026,
-                      "y": 0,
-                      "rotation": -0.31582611960462426
-                    }
-                  }
+                  "ref": "s7g9un",
+                  "name": "Chat / Suggestion Chip / Pressed"
                 },
                 {
                   "type": "text",
-                  "id": "rTE4o",
+                  "id": "RjGt7",
                   "name": "lbl",
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
-                  "width": 280,
-                  "content": "AI Thinking\naligned left · transparent bg · full width\nthree dot indicator · $chat.text.placeholder\nshown while LLM is processing",
+                  "width": 260,
+                  "content": "Suggestion Chip / Pressed\nradius 24 · $chat.chip.pressed.bg (#E3DFD6)\nGeist 14 center · $chat.text.primary · pad 12/16\nsends current question to chat input",
                   "fontFamily": "Geist",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -558273,18 +558219,18 @@
         },
         {
           "type": "frame",
-          "id": "rmS7n",
-          "name": "divComposed",
+          "id": "n5jen",
+          "name": "divHeader",
           "width": "fill_container",
           "height": 1,
           "fill": "#E8E6E0"
         },
         {
           "type": "text",
-          "id": "XiGXA",
-          "name": "composedLabel",
+          "id": "Uc645",
+          "name": "headerLabel",
           "fill": "$chat.text.primary",
-          "content": "Composed Elements",
+          "content": "Header",
           "fontFamily": "Geist",
           "fontSize": 16,
           "fontWeight": "600",
@@ -558292,8 +558238,8 @@
         },
         {
           "type": "frame",
-          "id": "w2Vusy",
-          "name": "composedRow",
+          "id": "aCZ0q",
+          "name": "headerRow",
           "gap": 32,
           "children": [
             {
@@ -558348,7 +558294,34 @@
                   "fontWeight": "500"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rmS7n",
+          "name": "divComposed",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "XiGXA",
+          "name": "composedLabel",
+          "fill": "$chat.text.primary",
+          "content": "Input Fields",
+          "fontFamily": "Geist",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "frame",
+          "id": "w2Vusy",
+          "name": "composedRow",
+          "gap": 32,
+          "children": [
             {
               "type": "frame",
               "id": "kkUG3",
@@ -558573,6 +558546,187 @@
         },
         {
           "type": "frame",
+          "id": "T98PRu",
+          "name": "divMsgs",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "TokLZ",
+          "name": "msgsLabel",
+          "fill": "$chat.text.primary",
+          "content": "Messages",
+          "fontFamily": "Geist",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "frame",
+          "id": "fPtFs",
+          "name": "msgsRow",
+          "gap": 32,
+          "children": [
+            {
+              "type": "frame",
+              "id": "nrrvb",
+              "name": "cardUserMsg",
+              "width": 320,
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "xppFj",
+                  "fill": "#8A8680",
+                  "content": "User Message",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "RVdjM",
+                  "type": "ref",
+                  "ref": "uTENT",
+                  "descendants": {
+                    "q0uPcr": {
+                      "fill": {
+                        "type": "color",
+                        "color": "$chat.bubble.user.bg",
+                        "enabled": false
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "j9UXH2",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 280,
+                  "content": "User Message\naligned right · radius 12 · $chat.bubble.user.bg\nborder $chat.bubble.user.border · pad 12/16\nGeist 14 · $chat.text.secondary · fixed-width 210",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xYWrW",
+              "name": "cardAiMsg",
+              "width": 320,
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "NGjv2",
+                  "fill": "#8A8680",
+                  "content": "AI Message",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "o8Auoz",
+                  "type": "ref",
+                  "ref": "Dvxep"
+                },
+                {
+                  "type": "text",
+                  "id": "iBAE2",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 280,
+                  "content": "AI Message\naligned left · transparent bg · full width\nGeist 14 · $chat.text.primary · fixed-width fill",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sckdF",
+              "name": "cardAiThinking",
+              "width": 320,
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lBnD8",
+                  "name": "title",
+                  "fill": "#8A8680",
+                  "content": "AI Thinking",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "WWsru",
+                  "type": "ref",
+                  "ref": "mViUs",
+                  "width": "fill_container",
+                  "name": "inst",
+                  "descendants": {
+                    "g3LqFE": {
+                      "x": 14.044097421894026,
+                      "y": 0,
+                      "rotation": -0.31582611960462426
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "rTE4o",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 280,
+                  "content": "AI Thinking\naligned left · transparent bg · full width\nthree dot indicator · $chat.text.placeholder\nshown while LLM is processing",
+                  "fontFamily": "Geist",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
           "id": "RmliA",
           "name": "divAssembled",
           "width": "fill_container",
@@ -558584,7 +558738,7 @@
           "id": "C3dOAN",
           "name": "asmLabel",
           "fill": "$chat.text.primary",
-          "content": "Assembled",
+          "content": "Panels",
           "fontFamily": "Geist",
           "fontSize": 16,
           "fontWeight": "600",
@@ -559038,7 +559192,7 @@
           "id": "r8tCaE",
           "name": "sourceLabel",
           "fill": "$chat.text.primary",
-          "content": "Source Components (Voice Input)",
+          "content": "Component Definitions",
           "fontFamily": "Geist",
           "fontSize": 16,
           "fontWeight": "600",
@@ -559055,6 +559209,7 @@
               "type": "frame",
               "id": "c64e2B",
               "name": "Chat / Voice Button Hover",
+              "context": "Voice input button (hover state). 34×34 pill with $chat.chip.hover.bg fill and border. Shown on pointer hover over the voice button.",
               "reusable": true,
               "width": 34,
               "height": 34,
@@ -559085,6 +559240,7 @@
               "type": "frame",
               "id": "Q3BNN0",
               "name": "Chat / Voice Button Active",
+              "context": "Voice input button (active/recording state). 34×34 pill, filled with blue accent ($chat.voice.active.bg), white microphone icon. Shown while recording audio. Tap to stop recording manually.",
               "reusable": true,
               "width": 34,
               "height": 34,
@@ -559110,6 +559266,7 @@
               "type": "frame",
               "id": "c8b4MZ",
               "name": "Chat / Voice Cancel Button",
+              "context": "Voice cancel button. 34×34 pill, transparent with border, X icon. Discards the current voice recording without transcribing. Only appears during the recording state.",
               "reusable": true,
               "width": 34,
               "height": 34,
@@ -559140,6 +559297,7 @@
               "type": "frame",
               "id": "p13Ml",
               "name": "Chat / Input Recording",
+              "context": "Chat input field (recording state). Shown during active voice recording. Blue accent border ($chat.voice.active.bg) at 1.5px. Contains waveform visualization, recording dot, timer, cancel button (left), and active voice button (right). Auto-stops after 2 seconds of silence.",
               "reusable": true,
               "width": 360,
               "stroke": {
@@ -559456,6 +559614,7 @@
               "type": "frame",
               "id": "oGU44",
               "name": "Chat / Input Transcribing",
+              "context": "Chat input field (transcribing state). Shown briefly while Cartesia processes speech-to-text. Dot animation with 'Transcribing...' placeholder. Buttons dimmed, send disabled. Transitions to Input Typing when transcript is ready.",
               "reusable": true,
               "width": 360,
               "stroke": {
@@ -559578,6 +559737,321 @@
                       ]
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "f3uqW",
+              "name": "Chat / Close Button Hover",
+              "context": "Close button (hover state). Background fills with $chat.close.hover.bg on pointer hover.",
+              "reusable": true,
+              "width": 28,
+              "height": 28,
+              "fill": "$chat.close.hover.bg",
+              "cornerRadius": 6,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "VpjGe",
+                  "name": "icon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "x",
+                  "iconFontFamily": "lucide",
+                  "fill": "$chat.icon"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "F8w3y3",
+              "name": "Chat / Close Button Pressed",
+              "context": "Close button (pressed state). Background fills with $chat.close.pressed.bg on tap/click.",
+              "reusable": true,
+              "width": 28,
+              "height": 28,
+              "fill": "$chat.close.pressed.bg",
+              "cornerRadius": 6,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "O0OWy",
+                  "name": "icon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "x",
+                  "iconFontFamily": "lucide",
+                  "fill": "$chat.icon"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "I5oHzJ",
+              "name": "Chat / Send Button Hover",
+              "context": "Send button (hover state). Background lightens to $chat.send.bg.hover on pointer hover.",
+              "reusable": true,
+              "width": 34,
+              "height": 34,
+              "fill": "$chat.send.bg.hover",
+              "cornerRadius": 9999,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "w8B1Y",
+                  "name": "sendIcon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "arrow-up-bold",
+                  "iconFontFamily": "phosphor",
+                  "fill": "$chat.send.icon"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "VNNsD",
+              "name": "Chat / Send Button Pressed",
+              "context": "Send button (pressed state). Background darkens to $chat.send.bg.pressed on tap/click.",
+              "reusable": true,
+              "width": 34,
+              "height": 34,
+              "fill": "$chat.send.bg.pressed",
+              "cornerRadius": 9999,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "EkDTP",
+                  "name": "sendIcon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "arrow-up-bold",
+                  "iconFontFamily": "phosphor",
+                  "fill": "$chat.send.icon"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "I4Aogq",
+              "name": "Chat / Stop Button Hover",
+              "context": "Stop button (hover state). Background lightens to $chat.send.bg.hover on pointer hover.",
+              "reusable": true,
+              "width": 34,
+              "height": 34,
+              "fill": "$chat.send.bg.hover",
+              "cornerRadius": 9999,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "KrvAr",
+                  "name": "stopIcon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "stop-bold",
+                  "iconFontFamily": "phosphor",
+                  "fill": "$chat.send.icon"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "M1675P",
+              "name": "Chat / Stop Button Pressed",
+              "context": "Stop button (pressed state). Background darkens to $chat.send.bg.pressed on tap/click.",
+              "reusable": true,
+              "width": 34,
+              "height": 34,
+              "fill": "$chat.send.bg.pressed",
+              "cornerRadius": 9999,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "vLGJp",
+                  "name": "stopIcon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "stop-bold",
+                  "iconFontFamily": "phosphor",
+                  "fill": "$chat.send.icon"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xC6Sc",
+              "name": "Chat / New Chat Button Hover",
+              "context": "New chat button (hover state). Background fills with $chat.chip.hover.bg on pointer hover.",
+              "reusable": true,
+              "height": 34,
+              "fill": "$chat.chip.hover.bg",
+              "cornerRadius": 9999,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$chat.chip.border"
+              },
+              "padding": [
+                0,
+                14
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Q9blA",
+                  "name": "label",
+                  "fill": "$chat.text.secondary",
+                  "content": "New Chat",
+                  "fontFamily": "Geist",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cKUEa",
+              "name": "Chat / New Chat Button Pressed",
+              "context": "New chat button (pressed state). Background fills with $chat.chip.pressed.bg on tap/click.",
+              "reusable": true,
+              "height": 34,
+              "fill": "$chat.chip.pressed.bg",
+              "cornerRadius": 9999,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$chat.chip.border"
+              },
+              "padding": [
+                0,
+                14
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Yyswp",
+                  "name": "label",
+                  "fill": "$chat.text.secondary",
+                  "content": "New Chat",
+                  "fontFamily": "Geist",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "B6eXL3",
+              "name": "Chat / Voice Button Pressed",
+              "context": "Voice button (pressed state). Background fills with $chat.chip.pressed.bg on tap/click. Transitions to Input Recording state.",
+              "reusable": true,
+              "width": 34,
+              "height": 34,
+              "fill": "$chat.chip.pressed.bg",
+              "cornerRadius": 9999,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$chat.chip.border"
+              },
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "jRpNt",
+                  "name": "icon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "microphone",
+                  "iconFontFamily": "phosphor",
+                  "fill": "$chat.icon"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ZBKrL",
+              "name": "Chat / Voice Cancel Button Hover",
+              "context": "Voice cancel button (hover state). Background fills with $chat.chip.hover.bg on pointer hover. Only appears during recording state.",
+              "reusable": true,
+              "width": 34,
+              "height": 34,
+              "fill": "$chat.chip.hover.bg",
+              "cornerRadius": 9999,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$chat.chip.border"
+              },
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "itIVT",
+                  "name": "icon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "x",
+                  "iconFontFamily": "phosphor",
+                  "fill": "$chat.voice.cancel.icon"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "FSaq0",
+              "name": "Chat / Voice Cancel Button Pressed",
+              "context": "Voice cancel button (pressed state). Background fills with $chat.chip.pressed.bg on tap/click. Discards the recording and returns to previous input state.",
+              "reusable": true,
+              "width": 34,
+              "height": 34,
+              "fill": "$chat.chip.pressed.bg",
+              "cornerRadius": 9999,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$chat.chip.border"
+              },
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "UQ8bi",
+                  "name": "icon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "x",
+                  "iconFontFamily": "phosphor",
+                  "fill": "$chat.voice.cancel.icon"
                 }
               ]
             }
@@ -601765,7 +602239,7 @@
                     },
                     {
                       "type": "frame",
-                      "id": "qjnla",
+                      "id": "TkYa7",
                       "name": "dot",
                       "width": 4,
                       "height": 4,
@@ -616649,6 +617123,7 @@
       "x": 0,
       "y": 0,
       "name": "Chat / AI Thinking",
+      "context": "AI thinking indicator. Shown while the AI is generating a response. Animated dots or shimmer to indicate processing. Appears in the message thread below the user's last message.",
       "reusable": true,
       "width": "fill_container(0)",
       "layout": "vertical",
@@ -617416,6 +617891,22 @@
     "chat.voice.waveform": {
       "type": "color",
       "value": "#7094FB"
+    },
+    "chat.close.hover.bg": {
+      "type": "color",
+      "value": "#EDEAE3"
+    },
+    "chat.close.pressed.bg": {
+      "type": "color",
+      "value": "#E3DFD6"
+    },
+    "chat.send.bg.hover": {
+      "type": "color",
+      "value": "#4F4F4F"
+    },
+    "chat.send.bg.pressed": {
+      "type": "color",
+      "value": "#2A2A2A"
     }
   },
   "fonts": [
