@@ -1,0 +1,109 @@
+# Output Anchoring
+
+**Category:** Generative UI — Stability  
+**Layer:** Structural / Layout  
+**Status:** Emerging law — generative UI specific
+
+---
+
+## Definition
+
+A generative UI must provide persistent structural anchors — fixed navigation, header, and shell chrome — that remain visually and functionally stable regardless of what the AI generates in the content zone. The canvas changes; the frame does not.
+
+---
+
+## Core Principle
+
+Users need spatial orientation at all times. When UI is generated dynamically, the risk of disorientation is high. Output anchoring solves this by separating the product into zones with explicit contracts:
+
+- **Immovable structure** — never generated, never animated, never altered by AI output
+- **Persistent controls** — always interactive, even during generation
+- **Generative canvas** — the only zone the AI owns
+
+Without anchoring, generative output feels like standing on a moving floor. With it, even highly dynamic content feels stable and trustworthy.
+
+---
+
+## The Three Shell Layers
+
+### Layer 1 — Immovable Structure
+Global header, navigation, branding, user identity. These are spatial landmarks. They tell users *where they are* in the product at all times.
+
+**Rules:**
+- Never generated, never conditionally rendered by AI
+- No animations triggered by AI state
+- No content shifts caused by AI output length or type
+- Consistent height, position, and visual weight across all AI states
+
+### Layer 2 — Persistent Controls
+Input bar, action buttons, filters, nav items, settings access. These give users the ability to *do something* at any moment.
+
+**Rules:**
+- Always interactive — including during active generation
+- Never disabled as a side effect of AI output
+- Should have a clear "generation in progress" visual mode (e.g. subtle indicator, input placeholder change) without losing interactivity
+
+### Layer 3 — Generative Canvas
+The only zone the AI owns. All generated content lives here.
+
+**Rules:**
+- Clearly bounded — users should be able to identify where AI output starts and ends
+- Scrolls internally — never pushes shell layers
+- Contains its own error, empty, loading, and success states
+- Does not reflow or resize shell layers based on output length or type
+
+---
+
+## Design Decisions
+
+### Lock the layout grid at the design system level
+Shell dimensions are design tokens, not per-screen decisions. Column widths, sidebar presence, header height — define these once. If the grid shifts between AI states, the shell is failing.
+
+### Design the empty state first
+The shell should look complete and usable before any AI output exists. Skeleton states, placeholder copy, default panels — these are the shell at its most visible and most tested. Design them before designing generated content.
+
+### Use containment, not full-page takeovers
+Generative output expands within its zone. It does not push, reflow, or overlay persistent shell elements. Use `overflow: scroll` or constrained containers — never dynamic height on the full layout.
+
+### Define a "generation in progress" shell state
+The shell needs a visual mode for active AI work. A loading indicator in the header, a subtle border change on the canvas zone, or a muted input placeholder — these tell the user: *the frame is stable, the stage is active.*
+
+---
+
+## Edge Cases to Design For
+
+| Scenario | Shell Behavior |
+|---|---|
+| Generation fails | Canvas shows fallback/error state; shell layers unchanged |
+| Generation is very long | Canvas scrolls internally; shell does not grow |
+| Generation produces unexpected content type | Shell containment prevents overflow into nav/controls |
+| User acts during generation | Layer 2 controls remain live; user can interrupt or redirect |
+| AI returns empty output | Canvas shows empty state; shell shows no absence of content |
+| Slow network / timeout | Shell shows generation indicator; Layer 2 remains interactive |
+
+---
+
+## Evergreen Application
+
+- The sidebar (nav), top header (branding + user), and input bar are Layer 1 and Layer 2 respectively — never touched by Evergreen Intelligence output
+- The chat/response area is the generative canvas — it scrolls internally and absorbs all AI states (thinking, streaming, error, empty)
+- The `.pencil` folder's UX rules should explicitly define which components belong to which layer, so AI-assisted code generation never accidentally generates into shell zones
+
+---
+
+## Related Laws
+
+- **Legible Generation** — the canvas's loading/streaming patterns
+- **Reversibility** — the canvas's undo/reset affordances
+- **Intentional Seams** — the visible boundary between shell and canvas
+- **Graceful Degradation** — what happens when the canvas fails
+
+---
+
+## Anti-Patterns
+
+- Navigation shifting position when AI output is long
+- Input bar disappearing or disabling during generation
+- Full-page loading states that hide the shell entirely
+- Modal overlays generated by AI that cover persistent controls
+- Header content changing based on AI-generated context
