@@ -538735,7 +538735,6 @@
           "type": "frame",
           "id": "PWyLj",
           "name": "tokensSection",
-          "width": "fill_container",
           "layout": "vertical",
           "gap": 20,
           "children": [
@@ -538744,6 +538743,8 @@
               "id": "dc9zl",
               "name": "clrLbl",
               "fill": "$chat.text.secondary",
+              "textGrowth": "fixed-width",
+              "width": "fit_content(238)",
               "content": "Colors (shared with Nav → chat-specific)",
               "fontFamily": "Heebo",
               "fontSize": 13,
@@ -538753,7 +538754,6 @@
               "type": "frame",
               "id": "DEGXu",
               "name": "colorRow1",
-              "width": "fill_container",
               "gap": 12,
               "children": [
                 {
@@ -538922,7 +538922,6 @@
               "type": "frame",
               "id": "smQZQ",
               "name": "colorRow2",
-              "width": "fill_container",
               "gap": 12,
               "children": [
                 {
@@ -539124,6 +539123,8 @@
               "id": "PDbvu",
               "name": "typoLbl",
               "fill": "$chat.text.secondary",
+              "textGrowth": "fixed-width",
+              "width": "fit_content(69)",
               "content": "Typography",
               "fontFamily": "Heebo",
               "fontSize": 13,
@@ -539133,7 +539134,6 @@
               "type": "frame",
               "id": "grI0l",
               "name": "typographyRow",
-              "width": "fill_container",
               "gap": 32,
               "children": [
                 {
@@ -539278,6 +539278,8 @@
               "id": "LckPS",
               "name": "spcLbl",
               "fill": "$chat.text.secondary",
+              "textGrowth": "fixed-width",
+              "width": "fit_content(97)",
               "content": "Spacing & Sizing",
               "fontFamily": "Heebo",
               "fontSize": 13,
@@ -539287,7 +539289,6 @@
               "type": "frame",
               "id": "SLX3P",
               "name": "spacingRef",
-              "width": "fill_container",
               "gap": 32,
               "children": [
                 {
@@ -539475,6 +539476,8 @@
               "id": "i5vx9",
               "name": "voiceLbl",
               "fill": "$chat.text.secondary",
+              "textGrowth": "fixed-width",
+              "width": "fit_content(144)",
               "content": "Voice Input (new tokens)",
               "fontFamily": "Heebo",
               "fontSize": 13,
@@ -539484,7 +539487,6 @@
               "type": "frame",
               "id": "aeDg1",
               "name": "voiceColorRow",
-              "width": "fill_container",
               "gap": 12,
               "children": [
                 {
@@ -540651,7 +540653,7 @@
                   "descendants": {
                     "oJE2e": {
                       "x": 16.01327931492265,
-                      "y": 12,
+                      "y": 12.000000000000002,
                       "rotation": -0.04226937605053072
                     }
                   }
@@ -541246,6 +541248,7 @@
                   "ref": "mViUs",
                   "width": "fill_container",
                   "name": "inst",
+                  "gap": 0,
                   "descendants": {
                     "g3LqFE": {
                       "x": 14.044097421894026,
@@ -541261,7 +541264,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 280,
-                  "content": "AI Thinking\naligned left · transparent bg · full width\nthree dot indicator · $chat.text.placeholder\nshown while LLM is processing",
+                  "content": "AI Thinking\naligned left · transparent bg · full width\nthree dot indicator · gradient status text\nshown while LLM is processing\ngradient shimmer animation left-to-right while thinking",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -541747,7 +541750,6 @@
           "type": "frame",
           "id": "BqnWF",
           "name": "sourceRow",
-          "width": "fill_container",
           "gap": 32,
           "children": [
             {
@@ -547173,6 +547175,100 @@
                       "width": "fill_container"
                     }
                   }
+                },
+                {
+                  "type": "frame",
+                  "id": "M7naLo",
+                  "name": "inst",
+                  "context": "Message / AI Thinking — Shown while the AI is generating a response. Animated dots or shimmer to indicate processing. Appears in the message thread below the user's last message.",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Fk25T",
+                      "name": "bubble",
+                      "fill": "$chat.bubble.ai.bg",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": [
+                        12,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ngZfy",
+                          "name": "dotsRow",
+                          "gap": 6,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "U1aleS",
+                              "name": "dot1",
+                              "fill": "$chat.text.placeholder",
+                              "width": 8,
+                              "height": 8
+                            },
+                            {
+                              "type": "ellipse",
+                              "id": "pf7AG",
+                              "name": "dot2",
+                              "rotation": -0.31582611960462426,
+                              "fill": "$chat.text.secondary",
+                              "width": 8,
+                              "height": 8
+                            },
+                            {
+                              "type": "ellipse",
+                              "id": "uU91o",
+                              "name": "dot3",
+                              "fill": "$chat.text.placeholder",
+                              "width": 8,
+                              "height": 8
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "XEqVs",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 90,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "$chat.text.placeholder",
+                            "position": 0
+                          },
+                          {
+                            "color": "$chat.text.secondary",
+                            "position": 1
+                          },
+                          {
+                            "color": "$chat.text.secondary",
+                            "position": 0.5
+                          },
+                          {
+                            "color": "$chat.text.placeholder",
+                            "position": 0.75
+                          }
+                        ]
+                      },
+                      "textGrowth": "fixed-width",
+                      "width": "fit_content(244)",
+                      "content": "Generating your retirement projection...",
+                      "fontFamily": "Heebo",
+                      "fontSize": 14
+                    }
+                  ]
                 }
               ]
             },
@@ -595935,7 +596031,7 @@
       "x": 0,
       "y": 0,
       "name": "Chat / Message / AI Thinking",
-      "context": "Message / AI Thinking — Shown while the AI is generating a response. Animated dots or shimmer to indicate processing. Appears in the message thread below the user's last message.",
+      "context": "Message / AI Thinking — Shown while the AI is generating a response. Animated dots or shimmer to indicate processing. Appears in the message thread below the user's last message. The gradient inside the dots and the text shimmers left-to-right as the LLM is thinking.",
       "reusable": true,
       "width": "fill_container(0)",
       "layout": "vertical",
@@ -595987,6 +596083,44 @@
               ]
             }
           ]
+        },
+        {
+          "type": "text",
+          "id": "rRBKo",
+          "name": "statusText",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 90,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#A8A49E",
+                "position": 0
+              },
+              {
+                "color": "#5E5954",
+                "position": 0.5
+              },
+              {
+                "color": "#A8A49E",
+                "position": 0.75
+              },
+              {
+                "color": "#5E5954",
+                "position": 1
+              }
+            ]
+          },
+          "textGrowth": "fixed-width",
+          "width": "fit_content(244)",
+          "content": "Generating your retirement projection...",
+          "fontFamily": "Heebo",
+          "fontSize": 14,
+          "fontWeight": "normal"
         }
       ]
     },
@@ -624080,6 +624214,4673 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "b6xQmL",
+      "x": 28298,
+      "y": 11700,
+      "name": "Atomic DS — Tokens",
+      "width": 1760,
+      "fill": "#FFFFFF",
+      "cornerRadius": 16,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "#E8E6E0"
+      },
+      "layout": "vertical",
+      "gap": 40,
+      "padding": 48,
+      "children": [
+        {
+          "type": "frame",
+          "id": "KXQJQ",
+          "name": "hdr",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "BZwsH",
+              "name": "title",
+              "fill": "#2D2926",
+              "content": "Design Tokens",
+              "fontFamily": "Heebo",
+              "fontSize": 28,
+              "fontWeight": "700",
+              "letterSpacing": -0.5
+            },
+            {
+              "type": "text",
+              "id": "bgaEl",
+              "name": "sub",
+              "fill": "#8A8680",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Tokens are the raw design values — colors, fonts, spacing, radii, icons — that every component references. They are not components themselves. Changing a token here cascades everywhere it’s used, which is why they’re the foundation layer.",
+              "lineHeight": 1.5,
+              "fontFamily": "Heebo",
+              "fontSize": 14
+            },
+            {
+              "type": "frame",
+              "id": "JaAIB",
+              "name": "tags",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "FCeob",
+                  "name": "t1",
+                  "fill": "#EBF0FE",
+                  "cornerRadius": 9999,
+                  "padding": [
+                    3,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "waNm2",
+                      "name": "t1t",
+                      "fill": "#3A6AF8",
+                      "content": "Foundation layer",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "TSB7n",
+                  "name": "t2",
+                  "fill": "#E8E6E0",
+                  "cornerRadius": 9999,
+                  "padding": [
+                    3,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "l8rjK",
+                      "name": "t2t",
+                      "fill": "#5E5954",
+                      "content": "FE-1281",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "N7WSz",
+          "name": "div",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "oTBy4",
+          "name": "navlbl",
+          "fill": "#2D2926",
+          "content": "Navigation Panel Tokens",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "XVFce",
+          "name": "navan",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Colors, typography, and spacing tokens used by the sidebar navigation. These define the visual language of the left panel — backgrounds, text hierarchy, hover states, and shadow treatment.",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "o2MKnj",
+          "name": "navtok",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "children": [
+            {
+              "type": "text",
+              "id": "U9wgr",
+              "name": "clrLbl",
+              "fill": "#5E5954",
+              "content": "Colors",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "v40F1r",
+              "name": "colorRow1",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n9FMD",
+                  "name": "s1",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "iYQQa",
+                      "fill": "$nav.bg",
+                      "width": 32,
+                      "height": 32,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#DCD8CB"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "lWcVt",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.bg\n#F7F5F0",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "oR1au",
+                  "name": "s2",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "YCpkP",
+                      "fill": "$nav.text.primary",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "Y1K7db",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.text.primary\n#2D2926",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "QLwM3",
+                  "name": "s3",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "lRho5",
+                      "fill": "$nav.text.secondary",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "D2Hkt",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.text.secondary\n#5E5954",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "o1aDuH",
+                  "name": "s4",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "STFaT",
+                      "fill": "$nav.text.disabled",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "tIoOi",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.text.disabled\n#B5B1AB",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gik1H",
+                  "name": "s5",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "mJYWE",
+                      "fill": "$nav.icon",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "JSJSp",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.icon\n#8A8680",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ikvd4",
+                  "name": "s6",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "jHXrm",
+                      "fill": "$nav.divider",
+                      "width": 32,
+                      "height": 32,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#DCD8CB"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "wychf",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.divider\n#E8E6E0",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Spdxp",
+              "name": "colorRow2",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Pmsj1",
+                  "name": "s7",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "iNt2v",
+                      "fill": "$nav.active.bg",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "sxy8o",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.active.bg\n#DCD8CB",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PuMRQ",
+                  "name": "s8",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "bH4aA",
+                      "fill": "$nav.border",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "XM8BD",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.border\n#DCD8CB",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "kRO6x",
+                  "name": "s9",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "BBUV3",
+                      "fill": "$nav.hover.bg",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "ekG6J",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.hover.bg\n#EDEAE3",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "smyI8",
+                  "name": "s10",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "WrUSe",
+                      "fill": "$nav.pressed.bg",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "RRUAK",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.pressed.bg\n#E3DFD6",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yCM0U",
+                  "name": "s11",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "jMyIS",
+                      "fill": "$nav.hover.text",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "u7x9W",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.hover.text\n#2D2926",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "vfO4q",
+                  "name": "s12",
+                  "width": 110,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "j2ahe",
+                      "fill": "$nav.shadow",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "F4sYIb",
+                      "fill": "#5E5954",
+                      "textGrowth": "fixed-width",
+                      "width": 110,
+                      "content": "nav.shadow\n#2D292628",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "BXJRz",
+              "name": "typoLbl",
+              "fill": "#5E5954",
+              "content": "Typography",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "bZYdz",
+              "name": "typographyRow",
+              "width": "fill_container",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fWxaV",
+                  "name": "t1",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qWa1l",
+                      "fill": "#2D2926",
+                      "content": "Nav Item",
+                      "fontFamily": "Heebo",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "d3m3A",
+                      "fill": "#8A8680",
+                      "content": "Geist Regular 13 · nav items, links",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "G9UDV",
+                  "name": "t2",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "V8QXi",
+                      "fill": "#2D2926",
+                      "content": "Active Item",
+                      "fontFamily": "Heebo",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QwSvM",
+                      "fill": "#8A8680",
+                      "content": "Geist Semibold 13 · selected state",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "TFmaH",
+                  "name": "t3",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VHP94",
+                      "fill": "#5E5954",
+                      "content": "SECTION HEADER",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 1.2
+                    },
+                    {
+                      "type": "text",
+                      "id": "cqRk6",
+                      "fill": "#8A8680",
+                      "content": "Geist Semibold 11 · 1.2 tracking · uppercase",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IiXf0",
+                  "name": "t4",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "D9sBx",
+                      "fill": "#5E5954",
+                      "content": "All Views",
+                      "fontFamily": "Heebo",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "hE5xX",
+                      "fill": "#8A8680",
+                      "content": "Geist Medium 12 · action links",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "cRbQx",
+                  "name": "t5",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "e5GLti",
+                      "fill": "#B5B1AB",
+                      "content": "Coming Soon",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "oRfUw",
+                      "fill": "#8A8680",
+                      "content": "Geist Medium 9 · chip labels",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "JykP6",
+                  "name": "t6",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "c18H4",
+                      "fill": "#2D2926",
+                      "content": "evergreen.ai",
+                      "fontFamily": "Manrope",
+                      "fontSize": 20,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "UuLQ5",
+                      "fill": "#8A8680",
+                      "content": "Manrope 20 + Spectral Italic 19 · logo",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "UxO5T",
+              "name": "spcLbl",
+              "fill": "#5E5954",
+              "content": "Spacing & Sizing",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "nRnK6",
+              "name": "spacingRef",
+              "width": "fill_container",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "sOMs9",
+                  "name": "sp1",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SOoaX",
+                      "fill": "#2D2926",
+                      "content": "Nav Panel",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "XYf5k",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "240 × fill · radius 12 · padding 24h / 20v\nshadow: blur 28, spread 2, y-offset 2",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "UFES7",
+                  "name": "sp2",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IiDdT",
+                      "fill": "#2D2926",
+                      "content": "Nav Items",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "roUl5",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 200,
+                      "content": "padding: 7t 10r 7b 24l · radius 4\nsection gap: 2 · group gap: 12",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "x8i5MO",
+                  "name": "sp3",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KabI9",
+                      "fill": "#2D2926",
+                      "content": "Section Header",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "L6zCOv",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 200,
+                      "content": "padding: 12t 10r 4b 6l · icon gap: 6\nchevron: 12 × 12",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sLYjI",
+                  "name": "sp4",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "T60gL",
+                      "fill": "#2D2926",
+                      "content": "User Area",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "k3roOU",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "padding: 16t 10r 4b 10l · avatar gap: 10\navatar: 32 × 32 pill · border-top: 0.5",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "V0tIn",
+                  "name": "sp5",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kwCZ8",
+                      "fill": "#2D2926",
+                      "content": "Atoms",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vQk3H",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "toggle btn: 28 × 28 · radius 6 · icon 16\nchip: pill · padding 2v 6h · stroke 1\ndivider: h1 · fade gradient: h36",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "s2PHQ",
+          "name": "cdiv",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "NdmAv",
+          "name": "chatlbl",
+          "fill": "#2D2926",
+          "content": "Chat Panel Tokens",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "n19F7",
+          "name": "chatan",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Colors, typography, and spacing tokens for the chat surface. Covers send button fills, voice recording accent, message bubble backgrounds, chip borders, input field states, and placeholder text.",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "QABt0",
+          "name": "chattok",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "children": [
+            {
+              "type": "text",
+              "id": "C9kGIq",
+              "name": "clrLbl",
+              "fill": "$chat.text.secondary",
+              "textGrowth": "fixed-width",
+              "width": "fit_content(238)",
+              "content": "Colors (shared with Nav → chat-specific)",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "QyJhI",
+              "name": "colorRow1",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "BlJl3",
+                  "name": "swatchBg",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "B77KHR",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.bg",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "tFm4E",
+                      "fill": "#8A8680",
+                      "content": "bg",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CD5Ud",
+                  "name": "swatchBorder",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "UW8cb",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.border",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "lbFHe",
+                      "fill": "#8A8680",
+                      "content": "border",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "X7B9H",
+                  "name": "swatchDivider",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "pssOS",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.divider",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "cxUk8",
+                      "fill": "#8A8680",
+                      "content": "divider",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "N0bZTI",
+                  "name": "swatchTextPri",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "hdOk9",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.text.primary",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "y6g8w",
+                      "fill": "#8A8680",
+                      "content": "text.primary",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ZIKvg",
+                  "name": "swatchTextSec",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Y9S15X",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.text.secondary",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "B4GF4",
+                      "fill": "#8A8680",
+                      "content": "text.secondary",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JDskl",
+              "name": "colorRow2",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "x13fdf",
+                  "name": "swatchPlaceholder",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "j6dTjE",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.text.placeholder",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "HP7yj",
+                      "fill": "#8A8680",
+                      "content": "placeholder",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CBiwk",
+                  "name": "swatchInputBg",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "amVUW",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.input.bg",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "BV0tx",
+                      "fill": "#8A8680",
+                      "content": "input.bg",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Wyq0K",
+                  "name": "swatchSendBg",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "jV5bL",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.send.bg",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "MCPBX",
+                      "fill": "#8A8680",
+                      "content": "send.bg",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LEQz9",
+                  "name": "swatchBubbleUser",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "IFSa6",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.bubble.user.bg",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$chat.bubble.user.border"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "tJuep",
+                      "fill": "#8A8680",
+                      "content": "bubble.user",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "b1CQX",
+                  "name": "swatchChip",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "j7Bbou",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.chip.bg",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$chat.chip.border"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "baehx",
+                      "fill": "#8A8680",
+                      "content": "chip",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bYvtA",
+                  "name": "swatchShadow",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "F2RXsf",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$chat.shadow",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "da8EN",
+                      "fill": "#8A8680",
+                      "content": "shadow",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "I3pz9j",
+              "name": "typoLbl",
+              "fill": "$chat.text.secondary",
+              "textGrowth": "fixed-width",
+              "width": "fit_content(69)",
+              "content": "Typography",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "q8Scuh",
+              "name": "typographyRow",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "v4Uwea",
+                  "name": "t1",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PNruY",
+                      "fill": "$chat.text.primary",
+                      "content": "Chat Title",
+                      "fontFamily": "Noto Serif",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "c1gUOA",
+                      "fill": "#8A8680",
+                      "content": "Noto Serif · 16 · Regular",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "QMf5J",
+                  "name": "t2",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DEaOM",
+                      "fill": "$chat.text.primary",
+                      "content": "Ask me any financial question...",
+                      "fontFamily": "Noto Serif",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FYKdt",
+                      "fill": "#8A8680",
+                      "content": "Noto Serif · 20 · Regular (greeting)",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tQYyS",
+                  "name": "t3",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DOfGG",
+                      "fill": "$chat.text.primary",
+                      "content": "Message body text",
+                      "fontFamily": "Heebo",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LnRix",
+                      "fill": "#8A8680",
+                      "content": "Geist · 14 · Regular (messages)",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "y9aM7l",
+                  "name": "t4",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "K6WbnZ",
+                      "fill": "$chat.text.secondary",
+                      "content": "Advisor",
+                      "fontFamily": "Heebo",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "l4GmOE",
+                      "fill": "#8A8680",
+                      "content": "Geist · 12 · Medium (advisor btn)",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "epA91",
+                  "name": "t5",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "v6LeA",
+                      "fill": "$chat.text.secondary",
+                      "content": "statement.pdf",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "arbzu",
+                      "fill": "#8A8680",
+                      "content": "Geist · 11 · Regular (attachments)",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "sDxDA",
+              "name": "spcLbl",
+              "fill": "$chat.text.secondary",
+              "textGrowth": "fixed-width",
+              "width": "fit_content(97)",
+              "content": "Spacing & Sizing",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "xtRMU",
+              "name": "spacingRef",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Fpg3W",
+                  "name": "s1",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "KL3kU",
+                      "width": 48,
+                      "height": 24,
+                      "cornerRadius": "$chat.radius",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$chat.border"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "EbVfj",
+                      "fill": "#8A8680",
+                      "content": "radius: 12",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mnjHA",
+                  "name": "s2",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ppsxJ",
+                      "width": 48,
+                      "height": 24,
+                      "fill": "$chat.bubble.user.bg",
+                      "cornerRadius": "$chat.bubble.radius",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$chat.bubble.user.border"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "b68B9n",
+                      "fill": "#8A8680",
+                      "content": "bubble: 12",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "A09Mxu",
+                  "name": "s3",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "eRtqt",
+                      "width": 48,
+                      "height": 24,
+                      "fill": "$chat.chip.bg",
+                      "cornerRadius": "$chat.chip.radius",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$chat.chip.border"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "VhHsT",
+                      "fill": "#8A8680",
+                      "content": "chip: 24",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XC0wQ",
+                  "name": "s4",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "TiO4V",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "$chat.send.bg",
+                      "cornerRadius": 9999
+                    },
+                    {
+                      "type": "text",
+                      "id": "UyyxU",
+                      "fill": "#8A8680",
+                      "content": "send: 34",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jKhHn",
+                  "name": "s5",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JhqjW",
+                      "fill": "$chat.text.primary",
+                      "content": "360",
+                      "fontFamily": "Heebo",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "J2fw0",
+                      "fill": "#8A8680",
+                      "content": "panel width",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "K70w3",
+                  "name": "s6",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "FVINb",
+                      "fill": "$chat.text.primary",
+                      "content": "14",
+                      "fontFamily": "Heebo",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EWNdU",
+                      "fill": "#8A8680",
+                      "content": "msg gap",
+                      "fontFamily": "Heebo",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "oY21y",
+              "name": "voiceLbl",
+              "fill": "$chat.text.secondary",
+              "textGrowth": "fixed-width",
+              "width": "fit_content(144)",
+              "content": "Voice Input (new tokens)",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "K2qNm",
+              "name": "voiceColorRow",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "cnI5g",
+                  "name": "swatchVoiceActive",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "H4IvEB",
+                      "width": 48,
+                      "height": 32,
+                      "fill": "$chat.voice.active.bg",
+                      "cornerRadius": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "K4xBE",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 80,
+                      "content": "voice.active.bg\n#3A6AF8",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "i11RKT",
+                  "name": "swatchVoiceIcon",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "KD2SH",
+                      "width": 48,
+                      "height": 32,
+                      "fill": "$chat.voice.active.icon",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "W572wV",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 80,
+                      "content": "voice.active.icon\n#FFFFFF",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "g0S2y0",
+                  "name": "swatchWaveform",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "SiSDL",
+                      "width": 48,
+                      "height": 32,
+                      "fill": "$chat.voice.waveform",
+                      "cornerRadius": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "eiziK",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 80,
+                      "content": "voice.waveform\n#7094FB",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iwLnO",
+                  "name": "swatchTimer",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "HUA12",
+                      "width": 48,
+                      "height": 32,
+                      "fill": "$chat.voice.timer",
+                      "cornerRadius": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "rdvfa",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 80,
+                      "content": "voice.timer\n#5E5954",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "h5aTnW",
+                  "name": "swatchPulse",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "rht3V",
+                      "width": 48,
+                      "height": 32,
+                      "fill": "$chat.voice.pulse",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E8E6E0"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "R4jDu",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 80,
+                      "content": "voice.pulse\n#3A6AF828",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 9,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "kf2Ju",
+      "x": 30200,
+      "y": 11700,
+      "name": "Atomic DS — Wave 1 / P1 Atoms",
+      "width": 1760,
+      "fill": "#FFFFFF",
+      "cornerRadius": 16,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "#E8E6E0"
+      },
+      "layout": "vertical",
+      "gap": 40,
+      "padding": 48,
+      "children": [
+        {
+          "type": "frame",
+          "id": "nxj7u",
+          "name": "hdr",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "y9rGX",
+              "name": "title",
+              "fill": "#2D2926",
+              "content": "Wave 1 — P1 Atoms",
+              "fontFamily": "Heebo",
+              "fontSize": 28,
+              "fontWeight": "700",
+              "letterSpacing": -0.5
+            },
+            {
+              "type": "text",
+              "id": "mOYKH",
+              "name": "sub",
+              "fill": "#8A8680",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Atoms are the smallest, indivisible UI elements. A button is an atom — it has states (hover, pressed, disabled) but cannot be decomposed into smaller functional pieces. Every molecule and organism is assembled from these building blocks.",
+              "lineHeight": 1.5,
+              "fontFamily": "Heebo",
+              "fontSize": 14
+            },
+            {
+              "type": "frame",
+              "id": "OPI6i",
+              "name": "tags",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "SusPI",
+                  "name": "tw",
+                  "fill": "#EBF0FE",
+                  "cornerRadius": 9999,
+                  "padding": [
+                    3,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gmNBN",
+                      "name": "twt",
+                      "fill": "#3A6AF8",
+                      "content": "Wave 1",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gbxsC",
+                  "name": "tf",
+                  "fill": "#E8E6E0",
+                  "cornerRadius": 9999,
+                  "padding": [
+                    3,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "C7H5CE",
+                      "name": "tft",
+                      "fill": "#5E5954",
+                      "content": "FE-1281",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sdyVR",
+          "name": "div",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "jgaKN",
+          "name": "navlbl",
+          "fill": "#2D2926",
+          "content": "Navigation Atoms",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "v263VR",
+          "name": "navan",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Sidebar building blocks: logo lockup, toggle buttons (with hover/pressed states), action chips, and divider lines. These are the smallest pieces that compose the nav sidebar.",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "YZ6Yv",
+          "name": "navatoms",
+          "gap": 32,
+          "children": [
+            {
+              "type": "frame",
+              "id": "hRoiE",
+              "name": "cardLogo",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "UoHXG",
+                  "type": "ref",
+                  "ref": "kVJkw"
+                },
+                {
+                  "type": "text",
+                  "id": "E0IRRm",
+                  "name": "lbl1",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 130,
+                  "content": "Logo\nManrope 20 + Spectral Italic 19",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "HW0X4",
+              "name": "cardToggle",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "FSpAr",
+                  "type": "ref",
+                  "ref": "A5gwBX"
+                },
+                {
+                  "type": "text",
+                  "id": "swJrI",
+                  "name": "lbl2",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 180,
+                  "content": "Toggle Button\n28×28 · radius 6 · icon 16×16",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "oy13f",
+              "name": "cardChip",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "o5BqR",
+                  "type": "ref",
+                  "ref": "Q5swg"
+                },
+                {
+                  "type": "text",
+                  "id": "VcRrO",
+                  "name": "lbl3",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "Chip / Coming Soon\npill · pad 2/6 · Geist 9 Medium · stroke 1",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "tPZW1",
+              "name": "cardDivider",
+              "width": 200,
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "H824x",
+                  "type": "ref",
+                  "ref": "K3l0NS"
+                },
+                {
+                  "type": "text",
+                  "id": "fj6k6",
+                  "name": "lbl4",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "Divider\nfill_container × 1 · $nav.divider",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "p6MxV",
+              "name": "cardToggleHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "GqeaK",
+                  "type": "ref",
+                  "ref": "X56S7Q"
+                },
+                {
+                  "type": "text",
+                  "id": "FsiPP",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 130,
+                  "content": "Toggle Hover\nfill: $nav.hover.bg",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "i87mu",
+              "name": "cardTogglePressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "sCYDn",
+                  "type": "ref",
+                  "ref": "L2TYG"
+                },
+                {
+                  "type": "text",
+                  "id": "J75uM",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 130,
+                  "content": "Toggle Pressed\nfill: $nav.pressed.bg",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sH78g",
+          "name": "cdiv",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "EEehE",
+          "name": "chatlbl",
+          "fill": "#2D2926",
+          "content": "Chat Buttons (Touch Targets)",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "gPB36",
+          "name": "chatan",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "All interactive button atoms for the chat surface: close, send, stop, new chat, voice input, and voice cancel. Each shown with default, hover, and pressed states. 34×34px pill shape for circular buttons, 28×28px for close.",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "T41SJ",
+          "name": "chatatoms",
+          "layout": "vertical",
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "YkhfZ",
+              "name": "grpClose",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "GxZxz",
+                  "name": "cardClose",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "F2g6aX",
+                      "fill": "#8A8680",
+                      "content": "Close Button / Default",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "cGRpD",
+                      "type": "ref",
+                      "ref": "o4iVPb"
+                    },
+                    {
+                      "type": "text",
+                      "id": "NEV0x",
+                      "name": "lbl",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 160,
+                      "content": "Close Button\n28×28 · radius 6 · lucide x · $chat.icon",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "y9Pbp",
+                  "name": "cardCloseHover",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DmcLM",
+                      "fill": "#8A8680",
+                      "content": "Close Button / Hover",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "AZ8r3",
+                      "type": "ref",
+                      "ref": "f3uqW"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CbGWG",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 200,
+                      "content": "28×28 · r6 · $chat.close.hover.bg\nlucide x · $chat.icon",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AlNVi",
+                  "name": "cardClosePressed",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "trIaS",
+                      "fill": "#8A8680",
+                      "content": "Close Button / Pressed",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "TMomV",
+                      "type": "ref",
+                      "ref": "F8w3y3"
+                    },
+                    {
+                      "type": "text",
+                      "id": "twwe3",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 200,
+                      "content": "28×28 · r6 · $chat.close.pressed.bg\nlucide x · $chat.icon",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "W10ZL",
+              "name": "grpSend",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "hI70V",
+                  "name": "cardSend",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "C5WEy",
+                      "fill": "#8A8680",
+                      "content": "Send Button / Default",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "e1iYl0",
+                      "type": "ref",
+                      "ref": "BlHbw"
+                    },
+                    {
+                      "type": "text",
+                      "id": "I4yNL",
+                      "name": "lbl",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 200,
+                      "content": "Send Button\n34×34 · pill · $chat.send.bg\nphosphor arrow-up-bold · $chat.send.icon",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fHyRi",
+                  "name": "cardSendHover",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Zl6DM",
+                      "fill": "#8A8680",
+                      "content": "Send Button / Hover",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "akA3m",
+                      "type": "ref",
+                      "ref": "I5oHzJ"
+                    },
+                    {
+                      "type": "text",
+                      "id": "PHl82",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "34×34 · pill · $chat.send.bg.hover\nphosphor arrow-up-bold · white",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "EzBez",
+                  "name": "cardSendPressed",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hFxPu",
+                      "fill": "#8A8680",
+                      "content": "Send Button / Pressed",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "IPNvc",
+                      "type": "ref",
+                      "ref": "VNNsD"
+                    },
+                    {
+                      "type": "text",
+                      "id": "moCZK",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "34×34 · pill · $chat.send.bg.pressed\nphosphor arrow-up-bold · white",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ZB3JE",
+                  "name": "cardSendDisabled",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kTzRU",
+                      "fill": "#8A8680",
+                      "content": "Send Button / Disabled",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "mg10E",
+                      "type": "ref",
+                      "ref": "JxTJs"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QGVbG",
+                      "name": "lbl",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 200,
+                      "content": "Send / Disabled\n34×34 · pill · $chat.send.bg.disabled\nphosphor arrow-up-bold · white",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ppIkU",
+              "name": "grpStop",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "FzKyw",
+                  "name": "cardStop",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "X6cbA",
+                      "fill": "#8A8680",
+                      "content": "Stop Button / Default",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "wqrf7",
+                      "type": "ref",
+                      "ref": "QLjZi"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FKbPg",
+                      "name": "lbl",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 200,
+                      "content": "Stop Button\n34×34 · pill · $chat.send.bg\nphosphor stop-bold · $chat.send.icon",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "O0bLt",
+                  "name": "cardStopHover",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Yf6IF",
+                      "fill": "#8A8680",
+                      "content": "Stop Button / Hover",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "tsqLq",
+                      "type": "ref",
+                      "ref": "I4Aogq"
+                    },
+                    {
+                      "type": "text",
+                      "id": "saGOZ",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "34×34 · pill · $chat.send.bg.hover\nphosphor stop-bold · white",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ydBv1",
+                  "name": "cardStopPressed",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vHt5m",
+                      "fill": "#8A8680",
+                      "content": "Stop Button / Pressed",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "a9eO6n",
+                      "type": "ref",
+                      "ref": "M1675P"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ReE6z",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "34×34 · pill · $chat.send.bg.pressed\nphosphor stop-bold · white",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "FWtmv",
+              "name": "grpNewChat",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "UXaW0",
+                  "name": "cardNewChat",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "LrlVc",
+                      "fill": "#8A8680",
+                      "content": "New Chat Button / Default",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "Q8wB1",
+                      "type": "ref",
+                      "ref": "jOKwk"
+                    },
+                    {
+                      "type": "text",
+                      "id": "cgARw",
+                      "name": "lbl",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "New Chat Button\npill · Geist 12 Medium · $chat.text.secondary\ntransparent · border $chat.chip.border · h34 · pad 0/14",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wHRpU",
+                  "name": "cardNewChatHover",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nx8i0",
+                      "fill": "#8A8680",
+                      "content": "New Chat Button / Hover",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "n17mY",
+                      "type": "ref",
+                      "ref": "xC6Sc"
+                    },
+                    {
+                      "type": "text",
+                      "id": "zLWBj",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "h34 · pill · $chat.chip.hover.bg\nborder $chat.chip.border\nGeist 12 medium · $chat.text.secondary",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "GRnwP",
+                  "name": "cardNewChatPressed",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cBOCY",
+                      "fill": "#8A8680",
+                      "content": "New Chat Button / Pressed",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "Zt8eK",
+                      "type": "ref",
+                      "ref": "cKUEa"
+                    },
+                    {
+                      "type": "text",
+                      "id": "p2TS9",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "h34 · pill · $chat.chip.pressed.bg\nborder $chat.chip.border\nGeist 12 medium · $chat.text.secondary",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KWFQH",
+              "name": "grpVoice",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "boxjP",
+                  "name": "cardVoice",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "LY4rE",
+                      "fill": "#8A8680",
+                      "content": "Voice Button / Default",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "Nuy2d",
+                      "type": "ref",
+                      "ref": "SUCQH"
+                    },
+                    {
+                      "type": "text",
+                      "id": "v8XvIJ",
+                      "name": "lbl",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Voice Button\n34×34 · pill · transparent\nphosphor microphone · $chat.icon · border $chat.chip.border",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Puq9J",
+                  "name": "cardVoiceHover",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "w0opSx",
+                      "fill": "#8A8680",
+                      "content": "Voice Button / Hover",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "KjVAC",
+                      "type": "ref",
+                      "ref": "c64e2B"
+                    },
+                    {
+                      "type": "text",
+                      "id": "HKzjD",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Voice Button Hover\n34×34 · pill · $chat.chip.hover.bg\nphosphor microphone · $chat.icon\nborder $chat.chip.border",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "B3KRz",
+                  "name": "cardVoicePressed",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gnVh7",
+                      "fill": "#8A8680",
+                      "content": "Voice Button / Pressed",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "pca3L",
+                      "type": "ref",
+                      "ref": "B6eXL3"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CvqK5",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "34×34 · pill · $chat.chip.pressed.bg\nphosphor microphone · $chat.icon\nborder $chat.chip.border",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "X0IQpE",
+                  "name": "cardVoiceActive",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "flQTU",
+                      "fill": "#8A8680",
+                      "content": "Voice Button / Active",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "JwMPk",
+                      "type": "ref",
+                      "ref": "Q3BNN0"
+                    },
+                    {
+                      "type": "text",
+                      "id": "O0CGf",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Voice Button Active (Recording)\n34×34 · pill · $chat.voice.active.bg\nphosphor microphone · white\nno border (filled state)",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "a5jGRW",
+              "name": "grpVoiceCancel",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "su2KI",
+                  "name": "cardVoiceCancel",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Rzn56",
+                      "fill": "#8A8680",
+                      "content": "Voice Cancel / Default",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "lqALJ",
+                      "type": "ref",
+                      "ref": "c8b4MZ"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N8bTQZ",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Voice Cancel Button\n34×34 · pill · transparent\nphosphor x · $chat.voice.cancel.icon\nborder $chat.chip.border",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bAQXh",
+                  "name": "cardVoiceCancelHover",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n1YBg0",
+                      "fill": "#8A8680",
+                      "content": "Voice Cancel / Hover",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "KCYFs",
+                      "type": "ref",
+                      "ref": "ZBKrL"
+                    },
+                    {
+                      "type": "text",
+                      "id": "mHFdU",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "34×34 · pill · $chat.chip.hover.bg\nphosphor x · $chat.voice.cancel.icon\nborder $chat.chip.border",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nNWub",
+                  "name": "cardVoiceCancelPressed",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kioqG",
+                      "fill": "#8A8680",
+                      "content": "Voice Cancel / Pressed",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "id": "BBjor",
+                      "type": "ref",
+                      "ref": "FSaq0"
+                    },
+                    {
+                      "type": "text",
+                      "id": "GKQ72",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "34×34 · pill · $chat.chip.pressed.bg\nphosphor x · $chat.voice.cancel.icon\nborder $chat.chip.border",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Corw9",
+          "name": "cdiv2",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "iJf0E",
+          "name": "chiplbl",
+          "fill": "#2D2926",
+          "content": "Prompt Chips",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "DlyjD",
+          "name": "chipan",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Pill-shaped suggestion chips shown below the chat input. Tappable quick-action shortcuts. Three states: default (transparent with border), hover ($chat.chip.hover.bg), pressed ($chat.chip.pressed.bg).",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "wIBO2",
+          "name": "chips",
+          "gap": 32,
+          "children": [
+            {
+              "type": "frame",
+              "id": "yGGlJ",
+              "name": "cardChip",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Itf1C",
+                  "fill": "#8A8680",
+                  "content": "Prompt Chip / Default",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "SBxfS",
+                  "type": "ref",
+                  "ref": "L5bc2",
+                  "name": "Chat / Suggestion Chip / Default",
+                  "descendants": {
+                    "oJE2e": {
+                      "x": 16.01327931492265,
+                      "y": 12,
+                      "rotation": -0.04226937605053072
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "W12is3",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 260,
+                  "content": "Prompt Chip / Default\nradius 24 · $chat.chip.bg · border $chat.chip.border\nGeist 14 center · $chat.text.secondary · pad 12/16\ncursor: pointer · single chip visible at a time\ntext rotation: slide-up + fade · 300ms ease-out\nauto-cycles every 3s · pauses on hover",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "oaY9s",
+              "name": "cardChipHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FWcyS",
+                  "fill": "#8A8680",
+                  "content": "Prompt Chip / Hover",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "Ra3hJ",
+                  "type": "ref",
+                  "ref": "OEGjn",
+                  "name": "Chat / Suggestion Chip / Hover"
+                },
+                {
+                  "type": "text",
+                  "id": "vfgc4",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 260,
+                  "content": "Prompt Chip / Hover\nradius 24 · $chat.chip.hover.bg (#EDEAE3)\nGeist 14 center · $chat.text.primary · pad 12/16\ncursor: pointer · transition: bg 150ms ease",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aZGzm",
+              "name": "cardChipPressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "r4InDZ",
+                  "fill": "#8A8680",
+                  "content": "Prompt Chip / Pressed",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "W24C2m",
+                  "type": "ref",
+                  "ref": "s7g9un",
+                  "name": "Chat / Suggestion Chip / Pressed"
+                },
+                {
+                  "type": "text",
+                  "id": "ww5dx",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 260,
+                  "content": "Prompt Chip / Pressed\nradius 24 · $chat.chip.pressed.bg (#E3DFD6)\nGeist 14 center · $chat.text.primary · pad 12/16\nsends current question to chat input",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "P4O6aU",
+          "name": "cdiv3",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "cY7te",
+          "name": "deflbl",
+          "fill": "#2D2926",
+          "content": "Component Definitions (Reusable)",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "QI2Lg",
+          "name": "defan",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Master component definitions for all chat atoms. These are the reusable sources that instances reference. Includes all button states, input field states, and their context annotations.",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "m6akT",
+          "name": "defs",
+          "gap": 32,
+          "children": [
+            {
+              "id": "mK3q2",
+              "type": "ref",
+              "ref": "c64e2B"
+            },
+            {
+              "id": "x3GbWZ",
+              "type": "ref",
+              "ref": "Q3BNN0"
+            },
+            {
+              "id": "uNoPy",
+              "type": "ref",
+              "ref": "c8b4MZ"
+            },
+            {
+              "id": "M6Iek9",
+              "type": "ref",
+              "ref": "p13Ml"
+            },
+            {
+              "id": "wqiNl",
+              "type": "ref",
+              "ref": "oGU44"
+            },
+            {
+              "id": "Q8iug",
+              "type": "ref",
+              "ref": "f3uqW"
+            },
+            {
+              "id": "QH4wQ",
+              "type": "ref",
+              "ref": "F8w3y3"
+            },
+            {
+              "id": "A87gp",
+              "type": "ref",
+              "ref": "I5oHzJ"
+            },
+            {
+              "id": "KdcG1",
+              "type": "ref",
+              "ref": "VNNsD"
+            },
+            {
+              "id": "O8zezz",
+              "type": "ref",
+              "ref": "I4Aogq"
+            },
+            {
+              "id": "mIdn9",
+              "type": "ref",
+              "ref": "M1675P"
+            },
+            {
+              "id": "r6l8v",
+              "type": "ref",
+              "ref": "xC6Sc"
+            },
+            {
+              "id": "Q4HMF",
+              "type": "ref",
+              "ref": "cKUEa"
+            },
+            {
+              "id": "XN2nc",
+              "type": "ref",
+              "ref": "B6eXL3"
+            },
+            {
+              "id": "nfN3p",
+              "type": "ref",
+              "ref": "ZBKrL"
+            },
+            {
+              "id": "sqQxf",
+              "type": "ref",
+              "ref": "FSaq0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "pnntT",
+      "x": 32100,
+      "y": 11700,
+      "name": "Atomic DS — Wave 2 / P2 Molecules",
+      "width": 1760,
+      "fill": "#FFFFFF",
+      "cornerRadius": 16,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "#E8E6E0"
+      },
+      "layout": "vertical",
+      "gap": 40,
+      "padding": 48,
+      "children": [
+        {
+          "type": "frame",
+          "id": "kvpW5",
+          "name": "hdr",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "N2HLau",
+              "name": "title",
+              "fill": "#2D2926",
+              "content": "Wave 2 — P2 Molecules",
+              "fontFamily": "Heebo",
+              "fontSize": 28,
+              "fontWeight": "700",
+              "letterSpacing": -0.5
+            },
+            {
+              "type": "text",
+              "id": "SZwTd",
+              "name": "sub",
+              "fill": "#8A8680",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Molecules combine two or more atoms into a functional unit. A nav item is a molecule: it composes an icon atom + a label atom + hover/pressed states into one interactive row. They handle a single user task.",
+              "lineHeight": 1.5,
+              "fontFamily": "Heebo",
+              "fontSize": 14
+            },
+            {
+              "type": "frame",
+              "id": "u3os1",
+              "name": "tags",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "XSuGL",
+                  "name": "tw",
+                  "fill": "#EBF0FE",
+                  "cornerRadius": 9999,
+                  "padding": [
+                    3,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lAeyS",
+                      "name": "twt",
+                      "fill": "#3A6AF8",
+                      "content": "Wave 2",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Trra8",
+                  "name": "tf",
+                  "fill": "#E8E6E0",
+                  "cornerRadius": 9999,
+                  "padding": [
+                    3,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HKjss",
+                      "name": "tft",
+                      "fill": "#5E5954",
+                      "content": "FE-1281",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pnGlF",
+                  "name": "td",
+                  "fill": "#FFF8E1",
+                  "cornerRadius": 9999,
+                  "padding": [
+                    3,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uJfoG",
+                      "name": "tdt",
+                      "fill": "#C25700",
+                      "content": "Depends on Wave 1 atoms",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "v9Z0ie",
+          "name": "div",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "rfXhf",
+          "name": "navlbl",
+          "fill": "#2D2926",
+          "content": "Nav Items",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "ECEEF",
+          "name": "navan",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Interactive sidebar rows composed from icon + label + hover/active state atoms. Includes standard items, pinned conversations with pin icon, and all interaction states (hover, pressed).",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "jn8U9",
+          "name": "navitems",
+          "gap": 32,
+          "children": [
+            {
+              "type": "frame",
+              "id": "eAwg9",
+              "name": "card1",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "qnI1R",
+                  "type": "ref",
+                  "ref": "t3tlC"
+                },
+                {
+                  "type": "text",
+                  "id": "hib91",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "Default\nGeist 13 · $nav.text.secondary · pad 7/10/7/24",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "TgTb8",
+              "name": "card2",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "OdXQe",
+                  "type": "ref",
+                  "ref": "t9PGb0"
+                },
+                {
+                  "type": "text",
+                  "id": "beskB",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "Active\nGeist 13 Semi · $nav.text.primary · fill: $nav.active.bg",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wTRhw",
+              "name": "card3",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "RH7Aj",
+                  "type": "ref",
+                  "ref": "Zr529"
+                },
+                {
+                  "type": "text",
+                  "id": "RIK5T",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "Disabled\n$nav.text.disabled · chip: pill stroke 1 · Geist 9",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "E3MB5Y",
+              "name": "card4",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "nb5qj",
+                  "type": "ref",
+                  "ref": "ix3OX"
+                },
+                {
+                  "type": "text",
+                  "id": "ymp3G",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "Pinned\npin icon: phosphor 12×12 · space_between",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gO6eR",
+              "name": "cardNavHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "J9VOm",
+                  "type": "ref",
+                  "ref": "BQNqd"
+                },
+                {
+                  "type": "text",
+                  "id": "Y8JCn",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "Hover\nfill: $nav.hover.bg · $nav.hover.text",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WD8vY",
+              "name": "cardNavPressed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "nd6d7",
+                  "type": "ref",
+                  "ref": "XM8dr"
+                },
+                {
+                  "type": "text",
+                  "id": "OJC21",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "Pressed\nfill: $nav.pressed.bg · $nav.hover.text",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "tLZwV",
+              "name": "cardPinnedHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "h5Oem",
+                  "type": "ref",
+                  "ref": "ZBqEp"
+                },
+                {
+                  "type": "text",
+                  "id": "CQinU",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 200,
+                  "content": "Pinned Hover\nfill: $nav.hover.bg · pin visible",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "URAem",
+          "name": "div2",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "c8Ktm",
+          "name": "complbl",
+          "fill": "#2D2926",
+          "content": "Composed Navigation Elements",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "BarZr",
+          "name": "compan",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Multi-atom compositions for the sidebar: section headers with collapse controls, user identity area, ‘All Views’ filter bar, scroll fade overlay, and collapsed section state.",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "SQgRC",
+          "name": "composed",
+          "gap": 32,
+          "children": [
+            {
+              "type": "frame",
+              "id": "I0AhJ9",
+              "name": "cardSectionHeader",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "l6z1H",
+                  "type": "ref",
+                  "ref": "waW4Z"
+                },
+                {
+                  "type": "text",
+                  "id": "Ke0tM",
+                  "name": "lbl5",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "Section Header\nGeist 11 Semi · 1.2 tracking · pad 12/10/4/6",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "HHFMn",
+              "name": "cardUserArea",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "XCAfv",
+                  "type": "ref",
+                  "ref": "w5uzT"
+                },
+                {
+                  "type": "text",
+                  "id": "s9mxjb",
+                  "name": "lbl6",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "User Area\npad 16/10/4/10 · avatar 32×32 pill · gap 10",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "HzrG7",
+              "name": "cardAllViews",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "ivptc",
+                  "type": "ref",
+                  "ref": "Uh8eV"
+                },
+                {
+                  "type": "text",
+                  "id": "O7RDB",
+                  "name": "lbl7",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "All Views Link\nGeist 12 Medium · arrow-right 11×11",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "p0xVD7",
+              "name": "cardFade",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "Pv6BK",
+                  "type": "ref",
+                  "ref": "J4CA0"
+                },
+                {
+                  "type": "text",
+                  "id": "o59CSY",
+                  "name": "lbl8",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "Fade Gradient\n240×36 · linear ↑ transparent→$nav.bg",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jrpYw",
+              "name": "cardSectionCollapsed",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "c6gPe",
+                  "type": "ref",
+                  "ref": "CLJJV"
+                },
+                {
+                  "type": "text",
+                  "id": "AfDD5",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "Section Collapsed\nchevron-right · same specs as expanded",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YpcLO",
+              "name": "cardAllViewsHover",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "id": "k9fzT",
+                  "type": "ref",
+                  "ref": "Sv4uf"
+                },
+                {
+                  "type": "text",
+                  "id": "YmeyC",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 220,
+                  "content": "All Views Hover\nfill: $nav.hover.bg · underline 0.5",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "r91leI",
+          "name": "div3",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "qixYg",
+          "name": "hdrlbl",
+          "fill": "#2D2926",
+          "content": "Chat Header",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "oDFGf",
+          "name": "hdran",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Top bar of the chat panel: title (Noto Serif) + close button atom. Sits above the message stream. Fixed position, does not scroll with content.",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "dKSxN",
+          "name": "header",
+          "gap": 32,
+          "children": [
+            {
+              "type": "frame",
+              "id": "C4he2W",
+              "name": "cardHeader",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "j1UGk",
+                  "fill": "#8A8680",
+                  "content": "Chat Header",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "qIve3",
+                  "type": "ref",
+                  "ref": "dZHCb",
+                  "descendants": {
+                    "Il1oG": {
+                      "type": "frame",
+                      "id": "qNt3b",
+                      "name": "a1",
+                      "width": 0,
+                      "height": 0
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "PNwYw",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 260,
+                  "content": "Chat Header\nw360 · pad 16/20\nbottom border 0.5 $chat.divider\nNoto Serif 16 title",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uqIay",
+          "name": "div4",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "F7nRl",
+          "name": "inplbl",
+          "fill": "#2D2926",
+          "content": "Input Fields",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "CVNSr",
+          "name": "inpan",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Chat input composer states: empty (placeholder + voice/send buttons), typing (text entered, send enabled), recording (blue accent border, waveform, timer), and transcribing (processing animation). Each state composes button atoms + input atom.",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "YQpkR",
+          "name": "inputs",
+          "gap": 32,
+          "children": [
+            {
+              "type": "frame",
+              "id": "keqXP",
+              "name": "cardInputEmpty",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "c76kHf",
+                  "fill": "#8A8680",
+                  "content": "Input Field / Empty",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "yIzGJ",
+                  "type": "ref",
+                  "ref": "TdYxI",
+                  "descendants": {
+                    "B9cAv3": {
+                      "type": "frame",
+                      "id": "jvc21",
+                      "name": "secondaryButtons",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "id": "fh17i",
+                          "type": "ref",
+                          "ref": "SUCQH"
+                        },
+                        {
+                          "id": "EdLml",
+                          "type": "ref",
+                          "ref": "jOKwk"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "Dcof6",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 280,
+                  "content": "Input / Empty\nw360 · pad 12/20/20/20\ninputField: radius 12 · $chat.input.bg · pad 12\nplaceholder: Geist 14 · $chat.text.placeholder\nvoice + new chat + send buttons",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "u2Itv",
+              "name": "cardInputTyping",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "A7aLOY",
+                  "fill": "#8A8680",
+                  "content": "Input Field / Typing",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "LW1UO",
+                  "type": "ref",
+                  "ref": "juIZl",
+                  "width": 360,
+                  "name": "newTyping",
+                  "descendants": {
+                    "V0dhK": {
+                      "type": "frame",
+                      "id": "AMl2M",
+                      "name": "secondaryButtons",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "id": "c83zI",
+                          "type": "ref",
+                          "ref": "SUCQH"
+                        },
+                        {
+                          "id": "O0dXz",
+                          "type": "ref",
+                          "ref": "jOKwk"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "ivtzP",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 260,
+                  "content": "Input / User Typing\nw360 · same structure as Empty\ntext: Geist 14 · $chat.text.secondary\nfixed-width fill · replaces placeholder",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pW5kO",
+              "name": "cardInputRecording",
+              "width": 400,
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "k6P8M",
+                  "fill": "#8A8680",
+                  "content": "Input Field / Recording",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "hxubR",
+                  "type": "ref",
+                  "ref": "p13Ml",
+                  "width": "fill_container"
+                },
+                {
+                  "type": "text",
+                  "id": "oi5MM",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Chat input in active recording state\nBlue accent border indicates recording\nWaveform visualization + rec dot + timer\nCancel (x) on left · Active mic on right\nAuto-stops after 2s of silence",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "tAhZu",
+              "name": "cardInputTranscribing",
+              "width": 400,
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "QUlSP",
+                  "fill": "#8A8680",
+                  "content": "Input Field / Transcribing",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "ZkzeU",
+                  "type": "ref",
+                  "ref": "oGU44",
+                  "width": "fill_container"
+                },
+                {
+                  "type": "text",
+                  "id": "pgcau",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Chat input during speech-to-text processing\nDot animation + \"Transcribing...\" placeholder\nButtons dimmed while processing\nSend disabled until transcript ready\nTransitions to Input Typing when complete",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hDwWO",
+          "name": "div5",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E6E0"
+        },
+        {
+          "type": "text",
+          "id": "Ke3uJ",
+          "name": "msglbl",
+          "fill": "#2D2926",
+          "content": "Messages",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0.5
+        },
+        {
+          "type": "text",
+          "id": "t0nVwS",
+          "name": "msgann",
+          "fill": "#8A8680",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Chat message bubbles: user messages (right-aligned, $chat.bubble.user.bg), AI messages (left-aligned, $chat.bubble.ai.bg), and AI thinking state (animated dots). Each composes TextContent + avatar + bubble container.",
+          "lineHeight": 1.5,
+          "fontFamily": "Heebo",
+          "fontSize": 12
+        },
+        {
+          "type": "frame",
+          "id": "d7plA",
+          "name": "msgs",
+          "gap": 32,
+          "children": [
+            {
+              "type": "frame",
+              "id": "qkhDa",
+              "name": "cardUserMsg",
+              "width": 320,
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gwngn",
+                  "fill": "#8A8680",
+                  "content": "Message / User",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "Brxni",
+                  "type": "ref",
+                  "ref": "uTENT",
+                  "descendants": {
+                    "q0uPcr": {
+                      "fill": {
+                        "type": "color",
+                        "color": "$chat.bubble.user.bg",
+                        "enabled": false
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "A2L3uA",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 280,
+                  "content": "User Message\naligned right · radius 12 · $chat.bubble.user.bg\nborder $chat.bubble.user.border · pad 12/16\nGeist 14 · $chat.text.secondary · fixed-width 210",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DZjfI",
+              "name": "cardAiMsg",
+              "width": 320,
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yYd9g",
+                  "fill": "#8A8680",
+                  "content": "Message / AI",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "I4FOTD",
+                  "type": "ref",
+                  "ref": "Dvxep"
+                },
+                {
+                  "type": "text",
+                  "id": "LkSys",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 280,
+                  "content": "AI Message\naligned left · transparent bg · full width\nGeist 14 · $chat.text.primary · fixed-width fill",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qXa2h",
+              "name": "cardAiThinking",
+              "width": 320,
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zQWHQ",
+                  "name": "title",
+                  "fill": "#8A8680",
+                  "content": "Message / AI Thinking",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "id": "wQlJQ",
+                  "type": "ref",
+                  "ref": "mViUs",
+                  "width": "fill_container",
+                  "name": "inst",
+                  "gap": 0,
+                  "descendants": {
+                    "g3LqFE": {
+                      "x": 14.044097421894026,
+                      "y": 0,
+                      "rotation": -0.31582611960462426
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "WCgaQ",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 280,
+                  "content": "AI Thinking\naligned left · transparent bg · full width\nthree dot indicator · gradient status text\nshown while LLM is processing\ngradient shimmer animation left-to-right while thinking",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "U34RrL",
+      "x": 34000,
+      "y": 11700,
+      "name": "Atomic DS — Wave 3 / P3 Organisms",
+      "width": 1760,
+      "height": "fit_content(0)",
+      "fill": "#FFFFFF",
+      "cornerRadius": 16,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "#E8E6E0"
+      },
+      "layout": "vertical",
+      "gap": 40,
+      "padding": 48
     }
   ],
   "themes": {
