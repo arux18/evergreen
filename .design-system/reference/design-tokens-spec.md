@@ -4,7 +4,7 @@
 >
 > **Scope:** Monte Carlo simulations, stock option calculators, retirement planners, portfolio dashboards, tax planning tools, and any data-rich financial interface.
 >
-> **Modes:** Light + Dark. **Fonts:** Heebo (UI + numbers), Cormorant Garamond (headings). **Palette:** Warm/cool categorical, neutral gray ramp (Gen UI lib.pen), Blue accent (#3A6AF8 light / #7094FB dark).
+> **Modes:** Light + Dark. **Fonts:** Heebo (UI + numbers), Noto Serif (headings). **Palette:** Warm/cool categorical, green-tinted grays, Blue accent (#3A6AF8).
 
 ---
 
@@ -26,29 +26,22 @@
 
 ### Color Primitives
 
-Foundation JSON and `gen-ui-design-system.lib.pen` share these resolved values.
-
-| Token | Light Value | Dark Value | Usage |
-| ----- | ----------- | ---------- | ----- |
-| `color.base.canvas` | `#FFFFFF` | `#0E0E0E` | App canvas (Pencil: `base.canvas`; dark matches `gray.50` dark) |
-| `color.base.white` | `#FFFFFF` | — | Absolute white (`white`; not theme-swapped) |
 
 | Token            | Light Value | Dark Value | Usage              |
 | ---------------- | ----------- | ---------- | ------------------ |
-| `color.gray.50`  | `#F7F7F8`   | `#0E0E0E`  | Lightest neutral / dark base   |
-| `color.gray.100` | `#E8E8EA`   | `#1A1A1A`  | Subtle background / dark card    |
-| `color.gray.200` | `#D1D1D6`   | `#3A3A3C`  | Borders / dark nested            |
-| `color.gray.300` | `#AEAEB2`   | `#535356`  | Disabled / dark border           |
-| `color.gray.400` | `#8E8E93`   | `#6C6C70`  | Muted UI                         |
-| `color.gray.500` | `#6C6C70`   | `#8E8E93`  | Tertiary text                    |
-| `color.gray.600` | `#535356`   | `#AEAEB2`  | Secondary text, data.neutral     |
-| `color.gray.700` | `#3A3A3C`   | `#D1D1D6`  | Emphasis                         |
-| `color.gray.800` | `#2C2C2E`   | `#E8E8EA`  | Strong borders                 |
-| `color.gray.900` | `#0E0E0E`   | `#F7F7F8`  | Primary text (theme-resolved)  |
+| `color.gray.50`  | `#F9FAF9`   | `#0E0E0E`  | Lightest surface   |
+| `color.gray.100` | `#EEEFEE`   | `#202220`  | Subtle background  |
+| `color.gray.200` | `#D8D9D8`   | `#3B3E3C`  | Borders, dividers  |
+| `color.gray.300` | `#B6B9B7`   | `#6B6F6C`  | Disabled fills (3.7:1 on #111) |
+| `color.gray.400` | `#949895`   | `#7E8480`  | Placeholder text (4.9:1 on #111) |
+| `color.gray.500` | `#727874`   | `#7E8480`  | Secondary text (4.9:1 on #111) |
+| `color.gray.600` | `#575B58`   | `#949895`  | Body text          |
+| `color.gray.700` | `#3B3E3C`   | `#B6B9B7`  | Primary text       |
+| `color.gray.800` | `#202220`   | `#D8D9D8`  | Headings           |
+| `color.gray.900` | `#0E0E0E`   | `#EEEFEE`  | High-emphasis text |
 
 | Token             | Value       | Usage                                            |
 | ----------------- | ----------- | ------------------------------------------------ |
-| `color.blue.50`   | `#F5F8FF`   | Lightest tint                                    |
 | `color.blue.100`  | `#EBF0FE`   | Lightest blue (selected backgrounds in light mode) |
 | `color.blue.200`  | `#C8D6FD`   | Very light backgrounds, subtle highlights        |
 | `color.blue.300`  | `#A3BCFC`   | Lighter blue                                     |
@@ -56,158 +49,52 @@ Foundation JSON and `gen-ui-design-system.lib.pen` share these resolved values.
 | `color.blue.500`  | `#7094FB`   | Medium blue (primary accent in dark mode)        |
 | `color.blue.600`  | `#3A6AF8`   | Primary accent (CTAs, interactive elements in light mode) |
 | `color.blue.700`  | `#295CCC`   | Dark blue (hover states in light mode)           |
-| `color.blue.800`  | `#1E3A8A`   | Dark blue surfaces (accent subtle, AI, surfaces)   |
-| `color.blue.900`  | `#152354`   | Deepest accent / pressed                         |
+| `color.blue.800`  | `#152354`   | Darkest blue (subtle backgrounds in dark mode)   |
 
-#### Red (destructive / error)
 
-| Token            | Value     | Usage                                                  |
-| ---------------- | --------- | ------------------------------------------------------ |
-| `color.red.50`   | `#FEF2F2` | Lightest wash (destructive.subtle light, status.error-bg light, fin.expense-bg light) |
-| `color.red.200`  | `#FECACA` | Icon/text destructive-pressed in dark mode             |
-| `color.red.300`  | `#FCA5A5` | Destructive.pressed in dark mode                       |
-| `color.red.400`  | `#F87171` | Status error / icon destructive / data.negative dark   |
-| `color.red.500`  | `#EF4444` | Destructive default in dark mode                       |
-| `color.red.700`  | `#B91C1C` | Destructive default light (status.error / data.negative / fin.expense light) |
-| `color.red.800`  | `#991B1B` | Destructive hover light (icon/text destructive-hover light) |
-| `color.red.900`  | `#450A0A` | Destructive pressed light (destructive.subtle dark)    |
+### Taupe Palette
 
-#### Green / Amber / Orange / Purple / Sky / Info (status & financial)
-
-| Token              | Value     | Usage |
-| ------------------ | --------- | ----- |
-| `color.green.50`   | `#F0FDF4` | success-bg / income-bg light |
-| `color.green.400`  | `#4ADE80` | success / data.positive / fin.income dark |
-| `color.green.700`  | `#15803D` | success / data.positive / fin.income light |
-| `color.green.800`  | `#166534` | reserved (swatch only) |
-| `color.green.900`  | `#052E16` | success-bg / income-bg dark |
-| `color.amber.400`  | `#FBBF24` | status warning dark |
-| `color.amber.700`  | `#C25700` | status warning light |
-| `color.orange.50`  | `#FFF7ED` | warning-bg / debt-bg light |
-| `color.orange.400` | `#FB923C` | fin.debt dark (chart.cat.13) |
-| `color.orange.700` | `#C2410C` | fin.debt light |
-| `color.orange.800` | `#9A3412` | reserved (swatch only) |
-| `color.orange.900` | `#451A03` | warning-bg / debt-bg dark |
-| `color.purple.50`  | `#F5F3FF` | fin.investment-bg light |
-| `color.purple.400` | `#A78BFA` | fin.investment dark (chart.cat.8) |
-| `color.purple.700` | `#7C3AED` | fin.investment light |
-| `color.purple.800` | `#5B21B6` | reserved (swatch only) |
-| `color.purple.900` | `#2E1065` | fin.investment-bg dark |
-| `color.sky.50`     | `#F0F9FF` | fin.savings-bg light |
-| `color.sky.400`    | `#38BDF8` | fin.savings dark (chart.cat.6) |
-| `color.sky.700`    | `#0369A1` | fin.savings light |
-| `color.sky.800`    | `#075985` | reserved (swatch only) |
-| `color.sky.900`    | `#082F49` | fin.savings-bg dark |
-| `color.info.50`    | `#EFF6FF` | status info-bg light |
-| `color.info.400`   | `#60A5FA` | status info dark |
-| `color.info.700`   | `#2563EB` | status info light |
-| `color.info.950`   | `#172554` | status info-bg dark |
-
+| Token              | Light Value | Dark Value | Usage                          |
+| ------------------ | ----------- | ---------- | ------------------------------ |
+| `color.taupe.50`   | `#FDFDFC`   | `#322C20`  | Lightest warm surface          |
+| `color.taupe.100`  | `#F7F5F0`   | `#4B4435`  | Warm subtle background         |
+| `color.taupe.200`  | `#ECE8DF`   | `#6C6451`  | Warm borders, dividers         |
+| `color.taupe.300`  | `#D5D0C1`   | `#877F68`  | Warm disabled fills            |
+| `color.taupe.400`  | `#BCB49E`   | `#9D937B`  | Warm placeholder text          |
+| `color.taupe.500`  | `#9D937B`   | `#9D937B`  | Warm secondary text            |
+| `color.taupe.600`  | `#877F68`   | `#BCB49E`  | Warm body text                 |
+| `color.taupe.700`  | `#6C6451`   | `#D5D0C1`  | Warm primary text              |
+| `color.taupe.800`  | `#4B4435`   | `#ECE8DF`  | Warm headings                  |
+| `color.taupe.900`  | `#322C20`   | `#F7F5F0`  | Warm high-emphasis text        |
 
 ### Semantic Colors
 
 
-> **Naming convention:** All semantic state suffixes use kebab-case `-default`, `-hover`, `-pressed`, `-subtle`, `-bg`. Background tokens use the `-bg` suffix (e.g. `status.error-bg`), matching `gen-ui-design-system.lib.pen`.
-
-#### Surface & Border
-
 | Token                        | Light Value         | Dark Value          | Usage                          |
 | ---------------------------- | ------------------- | ------------------- | ------------------------------ |
-| `color.surface.primary`      | `#FFFFFF`           | `#0E0E0E`           | Main background (`base.canvas` + `gray.50`) |
-| `color.surface.secondary`    | `#F7F7F8`           | `#1A1A1A`           | Card/panel (`gray.50` / `gray.100`) |
-| `color.surface.tertiary`     | `#E8E8EA`           | `#3A3A3C`           | Nested surfaces (`gray.100` / `gray.200`) |
-| `color.surface.elevated`     | `#FFFFFF`           | `#3A3A3C`           | Raised (`base.canvas` / `gray.200` dark) |
-| `color.surface.inverse`      | `#0E0E0E`           | `#F7F7F8`           | Inverse bars (`gray.900` both) |
-| `color.surface.accent`       | `#EBF0FE`           | `#1E3A8A`           | Accent wash (`blue.100` / `blue.800`) |
+| `color.surface.primary`      | `#FFFFFF`           | `#111111`           | Main background                |
+| `color.surface.secondary`    | `#F5F5F5`           | `#1A1A1A`           | Card/panel background          |
+| `color.surface.tertiary`     | `#EBEBEB`           | `#242424`           | Nested surfaces                |
 | `color.surface.overlay`      | `rgba(0,0,0,0.5)`  | `rgba(0,0,0,0.7)`  | Modal/dropdown backdrops       |
-| `color.border.default`       | `#E8E8EA`           | `#535356`           | Default (`gray.100` / `gray.300`) |
-| `color.border.strong`        | `#D1D1D6`           | `#6C6C70`           | Emphasized (`gray.200` / `gray.400`) |
-| `color.border.focus`         | `#3A6AF8`           | `#7094FB`           | Focus rings (`blue.600` / `blue.500`) |
-| `color.border.accent`        | `#3A6AF8`           | `#7094FB`           | Accent borders / outlined buttons (`blue.600` / `blue.500`) |
-
-#### Text
-
-| Token                          | Light Value | Dark Value | Usage                          |
-| ------------------------------ | ----------- | ---------- | ------------------------------ |
-| `color.text.primary`           | `#0E0E0E`   | `#F7F7F8`  | Primary text (`gray.900`)      |
-| `color.text.secondary`         | `#535356`   | `#AEAEB2`  | Secondary/helper (`gray.600`)  |
-| `color.text.tertiary`          | `#6C6C70`   | `#8E8E93`  | Placeholder, caption (`gray.500`) |
-| `color.text.inverse`           | `#FFFFFF`   | `#0E0E0E`  | On inverse (`white` / `gray.50` dark) |
-| `color.text.link`              | `#3A6AF8`   | `#7094FB`  | Interactive links              |
-| `color.text.accent`            | `#3A6AF8`   | `#7094FB`  | Accent text (links, ghost-button labels = `blue.600` / `blue.500`) |
-| `color.text.accent-hover`      | `#295CCC`   | `#9BB3FC`  | Accent text hover (`blue.700` / `blue.400`) |
-| `color.text.accent-pressed`    | `#152354`   | `#A3BCFC`  | Accent text pressed (`blue.900` / `blue.300`) |
-| `color.text.on-accent`         | `#FFFFFF`   | `#FFFFFF`  | Text on accent fill (white, not theme-swapped) |
-| `color.text.destructive`       | `#B91C1C`   | `#F87171`  | Destructive text (`red.700` / `red.400`) |
-| `color.text.destructive-hover` | `#991B1B`   | `#FCA5A5`  | Destructive text hover (`red.800` / `red.300`) |
-| `color.text.destructive-pressed`| `#450A0A`  | `#FECACA`  | Destructive text pressed (`red.900` / `red.200`) |
-| `color.text.on-destructive`    | `#FFFFFF`   | `#FFFFFF`  | Text on destructive fill (white) |
-
-#### Icon
-
-| Token                            | Light Value | Dark Value | Usage                          |
-| -------------------------------- | ----------- | ---------- | ------------------------------ |
-| `color.icon.accent`              | `#3A6AF8`   | `#7094FB`  | Accent icon (ghost button, link) (`blue.600` / `blue.500`) |
-| `color.icon.accent-hover`        | `#295CCC`   | `#9BB3FC`  | Accent icon hover (`blue.700` / `blue.400`) |
-| `color.icon.accent-pressed`      | `#152354`   | `#A3BCFC`  | Accent icon pressed (`blue.900` / `blue.300`) |
-| `color.icon.destructive`         | `#B91C1C`   | `#F87171`  | Destructive icon (`red.700` / `red.400`) |
-| `color.icon.destructive-hover`   | `#991B1B`   | `#FCA5A5`  | Destructive icon hover (`red.800` / `red.300`) |
-| `color.icon.destructive-pressed` | `#450A0A`   | `#FECACA`  | Destructive icon pressed (`red.900` / `red.200`) |
-| `color.icon.on-destructive`      | `#FFFFFF`   | `#FFFFFF`  | Icon on destructive fill (white) |
-
-#### Accent (interactive primary)
-
-| Token                  | Light Value | Dark Value | Usage                          |
-| ---------------------- | ----------- | ---------- | ------------------------------ |
-| `color.accent.default` | `#3A6AF8`   | `#7094FB`  | Primary actions, active states (`blue.600` / `blue.500`) |
-| `color.accent.hover`   | `#295CCC`   | `#9BB3FC`  | Primary hover (`blue.700` / `blue.400`) |
-| `color.accent.pressed` | `#152354`   | `#152354`  | Primary pressed **fill** — `blue.900` in both themes (`gen-ui-design-system.lib.pen`) |
-| `color.accent.subtle`  | `#EBF0FE`   | `#1E3A8A`  | Selected backgrounds, accent wash (`blue.100` / `blue.800`) |
-
-> **Renamed (legacy → current):** `accent.primary` → `accent.default`, `accent.primary-hover` → `accent.hover`, `accent.primary-subtle` → `accent.subtle`. New: `accent.pressed`.
-
-> **Pressed semantics:** Fill token `accent.pressed` is `$blue.900` for light and dark. For pressed **text** and **icons** on ghost/link controls, use `text.accent-pressed` / `icon.accent-pressed` (`blue.900` / `blue.300`).
-
-#### Destructive (delete / dangerous actions)
-
-> Distinct from `status.error`, which communicates UI validation/system state. Use `destructive.*` for user-initiated destructive intent (delete buttons, "Discard changes", etc.).
-
-| Token                      | Light Value | Dark Value | Usage                          |
-| -------------------------- | ----------- | ---------- | ------------------------------ |
-| `color.destructive.default`| `#B91C1C`   | `#EF4444`  | Destructive primary fill (`red.700` / `red.500`) |
-| `color.destructive.hover`  | `#991B1B`   | `#F87171`  | Destructive hover (`red.800` / `red.400`) |
-| `color.destructive.pressed`| `#450A0A`   | `#FCA5A5`  | Destructive pressed (`red.900` / `red.300`) |
-| `color.destructive.subtle` | `#FEF2F2`   | `#450A0A`  | Destructive subtle bg / outlined hover (`red.50` / `red.900`) |
-
-#### Status (UI state)
-
-| Token                 | Light Value | Dark Value | Usage                |
-| --------------------- | ----------- | ---------- | -------------------- |
-| `color.status.error`  | `#B91C1C`   | `#F87171`  | Error states         |
-| `color.status.error-bg`| `#FEF2F2`  | `#450A0A`  | Error background     |
-| `color.status.warning`| `#C25700`   | `#FBBF24`  | Warning states       |
-| `color.status.warning-bg`| `#FFF7ED`| `#451A03`  | Warning background   |
-| `color.status.success`| `#15803D`   | `#4ADE80`  | Success states       |
-| `color.status.success-bg`| `#F0FDF4`| `#052E16`  | Success background   |
-| `color.status.info`   | `#2563EB`   | `#60A5FA`  | Informational states |
-| `color.status.info-bg`| `#EFF6FF`   | `#172554`  | Informational background |
-
-> **Renamed:** `status.*-subtle` → `status.*-bg` (matches Pencil naming).
-
-#### Financial Semantic (income / expense / savings / debt / investment)
-
-| Token                       | Light Value | Dark Value | Usage              |
-| --------------------------- | ----------- | ---------- | ------------------ |
-| `color.fin.income`          | `#15803D`   | `#4ADE80`  | Income (`green.700` / `green.400`) |
-| `color.fin.income-bg`       | `#F0FDF4`   | `#052E16`  | Income chip bg (`green.50` / `green.900`) |
-| `color.fin.expense`         | `#B91C1C`   | `#F87171`  | Expense (`red.700` / `red.400`) |
-| `color.fin.expense-bg`      | `#FEF2F2`   | `#450A0A`  | Expense chip bg (`red.50` / `red.900`) |
-| `color.fin.savings`         | `#0369A1`   | `#38BDF8`  | Savings (`sky.700` / `sky.400`) |
-| `color.fin.savings-bg`      | `#F0F9FF`   | `#082F49`  | Savings chip bg (`sky.50` / `sky.900`) |
-| `color.fin.debt`            | `#C2410C`   | `#FB923C`  | Debt (`orange.700` / `orange.400`) |
-| `color.fin.debt-bg`         | `#FFF7ED`   | `#451A03`  | Debt chip bg (`orange.50` / `orange.900`) |
-| `color.fin.investment`      | `#7C3AED`   | `#A78BFA`  | Investment (`purple.700` / `purple.400`) |
-| `color.fin.investment-bg`   | `#F5F3FF`   | `#2E1065`  | Investment chip bg (`purple.50` / `purple.900`) |
+| `color.border.default`       | `#E5E5E5`           | `#4A4D4B`           | Default borders                |
+| `color.border.strong`        | `#D4D4D4`           | `#626562`           | Emphasized borders             |
+| `color.border.focus`         | `#3A6AF8`           | `#7094FB`           | Focus rings                    |
+| `color.text.primary`         | `#171717`           | `#F5F5F5`           | Primary text                   |
+| `color.text.secondary`       | `#525252`           | `#A3A3A3`           | Secondary/helper text          |
+| `color.text.tertiary`        | `#737373`           | `#8A8A8A`           | Placeholder, caption           |
+| `color.text.inverse`         | `#FFFFFF`           | `#111111`           | Text on filled surfaces        |
+| `color.text.link`            | `#3A6AF8`           | `#7094FB`           | Interactive links              |
+| `color.accent.primary`       | `#3A6AF8`           | `#7094FB`           | Primary actions, active states |
+| `color.accent.primary-hover` | `#295CCC`           | `#9BB3FC`           | Primary hover                  |
+| `color.accent.primary-subtle`| `#EBF0FE`           | `#152354`           | Selected backgrounds           |
+| `color.status.error`           | `#B91C1C`           | `#F87171`           | Error states                   |
+| `color.status.error-subtle`    | `#FEE2E2`           | `#450A0A`           | Error background               |
+| `color.status.warning`         | `#C25700`           | `#FBBF24`           | Warning states                 |
+| `color.status.warning-subtle`  | `#FFF7ED`           | `#451A03`           | Warning background             |
+| `color.status.success`         | `#15803D`           | `#4ADE80`           | Success states                 |
+| `color.status.success-subtle`  | `#F0FDF4`           | `#052E16`           | Success background             |
+| `color.status.info`            | `#2563EB`           | `#60A5FA`           | Informational states           |
+| `color.status.info-subtle`     | `#EFF6FF`           | `#172554`           | Informational background       |
 
 ### Data Value Colors
 
@@ -217,13 +104,13 @@ Foundation JSON and `gen-ui-design-system.lib.pen` share these resolved values.
 | ---------------------------- | ------------------- | ------------------- | ------------------------------ |
 | `color.data.positive`        | `#15803D`           | `#4ADE80`           | Gains, positive returns        |
 | `color.data.negative`        | `#B91C1C`           | `#F87171`           | Losses, negative returns       |
-| `color.data.neutral`         | `#535356`           | `#AEAEB2`           | Zero change, breakeven (`gray.600`) |
+| `color.data.neutral`         | `#525252`           | `#A3A3A3`           | Zero change, breakeven         |
 | `color.data.positive-subtle` | `rgba(21,128,61,0.08)` | `rgba(74,222,128,0.10)` | Positive badge/cell bg    |
 | `color.data.negative-subtle` | `rgba(185,28,28,0.08)` | `rgba(248,113,113,0.10)` | Negative badge/cell bg   |
 
 ### Chart Categorical Palette (15 Series, Priority-Ordered)
 
-> **Usage rule:** Always assign colors in priority order — cat.1 first, cat.2 second, and so on. These are high-saturation colors designed for maximum distinguishability. Some have dark-mode overrides for contrast accessibility on the dark canvas (~`#0E0E0E`).
+> **Usage rule:** Always assign colors in priority order — cat.1 first, cat.2 second, and so on. These are high-saturation colors designed for maximum distinguishability. Some have dark-mode overrides for contrast accessibility (≥ 3:1 on `#111111`).
 
 | Token                | Light Value | Dark Value | Usage priority |
 | -------------------- | ----------- | ---------- | -------------- |
@@ -245,20 +132,15 @@ Foundation JSON and `gen-ui-design-system.lib.pen` share these resolved values.
 
 ### Chart Sequential Ramp (Single-Hue for Area Charts)
 
-Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` at some steps).
-
 | Token                  | Value     | Usage         |
 | ---------------------- | --------- | ------------- |
-| `color.chart.seq.50`  | `#F5F8FF` | Lightest tint |
 | `color.chart.seq.100` | `#EBF0FE` | Lightest fill |
 | `color.chart.seq.200` | `#C8D6FD` | Light fill    |
 | `color.chart.seq.300` | `#A5BCFC` | Medium-light  |
 | `color.chart.seq.400` | `#7094FB` | Medium        |
 | `color.chart.seq.500` | `#5A82F9` | Medium-strong |
 | `color.chart.seq.600` | `#3A6AF8` | Strong        |
-| `color.chart.seq.700` | `#2952CC` | Dark fill     |
-| `color.chart.seq.800` | `#1E3F8F` | Darker fill   |
-| `color.chart.seq.900` | `#152B60` | Darkest fill  |
+| `color.chart.seq.700` | `#2952CC` | Darkest fill  |
 
 ### Typography Scale
 
@@ -267,7 +149,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | Token                  | Value            | Usage                          |
 | ---------------------- | ---------------- | ------------------------------ |
 | `font.family.primary`  | `Heebo`              | Primary UI font — body copy, numbers, labels (sans-serif, Google Fonts) |
-| `font.family.secondary`| `Cormorant Garamond` | Headings, editorial content (serif, Google Fonts)                       |
+| `font.family.secondary`| `Noto Serif` | Headings, editorial content (serif, Google Fonts)                       |
 
 #### Font Sizes
 
@@ -279,7 +161,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `font.size.base`  | `14px` | `16px`  | Body text, input values                  |
 | `font.size.md`    | `16px` | `18px`  | Emphasized body, dropdown items          |
 | `font.size.lg`    | `18px` | `20px`  | Section titles, card headers             |
-| `font.size.xl`    | `20px` | `24px`  | Page titles, large KPI values            |
+| `font.size.xl`    | `20px` | `24px`  | Large KPI values, emphasized headings    |
 | `font.size.2xl`   | `24px` | `30px`  | Large headings                           |
 | `font.size.3xl`   | `30px` | `36px`  | Hero headings                            |
 | `font.size.4xl`   | `36px` | `48px`  | Hero numbers, dashboard KPIs             |
@@ -296,10 +178,11 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | ------------------------ | ------------ | ----------- | ------------------------------ |
 | `font.weight.light`      | `Light`      | `300`       | Decorative, large display text (Heebo only) |
 | `font.weight.regular`    | `Regular`    | `400`       | Body, labels (Heebo only)      |
-| `font.weight.semibold`   | `SemiBold`   | `600`       | Subtitles, emphasis, all Cormorant Garamond headings |
+| `font.weight.medium`     | `Medium`     | `500`       | Form labels, axis titles, toggles |
+| `font.weight.semibold`   | `SemiBold`   | `600`       | Subtitles, emphasis, all Noto Serif headings |
 | `font.weight.bold`       | `Bold`       | `700`       | Section headers, table headers |
 
-> **Cormorant Garamond weight floor:** Never set Cormorant Garamond below `500`. Weights 300–400 render with hairline strokes that are difficult to read on most screens. Use `600` (semibold) as the default for all headings; `500` (medium) only when a deliberately lighter display feel is needed.
+> **Noto Serif weight guidance:** Noto Serif is legible down to `400` (regular). Use `600` (semibold) as the default for headings; `400` (regular) is acceptable for body-length serif passages or lighter display treatments.
 
 #### Line Heights
 
@@ -399,7 +282,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `form.group.direction`             | `row` (horizontal default) or `column` |
 | `form.group.wrap`                  | `wrap`             |
 | `form.field.min-width`             | `120px`            |
-| `form.field.label.font-size`       | `font.size.xs` (11px) |
+| `form.field.label.font-size`       | `font.size.xs` (10px / 12px) |
 | `form.field.label.font-weight`     | `font.weight.medium` |
 | `form.field.label.color`           | `text.secondary`   |
 | `form.field.label.text-transform`  | `uppercase`        |
@@ -425,7 +308,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `section.title.font-family`        | `font.family.primary` |
 | `section.title.color`              | `text.primary`     |
 | `section.title.margin-bottom`      | `space.2` (8px)    |
-| `section.subtitle.font-size`       | `font.size.sm` (13px) |
+| `section.subtitle.font-size`       | `font.size.sm` (12px / 14px) |
 | `section.subtitle.color`           | `text.secondary`   |
 | `section.subtitle.margin-bottom`   | `space.4` (16px)   |
 | `section.page-bg`                  | `surface.secondary` (gray background behind sections) |
@@ -435,11 +318,11 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | Token                    | Default            | Hover              | Focus              | Disabled           | Error              |
 | ------------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | `input.bg`               | `surface.primary`  | `surface.primary`  | `surface.primary`  | `surface.secondary`| `surface.primary`  |
-| `input.border`           | `border.default`   | `border.strong`    | `accent.default`   | `border.default`   | `status.error`     |
+| `input.border`           | `border.default`   | `border.strong`    | `accent.primary`   | `border.default`   | `status.error`     |
 | `input.border-width`     | `1px`              | `1px`              | `2px`              | `1px`              | `2px`              |
 | `input.text`             | `text.primary`     | `text.primary`     | `text.primary`     | `text.tertiary`    | `text.primary`     |
 | `input.placeholder`      | `text.tertiary`    | `text.tertiary`    | `text.tertiary`    | `text.tertiary`    | `text.tertiary`    |
-| `input.icon`             | `text.secondary`   | `text.primary`     | `accent.default`   | `text.tertiary`    | `status.error`     |
+| `input.icon`             | `text.secondary`   | `text.primary`     | `accent.primary`   | `text.tertiary`    | `status.error`     |
 | `input.radius`           | `radius.md`        | —                  | —                  | —                  | —                  |
 | `input.padding-x`        | `space.3`          | —                  | —                  | —                  | —                  |
 | `input.padding-y`        | `space.2`          | —                  | —                  | —                  | —                  |
@@ -468,10 +351,10 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `dropdown.item.radius`           | `radius.sm`                        |
 | `dropdown.item.font-size`        | `font.size.md`                     |
 | `dropdown.item.color`            | `text.primary`                     |
-| `dropdown.item.hover-bg`         | `accent.subtle`            |
-| `dropdown.item.selected-bg`      | `accent.subtle`            |
-| `dropdown.item.selected-color`   | `accent.default`                   |
-| `dropdown.item.selected-icon`    | Checkmark, `accent.default`        |
+| `dropdown.item.hover-bg`         | `accent.primary-subtle`            |
+| `dropdown.item.selected-bg`      | `accent.primary-subtle`            |
+| `dropdown.item.selected-color`   | `accent.primary`                   |
+| `dropdown.item.selected-icon`    | Checkmark, `accent.primary`        |
 | `dropdown.item.disabled-color`   | `text.tertiary`                    |
 | `dropdown.divider.color`         | `border.default`                   |
 | `dropdown.divider.margin-y`      | `space.1`                          |
@@ -483,15 +366,15 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `slider.track.height`       | `4px`                              |
 | `slider.track.radius`       | `radius.full`                      |
 | `slider.track.bg`           | `gray.200` / `gray.700` (dark)     |
-| `slider.track.fill`         | `accent.default`                   |
+| `slider.track.fill`         | `accent.primary`                   |
 | `slider.track.fill-disabled`| `gray.300`                         |
 | `slider.thumb.size`         | `18px`                             |
-| `slider.thumb.bg`           | `accent.default`                   |
+| `slider.thumb.bg`           | `accent.primary`                   |
 | `slider.thumb.border`       | `2px solid surface.primary`        |
 | `slider.thumb.shadow`       | `shadow.sm`                        |
 | `slider.thumb.hover-scale`  | `1.15`                             |
 | `slider.thumb.active-scale` | `1.0`                              |
-| `slider.thumb.focus-ring`   | `0 0 0 3px accent.subtle`  |
+| `slider.thumb.focus-ring`   | `0 0 0 3px accent.primary-subtle`  |
 | `slider.thumb.disabled-bg`  | `gray.300`                         |
 | `slider.label.font-size`    | `font.size.sm`                     |
 | `slider.value.font-size`    | `font.size.sm`                     |
@@ -511,7 +394,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 
 | Token              | Off        | On               | Disabled   |
 | ------------------ | ---------- | ---------------- | ---------- |
-| `toggle.track.bg`  | `gray.300` | `accent.default` | `gray.200` |
+| `toggle.track.bg`  | `gray.300` | `accent.primary` | `gray.200` |
 | `toggle.track.width`| `36px`    | —                | —          |
 | `toggle.track.height`| `20px`   | —                | —          |
 | `toggle.track.radius`| `radius.full`| —            | —          |
@@ -527,12 +410,12 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `checkbox.size`          | `18px`                                         |
 | `checkbox.radius`        | `radius.sm` (checkbox), `radius.full` (radio)  |
 | `checkbox.border`        | `1.5px solid border.strong`                    |
-| `checkbox.border-checked`| `1.5px solid accent.default`                   |
+| `checkbox.border-checked`| `1.5px solid accent.primary`                   |
 | `checkbox.bg`            | `surface.primary`                              |
-| `checkbox.bg-checked`    | `accent.default`                               |
+| `checkbox.bg-checked`    | `accent.primary`                               |
 | `checkbox.icon-color`    | `surface.primary`                              |
 | `checkbox.icon-size`     | `12px`                                         |
-| `checkbox.focus-ring`    | `0 0 0 3px accent.subtle`              |
+| `checkbox.focus-ring`    | `0 0 0 3px accent.primary-subtle`              |
 | `checkbox.gap`           | `space.2`                                      |
 | `checkbox.label.font-size`| `font.size.md`                                |
 
@@ -568,12 +451,12 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `datepicker.day.size`           | `32px`             |
 | `datepicker.day.font-size`      | `font.size.sm`     |
 | `datepicker.day.radius`         | `radius.full`      |
-| `datepicker.day.hover-bg`       | `accent.subtle`|
-| `datepicker.day.selected-bg`    | `accent.default`   |
+| `datepicker.day.hover-bg`       | `accent.primary-subtle`|
+| `datepicker.day.selected-bg`    | `accent.primary`   |
 | `datepicker.day.selected-color` | `text.inverse`     |
-| `datepicker.day.today-border`   | `1px solid accent.default`|
+| `datepicker.day.today-border`   | `1px solid accent.primary`|
 | `datepicker.day.outside-color`  | `text.tertiary`    |
-| `datepicker.range-bg`           | `accent.subtle`|
+| `datepicker.range-bg`           | `accent.primary-subtle`|
 
 ### Card
 
@@ -609,7 +492,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `kpi.value.color`              | `text.primary`     |
 | `kpi.value.color-positive`     | `data.positive`    |
 | `kpi.value.color-negative`     | `data.negative`    |
-| `kpi.value.color-accent`       | `accent.default`   |
+| `kpi.value.color-accent`       | `accent.primary`   |
 | `kpi.value.color-warning`      | `status.warning`   |
 | `kpi.value.letter-spacing`     | `tight`            |
 | `kpi.subtitle.font-size`       | `font.size.sm`     |
@@ -650,26 +533,19 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `badge.negative.text`          | `data.negative`    |
 | `badge.neutral.bg`             | `surface.tertiary` |
 | `badge.neutral.text`           | `text.secondary`   |
-| `badge.accent.bg`              | `accent.subtle` |
-| `badge.accent.text`            | `accent.default`   |
+| `badge.accent.bg`              | `accent.primary-subtle` |
+| `badge.accent.text`            | `accent.primary`   |
 
 ### Button
 
-| Token                          | Primary              | Secondary                    | Ghost                              | Destructive                  |
-| ------------------------------ | -------------------- | ---------------------------- | ---------------------------------- | ---------------------------- |
-| `button.*.bg`                  | `accent.default`     | `transparent`                | `transparent`                      | `destructive.default`        |
-| `button.*.text`                | `text.on-accent`     | `text.accent`                | `text.secondary`                   | `text.on-destructive`        |
-| `button.*.icon`                | `text.on-accent`     | `icon.accent`                | `text.secondary`                   | `icon.on-destructive`        |
-| `button.*.border`              | `none`               | `1px solid border.accent`    | `none`                             | `none`                       |
-| `button.*.hover-bg`            | `accent.hover`       | `accent.subtle`              | `surface.tertiary`                 | `destructive.hover`          |
-| `button.*.hover-text`          | `text.on-accent`     | `text.accent-hover`          | `text.accent-hover`                | `text.on-destructive`        |
-| `button.*.hover-icon`          | `text.on-accent`     | `icon.accent-hover`          | `icon.accent-hover`                | `icon.on-destructive`        |
-| `button.*.active-bg`           | `accent.pressed`     | `accent.subtle`              | `surface.tertiary`                 | `destructive.pressed`        |
-| `button.*.active-text`         | `text.on-accent`     | `text.accent-pressed`        | `text.accent-pressed`              | `text.on-destructive`        |
-| `button.*.active-icon`         | `text.on-accent`     | `icon.accent-pressed`        | `icon.accent-pressed`              | `icon.on-destructive`        |
-| `button.*.disabled-opacity`    | `0.38`               | `0.38`                       | `0.38`                             | `0.38`                       |
-
-> **Icon-only buttons** (`IconBtn/Primary | Secondary | Ghost | Destructive`) inherit the same colour mapping; size variants (`md` 36×36, `sm` 28×28) keep `radius.full` and the same focus ring.
+| Token                          | Primary              | Secondary            | Ghost                |
+| ------------------------------ | -------------------- | -------------------- | -------------------- |
+| `button.*.bg`                  | `accent.primary`     | `transparent`        | `transparent`        |
+| `button.*.text`                | `text.inverse`       | `accent.primary`     | `text.tertiary`      |
+| `button.*.border`              | `none`               | `1px solid accent.primary` | `none`        |
+| `button.*.hover-bg`            | `accent.primary-hover`| `accent.primary-subtle`| `surface.tertiary` |
+| `button.*.active-bg`           | `accent.primary`     | `accent.primary-subtle`| `surface.tertiary` |
+| `button.*.disabled-opacity`    | `0.38`               | `0.38`               | `0.38`               |
 
 | Token                          | Value (all variants) |
 | ------------------------------ | -------------------- |
@@ -686,7 +562,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `button.font-weight`           | `font.weight.semibold` |
 | `button.icon-size`             | `16px`               |
 | `button.icon-gap`              | `space.2`            |
-| `button.focus-ring`            | `0 0 0 3px accent.subtle` |
+| `button.focus-ring`            | `0 0 0 3px accent.primary-subtle` |
 | `button.active-scale`          | `0.98`               |
 | `button.transition`            | `150ms ease`         |
 
@@ -717,7 +593,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `progress.height-lg`           | `10px`             |
 | `progress.radius`              | `radius.full`      |
 | `progress.track-bg`            | `gray.200` / `gray.700` (dark) |
-| `progress.fill-bg`             | `accent.default`   |
+| `progress.fill-bg`             | `accent.primary`   |
 | `progress.fill-positive`       | `data.positive`    |
 | `progress.fill-warning`        | `status.warning`   |
 | `progress.fill-error`          | `status.error`     |
@@ -739,7 +615,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `alert.padding`                | `space.3 space.4` (12px 16px) |
 | `alert.radius`                 | `radius.md` (8px)  |
 | `alert.border-left-width`      | `4px`              |
-| `alert.font-size`              | `font.size.sm` (13px) |
+| `alert.font-size`              | `font.size.sm` (12px / 14px) |
 | `alert.title.font-weight`      | `weight.semibold` (500) |
 | `alert.title.margin-bottom`    | `2px`              |
 | `alert.body.font-size`         | `12px`             |
@@ -757,7 +633,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 
 | Token                          | Info               | Success            | Warning            | Error              |
 | ------------------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `alert.{status}.bg`            | `status.info-bg` | `status.success-bg` | `status.warning-bg` | `status.error-bg` |
+| `alert.{status}.bg`            | `status.info-subtle` | `status.success-subtle` | `status.warning-subtle` | `status.error-subtle` |
 | `alert.{status}.border`        | `status.info`      | `status.success`   | `status.warning`   | `status.error`     |
 | `alert.{status}.icon-color`    | `status.info`      | `status.success`   | `status.warning`   | `status.error`     |
 | `alert.{status}.button-color`  | `status.info`      | `status.success`   | `status.warning`   | `status.error`     |
@@ -814,7 +690,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | ------------------------------ | ------------------ |
 | `tabs.border-bottom`           | `1px solid border.default` |
 | `tabs.indicator.height`        | `2px`              |
-| `tabs.indicator.color`         | `accent.default`   |
+| `tabs.indicator.color`         | `accent.primary`   |
 | `tabs.indicator.radius`        | `radius.full`      |
 | `tabs.indicator.animation`     | `200ms ease`       |
 | `tabs.item.padding-x`          | `space.4`          |
@@ -823,7 +699,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `tabs.item.font-weight`        | `font.weight.regular` |
 | `tabs.item.color`              | `text.secondary`   |
 | `tabs.item.hover-color`        | `text.primary`     |
-| `tabs.item.active-color`       | `accent.default`   |
+| `tabs.item.active-color`       | `accent.primary`   |
 | `tabs.item.active-font-weight` | `font.weight.semibold` |
 | `tabs.item.gap`                | `space.1`          |
 | `tabs.item.icon-size`          | `16px`             |
@@ -847,16 +723,16 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `stepper.pending.border`           | `border.default`   |
 | `stepper.pending.text`             | `text.tertiary`    |
 | `stepper.pending.connector`        | `border.default`   |
-| `stepper.active.bg`                | `accent.default`   |
-| `stepper.active.border`            | `accent.default`   |
+| `stepper.active.bg`                | `accent.primary`   |
+| `stepper.active.border`            | `accent.primary`   |
 | `stepper.active.text`              | `#FFFFFF`          |
 | `stepper.active.label-color`       | `text.primary`     |
 | `stepper.active.label-weight`      | `font.weight.semibold` |
-| `stepper.active.connector`         | `accent.default`   |
-| `stepper.complete.bg`              | `accent.default`   |
-| `stepper.complete.border`          | `accent.default`   |
+| `stepper.active.connector`         | `accent.primary`   |
+| `stepper.complete.bg`              | `accent.primary`   |
+| `stepper.complete.border`          | `accent.primary`   |
 | `stepper.complete.icon`            | `#FFFFFF` (checkmark, 14px) |
-| `stepper.complete.connector`       | `accent.default`   |
+| `stepper.complete.connector`       | `accent.primary`   |
 | `stepper.complete.label-color`     | `text.secondary`   |
 | `stepper.error.bg`                 | `status.error`     |
 | `stepper.error.border`             | `status.error`     |
@@ -882,7 +758,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `comparison.delta-negative.bg`     | `data.negative-subtle` |
 | `comparison.delta.font-family`     | `font.family.primary` |
 | `comparison.delta.font-size`       | `font.size.sm`     |
-| `comparison.highlight-row.bg`      | `accent.subtle` |
+| `comparison.highlight-row.bg`      | `accent.primary-subtle` |
 | `comparison.winner-badge.radius`   | `radius.sm` (4px)  |
 | `comparison.winner-badge.font-size`| `font.size.xs`     |
 | `comparison.winner-badge.color`    | `data.positive`    |
@@ -922,12 +798,12 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 
 | Token                              | Value              |
 | ---------------------------------- | ------------------ |
-| `timeline.range.fill`              | `accent.subtle` / `cat-N` at `0.20` |
+| `timeline.range.fill`              | `accent.primary-subtle` / `cat-N` at `0.20` |
 | `timeline.range.fill-opacity`      | `0.25`             |
 | `timeline.range.border`            | `none`             |
 | `timeline.range.height`            | `timeline.track.height` (matches track) |
 
-> The range fill can use `accent.subtle` for single-color timelines, or interpolate between two `cat-N` handle colors for multi-event timelines. Keep opacity low so the track baseline remains visible.
+> The range fill can use `accent.primary-subtle` for single-color timelines, or interpolate between two `cat-N` handle colors for multi-event timelines. Keep opacity low so the track baseline remains visible.
 
 **Handles (draggable event markers):**
 
@@ -942,13 +818,13 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `timeline.handle.focus-ring`       | `0 0 0 3px` handle color at `0.25` |
 | `timeline.handle.cursor`           | `grab` / `grabbing` |
 
-> Each handle gets its own semantic color via a `color` prop — not a single shared token. For a stock option calculator: Exercise handle = `accent.default`, Sale handle = `cat-5` (teal). This allows at-a-glance identification of which event each dot represents.
+> Each handle gets its own semantic color via a `color` prop — not a single shared token. For a stock option calculator: Exercise handle = `accent.primary`, Sale handle = `cat-5` (teal). This allows at-a-glance identification of which event each dot represents.
 
 **Handle color assignment (by event type):**
 
 | Event Type       | Handle Color       | Usage                          |
 | ---------------- | ------------------ | ------------------------------ |
-| `exercise`       | `accent.default`   | Option exercise date           |
+| `exercise`       | `accent.primary`   | Option exercise date           |
 | `sale`           | `cat-5`            | Stock sale / liquidity event   |
 | `conversion`     | `cat-2`            | Roth conversion window         |
 | `rebalance`      | `cat-3`            | Portfolio rebalance trigger    |
@@ -959,7 +835,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 
 | Token                              | Value              |
 | ---------------------------------- | ------------------ |
-| `timeline.label.font-size`         | `font.size.xs` (11px) |
+| `timeline.label.font-size`         | `font.size.xs` (10px / 12px) |
 | `timeline.label.font-weight`       | `font.weight.medium` |
 | `timeline.label.padding`           | `space.1 space.2` (4px 8px) |
 | `timeline.label.radius`            | `radius.sm` (6px)  |
@@ -979,7 +855,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 
 | Token                              | Value              |
 | ---------------------------------- | ------------------ |
-| `timeline.phase.font-size`         | `font.size.xs` (11px) |
+| `timeline.phase.font-size`         | `font.size.xs` (10px / 12px) |
 | `timeline.phase.font-weight`       | `font.weight.regular` |
 | `timeline.phase.color`             | `text.tertiary`    |
 | `timeline.phase.text-transform`    | `none`             |
@@ -1151,12 +1027,12 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 
 | Token                              | Goal Line          | Benchmark Line     | Limit Line         |
 | ---------------------------------- | ------------------ | ------------------ | ------------------ |
-| `chart.threshold.*.line-color`     | `status.warning`   | `accent.default`   | `status.error`     |
+| `chart.threshold.*.line-color`     | `status.warning`   | `accent.primary`   | `status.error`     |
 | `chart.threshold.*.line-width`     | `1.5px`            | `1.5px`            | `2px`              |
 | `chart.threshold.*.line-style`     | `dashed`           | `dotted`           | `solid`            |
 | `chart.threshold.*.dash-array`     | `6 4`              | `3 3`              | `—`                |
 | `chart.threshold.*.label.font-size`| `font.size.xs`     | `font.size.xs`     | `font.size.xs`     |
-| `chart.threshold.*.label.color`    | `status.warning`   | `accent.default`   | `status.error`     |
+| `chart.threshold.*.label.color`    | `status.warning`   | `accent.primary`   | `status.error`     |
 | `chart.threshold.*.label.bg`       | `surface.primary`  | `surface.primary`  | `surface.primary`  |
 | `chart.threshold.*.label.padding`  | `space.1 space.2`  | `space.1 space.2`  | `space.1 space.2`  |
 
@@ -1174,7 +1050,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `chart.annotation.connector-color`   | `gray.400`         |
 | `chart.annotation.connector-style`   | `solid`            |
 | `chart.annotation.dot-radius`        | `4px`              |
-| `chart.annotation.dot-fill`          | `accent.default`   |
+| `chart.annotation.dot-fill`          | `accent.primary`   |
 
 ### Vertical Event Markers
 
@@ -1186,7 +1062,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `chart.event.line-style`                 | `dashed`           |
 | `chart.event.line-dash`                  | `4 3`              |
 | `chart.event.line-opacity`               | `0.50`             |
-| `chart.event.label.font-size`            | `font.size.xs` (11px) |
+| `chart.event.label.font-size`            | `font.size.xs` (10px / 12px) |
 | `chart.event.label.font-weight`          | `font.weight.medium` |
 | `chart.event.label.padding`              | `space.1 space.2` (4px 8px) |
 | `chart.event.label.radius`               | `radius.sm` (6px)  |
@@ -1199,7 +1075,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `chart.event.dot.stroke`                 | `surface.primary`  |
 | `chart.event.dot.stroke-width`           | `2px`              |
 
-> Each event marker inherits its color from the `timeline.handle` event type mapping (e.g., Exercise = `accent.default`, Sale = `cat-5`). Labels are positioned inside the chart area div with `position: absolute` at the same `left%` as their marker line, using `top: -18px; transform: translateX(-50%)` so they remain centered above their marker at any viewport width. The line extends downward to meet the timeline scrubber. An optional dot at the intersection with a data series provides precise reading.
+> Each event marker inherits its color from the `timeline.handle` event type mapping (e.g., Exercise = `accent.primary`, Sale = `cat-5`). Labels are positioned inside the chart area div with `position: absolute` at the same `left%` as their marker line, using `top: -18px; transform: translateX(-50%)` so they remain centered above their marker at any viewport width. The line extends downward to meet the timeline scrubber. An optional dot at the intersection with a data series provides precise reading.
 >
 > **Line weight for clip-path strokes:** Use a 1% vertical gap between top and bottom polygon edges (≈1.5px on a 176px chart) for consistent perpendicular thickness across both steep and flat segments. A larger gap (e.g., 2%) causes visible thickness variation on steep slopes.
 
@@ -1219,7 +1095,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `chart.confidence.median-width`  | `2.5px`      | —              | Median (P50) line stroke       |
 | `chart.confidence.median-style`  | `solid`      | —              | Median line style              |
 | `chart.confidence.endpoint-dot`  | `5px`        | —              | Dot radius at band endpoints   |
-| `chart.confidence.endpoint-fill` | `accent.default` | —          | Endpoint dot fill color        |
+| `chart.confidence.endpoint-fill` | `accent.primary` | —          | Endpoint dot fill color        |
 | `chart.confidence.endpoint-stroke`| `surface.primary`| —         | Endpoint dot border color      |
 | `chart.confidence.layer-order`   | widest first | —              | Visual stacking: 99 → 50       |
 
@@ -1232,7 +1108,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `chart.datapoint.opacity`          | `1.0`              | `1.0`              | `1.0`              | `0.38`             |
 | `chart.datapoint.scale`            | `1.0`              | `1.2`              | `1.0`              | `1.0`              |
 | `chart.datapoint.stroke-width`     | `0`                | `2px`              | `2px`              | `0`                |
-| `chart.datapoint.stroke-color`     | `—`                | `surface.primary`  | `accent.default`   | `—`                |
+| `chart.datapoint.stroke-color`     | `—`                | `surface.primary`  | `accent.primary`   | `—`                |
 | `chart.datapoint.shadow`           | `none`             | `shadow.sm`        | `shadow.sm`        | `none`             |
 | `chart.datapoint.cursor`           | `default`          | `pointer`          | `pointer`          | `not-allowed`      |
 | `chart.datapoint.transition`       | `—`                | `150ms ease-out`   | `150ms ease-out`   | `—`                |
@@ -1243,8 +1119,8 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 
 | Token                              | Value                            |
 | ---------------------------------- | -------------------------------- |
-| `chart.band.fill-color`            | `accent.default`                 |
-| `chart.band.stroke-color`          | `accent.default`                 |
+| `chart.band.fill-color`            | `accent.primary`                 |
+| `chart.band.stroke-color`          | `accent.primary`                 |
 | `chart.band.curve-type`            | `monotoneX`                      |
 | `chart.band.label.font-size`       | `font.size.xs`                   |
 | `chart.band.label.font-family`     | `font.family.primary`            |
@@ -1319,13 +1195,13 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | ---------------------------------- | -------------------------------- |
 | `chart.histogram.bin-gap-ratio`    | `0.05`                           |
 | `chart.histogram.bar-radius`       | `0px` (no corner radius)         |
-| `chart.histogram.bar-fill`         | `accent.default`                 |
+| `chart.histogram.bar-fill`         | `accent.primary`                 |
 | `chart.histogram.bar-hover-opacity`| `0.85`                           |
 | `chart.histogram.bar-inactive-opacity`| `0.3`                         |
 | `chart.histogram.goal-fill-above`  | `data.positive` at `0.75` opacity|
 | `chart.histogram.goal-fill-below`  | `gray.400` at `0.5` opacity      |
-| `chart.histogram.distribution-line`| `2px solid accent.hover` |
-| `chart.histogram.distribution-fill`| `accent.default` at `0.08`       |
+| `chart.histogram.distribution-line`| `2px solid accent.primary-hover` |
+| `chart.histogram.distribution-fill`| `accent.primary` at `0.08`       |
 
 > Goal-aware coloring: bins above a threshold use `data.positive`, bins below use a muted gray.
 
@@ -1397,8 +1273,8 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `chart.waterfall.connector-dash`   | `4 3`                            |
 | `chart.waterfall.positive-fill`    | `data.positive`                  |
 | `chart.waterfall.negative-fill`    | `data.negative`                  |
-| `chart.waterfall.total-fill`       | `accent.default`                 |
-| `chart.waterfall.subtotal-fill`    | `accent.default` at `0.6`        |
+| `chart.waterfall.total-fill`       | `accent.primary`                 |
+| `chart.waterfall.subtotal-fill`    | `accent.primary` at `0.6`        |
 | `chart.waterfall.bar-radius`       | `0px` (no corner radius)         |
 | `chart.waterfall.bar-width-ratio`  | `0.6`                            |
 | `chart.waterfall.value-label.font-size`  | `font.size.xs`              |
@@ -1415,7 +1291,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `chart.gauge.arc-width`            | `12px`                           |
 | `chart.gauge.track-color`          | `gray.200` / `gray.700` (dark)   |
 | `chart.gauge.track-opacity`        | `0.3`                            |
-| `chart.gauge.fill-color`           | `accent.default`                 |
+| `chart.gauge.fill-color`           | `accent.primary`                 |
 | `chart.gauge.fill-color-warning`   | `status.warning`                 |
 | `chart.gauge.fill-color-error`     | `status.error`                   |
 | `chart.gauge.needle-width`         | `2px`                            |
@@ -1542,7 +1418,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `chart.treemap.value.font-weight`        | `font.weight.semibold` (600) |
 | `chart.treemap.value.color`              | `rgba(255,255,255,0.9)` |
 | `chart.treemap.hover-stroke`             | `#FFFFFF`, `2px`   |
-| `chart.treemap.selected-stroke`          | `accent.default`, `2px` |
+| `chart.treemap.selected-stroke`          | `accent.primary`, `2px` |
 | `chart.treemap.breadcrumb.font-size`     | `font.size.sm`     |
 | `chart.treemap.breadcrumb.color`         | `text.secondary`   |
 | `chart.treemap.breadcrumb.separator`     | `›`                |
@@ -1568,14 +1444,14 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 
 | Token                                    | Value              |
 | ---------------------------------------- | ------------------ |
-| `chart.brush.selection-fill`             | `accent.subtle` |
+| `chart.brush.selection-fill`             | `accent.primary-subtle` |
 | `chart.brush.selection-opacity`          | `0.20`             |
 | `chart.brush.handle-width`              | `4px`              |
-| `chart.brush.handle-color`              | `accent.default`   |
+| `chart.brush.handle-color`              | `accent.primary`   |
 | `chart.brush.handle-radius`             | `radius.sm`        |
 | `chart.brush.handle-height`             | `24px`             |
 | `chart.brush.mask-opacity`              | `0.06`             |
-| `chart.brush.border-color`              | `accent.default`   |
+| `chart.brush.border-color`              | `accent.primary`   |
 
 #### Chart Animations
 
@@ -1631,12 +1507,12 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `table.header.border-bottom`   | `2px solid border.strong`    | `2px solid border.strong`    |
 | `table.header.sort-icon-size`  | `14px`                       | `14px`                       |
 | `table.header.sort-icon-color` | `text.tertiary`              | `text.tertiary`              |
-| `table.header.sort-icon-active`| `accent.default`             | `accent.default`             |
+| `table.header.sort-icon-active`| `accent.primary`             | `accent.primary`             |
 | `table.header.sticky-shadow`   | `shadow.sm`                  | `shadow.sm`                  |
 | `table.row.bg`                 | `surface.primary`            | `surface.primary`            |
 | `table.row.bg-alt`             | `surface.secondary`          | `surface.secondary`          |
-| `table.row.bg-hover`           | `accent.subtle`      | `accent.subtle`      |
-| `table.row.bg-selected`        | `accent.subtle`      | `accent.subtle`      |
+| `table.row.bg-hover`           | `accent.primary-subtle`      | `accent.primary-subtle`      |
+| `table.row.bg-selected`        | `accent.primary-subtle`      | `accent.primary-subtle`      |
 | `table.row.border-bottom`      | `1px solid border.default`   | `1px solid border.default`   |
 | `table.cell.padding`           | `space.3 space.4`            | `space.3 space.4`            |
 | `table.cell.font-size`         | `font.size.sm`               | `font.size.sm`               |
@@ -1656,7 +1532,7 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | ---------------------------------- | ------------------ |
 | `table.collapse.toggle-font-size`  | `font.size.sm`     |
 | `table.collapse.toggle-font-weight`| `font.weight.medium` |
-| `table.collapse.toggle-color`      | `accent.default`   |
+| `table.collapse.toggle-color`      | `accent.primary`   |
 | `table.collapse.toggle-cursor`     | `pointer`          |
 | `table.collapse.toggle-icon-size`  | `14px`             |
 | `table.collapse.toggle-icon-gap`   | `space.1` (4px)    |
@@ -1672,21 +1548,21 @@ Matches `chart.seq.*` in Gen UI lib.pen (chart ramp may differ from UI `blue.*` 
 | `table.row.event-border-left`      | `3px solid` event color |
 | `table.row.event-text-weight`      | `font.weight.medium` |
 
-> Color mapping reuses `timeline.handle.*` event types: Exercise = `accent.default`, Sale = `cat-5`. The row gets a tinted background and a left-border accent stripe matching the event color.
+> Color mapping reuses `timeline.handle.*` event types: Exercise = `accent.primary`, Sale = `cat-5`. The row gets a tinted background and a left-border accent stripe matching the event color.
 
 ---
 
 ## 5. Content Typography
 
-> **Font key:** `primary` = Heebo, `secondary` = Cormorant Garamond
+> **Font key:** `primary` = Heebo, `secondary` = Noto Serif
 >
 > Heebo is used for all body copy and numbers. Use `font-variant-numeric: tabular-nums` when numbers are stacked vertically and need to appear aligned (table columns, calculation breakdowns, tooltip value lists).
 >
-> **Cormorant Garamond minimum weight rule:** Never use Cormorant Garamond below `font-weight: 500`. Its high-contrast design with delicate hairline strokes means `400` (regular) renders visually thin — closer to a light weight on most screens. All headings and display text using `secondary` (Cormorant Garamond) must use `semibold` (600) or higher. If you need a lighter feel, use `500` (medium) as the floor.
+> **Noto Serif weight guidance:** Noto Serif is legible down to `font-weight: 400` (regular). Use `600` (semibold) as the default for headings and display text. `400` (regular) is acceptable for body-length serif passages or lighter display treatments. Avoid `300` (light) at small sizes.
 
 | Token               | Font        | Size   | Weight      | Line Height | Letter Spacing | Color            |
 | ------------------- | ----------- | ------ | ----------- | ----------- | -------------- | ---------------- |
-| `type.page-title`   | `secondary` | `2xl`  | `semibold`  | `2xl`       | `tight`        | `text.primary`   |
+| `type.page-title`   | `secondary` | `lg`   | `regular`   | `lg`        | `tight`        | `text.primary`   |
 | `type.section-title` | `primary`  | `lg`   | `semibold`  | `lg`        | `normal`       | `text.primary`   |
 | `type.subtitle`     | `primary`   | `md`   | `semibold`  | `md`        | `normal`       | `text.secondary` |
 | `type.body`         | `primary`   | `base` | `regular`   | `base`      | `normal`       | `text.primary`   |
@@ -1933,7 +1809,7 @@ ctx.scale(dpr, dpr);
 | Token                    | Canvas Font String                                        |
 | ------------------------ | --------------------------------------------------------- |
 | `font.family.primary`   | `'400 14px "Heebo", -apple-system, sans-serif'`           |
-| `font.family.secondary` | `'600 18px "Cormorant Garamond", Georgia, serif'`         |
+| `font.family.secondary` | `'600 18px "Noto Serif", Georgia, serif'`         |
 | Axis labels              | `'400 11px "Heebo", -apple-system, sans-serif'`           |
 | Chart title              | `'600 16px "Heebo", -apple-system, sans-serif'`           |
 | Tooltip value (stacked)  | `'600 13px "Heebo", -apple-system, sans-serif'`           |
@@ -1942,7 +1818,7 @@ ctx.scale(dpr, dpr);
 
 ```
 // Use rgba for transparency — hex doesn't support alpha in Canvas 2D
-ctx.fillStyle = 'rgba(79, 70, 229, 0.15)';  // accent.default at 15%
+ctx.fillStyle = 'rgba(58, 106, 248, 0.15)';  // accent.primary (#3A6AF8) at 15%
 
 // Helper: hex + opacity → rgba
 function hexToRgba(hex, alpha) {

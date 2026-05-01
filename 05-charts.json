@@ -84,13 +84,13 @@
     "histogram": {
       "binGapRatio": 0.05,
       "barRadius": "0px",
-      "barFill": "accent.default",
+      "barFill": "accent.primary",
       "barHoverOpacity": 0.85,
       "barInactiveOpacity": 0.3,
       "goalFillAbove": "data.positive at 0.75 opacity",
       "goalFillBelow": "gray.400 at 0.5 opacity",
-      "distributionLine": "2px solid accent.hover",
-      "distributionFill": "accent.default at 0.08"
+      "distributionLine": "2px solid accent.primary-hover",
+      "distributionFill": "accent.primary at 0.08"
     },
     "heatmap": {
       "cellGap": "1px",
@@ -128,8 +128,8 @@
       "connector": { "width": "1px", "style": "dashed", "color": "gray.400", "dash": "4 3" },
       "positiveFill": "data.positive",
       "negativeFill": "data.negative",
-      "totalFill": "accent.default",
-      "subtotalFill": "accent.default at 0.6",
+      "totalFill": "accent.primary",
+      "subtotalFill": "accent.primary at 0.6",
       "barRadius": "0px",
       "barWidthRatio": 0.6,
       "valueLabel": { "fontSize": "font.size.xs", "fontFamily": "font.family.primary", "offset": "space.1 above bar" }
@@ -140,7 +140,7 @@
       "arcWidth": "12px",
       "trackColor": { "light": "gray.200", "dark": "gray.700" },
       "trackOpacity": 0.3,
-      "fillColor": "accent.default",
+      "fillColor": "accent.primary",
       "fillColorWarning": "status.warning",
       "fillColorError": "status.error",
       "needle": { "width": "2px", "color": "text.primary", "capRadius": "4px" },
@@ -245,7 +245,7 @@
         "color": "rgba(255,255,255,0.9)"
       },
       "hoverStroke": "#FFFFFF, 2px",
-      "selectedStroke": "accent.default, 2px",
+      "selectedStroke": "accent.primary, 2px",
       "breadcrumb": { "fontSize": "font.size.sm", "color": "text.secondary", "separator": "›", "activeColor": "text.primary" },
       "animation": { "duration": "400ms", "easing": "motion.easing.inOut" }
     }
@@ -333,11 +333,11 @@
       "label": { "fontSize": "font.size.xs", "color": "status.warning", "bg": "surface.primary", "padding": "space.1 space.2" }
     },
     "benchmark": {
-      "lineColor": "accent.default",
+      "lineColor": "accent.primary",
       "lineWidth": "1.5px",
       "lineStyle": "dotted",
       "dashArray": "3 3",
-      "label": { "fontSize": "font.size.xs", "color": "accent.default", "bg": "surface.primary", "padding": "space.1 space.2" }
+      "label": { "fontSize": "font.size.xs", "color": "accent.primary", "bg": "surface.primary", "padding": "space.1 space.2" }
     },
     "limit": {
       "lineColor": "status.error",
@@ -355,7 +355,7 @@
     "calloutPadding": "space.2 space.3",
     "calloutFontSize": "font.size.xs",
     "connector": { "width": "1px", "color": "gray.400", "style": "solid" },
-    "dot": { "radius": "4px", "fill": "accent.default" }
+    "dot": { "radius": "4px", "fill": "accent.primary" }
   },
   "verticalEventMarkers": {
     "$description": "Full-height dashed vertical lines marking time-based events. Inherits color from timeline.handle event type mapping.",
@@ -386,11 +386,11 @@
       "50": { "fillOpacity": 0.25, "borderOpacity": 0.30 }
     },
     "median": { "width": "2.5px", "style": "solid" },
-    "endpointDot": { "radius": "5px", "fill": "accent.default", "stroke": "surface.primary" },
+    "endpointDot": { "radius": "5px", "fill": "accent.primary", "stroke": "surface.primary" },
     "layerOrder": "widest first (99 → 50)",
     "band": {
-      "fillColor": "accent.default",
-      "strokeColor": "accent.default",
+      "fillColor": "accent.primary",
+      "strokeColor": "accent.primary",
       "curveType": "monotoneX",
       "label": { "fontSize": "font.size.xs", "fontFamily": "font.family.primary", "color": "text.secondary", "offset": "6px (outside right edge)" }
     }
@@ -400,7 +400,7 @@
     "states": {
       "default":  { "opacity": 1.0, "scale": 1.0, "strokeWidth": "0",  "strokeColor": "none",           "shadow": "none",      "cursor": "default",     "transition": "none" },
       "hover":    { "opacity": 1.0, "scale": 1.2, "strokeWidth": "2px", "strokeColor": "surface.primary", "shadow": "shadow.sm", "cursor": "pointer",     "transition": "150ms ease-out" },
-      "selected": { "opacity": 1.0, "scale": 1.0, "strokeWidth": "2px", "strokeColor": "accent.default",  "shadow": "shadow.sm", "cursor": "pointer",     "transition": "150ms ease-out" },
+      "selected": { "opacity": 1.0, "scale": 1.0, "strokeWidth": "2px", "strokeColor": "accent.primary",  "shadow": "shadow.sm", "cursor": "pointer",     "transition": "150ms ease-out" },
       "disabled": { "opacity": 0.38, "scale": 1.0, "strokeWidth": "0",  "strokeColor": "none",           "shadow": "none",      "cursor": "not-allowed", "transition": "none" }
     }
   },
@@ -415,11 +415,11 @@
       "horizontal": "false (opt-in)"
     },
     "brush": {
-      "selectionFill": "accent.subtle",
+      "selectionFill": "accent.primary-subtle",
       "selectionOpacity": 0.20,
-      "handle": { "width": "4px", "color": "accent.default", "radius": "radius.sm", "height": "24px" },
+      "handle": { "width": "4px", "color": "accent.primary", "radius": "radius.sm", "height": "24px" },
       "maskOpacity": 0.06,
-      "borderColor": "accent.default"
+      "borderColor": "accent.primary"
     },
     "animations": {
       "barGrow": "300ms ease-out (from baseline)",
@@ -460,7 +460,7 @@
     "dprScaling": "canvas.width = rect.width * dpr; canvas.height = rect.height * dpr; ctx.scale(dpr, dpr). All subsequent coordinates use CSS pixels.",
     "fontStrings": {
       "primary": "400 14px \"Heebo\", -apple-system, sans-serif",
-      "secondary": "600 18px \"Cormorant Garamond\", Georgia, serif",
+      "secondary": "600 18px \"Noto Serif\", Georgia, serif",
       "axisLabels": "400 11px \"Heebo\", -apple-system, sans-serif",
       "chartTitle": "600 16px \"Heebo\", -apple-system, sans-serif",
       "tooltipValue": "600 13px \"Heebo\", -apple-system, sans-serif"

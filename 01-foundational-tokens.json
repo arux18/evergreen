@@ -2,167 +2,84 @@
   "$schema": "design-tokens",
   "$description": "Foundational design tokens for Evergreen financial data visualization system. Covers color primitives, semantic colors, data value semantics, chart palettes, and typography. Light + Dark modes.",
   "color": {
-    "base": {
-      "canvas": { "light": "#FFFFFF", "dark": "#0E0E0E", "usage": "App canvas / main field (matches Pencil base.canvas; dark aligns with gray.50 dark)" },
-      "white":  { "value": "#FFFFFF", "usage": "Absolute white (icons, text.on-accent); not theme-swapped" }
-    },
     "gray": {
-      "50":  { "light": "#F7F7F8", "dark": "#0E0E0E", "usage": "Lightest neutral / dark app base (paired scale, Gen UI lib.pen)" },
-      "100": { "light": "#E8E8EA", "dark": "#1A1A1A", "usage": "Subtle background / dark card" },
-      "200": { "light": "#D1D1D6", "dark": "#3A3A3C", "usage": "Borders, dividers / dark nested" },
-      "300": { "light": "#AEAEB2", "dark": "#535356", "usage": "Disabled fills / dark border" },
-      "400": { "light": "#8E8E93", "dark": "#6C6C70", "usage": "Muted UI" },
-      "500": { "light": "#6C6C70", "dark": "#8E8E93", "usage": "Tertiary text" },
-      "600": { "light": "#535356", "dark": "#AEAEB2", "usage": "Secondary text, data.neutral" },
-      "700": { "light": "#3A3A3C", "dark": "#D1D1D6", "usage": "Emphasis" },
-      "800": { "light": "#2C2C2E", "dark": "#E8E8EA", "usage": "Strong borders / light-on-dark surfaces" },
-      "900": { "light": "#0E0E0E", "dark": "#F7F7F8", "usage": "Primary text (light) / inverse bar fill (resolved per theme)" }
+      "50":  { "light": "#F9FAF9", "dark": "#0E0E0E", "usage": "Lightest surface" },
+      "100": { "light": "#EEEFEE", "dark": "#202220", "usage": "Subtle background" },
+      "200": { "light": "#D8D9D8", "dark": "#3B3E3C", "usage": "Borders, dividers" },
+      "300": { "light": "#B6B9B7", "dark": "#6B6F6C", "usage": "Disabled fills" },
+      "400": { "light": "#949895", "dark": "#7E8480", "usage": "Placeholder text" },
+      "500": { "light": "#727874", "dark": "#7E8480", "usage": "Secondary text" },
+      "600": { "light": "#575B58", "dark": "#949895", "usage": "Body text" },
+      "700": { "light": "#3B3E3C", "dark": "#B6B9B7", "usage": "Primary text" },
+      "800": { "light": "#202220", "dark": "#D8D9D8", "usage": "Headings" },
+      "900": { "light": "#0E0E0E", "dark": "#EEEFEE", "usage": "High-emphasis text" }
+    },
+    "taupe": {
+      "50":  { "light": "#FDFDFC", "dark": "#322C20", "usage": "Lightest warm surface" },
+      "100": { "light": "#F7F5F0", "dark": "#4B4435", "usage": "Warm subtle background" },
+      "200": { "light": "#ECE8DF", "dark": "#6C6451", "usage": "Warm borders, dividers" },
+      "300": { "light": "#D5D0C1", "dark": "#877F68", "usage": "Warm disabled fills" },
+      "400": { "light": "#BCB49E", "dark": "#9D937B", "usage": "Warm placeholder text" },
+      "500": { "light": "#9D937B", "dark": "#9D937B", "usage": "Warm secondary text" },
+      "600": { "light": "#877F68", "dark": "#BCB49E", "usage": "Warm body text" },
+      "700": { "light": "#6C6451", "dark": "#D5D0C1", "usage": "Warm primary text" },
+      "800": { "light": "#4B4435", "dark": "#ECE8DF", "usage": "Warm headings" },
+      "900": { "light": "#322C20", "dark": "#F7F5F0", "usage": "Warm high-emphasis text" }
     },
     "blue": {
-      "50":  { "value": "#F5F8FF", "usage": "Lightest tint" },
       "100": { "value": "#EBF0FE", "usage": "Lightest blue (selected backgrounds in light mode)" },
       "200": { "value": "#C8D6FD", "usage": "Very light backgrounds, subtle highlights" },
-      "300": { "value": "#A3BCFC", "usage": "Lighter blue (text/icon accent pressed in dark mode)" },
-      "400": { "value": "#9BB3FC", "usage": "Light blue (text/icon accent hover in dark mode)" },
+      "300": { "value": "#A3BCFC", "usage": "Lighter blue" },
+      "400": { "value": "#9BB3FC", "usage": "Light blue (hover states in dark mode)" },
       "500": { "value": "#7094FB", "usage": "Medium blue (primary accent in dark mode)" },
       "600": { "value": "#3A6AF8", "usage": "Primary accent (CTAs, interactive elements in light mode)" },
-      "700": { "value": "#295CCC", "usage": "Dark blue (text/icon accent hover in light mode)" },
-      "800": { "value": "#1E3A8A", "usage": "Dark blue surfaces (accent.subtle, AI, surface.accent in dark)" },
-      "900": { "value": "#152354", "usage": "Darkest blue (pressed, deep accent)" }
-    },
-    "red": {
-      "50":  { "value": "#FEF2F2", "usage": "Lightest red wash (destructive.subtle light, status.error-bg light, fin.expense-bg light)" },
-      "200": { "value": "#FECACA", "usage": "Very light red (icon/text destructive-pressed in dark mode)" },
-      "300": { "value": "#FCA5A5", "usage": "Light red (destructive.pressed in dark mode)" },
-      "400": { "value": "#F87171", "usage": "Status error / icon destructive / data.negative in dark mode" },
-      "500": { "value": "#EF4444", "usage": "Destructive default in dark mode" },
-      "700": { "value": "#B91C1C", "usage": "Destructive default in light mode (status.error / data.negative / fin.expense light)" },
-      "800": { "value": "#991B1B", "usage": "Destructive hover in light mode (icon/text destructive-hover light)" },
-      "900": { "value": "#450A0A", "usage": "Destructive pressed in light mode (destructive.subtle dark, fin.expense-bg dark)" }
-    },
-    "green": {
-      "50":  { "value": "#F0FDF4", "usage": "Lightest green wash (status.success-bg light, fin.income-bg light)" },
-      "400": { "value": "#4ADE80", "usage": "Status success / data.positive / fin.income in dark mode" },
-      "700": { "value": "#15803D", "usage": "Status success / data.positive / fin.income in light mode" },
-      "800": { "value": "#166534", "usage": "Strong green (reserved future use, swatch only)" },
-      "900": { "value": "#052E16", "usage": "Status success-bg / fin.income-bg dark" }
-    },
-    "orange": {
-      "50":  { "value": "#FFF7ED", "usage": "Lightest orange wash (status.warning-bg light, fin.debt-bg light)" },
-      "400": { "value": "#FB923C", "usage": "Orange tint dark (fin.debt dark, chart.cat.13)" },
-      "700": { "value": "#C2410C", "usage": "Strong orange light (fin.debt light)" },
-      "800": { "value": "#9A3412", "usage": "Strong orange (reserved future use, swatch only)" },
-      "900": { "value": "#451A03", "usage": "Status warning-bg / fin.debt-bg dark" }
-    },
-    "amber": {
-      "400": { "value": "#FBBF24", "usage": "Status warning in dark mode" },
-      "700": { "value": "#C25700", "usage": "Status warning in light mode" }
-    },
-    "purple": {
-      "50":  { "value": "#F5F3FF", "usage": "Lightest purple wash (fin.investment-bg light)" },
-      "400": { "value": "#A78BFA", "usage": "fin.investment dark (chart.cat.8)" },
-      "700": { "value": "#7C3AED", "usage": "fin.investment light" },
-      "800": { "value": "#5B21B6", "usage": "Strong purple (reserved future use, swatch only)" },
-      "900": { "value": "#2E1065", "usage": "fin.investment-bg dark" }
-    },
-    "sky": {
-      "50":  { "value": "#F0F9FF", "usage": "Lightest sky wash (fin.savings-bg light)" },
-      "400": { "value": "#38BDF8", "usage": "fin.savings dark (chart.cat.6)" },
-      "700": { "value": "#0369A1", "usage": "fin.savings light" },
-      "800": { "value": "#075985", "usage": "Strong sky (reserved future use, swatch only)" },
-      "900": { "value": "#082F49", "usage": "fin.savings-bg dark" }
-    },
-    "info": {
-      "50":  { "value": "#EFF6FF", "usage": "Status info-bg light" },
-      "400": { "value": "#60A5FA", "usage": "Status info in dark mode" },
-      "700": { "value": "#2563EB", "usage": "Status info in light mode" },
-      "950": { "value": "#172554", "usage": "Status info-bg dark" }
+      "700": { "value": "#295CCC", "usage": "Dark blue (hover states in light mode)" },
+      "800": { "value": "#152354", "usage": "Darkest blue (subtle backgrounds in dark mode)" }
     },
     "surface": {
-      "primary":   { "light": "#FFFFFF", "dark": "#0E0E0E", "usage": "Main background = base.canvas + gray.50 dark" },
-      "secondary": { "light": "#F7F7F8", "dark": "#1A1A1A", "usage": "Card/panel = gray.50 light / gray.100 dark" },
-      "tertiary":  { "light": "#E8E8EA", "dark": "#3A3A3C", "usage": "Nested surfaces = gray.100 / gray.200" },
-      "elevated":  { "light": "#FFFFFF", "dark": "#3A3A3C", "usage": "Raised surfaces = base.canvas / gray.200 dark" },
-      "inverse":   { "light": "#0E0E0E", "dark": "#F7F7F8", "usage": "Inverse bars = gray.900 (both themes)" },
-      "accent":    { "light": "#EBF0FE", "dark": "#1E3A8A", "usage": "Accent-tinted surface = blue.100 / blue.800" },
+      "primary":   { "light": "#FFFFFF", "dark": "#111111", "usage": "Main background" },
+      "secondary": { "light": "#F5F5F5", "dark": "#1A1A1A", "usage": "Card/panel background" },
+      "tertiary":  { "light": "#EBEBEB", "dark": "#242424", "usage": "Nested surfaces" },
       "overlay":   { "light": "rgba(0,0,0,0.5)", "dark": "rgba(0,0,0,0.7)", "usage": "Modal/dropdown backdrops" }
     },
     "border": {
-      "default": { "light": "#E8E8EA", "dark": "#535356", "usage": "Default = gray.100 / gray.300 (border.primary in Pencil)" },
-      "strong":  { "light": "#D1D1D6", "dark": "#6C6C70", "usage": "Emphasized = gray.200 / gray.400" },
-      "focus":   { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Focus rings = blue.600 / blue.500" },
-      "accent":  { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Accent borders (selected, active inputs) = blue.600 / blue.500" }
+      "default": { "light": "#E5E5E5", "dark": "#4A4D4B", "usage": "Default borders" },
+      "strong":  { "light": "#D4D4D4", "dark": "#626562", "usage": "Emphasized borders" },
+      "focus":   { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Focus rings" }
     },
     "text": {
-      "primary":           { "light": "#0E0E0E", "dark": "#F7F7F8", "usage": "Primary text = gray.900" },
-      "secondary":         { "light": "#535356", "dark": "#AEAEB2", "usage": "Secondary/helper = gray.600" },
-      "tertiary":          { "light": "#6C6C70", "dark": "#8E8E93", "usage": "Placeholder, caption = gray.500" },
-      "inverse":           { "light": "#FFFFFF", "dark": "#0E0E0E", "usage": "On inverse / chips: white / gray.50 dark" },
-      "link":              { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Interactive links = blue.600 / blue.500" },
-      "accent":            { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Accent text (links, ghost-button labels) = blue.600 / blue.500" },
-      "accent-hover":      { "light": "#295CCC", "dark": "#9BB3FC", "usage": "Accent text hover = blue.700 / blue.400" },
-      "accent-pressed":    { "light": "#152354", "dark": "#A3BCFC", "usage": "Accent text pressed = blue.900 / blue.300" },
-      "on-accent":         { "value": "#FFFFFF", "usage": "Text on accent fill (primary buttons) — absolute white, not theme-swapped" },
-      "destructive":       { "light": "#B91C1C", "dark": "#F87171", "usage": "Destructive text = red.700 / red.400" },
-      "destructive-hover": { "light": "#991B1B", "dark": "#FCA5A5", "usage": "Destructive text hover = red.800 / red.300" },
-      "destructive-pressed": { "light": "#450A0A", "dark": "#FECACA", "usage": "Destructive text pressed = red.900 / red.200" },
-      "on-destructive":    { "value": "#FFFFFF", "usage": "Text on destructive fill (destructive primary button) — absolute white" }
-    },
-    "icon": {
-      "accent":             { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Accent icons (ghost button icon) = blue.600 / blue.500" },
-      "accent-hover":       { "light": "#295CCC", "dark": "#9BB3FC", "usage": "Accent icon hover = blue.700 / blue.400" },
-      "accent-pressed":     { "light": "#152354", "dark": "#A3BCFC", "usage": "Accent icon pressed = blue.900 / blue.300" },
-      "destructive":        { "light": "#B91C1C", "dark": "#F87171", "usage": "Destructive icons = red.700 / red.400" },
-      "destructive-hover":  { "light": "#991B1B", "dark": "#FCA5A5", "usage": "Destructive icon hover = red.800 / red.300" },
-      "destructive-pressed":{ "light": "#450A0A", "dark": "#FECACA", "usage": "Destructive icon pressed = red.900 / red.200" },
-      "on-destructive":     { "value": "#FFFFFF", "usage": "Icon on destructive fill — absolute white" }
+      "primary":   { "light": "#171717", "dark": "#F5F5F5", "usage": "Primary text" },
+      "secondary": { "light": "#525252", "dark": "#A3A3A3", "usage": "Secondary/helper text" },
+      "tertiary":  { "light": "#737373", "dark": "#8A8A8A", "usage": "Placeholder, caption" },
+      "inverse":   { "light": "#FFFFFF", "dark": "#111111", "usage": "Text on filled surfaces" },
+      "link":      { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Interactive links" }
     },
     "accent": {
-      "default": { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Primary actions, active states = blue.600 / blue.500" },
-      "hover":   { "light": "#295CCC", "dark": "#9BB3FC", "usage": "Primary hover = blue.700 / blue.400" },
-      "pressed": { "light": "#152354", "dark": "#152354", "usage": "Primary pressed fill = blue.900 in both themes (matches gen-ui-design-system.lib.pen); for label/icon pressed colour use text.accent-pressed / icon.accent-pressed" },
-      "subtle":  { "light": "#EBF0FE", "dark": "#1E3A8A", "usage": "Selected backgrounds, accent wash = blue.100 / blue.800" }
-    },
-    "destructive": {
-      "default": { "light": "#B91C1C", "dark": "#EF4444", "usage": "Destructive primary fill = red.700 / red.500" },
-      "hover":   { "light": "#991B1B", "dark": "#F87171", "usage": "Destructive hover = red.800 / red.400" },
-      "pressed": { "light": "#450A0A", "dark": "#FCA5A5", "usage": "Destructive pressed = red.900 / red.300" },
-      "subtle":  { "light": "#FEF2F2", "dark": "#450A0A", "usage": "Destructive subtle background = red.50 / red.900" }
+      "primary":        { "light": "#3A6AF8", "dark": "#7094FB", "usage": "Primary actions, active states" },
+      "primary-hover":  { "light": "#295CCC", "dark": "#9BB3FC", "usage": "Primary hover" },
+      "primary-subtle": { "light": "#EBF0FE", "dark": "#152354", "usage": "Selected backgrounds" }
     },
     "status": {
-      "error":      { "light": "#B91C1C", "dark": "#F87171", "usage": "Error states (= red.700 / red.400)" },
-      "error-bg":   { "light": "#FEF2F2", "dark": "#450A0A", "usage": "Error background (= red.50 / red.900)" },
-      "warning":    { "light": "#C25700", "dark": "#FBBF24", "usage": "Warning states (= amber.700 / amber.400)" },
-      "warning-bg": { "light": "#FFF7ED", "dark": "#451A03", "usage": "Warning background (= orange.50 / orange.900)" },
-      "success":    { "light": "#15803D", "dark": "#4ADE80", "usage": "Success states (= green.700 / green.400)" },
-      "success-bg": { "light": "#F0FDF4", "dark": "#052E16", "usage": "Success background (= green.50 / green.900)" },
-      "info":       { "light": "#2563EB", "dark": "#60A5FA", "usage": "Informational states (= info.700 / info.400)" },
-      "info-bg":    { "light": "#EFF6FF", "dark": "#172554", "usage": "Informational background (= info.50 / info.950)" }
-    },
-    "fin": {
-      "$description": "Financial-context semantic colors (income, expense, savings, debt, investment). FG + bg pair per category.",
-      "income":           { "light": "#15803D", "dark": "#4ADE80", "usage": "Income / inflow (= green.700 / green.400)" },
-      "income-bg":        { "light": "#F0FDF4", "dark": "#052E16", "usage": "Income chip/badge bg (= green.50 / green.900)" },
-      "expense":          { "light": "#B91C1C", "dark": "#F87171", "usage": "Expense / outflow (= red.700 / red.400)" },
-      "expense-bg":       { "light": "#FEF2F2", "dark": "#450A0A", "usage": "Expense chip/badge bg (= red.50 / red.900)" },
-      "savings":          { "light": "#0369A1", "dark": "#38BDF8", "usage": "Savings (= sky.700 / sky.400)" },
-      "savings-bg":       { "light": "#F0F9FF", "dark": "#082F49", "usage": "Savings chip/badge bg (= sky.50 / sky.900)" },
-      "debt":             { "light": "#C2410C", "dark": "#FB923C", "usage": "Debt (= orange.700 / orange.400)" },
-      "debt-bg":          { "light": "#FFF7ED", "dark": "#451A03", "usage": "Debt chip/badge bg (= orange.50 / orange.900)" },
-      "investment":       { "light": "#7C3AED", "dark": "#A78BFA", "usage": "Investment (= purple.700 / purple.400)" },
-      "investment-bg":    { "light": "#F5F3FF", "dark": "#2E1065", "usage": "Investment chip/badge bg (= purple.50 / purple.900)" }
+      "error":          { "light": "#B91C1C", "dark": "#F87171", "usage": "Error states" },
+      "error-subtle":   { "light": "#FEE2E2", "dark": "#450A0A", "usage": "Error background" },
+      "warning":        { "light": "#C25700", "dark": "#FBBF24", "usage": "Warning states" },
+      "warning-subtle": { "light": "#FFF7ED", "dark": "#451A03", "usage": "Warning background" },
+      "success":        { "light": "#15803D", "dark": "#4ADE80", "usage": "Success states" },
+      "success-subtle": { "light": "#F0FDF4", "dark": "#052E16", "usage": "Success background" },
+      "info":           { "light": "#2563EB", "dark": "#60A5FA", "usage": "Informational states" },
+      "info-subtle":    { "light": "#EFF6FF", "dark": "#172554", "usage": "Informational background" }
     },
     "data": {
       "$description": "Financial meaning colors (gains/losses). Separate from status colors to avoid visual confusion when UI state and data value overlap.",
       "positive":        { "light": "#15803D", "dark": "#4ADE80", "usage": "Gains, positive returns" },
       "negative":        { "light": "#B91C1C", "dark": "#F87171", "usage": "Losses, negative returns" },
-      "neutral":         { "light": "#535356", "dark": "#AEAEB2", "usage": "Zero change, breakeven (= gray.600)" },
+      "neutral":         { "light": "#525252", "dark": "#A3A3A3", "usage": "Zero change, breakeven" },
       "positive-subtle": { "light": "rgba(21,128,61,0.08)", "dark": "rgba(74,222,128,0.10)", "usage": "Positive badge/cell bg" },
       "negative-subtle": { "light": "rgba(185,28,28,0.08)", "dark": "rgba(248,113,113,0.10)", "usage": "Negative badge/cell bg" }
     },
     "chart": {
       "categorical": {
-        "$description": "15-series priority-ordered palette. Always assign in order: cat.1 first, cat.2 second, etc. Dark-mode overrides ensure contrast on dark canvas (~#0E0E0E).",
+        "$description": "15-series priority-ordered palette. Always assign in order: cat.1 first, cat.2 second, etc. Dark-mode overrides ensure ≥ 3:1 contrast on #111111.",
         "1":  { "light": "#8951F0", "dark": "#8951F0" },
         "2":  { "light": "#06B6D4", "dark": "#06B6D4" },
         "3":  { "light": "#312E81", "dark": "#4338CA" },
@@ -180,24 +97,21 @@
         "15": { "light": "#FACC15", "dark": "#FDE68A" }
       },
       "sequential": {
-        "$description": "Single-hue blue ramp for charts (matches chart.seq.* in Gen UI lib.pen; distinct from UI blue.* where noted).",
-        "50": "#F5F8FF",
+        "$description": "Single-hue blue ramp for area charts and heatmaps.",
         "100": "#EBF0FE",
         "200": "#C8D6FD",
         "300": "#A5BCFC",
         "400": "#7094FB",
         "500": "#5A82F9",
         "600": "#3A6AF8",
-        "700": "#2952CC",
-        "800": "#1E3F8F",
-        "900": "#152B60"
+        "700": "#2952CC"
       }
     }
   },
   "font": {
     "family": {
       "primary":   { "value": "Heebo", "usage": "Primary UI font — body copy, numbers, labels (sans-serif, Google Fonts)" },
-      "secondary": { "value": "Cormorant Garamond", "usage": "Headings, editorial content (serif, Google Fonts)", "rules": ["Never set below font-weight 500", "Use 600 (semibold) as default for all headings", "500 (medium) only for deliberately lighter display"] }
+      "secondary": { "value": "Noto Serif", "usage": "Headings, editorial content (serif, Google Fonts)", "rules": ["Use 600 (semibold) as default for headings", "400 (regular) is acceptable for body-length serif or lighter display", "Avoid 300 (light) at small sizes"] }
     },
     "size": {
       "$breakpoint": "Mobile sizes apply below 768px. Desktop sizes apply at and above 768px.",
@@ -219,7 +133,8 @@
     "weight": {
       "light":    { "css": 300, "usage": "Decorative, large display text (Heebo only)" },
       "regular":  { "css": 400, "usage": "Body, labels (Heebo only)" },
-      "semibold": { "css": 600, "usage": "Subtitles, emphasis, all Cormorant Garamond headings" },
+      "medium":   { "css": 500, "usage": "Form labels, axis titles, toggles" },
+      "semibold": { "css": 600, "usage": "Subtitles, emphasis, all Noto Serif headings" },
       "bold":     { "css": 700, "usage": "Section headers, table headers" }
     },
     "lineHeight": {
@@ -245,8 +160,8 @@
     }
   },
   "type": {
-    "$description": "11 semantic type styles. Font key: primary = Heebo, secondary = Cormorant Garamond. Use font-variant-numeric: tabular-nums when numbers are stacked vertically.",
-    "page-title":    { "font": "secondary", "size": "2xl",  "weight": "semibold", "lineHeight": "2xl",  "letterSpacing": "tight",  "color": "text.primary" },
+    "$description": "11 semantic type styles. Font key: primary = Heebo, secondary = Noto Serif. Use font-variant-numeric: tabular-nums when numbers are stacked vertically.",
+    "page-title":    { "font": "secondary", "size": "lg",   "weight": "regular",  "lineHeight": "lg",   "letterSpacing": "tight",  "color": "text.primary" },
     "section-title": { "font": "primary",   "size": "lg",   "weight": "semibold", "lineHeight": "lg",   "letterSpacing": "normal", "color": "text.primary" },
     "subtitle":      { "font": "primary",   "size": "md",   "weight": "semibold", "lineHeight": "md",   "letterSpacing": "normal", "color": "text.secondary" },
     "body":          { "font": "primary",   "size": "base", "weight": "regular",  "lineHeight": "base", "letterSpacing": "normal", "color": "text.primary" },
