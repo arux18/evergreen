@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Builds Pencil variable payloads from tokens/ for hemlock-library.pen.
+ * Builds Pencil variable payloads from tokens/ for hemlock-library.lib.pen.
  * Run: node scripts/build-hemlock-pencil-variables.mjs
  *
  * Writes merged payloads under scripts/ (e.g. ndjson-line-*.json, pencil-mcp-full-with-replace.json).

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Replaces all variables in hemlock-library.pen with scripts/pencil-mcp-full-with-replace.json (1045 keys).
+ * Replaces all variables in hemlock-library.lib.pen with scripts/pencil-mcp-full-with-replace.json (1045 keys).
  * Run: node scripts/push-hemlock-full-replace.mjs
  *
  * Optional: PENCIL_EXTENSION_ROOT, PENCIL_MCP_APP (default cursor)

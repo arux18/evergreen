@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pushes `scripts/ndjson-line-*.json` chunks into hemlock-library.pen via Pencil MCP (stdio).
+ * Pushes `scripts/ndjson-line-*.json` chunks into hemlock-library.lib.pen via Pencil MCP (stdio).
  * Requires Cursor + Pencil with an open session (socket ~/.pencil/socket/pencil-cursor.sock).
  *
  * Run from repo root: node scripts/push-hemlock-chunks-stdio.mjs
