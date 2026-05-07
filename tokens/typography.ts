@@ -1,6 +1,6 @@
 export const fontFamily = {
   open: ['Heebo', 'sans-serif'],
-  noto: ['"Cormorant Garamond"', 'serif'],
+  noto: ['"Noto Serif"', 'serif'],
 }
 
 export enum TypographyTypes {
@@ -82,7 +82,7 @@ export enum TypographyTypes {
   'typo-primary-2xs-regular' = 'typo-primary-2xs-regular',
   'typo-primary-2xs-regular-link' = 'typo-primary-2xs-regular-link',
   'typo-primary-2xs-light' = 'typo-primary-2xs-light',
-  // Secondary (Cormorant Garamond)
+  // Secondary (Noto Serif)
   'typo-secondary-8xl' = 'typo-secondary-8xl',
   'typo-secondary-8xl-bold' = 'typo-secondary-8xl-bold',
   'typo-secondary-8xl-semibold' = 'typo-secondary-8xl-semibold',

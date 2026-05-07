@@ -158,7 +158,7 @@ function main() {
   }
   variables['font-family-secondary'] = {
     type: 'string',
-    value: 'Cormorant Garamond',
+    value: 'Noto Serif',
   }
 
   const typoPath = path.join(ROOT, 'tokens/typography.ts')
@@ -209,7 +209,7 @@ function main() {
       value:
         familyVar === 'font-family-primary'
           ? 'Heebo'
-          : 'Cormorant Garamond',
+          : 'Noto Serif',
     }
   }
 
