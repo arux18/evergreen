@@ -1,55 +1,24 @@
-# Синхронизация `tokens/` с Hemlock
+# Tokens sync log
 
-**Источник правды по цветам:** `pencil/design-system/in-progress/hemlock-library.lib.pen` (переменные `color-*` с hex).
+Reference library (read-only): `pencil/design-system/in-progress/hemlock-library.lib.pen`.
 
-**Команда обновления примитивов в `colors.css`:** из корня репозитория
-
-`node scripts/sync-tokens-from-hemlock.mjs`
+Regenerate primitive RGB lines in `colors.css`: `node scripts/sync-tokens-from-hemlock.mjs`
 
 ---
 
-## 1. Первая актуализация (состояние на момент запроса)
+## Primitives (`tokens/colors.css`)
 
-Когда вы впервые попросили привести папку `tokens/` в соответствие с Hemlock, было сделано следующее.
-
-- **`tokens/colors.css`** — примитивы `--color-*` пересчитаны из hex в Hemlock. В CSS попали в том числе **промежуточные шаги taupe** (например `taupe-150`, `175`, `225`, `350`, `550`), потому что они **тогда присутствовали** в `hemlock-library.lib.pen`.
-- **`tokens/typography.ts` и `tokens/typography.css`** — secondary: **Noto Serif** вместо Cormorant Garamond.
-- **`scripts/build-hemlock-pencil-variables.mjs`** — значение secondary по умолчанию: **Noto Serif**.
-- **`scripts/sync-tokens-from-hemlock.mjs`** — первый вариант скрипта **объединял** старые строки в `colors.css` с данными из Hemlock, поэтому лишние taupe **могли остаться в CSS** даже после удаления их из `.pen`.
+| | |
+|--|--|
+| **Removed** | `--color-clay-200`, `--color-clay-400`, `--color-clay-600`, `--color-violet-50`, `--color-violet-500` |
+| **Updated** | Full gray scale `--color-gray-50`–`900` and other `--color-*` hex primitives from Hemlock (80 total) |
 
 ---
 
-## 2. Текущая актуализация (после вашей чистки Hemlock)
+## Semantics (`tokens/colors.ts`)
 
-Вы убрали из `hemlock-library.lib.pen` лишние токены (в т.ч. несуществующую шкалу вроде taupe-125 и др.). В pen по taupe остались только **`color-taupe-100` … `color-taupe-900`** (80 цветовых примитивов с hex в переменных).
-
-Сделано сейчас:
-
-- **`scripts/sync-tokens-from-hemlock.mjs`** — логика обновлена: в `colors.css` попадают **только** примитивы из Hemlock **плюс** фиксированный список «наследие из CSS», которых нет в pen, но на них всё ещё ссылается **`tokens/colors.ts`**: **clay** и **violet**.
-- **`tokens/colors.css`** — пересобран из Hemlock; удалены примитивы, которых больше нет в pen.
-
-### Удалённые из `colors.css` при этом проходе
-
-| Причина | Примитивы |
-|--------|-----------|
-| Удалены из Hemlock (промежуточные taupe, ранее попавшие в CSS из старого merge) | `--color-taupe-150`, `--color-taupe-175`, `--color-taupe-225`, `--color-taupe-350`, `--color-taupe-550` |
-
-### Сохранены намеренно (нет в Hemlock, есть в `colors.ts`)
-
-- `--color-clay-200`, `--color-clay-400`, `--color-clay-600`
-- `--color-violet-50`, `--color-violet-500`
-
-### Проверено, без правок в этом проходе
-
-- **`spacing.ts`** — совпадает с числовыми переменными `spacing-*` в Hemlock.
-- **Типографика** — `font-family-primary` / `font-family-secondary` в Hemlock: Heebo / Noto Serif; desktop-шкалы в `typography.ts` совпадают с переменными `typo-*` в pen.
-
----
-
-## Итог по файлам (текущий проход)
-
-| Файл | Действие |
-|------|----------|
-| `tokens/colors.css` | Пересобран из Hemlock + clay/violet |
-| `scripts/sync-tokens-from-hemlock.mjs` | Обновлена логика (без «залипания» удалённых примитивов) |
-| `tokens/SYNC-LOG.md` | Этот журнал |
+| | |
+|--|--|
+| **Removed** | `text`: `header-success`, `header-error`, `body-error`, `body-success`. `icons`: `feature-dark`, `feature-white`. Entire `clay` and `violet` scales. |
+| **Added** | `nav` (bg, text, icon, states, shadow). `chat` (bg, border, divider, text, input, chips, shadow). `chatVoice` (active, waveform, timer, pulse). |
+| **Updated** | `text.disabled` → gray-300. `btnPrimaryTextDisabled` → gray-400. `btnPrimaryInvertedTextDisabled` & `btnSecondaryInvertedTextDisabled` → gray-300. Link/button text: blue-600 / blue-700 / blue-800, disabled gray-300. `btnLinkTextActive` renamed **`btnLinkTextPressed`** (aligned with `$colors-btnLinkTextPressed`). |

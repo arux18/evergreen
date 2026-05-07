@@ -4,9 +4,7 @@
  * Strips block comments before parsing so example lines like --color-name in the
  * header do not pollute the primitive list.
  *
- * Primitives are taken **only** from `hemlock-library.lib.pen` (`color-*` with hex),
- * plus a small allowlist preserved when missing from the pen (clay / violet), since
- * `tokens/colors.ts` still references them.
+ * Primitives are taken **only** from `hemlock-library.lib.pen` (`color-*` with hex).
  *
  * Run from repo root: node scripts/sync-tokens-from-hemlock.mjs
  */
@@ -19,9 +17,6 @@ const ROOT = path.join(__dirname, '..')
 
 const HEMLOCK = path.join(ROOT, 'pencil/design-system/in-progress/hemlock-library.lib.pen')
 const COLORS_CSS = path.join(ROOT, 'tokens/colors.css')
-
-/** Keep these RGB triplets from the current CSS if Hemlock has no matching primitive. */
-const PRESERVE_IF_ABSENT_IN_PEN = ['clay-200', 'clay-400', 'clay-600', 'violet-50', 'violet-500']
 
 function stripBlockComments(css) {
   return css.replace(/\/\*[\s\S]*?\*\//g, '')
@@ -36,17 +31,6 @@ function hexToRgbTriplet(hex) {
   const g = parseInt(h.slice(2, 4), 16)
   const b = parseInt(h.slice(4, 6), 16)
   return `${r} ${g} ${b}`
-}
-
-function parsePrimitives(css) {
-  const map = {}
-  const re = /--color-([a-z0-9-]+):\s*([\d ]+);/g
-  let m
-  const clean = stripBlockComments(css)
-  while ((m = re.exec(clean)) !== null) {
-    map[m[1]] = m[2].trim().replace(/\s+/g, ' ')
-  }
-  return map
 }
 
 function primitiveOrder(css) {
@@ -73,15 +57,9 @@ function main() {
   }
 
   const css = fs.readFileSync(COLORS_CSS, 'utf8')
-  const existing = parsePrimitives(css)
   const order = primitiveOrder(css)
 
   const merged = { ...fromPen }
-  for (const name of PRESERVE_IF_ABSENT_IN_PEN) {
-    if (merged[name] == null && existing[name] != null) {
-      merged[name] = existing[name]
-    }
-  }
 
   let fullOrder = order.filter((name) => merged[name] != null)
   const seen = new Set(fullOrder)
@@ -96,18 +74,19 @@ function main() {
 
   const block = `  /* primitives */\n${lines.join('\n')}`
 
-  const replaced = css.replace(
-    /\s*\/\* primitives \*\/[\s\S]*?(?=\n\})/,
-    `\n${block}`,
-  )
-
-  if (replaced === css) {
-    throw new Error('colors.css replace failed — pattern not found')
+  const primitiveBlock = /\s*\/\* primitives \*\/[\s\S]*?(?=\n\})/
+  if (!primitiveBlock.test(css)) {
+    throw new Error('colors.css: could not find /* primitives */ block before closing brace')
   }
 
-  fs.writeFileSync(COLORS_CSS, replaced, 'utf8')
+  const replaced = css.replace(primitiveBlock, `\n${block}`)
+
+  if (replaced !== css) {
+    fs.writeFileSync(COLORS_CSS, replaced, 'utf8')
+  }
+
   process.stderr.write(
-    `tokens/colors.css: ${Object.keys(fromPen).length} primitives from Hemlock + ${PRESERVE_IF_ABSENT_IN_PEN.filter((n) => fromPen[n] == null && existing[n] != null).length} preserved.\n`,
+    `tokens/colors.css: ${Object.keys(fromPen).length} primitives from Hemlock${replaced === css ? ' (unchanged)' : ''}.\n`,
   )
 }
 

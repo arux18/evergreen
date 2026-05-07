@@ -30,18 +30,12 @@ export const colors = {
     error: 'rgb(var(--color-red-600) / <alpha-value>)',
     action: 'rgb(var(--color-blue-600) / <alpha-value>)',
     reverse: 'rgb(var(--color-base-white) / <alpha-value>)',
-    'header-success': 'rgb(var(--color-green-600) / <alpha-value>)',
-    'header-error': 'rgb(var(--color-red-600) / <alpha-value>)',
-    'body-error': 'rgb(var(--color-red-800) / <alpha-value>)',
-    'body-success': 'rgb(var(--color-olive-800) / <alpha-value>)',
     deposit: 'rgb(var(--color-green-500) / <alpha-value>)',
-    disabled: 'rgb(var(--color-gray-400) / <alpha-value>)',
+    disabled: 'rgb(var(--color-gray-300) / <alpha-value>)',
   },
   icons: {
-    'feature-white': 'rgb(var(--color-green-500) / <alpha-value>)',
     muted: 'rgb(var(--color-gray-300) / <alpha-value>)',
     full: 'rgb(var(--color-gray-900) / <alpha-value>)',
-    'feature-dark': 'rgb(var(--color-green-300) / <alpha-value>)',
     error: 'rgb(var(--color-red-600) / <alpha-value>)',
     action: 'rgb(var(--color-blue-600) / <alpha-value>)',
     meta: 'rgb(var(--color-gray-600) / <alpha-value>)',
@@ -122,15 +116,6 @@ export const colors = {
     200: 'rgb(var(--color-taupe-200) / <alpha-value>)',
     100: 'rgb(var(--color-taupe-100) / <alpha-value>)',
   },
-  clay: {
-    200: 'rgb(var(--color-clay-200) / <alpha-value>)',
-    400: 'rgb(var(--color-clay-400) / <alpha-value>)',
-    600: 'rgb(var(--color-clay-600) / <alpha-value>)',
-  },
-  violet: {
-    500: 'rgb(var(--color-violet-500) / <alpha-value>)',
-    50: 'rgb(var(--color-violet-50) / <alpha-value>)',
-  },
   blue: {
     100: 'rgb(var(--color-blue-100) / <alpha-value>)',
     200: 'rgb(var(--color-blue-200) / <alpha-value>)',
@@ -155,6 +140,44 @@ export const colors = {
     900: 'rgb(var(--color-orange-900) / <alpha-value>)',
   },
 
+  nav: {
+    bg: 'rgb(var(--color-taupe-100) / <alpha-value>)',
+    textPrimary: 'rgb(var(--color-gray-800) / <alpha-value>)',
+    textSecondary: 'rgb(var(--color-gray-600) / <alpha-value>)',
+    textDisabled: 'rgb(var(--color-gray-300) / <alpha-value>)',
+    icon: 'rgb(var(--color-gray-400) / <alpha-value>)',
+    divider: 'rgb(var(--color-taupe-200) / <alpha-value>)',
+    activeBg: 'rgb(var(--color-taupe-300) / <alpha-value>)',
+    border: 'rgb(var(--color-taupe-300) / <alpha-value>)',
+    hoverBg: 'rgb(var(--color-taupe-200) / <alpha-value>)',
+    pressedBg: 'rgb(var(--color-taupe-300) / <alpha-value>)',
+    hoverText: 'rgb(var(--color-gray-800) / <alpha-value>)',
+    shadow: 'rgb(var(--color-gray-800) / 0.16)',
+  },
+
+  chat: {
+    bg: 'rgb(var(--color-taupe-100) / <alpha-value>)',
+    border: 'rgb(var(--color-taupe-300) / <alpha-value>)',
+    divider: 'rgb(var(--color-taupe-200) / <alpha-value>)',
+    textPrimary: 'rgb(var(--color-gray-800) / <alpha-value>)',
+    textSecondary: 'rgb(var(--color-gray-600) / <alpha-value>)',
+    placeholder: 'rgb(var(--color-gray-400) / <alpha-value>)',
+    inputBg: 'rgb(var(--color-base-white) / <alpha-value>)',
+    sendBg: 'rgb(var(--color-gray-800) / <alpha-value>)',
+    bubbleUser: 'rgb(var(--color-taupe-100) / <alpha-value>)',
+    chipHover: 'rgb(var(--color-taupe-200) / <alpha-value>)',
+    chipPressed: 'rgb(var(--color-taupe-300) / <alpha-value>)',
+    shadow: 'rgb(var(--color-gray-800) / 0.157)',
+  },
+
+  chatVoice: {
+    activeBg: 'rgb(var(--color-blue-600) / <alpha-value>)',
+    activeIcon: 'rgb(var(--color-base-white) / <alpha-value>)',
+    waveform: 'rgb(var(--color-blue-400) / <alpha-value>)',
+    timer: 'rgb(var(--color-gray-600) / <alpha-value>)',
+    pulse: 'rgb(var(--color-blue-100) / <alpha-value>)',
+  },
+
   btnPrimaryBg: 'rgb(var(--color-gray-900) / <alpha-value>)',
   btnPrimaryBgDisabled: 'rgb(var(--color-gray-200) / <alpha-value>)',
   btnPrimaryBgActive: 'rgb(var(--color-gray-700) / <alpha-value>)',
@@ -166,12 +189,12 @@ export const colors = {
   btnPrimaryInvertedBgHover: 'rgb(var(--color-base-white) / <alpha-value>)',
 
   btnPrimaryText: 'rgb(var(--color-gray-100) / <alpha-value>)',
-  btnPrimaryTextDisabled: 'rgb(var(--color-gray-600) / <alpha-value>)',
+  btnPrimaryTextDisabled: 'rgb(var(--color-gray-400) / <alpha-value>)',
   btnPrimaryTextActive: 'rgb(var(--color-base-white) / <alpha-value>)',
   btnPrimaryTextHover: 'rgb(var(--color-base-white) / <alpha-value>)',
 
   btnPrimaryInvertedText: 'rgb(var(--color-gray-700) / <alpha-value>)',
-  btnPrimaryInvertedTextDisabled: 'rgb(var(--color-gray-400) / <alpha-value>)',
+  btnPrimaryInvertedTextDisabled: 'rgb(var(--color-gray-300) / <alpha-value>)',
   btnPrimaryInvertedTextActive: 'rgb(var(--color-gray-700) / <alpha-value>)',
   btnPrimaryInvertedTextHover: 'rgb(var(--color-gray-900) / <alpha-value>)',
 
@@ -192,7 +215,7 @@ export const colors = {
   btnSecondaryTextHover: 'rgb(var(--color-gray-800) / <alpha-value>)',
 
   btnSecondaryInvertedText: 'rgb(var(--color-base-white) / <alpha-value>)',
-  btnSecondaryInvertedTextDisabled: 'rgb(var(--color-gray-400) / <alpha-value>)',
+  btnSecondaryInvertedTextDisabled: 'rgb(var(--color-gray-300) / <alpha-value>)',
   btnSecondaryInvertedTextActive: 'rgb(var(--color-gray-200) / <alpha-value>)',
   btnSecondaryInvertedTextHover: 'rgb(var(--color-base-white) / <alpha-value>)',
 
@@ -216,8 +239,8 @@ export const colors = {
   btnDestructionTextActive: 'rgb(var(--color-base-white) / <alpha-value>)',
   btnDestructionTextHover: 'rgb(var(--color-base-white) / <alpha-value>)',
 
-  btnLinkText: 'rgb(var(--color-sky-500) / <alpha-value>)',
-  btnLinkTextDisabled: 'rgb(var(--color-gray-400) / <alpha-value>)',
-  btnLinkTextActive: 'rgb(var(--color-sky-500) / <alpha-value>)',
-  btnLinkTextHover: 'rgb(var(--color-sky-300) / <alpha-value>)',
+  btnLinkText: 'rgb(var(--color-blue-600) / <alpha-value>)',
+  btnLinkTextHover: 'rgb(var(--color-blue-700) / <alpha-value>)',
+  btnLinkTextPressed: 'rgb(var(--color-blue-800) / <alpha-value>)',
+  btnLinkTextDisabled: 'rgb(var(--color-gray-300) / <alpha-value>)',
 }
