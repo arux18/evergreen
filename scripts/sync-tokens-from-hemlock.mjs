@@ -4,6 +4,10 @@
  * Strips block comments before parsing so example lines like --color-name in the
  * header do not pollute the primitive list.
  *
+ * Primitives are taken **only** from `hemlock-library.lib.pen` (`color-*` with hex),
+ * plus a small allowlist preserved when missing from the pen (clay / violet), since
+ * `tokens/colors.ts` still references them.
+ *
  * Run from repo root: node scripts/sync-tokens-from-hemlock.mjs
  */
 import fs from 'fs'
@@ -15,6 +19,9 @@ const ROOT = path.join(__dirname, '..')
 
 const HEMLOCK = path.join(ROOT, 'pencil/design-system/in-progress/hemlock-library.lib.pen')
 const COLORS_CSS = path.join(ROOT, 'tokens/colors.css')
+
+/** Keep these RGB triplets from the current CSS if Hemlock has no matching primitive. */
+const PRESERVE_IF_ABSENT_IN_PEN = ['clay-200', 'clay-400', 'clay-600', 'violet-50', 'violet-500']
 
 function stripBlockComments(css) {
   return css.replace(/\/\*[\s\S]*?\*\//g, '')
@@ -69,16 +76,23 @@ function main() {
   const existing = parsePrimitives(css)
   const order = primitiveOrder(css)
 
-  const merged = { ...existing, ...fromPen }
-
-  let fullOrder = [...order]
-  for (const name of Object.keys(merged)) {
-    if (!fullOrder.includes(name)) fullOrder.push(name)
+  const merged = { ...fromPen }
+  for (const name of PRESERVE_IF_ABSENT_IN_PEN) {
+    if (merged[name] == null && existing[name] != null) {
+      merged[name] = existing[name]
+    }
   }
 
-  const lines = fullOrder
-    .filter((name) => merged[name] != null)
-    .map((name) => `  --color-${name}: ${merged[name]};`)
+  let fullOrder = order.filter((name) => merged[name] != null)
+  const seen = new Set(fullOrder)
+  for (const name of Object.keys(merged).sort()) {
+    if (!seen.has(name)) {
+      fullOrder.push(name)
+      seen.add(name)
+    }
+  }
+
+  const lines = fullOrder.map((name) => `  --color-${name}: ${merged[name]};`)
 
   const block = `  /* primitives */\n${lines.join('\n')}`
 
@@ -93,7 +107,7 @@ function main() {
 
   fs.writeFileSync(COLORS_CSS, replaced, 'utf8')
   process.stderr.write(
-    `tokens/colors.css: merged ${Object.keys(fromPen).length} primitives from Hemlock.\n`,
+    `tokens/colors.css: ${Object.keys(fromPen).length} primitives from Hemlock + ${PRESERVE_IF_ABSENT_IN_PEN.filter((n) => fromPen[n] == null && existing[n] != null).length} preserved.\n`,
   )
 }
 
