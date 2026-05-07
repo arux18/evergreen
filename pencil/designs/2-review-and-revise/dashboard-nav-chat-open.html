@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Nav and Chat Open</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --color-bg: #FFFFFF;
+    --color-sidebar: #F7F5F0;
+    --color-chat: #F7F5F0;
+    --color-card: #FFFFFF;
+    --color-text-primary: #2D2926;
+    --color-text-secondary: #5E5954;
+    --color-text-muted: #8A8680;
+    --color-border: #DCD8CB;
+    --color-positive: #15803D;
+    --color-negative: #B91C1C;
+    --color-accent-blue: #3A6AF8;
+    --color-accent-light-blue: #6FA8FF;
+    --color-accent-gold: #C79A3D;
+    --color-score-green: #2D8A4E;
+
+    --font-serif: 'Noto Serif', serif;
+    --font-sans: 'Heebo', sans-serif;
+    --font-logo: 'Manrope', sans-serif;
+
+    --card-radius: 12px;
+    --card-shadow: 0 0 12px rgba(45, 41, 38, 0.16);
+    --card-shadow-hover: 0 0 15px rgba(41, 92, 204, 0.4);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    width: 1440px;
+    height: 900px;
+    overflow: hidden;
+    display: flex;
+    gap: 8px;
+    padding: 7px 8px 8px 8px;
+    justify-content: center;
+  }
+
+  /* ─── Sidebar ─── */
+  .sidebar {
+    width: 240px;
+    min-width: 240px;
+    height: 100%;
+    background: var(--color-sidebar);
+    border-radius: 0 12px 12px 0;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .sidebar-top {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex: 1;
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+
+  .sidebar-logo .logo-main {
+    font-family: var(--font-logo);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .sidebar-logo .logo-suffix {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: #1A1A1A;
+  }
+
+  .nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 12px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .nav-item:hover {
+    background: rgba(45, 41, 38, 0.05);
+  }
+
+  .nav-item.active {
+    background: rgba(45, 41, 38, 0.08);
+    color: var(--color-text-primary);
+  }
+
+  .nav-item-indent {
+    padding-left: 24px;
+  }
+
+  .nav-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+  }
+
+  .sidebar-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .sidebar-user:hover {
+    background: rgba(45, 41, 38, 0.05);
+  }
+
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+  }
+
+  .user-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  /* ─── Main Panel ─── */
+  .main-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 884px;
+    overflow-y: auto;
+  }
+
+  .header-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 20px 8px 20px;
+  }
+
+  .greeting-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .greeting {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--color-text-primary);
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+
+  .header-logo .logo-main {
+    font-family: var(--font-logo);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .header-logo .logo-suffix {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: #1A1A1A;
+  }
+
+  .content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px 48px;
+    flex: 1;
+  }
+
+  .intro-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+  }
+
+  .intro-text {
+    font-family: var(--font-serif);
+    font-size: 40px;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+  }
+
+  .cards-grid {
+    display: flex;
+    gap: 48px;
+    width: 100%;
+  }
+
+  .cards-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* ─── Cards ─── */
+  .card {
+    background: var(--color-card);
+    border-radius: var(--card-radius);
+    padding: 14px 24px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .card-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+  }
+
+  /* Accounts Card */
+  .accounts-card { gap: 10px; }
+
+  .card-subtext {
+    font-size: 12px;
+    color: var(--color-text-muted);
+  }
+
+  .account-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .account-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .account-row-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .account-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .account-amount {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .account-amount.negative { color: var(--color-negative); }
+
+  .account-type {
+    font-size: 11px;
+    color: var(--color-text-muted);
+  }
+
+  /* Wealth Score Card */
+  .wealth-score-card { gap: 12px; }
+
+  .score-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .score-ring {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .score-ring svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .score-number {
+    font-family: var(--font-sans);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    z-index: 1;
+  }
+
+  .score-label {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    z-index: 1;
+    margin-top: -6px;
+  }
+
+  .score-status {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-score-green);
+    text-align: center;
+  }
+
+  /* Investments Card */
+  .investments-card { gap: 12px; }
+
+  .stacked-bar {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .bar-segment { height: 100%; }
+  .bar-us-stocks { background: var(--color-accent-blue); flex: 50; }
+  .bar-intl-stocks { background: var(--color-accent-light-blue); flex: 20; }
+  .bar-bonds { background: var(--color-accent-gold); flex: 20; }
+  .bar-cash { background: var(--color-text-muted); flex: 10; }
+
+  .legend {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .legend-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .legend-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .legend-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .legend-value {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  /* Planning Card */
+  .planning-card { gap: 10px; }
+
+  .planning-card .card-title { font-size: 15px; }
+  .planning-card .card-icon { width: 14px; height: 14px; }
+
+  .planning-period {
+    font-size: 12px;
+    color: var(--color-text-muted);
+  }
+
+  .bills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .bill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .bill-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bill-date {
+    width: 38px;
+    height: 38px;
+    background: var(--color-card);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f0ede6;
+  }
+
+  .bill-date-month {
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .bill-date-day {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1;
+  }
+
+  .bill-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .bill-detail {
+    font-size: 11px;
+    color: var(--color-text-muted);
+  }
+
+  .bill-amount {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  /* Net Worth Card */
+  .networth-card { gap: 6px; }
+
+  .nw-amount {
+    font-family: var(--font-serif);
+    font-size: 46px;
+    color: var(--color-text-primary);
+    line-height: 1.1;
+  }
+
+  .nw-change {
+    font-size: 13px;
+    color: var(--color-positive);
+  }
+
+  /* Tax Strategy Card */
+  .tax-card { gap: 8px; padding: 12px 16px; }
+
+  .tax-info-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .tax-info-body {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .tax-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tax-highlight {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  /* Activity Card */
+  .activity-card {
+    gap: 12px;
+    border: 1px solid rgba(58, 106, 248, 0.3);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  .tx-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tx-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tx-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .tx-dot.expense { background: var(--color-negative); }
+  .tx-dot.income { background: var(--color-positive); }
+
+  .tx-name {
+    font-size: 13px;
+    color: var(--color-text-primary);
+  }
+
+  .tx-detail {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+  }
+
+  .tx-amount {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .tx-amount.expense { color: var(--color-negative); }
+  .tx-amount.income { color: var(--color-positive); }
+
+  /* Lifetime Planning Card */
+  .lifetime-card { gap: 16px; }
+
+  .chart-head {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .chart-filter {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .chart-filter-label {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+  }
+
+  .chart-filter-value {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .chart-area {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    height: 140px;
+    padding-bottom: 24px;
+    position: relative;
+  }
+
+  .chart-bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .chart-bar-amount {
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  .chart-bar-amount.highlight {
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .chart-bar {
+    width: 36px;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(180deg, var(--color-accent-blue) 0%, #6FA8FF 100%);
+  }
+
+  .chart-bar-label {
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+  }
+
+  .chart-bar-label.highlight {
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  /* ─── Chat Panel ─── */
+  .chat-panel {
+    width: 360px;
+    min-width: 360px;
+    height: 100%;
+    background: var(--color-chat);
+    border-radius: var(--card-radius);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 2px 28px 2px rgba(45, 41, 38, 0.16);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+  }
+
+  .collapse-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    font-size: 16px;
+  }
+
+  .collapse-btn:hover { background: rgba(45, 41, 38, 0.05); }
+
+  .chat-title {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--color-text-primary);
+  }
+
+  .chat-messages {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .chat-greeting {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+  }
+
+  .chat-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    background: var(--color-sidebar);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .chip:hover { background: #edeae3; }
+
+  .chat-input-area {
+    padding: 12px 16px;
+  }
+
+  .chat-input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: white;
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--color-border);
+  }
+
+  .chat-input {
+    border: none;
+    outline: none;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-text-primary);
+    background: transparent;
+    width: 100%;
+  }
+
+  .chat-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .chat-input-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .secondary-buttons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .icon-btn {
+    width: 34px;
+    height: 34px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    font-size: 16px;
+  }
+
+  .icon-btn:hover { background: rgba(45, 41, 38, 0.05); }
+
+  .new-chat-btn {
+    height: 34px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0 10px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  .new-chat-btn:hover { background: rgba(45, 41, 38, 0.05); }
+
+  .send-btn {
+    width: 34px;
+    height: 34px;
+    border: none;
+    background: var(--color-text-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+  }
+
+  .send-btn:hover { background: #1a1714; }
+
+  /* Scrollbar */
+  .main-panel::-webkit-scrollbar { width: 6px; }
+  .main-panel::-webkit-scrollbar-track { background: transparent; }
+  .main-panel::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav class="sidebar">
+  <div class="sidebar-top">
+    <div class="sidebar-logo">
+      <span class="logo-main">evergreen</span>
+      <span class="logo-suffix">.ai</span>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-group">
+        <a class="nav-item active">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+          Overview
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Net Worth</div>
+        <a class="nav-item">Overview</a>
+        <a class="nav-item">Accounts</a>
+        <a class="nav-item">Activity</a>
+        <a class="nav-item">Investments</a>
+        <a class="nav-item nav-item-indent">House & Property</a>
+        <a class="nav-item nav-item-indent">Equity</a>
+        <a class="nav-item">Wealth Score</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Planning</div>
+        <a class="nav-item">Lifetime Planning</a>
+        <a class="nav-item">Tax Strategy</a>
+        <a class="nav-item">Planning</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-bottom">
+    <div class="sidebar-user">
+      <div class="user-avatar">S</div>
+      <span class="user-name">Sylvia</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Panel -->
+<main class="main-panel">
+  <div class="header-row">
+    <div class="greeting-area">
+      <span class="greeting">Good morning, Sylvia</span>
+      <div class="header-logo">
+        <span class="logo-main">evergreen</span>
+        <span class="logo-suffix">.ai</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-column">
+    <div class="intro-section">
+      <h1 class="intro-text">Let's check in with your money.</h1>
+    </div>
+
+    <div class="cards-grid">
+      <!-- Left Column -->
+      <div class="cards-column">
+        <!-- Accounts -->
+        <div class="card accounts-card">
+          <div class="card-header">
+            <span class="card-title">Accounts</span>
+            <svg class="card-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>
+          </div>
+          <div class="card-subtext">4 linked · Updated today</div>
+          <div class="account-categories">
+            <div class="account-row">
+              <div class="account-row-top">
+                <span class="account-name">Chase Checking</span>
+                <span class="account-amount">$12,450</span>
+              </div>
+              <span class="account-type">Checking · Primary</span>
+            </div>
+            <div class="account-row">
+              <div class="account-row-top">
+                <span class="account-name">Marcus Savings</span>
+                <span class="account-amount">$48,200</span>
+              </div>
+              <span class="account-type">High-Yield Savings</span>
+            </div>
+            <div class="account-row">
+              <div class="account-row-top">
+                <span class="account-name">Amex Platinum</span>
+                <span class="account-amount negative">-$1,840</span>
+              </div>
+              <span class="account-type">Credit Card</span>
+            </div>
+            <div class="account-row">
+              <div class="account-row-top">
+                <span class="account-name">Fidelity Brokerage</span>
+                <span class="account-amount">$370,840</span>
+              </div>
+              <span class="account-type">Investment Account</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wealth Score -->
+        <div class="card wealth-score-card">
+          <div class="card-header">
+            <span class="card-title">Wealth Score</span>
+            <svg class="card-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>
+          </div>
+          <div class="score-visual">
+            <div class="score-ring">
+              <svg viewBox="0 0 140 140">
+                <circle cx="70" cy="70" r="50" fill="none" stroke="#E8E5DE" stroke-width="6"/>
+                <circle cx="70" cy="70" r="50" fill="none" stroke="#2D8A4E" stroke-width="6"
+                  stroke-dasharray="232.5 314.16" stroke-dashoffset="-39.27"
+                  stroke-linecap="round" transform="rotate(-90 70 70)"/>
+              </svg>
+              <div style="display:flex;flex-direction:column;align-items:center;z-index:1;">
+                <span class="score-number">740</span>
+                <span class="score-label">/ 1000</span>
+              </div>
+            </div>
+            <span class="score-status">Good · +12 pts this month</span>
+          </div>
+        </div>
+
+        <!-- Investments -->
+        <div class="card investments-card">
+          <div class="card-header">
+            <span class="card-title">Investments</span>
+            <svg class="card-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>
+          </div>
+          <div class="stacked-bar">
+            <div class="bar-segment bar-us-stocks"></div>
+            <div class="bar-segment bar-intl-stocks"></div>
+            <div class="bar-segment bar-bonds"></div>
+            <div class="bar-segment bar-cash"></div>
+          </div>
+          <div class="legend">
+            <div class="legend-row">
+              <div class="legend-left">
+                <div class="legend-dot" style="background:#3A6AF8"></div>
+                <span class="legend-label">US stocks</span>
+              </div>
+              <span class="legend-value">50% · $185,420</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-left">
+                <div class="legend-dot" style="background:#6FA8FF"></div>
+                <span class="legend-label">International stocks</span>
+              </div>
+              <span class="legend-value">20% · $74,168</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-left">
+                <div class="legend-dot" style="background:#C79A3D"></div>
+                <span class="legend-label">Bonds</span>
+              </div>
+              <span class="legend-value">20% · $74,168</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-left">
+                <div class="legend-dot" style="background:#8A8680"></div>
+                <span class="legend-label">Cash</span>
+              </div>
+              <span class="legend-value">10% · $37,084</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planning -->
+        <div class="card planning-card">
+          <div class="card-header">
+            <span class="card-title">Planning</span>
+            <svg class="card-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5.5"/><path d="M7 4v6M4 7h6"/></svg>
+          </div>
+          <div class="card-header" style="margin-bottom:4px">
+            <span class="planning-period">Next 10 days</span>
+          </div>
+          <div class="bills-list">
+            <div class="bill-item">
+              <div class="bill-left">
+                <div class="bill-date">
+                  <span class="bill-date-month">APR</span>
+                  <span class="bill-date-day">24</span>
+                </div>
+                <div>
+                  <div class="bill-name">Rent</div>
+                  <div class="bill-detail">Autopay · due in 2 days</div>
+                </div>
+              </div>
+              <span class="bill-amount">$2,400.00</span>
+            </div>
+            <div class="bill-item">
+              <div class="bill-left">
+                <div class="bill-date">
+                  <span class="bill-date-month">APR</span>
+                  <span class="bill-date-day">26</span>
+                </div>
+                <div>
+                  <div class="bill-name">Electric</div>
+                  <div class="bill-detail">ConEd · due in 4 days</div>
+                </div>
+              </div>
+              <span class="bill-amount">$145.50</span>
+            </div>
+            <div class="bill-item">
+              <div class="bill-left">
+                <div class="bill-date">
+                  <span class="bill-date-month">APR</span>
+                  <span class="bill-date-day">29</span>
+                </div>
+                <div>
+                  <div class="bill-name">Equinox</div>
+                  <div class="bill-detail">Gym · due in 7 days</div>
+                </div>
+              </div>
+              <span class="bill-amount">$245.00</span>
+            </div>
+            <div class="bill-item">
+              <div class="bill-left">
+                <div class="bill-date">
+                  <span class="bill-date-month">MAY</span>
+                  <span class="bill-date-day">01</span>
+                </div>
+                <div>
+                  <div class="bill-name">Internet</div>
+                  <div class="bill-detail">Verizon · due in 9 days</div>
+                </div>
+              </div>
+              <span class="bill-amount">$89.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="cards-column">
+        <!-- Net Worth -->
+        <div class="card networth-card">
+          <div class="card-header">
+            <span class="card-title">Net Worth</span>
+            <svg class="card-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>
+          </div>
+          <span class="nw-amount">$2,412,840</span>
+          <span class="nw-change">+$184,320 ytd (+8.3%)</span>
+        </div>
+
+        <!-- Tax Strategy -->
+        <div class="card tax-card">
+          <div class="card-header">
+            <span class="card-title">Tax Strategy</span>
+            <svg class="card-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>
+          </div>
+          <div>
+            <div class="tax-info-title">Tax Optimization Strategies</div>
+            <p class="tax-info-body">Reduce your tax burden through tax-loss harvesting, asset location optimization, and strategic contribution timing.</p>
+            <div class="tax-highlights">
+              <span class="tax-highlight">• Tax-Loss Harvesting — Offset gains by selling underperforming assets at a loss.</span>
+              <span class="tax-highlight">• Asset Location — Place holdings in the right account types for tax efficiency.</span>
+              <span class="tax-highlight">• Contribution Timing — Maximize 401(k), IRA, and HSA contributions.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity (Hover State) -->
+        <div class="card activity-card">
+          <div class="card-header">
+            <span class="card-title">Activity</span>
+            <svg class="card-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>
+          </div>
+          <div class="tx-item">
+            <div class="tx-left">
+              <div class="tx-dot expense"></div>
+              <div>
+                <div class="tx-name">Whole Foods Market</div>
+                <div class="tx-detail">Groceries · Apr 19</div>
+              </div>
+            </div>
+            <span class="tx-amount expense">-$142.50</span>
+          </div>
+          <div class="tx-item">
+            <div class="tx-left">
+              <div class="tx-dot income"></div>
+              <div>
+                <div class="tx-name">Salary Deposit</div>
+                <div class="tx-detail">Income · Apr 15</div>
+              </div>
+            </div>
+            <span class="tx-amount income">+$9,250.00</span>
+          </div>
+          <div class="tx-item">
+            <div class="tx-left">
+              <div class="tx-dot expense"></div>
+              <div>
+                <div class="tx-name">Netflix</div>
+                <div class="tx-detail">Entertainment · Apr 14</div>
+              </div>
+            </div>
+            <span class="tx-amount expense">-$17.99</span>
+          </div>
+        </div>
+
+        <!-- Lifetime Planning -->
+        <div class="card lifetime-card">
+          <div class="card-header">
+            <span class="card-title">Lifetime Planning</span>
+            <svg class="card-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>
+          </div>
+          <div class="chart-head">
+            <div class="chart-filter">
+              <span class="chart-filter-label">On track for</span>
+              <span class="chart-filter-value">$16.8M</span>
+              <span class="chart-filter-label">at 65</span>
+            </div>
+          </div>
+          <div class="chart-area">
+            <div class="chart-bar-group">
+              <span class="chart-bar-amount highlight">$2.4M</span>
+              <div class="chart-bar" style="height:20px"></div>
+              <span class="chart-bar-label highlight">Now</span>
+            </div>
+            <div class="chart-bar-group">
+              <span class="chart-bar-amount">$3.8M</span>
+              <div class="chart-bar" style="height:35px"></div>
+              <span class="chart-bar-label">40</span>
+            </div>
+            <div class="chart-bar-group">
+              <span class="chart-bar-amount">$7.2M</span>
+              <div class="chart-bar" style="height:55px"></div>
+              <span class="chart-bar-label">50</span>
+            </div>
+            <div class="chart-bar-group">
+              <span class="chart-bar-amount">$12.5M</span>
+              <div class="chart-bar" style="height:78px"></div>
+              <span class="chart-bar-label">60</span>
+            </div>
+            <div class="chart-bar-group">
+              <span class="chart-bar-amount highlight">$16.8M</span>
+              <div class="chart-bar" style="height:100px"></div>
+              <span class="chart-bar-label">65</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Chat Panel -->
+<aside class="chat-panel">
+  <div class="chat-header">
+    <button class="collapse-btn" title="Collapse chat">&#x276E;</button>
+    <span class="chat-title">Chat</span>
+  </div>
+
+  <div class="chat-messages">
+    <span class="chat-greeting">Ask me any<br>financial question...</span>
+    <div class="chat-chips">
+      <button class="chip">How can I offset large capital gains?</button>
+    </div>
+  </div>
+
+  <div class="chat-input-area">
+    <div class="chat-input-field">
+      <input type="text" class="chat-input" placeholder="Ask me any financial question...">
+      <div class="chat-input-buttons">
+        <div class="secondary-buttons">
+          <button class="icon-btn" title="Voice">&#x1F3A4;</button>
+          <button class="new-chat-btn">New Chat</button>
+        </div>
+        <button class="send-btn" title="Send">&#x2191;</button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+</body>
+</html>
