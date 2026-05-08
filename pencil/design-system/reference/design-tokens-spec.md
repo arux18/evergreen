@@ -616,7 +616,7 @@
 | `alert.radius`                 | `radius.md` (8px)  |
 | `alert.border-left-width`      | `4px`              |
 | `alert.font-size`              | `font.size.sm` (12px / 14px) |
-| `alert.title.font-weight`      | `weight.semibold` (500) |
+| `alert.title.font-weight`      | `font.weight.semibold` (600) |
 | `alert.title.margin-bottom`    | `2px`              |
 | `alert.body.font-size`         | `12px`             |
 | `alert.body.color`             | `text.secondary` (subtle) / `rgba(255,255,255,0.85)` (filled) |
