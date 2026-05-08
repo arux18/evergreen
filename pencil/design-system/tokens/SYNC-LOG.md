@@ -10,8 +10,10 @@ Regenerate primitive RGB lines in `colors.css`: `node scripts/sync-tokens-from-h
 
 | | |
 |--|--|
-| **Removed** | `--color-clay-200`, `--color-clay-400`, `--color-clay-600`, `--color-violet-50`, `--color-violet-500` |
-| **Updated** | Full gray scale `--color-gray-50`–`900` and other `--color-*` hex primitives from Hemlock (80 total) |
+| **Source of truth** | Hemlock `variables`: every `color-*` entry whose value is a `#RRGGBB` hex (`70` primitives). |
+| **Removed (historical)** | `--color-clay-*`, `--color-violet-*` (dropped from Hemlock). |
+| **Removed (historical)** | `--color-olive-50` … `--color-olive-900` — palette removed from Hemlock; leftover canvas labels in `.pen` do not define these variables. |
+| **Updated** | Gray scale and remaining `--color-*` primitives synced from Hemlock on each `sync-tokens-from-hemlock.mjs` run. |
 
 ---
 
@@ -19,6 +21,6 @@ Regenerate primitive RGB lines in `colors.css`: `node scripts/sync-tokens-from-h
 
 | | |
 |--|--|
-| **Removed** | `text`: `header-success`, `header-error`, `body-error`, `body-success`. `icons`: `feature-dark`, `feature-white`. Entire `clay` and `violet` scales. |
+| **Removed** | `text`: `header-success`, `header-error`, `body-error`, `body-success`. `icons`: `feature-dark`, `feature-white`. Entire `clay` and `violet` scales. Entire **`olive`** scale (no Hemlock primitives). |
 | **Added** | `nav` (bg, text, icon, states, shadow). `chat` (bg, border, divider, text, input, chips, shadow). `chatVoice` (active, waveform, timer, pulse). |
 | **Updated** | `text.disabled` → gray-300. `btnPrimaryTextDisabled` → gray-400. `btnPrimaryInvertedTextDisabled` & `btnSecondaryInvertedTextDisabled` → gray-300. Link/button text: blue-600 / blue-700 / blue-800, disabled gray-300. `btnLinkTextActive` renamed **`btnLinkTextPressed`** (aligned with `$colors-btnLinkTextPressed`). |
