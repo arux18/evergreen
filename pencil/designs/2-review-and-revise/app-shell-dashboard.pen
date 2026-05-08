@@ -492169,15 +492169,6 @@
           "height": "fill_container",
           "enabled": true,
           "descendants": {
-            "HqKLo/t1rFNf": {
-              "fontSize": 18,
-              "fontStyle": "normal",
-              "fontWeight": "500"
-            },
-            "HqKLo/xfYv6": {
-              "fontSize": 18,
-              "fontFamily": "Noto Serif"
-            },
             "ORy4G/xHfuD": {
               "content": "Overview"
             },
@@ -515353,15 +515344,6 @@
           "height": "fill_container",
           "enabled": true,
           "descendants": {
-            "HqKLo/t1rFNf": {
-              "fontSize": 18,
-              "fontStyle": "normal",
-              "fontWeight": "500"
-            },
-            "HqKLo/xfYv6": {
-              "fontSize": 18,
-              "fontFamily": "Noto Serif"
-            },
             "ORy4G/xHfuD": {
               "content": "Overview"
             },
@@ -556670,37 +556652,6 @@
               "padding": 20,
               "children": [
                 {
-                  "type": "frame",
-                  "id": "kVJkw",
-                  "name": "Nav / Logo",
-                  "reusable": true,
-                  "alignItems": "end",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "t1rFNf",
-                      "name": "logoMain",
-                      "fill": "$nav.text.primary",
-                      "content": "evergreen",
-                      "fontFamily": "Manrope",
-                      "fontSize": 20,
-                      "fontWeight": "normal",
-                      "letterSpacing": -0.3
-                    },
-                    {
-                      "type": "text",
-                      "id": "xfYv6",
-                      "name": "logoSuffix",
-                      "fill": "$nav.text.primary",
-                      "content": ".ai",
-                      "fontFamily": "Spectral",
-                      "fontSize": 19,
-                      "fontWeight": "normal",
-                      "fontStyle": "italic"
-                    }
-                  ]
-                },
-                {
                   "type": "text",
                   "id": "yk8NU",
                   "name": "lbl1",
@@ -556729,30 +556680,6 @@
               "gap": 12,
               "padding": 20,
               "children": [
-                {
-                  "type": "frame",
-                  "id": "A5gwBX",
-                  "name": "Nav / Toggle Button",
-                  "reusable": true,
-                  "width": 28,
-                  "height": 28,
-                  "cornerRadius": 6,
-                  "layout": "vertical",
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon_font",
-                      "id": "ZAevI",
-                      "name": "toggleIcon",
-                      "width": 16,
-                      "height": 16,
-                      "iconFontName": "panel-left",
-                      "iconFontFamily": "lucide",
-                      "fill": "$nav.text.secondary"
-                    }
-                  ]
-                },
                 {
                   "type": "text",
                   "id": "DuuFB",
@@ -556783,34 +556710,6 @@
               "padding": 20,
               "children": [
                 {
-                  "type": "frame",
-                  "id": "Q5swg",
-                  "name": "Nav / Chip Coming Soon",
-                  "reusable": true,
-                  "cornerRadius": 9999,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "$nav.border"
-                  },
-                  "padding": [
-                    2,
-                    6
-                  ],
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "iPq86",
-                      "name": "chipLabel",
-                      "fill": "$nav.text.disabled",
-                      "content": "Coming Soon",
-                      "fontFamily": "Heebo",
-                      "fontSize": 9,
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
                   "type": "text",
                   "id": "Okzlm",
                   "name": "lbl3",
@@ -556840,15 +556739,6 @@
               "gap": 12,
               "padding": 20,
               "children": [
-                {
-                  "type": "frame",
-                  "id": "K3l0NS",
-                  "name": "Nav / Divider",
-                  "reusable": true,
-                  "width": "fill_container",
-                  "height": 1,
-                  "fill": "$nav.divider"
-                },
                 {
                   "type": "text",
                   "id": "DxCfT",
@@ -557963,14 +557853,55 @@
                           "alignItems": "center",
                           "children": [
                             {
+                              "type": "frame",
                               "id": "HqKLo",
-                              "type": "ref",
-                              "ref": "kVJkw"
+                              "name": "component/NavLogo",
+                              "alignItems": "end",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "K27Wr",
+                                  "fill": "#000000",
+                                  "content": "evergreen",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "Manrope",
+                                  "fontSize": 20,
+                                  "fontWeight": "normal",
+                                  "letterSpacing": -0.3
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "GUlBH",
+                                  "fill": "#000000",
+                                  "content": ".ai",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "Spectral",
+                                  "fontSize": 19,
+                                  "fontWeight": "normal",
+                                  "fontStyle": "italic"
+                                }
+                              ]
                             },
                             {
+                              "type": "frame",
                               "id": "C4S7uV",
-                              "type": "ref",
-                              "ref": "A5gwBX"
+                              "name": "component/NavToggleButton",
+                              "width": 28,
+                              "height": 28,
+                              "fill": "#00000000",
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "t17e6w",
+                                  "width": 16,
+                                  "height": 16,
+                                  "iconFontName": "panel-left",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "#000000"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -557989,9 +557920,22 @@
                               "width": "fill_container"
                             },
                             {
+                              "type": "frame",
                               "id": "h5H6A",
-                              "type": "ref",
-                              "ref": "K3l0NS"
+                              "name": "component/NavDivider",
+                              "width": 200,
+                              "layout": "vertical",
+                              "justifyContent": "center",
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "F6ZTB",
+                                  "name": "Line",
+                                  "fill": "#000000",
+                                  "width": "fill_container",
+                                  "height": 1
+                                }
+                              ]
                             },
                             {
                               "type": "frame",
@@ -559407,15 +559351,24 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "V75en",
-                      "type": "ref",
-                      "ref": "f3uqW",
-                      "descendants": {
-                        "VpjGe": {
+                      "name": "component/ChatCloseButton",
+                      "width": 28,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "uOo85",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
                           "iconFontFamily": "lucide",
-                          "iconFontName": "arrow-right-to-line"
+                          "fill": "#000000"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "text",
@@ -559456,15 +559409,24 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "ONHOk",
-                      "type": "ref",
-                      "ref": "F8w3y3",
-                      "descendants": {
-                        "O0OWy": {
+                      "name": "component/ChatCloseButton",
+                      "width": 28,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "whNnz",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
                           "iconFontFamily": "lucide",
-                          "iconFontName": "arrow-right-to-line"
+                          "fill": "#000000"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "text",
@@ -559577,15 +559539,26 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "gfxWW",
-                      "type": "ref",
-                      "ref": "I5oHzJ",
-                      "descendants": {
-                        "w8B1Y": {
-                          "iconFontFamily": "lucide",
-                          "iconFontName": "arrow-up"
+                      "name": "component/ChatSendButton",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "#000000",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "P498Ey",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "arrow-up-bold",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "text",
@@ -559626,9 +559599,26 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "DxZhZ",
-                      "type": "ref",
-                      "ref": "VNNsD"
+                      "name": "component/ChatSendButton",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "#000000",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "MIwSj",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "arrow-up-bold",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -559805,15 +559795,26 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "JDu4C",
-                      "type": "ref",
-                      "ref": "I4Aogq",
-                      "descendants": {
-                        "KrvAr": {
+                      "name": "component/ChatStopButton",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "#000000",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "UjYiT",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "stop",
                           "iconFontFamily": "phosphor",
-                          "iconFontName": "stop-fill"
+                          "fill": "#000000"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "text",
@@ -559854,15 +559855,26 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "O2yeUk",
-                      "type": "ref",
-                      "ref": "M1675P",
-                      "descendants": {
-                        "vLGJp": {
+                      "name": "component/ChatStopButton",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "#000000",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "Habiv",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "stop",
                           "iconFontFamily": "phosphor",
-                          "iconFontName": "stop-fill"
+                          "fill": "#000000"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "text",
@@ -559982,9 +559994,31 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "sBKn7",
-                      "type": "ref",
-                      "ref": "xC6Sc"
+                      "name": "component/ChatNewButton",
+                      "height": 34,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "T7ocxF",
+                          "name": "Label",
+                          "fill": "#000000",
+                          "content": "New Chat",
+                          "lineHeight": 1.3333,
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -560025,9 +560059,31 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "aOiEH",
-                      "type": "ref",
-                      "ref": "cKUEa"
+                      "name": "component/ChatNewButton",
+                      "height": 34,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "s2qTD",
+                          "name": "Label",
+                          "fill": "#000000",
+                          "content": "New Chat",
+                          "lineHeight": 1.3333,
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -560145,9 +560201,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "cDdcG",
-                      "type": "ref",
-                      "ref": "c64e2B"
+                      "name": "component/ChatVoiceButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "I73Ts7",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "microphone",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -560188,9 +560265,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "NQATb",
-                      "type": "ref",
-                      "ref": "B6eXL3"
+                      "name": "component/ChatVoiceButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "CEEMq",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "microphone",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -560231,9 +560329,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "b8oMPs",
-                      "type": "ref",
-                      "ref": "Q3BNN0"
+                      "name": "component/ChatVoiceButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "j5j8rA",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "microphone",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -560282,9 +560401,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "mPygk",
-                      "type": "ref",
-                      "ref": "c8b4MZ"
+                      "name": "component/ChatVoiceCancelButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "H5hsIp",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -560325,9 +560465,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "T9V1hA",
-                      "type": "ref",
-                      "ref": "ZBKrL"
+                      "name": "component/ChatVoiceCancelButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "AtIry",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -560368,9 +560529,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "haR8f",
-                      "type": "ref",
-                      "ref": "FSaq0"
+                      "name": "component/ChatVoiceCancelButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "ry6Og",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -561696,7 +561878,8 @@
                           "id": "C3101b",
                           "name": "greeting",
                           "fill": "#2D2926",
-                          "content": "Ask me any financial question...",
+                          "content": "Ask me any\nfinancial question...",
+                          "textAlign": "center",
                           "fontFamily": "Noto Serif",
                           "fontSize": 20,
                           "fontWeight": "normal"
@@ -562410,94 +562593,6 @@
           "children": [
             {
               "type": "frame",
-              "id": "c64e2B",
-              "name": "Chat / Voice Button / Hover",
-              "context": "Voice input button (hover state). 34×34 pill with $chat.chip.hover.bg fill and border. Shown on pointer hover over the voice button.",
-              "reusable": true,
-              "width": 34,
-              "height": 34,
-              "fill": "$chat.chip.hover.bg",
-              "cornerRadius": 9999,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "$chat.chip.border"
-              },
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "k05wtt",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "iconFontName": "microphone",
-                  "iconFontFamily": "phosphor",
-                  "fill": "$chat.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "Q3BNN0",
-              "name": "Chat / Voice Button / Active",
-              "context": "Voice input button (active/recording state). 34×34 pill, filled with blue accent ($chat.voice.active.bg), white microphone icon. Shown while recording audio. Tap to stop recording manually.",
-              "reusable": true,
-              "width": 34,
-              "height": 34,
-              "fill": "$chat.voice.active.bg",
-              "cornerRadius": 9999,
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "dbMbi",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "iconFontName": "microphone",
-                  "iconFontFamily": "phosphor",
-                  "fill": "$chat.voice.active.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "c8b4MZ",
-              "name": "Chat / Voice Cancel / Default",
-              "context": "Voice cancel button (default state). 34×34 pill, transparent with border, X icon. Discards the current voice recording. Only appears during recording state. States: default, hover, pressed.",
-              "reusable": true,
-              "width": 34,
-              "height": 34,
-              "fill": "#00000000",
-              "cornerRadius": 9999,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "$chat.chip.border"
-              },
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "RecRe",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "iconFontName": "x",
-                  "iconFontFamily": "phosphor",
-                  "fill": "$chat.voice.cancel.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
               "id": "p13Ml",
               "name": "Chat / Input Field / Recording",
               "context": "Input Field / Recording — Shown during active voice recording. Blue accent border ($chat.voice.active.bg) at 1.5px. Contains waveform visualization, recording dot, timer, cancel button (left), and active voice button (right). Auto-stops after 2 seconds of silence.",
@@ -562785,10 +562880,30 @@
                           "gap": 8,
                           "children": [
                             {
+                              "type": "frame",
                               "id": "g4606a",
-                              "type": "ref",
-                              "ref": "c8b4MZ",
-                              "name": "cancelRef"
+                              "name": "cancelRef",
+                              "width": 34,
+                              "height": 34,
+                              "cornerRadius": 9999,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#000000"
+                              },
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "ucei5",
+                                  "width": 16,
+                                  "height": 16,
+                                  "iconFontName": "x",
+                                  "iconFontFamily": "phosphor",
+                                  "fill": "#000000"
+                                }
+                              ]
                             }
                           ]
                         },
@@ -562800,10 +562915,30 @@
                           "alignItems": "center",
                           "children": [
                             {
+                              "type": "frame",
                               "id": "eoz6l",
-                              "type": "ref",
-                              "ref": "Q3BNN0",
-                              "name": "voiceActiveRef"
+                              "name": "voiceActiveRef",
+                              "width": 34,
+                              "height": 34,
+                              "cornerRadius": 9999,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#000000"
+                              },
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "hQhIQ",
+                                  "width": 16,
+                                  "height": 16,
+                                  "iconFontName": "microphone",
+                                  "iconFontFamily": "phosphor",
+                                  "fill": "#000000"
+                                }
+                              ]
                             }
                           ]
                         }
@@ -563009,321 +563144,6 @@
                       ]
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "f3uqW",
-              "name": "Chat / Close Button / Hover",
-              "context": "Close button (hover state). Background fills with $chat.close.hover.bg on pointer hover.",
-              "reusable": true,
-              "width": 28,
-              "height": 28,
-              "fill": "$chat.close.hover.bg",
-              "cornerRadius": 6,
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "VpjGe",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "iconFontName": "arrow-right-to-line",
-                  "iconFontFamily": "lucide",
-                  "fill": "$chat.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "F8w3y3",
-              "name": "Chat / Close Button / Pressed",
-              "context": "Close button (pressed state). Background fills with $chat.close.pressed.bg on tap/click.",
-              "reusable": true,
-              "width": 28,
-              "height": 28,
-              "fill": "$chat.close.pressed.bg",
-              "cornerRadius": 6,
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "O0OWy",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "iconFontName": "arrow-right-to-line",
-                  "iconFontFamily": "lucide",
-                  "fill": "$chat.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "I5oHzJ",
-              "name": "Chat / Send Button / Hover",
-              "context": "Send button (hover state). Background lightens to $chat.send.bg.hover on pointer hover.",
-              "reusable": true,
-              "width": 34,
-              "height": 34,
-              "fill": "$chat.send.bg.hover",
-              "cornerRadius": 9999,
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "w8B1Y",
-                  "name": "sendIcon",
-                  "width": 20,
-                  "height": 20,
-                  "iconFontName": "arrow-up",
-                  "iconFontFamily": "lucide",
-                  "fill": "$chat.send.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "VNNsD",
-              "name": "Chat / Send Button / Pressed",
-              "context": "Send button (pressed state). Background darkens to $chat.send.bg.pressed on tap/click.",
-              "reusable": true,
-              "width": 34,
-              "height": 34,
-              "fill": "$chat.send.bg.pressed",
-              "cornerRadius": 9999,
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "EkDTP",
-                  "name": "sendIcon",
-                  "width": 20,
-                  "height": 20,
-                  "iconFontName": "arrow-up",
-                  "iconFontFamily": "lucide",
-                  "fill": "$chat.send.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "I4Aogq",
-              "name": "Chat / Stop Button / Hover",
-              "context": "Stop button (hover state). Background lightens to $chat.send.bg.hover on pointer hover.",
-              "reusable": true,
-              "width": 34,
-              "height": 34,
-              "fill": "$chat.send.bg.hover",
-              "cornerRadius": 9999,
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "KrvAr",
-                  "name": "stopIcon",
-                  "width": 20,
-                  "height": 20,
-                  "iconFontName": "stop-bold",
-                  "iconFontFamily": "phosphor",
-                  "fill": "$chat.send.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "M1675P",
-              "name": "Chat / Stop Button / Pressed",
-              "context": "Stop button (pressed state). Background darkens to $chat.send.bg.pressed on tap/click.",
-              "reusable": true,
-              "width": 34,
-              "height": 34,
-              "fill": "$chat.send.bg.pressed",
-              "cornerRadius": 9999,
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "vLGJp",
-                  "name": "stopIcon",
-                  "width": 20,
-                  "height": 20,
-                  "iconFontName": "stop-bold",
-                  "iconFontFamily": "phosphor",
-                  "fill": "$chat.send.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "xC6Sc",
-              "name": "Chat / New Chat Button / Hover",
-              "context": "New chat button (hover state). Background fills with $chat.chip.hover.bg on pointer hover.",
-              "reusable": true,
-              "height": 34,
-              "fill": "$chat.chip.hover.bg",
-              "cornerRadius": 9999,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "$chat.chip.border"
-              },
-              "padding": [
-                0,
-                14
-              ],
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "Q9blA",
-                  "name": "label",
-                  "fill": "$chat.text.secondary",
-                  "content": "New Chat",
-                  "fontFamily": "Heebo",
-                  "fontSize": 12,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "cKUEa",
-              "name": "Chat / New Chat Button / Pressed",
-              "context": "New chat button (pressed state). Background fills with $chat.chip.pressed.bg on tap/click.",
-              "reusable": true,
-              "height": 34,
-              "fill": "$chat.chip.pressed.bg",
-              "cornerRadius": 9999,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "$chat.chip.border"
-              },
-              "padding": [
-                0,
-                14
-              ],
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "Yyswp",
-                  "name": "label",
-                  "fill": "$chat.text.secondary",
-                  "content": "New Chat",
-                  "fontFamily": "Heebo",
-                  "fontSize": 12,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "B6eXL3",
-              "name": "Chat / Voice Button / Pressed",
-              "context": "Voice button (pressed state). Background fills with $chat.chip.pressed.bg on tap/click. Transitions to Input Recording state.",
-              "reusable": true,
-              "width": 34,
-              "height": 34,
-              "fill": "$chat.chip.pressed.bg",
-              "cornerRadius": 9999,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "$chat.chip.border"
-              },
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "jRpNt",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "iconFontName": "microphone",
-                  "iconFontFamily": "phosphor",
-                  "fill": "$chat.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "ZBKrL",
-              "name": "Chat / Voice Cancel / Hover",
-              "context": "Voice cancel button (hover state). Background fills with $chat.chip.hover.bg on pointer hover. Only appears during recording state.",
-              "reusable": true,
-              "width": 34,
-              "height": 34,
-              "fill": "$chat.chip.hover.bg",
-              "cornerRadius": 9999,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "$chat.chip.border"
-              },
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "itIVT",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "iconFontName": "x",
-                  "iconFontFamily": "phosphor",
-                  "fill": "$chat.voice.cancel.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "FSaq0",
-              "name": "Chat / Voice Cancel / Pressed",
-              "context": "Voice cancel button (pressed state). Background fills with $chat.chip.pressed.bg on tap/click. Discards the recording and returns to previous input state.",
-              "reusable": true,
-              "width": 34,
-              "height": 34,
-              "fill": "$chat.chip.pressed.bg",
-              "cornerRadius": 9999,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "$chat.chip.border"
-              },
-              "layout": "vertical",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "UQ8bi",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "iconFontName": "x",
-                  "iconFontFamily": "phosphor",
-                  "fill": "$chat.voice.cancel.icon"
                 }
               ]
             }
@@ -645294,15 +645114,6 @@
           "height": "fill_container(884)",
           "enabled": false,
           "descendants": {
-            "HqKLo/t1rFNf": {
-              "fontSize": 18,
-              "fontStyle": "normal",
-              "fontWeight": "500"
-            },
-            "HqKLo/xfYv6": {
-              "fontSize": 18,
-              "fontFamily": "Noto Serif"
-            },
             "ORy4G/xHfuD": {
               "content": "Overview"
             },
@@ -650528,9 +650339,34 @@
               "padding": 20,
               "children": [
                 {
+                  "type": "frame",
                   "id": "UoHXG",
-                  "type": "ref",
-                  "ref": "kVJkw"
+                  "name": "component/NavLogo",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "j17l9S",
+                      "fill": "#000000",
+                      "content": "evergreen",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Manrope",
+                      "fontSize": 20,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "Q6jDb",
+                      "fill": "#000000",
+                      "content": ".ai",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Spectral",
+                      "fontSize": 19,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    }
+                  ]
                 },
                 {
                   "type": "text",
@@ -650562,9 +650398,25 @@
               "padding": 20,
               "children": [
                 {
+                  "type": "frame",
                   "id": "FSpAr",
-                  "type": "ref",
-                  "ref": "A5gwBX"
+                  "name": "component/NavToggleButton",
+                  "width": 28,
+                  "height": 28,
+                  "fill": "#00000000",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "k37nO",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "panel-left",
+                      "iconFontFamily": "lucide",
+                      "fill": "#000000"
+                    }
+                  ]
                 },
                 {
                   "type": "text",
@@ -650596,9 +650448,30 @@
               "padding": 20,
               "children": [
                 {
+                  "type": "frame",
                   "id": "o5BqR",
-                  "type": "ref",
-                  "ref": "Q5swg"
+                  "name": "component/NavChipComingSoon",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#000000"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UGRKa",
+                      "name": "Label",
+                      "fill": "#000000",
+                      "content": "Coming Soon",
+                      "lineHeight": 1.2727,
+                      "textAlign": "center",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
                 },
                 {
                   "type": "text",
@@ -650631,9 +650504,22 @@
               "padding": 20,
               "children": [
                 {
+                  "type": "frame",
                   "id": "H824x",
-                  "type": "ref",
-                  "ref": "K3l0NS"
+                  "name": "component/NavDivider",
+                  "width": 200,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "id": "x2vruq",
+                      "name": "Line",
+                      "fill": "#000000",
+                      "width": "fill_container",
+                      "height": 1
+                    }
+                  ]
                 },
                 {
                   "type": "text",
@@ -650852,15 +650738,24 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "AZ8r3",
-                      "type": "ref",
-                      "ref": "f3uqW",
-                      "descendants": {
-                        "VpjGe": {
+                      "name": "component/ChatCloseButton",
+                      "width": 28,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "ySH3W",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
                           "iconFontFamily": "lucide",
-                          "iconFontName": "arrow-right-to-line"
+                          "fill": "#000000"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "text",
@@ -650901,15 +650796,24 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "TMomV",
-                      "type": "ref",
-                      "ref": "F8w3y3",
-                      "descendants": {
-                        "O0OWy": {
+                      "name": "component/ChatCloseButton",
+                      "width": 28,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "g4B5G",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
                           "iconFontFamily": "lucide",
-                          "iconFontName": "arrow-right-to-line"
+                          "fill": "#000000"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651022,9 +650926,26 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "akA3m",
-                      "type": "ref",
-                      "ref": "I5oHzJ"
+                      "name": "component/ChatSendButton",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "#000000",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "H4NFR9",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "arrow-up-bold",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651065,9 +650986,26 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "IPNvc",
-                      "type": "ref",
-                      "ref": "VNNsD"
+                      "name": "component/ChatSendButton",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "#000000",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "OUPuc",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "arrow-up-bold",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651244,15 +651182,26 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "tsqLq",
-                      "type": "ref",
-                      "ref": "I4Aogq",
-                      "descendants": {
-                        "KrvAr": {
-                          "iconFontFamily": "lucide",
-                          "iconFontName": "square"
+                      "name": "component/ChatStopButton",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "#000000",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "L6xoQ",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "stop",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651293,15 +651242,26 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "a9eO6n",
-                      "type": "ref",
-                      "ref": "M1675P",
-                      "descendants": {
-                        "vLGJp": {
-                          "iconFontFamily": "lucide",
-                          "iconFontName": "square"
+                      "name": "component/ChatStopButton",
+                      "width": 34,
+                      "height": 34,
+                      "fill": "#000000",
+                      "cornerRadius": 9999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "YHgA2",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "stop",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651421,9 +651381,31 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "n17mY",
-                      "type": "ref",
-                      "ref": "xC6Sc"
+                      "name": "component/ChatNewButton",
+                      "height": 34,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "FN2Tu",
+                          "name": "Label",
+                          "fill": "#000000",
+                          "content": "New Chat",
+                          "lineHeight": 1.3333,
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651464,9 +651446,31 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "Zt8eK",
-                      "type": "ref",
-                      "ref": "cKUEa"
+                      "name": "component/ChatNewButton",
+                      "height": 34,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "lSo68",
+                          "name": "Label",
+                          "fill": "#000000",
+                          "content": "New Chat",
+                          "lineHeight": 1.3333,
+                          "textAlign": "center",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651584,9 +651588,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "KjVAC",
-                      "type": "ref",
-                      "ref": "c64e2B"
+                      "name": "component/ChatVoiceButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "pNAsR",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "microphone",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651627,9 +651652,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "pca3L",
-                      "type": "ref",
-                      "ref": "B6eXL3"
+                      "name": "component/ChatVoiceButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "n6uGq",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "microphone",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651670,9 +651716,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "JwMPk",
-                      "type": "ref",
-                      "ref": "Q3BNN0"
+                      "name": "component/ChatVoiceButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "X1Znl",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "microphone",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651721,9 +651788,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "lqALJ",
-                      "type": "ref",
-                      "ref": "c8b4MZ"
+                      "name": "component/ChatVoiceCancelButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "wSFBj",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651764,9 +651852,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "KCYFs",
-                      "type": "ref",
-                      "ref": "ZBKrL"
+                      "name": "component/ChatVoiceCancelButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "oottM",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
@@ -651807,9 +651916,30 @@
                       "letterSpacing": 0.5
                     },
                     {
+                      "type": "frame",
                       "id": "BBjor",
-                      "type": "ref",
-                      "ref": "FSaq0"
+                      "name": "component/ChatVoiceCancelButton",
+                      "width": 34,
+                      "height": 34,
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#000000"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "xnfLY",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "x",
+                          "iconFontFamily": "phosphor",
+                          "fill": "#000000"
+                        }
+                      ]
                     },
                     {
                       "type": "text",
