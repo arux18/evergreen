@@ -1,6 +1,6 @@
 # .pen Design File Naming Conventions
 
-When creating or modifying nodes in `.pen` design files, follow these naming conventions strictly. Inconsistent naming breaks the design system contract.
+When creating or modifying nodes in `.pen` design files, follow these naming conventions strictly.
 
 ## Reusable Components (`reusable: true`)
 
@@ -20,44 +20,11 @@ Examples:
 
 **An instance MUST have the exact same name as the component it references.**
 
-Pencil visually distinguishes parent components (pink outline) from instances (purple outline), so there is no reason to rename instances. Using different names for the same component across instances creates confusion and defeats the purpose of a design system.
-
-Examples:
-- An instance of `Chat / Voice Button / Default` is named `Chat / Voice Button / Default`
-- An instance of `Chat / Header` is named `Chat / Header`
-- An instance of `Nav / User Area` is named `Nav / User Area`
-
-## Internal Nodes (children inside components)
-
-**Pattern:** `camelCase` descriptive name
-
-- Describes the node's role within the component
-- Short and contextual
-
-Examples:
-- `icon`, `label`, `sendIcon`, `stopIcon`
-- `inputField`, `rowButtons`, `placeholder`
-- `waveformArea`, `recDot`, `timer`
-
-## Design System Cards (documentation frames in the DS)
-
-**Pattern:** `card{Component}{State}` in camelCase
-
-Examples:
-- `cardSendDefault`, `cardSendDisabled`
-- `cardVoiceHover`, `cardVoiceActive`
-- `cardInputEmpty`, `cardInputRecording`
-
-## Design System Groups (rows of cards)
-
-**Pattern:** `grp{Component}` in camelCase
-
-Examples:
-- `grpSend`, `grpVoice`, `grpClose`, `grpStop`
+- Pencil visually distinguishes parent components (pink outline) from instances (purple outline), so there is no reason to rename instances.
+- Using different names for the same component across instances creates confusion and defeats the purpose of a design system.
 
 ## Rules
 
 1. **No unnamed refs.** Every `type: ref` node must have a `name`. No exceptions.
-2. **Instance name = component name.** Instances use the exact same name as their parent component. Do not invent camelCase variants, abbreviations, or add suffixes like `Ref`.
-3. **Pencil distinguishes visually.** Parent components have a pink outline; instances have a purple outline. The name does not need to encode this distinction.
-4. **One component, one name, everywhere.** If the component is `Chat / Send Button / Disabled`, every instance of it is also named `Chat / Send Button / Disabled`.
+2. **Instance name = component name.** Instances use the exact same name as their parent component. Do not abbreviate, reformat, or add suffixes.
+3. **One component, one name, everywhere.** If the component is `Chat / Send Button / Disabled`, every instance of it is also named `Chat / Send Button / Disabled`.
