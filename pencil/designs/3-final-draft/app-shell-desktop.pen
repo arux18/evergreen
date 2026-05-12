@@ -64499,6 +64499,78 @@
                       "fontWeight": "500"
                     }
                   ]
+                },
+                {
+                  "type": "frame",
+                  "id": "K6JyDp",
+                  "name": "cardVoiceDisabled",
+                  "fill": "#FAFAF8",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E8E6E0"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aQPuz",
+                      "name": "title",
+                      "fill": "#8A8680",
+                      "content": "Voice Button / Disabled",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "JyS5e",
+                      "name": "Chat / Voice Button / Disabled",
+                      "context": "Disabled state of the voice input button. Shown when voice input is unavailable (e.g., no mic permission, feature disabled). 34×34 pill, transparent background with border, 40% opacity. Same appearance as default but dimmed to indicate non-interactive state.",
+                      "reusable": true,
+                      "opacity": 0.4,
+                      "width": 34,
+                      "height": 34,
+                      "fill": "#00000000",
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$chat.chip.border"
+                      },
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "T5ORSk",
+                          "name": "icon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "mic",
+                          "iconFontFamily": "lucide",
+                          "fill": "$chat.icon"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "g895BR",
+                      "name": "lbl",
+                      "fill": "#8A8680",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Voice / Disabled\n34×34 · pill · transparent · opacity 0.4\nlucide mic · $chat.icon\nborder $chat.chip.border",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
                 }
               ]
             },
@@ -65215,22 +65287,22 @@
                           "id": "UhYQv",
                           "name": "rowButtons",
                           "width": "fill_container",
-                          "gap": 8,
+                          "gap": 12,
                           "justifyContent": "end",
                           "children": [
                             {
-                              "type": "frame",
-                              "id": "B9cAv3",
-                              "name": "secondaryButtons",
-                              "gap": 8,
-                              "children": [
-                                {
-                                  "id": "a81g2q",
-                                  "type": "ref",
-                                  "ref": "SUCQH",
-                                  "name": "voiceRef"
-                                }
-                              ]
+                              "id": "a81g2q",
+                              "type": "ref",
+                              "ref": "SUCQH",
+                              "name": "voiceRef",
+                              "x": 216,
+                              "y": 0
+                            },
+                            {
+                              "id": "dqawn",
+                              "type": "ref",
+                              "ref": "JxTJs",
+                              "name": "sendDisabledRef"
                             }
                           ]
                         }
@@ -65337,21 +65409,15 @@
                           "id": "ye7In",
                           "name": "rowButtons",
                           "width": "fill_container",
-                          "gap": 8,
+                          "gap": 12,
                           "justifyContent": "end",
                           "children": [
                             {
-                              "type": "frame",
-                              "id": "V0dhK",
-                              "name": "secondaryButtons",
-                              "gap": 8,
-                              "children": [
-                                {
-                                  "id": "lY9uw",
-                                  "type": "ref",
-                                  "ref": "SUCQH"
-                                }
-                              ]
+                              "id": "lY9uw",
+                              "type": "ref",
+                              "ref": "SUCQH",
+                              "x": 216,
+                              "y": 0
                             },
                             {
                               "id": "EAbh8",
@@ -65684,28 +65750,24 @@
                           "id": "H6ZmtZ",
                           "name": "rowButtons",
                           "width": "fill_container",
-                          "justifyContent": "space_between",
+                          "gap": 12,
+                          "justifyContent": "end",
                           "children": [
                             {
-                              "type": "frame",
-                              "id": "oazAC",
-                              "name": "recordingControls",
-                              "gap": 8,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "eoz6l",
-                                  "type": "ref",
-                                  "ref": "Q3BNN0",
-                                  "name": "voiceActiveRef"
-                                },
-                                {
-                                  "id": "MU7uj",
-                                  "type": "ref",
-                                  "ref": "JxTJs",
-                                  "name": "sendDisabled"
-                                }
-                              ]
+                              "id": "eoz6l",
+                              "type": "ref",
+                              "ref": "Q3BNN0",
+                              "name": "voiceActiveRef",
+                              "x": 216,
+                              "y": 0
+                            },
+                            {
+                              "id": "MU7uj",
+                              "type": "ref",
+                              "ref": "JxTJs",
+                              "name": "sendDisabled",
+                              "x": 262,
+                              "y": 0
                             }
                           ]
                         }
@@ -65846,23 +65908,17 @@
                           "id": "ABY1D",
                           "name": "rowButtons",
                           "width": "fill_container",
-                          "gap": 8,
+                          "gap": 12,
                           "justifyContent": "end",
                           "children": [
                             {
-                              "type": "frame",
-                              "id": "jY8kt",
-                              "name": "secondaryButtons",
-                              "gap": 8,
-                              "children": [
-                                {
-                                  "id": "JAB5O",
-                                  "type": "ref",
-                                  "ref": "SUCQH",
-                                  "name": "voiceRef",
-                                  "opacity": 0.4
-                                }
-                              ]
+                              "id": "JAB5O",
+                              "type": "ref",
+                              "ref": "SUCQH",
+                              "name": "voiceRef",
+                              "opacity": 0.4,
+                              "x": 216,
+                              "y": 0
                             },
                             {
                               "id": "e1agOJ",
@@ -66360,22 +66416,7 @@
                       "id": "yTiRy",
                       "type": "ref",
                       "ref": "TdYxI",
-                      "width": "fill_container",
-                      "descendants": {
-                        "B9cAv3": {
-                          "type": "frame",
-                          "id": "bNVJv",
-                          "name": "secondaryButtons",
-                          "gap": 8,
-                          "children": [
-                            {
-                              "id": "S1NJuq",
-                              "type": "ref",
-                              "ref": "SUCQH"
-                            }
-                          ]
-                        }
-                      }
+                      "width": "fill_container"
                     }
                   ]
                 },
@@ -66540,19 +66581,6 @@
                           "height": "fit_content",
                           "x": 12,
                           "y": 57
-                        },
-                        "V0dhK": {
-                          "type": "frame",
-                          "id": "WMsTV",
-                          "name": "secondaryButtons",
-                          "gap": 8,
-                          "children": [
-                            {
-                              "id": "eaSYM",
-                              "type": "ref",
-                              "ref": "SUCQH"
-                            }
-                          ]
                         }
                       }
                     }
@@ -94214,22 +94242,7 @@
                 {
                   "id": "yIzGJ",
                   "type": "ref",
-                  "ref": "TdYxI",
-                  "descendants": {
-                    "B9cAv3": {
-                      "type": "frame",
-                      "id": "jvc21",
-                      "name": "secondaryButtons",
-                      "gap": 8,
-                      "children": [
-                        {
-                          "id": "fh17i",
-                          "type": "ref",
-                          "ref": "SUCQH"
-                        }
-                      ]
-                    }
-                  }
+                  "ref": "TdYxI"
                 },
                 {
                   "type": "text",
@@ -94275,22 +94288,7 @@
                   "type": "ref",
                   "ref": "juIZl",
                   "width": 360,
-                  "name": "newTyping",
-                  "descendants": {
-                    "V0dhK": {
-                      "type": "frame",
-                      "id": "AMl2M",
-                      "name": "secondaryButtons",
-                      "gap": 8,
-                      "children": [
-                        {
-                          "id": "c83zI",
-                          "type": "ref",
-                          "ref": "SUCQH"
-                        }
-                      ]
-                    }
-                  }
+                  "name": "newTyping"
                 },
                 {
                   "type": "text",
@@ -94964,22 +94962,7 @@
                       "id": "E2jqF",
                       "type": "ref",
                       "ref": "TdYxI",
-                      "width": "fill_container",
-                      "descendants": {
-                        "B9cAv3": {
-                          "type": "frame",
-                          "id": "LNSdx",
-                          "name": "secondaryButtons",
-                          "gap": 8,
-                          "children": [
-                            {
-                              "id": "J74b1r",
-                              "type": "ref",
-                              "ref": "SUCQH"
-                            }
-                          ]
-                        }
-                      }
+                      "width": "fill_container"
                     }
                   ]
                 },
@@ -95222,22 +95205,7 @@
                       "type": "ref",
                       "ref": "juIZl",
                       "width": "fill_container",
-                      "name": "Chat / Input Typing",
-                      "descendants": {
-                        "V0dhK": {
-                          "type": "frame",
-                          "id": "h6aYm",
-                          "name": "secondaryButtons",
-                          "gap": 8,
-                          "children": [
-                            {
-                              "id": "RFmju",
-                              "type": "ref",
-                              "ref": "SUCQH"
-                            }
-                          ]
-                        }
-                      }
+                      "name": "Chat / Input Typing"
                     }
                   ]
                 },
@@ -133657,22 +133625,7 @@
               "type": "ref",
               "ref": "TdYxI",
               "x": 0,
-              "y": 749,
-              "descendants": {
-                "B9cAv3": {
-                  "type": "frame",
-                  "id": "LA0mF",
-                  "name": "secondaryButtons",
-                  "gap": 8,
-                  "children": [
-                    {
-                      "id": "H3jka",
-                      "type": "ref",
-                      "ref": "SUCQH"
-                    }
-                  ]
-                }
-              }
+              "y": 749
             }
           ]
         }
@@ -172080,22 +172033,7 @@
               "type": "ref",
               "ref": "TdYxI",
               "x": 0,
-              "y": 749,
-              "descendants": {
-                "B9cAv3": {
-                  "type": "frame",
-                  "id": "ly7SK",
-                  "name": "secondaryButtons",
-                  "gap": 8,
-                  "children": [
-                    {
-                      "id": "u8Zdzl",
-                      "type": "ref",
-                      "ref": "SUCQH"
-                    }
-                  ]
-                }
-              }
+              "y": 749
             }
           ]
         }
@@ -210507,22 +210445,7 @@
               "type": "ref",
               "ref": "TdYxI",
               "x": 0,
-              "y": 749,
-              "descendants": {
-                "B9cAv3": {
-                  "type": "frame",
-                  "id": "G0cOFY",
-                  "name": "secondaryButtons",
-                  "gap": 8,
-                  "children": [
-                    {
-                      "id": "t73ZBi",
-                      "type": "ref",
-                      "ref": "SUCQH"
-                    }
-                  ]
-                }
-              }
+              "y": 749
             }
           ]
         }
@@ -248934,22 +248857,7 @@
               "type": "ref",
               "ref": "TdYxI",
               "x": 0,
-              "y": 749,
-              "descendants": {
-                "B9cAv3": {
-                  "type": "frame",
-                  "id": "SSP7p",
-                  "name": "secondaryButtons",
-                  "gap": 8,
-                  "children": [
-                    {
-                      "id": "y4wfq",
-                      "type": "ref",
-                      "ref": "SUCQH"
-                    }
-                  ]
-                }
-              }
+              "y": 749
             }
           ]
         }
@@ -248966,16 +248874,6 @@
       "fontFamily": "Inter",
       "fontSize": 60,
       "fontWeight": "700"
-    },
-    {
-      "type": "prompt",
-      "id": "g2Yzq",
-      "x": 19530.693370922076,
-      "y": 10169.556431102097,
-      "model": "claude-4.7-opus",
-      "width": 250,
-      "height": 219,
-      "content": "we're missing a disabled voice button - add that in and use the styling that's in here Node ID: JAB5O"
     }
   ],
   "themes": {

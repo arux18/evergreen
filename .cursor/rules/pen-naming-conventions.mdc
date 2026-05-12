@@ -1,0 +1,69 @@
+# .pen Design File Naming Conventions
+
+When creating or modifying nodes in `.pen` design files, follow these naming conventions strictly. Inconsistent naming breaks the design system contract.
+
+## Reusable Components (`reusable: true`)
+
+**Pattern:** `{Category} / {Component} / {State}`
+
+- Title Case, separated by ` / ` (space-slash-space)
+- Category groups related components (e.g. `Chat`, `Nav`)
+- State is required for interactive elements
+
+Examples:
+- `Chat / Send Button / Default`
+- `Chat / Voice Button / Disabled`
+- `Nav Item / Active`
+- `Nav / Toggle Button Hover`
+
+## Component Instances (`type: ref`)
+
+**Pattern:** `camelCase` — `{component}{State}`
+
+- Every ref node MUST have a name. No unnamed instances.
+- Derived from the component name, dropping the category prefix
+- No `Ref` suffix — the node type is already `ref`, adding the suffix is redundant
+- If two instances of the same component appear in different parents, they use the same name (context is provided by the parent)
+
+Examples:
+- `voiceButtonDefault` (instance of `Chat / Voice Button / Default`)
+- `sendButtonDisabled` (instance of `Chat / Send Button / Disabled`)
+- `chatHeader` (instance of `Chat / Header`)
+- `navUserArea` (instance of `Nav / User Area`)
+- `chatInputFieldEmpty` (instance of `Chat / Input Field / Empty`)
+
+## Internal Nodes (children inside components)
+
+**Pattern:** `camelCase` descriptive name
+
+- Describes the node's role within the component
+- Short and contextual
+
+Examples:
+- `icon`, `label`, `sendIcon`, `stopIcon`
+- `inputField`, `rowButtons`, `placeholder`
+- `waveformArea`, `recDot`, `timer`
+
+## Design System Cards (documentation frames in the DS)
+
+**Pattern:** `card{Component}{State}` in camelCase
+
+Examples:
+- `cardSendDefault`, `cardSendDisabled`
+- `cardVoiceHover`, `cardVoiceActive`
+- `cardInputEmpty`, `cardInputRecording`
+
+## Design System Groups (rows of cards)
+
+**Pattern:** `grp{Component}` in camelCase
+
+Examples:
+- `grpSend`, `grpVoice`, `grpClose`, `grpStop`
+
+## Rules
+
+1. **No unnamed refs.** Every `type: ref` node must have a `name`. This is non-negotiable.
+2. **No `Ref` suffix.** The node type already tells you it's a reference.
+3. **No component-style names on instances.** Instance names use camelCase, not `Category / Component / State`. If a ref node has slashes in its name, it's wrong.
+4. **Consistency across instances.** All instances of the same component in the same role use the same name pattern.
+5. **Match the component, not the context.** Name the instance after what it IS (the component), not where it lives.
