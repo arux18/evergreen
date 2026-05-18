@@ -5144,7 +5144,6 @@
           "type": "frame",
           "id": "N4zCC",
           "name": "assembledRow",
-          "width": "fill_container",
           "gap": 32,
           "children": [
             {
@@ -5458,6 +5457,150 @@
             },
             {
               "type": "frame",
+              "id": "vE5MI",
+              "name": "cardThinking",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "BK8Xl",
+                  "name": "title",
+                  "fill": "#8A8680",
+                  "content": "Panel / Conversation + Thinking",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "frame",
+                  "id": "qpDy0",
+                  "name": "Chat / Panel / Conversation + Thinking",
+                  "clip": true,
+                  "width": 360,
+                  "height": 600,
+                  "fill": "#f7f5f0ff",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#DCD8CB"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#2D292628",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 28,
+                    "spread": 2
+                  },
+                  "layout": "vertical",
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "id": "K7VtvR",
+                      "type": "ref",
+                      "ref": "OBNxk",
+                      "width": "fill_container",
+                      "name": "header"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ElafA",
+                      "name": "chatMessages",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "layout": "vertical",
+                      "gap": 14,
+                      "padding": [
+                        16,
+                        20
+                      ],
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "id": "fhVhn",
+                          "type": "ref",
+                          "ref": "vPKw1",
+                          "width": "fill_container",
+                          "name": "msg1",
+                          "descendants": {
+                            "OXFUM": {
+                              "content": "What's my projected net worth at retirement?"
+                            }
+                          }
+                        },
+                        {
+                          "id": "ZtNhY",
+                          "type": "ref",
+                          "ref": "sSgx0",
+                          "width": "fill_container",
+                          "name": "msg2",
+                          "descendants": {
+                            "H1M8K1": {
+                              "content": "Based on your current savings rate of $8,200/month and portfolio growth of 7.2% annually, you're projected to reach $16.8M by age 65."
+                            }
+                          }
+                        },
+                        {
+                          "id": "nmwQc",
+                          "type": "ref",
+                          "ref": "vPKw1",
+                          "width": "fill_container",
+                          "name": "msg3",
+                          "descendants": {
+                            "OXFUM": {
+                              "content": "Can you break down where that growth is coming from?"
+                            }
+                          }
+                        },
+                        {
+                          "id": "ERWeQ",
+                          "type": "ref",
+                          "ref": "p6LC4S",
+                          "width": "fill_container",
+                          "name": "thinking"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "xLvyl",
+                      "type": "ref",
+                      "ref": "sIHVs",
+                      "width": "fill_container",
+                      "name": "input"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "m9HQE6",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 360,
+                  "content": "Chat Panel (Thinking State)\n360×600 · conversation with AI thinking\nuser asks follow-up · dots + status text\nempty input at bottom",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
               "id": "xf2kh",
               "name": "cardRecording",
               "fill": "#FAFAF8",
@@ -5707,36 +5850,6 @@
           ]
         }
       ]
-    },
-    {
-      "type": "frame",
-      "id": "DEN4r",
-      "x": 1774,
-      "y": -56,
-      "name": "Chat / Panel / Conversation + Thinking",
-      "clip": true,
-      "width": 390,
-      "height": 844,
-      "fill": "$chat.input.bg",
-      "cornerRadius": 12,
-      "stroke": {
-        "align": "inside",
-        "thickness": 1,
-        "fill": "#DCD8CB"
-      },
-      "effect": {
-        "type": "shadow",
-        "shadowType": "outer",
-        "color": "#2D292628",
-        "offset": {
-          "x": 0,
-          "y": 2
-        },
-        "blur": 28,
-        "spread": 2
-      },
-      "layout": "vertical",
-      "justifyContent": "space_between"
     }
   ],
   "themes": {
