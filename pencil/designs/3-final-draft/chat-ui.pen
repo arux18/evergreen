@@ -10879,7 +10879,6 @@
                   "type": "frame",
                   "id": "LCYKi",
                   "name": "Chat / Panel / Empty",
-                  "reusable": true,
                   "clip": true,
                   "width": 360,
                   "height": 600,
@@ -10905,69 +10904,11 @@
                   "justifyContent": "space_between",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "JLH7i",
-                      "name": "Chat / Header",
-                      "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
+                      "id": "yqqPH",
+                      "type": "ref",
+                      "ref": "OBNxk",
                       "width": "fill_container",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": {
-                          "bottom": 0.5
-                        },
-                        "fill": "$chat.divider"
-                      },
-                      "padding": [
-                        16,
-                        20
-                      ],
-                      "justifyContent": "space_between",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "N4fRC",
-                          "name": "left",
-                          "gap": 4,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "L3eoo",
-                              "name": "Chat / Close Button / Default",
-                              "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
-                              "width": 28,
-                              "height": 28,
-                              "cornerRadius": 6,
-                              "layout": "vertical",
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "icon_font",
-                                  "id": "EqYmm",
-                                  "name": "icon",
-                                  "width": 16,
-                                  "height": 16,
-                                  "iconFontName": "arrow-right-to-line",
-                                  "iconFontFamily": "lucide",
-                                  "fill": "$chat.icon"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "text",
-                              "id": "qn4Su",
-                              "name": "chatTitle",
-                              "fill": "$chat.text.primary",
-                              "content": "Chat",
-                              "fontFamily": "Noto Serif",
-                              "fontSize": 16,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
+                      "name": "h1"
                     },
                     {
                       "type": "frame",
@@ -11045,125 +10986,11 @@
                       ]
                     },
                     {
-                      "type": "frame",
-                      "id": "gT2aC",
-                      "name": "Chat / Input Field / Empty",
-                      "context": "Input Field / Empty — Shown when no text has been entered. Contains placeholder text and the button row (voice, send disabled). Outer padding: 12t/20r/20b/20l. Inner field: $chat.input.bg, border $chat.input.border, radius $chat.input.radius.",
+                      "id": "KjL6D",
+                      "type": "ref",
+                      "ref": "sIHVs",
                       "width": "fill_container",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": {
-                          "top": 0.5
-                        },
-                        "fill": {
-                          "type": "color",
-                          "color": "#E8E6E0",
-                          "enabled": false
-                        }
-                      },
-                      "layout": "vertical",
-                      "gap": 12,
-                      "padding": [
-                        12,
-                        20,
-                        20,
-                        20
-                      ],
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "EX7Cg",
-                          "name": "inputField",
-                          "width": "fill_container",
-                          "fill": "$chat.input.bg",
-                          "cornerRadius": "$chat.input.radius",
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1,
-                            "fill": "$chat.input.border"
-                          },
-                          "layout": "vertical",
-                          "gap": 24,
-                          "padding": 12,
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "k1EmN0",
-                              "name": "placeholder",
-                              "fill": "$chat.text.placeholder",
-                              "content": "Ask me any financial question...",
-                              "fontFamily": "Heebo",
-                              "fontSize": 14,
-                              "fontWeight": "normal"
-                            },
-                            {
-                              "type": "frame",
-                              "id": "XlAHP",
-                              "name": "rowButtons",
-                              "width": "fill_container",
-                              "gap": 8,
-                              "justifyContent": "end",
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "D1ZuKe",
-                                  "name": "Chat / Voice Button / Default",
-                                  "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
-                                  "width": 34,
-                                  "height": 34,
-                                  "fill": "#00000000",
-                                  "cornerRadius": 9999,
-                                  "stroke": {
-                                    "align": "inside",
-                                    "thickness": 1,
-                                    "fill": "$chat.chip.border"
-                                  },
-                                  "layout": "vertical",
-                                  "justifyContent": "center",
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "icon_font",
-                                      "id": "ZksRF",
-                                      "name": "icon",
-                                      "width": 16,
-                                      "height": 16,
-                                      "iconFontName": "mic",
-                                      "iconFontFamily": "lucide",
-                                      "fill": "$chat.icon"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "kb7LN",
-                                  "name": "Chat / Send Button / Disabled",
-                                  "context": "Disabled state of the send button. Shown when the input field is empty or processing. 34×34 pill, muted fill ($chat.send.bg.disabled) with white icon. States: disabled.",
-                                  "width": 34,
-                                  "height": 34,
-                                  "fill": "$chat.send.bg.disabled",
-                                  "cornerRadius": 9999,
-                                  "layout": "vertical",
-                                  "justifyContent": "center",
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "icon_font",
-                                      "id": "FMmdD",
-                                      "name": "sendIcon",
-                                      "width": 20,
-                                      "height": 20,
-                                      "iconFontName": "arrow-up",
-                                      "iconFontFamily": "lucide",
-                                      "fill": "#FFFFFF"
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
+                      "name": "inp1"
                     }
                   ]
                 },
@@ -11210,7 +11037,6 @@
                   "type": "frame",
                   "id": "k8DxI",
                   "name": "Chat / Panel / Conversation",
-                  "reusable": true,
                   "clip": true,
                   "width": 360,
                   "height": 600,
@@ -11236,69 +11062,11 @@
                   "justifyContent": "space_between",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "B58TF",
-                      "name": "Chat / Header",
-                      "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
+                      "id": "d2T0ma",
+                      "type": "ref",
+                      "ref": "OBNxk",
                       "width": "fill_container",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": {
-                          "bottom": 0.5
-                        },
-                        "fill": "$chat.divider"
-                      },
-                      "padding": [
-                        16,
-                        20
-                      ],
-                      "justifyContent": "space_between",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "M2tLTw",
-                          "name": "left",
-                          "gap": 4,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "GmP5H",
-                              "name": "Chat / Close Button / Default",
-                              "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
-                              "width": 28,
-                              "height": 28,
-                              "cornerRadius": 6,
-                              "layout": "vertical",
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "icon_font",
-                                  "id": "TKkAL",
-                                  "name": "icon",
-                                  "width": 16,
-                                  "height": 16,
-                                  "iconFontName": "arrow-right-to-line",
-                                  "iconFontFamily": "lucide",
-                                  "fill": "$chat.icon"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "text",
-                              "id": "r6RGp",
-                              "name": "chatTitle",
-                              "fill": "$chat.text.primary",
-                              "content": "Chat",
-                              "fontFamily": "Noto Serif",
-                              "fontSize": 16,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
+                      "name": "h2"
                     },
                     {
                       "type": "frame",
@@ -11316,277 +11084,64 @@
                       "justifyContent": "end",
                       "children": [
                         {
-                          "type": "frame",
-                          "id": "ZUiB7",
-                          "name": "msg1",
-                          "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
+                          "id": "Kcwv1",
+                          "type": "ref",
+                          "ref": "vPKw1",
                           "width": "fill_container",
-                          "justifyContent": "end",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "MbTQf",
-                              "name": "bubble",
-                              "fill": "$chat.bubble.user.bg",
-                              "cornerRadius": "$chat.bubble.radius",
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "$chat.bubble.user.border"
-                              },
-                              "padding": [
-                                12,
-                                16
-                              ],
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "h6L2x",
-                                  "name": "text",
-                                  "fill": "$chat.text.secondary",
-                                  "textGrowth": "fixed-width",
-                                  "width": 210,
-                                  "content": "How am I tracking against my savings goal?",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            }
-                          ]
+                          "name": "m2_1"
                         },
                         {
-                          "type": "frame",
-                          "id": "avRVu",
-                          "name": "msg2",
-                          "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
+                          "id": "o31Vf",
+                          "type": "ref",
+                          "ref": "sSgx0",
                           "width": "fill_container",
                           "padding": [
                             16,
                             0
                           ],
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "d8EKW",
-                              "name": "bubble",
-                              "width": "fill_container",
-                              "fill": "$chat.bubble.ai.bg",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "sFFOj",
-                                  "name": "text",
-                                  "fill": "$chat.text.primary",
-                                  "textGrowth": "fixed-width",
-                                  "width": "fill_container",
-                                  "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early.",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                          "name": "m2_2",
+                          "descendants": {
+                            "H1M8K1": {
+                              "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early."
                             }
-                          ]
+                          }
                         },
                         {
-                          "type": "frame",
-                          "id": "VEqCs",
-                          "name": "msg3",
-                          "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
+                          "id": "I6Gap",
+                          "type": "ref",
+                          "ref": "vPKw1",
                           "width": "fill_container",
-                          "justifyContent": "end",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "JXVqR",
-                              "name": "bubble",
-                              "fill": "$chat.bubble.user.bg",
-                              "cornerRadius": "$chat.bubble.radius",
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "$chat.bubble.user.border"
-                              },
-                              "padding": [
-                                12,
-                                16
-                              ],
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "tepOA",
-                                  "name": "text",
-                                  "fill": "$chat.text.secondary",
-                                  "textGrowth": "fixed-width",
-                                  "width": 210,
-                                  "content": "Anything unusual in my spending?",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                          "name": "m2_3",
+                          "descendants": {
+                            "OXFUM": {
+                              "content": "Anything unusual in my spending?"
                             }
-                          ]
+                          }
                         },
                         {
-                          "type": "frame",
-                          "id": "bg1Je",
-                          "name": "msg4",
-                          "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
+                          "id": "WCnJg",
+                          "type": "ref",
+                          "ref": "sSgx0",
                           "width": "fill_container",
                           "padding": [
                             16,
                             0
                           ],
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "dd0VV",
-                              "name": "bubble",
-                              "width": "fill_container",
-                              "fill": "$chat.bubble.ai.bg",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "XJ5zk",
-                                  "name": "text",
-                                  "fill": "$chat.text.primary",
-                                  "textGrowth": "fixed-width",
-                                  "width": "fill_container",
-                                  "content": "Groceries are up 18% vs. your 3 month average, driven by a few larger Whole Foods runs. Everything else is within normal ranges.",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                          "name": "m2_4",
+                          "descendants": {
+                            "H1M8K1": {
+                              "content": "Groceries are up 18% vs. your 3 month average, driven by a few larger Whole Foods runs. Everything else is within normal ranges."
                             }
-                          ]
+                          }
                         }
                       ]
                     },
                     {
-                      "type": "frame",
-                      "id": "I9JFL",
-                      "name": "Chat / Input Field / Typing",
-                      "context": "Input Field / Typing — Shown when the user has entered text. Border thickens to 1.5px $chat.input.border.active. Send button becomes enabled. Text displays in $chat.text.secondary.",
+                      "id": "F2ZViz",
+                      "type": "ref",
+                      "ref": "H1YHmh",
                       "width": "fill_container",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": {
-                          "top": 0.5
-                        },
-                        "fill": {
-                          "type": "color",
-                          "color": "#E8E6E0",
-                          "enabled": false
-                        }
-                      },
-                      "layout": "vertical",
-                      "gap": 12,
-                      "padding": [
-                        12,
-                        20,
-                        20,
-                        20
-                      ],
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "B0Uu0",
-                          "name": "inputField",
-                          "width": "fill_container",
-                          "fill": "$chat.input.bg",
-                          "cornerRadius": "$chat.input.radius",
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1.5,
-                            "fill": "$chat.input.border.active"
-                          },
-                          "layout": "vertical",
-                          "gap": 24,
-                          "padding": 12,
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "pZFbM",
-                              "name": "text",
-                              "fill": "$chat.text.secondary",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "What do my holdings look like this month?",
-                              "fontFamily": "Heebo",
-                              "fontSize": 14,
-                              "fontWeight": "normal"
-                            },
-                            {
-                              "type": "frame",
-                              "id": "OL2Wf",
-                              "name": "rowButtons",
-                              "width": "fill_container",
-                              "gap": 8,
-                              "justifyContent": "end",
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "E3ptjh",
-                                  "name": "Chat / Voice Button / Default",
-                                  "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
-                                  "width": 34,
-                                  "height": 34,
-                                  "fill": "#00000000",
-                                  "cornerRadius": 9999,
-                                  "stroke": {
-                                    "align": "inside",
-                                    "thickness": 1,
-                                    "fill": "$chat.chip.border"
-                                  },
-                                  "layout": "vertical",
-                                  "justifyContent": "center",
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "icon_font",
-                                      "id": "Rm8QU",
-                                      "name": "icon",
-                                      "width": 16,
-                                      "height": 16,
-                                      "iconFontName": "mic",
-                                      "iconFontFamily": "lucide",
-                                      "fill": "$chat.icon"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "KvNG8",
-                                  "name": "Chat / Send Button / Default",
-                                  "context": "Primary send button for submitting chat messages. 34×34 pill, dark fill ($chat.send.bg) with white arrow-up icon. Place at the right end of the input field button row. States: default, hover, pressed, disabled.",
-                                  "width": 34,
-                                  "height": 34,
-                                  "fill": "$chat.send.bg",
-                                  "cornerRadius": 9999,
-                                  "layout": "vertical",
-                                  "justifyContent": "center",
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "icon_font",
-                                      "id": "kuxfm",
-                                      "name": "sendIcon",
-                                      "width": 20,
-                                      "height": 20,
-                                      "iconFontName": "arrow-up",
-                                      "iconFontFamily": "lucide",
-                                      "fill": "$chat.send.icon"
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
+                      "name": "inp2"
                     }
                   ]
                 },
@@ -11659,69 +11214,11 @@
                   "justifyContent": "space_between",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "goJjQ",
-                      "name": "recHeader",
-                      "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
+                      "id": "gtX2u",
+                      "type": "ref",
+                      "ref": "OBNxk",
                       "width": "fill_container",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": {
-                          "bottom": 0.5
-                        },
-                        "fill": "$chat.divider"
-                      },
-                      "padding": [
-                        16,
-                        20
-                      ],
-                      "justifyContent": "space_between",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "LB7dM",
-                          "name": "left",
-                          "gap": 4,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "aoZY5",
-                              "name": "Chat / Close Button / Default",
-                              "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
-                              "width": 28,
-                              "height": 28,
-                              "cornerRadius": 6,
-                              "layout": "vertical",
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "icon_font",
-                                  "id": "w3VUU",
-                                  "name": "icon",
-                                  "width": 16,
-                                  "height": 16,
-                                  "iconFontName": "arrow-right-to-line",
-                                  "iconFontFamily": "lucide",
-                                  "fill": "$chat.icon"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "text",
-                              "id": "wx9UB",
-                              "name": "chatTitle",
-                              "fill": "$chat.text.primary",
-                              "content": "Chat",
-                              "fontFamily": "Noto Serif",
-                              "fontSize": 16,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
+                      "name": "h3"
                     },
                     {
                       "type": "frame",
@@ -11739,418 +11236,36 @@
                       "justifyContent": "end",
                       "children": [
                         {
-                          "type": "frame",
-                          "id": "JMmfa",
-                          "name": "msg1",
-                          "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
+                          "id": "iXbp4",
+                          "type": "ref",
+                          "ref": "vPKw1",
                           "width": "fill_container",
-                          "justifyContent": "end",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "Xxz7g",
-                              "name": "bubble",
-                              "fill": "$chat.bubble.user.bg",
-                              "cornerRadius": "$chat.bubble.radius",
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "$chat.bubble.user.border"
-                              },
-                              "padding": [
-                                12,
-                                16
-                              ],
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "UtFZ2",
-                                  "name": "text",
-                                  "fill": "$chat.text.secondary",
-                                  "textGrowth": "fixed-width",
-                                  "width": 210,
-                                  "content": "How am I tracking against my savings goal?",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            }
-                          ]
+                          "name": "m3_1"
                         },
                         {
-                          "type": "frame",
-                          "id": "K351nm",
-                          "name": "msg2",
-                          "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
+                          "id": "X1B2DS",
+                          "type": "ref",
+                          "ref": "sSgx0",
                           "width": "fill_container",
                           "padding": [
                             16,
                             0
                           ],
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "Wxdyd",
-                              "name": "bubble",
-                              "width": "fill_container",
-                              "fill": "$chat.bubble.ai.bg",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "YKt7D",
-                                  "name": "text",
-                                  "fill": "$chat.text.primary",
-                                  "textGrowth": "fixed-width",
-                                  "width": "fill_container",
-                                  "content": "You’re saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you’ll hit your year-end goal six weeks early.",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                          "name": "m3_2",
+                          "descendants": {
+                            "H1M8K1": {
+                              "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early."
                             }
-                          ]
+                          }
                         }
                       ]
                     },
                     {
-                      "type": "frame",
-                      "id": "yHvyP",
-                      "name": "recInput",
-                      "context": "Input Field / Recording — Shown during active voice recording. Blue accent border ($chat.voice.active.bg) at 1.5px. Contains waveform visualization, recording dot, timer, cancel button (left), and active voice button (right). Auto-stops after 2 seconds of silence.",
+                      "id": "BXwJb",
+                      "type": "ref",
+                      "ref": "vhK12",
                       "width": "fill_container",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": {
-                          "top": 0.5
-                        },
-                        "fill": {
-                          "type": "color",
-                          "color": "#E8E6E0",
-                          "enabled": false
-                        }
-                      },
-                      "layout": "vertical",
-                      "gap": 12,
-                      "padding": [
-                        12,
-                        20,
-                        20,
-                        20
-                      ],
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "wFz75",
-                          "name": "inputField",
-                          "width": "fill_container",
-                          "fill": "$chat.input.bg",
-                          "cornerRadius": "$chat.input.radius",
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1.5,
-                            "fill": "$chat.voice.active.bg"
-                          },
-                          "layout": "vertical",
-                          "gap": 16,
-                          "padding": 12,
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "LAM38",
-                              "name": "waveformArea",
-                              "width": "fill_container",
-                              "height": 32,
-                              "gap": 8,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "ellipse",
-                                  "id": "w9yyy",
-                                  "name": "recDot",
-                                  "fill": "$chat.voice.active.bg",
-                                  "width": 8,
-                                  "height": 8
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "fYife",
-                                  "name": "timer",
-                                  "fill": "$chat.voice.timer",
-                                  "content": "0:03",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 13,
-                                  "fontWeight": "500"
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "a6XmJW",
-                                  "name": "waveformBars",
-                                  "width": "fill_container",
-                                  "height": 28,
-                                  "gap": 2,
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "R8vUj",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 6
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "I0ftp",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 14
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "W0dnL",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 22
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "hLhFz",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 10
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "aKyUl",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 26
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "UkE6H",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 18
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "Bb8Pu",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 8
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "JVkx4",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 20
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "PSIR7",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 12
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "GxtPK",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 24
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "J61u3d",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 16
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "T0S8d",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 6
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "YnSbI",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 20
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "fV486",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 10
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "pUc7p",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 28
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "uyqxt",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 14
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "YnF2o",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 8
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "DVOpa",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 18
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "c5SJn",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 24
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "VGxxJ",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 12
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "b9zsvl",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 6
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "f33Jk",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 16
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "HvWVR",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 22
-                                    },
-                                    {
-                                      "type": "rectangle",
-                                      "cornerRadius": 1.5,
-                                      "id": "G26zJ",
-                                      "fill": "$chat.voice.waveform",
-                                      "width": 3,
-                                      "height": 10
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "fDm9v",
-                              "name": "rowButtons",
-                              "width": "fill_container",
-                              "gap": 8,
-                              "justifyContent": "end",
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "H9l5yu",
-                                  "name": "Chat / Voice Button / Active",
-                                  "context": "Voice input button (active/recording state). 34×34 pill, filled with blue accent ($chat.voice.active.bg), white microphone icon. Shown while recording audio. Tap to stop recording manually.",
-                                  "width": 34,
-                                  "height": 34,
-                                  "fill": "$chat.voice.active.bg",
-                                  "cornerRadius": 9999,
-                                  "layout": "vertical",
-                                  "justifyContent": "center",
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "icon_font",
-                                      "id": "Fdyg6",
-                                      "name": "icon",
-                                      "width": 16,
-                                      "height": 16,
-                                      "iconFontName": "mic",
-                                      "iconFontFamily": "lucide",
-                                      "fill": "$chat.voice.active.icon"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "q1Nf3i",
-                                  "name": "Chat / Send Button / Disabled",
-                                  "context": "Disabled state of the send button. Shown when the input field is empty or processing. 34×34 pill, muted fill ($chat.send.bg.disabled) with white icon. States: disabled.",
-                                  "width": 34,
-                                  "height": 34,
-                                  "fill": "$chat.send.bg.disabled",
-                                  "cornerRadius": 9999,
-                                  "layout": "vertical",
-                                  "justifyContent": "center",
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "icon_font",
-                                      "id": "KhZN6",
-                                      "name": "sendIcon",
-                                      "width": 20,
-                                      "height": 20,
-                                      "iconFontName": "arrow-up",
-                                      "iconFontFamily": "lucide",
-                                      "fill": "#FFFFFF"
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
+                      "name": "inp3"
                     }
                   ]
                 },
@@ -12223,69 +11338,11 @@
                   "justifyContent": "space_between",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "fFJ7P",
-                      "name": "transHeader",
-                      "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
+                      "id": "VIFv4",
+                      "type": "ref",
+                      "ref": "OBNxk",
                       "width": "fill_container",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": {
-                          "bottom": 0.5
-                        },
-                        "fill": "$chat.divider"
-                      },
-                      "padding": [
-                        16,
-                        20
-                      ],
-                      "justifyContent": "space_between",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "hFyVX",
-                          "name": "left",
-                          "gap": 4,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "Wq26g",
-                              "name": "Chat / Close Button / Default",
-                              "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
-                              "width": 28,
-                              "height": 28,
-                              "cornerRadius": 6,
-                              "layout": "vertical",
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "icon_font",
-                                  "id": "fv6iB",
-                                  "name": "icon",
-                                  "width": 16,
-                                  "height": 16,
-                                  "iconFontName": "arrow-right-to-line",
-                                  "iconFontFamily": "lucide",
-                                  "fill": "$chat.icon"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "text",
-                              "id": "LIbJD",
-                              "name": "chatTitle",
-                              "fill": "$chat.text.primary",
-                              "content": "Chat",
-                              "fontFamily": "Noto Serif",
-                              "fontSize": 16,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
+                      "name": "h4"
                     },
                     {
                       "type": "frame",
@@ -12303,238 +11360,36 @@
                       "justifyContent": "end",
                       "children": [
                         {
-                          "type": "frame",
-                          "id": "teCO1",
-                          "name": "msg1",
-                          "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
+                          "id": "PSrW3",
+                          "type": "ref",
+                          "ref": "vPKw1",
                           "width": "fill_container",
-                          "justifyContent": "end",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "rx1O2",
-                              "name": "bubble",
-                              "fill": "$chat.bubble.user.bg",
-                              "cornerRadius": "$chat.bubble.radius",
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "$chat.bubble.user.border"
-                              },
-                              "padding": [
-                                12,
-                                16
-                              ],
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "C1rabW",
-                                  "name": "text",
-                                  "fill": "$chat.text.secondary",
-                                  "textGrowth": "fixed-width",
-                                  "width": 210,
-                                  "content": "How am I tracking against my savings goal?",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            }
-                          ]
+                          "name": "m4_1"
                         },
                         {
-                          "type": "frame",
-                          "id": "I8P94C",
-                          "name": "msg2",
-                          "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
+                          "id": "DWv5n",
+                          "type": "ref",
+                          "ref": "sSgx0",
                           "width": "fill_container",
                           "padding": [
                             16,
                             0
                           ],
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "BcWuR",
-                              "name": "bubble",
-                              "width": "fill_container",
-                              "fill": "$chat.bubble.ai.bg",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "Iv1uR",
-                                  "name": "text",
-                                  "fill": "$chat.text.primary",
-                                  "textGrowth": "fixed-width",
-                                  "width": "fill_container",
-                                  "content": "You’re saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you’ll hit your year-end goal six weeks early.",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                          "name": "m4_2",
+                          "descendants": {
+                            "H1M8K1": {
+                              "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early."
                             }
-                          ]
+                          }
                         }
                       ]
                     },
                     {
-                      "type": "frame",
-                      "id": "UPQHf",
-                      "name": "transInput",
-                      "context": "Input Field / Transcribing — Shown briefly while Cartesia processes speech-to-text. Dot animation with 'Transcribing...' placeholder. Buttons dimmed, send disabled. Transitions to Input Field / Typing when transcript is ready.",
+                      "id": "W9c4wk",
+                      "type": "ref",
+                      "ref": "baK5k",
                       "width": "fill_container",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": {
-                          "top": 0.5
-                        },
-                        "fill": {
-                          "type": "color",
-                          "color": "#E8E6E0",
-                          "enabled": false
-                        }
-                      },
-                      "layout": "vertical",
-                      "gap": 12,
-                      "padding": [
-                        12,
-                        20,
-                        20,
-                        20
-                      ],
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "zPBro",
-                          "name": "inputField",
-                          "width": "fill_container",
-                          "fill": "$chat.input.bg",
-                          "cornerRadius": "$chat.input.radius",
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1.5,
-                            "fill": "$chat.input.border.active"
-                          },
-                          "layout": "vertical",
-                          "gap": 24,
-                          "padding": 12,
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "C0fqh",
-                              "name": "transcribeRow",
-                              "width": "fill_container",
-                              "gap": 8,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "ellipse",
-                                  "id": "X6lN2X",
-                                  "name": "dot1",
-                                  "opacity": 0.4,
-                                  "fill": "$chat.voice.waveform",
-                                  "width": 5,
-                                  "height": 5
-                                },
-                                {
-                                  "type": "ellipse",
-                                  "id": "SFHIU",
-                                  "name": "dot2",
-                                  "opacity": 0.7,
-                                  "fill": "$chat.voice.waveform",
-                                  "width": 5,
-                                  "height": 5
-                                },
-                                {
-                                  "type": "ellipse",
-                                  "id": "z7Ljzt",
-                                  "name": "dot3",
-                                  "fill": "$chat.voice.waveform",
-                                  "width": 5,
-                                  "height": 5
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "bQPmg",
-                                  "name": "label",
-                                  "fill": "$chat.text.placeholder",
-                                  "content": "Transcribing...",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "gexWe",
-                              "name": "rowButtons",
-                              "width": "fill_container",
-                              "gap": 8,
-                              "justifyContent": "end",
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "tDhEX",
-                                  "name": "Chat / Voice Button / Disabled",
-                                  "context": "Disabled state of the voice input button. Shown when voice input is unavailable (e.g., no mic permission, feature disabled). 34×34 pill, transparent background with border, 40% opacity. Same appearance as default but dimmed to indicate non-interactive state.",
-                                  "opacity": 0.4,
-                                  "width": 34,
-                                  "height": 34,
-                                  "fill": "#00000000",
-                                  "cornerRadius": 9999,
-                                  "stroke": {
-                                    "align": "inside",
-                                    "thickness": 1,
-                                    "fill": "$chat.chip.border"
-                                  },
-                                  "layout": "vertical",
-                                  "justifyContent": "center",
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "icon_font",
-                                      "id": "mXSKE",
-                                      "name": "icon",
-                                      "width": 16,
-                                      "height": 16,
-                                      "iconFontName": "mic",
-                                      "iconFontFamily": "lucide",
-                                      "fill": "$chat.icon"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "QcLu9",
-                                  "name": "Chat / Send Button / Disabled",
-                                  "context": "Disabled state of the send button. Shown when the input field is empty or processing. 34×34 pill, muted fill ($chat.send.bg.disabled) with white icon. States: disabled.",
-                                  "width": 34,
-                                  "height": 34,
-                                  "fill": "$chat.send.bg.disabled",
-                                  "cornerRadius": 9999,
-                                  "layout": "vertical",
-                                  "justifyContent": "center",
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "icon_font",
-                                      "id": "A8MSI",
-                                      "name": "sendIcon",
-                                      "width": 20,
-                                      "height": 20,
-                                      "iconFontName": "arrow-up",
-                                      "iconFontFamily": "lucide",
-                                      "fill": "#FFFFFF"
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
+                      "name": "inp4"
                     }
                   ]
                 },
