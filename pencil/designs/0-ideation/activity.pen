@@ -29268,7 +29268,7 @@
               "name": "headerRef",
               "descendants": {
                 "ooPDG": {
-                  "content": "Accounts"
+                  "content": "Net Worth | Accounts"
                 },
                 "t2sd7Y": {
                   "enabled": false
@@ -51146,7 +51146,7 @@
               "name": "headerRef",
               "descendants": {
                 "ooPDG": {
-                  "content": "Activity"
+                  "content": "Net Worth | Activity"
                 },
                 "t2sd7Y": {
                   "enabled": false
@@ -53015,484 +53015,99 @@
     },
     {
       "type": "frame",
-      "id": "z3ETuX",
+      "id": "XZtPp",
       "x": 4000,
       "y": -247,
       "name": "Account Selector / Open",
-      "width": 340,
+      "width": 320,
       "fill": "#FFFFFF00",
       "layout": "vertical",
-      "gap": 6,
+      "gap": "$O:spacing-2xs",
       "children": [
         {
           "type": "frame",
-          "id": "gVjHu",
+          "id": "u9DR6W",
           "name": "trigger",
           "width": "fill_container",
-          "fill": "#FFFFFF",
-          "cornerRadius": 8,
+          "fill": "$O:colors-background-surface",
+          "cornerRadius": "$O:radius-2xs",
           "stroke": {
             "align": "inside",
-            "thickness": 2,
-            "fill": "#3A6AF8"
+            "thickness": 1,
+            "fill": "#000000"
           },
-          "gap": 8,
+          "gap": "$O:spacing-xs",
           "padding": [
-            10,
-            14
+            "$O:spacing-sm",
+            "$O:spacing-md"
           ],
           "justifyContent": "space_between",
           "alignItems": "center",
           "children": [
             {
-              "type": "text",
-              "id": "VsTja",
-              "fill": "#2D2926",
-              "content": "All Accounts",
-              "fontFamily": "Heebo",
-              "fontSize": 14,
-              "fontWeight": "500"
+              "type": "frame",
+              "id": "mO8YV",
+              "name": "triggerTextWrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "g7WPc8",
+                  "name": "floatingLabel",
+                  "fill": "$O:colors-text-meta",
+                  "content": "Account",
+                  "fontFamily": "$O:typo-primary-xs-font-family",
+                  "fontSize": "$O:typo-primary-xs-font-size",
+                  "letterSpacing": "$O:typo-primary-xs-letter-spacing"
+                },
+                {
+                  "type": "text",
+                  "id": "FBwIC",
+                  "name": "triggerValue",
+                  "fill": "$O:colors-text-header",
+                  "content": "All Accounts",
+                  "fontFamily": "$O:typo-primary-sm-semibold-font-family",
+                  "fontSize": "$O:typo-primary-sm-semibold-font-size",
+                  "fontWeight": "500",
+                  "letterSpacing": "$O:typo-primary-sm-semibold-letter-spacing"
+                }
+              ]
             },
             {
-              "type": "text",
-              "id": "N89Yzl",
-              "fill": "#8A8680",
-              "content": "▵",
-              "fontFamily": "Heebo",
-              "fontSize": 12,
-              "fontWeight": "normal"
+              "type": "frame",
+              "id": "qAOr4",
+              "name": "icon / chevron-up",
+              "width": 20,
+              "height": 20,
+              "fill": "$O:colors-text-meta"
             }
           ]
         },
         {
           "type": "frame",
-          "id": "TMpkc",
+          "id": "jqh7Z",
           "name": "dropdownPanel",
           "width": "fill_container",
-          "fill": "#FFFFFF",
-          "cornerRadius": 12,
+          "height": "fit_content(0)",
+          "fill": "$O:colors-background-surface",
+          "cornerRadius": "$O:radius-xs",
           "stroke": {
             "align": "inside",
             "thickness": 1,
-            "fill": "#E8E6E0"
+            "fill": "$O:colors-borders-light"
           },
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "#0000000F",
-            "blur": 24
+            "color": "$O:shadow-md-color",
+            "blur": "$O:shadow-md-blur"
           },
           "layout": "vertical",
-          "padding": 6,
-          "children": [
-            {
-              "type": "frame",
-              "id": "Lxyr9",
-              "name": "allAccountsRow",
-              "width": "fill_container",
-              "fill": "#EEF2FE",
-              "cornerRadius": 8,
-              "padding": [
-                10,
-                14
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "JsBYX",
-                  "fill": "#3A6AF8",
-                  "content": "✓  All Accounts",
-                  "fontFamily": "Heebo",
-                  "fontSize": 14,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "uJzeh",
-              "name": "sep1",
-              "width": "fill_container",
-              "height": 1,
-              "fill": "#E8E6E0"
-            },
-            {
-              "type": "frame",
-              "id": "EzIL2",
-              "name": "bankingHdr",
-              "width": "fill_container",
-              "padding": [
-                14,
-                14,
-                6,
-                14
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "oOwzr",
-                  "fill": "#8A8680",
-                  "content": "Banking",
-                  "fontFamily": "Heebo",
-                  "fontSize": 11,
-                  "fontWeight": "600",
-                  "letterSpacing": 0.8
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "vFJBe",
-              "name": "acctItem",
-              "width": "fill_container",
-              "cornerRadius": 6,
-              "padding": [
-                8,
-                14,
-                8,
-                24
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "fqvK8",
-                  "fill": "#3C3836",
-                  "content": "Chase Sapphire Checking (••4821)",
-                  "fontFamily": "Heebo",
-                  "fontSize": 13
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "DzoEe",
-              "name": "acctItem",
-              "width": "fill_container",
-              "cornerRadius": 6,
-              "padding": [
-                8,
-                14,
-                8,
-                24
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "dT5Ei",
-                  "fill": "#3C3836",
-                  "content": "Wells Fargo Everyday Checking (••1234)",
-                  "fontFamily": "Heebo",
-                  "fontSize": 13
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "E8W0hz",
-              "name": "acctItem",
-              "width": "fill_container",
-              "cornerRadius": 6,
-              "padding": [
-                8,
-                14,
-                8,
-                24
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "mNwp8",
-                  "fill": "#3C3836",
-                  "content": "Wells Fargo Way2Save Savings (••5678)",
-                  "fontFamily": "Heebo",
-                  "fontSize": 13
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "Uyjxb",
-              "name": "addBankWrap",
-              "width": "fill_container",
-              "padding": [
-                2,
-                14,
-                4,
-                20
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "UVNXU",
-                  "name": "addBankBtn",
-                  "fill": "#EEF2FE",
-                  "cornerRadius": 6,
-                  "gap": 4,
-                  "padding": [
-                    6,
-                    10
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "kshfJ",
-                      "fill": "#3A6AF8",
-                      "content": "+ Add Account",
-                      "fontFamily": "Heebo",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "PlOLp",
-              "name": "sep2",
-              "width": "fill_container",
-              "height": 1,
-              "fill": "#E8E6E0"
-            },
-            {
-              "type": "frame",
-              "id": "OOtzz",
-              "name": "creditHdr",
-              "width": "fill_container",
-              "padding": [
-                14,
-                14,
-                6,
-                14
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "y7p7Wm",
-                  "fill": "#8A8680",
-                  "content": "Credit & Loans",
-                  "fontFamily": "Heebo",
-                  "fontSize": 11,
-                  "fontWeight": "600",
-                  "letterSpacing": 0.8
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "NOk4e",
-              "name": "acctItem",
-              "width": "fill_container",
-              "cornerRadius": 6,
-              "padding": [
-                8,
-                14,
-                8,
-                24
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "XMg0w",
-                  "fill": "#3C3836",
-                  "content": "Chase Freedom Unlimited (••9012)",
-                  "fontFamily": "Heebo",
-                  "fontSize": 13
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "M4IIV",
-              "name": "acctItem",
-              "width": "fill_container",
-              "cornerRadius": 6,
-              "padding": [
-                8,
-                14,
-                8,
-                24
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "jpeQC",
-                  "fill": "#3C3836",
-                  "content": "Citi Double Cash (••3456)",
-                  "fontFamily": "Heebo",
-                  "fontSize": 13
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "HEczM",
-              "name": "addCreditWrap",
-              "width": "fill_container",
-              "padding": [
-                2,
-                14,
-                4,
-                20
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "qqWXg",
-                  "name": "addCreditBtn",
-                  "fill": "#EEF2FE",
-                  "cornerRadius": 6,
-                  "gap": 4,
-                  "padding": [
-                    6,
-                    10
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "hxXd3",
-                      "fill": "#3A6AF8",
-                      "content": "+ Add Account",
-                      "fontFamily": "Heebo",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "gYIKS",
-              "name": "sep3",
-              "width": "fill_container",
-              "height": 1,
-              "fill": "#E8E6E0"
-            },
-            {
-              "type": "frame",
-              "id": "TZwbh",
-              "name": "investHdr",
-              "width": "fill_container",
-              "padding": [
-                14,
-                14,
-                6,
-                14
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "z49r8h",
-                  "fill": "#8A8680",
-                  "content": "Investments",
-                  "fontFamily": "Heebo",
-                  "fontSize": 11,
-                  "fontWeight": "600",
-                  "letterSpacing": 0.8
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "XdDaP",
-              "name": "acctItem",
-              "width": "fill_container",
-              "cornerRadius": 6,
-              "padding": [
-                8,
-                14,
-                8,
-                24
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "LLFHQ",
-                  "fill": "#3C3836",
-                  "content": "Fidelity Roth IRA (••7890)",
-                  "fontFamily": "Heebo",
-                  "fontSize": 13
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "JTXuB",
-              "name": "acctItem",
-              "width": "fill_container",
-              "cornerRadius": 6,
-              "padding": [
-                8,
-                14,
-                8,
-                24
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "heUki",
-                  "fill": "#3C3836",
-                  "content": "Vanguard Brokerage (••2345)",
-                  "fontFamily": "Heebo",
-                  "fontSize": 13
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "alnEt",
-              "name": "addInvestWrap",
-              "width": "fill_container",
-              "padding": [
-                2,
-                14,
-                8,
-                20
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "RRztf",
-                  "name": "addInvestBtn",
-                  "fill": "#EEF2FE",
-                  "cornerRadius": 6,
-                  "gap": 4,
-                  "padding": [
-                    6,
-                    10
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "q1V3u",
-                      "fill": "#3A6AF8",
-                      "content": "+ Add Account",
-                      "fontFamily": "Heebo",
-                      "fontSize": 12,
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            }
+          "padding": [
+            "$O:spacing-2xs",
+            0
           ]
         }
       ]
