@@ -8,7 +8,7 @@
       "y": 2194,
       "name": "Chat / Panel / Conversation",
       "clip": true,
-      "width": 390,
+      "width": 360,
       "height": 844,
       "fill": "$chat.input.bg",
       "cornerRadius": 12,
@@ -2327,7 +2327,7 @@
                       "fill": "#8A8680",
                       "textGrowth": "fixed-width",
                       "width": 160,
-                      "content": "Close Button\n28×28 · radius 6 · lucide x · $chat.icon",
+                      "content": "Close Button\n28×28 · radius 6 · lucide arrow-right-to-line · $chat.icon",
                       "fontFamily": "Heebo",
                       "fontSize": 11,
                       "fontWeight": "500"
@@ -3859,6 +3859,22 @@
                           "fontWeight": "normal"
                         }
                       ]
+                    },
+                    {
+                      "id": "y2rtxi",
+                      "type": "ref",
+                      "ref": "Q:z7pWh",
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "name": "btn",
+                      "descendants": {
+                        "Q:fEcTR": {
+                          "content": "Show View",
+                          "fontSize": 12
+                        }
+                      }
                     }
                   ]
                 },
@@ -3869,7 +3885,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 260,
-                  "content": "Chat Header\nw360 · pad 16/20\nbottom border 0.5 $chat.divider\nNoto Serif 16 title",
+                  "content": "Chat Header\nw360 · pad 16/20 · space-between\nbottom border 0.5 $chat.divider\nNoto Serif 16 title · Show View btn right",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -3907,6 +3923,7 @@
               "type": "frame",
               "id": "S5zrk",
               "name": "cardInputEmpty",
+              "width": 430,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
               "stroke": {
@@ -3934,7 +3951,7 @@
                   "name": "Chat / Input Field / Empty",
                   "context": "Input Field / Empty — Shown when no text has been entered. Contains placeholder text and the button row (voice, send disabled). Outer padding: 12t/20r/20b/20l. Inner field: $chat.input.bg, border $chat.input.border, radius $chat.input.radius.",
                   "reusable": true,
-                  "width": 360,
+                  "width": "fill_container",
                   "stroke": {
                     "align": "inside",
                     "thickness": {
@@ -3976,6 +3993,8 @@
                           "id": "tO2lE",
                           "name": "placeholder",
                           "fill": "$chat.text.placeholder",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
                           "content": "Ask me any financial question...",
                           "fontFamily": "Heebo",
                           "fontSize": 14,
@@ -4057,7 +4076,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 280,
-                  "content": "Input / Empty\nw360 · pad 12/20/20/20\ninputField: radius 12 · $chat.input.bg · pad 12\nplaceholder: Heebo 14 · $chat.text.placeholder\nvoice + send buttons · right-aligned",
+                  "content": "Input / Empty\nw360 · pad 12/20/20/20\ninputField: $chat.input.radius · $chat.input.bg · pad 12\nborder 1px $chat.input.border\nplaceholder: Heebo 14 · $chat.text.placeholder\nvoice + send disabled · right-aligned",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -4068,6 +4087,7 @@
               "type": "frame",
               "id": "rvTLP",
               "name": "cardInputTyping",
+              "width": 430,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
               "stroke": {
@@ -4095,7 +4115,7 @@
                   "name": "Chat / Input Field / Typing",
                   "context": "Input Field / Typing — Shown when the user has entered text. Border thickens to 1.5px $chat.input.border.active. Send button becomes enabled. Text displays in $chat.text.secondary.",
                   "reusable": true,
-                  "width": 360,
+                  "width": "fill_container",
                   "stroke": {
                     "align": "inside",
                     "thickness": {
@@ -4220,7 +4240,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 260,
-                  "content": "Input / User Typing\nw360 · same structure as Empty\ntext: Heebo 14 · $chat.text.secondary\nfixed-width fill · replaces placeholder",
+                  "content": "Input / User Typing\nw360 · same field structure as Empty\nborder 1.5px $chat.input.border.active\ntext: Heebo 14 · $chat.text.secondary · fill width\nsend button enabled · voice still visible",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -4231,7 +4251,7 @@
               "type": "frame",
               "id": "MAvCg",
               "name": "cardInputRecording",
-              "width": 400,
+              "width": 430,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
               "stroke": {
@@ -4259,7 +4279,7 @@
                   "name": "Chat / Input Field / Recording",
                   "context": "Input Field / Recording — Shown during active voice recording. Blue accent border ($chat.voice.active.bg) at 1.5px. Contains waveform visualization, recording dot, timer, cancel button (left), and active voice button (right). Auto-stops after 2 seconds of silence.",
                   "reusable": true,
-                  "width": 360,
+                  "width": "fill_container",
                   "stroke": {
                     "align": "inside",
                     "thickness": {
@@ -4598,7 +4618,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "Chat input in active recording state\nBlue accent border indicates recording\nWaveform visualization + rec dot + timer\nCancel (x) on left · Active mic on right\nAuto-stops after 2s of silence",
+                  "content": "Input / Recording\nw360 · pad 12/20/20/20\nborder 1.5px $chat.voice.active.bg (blue)\nrec dot + timer + waveform bars\nactive mic (blue) + send disabled · right-aligned\nauto-stops after 2s of silence",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -4609,7 +4629,7 @@
               "type": "frame",
               "id": "jj7YB",
               "name": "cardInputTranscribing",
-              "width": 400,
+              "width": 430,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
               "stroke": {
@@ -4637,7 +4657,7 @@
                   "name": "Chat / Input Field / Transcribing",
                   "context": "Input Field / Transcribing — Shown briefly while Cartesia processes speech-to-text. Dot animation with 'Transcribing...' placeholder. Buttons dimmed, send disabled. Transitions to Input Field / Typing when transcript is ready.",
                   "reusable": true,
-                  "width": 360,
+                  "width": "fill_container",
                   "stroke": {
                     "align": "inside",
                     "thickness": {
@@ -4796,7 +4816,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "Chat input during speech-to-text processing\nDot animation + \"Transcribing...\" placeholder\nButtons dimmed while processing\nSend disabled until transcript ready\nTransitions to Input Typing when complete",
+                  "content": "Input / Transcribing\nw360 · pad 12/20/20/20\nborder 1.5px $chat.input.border.active\ndot animation (varying opacity) + \"Transcribing...\"\nvoice dimmed (0.4) · send disabled",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -4834,7 +4854,7 @@
               "type": "frame",
               "id": "AFUYO",
               "name": "cardUserMsg",
-              "width": 320,
+              "width": 430,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
               "stroke": {
@@ -4862,12 +4882,20 @@
                   "name": "Chat / Message / User",
                   "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
                   "reusable": true,
+                  "width": "fill_container",
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    "$Q:spacing-lg"
+                  ],
                   "justifyContent": "end",
                   "children": [
                     {
                       "type": "frame",
                       "id": "oArwT",
                       "name": "bubble",
+                      "width": "fill_container",
                       "fill": "$chat.bubble.user.bg",
                       "cornerRadius": "$chat.bubble.radius",
                       "stroke": {
@@ -4903,7 +4931,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 280,
-                  "content": "User Message\naligned right · radius 12 · $chat.bubble.user.bg\nborder $chat.bubble.user.border · pad 12/16\nHeebo 14 · $chat.text.secondary · fixed-width 210",
+                  "content": "User Message\naligned right · $chat.bubble.radius · $chat.bubble.user.bg\nborder $chat.bubble.user.border · pad 12/16\nHeebo 14 · $chat.text.secondary · fixed-width 210\nleft padding $Q:spacing-lg pushes bubble right",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -4914,7 +4942,7 @@
               "type": "frame",
               "id": "vklX2",
               "name": "cardAiMsg",
-              "width": 320,
+              "width": 430,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
               "stroke": {
@@ -4942,7 +4970,7 @@
                   "name": "Chat / Message / AI",
                   "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
                   "reusable": true,
-                  "width": 242,
+                  "width": "fill_container",
                   "padding": [
                     8,
                     0
@@ -4978,7 +5006,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 280,
-                  "content": "AI Message\naligned left · transparent bg · full width\nHeebo 14 · $chat.text.primary · fixed-width fill",
+                  "content": "AI Message\naligned left · $chat.bubble.ai.bg · full width\nHeebo 14 · $chat.text.primary · fixed-width fill\npad 8/0 outer · no border",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -4989,7 +5017,7 @@
               "type": "frame",
               "id": "JVhmD",
               "name": "cardAiThinking",
-              "width": 320,
+              "width": 430,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
               "stroke": {
@@ -5018,6 +5046,7 @@
                   "name": "Chat / Message / AI Thinking",
                   "context": "Message / AI Thinking — Shown while the AI is generating a response. Animated dots or shimmer to indicate processing. Appears in the message thread below the user's last message. The gradient inside the dots and the text shimmers left-to-right as the LLM is thinking.",
                   "reusable": true,
+                  "width": "fill_container",
                   "layout": "vertical",
                   "children": [
                     {
@@ -5098,6 +5127,8 @@
                           }
                         ]
                       },
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
                       "content": "Generating your retirement projection...",
                       "fontFamily": "Heebo",
                       "fontSize": 14,
@@ -5112,7 +5143,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 280,
-                  "content": "AI Thinking\naligned left · transparent bg · full width\nthree dot indicator · gradient status text\nshown while LLM is processing\ngradient shimmer animation left-to-right while thinking",
+                  "content": "AI Thinking\naligned left · $chat.bubble.ai.bg bubble · full width\nthree 8px dots (placeholder/secondary/placeholder)\ngradient status text · Heebo 14 · shimmer animation\nshown while LLM is processing",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -5177,7 +5208,7 @@
                   "name": "Chat / Panel / Empty",
                   "clip": true,
                   "width": 360,
-                  "height": 600,
+                  "height": 844,
                   "fill": "#F7F5F0",
                   "cornerRadius": 12,
                   "stroke": {
@@ -5297,7 +5328,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 360,
-                  "content": "Chat Panel (Welcome)\n360×fill · radius 12 · $chat.bg · clip\nshadow · border $chat.border\ngreeting + suggestion chips + empty input",
+                  "content": "Chat Panel (Welcome)\n360×844 · radius 12 · $chat.bg · clip\nshadow · border $chat.border\ngreeting + suggestion chips + empty input",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -5335,7 +5366,7 @@
                   "name": "Chat / Panel / Conversation",
                   "clip": true,
                   "width": 360,
-                  "height": 600,
+                  "height": 844,
                   "fill": "#f7f5f0ff",
                   "cornerRadius": 12,
                   "stroke": {
@@ -5448,7 +5479,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 360,
-                  "content": "Chat Panel (Active Conversation)\n360×fill · messages justify-end\nuser bubbles right · AI bubbles left\ntyping input at bottom",
+                  "content": "Chat Panel (Active Conversation)\n360×600 · messages justify-end\nuser bubbles right · AI bubbles left\ntyping input at bottom",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -5487,7 +5518,7 @@
                   "name": "Chat / Panel / Conversation + Thinking",
                   "clip": true,
                   "width": 360,
-                  "height": 600,
+                  "height": 844,
                   "fill": "#f7f5f0ff",
                   "cornerRadius": 12,
                   "stroke": {
@@ -5601,6 +5632,210 @@
             },
             {
               "type": "frame",
+              "id": "pBdfw",
+              "name": "cardError",
+              "fill": "#FAFAF8",
+              "cornerRadius": 8,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#E8E6E0"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "uznnM",
+                  "name": "title",
+                  "fill": "#8A8680",
+                  "content": "Panel / Error State",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "frame",
+                  "id": "EpRMp",
+                  "name": "Chat / Panel / Error State",
+                  "clip": true,
+                  "width": 360,
+                  "height": 844,
+                  "fill": "#f7f5f0ff",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#DCD8CB"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#2D292628",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 28,
+                    "spread": 2
+                  },
+                  "layout": "vertical",
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "id": "uhhVA",
+                      "type": "ref",
+                      "ref": "OBNxk",
+                      "width": "fill_container",
+                      "name": "header"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "T1FdCU",
+                      "name": "chatMessages",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "layout": "vertical",
+                      "gap": 14,
+                      "padding": [
+                        16,
+                        20
+                      ],
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "id": "R3w4v",
+                          "type": "ref",
+                          "ref": "vPKw1",
+                          "width": "fill_container",
+                          "name": "msg1",
+                          "descendants": {
+                            "OXFUM": {
+                              "content": "What's my projected net worth at retirement?"
+                            }
+                          }
+                        },
+                        {
+                          "id": "VNlR0",
+                          "type": "ref",
+                          "ref": "sSgx0",
+                          "width": "fill_container",
+                          "name": "msg2",
+                          "descendants": {
+                            "H1M8K1": {
+                              "content": "Based on your current savings rate of $8,200/month and portfolio growth of 7.2% annually, you're projected to reach $16.8M by age 65."
+                            }
+                          }
+                        },
+                        {
+                          "id": "ThE7j",
+                          "type": "ref",
+                          "ref": "vPKw1",
+                          "width": "fill_container",
+                          "name": "msg1",
+                          "descendants": {
+                            "OXFUM": {
+                              "content": "How am I tracking against my savings goal?"
+                            }
+                          }
+                        },
+                        {
+                          "id": "BsXOp",
+                          "type": "ref",
+                          "ref": "sSgx0",
+                          "width": "fill_container",
+                          "name": "msg2",
+                          "descendants": {
+                            "H1M8K1": {
+                              "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early."
+                            }
+                          }
+                        },
+                        {
+                          "id": "jn41m",
+                          "type": "ref",
+                          "ref": "vPKw1",
+                          "width": "fill_container",
+                          "name": "msg1",
+                          "descendants": {
+                            "OXFUM": {
+                              "content": "What's my projected net worth at retirement?"
+                            }
+                          }
+                        },
+                        {
+                          "id": "YerLx",
+                          "type": "ref",
+                          "ref": "sSgx0",
+                          "width": "fill_container",
+                          "name": "msg2",
+                          "descendants": {
+                            "H1M8K1": {
+                              "content": "Based on your current savings rate of $8,200/month and portfolio growth of 7.2% annually, you're projected to reach $16.8M by age 65."
+                            }
+                          }
+                        },
+                        {
+                          "id": "EwPz8",
+                          "type": "ref",
+                          "ref": "vPKw1",
+                          "width": "fill_container",
+                          "name": "msg3",
+                          "descendants": {
+                            "OXFUM": {
+                              "content": "Can you break down where that growth is coming from?"
+                            }
+                          }
+                        },
+                        {
+                          "id": "cT1kT",
+                          "type": "ref",
+                          "ref": "Q:aPRUY",
+                          "width": "fill_container",
+                          "name": "errorAlert",
+                          "fill": "$Q:color-red-50",
+                          "descendants": {
+                            "Q:PSBCp/Q:FHA10": {
+                              "content": "Something Went Wrong",
+                              "fontSize": "$Q:typo-primary-sm-font-size",
+                              "lineHeight": 1.5
+                            },
+                            "Q:O7Jii/Q:FHA10": {
+                              "content": "We ran into an issue and were unable to process your request. Please try again later if the issue persists.",
+                              "fontSize": "$Q:typo-primary-sm-font-size"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "J4tQrh",
+                      "type": "ref",
+                      "ref": "sIHVs",
+                      "width": "fill_container",
+                      "name": "input"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "tdHks",
+                  "name": "lbl",
+                  "fill": "#8A8680",
+                  "textGrowth": "fixed-width",
+                  "width": 360,
+                  "content": "Chat Panel (Error State)\n360×600 · conversation with error alert\nuser asks question · AI fails with callout\nempty input at bottom",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
               "id": "xf2kh",
               "name": "cardRecording",
               "fill": "#FAFAF8",
@@ -5631,7 +5866,7 @@
                   "name": "panelRecording",
                   "clip": true,
                   "width": 360,
-                  "height": 600,
+                  "height": 844,
                   "fill": "#f7f5f0ff",
                   "cornerRadius": 12,
                   "stroke": {
@@ -5716,7 +5951,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 360,
-                  "content": "Chat Panel (Recording)\n360×fill · same panel structure\nrecording input with waveform + timer\ncancel left · active mic right",
+                  "content": "Chat Panel (Recording)\n360×844 · same panel structure\nrecording input with waveform + timer\ncancel left · active mic right",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -5755,7 +5990,7 @@
                   "name": "panelTranscribing",
                   "clip": true,
                   "width": 360,
-                  "height": 600,
+                  "height": 844,
                   "fill": "#f7f5f0ff",
                   "cornerRadius": 12,
                   "stroke": {
@@ -5840,7 +6075,7 @@
                   "fill": "#8A8680",
                   "textGrowth": "fixed-width",
                   "width": 360,
-                  "content": "Chat Panel (Transcribing)\n360×fill · same panel structure\ndot animation + \"Transcribing...\" placeholder\nbuttons dimmed · send disabled",
+                  "content": "Chat Panel (Transcribing)\n360×600 · same panel structure\ndot animation + \"Transcribing...\" placeholder\nbuttons dimmed · send disabled",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
