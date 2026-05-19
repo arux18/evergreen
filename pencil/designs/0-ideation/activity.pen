@@ -29268,7 +29268,7 @@
               "name": "headerRef",
               "descendants": {
                 "ooPDG": {
-                  "content": "Net Worth | Accounts"
+                  "content": "Accounts"
                 },
                 "t2sd7Y": {
                   "enabled": false
@@ -51146,7 +51146,7 @@
               "name": "headerRef",
               "descendants": {
                 "ooPDG": {
-                  "content": "Net Worth | Activity"
+                  "content": "Activity"
                 },
                 "t2sd7Y": {
                   "enabled": false
@@ -51172,12 +51172,18 @@
                   "ref": "O:jncEi",
                   "name": "accountSelect",
                   "width": 400,
-                  "height": 40,
+                  "height": 58,
                   "x": 40,
                   "y": 20,
                   "justifyContent": "start",
                   "alignItems": "center",
                   "cornerRadius": 8,
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    17
+                  ],
                   "descendants": {
                     "O:QrtxT": {
                       "justifyContent": "center",
@@ -51185,11 +51191,15 @@
                     },
                     "O:HqLdw": {
                       "content": "All Accounts",
-                      "fill": "$O:colors-text-meta",
+                      "fill": "$O:colors-text-header",
                       "textAlignVertical": "middle",
                       "fontFamily": "$O:typo-primary-sm-regular-font-family",
-                      "fontSize": "$O:typo-primary-sm-regular-font-size",
-                      "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                      "fontSize": "$O:typo-primary-base-regular-font-size",
+                      "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing",
+                      "fontWeight": "normal"
+                    },
+                    "O:LFzBa": {
+                      "fill": "#8A8680"
                     }
                   }
                 },
@@ -51225,7 +51235,7 @@
                       "ref": "O:jncEi",
                       "name": "categorySelect",
                       "width": 200,
-                      "height": 40,
+                      "height": 58,
                       "justifyContent": "start",
                       "alignItems": "center",
                       "cornerRadius": 8,
@@ -51268,6 +51278,7 @@
                       "name": "tableHeader",
                       "width": "fill_container",
                       "fill": "$O:color-taupe-100",
+                      "cornerRadius": 8,
                       "stroke": {
                         "align": "inside",
                         "thickness": {
@@ -51303,9 +51314,9 @@
                             {
                               "type": "icon_font",
                               "id": "h9ZSwV",
-                              "width": 8,
-                              "height": 8,
-                              "iconFontName": "arrow-down",
+                              "width": 10,
+                              "height": 10,
+                              "iconFontName": "arrow-down-wide-narrow",
                               "iconFontFamily": "lucide",
                               "fill": "$O:colors-icons-meta"
                             }
@@ -51334,7 +51345,7 @@
                               "id": "L1dxj5",
                               "width": 10,
                               "height": 10,
-                              "iconFontName": "chevrons-up-down",
+                              "iconFontName": "arrow-up-down",
                               "iconFontFamily": "lucide",
                               "fill": "$O:colors-icons-meta"
                             }
@@ -51363,7 +51374,7 @@
                               "id": "SxZDX",
                               "width": 10,
                               "height": 10,
-                              "iconFontName": "chevrons-up-down",
+                              "iconFontName": "arrow-up-down",
                               "iconFontFamily": "lucide",
                               "fill": "$O:colors-icons-meta"
                             }
@@ -51392,7 +51403,7 @@
                               "id": "sJ5R6",
                               "width": 10,
                               "height": 10,
-                              "iconFontName": "chevrons-up-down",
+                              "iconFontName": "arrow-up-down",
                               "iconFontFamily": "lucide",
                               "fill": "$O:colors-icons-meta"
                             }
@@ -51422,7 +51433,7 @@
                               "id": "mfQxd",
                               "width": 10,
                               "height": 10,
-                              "iconFontName": "chevrons-up-down",
+                              "iconFontName": "arrow-up-down",
                               "iconFontFamily": "lucide",
                               "fill": "$O:colors-icons-meta"
                             }
@@ -52991,10 +53002,601 @@
           "height": "fill_container",
           "name": "chatRef",
           "descendants": {
+            "dmV7o": {
+              "fontSize": 20
+            },
             "ojebW": {
               "fill": "#00000000"
             }
           }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "RXwaR",
+      "x": 4000,
+      "y": -247,
+      "name": "Account Selector / Open",
+      "width": 340,
+      "fill": "#FFFFFF",
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "#000000"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000001A",
+        "blur": 24
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "rWED0",
+          "name": "triggerRow",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "stroke": {
+            "align": "inside",
+            "thickness": 2,
+            "fill": "#000000"
+          },
+          "gap": 8,
+          "padding": [
+            12,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "lgiBG",
+              "name": "triggerLabel",
+              "fill": "#000000",
+              "content": "All Accounts",
+              "fontFamily": "Heebo",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "c6Idz",
+              "name": "chevron",
+              "fill": "#000000",
+              "content": "▴",
+              "fontFamily": "Heebo",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UkgsP",
+          "name": "scrollArea",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            4,
+            0
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "RKDEW",
+              "name": "allAccountsItem",
+              "width": "fill_container",
+              "fill": "#000000",
+              "padding": [
+                10,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "y7UQV",
+                  "fill": "#000000",
+                  "content": "All Accounts",
+                  "fontFamily": "Heebo",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "L7T5JA",
+              "name": "div1",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#000000"
+            },
+            {
+              "type": "frame",
+              "id": "ZeRfh",
+              "name": "bankingHeader",
+              "width": "fill_container",
+              "padding": [
+                12,
+                16,
+                6,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "F4aNwz",
+                  "fill": "#000000",
+                  "content": "BANKING",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Y0LATW",
+              "name": "acctRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "jImSc",
+                  "fill": "#000000",
+                  "content": "Chase Sapphire Checking",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "xX4Pw",
+                  "fill": "#000000",
+                  "content": "••4821",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wEcFG",
+              "name": "acctRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "aYvnU",
+                  "fill": "#000000",
+                  "content": "Wells Fargo Everyday Checking",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "N34YwN",
+                  "fill": "#000000",
+                  "content": "••1234",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "g5Kcur",
+              "name": "acctRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "j3Uwv",
+                  "fill": "#000000",
+                  "content": "Wells Fargo High Yield Savings",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "bCAob",
+                  "fill": "#000000",
+                  "content": "••5678",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Db80W",
+              "name": "addBankRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mSV2d",
+                  "fill": "#000000",
+                  "content": "+ Add Account",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KoaeI",
+              "name": "div2",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#000000"
+            },
+            {
+              "type": "frame",
+              "id": "d9imH",
+              "name": "creditHeader",
+              "width": "fill_container",
+              "padding": [
+                12,
+                16,
+                6,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Q9fdYR",
+                  "fill": "#000000",
+                  "content": "CREDIT & LOANS",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "FTVwe",
+              "name": "acctRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vu5aq",
+                  "fill": "#000000",
+                  "content": "Chase Freedom Unlimited",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "OQ1PG",
+                  "fill": "#000000",
+                  "content": "••3390",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "CNbGx",
+              "name": "acctRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mPKFQ",
+                  "fill": "#000000",
+                  "content": "SoFi Personal Loan",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "xb6Kr",
+                  "fill": "#000000",
+                  "content": "••7201",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fLFpw",
+              "name": "acctRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "E1ghqi",
+                  "fill": "#000000",
+                  "content": "Wells Fargo Active Cash",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "T47lvj",
+                  "fill": "#000000",
+                  "content": "••9156",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Dbj7I",
+              "name": "addCreditRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ODb5b",
+                  "fill": "#000000",
+                  "content": "+ Add Account",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "tL4AH",
+              "name": "div3",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#000000"
+            },
+            {
+              "type": "frame",
+              "id": "n7Fqz9",
+              "name": "investHeader",
+              "width": "fill_container",
+              "padding": [
+                12,
+                16,
+                6,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "WYLbn",
+                  "fill": "#000000",
+                  "content": "INVESTMENTS",
+                  "fontFamily": "Heebo",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "yKwMd",
+              "name": "acctRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZUxG3",
+                  "fill": "#000000",
+                  "content": "Fidelity 401(k)",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "ZJPKv",
+                  "fill": "#000000",
+                  "content": "••6543",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JLoCw",
+              "name": "acctRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "e6Ecm",
+                  "fill": "#000000",
+                  "content": "Schwab Brokerage",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "dfMM5",
+                  "fill": "#000000",
+                  "content": "••9012",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vqOFW",
+              "name": "acctRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mjWE7",
+                  "fill": "#000000",
+                  "content": "Schwab Roth IRA",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "O3ZVXU",
+                  "fill": "#000000",
+                  "content": "••3456",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Fe1UP",
+              "name": "acctRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                8,
+                28
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yGdDx",
+                  "fill": "#000000",
+                  "content": "Vanguard 529 Plan",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                },
+                {
+                  "type": "text",
+                  "id": "U4POk",
+                  "fill": "#000000",
+                  "content": "••8877",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qBFjb",
+              "name": "addInvestRow",
+              "width": "fill_container",
+              "padding": [
+                8,
+                16,
+                12,
+                28
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "aS4Ul",
+                  "fill": "#000000",
+                  "content": "+ Add Account",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13
+                }
+              ]
+            }
+          ]
         }
       ]
     }
