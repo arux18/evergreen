@@ -1,2 +1,2 @@
 # design-specs
-Testing out design files and version control
+Pencil.dev design files and libraries, assets, and version control
