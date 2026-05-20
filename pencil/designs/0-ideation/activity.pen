@@ -95189,7 +95189,8 @@
                           "id": "JLs31",
                           "name": "acctWellsFargo",
                           "width": "fill_container",
-                          "cornerRadius": "$O:radius-2xs",
+                          "fill": "$O:color-taupe-200",
+                          "cornerRadius": "$O:radius-xs",
                           "stroke": {
                             "align": "inside",
                             "thickness": {
@@ -95297,7 +95298,11 @@
                           "id": "U7kGVb",
                           "name": "acctAlly",
                           "width": "fill_container",
-                          "fill": "$O:color-taupe-200",
+                          "fill": {
+                            "type": "color",
+                            "color": "$O:color-taupe-200",
+                            "enabled": false
+                          },
                           "cornerRadius": "$O:radius-xs",
                           "stroke": {
                             "align": "inside",
@@ -96354,6 +96359,1124 @@
           "ref": "VODx3",
           "height": "fill_container",
           "name": "chatRef"
+        },
+        {
+          "type": "frame",
+          "id": "Ea2dU",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "screenOverlay",
+          "width": 1440,
+          "height": 1375,
+          "fill": "#00000066"
+        },
+        {
+          "type": "frame",
+          "id": "k6nVPV",
+          "layoutPosition": "absolute",
+          "x": 480,
+          "y": 133,
+          "name": "accountDetailPopup",
+          "width": 480,
+          "fill": "$O:color-base-white",
+          "cornerRadius": 12,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000001a",
+            "blur": 24
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "KU1tg",
+              "name": "popupHeader",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$O:color-taupe-100"
+              },
+              "padding": [
+                16,
+                24
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "w2tBq",
+                  "fill": "$O:color-blue-600",
+                  "content": "← Back to Accounts",
+                  "fontFamily": "Heebo",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "hiJ5k",
+                  "fill": "$O:color-gray-500",
+                  "content": "✕",
+                  "fontFamily": "Heebo",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "s2gpG",
+              "name": "titleSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                24,
+                24,
+                20,
+                24
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "D0rp1d",
+                  "fill": "$O:color-gray-900",
+                  "content": "Wells Fargo Checking",
+                  "fontFamily": "Heebo",
+                  "fontSize": 22,
+                  "fontWeight": "600",
+                  "letterSpacing": -0.3
+                },
+                {
+                  "type": "text",
+                  "id": "h0fXa",
+                  "fill": "$O:color-gray-500",
+                  "content": "Wells Fargo · Checking · ••1234",
+                  "fontFamily": "Heebo",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "T5PcEz",
+              "name": "balanceCard",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                0,
+                24
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "FtVMg",
+                  "name": "balanceInner",
+                  "width": "fill_container",
+                  "fill": "$O:color-taupe-100",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$O:color-taupe-100"
+                  },
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": [
+                    20,
+                    24
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "BHwYH",
+                      "fill": "$O:color-gray-500",
+                      "content": "CURRENT BALANCE",
+                      "fontFamily": "Heebo",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 1.2
+                    },
+                    {
+                      "type": "text",
+                      "id": "fFbcw",
+                      "fill": "$O:color-gray-900",
+                      "content": "$12,400.00",
+                      "fontFamily": "Heebo",
+                      "fontSize": 28,
+                      "fontWeight": "600",
+                      "letterSpacing": -0.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SBWtR",
+                      "name": "badgeRow",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "smWwS",
+                          "cornerRadius": 20,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$O:color-taupe-200"
+                          },
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Kwu9a",
+                              "fill": "$O:color-gray-500",
+                              "content": "30D",
+                              "fontFamily": "Heebo",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "zocCG",
+                              "fill": "$O:color-green-600",
+                              "content": "+$176.51",
+                              "fontFamily": "Heebo",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "iHBea",
+                          "cornerRadius": 20,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$O:color-taupe-200"
+                          },
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "NIkSl",
+                              "fill": "$O:color-gray-500",
+                              "content": "YTD",
+                              "fontFamily": "Heebo",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "SKUyF",
+                              "fill": "$O:color-green-600",
+                              "content": "+$297.10",
+                              "fontFamily": "Heebo",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Zr9u7",
+                          "cornerRadius": 20,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "$O:color-taupe-200"
+                          },
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "vZH0U",
+                              "fill": "$O:color-gray-500",
+                              "content": "1Y",
+                              "fontFamily": "Heebo",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "k40DBv",
+                              "fill": "$O:color-red-500",
+                              "content": "-$1,069",
+                              "fontFamily": "Heebo",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DyOWj",
+              "name": "identitySection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "padding": [
+                0,
+                24
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "b4KH7I",
+                  "name": "identityCard",
+                  "width": "fill_container",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$O:color-taupe-100"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "obzxz",
+                      "width": "fill_container",
+                      "fill": "$O:color-taupe-100",
+                      "cornerRadius": [
+                        8,
+                        8,
+                        0,
+                        0
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "avEZI",
+                          "fill": "$O:color-gray-700",
+                          "content": "Identity",
+                          "fontFamily": "Heebo",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "g5S6KJ",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "HVq51",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Display name",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "FojkX",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Wells Fargo Checking",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "tnvPe",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Dyki4",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Official name",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "qA0eW",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "WELLS FARGO BANK NA — CONSUMER CHECKING",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PYzDv",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ICUbM",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Institution",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ek8xi",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Wells Fargo",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "gmF1E",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "U2kEl",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Account number",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "H6elam",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "••1234   Show",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "I0VqXM",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "L0lhTb",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Account type",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "T4Jaf",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Checking",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rxtFs",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": {
+                          "type": "color",
+                          "color": "$O:color-taupe-100",
+                          "enabled": false
+                        }
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "rUVMt",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Owners",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "s6N5am",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "John Doe, Jane Doe",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Lvxnn",
+              "name": "balancesSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "padding": [
+                16,
+                24
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "d9t6K",
+                  "name": "balancesCard",
+                  "width": "fill_container",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$O:color-taupe-100"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Uiek8",
+                      "width": "fill_container",
+                      "fill": "$O:color-taupe-100",
+                      "cornerRadius": [
+                        8,
+                        8,
+                        0,
+                        0
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Nxw4j",
+                          "fill": "$O:color-gray-700",
+                          "content": "Balances",
+                          "fontFamily": "Heebo",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "YAqk0",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "mtHZv",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Current balance",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "fVO5r",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "$12,400.00",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CokAI",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vA2Bs",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Available balance",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "zNavf",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "$12,150.00",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "BY99g",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": {
+                          "type": "color",
+                          "color": "$O:color-taupe-100",
+                          "enabled": false
+                        }
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "QRKjF",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Last refreshed",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "A3JtX",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "May 13, 2026, 9:12 AM",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "AnJZ6",
+              "name": "recentActivitySection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "padding": [
+                0,
+                24,
+                24,
+                24
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "O2g2E",
+                  "name": "recentActivityCard",
+                  "width": "fill_container",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$O:color-taupe-100"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "QvAtX",
+                      "width": "fill_container",
+                      "fill": "$O:color-taupe-100",
+                      "cornerRadius": [
+                        8,
+                        8,
+                        0,
+                        0
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "GyKWG",
+                          "fill": "$O:color-gray-700",
+                          "content": "Recent Activity",
+                          "fontFamily": "Heebo",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "yh3sJ",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "miP3V",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 100,
+                          "content": "May 11, 2026",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "jaNra",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Costco Wholesale",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "odSE0",
+                          "fill": "$O:color-gray-700",
+                          "content": "-$151.55",
+                          "textAlign": "right",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "WZLi7",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sUVzN",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 100,
+                          "content": "May 8, 2026",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "N3gVzt",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Whole Foods Market",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "m7lRj9",
+                          "fill": "$O:color-gray-700",
+                          "content": "-$88.75",
+                          "textAlign": "right",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "tiiL8",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "O2J8w",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 100,
+                          "content": "May 4, 2026",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "TCzH7",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Direct deposit ACME PAYROLL",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "E6iSd",
+                          "fill": "$O:color-green-600",
+                          "content": "+$4,250.00",
+                          "textAlign": "right",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "gwtMh",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "EgKKj",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 100,
+                          "content": "Apr 30, 2026",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "kYpuW",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Zelle to landlord — rent",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "KXyby",
+                          "fill": "$O:color-gray-700",
+                          "content": "-$1,900.00",
+                          "textAlign": "right",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UxTj8",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-100"
+                      },
+                      "gap": 16,
+                      "padding": [
+                        10,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "M5EQ77",
+                          "fill": "$O:color-gray-500",
+                          "textGrowth": "fixed-width",
+                          "width": 100,
+                          "content": "Apr 25, 2026",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "DOvaW",
+                          "fill": "$O:color-gray-700",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Uber",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "k3ewPM",
+                          "fill": "$O:color-gray-700",
+                          "content": "-$17.99",
+                          "textAlign": "right",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "iKkK5",
+                      "width": "fill_container",
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "SYpMW",
+                          "fill": "$O:color-blue-600",
+                          "content": "View all activity →",
+                          "fontFamily": "Heebo",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
