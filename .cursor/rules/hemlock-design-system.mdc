@@ -1,0 +1,16 @@
+---
+description: Use Hemlock library components and variables when the file imports hemlock-library.lib.pen
+globs: **/*.pen
+alwaysApply: false
+---
+
+# Hemlock Design System
+
+When a `.pen` file has `hemlock-library.lib.pen` imported as a library, **always use Hemlock components and variables** instead of creating new ones from scratch.
+
+## Rules
+
+1. **Components first.** Before creating a new element, check if a matching Hemlock component exists. Use it.
+2. **Variables first.** Use Hemlock design tokens (colors, typography, spacing) for all styling. Do not hardcode values that Hemlock already defines.
+3. **No duplication.** Do not recreate components or variables that Hemlock already provides. Reference the library version.
+4. **Extend, don't replace.** If Hemlock doesn't cover a need, create a new local component or variable — but still use Hemlock tokens for its styling where possible.
