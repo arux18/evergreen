@@ -1,0 +1,1846 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Net Worth | Accounts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Manrope:wght@400;500;600&family=Noto+Serif:wght@400;500;600;700&family=Spectral:ital,wght@1,400&display=swap"
+  rel="stylesheet" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root {
+    /* Surface */
+    --bg-app-grad-1: #f7f5f0;
+    --bg-app-grad-2: #fdfdfc;
+    --bg-cream: #f7f5f0;
+    --bg-white: #ffffff;
+
+    /* Borders / dividers */
+    --border-soft: #eeedeb;
+    --border-mid: #e8e6e0;
+    --border-strong: #dcd8cb;
+
+    /* Text */
+    --t-headline: #0e0e0e;
+    --t-primary: #2d2926;
+    --t-row: #403d3a;
+    --t-secondary: #5e5954;
+    --t-muted: #716e6a;
+    --t-section: #8a8680;
+    --t-placeholder: #a8a49e;
+
+    /* Row interaction (Ally) */
+    --row-default: #f7f5f0;
+    --row-hover: #efece4;
+    --row-pressed: #e3dfd6;
+
+    /* Active nav fill */
+    --nav-active: #dcd8cb;
+
+    /* Misc */
+    --send-disabled: #d4d1ca;
+    --accent-link: #3a6af8;
+    --pos: #148338;
+
+    --shadow-panel: 0 2px 28px 2px rgba(45, 41, 38, .157);
+    --shadow-popup: 0 18px 48px rgba(0, 0, 0, .10), 0 2px 6px rgba(0, 0, 0, .04);
+    --overlay: rgba(0, 0, 0, .40);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  /* Pencil-style scrollbars (qaNVs spec: 6px wide, r3, #B5B1AB thumb, no track) */
+  .main-content,
+  .popup {
+    scrollbar-width: thin;
+    scrollbar-color: #B5B1AB transparent;
+  }
+  .main-content::-webkit-scrollbar,
+  .popup::-webkit-scrollbar { width: 6px; height: 6px; }
+  .main-content::-webkit-scrollbar-track,
+  .popup::-webkit-scrollbar-track { background: transparent; }
+  .main-content::-webkit-scrollbar-thumb,
+  .popup::-webkit-scrollbar-thumb {
+    background: #B5B1AB;
+    border-radius: 3px;
+  }
+  .main-content::-webkit-scrollbar-thumb:hover,
+  .popup::-webkit-scrollbar-thumb:hover { background: #9c988f; }
+  .main-content::-webkit-scrollbar-corner,
+  .popup::-webkit-scrollbar-corner { background: transparent; }
+  body {
+    font-family: "Heebo", system-ui, sans-serif;
+    color: var(--t-primary);
+    background: linear-gradient(135deg, var(--bg-app-grad-1) 0%, var(--bg-app-grad-2) 100%);
+    min-height: 100vh;
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: 240px 1fr 360px;
+    gap: 8px;
+    padding: 7px 8px 8px 8px;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ---------------- NAV ---------------- */
+  .nav {
+    background: var(--bg-cream);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    box-shadow: var(--shadow-panel);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px;
+    overflow: hidden;
+  }
+  .nav-top { display: flex; flex-direction: column; gap: 32px; }
+
+  .nav-logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    color: var(--t-primary);
+    line-height: 1;
+  }
+  .nav-logo img {
+    height: 24px;
+    width: auto;
+    display: block;
+  }
+  .nav-toggle {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--t-secondary);
+    cursor: pointer;
+  }
+  .nav-toggle svg { width: 16px; height: 16px; }
+
+  .nav-section { display: flex; flex-direction: column; gap: 2px; }
+  .nav-section-header {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 12px 10px 4px 6px;
+    color: var(--t-secondary);
+    font-family: "Heebo", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+  }
+  .nav-section-header svg { width: 12px; height: 12px; color: var(--t-section); }
+
+  .nav-item {
+    padding: 7px 10px 7px 24px;
+    border-radius: 4px;
+    color: var(--t-secondary);
+    font-family: "Heebo", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+  }
+  .nav-item.dashboard { /* dashDefault — same styling as other items */ }
+  .nav-item.is-active {
+    background: var(--nav-active);
+    color: var(--t-primary);
+    font-weight: 600;
+  }
+
+  .nav-divider {
+    height: 1px;
+    background: var(--border-mid);
+    margin: 4px 0 0 0;
+  }
+
+  .nav-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--bg-cream);
+    border-top: 0.5px solid var(--border-mid);
+    padding: 16px 0 4px 10px;
+    margin-top: 16px;
+  }
+  .nav-user .user-name {
+    font-family: "Heebo", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--t-secondary);
+  }
+  .nav-user .user-settings {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--t-secondary);
+    cursor: pointer;
+    display: inline-flex;
+  }
+  .nav-user .user-settings svg { width: 16px; height: 16px; }
+
+  /* ---------------- MAIN ---------------- */
+  .main {
+    background: var(--bg-white);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    box-shadow: var(--shadow-panel);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-header {
+    padding: 20px 40px 8px 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .main-header .greeting {
+    font-family: "Noto Serif", serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--t-primary);
+  }
+
+  .main-content {
+    padding: 20px 40px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    overflow: auto;
+  }
+
+  .headline {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+  }
+  .headline-net-worth {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .net-worth-label {
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--t-muted);
+  }
+  .net-worth-value {
+    font-family: "Heebo", sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--t-headline);
+    letter-spacing: -0.5px;
+  }
+
+  /* Add Account button — matches component/Button/outline/icon-right */
+  .btn-add {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-white);
+    color: var(--t-row);
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transform: rotate(-0.018deg);
+  }
+  .btn-add svg { width: 16px; height: 16px; }
+  .btn-add:hover { background: var(--row-default); }
+
+  /* Sections */
+  .section { display: flex; flex-direction: column; gap: 12px; }
+  .section-title {
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--t-muted);
+  }
+  .acct-list { display: flex; flex-direction: column; gap: 8px; }
+
+  /* Account row */
+  .acct {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .acct .logo {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    flex: 0 0 32px;
+  }
+  .acct .info { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .acct .name-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .acct .name-row .name {
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--t-row);
+  }
+  .acct .name-row svg { width: 14px; height: 14px; color: var(--t-row); }
+  .acct .subtype {
+    font-family: "Heebo", sans-serif;
+    font-size: 12px;
+    color: var(--t-muted);
+  }
+  .acct .refreshed {
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    color: var(--t-muted);
+  }
+  .acct .balance {
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--t-primary);
+  }
+
+  /* Hover / pressed feedback applied to every account row */
+  .acct:hover { background: var(--row-hover); border-radius: 12px; }
+  .acct:active,
+  .acct.is-pressed { background: var(--row-pressed); border-radius: 12px; }
+
+  /* ---------------- CHAT ---------------- */
+  .chat {
+    background: var(--bg-cream);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    box-shadow: var(--shadow-panel);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  .chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 0.5px solid var(--border-mid);
+  }
+  .chat-header-left { display: inline-flex; align-items: center; gap: 4px; }
+  .chat-close {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    color: var(--t-secondary);
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .chat-close svg { width: 16px; height: 16px; }
+  .chat-title {
+    font-family: "Noto Serif", serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--t-primary);
+  }
+
+  .chat-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 16px 20px;
+    overflow: hidden;
+  }
+  .chat-greeting {
+    font-family: "Noto Serif", serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--t-primary);
+    text-align: center;
+  }
+  .chat-chips { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+  .chat-chip {
+    position: relative;
+    padding: 12px 16px;
+    border-radius: 24px;
+    background: var(--bg-cream);
+    border: 1px solid var(--border-strong);
+    cursor: pointer;
+    overflow: hidden;
+    min-height: 44px;
+    width: max-content;
+    max-width: calc(100% - 24px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 150ms ease;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .chat-chip:hover { background: #edeae3; }
+  .chat-chip:active { background: var(--row-pressed); transition: background-color 0ms; }
+  .chat-chip:hover .chip-text,
+  .chat-chip:active .chip-text { color: var(--t-primary); }
+
+  /* Two-layer text stack: layers occupy the same grid cell so they overlap
+     and can be crossfaded with a slide-up. */
+  .chip-stack {
+    display: grid;
+    place-items: center;
+    width: 100%;
+  }
+  .chip-text {
+    grid-column: 1;
+    grid-row: 1;
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--t-secondary);
+    text-align: center;
+    transform: translateY(60px);
+    transition: transform 300ms ease-out, color 150ms ease;
+    pointer-events: none;
+  }
+  .chip-text.is-current { transform: translateY(0); }
+  .chip-text.is-leaving { transform: translateY(-60px); }
+  @media (prefers-reduced-motion: reduce) {
+    .chip-text { transition: color 150ms ease; }
+  }
+
+  .chat-input-wrap {
+    padding: 12px 20px 20px 20px;
+    border-top: 0.5px solid var(--border-mid);
+  }
+  .chat-input {
+    background: var(--bg-white);
+    border: 1px solid var(--border-mid);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition: border-color 150ms ease;
+  }
+  .chat-input.is-active { border-color: #c0bab2; }
+  .chat-input-field {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    resize: none;
+    overflow: hidden;
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--t-primary);
+    padding: 4px 4px 0;
+    min-height: 20px;
+    display: block;
+  }
+  .chat-input-field::placeholder { color: var(--t-placeholder); }
+
+  /* ---------------- Chat conversation ---------------- */
+  .chat-empty {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 16px 20px;
+    overflow: hidden;
+  }
+  .chat-messages {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 14px;
+    padding: 16px 20px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #B5B1AB transparent;
+  }
+  .chat-messages::-webkit-scrollbar { width: 6px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: #B5B1AB; border-radius: 3px; }
+  .chat-messages[hidden] { display: none; }
+  .chat-empty[hidden] { display: none; }
+
+  .msg-user-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 32px;
+  }
+  .msg-user {
+    background: #F7F5F0;
+    border: 1px solid #DCD8CB;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #5E5954;
+    line-height: 1.4;
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+  .msg-ai {
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--t-primary);
+    line-height: 1.5;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  /* Thinking indicator */
+  .msg-thinking {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 0;
+  }
+  .msg-thinking .dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .msg-thinking .dots span {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #A8A49E;
+    animation: thinkPulse 1.2s ease-in-out infinite;
+  }
+  .msg-thinking .dots span:nth-child(2) { animation-delay: 0.15s; }
+  .msg-thinking .dots span:nth-child(3) { animation-delay: 0.30s; }
+  @keyframes thinkPulse {
+    0%, 80%, 100% { background: #A8A49E; transform: scale(1); }
+    40%           { background: #5E5954; transform: scale(1.15); }
+  }
+  .msg-thinking .status {
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    color: #5E5954;
+    background-image: linear-gradient(90deg, #A8A49E 0%, #5E5954 50%, #A8A49E 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+            color: transparent;
+    animation: shimmer 1.8s linear infinite;
+  }
+  @keyframes shimmer {
+    0%   { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+  }
+
+  /* Stop button (replaces send while AI is replying) */
+  .chat-input-buttons .stop {
+    width: 34px; height: 34px;
+    border-radius: 9999px;
+    background: #3C3C3C;
+    border: none;
+    color: #FFFFFF;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .chat-input-buttons .stop svg { width: 20px; height: 20px; }
+
+  /* Recording mode */
+  .chat-input.is-recording { border-color: #3A6AF8; border-width: 1.5px; padding: 10.5px; gap: 16px; }
+  .recording-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 4px;
+  }
+  .recording-area .rec-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #3A6AF8;
+    animation: recPulse 1.2s ease-in-out infinite;
+    flex: 0 0 8px;
+  }
+  @keyframes recPulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+  }
+  .recording-area .rec-timer {
+    font-family: "Heebo", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #5E5954;
+    min-width: 30px;
+  }
+  .recording-area .rec-waveform {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 28px;
+    overflow: hidden;
+  }
+  .recording-area .rec-waveform i {
+    display: inline-block;
+    width: 3px;
+    background: #7094FB;
+    border-radius: 1.5px;
+    height: 6px;
+    transition: height 120ms ease;
+  }
+
+  .chat-input-buttons .voice-cancel {
+    width: 34px; height: 34px;
+    border-radius: 9999px;
+    background: transparent;
+    border: 1px solid #DCD8CB;
+    color: #8A8680;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    margin-right: auto; /* push cancel to the left side of the row */
+  }
+  .chat-input-buttons .voice-cancel svg { width: 16px; height: 16px; }
+
+  .chat-input-buttons .voice.is-active {
+    background: #3A6AF8;
+    border-color: #3A6AF8;
+    color: #FFFFFF;
+  }
+
+  /* Transcribing mode */
+  .transcribe-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 4px 0;
+  }
+  .transcribe-area .t-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #7094FB;
+    animation: transcribeFade 1.2s ease-in-out infinite;
+  }
+  .transcribe-area .t-dot:nth-child(1) { animation-delay: 0s; }
+  .transcribe-area .t-dot:nth-child(2) { animation-delay: 0.15s; }
+  .transcribe-area .t-dot:nth-child(3) { animation-delay: 0.30s; }
+  @keyframes transcribeFade {
+    0%, 100% { opacity: 0.3; }
+    50%      { opacity: 1; }
+  }
+  .transcribe-area .t-label {
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    color: #A8A49E;
+  }
+  .chat-input.is-transcribing .voice,
+  .chat-input.is-transcribing .send { opacity: 0.4; pointer-events: none; }
+  .chat-input-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  .chat-input-buttons .voice {
+    width: 34px; height: 34px;
+    border-radius: 9999px;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--t-secondary);
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .chat-input-buttons .voice svg { width: 16px; height: 16px; }
+  .chat-input-buttons .send {
+    width: 34px; height: 34px;
+    border-radius: 9999px;
+    background: var(--t-primary);
+    border: none;
+    color: var(--bg-white);
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+  }
+  .chat-input-buttons .send[disabled] {
+    background: var(--send-disabled);
+    cursor: not-allowed;
+  }
+  .chat-input-buttons .send svg { width: 16px; height: 16px; }
+
+  /* ---------------- POPUP (k6nVPV) ---------------- */
+  .scrim {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay);
+    display: none;
+    z-index: 50;
+  }
+  .scrim.is-open { display: block; }
+  .popup {
+    position: fixed;
+    top: 42px;
+    left: 440px;
+    width: 560px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 84px);
+    overflow-y: auto;
+    background: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-popup);
+    display: none;
+    z-index: 60;
+    flex-direction: column;
+  }
+  .popup.is-open { display: flex; }
+  .popup-body {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .popup-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+  }
+  .popup-title-row .institution-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--border-mid);
+    flex: 0 0 36px;
+  }
+  .popup-title {
+    flex: 1 1 auto;
+    font-family: "Noto Serif", serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--t-headline);
+    min-width: 0;
+  }
+  .popup-close {
+    width: 24px; height: 24px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--t-secondary);
+    background: transparent; border: none;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+  .popup-close svg { width: 24px; height: 24px; }
+  .balance-section { display: flex; flex-direction: column; gap: 4px; padding: 0 16px; }
+  .balance-label {
+    font-family: "Heebo", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--t-secondary);
+    letter-spacing: 0.5px;
+  }
+  .balance-value {
+    font-family: "Heebo", sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--t-headline);
+  }
+
+  .popup-section {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .popup-section-header {
+    padding: 12px 16px;
+    background: var(--bg-cream);
+    border-bottom: 1px solid var(--border-soft);
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--t-primary);
+  }
+  .kv-row {
+    display: flex;
+    gap: 40px;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: center;
+  }
+  .kv-row:last-child { border-bottom: none; }
+  .kv-key {
+    width: 140px;
+    flex: 0 0 140px;
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    color: var(--t-secondary);
+  }
+  .kv-val {
+    flex: 1 1 auto;
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    color: var(--t-row);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .kv-val .eye { color: var(--accent-link); width: 16px; height: 16px; cursor: pointer; }
+
+  .activity-row {
+    display: flex;
+    gap: 40px;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-soft);
+    align-items: center;
+  }
+  .activity-row .date {
+    width: 80px; flex: 0 0 80px;
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    color: var(--t-secondary);
+  }
+  .activity-row .desc {
+    flex: 1 1 auto;
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    color: var(--t-row);
+  }
+  .activity-row .amt {
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--t-row);
+    text-align: right;
+  }
+  .activity-row .amt.pos { color: var(--pos); }
+  .view-all-row { padding: 12px 16px; }
+  .view-all {
+    color: var(--accent-link);
+    font-family: "Heebo", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: transparent; border: none; cursor: pointer;
+    padding: 0;
+  }
+  .view-all svg { width: 16px; height: 16px; }
+</style>
+</head>
+<body>
+  <div class="app">
+
+    <!-- =========== NAV (EN05j) =========== -->
+    <aside class="nav" aria-label="Sidebar">
+      <div class="nav-top">
+
+        <div class="nav-logo-row">
+          <span class="nav-logo">
+            <img src="evergreen.ai-logo-new-3x.png" alt="evergreen.ai" />
+          </span>
+          <button class="nav-toggle" type="button" aria-label="Toggle sidebar">
+            <i data-lucide="panel-left"></i>
+          </button>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-item dashboard">Dashboard</div>
+          <div class="nav-divider"></div>
+
+          <div class="nav-section-header">
+            <i data-lucide="chevron-down"></i><span>NET WORTH</span>
+          </div>
+          <div class="nav-item">Accounts</div>
+          <div class="nav-item is-active">Activity</div>
+          <div class="nav-item">Investments</div>
+          <div class="nav-item">Home &amp; Property</div>
+
+          <div class="nav-section-header">
+            <i data-lucide="chevron-down"></i><span>PLANNING</span>
+          </div>
+          <div class="nav-item">Lifetime Planning</div>
+        </div>
+      </div>
+
+      <div class="nav-user">
+        <span class="user-name">Sylvia Peterson</span>
+        <button class="user-settings" type="button" aria-label="Settings">
+          <i data-lucide="settings"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- =========== MAIN PANEL =========== -->
+    <main class="main">
+      <header class="main-header">
+        <div class="greeting">Net Worth | Accounts</div>
+      </header>
+
+      <div class="main-content">
+
+        <div class="headline">
+          <div class="headline-net-worth">
+            <div class="net-worth-label">NET WORTH</div>
+            <div class="net-worth-value">$1,169,200</div>
+          </div>
+          <button class="btn-add" type="button">
+            Add Account <i data-lucide="plus"></i>
+          </button>
+        </div>
+
+        <section class="section">
+          <div class="section-title">BANKING</div>
+          <div class="acct-list">
+
+            <div class="acct" data-acct="wells" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328512502.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Wells Fargo Checking (x1234)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">Checking</div>
+                <div class="refreshed">Refreshed 9:12 AM</div>
+              </div>
+              <div class="balance">$12,400</div>
+            </div>
+
+            <!-- GtyJ6 — Ally High-Yield Savings -->
+            <div class="acct acct-ally" data-acct="ally" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328525846.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Ally High-Yield Savings (x5678)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">Savings</div>
+                <div class="refreshed">Refreshed 9:14 AM</div>
+              </div>
+              <div class="balance">$32,000</div>
+            </div>
+
+            <div class="acct" data-acct="marcus" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328529487.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Marcus 12-month CD (x9012)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">CD</div>
+                <div class="refreshed">Refreshed 8:55 AM</div>
+              </div>
+              <div class="balance">$2,800</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">INVESTMENTS</div>
+          <div class="acct-list">
+            <div class="acct" data-acct="schwab" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328535934.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Schwab Brokerage (x3456)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">Brokerage</div>
+                <div class="refreshed">Refreshed 9:01 AM</div>
+              </div>
+              <div class="balance">$620,000</div>
+            </div>
+            <div class="acct" data-acct="fidelity" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328523535.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Fidelity 401(k) (x7890)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">401(k)</div>
+                <div class="refreshed">Refreshed 8:58 AM</div>
+              </div>
+              <div class="balance">$480,000</div>
+            </div>
+            <div class="acct" data-acct="vanguard" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328533938.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Vanguard Roth IRA (x2345)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">Roth IRA</div>
+                <div class="refreshed">Refreshed 8:48 AM</div>
+              </div>
+              <div class="balance">$180,000</div>
+            </div>
+            <div class="acct" data-acct="coinbase" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328530203.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Coinbase Wallet (x0011)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">Crypto Exchange</div>
+                <div class="refreshed">Refreshed 9:08 AM</div>
+              </div>
+              <div class="balance">$22,000</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">CREDIT &amp; LOANS</div>
+          <div class="acct-list">
+            <div class="acct" data-acct="chase" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328524973.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Chase Sapphire Preferred (x5588)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">Credit Card</div>
+                <div class="refreshed">Refreshed 9:10 AM</div>
+              </div>
+              <div class="balance">−$2,400</div>
+            </div>
+            <div class="acct" data-acct="mortgage" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328523781.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Wells Fargo Mortgage (x1100)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">Mortgage</div>
+                <div class="refreshed">Refreshed 7:42 AM</div>
+              </div>
+              <div class="balance">−$168,000</div>
+            </div>
+            <div class="acct" data-acct="nelnet" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328529608.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Nelnet Federal Direct Loan (x2200)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">Student Loan</div>
+                <div class="refreshed">Refreshed 6:30 AM</div>
+              </div>
+              <div class="balance">−$8,200</div>
+            </div>
+            <div class="acct" data-acct="autoloan" tabindex="0">
+              <div class="logo" style="background-image:url(images/generated-1779328530268.png)"></div>
+              <div class="info">
+                <div class="name-row"><span class="name">Capital One Auto Loan (x3300)</span><i data-lucide="chevron-right"></i></div>
+                <div class="subtype">Auto Loan</div>
+                <div class="refreshed">Refreshed 5:15 AM</div>
+              </div>
+              <div class="balance">−$1,400</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- =========== CHAT (VODx3) =========== -->
+    <aside class="chat" aria-label="Chat">
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <button class="chat-close" type="button" aria-label="Close chat">
+            <i data-lucide="arrow-right-to-line"></i>
+          </button>
+          <span class="chat-title">Chat</span>
+        </div>
+      </div>
+
+      <!-- Empty view (greeting + chip). Hidden once first message is sent. -->
+      <div class="chat-empty" id="chatEmpty">
+        <div class="chat-greeting">Ask me any financial question...</div>
+        <div class="chat-chips">
+          <button
+            type="button"
+            class="chat-chip"
+            id="suggestionChip"
+            aria-live="polite"
+            aria-label="Suggested question">
+            <span class="chip-stack" id="chipStack"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Conversation view (revealed once the user sends their first message). -->
+      <div class="chat-messages" id="chatMessages" hidden></div>
+
+      <div class="chat-input-wrap">
+        <!-- Single container whose innerHTML gets swapped between typing / recording / transcribing. -->
+        <div class="chat-input" id="chatInput"></div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- =========== POPUP (k6nVPV) =========== -->
+  <div class="scrim" id="scrim"></div>
+  <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="popup-body">
+      <div class="popup-title-row">
+        <div class="institution-logo" id="popupLogo"></div>
+        <div class="popup-title" id="popupTitle"></div>
+        <button class="popup-close" id="popupClose" aria-label="Close"><i data-lucide="x"></i></button>
+      </div>
+
+      <div class="balance-section">
+        <div class="balance-label">CURRENT BALANCE</div>
+        <div class="balance-value" id="popupCurrentBalance"></div>
+      </div>
+
+      <div class="popup-section">
+        <div class="popup-section-header">Account Details</div>
+        <div class="kv-row"><div class="kv-key">Account Nickname</div><div class="kv-val" id="popupNickname"></div></div>
+        <div class="kv-row"><div class="kv-key">Account Name</div><div class="kv-val" id="popupName"></div></div>
+        <div class="kv-row"><div class="kv-key">Financial Institution</div><div class="kv-val" id="popupInstitution"></div></div>
+        <div class="kv-row"><div class="kv-key">Account Number</div><div class="kv-val" id="popupNumber"></div></div>
+        <div class="kv-row"><div class="kv-key">Account Type</div><div class="kv-val" id="popupType"></div></div>
+        <div class="kv-row"><div class="kv-key">Account Subtype</div><div class="kv-val" id="popupSubtype"></div></div>
+        <div class="kv-row"><div class="kv-key">Account Holder</div><div class="kv-val" id="popupHolder"></div></div>
+      </div>
+
+      <div class="popup-section">
+        <div class="popup-section-header">Balances</div>
+        <div class="kv-row"><div class="kv-key">Current Balance</div><div class="kv-val" id="popupBalCurrent"></div></div>
+        <div class="kv-row"><div class="kv-key">Available Balance</div><div class="kv-val" id="popupBalAvailable"></div></div>
+        <div class="kv-row"><div class="kv-key">Credit Limit</div><div class="kv-val" id="popupBalCreditLimit"></div></div>
+        <div class="kv-row"><div class="kv-key">Currency</div><div class="kv-val" id="popupBalCurrency"></div></div>
+        <div class="kv-row"><div class="kv-key">Last Refreshed</div><div class="kv-val" id="popupBalRefreshed"></div></div>
+      </div>
+
+      <div class="popup-section">
+        <div class="popup-section-header">Recent Activity</div>
+        <div id="popupActivity"></div>
+        <div class="view-all-row">
+          <button class="view-all" type="button">View All Activity <i data-lucide="arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  lucide.createIcons();
+
+  // Per-account data. Only Wells Fargo Checking is taken from the .pen popup
+  // (k6nVPV) — all other accounts (Ally included) use fabricated-but-plausible
+  // data so every row clicks through to a populated popup.
+  const accounts = {
+    wells: {
+      title: "Wells Fargo Checking (x1234)",
+      logo: "images/generated-1779328512502.png",
+      currentBalance: "$12,400.00",
+      nickname: "Wells Fargo Checking",
+      name: "WELLS FARGO BANK NA",
+      institution: "Wells Fargo",
+      number: "x1234",
+      type: "Checking",
+      subtype: "Checking",
+      holder: "John Doe, Jane Doe",
+      bal: { current: "$12,400.00", available: "$12,150.00", creditLimit: "—", currency: "USD", refreshed: "May 13, 2026, 9:12 AM" },
+      activity: [
+        { date: "May 11", desc: "Costco Wholesale",    amt: "-$151.55" },
+        { date: "May 8",  desc: "Whole Foods Market",  amt: "-$88.75" },
+        { date: "May 4",  desc: "Direct deposit ACME", amt: "+$4,250.00", pos: true },
+      ],
+    },
+    ally: {
+      title: "Ally High-Yield Savings (x5678)",
+      logo: "images/generated-1779328525846.png",
+      currentBalance: "$32,000.00",
+      nickname: "Ally High-Yield Savings",
+      name: "ALLY BANK",
+      institution: "Ally Bank",
+      number: "x5678",
+      type: "Savings",
+      subtype: "High-Yield Savings",
+      holder: "John Doe, Jane Doe",
+      bal: { current: "$32,000.00", available: "$32,000.00", creditLimit: "—", currency: "USD", refreshed: "May 13, 2026, 9:14 AM" },
+      activity: [
+        { date: "May 10", desc: "Interest Payment",            amt: "+$112.50",   pos: true },
+        { date: "May 2",  desc: "Transfer from Wells Fargo",   amt: "+$2,000.00", pos: true },
+        { date: "Apr 28", desc: "Transfer to Schwab Brokerage", amt: "-$5,000.00" },
+      ],
+    },
+    marcus: {
+      title: "Marcus 12-month CD (x9012)",
+      logo: "images/generated-1779328529487.png",
+      currentBalance: "$2,800.00",
+      nickname: "Marcus 12-month CD",
+      name: "GOLDMAN SACHS BANK USA",
+      institution: "Marcus by Goldman Sachs",
+      number: "x9012",
+      type: "Certificate of Deposit",
+      subtype: "12-month CD (4.40% APY)",
+      holder: "John Doe",
+      bal: { current: "$2,800.00", available: "$0.00", creditLimit: "—", currency: "USD", refreshed: "May 13, 2026, 8:55 AM" },
+      activity: [
+        { date: "May 1",  desc: "Interest Accrual", amt: "+$10.27", pos: true },
+        { date: "Apr 1",  desc: "Interest Accrual", amt: "+$10.27", pos: true },
+        { date: "Mar 1",  desc: "Interest Accrual", amt: "+$10.27", pos: true },
+      ],
+    },
+    schwab: {
+      title: "Schwab Brokerage (x3456)",
+      logo: "images/generated-1779328535934.png",
+      currentBalance: "$620,000.00",
+      nickname: "Schwab Brokerage",
+      name: "CHARLES SCHWAB & CO INC",
+      institution: "Charles Schwab",
+      number: "x3456",
+      type: "Brokerage",
+      subtype: "Individual Taxable",
+      holder: "John Doe",
+      bal: { current: "$620,000.00", available: "$8,420.16", creditLimit: "—", currency: "USD", refreshed: "May 13, 2026, 9:01 AM" },
+      activity: [
+        { date: "May 12", desc: "Buy 25 SCHB",       amt: "-$1,432.50" },
+        { date: "May 9",  desc: "Dividend SCHB",     amt: "+$842.10",   pos: true },
+        { date: "May 1",  desc: "Transfer from Ally", amt: "+$5,000.00", pos: true },
+      ],
+    },
+    fidelity: {
+      title: "Fidelity 401(k) (x7890)",
+      logo: "images/generated-1779328523535.png",
+      currentBalance: "$480,000.00",
+      nickname: "Fidelity 401(k)",
+      name: "FIDELITY MANAGEMENT TRUST CO",
+      institution: "Fidelity Investments",
+      number: "x7890",
+      type: "Retirement",
+      subtype: "401(k)",
+      holder: "John Doe",
+      bal: { current: "$480,000.00", available: "$0.00", creditLimit: "—", currency: "USD", refreshed: "May 13, 2026, 8:58 AM" },
+      activity: [
+        { date: "May 8", desc: "Employee Contribution",    amt: "+$1,250.00", pos: true },
+        { date: "May 8", desc: "Employer Match",           amt: "+$500.00",   pos: true },
+        { date: "May 1", desc: "Rebalance FXAIX → FSPSX", amt: "—" },
+      ],
+    },
+    vanguard: {
+      title: "Vanguard Roth IRA (x2345)",
+      logo: "images/generated-1779328533938.png",
+      currentBalance: "$180,000.00",
+      nickname: "Vanguard Roth IRA",
+      name: "VANGUARD FIDUCIARY TRUST",
+      institution: "Vanguard",
+      number: "x2345",
+      type: "Retirement",
+      subtype: "Roth IRA",
+      holder: "John Doe",
+      bal: { current: "$180,000.00", available: "$0.00", creditLimit: "—", currency: "USD", refreshed: "May 13, 2026, 8:48 AM" },
+      activity: [
+        { date: "Apr 15", desc: "Annual Contribution (2025)", amt: "+$7,000.00", pos: true },
+        { date: "Mar 28", desc: "Dividend VTSAX",             amt: "+$612.40",   pos: true },
+        { date: "Feb 12", desc: "Buy 12 VTSAX",               amt: "-$1,520.00" },
+      ],
+    },
+    coinbase: {
+      title: "Coinbase Wallet (x0011)",
+      logo: "images/generated-1779328530203.png",
+      currentBalance: "$22,000.00",
+      nickname: "Coinbase Wallet",
+      name: "COINBASE INC",
+      institution: "Coinbase",
+      number: "x0011",
+      type: "Crypto Exchange",
+      subtype: "Self-Custody Wallet",
+      holder: "John Doe",
+      bal: { current: "$22,000.00", available: "$22,000.00", creditLimit: "—", currency: "USD", refreshed: "May 13, 2026, 9:08 AM" },
+      activity: [
+        { date: "May 11", desc: "Buy 0.05 BTC",  amt: "-$3,210.00" },
+        { date: "May 5",  desc: "Sell 1.2 ETH",  amt: "+$3,720.00", pos: true },
+        { date: "Apr 30", desc: "Staking Reward ETH", amt: "+$48.20", pos: true },
+      ],
+    },
+    chase: {
+      title: "Chase Sapphire Preferred (x5588)",
+      logo: "images/generated-1779328524973.png",
+      currentBalance: "-$2,400.00",
+      nickname: "Chase Sapphire Preferred",
+      name: "JPMORGAN CHASE BANK NA",
+      institution: "Chase",
+      number: "x5588",
+      type: "Credit Card",
+      subtype: "Rewards Credit Card",
+      holder: "John Doe, Jane Doe",
+      bal: { current: "-$2,400.00", available: "$22,600.00", creditLimit: "$25,000.00", currency: "USD", refreshed: "May 13, 2026, 9:10 AM" },
+      activity: [
+        { date: "May 12", desc: "United Airlines",  amt: "-$612.40" },
+        { date: "May 9",  desc: "Sweetgreen",       amt: "-$18.75" },
+        { date: "May 1",  desc: "Statement Payment", amt: "+$3,150.00", pos: true },
+      ],
+    },
+    mortgage: {
+      title: "Wells Fargo Mortgage (x1100)",
+      logo: "images/generated-1779328523781.png",
+      currentBalance: "-$168,000.00",
+      nickname: "Wells Fargo Mortgage",
+      name: "WELLS FARGO HOME MORTGAGE",
+      institution: "Wells Fargo",
+      number: "x1100",
+      type: "Loan",
+      subtype: "30-yr Fixed Mortgage (5.875%)",
+      holder: "John Doe, Jane Doe",
+      bal: { current: "-$168,000.00", available: "—", creditLimit: "—", currency: "USD", refreshed: "May 13, 2026, 7:42 AM" },
+      activity: [
+        { date: "May 1",  desc: "Monthly Payment", amt: "-$1,420.00" },
+        { date: "Apr 1",  desc: "Monthly Payment", amt: "-$1,420.00" },
+        { date: "Mar 1",  desc: "Monthly Payment", amt: "-$1,420.00" },
+      ],
+    },
+    nelnet: {
+      title: "Nelnet Federal Direct Loan (x2200)",
+      logo: "images/generated-1779328529608.png",
+      currentBalance: "-$8,200.00",
+      nickname: "Nelnet Federal Direct Loan",
+      name: "U.S. DEPARTMENT OF EDUCATION",
+      institution: "Nelnet",
+      number: "x2200",
+      type: "Loan",
+      subtype: "Federal Student Loan (4.99%)",
+      holder: "John Doe",
+      bal: { current: "-$8,200.00", available: "—", creditLimit: "—", currency: "USD", refreshed: "May 13, 2026, 6:30 AM" },
+      activity: [
+        { date: "May 1", desc: "Monthly Payment", amt: "-$185.00" },
+        { date: "Apr 1", desc: "Monthly Payment", amt: "-$185.00" },
+        { date: "Mar 1", desc: "Monthly Payment", amt: "-$185.00" },
+      ],
+    },
+    autoloan: {
+      title: "Capital One Auto Loan (x3300)",
+      logo: "images/generated-1779328530268.png",
+      currentBalance: "-$1,400.00",
+      nickname: "Capital One Auto Loan",
+      name: "CAPITAL ONE AUTO FINANCE",
+      institution: "Capital One",
+      number: "x3300",
+      type: "Loan",
+      subtype: "Auto Loan (6.49%)",
+      holder: "John Doe",
+      bal: { current: "-$1,400.00", available: "—", creditLimit: "—", currency: "USD", refreshed: "May 13, 2026, 5:15 AM" },
+      activity: [
+        { date: "May 1", desc: "Monthly Payment", amt: "-$348.00" },
+        { date: "Apr 1", desc: "Monthly Payment", amt: "-$348.00" },
+        { date: "Mar 1", desc: "Monthly Payment", amt: "-$348.00" },
+      ],
+    },
+  };
+
+  const popup    = document.getElementById('popup');
+  const scrim    = document.getElementById('scrim');
+  const closeBtn = document.getElementById('popupClose');
+
+  // Cached field references
+  const F = {
+    logo:        document.getElementById('popupLogo'),
+    title:       document.getElementById('popupTitle'),
+    current:     document.getElementById('popupCurrentBalance'),
+    nickname:    document.getElementById('popupNickname'),
+    name:        document.getElementById('popupName'),
+    institution: document.getElementById('popupInstitution'),
+    number:      document.getElementById('popupNumber'),
+    type:        document.getElementById('popupType'),
+    subtype:     document.getElementById('popupSubtype'),
+    holder:      document.getElementById('popupHolder'),
+    balCurrent:  document.getElementById('popupBalCurrent'),
+    balAvail:    document.getElementById('popupBalAvailable'),
+    balLimit:    document.getElementById('popupBalCreditLimit'),
+    balCcy:      document.getElementById('popupBalCurrency'),
+    balRef:      document.getElementById('popupBalRefreshed'),
+    activity:    document.getElementById('popupActivity'),
+  };
+
+  function renderPopup(key) {
+    const a = accounts[key];
+    if (!a) return false;
+    F.logo.style.backgroundImage = `url(${a.logo})`;
+    F.title.textContent       = a.title;
+    F.current.textContent     = a.currentBalance;
+    F.nickname.textContent    = a.nickname;
+    F.name.textContent        = a.name;
+    F.institution.textContent = a.institution;
+    F.number.innerHTML        = `${a.number} <i data-lucide="eye" class="eye"></i>`;
+    F.type.textContent        = a.type;
+    F.subtype.textContent     = a.subtype;
+    F.holder.textContent      = a.holder;
+    F.balCurrent.textContent  = a.bal.current;
+    F.balAvail.textContent    = a.bal.available;
+    F.balLimit.textContent    = a.bal.creditLimit;
+    F.balCcy.textContent      = a.bal.currency;
+    F.balRef.textContent      = a.bal.refreshed;
+
+    F.activity.innerHTML = a.activity.map(t => `
+      <div class="activity-row">
+        <div class="date">${t.date}</div>
+        <div class="desc">${t.desc}</div>
+        <div class="amt${t.pos ? ' pos' : ''}">${t.amt}</div>
+      </div>`).join('');
+
+    // Re-render the eye icon (and any other new lucide icons) for this popup
+    lucide.createIcons();
+    return true;
+  }
+
+  function openPopup(key) {
+    if (!renderPopup(key)) return;
+    popup.classList.add('is-open');
+    scrim.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    popup.scrollTop = 0;
+  }
+  function closePopup() {
+    popup.classList.remove('is-open');
+    scrim.classList.remove('is-open');
+    document.body.style.overflow = '';
+    document.querySelectorAll('.acct.is-pressed').forEach(r => r.classList.remove('is-pressed'));
+  }
+
+  // Wire every account row
+  document.querySelectorAll('.acct[data-acct]').forEach(row => {
+    const key = row.getAttribute('data-acct');
+    row.addEventListener('mousedown', () => row.classList.add('is-pressed'));
+    ['mouseup', 'mouseleave', 'blur'].forEach(evt =>
+      row.addEventListener(evt, () => row.classList.remove('is-pressed'))
+    );
+    row.addEventListener('click', () => openPopup(key));
+    row.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPopup(key); }
+    });
+  });
+
+  scrim.addEventListener('click', closePopup);
+  closeBtn.addEventListener('click', closePopup);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
+
+  // ============================================================
+  //  Chat panel — Tier 2 scripted interactive flow
+  //  States: empty | typing | replying | recording | transcribing
+  //  Welcome → first send → conversation. Voice flow simulates
+  //  recording → transcribing → typing with a canned transcript.
+  // ============================================================
+  (function initChat() {
+    const SUGGESTIONS = [
+      "Tell me the key differences between a traditional IRA and a Roth IRA.",
+      "What's a donor-advised fund?",
+      "How much should I save for retirement?",
+      "Explain the wash-sale rule",
+      "What's a safe withdrawal rate?",
+      "Should I do a Roth conversion?",
+    ];
+
+    // Canned replies — keyed off the suggestion text. Anything else falls
+    // through to GENERIC_REPLY so typed-in questions still produce something.
+    const REPLIES = {
+      "Tell me the key differences between a traditional IRA and a Roth IRA.":
+        "Traditional IRAs let you deduct contributions now and pay tax on withdrawals in retirement; Roth IRAs use after-tax dollars but withdrawals are tax-free. For 2026 you can contribute up to $7,000 ($8,000 if 50+). The right choice usually comes down to whether your tax rate is higher today or expected to be higher in retirement.",
+      "What's a donor-advised fund?":
+        "A donor-advised fund is a charitable giving vehicle. You contribute cash or appreciated securities, take the tax deduction immediately, then recommend grants to charities over time. Funds invested inside it grow tax-free. It's useful for bunching deductions in high-income years or donating appreciated stock without paying capital gains.",
+      "How much should I save for retirement?":
+        "A common rule of thumb is 15% of gross income. As benchmarks: roughly 1× your salary saved by 30, 3× by 40, 6× by 50, 8× by 60, and 10× by 67. With your current $1,169,200 net worth and savings rate, you're tracking ahead — happy to model a retirement projection if you want to see your trajectory.",
+      "Explain the wash-sale rule":
+        "The wash-sale rule disallows a tax loss if you buy a \"substantially identical\" security within 30 days before or after the sale. It applies across your accounts — including your IRA — and your spouse's. The disallowed loss isn't gone; it gets added to the cost basis of the replacement shares, so you'll recover it when you eventually sell them.",
+      "What's a safe withdrawal rate?":
+        "The traditional rule is 4% — withdraw 4% of your starting portfolio in year one, then adjust for inflation. Newer research suggests 3.0–3.7% may be safer in lower-return environments, while flexible spending strategies (cutting back during downturns) can support 4.5%+ over a 30-year retirement.",
+      "Should I do a Roth conversion?":
+        "It depends on current vs. future tax rate. Converting now usually wins if you're in a low-income year, can pay the conversion tax from non-retirement funds, and don't need the money for 5+ years. Given your bracket, I'd want to model partial conversions over a few years first — want me to set that up?",
+    };
+    const GENERIC_REPLY =
+      "Good question. Let me pull together the relevant numbers from your accounts — give me a moment.";
+
+    // Canned voice transcript for the simulated transcription step.
+    const VOICE_TRANSCRIPT = "What do my holdings look like this month?";
+
+    const CYCLE_MS = 3000;
+    const CHIP_TRANSITION_MS = 300;
+    const THINKING_MS = 1300;
+    const RECORD_MAX_MS = 4000;
+    const TRANSCRIBE_MS = 1500;
+    const STREAM_INTERVAL_MS = 18;
+
+    // ---- DOM refs ----
+    const empty = document.getElementById("chatEmpty");
+    const messagesEl = document.getElementById("chatMessages");
+    const inputWrap = document.getElementById("chatInput");
+    const chip = document.getElementById("suggestionChip");
+    const stack = document.getElementById("chipStack");
+    if (!empty || !messagesEl || !inputWrap || !chip || !stack) return;
+
+    // ---- App state ----
+    let state = "empty";          // empty | typing | replying | recording | transcribing
+    let streamTimer = null;       // setInterval id for typewriter
+    let recordingTimer = null;    // setInterval id for waveform/timer
+    let recordingStartedAt = 0;
+    let savedDraft = "";          // input text preserved across mode swaps
+
+    // =========================
+    //  Input renderers
+    // =========================
+    function renderTypingInput(initialText = "") {
+      inputWrap.classList.remove("is-recording", "is-transcribing", "is-active");
+      inputWrap.innerHTML = `
+        <textarea
+          id="inputText"
+          class="chat-input-field"
+          rows="1"
+          placeholder="Ask me any financial question..."
+          aria-label="Message"></textarea>
+        <div class="chat-input-buttons">
+          <button class="voice" type="button" aria-label="Voice input" id="voiceBtn">
+            <i data-lucide="mic"></i>
+          </button>
+          <button class="send" type="button" aria-label="Send" id="sendBtn" disabled>
+            <i data-lucide="arrow-up"></i>
+          </button>
+        </div>
+      `;
+      lucide.createIcons();
+      const ta = document.getElementById("inputText");
+      ta.value = initialText;
+      autoResize(ta);
+      syncTypingState();
+      bindTypingHandlers();
+    }
+
+    function renderReplyingInput(currentText) {
+      // Same shape as typing, but send becomes the Stop button.
+      inputWrap.classList.add("is-active");
+      inputWrap.classList.remove("is-recording", "is-transcribing");
+      inputWrap.innerHTML = `
+        <textarea
+          id="inputText"
+          class="chat-input-field"
+          rows="1"
+          placeholder="Ask me any financial question..."
+          aria-label="Message"></textarea>
+        <div class="chat-input-buttons">
+          <button class="voice" type="button" aria-label="Voice input" id="voiceBtn" disabled>
+            <i data-lucide="mic"></i>
+          </button>
+          <button class="stop" type="button" aria-label="Stop response" id="stopBtn">
+            <i data-lucide="square"></i>
+          </button>
+        </div>
+      `;
+      lucide.createIcons();
+      const ta = document.getElementById("inputText");
+      ta.value = currentText || "";
+      autoResize(ta);
+      ta.addEventListener("input", () => autoResize(ta));
+      document.getElementById("stopBtn").addEventListener("click", stopReply);
+    }
+
+    function renderRecordingInput() {
+      inputWrap.classList.add("is-recording");
+      inputWrap.classList.remove("is-active", "is-transcribing");
+      const bars = Array.from({ length: 28 }, () => '<i></i>').join("");
+      inputWrap.innerHTML = `
+        <div class="recording-area">
+          <span class="rec-dot"></span>
+          <span class="rec-timer" id="recTimer">0:00</span>
+          <div class="rec-waveform" id="recWaveform">${bars}</div>
+        </div>
+        <div class="chat-input-buttons">
+          <button class="voice-cancel" type="button" aria-label="Cancel recording" id="voiceCancelBtn">
+            <i data-lucide="x"></i>
+          </button>
+          <button class="voice is-active" type="button" aria-label="Stop recording" id="voiceBtn">
+            <i data-lucide="mic"></i>
+          </button>
+        </div>
+      `;
+      lucide.createIcons();
+      document.getElementById("voiceCancelBtn").addEventListener("click", cancelRecording);
+      document.getElementById("voiceBtn").addEventListener("click", stopRecording);
+      startWaveform();
+    }
+
+    function renderTranscribingInput() {
+      inputWrap.classList.add("is-transcribing", "is-active");
+      inputWrap.classList.remove("is-recording");
+      inputWrap.innerHTML = `
+        <div class="transcribe-area">
+          <span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span>
+          <span class="t-label">Transcribing...</span>
+        </div>
+        <div class="chat-input-buttons">
+          <button class="voice" type="button" aria-label="Voice input" disabled>
+            <i data-lucide="mic"></i>
+          </button>
+          <button class="send" type="button" aria-label="Send" disabled>
+            <i data-lucide="arrow-up"></i>
+          </button>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    // =========================
+    //  Typing-state handlers
+    // =========================
+    function autoResize(ta) {
+      ta.style.height = "auto";
+      ta.style.height = ta.scrollHeight + "px";
+    }
+
+    function syncTypingState() {
+      const ta = document.getElementById("inputText");
+      const sendBtn = document.getElementById("sendBtn");
+      if (!ta || !sendBtn) return;
+      const hasText = ta.value.trim().length > 0;
+      inputWrap.classList.toggle("is-active", hasText);
+      sendBtn.disabled = !hasText;
+    }
+
+    function bindTypingHandlers() {
+      const ta = document.getElementById("inputText");
+      const sendBtn = document.getElementById("sendBtn");
+      const voiceBtn = document.getElementById("voiceBtn");
+      if (!ta || !sendBtn || !voiceBtn) return;
+
+      ta.addEventListener("input", () => {
+        autoResize(ta);
+        syncTypingState();
+      });
+      ta.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey && !sendBtn.disabled) {
+          e.preventDefault();
+          sendCurrent();
+        }
+      });
+      sendBtn.addEventListener("click", () => { if (!sendBtn.disabled) sendCurrent(); });
+      voiceBtn.addEventListener("click", startRecording);
+    }
+
+    // =========================
+    //  Message flow
+    // =========================
+    function enterConversationIfNeeded() {
+      if (!empty.hidden) {
+        empty.hidden = true;
+        messagesEl.hidden = false;
+      }
+    }
+
+    function appendUserMessage(text) {
+      enterConversationIfNeeded();
+      const wrap = document.createElement("div");
+      wrap.className = "msg-user-wrap";
+      const bubble = document.createElement("div");
+      bubble.className = "msg-user";
+      bubble.textContent = text;
+      wrap.appendChild(bubble);
+      messagesEl.appendChild(wrap);
+      scrollMessagesToBottom();
+    }
+
+    function appendThinking() {
+      const el = document.createElement("div");
+      el.className = "msg-thinking";
+      el.id = "msgThinking";
+      el.innerHTML = `
+        <span class="dots"><span></span><span></span><span></span></span>
+        <span class="status">Thinking...</span>
+      `;
+      messagesEl.appendChild(el);
+      scrollMessagesToBottom();
+      return el;
+    }
+
+    function removeThinking() {
+      const el = document.getElementById("msgThinking");
+      if (el) el.remove();
+    }
+
+    function appendAiBubble() {
+      const el = document.createElement("div");
+      el.className = "msg-ai";
+      messagesEl.appendChild(el);
+      return el;
+    }
+
+    function scrollMessagesToBottom() {
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function sendCurrent() {
+      const ta = document.getElementById("inputText");
+      if (!ta) return;
+      const text = ta.value.trim();
+      if (!text) return;
+      submitQuestion(text);
+    }
+
+    function submitQuestion(text) {
+      appendUserMessage(text);
+      // Reset input + switch to "replying" with stop button.
+      state = "replying";
+      renderReplyingInput("");
+      // Thinking indicator, then streamed reply.
+      appendThinking();
+      window.setTimeout(() => {
+        removeThinking();
+        const replyText = REPLIES[text] || GENERIC_REPLY;
+        streamReply(replyText);
+      }, THINKING_MS);
+    }
+
+    function streamReply(fullText) {
+      const bubble = appendAiBubble();
+      let i = 0;
+      streamTimer = window.setInterval(() => {
+        // Stream a chunk per tick so the typewriter is fast enough to feel snappy.
+        i = Math.min(fullText.length, i + 3);
+        bubble.textContent = fullText.slice(0, i);
+        scrollMessagesToBottom();
+        if (i >= fullText.length) {
+          finishReply();
+        }
+      }, STREAM_INTERVAL_MS);
+    }
+
+    function stopReply() {
+      if (streamTimer !== null) {
+        window.clearInterval(streamTimer);
+        streamTimer = null;
+      }
+      removeThinking();
+      finishReply();
+    }
+
+    function finishReply() {
+      if (streamTimer !== null) {
+        window.clearInterval(streamTimer);
+        streamTimer = null;
+      }
+      state = "typing";
+      renderTypingInput("");
+    }
+
+    // =========================
+    //  Voice flow (simulated)
+    // =========================
+    function startRecording() {
+      // Preserve any draft so we can restore it if recording is cancelled.
+      const ta = document.getElementById("inputText");
+      savedDraft = ta ? ta.value : "";
+      state = "recording";
+      recordingStartedAt = Date.now();
+      renderRecordingInput();
+      // Safety: auto-stop after RECORD_MAX_MS so the prototype doesn't sit forever.
+      window.setTimeout(() => { if (state === "recording") stopRecording(); }, RECORD_MAX_MS);
+    }
+
+    function startWaveform() {
+      const timerEl = document.getElementById("recTimer");
+      const waveEl  = document.getElementById("recWaveform");
+      if (!timerEl || !waveEl) return;
+      const bars = waveEl.querySelectorAll("i");
+
+      recordingTimer = window.setInterval(() => {
+        const elapsed = Math.floor((Date.now() - recordingStartedAt) / 1000);
+        const m = Math.floor(elapsed / 60);
+        const s = String(elapsed % 60).padStart(2, "0");
+        timerEl.textContent = `${m}:${s}`;
+        // Randomize bar heights — gives a "live mic" feel.
+        bars.forEach((b) => {
+          b.style.height = (6 + Math.random() * 22) + "px";
+        });
+      }, 80);
+    }
+
+    function stopWaveform() {
+      if (recordingTimer !== null) {
+        window.clearInterval(recordingTimer);
+        recordingTimer = null;
+      }
+    }
+
+    function cancelRecording() {
+      stopWaveform();
+      state = savedDraft.trim() ? "typing" : "empty";
+      renderTypingInput(savedDraft);
+    }
+
+    function stopRecording() {
+      stopWaveform();
+      state = "transcribing";
+      renderTranscribingInput();
+      window.setTimeout(() => {
+        // Drop the simulated transcript into the typing input.
+        state = "typing";
+        const transcript = savedDraft.trim()
+          ? savedDraft + " " + VOICE_TRANSCRIPT
+          : VOICE_TRANSCRIPT;
+        savedDraft = "";
+        renderTypingInput(transcript);
+        const ta = document.getElementById("inputText");
+        if (ta) ta.focus();
+      }, TRANSCRIBE_MS);
+    }
+
+    // =========================
+    //  Suggestion chip rotator
+    // =========================
+    const layerA = document.createElement("span");
+    const layerB = document.createElement("span");
+    layerA.className = "chip-text is-current";
+    layerB.className = "chip-text";
+    layerA.textContent = SUGGESTIONS[0];
+    layerB.textContent = "";
+    stack.appendChild(layerA);
+    stack.appendChild(layerB);
+
+    let chipIndex = 0;
+    let chipCurrent = layerA;
+    let chipNext = layerB;
+    let chipTimerId = null;
+    let chipPaused = false;
+
+    function rotateChip() {
+      if (chipPaused) return;
+      chipIndex = (chipIndex + 1) % SUGGESTIONS.length;
+
+      chipNext.style.transition = "none";
+      chipNext.classList.remove("is-current", "is-leaving");
+      chipNext.textContent = SUGGESTIONS[chipIndex];
+      chipNext.offsetHeight; // reflow
+      chipNext.style.transition = "";
+
+      chipCurrent.classList.add("is-leaving");
+      chipNext.classList.add("is-current");
+
+      const justLeft = chipCurrent;
+      chipCurrent = chipNext;
+      chipNext = justLeft;
+
+      window.setTimeout(() => {
+        if (justLeft.classList.contains("is-leaving")) justLeft.textContent = "";
+      }, CHIP_TRANSITION_MS);
+    }
+
+    function chipStart() { chipStop(); chipTimerId = window.setInterval(rotateChip, CYCLE_MS); }
+    function chipStop()  { if (chipTimerId !== null) { window.clearInterval(chipTimerId); chipTimerId = null; } }
+
+    chip.addEventListener("click", () => {
+      // Chip click → immediately submit the current question.
+      submitQuestion(SUGGESTIONS[chipIndex]);
+      chipPaused = true;
+      chipStop();
+    });
+    chip.addEventListener("mouseenter", () => { chipPaused = true; chipStop(); });
+    chip.addEventListener("mouseleave", () => { chipPaused = false; chipStart(); });
+    chip.addEventListener("focus",      () => { chipPaused = true; chipStop(); });
+    chip.addEventListener("blur",       () => { chipPaused = false; chipStart(); });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) chipStop();
+      else if (!chipPaused) chipStart();
+    });
+
+    // Initial render: empty state with typing input.
+    state = "empty";
+    renderTypingInput("");
+    chipStart();
+  })();
+</script>
+</body>
+</html>
