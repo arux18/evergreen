@@ -38,16 +38,25 @@ Line height: body 1.4–1.5; multi-line descriptions always `lineHeight: 1.5`.
 
 ### Touch / click targets
 
+WCAG 2.5.8 (Target Size Minimum, AA) requires **24×24 CSS px** as the absolute floor. WCAG 2.5.5 (Target Size, AAA) recommends 44×44px. We use a **three-tier model** based on element role:
 
-| Element               | Min                                       |
-| --------------------- | ----------------------------------------- |
-| Buttons, icon buttons | 44×44px (tap target; icon can be smaller) |
-| List items            | 44px height (whole row is target)         |
-| Filter chips          | 32px height with adequate padding         |
-| Checkboxes / toggles  | 44×44px tap target                        |
+| Tier | Elements | Min tap target | Notes |
+| ---- | -------- | -------------- | ----- |
+| **Primary** | Standalone buttons, CTAs, form controls, checkboxes, toggles, nav items | 44×44px | Icon/visual can be smaller; padding extends the tap target to 44×44 |
+| **Compact** | Icon buttons in dense rows (toolbars, chat input areas), chips, tags, secondary actions in constrained spaces | 34×34px | Acceptable when 8px+ gap between adjacent targets ensures no overlap confusion |
+| **Absolute floor** | Any interactive element regardless of context | 24×24px | Below this is always 🔴 must-fix — no exceptions |
 
+| Element               | Tier    | Min                                              |
+| --------------------- | ------- | ------------------------------------------------ |
+| Standalone buttons    | Primary | 44×44px tap target                               |
+| List items            | Primary | 44px height (whole row is target)                |
+| Checkboxes / toggles  | Primary | 44×44px tap target                               |
+| Nav items             | Primary | 44px height                                      |
+| Icon buttons in dense rows (chat input, toolbars) | Compact | 34×34px with 8px+ gap |
+| Filter chips / tags   | Compact | 32px height with adequate padding                |
+| Inline text links     | —       | Exempt from size requirements (WCAG 2.5.8 exception for inline targets) |
 
-Gaps: 8px min between adjacent interactive elements; 12px+ between destructive and safe actions.
+Gaps: 8px min between adjacent interactive elements; 12px+ between destructive and safe actions. When compact-tier elements are used, adequate gap is **required** — the gap compensates for the smaller target.
 
 ### Screen reader patterns
 
@@ -101,7 +110,10 @@ A violation is must-fix when it affects a user's ability to **understand critica
 - Missing form labels → must-fix
 - Missing alt text on informational images/charts → must-fix
 - Focus indicator completely removed with no replacement → must-fix
-- Touch target below 44×44px on any interactive element → must-fix
+- Touch target below **24×24px** on any interactive element → always must-fix
+- Primary-tier element (standalone buttons, form controls, nav items) below **44×44px** → must-fix
+- Compact-tier element (icon buttons in dense rows, chips) below **34×34px** → must-fix
+- Compact-tier element between 34×34px and 44×44px without 8px+ gap to adjacent targets → must-fix
 - Color used as the only indicator for financial data → must-fix
 
 ### 🟡 Should-Fix — Flagged, Tracked, Non-Blocking
@@ -180,7 +192,8 @@ Is it in the Exception Registry?
        │   navigation, or task completion?
        │
   YES ──► Is contrast below 3.0:1 OR is it a missing
-       │   keyboard/label/focus/touch-target issue?
+       │   keyboard/label/focus issue OR is the touch
+       │   target below its tier minimum?
        │
   YES ──► 🔴 Must-Fix (blocks approval)
        │
