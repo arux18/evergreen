@@ -96631,7 +96631,6 @@
                     {
                       "type": "frame",
                       "id": "JRmJr",
-                      "rotation": -0.054090371877753146,
                       "width": "fill_container",
                       "fill": "$O:colors-background-main",
                       "cornerRadius": [
@@ -118673,8 +118672,8 @@
           "type": "frame",
           "id": "uypCv",
           "layoutPosition": "absolute",
-          "x": 480,
-          "y": 133,
+          "x": 440,
+          "y": 126,
           "name": "accountDetailPopup",
           "width": 560,
           "fill": "$O:colors-background-surface",
@@ -119396,7 +119395,6 @@
                     {
                       "type": "frame",
                       "id": "gOXFJ",
-                      "rotation": -0.054090371877753146,
                       "width": "fill_container",
                       "fill": "$O:colors-background-main",
                       "cornerRadius": [
@@ -119625,20 +119623,20 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "frame",
+              "id": "qaNVs",
+              "layoutPosition": "absolute",
+              "x": 550,
+              "y": 60,
+              "name": "scrollbar",
+              "width": 6,
+              "height": 140,
+              "fill": "$O:color-gray-300",
+              "cornerRadius": 3
             }
           ]
-        },
-        {
-          "type": "frame",
-          "id": "gavey",
-          "layoutPosition": "absolute",
-          "x": 1426,
-          "y": 12,
-          "name": "scrollbar",
-          "width": 6,
-          "height": 120,
-          "fill": "#0000003D",
-          "cornerRadius": 3
         }
       ]
     },
@@ -142173,7 +142171,6 @@
                     {
                       "type": "frame",
                       "id": "M2UP1",
-                      "rotation": -0.054090371877753146,
                       "width": "fill_container",
                       "fill": "$O:colors-background-main",
                       "cornerRadius": [
@@ -255163,6 +255160,555 @@
               "fill": "#00000000"
             }
           }
+        },
+        {
+          "type": "frame",
+          "id": "Z7VGuP",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "screenOverlay",
+          "width": 1440,
+          "height": 1184,
+          "fill": "#00000066"
+        },
+        {
+          "type": "frame",
+          "id": "Qjfm2",
+          "layoutPosition": "absolute",
+          "x": 440,
+          "y": 182,
+          "name": "transactionDetailPopup",
+          "width": 560,
+          "fill": "$O:colors-background-surface",
+          "cornerRadius": "$O:radius-xs",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000001a",
+            "blur": "$O:shadow-lg-blur"
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Q0tXW",
+              "name": "popupBody",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": "$O:spacing-md",
+              "padding": "$O:spacing-md",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gTK6J",
+                  "name": "titleSection",
+                  "width": "fill_container",
+                  "gap": "$O:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "d3XCgT",
+                      "fill": "$O:colors-text-header",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Uber",
+                      "fontFamily": "$O:typo-primary-xl-semibold-font-family",
+                      "fontSize": "$O:typo-primary-xl-semibold-font-size",
+                      "fontWeight": "600",
+                      "letterSpacing": "$O:typo-primary-xl-semibold-letter-spacing"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "R8RUrj",
+                      "width": 28,
+                      "height": 28,
+                      "iconFontName": "x",
+                      "iconFontFamily": "lucide",
+                      "fill": "$O:colors-icons-meta"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rLr4G",
+                  "name": "amountCard",
+                  "width": "fill_container",
+                  "fill": "$O:colors-background-main",
+                  "cornerRadius": "$O:radius-2xs",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$O:color-taupe-200"
+                  },
+                  "layout": "vertical",
+                  "gap": "$O:spacing-2xs",
+                  "padding": "$O:spacing-md",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rRIIc",
+                      "fill": "$O:colors-text-meta",
+                      "content": "TRANSACTION AMOUNT",
+                      "fontFamily": "$O:typo-primary-xs-semibold-font-family",
+                      "fontSize": "$O:typo-primary-xs-semibold-font-size",
+                      "fontWeight": "600",
+                      "letterSpacing": "$O:typo-primary-xs-semibold-letter-spacing"
+                    },
+                    {
+                      "type": "text",
+                      "id": "kymaX",
+                      "name": "component/MoneyText",
+                      "fill": "$O:colors-text-header",
+                      "content": "-$18.50",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$O:typo-primary-base-semibold-font-family",
+                      "fontSize": "$O:typo-primary-base-semibold-font-size",
+                      "fontWeight": "600",
+                      "letterSpacing": "$O:typo-primary-base-semibold-letter-spacing"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Kyjo0",
+                  "name": "transactionDetailsCard",
+                  "width": "fill_container",
+                  "cornerRadius": "$O:radius-2xs",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$O:color-taupe-200"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Up5QY",
+                      "width": "fill_container",
+                      "fill": "$O:colors-background-main",
+                      "cornerRadius": [
+                        "$O:radius-2xs",
+                        "$O:radius-2xs",
+                        0,
+                        0
+                      ],
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-200"
+                      },
+                      "padding": [
+                        "$O:spacing-xs",
+                        "$O:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "twh1P",
+                          "name": "component/Label",
+                          "layout": "vertical",
+                          "gap": "$O:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "dEttw",
+                              "name": "Label Row",
+                              "gap": "$O:spacing-3xs",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "z0Td61",
+                                  "name": "Label Text",
+                                  "fill": "$O:colors-text-header",
+                                  "content": "Transaction Details",
+                                  "lineHeight": 1.4286,
+                                  "fontFamily": "$O:typo-primary-sm-semibold-font-family",
+                                  "fontSize": "$O:typo-primary-sm-semibold-font-size",
+                                  "fontWeight": "600",
+                                  "letterSpacing": "$O:typo-primary-sm-semibold-letter-spacing"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "OIE7m",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-200"
+                      },
+                      "gap": "$O:spacing-sm",
+                      "padding": [
+                        "$O:spacing-xs",
+                        "$O:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Y3fqFr",
+                          "fill": "$O:colors-text-meta",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Transaction ID",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        },
+                        {
+                          "type": "text",
+                          "id": "JHa6j",
+                          "fill": "$O:colors-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "txn_7e2f9a4d",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "l97fx",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-200"
+                      },
+                      "gap": "$O:spacing-sm",
+                      "padding": [
+                        "$O:spacing-xs",
+                        "$O:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "TTyYd",
+                          "fill": "$O:colors-text-meta",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Merchant",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        },
+                        {
+                          "type": "text",
+                          "id": "uzeaM",
+                          "fill": "$O:colors-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Uber",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "g665v9",
+                      "width": "fill_container",
+                      "gap": "$O:spacing-sm",
+                      "padding": [
+                        "$O:spacing-xs",
+                        "$O:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "lKUeB",
+                          "fill": "$O:colors-text-meta",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Check Number",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        },
+                        {
+                          "type": "text",
+                          "id": "dEQAQ",
+                          "fill": "$O:colors-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "—",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Fm58z",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-200"
+                      },
+                      "gap": "$O:spacing-sm",
+                      "padding": [
+                        "$O:spacing-xs",
+                        "$O:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "DyWtf",
+                          "fill": "$O:colors-text-meta",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Amount",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        },
+                        {
+                          "type": "text",
+                          "id": "RQhYO",
+                          "fill": "$O:colors-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "-$18.50",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hwRPw",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-200"
+                      },
+                      "gap": "$O:spacing-sm",
+                      "padding": [
+                        "$O:spacing-xs",
+                        "$O:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "O8L7r",
+                          "fill": "$O:colors-text-meta",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Currency",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        },
+                        {
+                          "type": "text",
+                          "id": "GYFu2",
+                          "fill": "$O:colors-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "USD",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "N57y29",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-200"
+                      },
+                      "gap": "$O:spacing-sm",
+                      "padding": [
+                        "$O:spacing-xs",
+                        "$O:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "pOz5z",
+                          "fill": "$O:colors-text-meta",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Date Processed",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        },
+                        {
+                          "type": "text",
+                          "id": "a69xEM",
+                          "fill": "$O:colors-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "May 13, 2026",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Z9bHeY",
+                      "width": "fill_container",
+                      "gap": "$O:spacing-sm",
+                      "padding": [
+                        "$O:spacing-xs",
+                        "$O:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Mwxij",
+                          "fill": "$O:colors-text-meta",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Date Authorized",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        },
+                        {
+                          "type": "text",
+                          "id": "UseiJ",
+                          "fill": "$O:colors-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "May 13, 2026",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cZ6Uw",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$O:color-taupe-200"
+                      },
+                      "gap": "$O:spacing-sm",
+                      "padding": [
+                        "$O:spacing-xs",
+                        "$O:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "HGxsM",
+                          "fill": "$O:colors-text-meta",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Category",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        },
+                        {
+                          "type": "text",
+                          "id": "d4VLt",
+                          "fill": "$O:colors-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Transportation",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "t7M3AP",
+                      "width": "fill_container",
+                      "gap": "$O:spacing-sm",
+                      "padding": [
+                        "$O:spacing-xs",
+                        "$O:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "t15sLr",
+                          "fill": "$O:colors-text-meta",
+                          "textGrowth": "fixed-width",
+                          "width": 130,
+                          "content": "Sub-category",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ZvWcu",
+                          "fill": "$O:colors-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Ride Share",
+                          "fontFamily": "$O:typo-primary-sm-regular-font-family",
+                          "fontSize": "$O:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal",
+                          "letterSpacing": "$O:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
