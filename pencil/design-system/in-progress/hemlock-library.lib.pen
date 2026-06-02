@@ -40446,7 +40446,7 @@
                   "id": "L5lIBn",
                   "name": "Component Label",
                   "fill": "$colors-text-meta",
-                  "content": "component / ModalDrawer — 4 variants",
+                  "content": "component / ModalDrawer — 6 variants",
                   "lineHeight": 1.2727,
                   "fontFamily": "$typo-primary-xs-regular-font-family",
                   "fontSize": 11,
@@ -41092,6 +41092,356 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "type": "text",
+                  "id": "UdpF3",
+                  "name": "vl-mobile-scroll",
+                  "fill": "$colors-text-meta",
+                  "content": "mobile/scroll (full-height bottom-sheet, 40px top padding, clipped body)",
+                  "fontFamily": "$typo-primary-xs-regular-font-family",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "s9V26",
+                  "name": "component/ModalDrawer/mobile/scroll",
+                  "reusable": true,
+                  "clip": true,
+                  "width": 375,
+                  "height": 812,
+                  "layout": "vertical",
+                  "padding": [
+                    "$spacing-xl",
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "id": "SaTIf",
+                      "layoutPosition": "absolute",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Backdrop",
+                      "opacity": 0.5,
+                      "fill": "$color-gray-900",
+                      "width": "fill_container(375)",
+                      "height": "fill_container(812)"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "IEGPD",
+                      "name": "Panel",
+                      "width": 375,
+                      "height": "fill_container",
+                      "fill": "$colors-background-surface",
+                      "cornerRadius": [
+                        "$radius-sm",
+                        "$radius-sm",
+                        0,
+                        0
+                      ],
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "$shadow-overlay-color",
+                        "offset": {
+                          "x": 0,
+                          "y": -4
+                        },
+                        "blur": "$shadow-overlay-blur"
+                      },
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "taC4K",
+                          "name": "Header",
+                          "width": "fill_container",
+                          "gap": "$spacing-sm",
+                          "padding": [
+                            "$spacing-sm",
+                            "$spacing-xs",
+                            "$spacing-sm",
+                            "$spacing-md"
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "iO3Eo",
+                              "name": "headerSlot",
+                              "slot": [],
+                              "width": "fill_container",
+                              "height": 36,
+                              "fill": "$color-gray-100",
+                              "cornerRadius": 4,
+                              "layout": "vertical"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "sPNc5",
+                              "name": "Close Button",
+                              "width": 36,
+                              "height": 36,
+                              "cornerRadius": "$radius-xs",
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "YVDnb",
+                                  "name": "X Icon",
+                                  "width": 20,
+                                  "height": 20,
+                                  "icon": "x",
+                                  "library": "lucide",
+                                  "fill": "$colors-icons-meta"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "IJ320",
+                          "name": "bodySlot",
+                          "slot": [],
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": "$spacing-md",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "cornerRadius": 2,
+                              "id": "lk6UJ",
+                              "layoutPosition": "absolute",
+                              "x": 339,
+                              "y": 25,
+                              "name": "Scroll Indicator",
+                              "fill": "$color-gray-300",
+                              "width": 4,
+                              "height": 80
+                            },
+                            {
+                              "type": "frame",
+                              "id": "t3YrFl",
+                              "name": "Slot Placeholder A",
+                              "slot": [],
+                              "width": "fill_container",
+                              "height": "fill_container",
+                              "fill": "$color-gray-100",
+                              "cornerRadius": 4
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Idzjs",
+                          "x": 0,
+                          "y": 0,
+                          "name": "footerSlot",
+                          "enabled": false,
+                          "slot": [
+                            "bMlax",
+                            "aFIzk"
+                          ],
+                          "width": "fill_container(0)",
+                          "height": "fit_content(0)",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "padding": [
+                            0,
+                            24
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "fERcW",
+                  "name": "vl-mobile-actions",
+                  "fill": "$colors-text-meta",
+                  "content": "mobile/with-actions (bottom-sheet with footer action buttons)",
+                  "fontFamily": "$typo-primary-xs-regular-font-family",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "zgiW4",
+                  "name": "component/ModalDrawer/mobile/with-actions",
+                  "reusable": true,
+                  "clip": true,
+                  "width": 375,
+                  "height": 812,
+                  "layout": "vertical",
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "id": "mdzW0",
+                      "layoutPosition": "absolute",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Backdrop",
+                      "opacity": 0.5,
+                      "fill": "$color-gray-900",
+                      "width": "fill_container(375)",
+                      "height": "fill_container(812)"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Yv9Mj",
+                      "name": "Panel",
+                      "width": 375,
+                      "height": 480,
+                      "fill": "$colors-background-surface",
+                      "cornerRadius": [
+                        "$radius-sm",
+                        "$radius-sm",
+                        0,
+                        0
+                      ],
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "$shadow-overlay-color",
+                        "offset": {
+                          "x": 0,
+                          "y": -4
+                        },
+                        "blur": "$shadow-overlay-blur"
+                      },
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "tB5V9",
+                          "name": "Header",
+                          "width": "fill_container",
+                          "gap": "$spacing-sm",
+                          "padding": [
+                            "$spacing-sm",
+                            "$spacing-xs",
+                            "$spacing-sm",
+                            "$spacing-md"
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "bQaMh",
+                              "name": "headerSlot",
+                              "slot": [],
+                              "width": "fill_container",
+                              "height": 36,
+                              "fill": "$color-gray-100",
+                              "cornerRadius": 4,
+                              "layout": "vertical"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "jlHgL",
+                              "name": "Close Button",
+                              "width": 36,
+                              "height": 36,
+                              "cornerRadius": "$radius-xs",
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "A9vf9",
+                                  "name": "X Icon",
+                                  "width": 20,
+                                  "height": 20,
+                                  "icon": "x",
+                                  "library": "lucide",
+                                  "fill": "$colors-icons-meta"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "gzJCW",
+                          "name": "bodySlot",
+                          "slot": [],
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": "$spacing-md",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "YOby6",
+                              "name": "Slot Placeholder A",
+                              "slot": [],
+                              "width": "fill_container",
+                              "height": "fill_container",
+                              "fill": "$color-gray-100",
+                              "cornerRadius": 4
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RTCgk",
+                          "name": "footerSlot",
+                          "slot": [
+                            "bMlax",
+                            "aFIzk"
+                          ],
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "padding": "$spacing-md",
+                          "children": [
+                            {
+                              "id": "Uors9",
+                              "type": "ref",
+                              "ref": "bMlax",
+                              "name": "Primary Action",
+                              "width": "fill_container",
+                              "descendants": {
+                                "sFmUs": {
+                                  "content": "Button Label"
+                                }
+                              }
+                            },
+                            {
+                              "id": "TcRFV",
+                              "type": "ref",
+                              "ref": "aFIzk",
+                              "name": "Secondary Action",
+                              "width": "fill_container",
+                              "descendants": {
+                                "NRjjr": {
+                                  "content": "Button Label"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -41364,7 +41714,7 @@
           "name": "ModalDrawer Separator",
           "width": "fill_container",
           "x": 64,
-          "y": 22018.985411951922,
+          "y": 23736.984504022417,
           "fill": "#088fe066",
           "padding": 0,
           "descendants": {
