@@ -1,5 +1,5 @@
 {
-  "version": "2.11",
+  "version": "2.13",
   "children": [
     {
       "type": "frame",
@@ -12,11 +12,9 @@
       "height": 844,
       "fill": "$chat.input.bg",
       "cornerRadius": 12,
-      "stroke": {
-        "align": "inside",
-        "thickness": 1,
-        "fill": "#DCD8CB"
-      },
+      "stroke": "#DCD8CB",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
       "effect": {
         "type": "shadow",
         "shadowType": "outer",
@@ -37,13 +35,11 @@
           "name": "Chat / Header",
           "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
           "width": "fill_container",
-          "stroke": {
-            "align": "inside",
-            "thickness": {
-              "bottom": 0.5
-            },
-            "fill": "$chat.divider"
+          "stroke": "$chat.divider",
+          "strokeWidth": {
+            "bottom": 0.5
           },
+          "strokeAlignment": "inner",
           "padding": [
             16,
             20
@@ -71,13 +67,13 @@
                   "alignItems": "center",
                   "children": [
                     {
-                      "type": "icon_font",
+                      "type": "icon",
                       "id": "V7iBq",
                       "name": "icon",
                       "width": 16,
                       "height": 16,
-                      "iconFontName": "arrow-right-to-line",
-                      "iconFontFamily": "lucide",
+                      "icon": "arrow-right-to-line",
+                      "library": "lucide",
                       "fill": "$chat.icon"
                     }
                   ]
@@ -130,11 +126,9 @@
                   "name": "bubble",
                   "fill": "$chat.bubble.user.bg",
                   "cornerRadius": "$chat.bubble.radius",
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "$chat.bubble.user.border"
-                  },
+                  "stroke": "$chat.bubble.user.border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "padding": [
                     12,
                     16
@@ -204,11 +198,9 @@
                   "name": "bubble",
                   "fill": "$chat.bubble.user.bg",
                   "cornerRadius": "$chat.bubble.radius",
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "$chat.bubble.user.border"
-                  },
+                  "stroke": "$chat.bubble.user.border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "padding": [
                     12,
                     16
@@ -271,11 +263,9 @@
                       "width": "fill_container",
                       "fill": "#FFFFFF",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.input.border"
-                      },
+                      "stroke": "$chat.input.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "children": [
                         {
@@ -959,11 +949,9 @@
                           "id": "ch1",
                           "fill": "$chat.chip.bg",
                           "cornerRadius": "$chat.chip.radius",
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1,
-                            "fill": "$chat.chip.border"
-                          },
+                          "stroke": "$chat.chip.border",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
                           "padding": [
                             6,
                             12
@@ -985,11 +973,9 @@
                           "id": "ch2",
                           "fill": "$chat.chip.bg",
                           "cornerRadius": "$chat.chip.radius",
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1,
-                            "fill": "$chat.chip.border"
-                          },
+                          "stroke": "$chat.chip.border",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
                           "padding": [
                             6,
                             12
@@ -1021,16 +1007,14 @@
           "context": "Input Field / Typing — Shown when the user has entered text. Border thickens to 1.5px $chat.input.border.active. Send button becomes enabled. Text displays in $chat.text.secondary.",
           "width": "fill_container",
           "stroke": {
-            "align": "inside",
-            "thickness": {
-              "top": 0.5
-            },
-            "fill": {
-              "type": "color",
-              "color": "#E8E6E0",
-              "enabled": false
-            }
+            "type": "color",
+            "color": "#E8E6E0",
+            "enabled": false
           },
+          "strokeWidth": {
+            "top": 0.5
+          },
+          "strokeAlignment": "inner",
           "layout": "vertical",
           "gap": 12,
           "padding": [
@@ -1047,11 +1031,9 @@
               "width": "fill_container",
               "fill": "$chat.bg",
               "cornerRadius": 9999,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1.5,
-                "fill": "$chat.input.border.active"
-              },
+              "stroke": "$chat.input.border.active",
+              "strokeWidth": 1.5,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 24,
               "padding": [
@@ -1096,23 +1078,21 @@
                           "height": 34,
                           "fill": "#00000000",
                           "cornerRadius": 9999,
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1,
-                            "fill": "$chat.chip.border"
-                          },
+                          "stroke": "$chat.chip.border",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
                           "layout": "vertical",
                           "justifyContent": "center",
                           "alignItems": "center",
                           "children": [
                             {
-                              "type": "icon_font",
+                              "type": "icon",
                               "id": "w24Cu",
                               "name": "icon",
                               "width": 16,
                               "height": 16,
-                              "iconFontName": "microphone",
-                              "iconFontFamily": "phosphor",
+                              "icon": "microphone",
+                              "library": "phosphor",
                               "fill": "$chat.icon"
                             }
                           ]
@@ -1131,13 +1111,13 @@
                           "alignItems": "center",
                           "children": [
                             {
-                              "type": "icon_font",
+                              "type": "icon",
                               "id": "pjM5Y",
                               "name": "sendIcon",
                               "width": 20,
                               "height": 20,
-                              "iconFontName": "arrow-up",
-                              "iconFontFamily": "lucide",
+                              "icon": "arrow-up",
+                              "library": "lucide",
                               "fill": "$chat.send.icon"
                             }
                           ]
@@ -1160,11 +1140,9 @@
       "name": "Chat Design Library",
       "fill": "#FFFFFF",
       "cornerRadius": 16,
-      "stroke": {
-        "align": "inside",
-        "thickness": 1,
-        "fill": "#E8E6E0"
-      },
+      "stroke": "#E8E6E0",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
       "layout": "vertical",
       "gap": 40,
       "padding": 48,
@@ -1249,11 +1227,9 @@
                       "height": 48,
                       "fill": "$chat.bg",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1284,11 +1260,9 @@
                       "height": 48,
                       "fill": "$chat.border",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1319,11 +1293,9 @@
                       "height": 48,
                       "fill": "$chat.divider",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1354,11 +1326,9 @@
                       "height": 48,
                       "fill": "$chat.text.primary",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1389,11 +1359,9 @@
                       "height": 48,
                       "fill": "$chat.text.secondary",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1432,11 +1400,9 @@
                       "height": 48,
                       "fill": "$chat.text.placeholder",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1467,11 +1433,9 @@
                       "height": 48,
                       "fill": "$chat.input.bg",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1502,11 +1466,9 @@
                       "height": 48,
                       "fill": "$chat.send.bg",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1537,11 +1499,9 @@
                       "height": 48,
                       "fill": "$chat.bubble.user.bg",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1573,11 +1533,9 @@
                       "height": 48,
                       "fill": "$chat.bubble.user.border",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1609,11 +1567,9 @@
                       "height": 48,
                       "fill": "$chat.chip.bg",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1645,11 +1601,9 @@
                       "height": 48,
                       "fill": "$chat.chip.border",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1681,11 +1635,9 @@
                       "height": 48,
                       "fill": "$chat.shadow",
                       "cornerRadius": 8,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1890,11 +1842,9 @@
                       "width": 48,
                       "height": 24,
                       "cornerRadius": "$chat.radius",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.border"
-                      }
+                      "stroke": "$chat.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1922,11 +1872,9 @@
                       "height": 24,
                       "fill": "$chat.bubble.user.bg",
                       "cornerRadius": "$chat.bubble.radius",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.bubble.user.border"
-                      }
+                      "stroke": "$chat.bubble.user.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -1954,11 +1902,9 @@
                       "height": 24,
                       "fill": "$chat.chip.bg",
                       "cornerRadius": "$chat.chip.radius",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.chip.border"
-                      }
+                      "stroke": "$chat.chip.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -2119,11 +2065,9 @@
                       "height": 32,
                       "fill": "$chat.voice.active.icon",
                       "cornerRadius": 6,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -2214,11 +2158,9 @@
                       "height": 32,
                       "fill": "$chat.voice.pulse",
                       "cornerRadius": 6,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "#E8E6E0"
-                      }
+                      "stroke": "#E8E6E0",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner"
                     },
                     {
                       "type": "text",
@@ -2276,11 +2218,9 @@
                   "name": "cardClose",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2309,13 +2249,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "h67r4",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "arrow-right-to-line",
-                          "iconFontFamily": "lucide",
+                          "icon": "arrow-right-to-line",
+                          "library": "lucide",
                           "fill": "$chat.icon"
                         }
                       ]
@@ -2340,11 +2280,9 @@
                   "name": "cardCloseHover",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2374,13 +2312,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "m0lAG",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "arrow-right-to-line",
-                          "iconFontFamily": "lucide",
+                          "icon": "arrow-right-to-line",
+                          "library": "lucide",
                           "fill": "$chat.icon"
                         }
                       ]
@@ -2404,11 +2342,9 @@
                   "name": "cardClosePressed",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2438,13 +2374,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "pE5dc",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "arrow-right-to-line",
-                          "iconFontFamily": "lucide",
+                          "icon": "arrow-right-to-line",
+                          "library": "lucide",
                           "fill": "$chat.icon"
                         }
                       ]
@@ -2476,11 +2412,9 @@
                   "name": "cardSend",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2510,13 +2444,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "iuZIp",
                           "name": "sendIcon",
                           "width": 20,
                           "height": 20,
-                          "iconFontName": "arrow-up",
-                          "iconFontFamily": "lucide",
+                          "icon": "arrow-up",
+                          "library": "lucide",
                           "fill": "$chat.send.icon"
                         }
                       ]
@@ -2541,11 +2475,9 @@
                   "name": "cardSendHover",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2575,13 +2507,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "sxrhU",
                           "name": "sendIcon",
                           "width": 20,
                           "height": 20,
-                          "iconFontName": "arrow-up",
-                          "iconFontFamily": "lucide",
+                          "icon": "arrow-up",
+                          "library": "lucide",
                           "fill": "$chat.send.icon"
                         }
                       ]
@@ -2605,11 +2537,9 @@
                   "name": "cardSendPressed",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2639,13 +2569,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "J7OpZM",
                           "name": "sendIcon",
                           "width": 20,
                           "height": 20,
-                          "iconFontName": "arrow-up",
-                          "iconFontFamily": "lucide",
+                          "icon": "arrow-up",
+                          "library": "lucide",
                           "fill": "$chat.send.icon"
                         }
                       ]
@@ -2669,11 +2599,9 @@
                   "name": "cardSendDisabled",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2703,13 +2631,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "rbf6H",
                           "name": "sendIcon",
                           "width": 20,
                           "height": 20,
-                          "iconFontName": "arrow-up",
-                          "iconFontFamily": "lucide",
+                          "icon": "arrow-up",
+                          "library": "lucide",
                           "fill": "#FFFFFF"
                         }
                       ]
@@ -2742,11 +2670,9 @@
                   "name": "cardStop",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2776,13 +2702,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "RS52P",
                           "name": "stopIcon",
                           "width": 20,
                           "height": 20,
-                          "iconFontName": "square",
-                          "iconFontFamily": "lucide",
+                          "icon": "square",
+                          "library": "lucide",
                           "fill": "$chat.send.icon"
                         }
                       ]
@@ -2807,11 +2733,9 @@
                   "name": "cardStopHover",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2841,13 +2765,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "o8NWT4",
                           "name": "stopIcon",
                           "width": 20,
                           "height": 20,
-                          "iconFontName": "square",
-                          "iconFontFamily": "lucide",
+                          "icon": "square",
+                          "library": "lucide",
                           "fill": "$chat.send.icon"
                         }
                       ]
@@ -2871,11 +2795,9 @@
                   "name": "cardStopPressed",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2905,13 +2827,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "D6Dm1R",
                           "name": "stopIcon",
                           "width": 20,
                           "height": 20,
-                          "iconFontName": "square",
-                          "iconFontFamily": "lucide",
+                          "icon": "square",
+                          "library": "lucide",
                           "fill": "$chat.send.icon"
                         }
                       ]
@@ -2943,11 +2865,9 @@
                   "name": "cardVoice",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -2972,23 +2892,21 @@
                       "height": 34,
                       "fill": "#00000000",
                       "cornerRadius": 9999,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.chip.border"
-                      },
+                      "stroke": "$chat.chip.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "justifyContent": "center",
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "Br59E",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "mic",
-                          "iconFontFamily": "lucide",
+                          "icon": "mic",
+                          "library": "lucide",
                           "fill": "$chat.icon"
                         }
                       ]
@@ -3013,11 +2931,9 @@
                   "name": "cardVoiceHover",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -3042,23 +2958,21 @@
                       "height": 34,
                       "fill": "$chat.chip.hover.bg",
                       "cornerRadius": 9999,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.chip.border"
-                      },
+                      "stroke": "$chat.chip.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "justifyContent": "center",
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "N1JJQP",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "mic",
-                          "iconFontFamily": "lucide",
+                          "icon": "mic",
+                          "library": "lucide",
                           "fill": "$chat.icon"
                         }
                       ]
@@ -3082,11 +2996,9 @@
                   "name": "cardVoicePressed",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -3111,23 +3023,21 @@
                       "height": 34,
                       "fill": "$chat.chip.pressed.bg",
                       "cornerRadius": 9999,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.chip.border"
-                      },
+                      "stroke": "$chat.chip.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "justifyContent": "center",
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "pDMj3",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "mic",
-                          "iconFontFamily": "lucide",
+                          "icon": "mic",
+                          "library": "lucide",
                           "fill": "$chat.icon"
                         }
                       ]
@@ -3151,11 +3061,9 @@
                   "name": "cardVoiceActive",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -3185,13 +3093,13 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "w4APe5",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "mic",
-                          "iconFontFamily": "lucide",
+                          "icon": "mic",
+                          "library": "lucide",
                           "fill": "$chat.voice.active.icon"
                         }
                       ]
@@ -3215,11 +3123,9 @@
                   "name": "cardVoiceDisabled",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -3246,23 +3152,21 @@
                       "height": 34,
                       "fill": "#00000000",
                       "cornerRadius": 9999,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.chip.border"
-                      },
+                      "stroke": "$chat.chip.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "justifyContent": "center",
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "HyYGf",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "mic",
-                          "iconFontFamily": "lucide",
+                          "icon": "mic",
+                          "library": "lucide",
                           "fill": "$chat.icon"
                         }
                       ]
@@ -3295,11 +3199,9 @@
                   "name": "cardVoiceCancel",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -3324,23 +3226,21 @@
                       "height": 34,
                       "fill": "#00000000",
                       "cornerRadius": 9999,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.chip.border"
-                      },
+                      "stroke": "$chat.chip.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "justifyContent": "center",
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "E1C10",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "x",
-                          "iconFontFamily": "lucide",
+                          "icon": "x",
+                          "library": "lucide",
                           "fill": "$chat.voice.cancel.icon"
                         }
                       ]
@@ -3364,11 +3264,9 @@
                   "name": "cardVoiceCancelHover",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -3393,23 +3291,21 @@
                       "height": 34,
                       "fill": "$chat.chip.hover.bg",
                       "cornerRadius": 9999,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.chip.border"
-                      },
+                      "stroke": "$chat.chip.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "justifyContent": "center",
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "hxuoo",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "x",
-                          "iconFontFamily": "lucide",
+                          "icon": "x",
+                          "library": "lucide",
                           "fill": "$chat.voice.cancel.icon"
                         }
                       ]
@@ -3433,11 +3329,9 @@
                   "name": "cardVoiceCancelPressed",
                   "fill": "#FAFAF8",
                   "cornerRadius": 8,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#E8E6E0"
-                  },
+                  "stroke": "#E8E6E0",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": 20,
@@ -3462,23 +3356,21 @@
                       "height": 34,
                       "fill": "$chat.chip.pressed.bg",
                       "cornerRadius": 9999,
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.chip.border"
-                      },
+                      "stroke": "$chat.chip.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "justifyContent": "center",
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon_font",
+                          "type": "icon",
                           "id": "m2w1gj",
                           "name": "icon",
                           "width": 16,
                           "height": 16,
-                          "iconFontName": "x",
-                          "iconFontFamily": "lucide",
+                          "icon": "x",
+                          "library": "lucide",
                           "fill": "$chat.voice.cancel.icon"
                         }
                       ]
@@ -3531,11 +3423,9 @@
               "name": "cardChip",
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -3558,11 +3448,9 @@
                   "reusable": true,
                   "fill": "$chat.chip.bg",
                   "cornerRadius": "$chat.chip.radius",
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "$chat.chip.border"
-                  },
+                  "stroke": "$chat.chip.border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "padding": [
                     12,
                     16
@@ -3604,11 +3492,9 @@
               "name": "cardChipHover",
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -3631,11 +3517,9 @@
                   "reusable": true,
                   "fill": "$chat.chip.hover.bg",
                   "cornerRadius": "$chat.chip.radius",
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "$chat.chip.border"
-                  },
+                  "stroke": "$chat.chip.border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "padding": [
                     12,
                     16
@@ -3677,11 +3561,9 @@
               "name": "cardChipPressed",
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -3704,11 +3586,9 @@
                   "reusable": true,
                   "fill": "$chat.chip.pressed.bg",
                   "cornerRadius": "$chat.chip.radius",
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "$chat.chip.border"
-                  },
+                  "stroke": "$chat.chip.border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "padding": [
                     12,
                     16
@@ -3777,11 +3657,9 @@
               "name": "cardHeader",
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -3803,13 +3681,11 @@
                   "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
                   "reusable": true,
                   "width": 360,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": {
-                      "bottom": 0.5
-                    },
-                    "fill": "$chat.divider"
+                  "stroke": "$chat.divider",
+                  "strokeWidth": {
+                    "bottom": 0.5
                   },
+                  "strokeAlignment": "inner",
                   "padding": [
                     16,
                     20
@@ -3837,13 +3713,13 @@
                           "alignItems": "center",
                           "children": [
                             {
-                              "type": "icon_font",
+                              "type": "icon",
                               "id": "KnGEz",
                               "name": "icon",
                               "width": 16,
                               "height": 16,
-                              "iconFontName": "arrow-right-to-line",
-                              "iconFontFamily": "lucide",
+                              "icon": "arrow-right-to-line",
+                              "library": "lucide",
                               "fill": "$chat.icon"
                             }
                           ]
@@ -3931,11 +3807,9 @@
               "width": 400,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -3958,16 +3832,14 @@
                   "reusable": true,
                   "width": "fill_container",
                   "stroke": {
-                    "align": "inside",
-                    "thickness": {
-                      "top": 0.5
-                    },
-                    "fill": {
-                      "type": "color",
-                      "color": "#E8E6E0",
-                      "enabled": false
-                    }
+                    "type": "color",
+                    "color": "#E8E6E0",
+                    "enabled": false
                   },
+                  "strokeWidth": {
+                    "top": 0.5
+                  },
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": [
@@ -3984,11 +3856,9 @@
                       "width": "fill_container",
                       "fill": "$chat.input.bg",
                       "cornerRadius": "$chat.input.radius",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.input.border"
-                      },
+                      "stroke": "$chat.input.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "gap": 24,
                       "padding": 12,
@@ -4022,23 +3892,21 @@
                               "height": 34,
                               "fill": "#00000000",
                               "cornerRadius": 9999,
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "$chat.chip.border"
-                              },
+                              "stroke": "$chat.chip.border",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
                               "layout": "vertical",
                               "justifyContent": "center",
                               "alignItems": "center",
                               "children": [
                                 {
-                                  "type": "icon_font",
+                                  "type": "icon",
                                   "id": "ZnNk6",
                                   "name": "icon",
                                   "width": 16,
                                   "height": 16,
-                                  "iconFontName": "mic",
-                                  "iconFontFamily": "lucide",
+                                  "icon": "mic",
+                                  "library": "lucide",
                                   "fill": "$chat.icon"
                                 }
                               ]
@@ -4057,13 +3925,13 @@
                               "alignItems": "center",
                               "children": [
                                 {
-                                  "type": "icon_font",
+                                  "type": "icon",
                                   "id": "M0awp",
                                   "name": "sendIcon",
                                   "width": 20,
                                   "height": 20,
-                                  "iconFontName": "arrow-up",
-                                  "iconFontFamily": "lucide",
+                                  "icon": "arrow-up",
+                                  "library": "lucide",
                                   "fill": "#FFFFFF"
                                 }
                               ]
@@ -4095,11 +3963,9 @@
               "width": 400,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -4122,16 +3988,14 @@
                   "reusable": true,
                   "width": "fill_container",
                   "stroke": {
-                    "align": "inside",
-                    "thickness": {
-                      "top": 0.5
-                    },
-                    "fill": {
-                      "type": "color",
-                      "color": "#E8E6E0",
-                      "enabled": false
-                    }
+                    "type": "color",
+                    "color": "#E8E6E0",
+                    "enabled": false
                   },
+                  "strokeWidth": {
+                    "top": 0.5
+                  },
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": [
@@ -4148,11 +4012,9 @@
                       "width": "fill_container",
                       "fill": "$chat.input.bg",
                       "cornerRadius": "$chat.input.radius",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1.5,
-                        "fill": "$chat.input.border.active"
-                      },
+                      "stroke": "$chat.input.border.active",
+                      "strokeWidth": 1.5,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "gap": 24,
                       "padding": 12,
@@ -4186,23 +4048,21 @@
                               "height": 34,
                               "fill": "#00000000",
                               "cornerRadius": 9999,
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "$chat.chip.border"
-                              },
+                              "stroke": "$chat.chip.border",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
                               "layout": "vertical",
                               "justifyContent": "center",
                               "alignItems": "center",
                               "children": [
                                 {
-                                  "type": "icon_font",
+                                  "type": "icon",
                                   "id": "ouekp",
                                   "name": "icon",
                                   "width": 16,
                                   "height": 16,
-                                  "iconFontName": "mic",
-                                  "iconFontFamily": "lucide",
+                                  "icon": "mic",
+                                  "library": "lucide",
                                   "fill": "$chat.icon"
                                 }
                               ]
@@ -4221,13 +4081,13 @@
                               "alignItems": "center",
                               "children": [
                                 {
-                                  "type": "icon_font",
+                                  "type": "icon",
                                   "id": "PFcK5",
                                   "name": "sendIcon",
                                   "width": 20,
                                   "height": 20,
-                                  "iconFontName": "arrow-up",
-                                  "iconFontFamily": "lucide",
+                                  "icon": "arrow-up",
+                                  "library": "lucide",
                                   "fill": "$chat.send.icon"
                                 }
                               ]
@@ -4259,11 +4119,9 @@
               "width": 400,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -4286,16 +4144,14 @@
                   "reusable": true,
                   "width": "fill_container",
                   "stroke": {
-                    "align": "inside",
-                    "thickness": {
-                      "top": 0.5
-                    },
-                    "fill": {
-                      "type": "color",
-                      "color": "#E8E6E0",
-                      "enabled": false
-                    }
+                    "type": "color",
+                    "color": "#E8E6E0",
+                    "enabled": false
                   },
+                  "strokeWidth": {
+                    "top": 0.5
+                  },
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": [
@@ -4312,11 +4168,9 @@
                       "width": "fill_container",
                       "fill": "$chat.input.bg",
                       "cornerRadius": "$chat.input.radius",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1.5,
-                        "fill": "$chat.voice.active.bg"
-                      },
+                      "stroke": "$chat.voice.active.bg",
+                      "strokeWidth": 1.5,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "gap": 16,
                       "padding": 12,
@@ -4575,13 +4429,13 @@
                               "alignItems": "center",
                               "children": [
                                 {
-                                  "type": "icon_font",
+                                  "type": "icon",
                                   "id": "Z5inc",
                                   "name": "icon",
                                   "width": 16,
                                   "height": 16,
-                                  "iconFontName": "mic",
-                                  "iconFontFamily": "lucide",
+                                  "icon": "mic",
+                                  "library": "lucide",
                                   "fill": "$chat.voice.active.icon"
                                 }
                               ]
@@ -4600,13 +4454,13 @@
                               "alignItems": "center",
                               "children": [
                                 {
-                                  "type": "icon_font",
+                                  "type": "icon",
                                   "id": "ltShu",
                                   "name": "sendIcon",
                                   "width": 20,
                                   "height": 20,
-                                  "iconFontName": "arrow-up",
-                                  "iconFontFamily": "lucide",
+                                  "icon": "arrow-up",
+                                  "library": "lucide",
                                   "fill": "#FFFFFF"
                                 }
                               ]
@@ -4637,11 +4491,9 @@
               "width": 400,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -4664,16 +4516,14 @@
                   "reusable": true,
                   "width": "fill_container",
                   "stroke": {
-                    "align": "inside",
-                    "thickness": {
-                      "top": 0.5
-                    },
-                    "fill": {
-                      "type": "color",
-                      "color": "#E8E6E0",
-                      "enabled": false
-                    }
+                    "type": "color",
+                    "color": "#E8E6E0",
+                    "enabled": false
                   },
+                  "strokeWidth": {
+                    "top": 0.5
+                  },
+                  "strokeAlignment": "inner",
                   "layout": "vertical",
                   "gap": 12,
                   "padding": [
@@ -4690,11 +4540,9 @@
                       "width": "fill_container",
                       "fill": "$chat.input.bg",
                       "cornerRadius": "$chat.input.radius",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1.5,
-                        "fill": "$chat.input.border.active"
-                      },
+                      "stroke": "$chat.input.border.active",
+                      "strokeWidth": 1.5,
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "gap": 24,
                       "padding": 12,
@@ -4763,23 +4611,21 @@
                               "height": 34,
                               "fill": "#00000000",
                               "cornerRadius": 9999,
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "$chat.chip.border"
-                              },
+                              "stroke": "$chat.chip.border",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
                               "layout": "vertical",
                               "justifyContent": "center",
                               "alignItems": "center",
                               "children": [
                                 {
-                                  "type": "icon_font",
+                                  "type": "icon",
                                   "id": "aAl2W",
                                   "name": "icon",
                                   "width": 16,
                                   "height": 16,
-                                  "iconFontName": "mic",
-                                  "iconFontFamily": "lucide",
+                                  "icon": "mic",
+                                  "library": "lucide",
                                   "fill": "$chat.icon"
                                 }
                               ]
@@ -4798,13 +4644,13 @@
                               "alignItems": "center",
                               "children": [
                                 {
-                                  "type": "icon_font",
+                                  "type": "icon",
                                   "id": "Rfd5q",
                                   "name": "sendIcon",
                                   "width": 20,
                                   "height": 20,
-                                  "iconFontName": "arrow-up",
-                                  "iconFontFamily": "lucide",
+                                  "icon": "arrow-up",
+                                  "library": "lucide",
                                   "fill": "#FFFFFF"
                                 }
                               ]
@@ -4862,11 +4708,9 @@
               "width": 360,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -4903,11 +4747,9 @@
                       "width": "fill_container",
                       "fill": "$chat.bubble.user.bg",
                       "cornerRadius": "$chat.bubble.radius",
-                      "stroke": {
-                        "align": "inside",
-                        "thickness": 1,
-                        "fill": "$chat.bubble.user.border"
-                      },
+                      "stroke": "$chat.bubble.user.border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
                       "padding": [
                         12,
                         16
@@ -4950,11 +4792,9 @@
               "width": 360,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -5021,11 +4861,9 @@
               "width": 360,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -5185,11 +5023,9 @@
               "height": 988,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -5214,11 +5050,9 @@
                   "height": "fill_container",
                   "fill": "#F7F5F0",
                   "cornerRadius": 12,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#DCD8CB"
-                  },
+                  "stroke": "#DCD8CB",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
@@ -5279,10 +5113,6 @@
                           "type": "frame",
                           "id": "R8dER",
                           "name": "Chips",
-                          "stroke": {
-                            "align": "inside",
-                            "thickness": 1
-                          },
                           "layout": "vertical",
                           "gap": 16,
                           "alignItems": "center",
@@ -5294,11 +5124,9 @@
                               "context": "Prompt chip (default state). Pill-shaped suggestion button shown below the input field. Displays a pre-written financial question the user can tap to send. Font: 14px Geist, fill $chat.chip.bg, border $chat.chip.border, radius $chat.chip.radius. States: default, hover, pressed.",
                               "fill": "$chat.chip.bg",
                               "cornerRadius": "$chat.chip.radius",
-                              "stroke": {
-                                "align": "inside",
-                                "thickness": 1,
-                                "fill": "$chat.chip.border"
-                              },
+                              "stroke": "$chat.chip.border",
+                              "strokeWidth": 1,
+                              "strokeAlignment": "inner",
                               "padding": [
                                 12,
                                 16
@@ -5354,11 +5182,9 @@
               "height": 988,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -5383,11 +5209,9 @@
                   "height": "fill_container",
                   "fill": "#f7f5f0ff",
                   "cornerRadius": 12,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#DCD8CB"
-                  },
+                  "stroke": "#DCD8CB",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
@@ -5507,11 +5331,9 @@
               "height": 988,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -5558,11 +5380,9 @@
               "height": 988,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -5588,11 +5408,9 @@
                   "height": "fill_container",
                   "fill": "#f7f5f0ff",
                   "cornerRadius": 12,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#DCD8CB"
-                  },
+                  "stroke": "#DCD8CB",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
@@ -5704,11 +5522,9 @@
               "height": 988,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -5734,11 +5550,9 @@
                   "height": "fill_container",
                   "fill": "#f7f5f0ff",
                   "cornerRadius": 12,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#DCD8CB"
-                  },
+                  "stroke": "#DCD8CB",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
@@ -5913,11 +5727,9 @@
               "height": 988,
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -5943,11 +5755,9 @@
                   "height": "fill_container",
                   "fill": "#f7f5f0ff",
                   "cornerRadius": 12,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#DCD8CB"
-                  },
+                  "stroke": "#DCD8CB",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
@@ -6038,11 +5848,9 @@
               "name": "cardTranscribing",
               "fill": "#FAFAF8",
               "cornerRadius": 8,
-              "stroke": {
-                "align": "inside",
-                "thickness": 1,
-                "fill": "#E8E6E0"
-              },
+              "stroke": "#E8E6E0",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
               "layout": "vertical",
               "gap": 12,
               "padding": 20,
@@ -6068,11 +5876,9 @@
                   "height": 844,
                   "fill": "#f7f5f0ff",
                   "cornerRadius": 12,
-                  "stroke": {
-                    "align": "inside",
-                    "thickness": 1,
-                    "fill": "#DCD8CB"
-                  },
+                  "stroke": "#DCD8CB",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
                   "effect": {
                     "type": "shadow",
                     "shadowType": "outer",
