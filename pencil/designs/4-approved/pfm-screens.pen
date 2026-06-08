@@ -431891,11 +431891,10 @@
           "id": "YLKxY",
           "layoutPosition": "absolute",
           "x": 0,
-          "y": 159,
+          "y": 54,
           "name": "bottomSheet",
           "clip": true,
           "width": 390,
-          "height": 850,
           "fill": "$O:colors-background-surface",
           "cornerRadius": [
             "$O:radius-md",
@@ -431914,45 +431913,56 @@
               "id": "S6OuJV",
               "name": "sheetHeader",
               "width": "fill_container",
+              "gap": "$O:spacing-xs",
               "padding": [
                 0,
-                "$O:spacing-sm",
-                0,
-                "$O:spacing-lg"
+                "$O:spacing-sm"
               ],
-              "justifyContent": "space_between",
               "alignItems": "center",
               "children": [
+                {
+                  "type": "frame",
+                  "id": "b616ZO",
+                  "name": "merchantLogo",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "markcjn",
+                    "link": "https://unsplash.com/@markcjn",
+                    "author": "Mark Chan"
+                  },
+                  "clip": true,
+                  "width": 36,
+                  "height": 36,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1610602699047-18cb7f727a2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODA5NDE0MDF8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 8
+                },
                 {
                   "type": "text",
                   "id": "JH3hX",
                   "name": "sheetTitle",
                   "fill": "$O:colors-text-header",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
                   "content": "Apple Inc.",
-                  "fontFamily": "$O:typo-primary-xl-light-font-family",
-                  "fontSize": "$O:typo-primary-xl-light-font-size",
-                  "fontWeight": "300",
-                  "letterSpacing": "$O:typo-primary-xl-light-letter-spacing"
+                  "fontFamily": "$O:font-family-secondary",
+                  "fontSize": "$O:typo-primary-xl-semibold-font-size",
+                  "fontWeight": "600",
+                  "letterSpacing": "$O:typo-primary-xl-semibold-letter-spacing"
                 },
                 {
-                  "type": "frame",
-                  "id": "A7ztux",
-                  "name": "closeButton",
-                  "padding": 4,
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "l60BoA",
-                      "name": "xIcon",
-                      "width": 20,
-                      "height": 20,
-                      "icon": "x",
-                      "library": "lucide",
-                      "fill": "$O:colors-icons-meta"
-                    }
-                  ]
+                  "type": "icon",
+                  "id": "l60BoA",
+                  "name": "xIcon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "x",
+                  "library": "lucide",
+                  "fill": "$O:colors-icons-meta"
                 }
               ]
             },
@@ -431960,9 +431970,7 @@
               "type": "frame",
               "id": "A9ly8",
               "name": "sheetBody",
-              "rotation": -0.020647806790237883,
               "width": "fill_container",
-              "height": "fill_container",
               "layout": "vertical",
               "gap": 24,
               "padding": [
