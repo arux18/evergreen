@@ -11,3 +11,5 @@ When a `.pen` file has `hemlock-library.lib.pen` imported as a library, **always
 2. **Variables first.** Use Hemlock design tokens (colors, typography, spacing) for all styling. Do not hardcode values that Hemlock already defines.
 3. **No duplication.** Do not recreate components or variables that Hemlock already provides. Reference the library version.
 4. **Extend, don't replace.** If Hemlock doesn't cover a need, create a new local component or variable — but still use Hemlock tokens for its styling where possible.
+5. **Match visuals, not data.** When copying or replicating elements, match the rendered visual output. Do not carry over hidden or disabled properties (e.g. invisible strokes, disabled fills) from source nodes. If a property isn't visible in the design, it doesn't belong in the output.
+6. **Use component refs, not raw frames.** When a Hemlock component exists for a pattern (e.g. AccountRow for list items), always use `ref` instances of that component and override descendants — never copy raw hand-built frames that bypass the component.
