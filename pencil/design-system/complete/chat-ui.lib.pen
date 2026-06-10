@@ -4732,12 +4732,6 @@
                   "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
                   "reusable": true,
                   "width": "fill_container",
-                  "padding": [
-                    0,
-                    0,
-                    0,
-                    "$Q:spacing-lg"
-                  ],
                   "justifyContent": "end",
                   "children": [
                     {
@@ -5077,7 +5071,7 @@
                         "y2rtxi": {
                           "fill": {
                             "type": "color",
-                            "color": "$Q:colors-btnPrimaryInvertedBg",
+                            "color": "#000000",
                             "enabled": false
                           }
                         }
@@ -5352,12 +5346,7 @@
                   "id": "qav42",
                   "type": "ref",
                   "ref": "k8DxI",
-                  "name": "Chat / Panel / Close View",
-                  "descendants": {
-                    "d2T0ma/y2rtxi/Q:fEcTR": {
-                      "content": "Close View"
-                    }
-                  }
+                  "name": "Chat / Panel / Close View"
                 },
                 {
                   "type": "text",
@@ -5681,9 +5670,9 @@
                           "id": "cT1kT",
                           "name": "errorAlert",
                           "width": "fill_container",
-                          "fill": "#ffeaea",
+                          "fill": "#ebf6ff",
                           "cornerRadius": 8,
-                          "stroke": "#fed5d4",
+                          "stroke": "#aedcfe",
                           "strokeWidth": 1,
                           "strokeAlignment": "inner",
                           "gap": 12,
@@ -5703,7 +5692,7 @@
                                   "x": 0,
                                   "y": 0,
                                   "opacity": 0.3,
-                                  "fill": "#fdaba9",
+                                  "fill": "#aedcfe",
                                   "width": 40,
                                   "height": 40
                                 },
@@ -5712,10 +5701,15 @@
                                   "id": "cT1kT_iconPath",
                                   "x": 0,
                                   "y": 0,
-                                  "geometry": "M10.25 20c0-5.3848 4.3652-9.75 9.75-9.75 5.3848 0 9.75 4.3652 9.75 9.75 0 5.3848-4.3652 9.75-9.75 9.75-5.3848 0-9.75-4.3652-9.75-9.75z m9.75-3.75c0.4142 0 0.75 0.3358 0.75 0.75v3.75c0 0.4142-0.3358 0.75-0.75 0.75-0.4142 0-0.75-0.3358-0.75-0.75v-3.75c0-0.4142 0.3358-0.75 0.75-0.75z m0 8.25c0.4142 0 0.75-0.3358 0.75-0.75 0-0.4142-0.3358-0.75-0.75-0.75-0.4142 0-0.75 0.3358-0.75 0.75 0 0.4142 0.3358 0.75 0.75 0.75z",
+                                  "geometry": "M10.25 20c0-5.3848 4.3652-9.75 9.75-9.75 5.3848 0 9.75 4.3652 9.75 9.75 0 5.3848-4.3652 9.75-9.75 9.75-5.3848 0-9.75-4.3652-9.75-9.75z m8.7062-1.4416c1.1463-0.5731 2.4369 0.4622 2.1261 1.7055l-0.709 2.836 0.0415-0.0207c0.3704-0.1852 0.8209-0.0351 1.0062 0.3354 0.1852 0.3705 0.0351 0.821-0.3354 1.0062l-0.0415 0.0208c-1.1462 0.5731-2.4369-0.4622-2.126-1.7055l0.709-2.836-0.0415 0.0207c-0.3705 0.1853-0.821 0.0351-1.0063-0.3354-0.1852-0.3705-0.035-0.821 0.3355-1.0062l0.0414-0.0208z m1.0438-1.5584c0.4142 0 0.75-0.3358 0.75-0.75 0-0.4142-0.3358-0.75-0.75-0.75-0.4142 0-0.75 0.3358-0.75 0.75 0 0.4142 0.3358 0.75 0.75 0.75z",
                                   "fillRule": "evenodd",
-                                  "viewBox": [0, 0, 40, 40],
-                                  "fill": "#fb5653",
+                                  "viewBox": [
+                                    0,
+                                    0,
+                                    40,
+                                    40
+                                  ],
+                                  "fill": "#35a8fd",
                                   "width": 40,
                                   "height": 40
                                 }
@@ -5731,31 +5725,16 @@
                               "children": [
                                 {
                                   "type": "text",
-                                  "id": "cT1kT_title",
-                                  "name": "Title",
-                                  "content": "Something Went Wrong",
-                                  "fill": "#961a18",
-                                  "textGrowth": "fixed-width",
-                                  "width": "fill_container",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "600",
-                                  "letterSpacing": 0,
-                                  "lineHeight": 1.5
-                                },
-                                {
-                                  "type": "text",
                                   "id": "cT1kT_body",
                                   "name": "Body",
-                                  "content": "We ran into an issue and were unable to process your request. Please try again later if the issue persists.",
-                                  "fill": "#c82320",
+                                  "fill": "#1f6193",
                                   "textGrowth": "fixed-width",
                                   "width": "fill_container",
+                                  "content": "We're currently experiencing high volume. Please refresh the page to try again.",
+                                  "lineHeight": 1.5,
                                   "fontFamily": "Heebo",
                                   "fontSize": 14,
-                                  "fontWeight": "normal",
-                                  "letterSpacing": 0,
-                                  "lineHeight": 1.5
+                                  "fontWeight": "normal"
                                 }
                               ]
                             }
@@ -6239,8 +6218,5 @@
       "type": "color",
       "value": "#2D2926"
     }
-  },
-  "imports": {
-    "Q": "../in-progress/hemlock-library.lib.pen"
   }
 }
