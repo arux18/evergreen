@@ -1,6 +1,6 @@
 # OpenUI Component Library — Hemlock Design System
 
-When creating screens in Pencil, use the OpenUI component library below. All components should be styled with Hemlock design tokens (see `pencil/design-system/in-progress/hemlock-library.lib.pen` for variables and tokens).
+When creating screens in Pencil, use the OpenUI component library below. All components **MUST** be styled following the Hemlock design system exactly — reference `pencil/design-system/in-progress/hemlock-library.lib.pen` for variables, tokens, and component styling conventions. Do not deviate from Hemlock's visual language (pill-shaped buttons, Heebo font, token-based colors, etc.).
 
 ## Design Tokens (Hemlock)
 
@@ -24,8 +24,9 @@ When creating screens in Pencil, use the OpenUI component library below. All com
 | `$btn.primary.disabled.bg` | `#D4D1CA` | Disabled button fill |
 | Primary Font | Heebo | All text |
 | Secondary Font | Noto Serif | Decorative/editorial only when specified |
-| Border radius | 12px | Standard corners |
-| Chip radius | 24px | Pills/chips |
+| Button radius | 999px (`$radius.full`) | ALL buttons are pill-shaped |
+| Standard radius | 12px (`$radius`) | Cards, dropdowns, containers |
+| Chip radius | 24px (`$chip.radius`) | Follow-up chips/pills |
 
 ## Available OpenUI Components
 
