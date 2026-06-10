@@ -1,4 +1,961 @@
 {
   "version": "2.13",
-  "children": []
+  "children": [
+    {
+      "type": "frame",
+      "id": "ae5DY",
+      "x": 0,
+      "y": 0,
+      "name": "Callout / Info",
+      "reusable": true,
+      "width": 360,
+      "fill": "$callout.info.bg",
+      "cornerRadius": "$radius",
+      "stroke": "$callout.info.border",
+      "strokeWidth": 1,
+      "gap": 12,
+      "padding": 16,
+      "children": [
+        {
+          "type": "icon",
+          "id": "o2efC",
+          "name": "Icon",
+          "width": 18,
+          "height": 18,
+          "icon": "info",
+          "library": "lucide",
+          "fill": "$callout.info.icon"
+        },
+        {
+          "type": "frame",
+          "id": "jkqu3",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "U89o4",
+              "name": "Title",
+              "fill": "$text.primary",
+              "content": "Information",
+              "fontFamily": "Heebo",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "eZTQa",
+              "name": "Message",
+              "fill": "$text.secondary",
+              "content": "This is an informational callout with helpful context.",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "O0DJx",
+      "x": 380,
+      "y": 0,
+      "name": "Callout / Success",
+      "reusable": true,
+      "width": 360,
+      "fill": "$callout.success.bg",
+      "cornerRadius": "$radius",
+      "stroke": "$callout.success.border",
+      "strokeWidth": 1,
+      "gap": 12,
+      "padding": 16,
+      "children": [
+        {
+          "type": "icon",
+          "id": "ktQM8",
+          "name": "Icon",
+          "width": 18,
+          "height": 18,
+          "icon": "circle-check",
+          "library": "lucide",
+          "fill": "$callout.success.icon"
+        },
+        {
+          "type": "frame",
+          "id": "Aa9BX",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "zHDUT",
+              "name": "Title",
+              "fill": "$text.primary",
+              "content": "Success",
+              "fontFamily": "Heebo",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "Hvt6f",
+              "name": "Message",
+              "fill": "$text.secondary",
+              "content": "Action completed successfully.",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "g7Ue0",
+      "x": 0,
+      "y": 96,
+      "name": "Callout / Warning",
+      "reusable": true,
+      "width": 360,
+      "fill": "$callout.warning.bg",
+      "cornerRadius": "$radius",
+      "stroke": "$callout.warning.border",
+      "strokeWidth": 1,
+      "gap": 12,
+      "padding": 16,
+      "children": [
+        {
+          "type": "icon",
+          "id": "GzVQy",
+          "name": "Icon",
+          "width": 18,
+          "height": 18,
+          "icon": "triangle-alert",
+          "library": "lucide",
+          "fill": "$callout.warning.icon"
+        },
+        {
+          "type": "frame",
+          "id": "qJJml",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "phQeb",
+              "name": "Title",
+              "fill": "$text.primary",
+              "content": "Warning",
+              "fontFamily": "Heebo",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "jNRJ4",
+              "name": "Message",
+              "fill": "$text.secondary",
+              "content": "Please review before proceeding.",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "kwoXd",
+      "x": 380,
+      "y": 96,
+      "name": "Callout / Error",
+      "reusable": true,
+      "width": 360,
+      "fill": "$callout.error.bg",
+      "cornerRadius": "$radius",
+      "stroke": "$callout.error.border",
+      "strokeWidth": 1,
+      "gap": 12,
+      "padding": 16,
+      "children": [
+        {
+          "type": "icon",
+          "id": "xNgUM",
+          "name": "Icon",
+          "width": 18,
+          "height": 18,
+          "icon": "circle-x",
+          "library": "lucide",
+          "fill": "$callout.error.icon"
+        },
+        {
+          "type": "frame",
+          "id": "CFx75",
+          "name": "Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "t21WzP",
+              "name": "Title",
+              "fill": "$text.primary",
+              "content": "Error",
+              "fontFamily": "Heebo",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "C8QhV",
+              "name": "Message",
+              "fill": "$text.secondary",
+              "content": "Something went wrong. Please try again.",
+              "fontFamily": "Heebo",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "NIJUB",
+      "x": 0,
+      "y": 212,
+      "name": "TextCallout",
+      "reusable": true,
+      "width": 360,
+      "fill": "$hover.bg",
+      "cornerRadius": "$radius",
+      "gap": 12,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "z6OfQ",
+          "name": "Accent",
+          "width": 3,
+          "height": 24,
+          "fill": "$text.secondary",
+          "cornerRadius": 2
+        },
+        {
+          "type": "text",
+          "id": "qYeTU",
+          "name": "Text",
+          "fill": "$text.primary",
+          "content": "This is an inline text callout for emphasis.",
+          "fontFamily": "Heebo",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "LIMet",
+      "x": 0,
+      "y": 300,
+      "name": "MessageLoading",
+      "reusable": true,
+      "fill": "$hover.bg",
+      "cornerRadius": "$radius",
+      "gap": 6,
+      "padding": 16,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "ellipse",
+          "id": "tu5iD",
+          "name": "dot1",
+          "fill": "$text.disabled",
+          "width": 8,
+          "height": 8
+        },
+        {
+          "type": "ellipse",
+          "id": "j2RxyP",
+          "name": "dot2",
+          "fill": "$text.secondary",
+          "width": 8,
+          "height": 8
+        },
+        {
+          "type": "ellipse",
+          "id": "CiEqR",
+          "name": "dot3",
+          "fill": "$text.disabled",
+          "width": 8,
+          "height": 8
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "W5RXT",
+      "x": 0,
+      "y": 380,
+      "name": "Skeleton",
+      "reusable": true,
+      "clip": true,
+      "width": 320,
+      "height": 180,
+      "fill": "#EEEDEB",
+      "cornerRadius": "$radius",
+      "layout": "vertical",
+      "gap": 16,
+      "padding": 24,
+      "justifyContent": "center",
+      "children": [
+        {
+          "type": "rectangle",
+          "cornerRadius": 4,
+          "id": "xG2CD",
+          "name": "Line 1",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 90,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#D5D3D0",
+                "position": 0
+              },
+              {
+                "color": "#EEEDEB",
+                "position": 0.4
+              },
+              {
+                "color": "#D5D3D0",
+                "position": 0.8
+              }
+            ]
+          },
+          "width": "fill_container",
+          "height": 12
+        },
+        {
+          "type": "rectangle",
+          "cornerRadius": 4,
+          "id": "IfyG8",
+          "name": "Line 2",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 90,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#D5D3D0",
+                "position": 0
+              },
+              {
+                "color": "#EEEDEB",
+                "position": 0.4
+              },
+              {
+                "color": "#D5D3D0",
+                "position": 0.8
+              }
+            ]
+          },
+          "width": "fill_container",
+          "height": 12
+        },
+        {
+          "type": "rectangle",
+          "cornerRadius": 4,
+          "id": "rMz3N",
+          "name": "Line 3",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 90,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#D5D3D0",
+                "position": 0
+              },
+              {
+                "color": "#EEEDEB",
+                "position": 0.4
+              },
+              {
+                "color": "#D5D3D0",
+                "position": 0.8
+              }
+            ]
+          },
+          "width": 220,
+          "height": 12
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "xSYFt",
+      "x": 340,
+      "y": 380,
+      "name": "TableSkeleton",
+      "reusable": true,
+      "clip": true,
+      "width": 320,
+      "fill": "#FFFFFF",
+      "cornerRadius": "$radius",
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "th8Hy",
+          "name": "Header",
+          "width": "fill_container",
+          "fill": "#F7F5F0",
+          "gap": 16,
+          "padding": [
+            12,
+            24
+          ],
+          "children": [
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "SjylM",
+              "name": "Col 1",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 80,
+              "height": 12
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "dTjAI",
+              "name": "Col 2",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 100,
+              "height": 12
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "Iqd2H",
+              "name": "Col 3",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 60,
+              "height": 12
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oHUEM",
+          "name": "Row 1",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "gap": 16,
+          "padding": [
+            12,
+            24
+          ],
+          "children": [
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "P0z9a",
+              "name": "Cell 1",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 80,
+              "height": 12
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "rCILa",
+              "name": "Cell 2",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 100,
+              "height": 12
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "h8OuSo",
+              "name": "Cell 3",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 60,
+              "height": 12
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "qkhe2",
+          "name": "Row 2",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "gap": 16,
+          "padding": [
+            12,
+            24
+          ],
+          "children": [
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "YbkJy",
+              "name": "Cell 1",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 80,
+              "height": 12
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "rnHGv",
+              "name": "Cell 2",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 100,
+              "height": 12
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "oHhNE",
+              "name": "Cell 3",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 60,
+              "height": 12
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "M7TLY",
+          "name": "Row 3",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "gap": 16,
+          "padding": [
+            12,
+            24
+          ],
+          "children": [
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "V5442P",
+              "name": "Cell 1",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 80,
+              "height": 12
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "E30fwb",
+              "name": "Cell 2",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 100,
+              "height": 12
+            },
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "x63EU",
+              "name": "Cell 3",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#EEEDEB",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#D5D3D0",
+                    "position": 0.8
+                  }
+                ]
+              },
+              "width": 60,
+              "height": 12
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg": {
+      "type": "color",
+      "value": "#F7F5F0"
+    },
+    "border": {
+      "type": "color",
+      "value": "#DCD8CB"
+    },
+    "callout.error.bg": {
+      "type": "color",
+      "value": "#FDECEC"
+    },
+    "callout.error.border": {
+      "type": "color",
+      "value": "#F0B8B8"
+    },
+    "callout.error.icon": {
+      "type": "color",
+      "value": "#C43B3B"
+    },
+    "callout.info.bg": {
+      "type": "color",
+      "value": "#EDF4FC"
+    },
+    "callout.info.border": {
+      "type": "color",
+      "value": "#B8D4F0"
+    },
+    "callout.info.icon": {
+      "type": "color",
+      "value": "#3B82C4"
+    },
+    "callout.success.bg": {
+      "type": "color",
+      "value": "#EDF7ED"
+    },
+    "callout.success.border": {
+      "type": "color",
+      "value": "#B8E0B8"
+    },
+    "callout.success.icon": {
+      "type": "color",
+      "value": "#3D8C3D"
+    },
+    "callout.warning.bg": {
+      "type": "color",
+      "value": "#FDF6EC"
+    },
+    "callout.warning.border": {
+      "type": "color",
+      "value": "#F0D8A8"
+    },
+    "callout.warning.icon": {
+      "type": "color",
+      "value": "#B8860B"
+    },
+    "divider": {
+      "type": "color",
+      "value": "#E8E6E0"
+    },
+    "hover.bg": {
+      "type": "color",
+      "value": "#EDEAE3"
+    },
+    "icon": {
+      "type": "color",
+      "value": "#8A8680"
+    },
+    "radius": {
+      "type": "number",
+      "value": 12
+    },
+    "skeleton.bg": {
+      "type": "color",
+      "value": "#EDEAE3"
+    },
+    "skeleton.shimmer": {
+      "type": "color",
+      "value": "#F7F5F0"
+    },
+    "text.disabled": {
+      "type": "color",
+      "value": "#B5B1AB"
+    },
+    "text.primary": {
+      "type": "color",
+      "value": "#2D2926"
+    },
+    "text.secondary": {
+      "type": "color",
+      "value": "#5E5954"
+    }
+  }
 }
