@@ -22,7 +22,8 @@ When creating screens in Pencil, use the OpenUI component library below. All com
 | `$btn.primary.pressed` | `#2A2A2A` | Primary button pressed |
 | `$btn.primary.text` | `#FFFFFF` | Primary button label |
 | `$btn.primary.disabled.bg` | `#D4D1CA` | Disabled button fill |
-| Font | Inter | All text |
+| Primary Font | Heebo | All text |
+| Secondary Font | Noto Serif | Decorative/editorial only when specified |
 | Border radius | 12px | Standard corners |
 | Chip radius | 24px | Pills/chips |
 
