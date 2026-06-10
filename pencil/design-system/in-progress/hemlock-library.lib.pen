@@ -40996,10 +40996,10 @@
                           "width": "fill_container",
                           "gap": "$spacing-sm",
                           "padding": [
-                            "$spacing-lg",
                             "$spacing-md",
+                            "$spacing-xs",
                             0,
-                            "$spacing-lg"
+                            "$spacing-sm"
                           ],
                           "alignItems": "center",
                           "children": [
@@ -41047,7 +41047,7 @@
                           "height": "fill_container",
                           "layout": "vertical",
                           "gap": 16,
-                          "padding": "$spacing-lg",
+                          "padding": "$spacing-sm",
                           "children": [
                             {
                               "type": "frame",
@@ -41157,10 +41157,10 @@
                           "width": "fill_container",
                           "gap": "$spacing-sm",
                           "padding": [
-                            "$spacing-lg",
                             "$spacing-md",
+                            "$spacing-xs",
                             0,
-                            "$spacing-lg"
+                            "$spacing-sm"
                           ],
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -41210,7 +41210,7 @@
                           "height": "fill_container",
                           "layout": "vertical",
                           "gap": 16,
-                          "padding": "$spacing-lg",
+                          "padding": "$spacing-sm",
                           "children": [
                             {
                               "type": "rectangle",
@@ -41332,10 +41332,10 @@
                           "width": "fill_container",
                           "gap": "$spacing-sm",
                           "padding": [
-                            "$spacing-lg",
                             "$spacing-md",
+                            "$spacing-xs",
                             0,
-                            "$spacing-lg"
+                            "$spacing-sm"
                           ],
                           "justifyContent": "space_between",
                           "alignItems": "center",
@@ -41384,12 +41384,7 @@
                           "height": "fill_container",
                           "layout": "vertical",
                           "gap": 16,
-                          "padding": [
-                            "$spacing-lg",
-                            "$spacing-lg",
-                            0,
-                            "$spacing-lg"
-                          ],
+                          "padding": "$spacing-sm",
                           "children": [
                             {
                               "type": "frame",
@@ -41414,7 +41409,7 @@
                           "width": "fill_container",
                           "layout": "vertical",
                           "gap": 12,
-                          "padding": "$spacing-lg",
+                          "padding": "$spacing-sm",
                           "children": [
                             {
                               "id": "Uors9",
@@ -41543,7 +41538,7 @@
                   "fill": "$colors-text-body",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "Composition\n\nModalDrawer (viewport frame, clip: true)\n  └ Backdrop — absolute-positioned rectangle, covers full viewport\n  └ Panel — centered surface, vertical layout\n      ├ Header — horizontal frame, center-aligned\n      │   ├ headerSlot — replaceable slot placeholder\n      │   └ Close Button — lucide x icon, 20 × 20\n      ├ bodySlot — replaceable content area\n      └ footerSlot — optional actions area (disabled by default)\n\nToken usage\n• Backdrop: $color-gray-900 at 50% opacity\n• Surface: $colors-background-surface\n• Corner radius: $radius-sm\n• Shadow: $shadow-overlay-y, $shadow-overlay-blur, $shadow-overlay-color\n\nDesktop layout\n• Root: 960 × 640, padding [$spacing-xl, 0], justifyContent center, alignItems center\n• Panel: 560 × 480\n• Header: padding [$spacing-xl, $spacing-lg, 0, $spacing-xl], gap $spacing-sm\n• bodySlot: padding $spacing-xl, fill_container height\n\nMobile layout\n• Root: 375 × 812, padding [$spacing-xl, 0, 0, 0], justifyContent end\n• Panel: 375 × 480, cornerRadius [$radius-sm, $radius-sm, 0, 0]\n• Header: padding [$spacing-lg, $spacing-md, 0, $spacing-lg], gap $spacing-sm\n• bodySlot: padding $spacing-lg, gap 16\n\nSlot convention\n• headerSlot — replace with DetailHeader (logo/avatar + title)\n• bodySlot — replace with DetailSection, AccountRowGroup, TransactionTable, etc.\n• footerSlot — enable and populate with Button instances when actions needed\n\nResize behavior\n• Desktop: panel centered via flex. Backdrop fills via fill_container + absolute position.\n• Mobile: panel anchored to bottom via justifyContent: end. Top corners rounded, bottom flush.\n• bodySlot: fills remaining panel height. Scroll variant clips overflow.",
+                  "content": "Composition\n\nModalDrawer (viewport frame, clip: true)\n  └ Backdrop — absolute-positioned rectangle, covers full viewport\n  └ Panel — centered surface, vertical layout\n      ├ Header — horizontal frame, center-aligned\n      │   ├ headerSlot — replaceable slot placeholder\n      │   └ Close Button — lucide x icon, 20 × 20\n      ├ bodySlot — replaceable content area\n      └ footerSlot — optional actions area (disabled by default)\n\nToken usage\n• Backdrop: $color-gray-900 at 50% opacity\n• Surface: $colors-background-surface\n• Corner radius: $radius-sm\n• Shadow: $shadow-overlay-y, $shadow-overlay-blur, $shadow-overlay-color\n\nDesktop layout\n• Root: 960 × 640, padding [$spacing-xl, 0], justifyContent center, alignItems center\n• Panel: 560 × 480\n• Header: padding [$spacing-xl, $spacing-lg, 0, $spacing-xl], gap $spacing-sm\n• bodySlot: padding $spacing-xl, fill_container height\n\nMobile layout\n• Root: 375 × 812, padding [$spacing-xl, 0, 0, 0], justifyContent end\n• Panel: 375 × 480, cornerRadius [$radius-sm, $radius-sm, 0, 0]\n• Header: padding [$spacing-md, $spacing-xs, 0, $spacing-sm], gap $spacing-sm\n• bodySlot: padding $spacing-sm, gap 16\n\nSlot convention\n• headerSlot — replace with DetailHeader (logo/avatar + title)\n• bodySlot — replace with DetailSection, AccountRowGroup, TransactionTable, etc.\n• footerSlot — enable and populate with Button instances when actions needed\n\nResize behavior\n• Desktop: panel centered via flex. Backdrop fills via fill_container + absolute position.\n• Mobile: panel anchored to bottom via justifyContent: end. Top corners rounded, bottom flush.\n• bodySlot: fills remaining panel height. Scroll variant clips overflow.",
                   "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
@@ -57323,7 +57318,12 @@
                               "name": "row3",
                               "width": "fill_container",
                               "height": "fit_content",
-                              "enabled": true
+                              "enabled": true,
+                              "stroke": {
+                                "type": "color",
+                                "color": "$colors-borders-light",
+                                "enabled": false
+                              }
                             },
                             {
                               "id": "G4HSVO",
@@ -57360,6 +57360,27 @@
                               "width": "fill_container(0)",
                               "height": "fit_content",
                               "enabled": false
+                            },
+                            {
+                              "id": "vXTx9",
+                              "type": "ref",
+                              "ref": "sA6O0",
+                              "name": "actionButton",
+                              "enabled": false,
+                              "width": "fill_container(0)",
+                              "height": "fit_content",
+                              "padding": [
+                                "$spacing-xs",
+                                "$spacing-sm"
+                              ],
+                              "descendants": {
+                                "PwKh4": {
+                                  "content": "Action"
+                                },
+                                "IgL1c": {
+                                  "icon": "arrow-right"
+                                }
+                              }
                             }
                           ]
                         }
@@ -57403,13 +57424,112 @@
                       "fill": "$colors-text-body",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
-                      "content": "Purpose\nSection header bar + DetailRow list for grouped key-value data. 7 row slots (rows 4-7 disabled by default). Override sectionTitle and row Label/Value via descendants. Enable extra rows with enabled:true.",
+                      "content": "Purpose\nA section container for grouped key-value data inside detail drawers. Combines a labeled header bar, a configurable list of DetailRow slots, and an optional action button. Used to organize related fields (account details, balances, transaction info, classification) into visually distinct groups.\n\nWhen to use\n• Grouping related key-value fields inside a detail drawer or panel\n• Account details, balances, transaction metadata, holding info\n• Any section that needs a titled header with rows of Label / Value pairs\n• Sections that need a contextual CTA (e.g. \"View All Activity\")\n\nWhen NOT to use\n• Standalone card content — use Card + CardHeader instead\n• Lists of navigable items — use ListRow or AccountRow\n• Free-form body text — use SectionBlock or TextContent\n• Tables with sortable columns — use TransactionTable or HoldingsTable\n\nComposition\n\nDetailSection (vertical frame, width: fill_container)\n  └ sectionHeader — header bar with background\n      └ sectionTitle — text label\n  └ row1 — DetailRow ref (enabled)\n  └ row2 — DetailRow ref (enabled)\n  └ row3 — DetailRow ref (enabled)\n  └ row4 — DetailRow ref (disabled by default)\n  └ row5 — DetailRow ref (disabled by default)\n  └ row6 — DetailRow ref (disabled by default)\n  └ row7 — DetailRow ref (disabled by default)\n  └ actionButton — Button/text/icon-right ref (disabled by default)\n\nToken usage\n• Header background: $color-taupe-100\n• Header border: $colors-borders-light (bottom 1px, inner)\n• Header corner radius: $radius-2xs (top-left, top-right)\n• Header padding: [$spacing-xs, $spacing-sm]\n• Section title: $typo-primary-sm-semibold, $colors-text-header\n• Action button: $color-blue-600, $typo-primary-base, icon arrow-right\n• Action button padding: [$spacing-xs, $spacing-sm]\n\nCustomization\n• Override sectionTitle content via descendants: {mD16B: {content: \"...\"}}\n• Override row Label/Value: {\"rowId/o8uVfY\": {content: \"...\"}, \"rowId/gTlHs\": {content: \"...\"}}\n• Enable extra rows: {G4HSVO: {enabled: true}} through {P8knJ9: {enabled: true}}\n• Remove last row border: override stroke enabled:false on the bottom row\n• Replace row type: use descendants with type to swap a base DetailRow for a transaction variant\n• Enable action button: {vXTx9: {enabled: true}} and override label: {\"vXTx9/PwKh4\": {content: \"View All\"}}",
                       "lineHeight": 1.4286,
                       "fontFamily": "$typo-primary-sm-regular-font-family",
                       "fontSize": "$typo-primary-sm-regular-font-size",
                       "fontWeight": "normal"
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "QYOXn",
+              "name": "DetailSection Demo Examples Title",
+              "fill": "$colors-text-header",
+              "content": "DetailSection — Demo Examples",
+              "lineHeight": 1.3333,
+              "fontFamily": "$typo-primary-xl-bold-font-family",
+              "fontSize": "$typo-primary-xl-bold-font-size",
+              "fontWeight": "700",
+              "letterSpacing": "$typo-primary-xl-bold-letter-spacing"
+            },
+            {
+              "type": "frame",
+              "id": "TMg1Z",
+              "name": "DetailSection Demos Row",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "id": "d0BiZ9",
+                  "type": "ref",
+                  "ref": "pKk6B",
+                  "name": "Demo: Recent Activity",
+                  "width": 500,
+                  "descendants": {
+                    "mD16B": {
+                      "content": "Recent Activity"
+                    },
+                    "z6DUjd": {
+                      "id": "Df6ie",
+                      "type": "ref",
+                      "ref": "YRTe5",
+                      "name": "row1",
+                      "width": "fill_container",
+                      "height": "fit_content",
+                      "descendants": {
+                        "gIwMp": {
+                          "content": "−$151.55"
+                        }
+                      }
+                    },
+                    "r2Dro": {
+                      "id": "XCOi8",
+                      "type": "ref",
+                      "ref": "YRTe5",
+                      "name": "row2",
+                      "width": "fill_container",
+                      "height": "fit_content",
+                      "descendants": {
+                        "s7Bd86": {
+                          "content": "May 8"
+                        },
+                        "w2KnH": {
+                          "content": "Whole Foods Market"
+                        },
+                        "gIwMp": {
+                          "content": "−$88.75"
+                        }
+                      }
+                    },
+                    "i79sZE": {
+                      "id": "ABNdq",
+                      "type": "ref",
+                      "ref": "PaBt8",
+                      "name": "row3",
+                      "width": "fill_container",
+                      "height": "fit_content",
+                      "stroke": {
+                        "type": "color",
+                        "color": "$colors-borders-light",
+                        "enabled": false
+                      },
+                      "descendants": {
+                        "r87MHv": {
+                          "content": "May 4"
+                        },
+                        "vt00K": {
+                          "content": "Direct deposit ACME"
+                        },
+                        "lfPdy": {
+                          "content": "+$4,250.00"
+                        }
+                      }
+                    },
+                    "vXTx9": {
+                      "enabled": false
+                    },
+                    "vXTx9/PwKh4": {
+                      "content": "View All Activity"
+                    },
+                    "vXTx9/IgL1c": {
+                      "icon": "arrow-right"
+                    }
+                  }
                 }
               ]
             }
@@ -105626,7 +105746,7 @@
                               "flipX": false,
                               "flipY": false,
                               "width": "fill_container(960)",
-                              "height": "fill_container(746)",
+                              "height": "fill_container(807)",
                               "x": 0,
                               "y": 0
                             },
@@ -105723,6 +105843,58 @@
                                           }
                                         }
                                       }
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "O6Suzv",
+                                      "name": "CTA container",
+                                      "clip": true,
+                                      "width": "fill_container",
+                                      "fill": "#FFFFFF",
+                                      "layout": "vertical",
+                                      "padding": [
+                                        0,
+                                        "$spacing-sm"
+                                      ],
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "ZIy3A",
+                                          "name": "component/Button/text/icon-right",
+                                          "gap": "$spacing-2xs",
+                                          "padding": [
+                                            "$spacing-2xs",
+                                            0
+                                          ],
+                                          "justifyContent": "center",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "v7pca",
+                                              "name": "Label",
+                                              "fill": "$color-blue-600",
+                                              "content": "Button",
+                                              "lineHeight": 1.5,
+                                              "textAlign": "center",
+                                              "fontFamily": "$typo-primary-base-font-family",
+                                              "fontSize": "$typo-primary-sm-font-size",
+                                              "fontWeight": "500",
+                                              "letterSpacing": "$typo-primary-base-letter-spacing"
+                                            },
+                                            {
+                                              "type": "icon",
+                                              "id": "jHwHf",
+                                              "name": "Icon",
+                                              "width": 16,
+                                              "height": 16,
+                                              "icon": "chevron-right",
+                                              "library": "lucide",
+                                              "fill": "$color-blue-600"
+                                            }
+                                          ]
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
@@ -105852,6 +106024,58 @@
                                           }
                                         }
                                       }
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "cW8TY",
+                                      "name": "CTA container",
+                                      "clip": true,
+                                      "width": "fill_container",
+                                      "fill": "#FFFFFF",
+                                      "layout": "vertical",
+                                      "padding": [
+                                        0,
+                                        "$spacing-sm"
+                                      ],
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "L72cE",
+                                          "name": "component/Button/text/icon-right",
+                                          "gap": "$spacing-2xs",
+                                          "padding": [
+                                            "$spacing-2xs",
+                                            0
+                                          ],
+                                          "justifyContent": "center",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "mFusN",
+                                              "name": "Label",
+                                              "fill": "$color-blue-600",
+                                              "content": "Button",
+                                              "lineHeight": 1.5,
+                                              "textAlign": "center",
+                                              "fontFamily": "$typo-primary-base-font-family",
+                                              "fontSize": "$typo-primary-sm-font-size",
+                                              "fontWeight": "500",
+                                              "letterSpacing": "$typo-primary-base-letter-spacing"
+                                            },
+                                            {
+                                              "type": "icon",
+                                              "id": "pJLDa",
+                                              "name": "Icon",
+                                              "width": 16,
+                                              "height": 16,
+                                              "icon": "chevron-right",
+                                              "library": "lucide",
+                                              "fill": "$color-blue-600"
+                                            }
+                                          ]
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
@@ -106232,6 +106456,58 @@
                                           "content": "May 13, 2026, 9:12 AM"
                                         }
                                       }
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "z9Zrx",
+                                      "name": "CTA container",
+                                      "clip": true,
+                                      "width": "fill_container",
+                                      "fill": "#FFFFFF",
+                                      "layout": "vertical",
+                                      "padding": [
+                                        0,
+                                        "$spacing-sm"
+                                      ],
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "M7dPwq",
+                                          "name": "Button",
+                                          "gap": "$spacing-2xs",
+                                          "padding": [
+                                            "$spacing-2xs",
+                                            0
+                                          ],
+                                          "justifyContent": "center",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "RTRQz",
+                                              "name": "Label",
+                                              "fill": "$color-blue-600",
+                                              "content": "View All Activity",
+                                              "lineHeight": 1.5,
+                                              "textAlign": "center",
+                                              "fontFamily": "$typo-primary-base-font-family",
+                                              "fontSize": "$typo-primary-sm-font-size",
+                                              "fontWeight": "500",
+                                              "letterSpacing": "$typo-primary-base-letter-spacing"
+                                            },
+                                            {
+                                              "type": "icon",
+                                              "id": "Ixxo9",
+                                              "name": "Icon",
+                                              "width": 16,
+                                              "height": 16,
+                                              "icon": "chevron-right",
+                                              "library": "lucide",
+                                              "fill": "$color-blue-600"
+                                            }
+                                          ]
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
@@ -106316,6 +106592,10 @@
                                       "width": "fill_container",
                                       "layout": "vertical",
                                       "gap": "$spacing-2xs",
+                                      "padding": [
+                                        "$spacing-xs",
+                                        0
+                                      ],
                                       "children": [
                                         {
                                           "type": "text",
@@ -106486,6 +106766,58 @@
                                           "content": "May 13, 2026, 9:12 AM"
                                         }
                                       }
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "azIIf",
+                                      "name": "CTA container",
+                                      "clip": true,
+                                      "width": "fill_container",
+                                      "fill": "#FFFFFF",
+                                      "layout": "vertical",
+                                      "padding": [
+                                        0,
+                                        "$spacing-sm"
+                                      ],
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "tfHmt",
+                                          "name": "Button",
+                                          "gap": "$spacing-2xs",
+                                          "padding": [
+                                            "$spacing-2xs",
+                                            0
+                                          ],
+                                          "justifyContent": "center",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "cSXK1",
+                                              "name": "Label",
+                                              "fill": "$color-blue-600",
+                                              "content": "View All Activity",
+                                              "lineHeight": 1.5,
+                                              "textAlign": "center",
+                                              "fontFamily": "$typo-primary-base-font-family",
+                                              "fontSize": "$typo-primary-sm-font-size",
+                                              "fontWeight": "500",
+                                              "letterSpacing": "$typo-primary-base-letter-spacing"
+                                            },
+                                            {
+                                              "type": "icon",
+                                              "id": "BDcGz",
+                                              "name": "Icon",
+                                              "width": 16,
+                                              "height": 16,
+                                              "icon": "chevron-right",
+                                              "library": "lucide",
+                                              "fill": "$color-blue-600"
+                                            }
+                                          ]
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
@@ -106530,7 +106862,7 @@
                           "descendants": {
                             "yfaBJ": {
                               "width": "fill_container(960)",
-                              "height": "fill_container(995)",
+                              "height": "fill_container(971)",
                               "flipX": false,
                               "flipY": false,
                               "x": 0,
@@ -106806,6 +107138,10 @@
                                       "width": "fill_container",
                                       "layout": "vertical",
                                       "gap": "$spacing-2xs",
+                                      "padding": [
+                                        "$spacing-xs",
+                                        0
+                                      ],
                                       "children": [
                                         {
                                           "type": "text",
@@ -106993,7 +107329,7 @@
                               "flipX": false,
                               "flipY": false,
                               "width": "fill_container(960)",
-                              "height": "fill_container(1157)",
+                              "height": "fill_container(1133)",
                               "x": 0,
                               "y": 0
                             },
@@ -107297,6 +107633,10 @@
                                       "width": "fill_container",
                                       "layout": "vertical",
                                       "gap": "$spacing-2xs",
+                                      "padding": [
+                                        "$spacing-xs",
+                                        0
+                                      ],
                                       "children": [
                                         {
                                           "type": "text",
