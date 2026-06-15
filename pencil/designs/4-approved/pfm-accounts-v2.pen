@@ -160933,16 +160933,15 @@
           ]
         },
         {
-          "type": "rectangle",
-          "id": "X7n0o",
+          "type": "frame",
+          "id": "s99ocn",
           "layoutPosition": "absolute",
           "x": 0,
           "y": 0,
-          "name": "backdrop",
-          "opacity": 0.6,
-          "fill": "#000000",
+          "name": "screenOverlay",
           "width": 390,
-          "height": 1307
+          "height": 1307,
+          "fill": "#00000066"
         },
         {
           "type": "frame",
@@ -162637,16 +162636,15 @@
           ]
         },
         {
-          "type": "rectangle",
-          "id": "RgvHR",
+          "type": "frame",
+          "id": "z8onyI",
           "layoutPosition": "absolute",
           "x": 0,
           "y": 0,
-          "name": "backdrop",
-          "opacity": 0.6,
-          "fill": "#000000",
+          "name": "screenOverlay",
           "width": 390,
-          "height": 844
+          "height": 844,
+          "fill": "#00000066"
         },
         {
           "type": "frame",
@@ -163698,10 +163696,9 @@
         {
           "type": "frame",
           "id": "f6sWV",
-          "x": 280,
+          "x": 0,
           "y": 0,
           "name": "contentBehind",
-          "opacity": 0.4,
           "clip": true,
           "width": 390,
           "height": 844,
@@ -163710,29 +163707,701 @@
           "children": [
             {
               "type": "frame",
-              "id": "smcIi",
-              "name": "fakeStatus",
+              "id": "IKwhH",
+              "name": "statusBar",
               "width": "fill_container",
               "height": 54,
-              "fill": "#FFFFFF"
+              "padding": [
+                16,
+                20
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "xwz0q",
+                  "name": "time",
+                  "fill": "#0E0E0E",
+                  "content": "9:41",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "N4mkQ",
+                  "name": "statusIcons",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "X8BtpF",
+                      "name": "signal",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "signal",
+                      "library": "lucide",
+                      "fill": "#0E0E0E"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "mCh30",
+                      "name": "wifi",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "wifi",
+                      "library": "lucide",
+                      "fill": "#0E0E0E"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "H5mY13",
+                      "name": "battery",
+                      "width": 22,
+                      "height": 16,
+                      "icon": "battery-full",
+                      "library": "lucide",
+                      "fill": "#0E0E0E"
+                    }
+                  ]
+                }
+              ]
             },
             {
               "type": "frame",
-              "id": "Spuvc",
-              "name": "fakeHeader",
+              "id": "SoRgj",
+              "name": "mobileHeader",
               "width": "fill_container",
               "height": 48,
-              "fill": "#FFFFFF"
+              "gap": 12,
+              "padding": [
+                0,
+                16
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "aftuY",
+                  "name": "leftGroup",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "zZBmG",
+                      "name": "menuIcon",
+                      "width": 22,
+                      "height": 22,
+                      "icon": "panel-left",
+                      "library": "lucide",
+                      "fill": "$O:color-gray-700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "RAUxD",
+                      "name": "pageTitle",
+                      "fill": "#2D2926",
+                      "content": "Accounts",
+                      "fontFamily": "Noto Serif",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "krwrV",
+                  "name": "chatIcon",
+                  "width": 22,
+                  "height": 22,
+                  "icon": "message-circle",
+                  "library": "lucide",
+                  "fill": "$O:color-gray-700"
+                }
+              ]
             },
             {
               "type": "frame",
-              "id": "cLYPR",
-              "name": "fakeContent",
+              "id": "k1wd6",
+              "name": "contentArea",
               "width": "fill_container",
-              "height": "fill_container",
-              "fill": "$O:color-gray-50"
+              "layout": "vertical",
+              "gap": "$O:spacing-xl",
+              "padding": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "OzWkz",
+                  "name": "headline",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$O:spacing-3xs",
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Eyq5H",
+                      "name": "Frame 3",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "a2j3p7",
+                          "fill": "$O:color-gray-500",
+                          "content": "NET WORTH",
+                          "fontFamily": "$O:typo-primary-sm-semibold-font-family",
+                          "fontSize": "$O:typo-primary-sm-font-size",
+                          "fontWeight": "600",
+                          "letterSpacing": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "zbw4o",
+                          "fill": "$O:color-gray-900",
+                          "content": "$1,169,200",
+                          "fontFamily": "$O:typo-primary-3xl-semibold-font-family",
+                          "fontSize": "$O:typo-primary-3xl-semibold-font-size",
+                          "fontWeight": "600",
+                          "letterSpacing": -0.5
+                        }
+                      ]
+                    },
+                    {
+                      "type": "group",
+                      "id": "K68bxs",
+                      "layout": "horizontal",
+                      "gap": "$O:spacing-sm",
+                      "children": [
+                        {
+                          "id": "MmAMG",
+                          "type": "ref",
+                          "ref": "O:URoI8",
+                          "name": "addBankBtn",
+                          "justifyContent": "start",
+                          "padding": [
+                            "$O:spacing-2xs",
+                            "$O:spacing-xs"
+                          ],
+                          "rotation": -360,
+                          "x": 0,
+                          "y": 3.159588741800171e-14,
+                          "width": "fit_content",
+                          "descendants": {
+                            "O:HgzWB": {
+                              "content": "Add Account",
+                              "fontSize": "$O:typo-primary-sm-font-size"
+                            },
+                            "O:Rfqnh": {
+                              "height": 16,
+                              "width": 16,
+                              "icon": "plus"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IR9Ni",
+                  "name": "sectionBanking",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$O:spacing-xs",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nDSru",
+                      "name": "bankingLabel",
+                      "fill": "$O:color-gray-500",
+                      "content": "BANKING",
+                      "fontFamily": "$O:typo-primary-sm-semibold-font-family",
+                      "fontSize": "$O:typo-primary-sm-font-size",
+                      "fontWeight": "600",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ib8pe",
+                      "name": "bankList",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$O:spacing-xs",
+                      "children": [
+                        {
+                          "id": "okDKo",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctWellsFargo",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH/O:hB7mR/O:m4IDL": {
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/wellsfargo-logo.png",
+                                "mode": "fill"
+                              }
+                            },
+                            "O:cFWeZ": {
+                              "content": "Wells Fargo Checking (x1234)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "Checking"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 9:12 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "$12,400"
+                            }
+                          }
+                        },
+                        {
+                          "id": "eAKDH",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctSavings",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH/O:hB7mR/O:m4IDL": {
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/ally-logo.png",
+                                "mode": "fill"
+                              }
+                            },
+                            "O:cFWeZ": {
+                              "content": "US High-Yield Savings (x5678)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "Savings"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 9:14 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "$32,000"
+                            }
+                          }
+                        },
+                        {
+                          "id": "vQpA0",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctCD",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH/O:hB7mR/O:m4IDL": {
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/marcus-logo.png",
+                                "mode": "fill"
+                              }
+                            },
+                            "O:cFWeZ": {
+                              "content": "Marcus CD (x9012)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "CD"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 8:55 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "$2,800"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "KAEl3",
+                  "name": "sectionCreditCards",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$O:spacing-xs",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HgdRW",
+                      "name": "creditLabel",
+                      "fill": "$O:color-gray-500",
+                      "content": "CREDIT CARDS",
+                      "fontFamily": "$O:typo-primary-sm-semibold-font-family",
+                      "fontSize": "$O:typo-primary-sm-font-size",
+                      "fontWeight": "600",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "pGp1N",
+                      "name": "clList",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$O:spacing-xs",
+                      "children": [
+                        {
+                          "id": "D92Clo",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctChase",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH": {
+                              "fill": "#1A3F6B"
+                            },
+                            "O:apkdH/O:hB7mR": {
+                              "enabled": false
+                            },
+                            "O:cFWeZ": {
+                              "content": "Chase Sapphire Preferred (x7856)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "Credit Card"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 9:18 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "-$3,200"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rPZBl",
+                  "name": "sectionInvestments",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$O:spacing-xs",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "iIOz5",
+                      "name": "investmentsLabel",
+                      "fill": "$O:color-gray-500",
+                      "content": "INVESTMENTS",
+                      "fontFamily": "$O:typo-primary-sm-semibold-font-family",
+                      "fontSize": "$O:typo-primary-sm-font-size",
+                      "fontWeight": "600",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MWNPG",
+                      "name": "invList",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$O:spacing-xs",
+                      "children": [
+                        {
+                          "id": "g7L2E",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctSchwab",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH": {
+                              "fill": "#4A154B"
+                            },
+                            "O:apkdH/O:hB7mR": {
+                              "enabled": false
+                            },
+                            "O:cFWeZ": {
+                              "content": "Schwab Brokerage (x4567)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "Brokerage"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 9:12 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "$485,000"
+                            }
+                          }
+                        },
+                        {
+                          "id": "G4VDK6",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctFidelity",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH": {
+                              "fill": "#1B7F37"
+                            },
+                            "O:apkdH/O:hB7mR": {
+                              "enabled": false
+                            },
+                            "O:cFWeZ": {
+                              "content": "Fidelity 401(k) (x7890)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "Retirement"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 8:30 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "$386,000"
+                            }
+                          }
+                        },
+                        {
+                          "id": "YTlal",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctVanguard",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH": {
+                              "fill": "#E11D48"
+                            },
+                            "O:apkdH/O:hB7mR": {
+                              "enabled": false
+                            },
+                            "O:cFWeZ": {
+                              "content": "Vanguard Roth IRA (x2345)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "Retirement"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 8:17 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "$198,000"
+                            }
+                          }
+                        },
+                        {
+                          "id": "OEP8g",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctCoinbase",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH": {
+                              "fill": "#2563EB"
+                            },
+                            "O:apkdH/O:hB7mR": {
+                              "enabled": false
+                            },
+                            "O:cFWeZ": {
+                              "content": "Coinbase Wallet (x8901)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "Crypto"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 9:20 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "$19,000"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Sql5h",
+                  "name": "sectionLoans",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$O:spacing-xs",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "LM0V7",
+                      "name": "loansLabel",
+                      "fill": "$O:color-gray-500",
+                      "content": "LOANS",
+                      "fontFamily": "$O:typo-primary-sm-semibold-font-family",
+                      "fontSize": "$O:typo-primary-sm-font-size",
+                      "fontWeight": "600",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "frame",
+                      "id": "GehWb",
+                      "name": "loansList",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$O:spacing-xs",
+                      "children": [
+                        {
+                          "id": "RzmTO",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctMortgage",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH": {
+                              "fill": "#C41E3A"
+                            },
+                            "O:apkdH/O:hB7mR": {
+                              "enabled": false
+                            },
+                            "O:cFWeZ": {
+                              "content": "Wells Fargo Mortgage (x1189)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "Mortgage"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 8:45 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "-$378,000"
+                            }
+                          }
+                        },
+                        {
+                          "id": "PNJ0s",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctNelnet",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH": {
+                              "fill": "#6D28D9"
+                            },
+                            "O:apkdH/O:hB7mR": {
+                              "enabled": false
+                            },
+                            "O:cFWeZ": {
+                              "content": "Nelnet Federal Direct Loan (x2003)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "Student Loan"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 8:22 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "-$5,400"
+                            }
+                          }
+                        },
+                        {
+                          "id": "wIoL0",
+                          "type": "ref",
+                          "ref": "O:OowGc",
+                          "name": "acctCapital",
+                          "width": "fill_container",
+                          "alignItems": "start",
+                          "justifyContent": "start",
+                          "descendants": {
+                            "O:apkdH": {
+                              "fill": "#0F766E"
+                            },
+                            "O:apkdH/O:hB7mR": {
+                              "enabled": false
+                            },
+                            "O:cFWeZ": {
+                              "content": "Capital One Auto Loan (x9701)"
+                            },
+                            "O:nxWvD": {
+                              "enabled": false
+                            },
+                            "O:AKuhp": {
+                              "content": "Auto Loan"
+                            },
+                            "O:q44Ur": {
+                              "content": "Refreshed 8:17 AM"
+                            },
+                            "O:b9l3e0": {
+                              "content": "-$11,400"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
+        },
+        {
+          "type": "frame",
+          "id": "VqsEX",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "screenOverlay",
+          "width": "fill_container(390)",
+          "height": "fill_container(844)",
+          "fill": "#00000066"
         },
         {
           "type": "frame",
@@ -163743,7 +164412,12 @@
           "width": 310,
           "height": 844,
           "fill": "$nav.bg",
-          "cornerRadius": 12,
+          "cornerRadius": [
+            0,
+            "$chat.chip.radius",
+            "$chat.chip.radius",
+            0
+          ],
           "stroke": "$nav.border",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
@@ -164190,7 +164864,10 @@
           "descendants": {
             "O:yfaBJ": {
               "width": 1440,
-              "height": 900
+              "height": 900,
+              "name": "screenOverlay",
+              "fill": "#00000066",
+              "opacity": 1
             },
             "O:nBDZ6": {
               "width": 688,
@@ -208473,7 +209150,10 @@
           "descendants": {
             "O:aVhre": {
               "width": 1440,
-              "height": 1415
+              "height": 1415,
+              "name": "screenOverlay",
+              "fill": "#00000066",
+              "opacity": 1
             },
             "O:XAaT7": {
               "height": "fit_content"
@@ -208543,16 +209223,15 @@
       "alignItems": "center",
       "children": [
         {
-          "type": "rectangle",
-          "id": "wKxiy",
+          "type": "frame",
+          "id": "apOh1",
           "layoutPosition": "absolute",
           "x": 0,
           "y": 0,
-          "name": "Backdrop",
-          "opacity": 0.5,
-          "fill": "$O:color-gray-900",
+          "name": "screenOverlay",
           "width": 390,
-          "height": 844
+          "height": 844,
+          "fill": "#00000066"
         },
         {
           "type": "frame",
@@ -231438,16 +232117,15 @@
           ]
         },
         {
-          "type": "rectangle",
-          "id": "Af4rU",
+          "type": "frame",
+          "id": "mfrXV",
           "layoutPosition": "absolute",
           "x": 0,
           "y": 0,
-          "name": "backdrop",
-          "opacity": 0.6,
-          "fill": "#000000",
+          "name": "screenOverlay",
           "width": 390,
-          "height": 1307
+          "height": 1307,
+          "fill": "#00000066"
         },
         {
           "type": "frame",
@@ -233154,16 +233832,15 @@
           ]
         },
         {
-          "type": "rectangle",
-          "id": "WXluM",
+          "type": "frame",
+          "id": "MaBJE",
           "layoutPosition": "absolute",
           "x": 0,
           "y": 0,
-          "name": "backdrop",
-          "opacity": 0.6,
-          "fill": "#000000",
+          "name": "screenOverlay",
           "width": 390,
-          "height": 1307
+          "height": 1307,
+          "fill": "#00000066"
         },
         {
           "type": "frame",
@@ -235096,7 +235773,10 @@
           "descendants": {
             "O:aVhre": {
               "width": "fill_container(1440)",
-              "height": "fill_container(1415)"
+              "height": "fill_container(1415)",
+              "name": "screenOverlay",
+              "fill": "#00000066",
+              "opacity": 1
             },
             "O:XAaT7": {
               "height": "fit_content",
@@ -259885,18 +260565,6 @@
     },
     {
       "type": "frame",
-      "id": "ojbJA",
-      "x": 5608,
-      "y": -2334,
-      "name": "Frame 6",
-      "clip": true,
-      "width": 1,
-      "height": 1,
-      "fill": "#FFFFFF",
-      "layout": "none"
-    },
-    {
-      "type": "frame",
       "id": "FOSbt",
       "x": 11717,
       "y": -3945,
@@ -260775,16 +261443,15 @@
           ]
         },
         {
-          "type": "rectangle",
-          "id": "qmpPL",
+          "type": "frame",
+          "id": "h5XXGQ",
           "layoutPosition": "absolute",
           "x": 0,
           "y": 0,
-          "name": "backdrop",
-          "opacity": 0.6,
-          "fill": "#000000",
+          "name": "screenOverlay",
           "width": 390,
-          "height": 1307
+          "height": 1307,
+          "fill": "#00000066"
         },
         {
           "type": "frame",
@@ -261850,7 +262517,10 @@
           "descendants": {
             "O:aVhre": {
               "width": "fill_container(1440)",
-              "height": "fill_container(1415)"
+              "height": "fill_container(1415)",
+              "name": "screenOverlay",
+              "fill": "#00000066",
+              "opacity": 1
             },
             "O:XAaT7": {
               "height": "fit_content",
