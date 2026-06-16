@@ -71114,7 +71114,11 @@
                   "ref": "uTENT",
                   "descendants": {
                     "q0uPcr": {
-                      "fill": "#FFFFFF00"
+                      "fill": {
+                        "type": "color",
+                        "color": "$chat.bubble.user.bg",
+                        "enabled": false
+                      }
                     }
                   }
                 },
@@ -139924,20 +139928,26 @@
           "enabled": true,
           "descendants": {
             "Xq4sY": {
-              "fill": "$nav.active.bg"
-            },
-            "Xq4sY/xHfuD": {
-              "content": "Dashboard",
-              "fontWeight": "600",
-              "fill": "$nav.text.primary"
+              "id": "Rpuu2",
+              "type": "ref",
+              "ref": "t9PGb0",
+              "width": "fill_container",
+              "descendants": {
+                "WPF4e": {
+                  "content": "Dashboard"
+                }
+              }
             },
             "DthDz": {
-              "fill": "#FFFFFF00"
-            },
-            "DthDz/WPF4e": {
-              "content": "Lifetime Planning",
-              "fontWeight": "normal",
-              "fill": "$nav.text.secondary"
+              "id": "PBmLU",
+              "type": "ref",
+              "ref": "t3tlC",
+              "width": "fill_container",
+              "descendants": {
+                "xHfuD": {
+                  "content": "Lifetime Planning"
+                }
+              }
             }
           }
         },
@@ -162445,20 +162455,26 @@
           "enabled": true,
           "descendants": {
             "Xq4sY": {
-              "fill": "$nav.active.bg"
-            },
-            "Xq4sY/xHfuD": {
-              "content": "Dashboard",
-              "fontWeight": "600",
-              "fill": "$nav.text.primary"
+              "id": "z7Ylan",
+              "type": "ref",
+              "ref": "t9PGb0",
+              "width": "fill_container",
+              "descendants": {
+                "WPF4e": {
+                  "content": "Dashboard"
+                }
+              }
             },
             "DthDz": {
-              "fill": "#FFFFFF00"
-            },
-            "DthDz/WPF4e": {
-              "content": "Lifetime Planning",
-              "fontWeight": "normal",
-              "fill": "$nav.text.secondary"
+              "id": "RRnc6",
+              "type": "ref",
+              "ref": "t3tlC",
+              "width": "fill_container",
+              "descendants": {
+                "xHfuD": {
+                  "content": "Lifetime Planning"
+                }
+              }
             }
           }
         },
@@ -246606,20 +246622,26 @@
               "enabled": true,
               "descendants": {
                 "Xq4sY": {
-                  "fill": "$nav.active.bg"
-                },
-                "Xq4sY/xHfuD": {
-                  "content": "Dashboard",
-                  "fontWeight": "600",
-                  "fill": "$nav.text.primary"
+                  "id": "gkDkb",
+                  "type": "ref",
+                  "ref": "t9PGb0",
+                  "width": "fill_container",
+                  "descendants": {
+                    "WPF4e": {
+                      "content": "Dashboard"
+                    }
+                  }
                 },
                 "DthDz": {
-                  "fill": "#FFFFFF00"
-                },
-                "DthDz/WPF4e": {
-                  "content": "Lifetime Planning",
-                  "fontWeight": "normal",
-                  "fill": "$nav.text.secondary"
+                  "id": "r4Gn3",
+                  "type": "ref",
+                  "ref": "t3tlC",
+                  "width": "fill_container",
+                  "descendants": {
+                    "xHfuD": {
+                      "content": "Lifetime Planning"
+                    }
+                  }
                 }
               }
             },
@@ -247072,263 +247094,410 @@
                                   "layout": "vertical",
                                   "children": [
                                     {
-                                      "id": "g67Oq",
-                                      "type": "ref",
-                                      "ref": "y:OowGc",
+                                      "type": "frame",
+                                      "id": "q67J1h",
                                       "name": "Schwab Brokerage",
+                                      "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
                                       "width": "fill_container",
+                                      "cornerRadius": 8,
+                                      "gap": "$y:spacing-md",
                                       "padding": [
                                         "$y:spacing-2xs",
                                         0
                                       ],
-                                      "cornerRadius": 8,
-                                      "gap": "$y:spacing-md",
-                                      "descendants": {
-                                        "y:apkdH": {
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
                                           "type": "frame",
-                                          "id": "zSIfb",
+                                          "id": "D5HUYf",
                                           "name": "Frame 10",
                                           "width": "fill_container",
                                           "gap": "$y:spacing-xs",
                                           "alignItems": "center",
                                           "children": [
                                             {
-                                              "id": "tPElI",
-                                              "type": "ref",
-                                              "ref": "y:qVfyr",
+                                              "type": "frame",
+                                              "id": "Z1mIn",
+                                              "name": "logo",
+                                              "context": "Avatar fallback variant. Centered initials on $color-gray-200 background when no image is available. Displays up to 2 uppercase letters.",
+                                              "clip": true,
+                                              "width": 32,
+                                              "height": 32,
                                               "fill": "#4A154B",
-                                              "cornerRadius": "$y:radius-2xs",
-                                              "descendants": {
-                                                "y:fv1WB": {
+                                              "cornerRadius": 8,
+                                              "layout": "vertical",
+                                              "justifyContent": "center",
+                                              "alignItems": "center",
+                                              "children": [
+                                                {
+                                                  "type": "text",
+                                                  "id": "iJDOG",
+                                                  "name": "initials",
+                                                  "fill": "#FFFFFF",
                                                   "content": "S",
-                                                  "fill": "#FFFFFF",
                                                   "fontFamily": "Heebo",
                                                   "fontSize": 11,
                                                   "fontWeight": "700"
                                                 }
-                                              }
+                                              ]
                                             },
                                             {
-                                              "id": "y:Y5IMNd",
-                                              "type": "ref",
-                                              "ref": "y:Y5IMNd",
+                                              "type": "frame",
+                                              "id": "TLxtm",
+                                              "name": "content",
                                               "width": "fill_container",
-                                              "gap": 2,
-                                              "descendants": {
-                                                "y:Cu6Iu": {
-                                                  "width": "fill_container"
-                                                },
-                                                "y:cFWeZ": {
-                                                  "content": "Schwab Brokerage (x45...",
-                                                  "fill": "$y:colors-text-body",
-                                                  "fontFamily": "Heebo",
-                                                  "fontSize": 14,
-                                                  "fontWeight": "600",
-                                                  "lineHeight": 1.4286,
+                                              "layout": "vertical",
+                                              "gap": "$y:spacing-4xs",
+                                              "children": [
+                                                {
+                                                  "type": "frame",
+                                                  "id": "Wd6jY",
+                                                  "name": "titleRow",
                                                   "width": "fill_container",
-                                                  "textGrowth": "fixed-width",
-                                                  "height": "fit_content(20)"
+                                                  "gap": "$y:spacing-xs",
+                                                  "alignItems": "center",
+                                                  "children": [
+                                                    {
+                                                      "type": "text",
+                                                      "id": "jAx7Z",
+                                                      "name": "title",
+                                                      "fill": "$y:colors-text-body",
+                                                      "textGrowth": "fixed-width",
+                                                      "width": "fill_container",
+                                                      "content": "Schwab Brokerage (x45...",
+                                                      "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                                                      "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                                                      "fontWeight": "600",
+                                                      "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                                                    },
+                                                    {
+                                                      "type": "icon",
+                                                      "id": "q7kGkB",
+                                                      "x": 41,
+                                                      "y": 3.5,
+                                                      "name": "chevron",
+                                                      "enabled": false,
+                                                      "width": 14,
+                                                      "height": 14,
+                                                      "icon": "chevron-right",
+                                                      "library": "lucide",
+                                                      "fill": "$y:colors-text-header"
+                                                    }
+                                                  ]
                                                 },
-                                                "y:nxWvD": {
-                                                  "enabled": false
-                                                },
-                                                "y:AKuhp": {
+                                                {
+                                                  "type": "text",
+                                                  "id": "J16ZG",
+                                                  "name": "subtitle",
+                                                  "fill": "$y:colors-text-meta",
                                                   "content": "Brokerage",
-                                                  "fill": "$y:colors-text-meta",
-                                                  "fontFamily": "Heebo",
+                                                  "lineHeight": 1.4286,
+                                                  "fontFamily": "$y:typo-primary-xs-regular-font-family",
                                                   "fontSize": 14,
                                                   "fontWeight": "normal",
-                                                  "lineHeight": 1.4286
+                                                  "letterSpacing": "$y:typo-primary-xs-regular-letter-spacing"
                                                 },
-                                                "y:q44Ur": {
-                                                  "enabled": false
+                                                {
+                                                  "type": "text",
+                                                  "id": "fy6k7",
+                                                  "x": 0,
+                                                  "y": 45,
+                                                  "name": "caption",
+                                                  "enabled": false,
+                                                  "fill": "$y:colors-text-meta",
+                                                  "content": "Caption",
+                                                  "lineHeight": 1.3333,
+                                                  "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                                                  "fontSize": 12,
+                                                  "fontWeight": "normal",
+                                                  "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
                                                 }
-                                              }
+                                              ]
                                             }
                                           ]
                                         },
-                                        "y:Y5IMNd": {
+                                        {
+                                          "id": "oHH9d",
+                                          "type": "ref",
+                                          "ref": "y:x8zWX",
                                           "content": "$485,000",
-                                          "fill": "$y:color-gray-800",
-                                          "fontFamily": "Heebo",
-                                          "fontSize": 14,
-                                          "fontWeight": "600",
-                                          "lineHeight": 1.4286
+                                          "name": "value",
+                                          "textAlign": "right",
+                                          "fill": "$y:colors-text-body"
                                         }
-                                      }
-                                    },
-                                    {
-                                      "id": "jZFde",
-                                      "type": "ref",
-                                      "ref": "y:OowGc",
-                                      "name": "Fidelity 401k",
-                                      "width": "fill_container",
-                                      "padding": [
-                                        "$y:spacing-2xs",
-                                        0
-                                      ],
-                                      "cornerRadius": 8,
-                                      "gap": "$y:spacing-md",
-                                      "height": "fit_content",
-                                      "descendants": {
-                                        "y:apkdH": {
-                                          "type": "frame",
-                                          "id": "eDjpT",
-                                          "name": "Frame 11",
-                                          "width": "fill_container",
-                                          "gap": "$y:spacing-xs",
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "id": "DgwCh",
-                                              "type": "ref",
-                                              "ref": "y:qVfyr",
-                                              "fill": "#1B7F37",
-                                              "cornerRadius": "$y:radius-2xs",
-                                              "descendants": {
-                                                "y:fv1WB": {
-                                                  "content": "F",
-                                                  "fill": "#FFFFFF",
-                                                  "fontFamily": "Heebo",
-                                                  "fontSize": 11,
-                                                  "fontWeight": "700"
-                                                }
-                                              }
-                                            },
-                                            {
-                                              "id": "y:Y5IMNd",
-                                              "type": "ref",
-                                              "ref": "y:Y5IMNd",
-                                              "descendants": {
-                                                "y:Cu6Iu": {
-                                                  "width": "fill_container"
-                                                },
-                                                "y:cFWeZ": {
-                                                  "content": "Fidelity 401(k) (x7890)",
-                                                  "fill": "$y:colors-text-body",
-                                                  "fontFamily": "Heebo",
-                                                  "fontSize": 14,
-                                                  "fontWeight": "600",
-                                                  "lineHeight": 1.4286,
-                                                  "width": "fill_container",
-                                                  "textGrowth": "fixed-width",
-                                                  "height": 20
-                                                },
-                                                "y:nxWvD": {
-                                                  "enabled": false
-                                                },
-                                                "y:AKuhp": {
-                                                  "content": "Retirement",
-                                                  "fill": "$y:colors-text-meta",
-                                                  "fontFamily": "Heebo",
-                                                  "fontSize": 14,
-                                                  "fontWeight": "normal",
-                                                  "lineHeight": 1.4286
-                                                },
-                                                "y:q44Ur": {
-                                                  "enabled": false
-                                                }
-                                              }
-                                            }
-                                          ]
-                                        },
-                                        "y:Y5IMNd": {
-                                          "content": "$386,000",
-                                          "fill": "$y:color-gray-800",
-                                          "fontFamily": "Heebo",
-                                          "fontSize": 14,
-                                          "fontWeight": "600",
-                                          "lineHeight": 1.4286
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "id": "l9Jkr",
-                                      "type": "ref",
-                                      "ref": "y:OowGc",
-                                      "name": "Wells Fargo Mortgage",
-                                      "width": "fill_container",
-                                      "padding": [
-                                        "$y:spacing-2xs",
-                                        0
-                                      ],
-                                      "cornerRadius": 8,
-                                      "gap": "$y:spacing-md",
-                                      "descendants": {
-                                        "y:apkdH": {
-                                          "type": "frame",
-                                          "id": "Q1f40y",
-                                          "name": "Frame 12",
-                                          "width": "fill_container",
-                                          "gap": "$y:spacing-xs",
-                                          "alignItems": "center",
-                                          "children": [
-                                            {
-                                              "id": "YWfLR",
-                                              "type": "ref",
-                                              "ref": "y:qVfyr",
-                                              "fill": "#E11D48",
-                                              "cornerRadius": "$y:radius-2xs",
-                                              "descendants": {
-                                                "y:fv1WB": {
-                                                  "content": "V",
-                                                  "fill": "#FFFFFF",
-                                                  "fontFamily": "Heebo",
-                                                  "fontSize": 11,
-                                                  "fontWeight": "700"
-                                                }
-                                              }
-                                            },
-                                            {
-                                              "id": "y:Y5IMNd",
-                                              "type": "ref",
-                                              "ref": "y:Y5IMNd",
-                                              "descendants": {
-                                                "y:Cu6Iu": {
-                                                  "width": "fill_container"
-                                                },
-                                                "y:cFWeZ": {
-                                                  "content": "Vanguard Roth IRA (x23...",
-                                                  "fill": "$y:colors-text-body",
-                                                  "fontFamily": "Heebo",
-                                                  "fontSize": 14,
-                                                  "fontWeight": "600",
-                                                  "lineHeight": 1.4286,
-                                                  "width": "fill_container",
-                                                  "textGrowth": "fixed-width",
-                                                  "height": 20
-                                                },
-                                                "y:nxWvD": {
-                                                  "enabled": false
-                                                },
-                                                "y:AKuhp": {
-                                                  "content": "Retirement",
-                                                  "fill": "$y:colors-text-meta",
-                                                  "fontFamily": "Heebo",
-                                                  "fontSize": 14,
-                                                  "fontWeight": "normal",
-                                                  "lineHeight": 1.4286
-                                                },
-                                                "y:q44Ur": {
-                                                  "enabled": false
-                                                }
-                                              }
-                                            }
-                                          ]
-                                        },
-                                        "y:Y5IMNd": {
-                                          "content": "$198,000",
-                                          "fill": "$y:color-gray-800",
-                                          "fontFamily": "Heebo",
-                                          "fontSize": 14,
-                                          "fontWeight": "600",
-                                          "lineHeight": 1.4286
-                                        }
-                                      }
+                                      ]
                                     },
                                     {
                                       "type": "frame",
-                                      "id": "l1gGv",
+                                      "id": "MrXIw",
+                                      "name": "Schwab Brokerage",
+                                      "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+                                      "width": "fill_container",
+                                      "cornerRadius": 8,
+                                      "gap": "$y:spacing-md",
+                                      "padding": [
+                                        "$y:spacing-2xs",
+                                        0
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "W0Jqc",
+                                          "name": "Frame 10",
+                                          "width": "fill_container",
+                                          "gap": "$y:spacing-xs",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "frame",
+                                              "id": "eeA2I",
+                                              "name": "logo",
+                                              "context": "Avatar fallback variant. Centered initials on $color-gray-200 background when no image is available. Displays up to 2 uppercase letters.",
+                                              "clip": true,
+                                              "width": 32,
+                                              "height": 32,
+                                              "fill": "#1B7F37",
+                                              "cornerRadius": 8,
+                                              "layout": "vertical",
+                                              "justifyContent": "center",
+                                              "alignItems": "center",
+                                              "children": [
+                                                {
+                                                  "type": "text",
+                                                  "id": "Afry1",
+                                                  "name": "initials",
+                                                  "fill": "#FFFFFF",
+                                                  "content": "F",
+                                                  "fontFamily": "Heebo",
+                                                  "fontSize": 11,
+                                                  "fontWeight": "700"
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "type": "frame",
+                                              "id": "MQX8O",
+                                              "name": "content",
+                                              "width": "fill_container",
+                                              "layout": "vertical",
+                                              "gap": "$y:spacing-4xs",
+                                              "children": [
+                                                {
+                                                  "type": "frame",
+                                                  "id": "HRCC6",
+                                                  "name": "titleRow",
+                                                  "width": "fill_container",
+                                                  "gap": "$y:spacing-xs",
+                                                  "alignItems": "center",
+                                                  "children": [
+                                                    {
+                                                      "type": "text",
+                                                      "id": "X3oXVw",
+                                                      "name": "title",
+                                                      "fill": "$y:colors-text-body",
+                                                      "textGrowth": "fixed-width",
+                                                      "width": "fill_container",
+                                                      "content": "Fidelity 401(k) (x7890)",
+                                                      "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                                                      "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                                                      "fontWeight": "600",
+                                                      "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                                                    },
+                                                    {
+                                                      "type": "icon",
+                                                      "id": "BPCtE",
+                                                      "x": 41,
+                                                      "y": 3.5,
+                                                      "name": "chevron",
+                                                      "enabled": false,
+                                                      "width": 14,
+                                                      "height": 14,
+                                                      "icon": "chevron-right",
+                                                      "library": "lucide",
+                                                      "fill": "$y:colors-text-header"
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "type": "text",
+                                                  "id": "hnwSo",
+                                                  "name": "subtitle",
+                                                  "fill": "$y:colors-text-meta",
+                                                  "content": "Retirement",
+                                                  "lineHeight": 1.4286,
+                                                  "fontFamily": "$y:typo-primary-xs-regular-font-family",
+                                                  "fontSize": 14,
+                                                  "fontWeight": "normal",
+                                                  "letterSpacing": "$y:typo-primary-xs-regular-letter-spacing"
+                                                },
+                                                {
+                                                  "type": "text",
+                                                  "id": "vbS4D",
+                                                  "x": 0,
+                                                  "y": 45,
+                                                  "name": "caption",
+                                                  "enabled": false,
+                                                  "fill": "$y:colors-text-meta",
+                                                  "content": "Caption",
+                                                  "lineHeight": 1.3333,
+                                                  "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                                                  "fontSize": 12,
+                                                  "fontWeight": "normal",
+                                                  "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "yHGIx",
+                                          "type": "ref",
+                                          "ref": "y:x8zWX",
+                                          "content": "$386,000",
+                                          "name": "value",
+                                          "textAlign": "right",
+                                          "fill": "$y:colors-text-body"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "PShZP",
+                                      "name": "Schwab Brokerage",
+                                      "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+                                      "width": "fill_container",
+                                      "cornerRadius": 8,
+                                      "gap": "$y:spacing-md",
+                                      "padding": [
+                                        "$y:spacing-2xs",
+                                        0
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "JzfAf",
+                                          "name": "Frame 10",
+                                          "width": "fill_container",
+                                          "gap": "$y:spacing-xs",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "frame",
+                                              "id": "UB8xs",
+                                              "name": "logo",
+                                              "context": "Avatar fallback variant. Centered initials on $color-gray-200 background when no image is available. Displays up to 2 uppercase letters.",
+                                              "clip": true,
+                                              "width": 32,
+                                              "height": 32,
+                                              "fill": "#C41E3A",
+                                              "cornerRadius": 8,
+                                              "layout": "vertical",
+                                              "justifyContent": "center",
+                                              "alignItems": "center",
+                                              "children": [
+                                                {
+                                                  "type": "text",
+                                                  "id": "CyUkD",
+                                                  "name": "initials",
+                                                  "fill": "#FFFFFF",
+                                                  "content": "V",
+                                                  "fontFamily": "Heebo",
+                                                  "fontSize": 11,
+                                                  "fontWeight": "700"
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "type": "frame",
+                                              "id": "VYo9C",
+                                              "name": "content",
+                                              "width": "fill_container",
+                                              "layout": "vertical",
+                                              "gap": "$y:spacing-4xs",
+                                              "children": [
+                                                {
+                                                  "type": "frame",
+                                                  "id": "nlliC",
+                                                  "name": "titleRow",
+                                                  "width": "fill_container",
+                                                  "gap": "$y:spacing-xs",
+                                                  "alignItems": "center",
+                                                  "children": [
+                                                    {
+                                                      "type": "text",
+                                                      "id": "HspHo",
+                                                      "name": "title",
+                                                      "fill": "$y:colors-text-body",
+                                                      "textGrowth": "fixed-width",
+                                                      "width": "fill_container",
+                                                      "content": "Vanguard Roth IRA (x23...",
+                                                      "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                                                      "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                                                      "fontWeight": "600",
+                                                      "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                                                    },
+                                                    {
+                                                      "type": "icon",
+                                                      "id": "ccQZ4",
+                                                      "x": 41,
+                                                      "y": 3.5,
+                                                      "name": "chevron",
+                                                      "enabled": false,
+                                                      "width": 14,
+                                                      "height": 14,
+                                                      "icon": "chevron-right",
+                                                      "library": "lucide",
+                                                      "fill": "$y:colors-text-header"
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "type": "text",
+                                                  "id": "CJU4p",
+                                                  "name": "subtitle",
+                                                  "fill": "$y:colors-text-meta",
+                                                  "content": "Retirement",
+                                                  "lineHeight": 1.4286,
+                                                  "fontFamily": "$y:typo-primary-xs-regular-font-family",
+                                                  "fontSize": 14,
+                                                  "fontWeight": "normal",
+                                                  "letterSpacing": "$y:typo-primary-xs-regular-letter-spacing"
+                                                },
+                                                {
+                                                  "type": "text",
+                                                  "id": "h99Jfg",
+                                                  "x": 0,
+                                                  "y": 45,
+                                                  "name": "caption",
+                                                  "enabled": false,
+                                                  "fill": "$y:colors-text-meta",
+                                                  "content": "Caption",
+                                                  "lineHeight": 1.3333,
+                                                  "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                                                  "fontSize": 12,
+                                                  "fontWeight": "normal",
+                                                  "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "DKoxl",
+                                          "type": "ref",
+                                          "ref": "y:x8zWX",
+                                          "content": "$198,000",
+                                          "name": "value",
+                                          "textAlign": "right",
+                                          "fill": "$y:colors-text-body"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "e3wR1E",
                                       "name": "moreAccountsRow",
                                       "width": "fill_container",
                                       "padding": [
@@ -247340,7 +247509,7 @@
                                       "children": [
                                         {
                                           "type": "text",
-                                          "id": "mDNG6",
+                                          "id": "gurYZ",
                                           "name": "moreAccounts",
                                           "fill": "#5E5954",
                                           "content": "+8 accounts",
@@ -247676,23 +247845,13 @@
                                         "y:Ie1te": {
                                           "content": "13"
                                         },
-                                        "y:hQlJG": {
-                                          "type": "frame",
-                                          "id": "ifCHy",
-                                          "name": "avatar",
-                                          "clip": true,
-                                          "width": 32,
-                                          "height": 32,
+                                        "y:hQlJG/y:hB7mR/y:m4IDL": {
                                           "fill": {
                                             "type": "image",
                                             "enabled": true,
                                             "url": "images/generated-1779331677775.png",
                                             "mode": "fill"
-                                          },
-                                          "cornerRadius": 6,
-                                          "stroke": "$y:color-gray-100",
-                                          "strokeWidth": 1,
-                                          "strokeAlignment": "inner"
+                                          }
                                         },
                                         "y:El0Cc": {
                                           "content": "Whole Foods Market",
@@ -247707,11 +247866,13 @@
                                           "width": 0
                                         },
                                         "y:fybdm": {
+                                          "id": "Dc6mN",
+                                          "type": "ref",
+                                          "ref": "y:x8zWX",
                                           "content": "-$82.14",
-                                          "fill": "$y:colors-text-body",
+                                          "textGrowth": "auto",
                                           "width": "fit_content(100)",
-                                          "height": "fit_content(24)",
-                                          "textGrowth": "auto"
+                                          "fill": "$y:colors-text-body"
                                         }
                                       }
                                     },
@@ -247735,23 +247896,13 @@
                                         "y:Ie1te": {
                                           "content": "13"
                                         },
-                                        "y:hQlJG": {
-                                          "type": "frame",
-                                          "id": "rg3J3",
-                                          "name": "avatar",
-                                          "clip": true,
-                                          "width": 32,
-                                          "height": 32,
+                                        "y:hQlJG/y:hB7mR/y:m4IDL": {
                                           "fill": {
                                             "type": "image",
                                             "enabled": true,
                                             "url": "images/generated-1779331681119.png",
                                             "mode": "fill"
-                                          },
-                                          "cornerRadius": 6,
-                                          "stroke": "$y:color-gray-100",
-                                          "strokeWidth": 1,
-                                          "strokeAlignment": "inner"
+                                          }
                                         },
                                         "y:El0Cc": {
                                           "content": "Uber",
@@ -247766,11 +247917,13 @@
                                           "width": 0
                                         },
                                         "y:fybdm": {
+                                          "id": "zQetS",
+                                          "type": "ref",
+                                          "ref": "y:x8zWX",
                                           "content": "-$18.50",
-                                          "fill": "$y:colors-text-body",
+                                          "textGrowth": "auto",
                                           "width": "fit_content(100)",
-                                          "height": "fit_content(24)",
-                                          "textGrowth": "auto"
+                                          "fill": "$y:colors-text-body"
                                         }
                                       }
                                     },
@@ -247795,19 +247948,27 @@
                                           "content": "13"
                                         },
                                         "y:hQlJG": {
-                                          "id": "LyiNo",
-                                          "type": "ref",
-                                          "ref": "y:D9oNa",
+                                          "type": "frame",
+                                          "id": "b969f",
+                                          "name": "avatar",
+                                          "clip": true,
+                                          "width": 32,
+                                          "height": 32,
                                           "fill": "$y:color-green-50",
-                                          "cornerRadius": 6,
-                                          "descendants": {
-                                            "y:b2XuE6": {
-                                              "icon": "arrow-down-left",
-                                              "fill": "$y:colors-text-deposit",
+                                          "cornerRadius": "$y:radius-2xs",
+                                          "justifyContent": "center",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "icon",
+                                              "id": "VUmI5",
                                               "width": 16,
-                                              "height": 16
+                                              "height": 16,
+                                              "icon": "arrow-down-left",
+                                              "library": "lucide",
+                                              "fill": "$y:colors-text-deposit"
                                             }
-                                          }
+                                          ]
                                         },
                                         "y:El0Cc": {
                                           "content": "Transfer from Savings",
@@ -247822,11 +247983,14 @@
                                           "width": 0
                                         },
                                         "y:fybdm": {
+                                          "id": "p9edo",
+                                          "type": "ref",
+                                          "ref": "y:x8zWX",
+                                          "name": "amount",
                                           "content": "+$500.00",
                                           "fill": "$y:colors-text-deposit",
-                                          "width": "fit_content(100)",
-                                          "height": "fit_content(24)",
-                                          "textGrowth": "auto"
+                                          "textGrowth": "auto",
+                                          "width": "fit_content(100)"
                                         }
                                       }
                                     },
@@ -247850,23 +248014,13 @@
                                         "y:Ie1te": {
                                           "content": "12"
                                         },
-                                        "y:hQlJG": {
-                                          "type": "frame",
-                                          "id": "v56jJ",
-                                          "name": "avatar",
-                                          "clip": true,
-                                          "width": 32,
-                                          "height": 32,
+                                        "y:hQlJG/y:hB7mR/y:m4IDL": {
                                           "fill": {
                                             "type": "image",
                                             "enabled": true,
                                             "url": "images/generated-1779331675914.png",
                                             "mode": "fill"
-                                          },
-                                          "cornerRadius": 6,
-                                          "stroke": "$y:color-gray-100",
-                                          "strokeWidth": 1,
-                                          "strokeAlignment": "inner"
+                                          }
                                         },
                                         "y:El0Cc": {
                                           "content": "Amazon.com",
@@ -247881,11 +248035,13 @@
                                           "width": 0
                                         },
                                         "y:fybdm": {
+                                          "id": "fYtRN",
+                                          "type": "ref",
+                                          "ref": "y:x8zWX",
                                           "content": "-$47.92",
-                                          "fill": "$y:colors-text-body",
+                                          "textGrowth": "auto",
                                           "width": "fit_content(100)",
-                                          "height": "fit_content(24)",
-                                          "textGrowth": "auto"
+                                          "fill": "$y:colors-text-body"
                                         }
                                       }
                                     },
@@ -247895,11 +248051,11 @@
                                       "ref": "y:kuI02",
                                       "name": "txSpotify",
                                       "width": "fill_container",
+                                      "stroke": [],
                                       "padding": [
                                         "$y:spacing-xs",
                                         0
                                       ],
-                                      "stroke": [],
                                       "descendants": {
                                         "y:M8t30": {
                                           "width": 32
@@ -247910,23 +248066,13 @@
                                         "y:Ie1te": {
                                           "content": "12"
                                         },
-                                        "y:hQlJG": {
-                                          "type": "frame",
-                                          "id": "Rm9kh",
-                                          "name": "avatar",
-                                          "clip": true,
-                                          "width": 32,
-                                          "height": 32,
+                                        "y:hQlJG/y:hB7mR/y:m4IDL": {
                                           "fill": {
                                             "type": "image",
                                             "enabled": true,
                                             "url": "images/generated-1779331682535.png",
                                             "mode": "fill"
-                                          },
-                                          "cornerRadius": 6,
-                                          "stroke": "$y:color-gray-100",
-                                          "strokeWidth": 1,
-                                          "strokeAlignment": "inner"
+                                          }
                                         },
                                         "y:El0Cc": {
                                           "content": "Spotify",
@@ -247941,11 +248087,13 @@
                                           "width": 0
                                         },
                                         "y:fybdm": {
+                                          "id": "luxzP",
+                                          "type": "ref",
+                                          "ref": "y:x8zWX",
                                           "content": "-$15.99",
-                                          "fill": "$y:colors-text-body",
+                                          "textGrowth": "auto",
                                           "width": "fit_content(100)",
-                                          "height": "fit_content(24)",
-                                          "textGrowth": "auto"
+                                          "fill": "$y:colors-text-body"
                                         }
                                       }
                                     },
@@ -268890,20 +269038,26 @@
               "enabled": true,
               "descendants": {
                 "Xq4sY": {
-                  "fill": "$nav.active.bg"
-                },
-                "Xq4sY/xHfuD": {
-                  "content": "Dashboard",
-                  "fontWeight": "600",
-                  "fill": "$nav.text.primary"
+                  "id": "r6JKl",
+                  "type": "ref",
+                  "ref": "t9PGb0",
+                  "width": "fill_container",
+                  "descendants": {
+                    "WPF4e": {
+                      "content": "Dashboard"
+                    }
+                  }
                 },
                 "DthDz": {
-                  "fill": "#FFFFFF00"
-                },
-                "DthDz/WPF4e": {
-                  "content": "Lifetime Planning",
-                  "fontWeight": "normal",
-                  "fill": "$nav.text.secondary"
+                  "id": "o9C5Dm",
+                  "type": "ref",
+                  "ref": "t3tlC",
+                  "width": "fill_container",
+                  "descendants": {
+                    "xHfuD": {
+                      "content": "Lifetime Planning"
+                    }
+                  }
                 }
               }
             },
@@ -290492,20 +290646,26 @@
               "enabled": true,
               "descendants": {
                 "Xq4sY": {
-                  "fill": "$nav.active.bg"
-                },
-                "Xq4sY/xHfuD": {
-                  "content": "Dashboard",
-                  "fontWeight": "600",
-                  "fill": "$nav.text.primary"
+                  "id": "eNRfs",
+                  "type": "ref",
+                  "ref": "t9PGb0",
+                  "width": "fill_container",
+                  "descendants": {
+                    "WPF4e": {
+                      "content": "Dashboard"
+                    }
+                  }
                 },
                 "DthDz": {
-                  "fill": "#FFFFFF00"
-                },
-                "DthDz/WPF4e": {
-                  "content": "Lifetime Planning",
-                  "fontWeight": "normal",
-                  "fill": "$nav.text.secondary"
+                  "id": "N3WBX",
+                  "type": "ref",
+                  "ref": "t3tlC",
+                  "width": "fill_container",
+                  "descendants": {
+                    "xHfuD": {
+                      "content": "Lifetime Planning"
+                    }
+                  }
                 }
               }
             },
@@ -291008,7 +291168,7 @@
                                                   "name": "skSubtitle1",
                                                   "fill": "#EDEAE3",
                                                   "width": 140,
-                                                  "height": 19
+                                                  "height": 20
                                                 }
                                               ]
                                             },
@@ -291025,7 +291185,7 @@
                                         },
                                         {
                                           "type": "frame",
-                                          "id": "x2JACn",
+                                          "id": "gifjJ",
                                           "name": "accountRowSkeleton1",
                                           "width": "fill_container",
                                           "gap": 12,
@@ -291038,7 +291198,7 @@
                                             {
                                               "type": "rectangle",
                                               "cornerRadius": 8,
-                                              "id": "C2cR0T",
+                                              "id": "CznPk",
                                               "name": "skAvatar1",
                                               "fill": "#EDEAE3",
                                               "width": 32,
@@ -291046,7 +291206,7 @@
                                             },
                                             {
                                               "type": "frame",
-                                              "id": "Ukufu",
+                                              "id": "JNVOk",
                                               "name": "skInfo1",
                                               "width": "fill_container",
                                               "layout": "vertical",
@@ -291055,7 +291215,7 @@
                                                 {
                                                   "type": "rectangle",
                                                   "cornerRadius": 4,
-                                                  "id": "Hi1Sy",
+                                                  "id": "ubSIZ",
                                                   "name": "skTitle1",
                                                   "fill": "#EDEAE3",
                                                   "width": "fill_container",
@@ -291064,18 +291224,18 @@
                                                 {
                                                   "type": "rectangle",
                                                   "cornerRadius": 4,
-                                                  "id": "W8tIOw",
+                                                  "id": "zmgbZ",
                                                   "name": "skSubtitle1",
                                                   "fill": "#EDEAE3",
                                                   "width": 140,
-                                                  "height": 19
+                                                  "height": 20
                                                 }
                                               ]
                                             },
                                             {
                                               "type": "rectangle",
                                               "cornerRadius": 4,
-                                              "id": "m5kv5",
+                                              "id": "V6Rxt",
                                               "name": "skValue1",
                                               "fill": "#EDEAE3",
                                               "width": 72,
@@ -291085,7 +291245,7 @@
                                         },
                                         {
                                           "type": "frame",
-                                          "id": "uUSHH",
+                                          "id": "DGtEf",
                                           "name": "accountRowSkeleton1",
                                           "width": "fill_container",
                                           "gap": 12,
@@ -291098,7 +291258,7 @@
                                             {
                                               "type": "rectangle",
                                               "cornerRadius": 8,
-                                              "id": "rC7i1",
+                                              "id": "K3XYH5",
                                               "name": "skAvatar1",
                                               "fill": "#EDEAE3",
                                               "width": 32,
@@ -291106,7 +291266,7 @@
                                             },
                                             {
                                               "type": "frame",
-                                              "id": "V6U5nO",
+                                              "id": "XMdDZ",
                                               "name": "skInfo1",
                                               "width": "fill_container",
                                               "layout": "vertical",
@@ -291115,7 +291275,7 @@
                                                 {
                                                   "type": "rectangle",
                                                   "cornerRadius": 4,
-                                                  "id": "MQX3o",
+                                                  "id": "kek2h",
                                                   "name": "skTitle1",
                                                   "fill": "#EDEAE3",
                                                   "width": "fill_container",
@@ -291124,18 +291284,18 @@
                                                 {
                                                   "type": "rectangle",
                                                   "cornerRadius": 4,
-                                                  "id": "l74c6S",
+                                                  "id": "ZGyi6",
                                                   "name": "skSubtitle1",
                                                   "fill": "#EDEAE3",
                                                   "width": 140,
-                                                  "height": 19
+                                                  "height": 20
                                                 }
                                               ]
                                             },
                                             {
                                               "type": "rectangle",
                                               "cornerRadius": 4,
-                                              "id": "kxsZG",
+                                              "id": "hi6jU",
                                               "name": "skValue1",
                                               "fill": "#EDEAE3",
                                               "width": 72,
