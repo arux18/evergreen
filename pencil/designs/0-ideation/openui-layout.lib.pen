@@ -310,6 +310,47 @@
     },
     {
       "type": "frame",
+      "id": "crdOut1",
+      "x": 680,
+      "y": 160,
+      "name": "Card / Outlined",
+      "reusable": true,
+      "width": 320,
+      "fill": "$colors-background-surface",
+      "cornerRadius": "$radius-sm",
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "layout": "vertical",
+      "gap": "$spacing-sm",
+      "padding": "$spacing-md",
+      "children": [
+        {
+          "type": "text",
+          "id": "coTit1",
+          "name": "Title",
+          "fill": "$colors-text-header",
+          "content": "Investment Goals",
+          "fontFamily": "$typo-primary-base-semibold-font-family",
+          "fontSize": "$typo-primary-base-semibold-font-size",
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "coDes1",
+          "name": "Description",
+          "fill": "$colors-text-body",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Track progress toward your retirement and education targets.",
+          "fontFamily": "$typo-primary-sm-regular-font-family",
+          "fontSize": "$typo-primary-sm-regular-font-size",
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
       "id": "F5gyK",
       "x": 0,
       "y": 461,
@@ -1310,6 +1351,259 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "accOpn1",
+      "x": 760,
+      "y": 461,
+      "name": "AccordionItem / Open",
+      "reusable": true,
+      "width": 320,
+      "layout": "vertical",
+      "gap": "$spacing-xs",
+      "padding": [
+        0,
+        0,
+        "$spacing-md",
+        0
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "aoTrg1",
+          "name": "Trigger",
+          "width": "fill_container",
+          "height": 56,
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "aoTit1",
+              "name": "Title",
+              "fill": "$colors-text-body",
+              "content": "What is Evergreen?",
+              "fontFamily": "$typo-primary-base-regular-font-family",
+              "fontSize": "$typo-primary-base-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "icon",
+              "id": "aoChv1",
+              "name": "Chevron",
+              "rotation": 180,
+              "width": 20,
+              "height": 20,
+              "icon": "chevron-down",
+              "library": "lucide",
+              "fill": "$colors-text-body"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "aoCnt1",
+          "name": "Content",
+          "fill": "$colors-text-body",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Evergreen is a modern banking platform that helps you manage your finances with intelligent automation and real-time insights.",
+          "fontFamily": "$typo-primary-sm-regular-font-family",
+          "fontSize": "$typo-primary-sm-regular-font-size",
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "accCls1",
+      "x": 760,
+      "y": 620,
+      "name": "AccordionItem / Closed",
+      "reusable": true,
+      "width": 320,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "acTrg1",
+          "name": "Trigger",
+          "width": "fill_container",
+          "height": 56,
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "acTit1",
+              "name": "Title",
+              "fill": "$colors-text-body",
+              "content": "How do I get started?",
+              "fontFamily": "$typo-primary-base-regular-font-family",
+              "fontSize": "$typo-primary-base-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "icon",
+              "id": "acChv1",
+              "name": "Chevron",
+              "width": 20,
+              "height": 20,
+              "icon": "chevron-down",
+              "library": "lucide",
+              "fill": "$colors-text-body"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "stpCmp1",
+      "x": 760,
+      "y": 720,
+      "name": "StepsItem / Complete",
+      "reusable": true,
+      "width": 100,
+      "layout": "vertical",
+      "gap": "$spacing-2xs",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "scCir1",
+          "name": "Circle",
+          "width": 32,
+          "height": 32,
+          "fill": "$colors-text-header",
+          "cornerRadius": "$radius-full",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "scIcn1",
+              "name": "Icon",
+              "width": 16,
+              "height": 16,
+              "icon": "check",
+              "library": "lucide",
+              "fill": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "scLbl1",
+          "name": "Label",
+          "fill": "$colors-text-header",
+          "content": "Account",
+          "textAlign": "center",
+          "fontFamily": "$typo-primary-xs-regular-font-family",
+          "fontSize": "$typo-primary-xs-regular-font-size",
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "stpAct1",
+      "x": 880,
+      "y": 720,
+      "name": "StepsItem / Active",
+      "reusable": true,
+      "width": 100,
+      "layout": "vertical",
+      "gap": "$spacing-2xs",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "saCir1",
+          "name": "Circle",
+          "width": 32,
+          "height": 32,
+          "fill": "$colors-btnLinkText",
+          "cornerRadius": "$radius-full",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "saNum1",
+              "name": "Number",
+              "fill": "#FFFFFF",
+              "content": "2",
+              "fontFamily": "$typo-primary-sm-semibold-font-family",
+              "fontSize": "$typo-primary-sm-semibold-font-size",
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "saLbl1",
+          "name": "Label",
+          "fill": "$colors-text-header",
+          "content": "Verify",
+          "textAlign": "center",
+          "fontFamily": "$typo-primary-xs-semibold-font-family",
+          "fontSize": "$typo-primary-xs-semibold-font-size",
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "stpUpc1",
+      "x": 1000,
+      "y": 720,
+      "name": "StepsItem / Upcoming",
+      "reusable": true,
+      "width": 100,
+      "layout": "vertical",
+      "gap": "$spacing-2xs",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "suCir1",
+          "name": "Circle",
+          "width": 32,
+          "height": 32,
+          "fill": "$colors-background-surface",
+          "cornerRadius": "$radius-full",
+          "stroke": "$colors-borders-light",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "suNum1",
+              "name": "Number",
+              "fill": "$colors-text-meta",
+              "content": "3",
+              "fontFamily": "$typo-primary-sm-semibold-font-family",
+              "fontSize": "$typo-primary-sm-semibold-font-size",
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "suLbl1",
+          "name": "Label",
+          "fill": "$colors-text-meta",
+          "content": "Fund",
+          "textAlign": "center",
+          "fontFamily": "$typo-primary-xs-regular-font-family",
+          "fontSize": "$typo-primary-xs-regular-font-size",
+          "fontWeight": "normal"
         }
       ]
     }
