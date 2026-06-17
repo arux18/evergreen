@@ -431,9 +431,8 @@
             {
               "type": "frame",
               "id": "Pm5sP",
-              "layoutPosition": "absolute",
-              "x": 170,
-              "y": 50,
+              "x": 68,
+              "y": 19,
               "name": "ChartTooltip",
               "fill": "$colors-background-surface",
               "cornerRadius": "$radius-2xs",
@@ -693,16 +692,6 @@
       "padding": "$spacing-md",
       "children": [
         {
-          "type": "text",
-          "id": "c7J0Oq",
-          "name": "Title",
-          "fill": "$colors-text-header",
-          "content": "Spending by Category",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600"
-        },
-        {
           "type": "frame",
           "id": "VfEoK",
           "name": "Body",
@@ -910,7 +899,7 @@
       "type": "frame",
       "id": "Mz3z5",
       "x": 420,
-      "y": 2370,
+      "y": 2450,
       "name": "HorizontalBarChart / Hover",
       "reusable": true,
       "width": 360,
@@ -923,16 +912,6 @@
       "gap": "$spacing-sm",
       "padding": "$spacing-md",
       "children": [
-        {
-          "type": "text",
-          "id": "n5NHM",
-          "name": "Title",
-          "fill": "$colors-text-header",
-          "content": "Top Categories",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600"
-        },
         {
           "type": "frame",
           "id": "pgyOr",
@@ -1183,7 +1162,7 @@
       "type": "frame",
       "id": "ZxcLZ",
       "x": 40,
-      "y": 2650,
+      "y": 2730,
       "name": "RadarChart / Default",
       "reusable": true,
       "width": 360,
@@ -1195,16 +1174,6 @@
       "gap": "$spacing-sm",
       "padding": "$spacing-md",
       "children": [
-        {
-          "type": "text",
-          "id": "GkFDb",
-          "name": "Title",
-          "fill": "$colors-text-header",
-          "content": "Financial Health",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600"
-        },
         {
           "type": "frame",
           "id": "b86W4L",
@@ -1356,126 +1325,56 @@
     {
       "type": "frame",
       "id": "Zs6S3",
-      "x": 420,
+      "x": 480,
       "y": 2040,
       "name": "ScatterChart / Hover",
       "reusable": true,
-      "width": 360,
+      "width": 420,
       "fill": "$colors-background-surface",
       "cornerRadius": "$radius-sm",
       "stroke": "$colors-borders-light",
       "strokeAlignment": "inner",
       "layout": "vertical",
       "gap": "$spacing-sm",
-      "padding": "$spacing-md",
+      "padding": [
+        24,
+        24,
+        24,
+        72
+      ],
       "children": [
-        {
-          "type": "text",
-          "id": "Q30KQ",
-          "name": "Title",
-          "fill": "$colors-text-header",
-          "content": "Income vs Spending",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600"
-        },
-        {
-          "type": "frame",
-          "id": "LUBhl",
-          "name": "Legend",
-          "gap": "$spacing-sm",
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "frame",
-              "id": "tVHcW",
-              "name": "LegendItem",
-              "gap": "$spacing-3xs",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "rectangle",
-                  "cornerRadius": "$radius-full",
-                  "id": "O3vwIZ",
-                  "name": "Swatch",
-                  "fill": "$chart-categorical/color-04",
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "type": "text",
-                  "id": "I2syrU",
-                  "name": "Label",
-                  "fill": "$colors-text-body",
-                  "content": "Income",
-                  "fontFamily": "$typo-primary-xs-regular-font-family",
-                  "fontSize": "$typo-primary-xs-regular-font-size",
-                  "fontWeight": "normal"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "Xailt",
-              "name": "LegendItem",
-              "gap": "$spacing-3xs",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "rectangle",
-                  "cornerRadius": "$radius-full",
-                  "id": "u9bxD",
-                  "name": "Swatch",
-                  "fill": "$chart-categorical/color-07",
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "type": "text",
-                  "id": "l1YOrP",
-                  "name": "Label",
-                  "fill": "$colors-text-body",
-                  "content": "Spending",
-                  "fontFamily": "$typo-primary-xs-regular-font-family",
-                  "fontSize": "$typo-primary-xs-regular-font-size",
-                  "fontWeight": "normal"
-                }
-              ]
-            }
-          ]
-        },
         {
           "type": "frame",
           "id": "ElYUY",
           "name": "PlotArea",
-          "width": "fill_container",
-          "height": 173,
+          "width": 312,
+          "height": 210,
           "layout": "none",
           "children": [
             {
               "type": "path",
-              "id": "MZjvN",
+              "id": "P7wCn4",
               "layoutPosition": "absolute",
               "x": 0,
-              "y": 150,
-              "name": "XAxis",
-              "geometry": "M0 150h312",
+              "y": 0,
+              "name": "Grid",
+              "geometry": "M0 0h312m-312 50h312m-312 50h312m-312 50h312m-312-150v150m104-150v150m104-150v150m104-150v150",
               "width": 312,
-              "height": 1,
+              "height": 150,
               "stroke": "$colors-borders-light",
               "strokeWidth": 1
             },
             {
               "type": "path",
-              "id": "LmNkA",
+              "id": "gbGxm",
               "layoutPosition": "absolute",
               "x": 0,
               "y": 0,
-              "name": "YAxis",
-              "geometry": "M0 0v150",
-              "width": 1,
+              "name": "Crosshair",
+              "geometry": "M185 0v150m-185-100h312",
+              "width": 312,
               "height": 150,
-              "stroke": "$colors-borders-light",
+              "stroke": "$colors-text-meta",
               "strokeWidth": 1
             },
             {
@@ -1524,14 +1423,17 @@
             },
             {
               "type": "ellipse",
-              "id": "c24GLW",
+              "id": "O5hOm3",
               "layoutPosition": "absolute",
-              "x": 180,
-              "y": 45,
-              "name": "Point5",
+              "x": 178,
+              "y": 43,
+              "name": "Point5-Hover",
               "fill": "$chart-categorical/color-04",
-              "width": 10,
-              "height": 10
+              "width": 14,
+              "height": 14,
+              "stroke": "$colors-background-surface",
+              "strokeWidth": 2,
+              "strokeAlignment": "outer"
             },
             {
               "type": "ellipse",
@@ -1565,31 +1467,6 @@
               "fill": "$chart-categorical/color-04",
               "width": 10,
               "height": 10
-            },
-            {
-              "type": "text",
-              "id": "mgsvm",
-              "x": 272,
-              "y": 155,
-              "name": "XLabel",
-              "fill": "$colors-text-meta",
-              "content": "Income",
-              "fontFamily": "$typo-primary-xs-regular-font-family",
-              "fontSize": "$typo-primary-xs-regular-font-size",
-              "fontWeight": "normal"
-            },
-            {
-              "type": "text",
-              "id": "xEyKP",
-              "layoutPosition": "absolute",
-              "x": 5,
-              "y": 0,
-              "name": "YLabel",
-              "fill": "$colors-text-meta",
-              "content": "Spending",
-              "fontFamily": "$typo-primary-xs-regular-font-family",
-              "fontSize": "$typo-primary-xs-regular-font-size",
-              "fontWeight": "normal"
             },
             {
               "type": "ellipse",
@@ -1669,11 +1546,107 @@
               "height": 10
             },
             {
-              "type": "frame",
-              "id": "i1oKao",
+              "type": "text",
+              "id": "aCPp0",
               "layoutPosition": "absolute",
-              "x": 140,
-              "y": 20,
+              "x": -38,
+              "y": -6,
+              "name": "YTick 23.80",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 34,
+              "content": "23.80",
+              "textAlign": "right",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "c7x2Y",
+              "layoutPosition": "absolute",
+              "x": -38,
+              "y": 44,
+              "name": "YTick 14.20",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 34,
+              "content": "14.20",
+              "textAlign": "right",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "XyXxU",
+              "layoutPosition": "absolute",
+              "x": -38,
+              "y": 94,
+              "name": "YTick 8.20",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 34,
+              "content": "8.20",
+              "textAlign": "right",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "y9CaaX",
+              "layoutPosition": "absolute",
+              "x": 84,
+              "y": 155,
+              "name": "XTick 10.50",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 40,
+              "content": "10.50",
+              "textAlign": "center",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "m4gs2",
+              "layoutPosition": "absolute",
+              "x": 188,
+              "y": 155,
+              "name": "XTick 18.50",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 40,
+              "content": "18.50",
+              "textAlign": "center",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "Ak6Pw",
+              "layoutPosition": "absolute",
+              "x": 292,
+              "y": 155,
+              "name": "XTick 32.50",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 40,
+              "content": "32.50",
+              "textAlign": "center",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "lo7Yb",
+              "layoutPosition": "absolute",
+              "x": 200,
+              "y": 56,
               "name": "ChartTooltip",
               "fill": "$colors-background-surface",
               "cornerRadius": "$radius-2xs",
@@ -1699,45 +1672,45 @@
               "children": [
                 {
                   "type": "text",
-                  "id": "K6jHk",
+                  "id": "n5jXat",
                   "name": "ttHeader",
-                  "fill": "$colors-text-meta",
-                  "content": "Mar 2024",
+                  "fill": "$colors-text-header",
+                  "content": "Income",
                   "fontFamily": "$typo-primary-xs-semibold-font-family",
                   "fontSize": "$typo-primary-xs-semibold-font-size",
                   "fontWeight": "600"
                 },
                 {
+                  "type": "rectangle",
+                  "id": "j9PYUp",
+                  "name": "ttDivider",
+                  "fill": "$colors-borders-light",
+                  "width": 80,
+                  "height": 1
+                },
+                {
                   "type": "frame",
-                  "id": "cYFY3",
-                  "name": "ttValueRow",
-                  "gap": "$spacing-2xs",
-                  "alignItems": "center",
+                  "id": "nBXuh",
+                  "name": "ttXSection",
+                  "layout": "vertical",
+                  "gap": "$spacing-3xs",
                   "children": [
                     {
-                      "type": "ellipse",
-                      "id": "hxdZj",
-                      "name": "ttMarker",
-                      "fill": "$chart-categorical/color-04",
-                      "width": 8,
-                      "height": 8
-                    },
-                    {
                       "type": "text",
-                      "id": "s5v9KB",
-                      "name": "ttLabel",
-                      "fill": "$colors-text-body",
-                      "content": "Income",
+                      "id": "sVSEc",
+                      "name": "ttXLabel",
+                      "fill": "$colors-text-meta",
+                      "content": "X",
                       "fontFamily": "$typo-primary-xs-regular-font-family",
                       "fontSize": "$typo-primary-xs-regular-font-size",
                       "fontWeight": "normal"
                     },
                     {
                       "type": "text",
-                      "id": "g2uhs",
-                      "name": "ttValue",
+                      "id": "bjrgj",
+                      "name": "ttXValue",
                       "fill": "$colors-text-header",
-                      "content": "$5,200",
+                      "content": "15",
                       "fontFamily": "$typo-primary-xs-semibold-font-family",
                       "fontSize": "$typo-primary-xs-semibold-font-size",
                       "fontWeight": "600"
@@ -1745,41 +1718,138 @@
                   ]
                 },
                 {
+                  "type": "rectangle",
+                  "id": "hoYJM",
+                  "name": "ttDivider2",
+                  "fill": "$colors-borders-light",
+                  "width": 80,
+                  "height": 1
+                },
+                {
                   "type": "frame",
-                  "id": "a9rHn",
-                  "name": "ttValueRow",
-                  "gap": "$spacing-2xs",
-                  "alignItems": "center",
+                  "id": "sfvLt",
+                  "name": "ttYSection",
+                  "layout": "vertical",
+                  "gap": "$spacing-3xs",
                   "children": [
                     {
-                      "type": "ellipse",
-                      "id": "QStXg",
-                      "name": "ttMarker",
-                      "fill": "$chart-categorical/color-07",
-                      "width": 8,
-                      "height": 8
-                    },
-                    {
                       "type": "text",
-                      "id": "u4jcb",
-                      "name": "ttLabel",
-                      "fill": "$colors-text-body",
-                      "content": "Spending",
+                      "id": "vAnHB",
+                      "name": "ttYLabel",
+                      "fill": "$colors-text-meta",
+                      "content": "Y",
                       "fontFamily": "$typo-primary-xs-regular-font-family",
                       "fontSize": "$typo-primary-xs-regular-font-size",
                       "fontWeight": "normal"
                     },
                     {
                       "type": "text",
-                      "id": "ApIbc",
-                      "name": "ttValue",
+                      "id": "c21wr",
+                      "name": "ttYValue",
                       "fill": "$colors-text-header",
-                      "content": "$3,100",
+                      "content": "14.2",
                       "fontFamily": "$typo-primary-xs-semibold-font-family",
                       "fontSize": "$typo-primary-xs-semibold-font-size",
                       "fontWeight": "600"
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "ZByA0",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 190,
+              "name": "XAxisName",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 312,
+              "content": "XAXISNAME",
+              "textAlign": "center",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "500",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "text",
+              "id": "A015gQ",
+              "layoutPosition": "absolute",
+              "x": -64,
+              "y": 130,
+              "name": "YAxisName",
+              "rotation": 90,
+              "fill": "$colors-text-meta",
+              "content": "YAXISNAME",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "500",
+              "letterSpacing": 1.5
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LUBhl",
+          "name": "Legend",
+          "gap": "$spacing-sm",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "tVHcW",
+              "name": "LegendItem",
+              "gap": "$spacing-3xs",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": "$radius-full",
+                  "id": "O3vwIZ",
+                  "name": "Swatch",
+                  "fill": "$chart-categorical/color-04",
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "type": "text",
+                  "id": "I2syrU",
+                  "name": "Label",
+                  "fill": "$colors-text-body",
+                  "content": "Income",
+                  "fontFamily": "$typo-primary-xs-regular-font-family",
+                  "fontSize": "$typo-primary-xs-regular-font-size",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Xailt",
+              "name": "LegendItem",
+              "gap": "$spacing-3xs",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": "$radius-full",
+                  "id": "u9bxD",
+                  "name": "Swatch",
+                  "fill": "$chart-categorical/color-07",
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "type": "text",
+                  "id": "l1YOrP",
+                  "name": "Label",
+                  "fill": "$colors-text-body",
+                  "content": "Spending",
+                  "fontFamily": "$typo-primary-xs-regular-font-family",
+                  "fontSize": "$typo-primary-xs-regular-font-size",
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -1791,7 +1861,7 @@
       "type": "frame",
       "id": "HOlZ9",
       "x": 40,
-      "y": 3060,
+      "y": 3140,
       "name": "RadialChart / Default",
       "reusable": true,
       "height": 240,
@@ -2147,7 +2217,7 @@
       "type": "frame",
       "id": "F2doj6",
       "x": 40,
-      "y": 3380,
+      "y": 3460,
       "name": "SingleStackedBarChart / Default",
       "reusable": true,
       "width": 360,
@@ -2729,118 +2799,37 @@
       "y": 2040,
       "name": "ScatterChart / Default",
       "reusable": true,
-      "width": 360,
+      "width": 420,
       "fill": "$colors-background-surface",
       "cornerRadius": "$radius-sm",
+      "stroke": "$colors-borders-light",
+      "strokeAlignment": "inner",
       "layout": "vertical",
       "gap": "$spacing-sm",
-      "padding": "$spacing-md",
+      "padding": [
+        24,
+        24,
+        24,
+        72
+      ],
       "children": [
-        {
-          "type": "text",
-          "id": "V65m0O",
-          "name": "Title",
-          "fill": "$colors-text-header",
-          "content": "Income vs Spending",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600"
-        },
-        {
-          "type": "frame",
-          "id": "ayDqV",
-          "name": "Legend",
-          "gap": "$spacing-sm",
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "frame",
-              "id": "meud7",
-              "name": "LegendItem",
-              "gap": "$spacing-3xs",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "rectangle",
-                  "cornerRadius": "$radius-full",
-                  "id": "W83Hv",
-                  "name": "Swatch",
-                  "fill": "$chart-categorical/color-04",
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "type": "text",
-                  "id": "x742f",
-                  "name": "Label",
-                  "fill": "$colors-text-body",
-                  "content": "Income",
-                  "fontFamily": "$typo-primary-xs-regular-font-family",
-                  "fontSize": "$typo-primary-xs-regular-font-size",
-                  "fontWeight": "normal"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "Zulhd",
-              "name": "LegendItem",
-              "gap": "$spacing-3xs",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "rectangle",
-                  "cornerRadius": "$radius-full",
-                  "id": "Ujb8b",
-                  "name": "Swatch",
-                  "fill": "$chart-categorical/color-07",
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "type": "text",
-                  "id": "JWzuj",
-                  "name": "Label",
-                  "fill": "$colors-text-body",
-                  "content": "Spending",
-                  "fontFamily": "$typo-primary-xs-regular-font-family",
-                  "fontSize": "$typo-primary-xs-regular-font-size",
-                  "fontWeight": "normal"
-                }
-              ]
-            }
-          ]
-        },
         {
           "type": "frame",
           "id": "G1QNIN",
           "name": "PlotArea",
-          "width": "fill_container",
-          "height": 173,
+          "width": 312,
+          "height": 210,
           "layout": "none",
           "children": [
             {
               "type": "path",
-              "id": "b9IyNw",
-              "layoutPosition": "absolute",
-              "x": 0,
-              "y": 150,
-              "name": "XAxis",
-              "geometry": "M0 150h312",
-              "width": 312,
-              "height": 1,
-              "stroke": "$colors-borders-light",
-              "strokeWidth": 1
-            },
-            {
-              "type": "path",
-              "id": "tFwfw",
+              "id": "v7iMD",
               "layoutPosition": "absolute",
               "x": 0,
               "y": 0,
-              "name": "YAxis",
-              "geometry": "M0 0v150",
-              "width": 1,
+              "name": "Grid",
+              "geometry": "M0 0h312m-312 50h312m-312 50h312m-312 50h312m-312-150v150m104-150v150m104-150v150m104-150v150",
+              "width": 312,
               "height": 150,
               "stroke": "$colors-borders-light",
               "strokeWidth": 1
@@ -3012,29 +3001,196 @@
             },
             {
               "type": "text",
-              "id": "g3q6F",
+              "id": "HKXdT",
               "layoutPosition": "absolute",
-              "x": 270,
-              "y": 155,
-              "name": "XLabel",
+              "x": -38,
+              "y": -6,
+              "name": "YTick 23.80",
               "fill": "$colors-text-meta",
-              "content": "Income",
+              "textGrowth": "fixed-width",
+              "width": 34,
+              "content": "23.80",
+              "textAlign": "right",
               "fontFamily": "$typo-primary-xs-regular-font-family",
               "fontSize": "$typo-primary-xs-regular-font-size",
               "fontWeight": "normal"
             },
             {
               "type": "text",
-              "id": "VU8WI",
+              "id": "D9MOc",
               "layoutPosition": "absolute",
-              "x": 5,
-              "y": 0,
-              "name": "YLabel",
+              "x": -38,
+              "y": 44,
+              "name": "YTick 14.20",
               "fill": "$colors-text-meta",
-              "content": "Spending",
+              "textGrowth": "fixed-width",
+              "width": 34,
+              "content": "14.20",
+              "textAlign": "right",
               "fontFamily": "$typo-primary-xs-regular-font-family",
               "fontSize": "$typo-primary-xs-regular-font-size",
               "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "LAjNs",
+              "layoutPosition": "absolute",
+              "x": -38,
+              "y": 94,
+              "name": "YTick 8.20",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 34,
+              "content": "8.20",
+              "textAlign": "right",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "Lp4Hq",
+              "layoutPosition": "absolute",
+              "x": 84,
+              "y": 155,
+              "name": "XTick 10.50",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 40,
+              "content": "10.50",
+              "textAlign": "center",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "oXOFv",
+              "layoutPosition": "absolute",
+              "x": 188,
+              "y": 155,
+              "name": "XTick 18.50",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 40,
+              "content": "18.50",
+              "textAlign": "center",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "e6IcM",
+              "layoutPosition": "absolute",
+              "x": 292,
+              "y": 155,
+              "name": "XTick 32.50",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 40,
+              "content": "32.50",
+              "textAlign": "center",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "i9mQi",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 190,
+              "name": "XAxisName",
+              "fill": "$colors-text-meta",
+              "textGrowth": "fixed-width",
+              "width": 312,
+              "content": "XAXISNAME",
+              "textAlign": "center",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "500",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "text",
+              "id": "z8RIkx",
+              "layoutPosition": "absolute",
+              "x": -64,
+              "y": 130,
+              "name": "YAxisName",
+              "rotation": 90,
+              "fill": "$colors-text-meta",
+              "content": "YAXISNAME",
+              "fontFamily": "$typo-primary-xs-regular-font-family",
+              "fontSize": "$typo-primary-xs-regular-font-size",
+              "fontWeight": "500",
+              "letterSpacing": 1.5
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ayDqV",
+          "name": "Legend",
+          "gap": "$spacing-sm",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "meud7",
+              "name": "LegendItem",
+              "gap": "$spacing-3xs",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": "$radius-full",
+                  "id": "W83Hv",
+                  "name": "Swatch",
+                  "fill": "$chart-categorical/color-04",
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "type": "text",
+                  "id": "x742f",
+                  "name": "Label",
+                  "fill": "$colors-text-body",
+                  "content": "Income",
+                  "fontFamily": "$typo-primary-xs-regular-font-family",
+                  "fontSize": "$typo-primary-xs-regular-font-size",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Zulhd",
+              "name": "LegendItem",
+              "gap": "$spacing-3xs",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": "$radius-full",
+                  "id": "Ujb8b",
+                  "name": "Swatch",
+                  "fill": "$chart-categorical/color-07",
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "type": "text",
+                  "id": "JWzuj",
+                  "name": "Label",
+                  "fill": "$colors-text-body",
+                  "content": "Spending",
+                  "fontFamily": "$typo-primary-xs-regular-font-family",
+                  "fontSize": "$typo-primary-xs-regular-font-size",
+                  "fontWeight": "normal"
+                }
+              ]
             }
           ]
         }
@@ -3044,7 +3200,7 @@
       "type": "frame",
       "id": "xbSBV",
       "x": 40,
-      "y": 2370,
+      "y": 2450,
       "name": "HorizontalBarChart / Default",
       "reusable": true,
       "width": 360,
@@ -3055,16 +3211,6 @@
       "gap": "$spacing-sm",
       "padding": "$spacing-md",
       "children": [
-        {
-          "type": "text",
-          "id": "K5NtLM",
-          "name": "Title",
-          "fill": "$colors-text-header",
-          "content": "Top Categories",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600"
-        },
         {
           "type": "frame",
           "id": "TGRhe",
@@ -3244,16 +3390,6 @@
       "gap": "$spacing-sm",
       "padding": "$spacing-md",
       "children": [
-        {
-          "type": "text",
-          "id": "ZRjck",
-          "name": "Title",
-          "fill": "$colors-text-header",
-          "content": "Spending by Category",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600"
-        },
         {
           "type": "frame",
           "id": "Rkp2Z",
@@ -3496,7 +3632,6 @@
                   "type": "frame",
                   "id": "aLheD",
                   "name": "ttValueRow",
-                  "width": "fill_container",
                   "gap": "$spacing-2xs",
                   "alignItems": "center",
                   "children": [
@@ -3530,7 +3665,7 @@
       "type": "frame",
       "id": "y9VCqa",
       "x": 420,
-      "y": 3380,
+      "y": 3460,
       "name": "SingleStackedBarChart / Hover",
       "reusable": true,
       "width": 360,
@@ -3805,7 +3940,7 @@
       "type": "frame",
       "id": "Pm87Y",
       "x": 443,
-      "y": 3060,
+      "y": 3140,
       "name": "RadialChart / Hover",
       "reusable": true,
       "height": 240,
@@ -4302,7 +4437,7 @@
       "type": "frame",
       "id": "pwNDY",
       "x": 420,
-      "y": 2650,
+      "y": 2730,
       "name": "RadarChart / Hover",
       "reusable": true,
       "width": 360,
@@ -4314,16 +4449,6 @@
       "gap": "$spacing-sm",
       "padding": "$spacing-md",
       "children": [
-        {
-          "type": "text",
-          "id": "CQYn5",
-          "name": "Title",
-          "fill": "$colors-text-header",
-          "content": "Financial Health",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600"
-        },
         {
           "type": "frame",
           "id": "AD9K8",
@@ -5988,13 +6113,14 @@
           "type": "frame",
           "id": "Ln9UG",
           "name": "PlotArea",
+          "clip": true,
           "width": "fill_container",
           "height": 150,
           "layout": "none",
           "children": [
             {
               "type": "path",
-              "id": "hX6Bb",
+              "id": "hSs4Y",
               "layoutPosition": "absolute",
               "x": 0,
               "y": 0,
@@ -6054,20 +6180,6 @@
             },
             {
               "type": "path",
-              "id": "kLywl",
-              "layoutPosition": "absolute",
-              "x": 0,
-              "y": 0,
-              "name": "Line-Liabilities",
-              "geometry": "M0 140c52-2 104-4 156-6 52-2 104-4 156-26",
-              "width": 312,
-              "height": 150,
-              "stroke": "$chart-categorical/color-04",
-              "strokeWidth": 2,
-              "strokeAlignment": "inner"
-            },
-            {
-              "type": "path",
               "id": "nkEdo",
               "layoutPosition": "absolute",
               "x": 0,
@@ -6077,6 +6189,19 @@
               "width": 312,
               "height": 130,
               "stroke": "$chart-categorical/color-07",
+              "strokeWidth": 2
+            },
+            {
+              "type": "path",
+              "id": "GDvec",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 0,
+              "name": "Line-Liabilities",
+              "geometry": "M0 140c52-2 104-4 156-6 52-2 104-4 156-26m-312 42",
+              "width": 312,
+              "height": 150,
+              "stroke": "$chart-categorical/color-04",
               "strokeWidth": 2
             }
           ]
@@ -6171,13 +6296,14 @@
           "type": "frame",
           "id": "j3C9Rd",
           "name": "PlotArea",
+          "clip": true,
           "width": "fill_container",
           "height": 150,
           "layout": "none",
           "children": [
             {
               "type": "path",
-              "id": "TlzSK",
+              "id": "QY50g",
               "layoutPosition": "absolute",
               "x": 0,
               "y": 0,
@@ -6237,20 +6363,6 @@
             },
             {
               "type": "path",
-              "id": "YajxP",
-              "layoutPosition": "absolute",
-              "x": 0,
-              "y": 0,
-              "name": "Line-Liabilities",
-              "geometry": "M0 140c52-2 104-4 156-6 52-2 104-4 156-26",
-              "width": 312,
-              "height": 150,
-              "stroke": "$chart-categorical/color-04",
-              "strokeWidth": 2,
-              "strokeAlignment": "inner"
-            },
-            {
-              "type": "path",
               "id": "UHyuE",
               "layoutPosition": "absolute",
               "x": 0,
@@ -6288,17 +6400,30 @@
               "type": "ellipse",
               "id": "o8gRj",
               "x": 206,
-              "y": 92,
+              "y": 79,
               "name": "ScrubDot-Liabilities",
               "fill": "$chart-categorical/color-04",
               "width": 8,
               "height": 8
             },
             {
+              "type": "path",
+              "id": "d40cW",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 0,
+              "name": "Line-Liabilities",
+              "geometry": "M0 140c52-2 104-4 156-6 52-2 104-4 156-26m-312 42",
+              "width": 312,
+              "height": 150,
+              "stroke": "$chart-categorical/color-04",
+              "strokeWidth": 2
+            },
+            {
               "type": "frame",
               "id": "EUlmU",
               "layoutPosition": "absolute",
-              "x": 160,
+              "x": 52,
               "y": 48,
               "name": "ChartTooltip",
               "fill": "$colors-background-surface",
