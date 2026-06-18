@@ -1,0 +1,31 @@
+---
+description: Spacing and layout conventions for mini tables inside mobile account detail modals
+globs: "**/*.pen"
+alwaysApply: false
+---
+
+# Mobile Modal Mini Tables
+
+Mini tables (Account Details, Balances, Recent Activity) inside mobile account detail modals use tighter spacing than desktop to maximize content area on small screens.
+
+## Row Padding
+
+| Row type | Padding | Token |
+|----------|---------|-------|
+| **Section headers** (e.g. "Account Details", "Balances") | `spacing-xs` all sides | `["$O:spacing-xs", "$O:spacing-xs"]` |
+| **Detail rows** | vertical `spacing-sm`, horizontal `spacing-xs` | `["$O:spacing-sm", "$O:spacing-xs"]` |
+| **Footer rows** (e.g. "View All Accounts") | `spacing-xs` all sides | `["$O:spacing-xs", "$O:spacing-xs"]` |
+
+## Other Mobile Modal Rules
+
+- **Label column width**: 110px (narrower than description column to give values more room)
+- **Modal padding**: `spacing-sm` (16px) on all sides
+- **Header padding**: 0 (no extra padding on the header frame)
+- **Header title font**: `typo-primary-lg-semibold` (not xl)
+- **Institution logo**: 24×24px in the modal header
+- **Body horizontal padding**: 0 (rows handle their own horizontal padding)
+- **Account number eye icon**: text uses `width: "fit_content"` so the icon sits adjacent, not pushed to far right
+
+## Scope
+
+These conventions apply **only to mobile screens** with centered modal overlays. Desktop detail views use standard `spacing-sm` row padding.
