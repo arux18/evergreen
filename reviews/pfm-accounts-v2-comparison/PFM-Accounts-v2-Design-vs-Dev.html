@@ -82,9 +82,9 @@
       <p><strong>Color split (updated design):</strong> The <strong>accounts list</strong> uses primitive <code>color-gray-500</code> (#716E6A) for NET WORTH, section headers, account subtype, and sync lines. The <strong>account-detail modal</strong> uses semantic <code>colors-text-meta</code> (#5E5954) for table labels — do not conflate the two.</p>
       <p><strong>Rule:</strong> Design wins. Buttons must be Hemlock library refs — not hand-built frames or wrong variants (filled primary, ghost, link).</p>
       <div class="stats">
-        <div class="stat gaps"><strong>154</strong> formatting gaps to fix</div>
+        <div class="stat gaps"><strong>155</strong> formatting gaps to fix</div>
         <div class="stat matches"><strong>73</strong> already match</div>
-        <div class="stat"><strong>245</strong> total spec rows</div>
+        <div class="stat"><strong>246</strong> total spec rows</div>
       </div>
       <div class="toc">
         <div>1–9. List page typography (layout → balance)</div>
@@ -692,6 +692,7 @@
 <tr><td>Horizontal overflow</td><td>No horizontal scroll — content fits within viewport width</td><td>Horizontal scrollbar visible — content or padding exceeds mobile viewport</td><td>Ensure content respects 100vw minus modal padding; add overflow-x: hidden as safeguard</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Responsive padding</td><td>Reduced horizontal padding at narrow viewports (e.g. p-md instead of p-xl)</td><td>Desktop p-xl (24px) padding applied regardless of viewport width</td><td>Add responsive padding: p-md (16px) below sm breakpoint</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Touch targets</td><td>Manage / Remove buttons meet 44px minimum touch target height</td><td>Buttons render at desktop height (~36px) — may be too small for touch</td><td>Ensure min-height: 44px on action buttons at mobile breakpoints</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Detail table cell padding</td><td>spacing-xs (12px) left + right padding on header and body rows in mini detail tables (e.g. Account Details, Balance, Identity)</td><td>spacing-sm (16px) — desktop value applied at all viewports</td><td>Below sm breakpoint: reduce cell px from spacing-sm (16px) to spacing-xs (12px). Applies to modal detail tables only — not account list rows, not desktop.</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Typography — meta labels</td><td>Same tokens as desktop (§15–17) — no mobile-specific change</td><td>Same tokens as desktop — no mobile-specific issue</td><td>No change — same as desktop sections §15–17</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Typography — values</td><td>Same tokens as desktop — no mobile-specific change</td><td>Same tokens as desktop — no mobile-specific issue</td><td>No change</td><td><span class="badge match">Match</span></td></tr></tbody></table>
   </section>
@@ -941,6 +942,7 @@
 <tr><td>Horizontal overflow</td><td>No horizontal scroll — content fits within viewport width</td><td>Horizontal scrollbar visible — content or padding exceeds mobile viewport</td><td>Ensure content respects 100vw minus modal padding; add overflow-x: hidden as safeguard</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Responsive padding</td><td>Reduced horizontal padding at narrow viewports (e.g. p-md instead of p-xl)</td><td>Desktop p-xl (24px) padding applied regardless of viewport width</td><td>Add responsive padding: p-md (16px) below sm breakpoint</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Touch targets</td><td>Manage / Remove buttons meet 44px minimum touch target height</td><td>Buttons render at desktop height (~36px) — may be too small for touch</td><td>Ensure min-height: 44px on action buttons at mobile breakpoints</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Detail table cell padding</td><td>spacing-xs (12px) left + right padding on header and body rows in mini detail tables (e.g. Account Details, Balance, Identity)</td><td>spacing-sm (16px) — desktop value applied at all viewports</td><td>Below sm breakpoint: reduce cell px from spacing-sm (16px) to spacing-xs (12px). Applies to modal detail tables only — not account list rows, not desktop.</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Typography — meta labels</td><td>Same tokens as desktop (§15–17) — no mobile-specific change</td><td>Same tokens as desktop — no mobile-specific issue</td><td>No change — same as desktop sections §15–17</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Typography — values</td><td>Same tokens as desktop — no mobile-specific change</td><td>Same tokens as desktop — no mobile-specific issue</td><td>No change</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Hemlock ref — addBankBtn (list CTA)</td><td>G2cAS → component/Button/outline/icon-right (Outline + right icon (0:URoI8))</td><td>Button Outline small + PlusIcon</td><td>Use Hemlock ref; override label + icon slot</td><td><span class="badge gap">Gap</span></td></tr>

@@ -570,6 +570,7 @@ const mobileDetailRows = [
   ['Horizontal overflow', 'No horizontal scroll — content fits within viewport width', 'Horizontal scrollbar visible — content or padding exceeds mobile viewport', 'Ensure content respects 100vw minus modal padding; add overflow-x: hidden as safeguard', 'Gap'],
   ['Responsive padding', 'Reduced horizontal padding at narrow viewports (e.g. p-md instead of p-xl)', 'Desktop p-xl (24px) padding applied regardless of viewport width', 'Add responsive padding: p-md (16px) below sm breakpoint', 'Gap'],
   ['Touch targets', 'Manage / Remove buttons meet 44px minimum touch target height', 'Buttons render at desktop height (~36px) — may be too small for touch', 'Ensure min-height: 44px on action buttons at mobile breakpoints', 'Gap'],
+  ['Detail table cell padding', 'spacing-xs (12px) left + right padding on header and body rows in mini detail tables (e.g. Account Details, Balance, Identity)', 'spacing-sm (16px) — desktop value applied at all viewports', 'Below sm breakpoint: reduce cell px from spacing-sm (16px) to spacing-xs (12px). Applies to modal detail tables only — not account list rows, not desktop.', 'Gap'],
   ['Typography — meta labels', 'Same tokens as desktop (§15–17) — no mobile-specific change', 'Same tokens as desktop — no mobile-specific issue', 'No change — same as desktop sections §15–17', 'Match'],
   ['Typography — values', 'Same tokens as desktop — no mobile-specific change', 'Same tokens as desktop — no mobile-specific issue', 'No change', 'Match'],
 ];
