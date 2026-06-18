@@ -882,6 +882,7 @@ const html = `<!DOCTYPE html>
     .side-nav-title.t-ref { color: #2563eb; }
     .nav-link { display: block; padding: 5px 8px; border-radius: 6px; font-size: 12px; font-weight: 400; color: var(--text); text-decoration: none; transition: background 0.12s; line-height: 1.35; }
     .nav-link:hover { background: #eae7e1; }
+    .nav-top { font-weight: 600; font-size: 13px; padding: 8px 8px; margin-bottom: 8px; border-bottom: 1px solid var(--line); border-radius: 0; color: #1a1a1a; }
     @media (min-width: 1600px) { .doc { margin-left: 200px; } }
     @media (max-width: 1599px) { .side-nav { display: none; } }
     @page { size: landscape; margin: 0.35in; }
@@ -897,6 +898,7 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
   <nav class="side-nav">
+    <a href="#top" class="nav-link nav-top">&#8593; Overview</a>
     <span class="side-nav-title t-list">List page</span>
     <a href="#s1" class="nav-link">1. Layout &amp; spacing</a>
     <a href="#s2" class="nav-link">2. NET WORTH label</a>
@@ -935,7 +937,7 @@ const html = `<!DOCTYPE html>
     <a href="#s28" class="nav-link">28. Master checklist</a>
   </nav>
   <div class="doc">
-    <header class="cover">
+    <header class="cover" id="top">
       <h1>PFM Accounts v2 — Formatting differences (Design vs Dev)</h1>
       <p class="meta">Design source of truth: <strong>pfm-accounts-v2.pen</strong> · frames <strong>FglEA</strong> (default), <strong>eWQkU</strong> (hover), <strong>TShbt</strong> (pressed), <strong>xGRDX</strong> (account details) · Dev: app.eg-dev.ai · js-mono develop</p>
       <p><strong>Scope:</strong> Typography, color, spacing, borders, interaction states (hover / pressed), account-detail modal styling, and <strong>Hemlock component refs</strong> for all buttons. Section inventory and copy wording are out of scope unless they affect measured typography.</p>
