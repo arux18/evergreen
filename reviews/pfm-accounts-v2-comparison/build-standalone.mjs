@@ -85,6 +85,7 @@ const images = {
   designPlaidErrorMobile: requireEmbed('assets/design/zNPDv.png'),
   devAddAccountMobile: requireEmbed('assets/dev/modals/add-account-mobile.png'),
   devRemoveInstitutionMobile: requireEmbed('assets/dev/modals/remove-institution-mobile.png'),
+  devPlaidErrorMobile: requireEmbed('assets/dev/modals/plaid-error-mobile.png'),
 };
 
 /** Pre-cropped closeup assets live in assets/dev/ and assets/design/ — no runtime CSS cropping */
@@ -972,7 +973,7 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('23', 'Mobile — Remove Institution', 'Remove Institution at 390px viewport — design FOSbt · dev mobile capture', images.designRemoveInstitutionMobile, images.devRemoveInstitutionMobile, modalCompareStyle, table(mobileRemoveInstitutionRows), '', modalCompareStyle)}
 
-    ${compareSection('24', 'Mobile — Plaid Linking Error', 'Plaid Linking Error at 390px viewport — design zNPDv · dev not capturable (requires Plaid failure)', images.designPlaidErrorMobile, null, modalCompareStyle, table(mobilePlaidErrorRows), '<p class="note"><strong>Dev screenshot unavailable:</strong> The Plaid Linking Error cannot be triggered on demand — it requires an actual Plaid connection failure. Design panel shows the expected mobile appearance.</p>', modalCompareStyle)}
+    ${compareSection('24', 'Mobile — Plaid Linking Error', 'Plaid Linking Error at 390px viewport — design zNPDv · dev mobile capture', images.designPlaidErrorMobile, images.devPlaidErrorMobile, modalCompareStyle, table(mobilePlaidErrorRows), '', modalCompareStyle)}
 
     <section class="page" id="s25">
       <h2>25. Files to change in js-mono</h2>
