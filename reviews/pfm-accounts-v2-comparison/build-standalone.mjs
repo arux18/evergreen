@@ -216,7 +216,7 @@ const netWorthValueRows = [
   ['Font weight', '600 semibold', '400 regular', 'Use semibold (600)', 'Gap'],
   ['Color', T.textHeader, 'text-text-header', 'No change — same token', 'Match'],
   ['Letter-spacing', '−0.5px (hardcoded in design)', 'Not set', 'tracking-[-0.5px]', 'Gap'],
-  ['Fraction digits', '0 (whole dollars in design sample)', '2 decimal places shown', 'maximumFractionDigits: 0 for headline', 'Gap'],
+  ['Fraction digits', '0 — rounded to nearest dollar (no cents)', '2 decimal places shown', 'maximumFractionDigits: 0 — round to nearest dollar', 'Gap'],
 ];
 
 const buttonRows = [
@@ -586,14 +586,14 @@ const mobileHomeRows = [
   ['Nav header', 'Hamburger icon (left) + "Accounts" title (left) + Chat icon (right) — single row', 'Hamburger icon (left) + "Net Worth | Accounts" (center) + Chat icon (right)', 'Left-align title beside hamburger; drop "Net Worth |" prefix', 'Gap'],
   ['Net Worth label', '"NET WORTH" — typo-primary-xs-semibold · color-text-meta · tracking uppercase', '"NET WORTH" — same treatment', 'Match — no change needed', 'Match'],
   ['Net Worth value', '$1,169,200 — typo-primary-3xl-light (~30px) · colors-text-header', '$3,575,547.32 — typo-primary-2xl-regular', 'Use 3xl light (larger, thinner weight) to match design prominence', 'Gap'],
-  ['Net Worth decimal', 'No decimal places shown — round number "$1,169,200"', 'Shows cents "$3,575,547.32"', 'Hide decimal/cents for cleaner mobile presentation (match design)', 'Gap'],
+  ['Net Worth — round to dollar', 'Rounded to nearest dollar — no cents shown ("$1,169,200")', 'Shows cents "$3,575,547.32"', 'Round to nearest dollar (maximumFractionDigits: 0) — no cents on Net Worth headline', 'Gap'],
   ['Add Account button', 'Outline pill button "Add Account +" — typo-primary-sm-regular · 1px border · rounded-full', 'Same outline pill "Add Account +" — slightly different sizing', 'Verify button height and padding match design proportions', 'Check'],
   ['Section headers (BANKING, INVESTMENTS, etc.)', 'typo-primary-xs-semibold · color-gray-500 · tracking ~1.5px · ALL CAPS — generous top margin', 'typo-primary-xs-semibold · text-text-meta · ALL CAPS — similar', 'Match color-gray-500 token; verify spacing above each section', 'Check'],
   ['Account row — name', 'Full name visible: "Wells Fargo Checking (x1234)" — typo-primary-base-semibold', 'Truncated: "Marcus Online Savings (..." with ellipsis — typo-primary-sm-semibold', 'Show full name (no truncation) or allow wrap; use base (not sm) size', 'Gap'],
   ['Account row — type', '"Checking", "Savings", etc. — typo-primary-sm-regular · color-text-body', '"Banking" for all — generic category instead of specific type', 'Use Plaid subtype (Checking, Savings, Brokerage) not generic category', 'Gap'],
   ['Account row — sync line', '"Refreshed Jun 3, 2026 at 9:12 AM" — typo-primary-xs-regular · color-gray-500', '"Last synced May 17, 2026" — typo-primary-xs-regular · color-gray-500', 'Match design date format: "Refreshed {date} at {time}"', 'Gap'],
-  ['Account row — balance', 'Right-aligned · typo-primary-base-semibold · colors-text-header · no decimals ("$12,400")', 'Right-aligned · typo-primary-sm-regular · "$325,000.00" with decimals', 'Use base-semibold (bolder, larger); hide decimal cents to match design', 'Gap'],
-  ['Account row — balance decimals', 'No decimal: "$12,400", "$32,000", "$485,000"', 'Full cents: "$325,000.00", "$145,000.00"', 'Remove .00 decimals for whole-dollar balances', 'Gap'],
+  ['Account row — balance', 'Right-aligned · typo-primary-base-semibold · colors-text-header · rounded to nearest dollar ("$12,400")', 'Right-aligned · typo-primary-sm-regular · "$325,000.00" with cents', 'Use base-semibold (bolder, larger); round to nearest dollar (no cents)', 'Gap'],
+  ['Account row — round to dollar', 'Rounded to nearest dollar: "$12,400", "$32,000", "$485,000" — no .00', 'Shows cents: "$325,000.00", "$145,000.00"', 'Round balances to nearest dollar (maximumFractionDigits: 0) on account rows', 'Gap'],
   ['Account row — logo size', '~32px circles with actual institution logos', '~32px circles — letter initials or logos', 'Match — when logoUrl available, display actual logo', 'Check'],
   ['Account row — chevron', 'No visible chevron arrow — row is tappable without indicator', '"> " chevron indicator after account name', 'Per design: no chevron indicator on mobile rows (tap affordance is implicit)', 'Gap'],
   ['Row vertical spacing', 'Generous py (~16px) between rows — spacious list feel', 'Tighter py (~8px) between rows — compact', 'Increase row vertical padding to match design spaciousness', 'Gap'],
@@ -883,6 +883,7 @@ const html = `<!DOCTYPE html>
     .nav-link { display: block; padding: 5px 8px; border-radius: 6px; font-size: 12px; font-weight: 400; color: var(--text); text-decoration: none; transition: background 0.12s; line-height: 1.35; }
     .nav-link:hover { background: #eae7e1; }
     .nav-top { font-weight: 600; font-size: 13px; padding: 8px 8px; margin-bottom: 8px; border-bottom: 1px solid var(--line); border-radius: 0; color: #1a1a1a; }
+    .nav-sub { display: block; font-size: 10px; font-weight: 600; color: #78716c; padding: 4px 8px 2px; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
     @media (min-width: 1600px) { .doc { margin-left: 200px; } }
     @media (max-width: 1599px) { .side-nav { display: none; } }
     @page { size: landscape; margin: 0.35in; }
@@ -900,6 +901,7 @@ const html = `<!DOCTYPE html>
   <nav class="side-nav">
     <a href="#top" class="nav-link nav-top">&#8593; Overview</a>
     <span class="side-nav-title t-list">Accounts list</span>
+    <span class="nav-sub">Desktop</span>
     <a href="#s1" class="nav-link">1. Layout &amp; spacing</a>
     <a href="#s2" class="nav-link">2. NET WORTH label</a>
     <a href="#s3" class="nav-link">3. Net worth value</a>
@@ -910,27 +912,31 @@ const html = `<!DOCTYPE html>
     <a href="#s7" class="nav-link">7. Meta text</a>
     <a href="#s8" class="nav-link">8. Sync text</a>
     <a href="#s9" class="nav-link">9. Balance</a>
+    <span class="nav-sub">Mobile</span>
+    <a href="#s21" class="nav-link">21. Layout &amp; rows</a>
     <span class="side-nav-title t-states">Row states</span>
+    <span class="nav-sub">Desktop</span>
     <a href="#s10" class="nav-link">10. Default</a>
     <a href="#s11" class="nav-link">11. Hover</a>
     <a href="#s12" class="nav-link">12. Pressed</a>
+    <span class="nav-sub">Mobile</span>
+    <a href="#s22" class="nav-link">22. Press state</a>
     <span class="side-nav-title t-data">Data</span>
     <a href="#s13" class="nav-link">13. Institution logos</a>
     <span class="side-nav-title t-detail">Account detail</span>
+    <span class="nav-sub">Desktop</span>
     <a href="#s14" class="nav-link">14. Full screen</a>
     <a href="#s15" class="nav-link">15. Header</a>
     <a href="#s16" class="nav-link">16. Balance &amp; actions</a>
     <a href="#s17" class="nav-link">17. Detail tables</a>
+    <span class="nav-sub">Mobile</span>
+    <a href="#s23" class="nav-link">23. Detail modal</a>
     <span class="side-nav-title t-modals">Modals</span>
+    <span class="nav-sub">Desktop</span>
     <a href="#s18" class="nav-link">18. Add Account</a>
     <a href="#s19" class="nav-link">19. Remove Institution</a>
     <a href="#s20" class="nav-link">20. Plaid Linking Error</a>
-    <span class="side-nav-title t-list">Mobile — accounts list</span>
-    <a href="#s21" class="nav-link">21. Layout &amp; rows</a>
-    <a href="#s22" class="nav-link">22. Press state</a>
-    <span class="side-nav-title t-detail">Mobile — account detail</span>
-    <a href="#s23" class="nav-link">23. Detail modal</a>
-    <span class="side-nav-title t-modals">Mobile — modals</span>
+    <span class="nav-sub">Mobile</span>
     <a href="#s24" class="nav-link">24. Add Account</a>
     <a href="#s25" class="nav-link">25. Remove Institution</a>
     <a href="#s26" class="nav-link">26. Plaid Linking Error</a>

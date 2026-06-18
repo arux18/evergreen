@@ -76,6 +76,7 @@
     .nav-link { display: block; padding: 5px 8px; border-radius: 6px; font-size: 12px; font-weight: 400; color: var(--text); text-decoration: none; transition: background 0.12s; line-height: 1.35; }
     .nav-link:hover { background: #eae7e1; }
     .nav-top { font-weight: 600; font-size: 13px; padding: 8px 8px; margin-bottom: 8px; border-bottom: 1px solid var(--line); border-radius: 0; color: #1a1a1a; }
+    .nav-sub { display: block; font-size: 10px; font-weight: 600; color: #78716c; padding: 4px 8px 2px; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
     @media (min-width: 1600px) { .doc { margin-left: 200px; } }
     @media (max-width: 1599px) { .side-nav { display: none; } }
     @page { size: landscape; margin: 0.35in; }
@@ -93,6 +94,7 @@
   <nav class="side-nav">
     <a href="#top" class="nav-link nav-top">&#8593; Overview</a>
     <span class="side-nav-title t-list">Accounts list</span>
+    <span class="nav-sub">Desktop</span>
     <a href="#s1" class="nav-link">1. Layout &amp; spacing</a>
     <a href="#s2" class="nav-link">2. NET WORTH label</a>
     <a href="#s3" class="nav-link">3. Net worth value</a>
@@ -103,27 +105,31 @@
     <a href="#s7" class="nav-link">7. Meta text</a>
     <a href="#s8" class="nav-link">8. Sync text</a>
     <a href="#s9" class="nav-link">9. Balance</a>
+    <span class="nav-sub">Mobile</span>
+    <a href="#s21" class="nav-link">21. Layout &amp; rows</a>
     <span class="side-nav-title t-states">Row states</span>
+    <span class="nav-sub">Desktop</span>
     <a href="#s10" class="nav-link">10. Default</a>
     <a href="#s11" class="nav-link">11. Hover</a>
     <a href="#s12" class="nav-link">12. Pressed</a>
+    <span class="nav-sub">Mobile</span>
+    <a href="#s22" class="nav-link">22. Press state</a>
     <span class="side-nav-title t-data">Data</span>
     <a href="#s13" class="nav-link">13. Institution logos</a>
     <span class="side-nav-title t-detail">Account detail</span>
+    <span class="nav-sub">Desktop</span>
     <a href="#s14" class="nav-link">14. Full screen</a>
     <a href="#s15" class="nav-link">15. Header</a>
     <a href="#s16" class="nav-link">16. Balance &amp; actions</a>
     <a href="#s17" class="nav-link">17. Detail tables</a>
+    <span class="nav-sub">Mobile</span>
+    <a href="#s23" class="nav-link">23. Detail modal</a>
     <span class="side-nav-title t-modals">Modals</span>
+    <span class="nav-sub">Desktop</span>
     <a href="#s18" class="nav-link">18. Add Account</a>
     <a href="#s19" class="nav-link">19. Remove Institution</a>
     <a href="#s20" class="nav-link">20. Plaid Linking Error</a>
-    <span class="side-nav-title t-list">Mobile — accounts list</span>
-    <a href="#s21" class="nav-link">21. Layout &amp; rows</a>
-    <a href="#s22" class="nav-link">22. Press state</a>
-    <span class="side-nav-title t-detail">Mobile — account detail</span>
-    <a href="#s23" class="nav-link">23. Detail modal</a>
-    <span class="side-nav-title t-modals">Mobile — modals</span>
+    <span class="nav-sub">Mobile</span>
     <a href="#s24" class="nav-link">24. Add Account</a>
     <a href="#s25" class="nav-link">25. Remove Institution</a>
     <a href="#s26" class="nav-link">26. Plaid Linking Error</a>
@@ -230,7 +236,7 @@
 <tr><td>Font weight</td><td>600 semibold</td><td>400 regular</td><td>Use semibold (600)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Color</td><td>colors-text-header / color-gray-900 (#0E0E0E)</td><td>text-text-header</td><td>No change — same token</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Letter-spacing</td><td>−0.5px (hardcoded in design)</td><td>Not set</td><td>tracking-[-0.5px]</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Fraction digits</td><td>0 (whole dollars in design sample)</td><td>2 decimal places shown</td><td>maximumFractionDigits: 0 for headline</td><td><span class="badge gap">Gap</span></td></tr></tbody></table>
+<tr><td>Fraction digits</td><td>0 — rounded to nearest dollar (no cents)</td><td>2 decimal places shown</td><td>maximumFractionDigits: 0 — round to nearest dollar</td><td><span class="badge gap">Gap</span></td></tr></tbody></table>
   </section>
 
     
@@ -752,14 +758,14 @@
 <tr><td>Nav header</td><td>Hamburger icon (left) + "Accounts" title (left) + Chat icon (right) — single row</td><td>Hamburger icon (left) + "Net Worth | Accounts" (center) + Chat icon (right)</td><td>Left-align title beside hamburger; drop "Net Worth |" prefix</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Net Worth label</td><td>"NET WORTH" — typo-primary-xs-semibold · color-text-meta · tracking uppercase</td><td>"NET WORTH" — same treatment</td><td>Match — no change needed</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Net Worth value</td><td>$1,169,200 — typo-primary-3xl-light (~30px) · colors-text-header</td><td>$3,575,547.32 — typo-primary-2xl-regular</td><td>Use 3xl light (larger, thinner weight) to match design prominence</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Net Worth decimal</td><td>No decimal places shown — round number "$1,169,200"</td><td>Shows cents "$3,575,547.32"</td><td>Hide decimal/cents for cleaner mobile presentation (match design)</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Net Worth — round to dollar</td><td>Rounded to nearest dollar — no cents shown ("$1,169,200")</td><td>Shows cents "$3,575,547.32"</td><td>Round to nearest dollar (maximumFractionDigits: 0) — no cents on Net Worth headline</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Add Account button</td><td>Outline pill button "Add Account +" — typo-primary-sm-regular · 1px border · rounded-full</td><td>Same outline pill "Add Account +" — slightly different sizing</td><td>Verify button height and padding match design proportions</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Section headers (BANKING, INVESTMENTS, etc.)</td><td>typo-primary-xs-semibold · color-gray-500 · tracking ~1.5px · ALL CAPS — generous top margin</td><td>typo-primary-xs-semibold · text-text-meta · ALL CAPS — similar</td><td>Match color-gray-500 token; verify spacing above each section</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Account row — name</td><td>Full name visible: "Wells Fargo Checking (x1234)" — typo-primary-base-semibold</td><td>Truncated: "Marcus Online Savings (..." with ellipsis — typo-primary-sm-semibold</td><td>Show full name (no truncation) or allow wrap; use base (not sm) size</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Account row — type</td><td>"Checking", "Savings", etc. — typo-primary-sm-regular · color-text-body</td><td>"Banking" for all — generic category instead of specific type</td><td>Use Plaid subtype (Checking, Savings, Brokerage) not generic category</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Account row — sync line</td><td>"Refreshed Jun 3, 2026 at 9:12 AM" — typo-primary-xs-regular · color-gray-500</td><td>"Last synced May 17, 2026" — typo-primary-xs-regular · color-gray-500</td><td>Match design date format: "Refreshed {date} at {time}"</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Account row — balance</td><td>Right-aligned · typo-primary-base-semibold · colors-text-header · no decimals ("$12,400")</td><td>Right-aligned · typo-primary-sm-regular · "$325,000.00" with decimals</td><td>Use base-semibold (bolder, larger); hide decimal cents to match design</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Account row — balance decimals</td><td>No decimal: "$12,400", "$32,000", "$485,000"</td><td>Full cents: "$325,000.00", "$145,000.00"</td><td>Remove .00 decimals for whole-dollar balances</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Account row — balance</td><td>Right-aligned · typo-primary-base-semibold · colors-text-header · rounded to nearest dollar ("$12,400")</td><td>Right-aligned · typo-primary-sm-regular · "$325,000.00" with cents</td><td>Use base-semibold (bolder, larger); round to nearest dollar (no cents)</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Account row — round to dollar</td><td>Rounded to nearest dollar: "$12,400", "$32,000", "$485,000" — no .00</td><td>Shows cents: "$325,000.00", "$145,000.00"</td><td>Round balances to nearest dollar (maximumFractionDigits: 0) on account rows</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Account row — logo size</td><td>~32px circles with actual institution logos</td><td>~32px circles — letter initials or logos</td><td>Match — when logoUrl available, display actual logo</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Account row — chevron</td><td>No visible chevron arrow — row is tappable without indicator</td><td>"> " chevron indicator after account name</td><td>Per design: no chevron indicator on mobile rows (tap affordance is implicit)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Row vertical spacing</td><td>Generous py (~16px) between rows — spacious list feel</td><td>Tighter py (~8px) between rows — compact</td><td>Increase row vertical padding to match design spaciousness</td><td><span class="badge gap">Gap</span></td></tr>
@@ -939,7 +945,7 @@
 <tr><td>Font weight</td><td>600 semibold</td><td>400 regular</td><td>Use semibold (600)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Color</td><td>colors-text-header / color-gray-900 (#0E0E0E)</td><td>text-text-header</td><td>No change — same token</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Letter-spacing</td><td>−0.5px (hardcoded in design)</td><td>Not set</td><td>tracking-[-0.5px]</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Fraction digits</td><td>0 (whole dollars in design sample)</td><td>2 decimal places shown</td><td>maximumFractionDigits: 0 for headline</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Fraction digits</td><td>0 — rounded to nearest dollar (no cents)</td><td>2 decimal places shown</td><td>maximumFractionDigits: 0 — round to nearest dollar</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Hemlock component ref</td><td>G2cAS · addBankBtn → ref `component/Button/outline/icon-right` (0:URoI8)</td><td>React `@money-evergreen/components/button` — not a Pencil library ref</td><td>Use Hemlock ref instance; override label + icon slot only</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Dev implementation</td><td>Pencil ref with descendant overrides on 0:URoI8</td><td>`pfm-accounts/index.tsx` — `Button variant={ButtonVariant.Outline} size="small"` + inner `<span className="flex items-center gap-2xs">`</td><td>Replace hand-built OpenUI wrapper with Hemlock outline/icon-right ref</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Label text</td><td>"Add Account"</td><td>`t("accounts_page.add_account")`</td><td>No change — same copy slot</td><td><span class="badge match">Match</span></td></tr>
@@ -1153,14 +1159,14 @@
 <tr><td>Nav header</td><td>Hamburger icon (left) + "Accounts" title (left) + Chat icon (right) — single row</td><td>Hamburger icon (left) + "Net Worth | Accounts" (center) + Chat icon (right)</td><td>Left-align title beside hamburger; drop "Net Worth |" prefix</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Net Worth label</td><td>"NET WORTH" — typo-primary-xs-semibold · color-text-meta · tracking uppercase</td><td>"NET WORTH" — same treatment</td><td>Match — no change needed</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Net Worth value</td><td>$1,169,200 — typo-primary-3xl-light (~30px) · colors-text-header</td><td>$3,575,547.32 — typo-primary-2xl-regular</td><td>Use 3xl light (larger, thinner weight) to match design prominence</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Net Worth decimal</td><td>No decimal places shown — round number "$1,169,200"</td><td>Shows cents "$3,575,547.32"</td><td>Hide decimal/cents for cleaner mobile presentation (match design)</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Net Worth — round to dollar</td><td>Rounded to nearest dollar — no cents shown ("$1,169,200")</td><td>Shows cents "$3,575,547.32"</td><td>Round to nearest dollar (maximumFractionDigits: 0) — no cents on Net Worth headline</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Add Account button</td><td>Outline pill button "Add Account +" — typo-primary-sm-regular · 1px border · rounded-full</td><td>Same outline pill "Add Account +" — slightly different sizing</td><td>Verify button height and padding match design proportions</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Section headers (BANKING, INVESTMENTS, etc.)</td><td>typo-primary-xs-semibold · color-gray-500 · tracking ~1.5px · ALL CAPS — generous top margin</td><td>typo-primary-xs-semibold · text-text-meta · ALL CAPS — similar</td><td>Match color-gray-500 token; verify spacing above each section</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Account row — name</td><td>Full name visible: "Wells Fargo Checking (x1234)" — typo-primary-base-semibold</td><td>Truncated: "Marcus Online Savings (..." with ellipsis — typo-primary-sm-semibold</td><td>Show full name (no truncation) or allow wrap; use base (not sm) size</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Account row — type</td><td>"Checking", "Savings", etc. — typo-primary-sm-regular · color-text-body</td><td>"Banking" for all — generic category instead of specific type</td><td>Use Plaid subtype (Checking, Savings, Brokerage) not generic category</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Account row — sync line</td><td>"Refreshed Jun 3, 2026 at 9:12 AM" — typo-primary-xs-regular · color-gray-500</td><td>"Last synced May 17, 2026" — typo-primary-xs-regular · color-gray-500</td><td>Match design date format: "Refreshed {date} at {time}"</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Account row — balance</td><td>Right-aligned · typo-primary-base-semibold · colors-text-header · no decimals ("$12,400")</td><td>Right-aligned · typo-primary-sm-regular · "$325,000.00" with decimals</td><td>Use base-semibold (bolder, larger); hide decimal cents to match design</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Account row — balance decimals</td><td>No decimal: "$12,400", "$32,000", "$485,000"</td><td>Full cents: "$325,000.00", "$145,000.00"</td><td>Remove .00 decimals for whole-dollar balances</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Account row — balance</td><td>Right-aligned · typo-primary-base-semibold · colors-text-header · rounded to nearest dollar ("$12,400")</td><td>Right-aligned · typo-primary-sm-regular · "$325,000.00" with cents</td><td>Use base-semibold (bolder, larger); round to nearest dollar (no cents)</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Account row — round to dollar</td><td>Rounded to nearest dollar: "$12,400", "$32,000", "$485,000" — no .00</td><td>Shows cents: "$325,000.00", "$145,000.00"</td><td>Round balances to nearest dollar (maximumFractionDigits: 0) on account rows</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Account row — logo size</td><td>~32px circles with actual institution logos</td><td>~32px circles — letter initials or logos</td><td>Match — when logoUrl available, display actual logo</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Account row — chevron</td><td>No visible chevron arrow — row is tappable without indicator</td><td>"> " chevron indicator after account name</td><td>Per design: no chevron indicator on mobile rows (tap affordance is implicit)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Row vertical spacing</td><td>Generous py (~16px) between rows — spacious list feel</td><td>Tighter py (~8px) between rows — compact</td><td>Increase row vertical padding to match design spaciousness</td><td><span class="badge gap">Gap</span></td></tr>
