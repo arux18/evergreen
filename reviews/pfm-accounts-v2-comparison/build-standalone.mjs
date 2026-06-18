@@ -400,6 +400,8 @@ const detailShellRows = [
   ['Modal background', T.bgSurface, 'White dialog surface', 'No change — same token', 'Match'],
   ['Body padding', T.xl, 'md:px-md pb-md (not uniform p-xl)', 'Use p-xl on scroll body', 'Gap'],
   ['Section gap inside body', T.lg, 'gap-lg (spacing-lg = 32px)', 'No change — same token', 'Match'],
+  ['Scroll behavior', 'Single vertical scroll on modal body — no horizontal scroll, no nested scrollable regions', 'Double scroll: outer dialog + inner content both scrollable; horizontal scrollbar visible on modal body', 'Remove nested overflow-auto; set single `overflow-y: auto; overflow-x: hidden` on the modal body container only', 'Gap'],
+  ['Horizontal overflow', 'No horizontal scroll — content fits within 560px modal width', 'Horizontal scrollbar appears (content or padding exceeds container width)', 'Fix content/padding so nothing overflows horizontally; add `overflow-x: hidden` as safeguard', 'Gap'],
 ];
 
 const detailHeaderRows = [
@@ -582,10 +584,13 @@ function refSection(num, title, subtitle, tableHtml, noteHtml = '') {
 
 const logoRows = [
   ['Data source', 'Plaid institution logo URL on every linked institution', 'logoUrl present for Fidelity + Schwab only; Marcus, Chase, etc. fall back to letter avatars', 'Backend must populate LinkedExternalInstitution.logoUrl from Plaid for all linked items — not a frontend formatting fix', 'Gap'],
-  ['Frontend render path', 'Show logo image when URL present', 'account-row.tsx: img when institution.logoUrl, else initial letter — logic is correct', 'Fix data pipeline; no row component change needed unless URL arrives empty', 'Match'],
+  ['Frontend render path (list rows)', 'Show logo image when URL present', 'account-row.tsx: img when institution.logoUrl, else initial letter — logic is correct', 'Fix data pipeline; no row component change needed unless URL arrives empty', 'Match'],
+  ['Frontend render path (account detail header)', 'Institution logo in modal header beside account name', 'account-detail-dialog.tsx: same logoUrl conditional render', 'Same fix — once backend populates logoUrl, detail header shows logo', 'Match'],
+  ['Frontend render path (Add Account modal tiles)', 'Institution logo tiles in linked-institutions grid', 'InstitutionLogoCard: renders logoUrl when present, letter fallback otherwise', 'Same fix — backend must supply logoUrl for all institutions', 'Match'],
   ['GraphQL field', 'logoUrl on externalAccounts.institutions', 'customerDetails / profile queries already request logoUrl', 'Ensure backend resolver returns Plaid logo for every institution', 'Gap'],
   ['List row dimensions', '32 × 32px', 'w-8 h-8 (32px)', 'No change once logo URL is present', 'Match'],
-  ['Modal header dimensions', '36 × 36px', 'w-9 h-9 (36px)', 'No change once logo URL is present', 'Match'],
+  ['Account detail header dimensions', '36 × 36px', 'w-9 h-9 (36px)', 'No change once logo URL is present', 'Match'],
+  ['Add Account modal tile dimensions', '48 × 48px (circle)', 'w-12 h-12 rounded-full (48px)', 'No change once logo URL is present', 'Match'],
 ];
 
 const devFiles = [
@@ -832,7 +837,7 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('12', 'Account row — pressed state', 'Active / mouse-down — frame TShbt · row Pv3zG (O:W8aOnw)', images.designPressedRow, null, '', table(rowPressedStateRows), '<p><strong>Dev today:</strong> No distinct <code>:active</code> pressed styling — row stays on hover gray or default. Press and hold a row in dev; background should deepen to <strong>#EDEAE3</strong> with 12px padding and 12px radius per design (left).</p><p>Full-screen design reference: frame <strong>TShbt</strong> in <code>assets/design/TShbt.png</code>.</p>')}
 
-    ${compareSection('13', 'Institution logos — Plaid data', 'Design expects Plaid institution logos on every row. Dev screenshot crop: INVESTMENTS rows (Fidelity, Schwab logos) vs BANKING rows (letter avatars when logoUrl is missing).', images.designRow, images.devRowsInvestments, '', table(logoRows), '<p><strong>Not a formatting gap:</strong> <code>account-row.tsx</code> renders <code>&lt;img src={institution.logoUrl}&gt;</code> when the API returns a URL. Letter avatars (M, C) mean <code>logoUrl</code> is null. Fidelity/Schwab in the crop below prove the render path works when data exists — backend must populate Plaid logos for all institutions.</p>')}
+    ${compareSection('13', 'Institution logos — Plaid data', 'Design expects Plaid institution logos on list rows, account-detail header, and Add Account modal tiles. Dev shows logos only when logoUrl is populated (Fidelity, Schwab); letter avatars appear when it is missing.', images.designRow, images.devRowsInvestments, '', table(logoRows), '<p><strong>Not a formatting gap:</strong> All three render paths (<code>account-row.tsx</code>, <code>account-detail-dialog.tsx</code>, <code>InstitutionLogoCard</code>) correctly render <code>&lt;img src={institution.logoUrl}&gt;</code> when the API returns a URL. Letter avatars (M, C) mean <code>logoUrl</code> is null — backend must populate Plaid logos for all institutions.</p>')}
 
     ${compareSection('14', 'Account details — full screen', 'Row click opens modal — frame xGRDX (design) vs dev viewport with dialog open', images.designDetailScreen, devDetailFull ?? devDetailPopup, modalImageStyle, table(detailShellRows), devDetailFull ? '' : devDetailFallbackNote, modalImageStyle)}
 
