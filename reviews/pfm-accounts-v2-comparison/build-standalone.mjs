@@ -86,6 +86,10 @@ const images = {
   devAddAccountMobile: requireEmbed('assets/dev/modals/add-account-mobile.png'),
   devRemoveInstitutionMobile: requireEmbed('assets/dev/modals/remove-institution-mobile.png'),
   devPlaidErrorMobile: requireEmbed('assets/dev/modals/plaid-error-mobile.png'),
+  designHomeMobile: requireEmbed('assets/design/TuZJ5.png'),
+  designPressMobile: requireEmbed('assets/design/EehZZ.png'),
+  devHomeMobile: requireEmbed('assets/dev/modals/accounts-home-mobile.png'),
+  devPressMobile: requireEmbed('assets/dev/modals/accounts-press-mobile.png'),
 };
 
 /** Pre-cropped closeup assets live in assets/dev/ and assets/design/ — no runtime CSS cropping */
@@ -577,6 +581,38 @@ const mobileDetailRows = [
   ['Typography — values', 'Same tokens as desktop — no mobile-specific change', 'Same tokens as desktop — no mobile-specific issue', 'No change', 'Match'],
 ];
 
+const mobileHomeRows = [
+  ['Page title', '"Accounts" — typo-primary-lg-semibold · left-aligned next to hamburger icon', '"Net Worth | Accounts" — typo-primary-base-semibold · centered between hamburger and chat icons', 'Match design: just "Accounts" without "Net Worth |" prefix at mobile; increase size to lg', 'Gap'],
+  ['Nav header', 'Hamburger icon (left) + "Accounts" title (left) + Chat icon (right) — single row', 'Hamburger icon (left) + "Net Worth | Accounts" (center) + Chat icon (right)', 'Left-align title beside hamburger; drop "Net Worth |" prefix', 'Gap'],
+  ['Net Worth label', '"NET WORTH" — typo-primary-xs-semibold · color-text-meta · tracking uppercase', '"NET WORTH" — same treatment', 'Match — no change needed', 'Match'],
+  ['Net Worth value', '$1,169,200 — typo-primary-3xl-light (~30px) · colors-text-header', '$3,575,547.32 — typo-primary-2xl-regular', 'Use 3xl light (larger, thinner weight) to match design prominence', 'Gap'],
+  ['Net Worth decimal', 'No decimal places shown — round number "$1,169,200"', 'Shows cents "$3,575,547.32"', 'Hide decimal/cents for cleaner mobile presentation (match design)', 'Gap'],
+  ['Add Account button', 'Outline pill button "Add Account +" — typo-primary-sm-regular · 1px border · rounded-full', 'Same outline pill "Add Account +" — slightly different sizing', 'Verify button height and padding match design proportions', 'Check'],
+  ['Section headers (BANKING, INVESTMENTS, etc.)', 'typo-primary-xs-semibold · color-gray-500 · tracking ~1.5px · ALL CAPS — generous top margin', 'typo-primary-xs-semibold · text-text-meta · ALL CAPS — similar', 'Match color-gray-500 token; verify spacing above each section', 'Check'],
+  ['Account row — name', 'Full name visible: "Wells Fargo Checking (x1234)" — typo-primary-base-semibold', 'Truncated: "Marcus Online Savings (..." with ellipsis — typo-primary-sm-semibold', 'Show full name (no truncation) or allow wrap; use base (not sm) size', 'Gap'],
+  ['Account row — type', '"Checking", "Savings", etc. — typo-primary-sm-regular · color-text-body', '"Banking" for all — generic category instead of specific type', 'Use Plaid subtype (Checking, Savings, Brokerage) not generic category', 'Gap'],
+  ['Account row — sync line', '"Refreshed Jun 3, 2026 at 9:12 AM" — typo-primary-xs-regular · color-gray-500', '"Last synced May 17, 2026" — typo-primary-xs-regular · color-gray-500', 'Match design date format: "Refreshed {date} at {time}"', 'Gap'],
+  ['Account row — balance', 'Right-aligned · typo-primary-base-semibold · colors-text-header · no decimals ("$12,400")', 'Right-aligned · typo-primary-sm-regular · "$325,000.00" with decimals', 'Use base-semibold (bolder, larger); hide decimal cents to match design', 'Gap'],
+  ['Account row — balance decimals', 'No decimal: "$12,400", "$32,000", "$485,000"', 'Full cents: "$325,000.00", "$145,000.00"', 'Remove .00 decimals for whole-dollar balances', 'Gap'],
+  ['Account row — logo size', '~32px circles with actual institution logos', '~32px circles — letter initials or logos', 'Match — when logoUrl available, display actual logo', 'Check'],
+  ['Account row — chevron', 'No visible chevron arrow — row is tappable without indicator', '"> " chevron indicator after account name', 'Per design: no chevron indicator on mobile rows (tap affordance is implicit)', 'Gap'],
+  ['Row vertical spacing', 'Generous py (~16px) between rows — spacious list feel', 'Tighter py (~8px) between rows — compact', 'Increase row vertical padding to match design spaciousness', 'Gap'],
+  ['Row separator', 'No visible dividers between rows — spacing alone separates', 'No dividers — spacing separates', 'Match — no change needed', 'Match'],
+  ['Content padding (horizontal)', '~16px left/right page padding', '~16px left/right — similar', 'Match — verify exact px value', 'Check'],
+  ['Bottom area', 'List ends cleanly — no extra elements below last row', 'Large empty white space below last row + chat input bar', 'Verify chat input does not overlap content area', 'Check'],
+];
+
+const mobilePressMobileRows = [
+  ['Press feedback', 'Row highlights with warm beige/tan background (#e8e0d4 or similar Hemlock token) on touch-down', 'Row shows same beige/tan background on :active state', 'Match — verify color matches Hemlock pressed token exactly', 'Check'],
+  ['Press color token', 'Warm tan/beige — appears to be color-surface-pressed or similar Hemlock token', 'Similar tan — using bg-surface-pressed or inline style', 'Verify exact Hemlock token: should be same as desktop pressed state (§12)', 'Check'],
+  ['Press border-radius', 'Pressed highlight has rounded-lg corners matching row shape', 'Pressed highlight has rounded corners — appears rounded-lg', 'Match — same radius as desktop', 'Check'],
+  ['Press covers full row', 'Background fill spans entire row width including logo and balance', 'Same — background covers full row width', 'Match', 'Match'],
+  ['Press timing', 'Immediate feedback on touch-down — no delay', 'Verify touch-start triggers :active immediately (no 300ms delay from tap-highlight)', 'Ensure -webkit-tap-highlight-color is disabled; use :active for instant feedback', 'Check'],
+  ['Press transition', 'Appears as instant fill (no fade-in visible in design)', 'May use transition — check CSS', 'Match design: instant or very fast (< 50ms) background change on press', 'Check'],
+  ['Row text during press', 'All text (name, type, sync, balance) remains unchanged during press — no color shift', 'Same — text colors stable during active state', 'Match — no text color change needed', 'Match'],
+  ['Release → navigate', 'On release, row returns to default and navigates to account detail', 'On tap (mouseup/touchend), opens account detail dialog', 'Behavior match — press shows feedback, release navigates', 'Match'],
+];
+
 const mobileAddAccountRows = [
   ['Modal presentation', 'Bottom sheet anchored to bottom of viewport — rounded top corners, no scrim gap at top', 'Centered floating dialog with scrim — same as desktop; does not adapt to mobile viewport', 'Use bottom sheet pattern (anchored to bottom, full-width, rounded top corners) below sm breakpoint', 'Gap'],
   ['Modal width', 'Full viewport width (edge-to-edge minus small side margin)', 'Narrow centered dialog ~280px — does not fill mobile viewport', 'Modal should span full width at 390px viewport', 'Gap'],
@@ -751,6 +787,8 @@ const masterRows = [
   ...addAccountModalRows,
   ...removeInstitutionModalRows,
   ...plaidErrorModalRows,
+  ...mobileHomeRows,
+  ...mobilePressMobileRows,
   ...mobileDetailRows,
   ...mobileAddAccountRows,
   ...mobileRemoveInstitutionRows,
@@ -886,13 +924,15 @@ const html = `<!DOCTYPE html>
     <a href="#s19" class="nav-link">19. Remove Institution</a>
     <a href="#s20" class="nav-link">20. Plaid Linking Error</a>
     <span class="side-nav-title t-mobile">Mobile</span>
-    <a href="#s21" class="nav-link">21. Account details</a>
-    <a href="#s22" class="nav-link">22. Add Account</a>
-    <a href="#s23" class="nav-link">23. Remove Institution</a>
-    <a href="#s24" class="nav-link">24. Plaid Linking Error</a>
+    <a href="#s21" class="nav-link">21. Home screen</a>
+    <a href="#s22" class="nav-link">22. Press state</a>
+    <a href="#s23" class="nav-link">23. Account details</a>
+    <a href="#s24" class="nav-link">24. Add Account</a>
+    <a href="#s25" class="nav-link">25. Remove Institution</a>
+    <a href="#s26" class="nav-link">26. Plaid Linking Error</a>
     <span class="side-nav-title t-ref">Reference</span>
-    <a href="#s25" class="nav-link">25. Files to change</a>
-    <a href="#s26" class="nav-link">26. Master checklist</a>
+    <a href="#s27" class="nav-link">27. Files to change</a>
+    <a href="#s28" class="nav-link">28. Master checklist</a>
   </nav>
   <div class="doc">
     <header class="cover">
@@ -918,12 +958,14 @@ const html = `<!DOCTYPE html>
         <div>18. Add Account modal (i0Ih1j)</div>
         <div>19. Remove Institution confirmation (G9xXUO)</div>
         <div>20. Plaid Linking Error (SXiFh)</div>
-        <div>21. Mobile — Account details</div>
-        <div>22. Mobile — Add Account</div>
-        <div>23. Mobile — Remove Institution</div>
-        <div>24. Mobile — Plaid Linking Error</div>
-        <div>25. Files to change</div>
-        <div>26. Master checklist</div>
+        <div>21. Mobile — Home screen (TuZJ5)</div>
+        <div>22. Mobile — Press state (EehZZ)</div>
+        <div>23. Mobile — Account details</div>
+        <div>24. Mobile — Add Account</div>
+        <div>25. Mobile — Remove Institution</div>
+        <div>26. Mobile — Plaid Linking Error</div>
+        <div>27. Files to change</div>
+        <div>28. Master checklist</div>
       </div>
     </header>
 
@@ -980,8 +1022,12 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('20', 'Plaid Linking Error', 'Plaid token / link failure — desktop SXiFh · mobile zNPDv; dev from plaid-error.tsx', images.designPlaidError, images.devPlaidErrorModal, modalCompareStyle, table(plaidErrorModalRows), '', modalCompareStyle)}
 
-    <section class="page" id="s21">
-      <h2>21. Mobile — Account details</h2>
+    ${compareSection('21', 'Mobile — Home screen', 'Accounts list page at 390px viewport — design TuZJ5 · dev mobile capture', images.designHomeMobile, images.devHomeMobile, modalCompareStyle, table(mobileHomeRows), '', modalCompareStyle)}
+
+    ${compareSection('22', 'Mobile — Press state', 'Row active/pressed feedback at 390px — design EehZZ · dev simulated :active', images.designPressMobile, images.devPressMobile, modalCompareStyle, table(mobilePressMobileRows), '<p class="note">Mobile has no hover — the equivalent interaction feedback is the press/active state shown during touch-down. Design shows a warm beige background highlight (same token as desktop pressed in §12). Dev shows similar but verify exact token match.</p>', modalCompareStyle)}
+
+    <section class="page" id="s23">
+      <h2>23. Mobile — Account details</h2>
       <p class="subtitle">Account detail modal at mobile viewport (&lt;640px) — responsive layout, scroll, and touch-target gaps</p>
       <div class="compare">
         <div class="panel design-panel">
@@ -1000,21 +1046,21 @@ const html = `<!DOCTYPE html>
       <p class="note">Mobile viewport surfaces additional UX issues beyond desktop: floating dialog instead of full-screen takeover, title truncation, and padding that doesn't scale down. Typography tokens are unchanged from desktop (§15–17).</p>
     </section>
 
-    ${compareSection('22', 'Mobile — Add Account', 'Add Account modal at 390px viewport — design ugE8p · dev mobile capture', images.designAddAccountMobile, images.devAddAccountMobile, modalCompareStyle, table(mobileAddAccountRows), '', modalCompareStyle)}
+    ${compareSection('24', 'Mobile — Add Account', 'Add Account modal at 390px viewport — design ugE8p · dev mobile capture', images.designAddAccountMobile, images.devAddAccountMobile, modalCompareStyle, table(mobileAddAccountRows), '', modalCompareStyle)}
 
-    ${compareSection('23', 'Mobile — Remove Institution', 'Remove Institution at 390px viewport — design FOSbt · dev mobile capture', images.designRemoveInstitutionMobile, images.devRemoveInstitutionMobile, modalCompareStyle, table(mobileRemoveInstitutionRows), '', modalCompareStyle)}
+    ${compareSection('25', 'Mobile — Remove Institution', 'Remove Institution at 390px viewport — design FOSbt · dev mobile capture', images.designRemoveInstitutionMobile, images.devRemoveInstitutionMobile, modalCompareStyle, table(mobileRemoveInstitutionRows), '', modalCompareStyle)}
 
-    ${compareSection('24', 'Mobile — Plaid Linking Error', 'Plaid Linking Error at 390px viewport — design zNPDv · dev mobile capture', images.designPlaidErrorMobile, images.devPlaidErrorMobile, modalCompareStyle, table(mobilePlaidErrorRows), '', modalCompareStyle)}
+    ${compareSection('26', 'Mobile — Plaid Linking Error', 'Plaid Linking Error at 390px viewport — design zNPDv · dev mobile capture', images.designPlaidErrorMobile, images.devPlaidErrorMobile, modalCompareStyle, table(mobilePlaidErrorRows), '', modalCompareStyle)}
 
-    <section class="page" id="s25">
-      <h2>25. Files to change in js-mono</h2>
+    <section class="page" id="s27">
+      <h2>27. Files to change in js-mono</h2>
       <p class="subtitle">Map formatting fixes to implementation files on develop.</p>
       ${fileTable()}
       <div class="note">Shared tokens: use Hemlock typography classes and Tailwind aliases. <strong>List page meta</strong> → <code>text-gray-500</code> (<code>color-gray-500</code>). <strong>Modal detail labels</strong> → <code>text-text-meta</code> (<code>colors-text-meta</code>). Row names/balances → <code>text-gray-800</code>.</div>
     </section>
 
-    <section class="page" id="s26">
-      <h2>26. Master formatting checklist</h2>
+    <section class="page" id="s28">
+      <h2>28. Master formatting checklist</h2>
       <p class="subtitle">Engineering sign-off — every row below must match design before merge. Out of scope: section inventory, account data, copy wording except where it affects typography slots.</p>
       ${table(masterRows)}
     </section>
