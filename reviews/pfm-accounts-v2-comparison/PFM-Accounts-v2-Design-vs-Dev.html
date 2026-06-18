@@ -18,6 +18,7 @@
       --warn: #b8860b;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif; }
     .doc { max-width: 1360px; margin: 0 auto; padding: 32px 28px 64px; }
     .cover { background: var(--paper); border: 1px solid var(--line); padding: 40px 48px; margin-bottom: 28px; }
@@ -33,7 +34,7 @@
     .badge.gap { background: #fde8e8; color: var(--gap); }
     .badge.match { background: #e8f5e9; color: var(--match); }
     .badge.warn { background: #fff8e1; color: var(--warn); }
-    section.page { background: var(--paper); border: 1px solid var(--line); padding: 28px 36px; margin-bottom: 22px; break-inside: avoid; }
+    section.page { background: var(--paper); border: 1px solid var(--line); padding: 28px 36px; margin-bottom: 22px; break-inside: avoid; scroll-margin-top: 56px; }
     section.page h2 { margin: 0 0 4px; font-size: 19px; font-weight: 600; }
     section.page .subtitle { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
     .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
@@ -62,14 +63,24 @@
     .note { background: #f0f7ff; border-left: 3px solid #4a7c9b; padding: 10px 14px; font-size: 13px; margin: 12px 0 0; }
     .toc { columns: 2; font-size: 13px; line-height: 1.75; margin-top: 14px; }
     .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
+    .sticky-nav { position: sticky; top: 0; z-index: 100; background: rgba(244, 242, 238, 0.97); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 10px 28px; margin: 0 -28px 22px; }
+    .nav-group { display: inline-flex; align-items: center; gap: 4px; margin-right: 12px; margin-bottom: 4px; }
+    .nav-group-label { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-right: 2px; white-space: nowrap; }
+    .nav-chip { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 500; color: var(--text); background: var(--paper); border: 1px solid var(--line); text-decoration: none; white-space: nowrap; transition: background 0.15s, border-color 0.15s; }
+    .nav-chip:hover { background: #eae7e1; border-color: #ccc8c0; }
+    .nav-chip.mobile { background: #f0e6ff; border-color: #d4b8ff; }
+    .nav-chip.mobile:hover { background: #e4d4f7; }
+    .nav-chip.ref { background: #e8f0f8; border-color: #b8d0e8; }
+    .nav-chip.ref:hover { background: #d8e4f0; }
     @page { size: landscape; margin: 0.35in; }
     @media print {
       body { background: white; }
       .doc { padding: 0; max-width: none; }
+      .sticky-nav { display: none; }
       section.page, .cover { page-break-after: always; border: none; box-shadow: none; }
       section.page:last-of-type { page-break-after: auto; }
     }
-    @media (max-width: 900px) { .compare, .toc { columns: 1; grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .compare, .toc { columns: 1; grid-template-columns: 1fr; } .sticky-nav { padding: 8px 12px; margin: 0 -12px 16px; } .nav-group { margin-right: 8px; } }
   </style>
 </head>
 <body>
@@ -103,8 +114,56 @@
       </div>
     </header>
 
+    <nav class="sticky-nav">
+      <span class="nav-group">
+        <span class="nav-group-label">List</span>
+        <a href="#s1" class="nav-chip" title="Layout &amp; spacing">§1</a>
+        <a href="#s2" class="nav-chip" title="Net Worth label">§2</a>
+        <a href="#s3" class="nav-chip" title="Net Worth value">§3</a>
+        <a href="#s4" class="nav-chip" title="Add Account button">§4</a>
+        <a href="#s4a" class="nav-chip" title="Hemlock button refs">§4a</a>
+        <a href="#s5" class="nav-chip" title="Section header">§5</a>
+        <a href="#s6" class="nav-chip" title="Row — account name">§6</a>
+        <a href="#s7" class="nav-chip" title="Row — meta text">§7</a>
+        <a href="#s8" class="nav-chip" title="Row — sync line">§8</a>
+        <a href="#s9" class="nav-chip" title="Row — balance">§9</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">States</span>
+        <a href="#s10" class="nav-chip" title="Row — default state">§10</a>
+        <a href="#s11" class="nav-chip" title="Row — hover state">§11</a>
+        <a href="#s12" class="nav-chip" title="Row — pressed state">§12</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">Data</span>
+        <a href="#s13" class="nav-chip" title="Institution logos">§13</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">Detail</span>
+        <a href="#s14" class="nav-chip" title="Detail — shell">§14</a>
+        <a href="#s15" class="nav-chip" title="Detail — header">§15</a>
+        <a href="#s16" class="nav-chip" title="Detail — balance">§16</a>
+        <a href="#s17" class="nav-chip" title="Detail — table rows">§17</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">Modals</span>
+        <a href="#s18" class="nav-chip" title="Add Account modal">§18</a>
+        <a href="#s19" class="nav-chip" title="Remove Institution">§19</a>
+        <a href="#s20" class="nav-chip" title="Plaid Linking Error">§20</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">Mobile</span>
+        <a href="#s21" class="nav-chip mobile" title="Mobile — Account details">§21</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">Ref</span>
+        <a href="#s22" class="nav-chip ref" title="Files to change">§22</a>
+        <a href="#s23" class="nav-chip ref" title="Master checklist">§23</a>
+      </span>
+    </nav>
+
     
-  <section class="page">
+  <section class="page" id="s1">
     <h2>1. Layout &amp; spacing</h2>
     <p class="subtitle">Content column padding and vertical rhythm</p>
     <div class="compare">
@@ -127,7 +186,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s2">
     <h2>2. NET WORTH label</h2>
     <p class="subtitle">Eyebrow above total — node ozOU0 · list meta uses color-gray-500 (not colors-text-meta)</p>
     <div class="compare">
@@ -149,7 +208,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s3">
     <h2>3. Net worth numerical value</h2>
     <p class="subtitle">Total amount — node NH57T</p>
     <div class="compare">
@@ -171,7 +230,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s4">
     <h2>4. Add Account button</h2>
     <p class="subtitle">Outline pill CTA — node b9y1P / G2cAS · Hemlock outline/icon-right</p>
     <div class="compare">
@@ -205,7 +264,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s4a">
     <h2>4a. Hemlock button component references</h2>
     <p class="subtitle">Every button on this page must be a Hemlock library ref — override label, icon, or text color only; never substitute filled primary, secondary solid, ghost, or link buttons.</p>
     <table class="spec-table hemlock-ref-table"><thead><tr><th>Node ID</th><th>Instance name</th><th>Hemlock component</th><th>Variant / ref</th><th>Dev today</th><th>Required change in dev</th></tr></thead><tbody><tr><td><code>G2cAS</code></td><td>addBankBtn (list CTA)</td><td><code>component/Button/outline/icon-right</code></td><td>Outline + right icon (0:URoI8)</td><td>Button Outline small + PlusIcon</td><td>Use Hemlock ref; override label + icon slot</td></tr>
@@ -225,7 +284,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s5">
     <h2>5. Section headers</h2>
     <p class="subtitle">BANKING, CREDIT CARDS, etc. — 14px semibold meta caps</p>
     <div class="compare">
@@ -248,7 +307,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s6">
     <h2>6. Row line 1 — account name</h2>
     <p class="subtitle">Primary row label — node dQRJV</p>
     <div class="compare">
@@ -270,7 +329,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s7">
     <h2>7. Row line 2 — meta text</h2>
     <p class="subtitle">Secondary line typography — design node O8QSz (14px meta)</p>
     <div class="compare">
@@ -292,7 +351,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s8">
     <h2>8. Row line 3 — sync text</h2>
     <p class="subtitle">Tertiary line typography — design node Pz6Xz (12px meta)</p>
     <div class="compare">
@@ -314,7 +373,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s9">
     <h2>9. Balance (right column)</h2>
     <p class="subtitle">Amount typography — node RlJfv</p>
     <div class="compare">
@@ -337,7 +396,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s10">
     <h2>10. Account row — default state</h2>
     <p class="subtitle">Resting row before interaction — FglEA / dVY3g</p>
     <div class="compare">
@@ -362,7 +421,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s11">
     <h2>11. Account row — hover state</h2>
     <p class="subtitle">Pointer over row — frame eWQkU · highlighted row g2UJK (O:e19L89)</p>
     <div class="compare">
@@ -388,7 +447,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s12">
     <h2>12. Account row — pressed state</h2>
     <p class="subtitle">Active / mouse-down — frame TShbt · row Pv3zG (O:W8aOnw)</p>
     <div class="compare">
@@ -410,7 +469,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s13">
     <h2>13. Institution logos — Plaid data</h2>
     <p class="subtitle">Design expects Plaid institution logos on list rows, account-detail header, and Add Account modal tiles. Dev shows logos only when logoUrl is populated (Fidelity, Schwab); letter avatars appear when it is missing.</p>
     <div class="compare">
@@ -434,7 +493,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s14">
     <h2>14. Account details — full screen</h2>
     <p class="subtitle">Row click opens modal — frame xGRDX (design) vs dev viewport with dialog open</p>
     <div class="compare">
@@ -460,7 +519,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s15">
     <h2>15. Account details — header</h2>
     <p class="subtitle">Title bar — popup hIBWD / HmYtb · modal labels use colors-text-meta (not list-page gray-500)</p>
     <div class="compare">
@@ -482,7 +541,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s16">
     <h2>16. Account details — balance &amp; actions</h2>
     <p class="subtitle">CURRENT BALANCE block + Manage / Remove — Qe4Vv · Hemlock outline refs qsmXG / p48Qbb</p>
     <div class="compare">
@@ -523,7 +582,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s17">
     <h2>17. Account details — detail tables</h2>
     <p class="subtitle">Identity / Balances / Recent Activity — DetailSection pattern in hIBWD</p>
     <div class="compare">
@@ -562,7 +621,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s18">
     <h2>18. Add Account modal</h2>
     <p class="subtitle">Linked-institution picker — desktop i0Ih1j · mobile ugE8p</p>
     <div class="compare">
@@ -592,7 +651,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s19">
     <h2>19. Remove Institution confirmation</h2>
     <p class="subtitle">Remove flow confirm dialog — desktop G9xXUO / panel fG4nj · mobile FOSbt</p>
     <div class="compare">
@@ -633,7 +692,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s20">
     <h2>20. Plaid Linking Error</h2>
     <p class="subtitle">Plaid token / link failure — no design frame in pen yet; dev from plaid-error.tsx</p>
     <div class="compare">
@@ -673,7 +732,7 @@
   </section>
 
     
-  <section class="page">
+  <section class="page" id="s21">
     <h2>21. Mobile — Account details</h2>
     <p class="subtitle">Account detail modal at mobile viewport (&lt;640px) — responsive layout, scroll, and touch-target gaps</p>
     <div class="compare">
@@ -697,14 +756,14 @@
 <tr><td>Typography — values</td><td>Same tokens as desktop — no mobile-specific change</td><td>Same tokens as desktop — no mobile-specific issue</td><td>No change</td><td><span class="badge match">Match</span></td></tr></tbody></table>
   </section>
 
-    <section class="page">
+    <section class="page" id="s22">
       <h2>22. Files to change in js-mono</h2>
       <p class="subtitle">Map formatting fixes to implementation files on develop.</p>
       <table class="spec-table file-table"><thead><tr><th>Area</th><th>js-mono file (develop)</th></tr></thead><tbody><tr><td>Net worth label + value</td><td><code>packages/features/external-accounts/src/components/net-worth-headline/net-worth-headline.tsx</code></td></tr><tr><td>Add Account button + page gaps</td><td><code>packages/features/external-accounts/src/pages/pfm-accounts/index.tsx</code></td></tr><tr><td>Outline button border/text overrides</td><td><code>shared-packages/packages/components/src/button/button.css → `.eg-button-outline`</code></td></tr><tr><td>Section header typography</td><td><code>packages/features/external-accounts/src/components/account-group-section/account-group-section.tsx</code></td></tr><tr><td>Row default / hover / pressed</td><td><code>packages/features/external-accounts/src/components/account-row/account-row.tsx</code></td></tr><tr><td>Institution logoUrl (Plaid → GraphQL)</td><td><code>Backend: LinkedExternalInstitution.logoUrl resolver · Plaid /institutions/get logo field</code></td></tr><tr><td>Sync line typography</td><td><code>packages/features/external-accounts/src/components/last-synced-badge/last-synced-badge.tsx</code></td></tr><tr><td>Account detail dialog shell + header</td><td><code>packages/features/external-accounts/src/components/account-detail-dialog/account-detail-dialog.tsx</code></td></tr><tr><td>Detail sections + rows</td><td><code>identity-section.tsx · detail-row.tsx · balance-section.tsx · recent-transactions-section.tsx</code></td></tr><tr><td>Manage / Remove buttons (Hemlock outline refs)</td><td><code>packages/features/external-accounts/src/components/account-detail-dialog/account-detail-connection-actions.tsx</code></td></tr><tr><td>Add Account modal</td><td><code>packages/features/external-accounts/src/components/plaid-link/add-account-modal/add-account-modal.tsx</code></td></tr><tr><td>Remove institution confirm</td><td><code>packages/features/external-accounts/src/components/account-detail-dialog/institution-remove-confirm-dialog.tsx</code></td></tr><tr><td>Plaid linking error</td><td><code>packages/features/external-accounts/src/components/plaid-link/plaid-error/plaid-error.tsx</code></td></tr><tr><td>Hemlock library</td><td><code>hemlock-library.lib.pen → component/Button/outline · outline/icon-right · text/icon-right · primary</code></td></tr></tbody></table>
       <div class="note">Shared tokens: use Hemlock typography classes and Tailwind aliases. <strong>List page meta</strong> → <code>text-gray-500</code> (<code>color-gray-500</code>). <strong>Modal detail labels</strong> → <code>text-text-meta</code> (<code>colors-text-meta</code>). Row names/balances → <code>text-gray-800</code>.</div>
     </section>
 
-    <section class="page">
+    <section class="page" id="s23">
       <h2>23. Master formatting checklist</h2>
       <p class="subtitle">Engineering sign-off — every row below must match design before merge. Out of scope: section inventory, account data, copy wording except where it affects typography slots.</p>
       <table class="spec-table"><thead><tr><th>Property</th><th>Design (Hemlock token)</th><th>Dev (Hemlock token / class)</th><th>Required change in dev</th><th>Status</th></tr></thead><tbody><tr><td>Content column padding</td><td>spacing-md (24px) vertical · spacing-xl (40px) horizontal</td><td>Shell wrapper — not py-md px-xl on content column</td><td>Apply py-md px-xl on accounts content column</td><td><span class="badge gap">Gap</span></td></tr>

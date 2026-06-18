@@ -587,7 +587,7 @@ function hemlockRefTable(rows) {
 
 function refSection(num, title, subtitle, tableHtml, noteHtml = '') {
   return `
-  <section class="page">
+  <section class="page" id="s${num}">
     <h2>${num}. ${title}</h2>
     <p class="subtitle">${subtitle}</p>
     ${tableHtml}
@@ -659,7 +659,7 @@ function compareSection(num, title, subtitle, designImg, devImg, devCrop, tableH
     ? `<img src="${designImg}" alt="Design: ${title}" ${designStyle} />`
     : `<div class="dev-note">${designNote || 'Design export needed.'}</div>`;
   return `
-  <section class="page">
+  <section class="page" id="s${num}">
     <h2>${num}. ${title}</h2>
     <p class="subtitle">${subtitle}</p>
     <div class="compare">
@@ -730,6 +730,7 @@ const html = `<!DOCTYPE html>
       --warn: #b8860b;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif; }
     .doc { max-width: 1360px; margin: 0 auto; padding: 32px 28px 64px; }
     .cover { background: var(--paper); border: 1px solid var(--line); padding: 40px 48px; margin-bottom: 28px; }
@@ -745,7 +746,7 @@ const html = `<!DOCTYPE html>
     .badge.gap { background: #fde8e8; color: var(--gap); }
     .badge.match { background: #e8f5e9; color: var(--match); }
     .badge.warn { background: #fff8e1; color: var(--warn); }
-    section.page { background: var(--paper); border: 1px solid var(--line); padding: 28px 36px; margin-bottom: 22px; break-inside: avoid; }
+    section.page { background: var(--paper); border: 1px solid var(--line); padding: 28px 36px; margin-bottom: 22px; break-inside: avoid; scroll-margin-top: 56px; }
     section.page h2 { margin: 0 0 4px; font-size: 19px; font-weight: 600; }
     section.page .subtitle { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
     .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
@@ -774,14 +775,24 @@ const html = `<!DOCTYPE html>
     .note { background: #f0f7ff; border-left: 3px solid #4a7c9b; padding: 10px 14px; font-size: 13px; margin: 12px 0 0; }
     .toc { columns: 2; font-size: 13px; line-height: 1.75; margin-top: 14px; }
     .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
+    .sticky-nav { position: sticky; top: 0; z-index: 100; background: rgba(244, 242, 238, 0.97); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 10px 28px; margin: 0 -28px 22px; }
+    .nav-group { display: inline-flex; align-items: center; gap: 4px; margin-right: 12px; margin-bottom: 4px; }
+    .nav-group-label { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-right: 2px; white-space: nowrap; }
+    .nav-chip { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 500; color: var(--text); background: var(--paper); border: 1px solid var(--line); text-decoration: none; white-space: nowrap; transition: background 0.15s, border-color 0.15s; }
+    .nav-chip:hover { background: #eae7e1; border-color: #ccc8c0; }
+    .nav-chip.mobile { background: #f0e6ff; border-color: #d4b8ff; }
+    .nav-chip.mobile:hover { background: #e4d4f7; }
+    .nav-chip.ref { background: #e8f0f8; border-color: #b8d0e8; }
+    .nav-chip.ref:hover { background: #d8e4f0; }
     @page { size: landscape; margin: 0.35in; }
     @media print {
       body { background: white; }
       .doc { padding: 0; max-width: none; }
+      .sticky-nav { display: none; }
       section.page, .cover { page-break-after: always; border: none; box-shadow: none; }
       section.page:last-of-type { page-break-after: auto; }
     }
-    @media (max-width: 900px) { .compare, .toc { columns: 1; grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .compare, .toc { columns: 1; grid-template-columns: 1fr; } .sticky-nav { padding: 8px 12px; margin: 0 -12px 16px; } .nav-group { margin-right: 8px; } }
   </style>
 </head>
 <body>
@@ -814,6 +825,54 @@ const html = `<!DOCTYPE html>
         <div>23. Master checklist</div>
       </div>
     </header>
+
+    <nav class="sticky-nav">
+      <span class="nav-group">
+        <span class="nav-group-label">List</span>
+        <a href="#s1" class="nav-chip" title="Layout &amp; spacing">§1</a>
+        <a href="#s2" class="nav-chip" title="Net Worth label">§2</a>
+        <a href="#s3" class="nav-chip" title="Net Worth value">§3</a>
+        <a href="#s4" class="nav-chip" title="Add Account button">§4</a>
+        <a href="#s4a" class="nav-chip" title="Hemlock button refs">§4a</a>
+        <a href="#s5" class="nav-chip" title="Section header">§5</a>
+        <a href="#s6" class="nav-chip" title="Row — account name">§6</a>
+        <a href="#s7" class="nav-chip" title="Row — meta text">§7</a>
+        <a href="#s8" class="nav-chip" title="Row — sync line">§8</a>
+        <a href="#s9" class="nav-chip" title="Row — balance">§9</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">States</span>
+        <a href="#s10" class="nav-chip" title="Row — default state">§10</a>
+        <a href="#s11" class="nav-chip" title="Row — hover state">§11</a>
+        <a href="#s12" class="nav-chip" title="Row — pressed state">§12</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">Data</span>
+        <a href="#s13" class="nav-chip" title="Institution logos">§13</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">Detail</span>
+        <a href="#s14" class="nav-chip" title="Detail — shell">§14</a>
+        <a href="#s15" class="nav-chip" title="Detail — header">§15</a>
+        <a href="#s16" class="nav-chip" title="Detail — balance">§16</a>
+        <a href="#s17" class="nav-chip" title="Detail — table rows">§17</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">Modals</span>
+        <a href="#s18" class="nav-chip" title="Add Account modal">§18</a>
+        <a href="#s19" class="nav-chip" title="Remove Institution">§19</a>
+        <a href="#s20" class="nav-chip" title="Plaid Linking Error">§20</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">Mobile</span>
+        <a href="#s21" class="nav-chip mobile" title="Mobile — Account details">§21</a>
+      </span>
+      <span class="nav-group">
+        <span class="nav-group-label">Ref</span>
+        <a href="#s22" class="nav-chip ref" title="Files to change">§22</a>
+        <a href="#s23" class="nav-chip ref" title="Master checklist">§23</a>
+      </span>
+    </nav>
 
     ${compareSection('1', 'Layout &amp; spacing', 'Content column padding and vertical rhythm', images.designContent, images.devFull, 'object-fit:cover;object-position:28% 18%;max-height:480px;', table(layoutRows))}
 
@@ -870,14 +929,14 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('21', 'Mobile — Account details', 'Account detail modal at mobile viewport (&lt;640px) — responsive layout, scroll, and touch-target gaps', null, images.devDetailMobile, modalCompareStyle, table(mobileDetailRows), '<p class="note">Mobile viewport surfaces additional UX issues beyond desktop: floating dialog instead of full-screen takeover, title truncation, and padding that doesn\'t scale down. Typography tokens are unchanged from desktop (§15–17).</p>', modalCompareStyle, '', 'Design mobile frame needed — add to pfm-accounts-v2.pen or link an external mobile spec.')}
 
-    <section class="page">
+    <section class="page" id="s22">
       <h2>22. Files to change in js-mono</h2>
       <p class="subtitle">Map formatting fixes to implementation files on develop.</p>
       ${fileTable()}
       <div class="note">Shared tokens: use Hemlock typography classes and Tailwind aliases. <strong>List page meta</strong> → <code>text-gray-500</code> (<code>color-gray-500</code>). <strong>Modal detail labels</strong> → <code>text-text-meta</code> (<code>colors-text-meta</code>). Row names/balances → <code>text-gray-800</code>.</div>
     </section>
 
-    <section class="page">
+    <section class="page" id="s23">
       <h2>23. Master formatting checklist</h2>
       <p class="subtitle">Engineering sign-off — every row below must match design before merge. Out of scope: section inventory, account data, copy wording except where it affects typography slots.</p>
       ${table(masterRows)}
