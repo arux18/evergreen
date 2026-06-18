@@ -899,7 +899,7 @@ const html = `<!DOCTYPE html>
 <body>
   <nav class="side-nav">
     <a href="#top" class="nav-link nav-top">&#8593; Overview</a>
-    <span class="side-nav-title t-list">List page</span>
+    <span class="side-nav-title t-list">Accounts list</span>
     <a href="#s1" class="nav-link">1. Layout &amp; spacing</a>
     <a href="#s2" class="nav-link">2. NET WORTH label</a>
     <a href="#s3" class="nav-link">3. Net worth value</a>
@@ -916,19 +916,21 @@ const html = `<!DOCTYPE html>
     <a href="#s12" class="nav-link">12. Pressed</a>
     <span class="side-nav-title t-data">Data</span>
     <a href="#s13" class="nav-link">13. Institution logos</a>
-    <span class="side-nav-title t-detail">Detail modal</span>
+    <span class="side-nav-title t-detail">Account detail</span>
     <a href="#s14" class="nav-link">14. Full screen</a>
     <a href="#s15" class="nav-link">15. Header</a>
     <a href="#s16" class="nav-link">16. Balance &amp; actions</a>
     <a href="#s17" class="nav-link">17. Detail tables</a>
-    <span class="side-nav-title t-modals">Other modals</span>
+    <span class="side-nav-title t-modals">Modals</span>
     <a href="#s18" class="nav-link">18. Add Account</a>
     <a href="#s19" class="nav-link">19. Remove Institution</a>
     <a href="#s20" class="nav-link">20. Plaid Linking Error</a>
-    <span class="side-nav-title t-mobile">Mobile</span>
-    <a href="#s21" class="nav-link">21. Home screen</a>
+    <span class="side-nav-title t-list">Mobile — accounts list</span>
+    <a href="#s21" class="nav-link">21. Layout &amp; rows</a>
     <a href="#s22" class="nav-link">22. Press state</a>
-    <a href="#s23" class="nav-link">23. Account details</a>
+    <span class="side-nav-title t-detail">Mobile — account detail</span>
+    <a href="#s23" class="nav-link">23. Detail modal</a>
+    <span class="side-nav-title t-modals">Mobile — modals</span>
     <a href="#s24" class="nav-link">24. Add Account</a>
     <a href="#s25" class="nav-link">25. Remove Institution</a>
     <a href="#s26" class="nav-link">26. Plaid Linking Error</a>
@@ -960,9 +962,9 @@ const html = `<!DOCTYPE html>
         <div>18. Add Account modal (i0Ih1j)</div>
         <div>19. Remove Institution confirmation (G9xXUO)</div>
         <div>20. Plaid Linking Error (SXiFh)</div>
-        <div>21. Mobile — Home screen (TuZJ5)</div>
+        <div>21. Mobile — Layout &amp; rows (TuZJ5)</div>
         <div>22. Mobile — Press state (EehZZ)</div>
-        <div>23. Mobile — Account details</div>
+        <div>23. Mobile — Detail modal</div>
         <div>24. Mobile — Add Account</div>
         <div>25. Mobile — Remove Institution</div>
         <div>26. Mobile — Plaid Linking Error</div>
@@ -1024,12 +1026,12 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('20', 'Plaid Linking Error', 'Plaid token / link failure — desktop SXiFh · mobile zNPDv; dev from plaid-error.tsx', images.designPlaidError, images.devPlaidErrorModal, modalCompareStyle, table(plaidErrorModalRows), '', modalCompareStyle)}
 
-    ${compareSection('21', 'Mobile — Home screen', 'Accounts list page at 390px viewport — design TuZJ5 · dev mobile capture', images.designHomeMobile, images.devHomeMobile, modalCompareStyle, table(mobileHomeRows), '', modalCompareStyle)}
+    ${compareSection('21', 'Mobile — Layout & rows', 'Accounts list at 390px viewport — design TuZJ5 · dev mobile capture', images.designHomeMobile, images.devHomeMobile, modalCompareStyle, table(mobileHomeRows), '', modalCompareStyle)}
 
     ${compareSection('22', 'Mobile — Press state', 'Row active/pressed feedback at 390px — design EehZZ · dev simulated :active', images.designPressMobile, images.devPressMobile, modalCompareStyle, table(mobilePressMobileRows), '<p class="note">Mobile has no hover — the equivalent interaction feedback is the press/active state shown during touch-down. Design shows a warm beige background highlight (same token as desktop pressed in §12). Dev shows similar but verify exact token match.</p>', modalCompareStyle)}
 
     <section class="page" id="s23">
-      <h2>23. Mobile — Account details</h2>
+      <h2>23. Mobile — Detail modal</h2>
       <p class="subtitle">Account detail modal at mobile viewport (&lt;640px) — responsive layout, scroll, and touch-target gaps</p>
       <div class="compare">
         <div class="panel design-panel">
