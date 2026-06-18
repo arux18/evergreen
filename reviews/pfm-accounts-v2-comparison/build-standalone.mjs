@@ -78,6 +78,7 @@ const images = {
   devDetailPopup: embed('assets/dev/account-detail-popup.png'),
   devDetailMobile: requireEmbed('assets/dev/modals/account-detail-mobile.png'),
   designDetailMobile: requireEmbed('assets/design/a52MXP.png'),
+  designDetailMobileViewport: requireEmbed('assets/design/xOF5t.png'),
 };
 
 /** Pre-cropped closeup assets live in assets/dev/ and assets/design/ — no runtime CSS cropping */
@@ -918,7 +919,25 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('20', 'Plaid Linking Error', 'Plaid token / link failure — no design frame in pen yet; dev from plaid-error.tsx', null, images.devPlaidErrorModal, modalCompareStyle, table(plaidErrorModalRows), '<p class="note"><strong>Design needed:</strong> No Plaid Linking Error frame exists in <code>pfm-accounts-v2.pen</code>. Dev panel shows current implementation.</p>', modalCompareStyle, '', 'No design frame in pfm-accounts-v2.pen — add a frame or link an external spec to complete the design panel.')}
 
-    ${compareSection('21', 'Mobile — Account details', 'Account detail modal at mobile viewport (&lt;640px) — responsive layout, scroll, and touch-target gaps', images.designDetailMobile, images.devDetailMobile, modalCompareStyle, table(mobileDetailRows), '<p class="note">Mobile viewport surfaces additional UX issues beyond desktop: floating dialog instead of full-screen takeover, title truncation, and padding that doesn\'t scale down. Typography tokens are unchanged from desktop (§15–17).</p>', modalCompareStyle)}
+    <section class="page" id="s21">
+      <h2>21. Mobile — Account details</h2>
+      <p class="subtitle">Account detail modal at mobile viewport (&lt;640px) — responsive layout, scroll, and touch-target gaps</p>
+      <div class="compare">
+        <div class="panel design-panel">
+          <div class="panel-label design">Design — pfm-accounts-v2.pen (initial view + full scroll)</div>
+          <div style="display:flex;gap:8px;padding:12px;background:#fff;align-items:flex-start;">
+            <img src="${images.designDetailMobileViewport}" alt="Design: Mobile — initial viewport" style="${modalCompareStyle}flex:1;min-width:0;" />
+            <img src="${images.designDetailMobile}" alt="Design: Mobile — full scroll" style="${modalCompareStyle}flex:1;min-width:0;" />
+          </div>
+        </div>
+        <div class="panel dev-panel">
+          <div class="panel-label dev">Dev — app.eg-dev.ai (scrolled)</div>
+          <img src="${images.devDetailMobile}" alt="Dev: Mobile — Account details" style="${modalCompareStyle}" />
+        </div>
+      </div>
+      ${table(mobileDetailRows)}
+      <p class="note">Mobile viewport surfaces additional UX issues beyond desktop: floating dialog instead of full-screen takeover, title truncation, and padding that doesn't scale down. Typography tokens are unchanged from desktop (§15–17).</p>
+    </section>
 
     <section class="page" id="s22">
       <h2>22. Files to change in js-mono</h2>
