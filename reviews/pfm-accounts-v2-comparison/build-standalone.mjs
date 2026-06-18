@@ -76,6 +76,7 @@ const images = {
   devPlaidErrorModal: requireEmbed('assets/dev/modals/plaid-error.png'),
   devDetailFull: embed('assets/dev/account-detail-full.png'),
   devDetailPopup: embed('assets/dev/account-detail-popup.png'),
+  devDetailMobile: requireEmbed('assets/dev/modals/account-detail-mobile.png'),
 };
 
 /** Pre-cropped closeup assets live in assets/dev/ and assets/design/ — no runtime CSS cropping */
@@ -562,6 +563,17 @@ const plaidErrorModalRows = [
   ['Button row layout', '— (no design frame)', 'flex justify-end gap-sm · both buttons `w-full`', 'Define footer layout in design', 'Gap'],
 ];
 
+const mobileDetailRows = [
+  ['Presentation', 'Full-screen takeover (bottom sheet or full page) at mobile breakpoints', 'Centered floating dialog — same as desktop; does not adapt to viewport', 'Use full-screen modal or bottom sheet pattern below sm breakpoint (640px)', 'Gap'],
+  ['Title truncation', 'Account name fully visible or wraps gracefully', 'Account name truncated with text-overflow: ellipsis — context lost', 'Allow title to wrap to 2 lines or use a smaller font-size at mobile widths', 'Gap'],
+  ['Double scroll', 'Single vertical scroll on modal body (same as §14 desktop fix)', 'Outer dialog + inner content both scrollable — worse on small viewport', 'Same fix as §14 — remove nested overflow-auto; single overflow-y: auto on body', 'Gap'],
+  ['Horizontal overflow', 'No horizontal scroll — content fits within viewport width', 'Horizontal scrollbar visible — content or padding exceeds mobile viewport', 'Ensure content respects 100vw minus modal padding; add overflow-x: hidden as safeguard', 'Gap'],
+  ['Responsive padding', 'Reduced horizontal padding at narrow viewports (e.g. p-md instead of p-xl)', 'Desktop p-xl (24px) padding applied regardless of viewport width', 'Add responsive padding: p-md (16px) below sm breakpoint', 'Gap'],
+  ['Touch targets', 'Manage / Remove buttons meet 44px minimum touch target height', 'Buttons render at desktop height (~36px) — may be too small for touch', 'Ensure min-height: 44px on action buttons at mobile breakpoints', 'Gap'],
+  ['Typography — meta labels', 'Same tokens as desktop (§15–17) — no mobile-specific change', 'Same tokens as desktop — no mobile-specific issue', 'No change — same as desktop sections §15–17', 'Match'],
+  ['Typography — values', 'Same tokens as desktop — no mobile-specific change', 'Same tokens as desktop — no mobile-specific issue', 'No change', 'Match'],
+];
+
 function hemlockRefTable(rows) {
   const head = ['Node ID', 'Instance name', 'Hemlock component', 'Variant / ref', 'Dev today', 'Required change in dev']
     .map((h) => `<th>${h}</th>`)
@@ -684,6 +696,7 @@ const masterRows = [
   ...addAccountModalRows,
   ...removeInstitutionModalRows,
   ...plaidErrorModalRows,
+  ...mobileDetailRows,
   ...hemlockButtonRefRows.map(([node, inst, comp, variant, dev, req]) => [
     `Hemlock ref — ${inst}`,
     `${node} → ${comp} (${variant})`,
@@ -795,8 +808,9 @@ const html = `<!DOCTYPE html>
         <div>18. Add Account modal (i0Ih1j)</div>
         <div>19. Remove Institution confirmation (G9xXUO)</div>
         <div>20. Plaid Linking Error (dev — design TBD)</div>
-        <div>21. Files to change</div>
-        <div>22. Master checklist</div>
+        <div>21. Mobile — Account details</div>
+        <div>22. Files to change</div>
+        <div>23. Master checklist</div>
       </div>
     </header>
 
@@ -853,15 +867,17 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('20', 'Plaid Linking Error', 'Plaid token / link failure — no design frame in pen yet; dev from plaid-error.tsx', null, images.devPlaidErrorModal, modalCompareStyle, table(plaidErrorModalRows), '<p class="note"><strong>Design needed:</strong> No Plaid Linking Error frame exists in <code>pfm-accounts-v2.pen</code>. Dev panel shows current implementation.</p>', modalCompareStyle, '', 'No design frame in pfm-accounts-v2.pen — add a frame or link an external spec to complete the design panel.')}
 
+    ${compareSection('21', 'Mobile — Account details', 'Account detail modal at mobile viewport (&lt;640px) — responsive layout, scroll, and touch-target gaps', null, images.devDetailMobile, modalCompareStyle, table(mobileDetailRows), '<p class="note">Mobile viewport surfaces additional UX issues beyond desktop: floating dialog instead of full-screen takeover, title truncation, and padding that doesn\'t scale down. Typography tokens are unchanged from desktop (§15–17).</p>', modalCompareStyle, '', 'Design mobile frame needed — add to pfm-accounts-v2.pen or link an external mobile spec.')}
+
     <section class="page">
-      <h2>21. Files to change in js-mono</h2>
+      <h2>22. Files to change in js-mono</h2>
       <p class="subtitle">Map formatting fixes to implementation files on develop.</p>
       ${fileTable()}
       <div class="note">Shared tokens: use Hemlock typography classes and Tailwind aliases. <strong>List page meta</strong> → <code>text-gray-500</code> (<code>color-gray-500</code>). <strong>Modal detail labels</strong> → <code>text-text-meta</code> (<code>colors-text-meta</code>). Row names/balances → <code>text-gray-800</code>.</div>
     </section>
 
     <section class="page">
-      <h2>22. Master formatting checklist</h2>
+      <h2>23. Master formatting checklist</h2>
       <p class="subtitle">Engineering sign-off — every row below must match design before merge. Out of scope: section inventory, account data, copy wording except where it affects typography slots.</p>
       ${table(masterRows)}
     </section>
