@@ -77,6 +77,7 @@ const images = {
   devDetailFull: embed('assets/dev/account-detail-full.png'),
   devDetailPopup: embed('assets/dev/account-detail-popup.png'),
   devDetailMobile: requireEmbed('assets/dev/modals/account-detail-mobile.png'),
+  designDetailMobile: requireEmbed('assets/design/a52MXP.png'),
 };
 
 /** Pre-cropped closeup assets live in assets/dev/ and assets/design/ — no runtime CSS cropping */
@@ -917,7 +918,7 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('20', 'Plaid Linking Error', 'Plaid token / link failure — no design frame in pen yet; dev from plaid-error.tsx', null, images.devPlaidErrorModal, modalCompareStyle, table(plaidErrorModalRows), '<p class="note"><strong>Design needed:</strong> No Plaid Linking Error frame exists in <code>pfm-accounts-v2.pen</code>. Dev panel shows current implementation.</p>', modalCompareStyle, '', 'No design frame in pfm-accounts-v2.pen — add a frame or link an external spec to complete the design panel.')}
 
-    ${compareSection('21', 'Mobile — Account details', 'Account detail modal at mobile viewport (&lt;640px) — responsive layout, scroll, and touch-target gaps', null, images.devDetailMobile, modalCompareStyle, table(mobileDetailRows), '<p class="note">Mobile viewport surfaces additional UX issues beyond desktop: floating dialog instead of full-screen takeover, title truncation, and padding that doesn\'t scale down. Typography tokens are unchanged from desktop (§15–17).</p>', modalCompareStyle, '', 'Design mobile frame needed — add to pfm-accounts-v2.pen or link an external mobile spec.')}
+    ${compareSection('21', 'Mobile — Account details', 'Account detail modal at mobile viewport (&lt;640px) — responsive layout, scroll, and touch-target gaps', images.designDetailMobile, images.devDetailMobile, modalCompareStyle, table(mobileDetailRows), '<p class="note">Mobile viewport surfaces additional UX issues beyond desktop: floating dialog instead of full-screen takeover, title truncation, and padding that doesn\'t scale down. Typography tokens are unchanged from desktop (§15–17).</p>', modalCompareStyle)}
 
     <section class="page" id="s22">
       <h2>22. Files to change in js-mono</h2>
