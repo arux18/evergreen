@@ -990,7 +990,7 @@ const html = `<!DOCTYPE html>
     ${refSection(
       '4a',
       'Hemlock button component references',
-      'Every button on this page must be a Hemlock library ref — override label, icon, or text color only; never substitute filled primary, secondary solid, ghost, or link buttons.',
+      'Every button on this page must be a Hemlock library ref — override label, icon, text color, or letter-spacing only; never substitute filled primary, secondary solid, ghost, or link buttons.',
       hemlockRefTable(hemlockButtonRefRows),
       `<div class="note"><strong>Token naming:</strong> In Hemlock, <em>outline</em> is the <strong>component variant</strong>; <em>secondary</em> is the <strong>token set</strong> (<code>colors-btnSecondaryText</code>, <code>colors-btnSecondaryBorder</code>) applied to outline buttons.<br/><br/>
       <strong>List page — G2cAS (Add Account):</strong> <code>component/Button/outline/icon-right</code> (0:URoI8) — padding <code>[spacing-2xs, spacing-xs]</code>; plus 16×16 icon-right.<br/>
