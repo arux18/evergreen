@@ -570,29 +570,37 @@ const plaidErrorModalRows = [
 ];
 
 const mobileDetailRows = [
-  ['Presentation', 'Full-screen takeover (bottom sheet or full page) at mobile breakpoints', 'Centered floating dialog — same as desktop; does not adapt to viewport', 'Use full-screen modal or bottom sheet pattern below sm breakpoint (640px)', 'Gap'],
-  ['Title truncation', 'Account name fully visible or wraps gracefully', 'Account name truncated with text-overflow: ellipsis — context lost', 'Allow title to wrap to 2 lines or use a smaller font-size at mobile widths', 'Gap'],
-  ['Double scroll', 'Single vertical scroll on modal body (same as §14 desktop fix)', 'Outer dialog + inner content both scrollable — worse on small viewport', 'Same fix as §14 — remove nested overflow-auto; single overflow-y: auto on body', 'Gap'],
+  ['Presentation', 'Full-screen takeover (bottom sheet or full page) at mobile breakpoints', 'Centered floating dialog (position: fixed, 351px wide, 12px border-radius all corners) — same as desktop; does not adapt to viewport', 'Use full-screen modal or bottom sheet pattern below sm breakpoint (640px)', 'Gap'],
+  ['Modal width', 'Edge-to-edge (full 390px viewport width minus safe margins)', 'Fixed 351px width with ~20px margin each side — does not feel full-screen', 'At mobile, modal should fill viewport width (bottom sheet or full page takeover)', 'Gap'],
+  ['Title truncation', 'Account name fully visible or wraps gracefully', 'Account name truncated with text-overflow: ellipsis + white-space: nowrap — "Marcus Online Savings (" gets cut off, losing context', 'Allow title to wrap to 2 lines or use a smaller font-size at mobile widths', 'Gap'],
+  ['Title font', 'Noto Serif 22px/30px weight 600 — serif heading', 'Same (Noto Serif 22px/30px 600) — correct font choice', 'Match — verify wrapping behavior when switching to multi-line', 'Match'],
+  ['Balance shows cents', 'Rounded to nearest dollar ("$325,000") — no decimals', '"$325,000.00" — shows cents', 'Round to nearest dollar (maximumFractionDigits: 0) in detail modal balance', 'Gap'],
+  ['Balance value font size', 'Prominent large size (~24px+) for "Current Balance" value — clear hierarchy below title', '16px/24px Heebo 600 — same size as section headers, lacks visual prominence', 'Increase balance font-size to match design hierarchy (likely 24px+ or typo-primary-xl)', 'Gap'],
+  ['"CURRENT BALANCE" label', '12px Heebo · uppercase · color-text-meta (#5E5954) · letter-spacing ~1.5px', '12px/16px Heebo · uppercase · color #5E5954 · letter-spacing: normal', 'Add letter-spacing (~1.5px) to match design tracking on uppercase labels', 'Gap'],
+  ['Button position (Manage/Remove)', 'Buttons on their own row below balance — full-width or visually distinct row', 'Buttons positioned inline alongside balance value — cramped at narrow viewport', 'Move Manage/Remove buttons to a dedicated row below balance at mobile breakpoints', 'Gap'],
+  ['Button height (Manage/Remove)', 'Minimum 44px touch target height', 'Buttons are only 32px tall (padding 5px 16px) — below minimum touch target', 'Increase button min-height to 44px at mobile breakpoints', 'Gap'],
+  ['Close button size', '44×44px minimum touch target', 'Close button is only 28×28px — too small for mobile touch interaction', 'Increase close button hit area to ≥44×44px at mobile viewports', 'Gap'],
+  ['Double scroll', 'Single vertical scroll on modal body (same as §14 desktop fix)', 'Modal body has overflow: auto but outer dialog + inner content may both scroll — worse on small viewport', 'Same fix as §14 — remove nested overflow-auto; single overflow-y: auto on body', 'Gap'],
   ['Horizontal overflow', 'No horizontal scroll — content fits within viewport width', 'Horizontal scrollbar visible — content or padding exceeds mobile viewport', 'Ensure content respects 100vw minus modal padding; add overflow-x: hidden as safeguard', 'Gap'],
   ['Responsive padding', 'Reduced horizontal padding at narrow viewports (e.g. p-md instead of p-xl)', 'Desktop p-xl (24px) padding applied regardless of viewport width', 'Add responsive padding: p-md (16px) below sm breakpoint', 'Gap'],
-  ['Touch targets', 'Manage / Remove buttons meet 44px minimum touch target height', 'Buttons render at desktop height (~36px) — may be too small for touch', 'Ensure min-height: 44px on action buttons at mobile breakpoints', 'Gap'],
+  ['Account Type value', '"Savings", "Checking", "Brokerage" — Plaid subtype', '"Banking" — generic Plaid account category instead of specific subtype', 'Use Plaid subtype (Savings, Checking, Brokerage) not generic category in Account Type row', 'Gap'],
   ['Detail table cell padding', 'spacing-xs (12px) left + right padding on header and body rows in mini detail tables (e.g. Account Details, Balance, Identity)', 'spacing-sm (16px) — desktop value applied at all viewports', 'Below sm breakpoint: reduce cell px from spacing-sm (16px) to spacing-xs (12px). Applies to modal detail tables only — not account list rows, not desktop.', 'Gap'],
-  ['Typography — meta labels', 'Same tokens as desktop (§15–17) — no mobile-specific change', 'Same tokens as desktop — no mobile-specific issue', 'No change — same as desktop sections §15–17', 'Match'],
-  ['Typography — values', 'Same tokens as desktop — no mobile-specific change', 'Same tokens as desktop — no mobile-specific issue', 'No change', 'Match'],
+  ['Typography — meta labels', 'Same tokens as desktop (§15–17): 14px/20px Heebo · #5E5954', 'Same tokens — 14px/20px Heebo · #5E5954', 'Match — no mobile-specific change needed', 'Match'],
+  ['Typography — table values', 'Same tokens as desktop: 14px/20px Heebo · #393633', 'Same tokens — 14px/20px Heebo · #393633', 'Match — no mobile-specific change needed', 'Match'],
 ];
 
 const mobileHomeRows = [
   ['Page title', '"Accounts" — typo-primary-lg-semibold · left-aligned next to hamburger icon', '"Net Worth | Accounts" — typo-primary-base-semibold · centered between hamburger and chat icons', 'Match design: just "Accounts" without "Net Worth |" prefix at mobile; increase size to lg', 'Gap'],
   ['Nav header', 'Hamburger icon (left) + "Accounts" title (left) + Chat icon (right) — single row', 'Hamburger icon (left) + "Net Worth | Accounts" (center) + Chat icon (right)', 'Left-align title beside hamburger; drop "Net Worth |" prefix', 'Gap'],
   ['Net Worth label', '"NET WORTH" — typo-primary-xs-semibold · color-text-meta · tracking uppercase', '"NET WORTH" — same treatment', 'Match — no change needed', 'Match'],
-  ['Net Worth value', '$1,169,200 — typo-primary-3xl-light (~30px) · colors-text-header', '$3,575,547.32 — typo-primary-2xl-regular', 'Use 3xl light (larger, thinner weight) to match design prominence', 'Gap'],
+  ['Net Worth value', '$1,169,200 — typo-primary-3xl-light (~30px) · colors-text-header · no letter-spacing', '$3,575,547.32 — 24px/32px Heebo (2xl-regular) · #0E0E0E · no letter-spacing', 'Increase to 30px (3xl); use light weight (300) instead of regular (400)', 'Gap'],
   ['Net Worth — round to dollar', 'Rounded to nearest dollar — no cents shown ("$1,169,200")', 'Shows cents "$3,575,547.32"', 'Round to nearest dollar (maximumFractionDigits: 0) — no cents on Net Worth headline', 'Gap'],
-  ['Add Account button', 'Outline pill button "Add Account +" — typo-primary-sm-regular · 1px border · rounded-full', 'Same outline pill "Add Account +" — slightly different sizing', 'Verify button height and padding match design proportions', 'Check'],
-  ['Section headers (BANKING, INVESTMENTS, etc.)', 'typo-primary-xs-semibold · color-gray-500 · tracking ~1.5px · ALL CAPS — generous top margin', 'typo-primary-xs-semibold · text-text-meta · ALL CAPS — similar', 'Match color-gray-500 token; verify spacing above each section', 'Check'],
-  ['Account row — name', 'Full name visible: "Wells Fargo Checking (x1234)" — typo-primary-base-semibold', 'Truncated: "Marcus Online Savings (..." with ellipsis — typo-primary-sm-semibold', 'Show full name (no truncation) or allow wrap; use base (not sm) size', 'Gap'],
-  ['Account row — type', '"Checking", "Savings", etc. — typo-primary-sm-regular · color-text-body', '"Banking" for all — generic category instead of specific type', 'Use Plaid subtype (Checking, Savings, Brokerage) not generic category', 'Gap'],
-  ['Account row — sync line', '"Refreshed Jun 3, 2026 at 9:12 AM" — typo-primary-xs-regular · color-gray-500', '"Last synced May 17, 2026" — typo-primary-xs-regular · color-gray-500', 'Match design date format: "Refreshed {date} at {time}"', 'Gap'],
-  ['Account row — balance', 'Right-aligned · typo-primary-base-semibold · colors-text-header · rounded to nearest dollar ("$12,400")', 'Right-aligned · typo-primary-sm-regular · "$325,000.00" with cents', 'Use base-semibold (bolder, larger); round to nearest dollar (no cents)', 'Gap'],
+  ['Add Account button', 'Outline pill button "Add Account +" — typo-primary-sm-regular · 1px border · rounded-full · ≥44px touch target', 'Outline pill: 14px/17.5px Heebo, border 1px solid #2D2926, rounded-full — but only 25.5px tall (padding 3px 8px). Far below 44px minimum touch target.', 'Increase button height to ≥44px at mobile (min-height: 44px; padding: 10px 16px)', 'Gap'],
+  ['Section headers (BANKING, INVESTMENTS, etc.)', 'typo-primary-xs-semibold (weight 600) · color-gray-500 · tracking ~1.5px · ALL CAPS — generous top margin', 'typo-primary-xs (12px/16px) · weight 400 (regular, not semibold) · #5E5954 · letter-spacing 0.3px · uppercase', 'Font-weight should be 600 (semibold); letter-spacing should be ~1.5px not 0.3px', 'Gap'],
+  ['Account row — name', 'Full name visible: "Wells Fargo Checking (x1234)" — typo-primary-base-semibold (16px, weight 600)', 'Truncated with ellipsis + nowrap: "Marcus Online Savings (..." — 14px/20px weight 400 (regular, not semibold)', 'Increase to 16px weight 600; allow wrap or ensure full name visible without truncation', 'Gap'],
+  ['Account row — type', '"Checking", "Savings", etc. — typo-primary-sm-regular (14px) · color-text-body (#393633)', '"Banking" for all — 12px (xs, not sm) · color #5E5954 (text-meta, not text-body)', 'Use Plaid subtype; increase to 14px (sm); change color to text-body (#393633)', 'Gap'],
+  ['Account row — sync line', '"Refreshed Jun 3, 2026 at 9:12 AM" — typo-primary-xs-regular · color-gray-500', '"Last synced May 17, 2026" — 12px/16px · #5E5954 — typography matches but format differs', 'Match design date format: "Refreshed {date} at {time}"', 'Gap'],
+  ['Account row — balance', 'Right-aligned · typo-primary-base-semibold (16px, weight 600) · colors-text-header · rounded to nearest dollar ("$12,400")', 'Right-aligned · 14px/20px weight 400 (regular) · "$325,000.00" with cents', 'Increase to 16px weight 600; round to nearest dollar (no cents)', 'Gap'],
   ['Account row — round to dollar', 'Rounded to nearest dollar: "$12,400", "$32,000", "$485,000" — no .00', 'Shows cents: "$325,000.00", "$145,000.00"', 'Round balances to nearest dollar (maximumFractionDigits: 0) on account rows', 'Gap'],
   ['Account row — logo size', '~32px circles with actual institution logos', '~32px circles — letter initials or logos', 'Match — when logoUrl available, display actual logo', 'Check'],
   ['Account row — chevron', 'No visible chevron arrow — row is tappable without indicator', '"> " chevron indicator after account name', 'Per design: no chevron indicator on mobile rows (tap affordance is implicit)', 'Gap'],
@@ -624,7 +632,8 @@ const mobileAddAccountRows = [
   ['Logo tile size', '~48px circles with actual institution branding', '~56px circles — slightly larger than design', 'Match design size (~48px) and ensure consistent sizing', 'Gap'],
   ['Logo tile labels', 'No text labels under logos — logo images are self-explanatory', 'Institution name labels below each circle ("Chase", "Marcus by Goldman Sachs", etc.)', 'Remove labels under logos to match design — logos should be recognizable without text', 'Gap'],
   ['"Link New Institution" button', 'Blue text link with chevron-right icon — left-aligned · typo-primary-base-regular · color-text-action', 'Blue text "Link new institution ›" — same style', 'Match — verify touch target is ≥44px tall', 'Match'],
-  ['Close button (X)', 'Top-right X icon, right-aligned with title row', 'Same placement — top-right X', 'Ensure 44×44px touch target at mobile', 'Check'],
+  ['Close button (X)', 'Top-right X icon — ≥44×44px touch target at mobile', 'Close button is only 28×28px — well below minimum touch target for mobile', 'Increase close button hit area to ≥44×44px at mobile viewports', 'Gap'],
+  ['Modal vertical overflow', 'All content visible without clipping — modal fits within viewport or scrolls internally', 'Modal bottom extends below viewport (computed bottom: -97px) — "Link new institution" link may be clipped or hard to reach', 'Ensure modal content is fully accessible: either scroll internally or constrain height to viewport', 'Gap'],
   ['Bottom spacing', 'Ample bottom padding below "Link New Institution" link before modal edge', 'Similar bottom padding', 'Match design spacing', 'Check'],
 ];
 
@@ -640,10 +649,10 @@ const mobileRemoveInstitutionRows = [
   ['Affected accounts list', 'Lists each account with logo + name + last4 + type (e.g., Wells Fargo Checking x1234, Checking)', 'No account list — only institution name in body text', 'Add affected accounts list with logo + account name + type per design', 'Gap'],
   ['Account list item style', 'Logo (40px circle) + account name (bold) + type (regular) — vertically stacked rows', 'N/A — not present in dev', 'Implement account row items per design layout', 'Gap'],
   ['Button layout', 'Stacked full-width: red "Remove Institution" primary on TOP, outline "Cancel" below — vertical gap between', 'Side-by-side: outline "Cancel" on left, filled "Remove Institution" on right — horizontal layout', 'Stack buttons vertically at full width; destructive action on top', 'Gap'],
-  ['Primary button (Remove)', 'Full-width · red fill (destructive) · white text · rounded-full · ~48px height', 'Small pill ~140px · black fill · white text "Remove Institution"', 'Full-width red destructive button with sufficient height for touch', 'Gap'],
-  ['Secondary button (Cancel)', 'Full-width · outline style (1px border) · "Cancel" text · rounded-full · ~48px height', 'Small pill ~80px · outline style · "Cancel"', 'Full-width outline button below destructive button', 'Gap'],
+  ['Primary button (Remove)', 'Full-width · red fill (destructive) · white text · rounded-full · ~48px height', 'Small pill 168px · black fill (not red) · white text "Remove Institution" · only 32px tall (padding 5px 16px)', 'Full-width red destructive button with min-height 48px for touch targets', 'Gap'],
+  ['Secondary button (Cancel)', 'Full-width · outline style (1px border) · "Cancel" text · rounded-full · ~48px height', 'Small pill 83px · outline style · "Cancel" · only 32px tall (padding 5px 16px)', 'Full-width outline button below destructive button with min-height 48px', 'Gap'],
   ['Button spacing', 'spacing-sm (12px) gap between stacked buttons', 'spacing-xs gap between side-by-side buttons', 'Use 12px vertical gap between stacked buttons', 'Gap'],
-  ['Close button (X)', 'Top-right X icon in title row', 'X present — same position', 'Ensure 44×44px touch target', 'Check'],
+  ['Close button (X)', 'Top-right X icon in title row — ≥44×44px touch target', 'Close button is only 28×28px — below minimum touch target', 'Increase close button hit area to ≥44×44px at mobile viewports', 'Gap'],
   ['Internal padding', 'Generous horizontal padding (~24px) — content comfortably inset from edges', 'Tighter padding (~16px)', 'Increase horizontal padding to match design proportions', 'Gap'],
 ];
 
@@ -658,10 +667,10 @@ const mobilePlaidErrorRows = [
   ['Body font size', 'typo-primary-base-regular (~16px)', 'typo-primary-sm-regular (~14px)', 'Use base (16px) not sm (14px) for body copy', 'Gap'],
   ['Vertical spacing (title → body)', '~24px gap between title and body text', '~12px gap — tighter vertical rhythm', 'Increase spacing between title and body to match design generosity', 'Gap'],
   ['Button layout', 'Stacked full-width vertically: black "Try Again" primary on TOP, outline "Cancel" below', 'Side-by-side: outline "Cancel" on left, filled "Try again" on right — horizontal', 'Stack buttons vertically at full width; primary action on top', 'Gap'],
-  ['Primary button (Try Again)', 'Full-width · black fill · white text "Try Again" · rounded-full · ~48px height', 'Small pill ~120px · black fill · "Try again"', 'Full-width black primary button', 'Gap'],
-  ['Secondary button (Cancel)', 'Full-width · outline style (1px border) · "Cancel" · rounded-full · ~48px height', 'Small pill ~100px · outline style · "Cancel"', 'Full-width outline button below primary', 'Gap'],
+  ['Primary button (Try Again)', 'Full-width · black fill · white text "Try Again" · rounded-full · ~48px height', 'Small pill ~120px · black fill · "Try again" · only 32px tall', 'Full-width black primary button with min-height 48px for touch targets', 'Gap'],
+  ['Secondary button (Cancel)', 'Full-width · outline style (1px border) · "Cancel" · rounded-full · ~48px height', 'Small pill ~100px · outline style · "Cancel" · only 32px tall', 'Full-width outline button below primary with min-height 48px', 'Gap'],
   ['Button spacing', 'spacing-sm (12px) vertical gap between stacked buttons', 'spacing-xs horizontal gap between side-by-side buttons', 'Use 12px vertical gap between stacked buttons', 'Gap'],
-  ['Close button (X)', 'Top-right X icon, vertically centered with title — slightly lower due to title wrap', 'Top-right X icon, aligned with title', 'Ensure 44×44px touch target; position relative to first line of title', 'Check'],
+  ['Close button (X)', 'Top-right X icon — ≥44×44px touch target', 'Close button is only 28×28px — below minimum touch target', 'Increase close button hit area to ≥44×44px at mobile viewports', 'Gap'],
   ['Internal padding', 'Generous padding (~24px horizontal, ~32px top, ~24px bottom)', 'Tighter padding (~16px all around)', 'Increase internal padding to match design proportions', 'Gap'],
 ];
 
@@ -829,7 +838,13 @@ const html = `<!DOCTYPE html>
     body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif; }
     .doc { max-width: 1360px; margin: 0 auto; padding: 32px 28px 64px 28px; }
     .cover { background: var(--paper); border: 1px solid var(--line); padding: 40px 48px; margin-bottom: 28px; }
-    .cover h1 { margin: 0 0 8px; font-size: 28px; font-weight: 600; line-height: 1.25; }
+    .cover h1 { margin: 0 0 12px; font-size: 28px; font-weight: 600; line-height: 1.25; }
+    .cover .purpose { font-size: 15px; color: var(--text); margin-bottom: 20px; line-height: 1.5; }
+    .cover h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #716E6A; margin: 20px 0 8px; }
+    .cover .how-to { margin: 0 0 12px; padding-left: 20px; font-size: 14px; line-height: 1.6; }
+    .cover .how-to li { margin-bottom: 4px; }
+    .badge-gap { background: #fef2f2; color: #b91c1c; padding: 1px 6px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .badge-match { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 4px; font-size: 12px; font-weight: 600; }
     .cover .meta { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
     .cover p { margin: 0 0 10px; font-size: 14px; max-width: 960px; }
     .stats { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0 8px; }
@@ -946,37 +961,38 @@ const html = `<!DOCTYPE html>
   </nav>
   <div class="doc">
     <header class="cover" id="top">
-      <h1>PFM Accounts v2 — Formatting differences (Design vs Dev)</h1>
-      <p class="meta">Design source of truth: <strong>pfm-accounts-v2.pen</strong> · frames <strong>FglEA</strong> (default), <strong>eWQkU</strong> (hover), <strong>TShbt</strong> (pressed), <strong>xGRDX</strong> (account details) · Dev: app.eg-dev.ai · js-mono develop</p>
-      <p><strong>Scope:</strong> Typography, color, spacing, borders, interaction states (hover / pressed), account-detail modal styling, and <strong>Hemlock component refs</strong> for all buttons. Section inventory and copy wording are out of scope unless they affect measured typography.</p>
-      <p><strong>Token rule:</strong> Design and dev both use Hemlock tokens from <code>hemlock-library.lib.pen</code>. A row is <strong>Match</strong> when dev uses the same token as design. Status = <strong>Gap</strong> only when the token differs or resolves differently. Letter-spacing may be hardcoded in design.</p>
-      <p><strong>Color split (updated design):</strong> The <strong>accounts list</strong> uses primitive <code>color-gray-500</code> (#716E6A) for NET WORTH, section headers, account subtype, and sync lines. The <strong>account-detail modal</strong> uses semantic <code>colors-text-meta</code> (#5E5954) for table labels — do not conflate the two.</p>
-      <p><strong>Rule:</strong> Design wins. Buttons must be Hemlock library refs — not hand-built frames or wrong variants (filled primary, ghost, link).</p>
+      <h1>PFM Accounts v2 — Design vs Dev</h1>
+      <p class="purpose">This document identifies every formatting difference between the approved Pencil designs and the current dev implementation on <code>app.eg-dev.ai</code>. Use it as a checklist to bring dev into pixel-perfect alignment with design.</p>
+
       <div class="stats">
-        <div class="stat gaps"><strong>${gapCount}</strong> formatting gaps to fix</div>
+        <div class="stat gaps"><strong>${gapCount}</strong> gaps to fix</div>
         <div class="stat matches"><strong>${matchCount}</strong> already match</div>
-        <div class="stat"><strong>${masterRows.length}</strong> total spec rows</div>
+        <div class="stat"><strong>${masterRows.length}</strong> total items</div>
       </div>
-      <div class="toc">
-        <div>1–9. List page typography (layout → balance)</div>
-        <div>4a. Hemlock button component refs (all CTAs)</div>
-        <div>10. Row — default state (FglEA)</div>
-        <div>11. Row — hover state (eWQkU)</div>
-        <div>12. Row — pressed state (TShbt)</div>
-        <div>13. Institution logos (Plaid data — not shape)</div>
-        <div>14–17. Account details modal (xGRDX)</div>
-        <div>18. Add Account modal (i0Ih1j)</div>
-        <div>19. Remove Institution confirmation (G9xXUO)</div>
-        <div>20. Plaid Linking Error (SXiFh)</div>
-        <div>21. Mobile — Layout &amp; rows (TuZJ5)</div>
-        <div>22. Mobile — Press state (EehZZ)</div>
-        <div>23. Mobile — Detail modal</div>
-        <div>24. Mobile — Add Account</div>
-        <div>25. Mobile — Remove Institution</div>
-        <div>26. Mobile — Plaid Linking Error</div>
-        <div>27. Files to change</div>
-        <div>28. Master checklist</div>
-      </div>
+
+      <h3>How to read each section</h3>
+      <ul class="how-to">
+        <li><strong>Design panel</strong> (left) — the approved Pencil frame, cropped to the relevant area</li>
+        <li><strong>Dev panel</strong> (right) — screenshot from <code>app.eg-dev.ai</code> at the same area</li>
+        <li><strong>Comparison table</strong> — row-by-row differences with status: <span class="badge-gap">Gap</span> = needs fixing, <span class="badge-match">Match</span> = already correct</li>
+        <li><strong>Required change</strong> column — exactly what dev needs to do to match design</li>
+      </ul>
+
+      <h3>Key rules</h3>
+      <ul class="how-to">
+        <li><strong>Design wins.</strong> Where design and dev differ, dev must change to match design.</li>
+        <li><strong>Hemlock tokens.</strong> Both use tokens from <code>hemlock-library.lib.pen</code>. A "Match" means the same token is used. A "Gap" means a different token or hardcoded value.</li>
+        <li><strong>Buttons = Hemlock refs.</strong> Every button must be a Hemlock library component ref — override label, icon, text color, or letter-spacing only.</li>
+        <li><strong>Color context matters.</strong> The accounts list uses <code>color-gray-500</code> for meta text. The detail modal uses <code>colors-text-meta</code>. They are different tokens — don't conflate them.</li>
+        <li><strong>Round to nearest dollar.</strong> Net Worth and row balances show whole dollars only (no cents).</li>
+      </ul>
+
+      <h3>Sources</h3>
+      <ul class="how-to">
+        <li><strong>Design:</strong> <code>pfm-accounts-v2.pen</code> (desktop + mobile frames)</li>
+        <li><strong>Dev:</strong> <code>app.eg-dev.ai/net-worth/accounts</code> on develop branch</li>
+        <li><strong>Tokens:</strong> <code>hemlock-library.lib.pen</code></li>
+      </ul>
     </header>
 
     ${compareSection('1', 'Layout &amp; spacing', 'Content column padding and vertical rhythm', images.designContent, images.devFull, 'object-fit:cover;object-position:28% 18%;max-height:480px;', table(layoutRows))}
