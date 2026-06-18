@@ -732,7 +732,7 @@ const html = `<!DOCTYPE html>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif; }
-    .doc { max-width: 1360px; margin: 0 auto; padding: 32px 28px 64px; }
+    .doc { max-width: 1360px; margin: 0 auto; padding: 32px 28px 64px 28px; }
     .cover { background: var(--paper); border: 1px solid var(--line); padding: 40px 48px; margin-bottom: 28px; }
     .cover h1 { margin: 0 0 8px; font-size: 28px; font-weight: 600; line-height: 1.25; }
     .cover .meta { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
@@ -746,7 +746,7 @@ const html = `<!DOCTYPE html>
     .badge.gap { background: #fde8e8; color: var(--gap); }
     .badge.match { background: #e8f5e9; color: var(--match); }
     .badge.warn { background: #fff8e1; color: var(--warn); }
-    section.page { background: var(--paper); border: 1px solid var(--line); padding: 28px 36px; margin-bottom: 22px; break-inside: avoid; scroll-margin-top: 56px; }
+    section.page { background: var(--paper); border: 1px solid var(--line); padding: 28px 36px; margin-bottom: 22px; break-inside: avoid; scroll-margin-top: 16px; }
     section.page h2 { margin: 0 0 4px; font-size: 19px; font-weight: 600; }
     section.page .subtitle { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
     .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
@@ -775,50 +775,59 @@ const html = `<!DOCTYPE html>
     .note { background: #f0f7ff; border-left: 3px solid #4a7c9b; padding: 10px 14px; font-size: 13px; margin: 12px 0 0; }
     .toc { columns: 2; font-size: 13px; line-height: 1.75; margin-top: 14px; }
     .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
-    .sticky-nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 2px solid var(--line); padding: 12px 28px; display: flex; flex-wrap: wrap; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-    .nav-chip { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--text); background: #f4f2ee; border: 1px solid var(--line); text-decoration: none; white-space: nowrap; transition: background 0.15s, border-color 0.15s; }
-    .nav-chip:hover { background: #e8e5df; border-color: #b8b4ac; }
-    .nav-chip.mobile { background: #f0e6ff; border-color: #d4b8ff; }
-    .nav-chip.mobile:hover { background: #e4d4f7; }
-    .nav-chip.ref { background: #e8f0f8; border-color: #b8d0e8; }
-    .nav-chip.ref:hover { background: #d8e4f0; }
+    .side-nav { position: fixed; top: 0; left: 0; width: 180px; height: 100vh; overflow-y: auto; background: var(--paper); border-right: 1px solid var(--line); padding: 16px 12px; z-index: 100; display: flex; flex-direction: column; gap: 2px; }
+    .side-nav-title { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); padding: 8px 8px 4px; margin-top: 6px; }
+    .side-nav-title:first-child { margin-top: 0; }
+    .nav-link { display: block; padding: 5px 8px; border-radius: 6px; font-size: 12px; font-weight: 400; color: var(--text); text-decoration: none; transition: background 0.12s; line-height: 1.35; }
+    .nav-link:hover { background: #eae7e1; }
+    .nav-link.mobile { color: #7c3aed; }
+    .nav-link.ref { color: #2563eb; }
+    @media (min-width: 1600px) { .doc { margin-left: 200px; } }
+    @media (max-width: 1599px) { .side-nav { display: none; } }
     @page { size: landscape; margin: 0.35in; }
     @media print {
       body { background: white; }
-      .doc { padding: 0; max-width: none; }
-      .sticky-nav { display: none; }
+      .doc { padding: 0; max-width: none; margin-left: 0; }
+      .side-nav { display: none; }
       section.page, .cover { page-break-after: always; border: none; box-shadow: none; }
       section.page:last-of-type { page-break-after: auto; }
     }
-    @media (max-width: 900px) { .compare, .toc { columns: 1; grid-template-columns: 1fr; } .sticky-nav { padding: 8px 12px; } }
+    @media (max-width: 900px) { .compare, .toc { columns: 1; grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <nav class="sticky-nav">
-    <a href="#s1" class="nav-chip">1. Layout &amp; spacing</a>
-    <a href="#s2" class="nav-chip">2. NET WORTH label</a>
-    <a href="#s3" class="nav-chip">3. Net worth value</a>
-    <a href="#s4" class="nav-chip">4. Add Account button</a>
-    <a href="#s4a" class="nav-chip">4a. Hemlock button refs</a>
-    <a href="#s5" class="nav-chip">5. Section headers</a>
-    <a href="#s6" class="nav-chip">6. Account name</a>
-    <a href="#s7" class="nav-chip">7. Meta text</a>
-    <a href="#s8" class="nav-chip">8. Sync text</a>
-    <a href="#s9" class="nav-chip">9. Balance</a>
-    <a href="#s10" class="nav-chip">10. Row — default</a>
-    <a href="#s11" class="nav-chip">11. Row — hover</a>
-    <a href="#s12" class="nav-chip">12. Row — pressed</a>
-    <a href="#s13" class="nav-chip">13. Institution logos</a>
-    <a href="#s14" class="nav-chip">14. Details — full screen</a>
-    <a href="#s15" class="nav-chip">15. Details — header</a>
-    <a href="#s16" class="nav-chip">16. Details — balance</a>
-    <a href="#s17" class="nav-chip">17. Details — tables</a>
-    <a href="#s18" class="nav-chip">18. Add Account modal</a>
-    <a href="#s19" class="nav-chip">19. Remove Institution</a>
-    <a href="#s20" class="nav-chip">20. Plaid Linking Error</a>
-    <a href="#s21" class="nav-chip mobile">21. Mobile — Account details</a>
-    <a href="#s22" class="nav-chip ref">22. Files to change</a>
-    <a href="#s23" class="nav-chip ref">23. Master checklist</a>
+  <nav class="side-nav">
+    <span class="side-nav-title">List page</span>
+    <a href="#s1" class="nav-link">1. Layout &amp; spacing</a>
+    <a href="#s2" class="nav-link">2. NET WORTH label</a>
+    <a href="#s3" class="nav-link">3. Net worth value</a>
+    <a href="#s4" class="nav-link">4. Add Account button</a>
+    <a href="#s4a" class="nav-link">4a. Hemlock button refs</a>
+    <a href="#s5" class="nav-link">5. Section headers</a>
+    <a href="#s6" class="nav-link">6. Account name</a>
+    <a href="#s7" class="nav-link">7. Meta text</a>
+    <a href="#s8" class="nav-link">8. Sync text</a>
+    <a href="#s9" class="nav-link">9. Balance</a>
+    <span class="side-nav-title">Row states</span>
+    <a href="#s10" class="nav-link">10. Default</a>
+    <a href="#s11" class="nav-link">11. Hover</a>
+    <a href="#s12" class="nav-link">12. Pressed</a>
+    <span class="side-nav-title">Data</span>
+    <a href="#s13" class="nav-link">13. Institution logos</a>
+    <span class="side-nav-title">Detail modal</span>
+    <a href="#s14" class="nav-link">14. Full screen</a>
+    <a href="#s15" class="nav-link">15. Header</a>
+    <a href="#s16" class="nav-link">16. Balance &amp; actions</a>
+    <a href="#s17" class="nav-link">17. Detail tables</a>
+    <span class="side-nav-title">Other modals</span>
+    <a href="#s18" class="nav-link">18. Add Account</a>
+    <a href="#s19" class="nav-link">19. Remove Institution</a>
+    <a href="#s20" class="nav-link">20. Plaid Linking Error</a>
+    <span class="side-nav-title">Mobile</span>
+    <a href="#s21" class="nav-link mobile">21. Account details</a>
+    <span class="side-nav-title">Reference</span>
+    <a href="#s22" class="nav-link ref">22. Files to change</a>
+    <a href="#s23" class="nav-link ref">23. Master checklist</a>
   </nav>
   <div class="doc">
     <header class="cover">
