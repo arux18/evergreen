@@ -64,12 +64,17 @@
     .toc { columns: 2; font-size: 13px; line-height: 1.75; margin-top: 14px; }
     .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
     .side-nav { position: fixed; top: 0; left: 0; width: 180px; height: 100vh; overflow-y: auto; background: var(--paper); border-right: 1px solid var(--line); padding: 16px 12px; z-index: 100; display: flex; flex-direction: column; gap: 2px; }
-    .side-nav-title { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); padding: 8px 8px 4px; margin-top: 6px; }
-    .side-nav-title:first-child { margin-top: 0; }
+    .side-nav-title { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 8px 8px 4px; margin-top: 8px; border-top: 1px solid var(--line); }
+    .side-nav-title:first-child { margin-top: 0; border-top: none; }
+    .side-nav-title.t-list { color: #2d6a4f; }
+    .side-nav-title.t-states { color: #b8860b; }
+    .side-nav-title.t-data { color: #6366f1; }
+    .side-nav-title.t-detail { color: #0891b2; }
+    .side-nav-title.t-modals { color: #9b2226; }
+    .side-nav-title.t-mobile { color: #7c3aed; }
+    .side-nav-title.t-ref { color: #2563eb; }
     .nav-link { display: block; padding: 5px 8px; border-radius: 6px; font-size: 12px; font-weight: 400; color: var(--text); text-decoration: none; transition: background 0.12s; line-height: 1.35; }
     .nav-link:hover { background: #eae7e1; }
-    .nav-link.mobile { color: #7c3aed; }
-    .nav-link.ref { color: #2563eb; }
     @media (min-width: 1600px) { .doc { margin-left: 200px; } }
     @media (max-width: 1599px) { .side-nav { display: none; } }
     @page { size: landscape; margin: 0.35in; }
@@ -85,7 +90,7 @@
 </head>
 <body>
   <nav class="side-nav">
-    <span class="side-nav-title">List page</span>
+    <span class="side-nav-title t-list">List page</span>
     <a href="#s1" class="nav-link">1. Layout &amp; spacing</a>
     <a href="#s2" class="nav-link">2. NET WORTH label</a>
     <a href="#s3" class="nav-link">3. Net worth value</a>
@@ -96,26 +101,26 @@
     <a href="#s7" class="nav-link">7. Meta text</a>
     <a href="#s8" class="nav-link">8. Sync text</a>
     <a href="#s9" class="nav-link">9. Balance</a>
-    <span class="side-nav-title">Row states</span>
+    <span class="side-nav-title t-states">Row states</span>
     <a href="#s10" class="nav-link">10. Default</a>
     <a href="#s11" class="nav-link">11. Hover</a>
     <a href="#s12" class="nav-link">12. Pressed</a>
-    <span class="side-nav-title">Data</span>
+    <span class="side-nav-title t-data">Data</span>
     <a href="#s13" class="nav-link">13. Institution logos</a>
-    <span class="side-nav-title">Detail modal</span>
+    <span class="side-nav-title t-detail">Detail modal</span>
     <a href="#s14" class="nav-link">14. Full screen</a>
     <a href="#s15" class="nav-link">15. Header</a>
     <a href="#s16" class="nav-link">16. Balance &amp; actions</a>
     <a href="#s17" class="nav-link">17. Detail tables</a>
-    <span class="side-nav-title">Other modals</span>
+    <span class="side-nav-title t-modals">Other modals</span>
     <a href="#s18" class="nav-link">18. Add Account</a>
     <a href="#s19" class="nav-link">19. Remove Institution</a>
     <a href="#s20" class="nav-link">20. Plaid Linking Error</a>
-    <span class="side-nav-title">Mobile</span>
-    <a href="#s21" class="nav-link mobile">21. Account details</a>
-    <span class="side-nav-title">Reference</span>
-    <a href="#s22" class="nav-link ref">22. Files to change</a>
-    <a href="#s23" class="nav-link ref">23. Master checklist</a>
+    <span class="side-nav-title t-mobile">Mobile</span>
+    <a href="#s21" class="nav-link">21. Account details</a>
+    <span class="side-nav-title t-ref">Reference</span>
+    <a href="#s22" class="nav-link">22. Files to change</a>
+    <a href="#s23" class="nav-link">23. Master checklist</a>
   </nav>
   <div class="doc">
     <header class="cover">
