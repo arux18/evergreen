@@ -775,11 +775,9 @@ const html = `<!DOCTYPE html>
     .note { background: #f0f7ff; border-left: 3px solid #4a7c9b; padding: 10px 14px; font-size: 13px; margin: 12px 0 0; }
     .toc { columns: 2; font-size: 13px; line-height: 1.75; margin-top: 14px; }
     .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
-    .sticky-nav { position: sticky; top: 0; z-index: 100; background: rgba(244, 242, 238, 0.97); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 10px 28px; margin: 0 -28px 22px; }
-    .nav-group { display: inline-flex; align-items: center; gap: 4px; margin-right: 12px; margin-bottom: 4px; }
-    .nav-group-label { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-right: 2px; white-space: nowrap; }
-    .nav-chip { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 500; color: var(--text); background: var(--paper); border: 1px solid var(--line); text-decoration: none; white-space: nowrap; transition: background 0.15s, border-color 0.15s; }
-    .nav-chip:hover { background: #eae7e1; border-color: #ccc8c0; }
+    .sticky-nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 2px solid var(--line); padding: 12px 28px; display: flex; flex-wrap: wrap; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .nav-chip { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--text); background: #f4f2ee; border: 1px solid var(--line); text-decoration: none; white-space: nowrap; transition: background 0.15s, border-color 0.15s; }
+    .nav-chip:hover { background: #e8e5df; border-color: #b8b4ac; }
     .nav-chip.mobile { background: #f0e6ff; border-color: #d4b8ff; }
     .nav-chip.mobile:hover { background: #e4d4f7; }
     .nav-chip.ref { background: #e8f0f8; border-color: #b8d0e8; }
@@ -792,10 +790,36 @@ const html = `<!DOCTYPE html>
       section.page, .cover { page-break-after: always; border: none; box-shadow: none; }
       section.page:last-of-type { page-break-after: auto; }
     }
-    @media (max-width: 900px) { .compare, .toc { columns: 1; grid-template-columns: 1fr; } .sticky-nav { padding: 8px 12px; margin: 0 -12px 16px; } .nav-group { margin-right: 8px; } }
+    @media (max-width: 900px) { .compare, .toc { columns: 1; grid-template-columns: 1fr; } .sticky-nav { padding: 8px 12px; } }
   </style>
 </head>
 <body>
+  <nav class="sticky-nav">
+    <a href="#s1" class="nav-chip">1. Layout &amp; spacing</a>
+    <a href="#s2" class="nav-chip">2. NET WORTH label</a>
+    <a href="#s3" class="nav-chip">3. Net worth value</a>
+    <a href="#s4" class="nav-chip">4. Add Account button</a>
+    <a href="#s4a" class="nav-chip">4a. Hemlock button refs</a>
+    <a href="#s5" class="nav-chip">5. Section headers</a>
+    <a href="#s6" class="nav-chip">6. Account name</a>
+    <a href="#s7" class="nav-chip">7. Meta text</a>
+    <a href="#s8" class="nav-chip">8. Sync text</a>
+    <a href="#s9" class="nav-chip">9. Balance</a>
+    <a href="#s10" class="nav-chip">10. Row — default</a>
+    <a href="#s11" class="nav-chip">11. Row — hover</a>
+    <a href="#s12" class="nav-chip">12. Row — pressed</a>
+    <a href="#s13" class="nav-chip">13. Institution logos</a>
+    <a href="#s14" class="nav-chip">14. Details — full screen</a>
+    <a href="#s15" class="nav-chip">15. Details — header</a>
+    <a href="#s16" class="nav-chip">16. Details — balance</a>
+    <a href="#s17" class="nav-chip">17. Details — tables</a>
+    <a href="#s18" class="nav-chip">18. Add Account modal</a>
+    <a href="#s19" class="nav-chip">19. Remove Institution</a>
+    <a href="#s20" class="nav-chip">20. Plaid Linking Error</a>
+    <a href="#s21" class="nav-chip mobile">21. Mobile — Account details</a>
+    <a href="#s22" class="nav-chip ref">22. Files to change</a>
+    <a href="#s23" class="nav-chip ref">23. Master checklist</a>
+  </nav>
   <div class="doc">
     <header class="cover">
       <h1>PFM Accounts v2 — Formatting differences (Design vs Dev)</h1>
@@ -825,54 +849,6 @@ const html = `<!DOCTYPE html>
         <div>23. Master checklist</div>
       </div>
     </header>
-
-    <nav class="sticky-nav">
-      <span class="nav-group">
-        <span class="nav-group-label">List</span>
-        <a href="#s1" class="nav-chip">Layout</a>
-        <a href="#s2" class="nav-chip">NW Label</a>
-        <a href="#s3" class="nav-chip">NW Value</a>
-        <a href="#s4" class="nav-chip">Add Btn</a>
-        <a href="#s4a" class="nav-chip">Hemlock Btns</a>
-        <a href="#s5" class="nav-chip">Section Hdr</a>
-        <a href="#s6" class="nav-chip">Acct Name</a>
-        <a href="#s7" class="nav-chip">Meta Text</a>
-        <a href="#s8" class="nav-chip">Sync Line</a>
-        <a href="#s9" class="nav-chip">Balance</a>
-      </span>
-      <span class="nav-group">
-        <span class="nav-group-label">States</span>
-        <a href="#s10" class="nav-chip">Default</a>
-        <a href="#s11" class="nav-chip">Hover</a>
-        <a href="#s12" class="nav-chip">Pressed</a>
-      </span>
-      <span class="nav-group">
-        <span class="nav-group-label">Data</span>
-        <a href="#s13" class="nav-chip">Logos</a>
-      </span>
-      <span class="nav-group">
-        <span class="nav-group-label">Detail Modal</span>
-        <a href="#s14" class="nav-chip">Shell</a>
-        <a href="#s15" class="nav-chip">Header</a>
-        <a href="#s16" class="nav-chip">Balance</a>
-        <a href="#s17" class="nav-chip">Table Rows</a>
-      </span>
-      <span class="nav-group">
-        <span class="nav-group-label">Modals</span>
-        <a href="#s18" class="nav-chip">Add Acct</a>
-        <a href="#s19" class="nav-chip">Remove</a>
-        <a href="#s20" class="nav-chip">Plaid Error</a>
-      </span>
-      <span class="nav-group">
-        <span class="nav-group-label">Mobile</span>
-        <a href="#s21" class="nav-chip mobile">Acct Details</a>
-      </span>
-      <span class="nav-group">
-        <span class="nav-group-label">Ref</span>
-        <a href="#s22" class="nav-chip ref">Files</a>
-        <a href="#s23" class="nav-chip ref">Checklist</a>
-      </span>
-    </nav>
 
     ${compareSection('1', 'Layout &amp; spacing', 'Content column padding and vertical rhythm', images.designContent, images.devFull, 'object-fit:cover;object-position:28% 18%;max-height:480px;', table(layoutRows))}
 
