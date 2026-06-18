@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design Spec Mock — Accounts Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600&family=Noto+Serif:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: Heebo, sans-serif;
+      background: #f7f5f0;
+      color: #202220;
+    }
+    .panel { max-width: 720px; }
+    .section { margin-top: 32px; }
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #727874;
+      margin-bottom: 12px;
+    }
+    .headline-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+    }
+    .net-label {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #727874;
+    }
+    .net-value {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0e0e0e;
+      margin-top: 4px;
+    }
+    .btn {
+      border: 1px solid #d8d9d8;
+      background: transparent;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font: 500 14px Heebo, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      box-shadow: inset 0 -1px 0 #eeefee;
+    }
+    .logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #fff;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo img { width: 100%; height: 100%; object-fit: cover; }
+    .info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+    .name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #202220;
+    }
+    .type {
+      font-size: 14px;
+      font-weight: 400;
+      color: #727874;
+    }
+    .refresh {
+      font-size: 12px;
+      font-weight: 400;
+      color: #727874;
+    }
+    .balance {
+      font-size: 14px;
+      font-weight: 600;
+      color: #202220;
+      flex-shrink: 0;
+    }
+    h1 {
+      font: 400 20px/1.2 "Noto Serif", serif;
+      color: #2d2926;
+      margin: 0 0 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h1>Net Worth | Accounts</h1>
+
+    <div class="headline-row">
+      <div>
+        <div class="net-label">Net Worth</div>
+        <div class="net-value">$1,169,200</div>
+      </div>
+      <button class="btn" type="button">Add Account <span>+</span></button>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Banking</div>
+      <div class="row">
+        <div class="logo"><img src="https://logo.clearbit.com/wellsfargo.com" alt="" onerror="this.parentElement.style.background='#c41e3a'"></div>
+        <div class="info">
+          <div class="name">Wells Fargo Checking (x1234)</div>
+          <div class="type">Checking</div>
+          <div class="refresh">Refreshed 9:12 AM</div>
+        </div>
+        <div class="balance">$12,400</div>
+      </div>
+      <div class="row">
+        <div class="logo" style="background:#7c3aed;color:#fff;font-weight:600;">a</div>
+        <div class="info">
+          <div class="name">Ally High-Yield Savings (x5678)</div>
+          <div class="type">Savings</div>
+          <div class="refresh">Refreshed 9:14 AM</div>
+        </div>
+        <div class="balance">$32,000</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

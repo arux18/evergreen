@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dev Implementation Mock — Accounts Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600&family=Noto+Serif:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: Heebo, sans-serif;
+      background: #f7f5f0;
+      color: #202220;
+    }
+    .panel {
+      max-width: 720px;
+      background: transparent;
+    }
+    .section { margin-top: 32px; }
+    .section-label {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #727874;
+      margin-bottom: 8px;
+    }
+    .headline-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .net-label {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #727874;
+    }
+    .net-value {
+      font-size: 28px;
+      font-weight: 400;
+      color: #202220;
+      margin-top: 4px;
+    }
+    .btn {
+      border: 1px solid #d8d9d8;
+      background: transparent;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font: 500 14px Heebo, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      text-align: left;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    .row:hover { background: #f9fafb; }
+    .logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid #eeefee;
+      background: #c41e3a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .info { flex: 1; min-width: 0; }
+    .name-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .name {
+      font-size: 14px;
+      font-weight: 400;
+      color: #202220;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .chevron { width: 14px; height: 14px; color: #202220; flex-shrink: 0; }
+    .meta {
+      font-size: 12px;
+      font-weight: 400;
+      color: #727874;
+      margin-top: 2px;
+    }
+    .balance {
+      font-size: 14px;
+      font-weight: 400;
+      color: #202220;
+      flex-shrink: 0;
+    }
+    .caption {
+      font: 12px/1.4 Heebo, sans-serif;
+      color: #716e6a;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font: 400 20px/1.2 "Noto Serif", serif;
+      color: #2d2926;
+      margin: 0 0 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h1>Net Worth | Accounts</h1>
+    <p class="caption">Mock rendered from <code>js-mono</code> develop branch classes/components (not a live authenticated screenshot).</p>
+
+    <div class="headline-row">
+      <div>
+        <div class="net-label">Net Worth</div>
+        <div class="net-value">$1,169,200</div>
+      </div>
+      <button class="btn" type="button">Add Account <span>+</span></button>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Banking</div>
+      <button class="row" type="button">
+        <div class="logo">W</div>
+        <div class="info">
+          <div class="name-row">
+            <div class="name">Wells Fargo Checking (x1234)</div>
+            <svg class="chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L11.168 10 7.23 6.29a.75.75 0 1 1 1.04-1.08l4.5 4.25a.75.75 0 0 1 0 1.08l-4.5 4.25a.75.75 0 0 1-1.06-.02Z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="meta">Banking</div>
+          <div class="meta">Last synced Jun 2, 2026</div>
+        </div>
+        <div class="balance">$12,400</div>
+      </button>
+    </div>
+  </div>
+</body>
+</html>

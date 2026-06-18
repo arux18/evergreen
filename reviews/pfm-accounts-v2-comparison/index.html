@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PFM Accounts v2 — Design vs Dev Comparison</title>
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --paper: #ffffff;
+      --text: #1a1a1a;
+      --muted: #5c5c5c;
+      --line: #e5e2dc;
+      --design: #2d6a4f;
+      --dev: #9b2226;
+      --match: #386641;
+      --gap: #bc4749;
+      --warn: #ee9b00;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .doc {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    .cover {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 48px 56px;
+      margin-bottom: 40px;
+    }
+
+    .cover h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .cover .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .cover dl {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 8px 16px;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .cover dt { color: var(--muted); }
+    .cover dd { margin: 0; }
+
+    .legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      font-size: 13px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .badge.gap { background: #fde8e8; color: var(--gap); }
+    .badge.match { background: #e8f5e9; color: var(--match); }
+    .badge.warn { background: #fff3cd; color: #856404; }
+
+    section.page {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 40px 48px;
+      margin-bottom: 32px;
+      break-inside: avoid;
+    }
+
+    section.page h2 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    section.page .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .fix-note {
+      background: #fff8e6;
+      border-left: 4px solid var(--warn);
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .panel-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel-label.design { background: #edf7f1; color: var(--design); }
+    .panel-label.dev { background: #fdecec; color: var(--dev); }
+
+    .panel img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #ffffff;
+    }
+
+    .panel.design img { background: #ffffff; }
+
+    .callouts {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .callout {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      font-size: 14px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .callout:first-child { border-top: none; padding-top: 0; }
+
+    .callout-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--gap);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .callout strong { display: block; margin-bottom: 2px; }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .summary-table th,
+    .summary-table td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .summary-table th {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 24px;
+    }
+
+    @media print {
+      body { background: white; }
+      .doc { padding: 0; max-width: none; }
+      section.page, .cover { border: none; box-shadow: none; page-break-inside: avoid; }
+    }
+
+    @media (max-width: 800px) {
+      .compare { grid-template-columns: 1fr; }
+      .doc { padding: 24px 16px; }
+      section.page, .cover { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="doc">
+    <header class="cover">
+      <h1>PFM Accounts v2 — Design vs Dev</h1>
+      <p class="meta">Visual discrepancy review · June 17, 2026</p>
+      <dl>
+        <dt>Design source</dt>
+        <dd><code>pfm-accounts-v2.pen</code> → frame <strong>FglEA</strong> (Accounts — Default)</dd>
+        <dt>Dev environment</dt>
+        <dd><a href="https://app.eg-dev.ai/net-worth/accounts">app.eg-dev.ai/net-worth/accounts</a> (authenticated capture)</dd>
+        <dt>Dev branch</dt>
+        <dd><code>js-mono</code> develop</dd>
+      </dl>
+      <div class="legend">
+        <span><span class="badge gap">Gap</span> Dev must change to match design</span>
+        <span><span class="badge match">Match</span> Already aligned</span>
+      </div>
+    </header>
+
+    <section class="page">
+      <h2>1. Full page overview</h2>
+      <p class="subtitle">Three-column shell: nav · accounts panel · chat</p>
+      <div class="compare">
+        <div class="panel">
+          <div class="panel-label design">Design <span class="badge match">Structure OK</span></div>
+          <img src="assets/design/FglEA.png" alt="Design full page" />
+        </div>
+        <div class="panel">
+          <div class="panel-label dev">Dev <span class="badge gap">Details differ</span></div>
+          <img src="assets/dev/full-page.png" alt="Dev full page" />
+        </div>
+      </div>
+      <div class="callouts">
+        <div class="callout">
+          <span class="callout-num">1</span>
+          <div><strong>Shell layout matches.</strong> Nav, main panel, and chat column are in the right places. Page title “Net Worth | Accounts” is correct.</div>
+        </div>
+        <div class="callout">
+          <span class="callout-num">2</span>
+          <div><strong>Account list styling diverges.</strong> Dev rows use circular logos, chevrons, hover pills, and category labels under each name. Design uses flat rows, square logos, no chevrons, and account subtypes.</div>
+        </div>
+        <div class="callout">
+          <span class="callout-num">3</span>
+          <div><strong>Missing Credit Cards &amp; Loans sections.</strong> Design shows four sections (Banking, Credit Cards, Investments, Loans). This dev account only shows Banking and Investments — section grouping may also be wrong (Chase Sapphire Reserve appears under Banking).</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <h2>2. Net worth headline</h2>
+      <p class="subtitle">Label + total value + Add Account button</p>
+      <div class="fix-note"><strong>Fix:</strong> Use <code>typo-primary-sm-semibold</code> for “NET WORTH” label and <code>typo-primary-3xl-semibold</code> in gray-900 for the total. Dev currently uses smaller, lighter weights.</div>
+      <div class="compare">
+        <div class="panel">
+          <div class="panel-label design">Design</div>
+          <img src="assets/design/qCXx8.png" alt="Design headline" />
+        </div>
+        <div class="panel">
+          <div class="panel-label dev">Dev</div>
+          <img src="assets/dev/full-page.png" alt="Dev headline area" style="object-fit: cover; object-position: 28% 12%; max-height: 220px;" />
+        </div>
+      </div>
+      <table class="summary-table">
+        <thead><tr><th>Property</th><th>Design</th><th>Dev</th></tr></thead>
+        <tbody>
+          <tr><td>Label</td><td>NET WORTH · sm-semibold · letter-spacing 1</td><td>NET WORTH · xs-regular · lighter weight</td></tr>
+          <tr><td>Value</td><td>3xl-semibold · #0E0E0E · −0.5 tracking</td><td>2xl-regular · text-header</td></tr>
+          <tr><td>Button</td><td>Outline “Add Account +”</td><td><span class="badge match">Match</span> Outline “Add Account +”</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page">
+      <h2>3. Account row — subtitle &amp; sync text</h2>
+      <p class="subtitle">Second line should be account type; third line should be refresh time</p>
+      <div class="fix-note"><strong>Fix:</strong> Show Plaid subtype (“Checking”, “Savings”, “Credit Card”) on line 2 — not the section name (“Banking”). Change sync copy from “Last synced {date}” to “Refreshed {time}”.</div>
+      <div class="compare">
+        <div class="panel">
+          <div class="panel-label design">Design row</div>
+          <img src="assets/design/dVY3g.png" alt="Design account row" />
+        </div>
+        <div class="panel">
+          <div class="panel-label dev">Dev row</div>
+          <img src="assets/dev/full-page.png" alt="Dev account row" style="object-fit: cover; object-position: 28% 38%; max-height: 140px;" />
+        </div>
+      </div>
+      <table class="summary-table">
+        <thead><tr><th>Line</th><th>Design example</th><th>Dev example</th></tr></thead>
+        <tbody>
+          <tr><td>Name</td><td>Wells Fargo Checking (x1234)</td><td>Marcus Online Savings (HYSA) (x2204)</td></tr>
+          <tr><td>Line 2</td><td><strong>Checking</strong> (account type)</td><td><strong>Banking</strong> (section category) ✗</td></tr>
+          <tr><td>Line 3</td><td>Refreshed 9:12 AM</td><td>Last synced May 17, 2026 ✗</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="page">
+      <h2>4. Banking section layout</h2>
+      <p class="subtitle">Section header, row dividers, logo shape, chevrons</p>
+      <div class="compare">
+        <div class="panel">
+          <div class="panel-label design">Design — BANKING</div>
+          <img src="assets/design/BuM7M.png" alt="Design banking section" />
+        </div>
+        <div class="panel">
+          <div class="panel-label dev">Dev — BANKING</div>
+          <img src="assets/dev/full-page.png" alt="Dev banking section" style="object-fit: cover; object-position: 28% 42%; max-height: 360px;" />
+        </div>
+      </div>
+      <div class="callouts">
+        <div class="callout"><span class="callout-num">1</span><div><strong>Logo shape:</strong> Design = 32×32 rounded square. Dev = circle with border.</div></div>
+        <div class="callout"><span class="callout-num">2</span><div><strong>Chevron:</strong> Design rows have no chevron. Dev adds chevron-right after name.</div></div>
+        <div class="callout"><span class="callout-num">3</span><div><strong>Row dividers:</strong> Design uses inset 1px bottom stroke between rows. Dev uses gap + hover background, no dividers.</div></div>
+        <div class="callout"><span class="callout-num">4</span><div><strong>Typography:</strong> Design name + balance are semibold. Dev uses regular weight.</div></div>
+        <div class="callout"><span class="callout-num">5</span><div><strong>Section label:</strong> Design uses sm-semibold + 1.5 letter-spacing. Dev uses xs-regular.</div></div>
+      </div>
+    </section>
+
+    <section class="page">
+      <h2>5. Credit card row (category grouping)</h2>
+      <p class="subtitle">Design places credit cards in their own section; dev lists Chase Sapphire Reserve under Banking</p>
+      <div class="fix-note"><strong>Fix:</strong> Move credit-card accounts to <strong>CREDIT CARDS</strong> section. Row subtitle should read “Credit Card”, not “Banking”.</div>
+      <div class="compare">
+        <div class="panel">
+          <div class="panel-label design">Design — CREDIT CARDS</div>
+          <img src="assets/design/LluOj.png" alt="Design credit card row" />
+        </div>
+        <div class="panel">
+          <div class="panel-label dev">Dev — under Banking</div>
+          <img src="assets/dev/full-page.png" alt="Dev credit card in banking" style="object-fit: cover; object-position: 28% 58%; max-height: 120px;" />
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <h2>6. Summary — all gaps to fix in dev</h2>
+      <p class="subtitle">Priority order for engineering</p>
+      <table class="summary-table">
+        <thead>
+          <tr><th>#</th><th>Gap</th><th>Design spec</th><th>Dev today</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Row subtitle</td><td>Account subtype (Checking, CD, …)</td><td>Section name (Banking, Investments)</td><td><span class="badge gap">P0</span></td></tr>
+          <tr><td>2</td><td>Sync label</td><td>Refreshed 9:12 AM</td><td>Last synced May 17, 2026</td><td><span class="badge gap">P0</span></td></tr>
+          <tr><td>3</td><td>Category grouping</td><td>Credit Cards &amp; Loans sections</td><td>Credit card under Banking; no Loans section</td><td><span class="badge gap">P0</span></td></tr>
+          <tr><td>4</td><td>Chevrons</td><td>None on list rows</td><td>Chevron after name</td><td><span class="badge gap">P1</span></td></tr>
+          <tr><td>5</td><td>Logo shape</td><td>32×32 rounded square</td><td>Circle</td><td><span class="badge gap">P1</span></td></tr>
+          <tr><td>6</td><td>Net worth typography</td><td>3xl-semibold total; sm-semibold label</td><td>2xl-regular total; xs-regular label</td><td><span class="badge gap">P1</span></td></tr>
+          <tr><td>7</td><td>Row dividers &amp; hover</td><td>Flat rows + inset stroke</td><td>Rounded hover pills, no dividers</td><td><span class="badge gap">P1</span></td></tr>
+          <tr><td>8</td><td>Name / balance weight</td><td>Semibold</td><td>Regular</td><td><span class="badge gap">P2</span></td></tr>
+          <tr><td>9</td><td>Page shell</td><td>3-column layout, page title, Add Account CTA</td><td><span class="badge match">Match</span></td><td>—</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="footer">
+      Open this file in a browser · Print to PDF (Cmd+P) · Or select sections and paste into Google Docs<br />
+      <code>design-specs/reviews/pfm-accounts-v2-comparison/index.html</code>
+    </p>
+  </div>
+</body>
+</html>
