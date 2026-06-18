@@ -578,24 +578,55 @@ const mobileDetailRows = [
 ];
 
 const mobileAddAccountRows = [
-  ['Modal presentation', 'Bottom sheet or full-screen takeover at mobile viewport', 'Centered floating dialog — same as desktop', 'Use bottom sheet or full-screen pattern below sm breakpoint', 'Gap'],
-  ['Institution logo grid', '2-row grid with 5 logos per row, wrapping naturally', 'Same grid layout as desktop — fits within narrower viewport', 'Verify grid wraps correctly at 390px; may need fewer per row', 'Check'],
-  ['"Link New Institution" link', 'Blue text link below logos with chevron', 'Same as desktop — appears at bottom of modal', 'Ensure tap target is at least 44px tall for mobile', 'Check'],
-  ['Close button (X)', 'Top-right close icon', 'Same as desktop', 'Ensure 44px touch target', 'Check'],
+  ['Modal presentation', 'Bottom sheet anchored to bottom of viewport — rounded top corners, no scrim gap at top', 'Centered floating dialog with scrim — same as desktop; does not adapt to mobile viewport', 'Use bottom sheet pattern (anchored to bottom, full-width, rounded top corners) below sm breakpoint', 'Gap'],
+  ['Modal width', 'Full viewport width (edge-to-edge minus small side margin)', 'Narrow centered dialog ~280px — does not fill mobile viewport', 'Modal should span full width at 390px viewport', 'Gap'],
+  ['Title typography', 'typo-primary-lg-bold (serif "Add Account") — large, left-aligned', 'typo-primary-base-semibold — smaller than design', 'Use larger title size to match design; bold serif weight', 'Gap'],
+  ['Title padding / spacing', 'Generous top padding (~24px) above title inside modal', 'Tighter padding (~16px) above title', 'Increase top internal padding to match design spacing', 'Gap'],
+  ['Description text', '"Add accounts from your linked institutions." — typo-primary-base-regular · left-aligned', 'Same copy, same alignment', 'Match — no change needed', 'Match'],
+  ['Section label ("LINKED INSTITUTIONS")', 'typo-primary-sm-semibold · color-gray-500 · tracking 1.5px · ALL CAPS — with spacing above', 'Same treatment — ALL CAPS, gray', 'Verify tracking and color token match', 'Check'],
+  ['Institution logo tiles', '5 logos per row in a grid, wrapping to second row (6 total shown); logos are actual institution images', 'Circular avatars in a row of 3, wrapping to second row (4 total); letter initials or logos', 'Match design grid — show actual logos when logoUrl available; fit 5 per row', 'Gap'],
+  ['Logo tile size', '~48px circles with actual institution branding', '~56px circles — slightly larger than design', 'Match design size (~48px) and ensure consistent sizing', 'Gap'],
+  ['Logo tile labels', 'No text labels under logos — logo images are self-explanatory', 'Institution name labels below each circle ("Chase", "Marcus by Goldman Sachs", etc.)', 'Remove labels under logos to match design — logos should be recognizable without text', 'Gap'],
+  ['"Link New Institution" button', 'Blue text link with chevron-right icon — left-aligned · typo-primary-base-regular · color-text-action', 'Blue text "Link new institution ›" — same style', 'Match — verify touch target is ≥44px tall', 'Match'],
+  ['Close button (X)', 'Top-right X icon, right-aligned with title row', 'Same placement — top-right X', 'Ensure 44×44px touch target at mobile', 'Check'],
+  ['Bottom spacing', 'Ample bottom padding below "Link New Institution" link before modal edge', 'Similar bottom padding', 'Match design spacing', 'Check'],
 ];
 
 const mobileRemoveInstitutionRows = [
-  ['Modal presentation', 'Bottom sheet overlaying account detail (itself a full-screen view)', 'Centered floating dialog over account detail dialog', 'Use bottom sheet at mobile; account detail should already be full-screen', 'Gap'],
-  ['Affected accounts list', 'Shows each account linked to the institution with logo + name + type', 'Simple text confirmation — no account list shown', 'Add affected accounts list per design (Wells Fargo Checking, Wells Fargo Mortgage, etc.)', 'Gap'],
-  ['Button layout', 'Stacked full-width: red "Remove Institution" primary on top, outline "Cancel" below', 'Side-by-side buttons', 'Stack buttons full-width at mobile viewport', 'Gap'],
-  ['Destructive button style', 'Red filled primary (destructive)', 'Same destructive style as desktop', 'Match design — full-width red primary', 'Check'],
+  ['Modal presentation', 'Bottom sheet overlaying account detail (itself full-screen) — rounded top corners, vertically centered content', 'Centered floating dialog (~280px wide) over account detail dialog — same as desktop', 'Use bottom sheet at mobile; account detail should already be full-screen takeover', 'Gap'],
+  ['Modal width', 'Full viewport width (edge-to-edge minus small side margin) — content fills available width', 'Narrow centered dialog — does not fill mobile viewport', 'Modal should span full width at 390px viewport', 'Gap'],
+  ['Background context', 'Account detail (full-screen) visible behind the bottom sheet scrim', 'Account list page visible behind — account detail is also a floating dialog', 'Account detail must be full-screen first; remove confirmation overlays on top', 'Gap'],
+  ['Title copy', '"Remove Institution?" — concise question form', '"Remove Institution Connection" — longer, centered', 'Match design copy: "Remove Institution?"', 'Gap'],
+  ['Title typography', 'typo-primary-lg-bold · left-aligned · colors-text-header', 'typo-primary-base-bold · text-center · text-text-header', 'Use larger bold left-aligned title to match design', 'Gap'],
+  ['Title alignment', 'Left-aligned with close X on same row', 'Center-aligned, close X separate or absent', 'Left-align title with X on right, same row as design', 'Gap'],
+  ['Body copy', 'Multi-line description listing affected accounts: "The following accounts linked to {{Institution Name}} will be removed. To keep specific accounts, you must re-link them individually after removal."', '"Are you sure you want to remove Marcus by Goldman Sachs? Evergreen will stop syncing data from this institution." — short single paragraph', 'Match design copy pattern — explain consequences and list affected accounts', 'Gap'],
+  ['Body typography', 'typo-primary-base-regular · colors-text-body · left-aligned', 'typo-primary-sm-regular · text-text-body · text-center', 'Use base (not sm) font-size, left-align to match design', 'Gap'],
+  ['Affected accounts list', 'Lists each account with logo + name + last4 + type (e.g., Wells Fargo Checking x1234, Checking)', 'No account list — only institution name in body text', 'Add affected accounts list with logo + account name + type per design', 'Gap'],
+  ['Account list item style', 'Logo (40px circle) + account name (bold) + type (regular) — vertically stacked rows', 'N/A — not present in dev', 'Implement account row items per design layout', 'Gap'],
+  ['Button layout', 'Stacked full-width: red "Remove Institution" primary on TOP, outline "Cancel" below — vertical gap between', 'Side-by-side: outline "Cancel" on left, filled "Remove Institution" on right — horizontal layout', 'Stack buttons vertically at full width; destructive action on top', 'Gap'],
+  ['Primary button (Remove)', 'Full-width · red fill (destructive) · white text · rounded-full · ~48px height', 'Small pill ~140px · black fill · white text "Remove Institution"', 'Full-width red destructive button with sufficient height for touch', 'Gap'],
+  ['Secondary button (Cancel)', 'Full-width · outline style (1px border) · "Cancel" text · rounded-full · ~48px height', 'Small pill ~80px · outline style · "Cancel"', 'Full-width outline button below destructive button', 'Gap'],
+  ['Button spacing', 'spacing-sm (12px) gap between stacked buttons', 'spacing-xs gap between side-by-side buttons', 'Use 12px vertical gap between stacked buttons', 'Gap'],
+  ['Close button (X)', 'Top-right X icon in title row', 'X present — same position', 'Ensure 44×44px touch target', 'Check'],
+  ['Internal padding', 'Generous horizontal padding (~24px) — content comfortably inset from edges', 'Tighter padding (~16px)', 'Increase horizontal padding to match design proportions', 'Gap'],
 ];
 
 const mobilePlaidErrorRows = [
-  ['Modal presentation', 'Bottom sheet or full-screen at mobile viewport', 'Centered floating dialog — same as desktop (if triggerable)', 'Use bottom sheet or full-screen pattern below sm breakpoint', 'Gap'],
-  ['Title', '"Account Linking Unavailable" — wraps to two lines at narrow width', '"Plaid Linking Error" — single line', 'Match design title; verify wrap behavior', 'Gap'],
-  ['Body copy', '"We were unable to start the connection. Please try again later."', 'Same copy as desktop', 'Match design copy', 'Check'],
-  ['Button layout', 'Stacked full-width: black "Try Again" primary on top, outline "Cancel" below', 'Side-by-side buttons', 'Stack buttons full-width at mobile viewport', 'Gap'],
+  ['Modal presentation', 'Bottom sheet anchored to bottom — rounded top corners, generous internal padding, no scrim gap at top', 'Centered floating dialog (~280px wide) — same as desktop; does not adapt to mobile viewport', 'Use bottom sheet pattern at mobile viewport', 'Gap'],
+  ['Modal width', 'Full viewport width (edge-to-edge minus small side margin)', 'Narrow centered dialog — does not fill mobile viewport', 'Modal should span full width at 390px viewport', 'Gap'],
+  ['Title copy', '"Account Linking Unavailable" — wraps to two lines at narrow width', '"Plaid Linking Error" — single line, different wording', 'Match design title: "Account Linking Unavailable"', 'Gap'],
+  ['Title typography', 'typo-primary-lg-bold · left-aligned · colors-text-header', 'typo-primary-sm-semibold · left-aligned', 'Use larger bold title size to match design', 'Gap'],
+  ['Title size', 'Large (~20px+) — prominent heading that wraps naturally', 'Small (~14px) — reads as a secondary label', 'Increase title font-size to match design prominence', 'Gap'],
+  ['Error icon + headline', 'No error icon or red headline — just title + body text', 'Red clock/error icon + red headline "Instant linking is unavailable" between title and body', 'Remove red icon + headline — not in design. OR update design to include it.', 'Gap'],
+  ['Body copy', '"We were unable to start the connection. Please try again later." — typo-primary-base-regular · left-aligned', 'Same copy — "We were unable to start the connection. Please try again later." · smaller font', 'Match design typography: base size, left-aligned', 'Gap'],
+  ['Body font size', 'typo-primary-base-regular (~16px)', 'typo-primary-sm-regular (~14px)', 'Use base (16px) not sm (14px) for body copy', 'Gap'],
+  ['Vertical spacing (title → body)', '~24px gap between title and body text', '~12px gap — tighter vertical rhythm', 'Increase spacing between title and body to match design generosity', 'Gap'],
+  ['Button layout', 'Stacked full-width vertically: black "Try Again" primary on TOP, outline "Cancel" below', 'Side-by-side: outline "Cancel" on left, filled "Try again" on right — horizontal', 'Stack buttons vertically at full width; primary action on top', 'Gap'],
+  ['Primary button (Try Again)', 'Full-width · black fill · white text "Try Again" · rounded-full · ~48px height', 'Small pill ~120px · black fill · "Try again"', 'Full-width black primary button', 'Gap'],
+  ['Secondary button (Cancel)', 'Full-width · outline style (1px border) · "Cancel" · rounded-full · ~48px height', 'Small pill ~100px · outline style · "Cancel"', 'Full-width outline button below primary', 'Gap'],
+  ['Button spacing', 'spacing-sm (12px) vertical gap between stacked buttons', 'spacing-xs horizontal gap between side-by-side buttons', 'Use 12px vertical gap between stacked buttons', 'Gap'],
+  ['Close button (X)', 'Top-right X icon, vertically centered with title — slightly lower due to title wrap', 'Top-right X icon, aligned with title', 'Ensure 44×44px touch target; position relative to first line of title', 'Check'],
+  ['Internal padding', 'Generous padding (~24px horizontal, ~32px top, ~24px bottom)', 'Tighter padding (~16px all around)', 'Increase internal padding to match design proportions', 'Gap'],
 ];
 
 function hemlockRefTable(rows) {
