@@ -368,7 +368,7 @@ const rowBalanceRows = [
   ['Font weight', '600 semibold', '400 regular', 'Use semibold (600)', 'Gap'],
   ['Color (positive balances)', T.textGray800, 'text-text-header (gray-900)', 'Use text-gray-800 — not text-text-header', 'Gap'],
   ['Color (negative / liability balances)', `${T.textGray800} — not error red`, 'text-text-header (not red)', 'No change', 'Match'],
-  ['Fraction digits', '0 in design samples', 'May show cents', 'maximumFractionDigits: 0 on row amounts', 'Gap'],
+  ['Fraction digits', '0 — rounded to nearest dollar in design', 'May show cents (.00)', 'maximumFractionDigits: 0 — round to nearest dollar on row balances', 'Gap'],
 ];
 
 const rowDefaultStateRows = [
@@ -484,8 +484,8 @@ const hemlockButtonRefRows = [
   ['kc5Be', 'Link Institution Button', 'component/Button/text/icon-right', 'Text action + chevron (0:sA6O0)', 'Plain `<button>` + text-text-action + ChevronRightIcon', 'Use Hemlock text/icon-right ref; label + icon → color-blue-600'],
   ['F1Qob', 'Cancel (remove confirm)', 'component/Button/outline', 'Outline text only (0:aFIzk)', 'Button Secondary', 'Use Hemlock outline ref; label "Cancel"'],
   ['x26EV', 'Remove Institution (confirm)', 'component/Button', 'Primary filled (0:bMlax)', 'Button Primary', 'Use Hemlock primary ref; label "Remove Institution"'],
-  ['—', 'Cancel (Plaid error)', 'component/Button/outline', 'Outline text only (0:aFIzk)', 'Button Secondary (`plaid-error.tsx`)', 'Use Hemlock outline ref — no design frame in pen yet'],
-  ['—', 'Try again (Plaid error)', 'component/Button', 'Primary filled (0:bMlax)', 'Button Primary (`plaid-error.tsx`)', 'Use Hemlock primary ref — no design frame in pen yet'],
+  ['SXiFh', 'Cancel (Plaid error)', 'component/Button/outline', 'Outline text only (0:aFIzk)', 'Button Secondary (`plaid-error.tsx`)', 'Use Hemlock outline ref per SXiFh design'],
+  ['SXiFh', 'Try Again (Plaid error)', 'component/Button', 'Primary filled (0:bMlax)', 'Button Primary (`plaid-error.tsx`)', 'Use Hemlock primary ref per SXiFh design'],
 ];
 
 const addAccountModalRows = [

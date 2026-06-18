@@ -283,8 +283,8 @@
 <tr><td><code>kc5Be</code></td><td>Link Institution Button</td><td><code>component/Button/text/icon-right</code></td><td>Text action + chevron (0:sA6O0)</td><td>Plain `<button>` + text-text-action + ChevronRightIcon</td><td>Use Hemlock text/icon-right ref; label + icon → color-blue-600</td></tr>
 <tr><td><code>F1Qob</code></td><td>Cancel (remove confirm)</td><td><code>component/Button/outline</code></td><td>Outline text only (0:aFIzk)</td><td>Button Secondary</td><td>Use Hemlock outline ref; label "Cancel"</td></tr>
 <tr><td><code>x26EV</code></td><td>Remove Institution (confirm)</td><td><code>component/Button</code></td><td>Primary filled (0:bMlax)</td><td>Button Primary</td><td>Use Hemlock primary ref; label "Remove Institution"</td></tr>
-<tr><td><code>—</code></td><td>Cancel (Plaid error)</td><td><code>component/Button/outline</code></td><td>Outline text only (0:aFIzk)</td><td>Button Secondary (`plaid-error.tsx`)</td><td>Use Hemlock outline ref — no design frame in pen yet</td></tr>
-<tr><td><code>—</code></td><td>Try again (Plaid error)</td><td><code>component/Button</code></td><td>Primary filled (0:bMlax)</td><td>Button Primary (`plaid-error.tsx`)</td><td>Use Hemlock primary ref — no design frame in pen yet</td></tr></tbody></table>
+<tr><td><code>SXiFh</code></td><td>Cancel (Plaid error)</td><td><code>component/Button/outline</code></td><td>Outline text only (0:aFIzk)</td><td>Button Secondary (`plaid-error.tsx`)</td><td>Use Hemlock outline ref per SXiFh design</td></tr>
+<tr><td><code>SXiFh</code></td><td>Try Again (Plaid error)</td><td><code>component/Button</code></td><td>Primary filled (0:bMlax)</td><td>Button Primary (`plaid-error.tsx`)</td><td>Use Hemlock primary ref per SXiFh design</td></tr></tbody></table>
     <div class="note"><strong>Token naming:</strong> In Hemlock, <em>outline</em> is the <strong>component variant</strong>; <em>secondary</em> is the <strong>token set</strong> (<code>colors-btnSecondaryText</code>, <code>colors-btnSecondaryBorder</code>) applied to outline buttons.<br/><br/>
       <strong>List page — G2cAS (Add Account):</strong> <code>component/Button/outline/icon-right</code> (0:URoI8) — padding <code>[spacing-2xs, spacing-xs]</code>; plus 16×16 icon-right.<br/>
       <strong>Account detail — qsmXG / p48Qbb:</strong> <code>component/Button/outline</code> (0:aFIzk) — Remove label → <code>colors-text-error</code> only.<br/>
@@ -402,7 +402,7 @@
 <tr><td>Font weight</td><td>600 semibold</td><td>400 regular</td><td>Use semibold (600)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Color (positive balances)</td><td>color-gray-800 (#2D2926)</td><td>text-text-header (gray-900)</td><td>Use text-gray-800 — not text-text-header</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Color (negative / liability balances)</td><td>color-gray-800 (#2D2926) — not error red</td><td>text-text-header (not red)</td><td>No change</td><td><span class="badge match">Match</span></td></tr>
-<tr><td>Fraction digits</td><td>0 in design samples</td><td>May show cents</td><td>maximumFractionDigits: 0 on row amounts</td><td><span class="badge gap">Gap</span></td></tr></tbody></table>
+<tr><td>Fraction digits</td><td>0 — rounded to nearest dollar in design</td><td>May show cents (.00)</td><td>maximumFractionDigits: 0 — round to nearest dollar on row balances</td><td><span class="badge gap">Gap</span></td></tr></tbody></table>
   </section>
 
     
@@ -995,7 +995,7 @@
 <tr><td>Font weight</td><td>600 semibold</td><td>400 regular</td><td>Use semibold (600)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Color (positive balances)</td><td>color-gray-800 (#2D2926)</td><td>text-text-header (gray-900)</td><td>Use text-gray-800 — not text-text-header</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Color (negative / liability balances)</td><td>color-gray-800 (#2D2926) — not error red</td><td>text-text-header (not red)</td><td>No change</td><td><span class="badge match">Match</span></td></tr>
-<tr><td>Fraction digits</td><td>0 in design samples</td><td>May show cents</td><td>maximumFractionDigits: 0 on row amounts</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Fraction digits</td><td>0 — rounded to nearest dollar in design</td><td>May show cents (.00)</td><td>maximumFractionDigits: 0 — round to nearest dollar on row balances</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Design frame</td><td>FglEA / dVY3g (Accounts — Default)</td><td>Default list before interaction</td><td>Baseline resting row chrome</td><td>—</td></tr>
 <tr><td>Background fill</td><td>Transparent</td><td>Transparent until hover</td><td>No change</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Row vertical padding</td><td>spacing-xs (12px)</td><td>py-2xs (spacing-2xs = 8px)</td><td>Use py-xs (spacing-xs = 12px)</td><td><span class="badge gap">Gap</span></td></tr>
@@ -1239,8 +1239,8 @@
 <tr><td>Hemlock ref — Link Institution Button</td><td>kc5Be → component/Button/text/icon-right (Text action + chevron (0:sA6O0))</td><td>Plain `<button>` + text-text-action + ChevronRightIcon</td><td>Use Hemlock text/icon-right ref; label + icon → color-blue-600</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Hemlock ref — Cancel (remove confirm)</td><td>F1Qob → component/Button/outline (Outline text only (0:aFIzk))</td><td>Button Secondary</td><td>Use Hemlock outline ref; label "Cancel"</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Hemlock ref — Remove Institution (confirm)</td><td>x26EV → component/Button (Primary filled (0:bMlax))</td><td>Button Primary</td><td>Use Hemlock primary ref; label "Remove Institution"</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Hemlock ref — Cancel (Plaid error)</td><td>— → component/Button/outline (Outline text only (0:aFIzk))</td><td>Button Secondary (`plaid-error.tsx`)</td><td>Use Hemlock outline ref — no design frame in pen yet</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Hemlock ref — Try again (Plaid error)</td><td>— → component/Button (Primary filled (0:bMlax))</td><td>Button Primary (`plaid-error.tsx`)</td><td>Use Hemlock primary ref — no design frame in pen yet</td><td><span class="badge gap">Gap</span></td></tr></tbody></table>
+<tr><td>Hemlock ref — Cancel (Plaid error)</td><td>SXiFh → component/Button/outline (Outline text only (0:aFIzk))</td><td>Button Secondary (`plaid-error.tsx`)</td><td>Use Hemlock outline ref per SXiFh design</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Hemlock ref — Try Again (Plaid error)</td><td>SXiFh → component/Button (Primary filled (0:bMlax))</td><td>Button Primary (`plaid-error.tsx`)</td><td>Use Hemlock primary ref per SXiFh design</td><td><span class="badge gap">Gap</span></td></tr></tbody></table>
     </section>
 
     <p class="footer">Self-contained HTML — share this single file with engineering.<br/>Open in browser · Print → Landscape for PDF · Source: pfm-accounts-v2.pen · app.eg-dev.ai/net-worth/accounts</p>
