@@ -79,6 +79,12 @@ const images = {
   devDetailMobile: requireEmbed('assets/dev/modals/account-detail-mobile.png'),
   designDetailMobile: requireEmbed('assets/design/a52MXP.png'),
   designDetailMobileViewport: requireEmbed('assets/design/xOF5t.png'),
+  designPlaidError: requireEmbed('assets/design/SXiFh.png'),
+  designAddAccountMobile: requireEmbed('assets/design/ugE8p.png'),
+  designRemoveInstitutionMobile: requireEmbed('assets/design/FOSbt.png'),
+  designPlaidErrorMobile: requireEmbed('assets/design/zNPDv.png'),
+  devAddAccountMobile: requireEmbed('assets/dev/modals/add-account-mobile.png'),
+  devRemoveInstitutionMobile: requireEmbed('assets/dev/modals/remove-institution-mobile.png'),
 };
 
 /** Pre-cropped closeup assets live in assets/dev/ and assets/design/ — no runtime CSS cropping */
@@ -532,37 +538,30 @@ const removeInstitutionModalRows = [
 ];
 
 const plaidErrorModalRows = [
-  ['Design frame', 'Not in pfm-accounts-v2.pen — supply design frame if available', 'PlaidError · plaid-error.tsx', 'Add design frame to pen or link external spec', 'Gap'],
-  ['Modal title (shell)', '—', 'setModalTitle → "Plaid Linking Error"', 'Match shell title when design supplied', '—'],
-  [
-    'Error headline',
-    '— (no design frame)',
-    'typo-primary-2xl-light · text-text-error · IconErrorCircle',
-    'Define error headline typography in design',
-    'Gap',
-  ],
+  ['Design frame', 'SXiFh "Accounts - Plaid Linking Error" in pfm-accounts-v2.pen', 'PlaidError · plaid-error.tsx', 'Compare design to dev implementation', '—'],
+  ['Modal title', '"Account Linking Unavailable"', 'setModalTitle → "Plaid Linking Error"', 'Match design title: "Account Linking Unavailable"', 'Gap'],
   [
     'Error body',
-    '— (no design frame)',
+    '"We were unable to start the connection. Please try again later."',
     'typo-primary-base-regular · text-text-body',
-    'Define body typography in design',
+    'Match design copy exactly',
     'Gap',
   ],
   ...outlineButtonSpec('Cancel (Plaid error)', {
-    nodeId: '—',
-    instanceName: 'Secondary Action (expected)',
+    nodeId: 'SXiFh',
+    instanceName: 'Cancel button — outline style',
     devSource: '`plaid-error.tsx` — `Button variant={ButtonVariant.Secondary}` · `w-full` (`plaid-link-error-cancel-button`)',
     devVariant: '`ButtonVariant.Secondary` filled — not outline ref',
-    paddingDesign: 'Expected outline ref (0:aFIzk) when design supplied',
+    paddingDesign: 'Outline ref (0:aFIzk)',
   }),
-  ...primaryButtonSpec('Try again (Plaid error)', {
-    nodeId: '—',
-    instanceName: 'Primary Action (expected)',
+  ...primaryButtonSpec('Try Again (Plaid error)', {
+    nodeId: 'SXiFh',
+    instanceName: 'Try Again button — primary black filled',
     devSource: '`plaid-error.tsx` — `Button variant={ButtonVariant.Primary}` · `w-full` · isLoading (`plaid-link-error-retry-button`)',
     devVariant: '`ButtonVariant.Primary` → gray-900 primary',
     destructive: false,
   }),
-  ['Button row layout', '— (no design frame)', 'flex justify-end gap-sm · both buttons `w-full`', 'Define footer layout in design', 'Gap'],
+  ['Button layout', 'Stacked vertically — Try Again on top, Cancel below', 'flex justify-end gap-sm · both buttons `w-full`', 'Stack buttons vertically per design', 'Gap'],
 ];
 
 const mobileDetailRows = [
@@ -575,6 +574,27 @@ const mobileDetailRows = [
   ['Detail table cell padding', 'spacing-xs (12px) left + right padding on header and body rows in mini detail tables (e.g. Account Details, Balance, Identity)', 'spacing-sm (16px) — desktop value applied at all viewports', 'Below sm breakpoint: reduce cell px from spacing-sm (16px) to spacing-xs (12px). Applies to modal detail tables only — not account list rows, not desktop.', 'Gap'],
   ['Typography — meta labels', 'Same tokens as desktop (§15–17) — no mobile-specific change', 'Same tokens as desktop — no mobile-specific issue', 'No change — same as desktop sections §15–17', 'Match'],
   ['Typography — values', 'Same tokens as desktop — no mobile-specific change', 'Same tokens as desktop — no mobile-specific issue', 'No change', 'Match'],
+];
+
+const mobileAddAccountRows = [
+  ['Modal presentation', 'Bottom sheet or full-screen takeover at mobile viewport', 'Centered floating dialog — same as desktop', 'Use bottom sheet or full-screen pattern below sm breakpoint', 'Gap'],
+  ['Institution logo grid', '2-row grid with 5 logos per row, wrapping naturally', 'Same grid layout as desktop — fits within narrower viewport', 'Verify grid wraps correctly at 390px; may need fewer per row', 'Check'],
+  ['"Link New Institution" link', 'Blue text link below logos with chevron', 'Same as desktop — appears at bottom of modal', 'Ensure tap target is at least 44px tall for mobile', 'Check'],
+  ['Close button (X)', 'Top-right close icon', 'Same as desktop', 'Ensure 44px touch target', 'Check'],
+];
+
+const mobileRemoveInstitutionRows = [
+  ['Modal presentation', 'Bottom sheet overlaying account detail (itself a full-screen view)', 'Centered floating dialog over account detail dialog', 'Use bottom sheet at mobile; account detail should already be full-screen', 'Gap'],
+  ['Affected accounts list', 'Shows each account linked to the institution with logo + name + type', 'Simple text confirmation — no account list shown', 'Add affected accounts list per design (Wells Fargo Checking, Wells Fargo Mortgage, etc.)', 'Gap'],
+  ['Button layout', 'Stacked full-width: red "Remove Institution" primary on top, outline "Cancel" below', 'Side-by-side buttons', 'Stack buttons full-width at mobile viewport', 'Gap'],
+  ['Destructive button style', 'Red filled primary (destructive)', 'Same destructive style as desktop', 'Match design — full-width red primary', 'Check'],
+];
+
+const mobilePlaidErrorRows = [
+  ['Modal presentation', 'Bottom sheet or full-screen at mobile viewport', 'Centered floating dialog — same as desktop (if triggerable)', 'Use bottom sheet or full-screen pattern below sm breakpoint', 'Gap'],
+  ['Title', '"Account Linking Unavailable" — wraps to two lines at narrow width', '"Plaid Linking Error" — single line', 'Match design title; verify wrap behavior', 'Gap'],
+  ['Body copy', '"We were unable to start the connection. Please try again later."', 'Same copy as desktop', 'Match design copy', 'Check'],
+  ['Button layout', 'Stacked full-width: black "Try Again" primary on top, outline "Cancel" below', 'Side-by-side buttons', 'Stack buttons full-width at mobile viewport', 'Gap'],
 ];
 
 function hemlockRefTable(rows) {
@@ -700,6 +720,9 @@ const masterRows = [
   ...removeInstitutionModalRows,
   ...plaidErrorModalRows,
   ...mobileDetailRows,
+  ...mobileAddAccountRows,
+  ...mobileRemoveInstitutionRows,
+  ...mobilePlaidErrorRows,
   ...hemlockButtonRefRows.map(([node, inst, comp, variant, dev, req]) => [
     `Hemlock ref — ${inst}`,
     `${node} → ${comp} (${variant})`,
@@ -832,9 +855,12 @@ const html = `<!DOCTYPE html>
     <a href="#s20" class="nav-link">20. Plaid Linking Error</a>
     <span class="side-nav-title t-mobile">Mobile</span>
     <a href="#s21" class="nav-link">21. Account details</a>
+    <a href="#s22" class="nav-link">22. Add Account</a>
+    <a href="#s23" class="nav-link">23. Remove Institution</a>
+    <a href="#s24" class="nav-link">24. Plaid Linking Error</a>
     <span class="side-nav-title t-ref">Reference</span>
-    <a href="#s22" class="nav-link">22. Files to change</a>
-    <a href="#s23" class="nav-link">23. Master checklist</a>
+    <a href="#s25" class="nav-link">25. Files to change</a>
+    <a href="#s26" class="nav-link">26. Master checklist</a>
   </nav>
   <div class="doc">
     <header class="cover">
@@ -859,10 +885,13 @@ const html = `<!DOCTYPE html>
         <div>14–17. Account details modal (xGRDX)</div>
         <div>18. Add Account modal (i0Ih1j)</div>
         <div>19. Remove Institution confirmation (G9xXUO)</div>
-        <div>20. Plaid Linking Error (dev — design TBD)</div>
+        <div>20. Plaid Linking Error (SXiFh)</div>
         <div>21. Mobile — Account details</div>
-        <div>22. Files to change</div>
-        <div>23. Master checklist</div>
+        <div>22. Mobile — Add Account</div>
+        <div>23. Mobile — Remove Institution</div>
+        <div>24. Mobile — Plaid Linking Error</div>
+        <div>25. Files to change</div>
+        <div>26. Master checklist</div>
       </div>
     </header>
 
@@ -917,7 +946,7 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('19', 'Remove Institution confirmation', 'Remove flow confirm dialog — desktop G9xXUO / panel fG4nj · mobile FOSbt', images.designRemoveInstitutionModal, images.devRemoveInstitutionModal, modalCompareStyle, table(removeInstitutionModalRows), '<p class="note">Design frame lists accounts to be removed. Dev today uses a shorter single-message confirm — see copy + body rows. Buttons: Hemlock outline Cancel + primary Remove Institution.</p>', modalCompareStyle)}
 
-    ${compareSection('20', 'Plaid Linking Error', 'Plaid token / link failure — no design frame in pen yet; dev from plaid-error.tsx', null, images.devPlaidErrorModal, modalCompareStyle, table(plaidErrorModalRows), '<p class="note"><strong>Design needed:</strong> No Plaid Linking Error frame exists in <code>pfm-accounts-v2.pen</code>. Dev panel shows current implementation.</p>', modalCompareStyle, '', 'No design frame in pfm-accounts-v2.pen — add a frame or link an external spec to complete the design panel.')}
+    ${compareSection('20', 'Plaid Linking Error', 'Plaid token / link failure — desktop SXiFh · mobile zNPDv; dev from plaid-error.tsx', images.designPlaidError, images.devPlaidErrorModal, modalCompareStyle, table(plaidErrorModalRows), '', modalCompareStyle)}
 
     <section class="page" id="s21">
       <h2>21. Mobile — Account details</h2>
@@ -939,15 +968,21 @@ const html = `<!DOCTYPE html>
       <p class="note">Mobile viewport surfaces additional UX issues beyond desktop: floating dialog instead of full-screen takeover, title truncation, and padding that doesn't scale down. Typography tokens are unchanged from desktop (§15–17).</p>
     </section>
 
-    <section class="page" id="s22">
-      <h2>22. Files to change in js-mono</h2>
+    ${compareSection('22', 'Mobile — Add Account', 'Add Account modal at 390px viewport — design ugE8p · dev mobile capture', images.designAddAccountMobile, images.devAddAccountMobile, modalCompareStyle, table(mobileAddAccountRows), '', modalCompareStyle)}
+
+    ${compareSection('23', 'Mobile — Remove Institution', 'Remove Institution at 390px viewport — design FOSbt · dev mobile capture', images.designRemoveInstitutionMobile, images.devRemoveInstitutionMobile, modalCompareStyle, table(mobileRemoveInstitutionRows), '', modalCompareStyle)}
+
+    ${compareSection('24', 'Mobile — Plaid Linking Error', 'Plaid Linking Error at 390px viewport — design zNPDv · dev not capturable (requires Plaid failure)', images.designPlaidErrorMobile, null, modalCompareStyle, table(mobilePlaidErrorRows), '<p class="note"><strong>Dev screenshot unavailable:</strong> The Plaid Linking Error cannot be triggered on demand — it requires an actual Plaid connection failure. Design panel shows the expected mobile appearance.</p>', modalCompareStyle)}
+
+    <section class="page" id="s25">
+      <h2>25. Files to change in js-mono</h2>
       <p class="subtitle">Map formatting fixes to implementation files on develop.</p>
       ${fileTable()}
       <div class="note">Shared tokens: use Hemlock typography classes and Tailwind aliases. <strong>List page meta</strong> → <code>text-gray-500</code> (<code>color-gray-500</code>). <strong>Modal detail labels</strong> → <code>text-text-meta</code> (<code>colors-text-meta</code>). Row names/balances → <code>text-gray-800</code>.</div>
     </section>
 
-    <section class="page" id="s23">
-      <h2>23. Master formatting checklist</h2>
+    <section class="page" id="s26">
+      <h2>26. Master formatting checklist</h2>
       <p class="subtitle">Engineering sign-off — every row below must match design before merge. Out of scope: section inventory, account data, copy wording except where it affects typography slots.</p>
       ${table(masterRows)}
     </section>
