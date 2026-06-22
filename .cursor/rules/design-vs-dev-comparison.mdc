@@ -71,11 +71,51 @@ Each row is a 5-element array:
 
 ## HTML Structure
 
-- **Overview/cover section** at top: purpose, how-to-read, key rules, sources
-- **Fixed left sidebar** navigation with categorized, color-coded section headers
+- **Overview/cover section** at top: purpose, how-to-read, key rules, sources, stats (gap count, match count, total)
+- **Fixed left sidebar navigation** (see detailed spec below)
 - **Sections grouped by feature** (e.g., "Accounts list", "Detail modal") with Desktop/Mobile sub-sections
 - Each section has: screenshot comparison (design vs dev side-by-side) + specification table
 - Mobile sections must explicitly state: text wraps (never truncates), touch targets ≥44px, no horizontal scroll
+
+## Side Navigation (Required)
+
+Every comparison document MUST include a fixed left sidebar navigation. This is critical for usability on large documents.
+
+### Structure
+
+```html
+<nav class="side-nav">
+  <a href="#top" class="nav-link nav-top">↑ Overview</a>
+  <span class="side-nav-title t-{category}">Category Name</span>
+  <span class="nav-sub">Desktop</span>
+  <a href="#s1" class="nav-link">1. Section name</a>
+  ...
+  <span class="nav-sub">Mobile</span>
+  <a href="#s14" class="nav-link">14. Mobile section name</a>
+  ...
+</nav>
+```
+
+### Requirements
+
+1. **Always present in the HTML** — never omit the `<nav>` element
+2. **"Overview" link** at the top (links to `#top`) — allows jumping back to the cover section from anywhere
+3. **Category headers** (`side-nav-title`) — color-coded by feature area (list, states, detail, modals, mobile, reference)
+4. **Desktop/Mobile sub-labels** (`nav-sub`) — within each category, clearly separate desktop and mobile sections
+5. **Links to every section** — each `<a>` links to the corresponding `<section id="s{num}">`
+6. **Responsive behavior** — visible at ≥1200px viewport width; hidden below 1200px. Content area gets `margin-left: 200px` when sidebar is visible.
+7. **Toggle button (required)** — when sidebar is hidden (below 1200px), a fixed hamburger button (top-left corner) must be visible so users can toggle the sidebar open. The page should NEVER look like navigation doesn't exist.
+8. **Fixed position** — `position: fixed; top: 0; left: 0; height: 100vh; overflow-y: auto`
+
+### Color-coded category classes
+
+- `.t-list` — green (#2d6a4f) for main list/page sections
+- `.t-states` — gold (#b8860b) for row interaction states
+- `.t-data` — indigo (#6366f1) for data/content sections
+- `.t-detail` — cyan (#0891b2) for detail views/popups
+- `.t-modals` — red (#9b2226) for modal dialogs
+- `.t-mobile` — purple (#7c3aed) for mobile-specific sections
+- `.t-ref` — blue (#2563eb) for reference/checklist sections
 
 ## Mobile-Specific Documentation
 
