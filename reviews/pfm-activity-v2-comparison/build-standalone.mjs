@@ -61,10 +61,16 @@ const images = {
   devNarrow: embed('assets/dev/table-narrow-1024.png'),
   devHover: embed('assets/dev/hover-row.png'),
   devPressed: embed('assets/dev/pressed-row.png'),
-  devDetailPopup: embed('assets/dev/modals/transaction-detail.png'),
-  devMobileDefault: embed('assets/dev/mobile-default.png'),
-  devMobileAccountSelect: embed('assets/dev/mobile-account-select.png'),
-  devMobileDetail: embed('assets/dev/modals/transaction-detail-mobile.png'),
+  devDetailWithdrawal: requireEmbed('assets/dev/detail-popup-withdrawal.png'),
+  devDetailDeposit: requireEmbed('assets/dev/detail-popup-deposit.png'),
+  devMobileDefault: requireEmbed('assets/dev/mobile-default.png'),
+  devMobileAccountSelect: requireEmbed('assets/dev/mobile-account-select.png'),
+  devMobileDetailWithdrawal: requireEmbed('assets/dev/mobile-detail-withdrawal.png'),
+  devMobileDetailDeposit: requireEmbed('assets/dev/mobile-detail-deposit.png'),
+  devTablet768: requireEmbed('assets/dev/tablet-768-broken.png'),
+  devTablet768ChatClosed: requireEmbed('assets/dev/tablet-768-chat-closed.png'),
+  devTablet900: requireEmbed('assets/dev/tablet-900-overlap.png'),
+  devTablet640: requireEmbed('assets/dev/tablet-640-3col.png'),
 };
 
 const modalCompareStyle = 'object-fit:contain;max-height:520px;background:#fff;padding:12px;';
@@ -201,16 +207,25 @@ const responsiveTableRows = [
   ['Mobile text wrapping', 'At mobile widths, text wraps to multiple lines (row height grows)', 'white-space: nowrap at ALL viewports — text never wraps, always truncates', 'Switch to white-space: normal below mobile breakpoint to allow wrapping', 'Gap'],
 ];
 
+const tabletResponsiveRows = [
+  ['Header overlap (768–1024px)', 'Column headers must never overlap — reduce columns or allow scroll', 'DESCRIPTION column collapses to 10px at 900px → header text "DESCRIPTION" overlaps "CATEGORY" header', 'Add min-width: 120px on DESCRIPTION column OR hide CATEGORY at ≤1024px', 'Gap'],
+  ['DESCRIPTION column collapse', 'DESCRIPTION always visible and readable (most important column)', 'At 900px: DESCRIPTION width = 10px (invisible). CATEGORY takes its space with 130px.', 'DESCRIPTION must have min-width priority over CATEGORY — reverse column priority', 'Gap'],
+  ['AMOUNT column cut off (768px)', 'AMOUNT column always visible regardless of viewport', 'At 768px with chat open: only DATE column visible. Chat panel consumes >50% viewport', 'Chat panel must collapse/hide at ≤1024px or use a bottom drawer pattern', 'Gap'],
+  ['Chat panel at tablet widths', 'Chat should collapse to icon/button at tablet widths (≤1024px)', 'Chat panel renders at full width (~350px) at all viewport sizes, stealing space from table', 'Auto-collapse chat panel below 1024px; show only the "Open chat" button', 'Gap'],
+  ['Column transition strategy', 'Graceful transition: 5 cols → 4 cols → 3 cols at defined breakpoints', 'Abrupt jump from 5 cols (with collapsed DESCRIPTION) straight to 3 cols at <640px', 'Add intermediate 4-column breakpoint (hide CATEGORY at ≤1024px, then hide ACCOUNT at ≤640px)', 'Gap'],
+  ['Sidebar + table conflict', 'Sidebar must not force table content below readable minimum', 'At 768px with sidebar: sidebar (180px) + 5-col table = content overflow/collapse', 'Collapse sidebar to icon rail at ≤1024px, or hide entirely', 'Gap'],
+];
+
 const hoverStateRows = [
-  ['Row background on hover', 'TransactionRow/hover (O:tzdWt) — warm taupe-100 background', 'Background change on hover present — specific color TBD from CSS inspection', 'Use Hemlock TransactionRow/hover component color token', 'Gap'],
+  ['Row background on hover', 'TransactionRow/hover (O:tzdWt) — warm taupe-100 background (pronounced contrast)', 'rgb(248, 247, 246) via --color-gray-50 — extremely subtle, nearly invisible against white', 'Use Hemlock taupe-100 token for more visible hover feedback', 'Gap'],
   ['Row corner radius on hover', 'Hemlock TransactionRow hover applies radius (8px)', 'No border-radius change on hover (stays rectangular)', 'Add border-radius: 8px on hover state', 'Gap'],
   ['Cursor', 'pointer', 'pointer (cursor: pointer on .eg-row-clickable)', 'No change — matches', 'Match'],
   ['Transition', 'Smooth background transition', 'Transition present via CSS', 'No change — matches', 'Match'],
 ];
 
 const pressedStateRows = [
-  ['Row background on press', 'TransactionRow/pressed (O:MSEcE) — deeper warm background on press', 'No distinct :active state (only hover background visible)', 'Add :active pseudo-class with TransactionRow/pressed fill', 'Gap'],
-  ['Visual feedback', 'Darker background than hover — confirms click action', 'No pressed state — hover and pressed appear identical', 'Add separate :active background darker than hover', 'Gap'],
+  ['Row background on press', 'TransactionRow/pressed (O:MSEcE) — deeper warm background on press (darker than hover)', 'No :active CSS rule exists — hover and pressed render identically at rgb(248, 247, 246)', 'Add :active pseudo-class with TransactionRow/pressed fill (deeper than hover)', 'Gap'],
+  ['Visual feedback', 'Visible press confirmation — darker background than hover', 'No pressed state differentiation — user gets no visual confirmation of tap/click', 'Add separate :active background (e.g., taupe-200) darker than hover', 'Gap'],
 ];
 
 const detailPopupShellRows = [
@@ -238,7 +253,7 @@ const mobileDefaultRows = [
   ['Column count', '4 columns visible: DATE, DESCRIPTION, ACCOUNT, AMOUNT (Category hidden)', 'Only 3 columns: DATE, DESCRIPTION, AMOUNT — ACCOUNT column is hidden', 'Show ACCOUNT column on mobile between DESCRIPTION and AMOUNT', 'Gap'],
   ['Text wrapping', 'Text wraps to multiple lines — "Whole Foods Market", "Transfer: Savings Deposit" wrap freely', 'white-space: nowrap + text-overflow: ellipsis on all cells — text truncates instead of wrapping', 'Remove truncation CSS on mobile; set white-space: normal to allow multi-line text', 'Gap'],
   ['Filter tabs overflow', 'Tabs scroll horizontally — "Investm..." partially visible indicating scrollability', 'Only 3 tabs visible (All Types, Banking, Credit Cards) — rest cut off, no scroll', 'Add overflow-x: auto on filter tab container at mobile widths', 'Gap'],
-  ['"Show More" button', '"Show More" link visible at bottom of transaction list', 'No "Show More" button visible — list just ends', 'Add "Show More" button/link below last visible transaction row', 'Gap'],
+  ['"Show More" button', '"Show More" link visible at bottom of transaction list', '"Show More" button present (confirmed in accessibility tree)', 'No change — matches', 'Match'],
   ['Date casing (mobile)', '"Jul", "Jun", "May" — sentence case month', '"MAY" — uppercase via CSS text-transform', 'Remove text-transform: uppercase; show sentence case on mobile', 'Gap'],
   ['Table header (mobile)', 'DATE ↕, DESCRIPTION ↕, ACCOUNT ↕, AMOUNT ↕ — light header text', 'DATE ↓, DESCRIPTION ↕, AMOUNT ↕ — dark header text, Account header missing', 'Add ACCOUNT column header; use gray-500 color for header text', 'Gap'],
   ['Row height (mobile)', 'Variable — taller rows for wrapping text (≥60px)', '~52px fixed row height per visible row', 'Allow rows to grow with content; minimum 44px for touch targets', 'Gap'],
@@ -246,25 +261,27 @@ const mobileDefaultRows = [
 ];
 
 const mobileAccountSelectRows = [
-  ['Dropdown style', 'Full-screen overlay dropdown with grouped accounts (BANKING, CREDIT CARDS, INVESTMENTS, LOANS)', 'Not triggered — account dropdown not opened on mobile', 'Account dropdown should be full-overlay with category headers', 'Verify'],
-  ['Category headers', 'Uppercase section headers: "BANKING", "CREDIT CARDS", "INVESTMENTS", "LOANS"', 'Not triggered', 'Group accounts under uppercase category headers', 'Verify'],
-  ['Account format in dropdown', '"{Institution} {Type} (x{mask})" — e.g. "Chase Sapphire Checking (x4821)"', 'Not triggered', 'Show full account name with mask in parentheses in dropdown options', 'Verify'],
-  ['Selected state', '"All Accounts" highlighted with taupe-100 background (pill shape)', 'Not triggered', 'Highlight selected option with taupe-100 background', 'Verify'],
-  ['Chevron direction', 'Up-chevron (∧) when dropdown is open', 'Not triggered', 'Rotate chevron to point up when dropdown is open', 'Verify'],
-  ['Dropdown corner radius', 'radius-2xs (8px)', 'Not triggered', 'Set border-radius: 8px on dropdown container', 'Verify'],
-  ['Dropdown shadow', 'shadow-md-blur + shadow-md-color', 'Not triggered', 'Apply shadow-md elevation on dropdown', 'Verify'],
+  ['Dropdown style', 'Full-screen overlay dropdown — takes over the content area with backdrop', 'Inline dropdown below selector — overlaps table rows, does not take full screen', 'Convert to full-screen overlay/sheet pattern on mobile', 'Gap'],
+  ['Category headers', 'Uppercase section headers: "BANKING", "CREDIT CARDS", "INVESTMENTS", "LOANS"', 'Uppercase category headers present and correct (BANKING, CREDIT CARDS, INVESTMENTS)', 'No change — matches', 'Match'],
+  ['Account format in dropdown', '"{Institution} {Type} (x{mask})" — e.g. "Chase Sapphire Checking (x4821)"', '"Chase Private Client Checking (x4821)" etc. — format matches', 'No change — matches', 'Match'],
+  ['Selected state', '"All Accounts" highlighted with taupe-100 background (rectangular pill)', '"All Accounts" highlighted with taupe/beige background', 'No change — matches', 'Match'],
+  ['Chevron direction', 'Up-chevron (∧) when dropdown is open', 'Up-chevron visible when dropdown is open', 'No change — matches', 'Match'],
+  ['Scrollbar visibility', 'Thin scrollbar (5px) visible when list overflows — design shows scroll indicator', 'No visible scrollbar — dropdown extends below fold, user must scroll entire page', 'Add max-height with overflow-y: auto and thin scrollbar indicator', 'Gap'],
+  ['Dropdown width', 'Full-width (fills content area minus padding)', 'Dropdown width matches selector width (~270px) — correct', 'No change — matches', 'Match'],
 ];
 
 const mobileDetailRows = [
-  ['Presentation style', 'Bottom sheet (slides up from bottom) — top corners rounded, rest of screen visible with dark backdrop', 'Not triggered — transaction tap not captured on mobile', 'Use bottom sheet pattern, not full-screen or centered dialog', 'Verify'],
-  ['Header', 'Merchant logo (32px) + merchant name (large, semibold) + close button (X) at top-right', 'Not triggered', 'Bottom sheet header: logo + name + dismiss button', 'Verify'],
-  ['Amount display', '"TRANSACTION AMOUNT" label (small uppercase) above amount value (large, bold)', 'Not triggered', 'Show label above amount in detail view', 'Verify'],
-  ['Detail sections', '3 sections: "Transaction Details", "Merchant Details", "Classification" — each with taupe-100 header bar', 'Not triggered', 'Use section headers with taupe-100 background bars', 'Verify'],
-  ['Transaction fields', 'Transaction ID, Amount, Currency, Date Processed, Date Authorized — key/value pairs', 'Not triggered', 'Show all transaction metadata as label/value rows', 'Verify'],
-  ['Merchant fields', 'Merchant name, Check Number — key/value pairs', 'Not triggered', 'Show merchant metadata section', 'Verify'],
-  ['Classification fields', 'Category, Sub-category — from Plaid classification', 'Not triggered', 'Show category/sub-category from Plaid data', 'Verify'],
-  ['Backdrop overlay', '#000000 at ~50% opacity behind bottom sheet', 'Not triggered', 'Apply dark backdrop overlay on background content', 'Verify'],
-  ['Top corner radius', 'Rounded top-left and top-right corners (radius-md)', 'Not triggered', 'Set border-radius on top corners only', 'Verify'],
+  ['Presentation style', 'Bottom sheet (slides up from bottom) — top corners rounded, rest of screen visible with dark backdrop', 'Left-side panel/drawer — pushes into content area inline, no dark backdrop, no bottom sheet animation', 'Convert to bottom sheet pattern on mobile with slide-up animation', 'Gap'],
+  ['Backdrop overlay', '#000000 at ~50% opacity behind bottom sheet', 'No backdrop overlay — table content visible behind/below the detail panel', 'Add semi-transparent dark backdrop when detail panel is open', 'Gap'],
+  ['Top corner radius', 'Rounded top-left and top-right corners (radius-md ~16px)', 'No visible corner radius on detail panel', 'Add border-radius to top corners of bottom sheet', 'Gap'],
+  ['Header', 'Merchant logo (32px) + merchant name (large, semibold) + close button (X) at top-right', 'Letter avatar (circle, 32px) + merchant name (16px semibold) + X button — correct', 'No change — matches', 'Match'],
+  ['Amount display', '"TRANSACTION AMOUNT" label (small uppercase) above amount value (large, bold)', '"TRANSACTION AMOUNT" label + large bold amount — correct layout', 'No change — matches', 'Match'],
+  ['Deposit amount color', 'Green (#148338) for positive amounts', '+$1,153.51 rendered in green — correct', 'No change — matches', 'Match'],
+  ['Withdrawal amount color', 'Dark text for negative amounts', '-$50.90 rendered in dark text — correct', 'No change — matches', 'Match'],
+  ['Detail sections', '3 sections: "Transaction Details", "Merchant Details", "Classification" — each with taupe-100 header bar', 'All 3 sections present with taupe/beige background header bars', 'No change — matches', 'Match'],
+  ['Transaction fields', 'Transaction ID, Amount, Currency, Date Processed, Date Authorized — key/value pairs', 'All fields present with correct key/value layout', 'No change — matches', 'Match'],
+  ['Transaction ID truncation', 'Full ID visible or accessible', 'ID truncates with "..." (bank:tj__user-6f03d6d8-6...)', 'Allow wrapping or add copy-to-clipboard for full ID', 'Gap'],
+  ['Panel width', 'Bottom sheet spans full viewport width (minus padding)', 'Panel is ~270px — does not fill full 390px viewport width', 'Bottom sheet should span full viewport width', 'Gap'],
 ];
 
 const devFiles = [
@@ -338,6 +355,7 @@ const masterRows = [
   ...txnRowCatAcctRows,
   ...txnRowAmountRows,
   ...responsiveTableRows,
+  ...tabletResponsiveRows,
   ...hoverStateRows,
   ...pressedStateRows,
   ...detailPopupShellRows,
@@ -394,6 +412,10 @@ const html = `<!DOCTYPE html>
     .panel-label { padding: 7px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; border-bottom: 1px solid var(--line); }
     .panel-label.design { background: #edf7f1; color: var(--design); }
     .panel-label.dev { background: #fdecec; color: var(--dev); }
+    .compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-bottom: 14px; }
+    .compare-grid .col { border: 1px solid var(--line); overflow: hidden; background: #fff; }
+    .compare-grid .col h3 { padding: 7px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; border-bottom: 1px solid var(--line); background: #f8f8f8; margin: 0; }
+    .compare-grid .col img { display: block; width: 100%; height: auto; }
     .spec-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 2px; }
     .spec-table th, .spec-table td { text-align: left; padding: 7px 9px; border-bottom: 1px solid var(--line); vertical-align: top; }
     .spec-table th { font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); background: #faf8f4; }
@@ -439,26 +461,27 @@ const html = `<!DOCTYPE html>
     <a href="#s3" class="nav-link">3. Account selector</a>
     <a href="#s4" class="nav-link">4. Category filter tabs</a>
     <a href="#s5" class="nav-link">5. Table header</a>
-    <a href="#s6" class="nav-link">6. Transaction row — description</a>
-    <a href="#s7" class="nav-link">7. Transaction row — date</a>
-    <a href="#s8" class="nav-link">8. Transaction row — category &amp; account</a>
-    <a href="#s9" class="nav-link">9. Transaction row — amount</a>
+    <a href="#s6" class="nav-link">6. Txn row — description</a>
+    <a href="#s7" class="nav-link">7. Txn row — date</a>
+    <a href="#s8" class="nav-link">8. Txn row — cat &amp; account</a>
+    <a href="#s9" class="nav-link">9. Txn row — amount</a>
     <a href="#s10" class="nav-link">10. Responsive truncation</a>
+    <a href="#s11" class="nav-link">11. Tablet — header overlap</a>
     <span class="side-nav-title t-states">Row states</span>
     <span class="nav-sub">Desktop</span>
-    <a href="#s11" class="nav-link">11. Hover state</a>
-    <a href="#s12" class="nav-link">12. Pressed state</a>
+    <a href="#s12" class="nav-link">12. Hover state</a>
+    <a href="#s13" class="nav-link">13. Pressed state</a>
     <span class="side-nav-title t-detail">Transaction detail</span>
     <span class="nav-sub">Desktop</span>
-    <a href="#s13" class="nav-link">13. Detail popup — shell</a>
-    <a href="#s14" class="nav-link">14. Detail popup — content</a>
-    <span class="side-nav-title t-mobile">Mobile</span>
-    <a href="#s15" class="nav-link">15. Default layout</a>
-    <a href="#s16" class="nav-link">16. Account selector</a>
-    <a href="#s17" class="nav-link">17. Transaction detail</a>
+    <a href="#s14" class="nav-link">14. Detail popup — shell</a>
+    <a href="#s15" class="nav-link">15. Detail popup — content</a>
+    <span class="side-nav-title t-mobile">Mobile (390px)</span>
+    <a href="#s16" class="nav-link">16. Default layout</a>
+    <a href="#s17" class="nav-link">17. Account selector</a>
+    <a href="#s18" class="nav-link">18. Transaction detail</a>
     <span class="side-nav-title t-ref">Reference</span>
-    <a href="#s18" class="nav-link">18. Files to change</a>
-    <a href="#s19" class="nav-link">19. Master checklist</a>
+    <a href="#s19" class="nav-link">19. Files to change</a>
+    <a href="#s20" class="nav-link">20. Master checklist</a>
   </nav>
   <div class="doc">
     <header class="cover" id="top">
@@ -517,29 +540,64 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('10', 'Responsive table — truncation issues', 'At viewports ≤1024px, description and account text truncate with ellipsis', images.designDefault, images.devNarrow, 'object-fit:cover;object-position:30% 25%;max-height:400px;', table(responsiveTableRows), '<p class="note"><strong>Key finding:</strong> At 1280px (clean screenshot, primary reference) all columns render without truncation. At ≤1024px, DESCRIPTION and ACCOUNT columns aggressively truncate text with "..." — this does not match the design intent where text wraps or columns maintain minimum widths.</p>', 'object-fit:cover;object-position:30% 25%;max-height:400px;')}
 
-    ${compareSection('11', 'Hover state', 'TransactionRow/hover (O:tzdWt) — warm background on pointer hover', images.designTxnHovered, images.devHover, modalCompareStyle, table(hoverStateRows), 'Hover any transaction row in dev to compare background color and radius.', modalCompareStyle)}
+    <section class="page" id="s11">
+      <h2>11. Tablet responsive — header overlap &amp; column collapse</h2>
+      <p class="subtitle">Between 640px and 1024px, the DESCRIPTION column collapses causing header text overlap and invisible content</p>
+      <div class="compare-grid">
+        <div class="col"><h3>768px — Chat open (broken)</h3><img src="${images.devTablet768}" style="${modalCompareStyle}" /></div>
+        <div class="col"><h3>768px — Chat closed (overlap visible)</h3><img src="${images.devTablet768ChatClosed}" style="${modalCompareStyle}" /></div>
+      </div>
+      <div class="compare-grid" style="margin-top:24px;">
+        <div class="col"><h3>900px — DESCRIPTION at 10px width</h3><img src="${images.devTablet900}" style="${modalCompareStyle}" /></div>
+        <div class="col"><h3>640px — 3-column layout (no overlap)</h3><img src="${images.devTablet640}" style="${modalCompareStyle}" /></div>
+      </div>
+      ${table(tabletResponsiveRows)}
+      <p class="note"><strong>Critical finding:</strong> The 3-column breakpoint fires at &lt;640px, but between 640–1024px the 5-column layout persists. The DESCRIPTION column has no min-width and shrinks to 10px at 900px, making it invisible while its header text overflows into the adjacent CATEGORY header. The chat panel exacerbates this at 768px by consuming &gt;50% of the viewport.</p>
+    </section>
 
-    ${compareSection('12', 'Pressed state', 'TransactionRow/pressed (O:MSEcE) — deeper background on click/active', images.designTxnPressed, images.devPressed, modalCompareStyle, table(pressedStateRows), 'Press and hold a transaction row — the background should deepen beyond hover.', modalCompareStyle)}
+    ${compareSection('12', 'Hover state', 'TransactionRow/hover (O:tzdWt) — warm background on pointer hover', images.designTxnHovered, images.devHover, modalCompareStyle, table(hoverStateRows), 'Hover any transaction row in dev to compare background color and radius.', modalCompareStyle)}
 
-    ${compareSection('13', 'Detail popup — shell', 'Transaction detail overlay — popup Qjfm2 (560×905, radius-xs, shadow-lg)', images.designTxnSelectedPopup, images.devDetailPopup, modalCompareStyle, table(detailPopupShellRows), '', modalCompareStyle)}
+    ${compareSection('13', 'Pressed state', 'TransactionRow/pressed (O:MSEcE) — deeper background on click/active', images.designTxnPressed, images.devPressed, modalCompareStyle, table(pressedStateRows), 'Press and hold a transaction row — the background should deepen beyond hover.', modalCompareStyle)}
 
-    ${compareSection('14', 'Detail popup — content', 'Title section, amount section, and detail sections inside popup — QXsSg', images.designDepositPopup, images.devDetailPopup, modalCompareStyle, table(detailPopupContentRows), '<p class="note">Design has two detail popup variants: <strong>withdrawal</strong> (bAspM) shows negative amount in default dark text; <strong>deposit</strong> (bDcIO) shows positive amount in green (#148338). Both use the same layout structure.</p>', modalCompareStyle)}
+    ${compareSection('14', 'Detail popup — shell', 'Transaction detail overlay — popup Qjfm2 (560×905, radius-xs, shadow-lg)', images.designTxnSelectedPopup, images.devDetailWithdrawal, modalCompareStyle, table(detailPopupShellRows), '', modalCompareStyle)}
 
-    ${compareSection('15', 'Mobile — Default layout', 'Activity list at 390px viewport — design v4sVMe / TrawO', images.designMobileDefault, images.devMobileDefault, modalCompareStyle, table(mobileDefaultRows), '', modalCompareStyle)}
+    <section class="page" id="s15">
+      <h2>15. Detail popup — content</h2>
+      <p class="subtitle">Title section, amount section, and detail sections inside popup — QXsSg</p>
+      <div class="compare-grid">
+        <div class="col"><h3>Design (target)</h3><img src="${images.designDepositPopup}" style="${modalCompareStyle}" /></div>
+        <div class="col"><h3>Dev — Withdrawal</h3><img src="${images.devDetailWithdrawal}" style="${modalCompareStyle}" /></div>
+        <div class="col"><h3>Dev — Deposit</h3><img src="${images.devDetailDeposit}" style="${modalCompareStyle}" /></div>
+      </div>
+      ${table(detailPopupContentRows)}
+      <p class="note">Design has two detail popup variants: <strong>withdrawal</strong> (bAspM) shows negative amount in default dark text; <strong>deposit</strong> (bDcIO) shows positive amount in green (#148338). Both use the same layout structure.</p>
+    </section>
 
-    ${compareSection('16', 'Mobile — Account selector', 'Account dropdown at mobile — ie8B0 / g1e3f with scrollbar', images.designMobileAccountSelect, images.devMobileAccountSelect, modalCompareStyle, table(mobileAccountSelectRows), '', modalCompareStyle)}
+    ${compareSection('16', 'Mobile — Default layout', 'Activity list at 390px viewport — design v4sVMe / TrawO', images.designMobileDefault, images.devMobileDefault, modalCompareStyle, table(mobileDefaultRows), '', modalCompareStyle)}
 
-    ${compareSection('17', 'Mobile — Transaction detail', 'Bottom sheet transaction detail — PcHUT with backdrop overlay', images.designMobileTransactionDetail, images.devMobileDetail, modalCompareStyle, table(mobileDetailRows), '', modalCompareStyle)}
+    ${compareSection('17', 'Mobile — Account selector', 'Account dropdown at mobile — ie8B0 / g1e3f with scrollbar', images.designMobileAccountSelect, images.devMobileAccountSelect, modalCompareStyle, table(mobileAccountSelectRows), '', modalCompareStyle)}
 
     <section class="page" id="s18">
-      <h2>18. Files to change in js-mono</h2>
+      <h2>18. Mobile — Transaction detail</h2>
+      <p class="subtitle">Bottom sheet transaction detail — PcHUT with backdrop overlay</p>
+      <div class="compare-grid">
+        <div class="col"><h3>Design (target)</h3><img src="${images.designMobileTransactionDetail}" style="${modalCompareStyle}" /></div>
+        <div class="col"><h3>Dev — Withdrawal</h3><img src="${images.devMobileDetailWithdrawal}" style="${modalCompareStyle}" /></div>
+        <div class="col"><h3>Dev — Deposit</h3><img src="${images.devMobileDetailDeposit}" style="${modalCompareStyle}" /></div>
+      </div>
+      ${table(mobileDetailRows)}
+      <p class="note">Design specifies a <strong>bottom sheet</strong> pattern (slides up from bottom with rounded top corners and dark backdrop). Dev currently renders a left-side panel/drawer. The deposit variant shows +amount in green (#148338).</p>
+    </section>
+
+    <section class="page" id="s19">
+      <h2>19. Files to change in js-mono</h2>
       <p class="subtitle">Map formatting fixes to implementation files on develop. File paths are approximate — verify in codebase.</p>
       ${fileTable()}
       <div class="note"><strong>Note:</strong> File paths above are estimates based on naming conventions. Verify actual paths in the <code>js-mono</code> repository. The Activity feature may live under <code>pfm-activity</code>, <code>activity</code>, or <code>net-worth/activity</code> depending on the project structure.</div>
     </section>
 
-    <section class="page" id="s19">
-      <h2>19. Master formatting checklist</h2>
+    <section class="page" id="s20">
+      <h2>20. Master formatting checklist</h2>
       <p class="subtitle">Engineering sign-off — every row below must match design before merge.</p>
       ${table(masterRows)}
     </section>
