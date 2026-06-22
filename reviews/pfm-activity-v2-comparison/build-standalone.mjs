@@ -206,10 +206,9 @@ const tableHeaderRows = [
   ['Category column width', '130px fixed (custom design value)', '130px', 'No change — matches', 'Match'],
   ['Account column width', '140px fixed (custom design value)', '200px (too wide)', 'Reduce Account column from 200px to 140px', 'Gap'],
   ['Amount column width', '100px fixed, right-aligned (custom design value)', '130px, right-aligned', 'Reduce Amount column from 130px to 100px', 'Gap'],
-  ['[MOBILE] Column count', '4 columns: DATE, DESCRIPTION, ACCOUNT, AMOUNT (CATEGORY hidden)', 'Only 3 columns visible (DATE, DESCRIPTION, AMOUNT) — ACCOUNT also hidden', 'Mobile: show 4 columns — hide CATEGORY only, keep ACCOUNT visible', 'Gap'],
+  ['[MOBILE] Column count', '3 columns: DATE (52px), DESCRIPTION (fill), AMOUNT (70px) — CATEGORY and ACCOUNT both hidden', 'Only 3 columns visible (DATE, DESCRIPTION, AMOUNT)', 'No change — matches. Mobile correctly shows 3 columns', 'Match'],
   ['[MOBILE] Header inter-column gap', `${T.s2xs} between columns (tighter than desktop spacing-sm)`, '0px — columns touch', 'Mobile: set column gap to $spacing-2xs (8px) — tighter than desktop 16px', 'Gap'],
   ['[MOBILE] DATE column width', '52px (slightly wider than desktop 44px to accommodate touch)', 'DATE column width on mobile — verify', 'Mobile: set DATE column to 52px (wider than desktop to improve legibility)', 'Gap'],
-  ['[MOBILE] ACCOUNT column width', '80px fixed (narrower than desktop 140px)', 'ACCOUNT column hidden on mobile (should be visible at 80px)', 'Mobile: show ACCOUNT column at 80px width', 'Gap'],
   ['[MOBILE] AMOUNT column width', '70px fixed, right-aligned (narrower than desktop 100px)', 'AMOUNT at same width as desktop — verify', 'Mobile: reduce AMOUNT column to 70px', 'Gap'],
   ['[MOBILE] Header styling', `Same tokens as desktop: $radius-2xs (8px), $color-taupe-100 fill, padding [10, $spacing-xs(12px)], typo-primary-xs-semibold (12px/600), $color-gray-500`, 'Verify mobile header uses same styling', 'No change in styling tokens — same as desktop. Only column layout changes.', 'Match'],
 ];
@@ -253,9 +252,8 @@ const txnRowCatAcctRows = [
   ['Account color', `${T.gray500}`, 'oklch(0.164 0 89.88) ≈ near-black #0E0E0E (NOT gray-500)', 'Change account text color from near-black to $color-gray-500 (#716E6A)', 'Gap'],
   ['Account width', '140px fixed (custom design value)', '200px (60px wider than design)', 'Reduce Account column from 200px to 140px', 'Gap'],
   ['Account format', '"WF Checking (x1234)" — short institution + type, mask in parentheses', '"Schwab One Brokerage Accountx3587" — full Plaid name, no space before mask, NO parentheses', 'Use short format: "{Institution} {SubType} (x{mask})" — parentheses around mask are required', 'Gap'],
-  ['[MOBILE] Category column', 'HIDDEN on mobile — not rendered (saves space for 4-col layout)', 'Category hidden on mobile (correct behavior)', 'Mobile: hide CATEGORY column entirely', 'Match'],
-  ['[MOBILE] Account column width', '80px fixed (narrower than desktop 140px)', 'Account hidden on mobile (should be visible at 80px)', 'Mobile: show ACCOUNT column at 80px width — truncate long names', 'Gap'],
-  ['[MOBILE] Account format', '"Chase Sapphire" or "WF Checking x1234" — shorter than desktop format', 'Account text on mobile — verify format', 'Mobile: use shorter format (brand only or brand + mask, no parentheses needed at 80px)', 'Gap'],
+  ['[MOBILE] Category column', 'HIDDEN on mobile — not rendered (3-col layout)', 'Category hidden on mobile (correct behavior)', 'No change — matches. CATEGORY correctly hidden', 'Match'],
+  ['[MOBILE] Account column', 'HIDDEN on mobile — not rendered (3-col layout: DATE, DESC, AMOUNT only)', 'Account hidden on mobile (correct behavior)', 'No change — matches. ACCOUNT correctly hidden on mobile', 'Match'],
 ];
 
 const txnRowAmountRows = [
@@ -269,7 +267,7 @@ const txnRowAmountRows = [
 ];
 
 const responsiveTableRows = [
-  ['Column visibility breakpoint', 'Desktop (5 cols): DATE, DESCRIPTION, CATEGORY, ACCOUNT, AMOUNT. Mobile (4 cols): hide CATEGORY only', 'Desktop (5 cols) → Mobile (3 cols): hides both CATEGORY and ACCOUNT columns below breakpoint', 'At mobile breakpoint, hide only CATEGORY — keep ACCOUNT visible', 'Gap'],
+  ['Column visibility breakpoint', 'Desktop (5 cols): DATE, DESCRIPTION, CATEGORY, ACCOUNT, AMOUNT. Mobile (3 cols): hide both CATEGORY and ACCOUNT', 'Desktop (5 cols) → Mobile (3 cols): hides both CATEGORY and ACCOUNT columns below breakpoint', 'No change — matches. Mobile correctly shows 3 columns (DATE, DESC, AMOUNT)', 'Match'],
   ['Description truncation', 'Text should wrap or fill available space — never truncate with ellipsis', 'At ≤1024px viewport, DESCRIPTION truncates with "..." (e.g. "SWVXX I...", "Wall Stree...")', 'Remove text-overflow: ellipsis; allow text to wrap or increase min-width', 'Gap'],
   ['Account name truncation', 'Full short-format account name visible (e.g. "WF Checking (x1234)")', 'Account names truncated at narrow widths — "Schwab One Brokerage Accou" cut off', 'Use short account format AND ensure no text truncation', 'Gap'],
   ['Column min-widths', 'Columns should maintain readable minimum widths', 'Columns compress freely — no min-width constraints causing text overflow', 'Set min-width on each column to prevent unreadable truncation', 'Gap'],
@@ -322,12 +320,12 @@ const detailPopupContentRows = [
 
 const mobileDefaultRows = [
   ['Page title', '"Activity" only on mobile (shorter than desktop)', '"Net Worth | Activity" — same as desktop, not shortened for mobile', 'Shorten title to just "Activity" on mobile viewport', 'Gap'],
-  ['Column count', '4 columns visible: DATE, DESCRIPTION, ACCOUNT, AMOUNT (Category hidden)', 'Only 3 columns: DATE, DESCRIPTION, AMOUNT — ACCOUNT column is hidden', 'Show ACCOUNT column on mobile between DESCRIPTION and AMOUNT', 'Gap'],
+  ['Column count', '3 columns: DATE (52px), DESCRIPTION (fill), AMOUNT (70px) — both CATEGORY and ACCOUNT hidden', 'Only 3 columns: DATE, DESCRIPTION, AMOUNT', 'No change — matches. 3-column mobile layout is correct', 'Match'],
   ['Text wrapping', 'Text wraps to multiple lines — "Whole Foods Market", "Transfer: Savings Deposit" wrap freely', 'white-space: nowrap + text-overflow: ellipsis on all cells — text truncates instead of wrapping', 'Remove truncation CSS on mobile; set white-space: normal to allow multi-line text', 'Gap'],
   ['Filter tabs overflow', 'Tabs scroll horizontally — "Investm..." partially visible indicating scrollability', 'Only 3 tabs visible (All Types, Banking, Credit Cards) — rest cut off, no scroll', 'Add overflow-x: auto on filter tab container at mobile widths', 'Gap'],
   ['"Show More" button', '"Show More" link visible at bottom of transaction list', '"Show More" button present (confirmed in accessibility tree)', 'No change — matches', 'Match'],
   ['Date casing (mobile)', '"Jul", "Jun", "May" — sentence case month', '"MAY" — uppercase via CSS text-transform', 'Remove text-transform: uppercase; show sentence case on mobile', 'Gap'],
-  ['Table header (mobile)', `DATE ↕, DESCRIPTION ↕, ACCOUNT ↕, AMOUNT ↕ — header text in ${T.gray500}`, 'DATE ↓, DESCRIPTION ↕, AMOUNT ↕ — dark header text, Account header missing', 'Add ACCOUNT column header; use $color-gray-500 (#716E6A) for header text', 'Gap'],
+  ['Table header (mobile)', `DATE ↕, DESCRIPTION ↕, AMOUNT ↕ — 3 columns, header text in ${T.gray500}`, 'DATE ↓, DESCRIPTION ↕, AMOUNT ↕ — dark header text', 'No change in column count — 3 headers correct. Fix header text color to $color-gray-500 (#716E6A)', 'Gap'],
   ['Row height (mobile)', 'Variable — taller rows for wrapping text (≥60px)', '~52px fixed row height per visible row', 'Allow rows to grow with content; minimum 44px for touch targets', 'Gap'],
   ['Content area padding', `${T.sm} horizontal padding`, 'Content has 16px horizontal padding (correct)', 'No change — value matches. Ensure dev uses $spacing-sm (16px) token', 'Match'],
 ];
