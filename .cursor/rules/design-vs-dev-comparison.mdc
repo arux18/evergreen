@@ -1,0 +1,86 @@
+---
+description: Methodology for creating design-vs-dev comparison HTML documents that audit UI implementation against Pencil designs
+globs: reviews/*-comparison/**
+alwaysApply: false
+---
+
+# Design vs Dev Comparison Documents
+
+When creating a comparison audit between a Pencil design and its dev implementation, follow this structure and methodology.
+
+## Directory Structure
+
+```
+reviews/{screen-name}-comparison/
+  build-standalone.mjs     # Node.js script that generates the HTML
+  PFM-{Name}-Design-vs-Dev.html  # Output (self-contained, base64 images)
+  index.html               # Lightweight redirect/alias
+  assets/
+    design/                # Exported PNGs from Pencil (frame IDs as filenames)
+    dev/                   # Screenshots captured from dev site
+    dev/modals/            # Modal/overlay dev screenshots
+```
+
+## Build Script Pattern
+
+The `build-standalone.mjs` script:
+1. Flattens design PNGs onto white background (PIL via Python)
+2. Embeds all images as base64 data URIs (fully self-contained HTML)
+3. Defines a Hemlock token map (`T` object) with exact values from the design system
+4. Defines comparison row arrays per section
+5. Uses helper functions (`compareSection`, `refSection`) to generate HTML
+6. Outputs a single `.html` file
+
+## Comparison Row Format
+
+Each row is a 5-element array:
+
+```javascript
+['Item name', 'Design spec (Hemlock token)', 'Current dev state', 'Required change in dev', 'Gap|Match|Check']
+```
+
+### Rules for Row Content
+
+- **Design column**: Use EXACT token name + value. Example: `spacing-md (24px)`. Never use ranges ("20–24px") or tildes ("~24px").
+- **Dev column**: State the measured value from the dev site. Use CDP inspection for precision.
+- **Required change column**: Specific instruction an engineer can act on. No vague language.
+- **Status**: `Gap` = design and dev differ, `Match` = identical, `Check` = needs verification.
+
+## Sourcing Design Assets
+
+1. Use Pencil MCP tools (`get_editor_state`, `snapshot_layout`, `batch_get`, `export_nodes`) to inspect and export frames
+2. Export frames by their Pencil node ID (e.g., `FglEA.png`)
+3. Flatten transparent PNGs onto white with Python PIL
+4. Verify padding/spacing values directly from Pencil data (`padding`, `gap` properties) — don't guess
+
+## Sourcing Dev Assets
+
+1. Use the Cursor browser resized to the correct viewport (390px for mobile, full-width for desktop)
+2. Navigate to the screen and capture with `browser_take_screenshot`
+3. For transient states (hover, pressed), inject CSS via `browser_cdp` Runtime.evaluate
+4. For measurements, use `browser_cdp` to query computed styles and element dimensions
+5. For modals: navigate to trigger the modal, then screenshot
+
+## Precision Requirements
+
+- All spacing/padding values must reference exact Hemlock tokens (spacing-xs=12, spacing-sm=16, spacing-md=24, spacing-lg=32, spacing-xl=40)
+- All font sizes must state the exact px value and weight
+- All colors must include the token name AND hex value
+- Button specs must include height, padding, border-radius, font details
+- No approximations in the Design column — verify against Pencil source
+
+## HTML Structure
+
+- **Overview/cover section** at top: purpose, how-to-read, key rules, sources
+- **Fixed left sidebar** navigation with categorized, color-coded section headers
+- **Sections grouped by feature** (e.g., "Accounts list", "Detail modal") with Desktop/Mobile sub-sections
+- Each section has: screenshot comparison (design vs dev side-by-side) + specification table
+- Mobile sections must explicitly state: text wraps (never truncates), touch targets ≥44px, no horizontal scroll
+
+## Mobile-Specific Documentation
+
+- Document overlay-to-modal padding (typically spacing-md / 24px from viewport edges)
+- Document scroll behavior (only ONE scroll region allowed)
+- Document text wrapping (no truncation with ellipsis on mobile)
+- Document touch target compliance (min 44px for interactive elements)
+- Document header borders (design typically has none; dev may add them)
