@@ -71,6 +71,11 @@ const images = {
   devTablet768ChatClosed: requireEmbed('assets/dev/tablet-768-chat-closed.png'),
   devTablet900: requireEmbed('assets/dev/tablet-900-overlap.png'),
   devTablet640: requireEmbed('assets/dev/tablet-640-3col.png'),
+  devSelectDefaultClosed: requireEmbed('assets/dev/select-default-closed.png'),
+  devSelectOpen: requireEmbed('assets/dev/select-dropdown-open.png'),
+  devSelectHover: requireEmbed('assets/dev/select-dropdown-hover.png'),
+  devSelectAccountSelected: requireEmbed('assets/dev/select-account-selected.png'),
+  devSelectReselection: requireEmbed('assets/dev/select-reselection.png'),
 };
 
 const modalCompareStyle = 'object-fit:contain;max-height:520px;background:#fff;padding:12px;';
@@ -116,13 +121,32 @@ const pageTitleRows = [
 
 const accountSelectorRows = [
   ['Component', 'Hemlock `component/Select` ref (O:jncEi)', 'Custom combobox — not a Hemlock Select ref', 'Use Hemlock Select component ref', 'Gap'],
-  ['Width', '375px fixed width', '1076px (full-width, fills entire content area)', 'Constrain to max-width: 375px', 'Gap'],
+  ['Width', '375px fixed width', '928px (full-width, fills entire content area)', 'Constrain to max-width: 375px', 'Gap'],
   ['Height', '58px', '58px', 'No change — matches', 'Match'],
   ['Corner radius', '8px', '8px', 'No change — matches', 'Match'],
   ['Padding', '[0, 12, 0, 17] — asymmetric horizontal', '0px 12px 0px 17px', 'No change — matches', 'Match'],
   ['Border', '1px solid (from Hemlock Select component)', '1px solid rgb(213, 211, 208) (#D5D3D0)', 'No change — matches btnSecondaryBorder', 'Match'],
-  ['Label text', '"All Accounts" — typo-primary-base-regular (16px), weight normal', '"All Accounts" text present — font-size/weight TBD from deeper inspection', 'Use 16px regular weight for selector label', 'Gap'],
-  ['Chevron icon color', '#8A8680 (gray muted)', 'Chevron present — color TBD', 'Set chevron fill to #8A8680', 'Gap'],
+  ['Background', 'Transparent / white (from Hemlock Select)', 'oklch(0.164 0 89.88 / 0.02) — 2% dark tint (barely visible)', 'Remove subtle tint; use transparent or white background', 'Gap'],
+  ['Floating label ("Account")', '"Account" label visible above value when dropdown is open/focused', 'No floating label — only aria-label "Filter by account" for accessibility, not visible', 'Add visible floating "Account" label above value text per Hemlock Select pattern', 'Gap'],
+  ['Value text', '"All Accounts" — Heebo 16px, weight 400 (regular)', '"All Accounts" — Heebo Variable 16px, weight 400', 'No change — matches', 'Match'],
+  ['Chevron icon', 'Down-chevron, color #8A8680 (gray muted), rotates to up on open', 'Chevron present, rotates on open — color inherits text color (dark)', 'Set chevron fill to #8A8680 instead of inheriting body text color', 'Gap'],
+];
+
+const accountSelectorDropdownRows = [
+  ['Dropdown width', '~300px (content-width, narrower than trigger)', '375px fixed', 'Dropdown should size to content or match trigger width — verify against design', 'Gap'],
+  ['Dropdown max-height', 'Full list visible without scrolling (in design frame)', '372px max-height with overflow hidden', 'Ensure dropdown can show all accounts without being cut off (increase max-height or add scroll)', 'Gap'],
+  ['Dropdown border-radius', 'radius-2xs (8px) per Hemlock Select dropdown', '12px', 'Reduce dropdown border-radius from 12px to 8px', 'Gap'],
+  ['Dropdown shadow', 'shadow-md (from Hemlock Select dropdown)', 'Multi-layer box-shadow: oklch 0.025 + oklch 0.05 blur 6px + blur 10px', 'Use Hemlock shadow-md token instead of custom multi-layer shadow', 'Gap'],
+  ['Dropdown border', '1px solid colors-borders-dark (from Hemlock)', '1px solid oklch(0.164 0 89.88 / 0.06) — 6% dark (very subtle)', 'Use colors-borders-dark token for dropdown border', 'Gap'],
+  ['Dropdown padding', 'spacing-md (24px) inner padding', '0px', 'Add padding: spacing-md (24px) inside dropdown container', 'Gap'],
+  ['Selected option style', 'DARK background (#1a1a1a) with WHITE text — inverted pill', 'LIGHT beige background rgb(237, 234, 227) with DARK text — non-inverted', 'Change selected option to dark/inverted background with white text per design', 'Gap'],
+  ['Selected option font-weight', 'Bold (implied by inverted pill prominence)', '600 (semibold)', 'Use bold weight on selected option text', 'Gap'],
+  ['Selected option border-radius', 'Full pill radius matching row height', '8px', 'Match design pill radius on selected option', 'Gap'],
+  ['Hover option style', 'Subtle gray highlight background on hovered item', 'oklch(0.164 0 89.88 / 0.04) — 4% dark overlay with border-radius 6px', 'Hover state is very subtle (4%) — compare with design contrast and adjust if needed', 'Match'],
+  ['Checkmark on current selection', 'No checkmark in design — selected state communicated via dark pill only', 'Checkmark (✓) SVG icon shown to the right of the currently selected account', 'Remove checkmark indicator — use inverted pill style only to communicate selection', 'Gap'],
+  ['Category group headers', 'Uppercase bold small text (BANKING, CREDIT CARDS, etc.)', 'Uppercase category headers present (BANKING, CREDIT CARDS, INVESTMENTS)', 'No change — category grouping matches', 'Match'],
+  ['Option padding', 'Consistent padding per Hemlock Select item pattern', '4px 24px 4px 6px (asymmetric — extra right for checkmark space)', 'Use symmetric padding per Hemlock Select; remove checkmark reserved space', 'Gap'],
+  ['Re-selection state', 'Previously selected account is NOT shown as currently active — user picks from fresh list', 'Previously selected account has data-state="checked" with subtle bg + checkmark', 'Remove "checked" state indicator — design shows no per-item active state in re-selection', 'Gap'],
 ];
 
 const filterTabsRows = [
@@ -348,6 +372,7 @@ const masterRows = [
   ...layoutRows,
   ...pageTitleRows,
   ...accountSelectorRows,
+  ...accountSelectorDropdownRows,
   ...filterTabsRows,
   ...tableHeaderRows,
   ...txnRowDescRows,
@@ -458,7 +483,8 @@ const html = `<!DOCTYPE html>
     <span class="nav-sub">Desktop</span>
     <a href="#s1" class="nav-link">1. Layout &amp; spacing</a>
     <a href="#s2" class="nav-link">2. Page title</a>
-    <a href="#s3" class="nav-link">3. Account selector</a>
+    <a href="#s3" class="nav-link">3. Account selector (closed)</a>
+    <a href="#s3b" class="nav-link">3b. Selector dropdown states</a>
     <a href="#s4" class="nav-link">4. Category filter tabs</a>
     <a href="#s5" class="nav-link">5. Table header</a>
     <a href="#s6" class="nav-link">6. Txn row — description</a>
@@ -524,7 +550,34 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('2', 'Page title', '"Net Worth | Activity" header bar — headerRef YRPZr', images.designDefault, images.devFull, 'object-fit:cover;object-position:25% 0%;max-height:120px;', table(pageTitleRows), '', 'object-fit:cover;object-position:25% 0%;max-height:120px;')}
 
-    ${compareSection('3', 'Account selector', 'Hemlock Select component (O:jncEi) — "All Accounts" dropdown — Q5tbaN', images.designDefault, images.devFull, 'object-fit:cover;object-position:30% 8%;max-height:160px;', table(accountSelectorRows), '', 'object-fit:cover;object-position:30% 8%;max-height:160px;')}
+    <section class="page" id="s3">
+      <h2>3. Account selector — closed state</h2>
+      <p class="subtitle">Hemlock Select component (O:jncEi) — "All Accounts" dropdown — Q5tbaN</p>
+      <div class="compare-grid">
+        <div class="col"><h3>Design (default closed)</h3><img src="${images.designDefault}" style="object-fit:cover;object-position:15% 5%;max-height:140px;" /></div>
+        <div class="col"><h3>Dev (default closed)</h3><img src="${images.devSelectDefaultClosed}" style="object-fit:cover;object-position:15% 5%;max-height:140px;" /></div>
+        <div class="col"><h3>Dev (account selected closed)</h3><img src="${images.devSelectAccountSelected}" style="object-fit:cover;object-position:15% 5%;max-height:140px;" /></div>
+      </div>
+      ${table(accountSelectorRows)}
+    </section>
+
+    <section class="page" id="s3b">
+      <h2>3b. Account selector — dropdown states</h2>
+      <p class="subtitle">Open dropdown with selected option, hover state, and re-selection behavior</p>
+      <div class="compare-grid">
+        <div class="col"><h3>Design — dropdown open (selected)</h3><img src="${images.designAccountSelected}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
+        <div class="col"><h3>Dev — dropdown open (All Accounts)</h3><img src="${images.devSelectOpen}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
+      </div>
+      <div class="compare-grid" style="margin-top:14px;">
+        <div class="col"><h3>Design — account hovered</h3><img src="${images.designAccountHovered}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
+        <div class="col"><h3>Dev — account hovered</h3><img src="${images.devSelectHover}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
+      </div>
+      <div class="compare-grid" style="margin-top:14px;">
+        <div class="col"><h3>Dev — re-selection (checkmark on current)</h3><img src="${images.devSelectReselection}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
+      </div>
+      ${table(accountSelectorDropdownRows)}
+      <p class="note"><strong>Major difference:</strong> Design uses a <strong>dark/inverted pill</strong> (near-black background, white text) to indicate the selected item in the dropdown. Dev uses a <strong>light beige</strong> background (rgb 237,234,227) with dark text plus a checkmark icon. The design communicates selection purely through color inversion — no checkmark is present.</p>
+    </section>
 
     ${compareSection('4', 'Category filter tabs', 'Segmented control — All Types / Banking / Credit Cards / Investments / Loans — A6epW', images.designDefault, images.devFull, 'object-fit:cover;object-position:30% 12%;max-height:130px;', table(filterTabsRows), '', 'object-fit:cover;object-position:30% 12%;max-height:130px;')}
 
