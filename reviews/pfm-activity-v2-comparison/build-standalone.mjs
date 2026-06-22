@@ -193,10 +193,12 @@ const txnRowAmountRows = [
 ];
 
 const responsiveTableRows = [
+  ['Column visibility breakpoint', 'Desktop (5 cols): DATE, DESCRIPTION, CATEGORY, ACCOUNT, AMOUNT. Mobile (4 cols): hide CATEGORY only', 'Desktop (5 cols) → Mobile (3 cols): hides both CATEGORY and ACCOUNT columns below breakpoint', 'At mobile breakpoint, hide only CATEGORY — keep ACCOUNT visible', 'Gap'],
   ['Description truncation', 'Text should wrap or fill available space — never truncate with ellipsis', 'At ≤1024px viewport, DESCRIPTION truncates with "..." (e.g. "SWVXX I...", "Wall Stree...")', 'Remove text-overflow: ellipsis; allow text to wrap or increase min-width', 'Gap'],
   ['Account name truncation', 'Full short-format account name visible (e.g. "WF Checking (x1234)")', 'Account names truncated at narrow widths — "Schwab One Brokerage Accou" cut off', 'Use short account format AND ensure no text truncation', 'Gap'],
   ['Column min-widths', 'Columns should maintain readable minimum widths', 'Columns compress freely — no min-width constraints causing text overflow', 'Set min-width on each column to prevent unreadable truncation', 'Gap'],
   ['Table horizontal scroll', 'Design does not show horizontal scroll — table fits container', 'Table overflows container at narrow viewports without scrolling', 'Add overflow-x: auto on table container for graceful handling', 'Gap'],
+  ['Mobile text wrapping', 'At mobile widths, text wraps to multiple lines (row height grows)', 'white-space: nowrap at ALL viewports — text never wraps, always truncates', 'Switch to white-space: normal below mobile breakpoint to allow wrapping', 'Gap'],
 ];
 
 const hoverStateRows = [
@@ -232,31 +234,37 @@ const detailPopupContentRows = [
 ];
 
 const mobileDefaultRows = [
-  ['Status bar', '54px height, padding [16, 20]', 'Not measured — mobile viewport not captured yet', 'Maintain 54px status bar area', 'Verify'],
-  ['Mobile header', '48px height, padding [0, 16], gap 12', 'Not measured — mobile viewport not captured yet', 'Header: 48px tall, px-16, gap-12 between elements', 'Verify'],
-  ['Content area padding', '16px padding, gap 16px between sections', 'Not measured — mobile viewport not captured yet', 'Content area: padding 16px, gap 16px', 'Verify'],
-  ['Text wrapping', 'All text must wrap — never truncate on mobile', 'Not measured — mobile viewport not captured yet', 'Ensure overflow-wrap: break-word; no text-overflow: ellipsis', 'Verify'],
-  ['Touch targets', 'Minimum 44px height for interactive elements', 'Not measured — mobile viewport not captured yet', 'All tappable rows ≥ 44px height', 'Verify'],
+  ['Page title', '"Activity" only on mobile (shorter than desktop)', '"Net Worth | Activity" — same as desktop, not shortened for mobile', 'Shorten title to just "Activity" on mobile viewport', 'Gap'],
+  ['Column count', '4 columns visible: DATE, DESCRIPTION, ACCOUNT, AMOUNT (Category hidden)', 'Only 3 columns: DATE, DESCRIPTION, AMOUNT — ACCOUNT column is hidden', 'Show ACCOUNT column on mobile between DESCRIPTION and AMOUNT', 'Gap'],
+  ['Text wrapping', 'Text wraps to multiple lines — "Whole Foods Market", "Transfer: Savings Deposit" wrap freely', 'white-space: nowrap + text-overflow: ellipsis on all cells — text truncates instead of wrapping', 'Remove truncation CSS on mobile; set white-space: normal to allow multi-line text', 'Gap'],
+  ['Filter tabs overflow', 'Tabs scroll horizontally — "Investm..." partially visible indicating scrollability', 'Only 3 tabs visible (All Types, Banking, Credit Cards) — rest cut off, no scroll', 'Add overflow-x: auto on filter tab container at mobile widths', 'Gap'],
+  ['"Show More" button', '"Show More" link visible at bottom of transaction list', 'No "Show More" button visible — list just ends', 'Add "Show More" button/link below last visible transaction row', 'Gap'],
+  ['Date casing (mobile)', '"Jul", "Jun", "May" — sentence case month', '"MAY" — uppercase via CSS text-transform', 'Remove text-transform: uppercase; show sentence case on mobile', 'Gap'],
+  ['Table header (mobile)', 'DATE ↕, DESCRIPTION ↕, ACCOUNT ↕, AMOUNT ↕ — light header text', 'DATE ↓, DESCRIPTION ↕, AMOUNT ↕ — dark header text, Account header missing', 'Add ACCOUNT column header; use gray-500 color for header text', 'Gap'],
+  ['Row height (mobile)', 'Variable — taller rows for wrapping text (≥60px)', '~52px fixed row height per visible row', 'Allow rows to grow with content; minimum 44px for touch targets', 'Gap'],
+  ['Content area padding', '16px horizontal padding', 'Content has 16px horizontal padding (correct)', 'No change — matches', 'Match'],
 ];
 
 const mobileAccountSelectRows = [
-  ['Dropdown container', 'Absolute positioned, width fill (358px), padding spacing-md (24px)', 'Not measured — mobile viewport not captured yet', 'Account dropdown: fill-width with 24px padding, positioned over content', 'Verify'],
-  ['Dropdown corner radius', 'radius-2xs (8px)', 'Not measured — mobile viewport not captured yet', 'Set border-radius: 8px on dropdown', 'Verify'],
-  ['Dropdown shadow', 'shadow-md-blur + shadow-md-color', 'Not measured — mobile viewport not captured yet', 'Apply shadow-md to account selector dropdown', 'Verify'],
-  ['Dropdown border', 'colors-borders-dark 1px inner stroke', 'Not measured — mobile viewport not captured yet', 'Set border: 1px solid colors-borders-dark', 'Verify'],
-  ['Dropdown fill', `${T.bgSurface} (white)`, 'Not measured — mobile viewport not captured yet', 'Background: white', 'Verify'],
-  ['Gap between items', 'spacing-md (24px)', 'Not measured — mobile viewport not captured yet', 'Set gap: 24px between account items in dropdown', 'Verify'],
-  ['Scrollbar', 'Thin scrollbar indicator (5px wide, gray-300, radius 3)', 'Not measured — mobile viewport not captured yet', 'Show scroll indicator when list overflows', 'Verify'],
+  ['Dropdown style', 'Full-screen overlay dropdown with grouped accounts (BANKING, CREDIT CARDS, INVESTMENTS, LOANS)', 'Not triggered — account dropdown not opened on mobile', 'Account dropdown should be full-overlay with category headers', 'Verify'],
+  ['Category headers', 'Uppercase section headers: "BANKING", "CREDIT CARDS", "INVESTMENTS", "LOANS"', 'Not triggered', 'Group accounts under uppercase category headers', 'Verify'],
+  ['Account format in dropdown', '"{Institution} {Type} (x{mask})" — e.g. "Chase Sapphire Checking (x4821)"', 'Not triggered', 'Show full account name with mask in parentheses in dropdown options', 'Verify'],
+  ['Selected state', '"All Accounts" highlighted with taupe-100 background (pill shape)', 'Not triggered', 'Highlight selected option with taupe-100 background', 'Verify'],
+  ['Chevron direction', 'Up-chevron (∧) when dropdown is open', 'Not triggered', 'Rotate chevron to point up when dropdown is open', 'Verify'],
+  ['Dropdown corner radius', 'radius-2xs (8px)', 'Not triggered', 'Set border-radius: 8px on dropdown container', 'Verify'],
+  ['Dropdown shadow', 'shadow-md-blur + shadow-md-color', 'Not triggered', 'Apply shadow-md elevation on dropdown', 'Verify'],
 ];
 
 const mobileDetailRows = [
-  ['Bottom sheet presentation', 'Slides up from bottom — cornerRadius [radius-md, radius-md, 0, 0] on top', 'Not measured — mobile viewport not captured yet', 'Use bottom sheet (not centered dialog) with top corners rounded', 'Verify'],
-  ['Bottom sheet fill', `${T.bgSurface} (colors-background-surface)`, 'Not measured — mobile viewport not captured yet', 'Background: white', 'Verify'],
-  ['Bottom sheet padding', 'spacing-md (24px) top, 0 sides — content has own padding', 'Not measured — mobile viewport not captured yet', 'Set padding-top: 24px (spacing-md) on bottom sheet container', 'Verify'],
-  ['Backdrop', '#000000 at 50% opacity', 'Not measured — mobile viewport not captured yet', 'Apply rgba(0,0,0,0.5) backdrop overlay', 'Verify'],
-  ['Backdrop starts at', 'y:0 (full screen from top)', 'Not measured — mobile viewport not captured yet', 'Backdrop covers entire viewport', 'Verify'],
-  ['Text wrapping', 'All text wraps — no truncation or ellipsis', 'Not measured — mobile viewport not captured yet', 'No text-overflow: ellipsis on any mobile text', 'Verify'],
-  ['Scroll behavior', 'Single scroll region within bottom sheet content only', 'Not measured — mobile viewport not captured yet', 'Only ONE scroll region — the bottom sheet body', 'Verify'],
+  ['Presentation style', 'Bottom sheet (slides up from bottom) — top corners rounded, rest of screen visible with dark backdrop', 'Not triggered — transaction tap not captured on mobile', 'Use bottom sheet pattern, not full-screen or centered dialog', 'Verify'],
+  ['Header', 'Merchant logo (32px) + merchant name (large, semibold) + close button (X) at top-right', 'Not triggered', 'Bottom sheet header: logo + name + dismiss button', 'Verify'],
+  ['Amount display', '"TRANSACTION AMOUNT" label (small uppercase) above amount value (large, bold)', 'Not triggered', 'Show label above amount in detail view', 'Verify'],
+  ['Detail sections', '3 sections: "Transaction Details", "Merchant Details", "Classification" — each with taupe-100 header bar', 'Not triggered', 'Use section headers with taupe-100 background bars', 'Verify'],
+  ['Transaction fields', 'Transaction ID, Amount, Currency, Date Processed, Date Authorized — key/value pairs', 'Not triggered', 'Show all transaction metadata as label/value rows', 'Verify'],
+  ['Merchant fields', 'Merchant name, Check Number — key/value pairs', 'Not triggered', 'Show merchant metadata section', 'Verify'],
+  ['Classification fields', 'Category, Sub-category — from Plaid classification', 'Not triggered', 'Show category/sub-category from Plaid data', 'Verify'],
+  ['Backdrop overlay', '#000000 at ~50% opacity behind bottom sheet', 'Not triggered', 'Apply dark backdrop overlay on background content', 'Verify'],
+  ['Top corner radius', 'Rounded top-left and top-right corners (radius-md)', 'Not triggered', 'Set border-radius on top corners only', 'Verify'],
 ];
 
 const devFiles = [
