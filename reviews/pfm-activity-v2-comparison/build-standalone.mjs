@@ -181,9 +181,12 @@ const filterTabsRows = [
   ['Active tab fill', `${T.bgSurface} with shadow-sm`, 'White fill with shadow present on "All Types"', 'No change — matches. Ensure dev uses $colors-background-surface token', 'Match'],
   ['Active tab radius', `${T.rFull} (pill)`, 'border-radius: 9999px on active tab', 'No change — matches', 'Match'],
   ['Tab padding', `[${T.s2xs}, ${T.md}] = [8px vertical, 24px horizontal]`, 'Padding present — tabs are sized proportionally', 'Each tab: padding $spacing-2xs (8px) vertical, $spacing-md (24px) horizontal', 'Match'],
+  ['Tab font-size', 'typo-primary-sm: Heebo 14px on all tabs (active and inactive)', '14px on tabs', 'No change — matches. Ensure dev uses $typo-primary-sm font-size token', 'Match'],
+  ['Active tab text', `${T.textHeader} (#0E0E0E), fontWeight 600 (semibold)`, 'Verify active tab text color and weight', 'Active tab: $colors-text-header + font-weight 600 (typo-primary-sm-semibold)', 'Gap'],
+  ['Inactive tab text', `${T.textBody} (#403D3A), fontWeight 400 (regular)`, 'Verify inactive tab text color and weight', 'Inactive tabs: $colors-text-body + font-weight 400 (typo-primary-sm-regular)', 'Gap'],
   ['Tab labels', 'All Types, Banking, Credit Cards, Investments, Loans — 5 tabs', 'All Types, Banking, Credit Cards, Investments, Loans', 'No change — same labels', 'Match'],
   ['[MOBILE] Tab overflow', 'Tabs container is 520px (wider than 358px content) — clips with horizontal scroll', 'Only 3 tabs visible; rest cut off with no scroll indicator', 'Mobile: add overflow-x: auto on tab container so all 5 tabs are scrollable', 'Gap'],
-  ['[MOBILE] Tab font', 'Same as desktop: Heebo 14px, active weight 600, inactive weight normal', 'Same font styling on mobile', 'No change — same tokens apply at mobile. Verify font does not resize', 'Match'],
+  ['[MOBILE] Tab font', 'Same as desktop: Heebo 14px, active 600 #0E0E0E, inactive 400 #403D3A', 'Same font styling on mobile', 'No change — same tokens apply at mobile', 'Match'],
 ];
 
 const tableHeaderRows = [

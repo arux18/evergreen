@@ -119,10 +119,10 @@
       <p class="purpose">This document identifies every formatting difference between the approved Pencil designs and the current dev implementation on <code>app.eg-dev.ai/net-worth/activity</code>. Use it as a checklist to bring dev into pixel-perfect alignment with design.</p>
 
       <div class="stats">
-        <div class="stat gaps"><strong>113</strong> gaps to fix</div>
-        <div class="stat matches"><strong>61</strong> already match</div>
+        <div class="stat gaps"><strong>115</strong> gaps to fix</div>
+        <div class="stat matches"><strong>62</strong> already match</div>
         <div class="stat checks"><strong>15</strong> to verify</div>
-        <div class="stat"><strong>189</strong> total items</div>
+        <div class="stat"><strong>192</strong> total items</div>
       </div>
 
       <h3>How to read each section</h3>
@@ -285,9 +285,12 @@
 <tr><td>Active tab fill</td><td>colors-background-surface (#FFFFFF) with shadow-sm</td><td>White fill with shadow present on "All Types"</td><td>No change — matches. Ensure dev uses $colors-background-surface token</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Active tab radius</td><td>radius-full (9999px) (pill)</td><td>border-radius: 9999px on active tab</td><td>No change — matches</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Tab padding</td><td>[spacing-2xs (8px), spacing-md (24px)] = [8px vertical, 24px horizontal]</td><td>Padding present — tabs are sized proportionally</td><td>Each tab: padding $spacing-2xs (8px) vertical, $spacing-md (24px) horizontal</td><td><span class="badge match">Match</span></td></tr>
+<tr><td>Tab font-size</td><td>typo-primary-sm: Heebo 14px on all tabs (active and inactive)</td><td>14px on tabs</td><td>No change — matches. Ensure dev uses $typo-primary-sm font-size token</td><td><span class="badge match">Match</span></td></tr>
+<tr><td>Active tab text</td><td>colors-text-header (#0E0E0E) (#0E0E0E), fontWeight 600 (semibold)</td><td>Verify active tab text color and weight</td><td>Active tab: $colors-text-header + font-weight 600 (typo-primary-sm-semibold)</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Inactive tab text</td><td>colors-text-body (#403D3A) (#403D3A), fontWeight 400 (regular)</td><td>Verify inactive tab text color and weight</td><td>Inactive tabs: $colors-text-body + font-weight 400 (typo-primary-sm-regular)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Tab labels</td><td>All Types, Banking, Credit Cards, Investments, Loans — 5 tabs</td><td>All Types, Banking, Credit Cards, Investments, Loans</td><td>No change — same labels</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>[MOBILE] Tab overflow</td><td>Tabs container is 520px (wider than 358px content) — clips with horizontal scroll</td><td>Only 3 tabs visible; rest cut off with no scroll indicator</td><td>Mobile: add overflow-x: auto on tab container so all 5 tabs are scrollable</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>[MOBILE] Tab font</td><td>Same as desktop: Heebo 14px, active weight 600, inactive weight normal</td><td>Same font styling on mobile</td><td>No change — same tokens apply at mobile. Verify font does not resize</td><td><span class="badge match">Match</span></td></tr></tbody></table>
+<tr><td>[MOBILE] Tab font</td><td>Same as desktop: Heebo 14px, active 600 #0E0E0E, inactive 400 #403D3A</td><td>Same font styling on mobile</td><td>No change — same tokens apply at mobile</td><td><span class="badge match">Match</span></td></tr></tbody></table>
   </section>
 
     
@@ -698,9 +701,12 @@
 <tr><td>Active tab fill</td><td>colors-background-surface (#FFFFFF) with shadow-sm</td><td>White fill with shadow present on "All Types"</td><td>No change — matches. Ensure dev uses $colors-background-surface token</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Active tab radius</td><td>radius-full (9999px) (pill)</td><td>border-radius: 9999px on active tab</td><td>No change — matches</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Tab padding</td><td>[spacing-2xs (8px), spacing-md (24px)] = [8px vertical, 24px horizontal]</td><td>Padding present — tabs are sized proportionally</td><td>Each tab: padding $spacing-2xs (8px) vertical, $spacing-md (24px) horizontal</td><td><span class="badge match">Match</span></td></tr>
+<tr><td>Tab font-size</td><td>typo-primary-sm: Heebo 14px on all tabs (active and inactive)</td><td>14px on tabs</td><td>No change — matches. Ensure dev uses $typo-primary-sm font-size token</td><td><span class="badge match">Match</span></td></tr>
+<tr><td>Active tab text</td><td>colors-text-header (#0E0E0E) (#0E0E0E), fontWeight 600 (semibold)</td><td>Verify active tab text color and weight</td><td>Active tab: $colors-text-header + font-weight 600 (typo-primary-sm-semibold)</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Inactive tab text</td><td>colors-text-body (#403D3A) (#403D3A), fontWeight 400 (regular)</td><td>Verify inactive tab text color and weight</td><td>Inactive tabs: $colors-text-body + font-weight 400 (typo-primary-sm-regular)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Tab labels</td><td>All Types, Banking, Credit Cards, Investments, Loans — 5 tabs</td><td>All Types, Banking, Credit Cards, Investments, Loans</td><td>No change — same labels</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>[MOBILE] Tab overflow</td><td>Tabs container is 520px (wider than 358px content) — clips with horizontal scroll</td><td>Only 3 tabs visible; rest cut off with no scroll indicator</td><td>Mobile: add overflow-x: auto on tab container so all 5 tabs are scrollable</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>[MOBILE] Tab font</td><td>Same as desktop: Heebo 14px, active weight 600, inactive weight normal</td><td>Same font styling on mobile</td><td>No change — same tokens apply at mobile. Verify font does not resize</td><td><span class="badge match">Match</span></td></tr>
+<tr><td>[MOBILE] Tab font</td><td>Same as desktop: Heebo 14px, active 600 #0E0E0E, inactive 400 #403D3A</td><td>Same font styling on mobile</td><td>No change — same tokens apply at mobile</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Header fill</td><td>color-taupe-100 (#F7F5F0) — warm off-white</td><td>rgba(0,0,0,0) — transparent (no background)</td><td>Add background: $color-taupe-100 (#F7F5F0) on table header row</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Header corner radius</td><td>radius-2xs (8px) on ALL 4 corners — header is a standalone rounded bar</td><td>Only top-left and top-right corners are rounded (inherited from table container 14px radius) — bottom corners are square</td><td>Set border-radius: $radius-2xs (8px) on all 4 corners of the header row itself (independent of table container)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Header padding</td><td>[10px, spacing-xs (12px)] — 10px top/bottom (custom), spacing-xs left/right on header row</td><td>12px on individual th cells (row-level padding 0)</td><td>Set row-level padding: 10px $spacing-xs(12px). 10px vertical is custom (between spacing-2xs and spacing-xs)</td><td><span class="badge gap">Gap</span></td></tr>
