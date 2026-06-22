@@ -135,6 +135,7 @@ const tableHeaderRows = [
   ['Header corner radius', '8px on ALL 4 corners — header is a standalone rounded bar', 'Only top-left and top-right corners are rounded (inherited from table container 14px radius) — bottom corners are square', 'Set border-radius: 8px on all 4 corners of the header row itself (independent of table container)', 'Gap'],
   ['Header padding', '[10px, 12px] — 10px top/bottom, 12px left/right on header row', '12px on individual th cells (row-level padding 0)', 'Set row-level padding: 10px 12px', 'Gap'],
   ['Column gap', '16px between columns', '0px — columns touch edge-to-edge (causes visual crowding)', 'Add 16px gap between columns (or cell padding-right)', 'Gap'],
+  ['Gap: header → first row', '8px space between header bar and first data row', '0px — rows start immediately after header (no gap)', 'Add 8px margin-bottom or gap after header row', 'Gap'],
   ['Header bottom border', `${T.gray100} 1px bottom only`, 'Border present on table container, not header-specific', 'Set border-bottom: 1px solid color-gray-100 on header row only', 'Gap'],
   ['Header font size', 'typo-primary-xs-semibold — 12px', '14px (too large)', 'Reduce header font-size from 14px to 12px', 'Gap'],
   ['Header font weight', '600 (semibold)', '700 (bold)', 'Reduce weight from 700 (bold) to 600 (semibold)', 'Gap'],
@@ -149,7 +150,7 @@ const tableHeaderRows = [
 ];
 
 const txnRowDescRows = [
-  ['Row background', 'All rows white — no alternating stripe', 'Alternating white/gray zebra stripe pattern on rows', 'Remove alternating row background; all rows should be white (#FFFFFF)', 'Gap'],
+  ['Row background', 'All rows white (#FFFFFF) — no alternating stripe', 'Alternating zebra stripe: odd rows transparent, even rows oklch(0.164 0 89.88 / 0.02) — subtle 2% gray tint', 'Remove nth-child alternating background; all rows should be white', 'Gap'],
   ['Row height', '~60px row height', '64px row height', 'Reduce row height slightly (minor difference)', 'Gap'],
   ['Cell padding (td)', '12px', '12px on each td', 'No change — matches', 'Match'],
   ['Column gap', '16px between cells', '0px gap between cells (columns touch)', 'Add 16px gap between cells', 'Gap'],
@@ -163,10 +164,13 @@ const txnRowDescRows = [
 ];
 
 const txnRowDateRows = [
-  ['Date layout', 'Vertical stack, width 44px, center-aligned', 'Vertical stack present — "MAY" above "30" — but cell is 76px wide (not 44px)', 'Reduce date cell width from 76px to 44px', 'Gap'],
-  ['Month text', 'typo-primary-2xs-regular (10px weight 400), color-gray-500', '"MAY" displayed above day number — font appears correct size', 'Verify exact font-size is 10px and color is gray-500', 'Match'],
-  ['Day number', 'typo-primary-md-semibold (18px weight 600), color-gray-700', '"30" displayed larger below month — appears ~18px', 'Verify exact font-size is 18px and weight is 600', 'Match'],
-  ['Date casing', '"May" (sentence case in design)', '"MAY" (uppercase in dev)', 'Change month from uppercase "MAY" to sentence case "May"', 'Gap'],
+  ['Date layout', 'Vertical stack, width 44px, center-aligned', 'Vertical stack present — inner div IS 44px (w-[44px]) but td cell is 76px wide', 'Reduce td cell width from 76px to match inner 44px content (remove extra cell padding)', 'Gap'],
+  ['Month font-size', '10px (typo-primary-2xs-regular)', '11px (text-[11px]) — 1px larger than design', 'Reduce month font-size from 11px to 10px', 'Gap'],
+  ['Month color', `${T.gray500} (#716E6A)`, '#716E6A (text-[#716E6A]) — correct gray-500', 'No change — matches', 'Match'],
+  ['Month casing', '"May" (sentence case — no text-transform)', '"MAY" — CSS text-transform: uppercase applied', 'Remove text-transform: uppercase from month span; display natural "May"', 'Gap'],
+  ['Day font-size', '18px (typo-primary-md-semibold)', '15px (text-[15px]) — 3px smaller than design', 'Increase day font-size from 15px to 18px', 'Gap'],
+  ['Day font-weight', '600 (semibold)', 'font-semibold (600)', 'No change — matches', 'Match'],
+  ['Day color', `${T.gray700} (#403D3A)`, '#2D2926 (text-[#2D2926]) — slightly darker than gray-700', 'Change to exact gray-700 token (#403D3A)', 'Gap'],
 ];
 
 const txnRowCatAcctRows = [
@@ -177,7 +181,7 @@ const txnRowCatAcctRows = [
   ['Account font', 'typo-primary-sm-regular (14px weight 400)', '14px weight 400', 'No change — matches', 'Match'],
   ['Account color', `${T.gray500} (#716E6A)`, 'oklch(0.164 0 89.88) ≈ near-black #0E0E0E (NOT gray-500)', 'Change account text color from near-black to gray-500 (#716E6A)', 'Gap'],
   ['Account width', '140px fixed', '200px (60px wider than design)', 'Reduce Account column from 200px to 140px', 'Gap'],
-  ['Account format', '"WF Checking (x1234)" — short institution name + mask', '"Schwab One Brokerage Accountx3587" — long name, no space before mask, no parens', 'Use short format: "{Institution} {SubType} (x{mask})"', 'Gap'],
+  ['Account format', '"WF Checking (x1234)" — short institution + type, mask in parentheses', '"Schwab One Brokerage Accountx3587" — full Plaid name, no space before mask, NO parentheses', 'Use short format: "{Institution} {SubType} (x{mask})" — parentheses around mask are required', 'Gap'],
 ];
 
 const txnRowAmountRows = [
