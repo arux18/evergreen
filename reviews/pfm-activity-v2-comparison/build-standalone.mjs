@@ -132,7 +132,7 @@ const filterTabsRows = [
 
 const tableHeaderRows = [
   ['Header fill', `${T.taupe100} (#F7F5F0) — warm off-white`, 'rgba(0,0,0,0) — transparent (no background)', 'Add background: color-taupe-100 on table header row', 'Gap'],
-  ['Header corner radius', '8px on header row', 'No border-radius on header row', 'Set border-radius: 8px on header row', 'Gap'],
+  ['Header corner radius', '8px on ALL 4 corners — header is a standalone rounded bar', 'Only top-left and top-right corners are rounded (inherited from table container 14px radius) — bottom corners are square', 'Set border-radius: 8px on all 4 corners of the header row itself (independent of table container)', 'Gap'],
   ['Header padding', '[10px, 12px] — 10px top/bottom, 12px left/right on header row', '12px on individual th cells (row-level padding 0)', 'Set row-level padding: 10px 12px', 'Gap'],
   ['Column gap', '16px between columns', '0px — columns touch edge-to-edge (causes visual crowding)', 'Add 16px gap between columns (or cell padding-right)', 'Gap'],
   ['Header bottom border', `${T.gray100} 1px bottom only`, 'Border present on table container, not header-specific', 'Set border-bottom: 1px solid color-gray-100 on header row only', 'Gap'],
