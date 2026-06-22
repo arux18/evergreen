@@ -120,7 +120,7 @@ const pageTitleRows = [
 ];
 
 const accountSelectorRows = [
-  ['Component', 'Hemlock `component/Select` ref (O:jncEi)', 'Custom combobox — not a Hemlock Select ref', 'Use Hemlock Select component ref', 'Gap'],
+  ['Component', 'Custom frame using Hemlock tokens ($O:) — follows Select pattern visually', 'Custom combobox — not a Hemlock Select ref', 'Align with Hemlock Select component specs (both are custom implementations — ensure token consistency)', 'Gap'],
   ['Width', '375px fixed width', '928px (full-width, fills entire content area)', 'Constrain to max-width: 375px', 'Gap'],
   ['Height', '58px', '58px', 'No change — matches', 'Match'],
   ['Corner radius', '8px', '8px', 'No change — matches', 'Match'],
@@ -133,15 +133,15 @@ const accountSelectorRows = [
 ];
 
 const accountSelectorDropdownRows = [
-  ['Dropdown width', '~300px (content-width, narrower than trigger)', '375px fixed', 'Dropdown should size to content or match trigger width — verify against design', 'Gap'],
+  ['Dropdown width', '358px fill_container on mobile (confirmed); ~300px on desktop (narrower than trigger)', '375px fixed', 'Reduce dropdown width — mobile should fill container (358px), desktop should be narrower (~300px content-width)', 'Gap'],
   ['Dropdown max-height', 'Full list visible without scrolling (in design frame)', '372px max-height with overflow hidden', 'Ensure dropdown can show all accounts without being cut off (increase max-height or add scroll)', 'Gap'],
-  ['Dropdown border-radius', 'radius-2xs (8px) per Hemlock Select dropdown', '12px', 'Reduce dropdown border-radius from 12px to 8px', 'Gap'],
+  ['Dropdown border-radius', 'radius-2xs (8px) — confirmed: $O:radius-2xs token = 8', '12px', 'Reduce dropdown border-radius from 12px to 8px', 'Gap'],
   ['Dropdown shadow', 'shadow-md (from Hemlock Select dropdown)', 'Multi-layer box-shadow: oklch 0.025 + oklch 0.05 blur 6px + blur 10px', 'Use Hemlock shadow-md token instead of custom multi-layer shadow', 'Gap'],
   ['Dropdown border', '1px solid colors-borders-dark (from Hemlock)', '1px solid oklch(0.164 0 89.88 / 0.06) — 6% dark (very subtle)', 'Use colors-borders-dark token for dropdown border', 'Gap'],
-  ['Dropdown inner padding', 'spacing-md (24px) on all sides', 'Viewport padding: 24px (matches)', 'No change — inner content padding matches', 'Match'],
+  ['Dropdown inner padding', 'spacing-md (24px) on all sides — confirmed: Dropdown frame padding = $O:spacing-md', '24px padding (matches)', 'No change — inner content padding matches (24px)', 'Match'],
   ['Selected option style', 'DARK background (#1a1a1a) with WHITE text — inverted pill', 'LIGHT beige background rgb(237, 234, 227) with DARK text — non-inverted', 'Change selected option to dark/inverted background with white text per design', 'Gap'],
   ['Selected option font-size', 'typo-primary-base-regular — Heebo 16px', 'Heebo Variable 16px', 'No change — font-size matches', 'Match'],
-  ['Selected option font-weight', '700 (bold — implied by inverted pill prominence)', '600 (semibold)', 'Increase font-weight from 600 to 700 on selected option', 'Gap'],
+  ['Selected option font-weight', '700 (bold) — confirmed: typo-primary-base-bold-font-weight token', '600 (semibold)', 'Increase font-weight from 600 to 700 on selected option', 'Gap'],
   ['Selected option line-height', '1.5 (24px at 16px font)', '24px', 'No change — line-height matches', 'Match'],
   ['Selected option padding', 'spacing-xs (12px) vertical, spacing-sm (16px) horizontal', '8px 12px (8px top/bottom, 12px left/right)', 'Increase selected option padding — 12px vertical, 16px horizontal per Hemlock Select', 'Gap'],
   ['Selected option height', '~44px (with 12px vertical padding + 24px line-height)', '40px', 'Increase to 44px via padding adjustment', 'Gap'],
@@ -151,14 +151,14 @@ const accountSelectorDropdownRows = [
   ['Option font-weight', '400 (regular)', '400 (regular)', 'No change — matches', 'Match'],
   ['Option line-height', '1.5 (24px at 16px font)', '24px', 'No change — matches', 'Match'],
   ['Option letter-spacing', 'normal (inherits from typo-primary-base-regular)', 'normal', 'No change — matches', 'Match'],
-  ['Option text color', 'colors-text-body (#403D3A / gray-700)', 'oklch(0.164 0 89.88) ≈ #0E0E0E (near-black — too dark)', 'Change option text color from near-black to colors-text-body (#403D3A)', 'Gap'],
+  ['Option text color', 'colors-text-body (#403D3A / color-gray-700) — confirmed via token', 'oklch(0.164 0 89.88) ≈ #0E0E0E (maps to color-gray-900 — header color, not body)', 'Change option text color from gray-900 (#0E0E0E) to colors-text-body gray-700 (#403D3A)', 'Gap'],
   ['Option padding', 'spacing-xs (12px) horizontal, spacing-2xs (8px) vertical per Hemlock Select item', '4px top/bottom, 6px left, 24px right (asymmetric — extra right for checkmark)', 'Use symmetric padding: 8px vertical, 12px horizontal; remove checkmark reserved space', 'Gap'],
   ['Option row height', '~40px (8px + 24px + 8px)', '32px (4px + 24px + 4px)', 'Increase option row height from 32px to 40px via padding adjustment', 'Gap'],
-  ['Gap between options (within group)', 'spacing-2xs (8px) between items', '2px (gap-0.5 — too tight)', 'Increase inter-item gap from 2px to 8px (spacing-2xs)', 'Gap'],
-  ['Gap between category groups', 'spacing-md (24px) before each group header', 'margin-top: 24px on each group', 'No change — group spacing matches', 'Match'],
+  ['Gap between options (within group)', 'spacing-2xs (8px) between items — confirmed via design export measurement', '2px (gap-0.5 — too tight)', 'Increase inter-item gap from 2px to 8px (spacing-2xs)', 'Gap'],
+  ['Gap between category groups', 'spacing-md (24px) — confirmed: Dropdown frame gap property = $O:spacing-md', 'margin-top: 24px on each group', 'No change — group spacing matches (24px)', 'Match'],
   ['Group header font-size', 'typo-primary-xs-semibold — 12px', '11px (!text-[11px])', 'Increase group header font from 11px to 12px per Hemlock token', 'Gap'],
   ['Group header font-weight', '600 (semibold)', '600 (semibold)', 'No change — matches', 'Match'],
-  ['Group header letter-spacing', '~1px (from typo-primary-xs-semibold)', '1.2px', 'Reduce letter-spacing from 1.2px to ~1px per token', 'Gap'],
+  ['Group header letter-spacing', '0 (normal) — confirmed: typo-primary-xs-semibold-letter-spacing token = 0', '1.2px (tracking-wider — too much)', 'Remove letter-spacing: set to 0/normal per Hemlock token (visual tracking comes from uppercase + font, not letter-spacing)', 'Gap'],
   ['Group header color', 'colors-text-meta (#5E5954)', 'rgb(94, 89, 84) = #5E5954', 'No change — matches colors-text-meta', 'Match'],
   ['Group header padding', 'spacing-xs (12px) left, spacing-2xs (8px) top', '8px top, 12px right, 4px bottom, 6px left (asymmetric)', 'Normalize group header padding: 8px top, 12px left per Hemlock pattern', 'Gap'],
   ['Group header text-transform', 'UPPERCASE (from component)', 'Not set in CSS (text is manually uppercase in content)', 'Add text-transform: uppercase to group label style', 'Gap'],
