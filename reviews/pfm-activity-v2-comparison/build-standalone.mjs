@@ -391,8 +391,9 @@ const html = `<!DOCTYPE html>
     .nav-link:hover { background: #eae7e1; }
     .nav-top { font-weight: 600; font-size: 13px; padding: 8px 8px; margin-bottom: 8px; border-bottom: 1px solid var(--line); border-radius: 0; color: #1a1a1a; }
     .nav-sub { display: block; font-size: 10px; font-weight: 600; color: #78716c; padding: 4px 8px 2px; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
-    .nav-toggle { position: fixed; top: 12px; left: 12px; z-index: 200; width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+    .nav-toggle { position: fixed; top: 12px; left: 12px; z-index: 200; width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.08); transition: left 0.2s ease; }
     .nav-toggle svg { width: 18px; height: 18px; stroke: var(--text); }
+    .nav-toggle.shifted { left: 192px; }
     .side-nav.open { display: flex !important; }
     @media (min-width: 1200px) { .doc { margin-left: 200px; } .nav-toggle { display: none; } }
     @media (max-width: 1199px) { .side-nav { display: none; } }
@@ -400,7 +401,7 @@ const html = `<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <button class="nav-toggle" onclick="document.querySelector('.side-nav').classList.toggle('open')" aria-label="Toggle navigation">
+  <button class="nav-toggle" onclick="document.querySelector('.side-nav').classList.toggle('open');this.classList.toggle('shifted')" aria-label="Toggle navigation">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
   <nav class="side-nav">
