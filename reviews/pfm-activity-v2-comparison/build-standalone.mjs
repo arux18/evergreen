@@ -112,11 +112,16 @@ const layoutRows = [
   ['Gap: content sections', `${T.md} between account selector, tabs, and table`, 'No explicit gap — sections flow with default spacing', 'Set gap: $spacing-md (24px) between account selector → tabs → table', 'Gap'],
   ['Table container corner radius', `${T.r2xs}`, '14px border-radius on table', 'Reduce border-radius from 14px to $radius-2xs (8px)', 'Gap'],
   ['Table container border', 'Disabled (no visible border in design)', '1px solid (faint border around table)', 'Remove table container border', 'Gap'],
+  ['[MOBILE] Content padding', `${T.sm} all sides (16px uniform — differs from desktop)`, '16px horizontal padding (correct value but check all sides)', 'Mobile: set padding $spacing-sm (16px) on all 4 sides (not desktop\'s asymmetric [20,40])', 'Gap'],
+  ['[MOBILE] Section gap', `${T.sm} between sections (16px — tighter than desktop 24px)`, 'Sections flow with spacing — verify gap value', 'Mobile: set gap $spacing-sm (16px) between account selector → tabs → table', 'Gap'],
 ];
 
 const pageTitleRows = [
   ['Title text', '"Net Worth | Activity" — page header', '"Net Worth | Activity"', 'No change — same copy', 'Match'],
   ['Title placement', 'Inside headerRef bar with padding [20px, spacing-xl (40px), spacing-2xs (8px), spacing-xl (40px)]', 'Title present in header bar — padding not verified at container level', 'Ensure header bar padding: 20px top, $spacing-xl (40px) sides, $spacing-2xs (8px) bottom', 'Gap'],
+  ['[MOBILE] Title text', '"Activity" only (shortened for mobile header)', '"Net Worth | Activity" (same as desktop — not shortened)', 'Mobile: shorten to just "Activity" — no "Net Worth |" prefix', 'Gap'],
+  ['[MOBILE] Title font', 'Noto Serif 20px, weight normal (secondary font — different from desktop Heebo)', 'Heebo on all viewports (font-family does not change at mobile breakpoint)', 'Mobile: switch page title to Noto Serif 20px normal (design uses secondary serif font on mobile)', 'Gap'],
+  ['[MOBILE] Header padding', `${T.sm} horizontal padding [0, 16] on mobileHeader`, 'Header has padding — verify matches 16px sides', 'Mobile header padding: 0 $spacing-sm (16px)', 'Gap'],
 ];
 
 const accountSelectorRows = [
@@ -130,6 +135,7 @@ const accountSelectorRows = [
   ['Floating label ("Account")', '"Account" label visible above value when dropdown is open/focused', 'No floating label — only aria-label "Filter by account" for accessibility, not visible', 'Add visible floating "Account" label above value text per Hemlock Select pattern', 'Gap'],
   ['Value text', 'typo-primary-base-regular (Heebo 16px, weight 400, line-height 24px)', '"All Accounts" — Heebo Variable 16px, weight 400', 'No change — values match. Ensure dev uses $typo-primary-base-regular token set', 'Match'],
   ['Chevron icon', 'Down-chevron, color-gray-400 (#8A8680), rotates to up on open', 'Chevron present, rotates on open — color inherits text color (dark, near-black)', 'Set chevron fill to $color-gray-400 (#8A8680) instead of inheriting body text color', 'Gap'],
+  ['[MOBILE] Selector width', 'fill_container (stretches to full content width, ~358px at 390px viewport)', 'Selector appears full-width on mobile (~270px within padded area)', 'Mobile: set width to fill_container (not fixed 375px)', 'Gap'],
 ];
 
 const accountSelectorDropdownRows = [
@@ -176,6 +182,8 @@ const filterTabsRows = [
   ['Active tab radius', `${T.rFull} (pill)`, 'border-radius: 9999px on active tab', 'No change — matches', 'Match'],
   ['Tab padding', `[${T.s2xs}, ${T.md}] = [8px vertical, 24px horizontal]`, 'Padding present — tabs are sized proportionally', 'Each tab: padding $spacing-2xs (8px) vertical, $spacing-md (24px) horizontal', 'Match'],
   ['Tab labels', 'All Types, Banking, Credit Cards, Investments, Loans — 5 tabs', 'All Types, Banking, Credit Cards, Investments, Loans', 'No change — same labels', 'Match'],
+  ['[MOBILE] Tab overflow', 'Tabs container is 520px (wider than 358px content) — clips with horizontal scroll', 'Only 3 tabs visible; rest cut off with no scroll indicator', 'Mobile: add overflow-x: auto on tab container so all 5 tabs are scrollable', 'Gap'],
+  ['[MOBILE] Tab font', 'Same as desktop: Heebo 14px, active weight 600, inactive weight normal', 'Same font styling on mobile', 'No change — same tokens apply at mobile. Verify font does not resize', 'Match'],
 ];
 
 const tableHeaderRows = [
@@ -195,6 +203,12 @@ const tableHeaderRows = [
   ['Category column width', '130px fixed (custom design value)', '130px', 'No change — matches', 'Match'],
   ['Account column width', '140px fixed (custom design value)', '200px (too wide)', 'Reduce Account column from 200px to 140px', 'Gap'],
   ['Amount column width', '100px fixed, right-aligned (custom design value)', '130px, right-aligned', 'Reduce Amount column from 130px to 100px', 'Gap'],
+  ['[MOBILE] Column count', '4 columns: DATE, DESCRIPTION, ACCOUNT, AMOUNT (CATEGORY hidden)', 'Only 3 columns visible (DATE, DESCRIPTION, AMOUNT) — ACCOUNT also hidden', 'Mobile: show 4 columns — hide CATEGORY only, keep ACCOUNT visible', 'Gap'],
+  ['[MOBILE] Header inter-column gap', `${T.s2xs} between columns (tighter than desktop spacing-sm)`, '0px — columns touch', 'Mobile: set column gap to $spacing-2xs (8px) — tighter than desktop 16px', 'Gap'],
+  ['[MOBILE] DATE column width', '52px (slightly wider than desktop 44px to accommodate touch)', 'DATE column width on mobile — verify', 'Mobile: set DATE column to 52px (wider than desktop to improve legibility)', 'Gap'],
+  ['[MOBILE] ACCOUNT column width', '80px fixed (narrower than desktop 140px)', 'ACCOUNT column hidden on mobile (should be visible at 80px)', 'Mobile: show ACCOUNT column at 80px width', 'Gap'],
+  ['[MOBILE] AMOUNT column width', '70px fixed, right-aligned (narrower than desktop 100px)', 'AMOUNT at same width as desktop — verify', 'Mobile: reduce AMOUNT column to 70px', 'Gap'],
+  ['[MOBILE] Header styling', 'Same tokens: radius-2xs, color-taupe-100 fill, padding [10,12], font 12px/600 gray-500', 'Verify mobile header uses same styling', 'No change in styling tokens — same as desktop. Only column layout changes.', 'Match'],
 ];
 
 const txnRowDescRows = [
@@ -209,16 +223,22 @@ const txnRowDescRows = [
   ['Avatar ↔ name gap', '10px (custom — between spacing-2xs=8 and spacing-xs=12)', 'Gap present — appears ~8-10px', 'Set gap: 10px in description cell (custom value, no exact token)', 'Match'],
   ['Description font weight', 'typo-primary-sm-semibold (14px, weight 600, line-height 20px)', '14px weight 400 (regular — NOT semibold)', 'Change font-weight from 400 to 600 per $typo-primary-sm-semibold-font-weight', 'Gap'],
   ['Description color', `${T.gray700}`, 'rgb(45, 41, 38) = #2D2926 (close but not exact — should be #403D3A)', 'Use exact $color-gray-700 (#403D3A) token', 'Gap'],
+  ['[MOBILE] Avatar', 'NO avatar on mobile — description text only (saves horizontal space)', 'Avatar may still render on mobile (verify)', 'Mobile: hide avatar; show merchant name text only in description cell', 'Gap'],
+  ['[MOBILE] Desc cell padding', 'padding: [0, 0, 0, spacing-2xs (8px)] — 8px left only (replaces avatar gap)', 'Verify mobile desc cell padding', 'Mobile: set desc cell padding-left to $spacing-2xs (8px); no other padding', 'Gap'],
+  ['[MOBILE] Inter-cell gap', `${T.s2xs} between cells (tighter than desktop spacing-sm)`, '0px gap between cells on mobile', 'Mobile: set row gap to $spacing-2xs (8px) — tighter layout than desktop 16px', 'Gap'],
+  ['[MOBILE] Desc font', 'Same as desktop: typo-primary-sm-semibold (14px, weight 600, color gray-700)', 'Same font on mobile — verify semibold applies', 'No change — same typography token on mobile', 'Match'],
 ];
 
 const txnRowDateRows = [
   ['Date layout', 'Vertical stack, width 44px (custom design value), center-aligned', 'Vertical stack present — inner div IS 44px (w-[44px]) but td cell is 76px wide', 'Reduce td cell width from 76px to match inner 44px content (remove extra cell padding)', 'Gap'],
-  ['Month font-size', 'typo-primary-2xs-regular (Heebo 10px, weight 400, line-height 14px)', '11px (text-[11px]) — 1px larger than design', 'Reduce month font-size from 11px to 10px per $typo-primary-2xs-regular-font-size', 'Gap'],
+  ['Month font-size', 'Heebo 11px, weight 400 (custom size — between typo-primary-2xs=10 and typo-primary-xs=12)', '11px (text-[11px])', 'No change — matches design (11px confirmed in .pen file)', 'Match'],
   ['Month color', `${T.gray500}`, '#716E6A (text-[#716E6A]) — correct, matches $color-gray-500', 'No change — matches $color-gray-500 token', 'Match'],
   ['Month casing', '"May" (sentence case — no text-transform)', '"MAY" — CSS text-transform: uppercase applied', 'Remove text-transform: uppercase from month span; display natural "May"', 'Gap'],
   ['Day font-size', 'typo-primary-md-semibold (Heebo 18px, weight 600, line-height 26px)', '15px (text-[15px]) — 3px smaller than design', 'Increase day font-size from 15px to 18px per $typo-primary-md-semibold-font-size', 'Gap'],
   ['Day font-weight', 'typo-primary-md-semibold — 600 (semibold)', 'font-semibold (600)', 'No change — matches $typo-primary-md-semibold-font-weight', 'Match'],
   ['Day color', `${T.gray700}`, '#2D2926 (text-[#2D2926]) — close but NOT exact gray-700', 'Change to exact $color-gray-700 (#403D3A) token', 'Gap'],
+  ['[MOBILE] Date stack width', '44px (same as desktop)', '44px inner div — matches', 'No change — same width on mobile', 'Match'],
+  ['[MOBILE] Month/Day sizing', 'Same as desktop: month 11px gray-500, day 18px semibold gray-700', 'Same font sizing on mobile', 'No change — same date stack tokens on mobile', 'Match'],
 ];
 
 const txnRowCatAcctRows = [
@@ -230,6 +250,9 @@ const txnRowCatAcctRows = [
   ['Account color', `${T.gray500}`, 'oklch(0.164 0 89.88) ≈ near-black #0E0E0E (NOT gray-500)', 'Change account text color from near-black to $color-gray-500 (#716E6A)', 'Gap'],
   ['Account width', '140px fixed (custom design value)', '200px (60px wider than design)', 'Reduce Account column from 200px to 140px', 'Gap'],
   ['Account format', '"WF Checking (x1234)" — short institution + type, mask in parentheses', '"Schwab One Brokerage Accountx3587" — full Plaid name, no space before mask, NO parentheses', 'Use short format: "{Institution} {SubType} (x{mask})" — parentheses around mask are required', 'Gap'],
+  ['[MOBILE] Category column', 'HIDDEN on mobile — not rendered (saves space for 4-col layout)', 'Category hidden on mobile (correct behavior)', 'Mobile: hide CATEGORY column entirely', 'Match'],
+  ['[MOBILE] Account column width', '80px fixed (narrower than desktop 140px)', 'Account hidden on mobile (should be visible at 80px)', 'Mobile: show ACCOUNT column at 80px width — truncate long names', 'Gap'],
+  ['[MOBILE] Account format', '"Chase Sapphire" or "WF Checking x1234" — shorter than desktop format', 'Account text on mobile — verify format', 'Mobile: use shorter format (brand only or brand + mask, no parentheses needed at 80px)', 'Gap'],
 ];
 
 const txnRowAmountRows = [
@@ -238,6 +261,8 @@ const txnRowAmountRows = [
   ['Positive amount color', `${T.depositGreen}`, 'rgb(42, 125, 79) = #2A7D4F (different green shade)', 'Use exact $colors-text-deposit (#148338) token for positive amounts', 'Gap'],
   ['Pending amount color', `${T.orange600} for pending transactions`, 'Not visible in current data (no pending txns loaded)', 'Ensure pending transactions use $color-orange-600 token', 'Verify'],
   ['Amount font', 'typo-primary-sm-regular (Heebo 14px, weight 400, line-height 20px) — inherits from MoneyText', '14px weight 400', 'No change — values match. Ensure dev uses $typo-primary-sm-regular token set', 'Match'],
+  ['[MOBILE] Amount width', '70px fixed (narrower than desktop 100px)', 'Amount column width on mobile — verify', 'Mobile: set AMOUNT column to 70px (narrower to fit 4-col mobile layout)', 'Gap'],
+  ['[MOBILE] Amount tokens', 'Same MoneyText refs: $colors-text-deposit (green), $colors-text-body (dark)', 'Same color tokens on mobile', 'No change — same MoneyText component and color tokens on mobile', 'Match'],
 ];
 
 const responsiveTableRows = [
@@ -263,6 +288,8 @@ const hoverStateRows = [
   ['Row corner radius on hover', `TransactionRow hover applies ${T.r2xs}`, 'No border-radius change on hover (stays rectangular)', 'Add border-radius: $radius-2xs (8px) on hover state', 'Gap'],
   ['Cursor', 'pointer', 'pointer (cursor: pointer on .eg-row-clickable)', 'No change — matches', 'Match'],
   ['Transition', 'Smooth background transition (motion token)', 'Transition present via CSS', 'No change — matches', 'Match'],
+  ['[MOBILE] Hover state', 'N/A — no :hover on touch devices (hover: none media query)', 'Hover styles may still apply on tap-hold (verify)', 'Mobile: use @media (hover: hover) to scope hover styles to pointer devices only', 'Gap'],
+  ['[MOBILE] Tap/active state', 'Same as pressed: TransactionRow/pressed background + radius-2xs on :active', ':active may not be styled on mobile', 'Mobile: ensure :active provides visual tap feedback using TransactionRow/pressed fill', 'Gap'],
 ];
 
 const pressedStateRows = [
@@ -545,6 +572,7 @@ const html = `<!DOCTYPE html>
         <li><strong>Dev panel</strong> (right) — screenshot from <code>app.eg-dev.ai</code> at the same area</li>
         <li><strong>Comparison table</strong> — row-by-row differences with status: <span class="badge-gap">Gap</span> = confirmed difference, <span class="badge-match">Match</span> = already correct, <span class="badge-check">Verify</span> = needs verification against live dev</li>
         <li><strong>Required change</strong> column — exactly what dev needs to do to match design</li>
+        <li><strong>[MOBILE] rows</strong> — inline within desktop sections, these indicate mobile-specific requirements that differ from or supplement the desktop spec. Rows without this prefix apply to desktop; §16–§18 cover mobile-only views.</li>
       </ul>
 
       <h3>Key rules</h3>
