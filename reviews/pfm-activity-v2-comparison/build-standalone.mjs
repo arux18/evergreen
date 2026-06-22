@@ -149,6 +149,7 @@ const tableHeaderRows = [
 ];
 
 const txnRowDescRows = [
+  ['Row background', 'All rows white — no alternating stripe', 'Alternating white/gray zebra stripe pattern on rows', 'Remove alternating row background; all rows should be white (#FFFFFF)', 'Gap'],
   ['Row height', '~60px row height', '64px row height', 'Reduce row height slightly (minor difference)', 'Gap'],
   ['Cell padding (td)', '12px', '12px on each td', 'No change — matches', 'Match'],
   ['Column gap', '16px between cells', '0px gap between cells (columns touch)', 'Add 16px gap between cells', 'Gap'],
