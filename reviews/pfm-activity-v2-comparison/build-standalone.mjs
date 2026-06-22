@@ -95,98 +95,98 @@ const T = {
 };
 
 const layoutRows = [
-  ['Content column padding', `${T.md} vertical (20px top, 40px horizontal)`, 'Verify: padding on main content area', 'Apply padding: 20px top/bottom, 40px left/right on activity content column', 'Check'],
-  ['Gap: content sections', `${T.md} (24px) between account selector, tabs, and table`, 'Verify: gap between major sections', 'Set gap-md (24px) between account selector → tabs → table', 'Check'],
-  ['Table container corner radius', `${T.r2xs} (8px)`, 'Verify: table wrapper border-radius', 'Set border-radius: 8px on table container', 'Check'],
-  ['Table internal gap', `${T.s2xs} (8px) between header and first row`, 'Verify: spacing between header and row list', 'Set gap: 8px between tableHeader and transactionList', 'Check'],
+  ['Content column padding', `${T.md} vertical (20px top, 40px horizontal)`, 'Verify: padding on main content area', 'Apply padding: 20px top/bottom, 40px left/right on activity content column', 'Verify'],
+  ['Gap: content sections', `${T.md} (24px) between account selector, tabs, and table`, 'Verify: gap between major sections', 'Set gap-md (24px) between account selector → tabs → table', 'Verify'],
+  ['Table container corner radius', `${T.r2xs} (8px)`, 'Verify: table wrapper border-radius', 'Set border-radius: 8px on table container', 'Verify'],
+  ['Table internal gap', `${T.s2xs} (8px) between header and first row`, 'Verify: spacing between header and row list', 'Set gap: 8px between tableHeader and transactionList', 'Verify'],
 ];
 
 const pageTitleRows = [
   ['Title text', '"Net Worth | Activity" — page header', '"Net Worth | Activity"', 'No change — same copy', 'Match'],
-  ['Title placement', 'Inside headerRef bar with padding [20,40,8,40]', 'Verify: header bar padding matches', 'Apply padding: 20px top, 40px sides, 8px bottom', 'Check'],
+  ['Title placement', 'Inside headerRef bar with padding [20,40,8,40]', 'Verify: header bar padding matches', 'Apply padding: 20px top, 40px sides, 8px bottom', 'Verify'],
 ];
 
 const accountSelectorRows = [
   ['Component', 'Hemlock `component/Select` ref (O:jncEi)', 'Custom dropdown (non-Hemlock)', 'Use Hemlock Select component ref', 'Gap'],
   ['Width', '375px fixed width', 'Full-width (fills container)', 'Set max-width: 375px on account selector', 'Gap'],
-  ['Height', '58px', 'Verify current height', 'Set height: 58px', 'Check'],
-  ['Corner radius', '8px', 'Verify', 'Set border-radius: 8px', 'Check'],
-  ['Padding', '[0, 12, 0, 17] — asymmetric horizontal', 'Verify padding values', 'Set padding: 0 12px 0 17px', 'Check'],
-  ['Label text', '"All Accounts" — typo-primary-base-regular (16px), weight normal', 'Verify: font-size and weight', 'Use 16px regular weight for selector label', 'Check'],
-  ['Label color', `${T.textHeader} (#0E0E0E)`, 'Verify: text color', 'Use colors-text-header', 'Check'],
-  ['Chevron icon color', '#8A8680 (gray muted)', 'Verify: chevron color', 'Set chevron fill to #8A8680', 'Check'],
+  ['Height', '58px', 'Verify current height', 'Set height: 58px', 'Verify'],
+  ['Corner radius', '8px', 'Verify', 'Set border-radius: 8px', 'Verify'],
+  ['Padding', '[0, 12, 0, 17] — asymmetric horizontal', 'Verify padding values', 'Set padding: 0 12px 0 17px', 'Verify'],
+  ['Label text', '"All Accounts" — typo-primary-base-regular (16px), weight normal', 'Verify: font-size and weight', 'Use 16px regular weight for selector label', 'Verify'],
+  ['Label color', `${T.textHeader} (#0E0E0E)`, 'Verify: text color', 'Use colors-text-header', 'Verify'],
+  ['Chevron icon color', '#8A8680 (gray muted)', 'Verify: chevron color', 'Set chevron fill to #8A8680', 'Verify'],
 ];
 
 const filterTabsRows = [
   ['Container shape', `${T.rFull} (pill) — segmented control`, 'Rounded tabs without pill container', 'Wrap tabs in pill-shaped container with radius-full', 'Gap'],
   ['Container fill', `${T.taupe100} (#F7F5F0) background`, 'No background fill on tab group', 'Add background: color-taupe-100 on tab container', 'Gap'],
-  ['Container padding', `${T.s3xs} (4px) inner padding`, 'Verify', 'Set padding: 4px on tab container', 'Check'],
+  ['Container padding', `${T.s3xs} (4px) inner padding`, 'Verify', 'Set padding: 4px on tab container', 'Verify'],
   ['Container width', '520px', 'Full-width or auto', 'Constrain tab container width to 520px', 'Gap'],
-  ['Active tab fill', `${T.bgSurface} (#FFFFFF) with shadow-sm`, 'Verify: active tab background', 'Active tab: white fill + shadow-sm elevation', 'Check'],
-  ['Active tab radius', `${T.rFull} (pill)`, 'Verify: active tab border-radius', 'Set radius-full on active tab', 'Check'],
-  ['Tab padding', '[spacing-2xs, spacing-md] = [8px, 24px]', 'Verify: individual tab padding', 'Each tab: padding 8px vertical, 24px horizontal', 'Check'],
+  ['Active tab fill', `${T.bgSurface} (#FFFFFF) with shadow-sm`, 'Verify: active tab background', 'Active tab: white fill + shadow-sm elevation', 'Verify'],
+  ['Active tab radius', `${T.rFull} (pill)`, 'Verify: active tab border-radius', 'Set radius-full on active tab', 'Verify'],
+  ['Tab padding', '[spacing-2xs, spacing-md] = [8px, 24px]', 'Verify: individual tab padding', 'Each tab: padding 8px vertical, 24px horizontal', 'Verify'],
   ['Tab labels', 'All Types, Banking, Credit Cards, Investments, Loans — 5 tabs', 'All Types, Banking, Credit Cards, Investments, Loans', 'No change — same labels', 'Match'],
 ];
 
 const tableHeaderRows = [
-  ['Header fill', `${T.taupe100} (#F7F5F0) — warm off-white`, 'Verify: header background color', 'Set background: color-taupe-100 on table header', 'Check'],
-  ['Header corner radius', '8px', 'Verify', 'Set border-radius: 8px on header row', 'Check'],
-  ['Header padding', '[10px, 12px] vertical/horizontal', 'Verify: header cell padding', 'Set padding: 10px 12px on header row', 'Check'],
-  ['Column gap', '16px between columns', 'Verify: gap between header cells', 'Set gap: 16px between columns', 'Check'],
-  ['Header bottom border', `${T.gray100} 1px bottom only`, 'Verify: border under header', 'Set border-bottom: 1px solid color-gray-100', 'Check'],
-  ['Header font', 'typo-primary-xs-semibold (12px weight 600) — uppercase', 'Verify: header text style', 'Use 12px semibold, uppercase, color-gray-500', 'Check'],
-  ['Header color', `${T.gray500} (#716E6A)`, 'Verify: header text color', 'Set color: color-gray-500', 'Check'],
-  ['Sort icons', 'Lucide arrows 10×10, color-gray-500', 'Sort arrows visible', 'Use 10×10 Lucide sort icons in gray-500', 'Check'],
-  ['Date column width', '44px fixed', 'Verify', 'Set Date column: width 44px', 'Check'],
-  ['Description column width', 'fill_container (flex grow)', 'Verify', 'Description column: flex-grow', 'Check'],
-  ['Category column width', '130px fixed', 'Verify', 'Set Category column: width 130px', 'Check'],
-  ['Account column width', '140px fixed', 'Verify', 'Set Account column: width 140px', 'Check'],
-  ['Amount column width', '100px fixed, right-aligned', 'Verify', 'Set Amount column: width 100px, text-align right', 'Check'],
+  ['Header fill', `${T.taupe100} (#F7F5F0) — warm off-white`, 'Verify: header background color', 'Set background: color-taupe-100 on table header', 'Verify'],
+  ['Header corner radius', '8px', 'Verify', 'Set border-radius: 8px on header row', 'Verify'],
+  ['Header padding', '[10px, 12px] vertical/horizontal', 'Verify: header cell padding', 'Set padding: 10px 12px on header row', 'Verify'],
+  ['Column gap', '16px between columns', 'Verify: gap between header cells', 'Set gap: 16px between columns', 'Verify'],
+  ['Header bottom border', `${T.gray100} 1px bottom only`, 'Verify: border under header', 'Set border-bottom: 1px solid color-gray-100', 'Verify'],
+  ['Header font', 'typo-primary-xs-semibold (12px weight 600) — uppercase', 'Verify: header text style', 'Use 12px semibold, uppercase, color-gray-500', 'Verify'],
+  ['Header color', `${T.gray500} (#716E6A)`, 'Verify: header text color', 'Set color: color-gray-500', 'Verify'],
+  ['Sort icons', 'Lucide arrows 10×10, color-gray-500', 'Sort arrows visible', 'Use 10×10 Lucide sort icons in gray-500', 'Verify'],
+  ['Date column width', '44px fixed', 'Verify', 'Set Date column: width 44px', 'Verify'],
+  ['Description column width', 'fill_container (flex grow)', 'Verify', 'Description column: flex-grow', 'Verify'],
+  ['Category column width', '130px fixed', 'Verify', 'Set Category column: width 130px', 'Verify'],
+  ['Account column width', '140px fixed', 'Verify', 'Set Account column: width 140px', 'Verify'],
+  ['Amount column width', '100px fixed, right-aligned', 'Verify', 'Set Amount column: width 100px, text-align right', 'Verify'],
 ];
 
 const txnRowDescRows = [
-  ['Row padding', '12px all sides (spacing-xs)', 'Verify: row padding', 'Set padding: 12px on each transaction row', 'Check'],
-  ['Row gap', '16px between cells', 'Verify: gap between row cells', 'Set gap: 16px between cells', 'Check'],
-  ['Row bottom border', `${T.gray100} 1px — divider between rows`, 'Verify: row divider', 'Set border-bottom: 1px solid color-gray-100', 'Check'],
-  ['Avatar size', '32×32px', 'Verify avatar dimensions', 'Set avatar: 32×32px', 'Check'],
-  ['Avatar corner radius', '6px', 'Verify', 'Set avatar border-radius: 6px', 'Check'],
-  ['Avatar border', `${T.gray100} 1px stroke inner`, 'Verify: avatar border', 'Set border: 1px solid color-gray-100 on avatar', 'Check'],
-  ['Avatar ↔ name gap', '10px', 'Verify: space between avatar and text', 'Set gap: 10px in description cell', 'Check'],
-  ['Description font', 'typo-primary-sm-semibold (14px weight 600)', 'Verify: merchant name font', 'Use 14px semibold for merchant/description name', 'Check'],
-  ['Description color', `${T.gray700} (#403D3A)`, 'Verify: name text color', 'Set color: color-gray-700', 'Check'],
+  ['Row padding', '12px all sides (spacing-xs)', 'Verify: row padding', 'Set padding: 12px on each transaction row', 'Verify'],
+  ['Row gap', '16px between cells', 'Verify: gap between row cells', 'Set gap: 16px between cells', 'Verify'],
+  ['Row bottom border', `${T.gray100} 1px — divider between rows`, 'Verify: row divider', 'Set border-bottom: 1px solid color-gray-100', 'Verify'],
+  ['Avatar size', '32×32px', 'Verify avatar dimensions', 'Set avatar: 32×32px', 'Verify'],
+  ['Avatar corner radius', '6px', 'Verify', 'Set avatar border-radius: 6px', 'Verify'],
+  ['Avatar border', `${T.gray100} 1px stroke inner`, 'Verify: avatar border', 'Set border: 1px solid color-gray-100 on avatar', 'Verify'],
+  ['Avatar ↔ name gap', '10px', 'Verify: space between avatar and text', 'Set gap: 10px in description cell', 'Verify'],
+  ['Description font', 'typo-primary-sm-semibold (14px weight 600)', 'Verify: merchant name font', 'Use 14px semibold for merchant/description name', 'Verify'],
+  ['Description color', `${T.gray700} (#403D3A)`, 'Verify: name text color', 'Set color: color-gray-700', 'Verify'],
 ];
 
 const txnRowDateRows = [
-  ['Date layout', 'Vertical stack, width 44px, center-aligned', 'Verify: date cell layout', 'Date cell: vertical stack, 44px width, center aligned', 'Check'],
-  ['Month text', 'typo-primary-2xs-regular (10px weight 400), color-gray-500', 'Verify: month text style', 'Month: 10px regular, color-gray-500 (e.g., "May")', 'Check'],
-  ['Day number', 'typo-primary-md-semibold (18px weight 600), color-gray-700', 'Verify: day number style', 'Day: 18px semibold, color-gray-700 (e.g., "13")', 'Check'],
+  ['Date layout', 'Vertical stack, width 44px, center-aligned', 'Verify: date cell layout', 'Date cell: vertical stack, 44px width, center aligned', 'Verify'],
+  ['Month text', 'typo-primary-2xs-regular (10px weight 400), color-gray-500', 'Verify: month text style', 'Month: 10px regular, color-gray-500 (e.g., "May")', 'Verify'],
+  ['Day number', 'typo-primary-md-semibold (18px weight 600), color-gray-700', 'Verify: day number style', 'Day: 18px semibold, color-gray-700 (e.g., "13")', 'Verify'],
   ['Date format — design', '"May" + "13" (short month + day number)', '"MAY" + "30" (uppercase month + day number)', 'Use sentence-case month name ("May" not "MAY")', 'Gap'],
 ];
 
 const txnRowCatAcctRows = [
-  ['Category font', 'typo-primary-sm-regular (14px weight 400)', 'Verify: category text style', 'Category: 14px regular', 'Check'],
-  ['Category color', `${T.gray500} (#716E6A)`, 'Verify: category text color', 'Set color: color-gray-500', 'Check'],
-  ['Category width', '130px fixed', 'Verify', 'Set Category cell: 130px', 'Check'],
-  ['Category content', '"Food & Drink", "Income", "Entertainment" — Plaid categories', 'Shows categories like "General Services", "Income"', 'Use Plaid personal_finance_category detail label', 'Check'],
-  ['Account font', 'typo-primary-sm-regular (14px weight 400)', 'Verify: account text style', 'Account: 14px regular', 'Check'],
-  ['Account color', `${T.gray500} (#716E6A)`, 'Verify: account text color', 'Set color: color-gray-500', 'Check'],
-  ['Account width', '140px fixed', 'Verify', 'Set Account cell: 140px', 'Check'],
+  ['Category font', 'typo-primary-sm-regular (14px weight 400)', 'Verify: category text style', 'Category: 14px regular', 'Verify'],
+  ['Category color', `${T.gray500} (#716E6A)`, 'Verify: category text color', 'Set color: color-gray-500', 'Verify'],
+  ['Category width', '130px fixed', 'Verify', 'Set Category cell: 130px', 'Verify'],
+  ['Category content', '"Food & Drink", "Income", "Entertainment" — Plaid categories', 'Shows categories like "General Services", "Income"', 'Use Plaid personal_finance_category detail label', 'Verify'],
+  ['Account font', 'typo-primary-sm-regular (14px weight 400)', 'Verify: account text style', 'Account: 14px regular', 'Verify'],
+  ['Account color', `${T.gray500} (#716E6A)`, 'Verify: account text color', 'Set color: color-gray-500', 'Verify'],
+  ['Account width', '140px fixed', 'Verify', 'Set Account cell: 140px', 'Verify'],
   ['Account format', '"WF Checking (x1234)" — short institution name + mask', '"Chase Sapphire Reserve x9104" — long name, no parens', 'Use short format: "{Institution} {SubType} (x{mask})"', 'Gap'],
 ];
 
 const txnRowAmountRows = [
-  ['Amount width', '100px fixed, right-aligned (justifyContent: end)', 'Verify: amount cell width and alignment', 'Set Amount cell: width 100px, text-align right', 'Check'],
-  ['Negative amount', 'component/MoneyText (O:AXiZv) — "-$82.14", default color (gray-700)', '"-$50.90" — plain text, dark color', 'Use MoneyText component; negative = default dark text', 'Check'],
+  ['Amount width', '100px fixed, right-aligned (justifyContent: end)', 'Verify: amount cell width and alignment', 'Set Amount cell: width 100px, text-align right', 'Verify'],
+  ['Negative amount', 'component/MoneyText (O:AXiZv) — "-$82.14", default color (gray-700)', '"-$50.90" — plain text, dark color', 'Use MoneyText component; negative = default dark text', 'Verify'],
   ['Positive amount', 'component/MoneyText/positive (O:E9XA30) — "+$4,250.00", green (#148338)', '"+$675.30" — green color', 'Use MoneyText/positive ref; deposit amounts in green', 'Match'],
-  ['Pending amount', 'component/MoneyText with color-orange-600 override — pending transactions', 'Verify: pending transaction color', 'Use color-orange-600 for pending transaction amounts', 'Check'],
-  ['Amount font', 'MoneyText inherits typo-primary-sm-regular (14px weight 400)', 'Verify: amount font-size', 'Amount: 14px regular (inherits from MoneyText component)', 'Check'],
+  ['Pending amount', 'component/MoneyText with color-orange-600 override — pending transactions', 'Verify: pending transaction color', 'Use color-orange-600 for pending transaction amounts', 'Verify'],
+  ['Amount font', 'MoneyText inherits typo-primary-sm-regular (14px weight 400)', 'Verify: amount font-size', 'Amount: 14px regular (inherits from MoneyText component)', 'Verify'],
 ];
 
 const hoverStateRows = [
   ['Row background', 'TransactionRow/hover (O:tzdWt) — warm background on hover', 'hover:bg-gray-50 or similar', 'Use Hemlock TransactionRow/hover component color token', 'Gap'],
-  ['Row corner radius', 'Hemlock TransactionRow hover radius (likely 8px or radius-2xs)', 'Verify: hover radius', 'Match TransactionRow/hover corner radius', 'Check'],
+  ['Row corner radius', 'Hemlock TransactionRow hover radius (likely 8px or radius-2xs)', 'Verify: hover radius', 'Match TransactionRow/hover corner radius', 'Verify'],
   ['Cursor', 'pointer', 'pointer', 'No change', 'Match'],
-  ['Transition', 'Smooth background transition', 'Verify', 'Add transition: background-color 0.15s ease', 'Check'],
+  ['Transition', 'Smooth background transition', 'Verify', 'Add transition: background-color 0.15s ease', 'Verify'],
 ];
 
 const pressedStateRows = [
@@ -195,51 +195,51 @@ const pressedStateRows = [
 ];
 
 const detailPopupShellRows = [
-  ['Popup width', '560px', 'Verify: detail drawer/popup width', 'Set transaction detail popup width: 560px', 'Check'],
-  ['Popup corner radius', `${T.rXs} (radius-xs = 16px)`, 'Verify', 'Set border-radius: 16px (radius-xs)', 'Check'],
-  ['Popup shadow', 'shadow-lg-blur, color #0000001a', 'Verify: popup elevation', 'Use shadow-lg with #0000001a color', 'Check'],
-  ['Popup fill', `${T.bgSurface} (#FFFFFF)`, 'Verify: popup background', 'Set background: colors-background-surface (white)', 'Check'],
-  ['Popup position', 'Absolute, x:440 y:140 from container', 'Verify: popup position/trigger', 'Position popup at center-right of viewport', 'Check'],
-  ['Body padding', `${T.xl} (spacing-xl = 40px) all sides`, 'Verify: inner content padding', 'Set padding: 40px (spacing-xl) inside popup body', 'Check'],
-  ['Section gap', `${T.lg} (spacing-lg = 32px) between sections`, 'Verify: gap between detail sections', 'Set gap: 32px (spacing-lg) between title/amount/detail sections', 'Check'],
-  ['Backdrop overlay', '#00000066 (40% black) covers main content', 'Verify: overlay behind popup', 'Apply semi-transparent black overlay behind popup', 'Check'],
+  ['Popup width', '560px', 'Verify: detail drawer/popup width', 'Set transaction detail popup width: 560px', 'Verify'],
+  ['Popup corner radius', `${T.rXs} (radius-xs = 16px)`, 'Verify', 'Set border-radius: 16px (radius-xs)', 'Verify'],
+  ['Popup shadow', 'shadow-lg-blur, color #0000001a', 'Verify: popup elevation', 'Use shadow-lg with #0000001a color', 'Verify'],
+  ['Popup fill', `${T.bgSurface} (#FFFFFF)`, 'Verify: popup background', 'Set background: colors-background-surface (white)', 'Verify'],
+  ['Popup position', 'Absolute, x:440 y:140 from container', 'Verify: popup position/trigger', 'Position popup at center-right of viewport', 'Verify'],
+  ['Body padding', `${T.xl} (spacing-xl = 40px) all sides`, 'Verify: inner content padding', 'Set padding: 40px (spacing-xl) inside popup body', 'Verify'],
+  ['Section gap', `${T.lg} (spacing-lg = 32px) between sections`, 'Verify: gap between detail sections', 'Set gap: 32px (spacing-lg) between title/amount/detail sections', 'Verify'],
+  ['Backdrop overlay', '#00000066 (40% black) covers main content', 'Verify: overlay behind popup', 'Apply semi-transparent black overlay behind popup', 'Verify'],
 ];
 
 const detailPopupContentRows = [
-  ['Title section padding', '[0, spacing-sm] = [0, 16px] sides', 'Verify', 'Set title section padding: 0 16px', 'Check'],
-  ['Title ↔ content gap', 'spacing-xs (12px) within title section', 'Verify', 'Set gap: 12px in title section', 'Check'],
-  ['Amount section padding', '[0, spacing-sm] = [0, 16px] sides', 'Verify', 'Set amount section padding: 0 16px', 'Check'],
-  ['Amount section gap', 'spacing-3xs (4px) between label and value', 'Verify', 'Set gap: 4px between amount label and value', 'Check'],
-  ['Detail sections', 'DetailSection pattern — same as Account detail (Hemlock pKk6B)', 'Verify: uses DetailSection component', 'Use Hemlock DetailSection component for structured data', 'Check'],
-  ['Deposit popup', 'Same layout, positive MoneyText/positive (#148338) for amount', 'Verify: deposit detail shows green amount', 'Use MoneyText/positive for deposit amounts in detail view', 'Check'],
+  ['Title section padding', '[0, spacing-sm] = [0, 16px] sides', 'Verify', 'Set title section padding: 0 16px', 'Verify'],
+  ['Title ↔ content gap', 'spacing-xs (12px) within title section', 'Verify', 'Set gap: 12px in title section', 'Verify'],
+  ['Amount section padding', '[0, spacing-sm] = [0, 16px] sides', 'Verify', 'Set amount section padding: 0 16px', 'Verify'],
+  ['Amount section gap', 'spacing-3xs (4px) between label and value', 'Verify', 'Set gap: 4px between amount label and value', 'Verify'],
+  ['Detail sections', 'DetailSection pattern — same as Account detail (Hemlock pKk6B)', 'Verify: uses DetailSection component', 'Use Hemlock DetailSection component for structured data', 'Verify'],
+  ['Deposit popup', 'Same layout, positive MoneyText/positive (#148338) for amount', 'Verify: deposit detail shows green amount', 'Use MoneyText/positive for deposit amounts in detail view', 'Verify'],
 ];
 
 const mobileDefaultRows = [
-  ['Status bar', '54px height, padding [16, 20]', 'Verify: mobile status bar presence/spacing', 'Maintain 54px status bar area', 'Check'],
-  ['Mobile header', '48px height, padding [0, 16], gap 12', 'Verify: mobile header layout', 'Header: 48px tall, px-16, gap-12 between elements', 'Check'],
-  ['Content area padding', '16px padding, gap 16px between sections', 'Verify: content padding on mobile', 'Content area: padding 16px, gap 16px', 'Check'],
-  ['Text wrapping', 'All text must wrap — never truncate on mobile', 'Verify: no ellipsis truncation', 'Ensure overflow-wrap: break-word; no text-overflow: ellipsis', 'Check'],
-  ['Touch targets', 'Minimum 44px height for interactive elements', 'Verify: row tap targets', 'All tappable rows ≥ 44px height', 'Check'],
+  ['Status bar', '54px height, padding [16, 20]', 'Verify: mobile status bar presence/spacing', 'Maintain 54px status bar area', 'Verify'],
+  ['Mobile header', '48px height, padding [0, 16], gap 12', 'Verify: mobile header layout', 'Header: 48px tall, px-16, gap-12 between elements', 'Verify'],
+  ['Content area padding', '16px padding, gap 16px between sections', 'Verify: content padding on mobile', 'Content area: padding 16px, gap 16px', 'Verify'],
+  ['Text wrapping', 'All text must wrap — never truncate on mobile', 'Verify: no ellipsis truncation', 'Ensure overflow-wrap: break-word; no text-overflow: ellipsis', 'Verify'],
+  ['Touch targets', 'Minimum 44px height for interactive elements', 'Verify: row tap targets', 'All tappable rows ≥ 44px height', 'Verify'],
 ];
 
 const mobileAccountSelectRows = [
-  ['Dropdown container', 'Absolute positioned, width fill (358px), padding spacing-md (24px)', 'Verify: dropdown overlay', 'Account dropdown: fill-width with 24px padding, positioned over content', 'Check'],
-  ['Dropdown corner radius', 'radius-2xs (8px)', 'Verify', 'Set border-radius: 8px on dropdown', 'Check'],
-  ['Dropdown shadow', 'shadow-md-blur + shadow-md-color', 'Verify: dropdown elevation', 'Apply shadow-md to account selector dropdown', 'Check'],
-  ['Dropdown border', 'colors-borders-dark 1px inner stroke', 'Verify: dropdown border', 'Set border: 1px solid colors-borders-dark', 'Check'],
-  ['Dropdown fill', `${T.bgSurface} (white)`, 'Verify', 'Background: white', 'Check'],
-  ['Gap between items', 'spacing-md (24px)', 'Verify: gap between account options', 'Set gap: 24px between account items in dropdown', 'Check'],
-  ['Scrollbar', 'Thin scrollbar indicator (5px wide, gray-300, radius 3)', 'Verify: custom scrollbar on long lists', 'Show scroll indicator when list overflows', 'Check'],
+  ['Dropdown container', 'Absolute positioned, width fill (358px), padding spacing-md (24px)', 'Verify: dropdown overlay', 'Account dropdown: fill-width with 24px padding, positioned over content', 'Verify'],
+  ['Dropdown corner radius', 'radius-2xs (8px)', 'Verify', 'Set border-radius: 8px on dropdown', 'Verify'],
+  ['Dropdown shadow', 'shadow-md-blur + shadow-md-color', 'Verify: dropdown elevation', 'Apply shadow-md to account selector dropdown', 'Verify'],
+  ['Dropdown border', 'colors-borders-dark 1px inner stroke', 'Verify: dropdown border', 'Set border: 1px solid colors-borders-dark', 'Verify'],
+  ['Dropdown fill', `${T.bgSurface} (white)`, 'Verify', 'Background: white', 'Verify'],
+  ['Gap between items', 'spacing-md (24px)', 'Verify: gap between account options', 'Set gap: 24px between account items in dropdown', 'Verify'],
+  ['Scrollbar', 'Thin scrollbar indicator (5px wide, gray-300, radius 3)', 'Verify: custom scrollbar on long lists', 'Show scroll indicator when list overflows', 'Verify'],
 ];
 
 const mobileDetailRows = [
-  ['Bottom sheet presentation', 'Slides up from bottom — cornerRadius [radius-md, radius-md, 0, 0] on top', 'Verify: modal presentation style', 'Use bottom sheet (not centered dialog) with top corners rounded', 'Check'],
-  ['Bottom sheet fill', `${T.bgSurface} (colors-background-surface)`, 'Verify', 'Background: white', 'Check'],
-  ['Bottom sheet padding', 'spacing-md (24px) top, 0 sides — content has own padding', 'Verify: bottom sheet top padding', 'Set padding-top: 24px (spacing-md) on bottom sheet container', 'Check'],
-  ['Backdrop', '#000000 at 50% opacity', 'Verify: backdrop behind bottom sheet', 'Apply rgba(0,0,0,0.5) backdrop overlay', 'Check'],
-  ['Backdrop starts at', 'y:0 (full screen from top)', 'Verify: backdrop coverage', 'Backdrop covers entire viewport', 'Check'],
-  ['Text wrapping', 'All text wraps — no truncation or ellipsis', 'Verify', 'No text-overflow: ellipsis on any mobile text', 'Check'],
-  ['Scroll behavior', 'Single scroll region within bottom sheet content only', 'Verify: no nested scrolls', 'Only ONE scroll region — the bottom sheet body', 'Check'],
+  ['Bottom sheet presentation', 'Slides up from bottom — cornerRadius [radius-md, radius-md, 0, 0] on top', 'Verify: modal presentation style', 'Use bottom sheet (not centered dialog) with top corners rounded', 'Verify'],
+  ['Bottom sheet fill', `${T.bgSurface} (colors-background-surface)`, 'Verify', 'Background: white', 'Verify'],
+  ['Bottom sheet padding', 'spacing-md (24px) top, 0 sides — content has own padding', 'Verify: bottom sheet top padding', 'Set padding-top: 24px (spacing-md) on bottom sheet container', 'Verify'],
+  ['Backdrop', '#000000 at 50% opacity', 'Verify: backdrop behind bottom sheet', 'Apply rgba(0,0,0,0.5) backdrop overlay', 'Verify'],
+  ['Backdrop starts at', 'y:0 (full screen from top)', 'Verify: backdrop coverage', 'Backdrop covers entire viewport', 'Verify'],
+  ['Text wrapping', 'All text wraps — no truncation or ellipsis', 'Verify', 'No text-overflow: ellipsis on any mobile text', 'Verify'],
+  ['Scroll behavior', 'Single scroll region within bottom sheet content only', 'Verify: no nested scrolls', 'Only ONE scroll region — the bottom sheet body', 'Verify'],
 ];
 
 const devFiles = [
@@ -260,8 +260,8 @@ function table(rows) {
       const badge =
         status === 'Match'
           ? '<span class="badge match">Match</span>'
-          : status === 'Check'
-            ? '<span class="badge warn">Check</span>'
+          : status === 'Verify'
+            ? '<span class="badge warn">Verify</span>'
             : '<span class="badge gap">Gap</span>';
       return `<tr><td>${a}</td><td>${b}</td><td>${c}</td><td>${d}</td><td>${badge}</td></tr>`;
     })
@@ -323,7 +323,7 @@ const masterRows = [
 
 const gapCount = masterRows.filter(([, , , , s]) => s === 'Gap').length;
 const matchCount = masterRows.filter(([, , , , s]) => s === 'Match').length;
-const checkCount = masterRows.filter(([, , , , s]) => s === 'Check').length;
+const checkCount = masterRows.filter(([, , , , s]) => s === 'Verify').length;
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -449,7 +449,7 @@ const html = `<!DOCTYPE html>
       <ul class="how-to">
         <li><strong>Design panel</strong> (left) — the approved Pencil frame, cropped to the relevant area</li>
         <li><strong>Dev panel</strong> (right) — screenshot from <code>app.eg-dev.ai</code> at the same area</li>
-        <li><strong>Comparison table</strong> — row-by-row differences with status: <span class="badge-gap">Gap</span> = confirmed difference, <span class="badge-match">Match</span> = already correct, <span class="badge-check">Check</span> = needs verification against live dev</li>
+        <li><strong>Comparison table</strong> — row-by-row differences with status: <span class="badge-gap">Gap</span> = confirmed difference, <span class="badge-match">Match</span> = already correct, <span class="badge-check">Verify</span> = needs verification against live dev</li>
         <li><strong>Required change</strong> column — exactly what dev needs to do to match design</li>
       </ul>
 
