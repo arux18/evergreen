@@ -77,6 +77,7 @@ const images = {
   devSelectAccountSelected: requireEmbed('assets/dev/select-account-selected.png'),
   devSelectReselection: requireEmbed('assets/dev/select-reselection.png'),
   devDetailInvestment: requireEmbed('assets/dev/detail-popup-investment.png'),
+  devDetailResponsiveOverflow: requireEmbed('assets/dev/detail-popup-responsive-overflow.png'),
 };
 
 const modalCompareStyle = 'object-fit:contain;max-height:520px;background:#fff;padding:12px;';
@@ -313,6 +314,10 @@ const detailPopupShellRows = [
   ['Close button (X)', '24×24px icon, top-right corner of popup, $color-gray-500 (#716E6A), cursor: pointer', 'X button present in top-right (confirmed visible)', 'Verify close button uses $color-gray-500 and is 24×24px', 'Match'],
   ['Close button position', 'Aligned to right edge of header row, vertically centered with merchant name', 'X button positioned top-right — appears correct', 'No change — position matches', 'Match'],
   ['Popup scroll behavior', 'Popup content scrolls internally if taller than viewport (overflow-y: auto)', 'Content visible below fold — scroll behavior not testable without taller content', 'Ensure overflow-y: auto on popup body for long transaction details', 'Verify'],
+  ['Responsive width', 'Popup should adapt to available viewport width (max-width: min(560px, calc(100vw - chat-width - nav-width - 2×$spacing-xl)))', 'Popup stays at 560px fixed width even when Chat panel reduces available space — content overflows and is clipped', 'Set popup max-width to respect available horizontal space. When viewport is narrow (Chat open), popup must shrink proportionally or stack below content.', 'Gap'],
+  ['Content truncation at narrow widths', 'Key-value rows must remain readable: wrap long values or use text-overflow: ellipsis with tooltip', 'At narrow viewport: Transaction ID, Amount value, Date values, and Merchant name all clip abruptly (no ellipsis, no wrapping)', 'Add text-overflow: ellipsis on value cells when popup is constrained, OR allow text-wrap. Ensure all field values remain accessible (tooltip on hover for truncated text).', 'Gap'],
+  ['Chat panel coexistence', 'When Chat panel is open alongside popup, popup should respect remaining space (either shrink or close Chat temporarily)', 'Popup renders at fixed 560px regardless of Chat panel state — causes overflow/clipping when both are visible', 'Either: (a) reduce popup width responsively, (b) temporarily collapse Chat panel when popup opens, or (c) render popup as full-screen overlay at constrained widths', 'Gap'],
+  ['Popup at tablet (768–1024px)', 'Below ~900px with Chat open, popup likely needs to become a full-width overlay or bottom sheet (same pattern as mobile)', 'Popup clips heavily — layout completely breaks below ~900px with Chat open', 'At viewport widths where popup + Chat + Nav exceed available space, switch popup to full-width overlay or use mobile bottom-sheet pattern', 'Gap'],
 ];
 
 const detailPopupContentRows = [
@@ -685,7 +690,17 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('13', 'Pressed state', 'TransactionRow/pressed (O:MSEcE) — deeper background on click/active', images.designTxnPressed, images.devPressed, modalCompareStyle, table(pressedStateRows), 'Press and hold a transaction row — the background should deepen beyond hover.', modalCompareStyle)}
 
-    ${compareSection('14', 'Detail popup — shell', 'Transaction detail overlay — popup Qjfm2 (560×905, radius-xs, shadow-lg)', images.designTxnSelectedPopup, images.devDetailWithdrawal, modalCompareStyle, table(detailPopupShellRows), '', modalCompareStyle)}
+    <section class="page" id="s14">
+      <h2>14. Detail popup — shell</h2>
+      <p class="subtitle">Transaction detail overlay — popup Qjfm2 (560×905, radius-xs, shadow-lg)</p>
+      <div class="compare-grid">
+        <div class="col"><div class="panel-label design">Design — popup (target)</div><img src="${images.designTxnSelectedPopup}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — popup (full width)</div><img src="${images.devDetailWithdrawal}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — popup OVERFLOW (Chat open)</div><img src="${images.devDetailResponsiveOverflow}" style="${modalCompareStyle}" /></div>
+      </div>
+      ${table(detailPopupShellRows)}
+      <p class="note"><strong>Critical responsive issue:</strong> When the Chat panel is open and viewport is constrained, the popup maintains its fixed 560px width and content overflows/clips. Transaction ID, Amount, Dates, and Merchant values all become unreadable. The popup must adapt its width to available space or switch to a full-overlay pattern at narrow viewports.</p>
+    </section>
 
     <section class="page" id="s15">
       <h2>15. Detail popup — content</h2>
