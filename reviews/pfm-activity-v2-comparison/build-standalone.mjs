@@ -601,9 +601,9 @@ const html = `<!DOCTYPE html>
       <h2>3. Account selector — closed state</h2>
       <p class="subtitle">Hemlock Select component (O:jncEi) — "All Accounts" dropdown — Q5tbaN</p>
       <div class="compare-grid">
-        <div class="col"><h3>Design (default closed)</h3><img src="${images.designDefault}" style="object-fit:cover;object-position:15% 5%;max-height:140px;" /></div>
-        <div class="col"><h3>Dev (default closed)</h3><img src="${images.devSelectDefaultClosed}" style="object-fit:cover;object-position:15% 5%;max-height:140px;" /></div>
-        <div class="col"><h3>Dev (account selected closed)</h3><img src="${images.devSelectAccountSelected}" style="object-fit:cover;object-position:15% 5%;max-height:140px;" /></div>
+        <div class="col"><div class="panel-label design">Design — default closed</div><img src="${images.designDefault}" style="object-fit:cover;object-position:15% 5%;max-height:140px;" /></div>
+        <div class="col"><div class="panel-label dev">Dev — default closed</div><img src="${images.devSelectDefaultClosed}" style="object-fit:cover;object-position:15% 5%;max-height:140px;" /></div>
+        <div class="col"><div class="panel-label dev">Dev — account selected closed</div><img src="${images.devSelectAccountSelected}" style="object-fit:cover;object-position:15% 5%;max-height:140px;" /></div>
       </div>
       ${table(accountSelectorRows)}
     </section>
@@ -612,15 +612,15 @@ const html = `<!DOCTYPE html>
       <h2>3b. Account selector — dropdown states</h2>
       <p class="subtitle">Open dropdown with selected option, hover state, and re-selection behavior</p>
       <div class="compare-grid">
-        <div class="col"><h3>Design — dropdown open (selected)</h3><img src="${images.designAccountSelected}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
-        <div class="col"><h3>Dev — dropdown open (All Accounts)</h3><img src="${images.devSelectOpen}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
+        <div class="col"><div class="panel-label design">Design — dropdown open (selected)</div><img src="${images.designAccountSelected}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
+        <div class="col"><div class="panel-label dev">Dev — dropdown open (All Accounts)</div><img src="${images.devSelectOpen}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
       </div>
       <div class="compare-grid" style="margin-top:14px;">
-        <div class="col"><h3>Design — account hovered</h3><img src="${images.designAccountHovered}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
-        <div class="col"><h3>Dev — account hovered</h3><img src="${images.devSelectHover}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
+        <div class="col"><div class="panel-label design">Design — account hovered</div><img src="${images.designAccountHovered}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
+        <div class="col"><div class="panel-label dev">Dev — account hovered</div><img src="${images.devSelectHover}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
       </div>
       <div class="compare-grid" style="margin-top:14px;">
-        <div class="col"><h3>Dev — re-selection (checkmark on current)</h3><img src="${images.devSelectReselection}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
+        <div class="col"><div class="panel-label dev">Dev — re-selection (checkmark on current)</div><img src="${images.devSelectReselection}" style="object-fit:cover;object-position:5% 3%;max-height:500px;" /></div>
       </div>
       ${table(accountSelectorDropdownRows)}
       <p class="note"><strong>Major difference:</strong> Design uses a <strong>dark/inverted pill</strong> (near-black background, white text) to indicate the selected item in the dropdown. Dev uses a <strong>light beige</strong> background (rgb 237,234,227) with dark text plus a checkmark icon. The design communicates selection purely through color inversion — no checkmark is present.</p>
@@ -644,12 +644,12 @@ const html = `<!DOCTYPE html>
       <h2>11. Tablet responsive — header overlap &amp; column collapse</h2>
       <p class="subtitle">Between 640px and 1024px, the DESCRIPTION column collapses causing header text overlap and invisible content</p>
       <div class="compare-grid">
-        <div class="col"><h3>768px — Chat open (broken)</h3><img src="${images.devTablet768}" style="${modalCompareStyle}" /></div>
-        <div class="col"><h3>768px — Chat closed (overlap visible)</h3><img src="${images.devTablet768ChatClosed}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — 768px, chat open (broken)</div><img src="${images.devTablet768}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — 768px, chat closed (overlap visible)</div><img src="${images.devTablet768ChatClosed}" style="${modalCompareStyle}" /></div>
       </div>
       <div class="compare-grid" style="margin-top:24px;">
-        <div class="col"><h3>900px — DESCRIPTION at 10px width</h3><img src="${images.devTablet900}" style="${modalCompareStyle}" /></div>
-        <div class="col"><h3>640px — 3-column layout (no overlap)</h3><img src="${images.devTablet640}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — 900px, DESCRIPTION at 10px width</div><img src="${images.devTablet900}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — 640px, 3-column layout (no overlap)</div><img src="${images.devTablet640}" style="${modalCompareStyle}" /></div>
       </div>
       ${table(tabletResponsiveRows)}
       <p class="note"><strong>Critical finding:</strong> The 3-column breakpoint fires at &lt;640px, but between 640–1024px the 5-column layout persists. The DESCRIPTION column has no min-width and shrinks to 10px at 900px, making it invisible while its header text overflows into the adjacent CATEGORY header. The chat panel exacerbates this at 768px by consuming &gt;50% of the viewport.</p>
@@ -665,9 +665,9 @@ const html = `<!DOCTYPE html>
       <h2>15. Detail popup — content</h2>
       <p class="subtitle">Title section, amount section, and detail sections inside popup — QXsSg</p>
       <div class="compare-grid">
-        <div class="col"><h3>Design (target)</h3><img src="${images.designDepositPopup}" style="${modalCompareStyle}" /></div>
-        <div class="col"><h3>Dev — Withdrawal</h3><img src="${images.devDetailWithdrawal}" style="${modalCompareStyle}" /></div>
-        <div class="col"><h3>Dev — Deposit</h3><img src="${images.devDetailDeposit}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label design">Design — deposit popup (target)</div><img src="${images.designDepositPopup}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — withdrawal popup</div><img src="${images.devDetailWithdrawal}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — deposit popup</div><img src="${images.devDetailDeposit}" style="${modalCompareStyle}" /></div>
       </div>
       ${table(detailPopupContentRows)}
       <p class="note">Design has two detail popup variants: <strong>withdrawal</strong> (bAspM) shows negative amount in default dark text; <strong>deposit</strong> (bDcIO) shows positive amount in green (#148338). Both use the same layout structure.</p>
@@ -681,9 +681,9 @@ const html = `<!DOCTYPE html>
       <h2>18. Mobile — Transaction detail</h2>
       <p class="subtitle">Bottom sheet transaction detail — PcHUT with backdrop overlay</p>
       <div class="compare-grid">
-        <div class="col"><h3>Design (target)</h3><img src="${images.designMobileTransactionDetail}" style="${modalCompareStyle}" /></div>
-        <div class="col"><h3>Dev — Withdrawal</h3><img src="${images.devMobileDetailWithdrawal}" style="${modalCompareStyle}" /></div>
-        <div class="col"><h3>Dev — Deposit</h3><img src="${images.devMobileDetailDeposit}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label design">Design — bottom sheet (target)</div><img src="${images.designMobileTransactionDetail}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — withdrawal detail</div><img src="${images.devMobileDetailWithdrawal}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — deposit detail</div><img src="${images.devMobileDetailDeposit}" style="${modalCompareStyle}" /></div>
       </div>
       ${table(mobileDetailRows)}
       <p class="note">Design specifies a <strong>bottom sheet</strong> pattern (slides up from bottom with rounded top corners and dark backdrop). Dev currently renders a left-side panel/drawer. The deposit variant shows +amount in green (#148338).</p>
