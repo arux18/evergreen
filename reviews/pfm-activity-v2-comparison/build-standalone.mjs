@@ -55,7 +55,7 @@ const images = {
   designMobileAccountSelect: requireEmbed('assets/design/ie8B0.png'),
   designMobileAccountSelectScroll: requireEmbed('assets/design/g1e3f.png'),
   designMobileTransactionDetail: requireEmbed('assets/design/PcHUT.png'),
-  designMobileDefaultAlt: requireEmbed('assets/design/TrawO.png'),
+  // TrawO is an alternate mobile default (not used — noted in §16 as non-canonical)
   devFull: requireEmbed('assets/dev/full-page-clean.png'),
   devFullWide: embed('assets/dev/full-page-wide.png'),
   devNarrow: embed('assets/dev/table-narrow-1024.png'),
@@ -76,6 +76,7 @@ const images = {
   devSelectHover: requireEmbed('assets/dev/select-dropdown-hover.png'),
   devSelectAccountSelected: requireEmbed('assets/dev/select-account-selected.png'),
   devSelectReselection: requireEmbed('assets/dev/select-reselection.png'),
+  devDetailInvestment: requireEmbed('assets/dev/detail-popup-investment.png'),
 };
 
 const modalCompareStyle = 'object-fit:contain;max-height:520px;background:#fff;padding:12px;';
@@ -103,7 +104,7 @@ const T = {
   lg: 'spacing-lg (32px)',
   xl: 'spacing-xl (40px)',
   r2xs: 'radius-2xs (8px)',
-  rXs: 'radius-xs (16px)',
+  rXs: 'radius-xs (12px)',
   rFull: 'radius-full (9999px)',
 };
 
@@ -112,8 +113,10 @@ const layoutRows = [
   ['Gap: content sections', `${T.md} between account selector, tabs, and table`, 'No explicit gap — sections flow with default spacing', 'Set gap: $spacing-md (24px) between account selector → tabs → table', 'Gap'],
   ['Table container corner radius', `${T.r2xs}`, '14px border-radius on table', 'Reduce border-radius from 14px to $radius-2xs (8px)', 'Gap'],
   ['Table container border', 'Disabled (no visible border in design)', '1px solid (faint border around table)', 'Remove table container border', 'Gap'],
+  ['"Show More" button', 'Text link: "Show More" — typo-primary-sm-semibold (14px/600), $colors-text-deposit (#148338) or accent color, centered below last row, padding-top $spacing-md (24px)', '"Show More" button present (confirmed) — appears as centered text link below last row', 'Verify "Show More" uses $typo-primary-sm-semibold and accent/green color. Ensure spacing-md (24px) gap above it.', 'Verify'],
   ['[MOBILE] Content padding', `${T.sm} all sides (16px uniform — differs from desktop)`, '16px horizontal padding (correct value but check all sides)', 'Mobile: set padding $spacing-sm (16px) on all 4 sides (not desktop\'s asymmetric [20,40])', 'Gap'],
   ['[MOBILE] Section gap', `${T.sm} between sections (16px — tighter than desktop 24px)`, 'Sections flow with spacing — verify gap value', 'Mobile: set gap $spacing-sm (16px) between account selector → tabs → table', 'Gap'],
+  ['[MOBILE] Navigation menu', 'Frame TVCWB: sidebar slides from left (310px wide), $nav.bg fill, $O:radius-md on top-right + bottom-right, screenOverlay #00000066 backdrop, nav items highlight "Activity"', 'Hamburger triggers left drawer nav — verify styling', 'Mobile nav drawer: 310px width, $nav.bg, $radius-md corners on right side, dark overlay (#00000066) behind. "Activity" must be highlighted as active.', 'Verify'],
 ];
 
 const pageTitleRows = [
@@ -299,23 +302,39 @@ const pressedStateRows = [
 ];
 
 const detailPopupShellRows = [
-  ['Popup width', '560px (custom design value — no token)', 'Detail popup not triggered via CDP — unable to measure (click blocked)', 'Set transaction detail popup width: 560px', 'Verify'],
-  ['Popup corner radius', `${T.rXs}`, 'Not measurable — popup not triggered', 'Set border-radius: $radius-xs (16px)', 'Verify'],
-  ['Popup shadow', 'shadow-lg (Hemlock shadow token), color #0000001a', 'Not measurable — popup not triggered', 'Use $shadow-lg token with #0000001a color', 'Verify'],
-  ['Popup fill', `${T.bgSurface}`, 'Not measurable — popup not triggered', 'Set background: $colors-background-surface (#FFFFFF)', 'Verify'],
-  ['Popup position', 'Absolute, x:440 y:140 from container (design-specific position)', 'Not measurable — popup not triggered', 'Position popup at center-right of viewport', 'Verify'],
-  ['Body padding', `${T.xl} all sides`, 'Not measurable — popup not triggered', 'Set padding: $spacing-xl (40px) inside popup body', 'Verify'],
-  ['Section gap', `${T.lg} between sections`, 'Not measurable — popup not triggered', 'Set gap: $spacing-lg (32px) between title/amount/detail sections', 'Verify'],
-  ['Backdrop overlay', '#00000066 (40% black) covers main content', 'Not measurable — popup not triggered', 'Apply semi-transparent black overlay (#00000066) behind popup', 'Verify'],
+  ['Popup width', '560px (custom design value — no token)', 'Popup renders ~560px wide (visually matches)', 'No change — width matches', 'Match'],
+  ['Popup corner radius', '$radius-xs (resolved: 12px from token)', 'Rounded corners visible — appears ~12px', 'Ensure dev uses $radius-xs token (12px)', 'Match'],
+  ['Popup shadow', '$shadow-lg-blur token, color #0000001a (6% black outer shadow)', 'Box-shadow present — subtle outer shadow visible', 'Ensure dev uses $shadow-lg token', 'Match'],
+  ['Popup fill', `${T.bgSurface}`, 'White background — correct', 'No change — matches $colors-background-surface', 'Match'],
+  ['Popup position', 'Absolute, centered in viewport (x:440 y:140 from frame top-left)', 'Positioned center of viewport above table', 'No change — position appears correct', 'Match'],
+  ['Body padding', `${T.xl} all sides (40px)`, 'Generous padding visible — appears ~40px', 'Ensure padding uses $spacing-xl (40px) token', 'Verify'],
+  ['Section gap', `${T.lg} between sections (32px between title/amount/detail sections)`, 'Visible spacing between sections — appears appropriate', 'Ensure gap uses $spacing-lg (32px) token', 'Verify'],
+  ['Backdrop overlay', '#00000066 (40% black) covers main content behind popup', 'No visible backdrop overlay — table content is NOT dimmed behind popup', 'Add semi-transparent backdrop overlay (#00000066) when popup is open', 'Gap'],
+  ['Close button (X)', '24×24px icon, top-right corner of popup, $color-gray-500 (#716E6A), cursor: pointer', 'X button present in top-right (confirmed visible)', 'Verify close button uses $color-gray-500 and is 24×24px', 'Match'],
+  ['Close button position', 'Aligned to right edge of header row, vertically centered with merchant name', 'X button positioned top-right — appears correct', 'No change — position matches', 'Match'],
+  ['Popup scroll behavior', 'Popup content scrolls internally if taller than viewport (overflow-y: auto)', 'Content visible below fold — scroll behavior not testable without taller content', 'Ensure overflow-y: auto on popup body for long transaction details', 'Verify'],
 ];
 
 const detailPopupContentRows = [
-  ['Title section padding', `[0, ${T.sm}] = [0, 16px] sides`, 'Not measurable — popup not triggered', 'Set title section padding: 0 $spacing-sm (16px)', 'Verify'],
-  ['Title ↔ content gap', `${T.xs} within title section`, 'Not measurable — popup not triggered', 'Set gap: $spacing-xs (12px) in title section', 'Verify'],
-  ['Amount section padding', `[0, ${T.sm}] = [0, 16px] sides`, 'Not measurable — popup not triggered', 'Set amount section padding: 0 $spacing-sm (16px)', 'Verify'],
-  ['Amount section gap', `${T.s3xs} between label and value`, 'Not measurable — popup not triggered', 'Set gap: $spacing-3xs (4px) between amount label and value', 'Verify'],
-  ['Detail sections', 'DetailSection pattern — same as Account detail (Hemlock pKk6B)', 'Not measurable — popup not triggered', 'Use Hemlock DetailSection component for structured data', 'Verify'],
-  ['Deposit popup', `Same layout, positive ${T.depositGreen} for amount`, 'Not measurable — popup not triggered', 'Use MoneyText/positive with $colors-text-deposit (#148338) for deposit amounts', 'Verify'],
+  ['Header row layout', 'Horizontal: merchant logo (32×32, radius 6px, 1px $color-gray-100 border) + merchant name + X button', 'Logo (circle 32px) + uppercase merchant name + X button — layout matches', 'Change logo from circle to 6px rounded square. Verify logo border: 1px $color-gray-100', 'Gap'],
+  ['Merchant name font', 'typo-primary-base-semibold (Heebo 16px, weight 600)', 'Merchant name rendered in ~16px semibold UPPERCASE', 'Verify: use $typo-primary-base-semibold. Dev shows uppercase text-transform — check if design intends uppercase', 'Verify'],
+  ['Amount label', '"TRANSACTION AMOUNT" — typo-primary-xs-semibold (12px/600), uppercase, $color-gray-500', '"TRANSACTION AMOUNT" label present, small gray uppercase — matches pattern', 'Ensure label uses $typo-primary-xs-semibold, $color-gray-500, text-transform: uppercase', 'Match'],
+  ['Amount value (withdrawal)', 'typo-primary-lg-bold (Heebo 20px, weight 700), $colors-text-body (#403D3A) for negative', 'Amount shown in large bold text, dark color for positive — color may differ by type', 'Use $typo-primary-lg-bold for amount value; negative amounts: $colors-text-body', 'Verify'],
+  ['Amount value (deposit)', `typo-primary-lg-bold (Heebo 20px, weight 700), ${T.depositGreen} for positive`, '+$675.30 rendered in green — correct', 'Positive amounts: $colors-text-deposit (#148338) via MoneyText/positive', 'Match'],
+  ['Amount ↔ label gap', `${T.s3xs} (4px) between "TRANSACTION AMOUNT" label and value`, 'Small gap visible between label and value — appears ~4px', 'Set gap: $spacing-3xs (4px)', 'Match'],
+  ['Section header (DetailHeader)', 'Full-width bar: $color-taupe-100 (#F7F5F0) fill, padding $spacing-xs (12px), typo-primary-sm-semibold (14px/600), $colors-text-header', '"Transaction Details" header with beige/taupe background bar — matches pattern', 'Ensure header bars use $color-taupe-100 fill, $spacing-xs padding, $typo-primary-sm-semibold', 'Match'],
+  ['Section header corner radius', '$radius-2xs (8px) on header bar', 'Header bars appear slightly rounded', 'Ensure header bar uses $radius-2xs (8px)', 'Verify'],
+  ['Detail row (DetailRow) layout', 'Two columns: label (left, $color-gray-500, typo-primary-sm-regular 14px/400) + value (right, $colors-text-body, typo-primary-sm-regular 14px/400)', 'Key-value pairs: left-aligned label, right-aligned value — correct layout', 'Use Hemlock DetailRow: label $color-gray-500 + value $colors-text-body, both typo-primary-sm-regular', 'Match'],
+  ['Detail row padding', '$spacing-xs (12px) vertical between rows', 'Visible vertical spacing between rows — appears ~12px', 'Ensure row padding: $spacing-xs (12px)', 'Match'],
+  ['Detail row divider', '1px solid $color-gray-100 (#EEEDEB) between rows', 'Faint horizontal dividers visible between detail rows', 'Use $color-gray-100 for row dividers', 'Match'],
+  ['Transaction ID truncation', 'Full ID visible or wrapped (design shows full "txn_7d29a64d")', 'ID truncates with "..." (investment:tj__user-6f03d6d8-6242-40fa-...)', 'Allow Transaction ID to wrap or provide copy-to-clipboard; do not truncate', 'Gap'],
+  ['Section: Transaction Details', '5 rows: Transaction ID, Amount, Currency, Date Processed, Date Authorized — present in ALL variants', 'All 5 fields present — correct', 'No change — matches', 'Match'],
+  ['Section: Merchant Details (withdrawal)', '2 rows: Merchant, Check Number — ONLY for merchant/payment transactions', 'Not visible in current test (investment transaction selected)', 'Conditionally show "Merchant Details" section for merchant/payment transaction types', 'Verify'],
+  ['Section: Transfer Details (deposit/transfer)', '2 rows: From Account, Receiving Account — ONLY for transfer transactions', 'Not visible in current test (investment transaction selected)', 'Conditionally show "Transfer Details" section for transfer transaction types', 'Verify'],
+  ['Section: Investment Details (investment)', 'Not shown in design (design only has withdrawal + deposit variants)', '2 rows: Type, Subtype — present for investment transactions', 'Investment variant: show "Investment Details" with Type + Subtype fields (matches dev behavior)', 'Match'],
+  ['Section: Classification', '2 rows: Category, Sub-category — present in ALL variants', '"Classification" section not visible in current investment view — may be below fold', 'Ensure Classification section always renders with Category + Sub-category', 'Verify'],
+  ['Section count per variant', 'Withdrawal: 3 sections (Transaction Details + Merchant Details + Classification). Deposit: 3 sections (Transaction Details + Transfer Details + Classification)', 'Investment: 2 sections visible (Transaction Details + Investment Details) — Classification may be below fold', 'Render correct sections based on transaction type. Always include Classification.', 'Verify'],
+  ['Gap between sections', `${T.md} (24px) between each DetailSection block`, 'Visible gap between sections — appears appropriate', 'Set gap: $spacing-md (24px) between each section', 'Verify'],
 ];
 
 const mobileDefaultRows = [
@@ -328,6 +347,8 @@ const mobileDefaultRows = [
   ['Table header (mobile)', `DATE ↕, DESCRIPTION ↕, AMOUNT ↕ — 3 columns, header text in ${T.gray500}`, 'DATE ↓, DESCRIPTION ↕, AMOUNT ↕ — dark header text', 'No change in column count — 3 headers correct. Fix header text color to $color-gray-500 (#716E6A)', 'Gap'],
   ['Row height (mobile)', 'Variable — taller rows for wrapping text (≥60px)', '~52px fixed row height per visible row', 'Allow rows to grow with content; minimum 44px for touch targets', 'Gap'],
   ['Content area padding', `${T.sm} horizontal padding`, 'Content has 16px horizontal padding (correct)', 'No change — value matches. Ensure dev uses $spacing-sm (16px) token', 'Match'],
+  ['Navigation drawer', 'Frame TVCWB: hamburger opens 310px sidebar from left, screenOverlay (#00000066), $nav.bg fill, rounded right corners $radius-md (24px), "Activity" highlighted', 'Hamburger opens left drawer — styling differs from design', 'Nav drawer must be 310px wide, $nav.bg background, $radius-md (24px) top-right/bottom-right corners, #00000066 backdrop overlay, "Activity" nav item highlighted as active page', 'Gap'],
+  ['Mobile header layout', 'Status bar (54px) + mobile header bar (48px, gap 12px, padding [0,16]): hamburger icon + "Activity" title + avatar', 'Header shows hamburger + "Net Worth | Activity" + chat icon', 'Mobile header should show just "Activity" (not full "Net Worth | Activity"). Verify hamburger + title + avatar layout matches design.', 'Gap'],
 ];
 
 const mobileAccountSelectRows = [
@@ -344,14 +365,19 @@ const mobileDetailRows = [
   ['Presentation style', 'Bottom sheet (slides up from bottom) — top corners rounded, rest of screen visible with dark backdrop', 'Left-side panel/drawer — pushes into content area inline, no dark backdrop, no bottom sheet animation', 'Convert to bottom sheet pattern on mobile with slide-up animation', 'Gap'],
   ['Backdrop overlay', '#000000 at 50% opacity (confirmed: bottomSheet backdrop opacity=0.5)', 'No backdrop overlay — table content visible behind/below the detail panel', 'Add backdrop: rgba(0,0,0,0.5) when detail panel is open', 'Gap'],
   ['Top corner radius', 'radius-md (24px) on top-left and top-right corners — confirmed: $O:radius-md = 24', 'No visible corner radius on detail panel', 'Add border-radius: $radius-md (24px) on top-left and top-right corners of bottom sheet', 'Gap'],
+  ['Bottom sheet height', 'Frame PcHUT: total 868px tall (extends below visible 844px viewport), content scrollable', 'Panel height determined by content — not a bottom sheet', 'Bottom sheet should have max-height ~85vh with internal scroll when content overflows', 'Gap'],
+  ['Scroll behavior', 'Bottom sheet body scrollable (overflow-y: auto); content area 944px tall in a 844px viewport = scrollable', 'No scroll needed in current panel layout', 'Add overflow-y: auto to bottom sheet body. User should be able to scroll to see all fields below the fold.', 'Gap'],
+  ['Drag indicator', 'Not explicitly shown in design (no visible grab handle/pill at top)', 'N/A — not a bottom sheet', 'Optional: add 36×4px gray pill at top of bottom sheet for drag-to-dismiss affordance (industry standard)', 'Verify'],
   ['Header', 'Merchant logo (32px) + merchant name (typo-primary-base-semibold: 16px/600) + close button (X) at top-right', 'Letter avatar (circle, 32px) + merchant name (16px semibold) + X button — correct', 'No change — values match. Ensure name uses $typo-primary-base-semibold token', 'Match'],
   ['Amount display', '"TRANSACTION AMOUNT" label (typo-primary-xs-semibold: 12px uppercase) above amount value (typo-primary-lg-bold)', '"TRANSACTION AMOUNT" label + large bold amount — correct layout', 'No change — matches. Use $typo-primary-xs-semibold for label, $typo-primary-lg-bold for value', 'Match'],
   ['Deposit amount color', `${T.depositGreen} for positive amounts`, '+$1,153.51 rendered in green — correct', 'No change — matches. Ensure dev uses $colors-text-deposit (#148338) token', 'Match'],
   ['Withdrawal amount color', `${T.textBody} for negative amounts`, '-$50.90 rendered in dark text — correct', 'No change — matches. Ensure dev uses $colors-text-body (#403D3A) token', 'Match'],
-  ['Detail sections', '3 sections: "Transaction Details", "Merchant Details", "Classification" — each with color-taupe-100 (#F7F5F0) header bar', 'All 3 sections present with taupe/beige background header bars', 'No change — matches. Ensure header bars use $color-taupe-100 token', 'Match'],
+  ['Detail sections', '3 sections: "Transaction Details", "Merchant/Transfer/Investment Details", "Classification" — each with color-taupe-100 (#F7F5F0) header bar', 'All sections present with taupe/beige background header bars (varies by transaction type)', 'No change — matches. Ensure header bars use $color-taupe-100 token', 'Match'],
   ['Transaction fields', 'Transaction ID, Amount, Currency, Date Processed, Date Authorized — key/value pairs', 'All fields present with correct key/value layout', 'No change — matches', 'Match'],
   ['Transaction ID truncation', 'Full ID visible or accessible', 'ID truncates with "..." (bank:tj__user-6f03d6d8-6...)', 'Allow wrapping or add copy-to-clipboard for full ID', 'Gap'],
-  ['Panel width', 'Bottom sheet spans full viewport width (minus padding)', 'Panel is ~270px — does not fill full 390px viewport width', 'Bottom sheet should span full viewport width', 'Gap'],
+  ['Panel width', 'Bottom sheet spans full viewport width (390px minus no padding — edge-to-edge)', 'Panel is ~270px — does not fill full 390px viewport width', 'Bottom sheet should span full viewport width (100vw)', 'Gap'],
+  ['Bottom sheet padding', '$spacing-md (24px) internal padding on content area', 'Padding appears smaller than 24px', 'Set internal padding: $spacing-md (24px) for bottom sheet content', 'Gap'],
+  ['Close (swipe down)', 'Bottom sheet dismisses on swipe-down gesture or tap backdrop', 'X button closes panel — no swipe gesture', 'Add swipe-down-to-dismiss and tap-backdrop-to-dismiss for bottom sheet', 'Gap'],
 ];
 
 const devFiles = [
@@ -668,14 +694,35 @@ const html = `<!DOCTYPE html>
         <div class="col"><div class="panel-label design">Design — deposit popup (target)</div><img src="${images.designDepositPopup}" style="${modalCompareStyle}" /></div>
         <div class="col"><div class="panel-label dev">Dev — withdrawal popup</div><img src="${images.devDetailWithdrawal}" style="${modalCompareStyle}" /></div>
         <div class="col"><div class="panel-label dev">Dev — deposit popup</div><img src="${images.devDetailDeposit}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — investment popup (3rd variant)</div><img src="${images.devDetailInvestment}" style="${modalCompareStyle}" /></div>
       </div>
       ${table(detailPopupContentRows)}
-      <p class="note">Design has two detail popup variants: <strong>withdrawal</strong> (bAspM) shows negative amount in default dark text; <strong>deposit</strong> (bDcIO) shows positive amount in green (#148338). Both use the same layout structure.</p>
+      <p class="note"><strong>Design has two explicit popup variants:</strong> <em>withdrawal</em> (bAspM) shows negative amount in default dark text with "Merchant Details" section; <em>deposit</em> (bDcIO) shows positive amount in green (#148338) with "Transfer Details" section. Both use the same layout structure.<br/><br/><strong>Dev has a third variant:</strong> <em>investment</em> transactions show "Investment Details" (Type + Subtype) instead. This is acceptable — the section structure pattern is consistent. Each variant conditionally renders the appropriate detail section based on transaction type.</p>
     </section>
 
-    ${compareSection('16', 'Mobile — Default layout', 'Activity list at 390px viewport — design v4sVMe / TrawO', images.designMobileDefault, images.devMobileDefault, modalCompareStyle, table(mobileDefaultRows), '', modalCompareStyle)}
+    <section class="page" id="s16">
+      <h2>16. Mobile — Default layout</h2>
+      <p class="subtitle">Activity list at 390px viewport — design v4sVMe / TrawO / TVCWB (nav open)</p>
+      <div class="compare-grid">
+        <div class="col"><div class="panel-label design">Design — default (3-column)</div><img src="${images.designMobileDefault}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label design">Design — nav menu open</div><img src="${images.designMobileNavOpen}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — default view</div><img src="${images.devMobileDefault}" style="${modalCompareStyle}" /></div>
+      </div>
+      ${table(mobileDefaultRows)}
+      <p class="note">Frame TrawO is an alternate desktop-like rendering of mobile — <strong>not used</strong> as the canonical mobile design. Frame TVCWB shows the mobile navigation menu sliding in from the left (310px wide) with a dark backdrop overlay.</p>
+    </section>
 
-    ${compareSection('17', 'Mobile — Account selector', 'Account dropdown at mobile — ie8B0 / g1e3f with scrollbar', images.designMobileAccountSelect, images.devMobileAccountSelect, modalCompareStyle, table(mobileAccountSelectRows), '', modalCompareStyle)}
+    <section class="page" id="s17">
+      <h2>17. Mobile — Account selector</h2>
+      <p class="subtitle">Account dropdown at mobile — ie8B0 / g1e3f with scrollbar</p>
+      <div class="compare-grid">
+        <div class="col"><div class="panel-label design">Design — dropdown open</div><img src="${images.designMobileAccountSelect}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label design">Design — scrollbar variant</div><img src="${images.designMobileAccountSelectScroll}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — dropdown open</div><img src="${images.devMobileAccountSelect}" style="${modalCompareStyle}" /></div>
+      </div>
+      ${table(mobileAccountSelectRows)}
+      <p class="note">Frame g1e3f shows a custom scrollbar indicator (5×200px, positioned at x:363) when account list overflows. Dev should implement a thin scrollbar track for long account lists.</p>
+    </section>
 
     <section class="page" id="s18">
       <h2>18. Mobile — Transaction detail</h2>
