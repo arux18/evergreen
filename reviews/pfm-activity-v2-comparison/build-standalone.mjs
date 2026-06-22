@@ -186,7 +186,7 @@ const filterTabsRows = [
   ['Inactive tab text', `${T.textBody} (#403D3A), fontWeight 400 (regular)`, 'Verify inactive tab text color and weight', 'Inactive tabs: $colors-text-body + font-weight 400 (typo-primary-sm-regular)', 'Gap'],
   ['Tab labels', 'All Types, Banking, Credit Cards, Investments, Loans — 5 tabs', 'All Types, Banking, Credit Cards, Investments, Loans', 'No change — same labels', 'Match'],
   ['[MOBILE] Tab overflow', 'Tabs container is 520px (wider than 358px content) — clips with horizontal scroll', 'Only 3 tabs visible; rest cut off with no scroll indicator', 'Mobile: add overflow-x: auto on tab container so all 5 tabs are scrollable', 'Gap'],
-  ['[MOBILE] Tab font', 'Same as desktop: Heebo 14px, active 600 #0E0E0E, inactive 400 #403D3A', 'Same font styling on mobile', 'No change — same tokens apply at mobile', 'Match'],
+  ['[MOBILE] Tab font', 'Same as desktop: typo-primary-sm (14px), active = typo-primary-sm-semibold + colors-text-header, inactive = typo-primary-sm-regular + colors-text-body', 'Same font styling on mobile', 'No change — same tokens apply at mobile', 'Match'],
 ];
 
 const tableHeaderRows = [
@@ -211,7 +211,7 @@ const tableHeaderRows = [
   ['[MOBILE] DATE column width', '52px (slightly wider than desktop 44px to accommodate touch)', 'DATE column width on mobile — verify', 'Mobile: set DATE column to 52px (wider than desktop to improve legibility)', 'Gap'],
   ['[MOBILE] ACCOUNT column width', '80px fixed (narrower than desktop 140px)', 'ACCOUNT column hidden on mobile (should be visible at 80px)', 'Mobile: show ACCOUNT column at 80px width', 'Gap'],
   ['[MOBILE] AMOUNT column width', '70px fixed, right-aligned (narrower than desktop 100px)', 'AMOUNT at same width as desktop — verify', 'Mobile: reduce AMOUNT column to 70px', 'Gap'],
-  ['[MOBILE] Header styling', 'Same tokens: radius-2xs, color-taupe-100 fill, padding [10,12], font 12px/600 gray-500', 'Verify mobile header uses same styling', 'No change in styling tokens — same as desktop. Only column layout changes.', 'Match'],
+  ['[MOBILE] Header styling', `Same tokens as desktop: $radius-2xs (8px), $color-taupe-100 fill, padding [10, $spacing-xs(12px)], typo-primary-xs-semibold (12px/600), $color-gray-500`, 'Verify mobile header uses same styling', 'No change in styling tokens — same as desktop. Only column layout changes.', 'Match'],
 ];
 
 const txnRowDescRows = [
@@ -229,7 +229,7 @@ const txnRowDescRows = [
   ['[MOBILE] Avatar', 'NO avatar on mobile — description text only (saves horizontal space)', 'Avatar may still render on mobile (verify)', 'Mobile: hide avatar; show merchant name text only in description cell', 'Gap'],
   ['[MOBILE] Desc cell padding', 'padding: [0, 0, 0, spacing-2xs (8px)] — 8px left only (replaces avatar gap)', 'Verify mobile desc cell padding', 'Mobile: set desc cell padding-left to $spacing-2xs (8px); no other padding', 'Gap'],
   ['[MOBILE] Inter-cell gap', `${T.s2xs} between cells (tighter than desktop spacing-sm)`, '0px gap between cells on mobile', 'Mobile: set row gap to $spacing-2xs (8px) — tighter layout than desktop 16px', 'Gap'],
-  ['[MOBILE] Desc font', 'Same as desktop: typo-primary-sm-semibold (14px, weight 600, color gray-700)', 'Same font on mobile — verify semibold applies', 'No change — same typography token on mobile', 'Match'],
+  ['[MOBILE] Desc font', `Same as desktop: typo-primary-sm-semibold (14px, weight 600), color $color-gray-700 (#403D3A)`, 'Same font on mobile — verify semibold applies', 'No change — same typography token on mobile. Ensure $typo-primary-sm-semibold + $color-gray-700', 'Match'],
 ];
 
 const txnRowDateRows = [
@@ -241,7 +241,7 @@ const txnRowDateRows = [
   ['Day font-weight', 'typo-primary-md-semibold — 600 (semibold)', 'font-semibold (600)', 'No change — matches $typo-primary-md-semibold-font-weight', 'Match'],
   ['Day color', `${T.gray700}`, '#2D2926 (text-[#2D2926]) — close but NOT exact gray-700', 'Change to exact $color-gray-700 (#403D3A) token', 'Gap'],
   ['[MOBILE] Date stack width', '44px (same as desktop)', '44px inner div — matches', 'No change — same width on mobile', 'Match'],
-  ['[MOBILE] Month/Day sizing', 'Same as desktop: month 11px gray-500, day 18px semibold gray-700', 'Same font sizing on mobile', 'No change — same date stack tokens on mobile', 'Match'],
+  ['[MOBILE] Month/Day sizing', `Same as desktop: month 11px $color-gray-500, day typo-primary-md-semibold (18px/600) $color-gray-700`, 'Same font sizing on mobile', 'No change — same date stack tokens on mobile', 'Match'],
 ];
 
 const txnRowCatAcctRows = [
