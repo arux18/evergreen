@@ -90,10 +90,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 24, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">14</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">13</div><div class="stat-label">Gaps</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--match)">72</div><div class="stat-label">Matches</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--verify)">9</div><div class="stat-label">To verify</div></div>
-    <div class="stat"><div class="stat-num">95</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num">94</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = confirmed mismatch, <span style="color:var(--match)">Match</span> = confirmed correct, <span style="color:var(--verify)">Verify</span> = needs live measurement (session expired before complete audit).</p>
 </div>
@@ -686,17 +686,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <thead><tr><th>Property</th><th>Design (token)</th><th>Dev (measured)</th><th>Required change</th><th>Status</th></tr></thead>
       <tbody>
     <tr>
-      <td>Card grid overflow (5+ columns)</td>
-      <td class="mono">Design shows max 2-col data tables that fit within 320px content width</td>
-      <td class="mono">5-column comparison cards overflow panel — "New Hampshire" column text hard-cut at right edge, no scroll affordance</td>
-      <td>Add horizontal scroll wrapper with overflow-x: auto to card grids, OR limit grid to max 3-4 columns and stack remaining below</td>
-      <td class="status-gap">Gap</td>
-    </tr>
-    <tr>
-      <td>Card grid overflow (4 columns)</td>
-      <td class="mono">Design shows compact tables fitting within panel</td>
-      <td class="mono">4-column grid barely fits (each card ~80px) — content area is ~344px but 4 cards + gaps = tight fit</td>
-      <td>At 4+ columns, switch to horizontal scroll with visible scroll indicator OR use stacked/list layout</td>
+      <td>Card grid layout on mobile</td>
+      <td class="mono">On mobile (390px), multi-column comparison grids should stack into a single column with each state as its own card</td>
+      <td class="mono">4-5 columns shown side-by-side overflow the panel — "New Hampshire" text hard-cut, content inaccessible</td>
+      <td>Switch to single-column stacked layout on mobile. Each comparison item (Florida, Georgia, etc.) gets its own full-width card stacked vertically.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
