@@ -90,10 +90,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 24, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">13</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">14</div><div class="stat-label">Gaps</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--match)">72</div><div class="stat-label">Matches</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--verify)">9</div><div class="stat-label">To verify</div></div>
-    <div class="stat"><div class="stat-num">94</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num">95</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = confirmed mismatch, <span style="color:var(--match)">Match</span> = confirmed correct, <span style="color:var(--verify)">Verify</span> = needs live measurement (session expired before complete audit).</p>
 </div>
@@ -740,6 +740,13 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <td class="mono">Has ">" chevron affordance indicating horizontal scroll works</td>
       <td>—</td>
       <td class="status-match">Match</td>
+    </tr>
+    <tr>
+      <td>Visible horizontal scrollbar on tables</td>
+      <td class="mono">Scrollbars should be hidden (use overflow-x: auto with scrollbar-width: none or ::-webkit-scrollbar { display: none })</td>
+      <td class="mono">Visible orange/tan scrollbar appears at bottom of table sections — looks out of place on mobile</td>
+      <td>Hide native scrollbar. Use CSS scrollbar-width: none and ::-webkit-scrollbar { display: none } while keeping overflow-x: auto for swipe gesture support</td>
+      <td class="status-gap">Gap</td>
     </tr></tbody>
     </table>
   </section>

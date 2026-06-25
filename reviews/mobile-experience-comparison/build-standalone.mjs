@@ -199,6 +199,7 @@ const richContentRows = [
   ['AI heading typography', 'Headings should fit within 320px content width without issues', '"State Tax Code Comparison — 2026" heading fits but uses large bold text — acceptable', '—', 'Match'],
   ['AI paragraph text wrapping', 'Text wraps naturally within message width', 'Body text wraps correctly within container', '—', 'Match'],
   ['Data table (State/Structure) scroll', 'Table should be scrollable when wider than panel', 'Has ">" chevron affordance indicating horizontal scroll works', '—', 'Match'],
+  ['Visible horizontal scrollbar on tables', 'Scrollbars should be hidden (use overflow-x: auto with scrollbar-width: none or ::-webkit-scrollbar { display: none })', 'Visible orange/tan scrollbar appears at bottom of table sections — looks out of place on mobile', 'Hide native scrollbar. Use CSS scrollbar-width: none and ::-webkit-scrollbar { display: none } while keeping overflow-x: auto for swipe gesture support', 'Gap'],
 ];
 
 const loginPageRows = [
