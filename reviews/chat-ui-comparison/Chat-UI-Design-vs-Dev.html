@@ -90,10 +90,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (chat panel, mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 24, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">12</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">15</div><div class="stat-label">Gaps</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--match)">50</div><div class="stat-label">Matches</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--verify)">25</div><div class="stat-label">To verify</div></div>
-    <div class="stat"><div class="stat-num">87</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verify)">27</div><div class="stat-label">To verify</div></div>
+    <div class="stat"><div class="stat-num">92</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = confirmed mismatch, <span style="color:var(--match)">Match</span> = confirmed correct, <span style="color:var(--verify)">Verify</span> = needs live measurement (session expired before complete audit).</p>
 </div>
@@ -759,10 +759,45 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <thead><tr><th>Property</th><th>Design (token)</th><th>Dev (measured)</th><th>Required change</th><th>Status</th></tr></thead>
       <tbody>
     <tr>
-      <td>Continue button styling</td>
-      <td class="mono">Hemlock Button / Primary component (from hemlock-library.lib.pen): specific height, padding, corner-radius, font-weight per design system</td>
-      <td class="mono">Full-width dark button with minimal styling — appears to use non-standard height, corner-radius, and possibly wrong font-weight</td>
-      <td>Replace with Hemlock Button / Primary component. Verify height (48px?), border-radius ($radius-sm = 8px?), font-weight (600?), and padding against hemlock-library.lib.pen</td>
+      <td>Continue button background</td>
+      <td class="mono">$colors-btnPrimaryBg = $color-gray-900</td>
+      <td class="mono">Appears to use a dark/black background — visually close</td>
+      <td>Verify exact color matches $color-gray-900 token</td>
+      <td class="status-verify">Verify</td>
+    </tr>
+    <tr>
+      <td>Continue button text color</td>
+      <td class="mono">$colors-btnPrimaryText = $color-gray-100 (light gray, not pure white)</td>
+      <td class="mono">Appears white — may not use the correct $color-gray-100 token</td>
+      <td>Use $colors-btnPrimaryText token for text color</td>
+      <td class="status-verify">Verify</td>
+    </tr>
+    <tr>
+      <td>Continue button corner radius</td>
+      <td class="mono">Hemlock component/Button uses $radius-xs = 12px</td>
+      <td class="mono">Button appears to have ~4-6px radius (much less rounded than design)</td>
+      <td>Change border-radius to 12px ($radius-xs) per Hemlock Button component</td>
+      <td class="status-gap">Gap</td>
+    </tr>
+    <tr>
+      <td>Continue button height</td>
+      <td class="mono">Hemlock Button height: 48px (standard touch target)</td>
+      <td class="mono">Button height appears shorter than 48px standard</td>
+      <td>Set explicit height to 48px per Hemlock Button spec</td>
+      <td class="status-gap">Gap</td>
+    </tr>
+    <tr>
+      <td>Continue button font</td>
+      <td class="mono">Heebo 16px/600 (semibold) per Hemlock Button</td>
+      <td class="mono">Font appears to be thinner weight — possibly 400/500 instead of 600</td>
+      <td>Use font-weight: 600 and Heebo 16px per Hemlock Button component</td>
+      <td class="status-gap">Gap</td>
+    </tr>
+    <tr>
+      <td>Continue button padding</td>
+      <td class="mono">Hemlock Button: 12px vertical, 24px horizontal ($spacing-xs / $spacing-md)</td>
+      <td class="mono">Button is full-width with minimal internal padding</td>
+      <td>Apply correct padding: py-3 px-6 (12px/24px) per Hemlock component</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
