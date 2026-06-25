@@ -49,6 +49,7 @@ const images = {
   devConversationTop: requireEmbed('assets/dev/conversation-top.png'),
   devConversationScrolled: requireEmbed('assets/dev/conversation-scrolled.png'),
   devEmptyState: requireEmbed('assets/dev/empty-state.png'),
+  devLoginPage: requireEmbed('assets/dev/login-page-button-scroll.png'),
 };
 
 // Design tokens from chat-ui.lib.pen
@@ -201,6 +202,13 @@ const richContentRows = [
   ['Data table (State/Structure) scroll', 'Table should be scrollable when wider than panel', 'Has ">" chevron affordance indicating horizontal scroll works', '—', 'Match'],
 ];
 
+const loginPageRows = [
+  ['Continue button styling', 'Hemlock Button / Primary component (from hemlock-library.lib.pen): specific height, padding, corner-radius, font-weight per design system', 'Full-width dark button with minimal styling — appears to use non-standard height, corner-radius, and possibly wrong font-weight', 'Replace with Hemlock Button / Primary component. Verify height (48px?), border-radius ($radius-sm = 8px?), font-weight (600?), and padding against hemlock-library.lib.pen', 'Gap'],
+  ['Page scroll behavior', 'Page should be scrollable — all content (including legal disclaimers) must be accessible', 'Page is NOT scrollable. Disclaimer text at the bottom is hard-cut ("returns, and probability projections are illustrative...") with no ability to scroll down and read the rest', 'Add overflow-y: auto or remove fixed positioning that prevents scrolling. Legal text must be fully accessible.', 'Gap'],
+  ['Continue button position', 'Button should be within the scrollable content flow OR sticky at bottom with content scrollable behind it', 'Button appears fixed at the very bottom of the viewport, trapping content above in a non-scrollable area', 'If button is sticky/fixed, the content area above must still be scrollable independently', 'Gap'],
+  ['Legal disclaimer accessibility', 'All legal/compliance text must be fully readable by users', 'Disclaimer text is cut off mid-sentence with no scroll — user cannot read full legal text', 'Critical compliance issue — must ensure users can access and read all legal disclaimers before proceeding', 'Gap'],
+];
+
 const panelStatesRows = [
   ['Empty state: centered prompt', '"Ask me any financial question..." centered in messages area', 'Verify — empty state message placement', '—', 'Verify'],
   ['Empty state: prompt chips visible', 'Suggested questions shown below prompt', 'Verify — chips visible in empty state', '—', 'Verify'],
@@ -253,7 +261,7 @@ function compareSection(id, title, rows, opts = {}) {
   </section>`;
 }
 
-const allRows = [panelShellRows, headerRows, messagesAreaRows, userMessageRows, aiMessageRows, inputFieldRows, sendButtonRows, voiceButtonRows, promptChipRows, richContentRows, panelStatesRows].flat();
+const allRows = [panelShellRows, headerRows, messagesAreaRows, userMessageRows, aiMessageRows, inputFieldRows, sendButtonRows, voiceButtonRows, promptChipRows, richContentRows, loginPageRows, panelStatesRows].flat();
 const gapCount = allRows.filter(r => r[4] === 'Gap').length;
 const matchCount = allRows.filter(r => r[4] === 'Match').length;
 const verifyCount = allRows.filter(r => r[4] === 'Verify').length;
@@ -337,8 +345,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <a href="#s9" class="nav-link">9. Prompt chips</a>
   <span class="side-nav-title t-states">Rich Content</span>
   <a href="#s10" class="nav-link">10. Rich content rendering</a>
+  <span class="side-nav-title t-modals">Login / Auth</span>
+  <a href="#s11" class="nav-link">11. Login page</a>
   <span class="side-nav-title t-states">Panel States</span>
-  <a href="#s11" class="nav-link">11. Panel states</a>
+  <a href="#s12" class="nav-link">12. Panel states</a>
   <span class="side-nav-title t-ref">Reference</span>
   <a href="#tokens" class="nav-link">Token map</a>
 </nav>
@@ -377,7 +387,9 @@ ${compareSection('s9', '9. Prompt chips (empty state)', promptChipRows, { images
 
 ${compareSection('s10', '10. Rich content rendering', richContentRows, { images: { dev: [images.devConversationScrolled, images.devConversationTop] } })}
 
-${compareSection('s11', '11. Panel states', panelStatesRows, { images: { design: images.designError } })}
+${compareSection('s11', '11. Login page', loginPageRows, { images: { dev: images.devLoginPage } })}
+
+${compareSection('s12', '12. Panel states', panelStatesRows, { images: { design: images.designError } })}
 
 <section id="tokens">
   <h2>Design Token Reference</h2>
