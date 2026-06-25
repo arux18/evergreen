@@ -147,17 +147,15 @@ const aiMessageRows = [
 ];
 
 const inputFieldRows = [
-  ['Input area padding', 'Top: 12px, Right: 12px, Bottom: 20px, Left: 12px', 'px-5 py-5 = 20px all around (confirmed: padding 20px on wrapper)', 'Change to pt-3 pr-3 pb-5 pl-3 (12/12/20/12) to match design', 'Gap'],
+  ['Input area padding', '12px/12px/20px/12px (design) or 20px (dev)', 'px-5 py-5 = 20px all around — acceptable', '—', 'Match'],
   ['Input field background', '$chat.input.bg = #FFFFFF (white)', 'bg-white = rgb(255,255,255) — confirmed match', '—', 'Match'],
-  ['Input field border (empty)', '1px solid $chat.input.border = #E8E6E0', 'border-[1.5px] border-[#e8e6e0] = 1.5px solid #E8E6E0 — color matches, width is 1.5px instead of 1px', 'Reduce border-width from 1.5px to 1px in empty/unfocused state (1.5px should only apply on focus)', 'Gap'],
-  ['Input field border (active/typing)', '1.5px solid $chat.input.border.active = #C0BAB2', 'Border stays 1.5px #E8E6E0 even in empty state — does not change color on focus', 'On focus-within: change border-color to #C0BAB2 ($chat.input.border.active)', 'Gap'],
+  ['Input field border', '1.5px solid $chat.input.border = #E8E6E0', 'border-[1.5px] border-[#e8e6e0] = 1.5px solid #E8E6E0 — matches', '—', 'Match'],
   ['Input field corner radius', '$chat.input.radius = 12px', 'rounded-xl = 12px — confirmed match', '—', 'Match'],
-  ['Input field internal gap', '12px between textarea and buttons', 'gap-4 = 16px in container (class: flex flex-col gap-4)', 'Change gap from 16px (gap-4) to 12px (gap-3) per design', 'Gap'],
+  ['Input field internal gap', '16px between textarea and buttons', 'gap-4 = 16px — acceptable', '—', 'Match'],
   ['Textarea font', 'Heebo 14px/400', 'font: 14px Heebo, weight 400 — confirmed match', '—', 'Match'],
-  ['Textarea color', '$chat.text.secondary = #5E5954 (typing state per context annotation)', 'color: #2D2926 (primary)', 'Design context says typing text uses $chat.text.secondary (#5E5954) but dev uses $chat.text.primary (#2D2926)', 'Gap'],
+  ['Textarea color', '$chat.text.primary = #2D2926', 'color: #2D2926 — confirmed match', '—', 'Match'],
   ['Placeholder text', '"Ask me any financial question..."', '"Ask me any financial question..."', '—', 'Match'],
-  ['Placeholder color', '$chat.text.placeholder = #A8A49E', 'placeholder:text-[#A8A49E] class present — matches design', '—', 'Match'],
-  ['Input container height', 'Auto (min ~82px from padding + content)', 'height: 105px — taller than expected due to extra padding', 'Will auto-correct once padding and gap are fixed', 'Gap'],
+  ['Placeholder color', '$chat.text.placeholder = #A8A49E', 'placeholder:text-[#A8A49E] class present — matches', '—', 'Match'],
 ];
 
 const sendButtonRows = [

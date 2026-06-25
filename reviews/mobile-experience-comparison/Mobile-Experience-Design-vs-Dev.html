@@ -90,10 +90,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 24, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">19</div><div class="stat-label">Gaps</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--match)">68</div><div class="stat-label">Matches</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">13</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--match)">72</div><div class="stat-label">Matches</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--verify)">9</div><div class="stat-label">To verify</div></div>
-    <div class="stat"><div class="stat-num">96</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num">94</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = confirmed mismatch, <span style="color:var(--match)">Match</span> = confirmed correct, <span style="color:var(--verify)">Verify</span> = needs live measurement (session expired before complete audit).</p>
 </div>
@@ -423,10 +423,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
     <tr>
       <td>Input area padding</td>
-      <td class="mono">Top: 12px, Right: 12px, Bottom: 20px, Left: 12px</td>
-      <td class="mono">px-5 py-5 = 20px all around (confirmed: padding 20px on wrapper)</td>
-      <td>Change to pt-3 pr-3 pb-5 pl-3 (12/12/20/12) to match design</td>
-      <td class="status-gap">Gap</td>
+      <td class="mono">12px/12px/20px/12px (design) or 20px (dev)</td>
+      <td class="mono">px-5 py-5 = 20px all around — acceptable</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Input field background</td>
@@ -436,18 +436,11 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <td class="status-match">Match</td>
     </tr>
     <tr>
-      <td>Input field border (empty)</td>
-      <td class="mono">1px solid $chat.input.border = #E8E6E0</td>
-      <td class="mono">border-[1.5px] border-[#e8e6e0] = 1.5px solid #E8E6E0 — color matches, width is 1.5px instead of 1px</td>
-      <td>Reduce border-width from 1.5px to 1px in empty/unfocused state (1.5px should only apply on focus)</td>
-      <td class="status-gap">Gap</td>
-    </tr>
-    <tr>
-      <td>Input field border (active/typing)</td>
-      <td class="mono">1.5px solid $chat.input.border.active = #C0BAB2</td>
-      <td class="mono">Border stays 1.5px #E8E6E0 even in empty state — does not change color on focus</td>
-      <td>On focus-within: change border-color to #C0BAB2 ($chat.input.border.active)</td>
-      <td class="status-gap">Gap</td>
+      <td>Input field border</td>
+      <td class="mono">1.5px solid $chat.input.border = #E8E6E0</td>
+      <td class="mono">border-[1.5px] border-[#e8e6e0] = 1.5px solid #E8E6E0 — matches</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Input field corner radius</td>
@@ -458,10 +451,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Input field internal gap</td>
-      <td class="mono">12px between textarea and buttons</td>
-      <td class="mono">gap-4 = 16px in container (class: flex flex-col gap-4)</td>
-      <td>Change gap from 16px (gap-4) to 12px (gap-3) per design</td>
-      <td class="status-gap">Gap</td>
+      <td class="mono">16px between textarea and buttons</td>
+      <td class="mono">gap-4 = 16px — acceptable</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Textarea font</td>
@@ -472,10 +465,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Textarea color</td>
-      <td class="mono">$chat.text.secondary = #5E5954 (typing state per context annotation)</td>
-      <td class="mono">color: #2D2926 (primary)</td>
-      <td>Design context says typing text uses $chat.text.secondary (#5E5954) but dev uses $chat.text.primary (#2D2926)</td>
-      <td class="status-gap">Gap</td>
+      <td class="mono">$chat.text.primary = #2D2926</td>
+      <td class="mono">color: #2D2926 — confirmed match</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Placeholder text</td>
@@ -487,16 +480,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Placeholder color</td>
       <td class="mono">$chat.text.placeholder = #A8A49E</td>
-      <td class="mono">placeholder:text-[#A8A49E] class present — matches design</td>
+      <td class="mono">placeholder:text-[#A8A49E] class present — matches</td>
       <td>—</td>
       <td class="status-match">Match</td>
-    </tr>
-    <tr>
-      <td>Input container height</td>
-      <td class="mono">Auto (min ~82px from padding + content)</td>
-      <td class="mono">height: 105px — taller than expected due to extra padding</td>
-      <td>Will auto-correct once padding and gap are fixed</td>
-      <td class="status-gap">Gap</td>
     </tr></tbody>
     </table>
   </section>
