@@ -203,15 +203,17 @@ const richContentRows = [
 ];
 
 const loginPageRows = [
-  ['Continue button background', '$colors-btnPrimaryBg = $color-gray-900', 'Appears to use a dark/black background — visually close', 'Verify exact color matches $color-gray-900 token', 'Verify'],
-  ['Continue button text color', '$colors-btnPrimaryText = $color-gray-100 (light gray, not pure white)', 'Appears white — may not use the correct $color-gray-100 token', 'Use $colors-btnPrimaryText token for text color', 'Verify'],
-  ['Continue button corner radius', 'Hemlock component/Button uses $radius-xs = 12px', 'Button appears to have ~4-6px radius (much less rounded than design)', 'Change border-radius to 12px ($radius-xs) per Hemlock Button component', 'Gap'],
-  ['Continue button height', 'Hemlock Button height: 48px (standard touch target)', 'Button height appears shorter than 48px standard', 'Set explicit height to 48px per Hemlock Button spec', 'Gap'],
-  ['Continue button font', 'Heebo 16px/600 (semibold) per Hemlock Button', 'Font appears to be thinner weight — possibly 400/500 instead of 600', 'Use font-weight: 600 and Heebo 16px per Hemlock Button component', 'Gap'],
-  ['Continue button padding', 'Hemlock Button: 12px vertical, 24px horizontal ($spacing-xs / $spacing-md)', 'Button is full-width with minimal internal padding', 'Apply correct padding: py-3 px-6 (12px/24px) per Hemlock component', 'Gap'],
-  ['Page scroll behavior', 'Page should be scrollable — all content (including legal disclaimers) must be accessible', 'Page is NOT scrollable. Disclaimer text at the bottom is hard-cut ("returns, and probability projections are illustrative...") with no ability to scroll down and read the rest', 'Add overflow-y: auto or remove fixed positioning that prevents scrolling. Legal text must be fully accessible.', 'Gap'],
-  ['Continue button position', 'Button should be within the scrollable content flow OR sticky at bottom with content scrollable behind it', 'Button appears fixed at the very bottom of the viewport, trapping content above in a non-scrollable area', 'If button is sticky/fixed, the content area above must still be scrollable independently', 'Gap'],
-  ['Legal disclaimer accessibility', 'All legal/compliance text must be fully readable by users', 'Disclaimer text is cut off mid-sentence with no scroll — user cannot read full legal text', 'Critical compliance issue — must ensure users can access and read all legal disclaimers before proceeding', 'Gap'],
+  ['Continue button background', '$colors-btnPrimaryBg = $color-gray-900 (#0E0E0E)', 'rgb(14,14,14) = #0E0E0E — exact match', '—', 'Match'],
+  ['Continue button text color', '$colors-btnPrimaryText = $color-gray-100 (#EEEDEB)', 'rgb(238,237,235) = #EEEDEB — exact match', '—', 'Match'],
+  ['Continue button corner radius', 'Hemlock Button: pill shape ($radius-full = 9999px)', 'border-radius: 9999px — matches pill shape', '—', 'Match'],
+  ['Continue button font family', 'Heebo', '"Heebo Variable", sans-serif — correct', '—', 'Match'],
+  ['Continue button font size', '16px', '16px — correct', '—', 'Match'],
+  ['Continue button height', 'Hemlock Button: 48px (standard touch target for medium size)', 'height: 32px — 16px too short, fails WCAG touch target (44px minimum)', 'Set min-height: 48px on the button. Current 32px fails accessibility touch target guidelines.', 'Gap'],
+  ['Continue button font weight', 'Hemlock Button: 600 (semibold)', 'font-weight: 400 (regular) — text appears too thin', 'Change font-weight to 600 per Hemlock Button component spec', 'Gap'],
+  ['Continue button padding', 'Hemlock Button: 12px top/bottom, 24px left/right ($spacing-xs / $spacing-md)', 'padding: 5px 16px — undersized vertical padding causes the 32px height', 'Change to padding: 12px 24px per Hemlock Button spec (this will also fix height)', 'Gap'],
+  ['Page scroll behavior', 'Page must be scrollable — all content including legal disclaimers must be accessible', 'overflow: hidden on html, body, AND parent container div. Form content is 1096px but viewport is 907px — 189px of content completely inaccessible', 'Remove overflow: hidden from html/body/container. Allow natural page scrolling.', 'Gap'],
+  ['Continue button position (fixed)', 'Button should be in content flow or sticky with scrollable content behind it', 'Button parent uses position: fixed; bottom: 0 (class: "fixed bottom-0 left-0 right-0 z-1 p-lg bg-white"). Content behind it cannot scroll.', 'Either make content area scrollable with padding-bottom for fixed button, or make button position: sticky/relative within scrollable flow', 'Gap'],
+  ['Legal disclaimer accessibility', 'All legal/compliance text must be fully readable by users', 'Disclaimer text ("Nothing herein should be construed as an offer, recommendation, or solicitation...") starts rendering but is clipped by overflow:hidden. User cannot scroll to read full text.', 'Critical compliance issue — remove overflow:hidden, add scroll capability. Legal disclaimers must be fully accessible before user clicks Continue.', 'Gap'],
 ];
 
 const panelStatesRows = [
