@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chat UI — Design vs Dev Comparison</title>
+<title>Mobile Experience — Design vs Dev Comparison</title>
 <style>
 :root { --sidebar-w: 200px; --gap: #d32f2f; --match: #2e7d32; --verify: #f57c00; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -85,15 +85,15 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
 </nav>
 
 <div class="overview">
-  <h1>Chat UI — Design vs Dev Comparison</h1>
-  <p><strong>Design source:</strong> <code>pencil/design-system/complete/chat-ui.lib.pen</code></p>
-  <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (chat panel, mobile 390px viewport)</p>
+  <h1>Mobile Experience — Design vs Dev Comparison</h1>
+  <p><strong>Design sources:</strong> <code>pencil/design-system/complete/chat-ui.lib.pen</code> + <code>pencil/design-system/in-progress/hemlock-library.lib.pen</code></p>
+  <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 24, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">14</div><div class="stat-label">Gaps</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--match)">55</div><div class="stat-label">Matches</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--verify)">25</div><div class="stat-label">To verify</div></div>
-    <div class="stat"><div class="stat-num">94</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">19</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--match)">68</div><div class="stat-label">Matches</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verify)">9</div><div class="stat-label">To verify</div></div>
+    <div class="stat"><div class="stat-num">96</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = confirmed mismatch, <span style="color:var(--match)">Match</span> = confirmed correct, <span style="color:var(--verify)">Verify</span> = needs live measurement (session expired before complete audit).</p>
 </div>
@@ -261,9 +261,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Messages layout</td>
       <td class="mono">vertical, justify: end (messages anchor to bottom)</td>
-      <td class="mono">flex-col (copilotKitMessagesContainer)</td>
-      <td>Design uses justify:end to push messages to bottom of scroll area</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">flex-col with justify-end in copilotKitMessagesContainer — confirmed</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Messages scroll</td>
@@ -406,10 +406,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>AI message margin-bottom</td>
-      <td class="mono">8px (gap handled by container gap 14px OR margin)</td>
-      <td class="mono">margin: 0 0 8px</td>
-      <td>Container gap is 14px but individual messages have 8px margin — combined spacing may differ from design 14px gap</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">14px (from container gap)</td>
+      <td class="mono">margin: 0 0 8px — individual message margin is 8px, not 14px</td>
+      <td>Spacing between messages is 8px instead of design 14px gap. Increase margin-bottom or rely on container gap.</td>
+      <td class="status-gap">Gap</td>
     </tr></tbody>
     </table>
   </section>
@@ -424,49 +424,49 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Input area padding</td>
       <td class="mono">Top: 12px, Right: 12px, Bottom: 20px, Left: 12px</td>
-      <td class="mono">px-5 py-5 = 20px all around</td>
+      <td class="mono">px-5 py-5 = 20px all around (confirmed: padding 20px on wrapper)</td>
       <td>Change to pt-3 pr-3 pb-5 pl-3 (12/12/20/12) to match design</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Input field background</td>
       <td class="mono">$chat.input.bg = #FFFFFF (white)</td>
-      <td class="mono">Verify — need to measure input container wrapper bg</td>
-      <td>If not white, add bg-white to input container</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">bg-white = rgb(255,255,255) — confirmed match</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Input field border (empty)</td>
       <td class="mono">1px solid $chat.input.border = #E8E6E0</td>
-      <td class="mono">Verify — need to measure input container wrapper border</td>
-      <td>If missing, add border border-[#E8E6E0]</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">border-[1.5px] border-[#e8e6e0] = 1.5px solid #E8E6E0 — color matches, width is 1.5px instead of 1px</td>
+      <td>Reduce border-width from 1.5px to 1px in empty/unfocused state (1.5px should only apply on focus)</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Input field border (active/typing)</td>
       <td class="mono">1.5px solid $chat.input.border.active = #C0BAB2</td>
-      <td class="mono">Verify — need to measure focus state border</td>
-      <td>If not thickening on focus, add focus-within:border-[1.5px] focus-within:border-[#C0BAB2]</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">Border stays 1.5px #E8E6E0 even in empty state — does not change color on focus</td>
+      <td>On focus-within: change border-color to #C0BAB2 ($chat.input.border.active)</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Input field corner radius</td>
       <td class="mono">$chat.input.radius = 12px</td>
-      <td class="mono">Verify — need to measure input container wrapper radius</td>
-      <td>If not 12px, add rounded-xl to input container</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">rounded-xl = 12px — confirmed match</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Input field internal gap</td>
       <td class="mono">12px between textarea and buttons</td>
-      <td class="mono">Verify — need to measure</td>
-      <td>—</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">gap-4 = 16px in container (class: flex flex-col gap-4)</td>
+      <td>Change gap from 16px (gap-4) to 12px (gap-3) per design</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Textarea font</td>
       <td class="mono">Heebo 14px/400</td>
-      <td class="mono">font: 14px Heebo, weight 400</td>
+      <td class="mono">font: 14px Heebo, weight 400 — confirmed match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
@@ -487,16 +487,16 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Placeholder color</td>
       <td class="mono">$chat.text.placeholder = #A8A49E</td>
-      <td class="mono">Verify — need to check computed placeholder color</td>
-      <td>If not #A8A49E, update placeholder:text-[#A8A49E]</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">placeholder:text-[#A8A49E] class present — matches design</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
-      <td>Input area top border (empty state)</td>
-      <td class="mono">0.5px solid $chat.divider = #E8E6E0</td>
-      <td class="mono">Verify — observed 0px in typing state (correct per design: disabled in typing state)</td>
-      <td>—</td>
-      <td class="status-verify">Verify</td>
+      <td>Input container height</td>
+      <td class="mono">Auto (min ~82px from padding + content)</td>
+      <td class="mono">height: 105px — taller than expected due to extra padding</td>
+      <td>Will auto-correct once padding and gap are fixed</td>
+      <td class="status-gap">Gap</td>
     </tr></tbody>
     </table>
   </section>
@@ -511,56 +511,56 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Send button size</td>
       <td class="mono">34×34px (circular)</td>
-      <td class="mono">w: 34px, h: 34px</td>
+      <td class="mono">w: 34px, h: 34px — confirmed match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Send button shape</td>
       <td class="mono">Circle (border-radius: 50%)</td>
-      <td class="mono">rounded-full = 9999px</td>
+      <td class="mono">rounded-full = 9999px — confirmed match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Send button bg (enabled)</td>
       <td class="mono">$chat.send.bg = #3C3C3C</td>
-      <td class="mono">Verify — need to test with text entered</td>
+      <td class="mono">Verify — need to test with text entered (send button only enables when text is typed)</td>
       <td>If not #3C3C3C, update bg to bg-[#3C3C3C]</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Send button bg (disabled)</td>
       <td class="mono">$chat.send.bg.disabled = #D4D1CA</td>
-      <td class="mono">bg: rgb(227,223,214) = #E3DFD6</td>
+      <td class="mono">bg: rgb(227,223,214) = #E3DFD6 — wrong token, too light</td>
       <td>Change disabled bg from #E3DFD6 to #D4D1CA ($chat.send.bg.disabled)</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Send button bg (hover)</td>
       <td class="mono">$chat.send.bg.hover = #4F4F4F</td>
-      <td class="mono">Verify — need to test hover state</td>
+      <td class="mono">Verify — requires enabled state + hover (cannot test in empty panel)</td>
       <td>If not #4F4F4F, update hover:bg-[#4F4F4F]</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Send button bg (pressed)</td>
       <td class="mono">$chat.send.bg.pressed = #2A2A2A</td>
-      <td class="mono">Verify — need to test active state</td>
+      <td class="mono">Verify — requires enabled state + click (cannot test in empty panel)</td>
       <td>If not #2A2A2A, update active:bg-[#2A2A2A]</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Send button icon color</td>
       <td class="mono">$chat.send.icon = #FFFFFF</td>
-      <td class="mono">color: rgb(255,255,255) = #FFFFFF</td>
+      <td class="mono">color: rgb(255,255,255) = #FFFFFF — confirmed match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Send button border</td>
       <td class="mono">None</td>
-      <td class="mono">border: 0px none</td>
+      <td class="mono">border: 0px none — confirmed match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr></tbody>
@@ -577,49 +577,49 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Voice button size</td>
       <td class="mono">34×34px (circular)</td>
-      <td class="mono">w: 34px, h: 34px</td>
+      <td class="mono">w: 34px, h: 34px — confirmed match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Voice button shape</td>
       <td class="mono">Circle (border-radius: 50%)</td>
-      <td class="mono">rounded-full = 9999px</td>
+      <td class="mono">rounded-full = 9999px — confirmed match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Voice button bg (default)</td>
       <td class="mono">Transparent</td>
-      <td class="mono">bg: transparent</td>
+      <td class="mono">bg: rgba(0,0,0,0) = transparent — confirmed match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Voice button border</td>
       <td class="mono">1px solid $chat.border = #DCD8CB</td>
-      <td class="mono">border: 1px solid rgb(220,216,203) = #DCD8CB</td>
+      <td class="mono">border: 1px solid rgb(220,216,203) = #DCD8CB — confirmed match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Voice button icon color</td>
       <td class="mono">$chat.icon = #5E5954</td>
-      <td class="mono">color: rgb(94,89,84) = #5E5954</td>
+      <td class="mono">color: rgb(94,89,84) = #5E5954 — confirmed match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Voice button active bg</td>
       <td class="mono">$chat.voice.active.bg = #3A6AF8</td>
-      <td class="mono">Verify — need to test recording state</td>
+      <td class="mono">Verify — requires triggering recording state (microphone permission)</td>
       <td>—</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Voice button active icon</td>
       <td class="mono">$chat.voice.active.icon = #FFFFFF</td>
-      <td class="mono">Verify — need to test recording state</td>
+      <td class="mono">Verify — requires triggering recording state (microphone permission)</td>
       <td>—</td>
       <td class="status-verify">Verify</td>
     </tr></tbody>
@@ -636,49 +636,56 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Prompt chip background</td>
       <td class="mono">$chat.chip.bg → $nav.bg = #F7F5F0</td>
-      <td class="mono">Verify — need to measure in empty state</td>
+      <td class="mono">bg: rgb(247,245,240) = #F7F5F0 — confirmed match</td>
       <td>—</td>
-      <td class="status-verify">Verify</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip border</td>
       <td class="mono">1px solid $chat.chip.border = #DCD8CB</td>
-      <td class="mono">Verify — need to measure in empty state</td>
+      <td class="mono">border: 1px solid rgb(220,216,203) = #DCD8CB — confirmed match</td>
       <td>—</td>
-      <td class="status-verify">Verify</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip corner radius</td>
       <td class="mono">$chat.chip.radius = 24px (pill shape)</td>
-      <td class="mono">Verify — need to measure in empty state</td>
+      <td class="mono">border-radius: 24px — confirmed match</td>
       <td>—</td>
-      <td class="status-verify">Verify</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip font</td>
       <td class="mono">Heebo 14px/400</td>
-      <td class="mono">Verify — need to measure in empty state</td>
+      <td class="mono">font: Heebo 14px, weight 400 — confirmed match</td>
       <td>—</td>
-      <td class="status-verify">Verify</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip color</td>
       <td class="mono">$chat.text.secondary = #5E5954</td>
-      <td class="mono">Verify — need to measure in empty state</td>
+      <td class="mono">color: rgb(94,89,84) = #5E5954 — confirmed match</td>
       <td>—</td>
-      <td class="status-verify">Verify</td>
+      <td class="status-match">Match</td>
+    </tr>
+    <tr>
+      <td>Prompt chip padding</td>
+      <td class="mono">12px 16px (from measured component)</td>
+      <td class="mono">padding: 12px 16px — confirmed match</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip hover bg</td>
       <td class="mono">$chat.chip.hover.bg → $nav.hover.bg = #EDEAE3</td>
-      <td class="mono">Verify — need to test hover state</td>
+      <td class="mono">Verify — hover states require mouse interaction testing</td>
       <td>—</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Prompt chip pressed bg</td>
       <td class="mono">$chat.chip.pressed.bg → $nav.pressed.bg = #E3DFD6</td>
-      <td class="mono">Verify — need to test active state</td>
+      <td class="mono">Verify — active states require click interaction testing</td>
       <td>—</td>
       <td class="status-verify">Verify</td>
     </tr></tbody>
@@ -848,28 +855,35 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Empty state: centered prompt</td>
       <td class="mono">"Ask me any financial question..." centered in messages area</td>
-      <td class="mono">Verify — empty state message placement</td>
+      <td class="mono">Confirmed — Noto Serif 20px/400, color #2D2926, vertically centered</td>
       <td>—</td>
-      <td class="status-verify">Verify</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Empty state: prompt chips visible</td>
-      <td class="mono">Suggested questions shown below prompt</td>
-      <td class="mono">Verify — chips visible in empty state</td>
+      <td class="mono">Suggested questions shown below centered prompt text</td>
+      <td class="mono">Confirmed — chip "What's a donor-advised fund?" visible below prompt</td>
       <td>—</td>
-      <td class="status-verify">Verify</td>
+      <td class="status-match">Match</td>
+    </tr>
+    <tr>
+      <td>Empty state prompt font</td>
+      <td class="mono">Noto Serif 20px/400, color $chat.text.primary</td>
+      <td class="mono">Noto Serif 20px/400, color rgb(45,41,38) = #2D2926 — confirmed match</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Error state: error bubble</td>
       <td class="mono">Blue-tinted bubble with error message</td>
-      <td class="mono">Verify — need to trigger error state</td>
+      <td class="mono">Verify — requires triggering error state (network disconnect)</td>
       <td>—</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Thinking state: animated indicator</td>
       <td class="mono">Three pulsing dots in AI message bubble</td>
-      <td class="mono">Verify — need to trigger thinking state</td>
+      <td class="mono">Verify — requires triggering thinking state (send a message)</td>
       <td>—</td>
       <td class="status-verify">Verify</td>
     </tr></tbody>

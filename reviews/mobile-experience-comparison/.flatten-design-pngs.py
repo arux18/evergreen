@@ -1,6 +1,6 @@
 from pathlib import Path
 from PIL import Image
-for p in Path("/Users/amanda/Evergreen Cursor Project/design-specs/reviews/chat-ui-comparison/assets/design").glob("*.png"):
+for p in Path("/Users/amanda/Evergreen Cursor Project/design-specs/reviews/mobile-experience-comparison/assets/design").glob("*.png"):
     img = Image.open(p).convert("RGBA")
     white = Image.new("RGBA", img.size, (255, 255, 255, 255))
     white.paste(img, mask=img.split()[3])

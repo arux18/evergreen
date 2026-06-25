@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 
-const dir = '/Users/amanda/Evergreen Cursor Project/design-specs/reviews/chat-ui-comparison';
+const dir = '/Users/amanda/Evergreen Cursor Project/design-specs/reviews/mobile-experience-comparison';
 
 function flattenDesignPngs() {
   const designDir = path.join(dir, 'assets/design');
@@ -119,7 +119,7 @@ const headerRows = [
 const messagesAreaRows = [
   ['Messages container gap', '14px', 'gap: 14px (copilotKitMessagesContainer)', '—', 'Match'],
   ['Messages container padding', '16px vertical, 20px horizontal', 'padding: 16px 20px', '—', 'Match'],
-  ['Messages layout', 'vertical, justify: end (messages anchor to bottom)', 'flex-col (copilotKitMessagesContainer)', 'Design uses justify:end to push messages to bottom of scroll area', 'Verify'],
+  ['Messages layout', 'vertical, justify: end (messages anchor to bottom)', 'flex-col with justify-end in copilotKitMessagesContainer — confirmed', '—', 'Match'],
   ['Messages scroll', 'Scrollable area between header and input', 'copilotKitMessages with overflow-y-auto', '—', 'Match'],
 ];
 
@@ -143,52 +143,53 @@ const aiMessageRows = [
   ['AI message color', '$chat.text.primary = #2D2926', 'color: rgb(45,41,38) = #2D2926', '—', 'Match'],
   ['AI message line-height', '1.6 (22.4px at 14px)', 'line-height: 22.4px (1.6×14)', '—', 'Match'],
   ['AI message padding', '0px (no bubble padding)', 'padding: 0px', '—', 'Match'],
-  ['AI message margin-bottom', '8px (gap handled by container gap 14px OR margin)', 'margin: 0 0 8px', 'Container gap is 14px but individual messages have 8px margin — combined spacing may differ from design 14px gap', 'Verify'],
+  ['AI message margin-bottom', '14px (from container gap)', 'margin: 0 0 8px — individual message margin is 8px, not 14px', 'Spacing between messages is 8px instead of design 14px gap. Increase margin-bottom or rely on container gap.', 'Gap'],
 ];
 
 const inputFieldRows = [
-  ['Input area padding', 'Top: 12px, Right: 12px, Bottom: 20px, Left: 12px', 'px-5 py-5 = 20px all around', 'Change to pt-3 pr-3 pb-5 pl-3 (12/12/20/12) to match design', 'Gap'],
-  ['Input field background', '$chat.input.bg = #FFFFFF (white)', 'Verify — need to measure input container wrapper bg', 'If not white, add bg-white to input container', 'Verify'],
-  ['Input field border (empty)', '1px solid $chat.input.border = #E8E6E0', 'Verify — need to measure input container wrapper border', 'If missing, add border border-[#E8E6E0]', 'Verify'],
-  ['Input field border (active/typing)', '1.5px solid $chat.input.border.active = #C0BAB2', 'Verify — need to measure focus state border', 'If not thickening on focus, add focus-within:border-[1.5px] focus-within:border-[#C0BAB2]', 'Verify'],
-  ['Input field corner radius', '$chat.input.radius = 12px', 'Verify — need to measure input container wrapper radius', 'If not 12px, add rounded-xl to input container', 'Verify'],
-  ['Input field internal gap', '12px between textarea and buttons', 'Verify — need to measure', '—', 'Verify'],
-  ['Textarea font', 'Heebo 14px/400', 'font: 14px Heebo, weight 400', '—', 'Match'],
+  ['Input area padding', 'Top: 12px, Right: 12px, Bottom: 20px, Left: 12px', 'px-5 py-5 = 20px all around (confirmed: padding 20px on wrapper)', 'Change to pt-3 pr-3 pb-5 pl-3 (12/12/20/12) to match design', 'Gap'],
+  ['Input field background', '$chat.input.bg = #FFFFFF (white)', 'bg-white = rgb(255,255,255) — confirmed match', '—', 'Match'],
+  ['Input field border (empty)', '1px solid $chat.input.border = #E8E6E0', 'border-[1.5px] border-[#e8e6e0] = 1.5px solid #E8E6E0 — color matches, width is 1.5px instead of 1px', 'Reduce border-width from 1.5px to 1px in empty/unfocused state (1.5px should only apply on focus)', 'Gap'],
+  ['Input field border (active/typing)', '1.5px solid $chat.input.border.active = #C0BAB2', 'Border stays 1.5px #E8E6E0 even in empty state — does not change color on focus', 'On focus-within: change border-color to #C0BAB2 ($chat.input.border.active)', 'Gap'],
+  ['Input field corner radius', '$chat.input.radius = 12px', 'rounded-xl = 12px — confirmed match', '—', 'Match'],
+  ['Input field internal gap', '12px between textarea and buttons', 'gap-4 = 16px in container (class: flex flex-col gap-4)', 'Change gap from 16px (gap-4) to 12px (gap-3) per design', 'Gap'],
+  ['Textarea font', 'Heebo 14px/400', 'font: 14px Heebo, weight 400 — confirmed match', '—', 'Match'],
   ['Textarea color', '$chat.text.secondary = #5E5954 (typing state per context annotation)', 'color: #2D2926 (primary)', 'Design context says typing text uses $chat.text.secondary (#5E5954) but dev uses $chat.text.primary (#2D2926)', 'Gap'],
   ['Placeholder text', '"Ask me any financial question..."', '"Ask me any financial question..."', '—', 'Match'],
-  ['Placeholder color', '$chat.text.placeholder = #A8A49E', 'Verify — need to check computed placeholder color', 'If not #A8A49E, update placeholder:text-[#A8A49E]', 'Verify'],
-  ['Input area top border (empty state)', '0.5px solid $chat.divider = #E8E6E0', 'Verify — observed 0px in typing state (correct per design: disabled in typing state)', '—', 'Verify'],
+  ['Placeholder color', '$chat.text.placeholder = #A8A49E', 'placeholder:text-[#A8A49E] class present — matches design', '—', 'Match'],
+  ['Input container height', 'Auto (min ~82px from padding + content)', 'height: 105px — taller than expected due to extra padding', 'Will auto-correct once padding and gap are fixed', 'Gap'],
 ];
 
 const sendButtonRows = [
-  ['Send button size', '34×34px (circular)', 'w: 34px, h: 34px', '—', 'Match'],
-  ['Send button shape', 'Circle (border-radius: 50%)', 'rounded-full = 9999px', '—', 'Match'],
-  ['Send button bg (enabled)', '$chat.send.bg = #3C3C3C', 'Verify — need to test with text entered', 'If not #3C3C3C, update bg to bg-[#3C3C3C]', 'Verify'],
-  ['Send button bg (disabled)', '$chat.send.bg.disabled = #D4D1CA', 'bg: rgb(227,223,214) = #E3DFD6', 'Change disabled bg from #E3DFD6 to #D4D1CA ($chat.send.bg.disabled)', 'Gap'],
-  ['Send button bg (hover)', '$chat.send.bg.hover = #4F4F4F', 'Verify — need to test hover state', 'If not #4F4F4F, update hover:bg-[#4F4F4F]', 'Verify'],
-  ['Send button bg (pressed)', '$chat.send.bg.pressed = #2A2A2A', 'Verify — need to test active state', 'If not #2A2A2A, update active:bg-[#2A2A2A]', 'Verify'],
-  ['Send button icon color', '$chat.send.icon = #FFFFFF', 'color: rgb(255,255,255) = #FFFFFF', '—', 'Match'],
-  ['Send button border', 'None', 'border: 0px none', '—', 'Match'],
+  ['Send button size', '34×34px (circular)', 'w: 34px, h: 34px — confirmed match', '—', 'Match'],
+  ['Send button shape', 'Circle (border-radius: 50%)', 'rounded-full = 9999px — confirmed match', '—', 'Match'],
+  ['Send button bg (enabled)', '$chat.send.bg = #3C3C3C', 'Verify — need to test with text entered (send button only enables when text is typed)', 'If not #3C3C3C, update bg to bg-[#3C3C3C]', 'Verify'],
+  ['Send button bg (disabled)', '$chat.send.bg.disabled = #D4D1CA', 'bg: rgb(227,223,214) = #E3DFD6 — wrong token, too light', 'Change disabled bg from #E3DFD6 to #D4D1CA ($chat.send.bg.disabled)', 'Gap'],
+  ['Send button bg (hover)', '$chat.send.bg.hover = #4F4F4F', 'Verify — requires enabled state + hover (cannot test in empty panel)', 'If not #4F4F4F, update hover:bg-[#4F4F4F]', 'Verify'],
+  ['Send button bg (pressed)', '$chat.send.bg.pressed = #2A2A2A', 'Verify — requires enabled state + click (cannot test in empty panel)', 'If not #2A2A2A, update active:bg-[#2A2A2A]', 'Verify'],
+  ['Send button icon color', '$chat.send.icon = #FFFFFF', 'color: rgb(255,255,255) = #FFFFFF — confirmed match', '—', 'Match'],
+  ['Send button border', 'None', 'border: 0px none — confirmed match', '—', 'Match'],
 ];
 
 const voiceButtonRows = [
-  ['Voice button size', '34×34px (circular)', 'w: 34px, h: 34px', '—', 'Match'],
-  ['Voice button shape', 'Circle (border-radius: 50%)', 'rounded-full = 9999px', '—', 'Match'],
-  ['Voice button bg (default)', 'Transparent', 'bg: transparent', '—', 'Match'],
-  ['Voice button border', '1px solid $chat.border = #DCD8CB', 'border: 1px solid rgb(220,216,203) = #DCD8CB', '—', 'Match'],
-  ['Voice button icon color', '$chat.icon = #5E5954', 'color: rgb(94,89,84) = #5E5954', '—', 'Match'],
-  ['Voice button active bg', '$chat.voice.active.bg = #3A6AF8', 'Verify — need to test recording state', '—', 'Verify'],
-  ['Voice button active icon', '$chat.voice.active.icon = #FFFFFF', 'Verify — need to test recording state', '—', 'Verify'],
+  ['Voice button size', '34×34px (circular)', 'w: 34px, h: 34px — confirmed match', '—', 'Match'],
+  ['Voice button shape', 'Circle (border-radius: 50%)', 'rounded-full = 9999px — confirmed match', '—', 'Match'],
+  ['Voice button bg (default)', 'Transparent', 'bg: rgba(0,0,0,0) = transparent — confirmed match', '—', 'Match'],
+  ['Voice button border', '1px solid $chat.border = #DCD8CB', 'border: 1px solid rgb(220,216,203) = #DCD8CB — confirmed match', '—', 'Match'],
+  ['Voice button icon color', '$chat.icon = #5E5954', 'color: rgb(94,89,84) = #5E5954 — confirmed match', '—', 'Match'],
+  ['Voice button active bg', '$chat.voice.active.bg = #3A6AF8', 'Verify — requires triggering recording state (microphone permission)', '—', 'Verify'],
+  ['Voice button active icon', '$chat.voice.active.icon = #FFFFFF', 'Verify — requires triggering recording state (microphone permission)', '—', 'Verify'],
 ];
 
 const promptChipRows = [
-  ['Prompt chip background', '$chat.chip.bg → $nav.bg = #F7F5F0', 'Verify — need to measure in empty state', '—', 'Verify'],
-  ['Prompt chip border', '1px solid $chat.chip.border = #DCD8CB', 'Verify — need to measure in empty state', '—', 'Verify'],
-  ['Prompt chip corner radius', '$chat.chip.radius = 24px (pill shape)', 'Verify — need to measure in empty state', '—', 'Verify'],
-  ['Prompt chip font', 'Heebo 14px/400', 'Verify — need to measure in empty state', '—', 'Verify'],
-  ['Prompt chip color', '$chat.text.secondary = #5E5954', 'Verify — need to measure in empty state', '—', 'Verify'],
-  ['Prompt chip hover bg', '$chat.chip.hover.bg → $nav.hover.bg = #EDEAE3', 'Verify — need to test hover state', '—', 'Verify'],
-  ['Prompt chip pressed bg', '$chat.chip.pressed.bg → $nav.pressed.bg = #E3DFD6', 'Verify — need to test active state', '—', 'Verify'],
+  ['Prompt chip background', '$chat.chip.bg → $nav.bg = #F7F5F0', 'bg: rgb(247,245,240) = #F7F5F0 — confirmed match', '—', 'Match'],
+  ['Prompt chip border', '1px solid $chat.chip.border = #DCD8CB', 'border: 1px solid rgb(220,216,203) = #DCD8CB — confirmed match', '—', 'Match'],
+  ['Prompt chip corner radius', '$chat.chip.radius = 24px (pill shape)', 'border-radius: 24px — confirmed match', '—', 'Match'],
+  ['Prompt chip font', 'Heebo 14px/400', 'font: Heebo 14px, weight 400 — confirmed match', '—', 'Match'],
+  ['Prompt chip color', '$chat.text.secondary = #5E5954', 'color: rgb(94,89,84) = #5E5954 — confirmed match', '—', 'Match'],
+  ['Prompt chip padding', '12px 16px (from measured component)', 'padding: 12px 16px — confirmed match', '—', 'Match'],
+  ['Prompt chip hover bg', '$chat.chip.hover.bg → $nav.hover.bg = #EDEAE3', 'Verify — hover states require mouse interaction testing', '—', 'Verify'],
+  ['Prompt chip pressed bg', '$chat.chip.pressed.bg → $nav.pressed.bg = #E3DFD6', 'Verify — active states require click interaction testing', '—', 'Verify'],
 ];
 
 const richContentRows = [
@@ -217,10 +218,11 @@ const loginPageRows = [
 ];
 
 const panelStatesRows = [
-  ['Empty state: centered prompt', '"Ask me any financial question..." centered in messages area', 'Verify — empty state message placement', '—', 'Verify'],
-  ['Empty state: prompt chips visible', 'Suggested questions shown below prompt', 'Verify — chips visible in empty state', '—', 'Verify'],
-  ['Error state: error bubble', 'Blue-tinted bubble with error message', 'Verify — need to trigger error state', '—', 'Verify'],
-  ['Thinking state: animated indicator', 'Three pulsing dots in AI message bubble', 'Verify — need to trigger thinking state', '—', 'Verify'],
+  ['Empty state: centered prompt', '"Ask me any financial question..." centered in messages area', 'Confirmed — Noto Serif 20px/400, color #2D2926, vertically centered', '—', 'Match'],
+  ['Empty state: prompt chips visible', 'Suggested questions shown below centered prompt text', 'Confirmed — chip "What\'s a donor-advised fund?" visible below prompt', '—', 'Match'],
+  ['Empty state prompt font', 'Noto Serif 20px/400, color $chat.text.primary', 'Noto Serif 20px/400, color rgb(45,41,38) = #2D2926 — confirmed match', '—', 'Match'],
+  ['Error state: error bubble', 'Blue-tinted bubble with error message', 'Verify — requires triggering error state (network disconnect)', '—', 'Verify'],
+  ['Thinking state: animated indicator', 'Three pulsing dots in AI message bubble', 'Verify — requires triggering thinking state (send a message)', '—', 'Verify'],
 ];
 
 // ------- Build HTML -------
@@ -279,7 +281,7 @@ const html = `<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chat UI — Design vs Dev Comparison</title>
+<title>Mobile Experience — Design vs Dev Comparison</title>
 <style>
 :root { --sidebar-w: 200px; --gap: #d32f2f; --match: #2e7d32; --verify: #f57c00; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -361,9 +363,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
 </nav>
 
 <div class="overview">
-  <h1>Chat UI — Design vs Dev Comparison</h1>
-  <p><strong>Design source:</strong> <code>pencil/design-system/complete/chat-ui.lib.pen</code></p>
-  <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (chat panel, mobile 390px viewport)</p>
+  <h1>Mobile Experience — Design vs Dev Comparison</h1>
+  <p><strong>Design sources:</strong> <code>pencil/design-system/complete/chat-ui.lib.pen</code> + <code>pencil/design-system/in-progress/hemlock-library.lib.pen</code></p>
+  <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 24, 2026</p>
   <div class="stats">
     <div class="stat"><div class="stat-num" style="color:var(--gap)">${gapCount}</div><div class="stat-label">Gaps</div></div>
@@ -409,7 +411,7 @@ ${compareSection('s12', '12. Panel states', panelStatesRows, { images: { design:
 </body>
 </html>`;
 
-const outPath = path.join(dir, 'Chat-UI-Design-vs-Dev.html');
+const outPath = path.join(dir, 'Mobile-Experience-Design-vs-Dev.html');
 fs.writeFileSync(outPath, html);
 console.log(`✓ Written: ${outPath}`);
 console.log(`  Gaps: ${gapCount} | Matches: ${matchCount} | Verify: ${verifyCount} | Total: ${totalCount}`);
