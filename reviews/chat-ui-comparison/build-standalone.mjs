@@ -190,6 +190,17 @@ const promptChipRows = [
   ['Prompt chip pressed bg', '$chat.chip.pressed.bg → $nav.pressed.bg = #E3DFD6', 'Verify — need to test active state', '—', 'Verify'],
 ];
 
+const richContentRows = [
+  ['Card grid overflow (5+ columns)', 'Design shows max 2-col data tables that fit within 320px content width', '5-column comparison cards overflow panel — "New Hampshire" column text hard-cut at right edge, no scroll affordance', 'Add horizontal scroll wrapper with overflow-x: auto to card grids, OR limit grid to max 3-4 columns and stack remaining below', 'Gap'],
+  ['Card grid overflow (4 columns)', 'Design shows compact tables fitting within panel', '4-column grid barely fits (each card ~80px) — content area is ~344px but 4 cards + gaps = tight fit', 'At 4+ columns, switch to horizontal scroll with visible scroll indicator OR use stacked/list layout', 'Gap'],
+  ['No horizontal scroll indicator on card grids', 'Design does not address wide content overflow explicitly', 'Data table (State/Structure) has a ">" chevron indicating horizontal scroll, but card grid above has NO affordance', 'Apply same scroll affordance pattern (chevron or fade) to ALL horizontally-overflowing containers', 'Gap'],
+  ['Inconsistent overflow handling', 'All content should handle overflow consistently', 'openui-table uses scroll indicator (">"); comparison cards just clip', 'Unify overflow behavior — all wide content should use the same scroll pattern with visible indicator', 'Gap'],
+  ['Text truncation without ellipsis', 'Text should never hard-clip on mobile (per chat design principles)', '"New Hampshir" is hard-clipped at container edge — no ellipsis, no fade, no indication content continues', 'Prevent hard-clip: either wrap text, show ellipsis, or add scroll container', 'Gap'],
+  ['AI heading typography', 'Headings should fit within 320px content width without issues', '"State Tax Code Comparison — 2026" heading fits but uses large bold text — acceptable', '—', 'Match'],
+  ['AI paragraph text wrapping', 'Text wraps naturally within message width', 'Body text wraps correctly within container', '—', 'Match'],
+  ['Data table (State/Structure) scroll', 'Table should be scrollable when wider than panel', 'Has ">" chevron affordance indicating horizontal scroll works', '—', 'Match'],
+];
+
 const panelStatesRows = [
   ['Empty state: centered prompt', '"Ask me any financial question..." centered in messages area', 'Verify — empty state message placement', '—', 'Verify'],
   ['Empty state: prompt chips visible', 'Suggested questions shown below prompt', 'Verify — chips visible in empty state', '—', 'Verify'],
@@ -242,9 +253,10 @@ function compareSection(id, title, rows, opts = {}) {
   </section>`;
 }
 
-const gapCount = [panelShellRows, headerRows, messagesAreaRows, userMessageRows, aiMessageRows, inputFieldRows, sendButtonRows, voiceButtonRows, promptChipRows, panelStatesRows].flat().filter(r => r[4] === 'Gap').length;
-const matchCount = [panelShellRows, headerRows, messagesAreaRows, userMessageRows, aiMessageRows, inputFieldRows, sendButtonRows, voiceButtonRows, promptChipRows, panelStatesRows].flat().filter(r => r[4] === 'Match').length;
-const verifyCount = [panelShellRows, headerRows, messagesAreaRows, userMessageRows, aiMessageRows, inputFieldRows, sendButtonRows, voiceButtonRows, promptChipRows, panelStatesRows].flat().filter(r => r[4] === 'Verify').length;
+const allRows = [panelShellRows, headerRows, messagesAreaRows, userMessageRows, aiMessageRows, inputFieldRows, sendButtonRows, voiceButtonRows, promptChipRows, richContentRows, panelStatesRows].flat();
+const gapCount = allRows.filter(r => r[4] === 'Gap').length;
+const matchCount = allRows.filter(r => r[4] === 'Match').length;
+const verifyCount = allRows.filter(r => r[4] === 'Verify').length;
 const totalCount = gapCount + matchCount + verifyCount;
 
 const html = `<!DOCTYPE html>
@@ -323,8 +335,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <a href="#s7" class="nav-link">7. Send button</a>
   <a href="#s8" class="nav-link">8. Voice button</a>
   <a href="#s9" class="nav-link">9. Prompt chips</a>
+  <span class="side-nav-title t-states">Rich Content</span>
+  <a href="#s10" class="nav-link">10. Rich content rendering</a>
   <span class="side-nav-title t-states">Panel States</span>
-  <a href="#s10" class="nav-link">10. Panel states</a>
+  <a href="#s11" class="nav-link">11. Panel states</a>
   <span class="side-nav-title t-ref">Reference</span>
   <a href="#tokens" class="nav-link">Token map</a>
 </nav>
@@ -361,7 +375,9 @@ ${compareSection('s8', '8. Voice button', voiceButtonRows)}
 
 ${compareSection('s9', '9. Prompt chips (empty state)', promptChipRows, { images: { design: images.designEmpty, dev: images.devEmptyState } })}
 
-${compareSection('s10', '10. Panel states', panelStatesRows, { images: { design: images.designError } })}
+${compareSection('s10', '10. Rich content rendering', richContentRows, { images: { dev: [images.devConversationScrolled, images.devConversationTop] } })}
+
+${compareSection('s11', '11. Panel states', panelStatesRows, { images: { design: images.designError } })}
 
 <section id="tokens">
   <h2>Design Token Reference</h2>
