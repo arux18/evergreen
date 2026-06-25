@@ -202,17 +202,18 @@ const richContentRows = [
 ];
 
 const loginPageRows = [
-  ['Continue button background', '$colors-btnPrimaryBg = $color-gray-900 (#0E0E0E)', 'rgb(14,14,14) = #0E0E0E — exact match', '—', 'Match'],
-  ['Continue button text color', '$colors-btnPrimaryText = $color-gray-100 (#EEEDEB)', 'rgb(238,237,235) = #EEEDEB — exact match', '—', 'Match'],
-  ['Continue button corner radius', 'Hemlock Button: pill shape ($radius-full = 9999px)', 'border-radius: 9999px — matches pill shape', '—', 'Match'],
-  ['Continue button font family', 'Heebo', '"Heebo Variable", sans-serif — correct', '—', 'Match'],
-  ['Continue button font size', '16px', '16px — correct', '—', 'Match'],
-  ['Continue button height', 'Hemlock Button: 48px (standard touch target for medium size)', 'height: 32px — 16px too short, fails WCAG touch target (44px minimum)', 'Set min-height: 48px on the button. Current 32px fails accessibility touch target guidelines.', 'Gap'],
-  ['Continue button font weight', 'Hemlock Button: 600 (semibold)', 'font-weight: 400 (regular) — text appears too thin', 'Change font-weight to 600 per Hemlock Button component spec', 'Gap'],
-  ['Continue button padding', 'Hemlock Button: 12px top/bottom, 24px left/right ($spacing-xs / $spacing-md)', 'padding: 5px 16px — undersized vertical padding causes the 32px height', 'Change to padding: 12px 24px per Hemlock Button spec (this will also fix height)', 'Gap'],
-  ['Page scroll behavior', 'Page must be scrollable — all content including legal disclaimers must be accessible', 'overflow: hidden on html, body, AND parent container div. Form content is 1096px but viewport is 907px — 189px of content completely inaccessible', 'Remove overflow: hidden from html/body/container. Allow natural page scrolling.', 'Gap'],
-  ['Continue button position (fixed)', 'Button should be in content flow or sticky with scrollable content behind it', 'Button parent uses position: fixed; bottom: 0 (class: "fixed bottom-0 left-0 right-0 z-1 p-lg bg-white"). Content behind it cannot scroll.', 'Either make content area scrollable with padding-bottom for fixed button, or make button position: sticky/relative within scrollable flow', 'Gap'],
-  ['Legal disclaimer accessibility', 'All legal/compliance text must be fully readable by users', 'Disclaimer text ("Nothing herein should be construed as an offer, recommendation, or solicitation...") starts rendering but is clipped by overflow:hidden. User cannot scroll to read full text.', 'Critical compliance issue — remove overflow:hidden, add scroll capability. Legal disclaimers must be fully accessible before user clicks Continue.', 'Gap'],
+  ['Continue button background', 'component/Button → $colors-btnPrimaryBg = #0E0E0E', 'rgb(14,14,14) = #0E0E0E — exact match', '—', 'Match'],
+  ['Continue button text color', 'component/Button → $colors-btnPrimaryText = #EEEDEB', 'rgb(238,237,235) = #EEEDEB — exact match', '—', 'Match'],
+  ['Continue button corner radius', 'component/Button → $radius-full = 9999px (pill)', 'border-radius: 9999px — matches', '—', 'Match'],
+  ['Continue button font family', 'component/Button → Heebo', '"Heebo Variable", sans-serif — correct', '—', 'Match'],
+  ['Continue button font size', 'component/Button → 16px', '16px — correct', '—', 'Match'],
+  ['Continue button text alignment', 'component/Button → text centered (justify-content: center, align-items: center)', 'display: flex — text appears left-aligned, not centered', 'Add justify-content: center and align-items: center to button or use text-align: center', 'Gap'],
+  ['Continue button height', 'component/Button → 48px min-height ($spacing-2xl)', 'height: 32px — 16px too short, fails WCAG touch target (44px min)', 'Set min-height: 48px. Current 32px fails accessibility touch target guidelines.', 'Gap'],
+  ['Continue button font weight', 'component/Button → font-weight: 600 (semibold)', 'font-weight: 400 (regular) — text too thin', 'Change to font-weight: 600 per component/Button spec', 'Gap'],
+  ['Continue button padding', 'component/Button → padding: 12px 24px ($spacing-xs / $spacing-md)', 'padding: 5px 16px — undersized, causes 32px height', 'Change to padding: 12px 24px per component/Button', 'Gap'],
+  ['Page scroll behavior', 'Page must be scrollable — all content including legal disclaimers must be accessible', 'overflow: hidden on html, body, AND container div. Content 1096px in 907px viewport — 189px inaccessible', 'Remove overflow: hidden. Allow natural page scrolling.', 'Gap'],
+  ['Continue button position (fixed)', 'Button in content flow or sticky with scrollable content behind', 'position: fixed; bottom: 0 (class "fixed bottom-0 left-0 right-0"). Content cannot scroll.', 'Make content area scrollable with padding-bottom, or use sticky/relative positioning', 'Gap'],
+  ['Legal disclaimer accessibility', 'All legal/compliance text must be fully readable', 'Disclaimer clipped by overflow:hidden — user cannot scroll to read full legal text', 'Critical compliance issue — legal disclaimers must be fully accessible before Continue', 'Gap'],
 ];
 
 const panelStatesRows = [
@@ -404,7 +405,7 @@ ${compareSection('s12', '12. Panel states', panelStatesRows, { images: { design:
   <dl class="token-map">
     ${Object.entries(T).map(([k, v]) => `<dt>$${k}</dt><dd>${v}</dd>`).join('\n    ')}
   </dl>
-  <h3 style="margin-top:32px">Hemlock Button Tokens <span style="font-weight:400;font-size:13px;color:#8A8680">(from hemlock-library.lib.pen)</span></h3>
+  <h3 style="margin-top:32px">Hemlock Button Tokens <span style="font-weight:400;font-size:13px;color:#8A8680">(component/Button · bMlax · hemlock-library.lib.pen)</span></h3>
   <dl class="token-map">
     <dt>$colors-btnPrimaryBg</dt><dd>$color-gray-900 → #0E0E0E</dd>
     <dt>$colors-btnPrimaryBgHover</dt><dd>$color-gray-800 → #2D2926</dd>
@@ -416,8 +417,10 @@ ${compareSection('s12', '12. Panel states', panelStatesRows, { images: { design:
     <dt>$radius-full</dt><dd>9999px (pill shape)</dd>
     <dt>$spacing-xs</dt><dd>12px (button vertical padding)</dd>
     <dt>$spacing-md</dt><dd>24px (button horizontal padding)</dd>
-    <dt>Button height (medium)</dt><dd>48px</dd>
+    <dt>Button height (medium)</dt><dd>48px min-height</dd>
     <dt>Button font</dt><dd>Heebo 16px / weight 600 (semibold)</dd>
+    <dt>Button text alignment</dt><dd>centered (justify-content: center, align-items: center)</dd>
+    <dt>Button layout</dt><dd>display: flex, flex-direction: row, gap: 8px</dd>
   </dl>
 </section>
 

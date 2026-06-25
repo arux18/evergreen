@@ -90,10 +90,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 24, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">13</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">14</div><div class="stat-label">Gaps</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--match)">72</div><div class="stat-label">Matches</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--verify)">9</div><div class="stat-label">To verify</div></div>
-    <div class="stat"><div class="stat-num">94</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num">95</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = confirmed mismatch, <span style="color:var(--match)">Match</span> = confirmed correct, <span style="color:var(--verify)">Verify</span> = needs live measurement (session expired before complete audit).</p>
 </div>
@@ -753,79 +753,86 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
     <tr>
       <td>Continue button background</td>
-      <td class="mono">$colors-btnPrimaryBg = $color-gray-900 (#0E0E0E)</td>
+      <td class="mono">component/Button → $colors-btnPrimaryBg = #0E0E0E</td>
       <td class="mono">rgb(14,14,14) = #0E0E0E — exact match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Continue button text color</td>
-      <td class="mono">$colors-btnPrimaryText = $color-gray-100 (#EEEDEB)</td>
+      <td class="mono">component/Button → $colors-btnPrimaryText = #EEEDEB</td>
       <td class="mono">rgb(238,237,235) = #EEEDEB — exact match</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Continue button corner radius</td>
-      <td class="mono">Hemlock Button: pill shape ($radius-full = 9999px)</td>
-      <td class="mono">border-radius: 9999px — matches pill shape</td>
+      <td class="mono">component/Button → $radius-full = 9999px (pill)</td>
+      <td class="mono">border-radius: 9999px — matches</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Continue button font family</td>
-      <td class="mono">Heebo</td>
+      <td class="mono">component/Button → Heebo</td>
       <td class="mono">"Heebo Variable", sans-serif — correct</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Continue button font size</td>
-      <td class="mono">16px</td>
+      <td class="mono">component/Button → 16px</td>
       <td class="mono">16px — correct</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
+      <td>Continue button text alignment</td>
+      <td class="mono">component/Button → text centered (justify-content: center, align-items: center)</td>
+      <td class="mono">display: flex — text appears left-aligned, not centered</td>
+      <td>Add justify-content: center and align-items: center to button or use text-align: center</td>
+      <td class="status-gap">Gap</td>
+    </tr>
+    <tr>
       <td>Continue button height</td>
-      <td class="mono">Hemlock Button: 48px (standard touch target for medium size)</td>
-      <td class="mono">height: 32px — 16px too short, fails WCAG touch target (44px minimum)</td>
-      <td>Set min-height: 48px on the button. Current 32px fails accessibility touch target guidelines.</td>
+      <td class="mono">component/Button → 48px min-height ($spacing-2xl)</td>
+      <td class="mono">height: 32px — 16px too short, fails WCAG touch target (44px min)</td>
+      <td>Set min-height: 48px. Current 32px fails accessibility touch target guidelines.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Continue button font weight</td>
-      <td class="mono">Hemlock Button: 600 (semibold)</td>
-      <td class="mono">font-weight: 400 (regular) — text appears too thin</td>
-      <td>Change font-weight to 600 per Hemlock Button component spec</td>
+      <td class="mono">component/Button → font-weight: 600 (semibold)</td>
+      <td class="mono">font-weight: 400 (regular) — text too thin</td>
+      <td>Change to font-weight: 600 per component/Button spec</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Continue button padding</td>
-      <td class="mono">Hemlock Button: 12px top/bottom, 24px left/right ($spacing-xs / $spacing-md)</td>
-      <td class="mono">padding: 5px 16px — undersized vertical padding causes the 32px height</td>
-      <td>Change to padding: 12px 24px per Hemlock Button spec (this will also fix height)</td>
+      <td class="mono">component/Button → padding: 12px 24px ($spacing-xs / $spacing-md)</td>
+      <td class="mono">padding: 5px 16px — undersized, causes 32px height</td>
+      <td>Change to padding: 12px 24px per component/Button</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Page scroll behavior</td>
       <td class="mono">Page must be scrollable — all content including legal disclaimers must be accessible</td>
-      <td class="mono">overflow: hidden on html, body, AND parent container div. Form content is 1096px but viewport is 907px — 189px of content completely inaccessible</td>
-      <td>Remove overflow: hidden from html/body/container. Allow natural page scrolling.</td>
+      <td class="mono">overflow: hidden on html, body, AND container div. Content 1096px in 907px viewport — 189px inaccessible</td>
+      <td>Remove overflow: hidden. Allow natural page scrolling.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Continue button position (fixed)</td>
-      <td class="mono">Button should be in content flow or sticky with scrollable content behind it</td>
-      <td class="mono">Button parent uses position: fixed; bottom: 0 (class: "fixed bottom-0 left-0 right-0 z-1 p-lg bg-white"). Content behind it cannot scroll.</td>
-      <td>Either make content area scrollable with padding-bottom for fixed button, or make button position: sticky/relative within scrollable flow</td>
+      <td class="mono">Button in content flow or sticky with scrollable content behind</td>
+      <td class="mono">position: fixed; bottom: 0 (class "fixed bottom-0 left-0 right-0"). Content cannot scroll.</td>
+      <td>Make content area scrollable with padding-bottom, or use sticky/relative positioning</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Legal disclaimer accessibility</td>
-      <td class="mono">All legal/compliance text must be fully readable by users</td>
-      <td class="mono">Disclaimer text ("Nothing herein should be construed as an offer, recommendation, or solicitation...") starts rendering but is clipped by overflow:hidden. User cannot scroll to read full text.</td>
-      <td>Critical compliance issue — remove overflow:hidden, add scroll capability. Legal disclaimers must be fully accessible before user clicks Continue.</td>
+      <td class="mono">All legal/compliance text must be fully readable</td>
+      <td class="mono">Disclaimer clipped by overflow:hidden — user cannot scroll to read full legal text</td>
+      <td>Critical compliance issue — legal disclaimers must be fully accessible before Continue</td>
       <td class="status-gap">Gap</td>
     </tr></tbody>
     </table>
@@ -916,7 +923,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <dt>$chat.voice.timer</dt><dd>#5E5954</dd>
     <dt>$chat.voice.waveform</dt><dd>#7094FB</dd>
   </dl>
-  <h3 style="margin-top:32px">Hemlock Button Tokens <span style="font-weight:400;font-size:13px;color:#8A8680">(from hemlock-library.lib.pen)</span></h3>
+  <h3 style="margin-top:32px">Hemlock Button Tokens <span style="font-weight:400;font-size:13px;color:#8A8680">(component/Button · bMlax · hemlock-library.lib.pen)</span></h3>
   <dl class="token-map">
     <dt>$colors-btnPrimaryBg</dt><dd>$color-gray-900 → #0E0E0E</dd>
     <dt>$colors-btnPrimaryBgHover</dt><dd>$color-gray-800 → #2D2926</dd>
@@ -928,8 +935,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <dt>$radius-full</dt><dd>9999px (pill shape)</dd>
     <dt>$spacing-xs</dt><dd>12px (button vertical padding)</dd>
     <dt>$spacing-md</dt><dd>24px (button horizontal padding)</dd>
-    <dt>Button height (medium)</dt><dd>48px</dd>
+    <dt>Button height (medium)</dt><dd>48px min-height</dd>
     <dt>Button font</dt><dd>Heebo 16px / weight 600 (semibold)</dd>
+    <dt>Button text alignment</dt><dd>centered (justify-content: center, align-items: center)</dd>
+    <dt>Button layout</dt><dd>display: flex, flex-direction: row, gap: 8px</dd>
   </dl>
 </section>
 
