@@ -43,7 +43,7 @@ function requireEmbed(rel) {
 }
 
 const images = {
-  designConversation: requireEmbed('assets/design/VJysN.png'),
+  designConversation: requireEmbed('assets/design/k8DxI.png'),
   designEmpty: requireEmbed('assets/design/LCYKi.png'),
   designError: requireEmbed('assets/design/EpRMp.png'),
   devConversationTop: requireEmbed('assets/dev/conversation-top.png'),
