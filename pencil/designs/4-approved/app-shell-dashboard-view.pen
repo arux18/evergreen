@@ -1,5 +1,5 @@
 {
-  "version": "2.13",
+  "version": "2.14",
   "children": [
     {
       "type": "frame",
@@ -269964,7 +269964,7 @@
           "y": 255,
           "width": 509,
           "height": 447,
-          "content": "Investments tile:\n\nDisplay the top 3 holdings by market value.\n\nFor each holding, display:\n- Security name or ticker\n- Market value"
+          "content": "Investments tile:\n\nDisplay the top 5 holdings by market value.\n\nFor each holding, display:\n- Security name or ticker\n- Market value"
         },
         {
           "type": "note",
@@ -317923,6 +317923,1083 @@
           "y": 7
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "ycWdv",
+      "x": 30262,
+      "y": 5772,
+      "name": "accountsCard",
+      "width": "fill_container(340)",
+      "fill": "#ffffff",
+      "cornerRadius": 12,
+      "stroke": {
+        "type": "color",
+        "color": "#E8E6E0",
+        "enabled": false
+      },
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#2d292629",
+        "blur": 12
+      },
+      "layout": "vertical",
+      "gap": "$y:spacing-xs",
+      "padding": "$y:spacing-md",
+      "children": [
+        {
+          "type": "frame",
+          "id": "lQbqk",
+          "name": "header",
+          "width": "fill_container",
+          "gap": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "v49IR",
+              "name": "title",
+              "fill": "$y:colors-text-header",
+              "content": "Accounts",
+              "lineHeight": 1.5,
+              "fontFamily": "Heebo",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "icon",
+              "id": "epONW",
+              "width": 14,
+              "height": 14,
+              "icon": "chevron-right",
+              "library": "lucide",
+              "fill": "$y:colors-icons-full"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "T2ZCiW",
+          "name": "netWorthSection",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": "$y:spacing-3xs",
+          "children": [
+            {
+              "type": "text",
+              "id": "EaEA3",
+              "name": "nwLabel",
+              "fill": "$y:colors-text-meta",
+              "content": "TOTAL BALANCE",
+              "lineHeight": 1.3333,
+              "fontFamily": "Heebo",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "id": "EcAej",
+              "type": "ref",
+              "ref": "y:LMwn2",
+              "x": 0,
+              "y": 20,
+              "content": "$1,169,200"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WVRWq",
+          "name": "accountList",
+          "width": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "pSjeF",
+              "name": "Schwab Brokerage",
+              "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "gap": "$y:spacing-md",
+              "padding": [
+                "$y:spacing-3xs",
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "yXfsp",
+                  "name": "Frame 10",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "PdaLK",
+                      "name": "content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "gpVl2",
+                          "name": "titleRow",
+                          "width": "fill_container",
+                          "gap": "$y:spacing-xs",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ccS0M",
+                              "name": "title",
+                              "fill": "$y:colors-text-body",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Schwab Brokerage (x4545)",
+                              "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                              "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                              "fontWeight": "normal",
+                              "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "vjWva",
+                              "x": 41,
+                              "y": 3.5,
+                              "name": "chevron",
+                              "enabled": false,
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$y:colors-text-header"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "hchxR",
+                          "x": 0,
+                          "y": 45,
+                          "name": "caption",
+                          "enabled": false,
+                          "fill": "$y:colors-text-meta",
+                          "content": "Caption",
+                          "lineHeight": 1.3333,
+                          "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "Hw8B0",
+                  "type": "ref",
+                  "ref": "y:x8zWX",
+                  "content": "$485,000",
+                  "name": "value",
+                  "textAlign": "right",
+                  "fill": "$y:colors-text-body",
+                  "fontStyle": "normal",
+                  "fontWeight": "400"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "c3a6l",
+              "name": "Schwab Brokerage",
+              "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "gap": "$y:spacing-md",
+              "padding": [
+                "$y:spacing-3xs",
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "JuQDX",
+                  "name": "Frame 10",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "r6TCJ",
+                      "name": "content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "HiEzr",
+                          "name": "titleRow",
+                          "width": "fill_container",
+                          "gap": "$y:spacing-xs",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "UiPCY",
+                              "name": "title",
+                              "fill": "$y:colors-text-body",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Schwab Brokerage (x0367)",
+                              "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                              "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                              "fontWeight": "normal",
+                              "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "TNmdh",
+                              "x": 41,
+                              "y": 3.5,
+                              "name": "chevron",
+                              "enabled": false,
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$y:colors-text-header"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "PMEfT",
+                          "x": 0,
+                          "y": 45,
+                          "name": "caption",
+                          "enabled": false,
+                          "fill": "$y:colors-text-meta",
+                          "content": "Caption",
+                          "lineHeight": 1.3333,
+                          "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "S4wwR",
+                  "type": "ref",
+                  "ref": "y:x8zWX",
+                  "content": "$485,000",
+                  "name": "value",
+                  "textAlign": "right",
+                  "fill": "$y:colors-text-body",
+                  "fontStyle": "normal",
+                  "fontWeight": "400"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "SYDXC",
+              "name": "Schwab Brokerage",
+              "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "gap": "$y:spacing-md",
+              "padding": [
+                "$y:spacing-3xs",
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "DGk6U",
+                  "name": "Frame 10",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "jvHhc",
+                      "name": "content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "iDr1O",
+                          "name": "titleRow",
+                          "width": "fill_container",
+                          "gap": "$y:spacing-xs",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "K74D9C",
+                              "name": "title",
+                              "fill": "$y:colors-text-body",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Fidelity 401(k) (x7890)",
+                              "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                              "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                              "fontWeight": "normal",
+                              "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "K1j5N",
+                              "x": 41,
+                              "y": 3.5,
+                              "name": "chevron",
+                              "enabled": false,
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$y:colors-text-header"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "ev1xm",
+                          "x": 0,
+                          "y": 45,
+                          "name": "caption",
+                          "enabled": false,
+                          "fill": "$y:colors-text-meta",
+                          "content": "Caption",
+                          "lineHeight": 1.3333,
+                          "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "DEm63",
+                  "type": "ref",
+                  "ref": "y:x8zWX",
+                  "content": "$386,000",
+                  "name": "value",
+                  "textAlign": "right",
+                  "fill": "$y:colors-text-body",
+                  "fontStyle": "normal",
+                  "fontWeight": "400"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Vv5ed",
+              "name": "Schwab Brokerage",
+              "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "gap": "$y:spacing-md",
+              "padding": [
+                "$y:spacing-3xs",
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "nHal2",
+                  "name": "Frame 10",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "YemzE",
+                      "name": "content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "hTwmT",
+                          "name": "titleRow",
+                          "width": "fill_container",
+                          "gap": "$y:spacing-xs",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "AoW5s",
+                              "name": "title",
+                              "fill": "$y:colors-text-body",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Fidelity 401(k) (x7890)",
+                              "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                              "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                              "fontWeight": "normal",
+                              "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "SUc2F",
+                              "x": 41,
+                              "y": 3.5,
+                              "name": "chevron",
+                              "enabled": false,
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$y:colors-text-header"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "e2xnzQ",
+                          "x": 0,
+                          "y": 45,
+                          "name": "caption",
+                          "enabled": false,
+                          "fill": "$y:colors-text-meta",
+                          "content": "Caption",
+                          "lineHeight": 1.3333,
+                          "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "vGcVy",
+                  "type": "ref",
+                  "ref": "y:x8zWX",
+                  "content": "$386,000",
+                  "name": "value",
+                  "textAlign": "right",
+                  "fill": "$y:colors-text-body",
+                  "fontStyle": "normal",
+                  "fontWeight": "400"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "X54ClE",
+              "name": "Schwab Brokerage",
+              "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "gap": "$y:spacing-md",
+              "padding": [
+                "$y:spacing-3xs",
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "mMkv5",
+                  "name": "Frame 10",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "o84mC3",
+                      "name": "content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "WmtEl",
+                          "name": "titleRow",
+                          "width": "fill_container",
+                          "gap": "$y:spacing-xs",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "EBDRT",
+                              "name": "title",
+                              "fill": "$y:colors-text-body",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Vanguard Roth IRA (x2321)",
+                              "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                              "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                              "fontWeight": "normal",
+                              "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "zt4k7",
+                              "x": 41,
+                              "y": 3.5,
+                              "name": "chevron",
+                              "enabled": false,
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$y:colors-text-header"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "T3ehWK",
+                          "x": 0,
+                          "y": 45,
+                          "name": "caption",
+                          "enabled": false,
+                          "fill": "$y:colors-text-meta",
+                          "content": "Caption",
+                          "lineHeight": 1.3333,
+                          "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "AgOLz",
+                  "type": "ref",
+                  "ref": "y:x8zWX",
+                  "content": "$198,000",
+                  "name": "value",
+                  "textAlign": "right",
+                  "fill": "$y:colors-text-body",
+                  "fontStyle": "normal",
+                  "fontWeight": "400"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Vhh0X",
+              "name": "Schwab Brokerage",
+              "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "gap": "$y:spacing-md",
+              "padding": [
+                "$y:spacing-3xs",
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ONnrr",
+                  "name": "Frame 10",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "aGE0K",
+                      "name": "content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "U2DxL",
+                          "name": "titleRow",
+                          "width": "fill_container",
+                          "gap": "$y:spacing-xs",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "U76DJe",
+                              "name": "title",
+                              "fill": "$y:colors-text-body",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Vanguard Roth IRA (x0275)",
+                              "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                              "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                              "fontWeight": "normal",
+                              "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "JyDDJ",
+                              "x": 41,
+                              "y": 3.5,
+                              "name": "chevron",
+                              "enabled": false,
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$y:colors-text-header"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "qOkiZ",
+                          "x": 0,
+                          "y": 45,
+                          "name": "caption",
+                          "enabled": false,
+                          "fill": "$y:colors-text-meta",
+                          "content": "Caption",
+                          "lineHeight": 1.3333,
+                          "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "rDeD2",
+                  "type": "ref",
+                  "ref": "y:x8zWX",
+                  "content": "$198,000",
+                  "name": "value",
+                  "textAlign": "right",
+                  "fill": "$y:colors-text-body",
+                  "fontStyle": "normal",
+                  "fontWeight": "400"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vj2l8",
+              "name": "Wells Fargo Mortgage",
+              "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "gap": "$y:spacing-md",
+              "padding": [
+                "$y:spacing-3xs",
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "K9CvBz",
+                  "name": "Frame 10",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "XWS78",
+                      "name": "content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "arLSi",
+                          "name": "titleRow",
+                          "width": "fill_container",
+                          "gap": "$y:spacing-xs",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "s2UzM0",
+                              "name": "title",
+                              "fill": "$y:colors-text-body",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Wells Fargo Mortgage (x7891)",
+                              "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                              "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                              "fontWeight": "normal",
+                              "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "sCyzV",
+                              "x": 41,
+                              "y": 3.5,
+                              "name": "chevron",
+                              "enabled": false,
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$y:colors-text-header"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "vJb8I",
+                          "x": 0,
+                          "y": 45,
+                          "name": "caption",
+                          "enabled": false,
+                          "fill": "$y:colors-text-meta",
+                          "content": "Caption",
+                          "lineHeight": 1.3333,
+                          "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "aGECp",
+                  "type": "ref",
+                  "ref": "y:x8zWX",
+                  "content": "$287,400",
+                  "name": "value",
+                  "textAlign": "right",
+                  "fill": "$y:colors-text-body",
+                  "fontStyle": "normal",
+                  "fontWeight": "400"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "w11aMA",
+              "name": "Wells Fargo Mortgage",
+              "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "gap": "$y:spacing-md",
+              "padding": [
+                "$y:spacing-3xs",
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "j8anIC",
+                  "name": "Frame 10",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "U5sNl",
+                      "name": "content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "epl2s",
+                          "name": "titleRow",
+                          "width": "fill_container",
+                          "gap": "$y:spacing-xs",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "QjViL",
+                              "name": "title",
+                              "fill": "$y:colors-text-body",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Wells Fargo Mortgage (x9876)",
+                              "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                              "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                              "fontWeight": "normal",
+                              "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "Qb4ot",
+                              "x": 41,
+                              "y": 3.5,
+                              "name": "chevron",
+                              "enabled": false,
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$y:colors-text-header"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "zbrcQ",
+                          "x": 0,
+                          "y": 45,
+                          "name": "caption",
+                          "enabled": false,
+                          "fill": "$y:colors-text-meta",
+                          "content": "Caption",
+                          "lineHeight": 1.3333,
+                          "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "gI8Mw",
+                  "type": "ref",
+                  "ref": "y:x8zWX",
+                  "content": "$287,400",
+                  "name": "value",
+                  "textAlign": "right",
+                  "fill": "$y:colors-text-body",
+                  "fontStyle": "normal",
+                  "fontWeight": "400"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jfYno",
+              "name": "Capital One Checking",
+              "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "gap": "$y:spacing-md",
+              "padding": [
+                "$y:spacing-3xs",
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "E91Bpf",
+                  "name": "Frame 10",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "X2ygY",
+                      "name": "content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ijvIK",
+                          "name": "titleRow",
+                          "width": "fill_container",
+                          "gap": "$y:spacing-xs",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "sTUmO",
+                              "name": "title",
+                              "fill": "$y:colors-text-body",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Capital One Checking (x9139)",
+                              "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                              "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                              "fontWeight": "normal",
+                              "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "a1VJO",
+                              "x": 41,
+                              "y": 3.5,
+                              "name": "chevron",
+                              "enabled": false,
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$y:colors-text-header"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "bqkTl",
+                          "x": 0,
+                          "y": 45,
+                          "name": "caption",
+                          "enabled": false,
+                          "fill": "$y:colors-text-meta",
+                          "content": "Caption",
+                          "lineHeight": 1.3333,
+                          "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "lXQ8P",
+                  "type": "ref",
+                  "ref": "y:x8zWX",
+                  "content": "$18,250",
+                  "name": "value",
+                  "textAlign": "right",
+                  "fill": "$y:colors-text-body",
+                  "fontStyle": "normal",
+                  "fontWeight": "400"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fCoLK",
+              "name": "Capital One Checking",
+              "context": "Generic account row molecule. Avatar media + title/chevron + subtitle + caption + MoneyText value. Use in AccountRowGroup or standalone account lists.",
+              "width": "fill_container",
+              "cornerRadius": 8,
+              "gap": "$y:spacing-md",
+              "padding": [
+                "$y:spacing-3xs",
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "lQJSH",
+                  "name": "Frame 10",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "h7olYI",
+                      "name": "content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Bnk9Z",
+                          "name": "titleRow",
+                          "width": "fill_container",
+                          "gap": "$y:spacing-xs",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Fbna2",
+                              "name": "title",
+                              "fill": "$y:colors-text-body",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Wealthfront High-Yield C... (x8764)",
+                              "fontFamily": "$y:typo-primary-sm-semibold-font-family",
+                              "fontSize": "$y:typo-primary-sm-semibold-font-size",
+                              "fontWeight": "normal",
+                              "letterSpacing": "$y:typo-primary-sm-semibold-letter-spacing"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "oH4bA",
+                              "x": 41,
+                              "y": 3.5,
+                              "name": "chevron",
+                              "enabled": false,
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "$y:colors-text-header"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "zNEDT",
+                          "x": 0,
+                          "y": 45,
+                          "name": "caption",
+                          "enabled": false,
+                          "fill": "$y:colors-text-meta",
+                          "content": "Caption",
+                          "lineHeight": 1.3333,
+                          "fontFamily": "$y:typo-primary-sm-regular-font-family",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": "$y:typo-primary-sm-regular-letter-spacing"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "erEw7",
+                  "type": "ref",
+                  "ref": "y:x8zWX",
+                  "content": "$18,250",
+                  "name": "value",
+                  "textAlign": "right",
+                  "fill": "$y:colors-text-body",
+                  "fontStyle": "normal",
+                  "fontWeight": "400"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "themes": {
@@ -318903,6 +319980,7 @@
   "imports": {
     "y": "../../design-system/in-progress/hemlock-library.lib.pen"
   },
+  "fileToken": "57dab7a1-1572-4556-8ef2-60ee993cd15d",
   "fonts": [
     {
       "name": "Cormorant Garamond",
