@@ -202,6 +202,11 @@ const richContentRows = [
   ['Visible horizontal scrollbar on tables', 'Scrollbars should be hidden (use overflow-x: auto with scrollbar-width: none or ::-webkit-scrollbar { display: none })', 'Visible orange/tan scrollbar appears at bottom of table sections — looks out of place on mobile', 'Hide native scrollbar. Use CSS scrollbar-width: none and ::-webkit-scrollbar { display: none } while keeping overflow-x: auto for swipe gesture support', 'Gap'],
 ];
 
+const navigationRows = [
+  ['Nav sections default state', 'Nav / Section Header (expanded ∨) is default component. Nav / Panel shows all sections expanded with child items visible.', 'Sections default to COLLAPSED on both mobile and desktop — user must manually expand each section to see nav items', 'Set defaultOpen={true} or equivalent on all nav section accordions. The collapsed state (Nav / Section Header Collapsed) should only appear after user explicitly collapses.', 'Gap'],
+  ['Nav section header component', 'Nav / Section Header (waW4Z) — expanded with ∨ chevron', 'Uses > chevron (collapsed variant) as initial render', 'Render Nav / Section Header component (expanded) by default, not Nav / Section Header Collapsed', 'Gap'],
+];
+
 const loginPageRows = [
   ['Continue button background', 'component/Button → $colors-btnPrimaryBg = #0E0E0E', 'rgb(14,14,14) = #0E0E0E — exact match', '—', 'Match'],
   ['Continue button text color', 'component/Button → $colors-btnPrimaryText = #EEEDEB', 'rgb(238,237,235) = #EEEDEB — exact match', '—', 'Match'],
@@ -271,7 +276,7 @@ function compareSection(id, title, rows, opts = {}) {
   </section>`;
 }
 
-const allRows = [panelShellRows, headerRows, messagesAreaRows, userMessageRows, aiMessageRows, inputFieldRows, sendButtonRows, voiceButtonRows, promptChipRows, richContentRows, loginPageRows, panelStatesRows].flat();
+const allRows = [panelShellRows, headerRows, messagesAreaRows, userMessageRows, aiMessageRows, inputFieldRows, sendButtonRows, voiceButtonRows, promptChipRows, richContentRows, navigationRows, loginPageRows, panelStatesRows].flat();
 const gapCount = allRows.filter(r => r[4] === 'Gap').length;
 const matchCount = allRows.filter(r => r[4] === 'Match').length;
 const verifyCount = allRows.filter(r => r[4] === 'Verify').length;
@@ -355,10 +360,12 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <a href="#s9" class="nav-link">9. Prompt chips</a>
   <span class="side-nav-title t-states">Rich Content</span>
   <a href="#s10" class="nav-link">10. Rich content rendering</a>
+  <span class="side-nav-title t-panel">Navigation</span>
+  <a href="#s11" class="nav-link">11. Navigation sidebar</a>
   <span class="side-nav-title t-modals">Login / Auth</span>
-  <a href="#s11" class="nav-link">11. Login page</a>
+  <a href="#s12" class="nav-link">12. Login page</a>
   <span class="side-nav-title t-states">Panel States</span>
-  <a href="#s12" class="nav-link">12. Panel states</a>
+  <a href="#s13" class="nav-link">13. Panel states</a>
   <span class="side-nav-title t-ref">Reference</span>
   <a href="#tokens" class="nav-link">Token map</a>
 </nav>
@@ -397,9 +404,11 @@ ${compareSection('s9', '9. Prompt chips (empty state)', promptChipRows, { images
 
 ${compareSection('s10', '10. Rich content rendering', richContentRows, { images: { dev: [images.devConversationScrolled, images.devConversationTop] } })}
 
-${compareSection('s11', '11. Login page', loginPageRows, { images: { dev: images.devLoginPage } })}
+${compareSection('s11', '11. Navigation sidebar', navigationRows)}
 
-${compareSection('s12', '12. Panel states', panelStatesRows, { images: { design: images.designError } })}
+${compareSection('s12', '12. Login page', loginPageRows, { images: { dev: images.devLoginPage } })}
+
+${compareSection('s13', '13. Panel states', panelStatesRows, { images: { design: images.designError } })}
 
 <section id="tokens">
   <h2>Design Token Reference</h2>
