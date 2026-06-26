@@ -46,10 +46,16 @@ const images = {
   designConversation: requireEmbed('assets/design/k8DxI.png'),
   designEmpty: requireEmbed('assets/design/LCYKi.png'),
   designError: requireEmbed('assets/design/EpRMp.png'),
+  designHeader: requireEmbed('assets/design/dZHCb.png'),
+  designInput: requireEmbed('assets/design/TdYxI.png'),
+  designUserMessage: requireEmbed('assets/design/uTENT.png'),
+  designAiMessage: requireEmbed('assets/design/Dvxep.png'),
+  designNavPanel: requireEmbed('assets/design/wTMEm.png'),
   devConversationTop: requireEmbed('assets/dev/conversation-top.png'),
   devConversationScrolled: requireEmbed('assets/dev/conversation-scrolled.png'),
   devEmptyState: requireEmbed('assets/dev/empty-state.png'),
   devLoginPage: requireEmbed('assets/dev/login-page-button-scroll.png'),
+  devNavSidebar: requireEmbed('assets/dev/nav-sidebar-collapsed.png'),
 };
 
 // Design tokens from chat-ui.lib.pen
@@ -386,25 +392,25 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
 
 ${compareSection('s1', '1. Panel shell', panelShellRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
-${compareSection('s2', '2. Header bar', headerRows)}
+${compareSection('s2', '2. Header bar', headerRows, { images: { design: images.designHeader, dev: images.devConversationTop } })}
 
-${compareSection('s3', '3. Messages area', messagesAreaRows)}
+${compareSection('s3', '3. Messages area', messagesAreaRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
-${compareSection('s4', '4. User message bubble', userMessageRows)}
+${compareSection('s4', '4. User message bubble', userMessageRows, { images: { design: images.designUserMessage } })}
 
-${compareSection('s5', '5. AI message', aiMessageRows)}
+${compareSection('s5', '5. AI message', aiMessageRows, { images: { design: images.designAiMessage, dev: images.devConversationScrolled } })}
 
-${compareSection('s6', '6. Input field', inputFieldRows)}
+${compareSection('s6', '6. Input field', inputFieldRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
 
-${compareSection('s7', '7. Send button', sendButtonRows)}
+${compareSection('s7', '7. Send button', sendButtonRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
 
-${compareSection('s8', '8. Voice button', voiceButtonRows)}
+${compareSection('s8', '8. Voice button', voiceButtonRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
 
 ${compareSection('s9', '9. Prompt chips (empty state)', promptChipRows, { images: { design: images.designEmpty, dev: images.devEmptyState } })}
 
 ${compareSection('s10', '10. Rich content rendering', richContentRows, { images: { dev: [images.devConversationScrolled, images.devConversationTop] } })}
 
-${compareSection('s11', '11. Navigation sidebar', navigationRows)}
+${compareSection('s11', '11. Navigation sidebar', navigationRows, { images: { design: images.designNavPanel, dev: images.devNavSidebar } })}
 
 ${compareSection('s12', '12. Login page', loginPageRows, { images: { dev: images.devLoginPage } })}
 
