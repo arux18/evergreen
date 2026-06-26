@@ -92,10 +92,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 24, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">25</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">24</div><div class="stat-label">Gaps</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--match)">44</div><div class="stat-label">Matches</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--verify)">34</div><div class="stat-label">To verify</div></div>
-    <div class="stat"><div class="stat-num">103</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num">102</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
 </div>
@@ -921,10 +921,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
-      <td>Thinking state: single indicator only</td>
-      <td class="mono">Chat / Message / AI Thinking (p6LC4S): ONE thinking indicator shown at a time — three dots + one status message</td>
-      <td class="mono">MULTIPLE thinking indicators stacked/duplicated. "Formulating response..." appears 2× in sequence. "Checking current market price..." and "Fetching Apple's price history..." shown simultaneously.</td>
-      <td>Only render ONE thinking indicator at a time. When a new status message arrives, REPLACE the previous one — do not stack multiple thinking messages.</td>
+      <td>Thinking status text: no duplication</td>
+      <td class="mono">Chat / Message / AI Thinking (p6LC4S): ONE set of dots + ONE status text line. When a new status arrives, it replaces the previous text — never stacks.</td>
+      <td class="mono">Multiple status text messages stacked/duplicated. "Formulating response..." appears 2× in sequence. "Checking current market price..." and "Fetching Apple's price history..." shown as separate lines simultaneously. The dots themselves are fine — it is the text lines that duplicate.</td>
+      <td>Only render ONE status text line below the dots. When a new status message arrives, REPLACE the previous text — do not stack multiple lines. The three-dot animation stays as-is.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -940,13 +940,6 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <td class="mono">Status text in lighter color — appears correct</td>
       <td>—</td>
       <td class="status-match">Match</td>
-    </tr>
-    <tr>
-      <td>Thinking status text: single line</td>
-      <td class="mono">One status message below the dots (e.g., "Generating your retirement projection...")</td>
-      <td class="mono">Multiple status lines stacked vertically — "Checking current market price..." then "Fetching Apple's price history..." as separate lines</td>
-      <td>Show only the LATEST status message. Replace previous status text when a new one arrives.</td>
-      <td class="status-gap">Gap</td>
     </tr></tbody>
     </table>
   </section>
