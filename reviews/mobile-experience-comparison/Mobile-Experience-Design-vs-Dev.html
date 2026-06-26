@@ -94,8 +94,8 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Date:</strong> June 26, 2026</p>
   <div class="stats">
     <div class="stat"><div class="stat-num" style="color:var(--gap)">27</div><div class="stat-label">Gaps</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--match)">44</div><div class="stat-label">Matches</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--verify)">43</div><div class="stat-label">To verify</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--match)">34</div><div class="stat-label">Matches</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verify)">53</div><div class="stat-label">To verify</div></div>
     <div class="stat"><div class="stat-num">114</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
@@ -350,10 +350,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>User message line-height</td>
-      <td class="mono">1.6 (22.4px at 14px)</td>
-      <td class="mono">line-height: 22.4px — should come from typography token</td>
-      <td>—</td>
-      <td class="status-match">Match</td>
+      <td class="mono">1.6 (22.4px at 14px) — typography token</td>
+      <td class="mono">line-height: 22.4px (computed) — token usage unconfirmed</td>
+      <td>Confirm line-height comes from a typography token class, not a hard-coded value</td>
+      <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>User bubble token usage</td>
@@ -382,9 +382,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>AI message background</td>
       <td class="mono">$chat.bubble.ai.bg (→ transparent)</td>
-      <td class="mono">background: transparent — correct</td>
-      <td>—</td>
-      <td class="status-match">Match</td>
+      <td class="mono">background: transparent (computed, CopilotKit) — token usage unconfirmed</td>
+      <td>Confirm bg references $chat.bubble.ai.bg token, not a hard-coded/CopilotKit default</td>
+      <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>AI message border</td>
@@ -416,10 +416,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>AI message line-height</td>
-      <td class="mono">1.6 (22.4px at 14px)</td>
-      <td class="mono">line-height: 22.4px — should come from typography token</td>
-      <td>—</td>
-      <td class="status-match">Match</td>
+      <td class="mono">1.6 (22.4px at 14px) — typography token</td>
+      <td class="mono">line-height: 22.4px (computed) — token usage unconfirmed</td>
+      <td>Confirm line-height comes from a typography token class, not a hard-coded value</td>
+      <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>AI message padding</td>
@@ -830,16 +830,16 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Continue button corner radius</td>
       <td class="mono">$radius-full (9999px, pill)</td>
-      <td class="mono">9999px — matches</td>
-      <td>—</td>
-      <td class="status-match">Match</td>
+      <td class="mono">9999px (computed, from OpenUI button CSS) — token usage unconfirmed</td>
+      <td>Confirm radius references $radius-full token, not a hard-coded 9999px in OpenUI CSS</td>
+      <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Continue button font family</td>
-      <td class="mono">Heebo</td>
-      <td class="mono">"Heebo Variable", sans-serif — correct</td>
-      <td>—</td>
-      <td class="status-match">Match</td>
+      <td class="mono">Heebo (Hemlock font token)</td>
+      <td class="mono">"Heebo Variable", sans-serif (computed) — token usage unconfirmed</td>
+      <td>Confirm font references the Hemlock font token, not a hard-coded font-family</td>
+      <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Continue button font size</td>
@@ -850,10 +850,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Continue button font weight</td>
-      <td class="mono">600 (semibold)</td>
-      <td class="mono">600 — matches</td>
-      <td>—</td>
-      <td class="status-match">Match</td>
+      <td class="mono">600 (semibold) — typography token</td>
+      <td class="mono">600 (computed, from OpenUI CSS) — token usage unconfirmed</td>
+      <td>Confirm weight references a typography token, not a hard-coded 600</td>
+      <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Continue button height</td>
@@ -865,9 +865,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Continue button padding</td>
       <td class="mono">$spacing-xs (12px) / $spacing-md (24px)</td>
-      <td class="mono">12px 24px — matches</td>
-      <td>—</td>
-      <td class="status-match">Match</td>
+      <td class="mono">12px 24px (computed, from OpenUI CSS) — token usage unconfirmed</td>
+      <td>Confirm padding references $spacing-xs / $spacing-md tokens, not hard-coded values</td>
+      <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Continue button text alignment</td>
@@ -986,10 +986,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Empty state prompt font</td>
-      <td class="mono">Noto Serif 20px/400</td>
-      <td class="mono">typo-secondary-lg-regular — verify uses typography token class ✓</td>
-      <td>—</td>
-      <td class="status-match">Match</td>
+      <td class="mono">Noto Serif 20px/400 — typography token</td>
+      <td class="mono">typo-secondary-lg-regular (token class) — verify the class is actually applied</td>
+      <td>Confirm the typo-secondary-lg-regular token class is applied to the prompt text</td>
+      <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Empty state prompt color</td>
@@ -1015,16 +1015,16 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Thinking dots styling</td>
       <td class="mono">Three dots in gray/taupe gradient (animated pulsing) — uses $chat.text.secondary tones</td>
-      <td class="mono">Dots appear in correct gray/taupe tones — matches design</td>
-      <td>—</td>
-      <td class="status-match">Match</td>
+      <td class="mono">Dots appear in correct tones (visual only) — token usage unconfirmed</td>
+      <td>Confirm dot colors reference $chat.text.secondary tokens, not hard-coded values</td>
+      <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Thinking status text color</td>
-      <td class="mono">Status text in $chat.text.placeholder (→ #A8A49E) — light, secondary appearance</td>
-      <td class="mono">Status text in lighter color — appears correct</td>
-      <td>—</td>
-      <td class="status-match">Match</td>
+      <td class="mono">$chat.text.placeholder (→ #A8A49E) — light, secondary appearance</td>
+      <td class="mono">Status text in lighter color (visual only) — token usage unconfirmed</td>
+      <td>Confirm status text color references $chat.text.placeholder token, not a hard-coded value</td>
+      <td class="status-verify">Verify</td>
     </tr></tbody>
     </table>
   </section>

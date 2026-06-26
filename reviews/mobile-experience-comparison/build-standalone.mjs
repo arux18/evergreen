@@ -144,18 +144,18 @@ const userMessageRows = [
   ['User bubble alignment', 'Right-aligned (pushed to right edge)', 'margin-left: auto — semantic utility ✓', '—', 'Match'],
   ['User message font', 'Heebo 14px/400', 'font: 14px/22.4px Heebo, weight 400 — verify uses typography token class', 'Should use typo-* utility if available, not raw font-size/weight', 'Verify'],
   ['User message color', '$chat.text.secondary (→ #5E5954)', 'color: rgb(94,89,84) — verify if class uses token (text-gray-600) or hard-coded', 'Should use semantic text color class mapped to $chat.text.secondary', 'Verify'],
-  ['User message line-height', '1.6 (22.4px at 14px)', 'line-height: 22.4px — should come from typography token', '—', 'Match'],
+  ['User message line-height', '1.6 (22.4px at 14px) — typography token', 'line-height: 22.4px (computed) — token usage unconfirmed', 'Confirm line-height comes from a typography token class, not a hard-coded value', 'Verify'],
   ['User bubble token usage', 'Bubble styled via Hemlock tokens (semantic Tailwind classes)', 'Element uses CopilotKit classes (.copilotKitUserMessage) — no Tailwind token classes on bubble itself. Computed values match design exactly (bg #F7F5F0, border #DCD8CB, 12px radius, 12/16 padding, #5E5954 text) but token backing unconfirmed in CSS source.', 'Confirm the .copilotKitUserMessage CSS rule references Hemlock tokens (e.g. $chat.bubble.user.*) and not hard-coded hex values', 'Verify'],
   ['User bubble bottom margin', '$spacing-sm (16px)', 'margin-bottom: 8px — wrong value (should be $spacing-sm 16px) AND likely hard-coded', 'Use $spacing-sm (16px) token for message spacing. Current 8px is the same gap discrepancy seen on AI messages.', 'Gap'],
 ];
 
 const aiMessageRows = [
-  ['AI message background', '$chat.bubble.ai.bg (→ transparent)', 'background: transparent — correct', '—', 'Match'],
+  ['AI message background', '$chat.bubble.ai.bg (→ transparent)', 'background: transparent (computed, CopilotKit) — token usage unconfirmed', 'Confirm bg references $chat.bubble.ai.bg token, not a hard-coded/CopilotKit default', 'Verify'],
   ['AI message border', 'None (transparent bubble)', 'border: 0px none — correct', '—', 'Match'],
   ['AI message max-width', '100% of container', 'max-width: 100% — correct', '—', 'Match'],
   ['AI message font', 'Heebo 14px/400', 'font: 14px/22.4px Heebo — verify uses typography token class', 'Should use typo-* utility if available', 'Verify'],
   ['AI message color', '$chat.text.primary (→ #2D2926)', 'color: rgb(45,41,38) — verify if class uses token (text-taupe-900) or hard-coded [#hex]', 'Should use semantic text color class mapped to $chat.text.primary', 'Verify'],
-  ['AI message line-height', '1.6 (22.4px at 14px)', 'line-height: 22.4px — should come from typography token', '—', 'Match'],
+  ['AI message line-height', '1.6 (22.4px at 14px) — typography token', 'line-height: 22.4px (computed) — token usage unconfirmed', 'Confirm line-height comes from a typography token class, not a hard-coded value', 'Verify'],
   ['AI message padding', '0px (no bubble padding)', 'padding: 0px — correct', '—', 'Match'],
   ['AI message margin-bottom', '$spacing-sm (16px)', 'margin: 0 0 8px — 8px instead of $spacing-sm (16px)', 'Use $spacing-sm (16px) token for message spacing. Current 8px is wrong value AND likely hard-coded.', 'Gap'],
 ];
@@ -225,12 +225,12 @@ const loginPageRows = [
   ['Continue button styled to match Hemlock', 'component/Button (bMlax) spec — OpenUI button acceptable if styled with Hemlock tokens to match bMlax exactly', 'OpenUI button (openui-button-base-primary). Component choice is acceptable under current policy, but it is NOT styled to match bMlax — wrong bg (#3C3C3C vs #0E0E0E), text (#FFFFFF vs #EEEDEB), font-size (14 vs 16), height (46 vs 48), left-aligned (should be centered). See token rows below.', 'Style the OpenUI button with Hemlock tokens so it matches component/Button (bMlax) exactly. The OpenUI component itself does not need to be replaced — only its token-backed styling.', 'Gap'],
   ['Continue button background', '$colors-btnPrimaryBg ($color-gray-900 → #0E0E0E)', 'rgb(60,60,60) = #3C3C3C — wrong color (this is the chat send-button color, not the Hemlock primary)', 'Use $colors-btnPrimaryBg (#0E0E0E). Current #3C3C3C is wrong.', 'Gap'],
   ['Continue button text color', '$colors-btnPrimaryText ($color-gray-100 → #EEEDEB)', 'rgb(255,255,255) = #FFFFFF — pure white, not the spec off-white #EEEDEB', 'Use $colors-btnPrimaryText (#EEEDEB). Current #FFFFFF is wrong.', 'Gap'],
-  ['Continue button corner radius', '$radius-full (9999px, pill)', '9999px — matches', '—', 'Match'],
-  ['Continue button font family', 'Heebo', '"Heebo Variable", sans-serif — correct', '—', 'Match'],
+  ['Continue button corner radius', '$radius-full (9999px, pill)', '9999px (computed, from OpenUI button CSS) — token usage unconfirmed', 'Confirm radius references $radius-full token, not a hard-coded 9999px in OpenUI CSS', 'Verify'],
+  ['Continue button font family', 'Heebo (Hemlock font token)', '"Heebo Variable", sans-serif (computed) — token usage unconfirmed', 'Confirm font references the Hemlock font token, not a hard-coded font-family', 'Verify'],
   ['Continue button font size', '16px', '14px — 2px smaller than spec', 'Use 16px per component/Button spec', 'Gap'],
-  ['Continue button font weight', '600 (semibold)', '600 — matches', '—', 'Match'],
+  ['Continue button font weight', '600 (semibold) — typography token', '600 (computed, from OpenUI CSS) — token usage unconfirmed', 'Confirm weight references a typography token, not a hard-coded 600', 'Verify'],
   ['Continue button height', '48px min-height ($spacing-2xl)', '46px — 2px short of spec (passes 44px touch target but not 48px)', 'Set min-height 48px per component/Button spec', 'Gap'],
-  ['Continue button padding', '$spacing-xs (12px) / $spacing-md (24px)', '12px 24px — matches', '—', 'Match'],
+  ['Continue button padding', '$spacing-xs (12px) / $spacing-md (24px)', '12px 24px (computed, from OpenUI CSS) — token usage unconfirmed', 'Confirm padding references $spacing-xs / $spacing-md tokens, not hard-coded values', 'Verify'],
   ['Continue button text alignment', 'Centered (justify-content: center, align-items: center)', 'Left-aligned — text sits at the left padding (offset 24px in a 326px-wide button; justify-content: normal). NOT centered.', 'Set justify-content: center so the label centers within the full-width button.', 'Gap'],
   ['Continue button width', 'Content-width or full-width in flow', 'w-full (326px) on mobile — acceptable responsive behavior', '—', 'Match'],
   ['Continue button disabled state (empty input)', 'Button is DISABLED when the email input is empty — design frame shows the disabled state (light grey button, no email entered)', 'Button stays ENABLED when input is empty — disabled=false, no disabled attribute, bg #3C3C3C (enabled color), cursor: pointer. Verified via real input clear (React state confirmed empty).', 'Disable the Continue button when the email input is empty. Use the Hemlock disabled state ($colors-btnPrimaryBgDisabled / $color-gray-200) so the button renders light grey and non-interactive until valid text is entered.', 'Gap'],
@@ -249,12 +249,12 @@ const loginPageRows = [
 const panelStatesRows = [
   ['Empty state: centered prompt', '"Ask me any financial question..." centered in messages area', 'Noto Serif 20px/400, vertically centered — correct layout', '—', 'Match'],
   ['Empty state: prompt chips visible', 'Suggested questions shown below centered prompt text', 'Chip "What\'s a donor-advised fund?" visible below prompt — correct', '—', 'Match'],
-  ['Empty state prompt font', 'Noto Serif 20px/400', 'typo-secondary-lg-regular — verify uses typography token class ✓', '—', 'Match'],
+  ['Empty state prompt font', 'Noto Serif 20px/400 — typography token', 'typo-secondary-lg-regular (token class) — verify the class is actually applied', 'Confirm the typo-secondary-lg-regular token class is applied to the prompt text', 'Verify'],
   ['Empty state prompt color', '$chat.text.primary (→ #2D2926)', 'color: #2D2926 — verify uses token class (text-taupe-900) not hard-coded [#hex]', 'Should use semantic class mapped to $chat.text.primary', 'Verify'],
   ['Error state: error bubble', 'Blue-tinted bubble with error message', 'Verify — requires triggering error state. Check token usage when visible.', '—', 'Verify'],
   ['Thinking status text: no duplication', 'Chat / Message / AI Thinking (p6LC4S): ONE set of dots + ONE status text line. When a new status arrives, it replaces the previous text — never stacks.', 'Multiple status text messages stacked/duplicated. "Formulating response..." appears 2× in sequence. "Checking current market price..." and "Fetching Apple\'s price history..." shown as separate lines simultaneously. The dots themselves are fine — it is the text lines that duplicate.', 'Only render ONE status text line below the dots. When a new status message arrives, REPLACE the previous text — do not stack multiple lines. The three-dot animation stays as-is.', 'Gap'],
-  ['Thinking dots styling', 'Three dots in gray/taupe gradient (animated pulsing) — uses $chat.text.secondary tones', 'Dots appear in correct gray/taupe tones — matches design', '—', 'Match'],
-  ['Thinking status text color', 'Status text in $chat.text.placeholder (→ #A8A49E) — light, secondary appearance', 'Status text in lighter color — appears correct', '—', 'Match'],
+  ['Thinking dots styling', 'Three dots in gray/taupe gradient (animated pulsing) — uses $chat.text.secondary tones', 'Dots appear in correct tones (visual only) — token usage unconfirmed', 'Confirm dot colors reference $chat.text.secondary tokens, not hard-coded values', 'Verify'],
+  ['Thinking status text color', '$chat.text.placeholder (→ #A8A49E) — light, secondary appearance', 'Status text in lighter color (visual only) — token usage unconfirmed', 'Confirm status text color references $chat.text.placeholder token, not a hard-coded value', 'Verify'],
 ];
 
 // ------- Build HTML -------
