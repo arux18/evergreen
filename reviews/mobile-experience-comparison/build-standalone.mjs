@@ -55,8 +55,7 @@ const images = {
   devConversationTop: requireEmbed('assets/dev/conversation-top.png'),
   devConversationScrolled: requireEmbed('assets/dev/conversation-scrolled.png'),
   devEmptyState: requireEmbed('assets/dev/empty-state.png'),
-  devLoginPage: requireEmbed('assets/dev/login-page-button-scroll.png'),
-  devLoginDisclosure: requireEmbed('assets/dev/login-disclosure-cutoff.png'),
+  devLoginWelcome: requireEmbed('assets/dev/login-welcome-mobile.png'),
   devNavSidebar: requireEmbed('assets/dev/nav-sidebar-collapsed.png'),
   devThinking1: requireEmbed('assets/dev/thinking-state-duplicated.png'),
   devThinking2: requireEmbed('assets/dev/thinking-state-duplicated-2.png'),
@@ -221,18 +220,27 @@ const navigationRows = [
 ];
 
 const loginPageRows = [
-  ['Continue button background', 'component/Button → $colors-btnPrimaryBg = #0E0E0E', 'rgb(14,14,14) = #0E0E0E — exact match', '—', 'Match'],
-  ['Continue button text color', 'component/Button → $colors-btnPrimaryText = #EEEDEB', 'rgb(238,237,235) = #EEEDEB — exact match', '—', 'Match'],
-  ['Continue button corner radius', 'component/Button → $radius-full = 9999px (pill)', 'border-radius: 9999px — matches', '—', 'Match'],
-  ['Continue button font family', 'component/Button → Heebo', '"Heebo Variable", sans-serif — correct', '—', 'Match'],
-  ['Continue button font size', 'component/Button → 16px', '16px — correct', '—', 'Match'],
-  ['Continue button text alignment', 'component/Button → text centered (justify-content: center, align-items: center)', 'display: flex — text appears left-aligned, not centered', 'Add justify-content: center and align-items: center to button or use text-align: center', 'Gap'],
-  ['Continue button height', 'component/Button → 48px min-height ($spacing-2xl)', 'height: 32px — 16px too short, fails WCAG touch target (44px min)', 'Set min-height: 48px. Current 32px fails accessibility touch target guidelines.', 'Gap'],
-  ['Continue button font weight', 'component/Button → font-weight: 600 (semibold)', 'font-weight: 400 (regular) — text too thin', 'Change to font-weight: 600 per component/Button spec', 'Gap'],
-  ['Continue button padding', 'component/Button → padding: 12px 24px ($spacing-xs / $spacing-md)', 'padding: 5px 16px — undersized, causes 32px height', 'Change to padding: 12px 24px per component/Button', 'Gap'],
-  ['Page scroll behavior', 'Login page content scrolls on device — legal/disclaimer text below the fold is reachable by scrolling. The static design frame shows the disclosure ending mid-paragraph because it extends past the viewport, but it is accessible via scroll.', 'Screen does NOT scroll at all (overflow: hidden on html, body, AND container). Footer disclosure text is literally cut off mid-sentence ("Nothing herein should be construed as an offer,…" truncated) — user cannot reach the rest of the legal text.', 'Remove overflow: hidden; make the login page scrollable so all legal/disclaimer text is reachable. Design intends scroll; dev hard-locks the viewport.', 'Gap'],
-  ['Continue button position (fixed)', 'Button in content flow or sticky with scrollable content behind', 'position: fixed; bottom: 0 (class "fixed bottom-0 left-0 right-0"). Content cannot scroll.', 'Make content area scrollable with padding-bottom, or use sticky/relative positioning', 'Gap'],
-  ['Legal disclaimer accessibility', 'All legal/compliance text must be fully readable', 'Disclaimer clipped by overflow:hidden — user cannot scroll to read full legal text', 'Critical compliance issue — legal disclaimers must be fully accessible before Continue', 'Gap'],
+  ['Continue button component', 'Hemlock component/Button (bMlax)', 'OpenUI button — classes `openui-button-base openui-button-base-primary openui-button-base-medium`. Not the Hemlock Button component.', 'Use Hemlock component/Button (bMlax) instead of openui-button-base. Per Hemlock design-system rule, use Hemlock components, not OpenUI equivalents.', 'Gap'],
+  ['Continue button background', '$colors-btnPrimaryBg ($color-gray-900 → #0E0E0E)', 'rgb(60,60,60) = #3C3C3C — wrong color (this is the chat send-button color, not the Hemlock primary)', 'Use $colors-btnPrimaryBg (#0E0E0E). Current #3C3C3C is wrong.', 'Gap'],
+  ['Continue button text color', '$colors-btnPrimaryText ($color-gray-100 → #EEEDEB)', 'rgb(255,255,255) = #FFFFFF — pure white, not the spec off-white #EEEDEB', 'Use $colors-btnPrimaryText (#EEEDEB). Current #FFFFFF is wrong.', 'Gap'],
+  ['Continue button corner radius', '$radius-full (9999px, pill)', '9999px — matches', '—', 'Match'],
+  ['Continue button font family', 'Heebo', '"Heebo Variable", sans-serif — correct', '—', 'Match'],
+  ['Continue button font size', '16px', '14px — 2px smaller than spec', 'Use 16px per component/Button spec', 'Gap'],
+  ['Continue button font weight', '600 (semibold)', '600 — matches', '—', 'Match'],
+  ['Continue button height', '48px min-height ($spacing-2xl)', '46px — 2px short of spec (passes 44px touch target but not 48px)', 'Set min-height 48px per component/Button spec', 'Gap'],
+  ['Continue button padding', '$spacing-xs (12px) / $spacing-md (24px)', '12px 24px — matches', '—', 'Match'],
+  ['Continue button text alignment', 'Centered (justify-content: center, align-items: center)', 'Left-aligned — text sits at the left padding (offset 24px in a 326px-wide button; justify-content: normal). NOT centered.', 'Set justify-content: center so the label centers within the full-width button.', 'Gap'],
+  ['Continue button width', 'Content-width or full-width in flow', 'w-full (326px) on mobile — acceptable responsive behavior', '—', 'Match'],
+  ['Page scroll behavior', 'Login page content scrolls on device — legal/disclaimer text below the fold is reachable by scrolling. The static design frame shows the disclosure ending mid-paragraph because it extends past the viewport, but it is accessible via scroll.', 'Screen does NOT scroll at all — overflow: hidden on both <html> and <body>; scrollHeight (844) == clientHeight (844); canScroll=false. Footer disclosure text is literally cut off mid-sentence ("…Historical returns, expected" truncated) — user cannot reach the rest of the legal text.', 'Remove overflow: hidden; make the login page scrollable so all legal/disclaimer text is reachable. Design intends scroll; dev hard-locks the viewport.', 'Gap'],
+  ['"Welcome to Evergreen" heading', 'Hemlock heading typography (verify token + weight)', '24px / weight 300 (light) / Heebo, color #000000 — weight 300 (light) may not match the Hemlock heading spec', 'Verify heading typography token; confirm weight 300 is intended (Hemlock heading may specify a heavier weight).', 'Verify'],
+  ['Subheading ("Access your personalized…")', 'Hemlock secondary text token (verify)', '16px / weight 400 / color rgb(57,54,51) #393633 — verify against Hemlock text token', 'Verify subheading size/color against Hemlock typography tokens.', 'Verify'],
+  ['Email input component', 'Hemlock component/Input', 'Native <input> with custom styling — not the Hemlock Input component', 'Use Hemlock component/Input; verify token usage.', 'Verify'],
+  ['Email input border radius', 'Hemlock Input radius (verify token)', '4px — small; verify against Hemlock Input radius token', 'Verify input radius against Hemlock Input component spec.', 'Verify'],
+  ['Email input border', 'Hemlock Input border token (verify)', '1px solid rgb(213,211,208) #D5D3D0 — verify against token', 'Verify border color references Hemlock token, not hard-coded.', 'Verify'],
+  ['Email input height', 'Hemlock Input height (verify)', '46px — verify against Hemlock Input spec', 'Verify input height against Hemlock Input component spec.', 'Verify'],
+  ['Phone link color', 'Hemlock link color token (verify)', 'rgb(58,106,248) #3A6AF8 — verify against Hemlock link token', 'Verify phone link color references Hemlock link token.', 'Verify'],
+  ['Phone link underline', 'Link underline per Hemlock (verify)', 'text-decoration: none — not underlined (earlier render appeared underlined; verify state)', 'Verify link underline behavior against Hemlock link spec.', 'Verify'],
+  ['Legal disclaimer accessibility', 'All legal/compliance text fully reachable via scroll', 'Disclaimer clipped by overflow:hidden — user cannot scroll to read full legal text (cut off mid-sentence)', 'Critical compliance issue — legal disclaimers must be fully accessible before Continue. Tied to the scroll gap above.', 'Gap'],
 ];
 
 const panelStatesRows = [
@@ -422,7 +430,7 @@ ${compareSection('s10', '10. Rich content rendering', richContentRows, { images:
 
 ${compareSection('s11', '11. Navigation sidebar', navigationRows, { images: { design: images.designNavPanel, dev: images.devNavSidebar } })}
 
-${compareSection('s12', '12. Login page', loginPageRows, { images: { dev: [images.devLoginPage, images.devLoginDisclosure] } })}
+${compareSection('s12', '12. Login page', loginPageRows, { images: { dev: images.devLoginWelcome } })}
 
 ${compareSection('s13', '13. Panel states', panelStatesRows, { images: { design: images.designThinking, dev: [images.devThinking1, images.devThinking2] } })}
 
