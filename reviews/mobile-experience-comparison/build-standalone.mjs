@@ -94,100 +94,101 @@ const T = {
 // ------- Comparison data -------
 
 const panelShellRows = [
-  ['Panel background', '$chat.bg → $nav.bg = #F7F5F0', 'bg-taupe-100 = #F7F5F0', '—', 'Match'],
-  ['Panel border', '$chat.border = 1px solid #DCD8CB', 'border border-[#DCD8CB] = 1px solid #DCD8CB', '—', 'Match'],
-  ['Panel corner radius', '$chat.radius = 12px', 'rounded-xl = 12px (inner); 0px on outer wrapper at mobile full-width', 'On mobile, outer wrapper has rounded-none because panel fills viewport — acceptable', 'Match'],
-  ['Panel shadow', '0 2px 28px 2px rgba(45,41,38,0.157) ($chat.shadow)', 'shadow-[0_2px_28px_2px_rgba(45,41,38,0.16)]', '—', 'Match'],
-  ['Panel width (mobile)', '360px (design artboard)', '390px (fills viewport)', 'Panel fills available width — correct responsive behavior', 'Match'],
-  ['Panel height', '844px (design artboard)', '907px (fills viewport height)', 'Panel fills available height — correct responsive behavior', 'Match'],
-  ['Panel layout', 'vertical, justify: space-between, clip: true', 'flex flex-col, overflow-hidden', '—', 'Match'],
+  ['Panel background', '$chat.bg (→ $nav.bg → #F7F5F0)', 'bg-taupe-100 — uses Tailwind token class ✓', '—', 'Match'],
+  ['Panel border', '$chat.border (→ 1px solid #DCD8CB)', 'border-[#DCD8CB] — hard-coded hex instead of token class', 'Use semantic border class mapped to $chat.border token. Hard-coded value will drift if token changes.', 'Gap'],
+  ['Panel corner radius', '$chat.radius (→ 12px)', 'rounded-xl = 12px (inner); 0px on outer wrapper at mobile full-width', 'Uses Tailwind scale class ✓ — mobile full-width with rounded-none is acceptable', 'Match'],
+  ['Panel shadow', '$chat.shadow (→ 0 2px 28px 2px rgba(45,41,38,0.157))', 'shadow-[0_2px_28px_2px_rgba(45,41,38,0.16)] — hard-coded arbitrary value', 'Use semantic shadow class mapped to $chat.shadow token. Hard-coded value will drift if token changes.', 'Gap'],
+  ['Panel width (mobile)', '360px (design artboard)', '390px (fills viewport) — correct responsive behavior', '—', 'Match'],
+  ['Panel height', '844px (design artboard)', '907px (fills viewport height) — correct responsive behavior', '—', 'Match'],
+  ['Panel layout', 'vertical, justify: space-between, clip: true', 'flex flex-col, overflow-hidden — semantic utilities ✓', '—', 'Match'],
 ];
 
 const headerRows = [
-  ['Header padding', '16px vertical, 20px horizontal', 'py-4 px-5 = 16px 20px', '—', 'Match'],
-  ['Header border-bottom', '0.5px solid $chat.divider (#E8E6E0)', '0.5px solid #E8E6E0', '—', 'Match'],
-  ['Header layout', 'flex, space-between, align-items: center', 'flex items-center justify-between', '—', 'Match'],
-  ['Header title font', 'Noto Serif 16px/400 (regular)', 'typo-secondary-base-regular = Noto Serif 16px/400', '—', 'Match'],
-  ['Header title color', '$chat.text.primary = #2D2926', 'text-[#2D2926] = #2D2926', '—', 'Match'],
-  ['Close button size', '28×28px (design component)', 'w-7 h-7 = 28×28px', '—', 'Match'],
-  ['Close button radius', '6px', 'rounded-[6px] = 6px', '—', 'Match'],
-  ['Close button icon color', '$chat.icon = $nav.text.secondary = #5E5954', 'text-gray-600 = #5E5954', '—', 'Match'],
-  ['Close button hover bg', '$chat.close.hover.bg = #EDEAE3', 'hover:bg-taupe-200 = #EDEAE3', '—', 'Match'],
-  ['Close button pressed bg', '$chat.close.pressed.bg = #E3DFD6', 'active:bg-taupe-300 = #E3DFD6', '—', 'Match'],
+  ['Header padding', '16px vertical, 20px horizontal (spacing scale)', 'py-4 px-5 — uses Tailwind spacing scale ✓', '—', 'Match'],
+  ['Header border-bottom', '$chat.divider (→ 0.5px solid #E8E6E0)', '0.5px solid #E8E6E0 — verify if class uses token or inline/arbitrary', 'Confirm border-color references $chat.divider token, not hard-coded hex', 'Verify'],
+  ['Header layout', 'flex, space-between, align-items: center', 'flex items-center justify-between — semantic utilities ✓', '—', 'Match'],
+  ['Header title font', 'Noto Serif 16px/400 (regular)', 'typo-secondary-base-regular — uses typography token class ✓', '—', 'Match'],
+  ['Header title color', '$chat.text.primary (→ #2D2926)', 'text-[#2D2926] — hard-coded hex instead of token class', 'Use semantic text color class mapped to $chat.text.primary. Hard-coded value will drift if token changes.', 'Gap'],
+  ['Close button size', '28×28px', 'w-7 h-7 — uses Tailwind spacing scale ✓', '—', 'Match'],
+  ['Close button radius', '6px', 'rounded-[6px] — hard-coded arbitrary value', 'Define a token-based radius utility or use closest scale value (rounded-md = 6px if configured)', 'Gap'],
+  ['Close button icon color', '$chat.icon (→ $nav.text.secondary → #5E5954)', 'text-gray-600 — uses Tailwind color scale ✓', '—', 'Match'],
+  ['Close button hover bg', '$chat.close.hover.bg (→ #EDEAE3)', 'hover:bg-taupe-200 — uses Tailwind color token ✓', '—', 'Match'],
+  ['Close button pressed bg', '$chat.close.pressed.bg (→ #E3DFD6)', 'active:bg-taupe-300 — uses Tailwind color token ✓', '—', 'Match'],
 ];
 
 const messagesAreaRows = [
-  ['Messages container gap', '14px', 'gap: 14px (copilotKitMessagesContainer)', '—', 'Match'],
-  ['Messages container padding', '16px vertical, 20px horizontal', 'padding: 16px 20px', '—', 'Match'],
-  ['Messages layout', 'vertical, justify: end (messages anchor to bottom)', 'flex-col with justify-end in copilotKitMessagesContainer — confirmed', '—', 'Match'],
-  ['Messages scroll', 'Scrollable area between header and input', 'copilotKitMessages with overflow-y-auto', '—', 'Match'],
+  ['Messages container gap', '14px (from design spacing)', 'gap: 14px — verify if using token class or hard-coded', 'Confirm gap references a spacing token, not arbitrary [14px]', 'Verify'],
+  ['Messages container padding', '16px vertical, 20px horizontal (spacing scale)', 'padding: 16px 20px — verify token usage (p-4 px-5 or hard-coded)', 'Confirm padding uses Tailwind spacing utilities, not arbitrary values', 'Verify'],
+  ['Messages layout', 'vertical, justify: end (messages anchor to bottom)', 'flex-col justify-end — semantic utilities ✓', '—', 'Match'],
+  ['Messages scroll', 'Scrollable area between header and input', 'overflow-y-auto — semantic utility ✓', '—', 'Match'],
 ];
 
 const userMessageRows = [
-  ['User bubble background', '$chat.bubble.user.bg → $nav.bg = #F7F5F0', 'bg: rgb(247,245,240) = #F7F5F0', '—', 'Match'],
-  ['User bubble border', '1px solid $chat.bubble.user.border = #DCD8CB', 'border: 1px solid rgb(220,216,203) = #DCD8CB', '—', 'Match'],
-  ['User bubble corner radius', '$chat.bubble.radius = 12px', 'border-radius: 12px', '—', 'Match'],
-  ['User bubble padding', '12px vertical, 16px horizontal (from component)', 'padding: 12px 16px', '—', 'Match'],
+  ['User bubble background', '$chat.bubble.user.bg (→ $nav.bg → #F7F5F0)', 'bg: rgb(247,245,240) — verify if class uses token (bg-taupe-100) or hard-coded', 'Confirm uses bg-taupe-100 or semantic class, not arbitrary bg-[#F7F5F0]', 'Verify'],
+  ['User bubble border', '$chat.bubble.user.border (→ #DCD8CB)', 'border: 1px solid rgb(220,216,203) — verify if class uses token or hard-coded [#hex]', 'Should use border-color token class, not arbitrary border-[#DCD8CB]', 'Verify'],
+  ['User bubble corner radius', '$chat.bubble.radius (→ 12px)', 'border-radius: 12px — verify if using rounded-xl (token scale) or [12px]', 'Should use rounded-xl from Tailwind scale, not arbitrary rounded-[12px]', 'Verify'],
+  ['User bubble padding', '12px vertical, 16px horizontal (spacing scale)', 'padding: 12px 16px — verify uses py-3 px-4 (scale) or arbitrary', 'Should use Tailwind spacing scale utilities', 'Verify'],
   ['User bubble max-width', '80% of container', 'max-width: 80%', '—', 'Match'],
-  ['User bubble alignment', 'Right-aligned (pushed to right edge)', 'margin-left: auto (68.8px offset for 275px bubble in 344px container)', '—', 'Match'],
-  ['User message font', 'Heebo 14px/400', 'font: 14px/22.4px Heebo, weight 400', '—', 'Match'],
-  ['User message color', '$chat.text.secondary = #5E5954', 'color: rgb(94,89,84) = #5E5954', '—', 'Match'],
-  ['User message line-height', '1.6 (22.4px at 14px)', 'line-height: 22.4px (1.6×14)', '—', 'Match'],
+  ['User bubble alignment', 'Right-aligned (pushed to right edge)', 'margin-left: auto — semantic utility ✓', '—', 'Match'],
+  ['User message font', 'Heebo 14px/400', 'font: 14px/22.4px Heebo, weight 400 — verify uses typography token class', 'Should use typo-* utility if available, not raw font-size/weight', 'Verify'],
+  ['User message color', '$chat.text.secondary (→ #5E5954)', 'color: rgb(94,89,84) — verify if class uses token (text-gray-600) or hard-coded', 'Should use semantic text color class mapped to $chat.text.secondary', 'Verify'],
+  ['User message line-height', '1.6 (22.4px at 14px)', 'line-height: 22.4px — should come from typography token', '—', 'Match'],
 ];
 
 const aiMessageRows = [
-  ['AI message background', '$chat.bubble.ai.bg = transparent (#FFFFFF00)', 'background: rgba(0,0,0,0) = transparent', '—', 'Match'],
-  ['AI message border', 'None (transparent bubble)', 'border: 0px none', '—', 'Match'],
-  ['AI message max-width', '100% of container', 'max-width: 100%', '—', 'Match'],
-  ['AI message font', 'Heebo 14px/400', 'font: 14px/22.4px Heebo, weight 400', '—', 'Match'],
-  ['AI message color', '$chat.text.primary = #2D2926', 'color: rgb(45,41,38) = #2D2926', '—', 'Match'],
-  ['AI message line-height', '1.6 (22.4px at 14px)', 'line-height: 22.4px (1.6×14)', '—', 'Match'],
-  ['AI message padding', '0px (no bubble padding)', 'padding: 0px', '—', 'Match'],
-  ['AI message margin-bottom', '14px (from container gap)', 'margin: 0 0 8px — individual message margin is 8px, not 14px', 'Spacing between messages is 8px instead of design 14px gap. Increase margin-bottom or rely on container gap.', 'Gap'],
+  ['AI message background', '$chat.bubble.ai.bg (→ transparent)', 'background: transparent — correct', '—', 'Match'],
+  ['AI message border', 'None (transparent bubble)', 'border: 0px none — correct', '—', 'Match'],
+  ['AI message max-width', '100% of container', 'max-width: 100% — correct', '—', 'Match'],
+  ['AI message font', 'Heebo 14px/400', 'font: 14px/22.4px Heebo — verify uses typography token class', 'Should use typo-* utility if available', 'Verify'],
+  ['AI message color', '$chat.text.primary (→ #2D2926)', 'color: rgb(45,41,38) — verify if class uses token (text-taupe-900) or hard-coded [#hex]', 'Should use semantic text color class mapped to $chat.text.primary', 'Verify'],
+  ['AI message line-height', '1.6 (22.4px at 14px)', 'line-height: 22.4px — should come from typography token', '—', 'Match'],
+  ['AI message padding', '0px (no bubble padding)', 'padding: 0px — correct', '—', 'Match'],
+  ['AI message margin-bottom', '14px (from $chat container gap)', 'margin: 0 0 8px — 8px instead of 14px gap token', 'Spacing should reference the container gap token (14px). Current 8px is wrong value AND likely hard-coded.', 'Gap'],
 ];
 
 const inputFieldRows = [
-  ['Input area padding', '12px/12px/20px/12px (design) or 20px (dev)', 'px-5 py-5 = 20px all around — acceptable', '—', 'Match'],
-  ['Input field background', '$chat.input.bg = #FFFFFF (white)', 'bg-white = rgb(255,255,255) — confirmed match', '—', 'Match'],
-  ['Input field border', '1.5px solid $chat.input.border = #E8E6E0', 'border-[1.5px] border-[#e8e6e0] = 1.5px solid #E8E6E0 — matches', '—', 'Match'],
-  ['Input field corner radius', '$chat.input.radius = 12px', 'rounded-xl = 12px — confirmed match', '—', 'Match'],
-  ['Input field internal gap', '16px between textarea and buttons', 'gap-4 = 16px — acceptable', '—', 'Match'],
-  ['Textarea font', 'Heebo 14px/400', 'font: 14px Heebo, weight 400 — confirmed match', '—', 'Match'],
-  ['Textarea color', '$chat.text.primary = #2D2926', 'color: #2D2926 — confirmed match', '—', 'Match'],
-  ['Placeholder text', '"Ask me any financial question..."', '"Ask me any financial question..."', '—', 'Match'],
-  ['Placeholder color', '$chat.text.placeholder = #A8A49E', 'placeholder:text-[#A8A49E] class present — matches', '—', 'Match'],
+  ['Input area padding', '20px (spacing scale)', 'px-5 py-5 — uses Tailwind spacing scale ✓', '—', 'Match'],
+  ['Input field background', '$chat.input.bg (→ #FFFFFF)', 'bg-white — uses Tailwind color token ✓', '—', 'Match'],
+  ['Input field border color', '$chat.input.border (→ #E8E6E0)', 'border-[#e8e6e0] — hard-coded hex instead of token class', 'Use semantic border class mapped to $chat.input.border token', 'Gap'],
+  ['Input field border width', '1.5px', 'border-[1.5px] — hard-coded arbitrary width', 'Define border-width token in Tailwind config or use closest scale value', 'Gap'],
+  ['Input field corner radius', '$chat.input.radius (→ 12px)', 'rounded-xl — uses Tailwind radius scale ✓', '—', 'Match'],
+  ['Input field internal gap', '16px (spacing scale)', 'gap-4 — uses Tailwind spacing scale ✓', '—', 'Match'],
+  ['Textarea font', 'Heebo 14px/400', 'font: 14px Heebo, weight 400 — verify uses typography token class', 'Should use typo-* utility if available', 'Verify'],
+  ['Textarea color', '$chat.text.primary (→ #2D2926)', 'color: #2D2926 — verify if class uses token or hard-coded [#hex]', 'Should use semantic text color class mapped to $chat.text.primary', 'Verify'],
+  ['Placeholder text', '"Ask me any financial question..."', '"Ask me any financial question..." — correct', '—', 'Match'],
+  ['Placeholder color', '$chat.text.placeholder (→ #A8A49E)', 'placeholder:text-[#A8A49E] — hard-coded hex instead of token class', 'Use semantic placeholder color class mapped to $chat.text.placeholder token', 'Gap'],
 ];
 
 const sendButtonRows = [
-  ['Send button size', '34×34px (circular)', 'w: 34px, h: 34px — confirmed match', '—', 'Match'],
-  ['Send button shape', 'Circle (border-radius: 50%)', 'rounded-full = 9999px — confirmed match', '—', 'Match'],
-  ['Send button bg (enabled)', '$chat.send.bg = #3C3C3C', 'Verify — need to test with text entered (send button only enables when text is typed)', 'If not #3C3C3C, update bg to bg-[#3C3C3C]', 'Verify'],
-  ['Send button bg (disabled)', '$chat.send.bg.disabled = #D4D1CA', 'bg: rgb(227,223,214) = #E3DFD6 — wrong token, too light', 'Change disabled bg from #E3DFD6 to #D4D1CA ($chat.send.bg.disabled)', 'Gap'],
-  ['Send button bg (hover)', '$chat.send.bg.hover = #4F4F4F', 'Verify — requires enabled state + hover (cannot test in empty panel)', 'If not #4F4F4F, update hover:bg-[#4F4F4F]', 'Verify'],
-  ['Send button bg (pressed)', '$chat.send.bg.pressed = #2A2A2A', 'Verify — requires enabled state + click (cannot test in empty panel)', 'If not #2A2A2A, update active:bg-[#2A2A2A]', 'Verify'],
-  ['Send button icon color', '$chat.send.icon = #FFFFFF', 'color: rgb(255,255,255) = #FFFFFF — confirmed match', '—', 'Match'],
-  ['Send button border', 'None', 'border: 0px none — confirmed match', '—', 'Match'],
+  ['Send button size', '34×34px (circular)', 'w: 34px, h: 34px — verify uses token class (w-[34px] is hard-coded)', 'Should use a named size token if available, not arbitrary [34px]', 'Verify'],
+  ['Send button shape', 'Circle (border-radius: 50%)', 'rounded-full — uses Tailwind scale ✓', '—', 'Match'],
+  ['Send button bg (enabled)', '$chat.send.bg (→ #3C3C3C)', 'Verify — need enabled state to inspect. Must use token class, not bg-[#3C3C3C]', 'Must use semantic class mapped to $chat.send.bg, not hard-coded hex', 'Verify'],
+  ['Send button bg (disabled)', '$chat.send.bg.disabled (→ #D4D1CA)', 'bg: #E3DFD6 — WRONG value AND likely hard-coded', 'Wrong value (#E3DFD6 vs #D4D1CA) AND must use token class mapped to $chat.send.bg.disabled', 'Gap'],
+  ['Send button bg (hover)', '$chat.send.bg.hover (→ #4F4F4F)', 'Verify — requires enabled state. Must use token class, not hover:bg-[#4F4F4F]', 'Must use semantic hover class mapped to $chat.send.bg.hover', 'Verify'],
+  ['Send button bg (pressed)', '$chat.send.bg.pressed (→ #2A2A2A)', 'Verify — requires enabled + click. Must use token class, not active:bg-[#2A2A2A]', 'Must use semantic active class mapped to $chat.send.bg.pressed', 'Verify'],
+  ['Send button icon color', '$chat.send.icon (→ #FFFFFF)', 'color: #FFFFFF — verify uses token class (text-white) not hard-coded', 'Should use text-white or semantic icon color class', 'Verify'],
+  ['Send button border', 'None', 'border: 0px none — correct', '—', 'Match'],
 ];
 
 const voiceButtonRows = [
-  ['Voice button size', '34×34px (circular)', 'w: 34px, h: 34px — confirmed match', '—', 'Match'],
-  ['Voice button shape', 'Circle (border-radius: 50%)', 'rounded-full = 9999px — confirmed match', '—', 'Match'],
-  ['Voice button bg (default)', 'Transparent', 'bg: rgba(0,0,0,0) = transparent — confirmed match', '—', 'Match'],
-  ['Voice button border', '1px solid $chat.border = #DCD8CB', 'border: 1px solid rgb(220,216,203) = #DCD8CB — confirmed match', '—', 'Match'],
-  ['Voice button icon color', '$chat.icon = #5E5954', 'color: rgb(94,89,84) = #5E5954 — confirmed match', '—', 'Match'],
-  ['Voice button active bg', '$chat.voice.active.bg = #3A6AF8', 'Verify — requires triggering recording state (microphone permission)', '—', 'Verify'],
-  ['Voice button active icon', '$chat.voice.active.icon = #FFFFFF', 'Verify — requires triggering recording state (microphone permission)', '—', 'Verify'],
+  ['Voice button size', '34×34px (circular)', 'w: 34px, h: 34px — verify uses token class not arbitrary [34px]', 'Should use named size token if available', 'Verify'],
+  ['Voice button shape', 'Circle (border-radius: 50%)', 'rounded-full — uses Tailwind scale ✓', '—', 'Match'],
+  ['Voice button bg (default)', 'Transparent', 'bg: transparent — correct', '—', 'Match'],
+  ['Voice button border', '$chat.border (→ 1px solid #DCD8CB)', 'border: 1px solid #DCD8CB — verify uses token class not hard-coded [#hex]', 'Should use semantic border class mapped to $chat.border token', 'Verify'],
+  ['Voice button icon color', '$chat.icon (→ #5E5954)', 'color: #5E5954 — verify uses token class (text-gray-600) not [#hex]', 'Should use semantic class mapped to $chat.icon', 'Verify'],
+  ['Voice button active bg', '$chat.voice.active.bg (→ #3A6AF8)', 'Verify — requires recording state. Must use token class not bg-[#3A6AF8]', 'Must use semantic class mapped to $chat.voice.active.bg', 'Verify'],
+  ['Voice button active icon', '$chat.voice.active.icon (→ #FFFFFF)', 'Verify — requires recording state. Must use token class', 'Must use semantic class mapped to $chat.voice.active.icon', 'Verify'],
 ];
 
 const promptChipRows = [
-  ['Prompt chip background', '$chat.chip.bg → $nav.bg = #F7F5F0', 'bg: rgb(247,245,240) = #F7F5F0 — confirmed match', '—', 'Match'],
-  ['Prompt chip border', '1px solid $chat.chip.border = #DCD8CB', 'border: 1px solid rgb(220,216,203) = #DCD8CB — confirmed match', '—', 'Match'],
-  ['Prompt chip corner radius', '$chat.chip.radius = 24px (pill shape)', 'border-radius: 24px — confirmed match', '—', 'Match'],
-  ['Prompt chip font', 'Heebo 14px/400', 'font: Heebo 14px, weight 400 — confirmed match', '—', 'Match'],
-  ['Prompt chip color', '$chat.text.secondary = #5E5954', 'color: rgb(94,89,84) = #5E5954 — confirmed match', '—', 'Match'],
-  ['Prompt chip padding', '12px 16px (from measured component)', 'padding: 12px 16px — confirmed match', '—', 'Match'],
-  ['Prompt chip hover bg', '$chat.chip.hover.bg → $nav.hover.bg = #EDEAE3', 'Verify — hover states require mouse interaction testing', '—', 'Verify'],
-  ['Prompt chip pressed bg', '$chat.chip.pressed.bg → $nav.pressed.bg = #E3DFD6', 'Verify — active states require click interaction testing', '—', 'Verify'],
+  ['Prompt chip background', '$chat.chip.bg (→ $nav.bg → #F7F5F0)', 'bg: #F7F5F0 — verify uses token class (bg-taupe-100) not hard-coded', 'Should use semantic class mapped to $chat.chip.bg', 'Verify'],
+  ['Prompt chip border', '$chat.chip.border (→ #DCD8CB)', 'border: 1px solid #DCD8CB — verify uses token class not hard-coded [#hex]', 'Should use semantic border class mapped to $chat.chip.border', 'Verify'],
+  ['Prompt chip corner radius', '$chat.chip.radius (→ 24px)', 'border-radius: 24px — verify uses rounded-3xl (token) or hard-coded [24px]', 'Should use rounded-3xl or semantic chip radius class', 'Verify'],
+  ['Prompt chip font', 'Heebo 14px/400', 'font: Heebo 14px — verify uses typography token class', 'Should use typo-* utility if available', 'Verify'],
+  ['Prompt chip color', '$chat.text.secondary (→ #5E5954)', 'color: #5E5954 — verify uses token class (text-gray-600) not [#hex]', 'Should use semantic class mapped to $chat.text.secondary', 'Verify'],
+  ['Prompt chip padding', '12px 16px (spacing scale)', 'padding: 12px 16px — verify uses py-3 px-4 (scale) or hard-coded', 'Should use Tailwind spacing utilities from scale', 'Verify'],
+  ['Prompt chip hover bg', '$chat.chip.hover.bg (→ #EDEAE3)', 'Verify — hover state. Must use token class (hover:bg-taupe-200)', 'Must use semantic hover class mapped to $chat.chip.hover.bg', 'Verify'],
+  ['Prompt chip pressed bg', '$chat.chip.pressed.bg (→ #E3DFD6)', 'Verify — active state. Must use token class (active:bg-taupe-300)', 'Must use semantic active class mapped to $chat.chip.pressed.bg', 'Verify'],
 ];
 
 const richContentRows = [
@@ -217,11 +218,12 @@ const loginPageRows = [
 ];
 
 const panelStatesRows = [
-  ['Empty state: centered prompt', '"Ask me any financial question..." centered in messages area', 'Confirmed — Noto Serif 20px/400, color #2D2926, vertically centered', '—', 'Match'],
-  ['Empty state: prompt chips visible', 'Suggested questions shown below centered prompt text', 'Confirmed — chip "What\'s a donor-advised fund?" visible below prompt', '—', 'Match'],
-  ['Empty state prompt font', 'Noto Serif 20px/400, color $chat.text.primary', 'Noto Serif 20px/400, color rgb(45,41,38) = #2D2926 — confirmed match', '—', 'Match'],
-  ['Error state: error bubble', 'Blue-tinted bubble with error message', 'Verify — requires triggering error state (network disconnect)', '—', 'Verify'],
-  ['Thinking state: animated indicator', 'Three pulsing dots in AI message bubble', 'Verify — requires triggering thinking state (send a message)', '—', 'Verify'],
+  ['Empty state: centered prompt', '"Ask me any financial question..." centered in messages area', 'Noto Serif 20px/400, vertically centered — correct layout', '—', 'Match'],
+  ['Empty state: prompt chips visible', 'Suggested questions shown below centered prompt text', 'Chip "What\'s a donor-advised fund?" visible below prompt — correct', '—', 'Match'],
+  ['Empty state prompt font', 'Noto Serif 20px/400', 'typo-secondary-lg-regular — verify uses typography token class ✓', '—', 'Match'],
+  ['Empty state prompt color', '$chat.text.primary (→ #2D2926)', 'color: #2D2926 — verify uses token class (text-taupe-900) not hard-coded [#hex]', 'Should use semantic class mapped to $chat.text.primary', 'Verify'],
+  ['Error state: error bubble', 'Blue-tinted bubble with error message', 'Verify — requires triggering error state. Check token usage when visible.', '—', 'Verify'],
+  ['Thinking state: animated indicator', 'Three pulsing dots in AI message bubble', 'Verify — requires triggering thinking state.', '—', 'Verify'],
 ];
 
 // ------- Build HTML -------
@@ -263,7 +265,7 @@ function compareSection(id, title, rows, opts = {}) {
     <h2>${title}</h2>
     ${imgHtml}
     <table>
-      <thead><tr><th>Property</th><th>Design (token)</th><th>Dev (measured)</th><th>Required change</th><th>Status</th></tr></thead>
+      <thead><tr><th>Property</th><th>Design token</th><th>Dev implementation</th><th>Required change</th><th>Status</th></tr></thead>
       <tbody>${tableRows}</tbody>
     </table>
   </section>`;
@@ -372,7 +374,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <div class="stat"><div class="stat-num" style="color:var(--verify)">${verifyCount}</div><div class="stat-label">To verify</div></div>
     <div class="stat"><div class="stat-num">${totalCount}</div><div class="stat-label">Total</div></div>
   </div>
-  <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = confirmed mismatch, <span style="color:var(--match)">Match</span> = confirmed correct, <span style="color:var(--verify)">Verify</span> = needs live measurement (session expired before complete audit).</p>
+  <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
 </div>
 
 ${compareSection('s1', '1. Panel shell', panelShellRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
