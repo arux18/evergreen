@@ -807,10 +807,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <thead><tr><th>Property</th><th>Design token</th><th>Dev implementation</th><th>Required change</th><th>Status</th></tr></thead>
       <tbody>
     <tr>
-      <td>Continue button component</td>
-      <td class="mono">Hemlock component/Button (bMlax)</td>
-      <td class="mono">OpenUI button — classes `openui-button-base openui-button-base-primary openui-button-base-medium`. Not the Hemlock Button component.</td>
-      <td>Use Hemlock component/Button (bMlax) instead of openui-button-base. Per Hemlock design-system rule, use Hemlock components, not OpenUI equivalents.</td>
+      <td>Continue button styled to match Hemlock</td>
+      <td class="mono">component/Button (bMlax) spec — OpenUI button acceptable if styled with Hemlock tokens to match bMlax exactly</td>
+      <td class="mono">OpenUI button (openui-button-base-primary). Component choice is acceptable under current policy, but it is NOT styled to match bMlax — wrong bg (#3C3C3C vs #0E0E0E), text (#FFFFFF vs #EEEDEB), font-size (14 vs 16), height (46 vs 48), left-aligned (should be centered). See token rows below.</td>
+      <td>Style the OpenUI button with Hemlock tokens so it matches component/Button (bMlax) exactly. The OpenUI component itself does not need to be replaced — only its token-backed styling.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -912,10 +912,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
-      <td>Email input component</td>
-      <td class="mono">Hemlock component/Input</td>
-      <td class="mono">Native <input> with custom styling — not the Hemlock Input component</td>
-      <td>Use Hemlock component/Input; verify token usage.</td>
+      <td>Email input styled to match Hemlock</td>
+      <td class="mono">component/Input spec — native/OpenUI input acceptable if styled with Hemlock tokens to match component/Input exactly</td>
+      <td class="mono">Native <input> with custom styling (4px radius, 1px #D5D3D0 border, 46px). Component choice is acceptable; verify it is styled with Hemlock Input tokens to match component/Input.</td>
+      <td>Style the native input with Hemlock tokens to match component/Input. The native/OpenUI input itself does not need to be replaced — only its token-backed styling.</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
