@@ -51,11 +51,14 @@ const images = {
   designUserMessage: requireEmbed('assets/design/uTENT.png'),
   designAiMessage: requireEmbed('assets/design/Dvxep.png'),
   designNavPanel: requireEmbed('assets/design/wTMEm.png'),
+  designThinking: requireEmbed('assets/design/qpDy0.png'),
   devConversationTop: requireEmbed('assets/dev/conversation-top.png'),
   devConversationScrolled: requireEmbed('assets/dev/conversation-scrolled.png'),
   devEmptyState: requireEmbed('assets/dev/empty-state.png'),
   devLoginPage: requireEmbed('assets/dev/login-page-button-scroll.png'),
   devNavSidebar: requireEmbed('assets/dev/nav-sidebar-collapsed.png'),
+  devThinking1: requireEmbed('assets/dev/thinking-state-duplicated.png'),
+  devThinking2: requireEmbed('assets/dev/thinking-state-duplicated-2.png'),
 };
 
 // Design tokens from chat-ui.lib.pen
@@ -235,7 +238,10 @@ const panelStatesRows = [
   ['Empty state prompt font', 'Noto Serif 20px/400', 'typo-secondary-lg-regular — verify uses typography token class ✓', '—', 'Match'],
   ['Empty state prompt color', '$chat.text.primary (→ #2D2926)', 'color: #2D2926 — verify uses token class (text-taupe-900) not hard-coded [#hex]', 'Should use semantic class mapped to $chat.text.primary', 'Verify'],
   ['Error state: error bubble', 'Blue-tinted bubble with error message', 'Verify — requires triggering error state. Check token usage when visible.', '—', 'Verify'],
-  ['Thinking state: animated indicator', 'Three pulsing dots in AI message bubble', 'Verify — requires triggering thinking state.', '—', 'Verify'],
+  ['Thinking state: single indicator only', 'Chat / Message / AI Thinking (p6LC4S): ONE thinking indicator shown at a time — three dots + one status message', 'MULTIPLE thinking indicators stacked/duplicated. "Formulating response..." appears 2× in sequence. "Checking current market price..." and "Fetching Apple\'s price history..." shown simultaneously.', 'Only render ONE thinking indicator at a time. When a new status message arrives, REPLACE the previous one — do not stack multiple thinking messages.', 'Gap'],
+  ['Thinking dots styling', 'Three dots in gray/taupe gradient (animated pulsing) — uses $chat.text.secondary tones', 'Three plain BLACK dots (●●●) — wrong color, no gradient, no animation visible', 'Change dots to gray/taupe colors matching design ($chat.text.secondary / $chat.text.placeholder gradient). Add CSS pulsing animation.', 'Gap'],
+  ['Thinking status text color', 'Status text in $chat.text.placeholder (→ #A8A49E) — light, secondary appearance', 'Status text in dark/black — too prominent, competes with actual message content', 'Change thinking status text color to $chat.text.placeholder (#A8A49E). It should be visually secondary.', 'Gap'],
+  ['Thinking status text: single line', 'One status message below the dots (e.g., "Generating your retirement projection...")', 'Multiple status lines stacked vertically — "Checking current market price..." then "Fetching Apple\'s price history..." as separate lines', 'Show only the LATEST status message. Replace previous status text when a new one arrives.', 'Gap'],
 ];
 
 // ------- Build HTML -------
@@ -415,7 +421,7 @@ ${compareSection('s11', '11. Navigation sidebar', navigationRows, { images: { de
 
 ${compareSection('s12', '12. Login page', loginPageRows, { images: { dev: images.devLoginPage } })}
 
-${compareSection('s13', '13. Panel states', panelStatesRows, { images: { design: images.designError } })}
+${compareSection('s13', '13. Panel states', panelStatesRows, { images: { design: images.designThinking, dev: [images.devThinking1, images.devThinking2] } })}
 
 <section id="tokens">
   <h2>Design Token Reference</h2>
