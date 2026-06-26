@@ -110,6 +110,7 @@ const panelShellRows = [
 ];
 
 const headerRows = [
+  ['Header background', '$chat.bg (→ #F7F5F0 taupe, inherited from panel)', 'Verify — must be taupe (#F7F5F0), not white (#FFFFFF)', 'If header has bg-white or background: #fff, change to inherit panel bg or use bg-taupe-100', 'Verify'],
   ['Header padding', '16px vertical, 20px horizontal (spacing scale)', 'py-4 px-5 — uses Tailwind spacing scale ✓', '—', 'Match'],
   ['Header border-bottom', '$chat.divider (→ 0.5px solid #E8E6E0)', '0.5px solid #E8E6E0 — verify if class uses token or inline/arbitrary', 'Confirm border-color references $chat.divider token, not hard-coded hex', 'Verify'],
   ['Header layout', 'flex, space-between, align-items: center', 'flex items-center justify-between — semantic utilities ✓', '—', 'Match'],
@@ -392,7 +393,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
 
 ${compareSection('s1', '1. Panel shell', panelShellRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
-${compareSection('s2', '2. Header bar', headerRows, { images: { design: images.designHeader, dev: images.devConversationTop } })}
+${compareSection('s2', '2. Header bar', headerRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
 ${compareSection('s3', '3. Messages area', messagesAreaRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
