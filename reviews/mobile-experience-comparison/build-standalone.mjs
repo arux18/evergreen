@@ -52,10 +52,12 @@ const images = {
   designAiMessage: requireEmbed('assets/design/Dvxep.png'),
   designNavPanel: requireEmbed('assets/design/wTMEm.png'),
   designThinking: requireEmbed('assets/design/qpDy0.png'),
+  designLogin: requireEmbed('assets/design/login-page-design.png'),
   devConversationTop: requireEmbed('assets/dev/conversation-top.png'),
   devConversationScrolled: requireEmbed('assets/dev/conversation-scrolled.png'),
   devEmptyState: requireEmbed('assets/dev/empty-state.png'),
   devLoginWelcome: requireEmbed('assets/dev/login-welcome-mobile.png'),
+  devLoginEmpty: requireEmbed('assets/dev/login-empty-input.png'),
   devNavSidebar: requireEmbed('assets/dev/nav-sidebar-collapsed.png'),
   devThinking1: requireEmbed('assets/dev/thinking-state-duplicated.png'),
   devThinking2: requireEmbed('assets/dev/thinking-state-duplicated-2.png'),
@@ -231,6 +233,7 @@ const loginPageRows = [
   ['Continue button padding', '$spacing-xs (12px) / $spacing-md (24px)', '12px 24px — matches', '—', 'Match'],
   ['Continue button text alignment', 'Centered (justify-content: center, align-items: center)', 'Left-aligned — text sits at the left padding (offset 24px in a 326px-wide button; justify-content: normal). NOT centered.', 'Set justify-content: center so the label centers within the full-width button.', 'Gap'],
   ['Continue button width', 'Content-width or full-width in flow', 'w-full (326px) on mobile — acceptable responsive behavior', '—', 'Match'],
+  ['Continue button disabled state (empty input)', 'Button is DISABLED when the email input is empty — design frame shows the disabled state (light grey button, no email entered)', 'Button stays ENABLED when input is empty — disabled=false, no disabled attribute, bg #3C3C3C (enabled color), cursor: pointer. Verified via real input clear (React state confirmed empty).', 'Disable the Continue button when the email input is empty. Use the Hemlock disabled state ($colors-btnPrimaryBgDisabled / $color-gray-200) so the button renders light grey and non-interactive until valid text is entered.', 'Gap'],
   ['Page scroll behavior', 'Login page content scrolls on device — legal/disclaimer text below the fold is reachable by scrolling. The static design frame shows the disclosure ending mid-paragraph because it extends past the viewport, but it is accessible via scroll.', 'Screen does NOT scroll at all — overflow: hidden on both <html> and <body>; scrollHeight (844) == clientHeight (844); canScroll=false. Footer disclosure text is literally cut off mid-sentence ("…Historical returns, expected" truncated) — user cannot reach the rest of the legal text.', 'Remove overflow: hidden; make the login page scrollable so all legal/disclaimer text is reachable. Design intends scroll; dev hard-locks the viewport.', 'Gap'],
   ['"Welcome to Evergreen" heading', 'Hemlock heading typography (verify token + weight)', '24px / weight 300 (light) / Heebo, color #000000 — weight 300 (light) may not match the Hemlock heading spec', 'Verify heading typography token; confirm weight 300 is intended (Hemlock heading may specify a heavier weight).', 'Verify'],
   ['Subheading ("Access your personalized…")', 'Hemlock secondary text token (verify)', '16px / weight 400 / color rgb(57,54,51) #393633 — verify against Hemlock text token', 'Verify subheading size/color against Hemlock typography tokens.', 'Verify'],
@@ -430,7 +433,7 @@ ${compareSection('s10', '10. Rich content rendering', richContentRows, { images:
 
 ${compareSection('s11', '11. Navigation sidebar', navigationRows, { images: { design: images.designNavPanel, dev: images.devNavSidebar } })}
 
-${compareSection('s12', '12. Login page', loginPageRows, { images: { dev: images.devLoginWelcome } })}
+${compareSection('s12', '12. Login page', loginPageRows, { images: { design: images.designLogin, dev: [images.devLoginWelcome, images.devLoginEmpty] } })}
 
 ${compareSection('s13', '13. Panel states', panelStatesRows, { images: { design: images.designThinking, dev: [images.devThinking1, images.devThinking2] } })}
 
