@@ -50,7 +50,6 @@ const images = {
   designInput: requireEmbed('assets/design/TdYxI.png'),
   designUserMessage: requireEmbed('assets/design/uTENT.png'),
   designAiMessage: requireEmbed('assets/design/Dvxep.png'),
-  designNavPanel: requireEmbed('assets/design/wTMEm.png'),
   designThinking: requireEmbed('assets/design/qpDy0.png'),
   designLogin: requireEmbed('assets/design/login-page-design.png'),
   devConversationTop: requireEmbed('assets/dev/conversation-top.png'),
@@ -58,7 +57,6 @@ const images = {
   devEmptyState: requireEmbed('assets/dev/empty-state.png'),
   devLoginWelcome: requireEmbed('assets/dev/login-welcome-mobile.png'),
   devLoginEmpty: requireEmbed('assets/dev/login-empty-input.png'),
-  devNavSidebar: requireEmbed('assets/dev/nav-sidebar-collapsed.png'),
   devThinking1: requireEmbed('assets/dev/thinking-state-duplicated.png'),
   devThinking2: requireEmbed('assets/dev/thinking-state-duplicated-2.png'),
 };
@@ -218,7 +216,6 @@ const richContentRows = [
 ];
 
 const navigationRows = [
-  ['Nav sections default state', 'Nav / Section Header (expanded ∨) is default component. Nav / Panel shows all sections expanded with child items visible.', 'Sections default to COLLAPSED on both mobile and desktop — user must manually expand each section to see nav items', 'Set defaultOpen={true} or equivalent on all nav section accordions. The collapsed state (Nav / Section Header Collapsed) should only appear after user explicitly collapses.', 'Gap'],
 ];
 
 const loginPageRows = [
@@ -303,7 +300,7 @@ function compareSection(id, title, rows, opts = {}) {
   </section>`;
 }
 
-const allRows = [loginPageRows, richContentRows, panelStatesRows, navigationRows, userMessageRows, aiMessageRows, sendButtonRows, inputFieldRows, voiceButtonRows, promptChipRows, panelShellRows, headerRows, messagesAreaRows].flat();
+const allRows = [loginPageRows, richContentRows, panelStatesRows, userMessageRows, aiMessageRows, sendButtonRows, inputFieldRows, voiceButtonRows, promptChipRows, panelShellRows, headerRows, messagesAreaRows].flat();
 const gapCount = allRows.filter(r => r[4] === 'Gap').length;
 const matchCount = allRows.filter(r => r[4] === 'Match').length;
 const verifyCount = allRows.filter(r => r[4] === 'Verify').length;
@@ -378,26 +375,25 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <a href="#s1" class="nav-link">1. Login page</a>
   <a href="#s2" class="nav-link">2. Rich content rendering</a>
   <a href="#s3" class="nav-link">3. Panel states (thinking)</a>
-  <a href="#s4" class="nav-link">4. Navigation sidebar</a>
   <span class="side-nav-title t-messages">Priority 2 — Messages</span>
-  <a href="#s5" class="nav-link">5. User message</a>
-  <a href="#s6" class="nav-link">6. AI message</a>
+  <a href="#s4" class="nav-link">4. User message</a>
+  <a href="#s5" class="nav-link">5. AI message</a>
   <span class="side-nav-title t-input">Priority 2 — Input &amp; Actions</span>
-  <a href="#s7" class="nav-link">7. Send button</a>
-  <a href="#s8" class="nav-link">8. Input field</a>
-  <a href="#s9" class="nav-link">9. Voice button</a>
-  <a href="#s10" class="nav-link">10. Prompt chips</a>
+  <a href="#s6" class="nav-link">6. Send button</a>
+  <a href="#s7" class="nav-link">7. Input field</a>
+  <a href="#s8" class="nav-link">8. Voice button</a>
+  <a href="#s9" class="nav-link">9. Prompt chips</a>
   <span class="side-nav-title t-panel">Priority 3 — Structure</span>
-  <a href="#s11" class="nav-link">11. Panel shell</a>
-  <a href="#s12" class="nav-link">12. Header bar</a>
-  <a href="#s13" class="nav-link">13. Messages area</a>
+  <a href="#s10" class="nav-link">10. Panel shell</a>
+  <a href="#s11" class="nav-link">11. Header bar</a>
+  <a href="#s12" class="nav-link">12. Messages area</a>
   <span class="side-nav-title t-ref">Reference</span>
   <a href="#tokens" class="nav-link">Token map</a>
 </nav>
 
 <div class="overview">
   <h1>Mobile Experience — Design vs Dev Comparison</h1>
-  <p><strong>Design sources:</strong> <code>pencil/design-system/complete/chat-ui.lib.pen</code> + <code>pencil/design-system/in-progress/hemlock-library.lib.pen</code> + <code>pencil/designs/4-approved/app-shell-dashboard-view.pen</code></p>
+  <p><strong>Design sources:</strong> <code>pencil/design-system/complete/chat-ui.lib.pen</code> + <code>pencil/design-system/in-progress/hemlock-library.lib.pen</code></p>
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 29, 2026</p>
   <div class="stats">
@@ -419,7 +415,6 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <li><strong>Rich content cards don't stack on mobile</strong> — Multi-column comparison grids overflow at 390px; text hard-clips ("New Hampshir"). Should be single-column stacked cards.</li>
     <li><strong>Visible horizontal scrollbar on tables</strong> — Native scrollbar appears on data tables; should be hidden (CSS scrollbar-width: none).</li>
     <li><strong>Thinking status text duplicates</strong> — "Formulating response…" appears multiple times stacked. Design shows ONE replaceable text line below dots.</li>
-    <li><strong>Navigation defaults to collapsed</strong> — All nav sections render collapsed on load; design shows expanded with child items visible.</li>
     <li><strong>Wrong icon library</strong> — Send button uses Heroicons; app standard is <strong>lucide</strong>.</li>
     <li><strong>Send button colors wrong</strong> — Hover (#525252 vs spec #4F4F4F), pressed (#252525 vs spec #2A2A2A), disabled (wrong token entirely).</li>
     <li><strong>Systemic: hard-coded hex values instead of tokens</strong> — border-[#DCD8CB], text-[#2D2926], placeholder-[#A8A49E], shadow-[…] appear across 12+ elements. Should use semantic token classes.</li>
@@ -434,25 +429,23 @@ ${compareSection('s2', '2. Rich content rendering', richContentRows, { images: {
 
 ${compareSection('s3', '3. Panel states (thinking)', panelStatesRows, { images: { design: images.designThinking, dev: [images.devThinking1, images.devThinking2] } })}
 
-${compareSection('s4', '4. Navigation sidebar', navigationRows, { images: { design: images.designNavPanel, dev: images.devNavSidebar } })}
+${compareSection('s4', '4. User message bubble', userMessageRows, { images: { design: images.designUserMessage, dev: images.devConversationTop } })}
 
-${compareSection('s5', '5. User message bubble', userMessageRows, { images: { design: images.designUserMessage, dev: images.devConversationTop } })}
+${compareSection('s5', '5. AI message', aiMessageRows, { images: { design: images.designAiMessage, dev: images.devConversationScrolled } })}
 
-${compareSection('s6', '6. AI message', aiMessageRows, { images: { design: images.designAiMessage, dev: images.devConversationScrolled } })}
+${compareSection('s6', '6. Send button', sendButtonRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
 
-${compareSection('s7', '7. Send button', sendButtonRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
+${compareSection('s7', '7. Input field', inputFieldRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
 
-${compareSection('s8', '8. Input field', inputFieldRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
+${compareSection('s8', '8. Voice button', voiceButtonRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
 
-${compareSection('s9', '9. Voice button', voiceButtonRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
+${compareSection('s9', '9. Prompt chips (empty state)', promptChipRows, { images: { design: images.designEmpty, dev: images.devEmptyState } })}
 
-${compareSection('s10', '10. Prompt chips (empty state)', promptChipRows, { images: { design: images.designEmpty, dev: images.devEmptyState } })}
+${compareSection('s10', '10. Panel shell', panelShellRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
-${compareSection('s11', '11. Panel shell', panelShellRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
+${compareSection('s11', '11. Header bar', headerRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
-${compareSection('s12', '12. Header bar', headerRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
-
-${compareSection('s13', '13. Messages area', messagesAreaRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
+${compareSection('s12', '12. Messages area', messagesAreaRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
 <section id="tokens">
   <h2>Design Token Reference</h2>
