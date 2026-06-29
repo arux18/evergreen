@@ -347,7 +347,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Visible horizontal scrollbar on tables</td>
       <td class="mono">Scrollbars should be hidden AND the content frame should not exceed the panel width in the first place — tables should fit within 390px or use a controlled scroll container without a visible scrollbar</td>
-      <td class="mono">Visible orange/tan scrollbar appears at bottom of table sections. Root cause: the table/frame is wider than the chat panel (390px), creating overflow. The scrollbar then appears because overflow-x is auto with no scrollbar hiding.</td>
+      <td class="mono">Visible tan scrollbar appears at bottom of table sections. Root cause: the table/frame is wider than the chat panel (390px), creating overflow. The scrollbar then appears because overflow-x is auto with no scrollbar hiding.</td>
       <td>Two fixes needed: (1) Constrain table max-width to the panel width so it does not overflow at all when possible, or use responsive column hiding. (2) When overflow IS necessary, hide the native scrollbar via scrollbar-width: none / ::-webkit-scrollbar { display: none } while keeping swipe gesture support.</td>
       <td class="status-gap">Gap</td>
     </tr></tbody>
