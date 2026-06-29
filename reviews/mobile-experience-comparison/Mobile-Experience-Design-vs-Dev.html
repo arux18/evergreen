@@ -79,6 +79,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <a href="#s10" class="nav-link">10. Panel shell</a>
   <a href="#s11" class="nav-link">11. Header bar</a>
   <a href="#s12" class="nav-link">12. Messages area</a>
+  <span class="side-nav-title t-data">Priority 4 — PFM Screens</span>
+  <a href="#s13" class="nav-link">13. Investments list</a>
+  <a href="#s14" class="nav-link">14. Holding detail popup</a>
+  <a href="#s15" class="nav-link">15. Missing designs</a>
   <span class="side-nav-title t-ref">Reference</span>
   <a href="#tokens" class="nav-link">Token map</a>
 </nav>
@@ -89,10 +93,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 29, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">36</div><div class="stat-label">Gaps</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--match)">46</div><div class="stat-label">Matches</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--verify)">32</div><div class="stat-label">To verify</div></div>
-    <div class="stat"><div class="stat-num">114</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">44</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--match)">52</div><div class="stat-label">Matches</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verify)">42</div><div class="stat-label">To verify</div></div>
+    <div class="stat"><div class="stat-num">138</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
 </div>
@@ -1030,6 +1034,61 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <td>—</td>
       <td class="status-match">Match</td>
     </tr></tbody>
+    </table>
+  </section>
+
+  <section id="s13">
+    <h2>13. Investments list screen</h2>
+    <p>Design source: <code>pfm-investments-v2.pen</code> → frame <code>zoKIL</code> ("Mobile - Investments - Default")</p>
+    <table>
+      <thead><tr><th>Property</th><th>Design token</th><th>Dev implementation</th><th>Required change</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Filter pills row</td><td>Row of pill buttons (All, ETFs, Stocks, Bonds, Crypto, REITs) between account selector and table. Uses <code>O:bMlax</code> (primary) for active, <code>O:aFIzk</code> (outline) for others. <code>cornerRadius: 9999</code>, gap <code>$O:spacing-2xs</code></td><td>Not present — app goes from account selector directly to table</td><td>Implement filter pill row matching design</td><td class="status-gap">Gap</td></tr>
+        <tr><td>Account column format</td><td>Shows institution + last 4 digits: "Fidelity Brokerage (x4372)". Font: <code>$O:typo-primary-sm-regular</code>, color <code>$O:color-gray-500</code></td><td>Shows "Fidelity · Fidelity 403(b) Tax-Deferred" — institution · full account name</td><td>Change to show institution name + masked account number format</td><td class="status-gap">Gap</td></tr>
+        <tr><td>Table column widths</td><td>SECURITY: <code>fill_container</code> / ACCOUNT: <code>100px</code> / MARKET VALUE: <code>80px</code> (right-aligned)</td><td>Columns visible but proportions appear different</td><td>Verify column widths match spec: security fills remaining space, account 100px, value 80px right-aligned</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Table header background</td><td><code>$O:color-taupe-100</code>, <code>cornerRadius: 8</code>, padding <code>[10, 12]</code></td><td>Appears taupe with rounded corners</td><td>—</td><td class="status-match">Match</td></tr>
+        <tr><td>Table header text</td><td><code>$O:color-gray-500</code>, <code>$O:typo-primary-2xs-semibold-font-family</code>, <code>$O:typo-primary-xs-semibold-font-size</code>, weight 600</td><td>Uppercase column labels present with sort icons</td><td>Verify font token usage</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Sort icons</td><td>Lucide icons, 10×10, <code>$O:color-gray-500</code></td><td>Sort icons present and functional</td><td>—</td><td class="status-match">Match</td></tr>
+        <tr><td>"TOTAL VALUE" label</td><td><code>$O:color-gray-500</code>, Heebo, <code>$O:typo-primary-sm-font-size</code>, weight 600, letterSpacing 1</td><td>Label present, appears correct</td><td>Verify token usage matches spec (should use <code>$colors-text-meta</code> / <code>$typo-primary-2xs-regular</code> per latest pattern)</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Total value amount</td><td><code>$O:color-gray-900</code>, Heebo, 36px, weight 600, letterSpacing -0.5</td><td>"$3,052,000.00" displayed large</td><td>Verify font size and weight</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Subtitle</td><td>"22 holdings across all accounts" — <code>$O:colors-text-meta</code>, Heebo, 14px, normal weight</td><td>Subtitle present</td><td>—</td><td class="status-match">Match</td></tr>
+        <tr><td>Account selector</td><td>Uses <code>O:jncEi</code> (Select component), height 58, cornerRadius 8</td><td>"All accounts" with chevron visible</td><td>—</td><td class="status-match">Match</td></tr>
+        <tr><td>Holding row padding</td><td><code>padding: 12</code>, gap <code>$O:spacing-sm</code>, bottom border <code>$O:color-gray-100</code></td><td>Rows with borders visible</td><td>Verify padding values</td><td class="status-verify">Verify</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="s14">
+    <h2>14. Holding detail bottom sheet</h2>
+    <p>Design source: <code>pfm-investments-v2.pen</code> → frame <code>mhYrM</code> (inside "Mobile - Investments - Holding Detail")</p>
+    <table>
+      <thead><tr><th>Property</th><th>Design token</th><th>Dev implementation</th><th>Required change</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Title icon shape</td><td>Square frame 36×36 with <code>cornerRadius: $O:radius-2xs</code>, image fill, <code>clip: true</code></td><td>Circular icon with letter "V" inside</td><td>Change to rounded-square image (or ticker logo) matching design. Not a circle with letter.</td><td class="status-gap">Gap</td></tr>
+        <tr><td>Title layout</td><td>Vertical column: ticker code ("AAPL" in <code>$O:color-gray-400</code>, 2xs-semibold, letterSpacing 0.5) above holding name (<code>$O:colors-text-header</code>, secondary-md-semibold, letterSpacing -0.3)</td><td>"VTI" and "Vanguard Tot..." appear on same line or different layout; name truncated with ellipsis</td><td>Implement two-line vertical column: ticker code on top, full holding name below. Ensure text wraps (no truncation).</td><td class="status-gap">Gap</td></tr>
+        <tr><td>Title truncation</td><td>Name should display fully — <code>textGrowth: fixed-width</code> on name allows wrapping, width <code>fill_container</code></td><td>"Vanguard Tot..." is truncated with ellipsis</td><td>Remove text truncation / ellipsis. Allow text to wrap.</td><td class="status-gap">Gap</td></tr>
+        <tr><td>Close icon</td><td>Lucide "x", 24×24, <code>$O:colors-icons-meta</code></td><td>X icon present, appears correct size</td><td>—</td><td class="status-match">Match</td></tr>
+        <tr><td>Title section gap</td><td><code>gap: 12</code>, <code>padding: [0, 16]</code>, <code>alignItems: center</code></td><td>Elements aligned</td><td>Verify gap and padding values</td><td class="status-verify">Verify</td></tr>
+        <tr><td>"MARKET VALUE" label</td><td><code>$colors-text-meta</code>, <code>$typo-primary-2xs-regular</code>, normal weight, letterSpacing 1.5</td><td>Label present</td><td>Verify uses 2xs-regular tokens (not sm-semibold)</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Value amount</td><td><code>$colors-text-header</code>, <code>$typo-primary-xl-semibold</code>, lineHeight 1.3333</td><td>"$450,000.00" displayed</td><td>Verify token usage</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Section header</td><td><code>$O:colors-background-main</code> fill, cornerRadius <code>[8,8,0,0]</code>, padding <code>[$O:spacing-xs, $O:spacing-sm]</code>, bottom border <code>$O:colors-borders-light</code>. Label uses <code>O:H9ao5i</code> (Label component ref), font-family-primary, semibold</td><td>Taupe/cream header with rounded top corners visible</td><td>Verify fill uses <code>$O:colors-background-main</code> (not hardcoded)</td><td class="status-match">Match</td></tr>
+        <tr><td>Detail row structure</td><td>Hand-built frames: label (<code>width: 140</code>, <code>$O:colors-text-meta</code>, sm-regular) + value (<code>fill_container</code>, <code>$O:colors-text-body</code>, sm-regular). Gap <code>$O:spacing-sm</code>, padding <code>$O:spacing-sm</code>, bottom border <code>$O:colors-borders-light</code></td><td>Two-column rows with borders visible</td><td>Verify label width is fixed 140px and value fills remaining space</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Detail row fields &amp; order</td><td>Security, Type, Account, Quantity, Last Price, Cost Basis, Sub-type, Price As Of, Currency (9 rows)</td><td>Security, Security Type, Account, Quantity, Last Price, Price As Of, Cost Basis, Currency (8 rows, different order)</td><td>Match field names and order to design. Add missing "Sub-type" row.</td><td class="status-gap">Gap</td></tr>
+        <tr><td>Performance values color</td><td><code>$O:colors-text-deposit</code> token for positive values</td><td>Green color displayed for +$155,000.00 and +52.54%</td><td>Verify uses <code>$O:colors-text-deposit</code> token (not hardcoded hex)</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Bottom sheet container</td><td><code>cornerRadius: [$O:radius-md, $O:radius-md, 0, 0]</code>, <code>fill: $O:colors-background-surface</code>, <code>padding: [$O:spacing-md, 0]</code>, <code>width: 390</code>, <code>clip: true</code></td><td>Rounded top corners, white background</td><td>—</td><td class="status-match">Match</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="s15">
+    <h2>15. Missing designs (empty states)</h2>
+    <p>The following screens exist in the app but have <strong>no approved design</strong> in any <code>.pen</code> file. These need designs created before dev can be audited.</p>
+    <table>
+      <thead><tr><th>Screen</th><th>What the app shows</th><th>Design file</th><th>Action needed</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Investments — empty state</td><td>Briefcase icon in circle, "Connect a brokerage to view your investments" heading, "Link an investment account to see your holdings here." body, "Connect a brokerage" CTA button (dark, pill-shaped)</td><td>No design exists</td><td>Create approved design in <code>pfm-investments-v2.pen</code></td><td class="status-gap">Gap</td></tr>
+        <tr><td>Activity — empty state</td><td>Header + account selector + filter tabs (All Types, Banking, Credit Cards) + table header (DATE, DESCRIPTION, AMOUNT) with empty body below</td><td>No design exists</td><td>Create approved design in PFM activity <code>.pen</code> file</td><td class="status-gap">Gap</td></tr>
+      </tbody>
     </table>
   </section>
 
