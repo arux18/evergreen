@@ -106,16 +106,15 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p style="font-size:14px;color:#5E5954;margin-bottom:16px;">Ordered by user-facing severity. Items marked ★ are compliance or accessibility risks.</p>
   <ol style="font-size:14px; line-height:2; padding-left:20px; margin:0;">
     <li><strong>★ Login page doesn't scroll</strong> — <code>overflow: hidden</code> on html/body clips legal disclaimers mid-sentence. Users cannot read required compliance text.</li>
-    <li><strong>★ Login page has no background</strong> — All elements are transparent; page renders black against browser canvas instead of white per design.</li>
     <li><strong>★ Continue button stays enabled on empty input</strong> — Should be disabled (Hemlock disabled state) until a valid email is entered.</li>
     <li><strong>Rich content cards don't stack on mobile</strong> — Multi-column comparison grids overflow at 390px; text hard-clips ("New Hampshir"). Should be single-column stacked cards.</li>
     <li><strong>Visible horizontal scrollbar on tables</strong> — Native scrollbar appears on data tables; should be hidden (CSS scrollbar-width: none).</li>
     <li><strong>Thinking status text duplicates</strong> — "Formulating response…" appears multiple times stacked. Design shows ONE replaceable text line below dots.</li>
-    <li><strong>Wrong icon library</strong> — Send button uses Heroicons; app standard is <strong>lucide</strong>.</li>
-    <li><strong>Send button colors wrong</strong> — Hover (#525252 vs spec #4F4F4F), pressed (#252525 vs spec #2A2A2A), disabled (wrong token entirely).</li>
     <li><strong>Systemic: hard-coded hex values instead of tokens</strong> — border-[#DCD8CB], text-[#2D2926], placeholder-[#A8A49E], shadow-[…] appear across 12+ elements. Should use semantic token classes.</li>
     <li><strong>Continue button styling doesn't match Hemlock</strong> — Wrong bg (#3C3C3C vs #0E0E0E), wrong text (#FFF vs #EEEDEB), wrong font-size (14 vs 16), left-aligned (should be centered).</li>
-    <li><strong>Message spacing 8px vs 16px</strong> — Both user and AI message bottom-margins are 8px; design token is $spacing-sm (16px).</li>
+    <li><strong>Holding detail: circular letter avatar instead of rounded-square image</strong> — Design uses a 36×36 rounded-square image fill with <code>cornerRadius: $O:radius-2xs</code>; app renders a circle with a letter inside.</li>
+    <li><strong>Holding detail: title truncated instead of wrapping</strong> — Name shows ellipsis ("Vanguard Tot…"); design uses two-line vertical layout (ticker code above, full name below) with <code>fill_container</code> width to allow wrapping.</li>
+    <li><strong>Holding detail: field order &amp; count mismatch</strong> — App shows 8 rows in different order; design specifies 9 rows (Security, Type, Account, Quantity, Last Price, Cost Basis, Sub-type, Price As Of, Currency). Missing "Sub-type" row entirely.</li>
   </ol>
 </div>
 
