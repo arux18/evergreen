@@ -93,9 +93,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 26, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">28</div><div class="stat-label">Gaps</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--match)">34</div><div class="stat-label">Matches</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--verify)">53</div><div class="stat-label">To verify</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">33</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--match)">45</div><div class="stat-label">Matches</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verify)">37</div><div class="stat-label">To verify</div></div>
     <div class="stat"><div class="stat-num">115</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
@@ -170,9 +170,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Header background</td>
       <td class="mono">$chat.bg (→ #F7F5F0 taupe, inherited from panel)</td>
-      <td class="mono">Verify — must be taupe (#F7F5F0), not white (#FFFFFF)</td>
-      <td>If header has bg-white or background: #fff, change to inherit panel bg or use bg-taupe-100</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">No explicit header bg — inherits from panel bg-taupe-100 ✓</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Header padding</td>
@@ -490,16 +490,16 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Textarea font</td>
       <td class="mono">$fontFamily-primary $fontSize-sm / $fontWeight-regular (Heebo 14px/400)</td>
-      <td class="mono">font: 14px Heebo, weight 400 — verify uses typography token class</td>
-      <td>Should use typo-primary-sm-regular token class</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">text-sm (Tailwind scale ✓) — font-size confirmed via token class</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Textarea color</td>
       <td class="mono">$chat.text.primary (→ #2D2926)</td>
-      <td class="mono">color: #2D2926 — verify if class uses token or hard-coded [#hex]</td>
-      <td>Should use semantic text color class mapped to $chat.text.primary</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">text-[#2D2926] — hard-coded hex instead of token class</td>
+      <td>Use semantic text color class mapped to $chat.text.primary. Hard-coded value will drift if token changes.</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Placeholder text</td>
@@ -528,9 +528,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Send button size</td>
       <td class="mono">$size-icon-lg (34px) — verify token name</td>
-      <td class="mono">w: 34px, h: 34px — verify uses token class (w-[34px] is hard-coded)</td>
-      <td>Should use a named size token, not arbitrary [34px]</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">style="width: 34px; height: 34px" — inline hard-coded, no token class</td>
+      <td>Use a named size token class (e.g. w-[--size-icon-lg]), not inline style with raw px</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Send button shape</td>
@@ -549,8 +549,8 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Send button bg (disabled)</td>
       <td class="mono">$chat.send.bg.disabled (→ #D4D1CA)</td>
-      <td class="mono">bg: #E3DFD6 — WRONG value AND likely hard-coded</td>
-      <td>Wrong value (#E3DFD6 vs #D4D1CA) AND must use token class mapped to $chat.send.bg.disabled</td>
+      <td class="mono">bg-taupe-300 = #E3DFD6 — WRONG value (#E3DFD6 vs #D4D1CA) AND uses wrong token (taupe-300 is $chat.close.pressed.bg, not send.disabled)</td>
+      <td>Use semantic class mapped to $chat.send.bg.disabled (#D4D1CA). Current bg-taupe-300 is the wrong token entirely.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -570,9 +570,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Send button icon color</td>
       <td class="mono">$chat.send.icon (→ #FFFFFF)</td>
-      <td class="mono">color: #FFFFFF — verify uses token class (text-white) not hard-coded</td>
-      <td>Should use text-white or semantic icon color class</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">text-white — uses Tailwind token class ✓</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Send button icon glyph</td>
@@ -601,9 +601,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Voice button size</td>
       <td class="mono">$size-icon-lg (34px) — verify token name</td>
-      <td class="mono">w: 34px, h: 34px — verify uses token class not arbitrary [34px]</td>
-      <td>Should use named size token</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">style="width: 34px; height: 34px" assumed (same pattern as send button) — inline hard-coded</td>
+      <td>Use a named size token class, not inline style</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Voice button shape</td>
@@ -622,16 +622,16 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Voice button border</td>
       <td class="mono">$chat.border (→ 1px solid #DCD8CB)</td>
-      <td class="mono">border: 1px solid #DCD8CB — verify uses token class not hard-coded [#hex]</td>
-      <td>Should use semantic border class mapped to $chat.border token</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">border-[#DCD8CB] — hard-coded hex instead of token class</td>
+      <td>Use semantic border class mapped to $chat.border token. Hard-coded value will drift if token changes.</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Voice button icon color</td>
       <td class="mono">$chat.icon (→ #5E5954)</td>
-      <td class="mono">color: #5E5954 — verify uses token class (text-gray-600) not [#hex]</td>
-      <td>Should use semantic class mapped to $chat.icon</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">text-gray-600 — uses Tailwind color scale ✓</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Voice button active bg</td>
@@ -660,58 +660,58 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Prompt chip background</td>
       <td class="mono">$chat.chip.bg (→ $nav.bg → #F7F5F0)</td>
-      <td class="mono">bg: #F7F5F0 — verify uses token class (bg-taupe-100) not hard-coded</td>
-      <td>Should use semantic class mapped to $chat.chip.bg</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">bg-taupe-100 — uses Tailwind token class ✓</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip border</td>
       <td class="mono">$chat.chip.border (→ #DCD8CB)</td>
-      <td class="mono">border: 1px solid #DCD8CB — verify uses token class not hard-coded [#hex]</td>
-      <td>Should use semantic border class mapped to $chat.chip.border</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">border-[#DCD8CB] — hard-coded hex instead of token class</td>
+      <td>Use semantic border class mapped to $chat.chip.border token. Hard-coded value will drift if token changes.</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Prompt chip corner radius</td>
       <td class="mono">$chat.chip.radius (→ 24px)</td>
-      <td class="mono">border-radius: 24px — verify uses rounded-3xl (token) or hard-coded [24px]</td>
-      <td>Should use rounded-3xl or semantic chip radius class</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">rounded-3xl — uses Tailwind radius scale ✓</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip font</td>
       <td class="mono">$fontFamily-primary $fontSize-sm / $fontWeight-regular (Heebo 14px/400)</td>
-      <td class="mono">font: Heebo 14px — verify uses typography token class</td>
-      <td>Should use typo-primary-sm-regular token class</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">text-sm font-normal — uses Tailwind scale classes ✓</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip color</td>
       <td class="mono">$chat.text.secondary (→ #5E5954)</td>
-      <td class="mono">color: #5E5954 — verify uses token class (text-gray-600) not [#hex]</td>
-      <td>Should use semantic class mapped to $chat.text.secondary</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">text-gray-600 — uses Tailwind color scale ✓</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip padding</td>
       <td class="mono">$spacing-xs (12px) / $spacing-sm (16px)</td>
-      <td class="mono">padding: 12px 16px — check uses py-3 px-4 (scale) or hard-coded</td>
-      <td>Should use Tailwind spacing utilities from scale</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">px-4 py-3 — uses Tailwind spacing scale ✓</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip hover bg</td>
       <td class="mono">$chat.chip.hover.bg (→ #EDEAE3)</td>
-      <td class="mono">Verify — hover state. Must use token class (hover:bg-taupe-200)</td>
-      <td>Must use semantic hover class mapped to $chat.chip.hover.bg</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">hover:bg-taupe-200 — uses Tailwind color token ✓</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip pressed bg</td>
       <td class="mono">$chat.chip.pressed.bg (→ #E3DFD6)</td>
-      <td class="mono">Verify — active state. Must use token class (active:bg-taupe-300)</td>
-      <td>Must use semantic active class mapped to $chat.chip.pressed.bg</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">active:bg-taupe-300 — uses Tailwind color token ✓</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr></tbody>
     </table>
   </section>

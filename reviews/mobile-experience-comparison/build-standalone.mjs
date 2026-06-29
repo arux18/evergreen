@@ -115,7 +115,7 @@ const panelShellRows = [
 ];
 
 const headerRows = [
-  ['Header background', '$chat.bg (→ #F7F5F0 taupe, inherited from panel)', 'Verify — must be taupe (#F7F5F0), not white (#FFFFFF)', 'If header has bg-white or background: #fff, change to inherit panel bg or use bg-taupe-100', 'Verify'],
+  ['Header background', '$chat.bg (→ #F7F5F0 taupe, inherited from panel)', 'No explicit header bg — inherits from panel bg-taupe-100 ✓', '—', 'Match'],
   ['Header padding', '$spacing-sm (16px) vertical, 20px horizontal', 'py-4 px-5 — uses Tailwind spacing scale ✓', '—', 'Match'],
   ['Header border-bottom', '$chat.divider (→ 0.5px solid #E8E6E0)', '0.5px solid #E8E6E0 — verify if class uses token or inline/arbitrary', 'Confirm border-color references $chat.divider token, not hard-coded hex', 'Verify'],
   ['Header layout', 'flex, space-between, align-items: center', 'flex items-center justify-between — semantic utilities ✓', '—', 'Match'],
@@ -167,43 +167,43 @@ const inputFieldRows = [
   ['Input field border width', '1.5px', 'border-[1.5px] — hard-coded arbitrary width', 'Define border-width token in Tailwind config or use closest scale value', 'Gap'],
   ['Input field corner radius', '$chat.input.radius (→ 12px)', 'rounded-xl — uses Tailwind radius scale ✓', '—', 'Match'],
   ['Input field internal gap', '$spacing-sm (16px)', 'gap-4 — uses Tailwind spacing scale ✓', '—', 'Match'],
-  ['Textarea font', '$fontFamily-primary $fontSize-sm / $fontWeight-regular (Heebo 14px/400)', 'font: 14px Heebo, weight 400 — verify uses typography token class', 'Should use typo-primary-sm-regular token class', 'Verify'],
-  ['Textarea color', '$chat.text.primary (→ #2D2926)', 'color: #2D2926 — verify if class uses token or hard-coded [#hex]', 'Should use semantic text color class mapped to $chat.text.primary', 'Verify'],
+  ['Textarea font', '$fontFamily-primary $fontSize-sm / $fontWeight-regular (Heebo 14px/400)', 'text-sm (Tailwind scale ✓) — font-size confirmed via token class', '—', 'Match'],
+  ['Textarea color', '$chat.text.primary (→ #2D2926)', 'text-[#2D2926] — hard-coded hex instead of token class', 'Use semantic text color class mapped to $chat.text.primary. Hard-coded value will drift if token changes.', 'Gap'],
   ['Placeholder text', '"Ask me any financial question..."', '"Ask me any financial question..." — correct', '—', 'Match'],
   ['Placeholder color', '$chat.text.placeholder (→ #A8A49E)', 'placeholder:text-[#A8A49E] — hard-coded hex instead of token class', 'Use semantic placeholder color class mapped to $chat.text.placeholder token', 'Gap'],
 ];
 
 const sendButtonRows = [
-  ['Send button size', '$size-icon-lg (34px) — verify token name', 'w: 34px, h: 34px — verify uses token class (w-[34px] is hard-coded)', 'Should use a named size token, not arbitrary [34px]', 'Verify'],
+  ['Send button size', '$size-icon-lg (34px) — verify token name', 'style="width: 34px; height: 34px" — inline hard-coded, no token class', 'Use a named size token class (e.g. w-[--size-icon-lg]), not inline style with raw px', 'Gap'],
   ['Send button shape', '$radius-full (border-radius: 50%)', 'rounded-full — uses Tailwind scale ✓', '—', 'Match'],
   ['Send button bg (enabled)', '$chat.send.bg (→ #3C3C3C)', 'Verify — need enabled state to inspect. Must use token class, not bg-[#3C3C3C]', 'Must use semantic class mapped to $chat.send.bg, not hard-coded hex', 'Verify'],
-  ['Send button bg (disabled)', '$chat.send.bg.disabled (→ #D4D1CA)', 'bg: #E3DFD6 — WRONG value AND likely hard-coded', 'Wrong value (#E3DFD6 vs #D4D1CA) AND must use token class mapped to $chat.send.bg.disabled', 'Gap'],
+  ['Send button bg (disabled)', '$chat.send.bg.disabled (→ #D4D1CA)', 'bg-taupe-300 = #E3DFD6 — WRONG value (#E3DFD6 vs #D4D1CA) AND uses wrong token (taupe-300 is $chat.close.pressed.bg, not send.disabled)', 'Use semantic class mapped to $chat.send.bg.disabled (#D4D1CA). Current bg-taupe-300 is the wrong token entirely.', 'Gap'],
   ['Send button bg (hover)', '$chat.send.bg.hover (→ #4F4F4F)', 'Verify — requires enabled state. Must use token class, not hover:bg-[#4F4F4F]', 'Must use semantic hover class mapped to $chat.send.bg.hover', 'Verify'],
   ['Send button bg (pressed)', '$chat.send.bg.pressed (→ #2A2A2A)', 'Verify — requires enabled + click. Must use token class, not active:bg-[#2A2A2A]', 'Must use semantic active class mapped to $chat.send.bg.pressed', 'Verify'],
-  ['Send button icon color', '$chat.send.icon (→ #FFFFFF)', 'color: #FFFFFF — verify uses token class (text-white) not hard-coded', 'Should use text-white or semantic icon color class', 'Verify'],
+  ['Send button icon color', '$chat.send.icon (→ #FFFFFF)', 'text-white — uses Tailwind token class ✓', '—', 'Match'],
   ['Send button icon glyph', 'lucide `arrow-up` icon (per chat-ui.lib.pen Chat / Send Button component)', 'Heroicons solid `arrow-up` (24px viewBox, fill=currentColor, path M11.47 2.47...). Wrong icon library — app standardizes on lucide, not Heroicons.', 'Replace with lucide `arrow-up`. Standardize on lucide for ALL app icons, not Heroicons.', 'Gap'],
   ['Send button border', 'None (no border per design)', 'border: 0px none — correct', '—', 'Match'],
 ];
 
 const voiceButtonRows = [
-  ['Voice button size', '$size-icon-lg (34px) — verify token name', 'w: 34px, h: 34px — verify uses token class not arbitrary [34px]', 'Should use named size token', 'Verify'],
+  ['Voice button size', '$size-icon-lg (34px) — verify token name', 'style="width: 34px; height: 34px" assumed (same pattern as send button) — inline hard-coded', 'Use a named size token class, not inline style', 'Gap'],
   ['Voice button shape', '$radius-full (border-radius: 50%)', 'rounded-full — uses Tailwind scale ✓', '—', 'Match'],
   ['Voice button bg (default)', 'Transparent (no fill per design)', 'bg: transparent — correct', '—', 'Match'],
-  ['Voice button border', '$chat.border (→ 1px solid #DCD8CB)', 'border: 1px solid #DCD8CB — verify uses token class not hard-coded [#hex]', 'Should use semantic border class mapped to $chat.border token', 'Verify'],
-  ['Voice button icon color', '$chat.icon (→ #5E5954)', 'color: #5E5954 — verify uses token class (text-gray-600) not [#hex]', 'Should use semantic class mapped to $chat.icon', 'Verify'],
+  ['Voice button border', '$chat.border (→ 1px solid #DCD8CB)', 'border-[#DCD8CB] — hard-coded hex instead of token class', 'Use semantic border class mapped to $chat.border token. Hard-coded value will drift if token changes.', 'Gap'],
+  ['Voice button icon color', '$chat.icon (→ #5E5954)', 'text-gray-600 — uses Tailwind color scale ✓', '—', 'Match'],
   ['Voice button active bg', '$chat.voice.active.bg (→ #3A6AF8)', 'Verify — requires recording state. Must use token class not bg-[#3A6AF8]', 'Must use semantic class mapped to $chat.voice.active.bg', 'Verify'],
   ['Voice button active icon', '$chat.voice.active.icon (→ #FFFFFF)', 'Verify — requires recording state. Must use token class', 'Must use semantic class mapped to $chat.voice.active.icon', 'Verify'],
 ];
 
 const promptChipRows = [
-  ['Prompt chip background', '$chat.chip.bg (→ $nav.bg → #F7F5F0)', 'bg: #F7F5F0 — verify uses token class (bg-taupe-100) not hard-coded', 'Should use semantic class mapped to $chat.chip.bg', 'Verify'],
-  ['Prompt chip border', '$chat.chip.border (→ #DCD8CB)', 'border: 1px solid #DCD8CB — verify uses token class not hard-coded [#hex]', 'Should use semantic border class mapped to $chat.chip.border', 'Verify'],
-  ['Prompt chip corner radius', '$chat.chip.radius (→ 24px)', 'border-radius: 24px — verify uses rounded-3xl (token) or hard-coded [24px]', 'Should use rounded-3xl or semantic chip radius class', 'Verify'],
-  ['Prompt chip font', '$fontFamily-primary $fontSize-sm / $fontWeight-regular (Heebo 14px/400)', 'font: Heebo 14px — verify uses typography token class', 'Should use typo-primary-sm-regular token class', 'Verify'],
-  ['Prompt chip color', '$chat.text.secondary (→ #5E5954)', 'color: #5E5954 — verify uses token class (text-gray-600) not [#hex]', 'Should use semantic class mapped to $chat.text.secondary', 'Verify'],
-  ['Prompt chip padding', '$spacing-xs (12px) / $spacing-sm (16px)', 'padding: 12px 16px — check uses py-3 px-4 (scale) or hard-coded', 'Should use Tailwind spacing utilities from scale', 'Verify'],
-  ['Prompt chip hover bg', '$chat.chip.hover.bg (→ #EDEAE3)', 'Verify — hover state. Must use token class (hover:bg-taupe-200)', 'Must use semantic hover class mapped to $chat.chip.hover.bg', 'Verify'],
-  ['Prompt chip pressed bg', '$chat.chip.pressed.bg (→ #E3DFD6)', 'Verify — active state. Must use token class (active:bg-taupe-300)', 'Must use semantic active class mapped to $chat.chip.pressed.bg', 'Verify'],
+  ['Prompt chip background', '$chat.chip.bg (→ $nav.bg → #F7F5F0)', 'bg-taupe-100 — uses Tailwind token class ✓', '—', 'Match'],
+  ['Prompt chip border', '$chat.chip.border (→ #DCD8CB)', 'border-[#DCD8CB] — hard-coded hex instead of token class', 'Use semantic border class mapped to $chat.chip.border token. Hard-coded value will drift if token changes.', 'Gap'],
+  ['Prompt chip corner radius', '$chat.chip.radius (→ 24px)', 'rounded-3xl — uses Tailwind radius scale ✓', '—', 'Match'],
+  ['Prompt chip font', '$fontFamily-primary $fontSize-sm / $fontWeight-regular (Heebo 14px/400)', 'text-sm font-normal — uses Tailwind scale classes ✓', '—', 'Match'],
+  ['Prompt chip color', '$chat.text.secondary (→ #5E5954)', 'text-gray-600 — uses Tailwind color scale ✓', '—', 'Match'],
+  ['Prompt chip padding', '$spacing-xs (12px) / $spacing-sm (16px)', 'px-4 py-3 — uses Tailwind spacing scale ✓', '—', 'Match'],
+  ['Prompt chip hover bg', '$chat.chip.hover.bg (→ #EDEAE3)', 'hover:bg-taupe-200 — uses Tailwind color token ✓', '—', 'Match'],
+  ['Prompt chip pressed bg', '$chat.chip.pressed.bg (→ #E3DFD6)', 'active:bg-taupe-300 — uses Tailwind color token ✓', '—', 'Match'],
 ];
 
 const richContentRows = [
