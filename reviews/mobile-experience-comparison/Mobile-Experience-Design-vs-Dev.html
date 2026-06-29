@@ -142,23 +142,23 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Continue button background</td>
-      <td class="mono">$colors-btnPrimaryBg ($color-gray-900 → #0E0E0E)</td>
+      <td class="mono">$O:colors-btnPrimaryBg ($O:color-gray-900 → #0E0E0E)</td>
       <td class="mono">rgb(60,60,60) = #3C3C3C — wrong color (this is the chat send-button color, not the Hemlock primary)</td>
-      <td>Use $colors-btnPrimaryBg (#0E0E0E). Current #3C3C3C is wrong.</td>
+      <td>Use $O:colors-btnPrimaryBg (#0E0E0E). Current #3C3C3C is wrong.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Continue button text color</td>
-      <td class="mono">$colors-btnPrimaryText ($color-gray-100 → #EEEDEB)</td>
+      <td class="mono">$O:colors-btnPrimaryText ($O:color-gray-100 → #EEEDEB)</td>
       <td class="mono">rgb(255,255,255) = #FFFFFF — pure white, not the spec off-white #EEEDEB</td>
-      <td>Use $colors-btnPrimaryText (#EEEDEB). Current #FFFFFF is wrong.</td>
+      <td>Use $O:colors-btnPrimaryText (#EEEDEB). Current #FFFFFF is wrong.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Continue button corner radius</td>
-      <td class="mono">$radius-full (9999px, pill)</td>
+      <td class="mono">$O:radius-full (9999px, pill)</td>
       <td class="mono">9999px (computed, from OpenUI button CSS) — token usage unconfirmed</td>
-      <td>Confirm radius references $radius-full token, not a hard-coded 9999px in OpenUI CSS</td>
+      <td>Confirm radius references $O:radius-full token, not a hard-coded 9999px in OpenUI CSS</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -184,16 +184,16 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Continue button height</td>
-      <td class="mono">$spacing-2xl (48px) min-height</td>
-      <td class="mono">46px — 2px short of $spacing-2xl</td>
-      <td>Set min-height: $spacing-2xl (48px) per component/Button spec</td>
+      <td class="mono">$O:spacing-2xl (48px) min-height</td>
+      <td class="mono">46px — 2px short of $O:spacing-2xl</td>
+      <td>Set min-height: $O:spacing-2xl (48px) per component/Button spec</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Continue button padding</td>
-      <td class="mono">$spacing-xs (12px) / $spacing-md (24px)</td>
+      <td class="mono">$O:spacing-xs (12px) / $O:spacing-md (24px)</td>
       <td class="mono">12px 24px (computed, from OpenUI CSS) — token usage unconfirmed</td>
-      <td>Confirm padding references $spacing-xs / $spacing-md tokens, not hard-coded values</td>
+      <td>Confirm padding references $O:spacing-xs / $O:spacing-md tokens, not hard-coded values</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -214,7 +214,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <td>Continue button disabled state (empty input)</td>
       <td class="mono">Button is DISABLED when the email input is empty — design frame shows the disabled state (light grey button, no email entered)</td>
       <td class="mono">Button stays ENABLED when input is empty — disabled=false, no disabled attribute, bg #3C3C3C (enabled color), cursor: pointer. Verified via real input clear (React state confirmed empty).</td>
-      <td>Disable the Continue button when the email input is empty. Use the Hemlock disabled state ($colors-btnPrimaryBgDisabled / $color-gray-200) so the button renders light grey and non-interactive until valid text is entered.</td>
+      <td>Disable the Continue button when the email input is empty. Use the Hemlock disabled state ($O:colors-btnPrimaryBgDisabled / $O:color-gray-200) so the button renders light grey and non-interactive until valid text is entered.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -455,7 +455,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>User bubble padding</td>
-      <td class="mono">$spacing-xs (12px) vertical, $spacing-sm (16px) horizontal</td>
+      <td class="mono">$O:spacing-xs (12px) vertical, $O:spacing-sm (16px) horizontal</td>
       <td class="mono">padding: 12px 16px — check uses py-3 px-4 (scale) or arbitrary</td>
       <td>Should use Tailwind spacing scale utilities</td>
       <td class="status-verify">Verify</td>
@@ -504,9 +504,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>User bubble bottom margin</td>
-      <td class="mono">$spacing-sm (16px)</td>
-      <td class="mono">margin-bottom: 8px — wrong value (should be $spacing-sm 16px) AND likely hard-coded</td>
-      <td>Use $spacing-sm (16px) token for message spacing. Current 8px is the same gap discrepancy seen on AI messages.</td>
+      <td class="mono">$O:spacing-sm (16px)</td>
+      <td class="mono">margin-bottom: 8px — wrong value (should be $O:spacing-sm 16px) AND likely hard-coded</td>
+      <td>Use $O:spacing-sm (16px) token for message spacing. Current 8px is the same gap discrepancy seen on AI messages.</td>
       <td class="status-gap">Gap</td>
     </tr></tbody>
     </table>
@@ -571,9 +571,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>AI message margin-bottom</td>
-      <td class="mono">$spacing-sm (16px)</td>
-      <td class="mono">margin: 0 0 8px — 8px instead of $spacing-sm (16px)</td>
-      <td>Use $spacing-sm (16px) token for message spacing. Current 8px is wrong value AND likely hard-coded.</td>
+      <td class="mono">$O:spacing-sm (16px)</td>
+      <td class="mono">margin: 0 0 8px — 8px instead of $O:spacing-sm (16px)</td>
+      <td>Use $O:spacing-sm (16px) token for message spacing. Current 8px is wrong value AND likely hard-coded.</td>
       <td class="status-gap">Gap</td>
     </tr></tbody>
     </table>
@@ -596,7 +596,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Send button shape</td>
-      <td class="mono">$radius-full (border-radius: 50%)</td>
+      <td class="mono">$O:radius-full (border-radius: 50%)</td>
       <td class="mono">rounded-full — uses Tailwind scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -698,7 +698,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Input field internal gap</td>
-      <td class="mono">$spacing-sm (16px)</td>
+      <td class="mono">$O:spacing-sm (16px)</td>
       <td class="mono">gap-4 — uses Tailwind spacing scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -751,7 +751,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Voice button shape</td>
-      <td class="mono">$radius-full (border-radius: 50%)</td>
+      <td class="mono">$O:radius-full (border-radius: 50%)</td>
       <td class="mono">rounded-full — uses Tailwind scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -839,7 +839,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Prompt chip padding</td>
-      <td class="mono">$spacing-xs (12px) / $spacing-sm (16px)</td>
+      <td class="mono">$O:spacing-xs (12px) / $O:spacing-sm (16px)</td>
       <td class="mono">px-4 py-3 — uses Tailwind spacing scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -938,7 +938,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Header padding</td>
-      <td class="mono">$spacing-sm (16px) vertical, 20px horizontal</td>
+      <td class="mono">$O:spacing-sm (16px) vertical, 20px horizontal</td>
       <td class="mono">py-4 px-5 — uses Tailwind spacing scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -980,9 +980,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Close button radius</td>
-      <td class="mono">$radius-sm (6px) — verify token name</td>
+      <td class="mono">$O:radius-sm (6px) — verify token name</td>
       <td class="mono">rounded-[6px] — hard-coded arbitrary value</td>
-      <td>Use $radius-sm token class (rounded-md if configured to 6px), not arbitrary [6px]</td>
+      <td>Use $O:radius-sm token class (rounded-md if configured to 6px), not arbitrary [6px]</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -1019,14 +1019,14 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
     <tr>
       <td>Messages container gap</td>
-      <td class="mono">$spacing-sm (16px)</td>
+      <td class="mono">$O:spacing-sm (16px)</td>
       <td class="mono">gap-4 (Tailwind scale = 16px ✓) — confirmed in empty state. Verify same class applies in conversation state.</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Messages container padding</td>
-      <td class="mono">$spacing-sm (16px) vertical, 20px horizontal</td>
+      <td class="mono">$O:spacing-sm (16px) vertical, 20px horizontal</td>
       <td class="mono">px-5 (Tailwind scale = 20px ✓) — horizontal confirmed. No py-* in empty state (0px top/bottom). Verify padding in conversation state.</td>
       <td>Verify vertical padding uses Tailwind scale in conversation state</td>
       <td class="status-verify">Verify</td>
@@ -1096,8 +1096,8 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
         <tr><td>Title layout</td><td>Vertical column: ticker code (<code>$O:color-gray-400</code>, 2xs-semibold) above holding name (<code>$O:colors-text-header</code>, secondary-md-semibold)</td><td>Ticker and name render horizontally in a row with <code>gap-3</code></td><td>Implement two-line vertical column: ticker code on top, full holding name below.</td><td class="status-gap">Gap</td></tr>
         <tr><td>Header text wrapping</td><td>Holding name should wrap to multiple lines — never truncate. Design uses <code>fill_container</code> width.</td><td><code>truncate</code> class on h2 applies <code>overflow: hidden; text-overflow: ellipsis; white-space: nowrap</code>. Long names get cut off (e.g. "Vanguard Tot…")</td><td>Remove <code>truncate</code> class from the holding name h2. Text must wrap, never truncate with ellipsis.</td><td class="status-gap">Gap</td></tr>
         <tr><td>Title section gap</td><td><code>gap: $O:spacing-xs</code> (12px), <code>padding: [0, $O:spacing-sm]</code> (0, 16px), <code>alignItems: center</code></td><td><code>gap-3 px-4</code> = gap 12px, padding 0 16px (hardcoded Tailwind, not tokens)</td><td>Pixel values match but uses hardcoded utilities. Replace <code>gap-3</code> with <code>$O:spacing-xs</code> and <code>px-4</code> with <code>$O:spacing-sm</code>.</td><td class="status-verify">Verify</td></tr>
-        <tr><td>"MARKET VALUE" label</td><td><code>$colors-text-meta</code>, <code>$typo-primary-2xs-regular</code>, letterSpacing 1.5</td><td>Label visible — cannot confirm token usage from classes alone</td><td>Must verify uses Hemlock typography tokens, not hardcoded font-size/weight</td><td class="status-verify">Verify</td></tr>
-        <tr><td>Value amount</td><td><code>$colors-text-header</code>, <code>$typo-primary-xl-semibold</code>, lineHeight 1.3333</td><td>"$171,500.00" displayed — cannot confirm token usage</td><td>Must verify uses Hemlock typography tokens</td><td class="status-verify">Verify</td></tr>
+        <tr><td>"MARKET VALUE" label</td><td><code>$O:colors-text-meta</code>, <code>$O:typo-primary-2xs-regular</code>, letterSpacing 1.5</td><td>Label visible — cannot confirm token usage from classes alone</td><td>Must verify uses Hemlock typography tokens, not hardcoded font-size/weight</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Value amount</td><td><code>$O:colors-text-header</code>, <code>$O:typo-primary-xl-semibold</code>, lineHeight 1.3333</td><td>"$171,500.00" displayed — cannot confirm token usage</td><td>Must verify uses Hemlock typography tokens</td><td class="status-verify">Verify</td></tr>
         <tr><td>Close icon</td><td>Lucide "x", 24×24, <code>$O:colors-icons-meta</code></td><td>X icon visible, appears correct size — cannot confirm icon color token</td><td>Must verify uses <code>$O:colors-icons-meta</code> token, not hardcoded color</td><td class="status-verify">Verify</td></tr>
         <tr><td>Performance values color</td><td><code>$O:colors-text-deposit</code> token for positive values</td><td>Green color displayed for +$76,300.00 and +80.15% — cannot confirm token</td><td>Must verify uses <code>$O:colors-text-deposit</code> token (not hardcoded hex)</td><td class="status-verify">Verify</td></tr>
       </tbody>
