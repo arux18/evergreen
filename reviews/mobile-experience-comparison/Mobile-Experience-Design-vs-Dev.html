@@ -114,7 +114,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <li><strong>Continue button styling doesn't match Hemlock</strong> — Wrong bg (#3C3C3C vs #0E0E0E), wrong text (#FFF vs #EEEDEB), wrong font-size (14 vs 16), left-aligned (should be centered).</li>
     <li><strong>Holding detail: circular letter avatar instead of rounded-square image</strong> — Design uses a 36×36 rounded-square image fill with <code>cornerRadius: $O:radius-2xs</code>; app renders a circle with a letter inside.</li>
     <li><strong>Holding detail: title truncated instead of wrapping</strong> — Name shows ellipsis ("Vanguard Tot…"); design uses two-line vertical layout (ticker code above, full name below) with <code>fill_container</code> width to allow wrapping.</li>
-    <li><strong>Holding detail: field order &amp; count mismatch</strong> — App shows 8 rows in different order; design specifies 9 rows (Security, Type, Account, Quantity, Last Price, Cost Basis, Sub-type, Price As Of, Currency). Missing "Sub-type" row entirely.</li>
+    <li><strong>Holding detail: padding/spacing completely off</strong> — Section gaps, row padding, and container insets in the holding detail popup don't match design tokens. Text in the detail rows isn't wrapping — it truncates or overflows instead of respecting <code>fill_container</code> width.</li>
   </ol>
 </div>
 
