@@ -176,10 +176,10 @@ const inputFieldRows = [
 const sendButtonRows = [
   ['Send button size', '$size-icon-lg (34px) — verify token name', 'style="width: 34px; height: 34px" — inline hard-coded, no token class', 'Use a named size token class (e.g. w-[--size-icon-lg]), not inline style with raw px', 'Gap'],
   ['Send button shape', '$radius-full (border-radius: 50%)', 'rounded-full — uses Tailwind scale ✓', '—', 'Match'],
-  ['Send button bg (enabled)', '$chat.send.bg (→ #3C3C3C)', 'Verify — need enabled state to inspect. Must use token class, not bg-[#3C3C3C]', 'Must use semantic class mapped to $chat.send.bg, not hard-coded hex', 'Verify'],
+  ['Send button bg (enabled)', '$chat.send.bg (→ #3C3C3C)', 'bg-[#3C3C3C] — hard-coded hex. Value matches token but not via token class.', 'Use semantic class mapped to $chat.send.bg. Hard-coded value will drift if token changes.', 'Gap'],
   ['Send button bg (disabled)', '$chat.send.bg.disabled (→ #D4D1CA)', 'bg-taupe-300 = #E3DFD6 — WRONG value (#E3DFD6 vs #D4D1CA) AND uses wrong token (taupe-300 is $chat.close.pressed.bg, not send.disabled)', 'Use semantic class mapped to $chat.send.bg.disabled (#D4D1CA). Current bg-taupe-300 is the wrong token entirely.', 'Gap'],
-  ['Send button bg (hover)', '$chat.send.bg.hover (→ #4F4F4F)', 'Verify — requires enabled state. Must use token class, not hover:bg-[#4F4F4F]', 'Must use semantic hover class mapped to $chat.send.bg.hover', 'Verify'],
-  ['Send button bg (pressed)', '$chat.send.bg.pressed (→ #2A2A2A)', 'Verify — requires enabled + click. Must use token class, not active:bg-[#2A2A2A]', 'Must use semantic active class mapped to $chat.send.bg.pressed', 'Verify'],
+  ['Send button bg (hover)', '$chat.send.bg.hover (→ #4F4F4F)', 'hover:bg-[#525252] — hard-coded hex AND wrong value (#525252 vs #4F4F4F)', 'Use semantic hover class mapped to $chat.send.bg.hover (#4F4F4F). Current value is wrong AND hard-coded.', 'Gap'],
+  ['Send button bg (pressed)', '$chat.send.bg.pressed (→ #2A2A2A)', 'active:bg-[#252525] — hard-coded hex AND wrong value (#252525 vs #2A2A2A)', 'Use semantic active class mapped to $chat.send.bg.pressed (#2A2A2A). Current value is wrong AND hard-coded.', 'Gap'],
   ['Send button icon color', '$chat.send.icon (→ #FFFFFF)', 'text-white — uses Tailwind token class ✓', '—', 'Match'],
   ['Send button icon glyph', 'lucide `arrow-up` icon (per chat-ui.lib.pen Chat / Send Button component)', 'Heroicons solid `arrow-up` (24px viewBox, fill=currentColor, path M11.47 2.47...). Wrong icon library — app standardizes on lucide, not Heroicons.', 'Replace with lucide `arrow-up`. Standardize on lucide for ALL app icons, not Heroicons.', 'Gap'],
   ['Send button border', 'None (no border per design)', 'border: 0px none — correct', '—', 'Match'],

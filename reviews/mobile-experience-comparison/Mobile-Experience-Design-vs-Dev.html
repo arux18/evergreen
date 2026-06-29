@@ -93,9 +93,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 26, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">33</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">36</div><div class="stat-label">Gaps</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--match)">45</div><div class="stat-label">Matches</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--verify)">37</div><div class="stat-label">To verify</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verify)">34</div><div class="stat-label">To verify</div></div>
     <div class="stat"><div class="stat-num">115</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
@@ -542,9 +542,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Send button bg (enabled)</td>
       <td class="mono">$chat.send.bg (→ #3C3C3C)</td>
-      <td class="mono">Verify — need enabled state to inspect. Must use token class, not bg-[#3C3C3C]</td>
-      <td>Must use semantic class mapped to $chat.send.bg, not hard-coded hex</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">bg-[#3C3C3C] — hard-coded hex. Value matches token but not via token class.</td>
+      <td>Use semantic class mapped to $chat.send.bg. Hard-coded value will drift if token changes.</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Send button bg (disabled)</td>
@@ -556,16 +556,16 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Send button bg (hover)</td>
       <td class="mono">$chat.send.bg.hover (→ #4F4F4F)</td>
-      <td class="mono">Verify — requires enabled state. Must use token class, not hover:bg-[#4F4F4F]</td>
-      <td>Must use semantic hover class mapped to $chat.send.bg.hover</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">hover:bg-[#525252] — hard-coded hex AND wrong value (#525252 vs #4F4F4F)</td>
+      <td>Use semantic hover class mapped to $chat.send.bg.hover (#4F4F4F). Current value is wrong AND hard-coded.</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Send button bg (pressed)</td>
       <td class="mono">$chat.send.bg.pressed (→ #2A2A2A)</td>
-      <td class="mono">Verify — requires enabled + click. Must use token class, not active:bg-[#2A2A2A]</td>
-      <td>Must use semantic active class mapped to $chat.send.bg.pressed</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">active:bg-[#252525] — hard-coded hex AND wrong value (#252525 vs #2A2A2A)</td>
+      <td>Use semantic active class mapped to $chat.send.bg.pressed (#2A2A2A). Current value is wrong AND hard-coded.</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Send button icon color</td>
