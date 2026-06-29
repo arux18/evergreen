@@ -385,9 +385,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Empty state prompt color</td>
-      <td class="mono">$chat.text.primary (→ #2D2926)</td>
+      <td class="mono">$O:colors-chatTextPrimary (→ #2D2926)</td>
       <td class="mono">color: #2D2926 — verify uses token class (text-taupe-900) not hard-coded [#hex]</td>
-      <td>Should use semantic class mapped to $chat.text.primary</td>
+      <td>Should use semantic class mapped to $O:colors-chatTextPrimary</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -406,16 +406,16 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Thinking dots styling</td>
-      <td class="mono">Three dots in gray/taupe gradient (animated pulsing) — uses $chat.text.secondary tones</td>
+      <td class="mono">Three dots in gray/taupe gradient (animated pulsing) — uses $O:colors-chatTextSecondary tones</td>
       <td class="mono">Dots appear in correct tones (visual only) — token usage unconfirmed</td>
-      <td>Confirm dot colors reference $chat.text.secondary tokens, not hard-coded values</td>
+      <td>Confirm dot colors reference $O:colors-chatTextSecondary tokens, not hard-coded values</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Thinking status text color</td>
-      <td class="mono">$chat.text.placeholder (→ #A8A49E) — light, secondary appearance</td>
+      <td class="mono">$O:colors-chatPlaceholder (→ #A8A49E) — light, secondary appearance</td>
       <td class="mono">Status text in lighter color (visual only) — token usage unconfirmed</td>
-      <td>Confirm status text color references $chat.text.placeholder token, not a hard-coded value</td>
+      <td>Confirm status text color references $O:colors-chatPlaceholder token, not a hard-coded value</td>
       <td class="status-verify">Verify</td>
     </tr></tbody>
     </table>
@@ -430,21 +430,21 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
     <tr>
       <td>User bubble background</td>
-      <td class="mono">$chat.bubble.user.bg (→ $nav.bg → #F7F5F0)</td>
+      <td class="mono">$O:colors-chatBubbleUser (→ #F7F5F0)</td>
       <td class="mono">bg: rgb(247,245,240) — verify if class uses token (bg-taupe-100) or hard-coded</td>
       <td>Confirm uses bg-taupe-100 or semantic class, not arbitrary bg-[#F7F5F0]</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>User bubble border</td>
-      <td class="mono">$chat.bubble.user.border (→ #DCD8CB)</td>
+      <td class="mono">$O:colors-chatBorder (→ #DCD8CB)</td>
       <td class="mono">border: 1px solid rgb(220,216,203) — verify if class uses token or hard-coded [#hex]</td>
       <td>Should use border-color token class, not arbitrary border-[#DCD8CB]</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>User bubble corner radius</td>
-      <td class="mono">$chat.bubble.radius (→ 12px)</td>
+      <td class="mono">$O:radius-xs (→ 12px)</td>
       <td class="mono">border-radius: 12px — verify if using rounded-xl (token scale) or [12px]</td>
       <td>Should use rounded-xl from Tailwind scale, not arbitrary rounded-[12px]</td>
       <td class="status-verify">Verify</td>
@@ -479,9 +479,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>User message color</td>
-      <td class="mono">$chat.text.secondary (→ #5E5954)</td>
+      <td class="mono">$O:colors-chatTextSecondary (→ #5E5954)</td>
       <td class="mono">color: rgb(94,89,84) — verify if class uses token (text-gray-600) or hard-coded</td>
-      <td>Should use semantic text color class mapped to $chat.text.secondary</td>
+      <td>Should use semantic text color class mapped to $O:colors-chatTextSecondary</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -495,7 +495,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <td>User bubble token usage</td>
       <td class="mono">Bubble styled via Hemlock tokens (semantic Tailwind classes)</td>
       <td class="mono">Element uses CopilotKit classes (.copilotKitUserMessage) — no Tailwind token classes on bubble itself. Computed values match design exactly (bg #F7F5F0, border #DCD8CB, 12px radius, 12/16 padding, #5E5954 text) but token backing unconfirmed in CSS source.</td>
-      <td>Confirm the .copilotKitUserMessage CSS rule references Hemlock tokens (e.g. $chat.bubble.user.*) and not hard-coded hex values</td>
+      <td>Confirm the .copilotKitUserMessage CSS rule references Hemlock tokens (e.g. $O:colors-chatBubbleUser) and not hard-coded hex values</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -517,9 +517,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
     <tr>
       <td>AI message background</td>
-      <td class="mono">$chat.bubble.ai.bg (→ transparent)</td>
+      <td class="mono">$O:colors-chatBubbleAiBg (→ transparent)</td>
       <td class="mono">background: transparent (computed, CopilotKit) — token usage unconfirmed</td>
-      <td>Confirm bg references $chat.bubble.ai.bg token, not a hard-coded/CopilotKit default</td>
+      <td>Confirm bg references $O:colors-chatBubbleAiBg token, not a hard-coded/CopilotKit default</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -545,9 +545,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>AI message color</td>
-      <td class="mono">$chat.text.primary (→ #2D2926)</td>
+      <td class="mono">$O:colors-chatTextPrimary (→ #2D2926)</td>
       <td class="mono">color: rgb(45,41,38) — verify if class uses token (text-taupe-900) or hard-coded [#hex]</td>
-      <td>Should use semantic text color class mapped to $chat.text.primary</td>
+      <td>Should use semantic text color class mapped to $O:colors-chatTextPrimary</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -597,35 +597,35 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Send button bg (enabled)</td>
-      <td class="mono">$chat.send.bg (→ #3C3C3C)</td>
+      <td class="mono">$O:colors-chatSendBg (→ #3C3C3C)</td>
       <td class="mono">bg-[#3C3C3C] — hard-coded hex. Value matches token but not via token class.</td>
-      <td>Use semantic class mapped to $chat.send.bg. Hard-coded value will drift if token changes.</td>
+      <td>Use semantic class mapped to $O:colors-chatSendBg. Hard-coded value will drift if token changes.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Send button bg (disabled)</td>
-      <td class="mono">$chat.send.bg.disabled (→ #D4D1CA)</td>
-      <td class="mono">bg-taupe-300 = #E3DFD6 — WRONG value (#E3DFD6 vs #D4D1CA) AND uses wrong token (taupe-300 is $chat.close.pressed.bg, not send.disabled)</td>
-      <td>Use semantic class mapped to $chat.send.bg.disabled (#D4D1CA). Current bg-taupe-300 is the wrong token entirely.</td>
+      <td class="mono">$O:colors-chatSendBgDisabled (→ #D4D1CA)</td>
+      <td class="mono">bg-taupe-300 = #E3DFD6 — WRONG value (#E3DFD6 vs #D4D1CA) AND uses wrong token (taupe-300 is $O:color-taupe-300, not send.disabled)</td>
+      <td>Use semantic class mapped to $O:colors-chatSendBgDisabled (#D4D1CA). Current bg-taupe-300 is the wrong token entirely.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Send button bg (hover)</td>
-      <td class="mono">$chat.send.bg.hover (→ #4F4F4F)</td>
+      <td class="mono">$O:colors-chatSendBgHover (→ #4F4F4F)</td>
       <td class="mono">hover:bg-[#525252] — hard-coded hex AND wrong value (#525252 vs #4F4F4F)</td>
-      <td>Use semantic hover class mapped to $chat.send.bg.hover (#4F4F4F). Current value is wrong AND hard-coded.</td>
+      <td>Use semantic hover class mapped to $O:colors-chatSendBgHover (#4F4F4F). Current value is wrong AND hard-coded.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Send button bg (pressed)</td>
-      <td class="mono">$chat.send.bg.pressed (→ #2A2A2A)</td>
+      <td class="mono">$O:colors-chatSendBgPressed (→ #2A2A2A)</td>
       <td class="mono">active:bg-[#252525] — hard-coded hex AND wrong value (#252525 vs #2A2A2A)</td>
-      <td>Use semantic active class mapped to $chat.send.bg.pressed (#2A2A2A). Current value is wrong AND hard-coded.</td>
+      <td>Use semantic active class mapped to $O:colors-chatSendBgPressed (#2A2A2A). Current value is wrong AND hard-coded.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Send button icon color</td>
-      <td class="mono">$chat.send.icon (→ #FFFFFF)</td>
+      <td class="mono">$O:color-base-white (→ #FFFFFF)</td>
       <td class="mono">text-white — uses Tailwind token class ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -663,16 +663,16 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Input field background</td>
-      <td class="mono">$chat.input.bg (→ #FFFFFF)</td>
+      <td class="mono">$O:colors-chatInputBg (→ #FFFFFF)</td>
       <td class="mono">bg-white — uses Tailwind color token ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Input field border color</td>
-      <td class="mono">$chat.input.border (→ #E8E6E0)</td>
+      <td class="mono">$O:colors-navDivider (→ #E8E6E0)</td>
       <td class="mono">border-[#e8e6e0] — hard-coded hex instead of token class</td>
-      <td>Use semantic border class mapped to $chat.input.border token</td>
+      <td>Use semantic border class mapped to $O:colors-navDivider token</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -684,7 +684,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Input field corner radius</td>
-      <td class="mono">$chat.input.radius (→ 12px)</td>
+      <td class="mono">$O:radius-xs (→ 12px)</td>
       <td class="mono">rounded-xl — uses Tailwind radius scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -705,9 +705,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Textarea color</td>
-      <td class="mono">$chat.text.primary (→ #2D2926)</td>
+      <td class="mono">$O:colors-chatTextPrimary (→ #2D2926)</td>
       <td class="mono">text-[#2D2926] — hard-coded hex instead of token class</td>
-      <td>Use semantic text color class mapped to $chat.text.primary. Hard-coded value will drift if token changes.</td>
+      <td>Use semantic text color class mapped to $O:colors-chatTextPrimary. Hard-coded value will drift if token changes.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -719,9 +719,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Placeholder color</td>
-      <td class="mono">$chat.text.placeholder (→ #A8A49E)</td>
+      <td class="mono">$O:colors-chatPlaceholder (→ #A8A49E)</td>
       <td class="mono">placeholder:text-[#A8A49E] — hard-coded hex instead of token class</td>
-      <td>Use semantic placeholder color class mapped to $chat.text.placeholder token</td>
+      <td>Use semantic placeholder color class mapped to $O:colors-chatPlaceholder token</td>
       <td class="status-gap">Gap</td>
     </tr></tbody>
     </table>
@@ -757,30 +757,30 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Voice button border</td>
-      <td class="mono">$chat.border (→ 1px solid #DCD8CB)</td>
+      <td class="mono">$O:colors-chatBorder (→ 1px solid #DCD8CB)</td>
       <td class="mono">border-[#DCD8CB] — hard-coded hex instead of token class</td>
-      <td>Use semantic border class mapped to $chat.border token. Hard-coded value will drift if token changes.</td>
+      <td>Use semantic border class mapped to $O:colors-chatBorder token. Hard-coded value will drift if token changes.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Voice button icon color</td>
-      <td class="mono">$chat.icon (→ #5E5954)</td>
+      <td class="mono">$O:colors-chatTextSecondary (→ #5E5954)</td>
       <td class="mono">text-gray-600 — uses Tailwind color scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Voice button active bg</td>
-      <td class="mono">$chat.voice.active.bg (→ #3A6AF8)</td>
+      <td class="mono">$O:colors-chatVoiceActiveBg (→ #3A6AF8)</td>
       <td class="mono">Verify — requires recording state. Must use token class not bg-[#3A6AF8]</td>
-      <td>Must use semantic class mapped to $chat.voice.active.bg</td>
+      <td>Must use semantic class mapped to $O:colors-chatVoiceActiveBg</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Voice button active icon</td>
-      <td class="mono">$chat.voice.active.icon (→ #FFFFFF)</td>
+      <td class="mono">$O:colors-chatVoiceActiveIcon (→ #FFFFFF)</td>
       <td class="mono">Verify — requires recording state. Must use token class</td>
-      <td>Must use semantic class mapped to $chat.voice.active.icon</td>
+      <td>Must use semantic class mapped to $O:colors-chatVoiceActiveIcon</td>
       <td class="status-verify">Verify</td>
     </tr></tbody>
     </table>
@@ -795,21 +795,21 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
     <tr>
       <td>Prompt chip background</td>
-      <td class="mono">$chat.chip.bg (→ $nav.bg → #F7F5F0)</td>
+      <td class="mono">$O:colors-navBg (→ #F7F5F0)</td>
       <td class="mono">bg-taupe-100 — uses Tailwind token class ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip border</td>
-      <td class="mono">$chat.chip.border (→ #DCD8CB)</td>
+      <td class="mono">$O:colors-navBorder (→ #DCD8CB)</td>
       <td class="mono">border-[#DCD8CB] — hard-coded hex instead of token class</td>
-      <td>Use semantic border class mapped to $chat.chip.border token. Hard-coded value will drift if token changes.</td>
+      <td>Use semantic border class mapped to $O:colors-navBorder token. Hard-coded value will drift if token changes.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Prompt chip corner radius</td>
-      <td class="mono">$chat.chip.radius (→ 24px)</td>
+      <td class="mono">$O:radius-2xl (→ 24px)</td>
       <td class="mono">rounded-3xl — uses Tailwind radius scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -823,7 +823,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Prompt chip color</td>
-      <td class="mono">$chat.text.secondary (→ #5E5954)</td>
+      <td class="mono">$O:colors-chatTextSecondary (→ #5E5954)</td>
       <td class="mono">text-gray-600 — uses Tailwind color scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -837,14 +837,14 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Prompt chip hover bg</td>
-      <td class="mono">$chat.chip.hover.bg (→ #EDEAE3)</td>
+      <td class="mono">$O:colors-chatChipHover (→ #EDEAE3)</td>
       <td class="mono">hover:bg-taupe-200 — uses Tailwind color token ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Prompt chip pressed bg</td>
-      <td class="mono">$chat.chip.pressed.bg (→ #E3DFD6)</td>
+      <td class="mono">$O:colors-chatChipPressed (→ #E3DFD6)</td>
       <td class="mono">active:bg-taupe-300 — uses Tailwind color token ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -861,30 +861,30 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
     <tr>
       <td>Panel background</td>
-      <td class="mono">$chat.bg (→ $nav.bg → #F7F5F0)</td>
+      <td class="mono">$O:colors-chatBg (→ #F7F5F0)</td>
       <td class="mono">bg-taupe-100 — uses Tailwind token class ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Panel border</td>
-      <td class="mono">$chat.border (→ 1px solid #DCD8CB)</td>
+      <td class="mono">$O:colors-chatBorder (→ 1px solid #DCD8CB)</td>
       <td class="mono">border-[#DCD8CB] — hard-coded hex instead of token class</td>
-      <td>Use semantic border class mapped to $chat.border token. Hard-coded value will drift if token changes.</td>
+      <td>Use semantic border class mapped to $O:colors-chatBorder token. Hard-coded value will drift if token changes.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Panel corner radius</td>
-      <td class="mono">$chat.radius (→ 12px)</td>
+      <td class="mono">$O:radius-xs (→ 12px)</td>
       <td class="mono">rounded-xl = 12px (inner); 0px on outer wrapper at mobile full-width</td>
       <td>Uses Tailwind scale class ✓ — mobile full-width with rounded-none is acceptable</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Panel shadow</td>
-      <td class="mono">$chat.shadow (→ 0 2px 28px 2px rgba(45,41,38,0.157))</td>
+      <td class="mono">$O:colors-chatShadow (→ 0 2px 28px 2px rgba(45,41,38,0.157))</td>
       <td class="mono">shadow-[0_2px_28px_2px_rgba(45,41,38,0.16)] — hard-coded arbitrary value</td>
-      <td>Use semantic shadow class mapped to $chat.shadow token. Hard-coded value will drift if token changes.</td>
+      <td>Use semantic shadow class mapped to $O:colors-chatShadow token. Hard-coded value will drift if token changes.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -920,7 +920,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
     <tr>
       <td>Header background</td>
-      <td class="mono">$chat.bg (→ #F7F5F0 taupe, inherited from panel)</td>
+      <td class="mono">$O:colors-chatBg (→ #F7F5F0 taupe, inherited from panel)</td>
       <td class="mono">No explicit header bg — inherits from panel bg-taupe-100 ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -934,7 +934,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Header border-bottom</td>
-      <td class="mono">$chat.divider (→ 0.5px solid #E8E6E0)</td>
+      <td class="mono">$O:colors-chatDivider (→ 0.5px solid #E8E6E0)</td>
       <td class="mono">border-bottom: 1px solid #E8E6E0 — applied via CSS rule (no Tailwind border-b class on element). Value is 1px not 0.5px (design spec says 0.5px). Color matches.</td>
       <td>Width mismatch (1px vs 0.5px). Also should use a token-backed border class or CSS variable, not a hardcoded CSS rule.</td>
       <td class="status-gap">Gap</td>
@@ -955,9 +955,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Header title color</td>
-      <td class="mono">$chat.text.primary (→ #2D2926)</td>
+      <td class="mono">$O:colors-chatTextPrimary (→ #2D2926)</td>
       <td class="mono">text-[#2D2926] — hard-coded hex instead of token class</td>
-      <td>Use semantic text color class mapped to $chat.text.primary. Hard-coded value will drift if token changes.</td>
+      <td>Use semantic text color class mapped to $O:colors-chatTextPrimary. Hard-coded value will drift if token changes.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -976,21 +976,21 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Close button icon color</td>
-      <td class="mono">$chat.icon (→ $nav.text.secondary → #5E5954)</td>
+      <td class="mono">$O:colors-chatTextSecondary (→ #5E5954)</td>
       <td class="mono">text-gray-600 — uses Tailwind color scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Close button hover bg</td>
-      <td class="mono">$chat.close.hover.bg (→ #EDEAE3)</td>
+      <td class="mono">$O:color-taupe-200 (→ #EDEAE3)</td>
       <td class="mono">hover:bg-taupe-200 — uses Tailwind color token ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Close button pressed bg</td>
-      <td class="mono">$chat.close.pressed.bg (→ #E3DFD6)</td>
+      <td class="mono">$O:color-taupe-300 (→ #E3DFD6)</td>
       <td class="mono">active:bg-taupe-300 — uses Tailwind color token ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -1107,43 +1107,43 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
 
 <section id="tokens">
   <h2>Design Token Reference</h2>
-  <p>Tokens from <code>chat-ui.lib.pen</code> variables:</p>
+  <p>Hemlock semantic tokens (from <code>hemlock-library.lib.pen</code>):</p>
   <dl class="token-map">
-    <dt>$chat.bg</dt><dd>#F7F5F0</dd>
-    <dt>$chat.border</dt><dd>#DCD8CB</dd>
-    <dt>$chat.radius</dt><dd>12px</dd>
-    <dt>$chat.shadow</dt><dd>0 2px 28px 2px #2D292628</dd>
-    <dt>$chat.divider</dt><dd>#E8E6E0</dd>
-    <dt>$chat.text.primary</dt><dd>#2D2926</dd>
-    <dt>$chat.text.secondary</dt><dd>#5E5954</dd>
-    <dt>$chat.text.placeholder</dt><dd>#A8A49E</dd>
-    <dt>$chat.bubble.user.bg</dt><dd>#F7F5F0</dd>
-    <dt>$chat.bubble.user.border</dt><dd>#DCD8CB</dd>
-    <dt>$chat.bubble.radius</dt><dd>12px</dd>
-    <dt>$chat.bubble.ai.bg</dt><dd>transparent (#FFFFFF00)</dd>
-    <dt>$chat.input.bg</dt><dd>#FFFFFF</dd>
-    <dt>$chat.input.border</dt><dd>#E8E6E0</dd>
-    <dt>$chat.input.border.active</dt><dd>#C0BAB2</dd>
-    <dt>$chat.input.radius</dt><dd>12px</dd>
-    <dt>$chat.send.bg</dt><dd>#3C3C3C</dd>
-    <dt>$chat.send.bg.disabled</dt><dd>#D4D1CA</dd>
-    <dt>$chat.send.bg.hover</dt><dd>#4F4F4F</dd>
-    <dt>$chat.send.bg.pressed</dt><dd>#2A2A2A</dd>
-    <dt>$chat.send.icon</dt><dd>#FFFFFF</dd>
-    <dt>$chat.icon</dt><dd>#5E5954</dd>
-    <dt>$chat.chip.bg</dt><dd>#F7F5F0</dd>
-    <dt>$chat.chip.border</dt><dd>#DCD8CB</dd>
-    <dt>$chat.chip.radius</dt><dd>24px</dd>
-    <dt>$chat.chip.hover.bg</dt><dd>#EDEAE3</dd>
-    <dt>$chat.chip.pressed.bg</dt><dd>#E3DFD6</dd>
-    <dt>$chat.close.hover.bg</dt><dd>#EDEAE3</dd>
-    <dt>$chat.close.pressed.bg</dt><dd>#E3DFD6</dd>
-    <dt>$chat.voice.active.bg</dt><dd>#3A6AF8</dd>
-    <dt>$chat.voice.active.icon</dt><dd>#FFFFFF</dd>
-    <dt>$chat.voice.cancel.icon</dt><dd>#8A8680</dd>
-    <dt>$chat.voice.pulse</dt><dd>#3A6AF828</dd>
-    <dt>$chat.voice.timer</dt><dd>#5E5954</dd>
-    <dt>$chat.voice.waveform</dt><dd>#7094FB</dd>
+    <dt>$O:colors-chatBg</dt><dd>#F7F5F0</dd>
+    <dt>$O:colors-chatBorder</dt><dd>#DCD8CB</dd>
+    <dt>$O:radius-xs</dt><dd>12px</dd>
+    <dt>$O:colors-chatShadow</dt><dd>0 2px 28px 2px #2D292628</dd>
+    <dt>$O:colors-chatDivider</dt><dd>#E8E6E0</dd>
+    <dt>$O:colors-chatTextPrimary</dt><dd>#2D2926</dd>
+    <dt>$O:colors-chatTextSecondary</dt><dd>#5E5954</dd>
+    <dt>$O:colors-chatPlaceholder</dt><dd>#A8A49E</dd>
+    <dt>$O:colors-chatBubbleUser</dt><dd>#F7F5F0</dd>
+    <dt>$O:colors-chatBorder</dt><dd>#DCD8CB</dd>
+    <dt>$O:radius-xs</dt><dd>12px</dd>
+    <dt>$O:colors-chatBubbleAiBg</dt><dd>transparent (#FFFFFF00)</dd>
+    <dt>$O:colors-chatInputBg</dt><dd>#FFFFFF</dd>
+    <dt>$O:colors-navDivider</dt><dd>#E8E6E0</dd>
+    <dt>$O:colors-chatInputBorderActive</dt><dd>#C0BAB2</dd>
+    <dt>$O:radius-xs</dt><dd>12px</dd>
+    <dt>$O:colors-chatSendBg</dt><dd>#3C3C3C</dd>
+    <dt>$O:colors-chatSendBgDisabled</dt><dd>#D4D1CA</dd>
+    <dt>$O:colors-chatSendBgHover</dt><dd>#4F4F4F</dd>
+    <dt>$O:colors-chatSendBgPressed</dt><dd>#2A2A2A</dd>
+    <dt>$O:color-base-white</dt><dd>#FFFFFF</dd>
+    <dt>$O:colors-chatTextSecondary</dt><dd>#5E5954</dd>
+    <dt>$O:colors-navBg</dt><dd>#F7F5F0</dd>
+    <dt>$O:colors-navBorder</dt><dd>#DCD8CB</dd>
+    <dt>$O:radius-2xl</dt><dd>24px</dd>
+    <dt>$O:colors-chatChipHover</dt><dd>#EDEAE3</dd>
+    <dt>$O:colors-chatChipPressed</dt><dd>#E3DFD6</dd>
+    <dt>$O:color-taupe-200</dt><dd>#EDEAE3</dd>
+    <dt>$O:color-taupe-300</dt><dd>#E3DFD6</dd>
+    <dt>$O:colors-chatVoiceActiveBg</dt><dd>#3A6AF8</dd>
+    <dt>$O:colors-chatVoiceActiveIcon</dt><dd>#FFFFFF</dd>
+    <dt>$O:color-gray-400</dt><dd>#8A8680</dd>
+    <dt>$O:colors-chatVoicePulse</dt><dd>#3A6AF828</dd>
+    <dt>$O:colors-chatVoiceTimer</dt><dd>#5E5954</dd>
+    <dt>$O:colors-chatVoiceWaveform</dt><dd>#7094FB</dd>
   </dl>
   <h3 style="margin-top:32px">Hemlock Button Tokens <span style="font-weight:400;font-size:13px;color:#8A8680">(component/Button · bMlax · hemlock-library.lib.pen)</span></h3>
   <dl class="token-map">
