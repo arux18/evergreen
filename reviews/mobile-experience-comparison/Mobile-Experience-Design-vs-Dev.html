@@ -318,9 +318,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Text truncation without ellipsis</td>
-      <td class="mono">Text should never hard-clip on mobile (per chat design principles)</td>
-      <td class="mono">"New Hampshir" is hard-clipped at container edge — no ellipsis, no fade, no indication content continues</td>
-      <td>Prevent hard-clip: either wrap text, show ellipsis, or add scroll container</td>
+      <td class="mono">Text should always wrap on mobile — never truncate or clip</td>
+      <td class="mono">"New Hampshire" APPEARS hard-clipped in the screenshot, but this is caused by the card grid overflow + scrollbar (not a text truncation issue). Once cards stack to single-column, text will have room to wrap naturally.</td>
+      <td>Fix is the card-grid stacking above — once cards are full-width, text wraps. No separate truncation fix needed.</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -346,9 +346,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Visible horizontal scrollbar on tables</td>
-      <td class="mono">Scrollbars should be hidden (use overflow-x: auto with scrollbar-width: none or ::-webkit-scrollbar { display: none })</td>
-      <td class="mono">Visible orange/tan scrollbar appears at bottom of table sections — looks out of place on mobile</td>
-      <td>Hide native scrollbar. Use CSS scrollbar-width: none and ::-webkit-scrollbar { display: none } while keeping overflow-x: auto for swipe gesture support</td>
+      <td class="mono">Scrollbars should be hidden AND the content frame should not exceed the panel width in the first place — tables should fit within 390px or use a controlled scroll container without a visible scrollbar</td>
+      <td class="mono">Visible orange/tan scrollbar appears at bottom of table sections. Root cause: the table/frame is wider than the chat panel (390px), creating overflow. The scrollbar then appears because overflow-x is auto with no scrollbar hiding.</td>
+      <td>Two fixes needed: (1) Constrain table max-width to the panel width so it does not overflow at all when possible, or use responsive column hiding. (2) When overflow IS necessary, hide the native scrollbar via scrollbar-width: none / ::-webkit-scrollbar { display: none } while keeping swipe gesture support.</td>
       <td class="status-gap">Gap</td>
     </tr></tbody>
     </table>
