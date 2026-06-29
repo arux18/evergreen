@@ -197,7 +197,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Header title font</td>
-      <td class="mono">Noto Serif 16px/400 (regular)</td>
+      <td class="mono">$fontFamily-secondary $fontSize-base / $fontWeight-regular (Noto Serif 16px/400)</td>
       <td class="mono">typo-secondary-base-regular — uses typography token class ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -211,16 +211,16 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Close button size</td>
-      <td class="mono">28×28px</td>
+      <td class="mono">$size-icon-sm (28px) — verify token name</td>
       <td class="mono">w-7 h-7 — uses Tailwind spacing scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Close button radius</td>
-      <td class="mono">6px</td>
+      <td class="mono">$radius-sm (6px) — verify token name</td>
       <td class="mono">rounded-[6px] — hard-coded arbitrary value</td>
-      <td>Define a token-based radius utility or use closest scale value (rounded-md = 6px if configured)</td>
+      <td>Use $radius-sm token class (rounded-md if configured to 6px), not arbitrary [6px]</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -336,9 +336,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>User message font</td>
-      <td class="mono">Heebo 14px/400</td>
+      <td class="mono">$fontFamily-primary $fontSize-sm / $fontWeight-regular (Heebo 14px/400)</td>
       <td class="mono">font: 14px/22.4px Heebo, weight 400 — verify uses typography token class</td>
-      <td>Should use typo-* utility if available, not raw font-size/weight</td>
+      <td>Should use typo-primary-sm-regular token class, not raw font-size/weight</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -350,7 +350,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>User message line-height</td>
-      <td class="mono">1.6 (22.4px at 14px) — typography token</td>
+      <td class="mono">$lineHeight-relaxed (1.6 → 22.4px at $fontSize-sm)</td>
       <td class="mono">line-height: 22.4px (computed) — token usage unconfirmed</td>
       <td>Confirm line-height comes from a typography token class, not a hard-coded value</td>
       <td class="status-verify">Verify</td>
@@ -402,9 +402,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>AI message font</td>
-      <td class="mono">Heebo 14px/400</td>
+      <td class="mono">$fontFamily-primary $fontSize-sm / $fontWeight-regular (Heebo 14px/400)</td>
       <td class="mono">font: 14px/22.4px Heebo — verify uses typography token class</td>
-      <td>Should use typo-* utility if available</td>
+      <td>Should use typo-primary-sm-regular token class</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -416,7 +416,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>AI message line-height</td>
-      <td class="mono">1.6 (22.4px at 14px) — typography token</td>
+      <td class="mono">$lineHeight-relaxed (1.6 → 22.4px at $fontSize-sm)</td>
       <td class="mono">line-height: 22.4px (computed) — token usage unconfirmed</td>
       <td>Confirm line-height comes from a typography token class, not a hard-coded value</td>
       <td class="status-verify">Verify</td>
@@ -489,9 +489,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Textarea font</td>
-      <td class="mono">Heebo 14px/400</td>
+      <td class="mono">$fontFamily-primary $fontSize-sm / $fontWeight-regular (Heebo 14px/400)</td>
       <td class="mono">font: 14px Heebo, weight 400 — verify uses typography token class</td>
-      <td>Should use typo-* utility if available</td>
+      <td>Should use typo-primary-sm-regular token class</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -527,14 +527,14 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
     <tr>
       <td>Send button size</td>
-      <td class="mono">34×34px (circular)</td>
+      <td class="mono">$size-icon-lg (34px) — verify token name</td>
       <td class="mono">w: 34px, h: 34px — verify uses token class (w-[34px] is hard-coded)</td>
-      <td>Should use a named size token if available, not arbitrary [34px]</td>
+      <td>Should use a named size token, not arbitrary [34px]</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Send button shape</td>
-      <td class="mono">Circle (border-radius: 50%)</td>
+      <td class="mono">$radius-full (border-radius: 50%)</td>
       <td class="mono">rounded-full — uses Tailwind scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -583,7 +583,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Send button border</td>
-      <td class="mono">None</td>
+      <td class="mono">None (no border per design)</td>
       <td class="mono">border: 0px none — correct</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -600,21 +600,21 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
     <tr>
       <td>Voice button size</td>
-      <td class="mono">34×34px (circular)</td>
+      <td class="mono">$size-icon-lg (34px) — verify token name</td>
       <td class="mono">w: 34px, h: 34px — verify uses token class not arbitrary [34px]</td>
-      <td>Should use named size token if available</td>
+      <td>Should use named size token</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Voice button shape</td>
-      <td class="mono">Circle (border-radius: 50%)</td>
+      <td class="mono">$radius-full (border-radius: 50%)</td>
       <td class="mono">rounded-full — uses Tailwind scale ✓</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Voice button bg (default)</td>
-      <td class="mono">Transparent</td>
+      <td class="mono">Transparent (no fill per design)</td>
       <td class="mono">bg: transparent — correct</td>
       <td>—</td>
       <td class="status-match">Match</td>
@@ -680,9 +680,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Prompt chip font</td>
-      <td class="mono">Heebo 14px/400</td>
+      <td class="mono">$fontFamily-primary $fontSize-sm / $fontWeight-regular (Heebo 14px/400)</td>
       <td class="mono">font: Heebo 14px — verify uses typography token class</td>
-      <td>Should use typo-* utility if available</td>
+      <td>Should use typo-primary-sm-regular token class</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
@@ -843,30 +843,30 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Continue button font family</td>
-      <td class="mono">Heebo (Hemlock font token)</td>
+      <td class="mono">$fontFamily-primary (Heebo)</td>
       <td class="mono">"Heebo Variable", sans-serif (computed) — token usage unconfirmed</td>
-      <td>Confirm font references the Hemlock font token, not a hard-coded font-family</td>
+      <td>Confirm font references $fontFamily-primary token, not a hard-coded font-family</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Continue button font size</td>
-      <td class="mono">16px</td>
-      <td class="mono">14px — 2px smaller than spec</td>
-      <td>Use 16px per component/Button spec</td>
+      <td class="mono">$fontSize-base (16px)</td>
+      <td class="mono">14px — 2px smaller than $fontSize-base</td>
+      <td>Use $fontSize-base (16px) per component/Button spec</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Continue button font weight</td>
-      <td class="mono">600 (semibold) — typography token</td>
+      <td class="mono">$fontWeight-semibold (600)</td>
       <td class="mono">600 (computed, from OpenUI CSS) — token usage unconfirmed</td>
-      <td>Confirm weight references a typography token, not a hard-coded 600</td>
+      <td>Confirm weight references $fontWeight-semibold token, not a hard-coded 600</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>
       <td>Continue button height</td>
-      <td class="mono">48px min-height ($spacing-2xl)</td>
-      <td class="mono">46px — 2px short of spec (passes 44px touch target but not 48px)</td>
-      <td>Set min-height 48px per component/Button spec</td>
+      <td class="mono">$spacing-2xl (48px) min-height</td>
+      <td class="mono">46px — 2px short of $spacing-2xl</td>
+      <td>Set min-height: $spacing-2xl (48px) per component/Button spec</td>
       <td class="status-gap">Gap</td>
     </tr>
     <tr>
@@ -980,7 +980,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Empty state: centered prompt</td>
       <td class="mono">"Ask me any financial question..." centered in messages area</td>
-      <td class="mono">Noto Serif 20px/400, vertically centered — correct layout</td>
+      <td class="mono">$fontFamily-secondary $fontSize-lg / $fontWeight-regular (Noto Serif 20px/400), vertically centered — correct layout</td>
       <td>—</td>
       <td class="status-match">Match</td>
     </tr>
@@ -993,7 +993,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     </tr>
     <tr>
       <td>Empty state prompt font</td>
-      <td class="mono">Noto Serif 20px/400 — typography token</td>
+      <td class="mono">$fontFamily-secondary $fontSize-lg / $fontWeight-regular (Noto Serif 20px/400)</td>
       <td class="mono">typo-secondary-lg-regular (token class) — verify the class is actually applied</td>
       <td>Confirm the typo-secondary-lg-regular token class is applied to the prompt text</td>
       <td class="status-verify">Verify</td>
