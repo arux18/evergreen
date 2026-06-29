@@ -93,9 +93,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 26, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">36</div><div class="stat-label">Gaps</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--match)">45</div><div class="stat-label">Matches</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--verify)">34</div><div class="stat-label">To verify</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">37</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--match)">46</div><div class="stat-label">Matches</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verify)">32</div><div class="stat-label">To verify</div></div>
     <div class="stat"><div class="stat-num">115</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
@@ -184,9 +184,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Header border-bottom</td>
       <td class="mono">$chat.divider (→ 0.5px solid #E8E6E0)</td>
-      <td class="mono">0.5px solid #E8E6E0 — verify if class uses token or inline/arbitrary</td>
-      <td>Confirm border-color references $chat.divider token, not hard-coded hex</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">border-bottom: 1px solid #E8E6E0 — applied via CSS rule (no Tailwind border-b class on element). Value is 1px not 0.5px (design spec says 0.5px). Color matches.</td>
+      <td>Width mismatch (1px vs 0.5px). Also should use a token-backed border class or CSS variable, not a hardcoded CSS rule.</td>
+      <td class="status-gap">Gap</td>
     </tr>
     <tr>
       <td>Header layout</td>
@@ -257,15 +257,15 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
     <tr>
       <td>Messages container gap</td>
       <td class="mono">$spacing-sm (16px)</td>
-      <td class="mono">gap: 14px (matches design artboard; confirm token vs hard-coded)</td>
-      <td>Use $spacing-sm (16px) token for message spacing; confirm dev references the token, not arbitrary [14px]</td>
-      <td class="status-verify">Verify</td>
+      <td class="mono">gap-4 (Tailwind scale = 16px ✓) — confirmed in empty state. Verify same class applies in conversation state.</td>
+      <td>—</td>
+      <td class="status-match">Match</td>
     </tr>
     <tr>
       <td>Messages container padding</td>
       <td class="mono">$spacing-sm (16px) vertical, 20px horizontal</td>
-      <td class="mono">padding: 16px 20px — check token usage (p-4 px-5 or hard-coded)</td>
-      <td>Confirm padding uses Tailwind spacing utilities, not arbitrary values</td>
+      <td class="mono">px-5 (Tailwind scale = 20px ✓) — horizontal confirmed. No py-* in empty state (0px top/bottom). Verify padding in conversation state.</td>
+      <td>Verify vertical padding uses Tailwind scale in conversation state</td>
       <td class="status-verify">Verify</td>
     </tr>
     <tr>

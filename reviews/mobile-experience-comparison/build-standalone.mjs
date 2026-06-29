@@ -117,7 +117,7 @@ const panelShellRows = [
 const headerRows = [
   ['Header background', '$chat.bg (→ #F7F5F0 taupe, inherited from panel)', 'No explicit header bg — inherits from panel bg-taupe-100 ✓', '—', 'Match'],
   ['Header padding', '$spacing-sm (16px) vertical, 20px horizontal', 'py-4 px-5 — uses Tailwind spacing scale ✓', '—', 'Match'],
-  ['Header border-bottom', '$chat.divider (→ 0.5px solid #E8E6E0)', '0.5px solid #E8E6E0 — verify if class uses token or inline/arbitrary', 'Confirm border-color references $chat.divider token, not hard-coded hex', 'Verify'],
+  ['Header border-bottom', '$chat.divider (→ 0.5px solid #E8E6E0)', 'border-bottom: 1px solid #E8E6E0 — applied via CSS rule (no Tailwind border-b class on element). Value is 1px not 0.5px (design spec says 0.5px). Color matches.', 'Width mismatch (1px vs 0.5px). Also should use a token-backed border class or CSS variable, not a hardcoded CSS rule.', 'Gap'],
   ['Header layout', 'flex, space-between, align-items: center', 'flex items-center justify-between — semantic utilities ✓', '—', 'Match'],
   ['Header title font', '$fontFamily-secondary $fontSize-base / $fontWeight-regular (Noto Serif 16px/400)', 'typo-secondary-base-regular — uses typography token class ✓', '—', 'Match'],
   ['Header title color', '$chat.text.primary (→ #2D2926)', 'text-[#2D2926] — hard-coded hex instead of token class', 'Use semantic text color class mapped to $chat.text.primary. Hard-coded value will drift if token changes.', 'Gap'],
@@ -129,8 +129,8 @@ const headerRows = [
 ];
 
 const messagesAreaRows = [
-  ['Messages container gap', '$spacing-sm (16px)', 'gap: 14px (matches design artboard; confirm token vs hard-coded)', 'Use $spacing-sm (16px) token for message spacing; confirm dev references the token, not arbitrary [14px]', 'Verify'],
-  ['Messages container padding', '$spacing-sm (16px) vertical, 20px horizontal', 'padding: 16px 20px — check token usage (p-4 px-5 or hard-coded)', 'Confirm padding uses Tailwind spacing utilities, not arbitrary values', 'Verify'],
+  ['Messages container gap', '$spacing-sm (16px)', 'gap-4 (Tailwind scale = 16px ✓) — confirmed in empty state. Verify same class applies in conversation state.', '—', 'Match'],
+  ['Messages container padding', '$spacing-sm (16px) vertical, 20px horizontal', 'px-5 (Tailwind scale = 20px ✓) — horizontal confirmed. No py-* in empty state (0px top/bottom). Verify padding in conversation state.', 'Verify vertical padding uses Tailwind scale in conversation state', 'Verify'],
   ['Messages layout', 'vertical, justify: end (messages anchor to bottom)', 'flex-col justify-end — semantic utilities ✓', '—', 'Match'],
   ['Messages scroll', 'Scrollable area between header and input', 'overflow-y-auto — semantic utility ✓', '—', 'Match'],
 ];
