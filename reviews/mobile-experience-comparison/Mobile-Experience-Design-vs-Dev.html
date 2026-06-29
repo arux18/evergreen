@@ -99,22 +99,6 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
 </div>
 
-<div class="overview" style="border-left: 4px solid var(--gap); margin-bottom: 32px;">
-  <h2 style="margin-top:0; border:none;">Executive Summary — Top Issues</h2>
-  <p style="font-size:14px;color:#5E5954;margin-bottom:16px;">Ordered by user-facing severity. Items marked ★ are compliance or accessibility risks.</p>
-  <ol style="font-size:14px; line-height:2; padding-left:20px; margin:0;">
-    <li><strong>★ Login page doesn't scroll</strong> — <code>overflow: hidden</code> on html/body clips legal disclaimers mid-sentence. Users cannot read required compliance text.</li>
-    <li><strong>★ Continue button stays enabled on empty input</strong> — Should be disabled (Hemlock disabled state) until a valid email is entered.</li>
-    <li><strong>Rich content cards don't stack on mobile</strong> — Multi-column comparison grids overflow at 390px; text hard-clips ("New Hampshir"). Should be single-column stacked cards.</li>
-    <li><strong>Visible horizontal scrollbar on tables</strong> — Native scrollbar appears on data tables; should be hidden (CSS scrollbar-width: none).</li>
-    <li><strong>Thinking status text duplicates</strong> — "Formulating response…" appears multiple times stacked. Design shows ONE replaceable text line below dots.</li>
-    <li><strong>Systemic: hard-coded hex values instead of tokens</strong> — border-[#DCD8CB], text-[#2D2926], placeholder-[#A8A49E], shadow-[…] appear across 12+ elements. Should use semantic token classes.</li>
-    <li><strong>Continue button styling doesn't match Hemlock</strong> — Wrong bg (#3C3C3C vs #0E0E0E), wrong text (#FFF vs #EEEDEB), wrong font-size (14 vs 16), left-aligned (should be centered).</li>
-    <li><strong>Holding detail: letter fallback instead of Plaid logo</strong> — Design uses a 36×36 rounded-square with institution logo image from Plaid; app shows only a single-letter text fallback ("A") — no <code>&lt;img&gt;</code> element, no logo loaded.</li>
-    <li><strong>Holding detail: title truncated instead of wrapping</strong> — Name shows ellipsis ("Vanguard Tot…"); design uses two-line vertical layout (ticker code above, full name below) with <code>fill_container</code> width to allow wrapping.</li>
-    <li><strong>Holding detail: padding/spacing completely off</strong> — Section gaps, row padding, and container insets in the holding detail popup don't match design tokens. Text in the detail rows isn't wrapping — it truncates or overflows instead of respecting <code>fill_container</code> width.</li>
-  </ol>
-</div>
 
 
   <section id="s1">
