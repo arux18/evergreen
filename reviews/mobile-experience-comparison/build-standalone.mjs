@@ -303,7 +303,7 @@ function compareSection(id, title, rows, opts = {}) {
   </section>`;
 }
 
-const allRows = [panelShellRows, headerRows, messagesAreaRows, userMessageRows, aiMessageRows, inputFieldRows, sendButtonRows, voiceButtonRows, promptChipRows, richContentRows, navigationRows, loginPageRows, panelStatesRows].flat();
+const allRows = [loginPageRows, richContentRows, panelStatesRows, navigationRows, userMessageRows, aiMessageRows, sendButtonRows, inputFieldRows, voiceButtonRows, promptChipRows, panelShellRows, headerRows, messagesAreaRows].flat();
 const gapCount = allRows.filter(r => r[4] === 'Gap').length;
 const matchCount = allRows.filter(r => r[4] === 'Match').length;
 const verifyCount = allRows.filter(r => r[4] === 'Verify').length;
@@ -374,26 +374,23 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
 
 <nav class="side-nav">
   <a href="#top" class="nav-link nav-top">↑ Overview</a>
-  <span class="side-nav-title t-panel">Panel &amp; Layout</span>
-  <a href="#s1" class="nav-link">1. Panel shell</a>
-  <a href="#s2" class="nav-link">2. Header bar</a>
-  <span class="side-nav-title t-messages">Messages</span>
-  <a href="#s3" class="nav-link">3. Messages area</a>
-  <a href="#s4" class="nav-link">4. User message</a>
-  <a href="#s5" class="nav-link">5. AI message</a>
-  <span class="side-nav-title t-input">Input &amp; Actions</span>
-  <a href="#s6" class="nav-link">6. Input field</a>
+  <span class="side-nav-title t-modals">Priority 1 — Critical</span>
+  <a href="#s1" class="nav-link">1. Login page</a>
+  <a href="#s2" class="nav-link">2. Rich content rendering</a>
+  <a href="#s3" class="nav-link">3. Panel states (thinking)</a>
+  <a href="#s4" class="nav-link">4. Navigation sidebar</a>
+  <span class="side-nav-title t-messages">Priority 2 — Messages</span>
+  <a href="#s5" class="nav-link">5. User message</a>
+  <a href="#s6" class="nav-link">6. AI message</a>
+  <span class="side-nav-title t-input">Priority 2 — Input &amp; Actions</span>
   <a href="#s7" class="nav-link">7. Send button</a>
-  <a href="#s8" class="nav-link">8. Voice button</a>
-  <a href="#s9" class="nav-link">9. Prompt chips</a>
-  <span class="side-nav-title t-states">Rich Content</span>
-  <a href="#s10" class="nav-link">10. Rich content rendering</a>
-  <span class="side-nav-title t-panel">Navigation</span>
-  <a href="#s11" class="nav-link">11. Navigation sidebar</a>
-  <span class="side-nav-title t-modals">Login / Auth</span>
-  <a href="#s12" class="nav-link">12. Login page</a>
-  <span class="side-nav-title t-states">Panel States</span>
-  <a href="#s13" class="nav-link">13. Panel states</a>
+  <a href="#s8" class="nav-link">8. Input field</a>
+  <a href="#s9" class="nav-link">9. Voice button</a>
+  <a href="#s10" class="nav-link">10. Prompt chips</a>
+  <span class="side-nav-title t-panel">Priority 3 — Structure</span>
+  <a href="#s11" class="nav-link">11. Panel shell</a>
+  <a href="#s12" class="nav-link">12. Header bar</a>
+  <a href="#s13" class="nav-link">13. Messages area</a>
   <span class="side-nav-title t-ref">Reference</span>
   <a href="#tokens" class="nav-link">Token map</a>
 </nav>
@@ -402,7 +399,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <h1>Mobile Experience — Design vs Dev Comparison</h1>
   <p><strong>Design sources:</strong> <code>pencil/design-system/complete/chat-ui.lib.pen</code> + <code>pencil/design-system/in-progress/hemlock-library.lib.pen</code> + <code>pencil/designs/4-approved/app-shell-dashboard-view.pen</code></p>
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
-  <p><strong>Date:</strong> June 26, 2026</p>
+  <p><strong>Date:</strong> June 29, 2026</p>
   <div class="stats">
     <div class="stat"><div class="stat-num" style="color:var(--gap)">${gapCount}</div><div class="stat-label">Gaps</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--match)">${matchCount}</div><div class="stat-label">Matches</div></div>
@@ -412,31 +409,50 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
 </div>
 
-${compareSection('s1', '1. Panel shell', panelShellRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
+<div class="overview" style="border-left: 4px solid var(--gap); margin-bottom: 32px;">
+  <h2 style="margin-top:0; border:none;">Executive Summary — Top Issues</h2>
+  <p style="font-size:14px;color:#5E5954;margin-bottom:16px;">Ordered by user-facing severity. Items marked ★ are compliance or accessibility risks.</p>
+  <ol style="font-size:14px; line-height:2; padding-left:20px; margin:0;">
+    <li><strong>★ Login page doesn't scroll</strong> — <code>overflow: hidden</code> on html/body clips legal disclaimers mid-sentence. Users cannot read required compliance text.</li>
+    <li><strong>★ Login page has no background</strong> — All elements are transparent; page renders black against browser canvas instead of white per design.</li>
+    <li><strong>★ Continue button stays enabled on empty input</strong> — Should be disabled (Hemlock disabled state) until a valid email is entered.</li>
+    <li><strong>Rich content cards don't stack on mobile</strong> — Multi-column comparison grids overflow at 390px; text hard-clips ("New Hampshir"). Should be single-column stacked cards.</li>
+    <li><strong>Visible horizontal scrollbar on tables</strong> — Native scrollbar appears on data tables; should be hidden (CSS scrollbar-width: none).</li>
+    <li><strong>Thinking status text duplicates</strong> — "Formulating response…" appears multiple times stacked. Design shows ONE replaceable text line below dots.</li>
+    <li><strong>Navigation defaults to collapsed</strong> — All nav sections render collapsed on load; design shows expanded with child items visible.</li>
+    <li><strong>Wrong icon library</strong> — Send button uses Heroicons; app standard is <strong>lucide</strong>.</li>
+    <li><strong>Send button colors wrong</strong> — Hover (#525252 vs spec #4F4F4F), pressed (#252525 vs spec #2A2A2A), disabled (wrong token entirely).</li>
+    <li><strong>Systemic: hard-coded hex values instead of tokens</strong> — border-[#DCD8CB], text-[#2D2926], placeholder-[#A8A49E], shadow-[…] appear across 12+ elements. Should use semantic token classes.</li>
+    <li><strong>Continue button styling doesn't match Hemlock</strong> — Wrong bg (#3C3C3C vs #0E0E0E), wrong text (#FFF vs #EEEDEB), wrong font-size (14 vs 16), left-aligned (should be centered).</li>
+    <li><strong>Message spacing 8px vs 16px</strong> — Both user and AI message bottom-margins are 8px; design token is $spacing-sm (16px).</li>
+  </ol>
+</div>
 
-${compareSection('s2', '2. Header bar', headerRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
+${compareSection('s1', '1. Login page', loginPageRows, { images: { design: images.designLogin, dev: [images.devLoginWelcome, images.devLoginEmpty] } })}
 
-${compareSection('s3', '3. Messages area', messagesAreaRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
+${compareSection('s2', '2. Rich content rendering', richContentRows, { images: { dev: [images.devConversationScrolled, images.devConversationTop] } })}
 
-${compareSection('s4', '4. User message bubble', userMessageRows, { images: { design: images.designUserMessage, dev: images.devConversationTop } })}
+${compareSection('s3', '3. Panel states (thinking)', panelStatesRows, { images: { design: images.designThinking, dev: [images.devThinking1, images.devThinking2] } })}
 
-${compareSection('s5', '5. AI message', aiMessageRows, { images: { design: images.designAiMessage, dev: images.devConversationScrolled } })}
+${compareSection('s4', '4. Navigation sidebar', navigationRows, { images: { design: images.designNavPanel, dev: images.devNavSidebar } })}
 
-${compareSection('s6', '6. Input field', inputFieldRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
+${compareSection('s5', '5. User message bubble', userMessageRows, { images: { design: images.designUserMessage, dev: images.devConversationTop } })}
+
+${compareSection('s6', '6. AI message', aiMessageRows, { images: { design: images.designAiMessage, dev: images.devConversationScrolled } })}
 
 ${compareSection('s7', '7. Send button', sendButtonRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
 
-${compareSection('s8', '8. Voice button', voiceButtonRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
+${compareSection('s8', '8. Input field', inputFieldRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
 
-${compareSection('s9', '9. Prompt chips (empty state)', promptChipRows, { images: { design: images.designEmpty, dev: images.devEmptyState } })}
+${compareSection('s9', '9. Voice button', voiceButtonRows, { images: { design: images.designInput, dev: images.devEmptyState } })}
 
-${compareSection('s10', '10. Rich content rendering', richContentRows, { images: { dev: [images.devConversationScrolled, images.devConversationTop] } })}
+${compareSection('s10', '10. Prompt chips (empty state)', promptChipRows, { images: { design: images.designEmpty, dev: images.devEmptyState } })}
 
-${compareSection('s11', '11. Navigation sidebar', navigationRows, { images: { design: images.designNavPanel, dev: images.devNavSidebar } })}
+${compareSection('s11', '11. Panel shell', panelShellRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
-${compareSection('s12', '12. Login page', loginPageRows, { images: { design: images.designLogin, dev: [images.devLoginWelcome, images.devLoginEmpty] } })}
+${compareSection('s12', '12. Header bar', headerRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
-${compareSection('s13', '13. Panel states', panelStatesRows, { images: { design: images.designThinking, dev: [images.devThinking1, images.devThinking2] } })}
+${compareSection('s13', '13. Messages area', messagesAreaRows, { images: { design: images.designConversation, dev: images.devConversationTop } })}
 
 <section id="tokens">
   <h2>Design Token Reference</h2>
