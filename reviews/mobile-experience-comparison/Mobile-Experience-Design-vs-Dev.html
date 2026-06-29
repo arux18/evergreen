@@ -93,10 +93,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 29, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">55</div><div class="stat-label">Gaps</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--match)">56</div><div class="stat-label">Matches</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--verify)">42</div><div class="stat-label">To verify</div></div>
-    <div class="stat"><div class="stat-num">153</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">54</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--match)">55</div><div class="stat-label">Matches</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verify)">41</div><div class="stat-label">To verify</div></div>
+    <div class="stat"><div class="stat-num">150</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
 </div>
@@ -1083,7 +1083,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tbody>
         <tr><td>Container padding</td><td><code>padding: [$O:spacing-md, 0]</code> = 24px top/bottom, 0px left/right</td><td><code>p-10</code> = 40px all sides (hardcoded Tailwind)</td><td>Replace <code>p-10</code> with token-based padding: 24px top/bottom, 0px horizontal. The body section handles its own horizontal padding.</td><td class="status-gap">Gap</td></tr>
         <tr><td>Container width</td><td>Fill width (full mobile viewport)</td><td><code>w-[560px] max-w-full</code> — hardcoded fixed width with max-w cap. Uses desktop dialog class.</td><td>Set to fill width for mobile (100% of viewport), not a fixed <code>w-[560px]</code>. Use a mobile bottom-sheet component, not a capped desktop dialog.</td><td class="status-gap">Gap</td></tr>
-        <tr><td>Container corner radius</td><td><code>cornerRadius: [$O:radius-md, $O:radius-md, $O:radius-md, $O:radius-md]</code> = 12px all four corners</td><td><code>rounded-xl</code> (12px all corners) on modal wrapper — hardcoded, not token</td><td>Replace hardcoded <code>rounded-xl</code> with <code>$O:radius-md</code> token for all four corners. Pixel value matches but must reference the token.</td><td class="status-gap">Gap</td></tr>
+        <tr><td>Container corner radius</td><td><code>cornerRadius: [$O:radius-md, $O:radius-md, $O:radius-md, $O:radius-md]</code> = 24px all four corners</td><td><code>rounded-xl</code> (12px all corners) on modal wrapper — wrong value AND hardcoded</td><td>Change from 12px to 24px using <code>$O:radius-md</code> token. Current <code>rounded-xl</code> is half the design spec.</td><td class="status-gap">Gap</td></tr>
         <tr><td>Body section padding</td><td><code>padding: [$O:spacing-md, $O:spacing-sm, 0, $O:spacing-sm]</code> = [24, 16, 0, 16]</td><td><code>padding: 0px</code> — missing entirely (outer <code>p-10</code> used instead)</td><td>Add body-level padding: <code>$O:spacing-md</code> (24px) top, <code>$O:spacing-sm</code> (16px) left/right, 0 bottom. Remove the outer <code>p-10</code>.</td><td class="status-gap">Gap</td></tr>
         <tr><td>Section-to-section gap</td><td><code>gap: 24</code> (<code>$O:spacing-md</code>) between Holding Details / Performance / Classification</td><td><code>gap-8</code> = 32px (hardcoded Tailwind)</td><td>Change to 24px using <code>$O:spacing-md</code> token</td><td class="status-gap">Gap</td></tr>
         <tr><td>Detail row inter-column gap</td><td><code>gap: $O:spacing-sm</code> = 16px between label and value</td><td><code>gap-10</code> = 40px (hardcoded Tailwind)</td><td>Change from 40px to 16px using <code>$O:spacing-sm</code> token</td><td class="status-gap">Gap</td></tr>
