@@ -80,8 +80,9 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <span class="side-nav-title t-data">Investments (PFM)</span>
   <a href="#s13" class="nav-link">13. Investments list</a>
   <a href="#s14" class="nav-link">14. Holding detail popup</a>
-  <span class="side-nav-title t-mobile">PFM Screens - Overall</span>
-  <a href="#s15" class="nav-link">15. PFM Screens - Overall</a>
+  <span class="side-nav-title t-mobile">Overall App</span>
+  <a href="#s15" class="nav-link">15. PFM Empty States</a>
+  <a href="#s16" class="nav-link">16. Page Headers</a>
   <span class="side-nav-title t-ref">Reference</span>
   <a href="#tokens" class="nav-link">Design sources</a>
 </nav>
@@ -105,7 +106,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tr><td>Login</td><td>§1</td><td><strong>10</strong></td></tr>
       <tr><td>Chat</td><td>§2–§12</td><td><strong>26</strong></td></tr>
       <tr><td>Investments (PFM)</td><td>§13–§14</td><td><strong>16</strong></td></tr>
-      <tr><td>PFM Screens - Overall</td><td>§15</td><td><strong>33</strong></td></tr>
+      <tr><td>Overall App</td><td>§15–§16</td><td><strong>40</strong></td></tr>
     </tbody>
   </table>
 </div>
@@ -1114,7 +1115,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   </section>
 
   <section id="s15">
-    <h2>15. PFM Screens — Overall</h2>
+    <h2>15. PFM Empty States</h2>
     <p>Design-vs-dev comparison of the three main PFM empty state screens. Design source: commit <code>10d1e8a</code> by Eugene (<time>2026-06-30</time>) — "Added the screens: Accounts-Empty state, Activity-Empty state, Investments-Empty state".</p>
 
     <h3 style="margin-top:24px; font-size:16px;">15.1 Accounts — Empty State</h3>
@@ -1194,8 +1195,22 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       </tbody>
     </table>
 
-    <h3 style="margin-top:32px; font-size:16px;">15.5 Page Header Font Audit</h3>
-    <p style="font-size:13px; color:#5E5954; margin:8px 0 16px;">The page header title ("Accounts", "Activity", "Investments") renders in <strong>Heebo on mobile</strong> but should use <strong>Noto Serif</strong> (matching desktop). All font properties audited below.</p>
+    <h3 style="margin-top:32px; font-size:16px;">15.5 Summary</h3>
+    <table>
+      <thead><tr><th>Screen</th><th>Matches</th><th>Gaps</th><th>Verify</th><th>Design file</th><th>Frame IDs</th></tr></thead>
+      <tbody>
+        <tr><td>Accounts — empty state</td><td>4</td><td>2</td><td>1</td><td><code>pfm-accounts-v2.pen</code></td><td><code>L9GwKY</code> (desktop), <code>J2BLyI</code> (mobile)</td></tr>
+        <tr><td>Activity — empty state</td><td>0</td><td>6</td><td>1</td><td><code>pfm-activity-v2.pen</code></td><td><code>EPra0</code> (desktop), <code>n89Oo</code> (mobile)</td></tr>
+        <tr><td>Investments — empty state</td><td>2</td><td>4</td><td>1</td><td><code>pfm-investments-v2.pen</code></td><td><code>Y7VAj</code> (desktop), <code>InWky</code> (mobile)</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:#8A8680; margin-top:12px;"><strong>Design sources:</strong> <code>pfm-accounts-v2.pen</code>, <code>pfm-activity-v2.pen</code>, <code>pfm-investments-v2.pen</code> — commit <code>10d1e8a</code> (eugene-designer, 2026-06-30). All empty state screens use <code>$fontFamily-primary</code> for body content.</p>
+  </section>
+
+  <section id="s16">
+    <h2>16. Page Headers</h2>
+    <p>The page header title ("Accounts", "Activity", "Investments") renders in <strong>Heebo on mobile</strong> but the design specifies <strong>Noto Serif</strong> (matching desktop). This section audits the font properties across all PFM page headers.</p>
+    <p style="font-size:13px; color:#5E5954; margin:4px 0 16px;">Design source: <code>pfm-accounts-v2.pen</code>, <code>pfm-activity-v2.pen</code>, <code>pfm-investments-v2.pen</code> — all page headers use <code>$fontFamily-secondary $fontSize-lg / $fontWeight-regular</code> (Noto Serif 20px/400).</p>
     <table>
       <thead><tr><th>Property</th><th>Design spec</th><th>Dev (mobile)</th><th>Required change</th><th>Status</th></tr></thead>
       <tbody>
@@ -1208,17 +1223,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
         <tr><td>Desktop/mobile parity</td><td class="mono">Same font on all viewports</td><td class="mono">Desktop: Noto Serif ✓ | Mobile: Heebo ✗</td><td>Remove any mobile-only font override that switches header to Heebo</td><td class="status-gap">Gap</td></tr>
       </tbody>
     </table>
-
-    <h3 style="margin-top:32px; font-size:16px;">15.6 Summary</h3>
-    <table>
-      <thead><tr><th>Screen</th><th>Matches</th><th>Gaps</th><th>Verify</th><th>Design file</th><th>Frame IDs</th></tr></thead>
-      <tbody>
-        <tr><td>Accounts — empty state</td><td>4</td><td>2</td><td>1</td><td><code>pfm-accounts-v2.pen</code></td><td><code>L9GwKY</code> (desktop), <code>J2BLyI</code> (mobile)</td></tr>
-        <tr><td>Activity — empty state</td><td>0</td><td>6</td><td>1</td><td><code>pfm-activity-v2.pen</code></td><td><code>EPra0</code> (desktop), <code>n89Oo</code> (mobile)</td></tr>
-        <tr><td>Investments — empty state</td><td>2</td><td>4</td><td>1</td><td><code>pfm-investments-v2.pen</code></td><td><code>Y7VAj</code> (desktop), <code>InWky</code> (mobile)</td></tr>
-      </tbody>
-    </table>
-    <p style="font-size:12px; color:#8A8680; margin-top:12px;"><strong>Design sources:</strong> <code>pfm-accounts-v2.pen</code>, <code>pfm-activity-v2.pen</code>, <code>pfm-investments-v2.pen</code> — commit <code>10d1e8a</code> (eugene-designer, 2026-06-30). All empty state screens use <code>$fontFamily-primary</code> for body content; page header uses <code>$fontFamily-secondary $fontSize-lg / $fontWeight-regular</code> (Noto Serif 20px/400).</p>
+    <p style="font-size:12px; color:#8A8680; margin-top:12px;"><strong>Key finding:</strong> A mobile-only CSS override (or missing class) switches the PFM page header font from Noto Serif to Heebo. The <code>typo-secondary-lg-regular</code> token class needs to be applied and not overridden on mobile viewports.</p>
   </section>
 
 <section id="tokens">
@@ -1229,7 +1234,8 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tr><td>§1–§12 (Chat UI)</td><td><code>pencil/designs/4-approved/app-shell-dashboard-view.pen</code></td><td>Chat panel, bubbles, input, send button, chips, voice, header</td></tr>
       <tr><td>§13 (Investments list)</td><td><code>pencil/designs/4-approved/pfm-investments-v2.pen</code></td><td>Frames <code>zoKIL</code> — "Mobile - Investments - Default", <code>gUTFt</code> — "Mobile - Investments - Dropdown Open", <code>PzpZ2</code> — "Mobile - Investments - Account Selected"</td></tr>
       <tr><td>§14 (Holding detail)</td><td><code>pencil/designs/4-approved/pfm-investments-v2.pen</code></td><td>Frame <code>mhYrM</code> — "Mobile - Investments - Holding Detail"</td></tr>
-      <tr><td>§15 (PFM Screens)</td><td><code>pfm-accounts-v2.pen</code>, <code>pfm-activity-v2.pen</code>, <code>pfm-investments-v2.pen</code></td><td>Empty state screens (desktop + mobile) — frames <code>L9GwKY</code>, <code>J2BLyI</code>, <code>EPra0</code>, <code>n89Oo</code>, <code>Y7VAj</code>, <code>InWky</code></td></tr>
+      <tr><td>§15 (PFM Empty States)</td><td><code>pfm-accounts-v2.pen</code>, <code>pfm-activity-v2.pen</code>, <code>pfm-investments-v2.pen</code></td><td>Empty state screens (desktop + mobile) — frames <code>L9GwKY</code>, <code>J2BLyI</code>, <code>EPra0</code>, <code>n89Oo</code>, <code>Y7VAj</code>, <code>InWky</code></td></tr>
+      <tr><td>§16 (Page Headers)</td><td><code>pfm-accounts-v2.pen</code>, <code>pfm-activity-v2.pen</code>, <code>pfm-investments-v2.pen</code></td><td>Page header title font (Noto Serif 20px/400 — token <code>typo-secondary-lg-regular</code>)</td></tr>
     </tbody>
   </table>
   <p style="margin-top:16px"><strong>Token library:</strong> <code>pencil/design-system/in-progress/hemlock-library.lib.pen</code> — all <code>$O:</code> tokens referenced in this document resolve from this file.</p>
