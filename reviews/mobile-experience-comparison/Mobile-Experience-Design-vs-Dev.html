@@ -92,10 +92,10 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
   <p><strong>Dev URL:</strong> <code>https://app.eg-dev.ai</code> (mobile 390px viewport)</p>
   <p><strong>Date:</strong> June 29, 2026</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" style="color:var(--gap)">54</div><div class="stat-label">Gaps</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gap)">57</div><div class="stat-label">Gaps</div></div>
     <div class="stat"><div class="stat-num" style="color:var(--match)">55</div><div class="stat-label">Matches</div></div>
-    <div class="stat"><div class="stat-num" style="color:var(--verify)">41</div><div class="stat-label">To verify</div></div>
-    <div class="stat"><div class="stat-num">150</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verify)">45</div><div class="stat-label">To verify</div></div>
+    <div class="stat"><div class="stat-num">157</div><div class="stat-label">Total</div></div>
   </div>
   <p style="margin-top:16px;font-size:13px;color:#8A8680"><strong>How to read:</strong> <span style="color:var(--gap)">Gap</span> = mismatch OR hard-coded value where token should be used, <span style="color:var(--match)">Match</span> = correct value AND uses token-backed class, <span style="color:var(--verify)">Verify</span> = needs code inspection to confirm token usage (not just value match).</p>
   <h2 style="margin-top:24px; border:none; font-size:16px;">Gaps by Screen</h2>
@@ -105,7 +105,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tr><td>Login</td><td>§1</td><td><strong>10</strong></td></tr>
       <tr><td>Chat</td><td>§2–§12</td><td><strong>26</strong></td></tr>
       <tr><td>Investments (PFM)</td><td>§13–§14</td><td><strong>16</strong></td></tr>
-      <tr><td>PFM Screens - Overall</td><td>§15</td><td><strong>2</strong></td></tr>
+      <tr><td>PFM Screens - Overall</td><td>§15</td><td><strong>6</strong></td></tr>
     </tbody>
   </table>
 </div>
@@ -1113,6 +1113,22 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
         <tr><td>Investments — empty state</td><td>Briefcase icon in circle, “Connect a brokerage to view your investments” heading, “Link an investment account to see your holdings here.” body, “Connect a brokerage” CTA button (dark, pill-shaped)</td><td>No design exists</td><td>Create approved empty-state design in <code>pfm-investments-v2.pen</code></td><td class="status-gap">Gap</td></tr>
       </tbody>
     </table>
+
+    <h3 style="margin-top:32px; font-size:16px;">Page Header Font Audit</h3>
+    <p style="font-size:13px; color:#5E5954; margin:8px 0 16px;">The page header title (“Accounts”, “Activity”, “Investments”) renders in <strong>Heebo on mobile</strong> but should use <strong>Noto Serif</strong> (matching desktop). All font properties audited below.</p>
+    <table>
+      <thead><tr><th>Property</th><th>Design spec</th><th>Dev (mobile)</th><th>Required change</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Font family</td><td class="mono">$fontFamily-secondary (Noto Serif)</td><td class="mono">Heebo — incorrect font family on mobile</td><td>Apply <code>typo-secondary-base-regular</code> token class (or ensure it is not overridden on mobile viewport)</td><td class="status-gap">Gap</td></tr>
+        <tr><td>Font size</td><td class="mono">$fontSize-base (16px)</td><td class="mono">Verify — appears ~16px from screenshots</td><td>Confirm uses <code>$fontSize-base</code> token (16px)</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Font weight</td><td class="mono">$fontWeight-regular (400)</td><td class="mono">Verify — appears regular weight from screenshots</td><td>Confirm uses <code>$fontWeight-regular</code> token (400)</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Line height</td><td class="mono">Normal (inherits from token class)</td><td class="mono">Verify computed line-height</td><td>Confirm matches design token output</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Letter spacing</td><td class="mono">Normal (0 / default)</td><td class="mono">Verify computed letter-spacing</td><td>Confirm no unexpected letter-spacing applied</td><td class="status-verify">Verify</td></tr>
+        <tr><td>Token class usage</td><td class="mono">typo-secondary-base-regular</td><td class="mono">Class may be missing or overridden by a mobile-specific rule</td><td>Ensure <code>typo-secondary-base-regular</code> is applied and no responsive override changes font-family to Heebo</td><td class="status-gap">Gap</td></tr>
+        <tr><td>Desktop/mobile parity</td><td class="mono">Same font on all viewports</td><td class="mono">Desktop: Noto Serif ✓ | Mobile: Heebo ✗</td><td>Remove any mobile-only font override that switches header to Heebo</td><td class="status-gap">Gap</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:#8A8680; margin-top:12px;"><strong>Design sources:</strong> <code>pfm-accounts-v2.pen</code>, <code>pfm-activity-v2.pen</code>, <code>pfm-investments-v2.pen</code> — header follows same pattern as §11 (Header bar): <code>$fontFamily-secondary $fontSize-base / $fontWeight-regular</code></p>
   </section>
 
 <section id="tokens">
@@ -1123,7 +1139,7 @@ td.mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
       <tr><td>§1–§12 (Chat UI)</td><td><code>pencil/designs/4-approved/app-shell-dashboard-view.pen</code></td><td>Chat panel, bubbles, input, send button, chips, voice, header</td></tr>
       <tr><td>§13 (Investments list)</td><td><code>pencil/designs/4-approved/pfm-investments-v2.pen</code></td><td>Frame <code>zoKIL</code> — "Mobile - Investments - Default"</td></tr>
       <tr><td>§14 (Holding detail)</td><td><code>pencil/designs/4-approved/pfm-investments-v2.pen</code></td><td>Frame <code>mhYrM</code> — "Mobile - Investments - Holding Detail"</td></tr>
-      <tr><td>§15 (PFM Screens)</td><td><code>pfm-accounts-v2.pen</code>, <code>pfm-investments-v2.pen</code></td><td>Mobile dashboard, Activity screen, Investments view</td></tr>
+      <tr><td>§15 (PFM Screens)</td><td><code>pfm-accounts-v2.pen</code>, <code>pfm-activity-v2.pen</code>, <code>pfm-investments-v2.pen</code></td><td>Page header font audit (all three PFM screens)</td></tr>
     </tbody>
   </table>
   <p style="margin-top:16px"><strong>Token library:</strong> <code>pencil/design-system/in-progress/hemlock-library.lib.pen</code> — all <code>$O:</code> tokens referenced in this document resolve from this file.</p>
