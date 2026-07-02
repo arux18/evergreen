@@ -81,6 +81,7 @@ const T = {
 
 const layoutRows = [
   ['Text truncation (GLOBAL)', 'Text always wraps — never truncate with ellipsis', '17 elements have text-overflow: ellipsis + white-space: nowrap + overflow: hidden (all security names truncated at 89px)', 'Remove ALL instances of text-overflow: ellipsis, white-space: nowrap, overflow: hidden on text elements. Text must wrap fully — never clip.', 'Gap'],
+  ['Responsive table (< 640px)', 'Below 640px table width, switch to mobile card/stack layout — no horizontal table with cramped columns', 'Table stays in horizontal layout at all widths — columns compress to ~89px causing truncation and illegibility (see screenshot)', 'Add 640px breakpoint: below 640px, switch to stacked card layout per mobile design pattern (one holding per card, vertical labels). This is a known pattern from other PFM reviews.', 'Gap'],
   ['Content column padding', `[20px top, ${T.xl} (40px) sides] — padding: [20, 40]`, '20px 40px — padding matches design values', 'Ensure code uses $spacing-xl token for sides (not hardcoded 40px)', 'Gap'],
   ['Gap: content sections', `${T.md} (24px) between value block, account selector, filter tabs, and table`, 'gap: normal (not explicitly set on flex column)', 'Set gap: $spacing-md (24px) between all content sections', 'Gap'],
   ['Table container corner radius', `${T.r2xs} (8px)`, '0px', 'Add border-radius: $radius-2xs (8px) on table container', 'Gap'],
