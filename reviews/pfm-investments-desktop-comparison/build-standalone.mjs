@@ -107,7 +107,7 @@ const accountSelectorRows = [
   ['Padding', '[0, spacing-xs (12px), 0, 17px] — 17px is custom right padding for chevron', '0px 12px 0px 17px', 'Ensure left padding uses $spacing-xs token (not hardcoded 12px). 17px right is custom.', 'Gap'],
   ['Border', `1px solid ${T.gray200} (#D5D3D0)`, '1px solid rgb(213, 211, 208) = #D5D3D0', 'Ensure code uses $color-gray-200 token for border color (not hardcoded rgb/hex)', 'Gap'],
   ['Background', 'color-base-white (#FFFFFF) or transparent — no tint', 'oklch(0.164 0 89.88 / 0.02) — 2% dark tint', 'Remove subtle tint; use $color-base-white or transparent', 'Gap'],
-  ['Value text', 'Heebo 16px, weight 400, "All Accounts"', '"All accounts" — matches style', 'No change — font matches. Verify capitalization: design says "All Accounts" (capital A)', 'Gap'],
+  ['Value text', 'Heebo 16px, weight 400, "All Accounts"', '"All accounts" (lowercase a)', 'Capitalize to "All Accounts" (capital A) per design. Ensure font uses $typo-primary-base-regular token.', 'Gap'],
   ['Chevron icon color', `${T.gray500} (#8A8680 or #716E6A)`, 'Chevron present — color inherits text color (dark)', 'Set chevron fill to $color-gray-400/#8A8680 not body text color', 'Gap'],
 ];
 
@@ -115,7 +115,7 @@ const filterTabsRows = [
   ['Container shape', 'No container — individual pills side-by-side with gap 8px', 'Segmented control with pill container (padding and bg visible)', 'Remove tab container background if present. Design shows standalone pill buttons without wrapper bg.', 'Gap'],
   ['Tab type', 'Button component refs — "All" uses primary ($O:bMlax), others use outline ($O:aFIzk)', '"All" has white fill, others have transparent bg', 'Active = $component/Button (filled), inactive = $component/Button/outline', 'Gap'],
   ['Tab font size', 'Heebo 12px (custom — set in descendants override)', '14px (2px too large)', 'Reduce filter tab font-size from 14px to 12px', 'Gap'],
-  ['Tab letter-spacing', '0 (normal)', 'normal', 'Ensure code does not set explicit letter-spacing (inherits normal)', 'Match'],
+  ['Tab letter-spacing', '0 (normal)', 'normal', 'No change — both inherit normal', 'Match'],
   ['Tab padding', '[4px, 16px] vertical/horizontal', '8px 24px (too much padding — double on both axes)', 'Reduce tab padding from 8px 24px to 4px 16px', 'Gap'],
   ['Tab gap', `${T.s2xs} (8px) between tabs`, 'Verify gap between tabs', 'Set gap: $spacing-2xs (8px) between filter tabs', 'Gap'],
   ['Active tab style', 'Filled button (solid background)', 'White fill with border-radius 9999px (pill) — correct shape', 'Ensure active uses $component/Button (filled) component ref', 'Gap'],
@@ -175,8 +175,8 @@ const detailPopupShellRows = [
   ['Popup corner radius', '$radius-xs (12px)', '12px', 'Ensure code uses $radius-xs token (not hardcoded 12px)', 'Gap'],
   ['Popup shadow', 'shadow-lg — rgba(0,0,0,0.2) 0px 16px 48px', 'rgba(0,0,0,0.2) 0px 16px 48px 0px', 'Ensure code uses $shadow-lg token (not hardcoded shadow values)', 'Gap'],
   ['Popup fill', `${T.bgSurface} (white)`, 'oklch(1 0 89.88) = white', 'Ensure code uses $colors-background-surface token (not oklch() or hardcoded white)', 'Gap'],
-  ['Popup overflow', 'hidden', 'overflow: hidden', 'Ensure overflow: hidden is set (matches)', 'Match'],
-  ['Popup position', 'Centered in viewport (modal pattern)', 'Fixed position, centered via openui-modal', 'Ensure uses standard modal centering pattern', 'Match'],
+  ['Popup overflow', 'hidden', 'overflow: hidden', 'No change — both use overflow: hidden', 'Match'],
+  ['Popup position', 'Centered in viewport (modal pattern)', 'Fixed position, centered via openui-modal', 'No change — centered modal pattern matches', 'Match'],
   ['Backdrop overlay', '#00000066 (40% black) covers main content behind popup', 'No visible backdrop dimming — table content not darkened', 'Add semi-transparent backdrop overlay (#00000066 or rgba(0,0,0,0.4)) when popup is open', 'Gap'],
   ['Body padding', `${T.xl} (40px) all sides`, '0px (padding is on inner sections, not wrapper)', 'Ensure consistent $spacing-xl (40px) padding inside popup body', 'Gap'],
 ];
