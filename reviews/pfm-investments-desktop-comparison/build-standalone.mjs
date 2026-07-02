@@ -52,7 +52,7 @@ const images = {
   devDetailHolding: requireEmbed('assets/dev/detail-popup-holding.png'),
 };
 
-const modalCompareStyle = 'object-fit:contain;max-height:520px;background:#fff;padding:12px;';
+const modalCompareStyle = 'object-fit:contain;max-height:600px;width:100%;background:#fff;padding:12px;';
 
 const T = {
   bgMain: 'colors-background-main (#F7F5F0)',
@@ -320,14 +320,14 @@ const html = `<!DOCTYPE html>
     .panel { border: 1px solid var(--line); overflow: hidden; background: #fff; }
     .panel.design-panel, .panel.design-panel img { background: #ffffff; }
     .panel.dev-panel, .panel.dev-panel img { background: #fafafa; }
-    .panel img { display: block; width: 100%; height: auto; background: #ffffff; }
+    .panel img { display: block; width: 100%; height: auto; background: #ffffff; object-fit: contain; }
     .panel-label { padding: 7px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; border-bottom: 1px solid var(--line); }
     .panel-label.design { background: #edf7f1; color: var(--design); }
     .panel-label.dev { background: #fdecec; color: var(--dev); }
     .compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-bottom: 14px; }
     .compare-grid .col { border: 1px solid var(--line); overflow: hidden; background: #fff; }
     .compare-grid .col h3 { padding: 7px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; border-bottom: 1px solid var(--line); background: #f8f8f8; margin: 0; }
-    .compare-grid .col img { display: block; width: 100%; height: auto; }
+    .compare-grid .col img { display: block; width: 100%; height: auto; object-fit: contain; }
     .spec-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 2px; }
     .spec-table th, .spec-table td { text-align: left; padding: 7px 9px; border-bottom: 1px solid var(--line); vertical-align: top; }
     .spec-table th { font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); background: #faf8f4; }
@@ -416,19 +416,19 @@ const html = `<!DOCTYPE html>
       </ul>
     </header>
 
-    ${compareSection('1', 'Layout &amp; spacing', 'Content column padding and vertical rhythm — contentColumn ZpdOH', images.designMain, images.devFull, 'object-fit:cover;object-position:25% 0%;max-height:500px;', table(layoutRows), '', 'object-fit:cover;object-position:25% 0%;max-height:500px;')}
+    ${compareSection('1', 'Layout &amp; spacing', 'Content column padding and vertical rhythm — contentColumn ZpdOH', images.designMain, images.devFull, '', table(layoutRows))}
 
-    ${compareSection('2', 'Total value section', 'TOTAL VALUE label + dollar amount + holdings count — valueCol as85C', images.designMain, images.devFull, 'object-fit:cover;object-position:25% 2%;max-height:180px;', table(totalValueRows), '', 'object-fit:cover;object-position:25% 2%;max-height:180px;')}
+    ${compareSection('2', 'Total value section', 'TOTAL VALUE label + dollar amount + holdings count — valueCol as85C', images.designMain, images.devFull, '', table(totalValueRows))}
 
-    ${compareSection('3', 'Account selector', 'Hemlock Select component (O:jncEi) — "All Accounts" dropdown — RcFdy', images.designMain, images.devFull, 'object-fit:cover;object-position:25% 14%;max-height:100px;', table(accountSelectorRows), '', 'object-fit:cover;object-position:25% 14%;max-height:100px;')}
+    ${compareSection('3', 'Account selector', 'Hemlock Select component (O:jncEi) — "All Accounts" dropdown — RcFdy', images.designMain, images.devFull, '', table(accountSelectorRows))}
 
-    ${compareSection('4', 'Type filter tabs', 'Security type pill buttons — filterRow g1Djl (All, Equity, ETF, Fund, Crypto, Treasury, etc.)', images.designMain, images.devFull, 'object-fit:cover;object-position:25% 20%;max-height:100px;', table(filterTabsRows), '', 'object-fit:cover;object-position:25% 20%;max-height:100px;')}
+    ${compareSection('4', 'Type filter tabs', 'Security type pill buttons — filterRow g1Djl (All, Equity, ETF, Fund, Crypto, Treasury, etc.)', images.designMain, images.devFull, '', table(filterTabsRows))}
 
-    ${compareSection('5', 'Table header', 'Column labels with sort icons — tableHeader j6Adz', images.designMain, images.devFull, 'object-fit:cover;object-position:25% 25%;max-height:100px;', table(tableHeaderRows), '', 'object-fit:cover;object-position:25% 25%;max-height:100px;')}
+    ${compareSection('5', 'Table header', 'Column labels with sort icons — tableHeader j6Adz', images.designMain, images.devFull, '', table(tableHeaderRows))}
 
-    ${compareSection('6', 'Holding row', 'Security ticker + name, type, account, market value, portfolio % — holdingRow', images.designMain, images.devFull, 'object-fit:cover;object-position:25% 35%;max-height:300px;', table(holdingRowRows), '', 'object-fit:cover;object-position:25% 35%;max-height:300px;')}
+    ${compareSection('6', 'Holding row', 'Security ticker + name, type, account, market value, portfolio % — holdingRow', images.designMain, images.devFull, '', table(holdingRowRows))}
 
-    ${compareSection('7', 'Show More footer', '"Show More" text button below holdings list — showMoreFooter ixx0J', images.designMain, images.devFull, 'object-fit:cover;object-position:25% 95%;max-height:100px;', table(showMoreRows), '', 'object-fit:cover;object-position:25% 95%;max-height:100px;')}
+    ${compareSection('7', 'Show More footer', '"Show More" text button below holdings list — showMoreFooter ixx0J', images.designMain, images.devFull, '', table(showMoreRows))}
 
     <section class="page" id="s8">
       <h2>8. Detail popup — shell</h2>
