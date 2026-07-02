@@ -143,6 +143,14 @@ Every comparison document MUST include a fixed left sidebar navigation. This is 
 - **Only crop when explicitly requested** by the user (e.g., "crop to just the header area"). Default is always: show the full image.
 - Panel images use: `display: block; width: 100%; height: auto; object-fit: contain;`
 
+## Text Wrapping Rule
+
+- **Text always wraps — never truncates.** No `text-overflow: ellipsis`, no `white-space: nowrap` + `overflow: hidden`, no `-webkit-line-clamp` on any text element.
+- If text is too long for a container, it wraps to the next line. The container grows to fit.
+- This applies to ALL text in the app (desktop and mobile): security names, account names, descriptions, labels, values.
+- The only exception is if the user explicitly requests truncation for a specific element.
+- When auditing dev, actively scan for `text-overflow: ellipsis` using CDP — this is a common dev pattern that violates design intent.
+
 ## Mobile-Specific Documentation
 
 - Document overlay-to-modal padding (typically spacing-md / 24px from viewport edges)

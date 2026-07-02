@@ -80,6 +80,7 @@ const T = {
 };
 
 const layoutRows = [
+  ['Text truncation (GLOBAL)', 'Text always wraps — never truncate with ellipsis', '17 elements have text-overflow: ellipsis + white-space: nowrap + overflow: hidden (all security names truncated at 89px)', 'Remove ALL instances of text-overflow: ellipsis, white-space: nowrap, overflow: hidden on text elements. Text must wrap fully — never clip.', 'Gap'],
   ['Content column padding', `[20px top, ${T.xl} (40px) sides] — padding: [20, 40]`, '20px 40px — padding matches design values', 'Ensure code uses $spacing-xl token for sides (not hardcoded 40px)', 'Gap'],
   ['Gap: content sections', `${T.md} (24px) between value block, account selector, filter tabs, and table`, 'gap: normal (not explicitly set on flex column)', 'Set gap: $spacing-md (24px) between all content sections', 'Gap'],
   ['Table container corner radius', `${T.r2xs} (8px)`, '0px', 'Add border-radius: $radius-2xs (8px) on table container', 'Gap'],
@@ -147,15 +148,15 @@ const holdingRowRows = [
   ['Row padding', `${T.xs} (12px) all sides`, '12px 8px 12px 12px (first cell), 12px 8px (middle cells), 12px 12px 12px 8px (last cell)', 'Standardize to $spacing-xs (12px) uniform padding on all cells', 'Gap'],
   ['Row gap (inter-cell)', `${T.sm} (16px) between cells`, '0px — cells touch (table layout)', 'Add $spacing-sm (16px) gap between row cells (or equivalent column padding)', 'Gap'],
   ['Row bottom border', `1px solid ${T.borderLight} (#EEEDEB) — separating each row`, '1px solid rgb(238, 237, 235) = #EEEDEB', 'Ensure code uses $colors-borders-light token (not hardcoded rgb())', 'Gap'],
-  ['Row height', 'Content-derived (~48px: 12px padding + 24px content + 12px padding)', '88px (too tall — multi-line text wrapping inflates height)', 'Reduce row height — fix by clipping account text to single line', 'Gap'],
+  ['Row height', 'Content-derived — height adjusts to wrapped text content', '88px (text wrapping causes taller rows — acceptable if text is not truncated)', 'Row height is acceptable as long as text wraps fully. Once account format is shortened, rows will naturally be shorter.', 'Gap'],
   ['Ticker text (SECURITY col)', 'Heebo 14px, weight 600, $color-gray-700 (#403D3A)', '14px, weight 600, color rgb(57, 54, 51) = #393633', 'Change ticker color from #393633 to $color-gray-700 (#403D3A)', 'Gap'],
   ['Ticker color', `${T.gray700} (#403D3A)`, 'rgb(57, 54, 51) = #393633', 'Use exact $color-gray-700 (#403D3A) token', 'Gap'],
-  ['Security name (subtitle)', 'Heebo 11px, weight 400, $color-gray-500 (#716E6A)', '11px, weight 400, color rgb(113, 110, 106) = #716E6A', 'Color matches $color-gray-500. Ensure code uses the token (not hardcoded rgb). Check no truncation.', 'Gap'],
+  ['Security name (subtitle)', 'Heebo 11px, weight 400, $color-gray-500 (#716E6A) — text wraps, never truncates', '11px, weight 400, color #716E6A — BUT text-overflow: ellipsis, white-space: nowrap, overflow: hidden (TRUNCATED at 89px)', 'REMOVE text-overflow: ellipsis, white-space: nowrap, overflow: hidden. Text must wrap. 17 security names are being clipped (e.g. "Vanguard To..." instead of "Vanguard Total Stock Market ETF").', 'Gap'],
   ['Security name gap below ticker', '2px gap between ticker and security name', 'Gap not explicitly measured', 'Set gap: 2px between ticker badge and security name text', 'Gap'],
   ['TYPE cell font', 'Heebo 14px, weight 400, $color-gray-500 (#716E6A)', '14px, weight 400, color rgb(57, 54, 51) = #393633', 'Change TYPE text color from #393633 to $color-gray-500 (#716E6A)', 'Gap'],
   ['ACCOUNT cell font', 'Heebo 14px, weight 400, $color-gray-500 (#716E6A)', '14px, weight 400, color rgb(57, 54, 51) = #393633', 'Change ACCOUNT text color from #393633 to $color-gray-500 (#716E6A)', 'Gap'],
   ['ACCOUNT cell format', '"Fidelity Brokerage (x4372)" — short format with mask', '"Fidelity · Fidelity 403(b) Tax-Deferred" — full Plaid name with dot separator', 'Use short format: "{Institution} {SubType} (x{mask})" or design-matching compact format', 'Gap'],
-  ['ACCOUNT cell truncation', 'Text visible, clip: true (truncates gracefully in fixed 160px)', 'Text wraps to multiple lines (causes 88px row height)', 'Set account column to clip text at 160px width (single line, no wrapping)', 'Gap'],
+  ['ACCOUNT cell truncation', 'Text wraps — never truncate with ellipsis', 'Text wraps to multiple lines (correct behavior)', 'Ensure NO text-overflow: ellipsis or line-clamp anywhere. Text must always wrap fully.', 'Gap'],
   ['MARKET VALUE font', 'Heebo 14px, weight 600, $color-gray-700 (#403D3A)', '14px, weight 400, color rgb(57, 54, 51) = #393633', 'Change MARKET VALUE font-weight from 400 to 600, color to $color-gray-700 (#403D3A)', 'Gap'],
   ['MARKET VALUE alignment', 'Right-aligned (justifyContent: end)', 'text-align: right', 'Ensure code uses $color-gray-700 token for color. Alignment correct.', 'Gap'],
   ['PORTFOLIO % font', 'Heebo 14px, weight 400, $color-gray-500 (#716E6A)', '14px, weight 400, color rgb(57, 54, 51) = #393633', 'Change PORTFOLIO % text color from #393633 to $color-gray-500 (#716E6A)', 'Gap'],
