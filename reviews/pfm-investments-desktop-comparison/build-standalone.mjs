@@ -50,6 +50,7 @@ const images = {
   designCryptoPopup: requireEmbed('assets/design/hJAHp.png'),
   devFull: requireEmbed('assets/dev/full-page.png'),
   devDetailHolding: requireEmbed('assets/dev/detail-popup-holding.png'),
+  devTableBelow640: requireEmbed('assets/dev/table-below-640px.png'),
 };
 
 const modalCompareStyle = 'object-fit:contain;max-height:600px;width:100%;background:#fff;padding:12px;';
@@ -421,6 +422,8 @@ const html = `<!DOCTYPE html>
     </header>
 
     ${compareSection('1', 'Layout &amp; spacing', 'Content column padding and vertical rhythm — contentColumn ZpdOH', images.designMain, images.devFull, '', table(layoutRows))}
+
+    ${compareSection('1b', 'Responsive table breakpoint (< 640px)', 'Table does not switch to mobile layout below 640px — columns compress to ~89px causing truncation and illegibility', null, images.devTableBelow640, '', table([['Responsive table (< 640px)', 'Below 640px table width, switch to mobile card/stack layout — no horizontal table with cramped columns', 'Table stays in horizontal layout at all widths — columns compress to ~89px causing truncation and illegibility', 'Add 640px breakpoint: below 640px, switch to stacked card layout per mobile design pattern (one holding per card, vertical labels). This is a known pattern from other PFM reviews.', 'Gap']]))}
 
     ${compareSection('2', 'Total value section', 'TOTAL VALUE label + dollar amount + holdings count — valueCol as85C', images.designMain, images.devFull, '', table(totalValueRows))}
 
