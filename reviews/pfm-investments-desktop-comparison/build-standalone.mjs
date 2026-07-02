@@ -115,17 +115,21 @@ const accountSelectorRows = [
 ];
 
 const filterTabsRows = [
-  ['Container shape', 'No container — individual pills side-by-side with gap 8px', 'Segmented control: inline-flex, bg rgb(247,245,240), padding 4px, gap 2px, border-radius 9999px', 'Remove tab container background and padding. Design shows standalone pill buttons without wrapper bg.', 'Gap'],
-  ['Tab type', 'Button component refs — "All" uses primary ($O:bMlax), others use outline ($O:aFIzk)', '"All": bg white, weight 600; others: bg transparent, weight 400', 'Active = $component/Button (filled), inactive = $component/Button/outline', 'Gap'],
-  ['Tab font size', 'Heebo 12px (custom — set in descendants override)', '14px', 'Reduce filter tab font-size from 14px to 12px', 'Gap'],
-  ['Tab letter-spacing', '0 (normal)', 'normal', 'No change — both inherit normal', 'Match'],
-  ['Tab padding', '[4px, 16px] vertical/horizontal', '8px 24px', 'Reduce tab padding from 8px 24px to 4px 16px', 'Gap'],
-  ['Tab gap', `${T.s2xs} (8px) between tabs`, '2px (container gap)', 'Increase gap from 2px to $spacing-2xs (8px) between filter tabs', 'Gap'],
-  ['Active tab style', 'Filled button (solid background)', 'bg white, border-radius 9999px', 'Ensure active uses $component/Button (filled) component ref', 'Gap'],
-  ['Active tab font weight', '600 (semibold — from Button component)', '600', 'Ensure code inherits weight from $component/Button token (not hardcoded 600)', 'Gap'],
-  ['Inactive tab font weight', '400 (regular — from Button/outline)', '400', 'Ensure code inherits weight from $component/Button/outline token (not hardcoded 400)', 'Gap'],
-  ['Tab labels', 'All, Equity, ETF, Fund, Crypto, Treasury, Corporate Bond, REIT — 8 tabs', 'All, Equity, ETF, Fund, Crypto, Treasury, Corporate Bond, REIT — 8 tabs', 'No change — same labels', 'Match'],
-  ['Tab border-radius', `${T.rFull} (9999px) — pill shape`, '9999px', 'Ensure code uses $radius-full token (not hardcoded 9999px)', 'Gap'],
+  ['Component', 'SegmentedControl — Hemlock component ref (component/SegmentedControl). Replaces previous individual pill buttons.', 'Segmented control: inline-flex, bg rgb(247,245,240), padding 4px, gap 2px, border-radius 9999px', 'Use Hemlock $component/SegmentedControl ref. Dev implementation visually matches the new design — verify it uses the component ref (not a hand-built frame).', 'Gap'],
+  ['Container width', 'fill_container — stretches to full content column width', 'inline-flex (hugs content, does not fill)', 'Set SegmentedControl container width to fill (100% of parent). Design uses fill_container.', 'Gap'],
+  ['Container fill', `${T.taupe100} (#F7F5F0) — $color-taupe-100`, 'rgb(247, 245, 240) = #F7F5F0', 'Ensure code uses $color-taupe-100 token (not hardcoded rgb)', 'Gap'],
+  ['Container padding', `${T.s3xs} (4px) — $spacing-3xs`, '4px', 'Ensure code uses $spacing-3xs token (not hardcoded 4px)', 'Gap'],
+  ['Container corner radius', `${T.rFull} (9999px) — $radius-full`, '9999px', 'Ensure code uses $radius-full token (not hardcoded 9999px)', 'Gap'],
+  ['Container gap', '0 between segments (segments touch)', '2px', 'Remove gap from 2px to 0 per SegmentedControl spec', 'Gap'],
+  ['Tab font size', 'Heebo 14px — typo-primary-sm (SegmentItem inherits)', '14px', 'Ensure code uses $typo-primary-sm token (not hardcoded 14px)', 'Gap'],
+  ['Tab letter-spacing', '0 (normal)', 'normal', 'No change — matches', 'Match'],
+  ['Tab padding', '[8px, 24px] vertical/horizontal per SegmentItem', '8px 24px', 'Ensure code uses SegmentItem token padding (not hardcoded 8px 24px)', 'Gap'],
+  ['Active tab fill', `$colors-background-surface (#FFFFFF) — white pill`, 'bg white', 'Ensure code uses $colors-background-surface token (not hardcoded white)', 'Gap'],
+  ['Active tab shadow', '$shadow-sm — blur 2px, y-offset 1px, color #00000014', 'No visible shadow on active tab', 'Add shadow: $shadow-sm (0px 1px 2px rgba(0,0,0,0.08)) on active/selected segment', 'Gap'],
+  ['Active tab font', 'Heebo 14px, weight 600 — $colors-text-header (#0E0E0E)', '14px, weight 600', 'Ensure code uses $colors-text-header and $typo-primary-sm-semibold tokens', 'Gap'],
+  ['Inactive tab font', 'Heebo 14px, weight 400 — $colors-text-body (#403D3A)', '14px, weight 400', 'Ensure code uses $colors-text-body and $typo-primary-sm-regular tokens', 'Gap'],
+  ['Tab labels', 'All, Equity, ETF, Fund, Crypto, Treasury, Corporate Bond, REIT — 8 segments', 'All, Equity, ETF, Fund, Crypto, Treasury, Corporate Bond, REIT — 8 tabs', 'No change — same labels', 'Match'],
+  ['Tab border-radius', `${T.rFull} (9999px) — each SegmentItem is pill-shaped`, '9999px', 'Ensure code uses $radius-full token (not hardcoded 9999px)', 'Gap'],
 ];
 
 const tableHeaderRows = [
@@ -379,7 +383,7 @@ const html = `<!DOCTYPE html>
     <a href="#s1b" class="nav-link">1b. Responsive breakpoint</a>
     <a href="#s2" class="nav-link">2. Total value section</a>
     <a href="#s3" class="nav-link">3. Account selector</a>
-    <a href="#s4" class="nav-link">4. Type filter tabs</a>
+    <a href="#s4" class="nav-link">4. SegmentedControl filter</a>
     <a href="#s5" class="nav-link">5. Table header</a>
     <a href="#s6" class="nav-link">6. Holding row</a>
     <a href="#s7" class="nav-link">7. Show More footer</a>
@@ -435,7 +439,7 @@ const html = `<!DOCTYPE html>
 
     ${compareSection('3', 'Account selector', 'Hemlock Select component (O:jncEi) — "All Accounts" dropdown — RcFdy', images.designMain, images.devFull, '', table(accountSelectorRows))}
 
-    ${compareSection('4', 'Type filter tabs', 'Security type pill buttons — filterRow g1Djl (All, Equity, ETF, Fund, Crypto, Treasury, etc.)', images.designMain, images.devFull, '', table(filterTabsRows))}
+    ${compareSection('4', 'SegmentedControl filter', 'Hemlock SegmentedControl component (typeFilterTabs AkPN9) — replaces previous individual pill buttons. fill_container width, $color-taupe-100 track, 8 segments.', images.designMain, images.devFull, '', table(filterTabsRows))}
 
     ${compareSection('5', 'Table header', 'Column labels with sort icons — tableHeader j6Adz', images.designMain, images.devFull, '', table(tableHeaderRows))}
 
