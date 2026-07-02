@@ -44,11 +44,11 @@ Each row is a 5-element array:
 - **Design column**: Use EXACT token name + value. Example: `spacing-md (24px)`. Never use ranges ("20–24px") or tildes ("~24px").
 - **Dev column**: State the measured value from the dev site. Use CDP inspection for precision.
 - **Required change column**: Specific instruction an engineer can act on. No vague language. **Even when the rendered value matches**, the instruction MUST say "Ensure code uses `$token-name`" — a matching pixel value is NOT the same as using the Hemlock token in code. Never write "No change — matches" when a token exists for that property.
-- **Status**: `Gap` = design and dev differ, `Match` = values align (but code must still use the correct token), `Verify` = needs verification against live dev.
+- **Status**: `Gap` = dev needs to change (includes token enforcement — if code must switch from a hardcoded value to a token, that is a Gap), `Match` = truly nothing to do (content/copy match, structural presence, or custom one-off value with no token), `Verify` = needs verification against live dev. **If the "Required change" column has ANY instruction, the status MUST be Gap, not Match.**
 
 ### Token Enforcement Rule
 
-**A rendered value matching a design value does NOT mean "no change needed."** The code must USE the Hemlock design token (CSS variable, Tailwind class, or component ref), not a hardcoded value that happens to equal the token's resolved output.
+**A rendered value matching a design value does NOT mean "no change needed."** The code must USE the Hemlock design token (CSS variable, Tailwind class, or component ref), not a hardcoded value that happens to equal the token's resolved output. **If the code needs to change to use a token, the status is Gap — period. "Match" means zero work for the developer.**
 
 Examples of WRONG "Required change" entries:
 - "No change — matches" (when `$radius-full` exists for `9999px`)

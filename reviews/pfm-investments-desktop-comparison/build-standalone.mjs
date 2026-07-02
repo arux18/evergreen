@@ -89,12 +89,12 @@ const layoutRows = [
 
 const totalValueRows = [
   ['Label text', '"TOTAL VALUE" — uppercase', '"TOTAL VALUE"', 'No change — same copy', 'Match'],
-  ['Label font', 'Heebo 14px, weight 600 (semibold)', '14px, weight 600', 'Ensure code uses $typo-primary-sm-semibold token (not hardcoded 14px/600)', 'Match'],
+  ['Label font', 'Heebo 14px, weight 600 (semibold)', '14px, weight 600', 'Ensure code uses $typo-primary-sm-semibold token (not hardcoded 14px/600)', 'Gap'],
   ['Label color', `${T.gray500} (#716E6A)`, 'rgb(94, 89, 84) = #5E5954 — one shade darker (colors-text-meta)', 'Change label color from #5E5954 to $color-gray-500 (#716E6A)', 'Gap'],
   ['Label letter-spacing', '1px (custom — adds slight tracking to uppercase label)', '0.35px', 'Increase letter-spacing from 0.35px to 1px per design', 'Gap'],
-  ['Value font', 'Heebo 36px, weight 600 (semibold)', '36px, weight 600', 'Ensure code uses $typo-primary-4xl-semibold token (not hardcoded 36px/600)', 'Match'],
-  ['Value color', `${T.gray900} (#0E0E0E)`, 'rgb(14, 14, 14) = #0E0E0E', 'Ensure code uses $color-gray-900 token (not hardcoded #0E0E0E or rgb())', 'Match'],
-  ['Value letter-spacing', '-0.5px (custom negative tracking for large numbers)', '-0.5px', 'Ensure code uses design token for letter-spacing (not hardcoded -0.5px)', 'Match'],
+  ['Value font', 'Heebo 36px, weight 600 (semibold)', '36px, weight 600', 'Ensure code uses $typo-primary-4xl-semibold token (not hardcoded 36px/600)', 'Gap'],
+  ['Value color', `${T.gray900} (#0E0E0E)`, 'rgb(14, 14, 14) = #0E0E0E', 'Ensure code uses $color-gray-900 token (not hardcoded #0E0E0E or rgb())', 'Gap'],
+  ['Value letter-spacing', '-0.5px (custom negative tracking for large numbers)', '-0.5px', 'Ensure code uses design token for letter-spacing (not hardcoded -0.5px)', 'Gap'],
   ['Holdings subtitle font', 'Heebo 14px, weight 400 (regular)', 'Needs verification against live', 'Ensure $typo-primary-sm-regular: Heebo 14px/400', 'Gap'],
   ['Holdings subtitle color', `${T.textMeta} (#5E5954)`, 'Needs verification', 'Use $colors-text-meta (#5E5954)', 'Gap'],
   ['Value section gap', `${T.s3xs} (4px) between label, value, and subtitle`, 'Default spacing — verify gap', 'Set gap: $spacing-3xs (4px) between TOTAL VALUE label, value number, and holdings line', 'Gap'],
@@ -103,9 +103,9 @@ const totalValueRows = [
 const accountSelectorRows = [
   ['Width', '375px fixed (custom design value)', '375px', 'No change — matches', 'Match'],
   ['Height', '58px (custom design value)', '58px', 'No change — matches', 'Match'],
-  ['Corner radius', `${T.r2xs} (8px)`, '8px', 'Ensure code uses $radius-2xs token (not hardcoded 8px)', 'Match'],
-  ['Padding', '[0, spacing-xs (12px), 0, 17px] — 17px is custom right padding for chevron', '0px 12px 0px 17px', 'Ensure left padding uses $spacing-xs token (not hardcoded 12px). 17px right is custom.', 'Match'],
-  ['Border', `1px solid ${T.gray200} (#D5D3D0)`, '1px solid rgb(213, 211, 208) = #D5D3D0', 'Ensure code uses $color-gray-200 token for border color (not hardcoded rgb/hex)', 'Match'],
+  ['Corner radius', `${T.r2xs} (8px)`, '8px', 'Ensure code uses $radius-2xs token (not hardcoded 8px)', 'Gap'],
+  ['Padding', '[0, spacing-xs (12px), 0, 17px] — 17px is custom right padding for chevron', '0px 12px 0px 17px', 'Ensure left padding uses $spacing-xs token (not hardcoded 12px). 17px right is custom.', 'Gap'],
+  ['Border', `1px solid ${T.gray200} (#D5D3D0)`, '1px solid rgb(213, 211, 208) = #D5D3D0', 'Ensure code uses $color-gray-200 token for border color (not hardcoded rgb/hex)', 'Gap'],
   ['Background', 'color-base-white (#FFFFFF) or transparent — no tint', 'oklch(0.164 0 89.88 / 0.02) — 2% dark tint', 'Remove subtle tint; use $color-base-white or transparent', 'Gap'],
   ['Value text', 'Heebo 16px, weight 400, "All Accounts"', '"All accounts" — matches style', 'No change — font matches. Verify capitalization: design says "All Accounts" (capital A)', 'Gap'],
   ['Chevron icon color', `${T.gray500} (#8A8680 or #716E6A)`, 'Chevron present — color inherits text color (dark)', 'Set chevron fill to $color-gray-400/#8A8680 not body text color', 'Gap'],
@@ -118,17 +118,17 @@ const filterTabsRows = [
   ['Tab letter-spacing', '0 (normal)', 'normal', 'Ensure code does not set explicit letter-spacing (inherits normal)', 'Match'],
   ['Tab padding', '[4px, 16px] vertical/horizontal', '8px 24px (too much padding — double on both axes)', 'Reduce tab padding from 8px 24px to 4px 16px', 'Gap'],
   ['Tab gap', `${T.s2xs} (8px) between tabs`, 'Verify gap between tabs', 'Set gap: $spacing-2xs (8px) between filter tabs', 'Gap'],
-  ['Active tab style', 'Filled button (solid background)', 'White fill with border-radius 9999px (pill) — correct shape', 'Ensure active uses filled button component styling', 'Match'],
-  ['Active tab font weight', '600 (semibold — from Button component)', '600', 'Ensure code inherits weight from $component/Button token (not hardcoded 600)', 'Match'],
-  ['Inactive tab font weight', '400 (regular — from Button/outline)', '400', 'Ensure code inherits weight from $component/Button/outline token (not hardcoded 400)', 'Match'],
+  ['Active tab style', 'Filled button (solid background)', 'White fill with border-radius 9999px (pill) — correct shape', 'Ensure active uses $component/Button (filled) component ref', 'Gap'],
+  ['Active tab font weight', '600 (semibold — from Button component)', '600', 'Ensure code inherits weight from $component/Button token (not hardcoded 600)', 'Gap'],
+  ['Inactive tab font weight', '400 (regular — from Button/outline)', '400', 'Ensure code inherits weight from $component/Button/outline token (not hardcoded 400)', 'Gap'],
   ['Tab labels', 'All, Equity, ETF, Fund, Crypto, Treasury, Corporate Bond, REIT — 8 tabs', 'All, Equity, ETF, Fund, Crypto, Treasury, Corporate Bond, REIT — 8 tabs', 'No change — same labels', 'Match'],
-  ['Tab border-radius', `${T.rFull} (9999px) — pill shape`, '9999px', 'Ensure code uses $radius-full token (not hardcoded 9999px)', 'Match'],
+  ['Tab border-radius', `${T.rFull} (9999px) — pill shape`, '9999px', 'Ensure code uses $radius-full token (not hardcoded 9999px)', 'Gap'],
 ];
 
 const tableHeaderRows = [
-  ['Header fill', `${T.taupe100} (#F7F5F0) background`, 'rgb(247, 245, 240) = #F7F5F0', 'Ensure code uses $color-taupe-100 token (not hardcoded rgb/hex)', 'Match'],
+  ['Header fill', `${T.taupe100} (#F7F5F0) background`, 'rgb(247, 245, 240) = #F7F5F0', 'Ensure code uses $color-taupe-100 token (not hardcoded rgb/hex)', 'Gap'],
   ['Header corner radius', `${T.r2xs} (8px)`, '0px — no border-radius on header row', 'Add border-radius: $radius-2xs (8px) on header row', 'Gap'],
-  ['Header padding', '[10px, spacing-xs (12px)] — 10px top/bottom, 12px left/right', '10px 12px', 'Ensure horizontal padding uses $spacing-xs token (not hardcoded 12px)', 'Match'],
+  ['Header padding', '[10px, spacing-xs (12px)] — 10px top/bottom, 12px left/right', '10px 12px', 'Ensure horizontal padding uses $spacing-xs token (not hardcoded 12px)', 'Gap'],
   ['Header bottom border', `1px solid ${T.borderLight} (#EEEDEB)`, 'Verify header border', 'Ensure border-bottom: 1px solid $colors-borders-light (#EEEDEB) on header', 'Gap'],
   ['Column gap', `${T.sm} (16px) between columns`, 'Columns at equal 92px — no explicit gap (cells expand to fill table)', 'Add $spacing-sm (16px) gap between header columns OR set column widths per design', 'Gap'],
   ['Header font size', 'typo-primary-xs-semibold: Heebo 12px', '14px (too large)', 'Reduce header font-size from 14px to 12px per $typo-primary-xs-semibold', 'Gap'],
@@ -146,7 +146,7 @@ const tableHeaderRows = [
 const holdingRowRows = [
   ['Row padding', `${T.xs} (12px) all sides`, '12px 8px (mixed padding per cell)', 'Standardize to $spacing-xs (12px) uniform padding on row', 'Gap'],
   ['Row gap (inter-cell)', `${T.sm} (16px) between cells`, '0px — cells touch (table layout)', 'Add $spacing-sm (16px) gap between row cells (or equivalent column padding)', 'Gap'],
-  ['Row bottom border', `1px solid ${T.borderLight} (#EEEDEB) — separating each row`, 'Border present between rows', 'Ensure code uses $colors-borders-light token (not hardcoded oklch/hex)', 'Match'],
+  ['Row bottom border', `1px solid ${T.borderLight} (#EEEDEB) — separating each row`, 'Border present between rows', 'Ensure code uses $colors-borders-light token (not hardcoded oklch/hex)', 'Gap'],
   ['Row height', 'Content-derived (~48px: 12px padding + 24px content + 12px padding)', '109px (far too tall — 2× design intent)', 'Reduce row height from 109px — should derive from padding (12px) + content height', 'Gap'],
   ['Ticker text (SECURITY col)', 'Heebo 14px, weight 600, $color-gray-700 (#403D3A)', '14px, weight 400 (regular — NOT semibold)', 'Change ticker font-weight from 400 to 600 (semibold)', 'Gap'],
   ['Ticker color', `${T.gray700} (#403D3A)`, 'rgb(57, 54, 51) = #393633 (close but not exact gray-700)', 'Use exact $color-gray-700 (#403D3A) token', 'Gap'],
@@ -172,9 +172,9 @@ const showMoreRows = [
 
 const detailPopupShellRows = [
   ['Popup width', '560px (custom design value — confirmed via dev measurement)', '560px', 'No change — matches', 'Match'],
-  ['Popup corner radius', '$radius-xs (12px)', '12px', 'Ensure code uses $radius-xs token (not hardcoded 12px)', 'Match'],
-  ['Popup shadow', 'shadow-lg — rgba(0,0,0,0.2) 0px 16px 48px', 'rgba(0,0,0,0.2) 0px 16px 48px 0px', 'Ensure code uses $shadow-lg token (not hardcoded shadow values)', 'Match'],
-  ['Popup fill', `${T.bgSurface} (white)`, 'oklch(1 0 89.88) = white', 'Ensure code uses $colors-background-surface token (not oklch() or hardcoded white)', 'Match'],
+  ['Popup corner radius', '$radius-xs (12px)', '12px', 'Ensure code uses $radius-xs token (not hardcoded 12px)', 'Gap'],
+  ['Popup shadow', 'shadow-lg — rgba(0,0,0,0.2) 0px 16px 48px', 'rgba(0,0,0,0.2) 0px 16px 48px 0px', 'Ensure code uses $shadow-lg token (not hardcoded shadow values)', 'Gap'],
+  ['Popup fill', `${T.bgSurface} (white)`, 'oklch(1 0 89.88) = white', 'Ensure code uses $colors-background-surface token (not oklch() or hardcoded white)', 'Gap'],
   ['Popup overflow', 'hidden', 'overflow: hidden', 'Ensure overflow: hidden is set (matches)', 'Match'],
   ['Popup position', 'Centered in viewport (modal pattern)', 'Fixed position, centered via openui-modal', 'Ensure uses standard modal centering pattern', 'Match'],
   ['Backdrop overlay', '#00000066 (40% black) covers main content behind popup', 'No visible backdrop dimming — table content not darkened', 'Add semi-transparent backdrop overlay (#00000066 or rgba(0,0,0,0.4)) when popup is open', 'Gap'],
@@ -182,23 +182,23 @@ const detailPopupShellRows = [
 ];
 
 const detailPopupContentRows = [
-  ['Header: Ticker label', '"VTI" — small label above security name', '"VTI" shown above name', 'Ensure ticker label uses $typo-primary-xs-semibold token', 'Match'],
+  ['Header: Ticker label', '"VTI" — small label above security name', '"VTI" shown above name', 'Ensure ticker label uses $typo-primary-xs-semibold token', 'Gap'],
   ['Header: Security name', 'Heebo 16px, weight 600 (typo-primary-base-semibold)', '"Vanguard Total Stock Market ETF" shown — verify font size and weight', 'Ensure 16px/600 ($typo-primary-base-semibold). Check it is NOT 24px.', 'Gap'],
-  ['Header: Close button (X)', '24×24px icon, cursor: pointer', 'Close button present (×)', 'Ensure icon is 24×24px using Hemlock icon sizing', 'Match'],
-  ['Amount label', '"MARKET VALUE" — typo-primary-xs-semibold (12px/600), uppercase, $color-gray-500', '"MARKET VALUE" present, small gray uppercase', 'Ensure label uses $typo-primary-xs-semibold (12px/600), $color-gray-500', 'Match'],
+  ['Header: Close button (X)', '24×24px icon, cursor: pointer', 'Close button present (×)', 'Ensure icon is 24×24px using Hemlock icon sizing token', 'Gap'],
+  ['Amount label', '"MARKET VALUE" — typo-primary-xs-semibold (12px/600), uppercase, $color-gray-500', '"MARKET VALUE" present, small gray uppercase', 'Ensure label uses $typo-primary-xs-semibold (12px/600), $color-gray-500', 'Gap'],
   ['Amount value', 'Heebo 20px, weight 700 (typo-primary-lg-bold)', '"$450,000.00" shown — verify font size', 'Ensure 20px/700 ($typo-primary-lg-bold). Dev may use 24px (too large).', 'Gap'],
-  ['Section header (Holding Details)', 'Full-width bar: $color-taupe-100 (#F7F5F0), padding $spacing-xs (12px), typo-primary-sm-semibold (14px/600), $colors-text-header', '"Holding Details" bar with beige bg — matches pattern', 'Verify: $color-taupe-100 bg, 12px padding, 14px/600 text, $colors-text-header color', 'Match'],
+  ['Section header (Holding Details)', 'Full-width bar: $color-taupe-100 (#F7F5F0), padding $spacing-xs (12px), typo-primary-sm-semibold (14px/600), $colors-text-header', '"Holding Details" bar with beige bg — matches pattern', 'Ensure code uses $color-taupe-100, $spacing-xs, $typo-primary-sm-semibold, $colors-text-header tokens', 'Gap'],
   ['Detail row: label font', 'Heebo 14px, weight 400, $color-gray-500 (#716E6A)', 'Label text (Security, Security Type, Account, etc.)', 'Ensure label uses $typo-primary-sm-regular, $color-gray-500', 'Gap'],
   ['Detail row: value font', 'Heebo 14px, weight 400, $colors-text-body (#403D3A)', 'Value text (Vanguard Total Stock Market ETF, ETF, etc.)', 'Ensure value uses $typo-primary-sm-regular, $colors-text-body', 'Gap'],
   ['Detail row: padding', '$spacing-xs (12px) vertical per row', 'Verify row padding', 'Set row padding: $spacing-xs (12px) top/bottom', 'Gap'],
-  ['Detail row: divider', `1px solid ${T.borderLight} (#EEEDEB) between rows`, 'Dividers visible between rows', 'Ensure code uses $colors-borders-light token (not hardcoded hex/oklch)', 'Match'],
+  ['Detail row: divider', `1px solid ${T.borderLight} (#EEEDEB) between rows`, 'Dividers visible between rows', 'Ensure code uses $colors-borders-light token (not hardcoded hex/oklch)', 'Gap'],
   ['Holding fields', 'Security, Security Type, Account, Quantity, Last Price, Price As Of, Cost Basis, Currency', 'Security, Security Type, Account, Quantity, Last Price, Price As Of, Cost Basis, Currency — all present', 'All fields present — no change needed', 'Match'],
-  ['Performance section', 'Section header "Performance" with detail rows', '"Performance" section visible below Holding Details', 'Section present — ensure header uses $color-taupe-100 bg token', 'Match'],
+  ['Performance section', 'Section header "Performance" with detail rows', '"Performance" section visible below Holding Details', 'Ensure header uses $color-taupe-100 bg token (not hardcoded hex/rgb)', 'Gap'],
   ['Classification section', 'Section header "Classification" with Category and Sub-category', 'Verify Classification section is present for all holding types', 'Ensure "Classification" section renders for all holding types', 'Gap'],
 ];
 
 const popupVariantsRows = [
-  ['Holding popup (Equity/ETF/Fund)', 'Sections: Holding Details + Performance + Classification', 'Holding Details shown, Performance visible', 'Verify all 3 sections present for equity/ETF/fund holdings', 'Match'],
+  ['Holding popup (Equity/ETF/Fund)', 'Sections: Holding Details + Performance + Classification', 'Holding Details shown, Performance visible', 'Verify all 3 sections present for equity/ETF/fund holdings', 'Verify'],
   ['Options popup', 'Sections: Holding Details + Contract Details + Performance + Classification', 'Not tested (no options in data set)', 'Ensure Options variant shows Contract Details with Strike, Expiration, Contract Type', 'Gap'],
   ['Fixed Income popup', 'Sections: Holding Details + Coupon/Maturity Details + Performance + Classification', 'Not tested (no fixed income in data set)', 'Ensure Fixed Income variant shows Coupon/Maturity with Coupon Rate, Maturity Date, Face Value', 'Gap'],
   ['Crypto popup', 'Sections: Holding Details + Performance + Classification', 'Not tested (no crypto in data set)', 'Ensure Crypto variant shows simplified Holding Details (no Price As Of)', 'Gap'],
