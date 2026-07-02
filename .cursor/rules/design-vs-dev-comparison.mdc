@@ -117,6 +117,14 @@ Every comparison document MUST include a fixed left sidebar navigation. This is 
 - `.t-mobile` — purple (#7c3aed) for mobile-specific sections
 - `.t-ref` — blue (#2563eb) for reference/checklist sections
 
+## Image Display Rules
+
+- **Never crop images.** All screenshots and design exports must use `object-fit: contain` so they scale proportionally without being cut off at any viewport width.
+- **No `object-fit: cover`** on comparison images. This causes cropping when the viewport is resized.
+- **No `max-height` constraints** that would clip image content. If an image is tall, let it be tall.
+- **Only crop when explicitly requested** by the user (e.g., "crop to just the header area"). Default is always: show the full image.
+- Panel images use: `display: block; width: 100%; height: auto; object-fit: contain;`
+
 ## Mobile-Specific Documentation
 
 - Document overlay-to-modal padding (typically spacing-md / 24px from viewport edges)
