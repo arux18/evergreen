@@ -182,6 +182,7 @@ const detailPopupShellRows = [
 ];
 
 const detailPopupContentRows = [
+  ['Header: Institution/security logo', 'Placeholder image in design — real logos should come from Plaid API', 'Logo not showing or not pulled from Plaid', 'Pull institution/security logo from Plaid API (logo_uri from /institutions/get or equivalent). Design placeholder is not the source of truth — Plaid is.', 'Gap'],
   ['Header: Ticker label', '"VTI" — small label above security name', '"VTI" shown above name', 'Ensure ticker label uses $typo-primary-xs-semibold token', 'Gap'],
   ['Header: Security name', 'Heebo 16px, weight 600 (typo-primary-base-semibold)', '"Vanguard Total Stock Market ETF" shown — verify font size and weight', 'Ensure 16px/600 ($typo-primary-base-semibold). Check it is NOT 24px.', 'Gap'],
   ['Header: Close button (X)', '24×24px icon, cursor: pointer', 'Close button present (×)', 'Ensure icon is 24×24px using Hemlock icon sizing token', 'Gap'],
