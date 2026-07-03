@@ -463,7 +463,7 @@ const html = `<!DOCTYPE html>
 
     <section class="page" id="s6b">
       <h2>6b. Holding row — hover &amp; pressed states</h2>
-      <p class="subtitle">Interaction states from component/HoldingsRow/hover (O:g3XbNY) and component/HoldingsRow/pressed (O:WsWQG) in pfm-investments-v2.pen</p>
+      <p class="subtitle">Interaction states from component/HoldingsRow/hover and component/HoldingsRow/pressed — standalone frames built in pfm-investments-v2.pen (a7NPD, OAjLm)</p>
       <div class="compare-grid">
         <div class="col"><div class="panel-label design">Design — Hover row</div><img src="${images.designHoverRow}" /></div>
         <div class="col"><div class="panel-label design">Design — Pressed row</div><img src="${images.designPressedRow}" /></div>
