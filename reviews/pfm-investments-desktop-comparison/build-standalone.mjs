@@ -51,6 +51,8 @@ const images = {
   designMobileTable: requireEmbed('assets/design/zoKIL.png'),
   designHoverRow: requireEmbed('assets/design/hover-row.png'),
   designPressedRow: requireEmbed('assets/design/pressed-row.png'),
+  designHoverTable: requireEmbed('assets/design/hover-table.png'),
+  designPressedTable: requireEmbed('assets/design/pressed-table.png'),
   devHoverRow: requireEmbed('assets/dev/hover-row-dev.png'),
 };
 
@@ -461,11 +463,16 @@ const html = `<!DOCTYPE html>
 
     <section class="page" id="s6b">
       <h2>6b. Holding row — hover &amp; pressed states</h2>
-      <p class="subtitle">Interaction states from component/AccountRow/hover and component/AccountRow/pressed (pfm-accounts-v2.pen) — same pattern applies to investments holding rows</p>
+      <p class="subtitle">Interaction states from component/HoldingsRow/hover (O:g3XbNY) and component/HoldingsRow/pressed (O:WsWQG) in pfm-investments-v2.pen</p>
       <div class="compare-grid">
-        <div class="col"><div class="panel-label design">Design — Hover state</div><img src="${images.designHoverRow}" /></div>
-        <div class="col"><div class="panel-label design">Design — Pressed state</div><img src="${images.designPressedRow}" /></div>
-        <div class="col"><div class="panel-label dev">Dev — Hover state (simulated)</div><img src="${images.devHoverRow}" /></div>
+        <div class="col"><div class="panel-label design">Design — Hover row</div><img src="${images.designHoverRow}" /></div>
+        <div class="col"><div class="panel-label design">Design — Pressed row</div><img src="${images.designPressedRow}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — Hover state (current)</div><img src="${images.devHoverRow}" /></div>
+      </div>
+      <h3 style="margin:24px 0 8px;">Table context — hover &amp; pressed in situ</h3>
+      <div class="compare-grid">
+        <div class="col"><div class="panel-label design">Design — HoldingsTable/hover</div><img src="${images.designHoverTable}" /></div>
+        <div class="col"><div class="panel-label design">Design — HoldingsTable/pressed</div><img src="${images.designPressedTable}" /></div>
       </div>
       ${table(holdingRowInteractionRows)}
     </section>
