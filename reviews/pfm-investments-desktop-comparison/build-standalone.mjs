@@ -181,10 +181,10 @@ const holdingRowRows = [
 ];
 
 const showMoreRows = [
-  ['"Show More" button', 'Hemlock $component/Button/text ref — "Show More" using $typo-primary-sm-regular (14px). Only appears when holdings count exceeds 50 rows.', 'Not visible — account has 22 holdings (below 50-row threshold)', 'Ensure "Show More" button renders using Hemlock $component/Button/text ref when holdings exceed 50 rows. Could not verify in dev — test with an account containing 50+ holdings.', 'Unable to verify'],
-  ['Footer border', `1px solid $colors-borders-light (#EEEDEB) — top border only`, 'Not visible — button only appears above 50 rows', 'When visible, footer container must have border-top: 1px solid $colors-borders-light (#EEEDEB).', 'Unable to verify'],
-  ['Footer padding', `$spacing-2xs (8px)`, 'Not visible — button only appears above 50 rows', 'When visible, footer container padding: $spacing-2xs (8px).', 'Unable to verify'],
-  ['Footer alignment', 'Centered (justifyContent: center)', 'Not visible — button only appears above 50 rows', 'When visible, center "Show More" button horizontally in footer.', 'Unable to verify'],
+  ['"Show More" button', 'Hemlock $component/Button/text ref — "Show More" using $typo-primary-sm-regular (14px). Only appears when holdings count exceeds 50 rows.', 'Not visible — account has 22 holdings (below 50-row threshold)', 'Ensure "Show More" button renders using Hemlock $component/Button/text ref when holdings exceed 50 rows. Could not verify in dev — test with an account containing 50+ holdings.', 'Verify'],
+  ['Footer border', `1px solid $colors-borders-light (#EEEDEB) — top border only`, 'Not visible — button only appears above 50 rows', 'When visible, footer container must have border-top: 1px solid $colors-borders-light (#EEEDEB).', 'Verify'],
+  ['Footer padding', `$spacing-2xs (8px)`, 'Not visible — button only appears above 50 rows', 'When visible, footer container padding: $spacing-2xs (8px).', 'Verify'],
+  ['Footer alignment', 'Centered (justifyContent: center)', 'Not visible — button only appears above 50 rows', 'When visible, center "Show More" button horizontally in footer.', 'Verify'],
 ];
 
 const detailPopupShellRows = [
