@@ -104,10 +104,10 @@
       <p class="purpose">This document identifies every formatting difference between the approved Pencil designs and the current dev implementation on <code>app.eg-dev.ai/net-worth/investments</code>. Use it as a checklist to bring dev into pixel-perfect alignment with design.</p>
 
       <div class="stats">
-        <div class="stat gaps"><strong>103</strong> gaps to fix</div>
+        <div class="stat gaps"><strong>104</strong> gaps to fix</div>
         <div class="stat matches"><strong>10</strong> already match</div>
         <div class="stat checks"><strong>1</strong> to verify</div>
-        <div class="stat"><strong>114</strong> total items</div>
+        <div class="stat"><strong>115</strong> total items</div>
       </div>
 
       <h3>How to read each section</h3>
@@ -220,7 +220,8 @@
 <tr><td>Border</td><td>1px solid color-gray-200 (#D5D3D0) (#D5D3D0)</td><td>1px solid rgb(220, 216, 203) = #DCD8CB</td><td>Change border color from #DCD8CB to $color-gray-200 (#D5D3D0)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Background</td><td>color-base-white (#FFFFFF) or transparent — no tint</td><td>rgb(255, 255, 255) = white</td><td>Ensure code uses $color-base-white token (not hardcoded rgb)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Value text</td><td>Heebo 16px, weight 400, "All Accounts" (capital A)</td><td>16px, weight 400, "All accounts" (lowercase a)</td><td>Capitalize to "All Accounts" (capital A) per design. Ensure font uses $typo-primary-base-regular token.</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Chevron icon color</td><td>color-gray-500 (#716E6A) (#8A8680 or #716E6A)</td><td>Chevron inherits text color rgb(45, 41, 38) = #2D2926</td><td>Set chevron fill to $color-gray-500 (not body text color)</td><td><span class="badge gap">Gap</span></td></tr></tbody></table>
+<tr><td>Chevron icon</td><td>20×20px Lucide chevron-down, color #8A8680</td><td>Chevron inherits text color rgb(45, 41, 38) = #2D2926</td><td>Set chevron to 20×20px, fill #8A8680. Current color #2D2926 is too dark.</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Value text color</td><td>$color-gray-900 (#0E0E0E)</td><td>16px, weight 400 — verify text color</td><td>Ensure text color is $color-gray-900 (#0E0E0E)</td><td><span class="badge gap">Gap</span></td></tr></tbody></table>
   </section>
 
     
@@ -439,7 +440,8 @@
 <tr><td>Border</td><td>1px solid color-gray-200 (#D5D3D0) (#D5D3D0)</td><td>1px solid rgb(220, 216, 203) = #DCD8CB</td><td>Change border color from #DCD8CB to $color-gray-200 (#D5D3D0)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Background</td><td>color-base-white (#FFFFFF) or transparent — no tint</td><td>rgb(255, 255, 255) = white</td><td>Ensure code uses $color-base-white token (not hardcoded rgb)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Value text</td><td>Heebo 16px, weight 400, "All Accounts" (capital A)</td><td>16px, weight 400, "All accounts" (lowercase a)</td><td>Capitalize to "All Accounts" (capital A) per design. Ensure font uses $typo-primary-base-regular token.</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Chevron icon color</td><td>color-gray-500 (#716E6A) (#8A8680 or #716E6A)</td><td>Chevron inherits text color rgb(45, 41, 38) = #2D2926</td><td>Set chevron fill to $color-gray-500 (not body text color)</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Chevron icon</td><td>20×20px Lucide chevron-down, color #8A8680</td><td>Chevron inherits text color rgb(45, 41, 38) = #2D2926</td><td>Set chevron to 20×20px, fill #8A8680. Current color #2D2926 is too dark.</td><td><span class="badge gap">Gap</span></td></tr>
+<tr><td>Value text color</td><td>$color-gray-900 (#0E0E0E)</td><td>16px, weight 400 — verify text color</td><td>Ensure text color is $color-gray-900 (#0E0E0E)</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Component</td><td>SegmentedControl — Hemlock component ref (component/SegmentedControl). Replaces previous individual pill buttons.</td><td>Segmented control: inline-flex, bg rgb(247,245,240), padding 4px, gap 2px, border-radius 9999px</td><td>Use Hemlock $component/SegmentedControl ref. Dev implementation visually matches the new design — verify it uses the component ref (not a hand-built frame).</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Container width</td><td>fill_container — stretches to full content column width</td><td>inline-flex (hugs content, does not fill)</td><td>Set SegmentedControl container width to fill (100% of parent). Design uses fill_container.</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Container fill</td><td>color-taupe-100 (#F7F5F0) (#F7F5F0) — $color-taupe-100</td><td>rgb(247, 245, 240) = #F7F5F0</td><td>Ensure code uses $color-taupe-100 token (not hardcoded rgb)</td><td><span class="badge gap">Gap</span></td></tr>

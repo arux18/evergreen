@@ -111,7 +111,8 @@ const accountSelectorRows = [
   ['Border', `1px solid ${T.gray200} (#D5D3D0)`, '1px solid rgb(220, 216, 203) = #DCD8CB', 'Change border color from #DCD8CB to $color-gray-200 (#D5D3D0)', 'Gap'],
   ['Background', 'color-base-white (#FFFFFF) or transparent — no tint', 'rgb(255, 255, 255) = white', 'Ensure code uses $color-base-white token (not hardcoded rgb)', 'Gap'],
   ['Value text', 'Heebo 16px, weight 400, "All Accounts" (capital A)', '16px, weight 400, "All accounts" (lowercase a)', 'Capitalize to "All Accounts" (capital A) per design. Ensure font uses $typo-primary-base-regular token.', 'Gap'],
-  ['Chevron icon color', `${T.gray500} (#8A8680 or #716E6A)`, 'Chevron inherits text color rgb(45, 41, 38) = #2D2926', 'Set chevron fill to $color-gray-500 (not body text color)', 'Gap'],
+  ['Chevron icon', '20×20px Lucide chevron-down, color #8A8680', 'Chevron inherits text color rgb(45, 41, 38) = #2D2926', 'Set chevron to 20×20px, fill #8A8680. Current color #2D2926 is too dark.', 'Gap'],
+  ['Value text color', '$color-gray-900 (#0E0E0E)', '16px, weight 400 — verify text color', 'Ensure text color is $color-gray-900 (#0E0E0E)', 'Gap'],
 ];
 
 const filterTabsRows = [
