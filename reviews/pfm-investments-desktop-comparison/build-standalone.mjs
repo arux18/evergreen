@@ -49,6 +49,9 @@ const images = {
   devDetailHolding: requireEmbed('assets/dev/detail-popup-holding.png'),
   devTableBelow640: requireEmbed('assets/dev/table-below-640px.png'),
   designMobileTable: requireEmbed('assets/design/zoKIL.png'),
+  designHoverRow: requireEmbed('assets/design/hover-row.png'),
+  designPressedRow: requireEmbed('assets/design/pressed-row.png'),
+  devHoverRow: requireEmbed('assets/dev/hover-row-dev.png'),
 };
 
 const modalCompareStyle = 'object-fit:contain;width:100%;background:#fff;padding:12px;';
@@ -220,6 +223,15 @@ const detailPopupContentRows = [
 ];
 
 
+const holdingRowInteractionRows = [
+  ['Hover: background fill', '$color-taupe-100 (#F7F5F0)', 'rgb(var(--color-gray-50)) = rgb(248, 247, 246) = #F8F7F6', 'Change hover background from --color-gray-50 (#F8F7F6) to $color-taupe-100 (#F7F5F0). Wrong token — dev uses a cool gray, design uses warm taupe.', 'Gap'],
+  ['Hover: corner radius', '$radius-xs (12px)', '0px (no change on hover)', 'Add border-radius: $radius-xs (12px) on hover. Currently no radius change on hover — row stays rectangular.', 'Gap'],
+  ['Pressed: background fill', '$color-taupe-200 (#EDEAE3)', 'No :active rule exists', 'Add :active state with background-color: $color-taupe-200 (#EDEAE3). Currently no pressed/active styling at all.', 'Gap'],
+  ['Pressed: corner radius', '$radius-xs (12px)', 'No :active rule exists', 'Add border-radius: $radius-xs (12px) on :active. Same as hover radius.', 'Gap'],
+  ['Cursor', 'pointer', 'cursor: pointer', 'No change — matches.', 'Match'],
+  ['Transition', 'Smooth transition on background-color and border-radius', 'transition: all', 'Transition exists but should be scoped to background-color and border-radius — not all properties.', 'Gap'],
+];
+
 const devFiles = [
   ['Page layout', 'apps/web/src/features/pfm-investments/index.tsx'],
   ['Holdings table', 'apps/web/src/features/pfm-investments/components/holdings-table.tsx'],
@@ -287,6 +299,7 @@ const masterRows = [
   ...filterTabsRows,
   ...tableHeaderRows,
   ...holdingRowRows,
+  ...holdingRowInteractionRows,
   ...showMoreRows,
   ...detailPopupShellRows,
   ...detailPopupContentRows,
@@ -387,6 +400,7 @@ const html = `<!DOCTYPE html>
     <a href="#s4" class="nav-link">4. SegmentedControl filter</a>
     <a href="#s5" class="nav-link">5. Table header</a>
     <a href="#s6" class="nav-link">6. Holding row</a>
+    <a href="#s6b" class="nav-link">6b. Row hover &amp; pressed</a>
     <a href="#s7" class="nav-link">7. Show More footer</a>
     <span class="side-nav-title t-detail">Holding detail</span>
     <a href="#s8" class="nav-link">8. Detail popup — shell</a>
@@ -444,6 +458,17 @@ const html = `<!DOCTYPE html>
     ${compareSection('5', 'Table header', 'Column labels with sort icons — tableHeader j6Adz', images.designMain, images.devFull, '', table(tableHeaderRows))}
 
     ${compareSection('6', 'Holding row', 'Security ticker + name, type, account, market value, portfolio % — holdingRow', images.designMain, images.devFull, '', table(holdingRowRows))}
+
+    <section class="page" id="s6b">
+      <h2>6b. Holding row — hover &amp; pressed states</h2>
+      <p class="subtitle">Interaction states from component/AccountRow/hover and component/AccountRow/pressed (pfm-accounts-v2.pen) — same pattern applies to investments holding rows</p>
+      <div class="compare-grid">
+        <div class="col"><div class="panel-label design">Design — Hover state</div><img src="${images.designHoverRow}" /></div>
+        <div class="col"><div class="panel-label design">Design — Pressed state</div><img src="${images.designPressedRow}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — Hover state (simulated)</div><img src="${images.devHoverRow}" /></div>
+      </div>
+      ${table(holdingRowInteractionRows)}
+    </section>
 
     ${compareSection('7', 'Show More footer', '"Show More" text button below holdings list — showMoreFooter ixx0J', images.designMain, images.devFull, '', table(showMoreRows))}
 
