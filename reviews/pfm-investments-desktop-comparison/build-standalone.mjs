@@ -181,10 +181,10 @@ const holdingRowRows = [
 ];
 
 const showMoreRows = [
-  ['"Show More" button', 'Hemlock $component/Button/text ref — "Show More" using $typo-primary-sm-regular (14px)', 'NOT PRESENT — all 22 rows displayed at once, no pagination', 'Add "Show More" button using Hemlock $component/Button/text ref below initial visible rows. Currently shows all 22 rows at once — needs pagination.', 'Gap'],
-  ['Footer border', `1px solid $colors-borders-light (#EEEDEB) — top border only`, 'N/A — no show more footer exists', 'Add footer container with border-top: 1px solid $colors-borders-light (#EEEDEB). Footer does not exist yet.', 'Gap'],
-  ['Footer padding', `$spacing-2xs (8px)`, 'N/A — no show more footer exists', 'Set footer container padding: $spacing-2xs (8px). Footer does not exist yet.', 'Gap'],
-  ['Footer alignment', 'Centered (justifyContent: center)', 'N/A — no show more footer exists', 'Center "Show More" button horizontally in footer. Footer does not exist yet.', 'Gap'],
+  ['"Show More" button', 'Hemlock $component/Button/text ref — "Show More" using $typo-primary-sm-regular (14px). Only appears when holdings count exceeds 50 rows.', 'Not visible — account has 22 holdings (below 50-row threshold)', 'Ensure "Show More" button renders using Hemlock $component/Button/text ref when holdings exceed 50 rows. Could not verify in dev — test with an account containing 50+ holdings.', 'Unable to verify'],
+  ['Footer border', `1px solid $colors-borders-light (#EEEDEB) — top border only`, 'Not visible — button only appears above 50 rows', 'When visible, footer container must have border-top: 1px solid $colors-borders-light (#EEEDEB).', 'Unable to verify'],
+  ['Footer padding', `$spacing-2xs (8px)`, 'Not visible — button only appears above 50 rows', 'When visible, footer container padding: $spacing-2xs (8px).', 'Unable to verify'],
+  ['Footer alignment', 'Centered (justifyContent: center)', 'Not visible — button only appears above 50 rows', 'When visible, center "Show More" button horizontally in footer.', 'Unable to verify'],
 ];
 
 const detailPopupShellRows = [
@@ -477,7 +477,7 @@ const html = `<!DOCTYPE html>
       ${table(holdingRowInteractionRows)}
     </section>
 
-    ${compareSection('7', 'Show More footer', '"Show More" text button below holdings list — showMoreFooter ixx0J', images.designMain, images.devFull, '', table(showMoreRows))}
+    ${compareSection('7', 'Show More footer', '"Show More" text button below holdings list — only visible when holdings exceed 50 rows (not visible in current dev account with 22 holdings)', images.designMain, images.devFull, '', table(showMoreRows))}
 
     <section class="page" id="s8">
       <h2>8. Detail popup — shell</h2>
