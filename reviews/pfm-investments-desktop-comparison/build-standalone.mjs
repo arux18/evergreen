@@ -45,16 +45,13 @@ function requireEmbed(rel) {
 const images = {
   designMain: requireEmbed('assets/design/JsL9R.png'),
   designHoldingPopup: requireEmbed('assets/design/Uipye.png'),
-  designOptionsPopup: requireEmbed('assets/design/sOb4u.png'),
-  designFixedIncomePopup: requireEmbed('assets/design/uIigF.png'),
-  designCryptoPopup: requireEmbed('assets/design/hJAHp.png'),
   devFull: requireEmbed('assets/dev/full-page.png'),
   devDetailHolding: requireEmbed('assets/dev/detail-popup-holding.png'),
   devTableBelow640: requireEmbed('assets/dev/table-below-640px.png'),
   designMobileTable: requireEmbed('assets/design/zoKIL.png'),
 };
 
-const modalCompareStyle = 'object-fit:contain;max-height:600px;width:100%;background:#fff;padding:12px;';
+const modalCompareStyle = 'object-fit:contain;width:100%;background:#fff;padding:12px;';
 
 const T = {
   bgMain: 'colors-background-main (#F7F5F0)',
@@ -82,7 +79,6 @@ const T = {
 };
 
 const layoutRows = [
-  ['Responsive table (< 640px)', 'Below 640px table width, switch to mobile card/stack layout — no horizontal table with cramped columns', 'Table stays in horizontal layout at all widths — columns compress to ~89px causing truncation and illegibility (see screenshot)', 'Add 640px breakpoint: below 640px, switch to stacked card layout per mobile design pattern (one holding per card, vertical labels). This is a known pattern from other PFM reviews.', 'Gap'],
   ['Content column padding', `[20px top, ${T.xl} (40px) sides] — padding: [20, 40]`, '20px 40px — padding matches design values', 'Values match but code must use $spacing-xl (40px) for left/right padding instead of hardcoded 40px. Top 20px is custom.', 'Gap'],
   ['Gap: content sections', `${T.md} (24px) between value block, account selector, filter tabs, and table`, 'gap: normal (not explicitly set on flex column)', 'Add gap: $spacing-md (24px) on the content column flex container. Currently no gap is set — sections rely on implicit spacing.', 'Gap'],
   ['Table container corner radius', `${T.r2xs} (8px)`, '0px', 'Add border-radius: $radius-2xs (8px) on table container. Currently 0px — no rounding.', 'Gap'],
@@ -97,7 +93,7 @@ const totalValueRows = [
   ['Label letter-spacing', '1px (custom — adds slight tracking to uppercase label)', '0.35px', 'Change letter-spacing from 0.35px to 1px. This is a custom value, not a token.', 'Gap'],
   ['Value font', '$typo-primary-4xl-semibold (Heebo 36px/600)', '36px, weight 600', 'Size and weight match but code must reference $typo-primary-4xl-semibold token — not hardcoded font-size: 36px; font-weight: 600.', 'Gap'],
   ['Value color', `$color-gray-900 (#0E0E0E)`, 'rgb(14, 14, 14) = #0E0E0E', 'Color matches but code must reference $color-gray-900 token — not hardcoded rgb(14, 14, 14).', 'Gap'],
-  ['Value letter-spacing', '-0.5px (custom negative tracking for large numbers)', '-0.5px', 'Value matches. This is a custom value (no token). Verify it is not hardcoded inline — use a CSS variable or class.', 'Gap'],
+  ['Value letter-spacing', '-0.5px (custom — no Hemlock token for letter-spacing)', '-0.5px', 'No change — value matches. Letter-spacing has no Hemlock token; hardcoded -0.5px is correct.', 'Match'],
   ['Holdings subtitle font', '$typo-primary-sm-regular (Heebo 14px/400)', '14px, weight 400', 'Size and weight match but code must reference $typo-primary-sm-regular token — not hardcoded font-size: 14px; font-weight: 400.', 'Gap'],
   ['Holdings subtitle color', `$colors-text-meta (#5E5954)`, 'rgb(94, 89, 84) = #5E5954', 'Color matches but code must reference $colors-text-meta token — not hardcoded rgb(94, 89, 84).', 'Gap'],
   ['Value section gap', `$spacing-3xs (4px) between label, value, and subtitle`, '4px', 'Value matches but code must use $spacing-3xs token — not hardcoded 4px.', 'Gap'],
@@ -154,7 +150,7 @@ const holdingRowRows = [
   ['Row padding', `$spacing-xs (12px) all sides`, '12px 8px 12px 12px (first cell), 12px 8px (middle cells), 12px 12px 12px 8px (last cell)', 'Padding is inconsistent across cells. Standardize all cells to $spacing-xs (12px) uniform padding — not hardcoded mixed values.', 'Gap'],
   ['Row gap (inter-cell)', `$spacing-sm (16px) between cells`, '0px — cells touch (table layout)', 'Add $spacing-sm (16px) gap between row cells. Currently 0px — cells have no spacing between them.', 'Gap'],
   ['Row bottom border', `1px solid $colors-borders-light (#EEEDEB)`, '1px solid rgb(238, 237, 235) = #EEEDEB', 'Color matches but code must reference $colors-borders-light token — not hardcoded rgb(238, 237, 235).', 'Gap'],
-  ['Row height', 'Content-derived — height adjusts to wrapped text content', '88px (text wrapping causes taller rows — acceptable if text is not truncated)', 'Row height is acceptable as long as text wraps fully. Once account format is shortened, rows will naturally be shorter.', 'Gap'],
+  ['Row height', 'Content-derived — height adjusts to wrapped text content', '88px (text wrapping causes taller rows — acceptable if text is not truncated)', 'No change — content-driven height is correct. Rows will shorten once account format is shortened.', 'Match'],
   ['Ticker text (SECURITY col)', '$typo-primary-sm-semibold (Heebo 14px/600), color $color-gray-700 (#403D3A)', '14px, weight 600, color rgb(57, 54, 51) = #393633', 'Change ticker color from #393633 to $color-gray-700 (#403D3A). Code must use $typo-primary-sm-semibold for font and $color-gray-700 for color.', 'Gap'],
   ['Security name (subtitle)', '$typo-primary-xs-regular (Heebo 11px/400), color $color-gray-500 (#716E6A) — text wraps, never truncates', '11px, weight 400, color #716E6A — BUT text-overflow: ellipsis, white-space: nowrap, overflow: hidden (TRUNCATED at 89px)', 'REMOVE text-overflow: ellipsis, white-space: nowrap, overflow: hidden. Text must wrap. 17 security names are being clipped (e.g. "Vanguard To..." instead of "Vanguard Total Stock Market ETF"). Code must use $typo-primary-xs-regular for font and $color-gray-500 for color.', 'Gap'],
   ['Security name truncation', 'Text MUST wrap fully — never truncate with ellipsis', 'text-overflow: ellipsis, white-space: nowrap, overflow: hidden — 17 of 17 security names are clipped', 'Remove text-overflow: ellipsis, white-space: nowrap, overflow: hidden on .security-name (or equivalent class). Set white-space: normal; overflow: visible. Every name must be fully readable.', 'Gap'],
@@ -186,7 +182,7 @@ const detailPopupShellRows = [
   ['Popup overflow', 'hidden', 'overflow: hidden', 'No change — matches', 'Match'],
   ['Popup position', 'Centered in viewport (modal pattern)', 'position: fixed, centered via openui-modal', 'No change — centered modal pattern matches', 'Match'],
   ['Backdrop overlay', 'rgba(0,0,0,0.4) (#00000066) covers main content behind popup', 'No visible backdrop — content behind popup not dimmed', 'Add backdrop overlay: background rgba(0,0,0,0.4) covering viewport when popup is open. Currently no dimming.', 'Gap'],
-  ['Body padding', `$spacing-xl (40px) all sides`, '40px 32px 0px 40px (right=32px, bottom=0px — asymmetric)', 'Fix padding asymmetry: right is 32px (change to $spacing-xl 40px), bottom is 0px (change to $spacing-xl 40px). All four sides must use $spacing-xl (40px).', 'Gap'],
+  ['Body padding', `$spacing-xl (40px) all sides`, 'padding: 40px (uniform on scrollable content container)', 'Value matches but code must use $spacing-xl token — not hardcoded p-10.', 'Gap'],
 ];
 
 const detailPopupContentRows = [
@@ -194,33 +190,27 @@ const detailPopupContentRows = [
   ['Header: Institution/security logo', '36×36px, border-radius $radius-2xs (8px) — real logos from Plaid API', 'No logo element rendered', 'Pull institution/security logo from Plaid API (logo_uri from /institutions/get). Display at 36×36px with border-radius: $radius-2xs (8px). Currently missing entirely.', 'Gap'],
   ['Header: Ticker label', '$typo-primary-xs-semibold (Heebo 11px/600), color #8A8680, letter-spacing 0.5px', '11px, weight 600, color rgb(138, 134, 128) = #8A8680, letter-spacing 0.5px', 'Values match but code must reference $typo-primary-xs-semibold token for font — not hardcoded font-size: 11px; font-weight: 600. Color #8A8680 is custom (no token).', 'Gap'],
   ['Header: Security name', '$typo-secondary-lg-semibold (Noto Serif 18px/600), color $colors-text-header (#0E0E0E), letter-spacing -0.3px', 'Heebo 18px, weight 600, color rgb(14, 14, 14) = #0E0E0E', 'Switch font from Heebo to $typo-secondary-lg-semibold (Noto Serif 18px/600). Add letter-spacing: -0.3px. Set color to $colors-text-header (#0E0E0E). Same pattern as activity detail popup header.', 'Gap'],
-  ['Header: Security name truncation', 'Text wraps — never truncate', 'Verify no text-overflow: ellipsis on popup security name', 'Remove any text-overflow: ellipsis, white-space: nowrap, overflow: hidden. Long names must wrap fully.', 'Gap'],
-  ['Header: titleColumn gap', '2px gap between ticker label and security name', 'Verify gap between ticker and name', 'Set gap: 2px between ticker label and holding name in titleColumn.', 'Gap'],
-  ['Header: Close button (X)', 'Lucide "x" icon, $icon-md (24×24px), fill $colors-text-meta (#5E5954)', '0×0px rendered size (button exists but not visually sized)', 'Set close button icon to 24×24px using $icon-md sizing token. Set fill to $colors-text-meta (#5E5954). Currently renders at 0×0px — icon is not loading or missing width/height.', 'Gap'],
-  ['Header: row gap', '$spacing-xs (12px) between logo, titleColumn, and close button', 'Verify horizontal gap in header row', 'Set horizontal gap: $spacing-xs (12px) between logo, title column, and close button.', 'Gap'],
+  ['Header: Security name truncation', 'Text wraps — never truncate', 'whiteSpace: normal, overflow: visible — no truncation', 'No change — text wraps correctly. No truncation applied.', 'Match'],
+  ['Header: titleColumn gap', '2px gap between ticker label and security name', 'gap: 2px (flex-col gap-0.5)', 'No change — gap matches design.', 'Match'],
+  ['Header: Close button (X)', 'Lucide "x" icon, $icon-md (24×24px), fill $colors-text-meta (#5E5954)', '28×28px button, 16×16px SVG icon, color rgb(94, 89, 84) = #5E5954', 'Reduce button from 28×28px to 24×24px and SVG icon from 16×16px to 24×24px using $icon-md (24px) sizing token. Color matches $colors-text-meta.', 'Gap'],
+  ['Header: row gap', '$spacing-xs (12px) between logo, titleColumn, and close button', 'gap: 12px (flex gap-3)', 'No change — gap matches design.', 'Match'],
   ['Popup title', 'NOT in design — popup has no separate title bar', '"Holding details" — 20px, weight 700, color black', 'Remove "Holding details" title text entirely. Design has no popup title — goes straight to ticker/name/value.', 'Gap'],
   ['Amount section padding', '[0, $spacing-sm (16px)] — 0px vertical, 16px horizontal', 'No separate amountSection padding', 'Add amountSection padding: 0px $spacing-sm (16px) to match header pattern.', 'Gap'],
   ['Amount label', '$typo-primary-xs-regular (Heebo 11px/400), color $colors-text-meta (#5E5954), letter-spacing 1.5px, uppercase', '11px, weight 400, color rgb(94, 89, 84) = #5E5954, letter-spacing 1.5px, uppercase', 'Values match but code must reference $typo-primary-xs-regular for font and $colors-text-meta for color — not hardcoded values.', 'Gap'],
   ['Amount value', 'Hemlock $component/MoneyText/lg ref (Heebo 24px/600), color $colors-text-header (#0E0E0E)', '24px, weight 600, color rgb(14, 14, 14) = #0E0E0E', 'Values match but code must use $component/MoneyText/lg ref — not hardcoded font-size: 24px; font-weight: 600. Set color via $colors-text-header.', 'Gap'],
-  ['Amount section gap', '$spacing-3xs (4px) between label and value', 'Verify gap between MARKET VALUE label and dollar amount', 'Set gap: $spacing-3xs (4px) between amount label and amount value.', 'Gap'],
-  ['Body section gap', '32px gap between titleSection, amountSection, and detail sections', 'Verify vertical gap between popup sections', 'Set gap: 32px on popupBody flex column. This is a custom value (no token — between $spacing-xl 40px and $spacing-md 24px).', 'Gap'],
+  ['Amount section gap', '$spacing-3xs (4px) between label and value', 'gap: 4px (flex-col gap-1)', 'Value matches but code must use $spacing-3xs token — not hardcoded gap-1.', 'Gap'],
+  ['Body section gap', '32px gap between titleSection, amountSection, and detail sections', 'gap: 32px (flex-col gap-8)', 'Value matches. 32px is between $spacing-md (24px) and $spacing-xl (40px) — Tailwind gap-8 is correct. No token exists for 32px; hardcoded is acceptable.', 'Match'],
   ['Section header (Holding Details)', '$color-taupe-100 (#F7F5F0) bg, padding [$spacing-xs (12px), $spacing-sm (16px)], radius [8,8,0,0], border-bottom 1px $colors-borders-light (#EEEDEB), $typo-primary-sm-semibold (14px/600)', '14px, weight 600, color #0E0E0E, bg rgb(247, 245, 240), padding 12px 16px, border-radius 8px 8px 0 0', 'Values match but code must reference tokens: $color-taupe-100 for bg, $colors-borders-light for border, $typo-primary-sm-semibold for font, $spacing-xs/$spacing-sm for padding — not hardcoded values.', 'Gap'],
   ['Detail row: label font', '$typo-primary-sm-regular (Heebo 14px/400), color $colors-text-meta (#5E5954), fixed-width 140px', '14px, weight 400, color rgb(94, 89, 84) = #5E5954', 'Color matches but code must reference $typo-primary-sm-regular for font and $colors-text-meta for color. Add fixed width: 140px on label column.', 'Gap'],
   ['Detail row: value font', '$typo-primary-sm-regular (Heebo 14px/400), color $colors-text-body (#403D3A), fill_container width', '14px, weight 400, color rgb(57, 54, 51) = #393633', 'Change value color from #393633 to $colors-text-body (#403D3A). Code must use $typo-primary-sm-regular for font. Value column should flex-grow to fill remaining width.', 'Gap'],
-  ['Detail row: value truncation', 'Text wraps — never truncate', 'Verify no text-overflow: ellipsis on detail values (long security names, account names)', 'Remove any text-overflow: ellipsis, white-space: nowrap, overflow: hidden on ALL detail row values. Long values must wrap fully.', 'Gap'],
+  ['Detail row: value truncation', 'Text wraps — never truncate', 'whiteSpace: normal, overflow: visible, textOverflow: clip — no truncation on any of 11 detail rows', 'No change — text wraps correctly on all detail row values. No truncation applied.', 'Match'],
   ['Detail row: padding', '$spacing-sm (16px) all sides', '16px', 'Value matches but code must reference $spacing-sm token — not hardcoded padding: 16px.', 'Gap'],
-  ['Detail row: internal gap', '40px gap between label and value', 'Verify gap between label and value in detail rows', 'Set gap: 40px between label and value. This is a custom value (no token — between $spacing-xl 40px). Use $spacing-xl (40px) if available or hardcode 40px.', 'Gap'],
+  ['Detail row: internal gap', '40px ($spacing-xl) gap between label and value', 'gap: 40px (flex gap-10), label width: 140px fixed', 'Value matches. Code must use $spacing-xl (40px) token — not hardcoded gap-10.', 'Gap'],
   ['Detail row: divider', `1px solid $colors-borders-light (#EEEDEB) between rows`, '1px solid rgb(238, 237, 235) = #EEEDEB', 'Color matches but code must reference $colors-borders-light token — not hardcoded rgb(238, 237, 235).', 'Gap'],
   ['Holding fields', 'Security, Security Type, Account, Quantity, Last Price, Price As Of, Cost Basis, Currency', 'Security, Security Type, Account, Quantity (all present — verified)', 'No change — all fields present', 'Match'],
   ['Performance section header', '$color-taupe-100 bg, $typo-primary-sm-semibold (14px/600), $colors-borders-light border', '14px, weight 600, color #0E0E0E — section present', 'Section exists but code must reference tokens: $color-taupe-100 for bg, $typo-primary-sm-semibold for font, $colors-borders-light for border — not hardcoded values.', 'Gap'],
 ];
 
-const popupVariantsRows = [
-  ['Holding popup (Equity/ETF/Fund)', 'Sections: Holding Details + Performance + Classification', 'Holding Details shown, Performance visible', 'Verify all 3 sections present for equity/ETF/fund holdings', 'Verify'],
-  ['Options popup', 'Sections: Holding Details + Contract Details + Performance + Classification', 'Not tested (no options in data set)', 'Ensure Options variant shows Contract Details with Strike, Expiration, Contract Type', 'Gap'],
-  ['Fixed Income popup', 'Sections: Holding Details + Coupon/Maturity Details + Performance + Classification', 'Not tested (no fixed income in data set)', 'Ensure Fixed Income variant shows Coupon/Maturity with Coupon Rate, Maturity Date, Face Value', 'Gap'],
-  ['Crypto popup', 'Sections: Holding Details + Performance + Classification', 'Not tested (no crypto in data set)', 'Ensure Crypto variant shows simplified Holding Details (no Price As Of)', 'Gap'],
-];
 
 const devFiles = [
   ['Page layout', 'apps/web/src/features/pfm-investments/index.tsx'],
@@ -292,7 +282,6 @@ const masterRows = [
   ...showMoreRows,
   ...detailPopupShellRows,
   ...detailPopupContentRows,
-  ...popupVariantsRows,
 ];
 
 const gapCount = masterRows.filter(([, , , , s]) => s === 'Gap').length;
@@ -394,10 +383,9 @@ const html = `<!DOCTYPE html>
     <span class="side-nav-title t-detail">Holding detail</span>
     <a href="#s8" class="nav-link">8. Detail popup — shell</a>
     <a href="#s9" class="nav-link">9. Detail popup — content</a>
-    <a href="#s10" class="nav-link">10. Popup variants</a>
     <span class="side-nav-title t-ref">Reference</span>
-    <a href="#s11" class="nav-link">11. Files to change</a>
-    <a href="#s12" class="nav-link">12. Master checklist</a>
+    <a href="#s10" class="nav-link">10. Files to change</a>
+    <a href="#s11" class="nav-link">11. Master checklist</a>
   </nav>
   <div class="doc">
     <header class="cover" id="top">
@@ -453,10 +441,10 @@ const html = `<!DOCTYPE html>
 
     <section class="page" id="s8">
       <h2>8. Detail popup — shell</h2>
-      <p class="subtitle">Holding detail overlay — popup (560px, radius-xs, shadow-lg)</p>
+      <p class="subtitle">Holding detail overlay — popup (560px, $radius-xs, blur 24px rgba(0,0,0,0.1))</p>
       <div class="compare-grid">
         <div class="col"><div class="panel-label design">Design — Holding popup</div><img src="${images.designHoldingPopup}" style="${modalCompareStyle}" /></div>
-        <div class="col"><div class="panel-label dev">Dev — VTI popup</div><img src="${images.devDetailHolding}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — Holding detail popup</div><img src="${images.devDetailHolding}" style="${modalCompareStyle}" /></div>
       </div>
       ${table(detailPopupShellRows)}
     </section>
@@ -466,32 +454,20 @@ const html = `<!DOCTYPE html>
       <p class="subtitle">Header, amount, and detail sections inside holding popup</p>
       <div class="compare-grid">
         <div class="col"><div class="panel-label design">Design — Holding (equity/ETF)</div><img src="${images.designHoldingPopup}" style="${modalCompareStyle}" /></div>
-        <div class="col"><div class="panel-label dev">Dev — VTI holding detail</div><img src="${images.devDetailHolding}" style="${modalCompareStyle}" /></div>
+        <div class="col"><div class="panel-label dev">Dev — Holding detail popup</div><img src="${images.devDetailHolding}" style="${modalCompareStyle}" /></div>
       </div>
       ${table(detailPopupContentRows)}
     </section>
 
     <section class="page" id="s10">
-      <h2>10. Popup variants</h2>
-      <p class="subtitle">Design defines 4 popup variants based on security type: Holding (equity/ETF/fund), Options, Fixed Income, Crypto</p>
-      <div class="compare-grid">
-        <div class="col"><div class="panel-label design">Design — Options popup</div><img src="${images.designOptionsPopup}" style="${modalCompareStyle}" /></div>
-        <div class="col"><div class="panel-label design">Design — Fixed Income popup</div><img src="${images.designFixedIncomePopup}" style="${modalCompareStyle}" /></div>
-        <div class="col"><div class="panel-label design">Design — Crypto popup</div><img src="${images.designCryptoPopup}" style="${modalCompareStyle}" /></div>
-      </div>
-      ${table(popupVariantsRows)}
-      <p class="note"><strong>Design defines 4 popup variants:</strong> Each security type renders a different detail popup layout. The <em>Options</em> variant adds Contract Details (Strike, Expiration, Type). The <em>Fixed Income</em> variant adds Coupon/Maturity Details (Coupon Rate, Maturity Date, Face Value, Yield). The <em>Crypto</em> variant simplifies the holding section. Dev should conditionally render the appropriate sections based on <code>security_type</code>.</p>
-    </section>
-
-    <section class="page" id="s11">
-      <h2>11. Files to change in js-mono</h2>
+      <h2>10. Files to change in js-mono</h2>
       <p class="subtitle">Map formatting fixes to implementation files on develop. File paths are approximate — verify in codebase.</p>
       ${fileTable()}
       <div class="note"><strong>Note:</strong> File paths above are estimates based on naming conventions. Verify actual paths in the <code>js-mono</code> repository. The Investments feature may live under <code>pfm-investments</code>, <code>investments</code>, or <code>net-worth/investments</code> depending on the project structure.</div>
     </section>
 
-    <section class="page" id="s12">
-      <h2>12. Master formatting checklist</h2>
+    <section class="page" id="s11">
+      <h2>11. Master formatting checklist</h2>
       <p class="subtitle">Engineering sign-off — every row below must match design before merge.</p>
       ${table(masterRows)}
     </section>
