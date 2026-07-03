@@ -104,10 +104,10 @@
       <p class="purpose">This document identifies every formatting difference between the approved Pencil designs and the current dev implementation on <code>app.eg-dev.ai/net-worth/investments</code>. Use it as a checklist to bring dev into pixel-perfect alignment with design.</p>
 
       <div class="stats">
-        <div class="stat gaps"><strong>98</strong> gaps to fix</div>
+        <div class="stat gaps"><strong>97</strong> gaps to fix</div>
         <div class="stat matches"><strong>13</strong> already match</div>
         <div class="stat checks"><strong>1</strong> to verify</div>
-        <div class="stat"><strong>112</strong> total items</div>
+        <div class="stat"><strong>111</strong> total items</div>
       </div>
 
       <h3>How to read each section</h3>
@@ -385,8 +385,7 @@
 <tr><td>Detail row: internal gap</td><td>40px gap between label and value</td><td>Verify gap between label and value in detail rows</td><td>Set gap: 40px between label and value. This is a custom value (no token — between $spacing-xl 40px). Use $spacing-xl (40px) if available or hardcode 40px.</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Detail row: divider</td><td>1px solid $colors-borders-light (#EEEDEB) between rows</td><td>1px solid rgb(238, 237, 235) = #EEEDEB</td><td>Color matches but code must reference $colors-borders-light token — not hardcoded rgb(238, 237, 235).</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Holding fields</td><td>Security, Security Type, Account, Quantity, Last Price, Price As Of, Cost Basis, Currency</td><td>Security, Security Type, Account, Quantity (all present — verified)</td><td>No change — all fields present</td><td><span class="badge match">Match</span></td></tr>
-<tr><td>Performance section header</td><td>$color-taupe-100 bg, $typo-primary-sm-semibold (14px/600), $colors-borders-light border</td><td>14px, weight 600, color #0E0E0E — section present</td><td>Section exists but code must reference tokens: $color-taupe-100 for bg, $typo-primary-sm-semibold for font, $colors-borders-light for border — not hardcoded values.</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Classification section</td><td>Section header "Classification" with Category and Sub-category rows</td><td>NOT FOUND — section does not render</td><td>Add "Classification" section with header (same styling as Holding Details header) and two detail rows: Category and Sub-category.</td><td><span class="badge gap">Gap</span></td></tr></tbody></table>
+<tr><td>Performance section header</td><td>$color-taupe-100 bg, $typo-primary-sm-semibold (14px/600), $colors-borders-light border</td><td>14px, weight 600, color #0E0E0E — section present</td><td>Section exists but code must reference tokens: $color-taupe-100 for bg, $typo-primary-sm-semibold for font, $colors-borders-light for border — not hardcoded values.</td><td><span class="badge gap">Gap</span></td></tr></tbody></table>
     </section>
 
     <section class="page" id="s10">
@@ -521,7 +520,6 @@
 <tr><td>Detail row: divider</td><td>1px solid $colors-borders-light (#EEEDEB) between rows</td><td>1px solid rgb(238, 237, 235) = #EEEDEB</td><td>Color matches but code must reference $colors-borders-light token — not hardcoded rgb(238, 237, 235).</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Holding fields</td><td>Security, Security Type, Account, Quantity, Last Price, Price As Of, Cost Basis, Currency</td><td>Security, Security Type, Account, Quantity (all present — verified)</td><td>No change — all fields present</td><td><span class="badge match">Match</span></td></tr>
 <tr><td>Performance section header</td><td>$color-taupe-100 bg, $typo-primary-sm-semibold (14px/600), $colors-borders-light border</td><td>14px, weight 600, color #0E0E0E — section present</td><td>Section exists but code must reference tokens: $color-taupe-100 for bg, $typo-primary-sm-semibold for font, $colors-borders-light for border — not hardcoded values.</td><td><span class="badge gap">Gap</span></td></tr>
-<tr><td>Classification section</td><td>Section header "Classification" with Category and Sub-category rows</td><td>NOT FOUND — section does not render</td><td>Add "Classification" section with header (same styling as Holding Details header) and two detail rows: Category and Sub-category.</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Holding popup (Equity/ETF/Fund)</td><td>Sections: Holding Details + Performance + Classification</td><td>Holding Details shown, Performance visible</td><td>Verify all 3 sections present for equity/ETF/fund holdings</td><td><span class="badge warn">Verify</span></td></tr>
 <tr><td>Options popup</td><td>Sections: Holding Details + Contract Details + Performance + Classification</td><td>Not tested (no options in data set)</td><td>Ensure Options variant shows Contract Details with Strike, Expiration, Contract Type</td><td><span class="badge gap">Gap</span></td></tr>
 <tr><td>Fixed Income popup</td><td>Sections: Holding Details + Coupon/Maturity Details + Performance + Classification</td><td>Not tested (no fixed income in data set)</td><td>Ensure Fixed Income variant shows Coupon/Maturity with Coupon Rate, Maturity Date, Face Value</td><td><span class="badge gap">Gap</span></td></tr>

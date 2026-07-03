@@ -213,7 +213,6 @@ const detailPopupContentRows = [
   ['Detail row: divider', `1px solid $colors-borders-light (#EEEDEB) between rows`, '1px solid rgb(238, 237, 235) = #EEEDEB', 'Color matches but code must reference $colors-borders-light token — not hardcoded rgb(238, 237, 235).', 'Gap'],
   ['Holding fields', 'Security, Security Type, Account, Quantity, Last Price, Price As Of, Cost Basis, Currency', 'Security, Security Type, Account, Quantity (all present — verified)', 'No change — all fields present', 'Match'],
   ['Performance section header', '$color-taupe-100 bg, $typo-primary-sm-semibold (14px/600), $colors-borders-light border', '14px, weight 600, color #0E0E0E — section present', 'Section exists but code must reference tokens: $color-taupe-100 for bg, $typo-primary-sm-semibold for font, $colors-borders-light for border — not hardcoded values.', 'Gap'],
-  ['Classification section', 'Section header "Classification" with Category and Sub-category rows', 'NOT FOUND — section does not render', 'Add "Classification" section with header (same styling as Holding Details header) and two detail rows: Category and Sub-category.', 'Gap'],
 ];
 
 const popupVariantsRows = [
