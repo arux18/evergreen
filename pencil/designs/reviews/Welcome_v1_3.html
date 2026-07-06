@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  WELCOME COMPONENT — onboarding flow for a new visitor
+  ============================================================================
+  A single, self-contained, client-side onboarding experience. This component
+  is NOT in a tile and casts NO shadow. Topics pin ~50px below the top of the
+  main area (WC_TOP_OFFSET) and scroll upward as the next topic is reached.
+  Type is larger and white space more generous than other components, because
+  this is a first-time visitor's introduction. Navigation is via the per-step
+  Next / Skip / Back controls only (there is no chat surface).
+
+  TOPICS (in order)
+    t1     Welcome / intro                [Next]
+    t1b    Your name                      first / last / age
+    t2a    Household                      spouse? + #dependents
+    t3a    Click on your state            tile-grid US map (white -> blue by max rate)
+    t3b    State tax brackets             bracket table by filing status
+    t4a    Estimate income                state + locality + income slider
+    t4rank Income vs U.S. households      percentile gauge (shown only at >= 40th pctile)
+    t4b    Estimated tax rates            Income + Marginal Tax Rates tables
+    t4c    Rent or own                    routes to t5 / t5b / t9
+    t5     One home                       value / mortgage / net equity
+    t5b    Multiple homes                 + Add Home; total net equity
+    t9     Investable assets              summary slider (+ optional detail sliders)
+    t10    Are you on track?              savings-multiple-vs-age chart
+    t10b   Project your financial future  lifetime-planning inputs
+    t11    Do you have these items?       checklist
+
+  Bilingual (EN/ES) and light/dark theme are driven by a fixed control at the
+  lower-right of the main area. Tax data mirrors the STATES dataset and 2026
+  federal constants embedded below. All figures are illustrative sample data,
+  not tax, legal, or investment advice.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Welcome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== Design tokens — shared with specialized_components_v1 ===== */
+  :root{
+    --surface-1:#FFFFFF; --surface-2:#F5F5F5; --nest:#F5F5F5;
+    --border:#E5E5E5; --border-strong:#D4D4D4;
+    --ink:#171717; --muted:#525252; --faint:#737373; --inverse:#FFFFFF;
+    --accent:#3A6AF8; --accent-hover:#295CCC; --accent-subtle:#EBF0FE;
+    --pos:#15803D; --neg:#B91C1C; --warn:#C25700; --page-bg:#FFFFFF; --main-bg:#FFFFFF;
+    --font-ui:'Heebo',-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    --font-serif:'Noto Serif',Georgia,serif;
+    /* Welcome-specific: larger type + more air than other components */
+    --wc-top-offset:50px;
+    --wc-maxw:1100px;
+  }
+  html[data-theme="dark"]{
+    --surface-1:#111111; --surface-2:#1A1A1A; --nest:#242424;
+    --border:#4A4D4B; --border-strong:#626562;
+    --ink:#F5F5F5; --muted:#A3A3A3; --faint:#8A8A8A; --inverse:#111111;
+    --accent:#7094FB; --accent-hover:#9BB3FC; --accent-subtle:#152354;
+    --pos:#4ADE80; --neg:#F87171; --warn:#FBBF24; --page-bg:#1A1A1A; --main-bg:#262626;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{margin:0;background:var(--page-bg);color:var(--ink);
+       font:16px/1.5 var(--font-ui);-webkit-font-smoothing:antialiased;
+       transition:background .2s,color .2s;}
+
+  /* ===== Layout: single scrolling main flow ===== */
+  #layout{display:flex;height:100vh;overflow:hidden;}
+  #wcMain{flex:1 1 auto;overflow:auto;position:relative;padding:0 48px 40vh;scroll-behavior:smooth;background:var(--main-bg);}
+  #wcInner{max-width:var(--wc-maxw);margin:0 auto;}
+
+  /* ===== Welcome tour modals ===== */
+  #wcMain.tour-open{overflow:hidden;}
+  #tour{position:absolute;top:0;left:0;right:0;height:100vh;z-index:60;
+        display:flex;align-items:center;justify-content:center;
+        background:rgba(23,23,27,.72);}                 /* grayed-out main area */
+  #tour.hidden{display:none;}
+  .tour-card{display:flex;width:min(800px,86%);min-height:500px;
+             background:#fff;border-radius:12px;overflow:hidden;
+             box-shadow:0 24px 70px rgba(0,0,0,.40);}
+  .tour-card.hidden{display:none;}
+  .tour-left{flex:0 0 50%;background:#EFE9DE;}           /* taupe panel (lighter, half width) */
+  .tour-right{flex:1 1 auto;background:#fff;padding:48px 48px;
+              display:flex;flex-direction:column;justify-content:center;}
+  .tour-eyebrow{font:600 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;
+                color:var(--accent);margin:0 0 16px;}
+  .tour-title{font:400 24px/1.25 var(--font-serif);color:var(--ink);margin:0 0 16px;}
+  .tour-body{font:16px/1.5 var(--font-ui);color:var(--muted);margin:0 0 32px;}
+  .tour-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .tour-dots{display:flex;gap:8px;}
+  .tour-dot{width:12px;height:12px;border-radius:50%;background:#D8D9D8;cursor:pointer;transition:background .15s;}
+  .tour-dot.on{background:var(--accent);}
+  .tour-dot:hover{background:var(--accent-hover,#9BB3FC);}
+  /* ---- dark mode: blue-black + charcoal, with subtle gradients ---- */
+  html[data-theme="dark"] #wcMain{background:linear-gradient(160deg,#1a1f2b 0%,#141823 55%,#0e1019 100%);}
+  html[data-theme="dark"] body{background:#0e1019;}
+  html[data-theme="dark"] .tour-card{background:#1d2024;border:1px solid #5a5e63;}
+  html[data-theme="dark"] .tour-left{background:linear-gradient(180deg,#18243f 0%,#0a1020 100%);}
+  html[data-theme="dark"] .tour-right{background:linear-gradient(150deg,#26292e 0%,#1b1e22 100%);}
+  html[data-theme="dark"] .tour-title{color:#F2F4F8;}
+  html[data-theme="dark"] .tour-body{color:#C2C8D2;}
+
+  /* When the MAIN AREA is <=599px wide: tiles fill the screen, taupe on top / white below */
+  #wcMain.narrow #tour{padding:0;}
+  #wcMain.narrow .tour-card{flex-direction:column;width:100%;min-height:100vh;border-radius:0;box-shadow:none;overflow-y:auto;}
+  #wcMain.narrow .tour-left{flex:0 0 40%;width:100%;}
+  #wcMain.narrow .tour-right{flex:1 1 auto;width:100%;justify-content:center;}
+
+  /* topbar: just a theme toggle, kept minimal to maximise white space */
+  #wcBar{position:sticky;top:0;z-index:5;display:flex;justify-content:flex-end;
+         padding:14px 0 0;background:linear-gradient(var(--main-bg) 70%,transparent);}
+  .wc-theme{background:transparent;color:var(--muted);border:1px solid var(--border);
+            border-radius:9999px;padding:6px 14px;font:600 13px var(--font-ui);cursor:pointer;}
+  .wc-theme:hover{background:var(--accent-subtle);color:var(--accent);}
+  /* lang + theme controls, fixed at the lower-right of the main area */
+  #wcTools{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:10px;
+           background:var(--surface-1);border:1px solid var(--border);border-radius:9999px;padding:6px 10px;
+           box-shadow:0 4px 16px rgba(0,0,0,.14);}
+  html[data-theme="dark"] #wcTools{background:#111;border-color:#333;}
+  /* EN/ES language toggle */
+  .lang-seg{display:inline-flex;border:1px solid var(--border);border-radius:9999px;overflow:hidden;}
+  .lang-seg button{background:transparent;color:var(--muted);border:none;padding:5px 11px;font:600 12px var(--font-ui);cursor:pointer;}
+  .lang-seg button.on{background:var(--accent);color:#fff;}
+
+  /* ===== Topics ===== */
+  .topic{padding:0;margin:0 0 18vh;scroll-margin-top:var(--wc-top-offset);}
+  .topic.hidden,.hidden{display:none;}
+  .topic:first-of-type{padding-top:var(--wc-top-offset);}
+  .eyebrow{font:600 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;
+           color:var(--accent);margin:0 0 12px;padding-top:48px;border-top:1px solid var(--border-strong);}
+  .topic h1{font:600 clamp(24px,3.6vw,36px)/1.14 var(--font-serif);margin:0 0 16px;letter-spacing:-.01em;}
+  .topic h2{font:600 clamp(24px,3.1vw,30px)/1.18 var(--font-serif);margin:0 0 24px;letter-spacing:-.01em;}
+  #t4a h2{margin-bottom:48px;}   /* extra breathing room under "Let's estimate your total taxes" */
+  #t2a h2,#t4b h2{margin-bottom:40px;}   /* space below title before the content */
+  #t3a h2{margin-bottom:20px;}   /* tighter space between the title and the content below */
+  /* income-ranking gauge */
+  .gauge-wrap{display:flex;justify-content:flex-start;margin:6px 0 16px -10px;}   /* nudged 10px left */
+  .gauge .track{stroke:var(--border-strong);}
+  .gauge .prog{stroke:var(--accent);}
+  .gauge-num{font:700 40px var(--font-ui);fill:var(--ink);}
+  .gauge-lbl{font:600 12px var(--font-ui);fill:var(--muted);text-transform:uppercase;letter-spacing:.09em;}
+  .rank-note{text-align:left;margin:0;max-width:560px;color:var(--muted);font-size:16px;}
+  .track-headline{text-align:left;margin:0 0 16px;color:var(--ink);font:400 clamp(18px,2vw,22px) var(--font-ui);max-width:520px;}
+  #rankWrap .rank-note{font-size:18px;color:var(--ink);}   /* larger, full-black "Your household income…" line */
+  .lead{font-size:18px;color:var(--muted);margin:0 0 32px;max-width:34ch;}
+  .hint{font-style:italic;color:var(--faint);font-size:16px;margin:20px 0 0;}
+  .qlabel{font-size:18px;font-weight:500;margin:0 0 16px;}
+  .qblock{margin:0 0 44px;}
+
+  /* ===== Buttons ===== */
+  .btn{background:transparent;color:var(--accent);border:1.5px solid var(--accent);
+       border-radius:9999px;padding:14px 32px;font:600 16px var(--font-ui);cursor:pointer;
+       transition:background .15s,color .15s,transform .1s;}
+  .btn:hover{background:var(--accent-subtle);}
+  .btn:active{transform:translateY(1px);}
+  .btn.primary{background:#0e0e0e;color:#fff;border-color:#0e0e0e;}
+  .btn.primary:hover{background:#2a2a2a;}
+  html[data-theme="dark"] .btn.primary{background:#4f6fd6;border-color:#4f6fd6;}
+  html[data-theme="dark"] .btn.primary:hover{background:#5d7ce0;border-color:#5d7ce0;}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+  .pillset{display:flex;flex-wrap:wrap;gap:12px;}
+  .pill{min-width:58px;text-align:center;background:transparent;color:var(--ink);
+        border:1.5px solid var(--border-strong);border-radius:9999px;padding:14px 20px;
+        font:600 16px var(--font-ui);cursor:pointer;transition:all .15s;}
+  .pill:hover{border-color:var(--accent);color:var(--accent);}
+  .pill.sel{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .next-wrap{margin-top:32px;display:flex;align-items:center;}
+  .skip-next{margin-left:28px;color:var(--accent);font:400 16px var(--font-ui);background:none;border:none;cursor:pointer;text-decoration:none;}
+  .skip-next:hover{text-decoration:underline;}
+  .back-next{margin-left:20px;color:var(--accent);font:400 16px var(--font-ui);background:none;border:none;cursor:pointer;text-decoration:none;}
+  .back-next:hover{text-decoration:underline;}
+
+  /* ===== Equity form (home value / mortgage / net equity) ===== */
+  .equity-form{max-width:400px;display:flex;flex-direction:column;gap:8px;}
+  .eq-row{display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:16px;color:var(--ink);}
+  .eq-lbl{flex:0 1 auto;}
+  .eq-in{width:140px;text-align:right;padding:8px 12px;font-size:16px;border:1px solid var(--border);border-radius:6px;background:var(--calc-bg);color:var(--ink);}
+  .eq-total{margin-top:8px;}   /* per-home "Net equity" rows are regular weight */
+  .eq-out{width:140px;text-align:right;}
+  .homes-two{display:flex;flex-direction:column;gap:32px;}
+  #t5b h2{margin-bottom:32px;}
+  #t5 h2{margin-bottom:48px;}
+  #t9 h2{margin-bottom:32px;}
+  #t10 h2{margin-bottom:24px;}
+  .add-home-wrap{margin-top:24px;}
+  .total-equity{border-top:1px solid var(--border-strong);padding-top:12px;font-weight:600;}   /* only the "Total net equity" row is emphasized (bold) */
+  .home-block-title{font:600 18px var(--font-ui);color:var(--ink);margin:0 0 12px;max-width:400px;border-bottom:1px solid var(--border-strong);padding-bottom:12px;}
+  html[data-theme="dark"] .home-block-title{border-bottom-color:var(--border-strong);}
+
+
+  /* ===== US tile-grid map (Topic 3a) ===== */
+  #usmap{display:grid;grid-template-columns:repeat(11,1fr);gap:3px;max-width:700px;margin:0 auto 14px;padding:0 40px;align-items:start;}
+  .st{aspect-ratio:1/1;border:1px solid var(--accent);border-radius:0;cursor:pointer;align-self:start;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      line-height:1.1;color:#1a1a1a;transition:transform .1s,box-shadow .15s,outline .1s;}
+  .st:hover{transform:translateY(-2px);outline:2px solid #E11D48;z-index:2;}
+  .st.sel{outline:4px solid #E11D48;transform:translateY(-2px);z-index:3;}
+  .st .ab{font:700 16px var(--font-ui);}
+  .st .rt{font:500 13px var(--font-ui);opacity:.85;}
+  /* top-center title + legend, sitting on the line between Alaska and Maine */
+  /* title sits left (against Alaska); legend sits right (against Maine), same line.
+     align-self:stretch makes the title box fill the row height (= a tile height),
+     so translateY(50%) drops its top exactly to Alaska's top (Alaska is shifted +50%). */
+  .map-title{align-self:start;margin-left:20px;
+             font:400 18px var(--font-ui);color:var(--ink);text-align:left;line-height:1.18;}
+  /* vertical legend, bottom-right: bar on the right (against Rhode Island), ticks to its left, 0% at bottom */
+  .map-legend{align-self:stretch;margin-top:30px;display:flex;align-items:stretch;justify-content:flex-end;gap:6px;}
+  .ml-ticks{display:flex;flex-direction:column;justify-content:space-between;
+            font:500 11px var(--font-ui);color:var(--muted);text-align:right;}
+  .ml-bar{width:14px;border:1px solid var(--accent);background:linear-gradient(to top,#ffffff,rgb(30,102,240));}
+  /* match the map's centered 700px box + 40px gutter so the line starts at Hawaii's left edge */
+  .wc-select{width:100%;font:400 16px var(--font-ui);border:1px solid var(--border);
+             border-radius:6px;padding:8px 12px;background:var(--surface-1);color:var(--ink);}
+  .hf-row{display:flex;flex-direction:column;gap:6px;}
+  .hf-row span{font-size:14px;color:var(--muted);}
+  .hf-row input{font:400 16px var(--font-ui);border:1px solid var(--border);border-radius:6px;
+                padding:8px 12px;background:var(--surface-1);color:var(--ink);width:100%;}
+  html[data-theme="dark"] #t1b .hf-row input{background:transparent;}
+  #selfAge{max-width:120px;}
+  .name-form{display:grid;grid-template-columns:1fr 1fr;gap:16px 16px;max-width:600px;margin:0 0 8px;}
+  .name-form .hf-row{display:flex;flex-direction:column;gap:6px;}
+  .name-form .hf-age{grid-column:1 / -1;}
+  #wcMain.narrow .name-form{grid-template-columns:1fr;}
+  .lp-form{display:flex;flex-direction:column;gap:16px;max-width:440px;margin:0 0 8px;}
+  .lp-form .hf-row input{max-width:160px;}
+  .lp-form .hf-row span{font-size:16px;color:var(--ink);}
+  .lp-form .lp-check{margin:0;}
+  #t3a .next-wrap{margin-top:48px;}
+  /* savings-multiple-by-age chart */
+  .savings-chart svg{display:block;width:100%;max-width:600px;height:auto;}
+  .sv-axis{stroke:var(--border-strong);stroke-width:1;}
+  .sv-grid{stroke:var(--border);stroke-width:1;}
+  .sv-tick{font:500 11px var(--font-ui);fill:var(--muted);}
+  .sv-area{fill:var(--accent-subtle);}
+  .sv-guide{fill:none;stroke:var(--border-strong);stroke-width:2;}
+  .sv-you{font:700 16px var(--font-ui);fill:#E5484D;}
+  .sv-axlbl{font:600 12px var(--font-ui);fill:var(--muted);}
+  .sv-zone{font:600 15px var(--font-ui);fill:#000;letter-spacing:.04em;}
+  html[data-theme="dark"] .sv-area{fill:#33548f;}
+  html[data-theme="dark"] .sv-zone{fill:#ffffff;}
+  #savingsWrap .rank-note{font-size:16px;}
+  html[data-theme="dark"] #savingsWrap .rank-note{color:#c6c9d0;font-size:16px;}
+  /* "Do you have these items?" checklist */
+  .checklist{display:flex;flex-direction:column;gap:12px;}
+  .check-item{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--ink);cursor:pointer;}
+  .check-item input{width:18px;height:18px;accent-color:var(--accent);flex:0 0 auto;}
+  html[data-theme="dark"] .check-item input{-webkit-appearance:none;appearance:none;border:1px solid #6b7178;border-radius:4px;background:#c7ccd3;position:relative;cursor:pointer;}
+  html[data-theme="dark"] .check-item input:checked{background:var(--accent);border-color:var(--accent);}
+  html[data-theme="dark"] .check-item input:checked::after{content:"";position:absolute;left:6px;top:2px;width:4px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+  .radioset{display:flex;flex-direction:column;gap:12px;}
+  .radio-row{display:flex;align-items:center;gap:12px;font-size:16px;cursor:pointer;}
+  .radio-row input{width:18px;height:18px;accent-color:var(--accent);}
+
+  /* ===== Tables (3b + 4b) ===== */
+  .wc-table{width:100%;border-collapse:collapse;font-size:16px;margin:8px 0 0;}
+  .wc-table th,.wc-table td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--border);}
+  .wc-table th{font:600 14px var(--font-ui);color:var(--muted);vertical-align:bottom;}
+  .wc-table th:first-child,.wc-table td:first-child{text-align:left;}
+  .wc-table tr.total td{font-weight:700;border-top:2px solid var(--border-strong);border-bottom:none;}
+  /* bracket ranges: keep each amount intact, allow "to $Y" to drop to a second line */
+  .wc-table td .rng-a,.wc-table td .rng-b{white-space:nowrap;}
+  #bracketWrap .wc-table td:first-child{font-weight:700;}   /* bracket rate column in bold */
+  #bracketWrap .wc-table{width:auto;}                       /* size to content (not full main-area width) */
+  #bracketWrap .wc-table th,#bracketWrap .wc-table td{padding-left:20px;padding-right:20px;font-size:14px;}  /* roomy columns; numbers match header size */
+  #bracketWrap caption{font-size:18px;color:var(--ink);max-width:600px;}    /* larger body copy; wraps only when wider than 600px */
+  #bracketWrap .wc-table.few th,#bracketWrap .wc-table.few td{font-size:17px;}   /* larger when 5 or fewer rows */
+  /* when any bracket range wraps, force every range onto two lines for a uniform look */
+  #bracketWrap .wc-table.uniform2 .rng-a{display:block;}
+  /* estimate tables (#taxWrap): compact + no inter-row lines (only the header underline
+     and the rule on top of the total); shrink to content and center within the main area */
+  /* the wrapper shrinks to the widest table; each table fills it, so all three share that width and center */
+  #taxWrap .tax-tables{width:500px;max-width:100%;margin:0;}        /* both tables capped at 500px */
+  #taxWrap .wc-table{width:auto;margin:8px 0 0;font-size:15px;}
+  #taxWrap .esttax{width:100%;}   /* both estimate tables fill the wrapper -> equal width */
+  #taxWrap .wc-table th,#taxWrap .wc-table td{padding:3px 11px;border-bottom:none;}
+  #taxWrap .wc-table thead th{border-bottom:1.5px solid var(--muted);padding-bottom:6px;font-weight:400;color:var(--ink);}
+  #taxWrap .wc-table tbody tr:first-child td{padding-top:13px;}   /* 10px gap below the header row */
+  #taxWrap .esttax.rates{margin-top:48px;}   /* line space between the Income and Marginal Tax Rates tables */
+  #taxWrap .tax-fineprint{font-size:13px;color:var(--muted);line-height:1.4;max-width:500px;margin:10px 0 0;padding-left:11px;}
+  #taxWrap td.tax-fineprint{font-weight:400;padding-top:8px;border:none;}
+  .filing-row{display:flex;flex-wrap:wrap;gap:24px;margin:0 0 16px;}
+  .filing-opt{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink);cursor:pointer;}
+  .filing-opt input{width:16px;height:16px;accent-color:var(--accent);}
+  #taxWrap .wc-table tr.total td{border-top:1px solid var(--border-strong);padding-top:6px;}
+  /* first column: chevron sits in a left gutter aligned with the table lines; all text indented to align */
+  #taxWrap td.lbl{position:relative;}
+  #taxWrap .lbl{padding-left:0;min-width:160px;}
+  #taxWrap .esttax.rates .lbl{min-width:0;padding-right:6px;}   /* pull Earned Income closer to Marginal Tax Rates */
+  #wcMain:not(.narrow) #taxWrap .wc-table th,
+  #wcMain:not(.narrow) #taxWrap .wc-table td{font-size:16px;}   /* larger tax-table text on wide main area */
+  .wc-table caption{caption-side:top;text-align:left;color:var(--faint);font-size:14px;margin-bottom:10px;}
+
+  /* ===== Sliders (Topic 4a) ===== */
+  .slider-block{margin:0 0 32px;max-width:600px;}   /* match the slider cap so the value sits at the slider's right edge */
+  .slider-block .sl-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+  .slider-block .sl-label{font-size:18px;font-weight:500;}
+  .slider-block .sl-val{font:700 24px var(--font-ui);color:var(--accent);}
+  /* sliders: filled part = accent, unfilled right side = light-but-visible gray, no outline */
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;max-width:600px;height:4px;margin:10px 0;
+       border:none;outline:none;border-radius:3px;background:#e4e4e4;cursor:pointer;}
+  input[type=range]::-webkit-slider-runnable-track{height:4px;border:none;border-radius:3px;background:transparent;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;
+       margin-top:-8px;border:2px solid #fff;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.2);}
+  input[type=range]::-moz-range-track{height:4px;border:none;border-radius:3px;background:#e4e4e4;}
+  html[data-theme="dark"] input[type=range]{background:#3a3d42;}
+  html[data-theme="dark"] input[type=range]::-moz-range-track{background:#3a3d42;}
+  input[type=range]::-moz-range-progress{height:4px;border-radius:3px;background:var(--accent);}
+  input[type=range]::-moz-range-thumb{width:20px;height:20px;border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.2);background:var(--accent);cursor:pointer;}
+  .detail-grid{display:grid;grid-template-columns:1fr;gap:6px;}
+  .detail-grid.two .sl-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .col-head{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:600px;font:600 14px var(--font-ui);
+            color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;}
+  .col-head span{border-bottom:1px solid var(--border-strong);padding-bottom:6px;}
+  /* detail slider: label + value on one line (value flush left, right after the label) */
+  .sl-row{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:4px;max-width:600px;}
+  .sl-row .sl-label,.sl-row .sl-val{line-height:1.2;}   /* same baseline for label and dollar amount */
+  .col-head span{max-width:600px;}                       /* You/Spouse underline matches the slider width */
+  .detail-note{max-width:600px;}                         /* gray note matches the slider width */
+  .sl-field{display:flex;flex-direction:column;}
+  .sl-field .sl-val{align-self:flex-end;margin-bottom:2px;}   /* value flush right at the slider's right edge */
+  .sl-twohead{align-items:baseline;margin-bottom:2px;}        /* label + both dollar figures share one baseline */
+  .sl-twohead .sl-row{margin-bottom:0;}
+  .sl-twohead .sl-valcell{text-align:right;line-height:1.2;}
+  .detail-note{font-size:13px;color:var(--faint);line-height:1.4;margin:6px 0 0;}
+  .checkrow{display:flex;align-items:center;gap:12px;font-size:16px;margin:8px 0 32px;}
+  .checkrow input{width:20px;height:20px;accent-color:var(--accent);}
+  .acct-hint{display:none;font-size:13px;color:var(--muted);margin:-22px 0 26px;}
+  .acct-hint.on{display:block;}
+  /* click-to-edit blue slider value */
+  .sl-val .val-edit{font:inherit;color:var(--accent);text-align:right;
+       border:1px solid var(--accent);border-radius:6px;padding:0 6px;width:130px;background:var(--surface,#fff);}
+  html[data-theme="dark"] .sl-val .val-edit{background:var(--surface-2,#1c1c1c);}
+  .sl-val{cursor:text;}
+  /* You/Spouse totals row under the detail sliders */
+  .acct-total{border-top:1px solid var(--border-strong);padding-top:10px;margin-top:6px;}
+  .acct-combined{margin-top:10px;}
+
+
+  /* ===== Focus rings (Hemlock a11y) ===== */
+  .btn:focus-visible,.pill:focus-visible,.skip-next:focus-visible,.back-next:focus-visible,
+  .wc-theme:focus-visible,.lang-seg button:focus-visible,.tour-next:focus-visible{
+    outline:2px solid var(--accent);outline-offset:2px;}
+  input:focus-visible,select:focus-visible,.eq-in:focus-visible{
+    outline:2px solid var(--accent);outline-offset:1px;}
+  input[type=range]:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
+  input[type=checkbox]:focus-visible,input[type=radio]:focus-visible{
+    outline:2px solid var(--accent);outline-offset:2px;}
+  .st:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+  .tour-dot:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  /* ===== Responsive: mobile breakpoint <= 599px ===== */
+  @media (max-width:899px){
+    #wcMain{padding:0 28px 40vh;}
+  }
+  @media (max-width:599px){
+    body{font-size:14px;}
+    #layout{flex-direction:column;height:auto;overflow:visible;}
+    #wcMain{height:auto;overflow:visible;padding:0 16px 30vh;order:1;}
+    .detail-grid.two .sl-cols,.col-head{grid-template-columns:1fr;}
+  }
+  /* When the MAIN AREA (not the viewport) is <=599px, the map spans full content width,
+     hides title/legend (uniform tile rows), and shrinks the box text. Toggled by JS. */
+  #wcMain.narrow{padding-left:28px;padding-right:28px;}   /* reduce page margins when the main area is <=599px */
+  #wcMain.narrow #usmap{padding:0;max-width:100%;}
+  #wcMain.narrow .map-title,#wcMain.narrow .map-legend{display:none;}
+  #wcMain.narrow .st .ab{font-size:9px;}
+  #wcMain.narrow .st .rt{font-size:7px;}
+  /* viewport 526-599px: larger text inside the map boxes */
+  @media (min-width:526px) and (max-width:599px){
+    #wcMain.narrow .st .ab{font-size:13px;}
+    #wcMain.narrow .st .rt{font-size:10px;}
+  }
+  /* viewport 600-850px: drop the map's extra side padding; cap the map itself at 625px */
+  @media (min-width:600px) and (max-width:850px){
+    #usmap{padding-left:0;padding-right:0;max-width:625px;}
+  }
+  /* viewport < 700px: map sits flush to the page content margins (no extra side padding, no centering cap) */
+  @media (max-width:699px){
+    #wcMain #usmap,
+    #wcMain.narrow #usmap{padding-left:0;padding-right:0;max-width:none;margin-left:0;margin-right:0;}
+  }
+  /* approaching 600px (above mobile mode): keep section titles larger — reduce them less than the clamp floor would */
+  @media (min-width:600px) and (max-width:760px){
+    .topic h1{font-size:28px;}
+    .topic h2{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+<div id="layout">
+  <main id="wcMain">
+    <!-- ============ Welcome tour (four modal tiles over a grayed-out main area) ============ -->
+    <div id="tour">
+        <div class="tour-card" id="tour1">
+          <div class="tour-left"></div>
+          <div class="tour-right">
+            <p class="tour-eyebrow">THE COMPLETE PICTURE</p>
+            <h2 class="tour-title">All your accounts in one secure place</h2>
+            <p class="tour-body">Link your external bank and brokerage accounts to view them all at once. Stop guessing, looking up one account at a time, or tracking your accounts in a spreadsheet. Get up-to-date data and personalized analysis with a few clicks.</p>
+            <div class="tour-nav">
+              <div class="tour-dots"><span class="tour-dot on"></span><span class="tour-dot"></span><span class="tour-dot"></span><span class="tour-dot"></span></div>
+              <button class="btn primary tour-next" data-tour="1">Next</button>
+            </div>
+          </div>
+        </div>
+        <div class="tour-card hidden" id="tour2">
+          <div class="tour-left"></div>
+          <div class="tour-right">
+            <p class="tour-eyebrow">FINANCIAL GUIDANCE</p>
+            <h2 class="tour-title">Better data means better decisions</h2>
+            <p class="tour-body">Get personalized answers to your financial questions – the specific questions you think of during the day or late at night. Use your own financial data and instant analysis to make confident decisions about your money.</p>
+            <div class="tour-nav">
+              <div class="tour-dots"><span class="tour-dot"></span><span class="tour-dot on"></span><span class="tour-dot"></span><span class="tour-dot"></span></div>
+              <button class="btn primary tour-next" data-tour="2">Next</button>
+            </div>
+          </div>
+        </div>
+        <div class="tour-card hidden" id="tour3">
+          <div class="tour-left"></div>
+          <div class="tour-right">
+            <p class="tour-eyebrow">SECURE BY DESIGN</p>
+            <h2 class="tour-title">Nine layers of security and privacy</h2>
+            <p class="tour-body">Your data is protected by nine interlinked layers of protection, is never used to train an AI model, and is never exposed to the outside Internet. Keep your sensitive financial information private and safe.</p>
+            <div class="tour-nav">
+              <div class="tour-dots"><span class="tour-dot"></span><span class="tour-dot"></span><span class="tour-dot on"></span><span class="tour-dot"></span></div>
+              <button class="btn primary tour-next" data-tour="3">Next</button>
+            </div>
+          </div>
+        </div>
+        <div class="tour-card hidden" id="tour4">
+          <div class="tour-left"></div>
+          <div class="tour-right">
+            <p class="tour-eyebrow">ALWAYS IN CONTROL</p>
+            <h2 class="tour-title">Track your progress throughout the year</h2>
+            <p class="tour-body">Monitor your money with ease – we do the work and you make the decisions. Optimize your finances and make sure you're not missing out on important tax opportunities.</p>
+            <div class="tour-nav">
+              <div class="tour-dots"><span class="tour-dot"></span><span class="tour-dot"></span><span class="tour-dot"></span><span class="tour-dot on"></span></div>
+              <button class="btn primary tour-next" data-tour="4">Get started</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div id="wcInner">
+
+      <!-- ================= Topic 1 ================= -->
+      <section class="topic" id="t1">
+        <p class="eyebrow">EVERGREEN.AI</p>
+        <h1>Welcome!</h1>
+        <p class="lead">Let me answer your money questions. First, a little bit about you.</p>
+        <div class="next-wrap"><button class="btn primary" data-next="t1b">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 1b (your name) ================= -->
+      <section class="topic hidden" id="t1b">
+        <p class="eyebrow">YOUR NAME</p>
+        <h2>Let's get started</h2>
+        <div class="name-form">
+          <label class="hf-row"><span>First Name</span><input type="text" id="selfFirst" autocomplete="given-name"></label>
+          <label class="hf-row"><span>Last Name</span><input type="text" id="selfLast" autocomplete="family-name"></label>
+          <label class="hf-row hf-age"><span>Age</span><input type="text" id="selfAge" inputmode="numeric"></label>
+        </div>
+        <div class="next-wrap"><button class="btn primary" data-next="t2a">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 2a ================= -->
+      <section class="topic hidden" id="t2a">
+        <p class="eyebrow">Your family</p>
+        <h2>Who is in your household?</h2>
+        <div class="qblock">
+          <p class="qlabel">Do you have a spouse or domestic partner?</p>
+          <div class="btn-row" id="spouseSet">
+            <button class="pill" data-spouse="yes">Yes</button>
+            <button class="pill" data-spouse="no">No</button>
+          </div>
+        </div>
+        <div class="qblock">
+          <p class="qlabel">Do you have children or dependents?</p>
+          <div class="pillset" id="kidsSet">
+            <button class="pill" data-kids="0">0</button>
+            <button class="pill" data-kids="1">1</button>
+            <button class="pill" data-kids="2">2</button>
+            <button class="pill" data-kids="3">3</button>
+            <button class="pill" data-kids="4">4</button>
+            <button class="pill" data-kids="5">5</button>
+            <button class="pill" data-kids="6">6+</button>
+          </div>
+        </div>
+        <div class="next-wrap"><button class="btn primary" data-next="t3a">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 3a ================= -->
+      <section class="topic hidden" id="t3a">
+        <p class="eyebrow">YOUR RESIDENCE</p>
+        <h2>Click on your state</h2>
+        <p class="lead" style="max-width:none">Where do you reside for tax purposes?</p>
+        <div id="usmap"></div>
+        <div class="next-wrap"><button class="btn primary" id="t3aNext">Next</button><a class="skip-next" id="t3aSkip" href="#">Skip</a></div>
+      </section>
+
+      <!-- ================= Subtopic 3b ================= -->
+      <section class="topic hidden" id="t3b">
+        <p class="eyebrow">STATE TAX RATES</p>
+        <h2 id="t3bTitle">State tax brackets</h2>
+        <div id="bracketWrap" style="overflow:auto"></div>
+        <div class="next-wrap"><button class="btn primary" data-next="t4a">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 4a ================= -->
+      <section class="topic hidden" id="t4a">
+        <p class="eyebrow">YOUR INCOME</p>
+        <h2>Let's estimate your total taxes</h2>
+        <div id="stateBlock" class="slider-block" style="max-width:340px">
+          <div class="sl-head"><span class="sl-label">Your state</span></div>
+          <select id="stateSelect" class="wc-select"><option value="">Select a state…</option></select>
+        </div>
+        <div id="localityBlock" class="qblock hidden" style="margin-bottom:30px"></div>
+        <div class="slider-block" id="householdBlock">
+          <div class="sl-head"><span class="sl-label">Your household income</span><span class="sl-val" id="incVal">$100,000</span></div>
+          <input type="range" id="incSlider" min="0" max="1000" value="375">
+        </div>
+        <div class="next-wrap"><button class="btn primary" id="t4next">Next</button></div>
+      </section>
+
+      <!-- ================= Subtopic 4 (income ranking) ================= -->
+      <section class="topic hidden" id="t4rank">
+        <p class="eyebrow">YOUR INCOME</p>
+        <h2>Your Income vs U.S. households</h2>
+        <div id="rankWrap"></div>
+        <div class="next-wrap"><button class="btn primary" data-next="t4b" id="t4rankNext">Next</button></div>
+      </section>
+
+      <!-- ================= Subtopic 4b ================= -->
+      <section class="topic hidden" id="t4b">
+        <p class="eyebrow">Your taxes</p>
+        <h2>Your estimated tax rates</h2>
+        <div id="taxWrap" style="overflow:auto"></div>
+        <div class="next-wrap"><button class="btn primary" data-next="t4c" id="t4bNext">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 4c (rent or own) ================= -->
+      <section class="topic hidden" id="t4c">
+        <p class="eyebrow">YOUR HOME</p>
+        <h2>Do you rent or own your home?</h2>
+        <div class="radioset">
+          <label class="radio-row"><input type="radio" name="ownrent" value="rent"> I rent my home</label>
+          <label class="radio-row"><input type="radio" name="ownrent" value="own"> I own my home</label>
+          <label class="radio-row"><input type="radio" name="ownrent" value="own2"> I own multiple homes</label>
+        </div>
+        <div class="next-wrap"><button class="btn primary" id="t4cNext">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 5 (one home: value / mortgage / net equity) ================= -->
+      <section class="topic hidden" id="t5">
+        <p class="eyebrow">YOUR HOME</p>
+        <h2>What is your home worth?</h2>
+        <p class="home-block-title">Primary Residence</p>
+        <div class="equity-form">
+          <label class="eq-row"><span class="eq-lbl">Home value</span><input type="text" id="homeVal" class="eq-in" inputmode="numeric" placeholder="$"></label>
+          <label class="eq-row"><span class="eq-lbl">Mortgage balance</span><input type="text" id="homeMort" class="eq-in" inputmode="numeric" placeholder="$"></label>
+          <div class="eq-row eq-total"><span class="eq-lbl">Net equity</span><span class="eq-out" id="homeEq">$0</span></div>
+        </div>
+        <div class="next-wrap"><button class="btn primary" data-next="t9" id="t5next">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 5b (two homes) ================= -->
+      <section class="topic hidden" id="t5b">
+        <p class="eyebrow">YOUR HOME</p>
+        <h2>What are your homes worth?</h2>
+        <div class="homes-two">
+          <div class="home-block">
+            <p class="home-block-title">Primary Residence</p>
+            <div class="equity-form">
+              <label class="eq-row"><span class="eq-lbl">Home value</span><input type="text" id="home1Val" class="eq-in" inputmode="numeric" placeholder="$"></label>
+              <label class="eq-row"><span class="eq-lbl">Mortgage balance</span><input type="text" id="home1Mort" class="eq-in" inputmode="numeric" placeholder="$"></label>
+              <div class="eq-row eq-total"><span class="eq-lbl">Net equity</span><span class="eq-out" id="home1Eq">$0</span></div>
+            </div>
+          </div>
+          <div class="home-block">
+            <p class="home-block-title">Second Home</p>
+            <div class="equity-form">
+              <label class="eq-row"><span class="eq-lbl">Home value</span><input type="text" id="home2Val" class="eq-in" inputmode="numeric" placeholder="$"></label>
+              <label class="eq-row"><span class="eq-lbl">Mortgage balance</span><input type="text" id="home2Mort" class="eq-in" inputmode="numeric" placeholder="$"></label>
+              <div class="eq-row eq-total"><span class="eq-lbl">Net equity</span><span class="eq-out" id="home2Eq">$0</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="equity-form total-equity" style="max-width:400px;margin-top:24px">
+          <div class="eq-row eq-total"><span class="eq-lbl">Total net equity</span><span class="eq-out" id="homesTotalEq">$0</span></div>
+        </div>
+        <div class="add-home-wrap"><button class="btn" id="addHome" type="button">+ Add Home</button></div>
+        <div class="next-wrap"><button class="btn primary" data-next="t9" id="t5bnext">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 9 (financial accounts) ================= -->
+      <section class="topic hidden" id="t9">
+        <p class="eyebrow">YOUR ACCOUNTS</p>
+        <h2>What are your investable assets?</h2>
+        <div class="slider-block" id="acctSimpleBlock">
+          <div class="sl-head"><span class="sl-label">Your Financial Accounts</span><span class="sl-val" id="acctVal">$500,000</span></div>
+          <input type="range" id="acctSlider" min="0" max="1000" value="375">
+        </div>
+        <label class="checkrow"><input type="checkbox" id="acctDetailChk"> Provide detail for better estimates.</label>
+        <p class="acct-hint" id="acctHint">You may click on the blue numbers to make more precise entries.</p>
+        <div id="acctDetailBox" class="hidden"></div>
+        <div class="next-wrap"><button class="btn primary" data-next="t10" id="t9next">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 10 (savings multiple vs age) ================= -->
+      <section class="topic hidden" id="t10">
+        <p class="eyebrow">YOUR SAVINGS</p>
+        <h2>Are you on track?</h2>
+        <div id="savingsWrap"></div>
+        <div class="next-wrap"><button class="btn primary" data-next="t10b" id="t10next">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 10b (lifetime planning) ================= -->
+      <section class="topic hidden" id="t10b">
+        <p class="eyebrow">LIFETIME PLANNING</p>
+        <h2>Project your financial future</h2>
+        <div class="lp-form">
+          <label class="hf-row"><span>When do you plan to retire?</span><input type="text" id="retireAge" inputmode="numeric" placeholder="Age"></label>
+          <label class="checkrow lp-check"><input type="checkbox" id="alreadyRetired"> Already retired</label>
+          <label class="hf-row"><span>Annual savings as a percent of gross income</span><input type="text" id="savingsPct" inputmode="numeric" placeholder="%"></label>
+        </div>
+        <div class="next-wrap"><button class="btn primary" data-next="t11" id="t10bNext">Next</button></div>
+      </section>
+
+      <!-- ================= Topic 11 (additional information) ================= -->
+      <section class="topic hidden" id="t11">
+        <p class="eyebrow">INFORMATION</p>
+        <h2>Do you have these items?</h2>
+        <p class="lead" style="margin:0 0 24px">If you do, we can dive deeper into these topics if you like.</p>
+        <div class="checklist">
+          <label class="check-item"><input type="checkbox"> A second home</label>
+          <label class="check-item"><input type="checkbox"> Rental property</label>
+          <label class="check-item"><input type="checkbox"> Equity compensation</label>
+          <label class="check-item"><input type="checkbox"> Own a business</label>
+          <label class="check-item"><input type="checkbox"> Social Security</label>
+          <label class="check-item"><input type="checkbox"> Medicare or Medicaid</label>
+          <label class="check-item"><input type="checkbox"> Life insurance</label>
+          <label class="check-item"><input type="checkbox"> Other property</label>
+        </div>
+        <div class="next-wrap"><button class="btn primary" id="t11next">Next</button></div>
+      </section>
+    </div>
+    <div id="wcTools">
+      <span class="lang-seg notranslate" id="langSeg"><button type="button" data-lang="en" class="on">EN</button><button type="button" data-lang="es">ES</button></span>
+      <button class="wc-theme" id="themeBtn">◐ Theme</button>
+    </div>
+  </main>
+</div>
+
+<script>
+/* ============================================================================
+   DATA — 2026 federal constants + STATES (mirrors specialized_components_v1)
+   ============================================================================ */
+const FED_ORD={
+  single:[[0,.10],[12400,.12],[50400,.22],[105700,.24],[201775,.32],[256225,.35],[640600,.37]],
+  mfj:[[0,.10],[24800,.12],[100800,.22],[211400,.24],[403550,.32],[512450,.35],[768700,.37]],
+  mfs:[[0,.10],[12400,.12],[50400,.22],[105700,.24],[201775,.32],[256225,.35],[384350,.37]],
+  hoh:[[0,.10],[17700,.12],[67450,.22],[105700,.24],[201775,.32],[256200,.35],[640600,.37]]
+};
+const FED_CG={ single:[[0,0],[49450,.15],[545500,.20]], mfj:[[0,0],[98900,.15],[613700,.20]],
+  mfs:[[0,0],[49450,.15],[306850,.20]], hoh:[[0,0],[66200,.15],[579600,.20]] };
+const STD_DED={single:16100,mfj:32200,mfs:16100,hoh:24150};
+const NIIT_T={single:200000,mfj:250000,mfs:125000,hoh:200000}, NIIT_R=0.038;
+
+const STATES=[
+  {a:'AL',n:'Alabama',m:{t:'grad',b:[[0,.02],[500,.04],[3000,.05]]},bMfj:[[0,.02],[1000,.04],[6000,.05]]},
+  {a:'AK',n:'Alaska',m:{t:'none'}},
+  {a:'AZ',n:'Arizona',m:{t:'flat',r:.025}},
+  {a:'AR',n:'Arkansas',m:{t:'grad',b:[[0,.02],[4600,.039]]}},
+  {a:'CA',n:'California',m:{t:'grad',b:[[0,.01],[11079,.02],[26264,.04],[41452,.06],[57542,.08],[72724,.093],[371479,.103],[445771,.113],[742953,.123],[1000000,.133]]},bMfj:[[0,.01],[22158,.02],[52528,.04],[82904,.06],[115084,.08],[145448,.093],[742958,.103],[891542,.113],[1000000,.123],[1485906,.133]]},
+  {a:'CO',n:'Colorado',m:{t:'flat',r:.044}},
+  {a:'CT',n:'Connecticut',m:{t:'grad',b:[[0,.02],[10000,.045],[50000,.055],[100000,.06],[200000,.065],[250000,.069],[500000,.0699]]},bMfj:[[0,.02],[20000,.045],[100000,.055],[200000,.06],[400000,.065],[500000,.069],[1000000,.0699]]},
+  {a:'DE',n:'Delaware',m:{t:'grad',b:[[2000,.022],[5000,.039],[10000,.048],[20000,.052],[25000,.0555],[60000,.066]]}},
+  {a:'FL',n:'Florida',m:{t:'none'}},
+  {a:'GA',n:'Georgia',m:{t:'flat',r:.0519}},
+  {a:'HI',n:'Hawaii',m:{t:'grad',b:[[0,.014],[9600,.032],[14400,.055],[19200,.064],[24000,.068],[36000,.072],[48000,.076],[125000,.079],[175000,.0825],[225000,.09],[275000,.1],[325000,.11]]},bMfj:[[0,.014],[19200,.032],[28800,.055],[38400,.064],[48000,.068],[72000,.072],[96000,.076],[250000,.079],[350000,.0825],[450000,.09],[550000,.1],[650000,.11]]},
+  {a:'ID',n:'Idaho',m:{t:'grad',b:[[4811,.053]]},bMfj:[[9622,.053]]},
+  {a:'IL',n:'Illinois',m:{t:'flat',r:.0495}},
+  {a:'IN',n:'Indiana',m:{t:'flat',r:.0295}},
+  {a:'IA',n:'Iowa',m:{t:'flat',r:.038}},
+  {a:'KS',n:'Kansas',m:{t:'grad',b:[[0,.052],[23000,.0558]]},bMfj:[[0,.052],[46000,.0558]]},
+  {a:'KY',n:'Kentucky',m:{t:'flat',r:.035}},
+  {a:'LA',n:'Louisiana',m:{t:'flat',r:.03}},
+  {a:'ME',n:'Maine',m:{t:'grad',b:[[0,.058],[27399,.0675],[64849,.0715]]},bMfj:[[0,.058],[54849,.0675],[129749,.0715]]},
+  {a:'MD',n:'Maryland',m:{t:'grad',b:[[0,.02],[1000,.03],[2000,.04],[3000,.0475],[100000,.05],[125000,.0525],[150000,.055],[250000,.0575],[500000,.0625],[1000000,.065]]},bMfj:[[0,.02],[1000,.03],[2000,.04],[3000,.0475],[150000,.05],[175000,.0525],[225000,.055],[300000,.0575],[600000,.0625],[1200000,.065]]},
+  {a:'MA',n:'Massachusetts',m:{t:'grad',b:[[0,.05],[1083150,.09]]}},
+  {a:'MI',n:'Michigan',m:{t:'flat',r:.0425}},
+  {a:'MN',n:'Minnesota',m:{t:'grad',b:[[0,.0535],[33310,.068],[109430,.0785],[203150,.0985]]},bMfj:[[0,.0535],[48700,.068],[193480,.0785],[337930,.0985]]},
+  {a:'MS',n:'Mississippi',m:{t:'grad',b:[[10000,.04]]}},
+  {a:'MO',n:'Missouri',m:{t:'grad',b:[[1348,.02],[2696,.025],[4044,.03],[5392,.035],[6740,.04],[8088,.045],[9436,.047]]}},
+  {a:'MT',n:'Montana',m:{t:'grad',b:[[0,.047],[47500,.0565]]},bMfj:[[0,.047],[95000,.0565]]},
+  {a:'NE',n:'Nebraska',m:{t:'grad',b:[[0,.0246],[4130,.0351],[24760,.0455]]},bMfj:[[0,.0246],[8250,.0351],[49530,.0455]]},
+  {a:'NV',n:'Nevada',m:{t:'none'}},
+  {a:'NH',n:'New Hampshire',m:{t:'none'}},
+  {a:'NJ',n:'New Jersey',m:{t:'grad',b:[[0,.014],[20000,.0175],[35000,.035],[40000,.05525],[75000,.0637],[500000,.0897],[1000000,.1075]]},bMfj:[[0,.014],[20000,.0175],[50000,.0245],[70000,.035],[80000,.05525],[150000,.0637],[500000,.0897],[1000000,.1075]]},
+  {a:'NM',n:'New Mexico',m:{t:'grad',b:[[0,.015],[5500,.032],[16500,.043],[33500,.047],[66500,.049],[210000,.059]]},bMfj:[[0,.015],[8000,.032],[25000,.043],[50000,.047],[100000,.049],[315000,.059]]},
+  {a:'NY',n:'New York',m:{t:'grad',b:[[0,.039],[8500,.044],[11700,.0515],[13900,.054],[80650,.059],[215400,.0685],[1077550,.0965],[5000000,.103],[25000000,.109]]},bMfj:[[0,.039],[17150,.044],[23600,.0515],[27900,.054],[161550,.059],[323200,.0685],[2155350,.0965],[5000000,.103],[25000000,.109]]},
+  {a:'NC',n:'North Carolina',m:{t:'flat',r:.0399}},
+  {a:'ND',n:'North Dakota',m:{t:'grad',b:[[48475,.0195],[244825,.025]]},bMfj:[[80975,.0195],[298075,.025]]},
+  {a:'OH',n:'Ohio',m:{t:'grad',b:[[26050,.0275]]}},
+  {a:'OK',n:'Oklahoma',m:{t:'grad',b:[[3750,.025],[4900,.035],[7200,.045]]},bMfj:[[7500,.025],[9800,.035],[14400,.045]]},
+  {a:'OR',n:'Oregon',m:{t:'grad',b:[[0,.0475],[4550,.0675],[11400,.0875],[125000,.099]]},bMfj:[[0,.0475],[9100,.0675],[22800,.0875],[250000,.099]]},
+  {a:'PA',n:'Pennsylvania',m:{t:'flat',r:.0307}},
+  {a:'RI',n:'Rhode Island',m:{t:'grad',b:[[0,.0375],[82050,.0475],[186450,.0599]]}},
+  {a:'SC',n:'South Carolina',m:{t:'grad',b:[[0,0],[3640,.03],[18230,.06]]}},
+  {a:'SD',n:'South Dakota',m:{t:'none'}},
+  {a:'TN',n:'Tennessee',m:{t:'none'}},
+  {a:'TX',n:'Texas',m:{t:'none'}},
+  {a:'UT',n:'Utah',m:{t:'flat',r:.045}},
+  {a:'VT',n:'Vermont',m:{t:'grad',b:[[0,.0335],[49400,.066],[119700,.076],[249700,.0875]]},bMfj:[[0,.0335],[82500,.066],[199450,.076],[304000,.0875]]},
+  {a:'VA',n:'Virginia',m:{t:'grad',b:[[0,.02],[3000,.03],[5000,.05],[17000,.0575]]}},
+  {a:'WA',n:'Washington',m:{t:'none'}},
+  {a:'DC',n:'Washington DC',m:{t:'grad',b:[[0,.04],[10000,.06],[40000,.065],[60000,.085],[250000,.0925],[500000,.0975],[1000000,.1075]]}},
+  {a:'WV',n:'West Virginia',m:{t:'grad',b:[[0,.0222],[10000,.0296],[25000,.0333],[40000,.0444],[60000,.0482]]}},
+  {a:'WI',n:'Wisconsin',m:{t:'grad',b:[[0,.035],[15110,.044],[51950,.053],[332720,.0765]]},bMfj:[[0,.035],[20150,.044],[69260,.053],[443630,.0765]]},
+  {a:'WY',n:'Wyoming',m:{t:'none'}}
+];
+const ST_BY={}; STATES.forEach(s=>ST_BY[s.a]=s);
+
+/* localities with their own local income tax (rate = local marginal rate) */
+const LOC={
+  AL:[{n:'Birmingham',r:.01},{n:'Gadsden',r:.02}],
+  DE:[{n:'Wilmington',r:.0125}],
+  IN:[{n:'Marion Co. (Indianapolis)',r:.0202},{n:'Allen Co. (Fort Wayne)',r:.0159},{n:'Lake County',r:.015}],
+  KY:[{n:'Louisville (Jefferson Co.)',r:.022},{n:'Lexington (Fayette Co.)',r:.0225}],
+  MD:[{n:'Baltimore City',r:.032},{n:'Montgomery County',r:.032},{n:'Anne Arundel County',r:.0281}],
+  MI:[{n:'Detroit',r:.024},{n:'Grand Rapids',r:.015},{n:'Lansing',r:.01},{n:'Flint',r:.024}],
+  MO:[{n:'Kansas City',r:.01},{n:'St. Louis',r:.01}],
+  NY:[{n:'New York City',r:.03876},{n:'Yonkers (resident)',r:.01955}],
+  OH:[{n:'Columbus',r:.025},{n:'Cleveland',r:.025},{n:'Cincinnati',r:.018},{n:'Toledo',r:.025},{n:'Akron',r:.025}],
+  OR:[{n:'Portland Metro (Multnomah)',r:.03}],
+  PA:[{n:'Philadelphia',r:.0375},{n:'Pittsburgh',r:.03},{n:'Scranton',r:.034}]
+};
+STATES.forEach(s=>{ if(LOC[s.a]) s.loc=LOC[s.a]; });
+
+/* tile-grid layout [row,col] 1-indexed, 11 cols — matches the supplied reference map.
+   Row 1 holds AK (left) and ME (right) flanking the legend; WI pokes up at row 2. */
+const GRID={
+  AK:[1,1], ME:[1,11],
+  WI:[2,6], VT:[2,10], NH:[2,11],
+  WA:[3,1], ID:[3,2], MT:[3,3], ND:[3,4], MN:[3,5], IL:[3,6], MI:[3,7], NY:[3,10], MA:[3,11],
+  OR:[4,1], NV:[4,2], WY:[4,3], SD:[4,4], IA:[4,5], IN:[4,6], OH:[4,7], PA:[4,8], NJ:[4,9], CT:[4,10], RI:[4,11],
+  CA:[5,1], UT:[5,2], CO:[5,3], NE:[5,4], MO:[5,5], KY:[5,6], WV:[5,7], VA:[5,8], MD:[5,9], DE:[5,10],
+  AZ:[6,2], NM:[6,3], KS:[6,4], AR:[6,5], TN:[6,6], NC:[6,7], SC:[6,8], DC:[6,9],
+  OK:[7,4], LA:[7,5], MS:[7,6], AL:[7,7], GA:[7,8],
+  HI:[8,1], TX:[8,4], FL:[8,9]
+};
+
+/* ============================================================================
+   HELPERS
+   ============================================================================ */
+const $=id=>document.getElementById(id);
+const usd=n=>'$'+Math.round(n).toLocaleString('en-US');
+const pct=r=>(r*100).toFixed(2).replace(/\.00$/,'')+'%';
+function bTax(b,inc){let t=0;for(let i=0;i<b.length;i++){const lo=b[i][0],hi=i+1<b.length?b[i+1][0]:Infinity;if(inc>lo)t+=(Math.min(inc,hi)-lo)*b[i][1];else break;}return t;}
+function bRate(b,inc){let r=b[0][1];for(let i=0;i<b.length;i++){if(inc>=b[i][0])r=b[i][1];}return r;}
+function maxRate(st){const m=st.m;if(m.t==='none')return 0;if(m.t==='flat')return m.r;return m.b[m.b.length-1][1];}
+const LEG_MAX=0.12;   // legend tops out at 12%
+/* one-decimal display, rounded UP to the next 0.1% */
+function fmtRate1(r){return (Math.ceil(r*1000)/10).toFixed(1)+'%';}
+/* white (0%) -> darkish blue (>=12%). The ramp is eased (t^1.7) so the blue deepens
+   slowly at the low end — e.g. 4% reads noticeably lighter than a linear ramp. */
+function rampT(rawFrac){ return Math.pow(Math.max(0,Math.min(1,rawFrac)),1.7); }
+function rgbAt(t){
+  if(document.documentElement.getAttribute('data-theme')==='dark'){
+    var a=[201,217,244], b=[36,84,188];   // very light blue (0%) -> darker blue (high)
+    return `rgb(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)})`;
+  }
+  return `rgb(${Math.round(255+(30-255)*t)},${Math.round(255+(102-255)*t)},${Math.round(255+(240-255)*t)})`;
+}
+function stateColor(st){
+  const t=rampT(Math.min(maxRate(st),LEG_MAX)/LEG_MAX);
+  return {bg:rgbAt(t), fg: t>0.55?'#ffffff':'#1a1a1a'};
+}
+function stateTax(st,taxable,filing){const m=st.m;if(m.t==='none')return 0;if(m.t==='flat')return m.r*taxable;
+  const b=(filing==='mfj'&&st.bMfj)?st.bMfj:m.b;return bTax(b,taxable);}
+function stateMarg(st,taxable,filing){const m=st.m;if(m.t==='none')return 0;if(m.t==='flat')return m.r;
+  const b=(filing==='mfj'&&st.bMfj)?st.bMfj:m.b;return bRate(b,taxable);}
+
+/* ============================================================================
+   STATE OF THE FLOW
+   ============================================================================ */
+const S={ spouse:null, kids:null, state:null, stateFromMap:false, locality:null, filing:null, income:100000,
+          acctTotal:500000, acctDetail:false, acct:{bank:[null,null],brokerage:[null,null],k401:[null,null],ira:[null,null],roth:[null,null],other:[null,null]},
+          detail:false, salary:[null,null], interest:[null,null], dividends:[null,null],
+          people:[] };
+const FILING=()=>S.spouse==='yes'?'mfj':'single';
+
+/* ---- reveal helpers (pin new topic 50px below top, scroll others up) ---- */
+function reveal(id){
+  const el=$(id); if(!el) return;
+  el.classList.remove('hidden');
+  if(id==='t4a') refreshStateUI();   // show/hide the state dropdown + locality radios
+  if(id==='t9' && S.acctDetail) buildAcctDetail();   // rebuild accounts detail (picks up 2 columns if spouse)
+  // scroll so the newly revealed topic sits at WC_TOP_OFFSET
+  requestAnimationFrame(()=>{ el.scrollIntoView({behavior:'smooth',block:'start'}); });
+}
+document.querySelectorAll('[data-next]').forEach(btn=>{
+  btn.addEventListener('click',()=>reveal(btn.dataset.next));
+});
+
+/* ===== Welcome tour (four modal tiles) ===== */
+(function initTour(){
+  const main=$('wcMain'), tour=$('tour');
+  if(!tour) return;
+  main.classList.add('tour-open');
+  function show(n){
+    for(let i=1;i<=4;i++){ const c=$('tour'+i); if(c) c.classList.toggle('hidden', i!==n); }
+  }
+  function close(){
+    tour.classList.add('hidden');
+    main.classList.remove('tour-open');
+  }
+  tour.querySelectorAll('.tour-next').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const n=parseInt(btn.dataset.tour,10);
+      if(n>=4) close(); else show(n+1);
+    });
+  });
+  // progress dots navigate between tiles
+  tour.querySelectorAll('.tour-dots').forEach(dots=>{
+    Array.prototype.forEach.call(dots.children,(dot,i)=>{
+      dot.addEventListener('click',()=>show(i+1));
+    });
+  });
+  show(1);
+})();
+
+/* ============================================================================
+   TOPIC 2a — spouse / kids
+   ============================================================================ */
+function pickSpouse(v){
+  S.spouse=v;
+  $('spouseSet').querySelectorAll('.pill').forEach(p=>p.classList.toggle('sel',p.dataset.spouse===v));
+  onFamilyChange();
+}
+function pickKids(v){
+  S.kids=v;
+  $('kidsSet').querySelectorAll('.pill').forEach(p=>p.classList.toggle('sel',+p.dataset.kids===v));
+  onFamilyChange();
+}
+/* a change to spouse/kids rebuilds the tree and ripples into any later screens already shown */
+function onFamilyChange(){
+  // advance to the state map only when the Next/Skip control is used
+  refreshDownstream();
+}
+/* re-render whichever later screens are already visible so they reflect current answers */
+function refreshDownstream(){
+  if(!$('t4a').classList.contains('hidden')){ refreshStateUI(); }
+  if(!$('t3b').classList.contains('hidden') && S.state) buildBrackets();
+  if(!$('t4b').classList.contains('hidden')) buildTax();
+}
+$('spouseSet').addEventListener('click',e=>{const b=e.target.closest('[data-spouse]');if(b)pickSpouse(b.dataset.spouse);});
+$('kidsSet').addEventListener('click',e=>{const b=e.target.closest('[data-kids]');if(b)pickKids(+b.dataset.kids);});
+
+/* ============================================================================
+   Name / household helpers — feed the account-detail "You" / "Spouse" headers
+   ============================================================================ */
+function defRole(kind){return kind==='self'?'You':kind==='spouse'?'Spouse / Partner':'Child';}
+function firstName(full){return (full||'').trim().split(/\s+/)[0]||'';}
+function dispName(kind,idx){
+  const p=S.people.find(x=>x.kind===kind&&x.idx===(idx||0));
+  const fn=p&&firstName(p.name);
+  return fn?fn:defRole(kind);
+}
+
+/* ============================================================================
+   TOPIC 3a — US map
+   ============================================================================ */
+function buildMap(){
+  const g=$('usmap'); g.innerHTML='';
+  // title on the left (against Alaska), legend on the right (against Maine), same top line
+  const title=document.createElement('div');
+  title.className='map-title'; title.style.gridRow='1'; title.style.gridColumn='2 / 6';
+  title.innerHTML='Highest Marginal<br>Tax Rate';
+  g.appendChild(title);
+  const leg=document.createElement('div');
+  leg.className='map-legend'; leg.style.gridRow='6 / 9'; leg.style.gridColumn='10 / 12';
+  const ticks=[12,10,8,6,4,2,0].map(v=>`<span>${v}%</span>`).join('');   // 0% at bottom, rising
+  leg.innerHTML=`<div class="ml-ticks">${ticks}</div><div class="ml-bar"></div>`;
+  g.appendChild(leg);
+  // legend gradient matches the eased map ramp (0% at bottom -> 12% at top)
+  const stops=[]; for(let i=0;i<=12;i++){ stops.push(rgbAt(rampT(i/12))+' '+Math.round(i/12*100)+'%'); }
+  leg.querySelector('.ml-bar').style.background='linear-gradient(to top,'+stops.join(',')+')';
+  STATES.forEach(st=>{
+    const pos=GRID[st.a]; if(!pos) return;
+    const c=stateColor(st);
+    const d=document.createElement('div');
+    d.className='st'; d.style.gridRow=pos[0]; d.style.gridColumn=pos[1];
+    d.style.background=c.bg; d.style.color=c.fg;
+    d.dataset.st=st.a;
+    d.innerHTML=`<span class="ab">${st.a}</span><span class="rt">${fmtRate1(maxRate(st))}</span>`;
+    d.addEventListener('click',()=>pickState(st.a));
+    g.appendChild(d);
+  });
+}
+function pickState(a){
+  if(!ST_BY[a]) return;
+  S.state=a; S.stateFromMap=true; S.locality=null;   // chosen by clicking the map
+  $('usmap').querySelectorAll('.st').forEach(d=>d.classList.toggle('sel',d.dataset.st===a));
+  if($('stateSelect')) $('stateSelect').value=a;
+  buildBrackets();   // brackets prepared; advance only via Next/Skip
+  if(!$('t4a').classList.contains('hidden')) refreshStateUI();
+  if(!$('t4b').classList.contains('hidden')) buildTax();
+}
+/* state dropdown on the estimate screen (used when the map was skipped) */
+function initStateSelect(){
+  const sel=$('stateSelect'); if(!sel) return;
+  STATES.slice().sort((x,y)=>x.n.localeCompare(y.n)).forEach(s=>{
+    const o=document.createElement('option'); o.value=s.a; o.textContent=s.n; sel.appendChild(o);
+  });
+  sel.addEventListener('change',()=>{
+    if(!sel.value) return;
+    S.state=sel.value; S.stateFromMap=false; S.locality=null;
+    $('usmap').querySelectorAll('.st').forEach(d=>d.classList.toggle('sel',d.dataset.st===sel.value));
+    buildLocality(ST_BY[sel.value]);
+    if(!$('t3b').classList.contains('hidden')) buildBrackets();
+    if(!$('t4b').classList.contains('hidden')) buildTax();
+  });
+}
+/* on the estimate screen: hide the dropdown if a state was clicked on the map;
+   show locality radios when the chosen state has localities with their own tax */
+function refreshStateUI(){
+  const st=ST_BY[S.state]||null;
+  $('stateBlock').classList.toggle('hidden', !!S.stateFromMap);
+  if(st && $('stateSelect')) $('stateSelect').value=st.a;
+  buildLocality(st);
+}
+function buildLocality(st){
+  const box=$('localityBlock');
+  if(!st || !st.loc){ box.classList.add('hidden'); box.innerHTML=''; return; }
+  box.classList.remove('hidden');
+  const clean=n=>n.replace(/\s*\(.*\)\s*/,'');
+  let h=`<p class="qlabel" style="font-size:19px;margin-bottom:14px">Where in ${st.n}${st.a==='NY'?' state':''} do you live? (The cities below impose local income taxes).</p><div class="radioset">`;
+  st.loc.forEach((l,i)=>{ h+=`<label class="radio-row"><input type="radio" name="locality" value="${i}" ${S.locality===i?'checked':''}> I live in ${clean(l.n)}</label>`; });
+  h+=`<label class="radio-row"><input type="radio" name="locality" value="-1" ${S.locality==null?'checked':''}> Elsewhere in ${st.n} (no local tax)</label>`;
+  h+='</div>';
+  box.innerHTML=h;
+  box.querySelectorAll('input[name=locality]').forEach(r=>r.addEventListener('change',()=>{
+    const v=+r.value; S.locality = v<0?null:v;
+    if(!$('t4b').classList.contains('hidden')) buildTax();
+  }));
+}
+
+/* ============================================================================
+   SUBTOPIC 3b — bracket table
+   ============================================================================ */
+function buildBrackets(){
+  const st=ST_BY[S.state]; if(!st) return;
+  $('t3bTitle').textContent=`${st.n} — tax brackets`;
+  const wrap=$('bracketWrap');
+  if(st.m.t==='none'){ wrap.innerHTML=`<p class="lead" style="margin:0">${st.n} has no state income tax.</p>`; return; }
+  const CAP='Marginal tax rates on taxable income by bracket and filing status.';
+  if(st.m.t==='flat'){ wrap.innerHTML=`<table class="wc-table few"><caption>${CAP}</caption>
+     <thead><tr><th>Tax&nbsp;Rates</th><th>Taxable&nbsp;income</th></tr></thead>
+     <tbody><tr><td>${pct(st.m.r)}</td><td>$0 and up</td></tr></tbody></table>`; return; }
+  const single=st.m.b, mfj=st.bMfj||null;
+  // bracket i spans [start, next start); the last bracket is "$X and up".
+  // each amount is its own nowrap span so a narrow column wraps "to $Y" onto a 2nd line.
+  const range=(b,i)=>{const start=usd(b[i][0]); const tail=(i+1<b.length)?`to ${usd(b[i+1][0])}`:`and up`;
+    return `<span class="rng-a">${start}</span> <span class="rng-b">${tail}</span>`;};
+  // rate first, then a bracket-range column per filing status
+  const singleHdr = mfj ? 'Single Filer' : 'All Filers';   // one column -> single-line "All Filers"
+  const fewCls = single.length<=5 ? ' few' : '';
+  let h='<table class="wc-table'+fewCls+'"><caption>'+CAP+'</caption><thead><tr><th>Tax&nbsp;Rates</th><th>'+singleHdr+'</th>'+(mfj?'<th>Married Filing Jointly</th>':'')+'</tr></thead><tbody>';
+  for(let i=0;i<single.length;i++){
+    const m=mfj&&mfj[i]?mfj[i]:null;
+    h+=`<tr><td>${pct(single[i][1])}</td><td>${range(single,i)}</td>`+(mfj?`<td>${m?range(mfj,i):''}</td>`:'')+'</tr>';
+  }
+  h+='</tbody></table>';
+  wrap.innerHTML=h;
+  // if any range wrapped to a 2nd line, force ALL ranges onto two lines (uniform rows)
+  requestAnimationFrame(()=>{
+    const t=wrap.querySelector('table'); if(!t) return;
+    let wrapped=false;
+    t.querySelectorAll('td .rng-b').forEach(b=>{ const a=b.previousElementSibling;
+      if(a && b.getBoundingClientRect().top - a.getBoundingClientRect().top > 2) wrapped=true; });
+    t.classList.toggle('uniform2', wrapped);
+  });
+}
+
+/* ============================================================================
+   TOPIC 4a — income sliders (log scale 0 -> $1M)
+   ============================================================================ */
+/* slider scale: linear $0–$200k over the first 3/4, then logarithmic to $1M over the last 1/4 */
+const SL_MAX=1000, SL_KNEE=750, LIN_TOP=200000, LOG_TOP=1000000;
+function slToDollars(v){
+  if(v<=0) return 0;
+  if(v<=SL_KNEE) return Math.round(LIN_TOP*(v/SL_KNEE)/1000)*1000;
+  const f=(v-SL_KNEE)/(SL_MAX-SL_KNEE);
+  return Math.round(LIN_TOP*Math.pow(LOG_TOP/LIN_TOP,f)/1000)*1000;
+}
+function dollarsToSl(d){
+  if(d<=0) return 0;
+  if(d<=LIN_TOP) return Math.round(d/LIN_TOP*SL_KNEE);
+  const f=Math.log(d/LIN_TOP)/Math.log(LOG_TOP/LIN_TOP);
+  return Math.round(SL_KNEE+f*(SL_MAX-SL_KNEE));
+}
+/* paint the filled (left) portion accent on WebKit; the right stays the gray track */
+// Click a blue slider amount to type a number; the slider then moves to match.
+function editableVal(valEl, rangeEl, dollarsToPos){
+  if(!valEl||!rangeEl||valEl.dataset.editable) return;
+  valEl.dataset.editable='1';
+  valEl.addEventListener('click',()=>{
+    if(valEl.querySelector('input')) return;
+    const cur=(valEl.textContent||'').replace(/[^0-9]/g,'');
+    valEl.innerHTML='<input class="val-edit" type="text" inputmode="numeric">';
+    const inp=valEl.firstChild; inp.value=cur?(+cur).toLocaleString('en-US'):''; inp.focus(); inp.select();
+    const commit=()=>{ const d=parseInt(inp.value.replace(/[^0-9]/g,''),10)||0;
+      rangeEl.value=dollarsToPos(d); rangeEl.dispatchEvent(new Event('input',{bubbles:true})); };
+    inp.addEventListener('input',()=>{ const nraw=inp.value.replace(/[^0-9]/g,''); inp.value=nraw?(+nraw).toLocaleString('en-US'):''; });
+    inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault(); commit();}
+      else if(e.key==='Escape'){ rangeEl.dispatchEvent(new Event('input',{bubbles:true})); } });
+    inp.addEventListener('blur',commit);
+  });
+}
+function paintRange(el){ const mn=+el.min||0,mx=+el.max||100,p=Math.max(0,Math.min(100,(+el.value-mn)/(mx-mn)*100));
+  var trk=document.documentElement.getAttribute('data-theme')==='dark'?'#3a3d42':'#e4e4e4';
+  el.style.background=`linear-gradient(90deg,var(--accent) 0 ${p}%,${trk} ${p}% 100%)`; }
+
+/* accounts slider scale: linear $0–$1M over the first 3/4, then logarithmic to $10M over the last 1/4 */
+const ACCT_LIN_TOP=1000000, ACCT_LOG_TOP=10000000;
+function acctToDollars(v){
+  if(v<=0) return 0;
+  if(v<=SL_KNEE) return Math.round(ACCT_LIN_TOP*(v/SL_KNEE)/1000)*1000;
+  const f=(v-SL_KNEE)/(SL_MAX-SL_KNEE);
+  return Math.round(ACCT_LIN_TOP*Math.pow(ACCT_LOG_TOP/ACCT_LIN_TOP,f)/1000)*1000;
+}
+function dollarsToAcct(d){
+  if(d<=0) return 0;
+  if(d<=ACCT_LIN_TOP) return Math.round(d/ACCT_LIN_TOP*SL_KNEE);
+  const f=Math.log(d/ACCT_LIN_TOP)/Math.log(ACCT_LOG_TOP/ACCT_LIN_TOP);
+  return Math.round(SL_KNEE+f*(SL_MAX-SL_KNEE));
+}
+const ACCT_CATS=[['bank','Bank'],['brokerage','Brokerage'],['k401','401k'],
+                 ['ira','IRA'],['roth','Roth IRA']];
+function syncAcct(){ S.acctTotal=acctToDollars(+$('acctSlider').value); $('acctVal').textContent=usd(S.acctTotal); paintRange($('acctSlider'));
+  S.acct.brokerage[0]=S.acctTotal;   // summary slider drives Brokerage (You) in the detail area
+  const bsl=document.querySelector('#acctDetailBox input[data-acct="brokerage"][data-col="0"]');
+  if(bsl){ bsl.value=dollarsToAcct(S.acctTotal); paintRange(bsl); const av=$('av_brokerage_0'); if(av) av.textContent=usd(S.acctTotal);
+    let t0=0,t1=0; ACCT_CATS.forEach(([k])=>{ t0+=S.acct[k][0]||0; t1+=S.acct[k][1]||0; });
+    if($('atot_0')) $('atot_0').textContent=usd(t0); if($('atot_1')) $('atot_1').textContent=usd(t1); }
+}
+function buildAcctDetail(){
+  const box=$('acctDetailBox');
+  if(!S.acctDetail){ box.classList.add('hidden'); box.innerHTML=''; return; }
+  box.classList.remove('hidden');
+  if(S.acct.brokerage[0]==null) S.acct.brokerage[0]=S.acctTotal||0;   // seed the summary amount into Brokerage (You); others stay 0
+  const two=S.spouse==='yes';
+  box.className=two?'detail-grid two':'detail-grid';
+  let h='';
+  if(two) h+=`<div class="col-head"><span>${dispName('self',0)}</span><span>${dispName('spouse',0)}</span></div>`;
+  ACCT_CATS.forEach(([k,label])=>{
+    if(two){
+      const v0=S.acct[k][0]==null?0:dollarsToAcct(S.acct[k][0]), v1=S.acct[k][1]==null?0:dollarsToAcct(S.acct[k][1]);
+      h+=`<div class="slider-block" style="margin-bottom:10px"><div class="sl-cols sl-twohead">`
+        +`<div class="sl-row"><span class="sl-label" style="font-size:16px">${label}</span><span class="sl-val" style="font-size:16px" id="av_${k}_0">${usd(acctToDollars(v0))}</span></div>`
+        +`<div class="sl-valcell"><span class="sl-val" style="font-size:16px" id="av_${k}_1">${usd(acctToDollars(v1))}</span></div>`
+        +`</div><div class="sl-cols">`
+        +`<input type="range" min="0" max="${SL_MAX}" value="${v0}" data-acct="${k}" data-col="0">`
+        +`<input type="range" min="0" max="${SL_MAX}" value="${v1}" data-acct="${k}" data-col="1"></div></div>`;
+    } else {
+      const cur=S.acct[k][0]; const v=cur==null?0:dollarsToAcct(cur);
+      h+=`<div class="slider-block" style="margin-bottom:10px"><div class="sl-row"><span class="sl-label" style="font-size:16px">${label}</span>`
+        +`<span class="sl-val" style="font-size:16px" id="av_${k}_0">${usd(acctToDollars(v))}</span></div>`
+        +`<input type="range" min="0" max="${SL_MAX}" value="${v}" data-acct="${k}" data-col="0"></div>`;
+    }
+  });
+  // You / Spouse totals under the last category ("Other")
+  let _t0=0,_t1=0; ACCT_CATS.forEach(([k])=>{ _t0+=S.acct[k][0]||0; _t1+=S.acct[k][1]||0; });
+  if(two){
+    h+=`<div class="slider-block acct-total" style="margin-bottom:0;border-bottom:1px solid var(--border-strong);padding-bottom:10px"><div class="sl-cols sl-twohead">`
+      +`<div class="sl-row"><span class="sl-label" style="font-size:16px;font-weight:700">Total</span><span class="sl-val" style="font-size:16px;color:var(--ink)" id="atot_0">${usd(_t0)}</span></div>`
+      +`<div class="sl-valcell"><span class="sl-val" style="font-size:16px;color:var(--ink)" id="atot_1">${usd(_t1)}</span></div>`
+      +`</div></div>`;
+    h+=`<div class="slider-block acct-combined" style="margin-bottom:0"><div class="sl-cols sl-twohead">`
+      +`<div class="sl-row"><span class="sl-label" style="font-size:16px;font-weight:700">Combined Total</span></div>`
+      +`<div class="sl-valcell"><span class="sl-val" style="font-size:16px;font-weight:700;color:var(--ink)" id="atotc">${usd(_t0+_t1)}</span></div>`
+      +`</div></div>`;
+  } else {
+    h+=`<div class="slider-block acct-total" style="margin-bottom:0"><div class="sl-row"><span class="sl-label" style="font-size:16px;font-weight:700">Total</span>`
+      +`<span class="sl-val" style="font-size:16px;color:var(--ink)" id="atot_0">${usd(_t0)}</span></div></div>`;
+  }
+  box.innerHTML=h;
+  const updAcctTot=()=>{ let t0=0,t1=0; ACCT_CATS.forEach(([k])=>{ t0+=S.acct[k][0]||0; t1+=S.acct[k][1]||0; });
+    if($('atot_0')) $('atot_0').textContent=usd(t0); if($('atot_1')) $('atot_1').textContent=usd(t1); if($('atotc')) $('atotc').textContent=usd(t0+t1); };
+  box.querySelectorAll('input[type=range]').forEach(inp=>{ paintRange(inp);
+    inp.addEventListener('input',()=>{ const k=inp.dataset.acct,c=+inp.dataset.col,dd=acctToDollars(+inp.value);
+      S.acct[k][c]=dd; $('av_'+k+'_'+c).textContent=usd(dd); paintRange(inp); updAcctTot(); });
+    editableVal($('av_'+inp.dataset.acct+'_'+inp.dataset.col), inp, dollarsToAcct);
+  });
+}
+/* refresh income-dependent screens (the ranking gauge and the estimate) if they're showing */
+function refreshIncomeScreens(){
+  if(!$('t4rank').classList.contains('hidden')) buildRank();
+  if(!$('t4b').classList.contains('hidden')) buildTax();
+}
+function syncIncome(){ S.income=slToDollars(+$('incSlider').value); $('incVal').textContent=usd(S.income); paintRange($('incSlider')); refreshIncomeScreens(); }
+$('incSlider').addEventListener('input',syncIncome);
+
+/* ===== Income ranking gauge (Subtopic 4 / t4rank) ===== */
+/* approximate U.S. household-income percentiles: [income, % of households below] */
+// Household-income thresholds by percentile (1..99), 2024 — from US_Household_Income_by_Percentile_2024.xlsx, tab "Percentile Thresholds".
+// PCTL_THRESH[i] is the income at or above which a household reaches percentile (i+1).
+const PCTL_THRESH=[0, 1470, 5401, 9600, 11604, 13200, 14628, 16272, 18000, 19889, 21000, 22501, 24016, 25297, 26836, 28464, 30000, 31081, 32600, 34476, 35501, 37001, 38695, 40000, 41401, 43182, 45000, 46246, 48000, 49448, 50272, 52000, 53708, 55127, 57000, 58867, 60005, 61458, 63429, 65056, 67073, 69300, 70625, 72323, 74340, 75801, 77900, 80000, 81244, 83592, 85380, 87601, 90000, 92000, 94432, 96596, 99100, 100701, 103050, 105411, 108044, 110692, 113784, 116520, 120000, 122016, 125177, 128520, 131160, 135020, 138776, 142110, 146005, 150000, 153000, 156605, 161064, 165530, 170412, 175696, 181002, 186936, 193040, 199654, 206000, 213082, 220858, 230250, 240060, 251036, 263177, 277971, 294910, 312261, 335575, 366980, 408400, 484613, 659060];
+function incomePercentile(inc){
+  if(inc<=0) return 0;
+  const T=PCTL_THRESH;
+  if(inc<=T[0]) return 1;
+  if(inc>=T[T.length-1]) return 99;
+  for(let i=1;i<T.length;i++){
+    if(inc<=T[i]){ return i + (inc-T[i-1])/(T[i]-T[i-1]); }   // T[i-1]->pctile i, T[i]->pctile i+1
+  }
+  return 99;
+}
+/* a point on the circle, angle measured clockwise from the top (12 o'clock) */
+function gaugePt(cx,cy,R,deg){const a=deg*Math.PI/180;return [cx+R*Math.sin(a), cy-R*Math.cos(a)];}
+function gaugeArc(cx,cy,R,a1,a2){
+  const [x1,y1]=gaugePt(cx,cy,R,a1),[x2,y2]=gaugePt(cx,cy,R,a2);
+  const large=(a2-a1)>180?1:0;
+  return `M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${R} ${R} 0 ${large} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`;
+}
+function buildRank(){
+  const {earned,ordInvest,prefInvest}=gather();
+  const gross=(earned+ordInvest+prefInvest)||S.income;
+  const pctl=Math.round(incomePercentile(gross));
+  // three-quarter circle: 90° gap centered at the bottom, both ends level at the bottom;
+  // blue fills from the lower-left end (225°) upward (clockwise) to lower-right (495°/135°)
+  const R=78, START=225, SWEEP=270, end=START+SWEEP*pctl/100;
+  const track=gaugeArc(100,100,R,START,START+SWEEP);
+  const prog =pctl>0?gaugeArc(100,100,R,START,end):'';
+  $('rankWrap').innerHTML=`<div class="gauge-wrap">
+    <svg class="gauge" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="${pctl} percent ranking">
+      <path class="track" d="${track}" fill="none" stroke-width="12" stroke-linecap="round"/>
+      ${prog?`<path class="prog" d="${prog}" fill="none" stroke-width="12" stroke-linecap="round"/>`:''}
+      <text class="gauge-num" x="100" y="98" text-anchor="middle">${pctl}%</text>
+      <text class="gauge-lbl" x="100" y="120" text-anchor="middle">Percent</text>
+      <text class="gauge-lbl" x="100" y="136" text-anchor="middle">Ranking</text>
+    </svg></div>
+    <p class="rank-note">Your household income is higher than about ${pctl}% of U.S. households.</p>`;
+}
+
+/* ===== Net equity (t8) ===== */
+function numFromInput(el){ return parseInt((el.value||'').replace(/[^0-9]/g,''),10)||0; }
+function calcEquity(valId,mortId,outId){
+  const v=numFromInput($(valId)), m=numFromInput($(mortId)), eq=v-m;
+  $(outId).textContent = eq<0 ? '('+usd(-eq)+')' : usd(eq);
+  updateHomesTotal();
+}
+function updateHomesTotal(){
+  const el=$('homesTotalEq'); if(!el) return;
+  let tot=0;
+  document.querySelectorAll('#t5b .homes-two .home-block').forEach(b=>{
+    const ins=b.querySelectorAll('input.eq-in');
+    if(ins.length>=2) tot += numFromInput(ins[0]) - numFromInput(ins[1]);
+  });
+  el.textContent = tot<0 ? '('+usd(-tot)+')' : usd(tot);
+}
+// One home (t5)
+['homeVal','homeMort'].forEach(id=>$(id).addEventListener('input',()=>calcEquity('homeVal','homeMort','homeEq')));
+// Two homes (t5b)
+['home1Val','home1Mort'].forEach(id=>$(id).addEventListener('input',()=>calcEquity('home1Val','home1Mort','home1Eq')));
+['home2Val','home2Mort'].forEach(id=>$(id).addEventListener('input',()=>calcEquity('home2Val','home2Mort','home2Eq')));
+// "Add Home" appends another home block (Third Home, Fourth Home, ...) on the two-homes screen
+(function(){
+  const ORD=['','First','Second','Third','Fourth','Fifth','Sixth','Seventh','Eighth','Ninth','Tenth'];
+  let homeCount=2;
+  const btn=$('addHome');
+  if(!btn) return;
+  btn.addEventListener('click',()=>{
+    const n=++homeCount;
+    const title=(ORD[n]||('Home '+n))+' Home';
+    const block=document.createElement('div');
+    block.className='home-block';
+    block.innerHTML=`<p class="home-block-title">${title}</p>
+      <div class="equity-form">
+        <label class="eq-row"><span class="eq-lbl">Home value</span><input type="text" id="home${n}Val" class="eq-in" inputmode="numeric" placeholder="$"></label>
+        <label class="eq-row"><span class="eq-lbl">Mortgage balance</span><input type="text" id="home${n}Mort" class="eq-in" inputmode="numeric" placeholder="$"></label>
+        <div class="eq-row eq-total"><span class="eq-lbl">Net equity</span><span class="eq-out" id="home${n}Eq">$0</span></div>
+      </div>`;
+    document.querySelector('#t5b .homes-two').appendChild(block);
+    [`home${n}Val`,`home${n}Mort`].forEach(id=>$(id).addEventListener('input',()=>calcEquity(`home${n}Val`,`home${n}Mort`,`home${n}Eq`)));
+  });
+})();
+
+// Rent / own routing off the t4c Next button
+function homeNextTarget(){
+  if(S.ownRent==='own')  return 't5';
+  if(S.ownRent==='own2') return 't5b';
+  return 't9';                 // rent (or unspecified) skips straight to financial assets
+}
+$('t4cNext').addEventListener('click',()=>{
+  const sel=document.querySelector('input[name=ownrent]:checked');
+  S.ownRent = sel ? sel.value : 'rent';
+  reveal(homeNextTarget());
+});
+
+/* ===== Savings multiple vs. age (t10) ===== */
+const SAVE_GUIDE=[[30,1],[35,2],[40,3],[45,4],[50,6],[55,7],[60,8],[65,9],[67,10]];
+function youAssetTotal(){
+  if(S.acctDetail){ let s=0; const two=S.spouse==='yes';
+    for(const k in S.acct){ s+=(S.acct[k][0]||0)+(two?(S.acct[k][1]||0):0); } return s; }
+  return S.acctTotal||0;
+}
+function youAgeVal(){ const p=S.people.find(x=>x.kind==='self'); const a=p&&parseInt(p.age,10); return (a&&a>0)?a:50; }
+function guideMultAt(a){ const g=SAVE_GUIDE; if(a<=g[0][0]) return g[0][1];
+  for(let i=1;i<g.length;i++){ if(a<=g[i][0]){ const p=g[i-1],q=g[i]; return p[1]+(q[1]-p[1])*(a-p[0])/(q[0]-p[0]); } }
+  return g[g.length-1][1]; }
+function buildSavings(){
+  const g=gather(); const income=(g.earned+g.ordInvest+g.prefInvest)||S.income||1;
+  const assets=youAssetTotal(), age=youAgeVal(), mult=assets/income;
+  const W=520,H=320,L=48,R=18,T=20,B=40, x0=28,x1=68;
+  const yMax=Math.min(16,Math.max(11,Math.ceil(mult)+1));
+  const px=a=>L+(a-x0)/(x1-x0)*(W-L-R);
+  const py=m=>H-B-(Math.max(0,m)/yMax)*(H-T-B);
+  let yt=[0,2,4,6,8,10]; if(yMax>11) yt=yt.concat([12,14,16].filter(v=>v<=yMax));
+  let grid=''; yt.forEach(v=>{ const Y=py(v); grid+=`<line class="sv-grid" x1="${L}" y1="${Y.toFixed(1)}" x2="${W-R}" y2="${Y.toFixed(1)}"/><text class="sv-tick" x="${L-8}" y="${(Y+4).toFixed(1)}" text-anchor="end">${v}x</text>`; });
+  let xticks=''; [30,40,50,60,67].forEach(a=>{ const X=px(a); xticks+=`<text class="sv-tick" x="${X.toFixed(1)}" y="${H-B+18}" text-anchor="middle">${a}</text>`; });
+  let line='', dots=''; SAVE_GUIDE.forEach(([a,m],i)=>{ const X=px(a),Y=py(m); line+=(i?'L':'M')+X.toFixed(1)+' '+Y.toFixed(1)+' '; dots+=`<circle cx="${X.toFixed(1)}" cy="${Y.toFixed(1)}" r="4" fill="var(--muted)"/>`; });
+  // shaded area under the guideline line (very light blue)
+  const baseY=py(0).toFixed(1), fa=SAVE_GUIDE[0][0], la=SAVE_GUIDE[SAVE_GUIDE.length-1][0];
+  const area=`M ${px(fa).toFixed(1)} ${baseY} `+SAVE_GUIDE.map(([a,m])=>`L ${px(a).toFixed(1)} ${py(m).toFixed(1)}`).join(' ')+` L ${px(la).toFixed(1)} ${baseY} Z`;
+  const yx=px(Math.max(x0,Math.min(x1,age))), yy=py(Math.min(yMax,mult));
+  const _gy=py(Math.min(yMax,guideMultAt(Math.max(x0,Math.min(x1,age)))));
+  const youY=((yy-_gy)>-16)?(yy+27):(yy-19);   // below the dot if "YOU" above would overlap the guide line
+  const svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Savings multiple by age">
+      ${grid}
+      <path class="sv-area" d="${area}"/>
+      <text class="sv-zone" x="${(L+40).toFixed(1)}" y="${((py(8)+py(10))/2).toFixed(1)}" text-anchor="start"><tspan x="${(L+40).toFixed(1)}" dy="-3">Ahead of</tspan><tspan x="${(L+40).toFixed(1)}" dy="16">schedule</tspan></text>
+      <text class="sv-zone" x="${(px(la)-40).toFixed(1)}" y="${((py(2)+py(4))/2+20).toFixed(1)}" text-anchor="end"><tspan x="${(px(la)-40).toFixed(1)}" dy="-3">Behind</tspan><tspan x="${(px(la)-40).toFixed(1)}" dy="16">schedule</tspan></text>
+      <line class="sv-axis" x1="${L}" y1="${T}" x2="${L}" y2="${H-B}"/>
+      <line class="sv-axis" x1="${L}" y1="${H-B}" x2="${W-R}" y2="${H-B}"/>
+      ${xticks}
+      <path class="sv-guide" d="${line.trim()}"/>
+      ${dots}
+      <circle cx="${yx.toFixed(1)}" cy="${yy.toFixed(1)}" r="9" fill="#E5484D" stroke="#fff" stroke-width="2"/>
+      <text class="sv-you" x="${yx.toFixed(1)}" y="${youY.toFixed(1)}" text-anchor="middle">YOU</text>
+      <text class="sv-axlbl" x="${((L+W-R)/2).toFixed(1)}" y="${H-4}" text-anchor="middle">Age</text>
+      <text class="sv-axlbl" transform="rotate(-90 14 ${((T+H-B)/2).toFixed(1)})" x="14" y="${((T+H-B)/2).toFixed(1)}" text-anchor="middle">Multiple of salary</text>
+    </svg>`;
+  $('savingsWrap').innerHTML=
+     `<p class="track-headline">Your savings and investments are about ${mult.toFixed(1)}× your income at age ${age}.</p>`
+    +`<div class="savings-chart">${svg}</div>`
+    +`<p class="rank-note" style="max-width:62ch;margin-top:18px">A common rule of thumb suggests you should have savings and investments equal to an increasing multiple of your income as you get older. For instance, if you are fifty, you should have at least six times your income in savings. The red dot shows how you are doing in relation to this rough rule of thumb. (We will get much more precise as we learn more about you.)</p>`;
+}
+$('t9next').addEventListener('click',buildSavings);
+
+$('acctSlider').addEventListener('input',syncAcct);
+// summary slider values are click-to-edit too
+editableVal($('incVal'),$('incSlider'),dollarsToSl);
+editableVal($('acctVal'),$('acctSlider'),dollarsToAcct);
+// keep a "$" prefix and thousands commas in money entry fields (incl. dynamically added homes)
+document.addEventListener('input',e=>{ const el=e.target;
+  if(el&&el.classList&&el.classList.contains('eq-in')){
+    const n=el.value.replace(/[^0-9]/g,''); el.value=n?'$'+(+n).toLocaleString('en-US'):''; }
+});
+$('acctDetailChk').addEventListener('change',()=>{ S.acctDetail=$('acctDetailChk').checked;
+  $('acctSimpleBlock').classList.toggle('hidden',S.acctDetail);   // hide the simple slider in detail mode
+  $('acctHint').classList.toggle('on',S.acctDetail);
+  buildAcctDetail(); });
+
+
+/* ============================================================================
+   SUBTOPIC 4b — estimated taxes (dollar breakdown)
+   ============================================================================ */
+function gather(){
+  // Returns {earned, ordInvest, prefInvest}
+  if(S.detail){
+    const sum=k=>(S[k][0]||0)+(S.spouse==='yes'?(S[k][1]||0):0);
+    let earned=sum('salary'), ordInvest=sum('interest'), prefInvest=sum('dividends');
+    if(earned+ordInvest+prefInvest===0) earned=S.income; // fall back
+    return {earned,ordInvest,prefInvest};
+  }
+  // only the household slider was used -> assume all earned income
+  return {earned:S.income, ordInvest:0, prefInvest:0};
+}
+function buildTax(){
+  const st=ST_BY[S.state]||ST_BY.TX;
+  // filing-status choices depend on whether there's a spouse/partner; default to the first
+  const filingPairs=(S.spouse==='yes')
+    ? [['mfj','Married Filing Jointly'],['mfs','Married Filing Separately']]
+    : [['single','Single Filer'],['hoh','Head of Household']];
+  if(!filingPairs.some(p=>p[0]===S.filing)) S.filing=filingPairs[0][0];
+  const filing=S.filing;
+  const {earned,ordInvest,prefInvest}=gather();
+  const gross=earned+ordInvest+prefInvest;
+  const std=STD_DED[filing];
+  const ded=std;   // standard deduction only (no dependent exemption exists post-TCJA/OBBBA)
+  // apply deductions to ordinary income first (earned, then interest), then dividends
+  const earnedTaxable=Math.max(0,earned-ded);
+  let rem=Math.max(0,ded-earned);
+  const intTaxable=Math.max(0,ordInvest-rem); rem=Math.max(0,rem-ordInvest);
+  const divTaxable=Math.max(0,prefInvest-rem);
+  const ordTaxable=earnedTaxable+intTaxable, totalTaxable=ordTaxable+divTaxable;
+  // federal ordinary on earned+interest, split by their taxable share
+  const fedOrd=bTax(FED_ORD[filing],ordTaxable);
+  const eShare=ordTaxable>0?earnedTaxable/ordTaxable:1, iShare=ordTaxable>0?intTaxable/ordTaxable:0;
+  const fedEarn=fedOrd*eShare, fedInt=fedOrd*iShare;
+  // federal capital gains stack on top of ordinary -> dividends column
+  const fedDiv=Math.max(0,bTax(FED_CG[filing],totalTaxable)-bTax(FED_CG[filing],ordTaxable));
+  // NIIT on investment income above the threshold
+  const magi=Math.max(0,gross-std);
+  const niit=NIIT_R*Math.max(0,Math.min(ordInvest+prefInvest, magi-NIIT_T[filing]));
+  const niitInt=(ordInvest+prefInvest)>0?niit*ordInvest/(ordInvest+prefInvest):0, niitDiv=niit-niitInt;
+  // state + locality on taxable income, split across columns by taxable share
+  const tShare=[earnedTaxable,intTaxable,divTaxable].map(x=>totalTaxable>0?x/totalTaxable:0);
+  const stTax=stateTax(st,totalTaxable,filing);
+  const stCols=tShare.map(s=>stTax*s);
+  const locArr=st.loc||null;
+  const locObj=(locArr&&S.locality!=null&&locArr[S.locality])?locArr[S.locality]:null;
+  const locName=locObj?locObj.n.replace(/\s*\(.*\)\s*/,''):'Local';
+  const locTax=locObj?locObj.r*totalTaxable:0;
+  const locCols=tShare.map(s=>locTax*s);
+
+  // marginal rates per income type
+  const fedOrdMarg=bRate(FED_ORD[filing],ordTaxable), fedCGMarg=bRate(FED_CG[filing],totalTaxable);
+  const niitMarg=magi>NIIT_T[filing]?NIIT_R:0;
+  const stMarg=stateMarg(st,totalTaxable,filing), locRate=locObj?locObj.r:0;
+
+  // income-mix shares (for the weighted "Total" column on the rate table)
+  const shares=[earned,ordInvest,prefInvest].map(x=>gross>0?x/gross:0);
+  const colTax=[fedEarn+stCols[0]+locCols[0], fedInt+niitInt+stCols[1]+locCols[1], fedDiv+niitDiv+stCols[2]+locCols[2]];
+  const totalTax=Math.max(0,colTax.reduce((a,b)=>a+b,0));
+  const effRate=gross>0?(totalTax/gross*100):0;
+  const mEarn=fedOrdMarg+stMarg+locRate, mInt=fedOrdMarg+niitMarg+stMarg+locRate, mDiv=fedCGMarg+niitMarg+stMarg+locRate;
+
+  // ----- two tables: an Income summary and a Marginal Tax Rates grid -----
+  const usdC=v=>usd(Math.round(v));
+  const negC=v=>'- '+usd(Math.round(v));        // deductions shown as "- $XX,XXX"
+  const pct=r=>(r*100).toFixed(1)+'%';
+  const row=(label,cells,cls)=>`<tr${cls?` class="${cls}"`:''}><td class="lbl">${label}</td>${cells}</tr>`;
+
+  // Income table (single value column)
+  let inc='';
+  inc+=row('Gross Income', `<td>${usdC(gross)}</td>`);
+  inc+=row('Less: Standard Deduction', `<td>${negC(std)}</td>`);
+  inc+=row('Taxable Income', `<td>${usdC(totalTaxable)}</td>`, 'total');
+  const incHead=`<thead><tr><th class="lbl"></th><th>Income</th></tr></thead>`;
+
+  // Marginal Tax Rates table (Earned Income / Interest / Capital Gains)
+  const rCells=vals=>vals.map(r=>`<td>${pct(r)}</td>`).join('');
+  let rt='';
+  rt+=row('Federal', rCells([fedOrdMarg,fedOrdMarg,fedCGMarg]));
+  rt+=row('NIIT', rCells([0,niitMarg,niitMarg]));
+  rt+=row('State', rCells([stMarg,stMarg,stMarg]));
+  rt+=row('Local', rCells([locRate,locRate,locRate]));
+  rt+=row('Total', rCells([mEarn,mInt,mDiv]), 'total');
+  const rtHead=`<thead><tr><th class="lbl">Marginal Tax Rates</th><th>Earned Income</th><th>Interest</th><th>Capital Gains</th></tr></thead>`;
+
+  const filingRow=`<div class="filing-row">`+filingPairs.map(([v,l])=>
+    `<label class="filing-opt"><input type="radio" name="filing" value="${v}" ${filing===v?'checked':''}> ${l}</label>`).join('')+`</div>`;
+  const h=filingRow+`<div class="tax-tables">`+
+    `<p class="tax-fineprint" style="margin-top:0;font-style:italic">These are rough estimates for illustration only and assume all household income is salary. This is not tax advice.</p>`+
+    `<table class="wc-table esttax inc">${incHead}<tbody>${inc}</tbody></table>`+
+    `<p class="tax-fineprint">The Child Tax Credit may reduce your taxes by $2,200 per dependent child.</p>`+
+    `<table class="wc-table esttax rates">${rtHead}<tbody>${rt}</tbody></table>`+
+    `<p class="tax-fineprint">NIIT is the Net Investment Income Tax which applies only to the investments of high-income taxpayers.</p>`+
+    `</div>`;
+  $('taxWrap').innerHTML=h;
+  // filing radios rebuild the tables on change
+  $('taxWrap').querySelectorAll('input[name=filing]').forEach(r=>r.addEventListener('change',()=>{ S.filing=r.value; buildTax(); }));
+}
+
+/* run the 4b build when its [Next] is pressed (button data-next already reveals it) */
+/* income percentile (used to decide whether to show the ranking section) */
+function rankPctl(){ const g=gather(); const gross=(g.earned+g.ordInvest+g.prefInvest)||S.income; return Math.round(incomePercentile(gross)); }
+$('t4next').addEventListener('click',()=>{           // t4a -> ranking, but skip it if below the 40th percentile
+  if(rankPctl()>=40){ buildRank(); reveal('t4rank'); }
+  else { buildTax(); reveal('t4b'); }
+});
+$('t4rankNext').addEventListener('click',buildTax);    // ranking -> estimate
+
+/* ============================================================================
+   THEME + INIT
+   ============================================================================ */
+$('themeBtn').addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';
+  document.documentElement.setAttribute('data-theme',cur==='dark'?'light':'dark');
+  try{ buildMap(); }catch(e){}
+  document.querySelectorAll('input[type=range]').forEach(paintRange);
+});
+document.documentElement.setAttribute('data-theme','light');
+// "show me the next screen" link skips straight past state selection
+$('t3aNext').addEventListener('click',()=>{ if(S.state){ buildBrackets(); reveal('t3b'); } else { reveal('t4a'); buildTax(); } });
+$('t3aSkip').addEventListener('click',e=>{ e.preventDefault(); reveal('t4a'); buildTax(); });
+// toggle the "narrow" class when the MAIN AREA (not the viewport) is <=599px wide
+(function(){ const m=$('wcMain'); if(!m) return;
+  const check=()=>m.classList.toggle('narrow', m.clientWidth<=599);
+  if(window.ResizeObserver) new ResizeObserver(check).observe(m);   // also fires on sidebar drag
+  window.addEventListener('resize',check); check();
+})();
+// "Your name" screen feeds the self record (name/age) so it carries into the family tree, headers, and savings age
+function setSelf(f,v){ let rec=S.people.find(x=>x.kind==='self'&&x.idx===0); if(!rec){rec={kind:'self',idx:0};S.people.push(rec);} rec[f]=v; }
+$('selfFirst').addEventListener('input',e=>setSelf('name',e.target.value));
+$('selfLast').addEventListener('input',e=>setSelf('last',e.target.value));
+$('retireAge')&&$('retireAge').addEventListener('input',e=>{S.retireAge=e.target.value;});
+$('alreadyRetired')&&$('alreadyRetired').addEventListener('change',e=>{S.retired=e.target.checked;});
+$('savingsPct')&&$('savingsPct').addEventListener('input',e=>{S.savingsPct=e.target.value;});
+$('selfAge').addEventListener('input',e=>setSelf('age',e.target.value));
+buildMap(); initStateSelect(); syncIncome(); syncAcct();
+// accounts: default to the detailed view (checkbox pre-checked)
+if(S.acctDetail){ $('acctSimpleBlock').classList.add('hidden'); buildAcctDetail(); }
+$('acctHint').classList.toggle('on',S.acctDetail);
+var ORDER=['t1','t1b','t2a','t3a','t3b','t4a','t4rank','t4b','t4c','t5','t5b','t9','t10','t10b','t11'];
+function goBack(curId){
+  var i=ORDER.indexOf(curId); if(i<=0) return;
+  for(var j=i-1;j>=0;j--){ var el=$(ORDER[j]); if(el && !el.classList.contains('hidden')){
+    $('wcMain').scrollTo({top:Math.max(0,el.offsetTop-30),behavior:'smooth'}); return; } }
+}
+document.querySelectorAll('.next-wrap').forEach(function(nw){
+  var btn=nw.querySelector('.btn.primary'); if(!btn) return;
+  var sec0=nw.closest('.topic'); if(sec0 && sec0.id==='t1') return;   // no Skip/Back on the Welcome screen
+  if(!nw.querySelector('.skip-next')){
+    var a=document.createElement('a'); a.href='#'; a.className='skip-next'; a.textContent='Skip';
+    a.addEventListener('click',function(e){ e.preventDefault(); btn.click(); });
+    nw.appendChild(a);
+  }
+  if(!nw.querySelector('.back-next')){
+    var b=document.createElement('a'); b.href='#'; b.className='back-next'; b.textContent='Back';
+    b.addEventListener('click',function(e){ e.preventDefault(); var sec=nw.closest('.topic'); if(sec) goBack(sec.id); });
+    nw.appendChild(b);
+  }
+});
+/* ============================================================================
+   i18n — English / Spanish toggle
+   Translates static + dynamically rendered text via a DOM walk over #layout.
+   ============================================================================ */
+(function(){
+  var LANG='en';
+  var ES={
+    "Welcome!":"¡Bienvenido!",
+    "LIFETIME PLANNING":"PLANIFICACIÓN PARA TODA LA VIDA",
+    "Project your financial future":"Proyecta tu futuro financiero",
+    "When do you plan to retire?":"¿Cuándo planeas jubilarte?",
+    "Already retired":"Ya estoy jubilado",
+    "Annual savings as a percent of gross income":"Ahorro anual como porcentaje del ingreso bruto",
+    "Skip":"Saltar",
+    "Back":"Atrás",
+    "You may click on the blue numbers to make more precise entries.":"Puedes hacer clic en los números azules para ingresar cifras más precisas.",
+    "Combined Total":"Total combinado",
+    "If you do, we can dive deeper into these topics if you like.":"Si es así, podemos profundizar en estos temas si lo deseas.",
+    "NIIT is the Net Investment Income Tax which applies only to the investments of high-income taxpayers.":"El NIIT es el Impuesto sobre los Ingresos Netos de Inversión, que se aplica únicamente a las inversiones de los contribuyentes de altos ingresos.",
+    "Highest Marginal":"Tasa impositiva",
+    "Tax Rate":"marginal más alta",
+    "Your Income vs U.S. households":"Tus ingresos frente a los hogares de los Estados Unidos",
+    "Let me answer your money questions. First, a little bit about you.":"Permíteme responder tus preguntas de dinero. Primero, cuéntame un poco sobre ti.",
+    "Next":"Siguiente",
+    "YOUR NAME":"TU NOMBRE",
+    "Let's get started":"Comencemos",
+    "First Name":"Nombre","Last Name":"Apellido",
+    "Name":"Nombre","Age":"Edad",
+    "Your family":"Tu familia",
+    "Who is in your household?":"¿Quiénes forman tu hogar?",
+    "Do you have a spouse or domestic partner?":"¿Tienes cónyuge o pareja de hecho?",
+    "Do you have children or dependents?":"¿Tienes hijos o dependientes?",
+    "Yes":"Sí","No":"No",
+    "YOUR RESIDENCE":"TU RESIDENCIA",
+    "Click on your state":"Haz clic en tu estado",
+    "Where do you reside for tax purposes?":"¿Dónde resides para efectos fiscales?",
+    "Click on a state or just":"Haz clic en un estado o simplemente",
+    "click here":"haz clic aquí",
+    "to move forward.":"para continuar.",
+    "STATE TAX RATES":"TASAS DE IMPUESTOS ESTATALES",
+    "State tax brackets":"Categorías de impuestos estatales",
+    "YOUR INCOME":"TUS INGRESOS",
+    "Let's estimate your total taxes":"Estimemos tus impuestos totales",
+    "Your state":"Tu estado",
+    "Select a state…":"Selecciona un estado…",
+    "Your household income":"Tus ingresos del hogar",
+    "Your taxes":"Tus impuestos",
+    "Your estimated tax rates":"Tus tasas de impuestos estimadas",
+    "Income":"Ingresos","Gross Income":"Ingreso bruto",
+    "Less: Standard Deduction":"Menos: Deducción estándar",
+    "Taxable Income":"Ingreso gravable",
+    "The Child Tax Credit may reduce your taxes by $2,200 per dependent child.":"El Crédito Tributario por Hijos puede reducir tus impuestos en $2,200 por cada hijo dependiente.",
+    "These are rough estimates for illustration only and assume all household income is salary. This is not tax advice.":"Estas son estimaciones aproximadas, solo con fines ilustrativos, y suponen que todos los ingresos del hogar provienen de salario. Esto no es asesoría fiscal.",
+    "Marginal Tax Rates":"Tasas impositivas marginales",
+    "Earned Income":"Ingreso laboral",
+    "Interest":"Intereses","Capital Gains":"Ganancias de capital",
+    "Federal":"Federal","NIIT":"NIIT","State":"Estado","Local":"Local","Total":"Total",
+    "Single Filer":"Soltero","Head of Household":"Cabeza de familia",
+    "Married Filing Jointly":"Casados declarando juntos",
+    "Married Filing Separately":"Casados declarando por separado",
+    "All Filers":"Todos los contribuyentes",
+    "Tax Rates":"Tasas impositivas","Taxable income":"Ingreso gravable",
+    "and up":"o más","$0 and up":"$0 o más",
+    "YOUR HOME":"TU VIVIENDA",
+    "Do you rent or own your home?":"¿Rentas o eres dueño de tu vivienda?",
+    "I rent my home":"Rento mi vivienda",
+    "I own my home":"Soy dueño de mi vivienda",
+    "I own multiple homes":"Soy dueño de varias viviendas",
+    "What is your home worth?":"¿Cuánto vale tu vivienda?",
+    "What are your homes worth?":"¿Cuánto valen tus viviendas?",
+    "Primary Residence":"Residencia principal",
+    "Second Home":"Segunda vivienda",
+    "Home value":"Valor de la vivienda",
+    "Mortgage balance":"Saldo de la hipoteca",
+    "Net equity":"Capital neto","Total net equity":"Capital neto total",
+    "+ Add Home":"+ Agregar vivienda",
+    "YOUR ACCOUNTS":"TUS CUENTAS",
+    "What are your investable assets?":"¿Cuáles son tus activos invertibles?",
+    "Your Financial Accounts":"Tus cuentas financieras",
+    "Provide detail for better estimates.":"Proporciona detalles para mejores estimaciones.",
+    "Bank":"Banco","Brokerage":"Corretaje","401k":"401k","IRA":"IRA","Roth IRA":"Roth IRA",
+    "Salary":"Salario","Interest*":"Intereses*","Capital Gains*":"Ganancias de capital*",
+    "YOUR SAVINGS":"TUS AHORROS",
+    "Are you on track?":"¿Vas por buen camino?",
+    "Ahead of":"Por encima","Behind":"Por debajo","schedule":"del objetivo",
+    "You":"Tú","YOU":"TÚ","Multiple of salary":"Múltiplo del salario",
+    "Percent":"Posición","Ranking":"percentil",
+    "INFORMATION":"INFORMACIÓN",
+    "Do you have these items?":"¿Tienes alguno de estos?",
+    "A second home":"Una segunda vivienda",
+    "Rental property":"Propiedad de alquiler",
+    "Equity compensation":"Compensación en acciones",
+    "Own a business":"Eres dueño de un negocio",
+    "Other property":"Otra propiedad",
+    "Social Security":"Seguro Social",
+    "Medicare or Medicaid":"Medicare o Medicaid",
+    "Life insurance":"Seguro de vida",
+    "Get started":"Comenzar",
+    "EYEBROW":"ETIQUETA",
+    "This is the first tile in the tour.":"Este es el primer panel del recorrido.",
+    "This is the second tile in the tour.":"Este es el segundo panel del recorrido.",
+    "This is the third tile in the tour.":"Este es el tercer panel del recorrido.",
+    "This is the final tile in the tour.":"Este es el último panel del recorrido.",
+    "THE COMPLETE PICTURE":"EL PANORAMA COMPLETO",
+    "All your accounts in one secure place":"Todas tus cuentas en un solo lugar seguro",
+    "Link your external bank and brokerage accounts to view them all at once. Stop guessing, looking up one account at a time, or tracking your accounts in a spreadsheet. Get up-to-date data and personalized analysis with a few clicks.":"Vincula tus cuentas bancarias y de corretaje externas para verlas todas a la vez. Deja de adivinar, de revisar una cuenta a la vez o de llevar tus cuentas en una hoja de cálculo. Obtén datos actualizados y análisis personalizado con unos pocos clics.",
+    "FINANCIAL GUIDANCE":"ORIENTACIÓN FINANCIERA",
+    "Better data means better decisions":"Mejores datos significan mejores decisiones",
+    "Get personalized answers to your financial questions – the specific questions you think of during the day or late at night. Use your own financial data and instant analysis to make confident decisions about your money.":"Obtén respuestas personalizadas a tus preguntas financieras: las preguntas específicas que se te ocurren durante el día o a altas horas de la noche. Usa tus propios datos financieros y análisis instantáneo para tomar decisiones seguras sobre tu dinero.",
+    "SECURE BY DESIGN":"SEGURO POR DISEÑO",
+    "Nine layers of security and privacy":"Nueve capas de seguridad y privacidad",
+    "Your data is protected by nine interlinked layers of protection, is never used to train an AI model, and is never exposed to the outside Internet. Keep your sensitive financial information private and safe.":"Tus datos están protegidos por nueve capas de protección interconectadas, nunca se usan para entrenar un modelo de IA y nunca se exponen a la Internet externa. Mantén tu información financiera sensible privada y segura.",
+    "ALWAYS IN CONTROL":"SIEMPRE EN CONTROL",
+    "Track your progress throughout the year":"Sigue tu progreso durante todo el año",
+    "Monitor your money with ease – we do the work and you make the decisions. Optimize your finances and make sure you're not missing out on important tax opportunities.":"Monitorea tu dinero con facilidad: nosotros hacemos el trabajo y tú tomas las decisiones. Optimiza tus finanzas y asegúrate de no perderte oportunidades fiscales importantes.",
+    "◐ Theme":"◐ Tema",
+    "Marginal tax rates on taxable income by bracket and filing status.":"Tasas impositivas marginales sobre el ingreso gravable por categoría y estado civil.",
+    "A common rule of thumb suggests you should have savings and investments equal to an increasing multiple of your income as you get older. For instance, if you are fifty, you should have at least six times your income in savings. The red dot shows how you are doing in relation to this rough rule of thumb. (We will get much more precise as we learn more about you.)":"Una regla general común sugiere que deberías tener ahorros e inversiones equivalentes a un múltiplo creciente de tus ingresos a medida que envejeces. Por ejemplo, si tienes cincuenta años, deberías tener al menos seis veces tus ingresos en ahorros. El punto rojo muestra cómo te encuentras en relación con esta regla aproximada. (Seremos mucho más precisos a medida que sepamos más sobre ti.)"
+  };
+  var RE=[
+    [/^Your household income is higher than about (\d+)% of U\.S\. households\.$/,function(m){return 'Tus ingresos del hogar son más altos que aproximadamente el '+m[1]+'% de los hogares de los Estados Unidos.';}],
+    [/^Your savings and investments are about ([\d.]+)× your income at age (\d+)\.$/,function(m){return 'Tus ahorros e inversiones son aproximadamente '+m[1]+'× tus ingresos a los '+m[2]+' años.';}],
+    [/^(.+) — tax brackets$/,function(m){return m[1]+' — categorías impositivas';}],
+    [/^(.+) has no state income tax\.$/,function(m){return m[1]+' no tiene impuesto estatal sobre la renta.';}],
+    [/^to (\$[\d,]+)$/,function(m){return 'hasta '+m[1];}],
+    [/^Got it — (.+)\.$/,function(m){return 'Entendido — '+m[1]+'.';}],
+    [/^Where in (.+?)( state)? do you live\? \(The cities below impose local income taxes\)\.$/,function(m){var loc=m[2]?('del estado de '+m[1]):('de '+m[1]);return '¿En qué parte '+loc+' vives? (Las ciudades a continuación imponen impuestos locales sobre la renta).';}],
+    [/^I live in (.+)$/,function(m){return 'Vivo en '+m[1];}],
+    [/^Elsewhere in (.+) \(no local tax\)$/,function(m){return 'En otra parte de '+m[1]+' (sin impuesto local)';}]
+  ];
+  function core2es(core){
+    var norm=core.replace(/ /g,' ').replace(/\s+/g,' ').trim();
+    if(Object.prototype.hasOwnProperty.call(ES,norm)) return ES[norm];
+    for(var i=0;i<RE.length;i++){ var mm=norm.match(RE[i][0]); if(mm) return RE[i][1](mm); }
+    return null;
+  }
+  function translate(s){
+    if(s==null) return s;
+    var m=s.match(/^(\s*)([\s\S]*?)(\s*)$/);
+    var lead=m[1],corep=m[2],trail=m[3];
+    if(corep==='') return s;
+    var es=core2es(corep);
+    return es==null ? s : lead+es+trail;
+  }
+  var _en=new WeakMap();
+  function skip(node){
+    var p=node.parentNode; if(!p) return true;
+    var t=p.nodeName; if(t==='SCRIPT'||t==='STYLE') return true;
+    var e=p; while(e&&e!==document.body){ if(e.classList&&(e.classList.contains('notranslate')||(e.classList.contains('msg')&&e.classList.contains('me')))) return true; e=e.parentElement; }
+    return false;
+  }
+  function walk(cb){
+    var root=document.getElementById('layout'); if(!root) return;
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);
+    var n; while(n=w.nextNode()){ if(!skip(n)) cb(n); }
+  }
+  function setAttr(el,name){
+    if(!el) return; var key='_en_'+name;
+    if(LANG==='es'){ if(el[key]==null) el[key]=el.getAttribute(name)||''; var sp=translate(el[key]); if(sp!=null) el.setAttribute(name,sp); }
+    else if(el[key]!=null){ el.setAttribute(name,el[key]); }
+  }
+  function applyLang(){
+    walk(function(node){
+      if(LANG==='es'){
+        var base=_en.has(node)?_en.get(node):node.nodeValue;
+        var sp=translate(base);
+        if(sp!==node.nodeValue){ if(!_en.has(node)) _en.set(node,base); node.nodeValue=sp; }
+      } else if(_en.has(node)){ node.nodeValue=_en.get(node); _en.delete(node); }
+    });
+    document.documentElement.lang=LANG;
+  }
+  // observe dynamic renders; disconnect during our own writes to avoid loops
+  var obs=null, pending=false;
+  var target=document.getElementById('layout');
+  var opts={childList:true,subtree:true,characterData:true};
+  function run(){ if(obs) obs.disconnect(); applyLang(); if(obs){ obs.takeRecords(); obs.observe(target,opts); } }
+  function schedule(){ if(pending) return; pending=true; (window.requestAnimationFrame||setTimeout)(function(){ pending=false; run(); }); }
+  if(window.MutationObserver && target){ obs=new MutationObserver(function(){ if(LANG==='es') schedule(); }); obs.observe(target,opts); }
+  // toggle wiring
+  var seg=document.getElementById('langSeg');
+  if(seg){
+    seg.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-lang]'); if(!b) return;
+      LANG=b.dataset.lang;
+      Array.prototype.forEach.call(seg.querySelectorAll('button'),function(x){ x.classList.toggle('on', x.dataset.lang===LANG); });
+      run();
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
