@@ -1,8 +1,8 @@
-# Evergreen Design System
+# Evergreen Design System — Hemlock
 
-> **Version:** 1.0.0
-> **Last updated:** 2026-04-27
-> **Visual canvas:** `.design-system/gen-ui-design-system.lib.pen`
+> **Version:** 2.0.0
+> **Last updated:** 2026-07-06
+> **Visual canvas:** `hemlock-library.lib.pen`
 > **Audience:** Freya (front-end engineering agent), gen-UI renderer, human designers/developers
 > **Scope:** Everything — tokens, accessibility, primitives, shell chrome, gen-UI components, charts, dashboard widgets, edge states
 
@@ -10,11 +10,11 @@
 
 ## How to read this file
 
-This is the **single source of truth** for the Evergreen design system as implemented in code. The companion `.lib.pen` file is the visual canvas for design review — both must stay in sync.
+This is the **single source of truth** for the Evergreen design system as implemented in `hemlock-library.lib.pen`. Both must stay in sync.
 
 **For Freya / gen-UI renderer:**
-- Every component uses a consistent 7-field pattern: **Name · Role · Variants · States · Tokens · Keyboard/ARIA · Gen-UI invocation**
-- Token references use `$` prefix (e.g., `$accent.default`). In code, map to CSS custom properties or your framework's token system.
+- Every component uses a consistent pattern: **Name · Variants · States · Tokens · Keyboard/ARIA · Gen-UI invocation**
+- Token references use `$` prefix (e.g., `$color-blue-600`). In code, map to CSS custom properties or your framework's token system.
 - Components marked `[PLANNED]` are specced but not yet in `.lib.pen`. Build to spec; canvas will follow.
 
 **For gen-UI (AI output):**
@@ -23,7 +23,7 @@ This is the **single source of truth** for the Evergreen design system as implem
 - All gen-UI output renders in mainPanel. Chat messages render in chatPanel (shell chrome).
 
 **Status legend:**
-- `[SHIPPED]` — In `.lib.pen` and ready for implementation
+- `[SHIPPED]` — In `hemlock-library.lib.pen` and ready for implementation
 - `[PLANNED]` — Specced here, not yet in `.lib.pen`
 - `[FUTURE]` — Noted for completeness, not yet specced
 
@@ -52,282 +52,390 @@ This is the **single source of truth** for the Evergreen design system as implem
 
 ### Color Primitives
 
-Foundation JSON and `gen-ui-design-system.lib.pen` share these resolved values.
+Foundation variables in `hemlock-library.lib.pen`.
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `color.base.canvas` | `#FFFFFF` | `#0E0E0E` | App canvas |
-| `color.base.white` | `#FFFFFF` | — | Absolute white (not theme-swapped) |
+| Token | Value | Usage |
+|---|---|---|
+| `color-base-white` | `#ffffff` | Absolute white |
+| `color-base-black` | `#000000` | Absolute black |
 
-#### Gray ramp (green-tinted neutrals)
+#### Gray ramp (warm neutrals)
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `gray.50` | `#F9FAF9` | `#0E0E0E` | Lightest / dark base |
-| `gray.100` | `#EEEFEE` | `#202220` | Subtle bg / dark card |
-| `gray.200` | `#D8D9D8` | `#3B3E3C` | Borders / dark nested |
-| `gray.300` | `#B6B9B7` | `#6B6F6C` | Disabled / dark border |
-| `gray.400` | `#949895` | `#7E8480` | Muted UI |
-| `gray.500` | `#727874` | `#7E8480` | Tertiary text |
-| `gray.600` | `#575B58` | `#949895` | Secondary text |
-| `gray.700` | `#3B3E3C` | `#B6B9B7` | Emphasis |
-| `gray.800` | `#202220` | `#D8D9D8` | Strong borders |
-| `gray.900` | `#0E0E0E` | `#EEEFEE` | Primary text |
-| `gray.950` | `#030712` | `#F9FAF9` | Maximum contrast |
+| Token | Value | Usage |
+|---|---|---|
+| `color-gray-50` | `#F8F7F6` | Lightest bg |
+| `color-gray-100` | `#EEEDEB` | Subtle bg, borders |
+| `color-gray-200` | `#D5D3D0` | Borders, dividers |
+| `color-gray-300` | `#B5B1AB` | Disabled, placeholders |
+| `color-gray-400` | `#8A8680` | Muted UI, icons |
+| `color-gray-500` | `#716E6A` | Tertiary text |
+| `color-gray-600` | `#5E5954` | Secondary text |
+| `color-gray-700` | `#403D3A` | Body text |
+| `color-gray-800` | `#2D2926` | Emphasis |
+| `color-gray-900` | `#0e0e0e` | Headers, primary text |
+
+#### Taupe ramp (brand warm neutrals)
+
+| Token | Value | Usage |
+|---|---|---|
+| `color-taupe-100` | `#F7F5F0` | Nav/chat background |
+| `color-taupe-200` | `#EDEAE3` | Hover states, dividers |
+| `color-taupe-300` | `#E3DFD6` | Active states, borders |
+| `color-taupe-400` | `#BCB49E` | Muted accents |
+| `color-taupe-500` | `#9D937B` | Tertiary elements |
+| `color-taupe-600` | `#877F68` | Secondary elements |
+| `color-taupe-700` | `#6C6451` | Emphasis |
+| `color-taupe-800` | `#4B4435` | Strong |
+| `color-taupe-900` | `#322C20` | Maximum contrast |
 
 #### Blue ramp (accent)
 
 | Token | Value | Usage |
 |---|---|---|
-| `blue.50` | `#F5F8FF` | Lightest tint |
-| `blue.100` | `#EBF0FE` | Selected backgrounds (light) |
-| `blue.200` | `#C8D6FD` | Very light highlights |
-| `blue.300` | `#A3BCFC` | Lighter blue |
-| `blue.400` | `#9BB3FC` | Hover states (dark) |
-| `blue.500` | `#7094FB` | Primary accent (dark) |
-| `blue.600` | `#3A6AF8` | Primary accent (light) |
-| `blue.700` | `#295CCC` | Hover (light) |
-| `blue.800` | `#152354` | Dark blue surfaces |
-| `blue.900` | `#1E3A8A` | Deepest accent |
+| `color-blue-100` | `#ebf0fe` | Selected backgrounds |
+| `color-blue-200` | `#c8d6fd` | Light highlights |
+| `color-blue-300` | `#a5bcfc` | Lighter blue |
+| `color-blue-400` | `#7094fb` | Medium accent |
+| `color-blue-500` | `#5a82f9` | Medium-strong |
+| `color-blue-600` | `#3a6af8` | Primary accent |
+| `color-blue-700` | `#2952cc` | Hover |
+| `color-blue-800` | `#163196` | Dark blue surfaces |
+| `color-blue-900` | `#031e64` | Deepest accent |
 
-#### Status & financial color primitives
+#### Red ramp (error / expense)
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `color.red.50` | `#FEF2F2` | — | Error/expense bg (light) |
-| `color.red.400` | — | `#F87171` | Error/expense (dark) |
-| `color.red.700` | `#B91C1C` | — | Error/expense (light) |
-| `color.green.50` | `#F0FDF4` | — | Success/income bg (light) |
-| `color.green.400` | — | `#4ADE80` | Success/income (dark) |
-| `color.green.700` | `#15803D` | — | Success/income (light) |
-| `color.amber.400` | — | `#FBBF24` | Warning (dark) |
-| `color.amber.700` | `#C25700` | — | Warning (light) |
-| `color.orange.50` | `#FFF7ED` | — | Debt bg (light) |
-| `color.orange.400` | — | `#FB923C` | Debt (dark) |
-| `color.orange.700` | `#C2410C` | — | Debt (light) |
-| `color.purple.50` | `#F5F3FF` | — | Investment bg (light) |
-| `color.purple.400` | — | `#A78BFA` | Investment (dark) |
-| `color.purple.700` | `#7C3AED` | — | Investment (light) |
-| `color.sky.50` | `#F0F9FF` | — | Savings bg (light) |
-| `color.sky.400` | — | `#38BDF8` | Savings (dark) |
-| `color.sky.700` | `#0369A1` | — | Savings (light) |
-| `color.info.400` | — | `#60A5FA` | Info (dark) |
-| `color.info.700` | `#2563EB` | — | Info (light) |
+| Token | Value | Usage |
+|---|---|---|
+| `color-red-50` | `#ffeaea` | Error/expense bg |
+| `color-red-100` | `#fed5d4` | Light error bg |
+| `color-red-200` | `#fdaba9` | Light error |
+| `color-red-300` | `#fc807e` | Medium error |
+| `color-red-400` | `#fb5653` | Error/expense text |
+| `color-red-500` | `#fa2c28` | Strong error |
+| `color-red-600` | `#c82320` | Error borders, destructive |
+| `color-red-700` | `#961a18` | Dark error |
+| `color-red-800` | `#641210` | Error text on light bg |
+| `color-red-900` | `#320908` | Deepest error |
+
+#### Green ramp (success / income / deposit)
+
+| Token | Value | Usage |
+|---|---|---|
+| `color-green-50` | `#e9fff0` | Success/income bg |
+| `color-green-100` | `#a9fdc4` | Light success |
+| `color-green-200` | `#68fc97` | Medium-light success |
+| `color-green-300` | `#27fb6b` | Medium success |
+| `color-green-400` | `#1ebf51` | Success accent |
+| `color-green-500` | `#148338` | Income/deposit text |
+| `color-green-600` | `#10642b` | Dark success |
+| `color-green-700` | `#0b461e` | Darker success |
+| `color-green-800` | `#062811` | Deep success |
+| `color-green-900` | `#020a04` | Deepest success |
+
+#### Orange ramp (warning / debt)
+
+| Token | Value | Usage |
+|---|---|---|
+| `color-orange-50` | `#fff1e9` | Warning/debt bg |
+| `color-orange-100` | `#fee4d2` | Light warning |
+| `color-orange-200` | `#fdc9a6` | Medium-light warning |
+| `color-orange-300` | `#fcad79` | Medium warning |
+| `color-orange-400` | `#fb924d` | Warning accent |
+| `color-orange-500` | `#fa7720` | Strong warning |
+| `color-orange-600` | `#c85f1a` | Dark warning |
+| `color-orange-700` | `#964713` | Darker warning |
+| `color-orange-800` | `#64300d` | Deep warning |
+| `color-orange-900` | `#321806` | Deepest warning |
+
+#### Sky ramp (savings / info)
+
+| Token | Value | Usage |
+|---|---|---|
+| `color-sky-50` | `#ebf6ff` | Savings/info bg |
+| `color-sky-100` | `#aedcfe` | Light info |
+| `color-sky-200` | `#72c2fe` | Medium-light info |
+| `color-sky-300` | `#35a8fd` | Medium info |
+| `color-sky-400` | `#2e90da` | Info accent |
+| `color-sky-500` | `#2679b6` | Savings text |
+| `color-sky-600` | `#1f6193` | Dark info |
+| `color-sky-700` | `#174a6f` | Darker info |
+| `color-sky-800` | `#10324c` | Deep info |
+| `color-sky-900` | `#081b28` | Deepest info |
 
 ### Semantic Colors
 
-#### Surface & border
+#### Background & surface
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `surface.primary` | `#FFFFFF` | `#111111` | Main background |
-| `surface.secondary` | `#F5F5F5` | `#1A1A1A` | Card/panel |
-| `surface.tertiary` | `#EBEBEB` | `#242424` | Nested surfaces |
-| `surface.elevated` | `#FFFFFF` | `#242424` | Raised elements |
-| `surface.inverse` | `#111111` | `#F5F5F5` | Inverse bars |
-| `surface.accent` | `#EBF0FE` | `#152354` | Accent wash |
-| `surface.overlay` | `rgba(0,0,0,0.5)` | `rgba(0,0,0,0.7)` | Modal backdrops |
-| `border.primary` | `#E5E5E5` | `#4A4D4B` | Default borders |
-| `border.secondary` | `#D4D4D4` | `#626562` | Emphasized borders |
-| `border.focus` | `#3A6AF8` | `#7094FB` | Focus rings |
-| `border.accent` | `#3A6AF8` | `#7094FB` | Accent borders |
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-background-surface` | `$color-base-white` | Main surface / card bg |
+| `colors-background-main` | `$color-taupe-100` | Page canvas, nav/chat bg |
+| `colors-background-light` | `$color-gray-50` | Subtle section bg |
+
+#### Borders
+
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-borders-light` | `$color-gray-100` | Default borders |
+| `colors-borders-dark` | `$color-gray-200` | Emphasized borders |
+| `colors-borders-error` | `$color-red-600` | Error state borders |
+| `colors-borders-focus` | `$color-gray-900` | Focus ring (dark) |
+| `colors-borders-focus-inverted` | `$color-base-white` | Focus ring on dark bg |
 
 #### Text
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `text.primary` | `#171717` | `#F5F5F5` | Primary text |
-| `text.secondary` | `#525252` | `#A3A3A3` | Secondary/helper |
-| `text.tertiary` | `#737373` | `#8A8A8A` | Placeholder, caption |
-| `text.inverse` | `#FFFFFF` | `#111111` | On inverse surfaces |
-| `text.accent` | `#3A6AF8` | `#7094FB` | Links, accent text |
-| `text.on-accent` | `#FFFFFF` | `#FFFFFF` | On accent fill |
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-text-header` | `$color-gray-900` | Headings, primary |
+| `colors-text-body` | `$color-gray-700` | Body text |
+| `colors-text-meta` | `$color-gray-600` | Secondary / helper |
+| `colors-text-placeholder` | `$color-gray-300` | Placeholder text |
+| `colors-text-disabled` | `$color-gray-300` | Disabled text |
+| `colors-text-action` | `$color-blue-600` | Links, action text |
+| `colors-text-error` | `$color-red-600` | Error messages |
+| `colors-text-body-error` | `$color-red-800` | Error body text |
+| `colors-text-deposit` | `$color-green-500` | Income / deposit values |
+| `colors-text-reverse` | `$color-base-white` | Text on dark surfaces |
 
-#### Accent (interactive primary)
+#### Icons
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `accent.default` | `#3A6AF8` | `#7094FB` | Primary actions |
-| `accent.hover` | `#295CCC` | `#9BB3FC` | Hover |
-| `accent.pressed` | `#1E3F8F` | `#1E3F8F` | Pressed fill |
-| `accent.subtle` | `#EBF0FE` | `#152354` | Selected backgrounds |
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-icons-full` | `$color-gray-900` | Primary icons |
+| `colors-icons-meta` | `$color-gray-600` | Secondary icons |
+| `colors-icons-muted` | `$color-gray-300` | Disabled icons |
+| `colors-icons-action` | `$color-blue-600` | Interactive icons |
+| `colors-icons-error` | `$color-red-600` | Error icons |
+| `colors-icons-reverse` | `$color-base-white` | Icons on dark bg |
 
-#### Destructive
+#### Button — Primary
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `destructive.default` | `#B91C1C` | `#EF4444` | Destructive primary |
-| `destructive.hover` | `#991B1B` | `#F87171` | Destructive hover |
-| `destructive.pressed` | `#450A0A` | `#FCA5A5` | Destructive pressed |
-| `destructive.subtle` | `#FEF2F2` | `#450A0A` | Destructive bg |
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-btnPrimaryBg` | `$color-gray-900` | Default fill |
+| `colors-btnPrimaryBgHover` | `$color-gray-800` | Hover fill |
+| `colors-btnPrimaryBgActive` | `$color-gray-700` | Pressed fill |
+| `colors-btnPrimaryBgDisabled` | `$color-gray-200` | Disabled fill |
+| `colors-btnPrimaryText` | `$color-gray-100` | Default text |
+| `colors-btnPrimaryTextHover` | `$color-base-white` | Hover text |
+| `colors-btnPrimaryTextActive` | `$color-base-white` | Pressed text |
+| `colors-btnPrimaryTextDisabled` | `$color-gray-400` | Disabled text |
 
-#### Status (UI state)
+#### Button — Primary Inverted
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `status.error` | `#B91C1C` | `#F87171` | Error states |
-| `status.error-bg` | `#FEF2F2` | `#450A0A` | Error background |
-| `status.warning` | `#C25700` | `#FBBF24` | Warning states |
-| `status.warning-bg` | `#FFF7ED` | `#451A03` | Warning background |
-| `status.success` | `#15803D` | `#4ADE80` | Success states |
-| `status.success-bg` | `#F0FDF4` | `#052E16` | Success background |
-| `status.info` | `#2563EB` | `#60A5FA` | Info states |
-| `status.info-bg` | `#EFF6FF` | `#172554` | Info background |
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-btnPrimaryInvertedBg` | `$color-gray-50` | Default fill |
+| `colors-btnPrimaryInvertedBgHover` | `$color-base-white` | Hover fill |
+| `colors-btnPrimaryInvertedBgActive` | `$color-gray-100` | Pressed fill |
+| `colors-btnPrimaryInvertedBgDisabled` | `$color-gray-50` | Disabled fill |
+| `colors-btnPrimaryInvertedText` | `$color-gray-700` | Default text |
+| `colors-btnPrimaryInvertedTextHover` | `$color-gray-900` | Hover text |
+| `colors-btnPrimaryInvertedTextActive` | `$color-gray-700` | Pressed text |
+| `colors-btnPrimaryInvertedTextDisabled` | `$color-gray-300` | Disabled text |
 
-#### Financial semantic
+#### Button — Secondary
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `fin.income` | `#15803D` | `#4ADE80` | Income |
-| `fin.income-bg` | `#F0FDF4` | `#052E16` | Income chip bg |
-| `fin.expense` | `#B91C1C` | `#F87171` | Expense |
-| `fin.expense-bg` | `#FEF2F2` | `#450A0A` | Expense chip bg |
-| `fin.savings` | `#0369A1` | `#38BDF8` | Savings |
-| `fin.savings-bg` | `#F0F9FF` | `#082F49` | Savings chip bg |
-| `fin.debt` | `#C2410C` | `#FB923C` | Debt |
-| `fin.debt-bg` | `#FFF7ED` | `#451A03` | Debt chip bg |
-| `fin.investment` | `#7C3AED` | `#A78BFA` | Investment |
-| `fin.investment-bg` | `#F5F3FF` | `#2E1065` | Investment chip bg |
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-btnSecondaryBg` | `#00000000` | Transparent fill |
+| `colors-btnSecondaryBgHover` | `#00000000` | Hover fill |
+| `colors-btnSecondaryBgActive` | `$color-gray-100` | Pressed fill |
+| `colors-btnSecondaryBgDisabled` | `#00000000` | Disabled fill |
+| `colors-btnSecondaryBorder` | `$color-gray-200` | Default border |
+| `colors-btnSecondaryBorderHover` | `$color-gray-600` | Hover border |
+| `colors-btnSecondaryBorderActive` | `$color-gray-100` | Pressed border |
+| `colors-btnSecondaryBorderDisabled` | `$color-gray-200` | Disabled border |
+| `colors-btnSecondaryText` | `$color-gray-800` | Default text |
+| `colors-btnSecondaryTextHover` | `$color-gray-800` | Hover text |
+| `colors-btnSecondaryTextActive` | `$color-gray-700` | Pressed text |
+| `colors-btnSecondaryTextDisabled` | `$color-gray-400` | Disabled text |
 
-#### Data value colors
+#### Button — Secondary Inverted
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `data.positive` | `#15803D` | `#4ADE80` | Gains |
-| `data.negative` | `#B91C1C` | `#F87171` | Losses |
-| `data.neutral` | `#525252` | `#A3A3A3` | Zero change |
-| `data.highlight` | `#3A6AF8` | `#7094FB` | Highlighted data |
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-btnSecondaryInvertedBg` | `#00000000` | Transparent fill |
+| `colors-btnSecondaryInvertedBgHover` | `#ffffff1a` | Hover fill (white 10%) |
+| `colors-btnSecondaryInvertedBgActive` | `#ffffff1a` | Pressed fill |
+| `colors-btnSecondaryInvertedBgDisabled` | `#00000000` | Disabled fill |
+| `colors-btnSecondaryInvertedBorder` | `$color-gray-200` | Default border |
+| `colors-btnSecondaryInvertedBorderHover` | `$color-base-white` | Hover border |
+| `colors-btnSecondaryInvertedBorderActive` | `#00000000` | Pressed border |
+| `colors-btnSecondaryInvertedBorderDisabled` | `$color-gray-300` | Disabled border |
+| `colors-btnSecondaryInvertedText` | `$color-base-white` | Default text |
+| `colors-btnSecondaryInvertedTextHover` | `$color-base-white` | Hover text |
+| `colors-btnSecondaryInvertedTextActive` | `$color-gray-200` | Pressed text |
+| `colors-btnSecondaryInvertedTextDisabled` | `$color-gray-300` | Disabled text |
 
-#### AI namespace
+#### Button — Destructive
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `ai.accent` | `#3A6AF8` | `#7094FB` | AI brand accent |
-| `ai.surface` | `#EBF0FE` | `#172554` | AI content bg |
-| `ai.border` | `#EBF0FE` | `#152354` | AI card border |
-| `ai.chip-surface` | `#FFFFFF` | `#242424` | Prompt chip bg |
-| `ai.chip-border` | `#EBF0FE` | `#152354` | Prompt chip border |
-| `ai.gradient-start` | `#3A6AF8` | — | AI gradient |
-| `ai.gradient-end` | `#2952CC` | — | AI gradient |
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-btnDestructionBg` | `$color-red-600` | Default fill |
+| `colors-btnDestructionBgHover` | `$color-red-500` | Hover fill |
+| `colors-btnDestructionBgActive` | `$color-red-700` | Pressed fill |
+| `colors-btnDestructionBgDisabled` | `$color-gray-200` | Disabled fill |
+| `colors-btnDestructionText` | `$color-gray-100` | Default text |
+| `colors-btnDestructionTextHover` | `$color-base-white` | Hover text |
+| `colors-btnDestructionTextActive` | `$color-base-white` | Pressed text |
+| `colors-btnDestructionTextDisabled` | `$color-gray-600` | Disabled text |
+
+#### Button — Link
+
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-btnLinkText` | `$color-blue-600` | Default text |
+| `colors-btnLinkTextHover` | `$color-blue-700` | Hover text |
+| `colors-btnLinkTextActive` | `$color-sky-500` | Active text |
+| `colors-btnLinkTextPressed` | `$color-blue-800` | Pressed text |
+| `colors-btnLinkTextDisabled` | `$color-gray-300` | Disabled text |
+
+#### Navigation
+
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-navBg` | `$color-taupe-100` | Nav panel bg |
+| `colors-navBorder` | `$color-taupe-300` | Nav border |
+| `colors-navDivider` | `$color-taupe-200` | Nav section divider |
+| `colors-navHoverBg` | `$color-taupe-200` | Item hover bg |
+| `colors-navHoverText` | `$color-gray-800` | Item hover text |
+| `colors-navActiveBg` | `$color-taupe-300` | Active item bg |
+| `colors-navPressedBg` | `$color-taupe-300` | Pressed item bg |
+| `colors-navIcon` | `$color-gray-400` | Nav icons |
+| `colors-navTextPrimary` | `$color-gray-800` | Primary nav text |
+| `colors-navTextSecondary` | `$color-gray-600` | Secondary nav text |
+| `colors-navTextDisabled` | `$color-gray-300` | Disabled nav text |
+| `colors-navShadow` | `#2D292628` | Nav shadow |
+
+#### Chat
+
+| Token | Resolves to | Usage |
+|---|---|---|
+| `colors-chatBg` | `$color-taupe-100` | Chat panel bg |
+| `colors-chatBorder` | `$color-taupe-300` | Chat panel border |
+| `colors-chatDivider` | `$color-taupe-200` | Message divider |
+| `colors-chatBubbleUser` | `$color-taupe-100` | User message bg |
+| `colors-chatInputBg` | `$color-base-white` | Input field bg |
+| `colors-chatPlaceholder` | `$color-gray-400` | Input placeholder |
+| `colors-chatTextPrimary` | `$color-gray-800` | Primary chat text |
+| `colors-chatTextSecondary` | `$color-gray-600` | Secondary chat text |
+| `colors-chatSendBg` | `$color-gray-800` | Send button bg |
+| `colors-chatChipHover` | `$color-taupe-200` | Chip hover bg |
+| `colors-chatChipPressed` | `$color-taupe-300` | Chip pressed bg |
+| `colors-chatShadow` | `#2D292628` | Chat shadow |
+| `colors-chatVoiceActiveBg` | `$color-blue-600` | Voice active bg |
+| `colors-chatVoiceActiveIcon` | `$color-base-white` | Voice active icon |
+| `colors-chatVoicePulse` | `$color-blue-100` | Voice pulse ring |
+| `colors-chatVoiceWaveform` | `$color-blue-400` | Waveform color |
+| `colors-chatVoiceTimer` | `$color-gray-600` | Timer text |
 
 ### Chart Palettes
 
 #### Categorical (15 series, priority-ordered)
 
-| Token | Light | Dark | Priority |
-|---|---|---|---|
-| `chart.cat.1` | `#8951F0` | `#8951F0` | 1st |
-| `chart.cat.2` | `#06B6D4` | `#06B6D4` | 2nd |
-| `chart.cat.3` | `#312E81` | `#4338CA` | 3rd |
-| `chart.cat.4` | `#3B82F6` | `#3B82F6` | 4th |
-| `chart.cat.5` | `#0F766E` | `#14B8A6` | 5th |
-| `chart.cat.6` | `#38BDF8` | `#38BDF8` | 6th |
-| `chart.cat.7` | `#2DD4BF` | `#2DD4BF` | 7th |
-| `chart.cat.8` | `#A78BFA` | `#A78BFA` | 8th |
-| `chart.cat.9` | `#C026D3` | `#C026D3` | 9th |
-| `chart.cat.10` | `#E73CAE` | `#E73CAE` | 10th |
-| `chart.cat.11` | `#E879A8` | `#E879A8` | 11th |
-| `chart.cat.12` | `#92400E` | `#EA580C` | 12th |
-| `chart.cat.13` | `#FB923C` | `#FB923C` | 13th |
-| `chart.cat.14` | `#CA8A04` | `#EAB308` | 14th |
-| `chart.cat.15` | `#FACC15` | `#FDE68A` | 15th |
+| Token | Value | Priority |
+|---|---|---|
+| `chart-categorical/color-01` | `#8951F0` | 1st |
+| `chart-categorical/color-02` | `#06B6D4` | 2nd |
+| `chart-categorical/color-03` | `#312E81` | 3rd |
+| `chart-categorical/color-04` | `#3B82F6` | 4th |
+| `chart-categorical/color-05` | `#0F766E` | 5th |
+| `chart-categorical/color-06` | `#38BDF8` | 6th |
+| `chart-categorical/color-07` | `#2DD4BF` | 7th |
+| `chart-categorical/color-08` | `#A78BFA` | 8th |
+| `chart-categorical/color-09` | `#C026D3` | 9th |
+| `chart-categorical/color-10` | `#E73CAE` | 10th |
+| `chart-categorical/color-11` | `#E879A8` | 11th |
+| `chart-categorical/color-12` | `#92400E` | 12th |
+| `chart-categorical/color-13` | `#FB923C` | 13th |
+| `chart-categorical/color-14` | `#CA8A04` | 14th |
+| `chart-categorical/color-15` | `#FACC15` | 15th |
 
-Always assign in priority order. Dark-mode overrides exist on slots 3, 5, 12, 14, 15 for contrast on dark canvas.
+Always assign in priority order.
 
 #### Sequential ramp (single-hue blue)
 
-| Token | Value | Usage |
+| Token | Resolves to | Usage |
 |---|---|---|
-| `chart.seq.50` | `#F5F8FF` | Lightest tint |
-| `chart.seq.100` | `#EBF0FE` | Lightest fill |
-| `chart.seq.200` | `#C8D6FD` | Light fill |
-| `chart.seq.300` | `#A5BCFC` | Medium-light |
-| `chart.seq.400` | `#7094FB` | Medium |
-| `chart.seq.500` | `#5A82F9` | Medium-strong |
-| `chart.seq.600` | `#3A6AF8` | Strong |
-| `chart.seq.700` | `#2952CC` | Dark fill |
-| `chart.seq.800` | `#1E3F8F` | Darker fill |
-| `chart.seq.900` | `#152B60` | Darkest fill |
+| `chart-sequential/seq-100` | `$color-blue-100` | Lightest fill |
+| `chart-sequential/seq-200` | `$color-blue-200` | Light fill |
+| `chart-sequential/seq-300` | `$color-blue-300` | Medium-light |
+| `chart-sequential/seq-400` | `$color-blue-400` | Medium |
+| `chart-sequential/seq-500` | `$color-blue-500` | Medium-strong |
+| `chart-sequential/seq-600` | `$color-blue-600` | Strong |
+| `chart-sequential/seq-700` | `$color-blue-700` | Darkest fill |
 
-### Spacing (4px base grid)
+### Spacing
 
 | Token | Value | Usage |
 |---|---|---|
-| `space.1` | `4px` | Tight internal gaps |
-| `space.2` | `8px` | Icon-to-label, checkbox gap |
-| `space.3` | `12px` | Input padding, cell padding |
-| `space.4` | `16px` | Card padding, section gaps |
-| `space.5` | `20px` | Component spacing |
-| `space.6` | `24px` | Group spacing |
-| `space.8` | `32px` | Section dividers |
-| `space.10` | `40px` | Major section gaps |
-| `space.12` | `48px` | Page-level spacing |
+| `spacing-4xs` | `2px` | Hairline gaps |
+| `spacing-3xs` | `4px` | Tight internal gaps |
+| `spacing-2xs` | `8px` | Icon-to-label, checkbox gap |
+| `spacing-xs` | `12px` | Input padding, cell padding |
+| `spacing-sm` | `16px` | Card padding, compact gaps |
+| `spacing-md` | `24px` | Component spacing, section gaps |
+| `spacing-lg` | `32px` | Section dividers |
+| `spacing-xl` | `40px` | Major section gaps |
+| `spacing-2xl` | `48px` | Page-level spacing |
+| `spacing-3xl` | `64px` | Large page gaps |
+| `spacing-4xl` | `72px` | Major layout gaps |
+| `spacing-5xl` | `128px` | Maximum spacing |
 
 ### Border Radius
 
 | Token | Value | Usage |
 |---|---|---|
-| `radius.none` | `0px` | Table cells, chart areas |
-| `radius.sm` | `4px` | Inputs, tags, badges |
-| `radius.md` | `6px` | Cards, dropdowns |
-| `radius.lg` | `8px` | Modals, panels |
-| `radius.xl` | `12px` | Large containers |
-| `radius.full` | `9999px` | Buttons, pills, toggle thumbs |
+| `radius-none` | `0px` | Table cells, chart areas |
+| `radius-4xs` | `2px` | Hairline rounding |
+| `radius-3xs` | `4px` | Tags, small badges |
+| `radius-2xs` | `8px` | Inputs, buttons, chips |
+| `radius-xs` | `12px` | Cards, dropdowns |
+| `radius-sm` | `16px` | Panels, modals |
+| `radius-md` | `24px` | Large containers |
+| `radius-lg` | `32px` | Extra-large containers |
+| `radius-xl` | `40px` | Rounded panels |
+| `radius-2xl` | `48px` | Large rounded surfaces |
+| `radius-3xl` | `64px` | Hero elements |
+| `radius-4xl` | `72px` | Feature elements |
+| `radius-5xl` | `128px` | Maximum rounding |
+| `radius-full` | `9999px` | Pills, circles, toggle thumbs |
 
 ### Elevation / Shadows
 
-| Token | Light | Dark |
-|---|---|---|
-| `shadow.sm` | `0 1px 2px rgba(0,0,0,0.05)` | `0 1px 3px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)` |
-| `shadow.md` | `0 4px 6px rgba(0,0,0,0.07)` | `0 4px 8px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05)` |
-| `shadow.lg` | `0 10px 15px rgba(0,0,0,0.1)` | `0 10px 20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06)` |
-| `shadow.dropdown` | `0 4px 12px rgba(0,0,0,0.12)` | `0 4px 16px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)` |
-| `shadow.tooltip` | `0 2px 8px rgba(0,0,0,0.15)` | `0 2px 10px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)` |
+Each shadow is defined by three sub-tokens (y-offset, blur, color):
+
+| Shadow | Y-offset | Blur | Color | Usage |
+|---|---|---|---|---|
+| `shadow-sm` | `1px` | `2px` | `#00000014` (8%) | Subtle elevation |
+| `shadow-md` | `4px` | `12px` | `#0000001A` (10%) | Cards, dropdowns |
+| `shadow-lg` | `8px` | `24px` | `#0000001F` (12%) | Modals, popovers |
+| `shadow-overlay` | `16px` | `40px` | `#00000029` (16%) | Full overlays |
 
 ### Motion / Easing
 
 | Token | Value | Usage |
 |---|---|---|
-| `motion.fast` | `150ms` | Hover, toggles |
-| `motion.normal` | `250ms` | Dropdowns, tooltips |
-| `motion.slow` | `400ms` | Modals, chart transitions |
-| `motion.easing.default` | `cubic-bezier(0.4, 0, 0.2, 1)` | Standard |
-| `motion.easing.in` | `cubic-bezier(0.4, 0, 1, 1)` | Exiting elements |
-| `motion.easing.out` | `cubic-bezier(0, 0, 0.2, 1)` | Entering elements |
+| `duration-fast` | `150ms` | Hover, toggles |
+| `duration-base` | `200ms` | Dropdowns, tooltips |
+| `duration-slow` | `300ms` | Modals, chart transitions |
+| `easing-standard` | `cubic-bezier(0.2, 0, 0, 1)` | Default transitions |
+| `easing-enter` | `cubic-bezier(0, 0, 0.2, 1)` | Entering elements |
+| `easing-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Exiting elements |
 
-### Opacity
+### Z-Index
 
 | Token | Value | Usage |
 |---|---|---|
-| `opacity.disabled` | `0.4` | Disabled elements |
-| `opacity.hover` | `0.06` | Hover tint |
-| `opacity.pressed` | `0.1` | Active/pressed tint |
-| `opacity.skeleton` | `0.08` | Skeleton loading |
-
-### Density
-
-| Scale | Gap | Padding | Usage |
-|---|---|---|---|
-| `density.compact` | `4px` | `8px` | Large datasets, >50 rows |
-| `density.comfortable` | `8px` | `16px` | Default — touch-friendly |
-| `density.spacious` | `16px` | `24px` | Summary, marketing |
-
-### Focus Ring
-
-| Token | Value |
-|---|---|
-| `focus.ring-width` | `2px` |
-| `focus.ring-offset` | `2px` |
-| `focus.ring-color` | `$border.focus` |
-
-### Responsive Breakpoints
-
-| Token | Value | Behavior |
-|---|---|---|
-| `breakpoint.sm` | `390px` | Single-column stack |
-| `breakpoint.md` | `768px` | Side-by-side; mobile font sizes below |
-| `breakpoint.lg` | `1024px` | Full dashboard grid |
-| `breakpoint.xl` | `1280px` | Extended chart widths |
+| `z-base` | `0` | Default stacking |
+| `z-dropdown` | `100` | Dropdown menus |
+| `z-popover` | `200` | Popovers, tooltips |
+| `z-sticky` | `300` | Sticky headers |
+| `z-overlay` | `400` | Backdrop overlays |
+| `z-modal` | `500` | Modal dialogs |
+| `z-toast` | `600` | Toast notifications |
+| `z-tooltip` | `700` | Tooltips (topmost) |
 
 ---
 
@@ -337,62 +445,56 @@ Always assign in priority order. Dark-mode overrides exist on slots 3, 5, 12, 14
 
 | Token | Value | Usage |
 |---|---|---|
-| `font.primary` | Heebo | UI font — body, numbers, labels |
-| `font.secondary` | Cormorant Garamond | Headings, editorial content |
-| `font.mono` | Heebo (with `tabular-nums`) | Monospaced numeric contexts |
-
-**Cormorant Garamond weight floor:** never below `500`. Weights 300–400 render hairline strokes. Use `600` (semibold) as default for all headings.
+| `font-family-primary` | Heebo | UI font — body, numbers, labels, all UI text |
+| `font-family-secondary` | Noto Serif | Headings, editorial content |
 
 ### Type Scale
 
-| Token | Mobile | Desktop | Usage |
-|---|---|---|---|
-| `font.size.xs` | `10px` | `12px` | Chart ticks, fine print |
-| `font.size.sm` | `12px` | `14px` | Axis labels, table cells, helper text |
-| `font.size.md` | `14px` | `16px` | Body text (min for body per a11y) |
-| `font.size.lg` | `16px` | `18px` | Section titles, card headers |
-| `font.size.xl` | `20px` | `24px` | Page titles, large KPI values |
-| `font.size.2xl` | `24px` | `30px` | Large headings |
-| `font.size.3xl` | `32px` | `36px` | Hero headings |
-| `font.size.4xl` | `40px` | `48px` | Hero numbers, dashboard KPIs |
-| `font.size.5xl` | `48px` | `60px` | Display text |
-| `font.size.display` | `64px` | `64px` | Display |
-| `font.size.hero` | `80px` | `80px` | Hero |
+The typography system uses a `typo-{family}-{size}-{weight}` naming convention. Each token set includes `font-family`, `font-size`, `font-weight`, `letter-spacing`, and `line-height`.
 
-Mobile sizes apply below `breakpoint.md` (768px).
+| Size token | Font size | Line height | Usage |
+|---|---|---|---|
+| `2xs` | `11px` | `14px` | Fine print, chart ticks |
+| `xs` | `12px` | `16px` | Axis labels, helper text |
+| `sm` | `14px` | `20px` | Table cells, captions, meta |
+| `base` | `16px` | `24px` | Body text (default) |
+| `md` | `18px` | `28px` | Section subtitles |
+| `lg` | `20px` | `28px` | Section titles, card headers |
+| `xl` | `24px` | `32px` | Page titles |
+| `2xl` | `30px` | `36px` | Large headings |
+| `3xl` | `36px` | `40px` | Hero headings |
+| `4xl` | `48px` | `52px` | Hero numbers, KPIs |
+| `5xl` | `56px` | `64px` | Display text |
+| `6xl` | `64px` | `72px` | Large display |
+| `7xl` | `80px` | `84px` | Hero |
+| `8xl` | `96px` | `96px` | Maximum display |
 
 ### Font Weights
 
-| Token | Value | Usage |
+| Weight token | Value | Usage |
 |---|---|---|
-| `font.weight.light` | `300` | Large display text only |
-| `font.weight.regular` | `400` | Body, labels |
-| `font.weight.medium` | `500` | Subtitles, emphasis |
-| `font.weight.semibold` | `600` | Section headers, all Cormorant headings |
-| `font.weight.bold` | `700` | Table headers, KPI values |
+| `light` | `300` | Large display text only |
+| `regular` | `400` | Body, labels |
+| `semibold` | `600` | Section headers, emphasis |
+| `bold` | `700` | Table headers, KPI values |
 
-### Semantic Type Styles
+### Token naming pattern
 
-| Token | Font | Size | Weight | Letter Spacing | Color |
-|---|---|---|---|---|---|
-| `type.page-title` | secondary | 2xl | semibold | tight | `$text.primary` |
-| `type.section-title` | primary | lg | semibold | normal | `$text.primary` |
-| `type.subtitle` | primary | md | semibold | normal | `$text.secondary` |
-| `type.body` | primary | base | regular | normal | `$text.primary` |
-| `type.caption` | primary | sm | regular | normal | `$text.secondary` |
-| `type.overline` | primary | xs | semibold | wide (0.05em) | `$text.tertiary` |
-| `type.label` | primary | sm | semibold | normal | `$text.primary` |
-| `type.helper` | primary | xs | regular | normal | `$text.secondary` |
-| `type.kpi-value` | primary | 4xl | bold | tight | `$text.primary` |
-| `type.data-value` | primary | sm | regular | normal | `$text.primary` |
+Full token example: `typo-primary-sm-semibold-font-size` → `14`
+
+Pattern: `typo-{primary|secondary}-{size}-{weight}-{property}`
+
+Available properties: `font-family`, `font-size`, `font-weight`, `letter-spacing`, `line-height`
+
+Link variants append `-link` before the property: `typo-primary-sm-semibold-link-font-weight`
 
 ### Typography Rules
 
-1. **Heebo for all UI and numbers.** Cormorant Garamond for headings/editorial only.
+1. **Heebo for all UI and numbers.** Noto Serif for headings/editorial only.
 2. **Tabular-nums** (`font-variant-numeric: tabular-nums`) on all right-aligned numeric columns.
-3. **Line height:** body 1.4–1.5; multi-line descriptions always `lineHeight: 1.5`.
-4. **Financial values** minimum `$font.size.md` (14px) — never smaller.
-5. **Letter spacing:** `tight` (-0.01em) for large headings, `wide` (0.05em) for all-caps overlines, `normal` for everything else.
+3. **Line height:** follows the scale (e.g., base = 24px for 16px text).
+4. **Financial values** minimum `sm` (14px) — never smaller.
+5. **Letter spacing:** all tokens define `0` letter-spacing. Apply tight (-0.01em) only for large display headings in code.
 
 ---
 
@@ -414,7 +516,6 @@ Mobile sizes apply below `breakpoint.md` (768px).
 - **Budget progress:** color fill + percentage text
 - **Charts:** legend + pattern/shape, not color alone
 - **Negative numbers:** color + minus sign + optional parentheses
-- All tokens support light/dark — never hardcode hex
 
 ### Touch / click targets
 
@@ -436,27 +537,16 @@ Gaps: 8px min between adjacent interactive elements; 12px+ between destructive a
 | 84% (budget) | "eighty-four percent of budget used" |
 | Green up arrow | "trending up" (via aria-label) |
 
-Component announcements: `KPI Card` → "[Label]: [Value], [trend] [change]". `Transaction Item` → "[Merchant], [category], [amount], [date]". `AI Insight` → "AI Insight: [title]. [body]". Loading → "Loading [content type]…". Error → "Error: [title]. [description]. [actions]".
-
 ### Focus
 
-- Visible ring on every interactive element: `$border.focus`, ≥2px, 3:1 contrast against adjacent colors
+- Visible ring on every interactive element: `$colors-borders-focus` (dark) or `$colors-borders-focus-inverted` (on dark bg), ≥2px, 3:1 contrast
 - Order: newNav → mainPanel header → KPI row (L→R) → main content (top→bottom, L→R) → chatPanel
 
 ### Motion
 
 - All animations respect `prefers-reduced-motion: reduce` → instant transitions, no shimmer
-- Use `$motion.*` tokens so motion can be globally disabled
+- Use `$duration-*` and `$easing-*` tokens so motion can be globally disabled
 - Never use motion as the only way to convey information
-- Loading: subtle shimmer only (never pulse). Chart transitions: fade (never bounce/spring). Values: brief highlight (never flash).
-
-### Severity Model
-
-| Tier | Criteria | Blocks approval? |
-|---|---|---|
-| 🔴 Must-Fix | Affects financial data, interactive elements, navigation, or task completion; contrast below 3.0:1; missing keyboard access/labels/focus/touch targets | Yes |
-| 🟡 Should-Fix | Secondary content, decorative elements; contrast between 3.0:1–4.5:1 on secondary | No (tracked) |
-| 🔵 Known Exception | Registered deviation with rationale, mitigation, review date, and approval | No action |
 
 ---
 
@@ -468,63 +558,54 @@ Component announcements: `KPI Card` → "[Label]: [Value], [trend] [change]". `T
 
 | Data | Component |
 |---|---|
-| Currency with trend | `KPI Card/Positive` or `KPI Card/Negative` |
-| Currency with sparkline | `KPI Sparkline Card` |
-| Currency neutral | `KPI Card/Neutral` |
-| Percentage with direction | KPI card + badge row |
+| Currency with trend | `KpiCard` (positive variant) or `KpiCard/negative` |
+| Currency with sparkline | `KpiCard/with-sparkline` |
+| Currency neutral | `KpiCard/neutral` |
+| Percentage with direction | `KpiCard` + `DataValueIndicator` |
 
 #### Comparisons
 
 | Scenario | Component | Rule |
 |---|---|---|
-| Two time periods | `GenUI/Comparison Metric` | Label both periods |
-| Before/after | `GenUI/Comparison Metric` | Delta badge with direction |
-| Budget vs actual | `Budget/Category Row` | Progress bar required |
-| Multi-metric side-by-side | KPI card row (3–4) | Horizontal, `fill_container` |
+| Two time periods | Comparison metrics row | Label both periods |
+| Before/after | Delta badge with direction | `DataValueIndicator` |
+| Budget vs actual | Budget category row | Progress bar required |
+| Multi-metric side-by-side | KpiCard row (3–4) | Horizontal, `fill_container` |
 
 #### Lists & tables
 
 | Data | Component |
 |---|---|
-| Recent transactions | `Transaction/*` variants |
-| Holdings / positions | `Table` with frozen first column |
-| Budget categories | `Budget/Category Row` |
-| Account list | `Card` or Accordion, grouped by type |
-| Amortization / schedules | `Table` (compact density) |
-| Scenario comparison | `Table` with comparison tokens |
+| Recent transactions | `TransactionRow` / `TransactionTable` |
+| Holdings / positions | `HoldingsRow` / `HoldingsTable` |
+| Account list | `AccountRow` / `AccountRowGroup` |
+| Detail information | `DetailRow` / `DetailSection` |
+| Generic list items | `ListRow` variants |
 
 #### Charts (data shape → chart type)
 
 | Shape | Component |
 |---|---|
-| Part-of-whole | `Donut Chart`, `Pie Chart Card` |
-| Time series (1 metric) | `Area Chart`, `Sparkline Pattern` |
-| Time series (multi) | `Multi-Series Area Chart` |
-| Categorical comparison | `Bar Chart`, `Horizontal Bar Chart` |
-| Composition over time | `Stacked Bar Chart` |
-| Flow / movement | `Sankey Flow Diagram` |
-| Projection / forecast | `Monte Carlo Chart` |
-| Threshold / gauge | `Gauge Chart` |
-| Hierarchical | `Treemap Chart` |
-| Market data | `Candlestick Chart` |
-| Waterfall / attribution | `Waterfall Chart` |
-
-#### AI-generated content
-
-| Content | Component |
-|---|---|
-| Proactive insight | `GenUI/AI Insight Card` |
-| Actionable recommendation | `GenUI/AI Recommendation Card` |
-| Conversational text | `Chat/AI` (in chatPanel) |
-| Response with data | `Chat/AI Preview` (chatPanel) + full view (mainPanel) |
-| Thinking (<5s) | `GenUI/AI Thinking State` |
-| Long processing (>5s) | `GenUI/AI Progress Bar` |
+| Part-of-whole | `DonutChart` |
+| Time series (1 metric) | `AreaChart` |
+| Time series (multi) | `AreaChartMultiSeries` |
+| Categorical comparison | `BarChart` |
+| Flow / movement | `SankeyDiagram` |
+| Projection / forecast | `ProjectedVsActualChart` |
+| Threshold / gauge | `GaugeChart` |
+| Hierarchical | `TreemapChart` |
+| Market data | `CandlestickChart` |
+| Waterfall / attribution | `WaterfallChart` |
+| Heat intensity | `HeatmapChart` |
+| Benchmark comparison | `BenchmarkComparisonChart` |
+| Timeline navigation | `TimelineScrubberChart` |
+| Two-axis correlation | `DualAxisChart` |
+| Inline trend | `Sparkline` |
 
 ### Dashboard composition rules
 
 - **KPI row:** always 3 or 4 cards (never 1, 2, or 5+). Primary metric first. `fill_container` width.
 - **Transaction list:** preceded by filter row. Group by date. Max 20 visible → pagination. Pending at top.
-- **AI insights section:** max 3 visible → "See all". Highest confidence/impact first. `GenUI/Financial Disclaimer` below projections.
 - **Dashboard grid:** 2-column fixed grid. Widgets are card-sized views. See §11.
 
 ### Content voice
@@ -533,10 +614,8 @@ Component announcements: `KPI Card` → "[Label]: [Value], [trend] [change]". `T
 - **Insight pattern:** Observation + comparison + driver
 - **Recommendation pattern:** Action + quantified impact + reasoning
 - **Error pattern:** What happened + reassurance + action
-- **Confidence language:** High (>80%) → "Based on 24 months of data…" / Medium (50–80%) → "Based on available data, it appears…" / Low (<50%) → "With limited data, we estimate…"
-- **Never use:** "will", "definitely", "guaranteed", "you need to"
 - **Numbers:** Always exact values, always with baseline, period, and source. Never approximate actuals.
-- **Disclaimer (required on all projections):** "This is not financial advice. Projections are estimates based on historical data and may not reflect future results." Use `GenUI/Financial Disclaimer`. Never omit.
+- **Disclaimer (required on all projections):** "This is not financial advice. Projections are estimates based on historical data and may not reflect future results."
 
 ---
 
@@ -561,138 +640,153 @@ Component announcements: `KPI Card` → "[Label]: [Value], [trend] [change]". `T
 └──────────┴─────────────────────────────────────┴───────────────┘
 ```
 
+### Layout tokens
+
+- Nav background: `$colors-navBg` (`$color-taupe-100`)
+- Nav border: `$colors-navBorder` (`$color-taupe-300`)
+- Chat background: `$colors-chatBg` (`$color-taupe-100`)
+- Chat border: `$colors-chatBorder` (`$color-taupe-300`)
+- Main surface: `$colors-background-surface` (`$color-base-white`)
+
 ### Layout behavior
 
 | Behavior | Rule |
 |---|---|
-| **Collapse** | When chatPanel or newNav collapses, mainPanel expands to fill. Nav icon and chat icon move into mainPanel header. Small gutter maintained. |
-| **Rendering split** | chatPanel = conversation (input surface). mainPanel = gen-UI output (output surface). Pattern B: chat bubble shows summary/preview; mainPanel owns full interactive rendering. |
-| **Single view** | mainPanel always shows one view at a time — most recent chat context or a saved/pinned view from history. No tabs. |
+| **Collapse** | When chatPanel or newNav collapses, mainPanel expands to fill. |
+| **Rendering split** | chatPanel = conversation (input surface). mainPanel = gen-UI output (output surface). |
+| **Single view** | mainPanel always shows one view at a time. No tabs. |
 | **Dashboard mode** | Dashboard is a special mainPanel view with a 2-column widget grid. See §11. |
 
-### Shell chrome components `[PLANNED]`
+### Shell chrome components `[SHIPPED]`
 
 | Component | Location | Role |
 |---|---|---|
-| `Shell/NewNav` | Left panel | Navigation links, account switcher, collapse affordance |
-| `Shell/NewNav/Collapsed` | Left panel | Icon-only state |
-| `Shell/ChatPanel` | Right panel | Chat conversation container |
-| `Shell/ChatPanel/Collapsed` | Right panel | Chat icon state |
-| `Shell/MainPanel/Header` | Top of center | Page title, breadcrumb-or-back, collapsed icons (nav + chat), view actions (save, pin) |
-| `Chat/User` | chatPanel | User message bubble |
-| `Chat/AI` | chatPanel | AI text-only response bubble |
-| `Chat/AI Preview` | chatPanel | Summary card + "View in main panel" link (Pattern B bridge) |
-| `Chat/Typing Indicator` | chatPanel | Dots during AI response |
-| `Chat/Streaming Line` | chatPanel | Streamed text during generation |
-| `GenUI/Prompt Chip` | chatPanel | Suggested prompt buttons |
+| `AccountSelector/closed` | Nav panel | Account switcher (collapsed) |
+| `AccountSelector/open` | Nav panel | Account switcher (expanded with list) |
+| `AccountSelector/open-hover` | Nav panel | Account switcher item hover |
 
 ---
 
-## 06 · UI Primitives `[SHIPPED]` unless noted
+## 06 · UI Primitives `[SHIPPED]`
 
 ### Buttons
 
 | Variant | Fill | Text | Border |
 |---|---|---|---|
-| `Btn/Primary` | `$accent.default` | `$text.on-accent` | none |
-| `Btn/Secondary` | transparent | `$text.accent` | `1px $border.accent` |
-| `Btn/Outline` | transparent | `$text.primary` | `1px $border.primary` |
-| `Btn/Ghost` | transparent | `$text.secondary` | none |
-| `Btn/Destructive` | `$destructive.default` | `$text.on-accent` | none |
+| `Button` (primary) | `$colors-btnPrimaryBg` | `$colors-btnPrimaryText` | none |
+| `Button/secondary` | transparent | `$colors-btnSecondaryText` | `$colors-btnSecondaryBorder` |
+| `Button/outline` | transparent | `$colors-btnSecondaryText` | `$colors-btnSecondaryBorder` |
+| `Button/text` | transparent | `$colors-btnLinkText` | none |
 
-**Sizes:** `Sm` (28px height, `$font.size.sm`), `Md` (36px, `$font.size.md`), `Lg` (44px)
-**States per variant:** Default, Hover, Active, Disabled
-**Shape:** `$radius.full` (pill)
-**Focus ring:** `$border.focus`, 2px, 2px offset
+Sub-variants with icons: `/icon-left`, `/icon-right`
+
+**States per variant:** Default, Hover, Active, Disabled (all token-driven via semantic button colors)
+**Shape:** `$radius-2xs` (8px)
+**Focus ring:** `$colors-borders-focus`, 2px
 
 ### Input Fields
 
-**States:** Default, Focused, Error, Disabled
+| Variant | Description |
+|---|---|
+| `Input` | Default state |
+| `Input/filled` | Has value |
+| `Input/focus` | Focused |
+| `Input/no-label` | Without label |
+| `Input/disabled` | Disabled |
+| `Input/error` | Error state |
+| `Input/error-icon` | Error with icon |
+| `Input/icon-right` | With trailing icon |
 
-| State | Border | Border width |
-|---|---|---|
-| Default | `$border.primary` | 1px |
-| Focused | `$accent.default` | 2px |
-| Error | `$status.error` | 2px |
-| Disabled | `$border.primary`, opacity `$opacity.disabled` | 1px |
+### Textarea
 
-Height: 36px. Padding: `$space.2` vertical, `$space.3` horizontal. Radius: `$radius.md`. Font: `$font.size.md`.
+| Variant | Description |
+|---|---|
+| `Textarea` | Default |
+| `Textarea/hover` | Hovered |
+| `Textarea/focus` | Focused |
+| `Textarea/filled` | Has value |
+| `Textarea/disabled` | Disabled |
+| `Textarea/error` | Error state |
 
-### Dropdown / Select
+### Select / Dropdown
 
-Trigger inherits `Input/*` tokens. Menu: `$surface.primary`, `$shadow.dropdown`, `$radius.md`. Item hover: `$accent.subtle`. Selected: checkmark + `$accent.default` text.
+| Variant | Description |
+|---|---|
+| `Select` | Default state |
+| `Select/selected` | Has selection |
+| `Select/open` | Menu open |
+| `Select/hover` | Hovered |
+| `Select/focus` | Focused |
+| `Select/disabled` | Disabled |
+| `Select/error` | Error state |
+| `Select/floating-label` | Floating label variant |
 
-**States:** Default, Filled, Open (with menu)
+### Toggle Switch
 
-### Toggle / Switch
-
-Track: 36×20px, `$radius.full`. Off: `$gray.300`. On: `$accent.default`. Thumb: 16px, `$surface.primary`.
+| Variant | Description |
+|---|---|
+| `ToggleSwitch` | Off state |
+| `ToggleSwitch/on` | On state |
+| `ToggleSwitch/disabled` | Disabled |
+| `ToggleSwitch/loading` | Loading state |
 
 ### Checkbox & Radio
 
-18×18px. Checkbox: `$radius.sm`. Radio: `$radius.full`. Checked: `$accent.default` fill + white icon. Focus ring: `$border.focus`.
-
-### Slider `[PLANNED]`
-
-Primary input for continuous numeric variables in modeling tools.
-
-**Variants:** `Slider/Single`, `Slider/Range`, `Slider/Stepped`
-**States:** Default, Hover, Active (dragging), Focused, Disabled, Error
-
-| Element | Token |
+| Variant | Description |
 |---|---|
-| Track | 4px height, `$surface.tertiary` bg |
-| Fill | `$accent.default`, left of thumb |
-| Thumb | 20×20px, `$accent.default`, 2px `$surface.primary` inner ring |
-| Tap target | 44×44px invisible hit area |
-| Label | `$font.size.md`, weight 500, `$text.primary` |
-| Value readout | `$font.size.xl`, weight 600, `$text.primary`, right-aligned |
-| Tick marks (stepped) | 1×8px, `$border.primary` |
+| `Checkbox` | Unchecked |
+| `Checkbox/checked` | Checked |
+| `Checkbox/no-label` | Without label |
+| `Checkbox/with-error` | Error state |
+| `Radio` | Unselected |
+| `Radio/checked` | Selected |
+| `Radio/no-label` | Without label |
+| `Radio/with-error` | Error state |
 
-**Numeric formats:** `currency` ($12,500), `percent` (7.5%), `number` (10,000), `year` (2045), `duration` (25 years)
+### Slider
 
-**Value display modes:**
-- `inline` — value always visible in label row (default)
-- `popover` — floats above thumb while dragging
-- `paired-input` — editable input synced bidirectionally (preferred for modeling)
+| Variant | Description |
+|---|---|
+| `Slider` | Default |
+| `Slider/hover` | Hovered |
+| `Slider/focus` | Focused |
+| `Slider/disabled` | Disabled |
+| `Slider/show-value` | With value display |
+| `Slider/show-value-range-labels` | With min/max labels |
 
-**Keyboard:** ←/→ = step, Shift+←/→ = 10× step, Home/End = min/max, PageUp/Down = 10% of range
+### DatePicker
 
-**ARIA:** `role="slider"`, `aria-valuemin`, `aria-valuemax`, `aria-valuenow`, `aria-valuetext` (formatted: "15 percent", not "15")
+| Variant | Description |
+|---|---|
+| `DatePicker` | Default |
+| `DatePicker/filled` | Has date |
+| `DatePicker/focus` | Focused |
+| `DatePicker/disabled` | Disabled |
+| `DatePicker/error` | Error state |
+| `DatePicker/description` | With helper text |
+| `DatePicker/no-label` | Without label |
+| `DatePicker/open` | Calendar open |
 
-### Table `[PLANNED]`
+### Label
 
-Generic data grid for holdings, amortization, scenarios, assumptions, sensitivity, tax tables.
+| Variant | Description |
+|---|---|
+| `Label` | Standard label |
+| `Label/description` | With description |
+| `Label/required` | With required indicator |
+| `Label/required-description` | Required + description |
+| `Label/disabled` | Disabled state |
 
-**Primitives:** `Table/Container`, `Table/Header Cell`, `Table/Row`, `Table/Row/Expanded`, `Table/Cell/Text`, `Table/Cell/Numeric`, `Table/Cell/Editable`, `Table/Total Row`
+### Tag
 
-**Row states:** Default (`$surface.primary`), Hover (`$surface.secondary`), Selected (`$surface.accent` + left 2px bar), Focused (2px `$border.focus` ring), Expanded (chevron rotated, child below)
-
-**Header Cell states:** Default, Sortable/Unsorted (↕), Ascending (↑), Descending (↓), Sticky (+shadow)
-
-**Cell formats:** text (left), number (right, tabular-nums), currency (right, negative = `$fin.expense`), percent (right, `$data.*`), delta (right + arrow), status (badge), date
-
-**Density:**
-| Scale | Row height | Padding | Use case |
-|---|---|---|---|
-| compact | 32px | `$density.compact.padding` | >50 rows, amortization |
-| comfortable | 44px | `$density.comfortable.padding` | Default |
-| spacious | 56px | `$density.spacious.padding` | Summary |
-
-**Sticky header:** pins to viewport top + `$shadow.color` when scrolled
-**Frozen column:** first column pins left + right border
-
-**Keyboard:** Arrow keys between cells, Enter to edit/expand, Escape to cancel, Tab enters/exits table
-
-**ARIA:** `role="table"`, `aria-sort` on sortable headers, `aria-rowcount`/`aria-colcount` for virtualized tables, editable cells use `role="gridcell"` + `aria-readonly="false"`
-
-### Stepper / Number Input `[PLANNED]`
-
-36px height, `$font.primary`, right-aligned. Stepper buttons: 28px wide, ±, `$surface.tertiary` hover.
-
-### Date Picker `[PLANNED]`
-
-Trigger inherits `Input/*`. Calendar popup: `$surface.primary`, `$shadow.dropdown`, `$radius.lg`. Day cells: 32px, `$radius.full`. Selected: `$accent.default` fill. Today: `1px solid $accent.default`. Range: `$accent.subtle` wash between endpoints.
+| Variant | Description |
+|---|---|
+| `Tag` | Default |
+| `Tag/icon-left` | With leading icon |
+| `Tag/icon-right` | With trailing icon |
+| `Tag/large` | Large size |
+| `Tag/large/icon-left` | Large with leading icon |
+| `Tag/large/icon-right` | Large with trailing icon |
 
 ---
 
@@ -700,75 +794,295 @@ Trigger inherits `Input/*`. Calendar popup: `$surface.primary`, `$shadow.dropdow
 
 ### Card
 
-Base container. `$surface.secondary` fill, `1px $border.primary`, `$radius.lg`, `$shadow.md`, `$space.6` padding. Hover: `$border.secondary` + `$shadow.lg`.
+| Variant | Description |
+|---|---|
+| `Card` | Default card container |
+| `Card/subtle` | Reduced emphasis |
+| `Card/shadow` | With drop shadow |
+| `Card/no-border` | Borderless |
+| `Card/dense` | Compact padding |
+| `Card/sm` | Small size |
+| `Card/lg` | Large size |
 
-### KPI Card
+### CardHeader
 
-| Variant | Trend color | Badge bg |
+| Variant | Description |
+|---|---|
+| `CardHeader` | Title only |
+| `CardHeader/description` | Title + description |
+| `CardHeader/action` | Title + action button |
+| `CardHeader/description-action` | Title + description + action |
+| `CardHeader/divider` | With bottom divider |
+| `CardHeader/dense` | Compact spacing |
+
+### Callout (Alert)
+
+| Variant | Description |
+|---|---|
+| `Callout` | Info (default) |
+| `Callout/neutral` | Neutral tone |
+| `Callout/success` | Success state |
+| `Callout/warning` | Warning state |
+| `Callout/error` | Error state |
+| `Callout/title-only` | Without body |
+| `Callout/dismissible` | With close button |
+| `Callout/action` | With action button |
+
+### Tabs
+
+| Component | Variant | Description |
 |---|---|---|
-| `KPI Card/Positive` | `$data.positive` | `$data.positive` at 8% |
-| `KPI Card/Negative` | `$data.negative` | `$data.negative` at 8% |
-
-Value: `$font.size.4xl`, `$font.weight.bold`. Subtitle: `$font.size.sm`, `$text.secondary`.
-
-### Alert
-
-4 status variants: Success, Error, Warning, Info. `4px` left border in status color. Status-tinted bg. Shared: `$radius.md`, `$space.3 $space.4` padding.
-
-### Progress Bar
-
-6px track, `$radius.full`. Fill: `$accent.default` (normal), `$data.positive` (on track), `$status.warning` (attention), `$status.error` (over limit).
-
-### Tab Bar
-
-Underline indicator: 2px, `$accent.default`. Item: `$text.secondary` default, `$accent.default` active, weight `semibold` when active.
+| `TabItem` | — | Default tab |
+| `TabItem/hover` | — | Hovered |
+| `TabItem/selected` | — | Active tab |
+| `TabItem/disabled` | — | Disabled |
+| `TabsGroup` | — | 3-tab group (first selected) |
+| `TabsGroup/2-tabs` | — | 2-tab group |
+| `TabsGroup/mid-selected` | — | Middle tab active |
+| `TabsGroup/last-selected` | — | Last tab active |
+| `TabsGroup/4-tabs` | — | 4-tab group |
+| `TabsGroup/with-disabled` | — | Group with disabled tab |
 
 ### Segmented Control
 
-Pill-style toggle. Container: `$surface.secondary`, `$radius.md`. Active segment: `$surface.primary`, `$shadow.sm`, `$text.primary`. Inactive: `$text.secondary`.
+| Variant | Description |
+|---|---|
+| `SegmentedControl` | 3-item (first selected) |
+| `SegmentedControl/2-items` | 2-item group |
+| `SegmentedControl/mid-selected` | Middle selected |
+| `SegmentedControl/last-selected` | Last selected |
+| `SegmentedControl/4-items` | 4-item group |
+| `SegmentedControl/fill` | Fill container width |
+| `SegmentedControl/with-disabled` | With disabled item |
+
+### SegmentItem (child of SegmentedControl)
+
+| Variant | Description |
+|---|---|
+| `SegmentItem` | Default |
+| `SegmentItem/hover` | Hovered |
+| `SegmentItem/selected` | Active |
+| `SegmentItem/disabled` | Disabled |
+
+### Accordion
+
+| Variant | Description |
+|---|---|
+| `Accordion` | Default (first item open) |
+| `Accordion/2-items` | 2-item |
+| `Accordion/4-items` | 4-item |
+| `Accordion/mid-open` | Middle item open |
+| `Accordion/last-open` | Last item open |
+| `Accordion/all-closed` | All collapsed |
+| `Accordion/multiple-open` | Multiple expanded |
+
+### Collapse
+
+| Variant | Description |
+|---|---|
+| `Collapse` | Collapsed |
+| `Collapse/open` | Expanded |
+
+### ModalDrawer
+
+| Variant | Description |
+|---|---|
+| `ModalDrawer` | Default |
+| `ModalDrawer/with-actions` | With action buttons |
+| `ModalDrawer/scroll` | Scrollable content |
+| `ModalDrawer/mobile` | Mobile variant |
+| `ModalDrawer/mobile/scroll` | Mobile scrollable |
+| `ModalDrawer/mobile/with-actions` | Mobile with actions |
+
+### Steps
+
+| Variant | Description |
+|---|---|
+| `Steps` | Default horizontal steps |
+| `Steps/h3-mid` | Mid-step active |
+| `Steps/h5` | 5-step variant |
+| `Steps/no-labels` | Icons only |
+| `Steps/vertical` | Vertical layout |
+
+### ListRow
+
+| Variant | Description |
+|---|---|
+| `ListRow` | Default |
+| `ListRow/with-description` | With subtitle |
+| `ListRow/with-border` | With bottom border |
+| `ListRow/with-description-border` | Subtitle + border |
+| `ListRow/hover` | Hovered |
+| `ListRow/disabled` | Disabled |
+| `ListRow/long-content` | Overflow handling |
+| `ListRow/no-chevron` | Without disclosure arrow |
+| `ListRow/no-chevron-description` | No chevron + subtitle |
+| `ListRow/no-chevron-border` | No chevron + border |
+| `ListRow/no-chevron-description-border` | No chevron + subtitle + border |
+
+### Avatar
+
+| Variant | Description |
+|---|---|
+| `Avatar` | Image avatar |
+| `Avatar/fallback` | Initials fallback |
+| `Avatar/icon` | Icon avatar |
+
+### Pagination
+
+| Variant | Description |
+|---|---|
+| `PaginationDot` | Default dot |
+| `PaginationDot/active` | Active dot |
+| `PaginationDot/disabled` | Disabled dot |
 
 ### Badge
 
-| Variant | Text | Background |
-|---|---|---|
-| `Badge/Positive` | `$data.positive` | `$data.positive` at 8% |
-| `Badge/Negative` | `$data.negative` | `$data.negative` at 8% |
-| `Badge/Neutral` | `$text.secondary` | `$surface.tertiary` |
-| `Badge/Category` | `$accent.default` | `$accent.subtle` |
+| Variant | Description |
+|---|---|
+| `Badge New` | New indicator |
+| `Badge Changed` | Changed indicator |
+| `Badge Deleted` | Deleted indicator |
 
-Shape: `$radius.sm` (4px) — always rounded rectangle, never pill. Badges are non-interactive.
+### CodeBlock
 
-### Modal `[PLANNED]`
+| Variant | Description |
+|---|---|
+| `CodeBlock` | Default (with language header) |
+| `CodeBlock/json` | JSON syntax |
+| `CodeBlock/css` | CSS syntax |
+| `CodeBlock/no-header` | Without header |
+| `CodeBlock/copied` | Copy confirmed state |
+| `CodeBlock/error` | Error state |
 
-Widths: sm (400px), md (560px), lg (720px). `$radius.xl`, `$shadow.lg`, `$surface.primary`. Backdrop: `$surface.overlay` + 4px blur. Animation: 200ms ease-out fade+scale.
+### Separator
 
-### Popover `[PLANNED]`
+| Component | Description |
+|---|---|
+| `Separator` | Horizontal divider line |
 
-Max 320px. `$radius.md`, `$shadow.dropdown`. Animation: 150ms ease-out fade+translate-y.
+### Stack
+
+| Component | Description |
+|---|---|
+| `Stack` | Vertical spacing utility |
 
 ---
 
 ## 08 · Financial Components `[SHIPPED]`
 
-### Transaction
+### TransactionRow
 
-3 variants: `Transaction/Expense`, `Transaction/Income`, `Transaction/Pending`
+| Variant | Description |
+|---|---|
+| `TransactionRow` | Default transaction |
+| `TransactionRow/hover` | Hovered state |
+| `TransactionRow/pressed` | Pressed state |
+| `TransactionRow/pending` | Pending transaction |
 
-Anatomy: category icon (28×28 circle with tinted bg) + merchant name + meta (date, category) + amount (right-aligned) + balance
+### TransactionTable (composed)
 
-Pending: badge "Pending" in `$status.warning-bg` / `$status.warning` text
+| Variant | Description |
+|---|---|
+| `TransactionTable` | Default table |
+| `TransactionTable/hover` | Row hover |
+| `TransactionTable/pressed` | Row pressed |
+| `TransactionTableHeader` | Column headers |
 
-### Budget Category Row
+### AccountRow
 
-2 variants: `Budget/Category Row` (normal), `Budget/Category Row/Over` (over budget)
+| Variant | Description |
+|---|---|
+| `AccountRow` | Default account item |
+| `AccountRow/hover` | Hovered |
+| `AccountRow/pressed` | Pressed |
+| `AccountRow/error` | Error state |
 
-Anatomy: category icon + name + spent/limit + progress bar + remaining + % used
+### AccountRowGroup
 
-Over: progress fill in `$status.error`, remaining text in `$status.error`
+| Variant | Description |
+|---|---|
+| `AccountRowGroup` | Grouped accounts |
+| `AccountRowGroup/hover` | Group hover |
+| `AccountRowGroup/pressed` | Group pressed |
 
-### Comparison Table `[token-specced]`
+### HoldingsRow
 
-Side-by-side scenario analysis. Header: `$surface.secondary`. Divider: `2px $border.secondary`. Delta column: `$surface.tertiary`, 80px wide. Highlight row: `$accent.subtle`. Winner badge: `$data.positive` text on `$data.positive` at 8%.
+| Variant | Description |
+|---|---|
+| `HoldingsRow` | Default holding |
+| `HoldingsRow/hover` | Hovered |
+| `HoldingsRow/pressed` | Pressed |
+
+### HoldingsTable (composed)
+
+| Variant | Description |
+|---|---|
+| `HoldingsTable` | Default |
+| `HoldingsTable/hover` | Row hover |
+| `HoldingsTable/pressed` | Row pressed |
+| `HoldingsTableHeader` | Column headers |
+
+### DetailRow
+
+| Variant | Description |
+|---|---|
+| `DetailRow` | Default label-value pair |
+| `DetailRow/money` | Currency formatted |
+| `DetailRow/positive` | Positive value (green) |
+| `DetailRow/negative` | Negative value (red) |
+| `DetailRow/muted` | Muted styling |
+| `DetailRow/transaction-negative` | Transaction expense |
+| `DetailRow/transaction-positive` | Transaction income |
+
+### DetailHeader & DetailSection
+
+| Component | Description |
+|---|---|
+| `DetailHeader` | Section header in detail view |
+| `DetailHeader/with-eyebrow` | With category eyebrow |
+| `DetailSection` | Grouped detail rows |
+
+### DetailDrawer
+
+| Variant | Description |
+|---|---|
+| `DetailDrawer` | Desktop drawer |
+| `DetailDrawer/mobile` | Mobile full-screen |
+
+### MoneyText
+
+| Variant | Description |
+|---|---|
+| `MoneyText` | Default currency display |
+| `MoneyText/positive` | Positive (green) |
+| `MoneyText/negative` | Negative (red) |
+| `MoneyText/muted` | Muted color |
+| `MoneyText/sm` | Small size |
+| `MoneyText/lg` | Large size |
+
+### DataValueIndicator
+
+| Variant | Description |
+|---|---|
+| `DataValueIndicator` | Positive trend (green + up arrow) |
+| `DataValueIndicator/negative` | Negative trend (red + down arrow) |
+| `DataValueIndicator/neutral` | Neutral (gray + dash) |
+
+### TableHeaderCell
+
+| Variant | Description |
+|---|---|
+| `TableHeaderCell` | Default |
+| `TableHeaderCell/sortable` | With sort affordance |
+| `TableHeaderCell/sorted-asc` | Sorted ascending |
+| `TableHeaderCell/sorted-desc` | Sorted descending |
+
+### Swatch Card
+
+| Component | Description |
+|---|---|
+| `Swatch Card` | Color swatch display card |
 
 ---
 
@@ -776,122 +1090,81 @@ Side-by-side scenario analysis. Header: `$surface.secondary`. Divider: `2px $bor
 
 ### Chart types in the system
 
-| Chart | Component name | Status |
+| Chart | Component name | Variants |
 |---|---|---|
-| Donut | `Donut Chart` | Shipped |
-| Sparkline | `Sparkline Pattern` | Shipped |
-| Area | `Area Chart Pattern` | Shipped |
-| Multi-Series Area | `Multi-Series Area Chart` | Shipped |
-| Stacked Bar | `Stacked Bar Chart` | Shipped |
-| Horizontal Bar | `Horizontal Bar Chart` | Shipped |
-| Pie | `Pie Chart Card` | Shipped |
-| Monte Carlo | `Monte Carlo Chart` | Shipped |
-| Waterfall | `Waterfall Chart` | Shipped |
-| Candlestick | `Candlestick Chart` | Shipped |
-| Gauge | `Gauge Chart` | Shipped |
-| Sankey | `Sankey Flow Diagram` | Shipped |
-| Treemap | `Treemap Chart` | Shipped |
-| KPI Sparkline | `KPI Sparkline Card` | Shipped |
-| Line (standalone) | — | Token-specced, no canvas component |
-| Scatter / Bubble | — | Token-specced, no canvas component |
-| Histogram | — | Token-specced, no canvas component |
-| Heatmap | — | Token-specced, no canvas component |
+| Area | `AreaChart` | default, `/compact`, `/no-card` |
+| Multi-Series Area | `AreaChartMultiSeries` | default, `/compact` |
+| Bar | `BarChart` | default, `/compact`, `/with-tooltip`, `/no-card` |
+| Donut | `DonutChart` | default, `/pressed`, `/with-legend`, `/compact`, `/hover`, `/static-filled` |
+| Gauge | `GaugeChart` | default, `/compact`, `/with-min-max`, `/warning`, `/success` |
+| KPI Sparkline | `KpiCard/with-sparkline` | (variant of KpiCard) |
+| Waterfall | `WaterfallChart` | default, `/with-positive-negative`, `/compact`, `/no-card`, `/with-tooltip` |
+| Heatmap | `HeatmapChart` | default, `/positive-negative`, `/compact`, `/with-labels` |
+| Candlestick | `CandlestickChart` | default, `/compact`, `/with-grid`, `/no-card`, `/with-tooltip` |
+| Projected vs Actual | `ProjectedVsActualChart` | default, `/with-today-marker`, `/compact`, `/no-card`, `/with-tooltip` |
+| Benchmark Comparison | `BenchmarkComparisonChart` | default, `/with-labels`, `/compact`, `/no-card`, `/with-tooltip` |
+| Treemap | `TreemapChart` | default, `/with-values`, `/with-tooltip`, `/compact`, `/no-card` |
+| Sankey | `SankeyDiagram` | default, `/compact`, `/with-values`, `/with-tooltip`, `/no-card` |
+| Timeline Scrubber | `TimelineScrubberChart` | default, `/with-events`, `/with-tooltip`, `/compact`, `/no-card` |
+| Dual Axis | `DualAxisChart` | default, `/with-tooltip`, `/with-events`, `/compact`, `/no-card` |
+| Sparkline (inline) | `Sparkline` | default, `/negative`, `/neutral`, `/with-value`, `/compact` |
 
-### Shared chart tokens
+### Shared chart primitives
 
-Full chart token tables (axis, grid, tooltip, legend, threshold lines, annotations, confidence bands, data point states, interactions, animations) are defined in `design-tokens-spec.md` §3. Key highlights:
+| Component | Variants | Role |
+|---|---|---|
+| `ChartTooltip` | default, `/multi-series`, `/with-total`, `/compact` | Tooltip overlay |
+| `ChartLegend` | default, `/inline-bottom`, `/vertical`, `/compact` | Static legend |
+| `InteractiveLegend` | default, `/active`, `/inactive`, `/disabled`, `/compact` | Clickable legend |
+| `ChartAxisGrid` | default, `/axis-line`, `/reference-line`, `/full-grid` | Axis & grid lines |
+| `ThresholdLine` | default (goal), `/benchmark`, `/limit` | Reference lines |
 
-- **Background:** always `$surface.primary`. Never gray or tinted.
-- **Axis labels:** `$font.size.xs`, `$text.secondary`
-- **Tooltip:** `$surface.primary` bg, `$shadow.tooltip`, max 240px, no caret
-- **Legend:** bottom placement default, click-to-toggle, inactive at 35% opacity + strikethrough
-- **Threshold lines:** Goal = dashed `$status.warning`, Benchmark = dotted `$accent.default`, Limit = solid `$status.error`
-- **Confidence bands:** 99th→50th percentile, opacity 0.06→0.25, widest first
-- **Chart text scaling:** NEVER scale text with chart. Use fixed pixel SVG dimensions. Wrap in `overflow-x: auto` if needed.
-- **No SVG for standard charts.** Pure HTML/CSS with clip-path polygons. Exceptions: donut, gauge, Sankey, sparklines.
+### Chart design rules
 
-### Chart primitives (reusable sub-components)
-
-| Component | Role |
-|---|---|
-| `Chart Tooltip` | Shared tooltip with swatch + value rows |
-| `Chart Legend/Horizontal` | Bottom-placed legend strip |
-| `Chart Legend/Vertical` | Right-placed legend column |
-| `Chart Bar` | Single bar primitive |
+- **Background:** always `$colors-background-surface` (white). Never gray or tinted.
+- **Axis labels:** `xs` size (12px), `$colors-text-meta`
+- **Tooltip:** `$colors-background-surface` bg, `shadow-md`, max 240px
+- **Legend:** bottom placement default, click-to-toggle via `InteractiveLegend`
+- **Threshold lines:** Goal = dashed, Benchmark = dotted, Limit = solid
+- **Chart text scaling:** NEVER scale text with chart. Use fixed pixel sizes.
 
 ---
 
 ## 10 · Gen-UI Affordances `[SHIPPED]`
 
-### AI lifecycle states
+### Content blocks
 
-| Component | Role | Where |
+| Component | Variants | Role |
 |---|---|---|
-| `GenUI/Typing Indicator` | Dots animation during generation | chatPanel |
-| `GenUI/Streaming Line` | Text streams in real-time | chatPanel |
-| `GenUI/AI Thinking State` | "Working on it" (<5s) | chatPanel or mainPanel |
-| `GenUI/AI Progress Bar` | Long processing (>5s) | mainPanel |
+| `FollowUpBlock` | default, `/with-body-text`, `/compact`, `/horizontal`, `/four-actions`, `/text-buttons`, `/hug` | Suggested action chips |
+| `ListBlock` | default, `/compact`, `/numbered`, `/checklist`, `/with-tags`, `/interactive`, `/long-content`, `/radio-list` | Structured list content |
+| `SectionBlock` | default, `/with-callout`, `/with-list`, `/with-accordion`, `/compact`, `/long-content` | Section with rich content |
 
-### Skeletons
+### Image & media
 
-7 variants: `Skeleton/Text`, `Skeleton/Text Short`, `Skeleton/Heading`, `Skeleton/Avatar`, `Skeleton/Chart`, `Skeleton/Bar`, `Skeleton/KPI Value`
-
-Skeleton bg: `$gray.100` / `$gray.800`. Gradient sweep animation 1.5s. Respects `prefers-reduced-motion`.
-
-### AI content cards
-
-| Component | Role | Anatomy |
+| Component | Variants | Role |
 |---|---|---|
-| `GenUI/AI Insight Card` | Proactive insight | Header + data highlight + body + action chips |
-| `GenUI/AI Recommendation Card` | Actionable recommendation | Header + impact metrics + badge + CTA |
+| `Image` | default, `/loading`, `/error` | Single image |
+| `ImageBlock` | default, `/caption-credit`, `/no-caption`, `/loading`, `/error`, `/centered` | Image with metadata |
+| `ImageGallery` | default, `/with-captions`, `/two-column`, `/three-column`, `/mixed-aspect-ratio`, `/with-header`, `/compact` | Multi-image gallery |
+| `Carousel` | default, `/image-with-caption`, `/multi-card`, `/with-header`, `/controls-disabled-start`, `/controls-disabled-end` | Swipeable content |
 
-### Chat components (shell chrome — in chatPanel)
+### Text content
 
-| Component | Role |
+| Component | Description |
 |---|---|
-| `GenUI/Chat/User` | User message bubble |
-| `GenUI/Chat/AI` | AI text response |
-| `GenUI/Chat/AI Rich` | AI response with embedded content |
-| `Chat/AI Preview` `[PLANNED]` | Summary card + "View in main panel" link |
+| `TextContent` | Rich text block for AI responses |
 
-### Prompt & filter chips
+### KPI Cards
 
-| Component | Tokens |
+| Variant | Description |
 |---|---|
-| `GenUI/Prompt Chip` | `$ai.chip-surface`, `$ai.chip-border`, `$ai.accent` icon, `$radius.full` |
-| `GenUI/Filter Chip` | Same family, toggle-able |
-| `GenUI/Filter Chip/Active` | `$accent.subtle` fill when selected |
-| `GenUI/Date Range Pill` | Display-only date range indicator |
-
-### Data mentions (inline in AI text)
-
-| Variant | Color |
-|---|---|
-| `GenUI/Data Mention/Positive` | `$data.positive` |
-| `GenUI/Data Mention/Negative` | `$data.negative` |
-| `GenUI/Data Mention/Neutral` | `$data.neutral` |
-
-### Trust & confidence
-
-| Component | Role |
-|---|---|
-| `GenUI/Confidence/High` | Green indicator, "Based on 24 months…" |
-| `GenUI/Confidence/Medium` | Amber indicator, "Based on available data…" |
-| `GenUI/Confidence/Low` | Red indicator, "With limited data…" |
-| `GenUI/Trust Signal Bar` | Source + freshness + confidence in a row |
-| `GenUI/Stale Data Indicator` | "Data as of [date]" warning |
-| `GenUI/Freshness/Live` | Green dot, real-time data |
-| `GenUI/Freshness/Stale` | Amber dot, data may be outdated |
-| `GenUI/Financial Disclaimer` | Required on all projections. Never omit. |
-| `GenUI/Calm Notification` | Non-intrusive notification card |
-
-### Interaction & safety
-
-| Component | Role |
-|---|---|
-| `GenUI/Confirmation Dialog` | "Are you sure?" before consequential actions |
-| `GenUI/Gain First Summary` | Leads with gains before losses (loss aversion UX) |
-| `GenUI/Conflicting Data State` | When data sources disagree |
+| `KpiCard` | Default (positive trend) |
+| `KpiCard/negative` | Negative trend |
+| `KpiCard/neutral` | No trend |
+| `KpiCard/accent` | Accent-colored |
+| `KpiCard/with-sparkline` | With inline sparkline |
+| `KpiCard/compact` | Compact size |
 
 ---
 
@@ -900,18 +1173,6 @@ Skeleton bg: `$gray.100` / `$gray.800`. Gradient sweep animation 1.5s. Respects 
 ### Dashboard model
 
 The dashboard is a special mainPanel view containing a **2-column fixed grid** of widget cards. Each widget is a compact preview of a saved or AI-suggested view.
-
-### Dashboard components
-
-| Component | Role |
-|---|---|
-| `Dashboard/Grid` | 2-column fixed layout container with gutter (`$space.4`) |
-| `Widget/Container` | Card frame — holds header + compact gen-UI content |
-| `Widget/Header` | Title + right-chevron → click opens full view in mainPanel |
-| `Widget/Hover Controls` | Drag handle (desktop only, appears on hover) |
-| `Dashboard/Customize Panel` | Overlay/drawer with widget list + checkboxes |
-| `Dashboard/Customize Item` | Row: widget name + toggle + drag-to-reorder |
-| `Dashboard/AI Default Layout` | First-time state: AI-suggested arrangement |
 
 ### Widget behavior
 
@@ -922,89 +1183,46 @@ The dashboard is a special mainPanel view containing a **2-column fixed grid** o
 | **Controls (desktop)** | Hidden until hover: drag handle for rearrange |
 | **Controls (mobile)** | No inline controls; user opens view to interact |
 | **Widget content** | Read-only compact preview. Full interaction in opened view. |
-| **Customization** | "Customize" button on dashboard → panel with selectable widget list (check/uncheck) |
-| **Rearrange** | Drag/drop in edit mode (desktop). Mobile TBD. |
 | **First-time user** | AI suggests default layout. No empty dashboard state. |
 
 ### Compact rendering rule
 
-Every gen-UI component that can appear as a widget needs a **compact variant** — specifically, how it renders at ~half-width column card size. Guidelines:
+Every gen-UI component that can appear as a widget needs a **compact variant**:
 
-- KPI Card: keep value + trend, hide sparkline
-- Chart: reduce to sparkline-level fidelity (no axis labels, no legend, simplified shape)
-- Table: show first 3 rows + "View all" link, hide pagination
-- Insight Card: title + 1-line summary, hide action chips
+- KpiCard: use `/compact` variant
+- Charts: use `/compact` variant (simplified, no axis labels)
+- Tables: show first 3 rows + "View all" link
+- ListBlock: use `/compact` variant
 
 ---
 
-## 12 · Edge Cases & States `[SHIPPED]`
+## 12 · Edge Cases & States `[PLANNED]`
+
+Edge state components are specced for future implementation:
 
 | Component | Role |
 |---|---|
-| `GenUI/Empty State` | No data yet — icon + title + description + CTA |
-| `GenUI/Error State` | System error — icon + title + description + retry |
-| `GenUI/AI Error State` | AI-specific failure — different icon, softer tone |
-| `GenUI/Partial Data State` | Some data available, some missing — show what we have + explanation |
-| `GenUI/Zero Balance State` | Account exists but balance is $0 — congratulatory or encouraging tone |
-| `GenUI/Permission Gated Card` | Feature behind auth/upgrade — explain + CTA |
-| `GenUI/Rate Limited State` | Too many requests — "Try again in X minutes" |
-| `GenUI/Conflicting Data State` | Data sources disagree — show both + explanation |
-
-### Mobile & Dark Mode `[SHIPPED]`
-
-All components have dark mode variants in `.lib.pen` (section "01–12 Dark" mirrors each light section). Mobile dashboard layout (`Mobile/Dashboard`) exists for reference.
+| Empty State | No data yet — icon + title + description + CTA |
+| Error State | System error — icon + title + description + retry |
+| AI Error State | AI-specific failure — softer tone |
+| Partial Data State | Some data available, some missing |
+| Zero Balance State | Account exists but balance is $0 |
+| Permission Gated Card | Feature behind auth/upgrade |
+| Rate Limited State | Too many requests |
+| Conflicting Data State | Data sources disagree |
 
 ---
 
 ## 13 · Gen-UI Invocation Schema
 
-When the AI generates a component, it emits a JSON object. The gen-UI renderer hydrates it into the matching component.
+When the AI generates a component, it emits a JSON object. The gen-UI renderer hydrates it into the matching Hemlock component.
 
-### Slider
-
-```json
-{
-  "component": "Slider",
-  "variant": "paired-input",
-  "label": "Annual savings rate",
-  "helperText": "Share of pre-tax income saved each year",
-  "format": "percent",
-  "min": 0,
-  "max": 50,
-  "step": 0.5,
-  "value": 15,
-  "locale": "en-US",
-  "bindTo": "assumptions.savingsRate"
-}
-```
-
-### Table
+### KpiCard
 
 ```json
 {
-  "component": "Table",
-  "density": "comfortable",
-  "columns": [
-    { "id": "asset", "label": "Asset", "format": "text", "sortable": true, "frozen": true },
-    { "id": "shares", "label": "Shares", "format": "number", "sortable": true },
-    { "id": "price", "label": "Price", "format": "currency", "sortable": true },
-    { "id": "value", "label": "Value", "format": "currency", "sortable": true, "defaultSort": "desc" }
-  ],
-  "rows": [
-    { "id": "vtsax", "asset": "VTSAX", "shares": 1420.5, "price": 112.34, "value": 159522 }
-  ],
-  "totalRow": { "value": 168209 },
-  "editable": ["shares"],
-  "stickyHeader": true
-}
-```
-
-### KPI Card
-
-```json
-{
-  "component": "KPICard",
-  "variant": "positive",
+  "component": "KpiCard",
+  "variant": "default",
   "label": "Portfolio Value",
   "value": 168209,
   "format": "currency",
@@ -1012,57 +1230,99 @@ When the AI generates a component, it emits a JSON object. The gen-UI renderer h
 }
 ```
 
-### AI Insight Card
+### TransactionTable
 
 ```json
 {
-  "component": "AIInsightCard",
-  "title": "Dining spend is rising",
-  "body": "Your dining expenses increased 23% this month vs. your 3-month average.",
-  "dataHighlight": { "value": 23, "format": "percent", "direction": "up" },
-  "confidence": "high",
-  "actions": ["View transactions", "Set budget alert"]
+  "component": "TransactionTable",
+  "transactions": [
+    { "merchant": "Whole Foods", "category": "Groceries", "amount": -127.43, "date": "2026-07-05", "status": "posted" }
+  ],
+  "showHeader": true
 }
 ```
 
-### Chart (example: Monte Carlo)
+### AreaChart
 
 ```json
 {
-  "component": "Chart",
-  "type": "monteCarlo",
-  "title": "Retirement Projection",
-  "data": { "percentiles": ["p10", "p25", "p50", "p75", "p90"], "series": "..." },
-  "goal": { "value": 2000000, "label": "Target: $2M" },
-  "xAxis": { "label": "Year", "format": "year" },
-  "yAxis": { "label": "Portfolio Value", "format": "currency" }
+  "component": "AreaChart",
+  "variant": "default",
+  "title": "Net Worth Over Time",
+  "data": { "series": [{ "label": "Total", "values": [] }] },
+  "xAxis": { "label": "Month", "format": "date" },
+  "yAxis": { "label": "Value", "format": "currency" }
 }
 ```
 
-### Dashboard Widget
+### DonutChart
 
 ```json
 {
-  "component": "Widget",
-  "title": "Portfolio Overview",
-  "viewId": "saved-view-uuid",
-  "compact": true,
-  "content": { "component": "KPICard", "..." : "..." }
+  "component": "DonutChart",
+  "variant": "with-legend",
+  "title": "Spending by Category",
+  "data": [
+    { "label": "Housing", "value": 2400, "color": "$chart-categorical/color-01" },
+    { "label": "Food", "value": 800, "color": "$chart-categorical/color-02" }
+  ]
 }
 ```
 
-### Chat/AI Preview (Pattern B bridge)
+### FollowUpBlock
 
 ```json
 {
-  "component": "ChatAIPreview",
-  "title": "Retirement Projection Ready",
-  "summary": "Your Monte Carlo simulation shows an 82% chance of reaching $2M by age 65.",
-  "thumbnail": "monteCarlo",
-  "viewId": "generated-view-uuid"
+  "component": "FollowUpBlock",
+  "variant": "default",
+  "actions": ["View transactions", "Set budget alert", "Compare months"]
+}
+```
+
+### ListBlock
+
+```json
+{
+  "component": "ListBlock",
+  "variant": "numbered",
+  "items": [
+    { "text": "Reduce dining spend by $200/month" },
+    { "text": "Increase emergency fund contribution" },
+    { "text": "Rebalance investment portfolio" }
+  ]
+}
+```
+
+### SectionBlock
+
+```json
+{
+  "component": "SectionBlock",
+  "variant": "with-callout",
+  "title": "Retirement Readiness",
+  "body": "Your current savings rate puts you on track for retirement at age 67.",
+  "callout": { "type": "success", "message": "You're ahead of 72% of peers in your age group." }
+}
+```
+
+### DetailDrawer
+
+```json
+{
+  "component": "DetailDrawer",
+  "variant": "default",
+  "header": { "title": "Chase Sapphire", "eyebrow": "Credit Card" },
+  "sections": [
+    {
+      "rows": [
+        { "label": "Current Balance", "value": "$4,231.00", "variant": "money" },
+        { "label": "Available Credit", "value": "$15,769.00", "variant": "positive" }
+      ]
+    }
+  ]
 }
 ```
 
 ---
 
-*Maintained by Vega. Visual canvas: `.design-system/gen-ui-design-system.lib.pen`. Both must stay in sync — same commit, no exceptions.*
+*Maintained by Vega. Visual canvas: `hemlock-library.lib.pen`. Both must stay in sync — same commit, no exceptions.*
