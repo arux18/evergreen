@@ -156,8 +156,9 @@ html[data-theme="dark"] #appMain.mw-xs .card{padding-left:24px !important;paddin
   #dataTable td a{color:var(--accent);text-decoration:none;} #dataTable td a:hover{text-decoration:underline;}
   #dataTable .data-none{text-align:center;color:var(--muted);padding:18px;white-space:normal;}
   .th-in{display:block;} .th-label{display:block;white-space:normal;}
-  .sortarr{position:absolute;right:9px;bottom:6px;font-size:20px;line-height:1;color:#B5B1AB;pointer-events:none;display:inline-block;transform-origin:50% 50%;}
-  .sortarr.active{color:var(--accent);} .sortarr.down{transform:rotate(180deg);}
+  .sortarr{position:absolute;right:8px;bottom:8px;color:#B5B1AB;pointer-events:none;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;}
+  .sortarr svg{width:14px;height:14px;}
+  .sortarr.active{color:var(--accent);}
   /* chart */
   .tmpl-toolbar{display:flex;gap:var(--space-xs);flex-wrap:wrap;margin:2px 0 var(--space-sm);}
   .tmpl-toolbar button{background:var(--btnSecondary-bg);color:var(--btnLink-text);border:1px solid var(--btnLink-text);border-radius:var(--radius-full);padding:var(--space-2xs) var(--space-sm);font-size:13px;font-family:var(--font-ui);cursor:pointer;}
@@ -743,9 +744,13 @@ html[data-theme="dark"]{--bill:radial-gradient(120% 130% at 50% 100%,#7094FB 0%,
       var th=document.createElement('th'); if(i===0) th.className='sticky';
       var inner=document.createElement('span'); inner.className='th-in';
       var lab=document.createElement('span'); lab.className='th-label'; lab.textContent=c.label[lg]||c.label.en; inner.appendChild(lab);
-      var arr=document.createElement('span'); arr.className='sortarr'; arr.textContent='▴';  /* one glyph, rotated for "down" so both directions are identical in size/shape */
-      if(i===sortCol){ arr.classList.add('active'); if(sortDir<0) arr.classList.add('down'); }
-      else { arr.classList.add('down'); }
+      var arr=document.createElement('span'); arr.className='sortarr';
+      if(i===sortCol){
+        arr.classList.add('active');
+        arr.innerHTML=sortDir>0?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
+      } else {
+        arr.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>';
+      }
       th.appendChild(inner); th.appendChild(arr);
       th.setAttribute('role','button'); th.setAttribute('tabindex','0');
       th.setAttribute('aria-sort', i===sortCol ? (sortDir>0?'ascending':'descending') : 'none');
