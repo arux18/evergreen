@@ -277,44 +277,51 @@
   .radio-row{display:flex;align-items:center;gap:12px;font-size:16px;cursor:pointer;}
   .radio-row input{width:20px;height:20px;accent-color:var(--accent);}
 
-  /* ===== Tables (3b + 4b) ===== */
-  .wc-table{width:100%;border-collapse:collapse;font-size:16px;margin:8px 0 0;}
-  .wc-table th,.wc-table td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--border);}
-  .wc-table th{font:600 14px var(--font-ui);color:var(--muted);vertical-align:bottom;}
-  .wc-table th:first-child,.wc-table td:first-child{text-align:left;}
-  .wc-table tr.total td{font-weight:700;border-top:2px solid var(--border-strong);border-bottom:none;}
-  /* bracket ranges: keep each amount intact, allow "to $Y" to drop to a second line */
+  /* ===== Tables — Hemlock DetailSection pattern (3b + 4b) ===== */
+  .wc-table{width:100%;border-collapse:collapse;font:400 14px/1.43 var(--font-ui);margin:8px 0 0;}
+  .wc-table thead{background:#F7F5F0;border-radius:8px 8px 0 0;}
+  .wc-table thead th:first-child{border-radius:8px 0 0 0;}
+  .wc-table thead th:last-child{border-radius:0 8px 0 0;}
+  html[data-theme="dark"] .wc-table thead{background:var(--surface-2);}
+  .wc-table th,.wc-table td{padding:14px 16px;text-align:right;border-bottom:1px solid #EEEDEB;}
+  html[data-theme="dark"] .wc-table th,html[data-theme="dark"] .wc-table td{border-bottom-color:var(--border);}
+  .wc-table th{font:600 14px var(--font-ui);color:#0e0e0e;vertical-align:bottom;}
+  html[data-theme="dark"] .wc-table th{color:var(--ink);}
+  .wc-table th:first-child,.wc-table td:first-child{text-align:left;color:#5E5954;}
+  html[data-theme="dark"] .wc-table th:first-child{color:var(--ink);}
+  html[data-theme="dark"] .wc-table td:first-child{color:var(--muted);}
+  .wc-table td{color:#403D3A;height:52px;}
+  html[data-theme="dark"] .wc-table td{color:var(--ink);}
+  .wc-table td:not(:first-child){font:600 16px/1.5 var(--font-ui);}
+  .wc-table tr:last-child td{border-bottom:none;}
+  .wc-table tr.total td{font-weight:700;border-top:2px solid #D5D3D0;border-bottom:none;}
+  html[data-theme="dark"] .wc-table tr.total td{border-top-color:var(--border-strong);}
   .wc-table td .rng-a,.wc-table td .rng-b{white-space:nowrap;}
-  #bracketWrap .wc-table td:first-child{font-weight:700;}   /* bracket rate column in bold */
-  #bracketWrap .wc-table{width:auto;}                       /* size to content (not full main-area width) */
-  #bracketWrap .wc-table th,#bracketWrap .wc-table td{padding-left:20px;padding-right:20px;font-size:14px;}  /* roomy columns; numbers match header size */
-  #bracketWrap caption{font-size:16px;color:var(--ink);max-width:600px;}    /* larger body copy; wraps only when wider than 600px */
-  #bracketWrap .wc-table.few th,#bracketWrap .wc-table.few td{font-size:17px;}   /* larger when 5 or fewer rows */
-  /* when any bracket range wraps, force every range onto two lines for a uniform look */
+  #bracketWrap .wc-table td:first-child{font-weight:600;color:#403D3A;}
+  html[data-theme="dark"] #bracketWrap .wc-table td:first-child{color:var(--ink);}
+  #bracketWrap .wc-table{width:auto;}
+  #bracketWrap .wc-table th,#bracketWrap .wc-table td{padding-left:20px;padding-right:20px;}
+  #bracketWrap caption{font-size:16px;color:var(--ink);max-width:600px;}
   #bracketWrap .wc-table.uniform2 .rng-a{display:block;}
-  /* estimate tables (#taxWrap): compact + no inter-row lines (only the header underline
-     and the rule on top of the total); shrink to content and center within the main area */
-  /* the wrapper shrinks to the widest table; each table fills it, so all three share that width and center */
-  #taxWrap .tax-tables{width:500px;max-width:100%;margin:0;}        /* both tables capped at 500px */
-  #taxWrap .wc-table{width:auto;margin:8px 0 0;font-size:15px;}
-  #taxWrap .esttax{width:100%;}   /* both estimate tables fill the wrapper -> equal width */
-  #taxWrap .wc-table th,#taxWrap .wc-table td{padding:3px 11px;border-bottom:none;}
-  #taxWrap .wc-table thead th{border-bottom:1.5px solid var(--muted);padding-bottom:6px;font-weight:400;color:var(--ink);}
-  #taxWrap .wc-table tbody tr:first-child td{padding-top:13px;}   /* 10px gap below the header row */
-  #taxWrap .esttax.rates{margin-top:48px;}   /* line space between the Income and Marginal Tax Rates tables */
-  #taxWrap .tax-fineprint{font-size:13px;color:var(--muted);line-height:1.4;max-width:500px;margin:10px 0 0;padding-left:11px;}
+  #taxWrap .tax-tables{width:500px;max-width:100%;margin:0;}
+  #taxWrap .wc-table{width:auto;margin:8px 0 0;}
+  #taxWrap .esttax{width:100%;}
+  #taxWrap .wc-table th,#taxWrap .wc-table td{padding:8px 16px;}
+  #taxWrap .wc-table thead th{border-bottom:1px solid #EEEDEB;padding-bottom:12px;}
+  html[data-theme="dark"] #taxWrap .wc-table thead th{border-bottom-color:var(--border);}
+  #taxWrap .wc-table tbody tr:first-child td{padding-top:16px;}
+  #taxWrap .esttax.rates{margin-top:48px;}
+  #taxWrap .tax-fineprint{font:400 13px/1.4 var(--font-ui);color:var(--muted);max-width:500px;margin:10px 0 0;padding-left:16px;}
   #taxWrap td.tax-fineprint{font-weight:400;padding-top:8px;border:none;}
   .filing-row{display:flex;flex-wrap:wrap;gap:24px;margin:0 0 16px;}
   .filing-opt{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink);cursor:pointer;}
   .filing-opt input{width:16px;height:16px;accent-color:var(--accent);}
-  #taxWrap .wc-table tr.total td{border-top:1px solid var(--border-strong);padding-top:6px;}
-  /* first column: chevron sits in a left gutter aligned with the table lines; all text indented to align */
+  #taxWrap .wc-table tr.total td{border-top:1px solid #D5D3D0;padding-top:12px;}
+  html[data-theme="dark"] #taxWrap .wc-table tr.total td{border-top-color:var(--border-strong);}
   #taxWrap td.lbl{position:relative;}
   #taxWrap .lbl{padding-left:0;min-width:160px;}
-  #taxWrap .esttax.rates .lbl{min-width:0;padding-right:6px;}   /* pull Earned Income closer to Marginal Tax Rates */
-  #wcMain:not(.narrow) #taxWrap .wc-table th,
-  #wcMain:not(.narrow) #taxWrap .wc-table td{font-size:16px;}   /* larger tax-table text on wide main area */
-  .wc-table caption{caption-side:top;text-align:left;color:var(--faint);font-size:14px;margin-bottom:10px;}
+  #taxWrap .esttax.rates .lbl{min-width:0;padding-right:6px;}
+  .wc-table caption{caption-side:top;text-align:left;color:#5E5954;font:400 14px var(--font-ui);margin-bottom:10px;}
 
   /* ===== Sliders (Topic 4a) ===== */
   .slider-block{margin:0 0 32px;max-width:600px;}   /* match the slider cap so the value sits at the slider's right edge */
