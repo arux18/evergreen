@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Text Component Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- CSS below was RECONSTRUCTED from the Component Spec (Sections 3-6); body + scripts are the spec-designated structure/behavior. -->
+<style>
+
+  :root{
+    /* Hemlock Design System — Light mode tokens (2026-07-06) */
+    --surface-1:#FFFFFF; --surface-2:#F8F7F6; --nest:#F8F7F6;
+    --border:#EEEDEB; --border-strong:#D5D3D0;
+    --ink:#0e0e0e; --muted:#5E5954; --faint:#8A8680; --inverse:#FFFFFF;
+    --accent:#3a6af8; --accent-hover:#2952cc; --accent-subtle:#ebf0fe; --calc-bg:#F7F5F0;
+    --pos:#148338; --pos-mid:#1ebf51; --neg:#c82320; --warn:#c85f1a; --pos-soft:#68fc97; --neg-soft:#fb5653; --page-bg:#FFFFFF; --taupe-100:#F7F5F0; --taupe-border:#E3DFD6;
+    --grid:#EEEDEB; --grid2:#D5D3D0; --axis:#B5B1AB; --zero:#B5B1AB; --det:#5E5954; --orange:#c85f1a;
+    --accent-fill:rgba(58,106,248,0.15);
+    --cat1:#8951F0; --cat2:#06B6D4; --cat3:#312E81; --cat4:#3B82F6; --cat5:#0F766E; --cat6:#38BDF8; --cat7:#FB923C;
+    --tile-shadow:0 4px 12px #0000001A;
+    /* Semantic aliases */
+    --surface-primary:var(--surface-1); --surface-secondary:var(--surface-2); --surface-tertiary:#EEEDEB;
+    --border-default:var(--border); --text-primary:var(--ink); --text-secondary:var(--muted); --text-tertiary:var(--faint);
+    --pos-subtle:#e9fff0; --neg-subtle:#ffeaea;
+    /* Hemlock categorical palette (priority-ordered) */
+    --cat-1:#8951F0; --cat-2:#06B6D4; --cat-3:#312E81; --cat-4:#3B82F6; --cat-5:#0F766E; --cat-6:#CA8A04;
+    --panel-shadow:var(--tile-shadow); --panel-shadow-hover:0 8px 24px #0000001F;
+    --modal-shadow:0 16px 40px #00000029;
+    --grid-stroke:rgba(14,14,14,.08); --crosshair-stroke:rgba(14,14,14,.32);
+    --backdrop:rgba(45,41,38,0.34); --tile-muted-fg:rgba(14,14,14,.32);
+    --font-ui:'Heebo',-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    --font-serif:'Noto Serif',Georgia,serif;
+}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--page-bg);color:var(--ink);font:16px/1.5 var(--font-ui);-webkit-font-smoothing:antialiased;height:100vh;overflow:hidden;}
+  #layout{display:flex;height:100vh;overflow:hidden;}
+  #appMain{flex:1 1 auto;overflow:auto;padding:40px 56px 48px;position:relative;}
+  /* Responsive gutter tiers (keyed to the component's own width via JS):
+     xs <600 : 24px gutter, chrome removed, content edge-to-edge
+     md 600-1099 : 36px gutter ; lg >=1100 : 56px gutter, tile capped at 1100px & centered
+     (a 24px "sm" tier exists for parity but the script never applies it). */
+  #appMain.mw-xs{padding-left:24px;padding-right:24px;overflow-x:hidden;}
+  #appMain.mw-sm{padding-left:24px;padding-right:24px;}
+  #appMain.mw-md{padding-left:36px;padding-right:36px;}
+  #appMain.mw-lg{padding-left:56px;padding-right:56px;}
+  #appMain.mw-lg .card{max-width:1100px;margin-left:auto;margin-right:auto;padding:36px;padding-bottom:40px;}
+/* at the capped (lg) tier, align the toggles' right edge with the 1100px tile's right edge instead of the page gutter */
+#appMain.mw-lg .tmpl-controls{max-width:1100px;margin-left:auto;margin-right:auto;}
+  #appMain.mw-xs .card{border:none !important;border-radius:0 !important;box-shadow:inset 0 1px 0 #595959, inset 0 -1px 0 #595959 !important;padding-left:0 !important;padding-right:0 !important;}
+/* dark + mobile -> full-bleed component (no black side gutters); content keeps 24px inset via card padding, card bg + hairlines reach the viewport edges */
+html[data-theme="dark"] #appMain.mw-xs{padding-left:0;padding-right:0;}
+html[data-theme="dark"] #appMain.mw-xs .card{padding-left:24px !important;padding-right:24px !important;}  /* mobile: no tile chrome, but keep medium-charcoal hairlines at the top & bottom edges */
+  .card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:24px;padding-bottom:40px;margin-bottom:36px;box-shadow:var(--tile-shadow);}
+  .card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+  h2{font-family:var(--font-ui);font-size:18px;margin:0;font-weight:600;color:var(--ink);}
+#componentCard .card-head{margin-top:12px}
+  .toggle{display:flex;justify-content:flex-start;align-items:center;gap:10px;cursor:pointer;user-select:none;}
+  .toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px;}
+  .toggle .chev{transition:transform .15s;color:var(--muted);font-size:0;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:0 0 16px;}
+  .toggle .chev::after{content:'';width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-3px;}
+  .toggle.closed .chev{transform:rotate(-90deg);}
+  .hidden{display:none !important;}
+  .sc-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px;margin-bottom:32px;}  /* +30px between title and tab row */
+  .sc-tabs button{background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:9999px;padding:7px 16px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-ui);}
+  .sc-tabs button:hover{background:var(--accent-subtle);}
+  .sc-tabs button.on{background:var(--accent);color:#fff;}
+  .cs-pane{display:none;} .cs-pane.on{display:block;}
+  .ec-title{font-family:var(--font-ui);font-size:18px;font-weight:600;color:var(--ink);margin:0 0 10px;}
+  .ec-desc{font-size:17px;line-height:1.55;color:var(--ink);max-width:920px;margin:0 0 28px;}
+  .ec-box{background:var(--nest);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:18px;}
+  .ec-box h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
+  .ec-box.pros h4,.ec-box.cons h4{font-size:13px;margin:0 0 10px;}
+  .ec-box p{margin:0;font-size:13px;line-height:1.5;} .ec-box ul{margin:0;padding-left:18px;font-size:13px;line-height:1.5;} .ec-box li{margin-bottom:5px;}
+  .ec-box.pros{background:linear-gradient(90deg,rgba(46,160,93,.07),#ffffff);border-color:rgba(46,160,93,.25);} .ec-box.pros h4{color:#1d8a4a;}
+  .ec-box.cons{background:linear-gradient(90deg,rgba(214,69,69,.06),#ffffff);border-color:rgba(214,69,69,.22);} .ec-box.cons h4{color:#c43d3d;}
+  .ec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+  #cs-ov-types .ec-grid{grid-template-columns:repeat(2,minmax(0,1fr));}  /* Category grid: true 2x2 (collapses to 1 column <599 via the container rule) */
+  .ec-grid .ec-box{margin-bottom:0;}
+  .ec-how .ec-box:not(.info){background:transparent;border:none;border-radius:0;padding:0;}
+  /* 6px vertical accent strip just inside the left outline of Pros/Cons boxes (matches the title color) */
+  .ec-box.pros,.ec-box.cons,.ec-box.info{position:relative;border-radius:0 8px 8px 0;padding-left:28px;}  /* square left corners + type cleared 12px from the strip */
+  .ec-box.pros::before,.ec-box.cons::before,.ec-box.info::before{content:'';position:absolute;left:0;top:-1px;bottom:-1px;width:6px;border-radius:0;}
+  .ec-box.pros::before{background:#1d8a4a;} .ec-box.cons::before{background:#c43d3d;}
+  /* plum info tiles (light) — same treatment as Pros/Cons */
+  .ec-box.info{background:linear-gradient(90deg,rgba(142,69,133,.06),#ffffff);border-color:rgba(142,69,133,.24);} .ec-box.info h4{color:#8E4585;} .ec-box.info::before{background:#8E4585;}
+  .cs-ov-text p,.cs-ov-text li{font-size:15px;line-height:1.6;color:var(--ink);}
+  .cs-ov-text > p{padding-left:26px;}  /* align guidance paragraphs with the section title text + bullet markers */
+  /* video thumbnails */
+  .vthumb{position:relative;flex:0 0 auto;width:360px;max-width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#1a1714 var(--vbg,var(--bill)) center/cover no-repeat;border:none;  /* no outline in light mode */cursor:pointer;margin:0 0 30px;}
+  html[data-theme="dark"] .vthumb{border:1px solid #595959;}  /* darker-gray outline in dark mode only */
+  .vthumb::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,7,6,.45) 0%,rgba(8,7,6,.2) 22%,rgba(8,7,6,0) 42%);}
+  .vthumb-cap{position:absolute;z-index:2;left:22px;right:40%;top:50%;transform:translateY(-50%);}
+  .vthumb-title{color:#fff;font-family:var(--font-ui);font-weight:700;font-size:17px;line-height:1.22;text-shadow:0 1px 4px rgba(0,0,0,.55);}
+  .vthumb-play{position:absolute;z-index:2;left:22px;bottom:22px;line-height:0;}
+  .vthumb-sm{width:200px;max-width:40%;float:right;margin:2px 0 12px 20px;}
+  .vthumb-sm .vthumb-cap{left:11px;right:50%;} .vthumb-sm .vthumb-title{font-size:11px;} .vthumb-sm .vthumb-play{left:11px;bottom:11px;} .vthumb-sm .vthumb-play svg{width:28px;height:28px;}
+  .sc-videos{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;}
+  .sc-vid-list{flex:1 1 240px;min-width:200px;list-style:none;margin:0;padding:0;}
+  .sc-vid-list li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:11px 2px;border-bottom:1px solid var(--border);font-size:14px;color:var(--ink);cursor:pointer;}
+  .sc-vid-list li:last-child{border-bottom:none;}
+  .quick-calc-note{color:#8E4585;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:4px;}  /* plum + bold in light mode */
+  html[data-theme="dark"] .quick-calc-note{color:#C084FC;font-weight:700;}  /* bright purple + bold in dark mode */
+  /* pane intro float container */
+  .cs-pane > .pane-intro{display:flow-root;margin:0 0 30px;}
+  .cs-pane > .pane-intro > .ec-desc{margin-bottom:0;} .cs-pane > .pane-intro > .vthumb-sm{margin-bottom:0;}
+  /* clickable nav tiles under the Overview intro — hover lift + subtle shadow + outline color change (light); lift + grey-blue shadow (dark). Placeholder buttons; hosts wire data-goto to real tabs. */
+  .sc-plan-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px;margin:2px 0 30px;}
+  .sc-plan-card{display:flex;flex-direction:column;gap:6px;text-align:left;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--nest);cursor:pointer;font:inherit;color:var(--ink);transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;}
+  .sc-plan-card:hover,.sc-plan-card:focus-visible{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 10px 24px rgba(15,23,42,0.14);outline:none;}
+  html[data-theme="dark"] .sc-plan-card:hover,html[data-theme="dark"] .sc-plan-card:focus-visible{box-shadow:0 10px 24px rgba(120,150,190,0.28);}
+  .sc-plan-card .pc-name{font-weight:600;}
+  .sc-plan-card .pc-line{font-size:13px;color:var(--muted);line-height:1.45;}
+  .sc-plan-card .pc-more{font-size:13px;color:var(--accent);margin-top:auto;}
+  html[data-theme="dark"] .sc-plan-card{background:linear-gradient(180deg,#121B2E,#0E1524);}
+  /* section-title dividers: 18px closed both sides; open body 36px; light gray line */
+  .cs-pane > .toggle,.subsec-head.toggle,.ec-how > .toggle{border-top:1px solid var(--border);margin-top:0;padding-top:18px;border-top-color:#D5D3D0;}
+  .cs-pane > .toggle > .ec-title,.subsec-head.toggle > h2,.ec-how > .toggle > .ec-title{margin:0;}
+  .cs-pane > .toggle.closed,.subsec-head.toggle.closed,.ec-how > .toggle.closed{padding-top:18px;margin-bottom:18px;}
+  .cs-pane > .toggle:not(.closed),.subsec-head.toggle:not(.closed),.ec-how > .toggle:not(.closed){margin-bottom:30px;}  /* 18px + 12px extra between open title and its content */
+  #componentCard .toggle:not(.closed) + div:not(.hidden):not(.sc-calc-body){margin-bottom:36px !important;padding-bottom:0 !important;}
+  .subsec-head{}
+  /* data table */
+  .data-search{display:flex;align-items:stretch;max-width:420px;margin:0 0 12px;}
+  #dataRoot #dataSearch{flex:1 1 auto;background:var(--surface-1);border:1px solid var(--border);border-right:0;border-radius:8px 0 0 8px;color:var(--ink);padding:9px 12px;font-size:14px;font-family:var(--font-ui);}
+  #dataSearchBtn{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:42px;background:var(--accent);color:var(--inverse);border:1px solid var(--accent);border-radius:0 8px 8px 0;cursor:pointer;padding:0;font:inherit;}
+  .data-wrap{overflow:auto;max-height:460px;border:1px solid var(--border);border-radius:10px;background:var(--surface-1);}
+  #dataTable{border-collapse:separate;border-spacing:0;font-size:13px;table-layout:auto;width:100%;min-width:640px;}  /* responsive columns; horizontal scroll (sticky first col) when narrower than 640 */
+  #dataTable th,#dataTable td{background:var(--surface-1);border-bottom:1px solid var(--border);border-right:1px solid var(--border);padding:8px 10px;text-align:right;overflow:hidden;text-overflow:ellipsis;}
+  #dataTable thead th{position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;font-weight:600;background:var(--calc-bg);color:var(--muted);vertical-align:top;white-space:normal;line-height:1.2;padding:12px 10px 30px;}
+  #dataTable td{white-space:nowrap;}
+  #dataTable th.sticky,#dataTable td.sticky{position:sticky;left:0;z-index:1;font-weight:600;color:var(--ink);text-align:left;}
+  #dataTable thead th.sticky{z-index:3;}
+  #dataTable td:not(.sticky){font-variant-numeric:tabular-nums;color:var(--ink);}
+  #dataTable td a{color:var(--accent);text-decoration:none;} #dataTable td a:hover{text-decoration:underline;}
+  #dataTable .data-none{text-align:center;color:var(--muted);padding:18px;white-space:normal;}
+  .th-in{display:block;} .th-label{display:block;white-space:normal;}
+  .sortarr{position:absolute;right:9px;bottom:6px;font-size:20px;line-height:1;color:#B5B1AB;pointer-events:none;display:inline-block;transform-origin:50% 50%;}
+  .sortarr.active{color:var(--accent);} .sortarr.down{transform:rotate(180deg);}
+  /* chart */
+  .tmpl-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:2px 0 14px;}
+  .tmpl-toolbar button{background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:9999px;padding:5px 14px;font-size:13px;font-family:var(--font-ui);cursor:pointer;}
+  .tmpl-toolbar button.on{background:var(--accent);color:#fff;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin:10px 0 18px;align-items:center;}
+  .legend .dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+  .chartbox{position:relative;width:100%;height:360px;} .chartbox svg{display:block;width:100%;height:100%;}
+  /* comparison */
+  .subsec-head{border-top:0;}
+  .sc-cmp-checks{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px;}
+  .sc-cmp-checks label{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;}
+  .sc-cmp-wrap{overflow-x:auto;}
+  .sc-cmp-table{border-collapse:separate;border-spacing:0;table-layout:auto;width:100%;font-size:13px;line-height:1.45;}  /* responsive columns; horizontal scroll (sticky first col) when too narrow */
+  .sc-cmp-table th,.sc-cmp-table td{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;position:relative;}
+  .sc-cmp-table tr:first-child th{border-top:1px solid var(--border);}
+  .sc-cmp-table th:first-child,.sc-cmp-table td:first-child{border-left:1px solid var(--border);position:sticky;left:0;z-index:2;font-weight:600;white-space:nowrap;}
+  .sc-cmp-table td:first-child{background:var(--surface-1);}
+  .sc-cmp-table th{background:var(--calc-bg);font-size:12px;font-weight:600;}
+  .sc-cmp-table th:not(:first-child),.sc-cmp-table td:not(:first-child){min-width:140px;}  /* keeps columns readable; wrapper scrolls when they don't all fit */
+  /* calculator */
+  .sc-calc-body:not(.hidden){background:var(--calc-bg);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:30px;}  /* >=30px from the calculator card to the divider line below (it's excluded from the generic open-body rule) */
+  #csCalc{display:flex;flex-wrap:wrap;gap:16px 22px;align-items:flex-end;margin-bottom:4px;}
+  .cs-field{display:flex;flex-direction:column;gap:6px;} .cs-field label{font-size:12px;font-weight:500;color:var(--muted);}
+  .cs-field input,.cs-field select{background:var(--surface-1);border:1px solid var(--border);border-radius:8px;color:var(--ink);padding:8px 10px;font-size:14px;font-family:var(--font-ui);height:36px;}
+  .cs-field input{width:120px;}
+  /* keep selects/menus within the viewport gutter — native <select> option popups are positioned by the browser to stay on-screen; any custom dropdown must clamp its left/right within the viewport */
+  .cs-field{min-width:0;} .cs-field select,select{max-width:100%;}
+  select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23525252' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;}
+  .cs-results{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;}
+  .cs-kpi{flex:1 1 180px;border:1px solid var(--border);border-radius:10px;padding:14px 16px;background:var(--surface-1);}
+  .cs-kpi .l{font-size:12px;color:var(--muted);} .cs-kpi .v{font-size:22px;font-weight:600;color:var(--ink);margin-top:4px;font-variant-numeric:tabular-nums;}
+  .cs-note{margin:16px 0 0;font-size:15px;line-height:1.6;color:var(--muted);}
+  /* align chart toolbar/legend/note left edge with the y-axis numbers' left edge (~x=24 of the 720 viewBox) */
+  #cs-ov-chart .tmpl-toolbar,#cs-ov-chart .legend,#cs-ov-chart .cs-note{padding-left:calc(100% * 24 / 720);}
+  /* disclosures */
+  .sc-disclaimer{margin-top:18px;padding-top:16px;border-top:1px solid #D5D3D0;font-size:12px;line-height:1.6;color:var(--faint);}
+  .sc-disclaimer span{margin-right:5px;}
+  /* toggles below component */
+  .tmpl-controls{display:flex;justify-content:flex-end;gap:12px;margin:14px 0 4px;}
+  html[data-embed] .tmpl-controls{display:none !important;}  /* embed mode: toggles hidden, theme/lang locked by config */
+  .tmpl-seg{display:inline-flex;gap:4px;padding:4px;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;}
+  .tmpl-seg button{background:transparent;color:var(--muted);border:0;border-radius:7px;padding:6px 16px;font-size:14px;font-weight:500;font-family:var(--font-ui);line-height:1.4;cursor:pointer;}
+  .tmpl-seg button.on{background:var(--surface-1);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.10);}
+  /* video modal */
+  .vid-modal-backdrop{position:fixed;inset:0;background:var(--backdrop,rgba(95,100,110,0.34));display:flex;align-items:center;justify-content:center;z-index:200;padding:24px;}
+  .vid-modal-backdrop[hidden]{display:none;}
+  .vid-modal{background:var(--surface-1);border:1px solid var(--border);border-radius:14px;box-shadow:0 24px 60px rgba(15,23,42,.18),0 4px 12px rgba(15,23,42,.10);width:560px;max-width:100%;max-height:88vh;overflow:auto;}
+  .vid-modal-poster{position:relative;overflow:hidden;aspect-ratio:16/9;background:#1a1714 var(--vbg,var(--bill)) center/cover no-repeat;border-radius:14px 14px 0 0;}
+  .vid-modal-poster::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,7,6,.78) 0%,rgba(8,7,6,.5) 20%,rgba(8,7,6,0) 46%);}
+  .vid-modal-cap{position:absolute;z-index:2;left:40px;right:50%;top:50%;transform:translateY(-50%);}
+  .vid-modal-ptitle{color:#fff;font-family:var(--font-ui);font-weight:700;font-size:28px;line-height:1.2;text-shadow:0 1px 4px rgba(0,0,0,.55);}
+  .vid-modal-play{position:absolute;z-index:2;left:40px;bottom:40px;line-height:0;}
+  .vid-modal-head{display:flex;align-items:flex-start;gap:12px;padding:18px 22px 0;}
+  .vid-modal-title-block{flex:1;min-width:0;} .vid-modal-title{font-size:20px;font-weight:600;color:var(--ink);line-height:1.3;}
+  .vid-modal-time{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--faint);margin-top:6px;}
+  .vid-modal-close{background:transparent;border:none;color:var(--faint);cursor:pointer;font-size:18px;line-height:1;padding:4px 6px;border-radius:6px;}
+  .vid-modal-body{padding:14px 22px 4px;} .vid-modal-body p{font-size:15px;line-height:1.62;color:var(--ink);margin:0 0 12px;}
+  .vid-modal-foot{padding:2px 22px 20px;font-size:12px;color:var(--faint);}
+  @container (max-width:599px){ #componentCard .ec-grid{grid-template-columns:1fr;} }  /* calculator now flex-wraps responsively at all widths (no forced single column) */
+  #componentCard{container-type:inline-size;}
+  /* Mobile: intro video drops BELOW the paragraph, flush left, at its normal 200px size; it expands inline as an illustrative preview (full width; no playback) instead of opening the modal */
+  #appMain.main-narrow .pane-intro{display:flex;flex-direction:column;}
+  #appMain.main-narrow .pane-intro > .ec-desc{order:1;margin-bottom:24px;}
+  #appMain.main-narrow .pane-intro > .vthumb-sm{order:2;align-self:flex-start;float:none;width:200px;max-width:100%;margin:0;}
+  #appMain.main-narrow .vthumb.vplaying{width:100%;max-width:none;align-self:stretch;}
+  /* Touch tap targets on mobile: tab pills >=44px tall (sortable table headers are already the full ~56px sticky th). */
+  #appMain.main-narrow .sc-tabs button{min-height:44px;display:inline-flex;align-items:center;}
+
+  html[data-theme="dark"]{
+--surface-1:#0E1524; --surface-2:#121B2E; --nest:#131C30;
+    --border:#243350; --border-strong:#33476E;
+    --ink:#EAF0FF; --muted:#9DB0D2; --faint:#8A9BBF; --inverse:#0B1220;
+    --accent:#5A86FF; --accent-hover:#8FB0FF; --accent-subtle:rgba(58,106,248,.18);
+    --accent-2:#2FD4C4; --accent-3:#9A86FF; --accent-4:#E3B972;   /* secondary accents */
+    --pos:#34D399; --neg:#F87171;
+    --calc-bg:#12203C; --backdrop:rgba(225,230,240,0.22);  /* modal scrim: whiter tint over the dark page */
+    --page-bg:#070A10; --grid:#26324C; --grid2:#26324C; --axis:#5E6E90;
+    --cat1:#5A86FF; --cat2:#2FD4C4;   /* chart series: primary blue + secondary teal */
+    --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.60);
+    /* brand hero ombre (bottom -> top); also the video-poster fallback */
+    --hero-1:#7094FB; --hero-2:#5873C0; --hero-3:#3F5185; --hero-4:#334067;
+    --hero-5:#273049; --hero-6:#1A1F2C; --hero-7:#14161D; --hero-8:#0E0E0E;
+    --bill:radial-gradient(120% 130% at 50% 100%,#7094FB 0%,#5873C0 18%,#3F5185 34%,#334067 46%,#273049 58%,#1A1F2C 70%,#14161D 80%,#0E0E0E 90%);
+}
+  html[data-theme="dark"] body{background:radial-gradient(150% 90% at 50% 100%,rgba(112,148,251,0.22) 0%,rgba(88,115,192,0.17) 18%,rgba(63,81,133,0.13) 34%,rgba(51,64,103,0.10) 48%,rgba(39,48,73,0.07) 60%,rgba(26,31,44,0.04) 70%,rgba(7,10,16,0) 82%),#070A10;background-attachment:fixed;}
+  html[data-theme="dark"] .card{background:linear-gradient(180deg,#0F1728 0%,#0C1220 58%,#0A0F1B 100%);border-color:var(--border);box-shadow:0 0 0 1px rgba(120,150,255,0.06),0 26px 64px rgba(0,0,0,0.62);}
+  html[data-theme="dark"] .sc-tabs button{border-color:var(--border-strong);color:var(--accent);}
+  html[data-theme="dark"] .sc-tabs button:hover{background:rgba(90,134,255,0.12);}
+  html[data-theme="dark"] .sc-tabs button.on{background:linear-gradient(135deg,#5A86FF 0%,#295CCC 100%);border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(58,106,248,0.45);}
+  html[data-theme="dark"] .ec-box{background:linear-gradient(180deg,#121B2E,#0E1524);border-color:var(--border);}
+  html[data-theme="dark"] .ec-box.pros{background:linear-gradient(to right,rgba(52,211,153,0.16),rgba(18,54,42,0.10));border-color:rgba(52,211,153,0.32);} html[data-theme="dark"] .ec-box.pros h4{color:#5FE0A8;}
+  html[data-theme="dark"] .ec-box.cons{background:linear-gradient(to right,rgba(248,113,113,0.15),rgba(66,20,20,0.10));border-color:rgba(248,113,113,0.30);} html[data-theme="dark"] .ec-box.cons h4{color:#FCA5A5;}
+  html[data-theme="dark"] .ec-box.pros::before{background:#5FE0A8;} html[data-theme="dark"] .ec-box.cons::before{background:#FCA5A5;}
+  /* purple info tiles (dark) */
+  html[data-theme="dark"] .ec-box.info{background:linear-gradient(to right,rgba(154,134,255,0.16),rgba(40,32,70,0.10));border-color:rgba(154,134,255,0.32);} html[data-theme="dark"] .ec-box.info h4{color:#C3B4FF;} html[data-theme="dark"] .ec-box.info::before{background:#9A86FF;}
+  html[data-theme="dark"] .sc-calc-body:not(.hidden){background:radial-gradient(120% 140% at 100% 0%,rgba(154,134,255,0.12),transparent 55%),linear-gradient(160deg,#16233F 0%,#101A30 55%,#0C1424 100%);border-color:#2A3B5E;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05),0 18px 42px rgba(0,0,0,0.50);}
+  html[data-theme="dark"] .cs-kpi{background:linear-gradient(180deg,#111A2C,#0D1421);border-color:var(--border);position:relative;overflow:hidden;border-radius:0 0 10px 10px;}  /* square top corners; top bar reaches the outline */
+  html[data-theme="dark"] .cs-kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:#9A86FF;opacity:.95;}
+  /* KPI top bars are uniformly #9A86FF via the base ::before above. */
+  html[data-theme="dark"] #dataTable thead th{background:linear-gradient(180deg,#17263F,#101A2E);}
+  html[data-theme="dark"] #dataTable .sortarr{color:#8695B5;} html[data-theme="dark"] #dataTable .sortarr.active{color:var(--accent);}
+  html[data-theme="dark"] .vthumb,html[data-theme="dark"] .vid-modal-poster{background:radial-gradient(120% 130% at 50% 100%,var(--hero-1) 0%,var(--hero-2) 18%,var(--hero-3) 34%,var(--hero-4) 46%,var(--hero-5) 58%,var(--hero-6) 70%,var(--hero-7) 80%,var(--hero-8) 90%);}
+  html[data-theme="dark"] .cs-pane > .toggle,html[data-theme="dark"] .subsec-head.toggle,html[data-theme="dark"] .ec-how > .toggle{border-image:linear-gradient(90deg,rgba(90,134,255,0.55),rgba(47,212,196,0.18) 55%,transparent) 1;}
+  /* dark bottom (disclosures) line = solid, non-fading, same as the left end of the lines above */
+  html[data-theme="dark"] .sc-disclaimer{border-image:none;border-top:1px solid rgba(90,134,255,0.55);}
+  html[data-theme="dark"] .cs-field select{background-image:none;background-color:var(--surface-1);}
+  html[data-theme="dark"] select{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23A3A3A3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");}
+  :root{--bill:linear-gradient(135deg,#3a4a63 0%,#22303f 60%,#161d27 100%);}
+  html[data-theme="dark"]{}
+html[data-theme="dark"]{--bill:radial-gradient(120% 130% at 50% 100%,#7094FB 0%,#5873C0 18%,#3F5185 34%,#334067 46%,#273049 58%,#1A1F2C 70%,#14161D 80%,#0E0E0E 90%);}
+
+  /* ===== v1.1 optional patterns (distilled from the Life Insurance & Retirement Accounts builds) =====
+     Additive only — plain .sc-plan-card and existing markup are unchanged. Copy-paste markup for each
+     is in "Optional Patterns (v1.1).md". Remember to add en+es i18n keys for any new strings. */
+  /* (a) Selector-tile embellishments: optional badge, headline metric, "best for" line, relative-cost marks */
+  .sc-plan-card .pc-top{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .pc-badge{font-size:11px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--accent);background:var(--accent-subtle);border-radius:9999px;padding:3px 9px;white-space:nowrap;}
+  .pc-metric{font-size:13px;font-weight:500;color:var(--ink);}
+  .pc-best{font-size:13px;color:var(--ink);}
+  .pc-best .pc-best-lbl{font-weight:600;}
+  .pc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:6px;gap:8px;}
+  .pc-cost{display:inline-flex;gap:1px;align-items:center;font-weight:700;font-size:14px;line-height:1;}
+  .pc-cost i{font-style:normal;color:var(--border-strong);}
+  .pc-cost i::before{content:"$";}
+  .pc-cost i.on{color:var(--accent);}
+  .pc-cost-varies{font-size:12px;color:var(--muted);font-style:italic;}
+  /* (b) Routing chips: "pick your situation" -> chips that jump to tabs (wire via data-goto) */
+  .sc-chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .sc-chip{background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:9999px;padding:4px 12px;font:inherit;font-size:12.5px;cursor:pointer;}
+  .sc-chip:hover{background:var(--accent-subtle);}
+  /* (c) Labeled step row / mini-timeline: a row label + N steps (e.g. Contribute -> Grow -> Withdraw).
+     Set --sc-steps to the step count; add .on to an emphasized step (or drive it with a data-emph rule). */
+  .sc-steprow{display:grid;grid-template-columns:minmax(120px,160px) repeat(var(--sc-steps,3),1fr);gap:8px;align-items:stretch;margin-bottom:8px;}
+  .sc-steprow-label{font-weight:600;font-size:13px;color:var(--ink);display:flex;align-items:center;}
+  .sc-step{background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:8px 10px;}
+  html[data-theme="dark"] .sc-step{background:var(--surface-2);}
+  .sc-step-h{font-weight:600;font-size:12.5px;color:var(--ink);}
+  .sc-step-sub{font-size:12px;color:var(--muted);line-height:1.4;margin-top:2px;}
+  .sc-step.on{border-color:var(--accent);background:var(--accent-subtle);}
+  #appMain.mw-xs .sc-steprow{grid-template-columns:1fr;}
+</style>
+</head><body>
+<div id="layout"><div id="appMain">
+<div class="card" id="componentCard" data-component="ComponentName">
+  <div class="card-head">
+    <div class="toggle" data-tile="csBody"><span class="chev">&#9662;</span><h2 data-i18n="title">[Component Title]</h2></div>
+  </div>
+  <div id="csBody">
+    <div id="csTabs" class="sc-tabs">
+      <button data-cs="overview" data-i18n="tab_overview" class="on">Overview</button><button data-cs="a" data-i18n="tab_a">Option A</button><button data-cs="b" data-i18n="tab_b">Option B</button><button data-cs="c" data-i18n="tab_c">Option C</button><button data-cs="d" data-i18n="tab_d">Option D</button><button data-cs="e" data-i18n="tab_e">Option E</button><button data-cs="f" data-i18n="tab_f">Option F</button>
+    </div>
+
+    <!-- ===== Overview pane ===== -->
+    <div class="cs-pane on" id="cs-overview" data-button="Overview">
+
+      <h3 data-i18n="ov_head" class="ec-title">[Overview - heading]</h3>
+      <div class="pane-intro"><div class="vthumb vthumb-sm" data-vid="1" role="button" aria-label="Play video" data-i18n-aria="aria_play" tabindex="0" style="--vbg:linear-gradient(135deg,#3a4a63,#161d27)" data-vbg="grad0"><div class="vthumb-cap"><div data-i18n="ov_vid" class="vthumb-title">[Overview video]</div></div><span class="vthumb-play"><svg width="30" height="30" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><path d="M18 14l14 9-14 9z" fill="#fff"/></svg></span></div><p class="ec-desc" data-i18n="ov_intro">[Introductory paragraph for this component. Summarize what it covers and who it's for — this sits at the top of the Overview tab, above the sections below.]</p></div>
+
+      <!-- clickable navigation tiles under the intro; hover lifts the tile with a subtle shadow and re-colors its outline (light + dark). Placeholder titles — hosts wire data-goto to real tabs. -->
+      <div class="sc-plan-cards" aria-label="Jump to a topic">
+        <button type="button" class="sc-plan-card" data-goto="a"><span class="pc-name" data-i18n="nav_t1_n">[Option A]</span><span class="pc-line" data-i18n="nav_t1_l">[One-line placeholder description of this topic.]</span><span class="pc-more" data-i18n="nav_more">[Learn more] &#8594;</span></button>
+        <button type="button" class="sc-plan-card" data-goto="b"><span class="pc-name" data-i18n="nav_t2_n">[Option B]</span><span class="pc-line" data-i18n="nav_t2_l">[One-line placeholder description of this topic.]</span><span class="pc-more" data-i18n="nav_more">[Learn more] &#8594;</span></button>
+        <button type="button" class="sc-plan-card" data-goto="c"><span class="pc-name" data-i18n="nav_t3_n">[Option C]</span><span class="pc-line" data-i18n="nav_t3_l">[One-line placeholder description of this topic.]</span><span class="pc-more" data-i18n="nav_more">[Learn more] &#8594;</span></button>
+        <button type="button" class="sc-plan-card" data-goto="d"><span class="pc-name" data-i18n="nav_t4_n">[Option D]</span><span class="pc-line" data-i18n="nav_t4_l">[One-line placeholder description of this topic.]</span><span class="pc-more" data-i18n="nav_more">[Learn more] &#8594;</span></button>
+        <button type="button" class="sc-plan-card" data-goto="e"><span class="pc-name" data-i18n="nav_t5_n">[Option E]</span><span class="pc-line" data-i18n="nav_t5_l">[One-line placeholder description of this topic.]</span><span class="pc-more" data-i18n="nav_more">[Learn more] &#8594;</span></button>
+        <button type="button" class="sc-plan-card" data-goto="f"><span class="pc-name" data-i18n="nav_t6_n">[Option F]</span><span class="pc-line" data-i18n="nav_t6_l">[One-line placeholder description of this topic.]</span><span class="pc-more" data-i18n="nav_more">[Learn more] &#8594;</span></button>
+      </div>
+
+      <!-- category-grid section (plum/purple info tiles), collapsed by default -->
+      <div class="toggle closed sc-no-mirror" data-tile="cs-ov-types"><span class="chev">&#9662;</span><h3 data-i18n="sec_types" class="ec-title">[Category grid heading]</h3></div>
+      <div id="cs-ov-types" class="hidden">
+        <div class="ec-grid">
+          <div class="ec-box info"><h4 data-i18n="ty1_h">[CATEGORY ONE]</h4><p data-i18n="ty1_b">[Placeholder description one — two to four sentences summarizing what this category is and the key things a reader should know.]</p></div>
+          <div class="ec-box info"><h4 data-i18n="ty2_h">[CATEGORY TWO]</h4><p data-i18n="ty2_b">[Placeholder description two — two to four sentences summarizing what this category is and the key things a reader should know.]</p></div>
+          <div class="ec-box info"><h4 data-i18n="ty3_h">[CATEGORY THREE]</h4><p data-i18n="ty3_b">[Placeholder description three — two to four sentences summarizing what this category is and the key things a reader should know.]</p></div>
+          <div class="ec-box info"><h4 data-i18n="ty4_h">[CATEGORY FOUR]</h4><p data-i18n="ty4_b">[Placeholder description four — two to four sentences summarizing what this category is and the key things a reader should know.]</p></div>
+        </div>
+      </div>
+
+      <div class="toggle closed sc-no-mirror" data-tile="cs-ov-data"><span class="chev">&#9662;</span><h3 data-i18n="sec_data" class="ec-title">[Reference Data Table]</h3><span class="quick-calc-note" aria-hidden="true"><svg width="22" height="13" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 H3 M10 1 L3 7 L10 13"/></svg><span data-i18n="note_search">Searchable List</span></span></div>
+      <div id="cs-ov-data" class="hidden">
+        <div id="dataRoot">
+          <div class="data-search"><input id="dataSearch" type="text" autocomplete="off" spellcheck="false" placeholder="Search the table&#8230;"/><button type="button" id="dataSearchBtn" aria-label="Search" data-i18n-aria="aria_search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button></div>
+          <div class="data-wrap"><table id="dataTable"><thead></thead><tbody></tbody></table></div>
+        </div>
+      </div>
+
+      <div class="toggle closed sc-no-mirror" data-tile="cs-ov-chart"><span class="chev">&#9662;</span><h3 data-i18n="sec_chart" class="ec-title">[Sample Chart]</h3></div>
+      <div id="cs-ov-chart" class="hidden">
+        <div class="tmpl-toolbar" id="chartToolbar"><button data-i18n="ch_both" data-series="both" class="on">Both series</button><button data-i18n="ch_s1" data-series="s1">Series A only</button><button data-i18n="ch_s2" data-series="s2">Series B only</button></div>
+        <div class="legend" id="chartLegend"></div>
+        <div class="chartbox"><svg id="sampleChart" viewBox="0 0 720 360" preserveAspectRatio="none" role="img" aria-label="Sample chart" data-i18n-aria="aria_chart"></svg></div>
+        <p data-i18n="ch_note" class="cs-note">Illustrative sample data &#8212; replace the CHART values in the &#8220;Sample chart&#8221; script with your own series.</p>
+      </div>
+
+      <div class="toggle closed sc-no-mirror" data-tile="cs-ov-guide"><span class="chev">&#9662;</span><h3 data-i18n="sec_guide" class="ec-title">[Overview / Guidance]</h3></div>
+      <div id="cs-ov-guide" class="hidden">
+        <div class="cs-ov-text">
+          <p data-i18n="g_p1">[Opening guidance paragraph. Orient the reader and help them choose among the options below.]</p>
+          <ul>
+            <li><strong data-i18n="g_l1">[When to pick Option A]</strong><span data-i18n="g_l1t"> &#8212; [one line of reasoning].</span></li>
+            <li><strong data-i18n="g_l2">[When to pick Option B]</strong><span data-i18n="g_l2t"> &#8212; [one line of reasoning].</span></li>
+            <li><strong data-i18n="g_l3">[When to pick Option C]</strong><span data-i18n="g_l3t"> &#8212; [one line of reasoning].</span></li>
+          </ul>
+          <p data-i18n="g_p2">[Closing thought or common approach.]</p>
+        </div>
+      </div>
+
+      <div class="toggle closed sc-no-mirror" data-tile="cs-ov-videos"><span class="chev">&#9662;</span><h3 data-i18n="sec_videos" class="ec-title">[Videos]</h3></div>
+      <div id="cs-ov-videos" class="hidden">
+        <div class="sc-videos">
+          <div class="vthumb" data-vid="1" role="button" aria-label="Play video" data-i18n-aria="aria_play" tabindex="0" style="--vbg:linear-gradient(135deg,#3a4a63,#161d27)" data-vbg="grad0"><div class="vthumb-cap"><div data-i18n="vid1" class="vthumb-title">[Featured video title]</div></div><span class="vthumb-play"><svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><path d="M18 14l14 9-14 9z" fill="#fff"/></svg></span></div>
+          <ul class="sc-vid-list">
+            <li data-vbg="grad0" data-vfeatured="1" data-vid="1" role="button" tabindex="0"><span data-i18n="vid1b">[Featured video title]</span> <span class="sc-vid-dur">3:10</span></li>
+            <li data-vbg="grad1" data-vid="2" role="button" tabindex="0"><span data-i18n="vid2">[Video two title]</span> <span class="sc-vid-dur">2:40</span></li>
+            <li data-vbg="grad2" data-vid="3" role="button" tabindex="0"><span data-i18n="vid3">[Video three title]</span> <span class="sc-vid-dur">3:25</span></li>
+            <li data-vbg="grad3" data-vid="4" role="button" tabindex="0"><span data-i18n="vid4">[Video four title]</span> <span class="sc-vid-dur">2:05</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Option tab: Option A ===== -->
+    <div class="cs-pane" id="cs-a" data-button="OptionA">
+      <h3 data-i18n="optA_head" class="ec-title">[Option A — heading]</h3>
+      <div class="pane-intro"><div class="vthumb vthumb-sm" data-vid="1" role="button" aria-label="Play video" data-i18n-aria="aria_play" tabindex="0" style="--vbg:linear-gradient(135deg,#39506b,#1a2330)" data-vbg="agrad"><div class="vthumb-cap"><div data-i18n="optA_vid" class="vthumb-title">[Intro video — Option A]</div></div><span class="vthumb-play"><svg width="30" height="30" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><path d="M18 14l14 9-14 9z" fill="#fff"/></svg></span></div><p data-i18n="optA_desc" class="ec-desc">[Intro paragraph for Option A. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]</p></div>
+
+      <div class="toggle closed" data-tile="cs-a-pc"><span class="chev">&#9662;</span><h3 data-i18n="optA_pctitle" class="ec-title">Pros &amp; Cons — Option A</h3></div>
+      <div id="cs-a-pc" class="hidden">
+        <div class="ec-grid">
+          <div class="ec-box pros"><h4 data-i18n="optA_prosh">Pros</h4><ul><li><span data-i18n="optA_pro1">[Advantage one]</span></li><li><span data-i18n="optA_pro2">[Advantage two]</span></li><li><span data-i18n="optA_pro3">[Advantage three]</span></li></ul></div>
+          <div class="ec-box cons"><h4 data-i18n="optA_consh">Cons</h4><ul><li><span data-i18n="optA_con1">[Drawback one]</span></li><li><span data-i18n="optA_con2">[Drawback two]</span></li><li><span data-i18n="optA_con3">[Drawback three]</span></li></ul></div>
+        </div>
+      </div>
+
+      <div class="ec-how">
+        <div class="toggle closed" data-tile="csHow-a"><span class="chev">&#9662;</span><h3 data-i18n="optA_howtitle" class="ec-title">How Option A Works</h3></div>
+        <div id="csHow-a" class="hidden">
+          <div class="ec-grid ec-how-grid"><div class="ec-box info"><h4><span data-i18n="optA_ha_h">[Sub-topic A]</span></h4><p><span data-i18n="optA_ha">[Detail for [Sub-topic A].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optA_hb_h">[Sub-topic B]</span></h4><p><span data-i18n="optA_hb">[Detail for [Sub-topic B].]</span></p></div></div>
+          <div class="ec-grid ec-how-grid" style="margin-top:24px"><div class="ec-box info"><h4><span data-i18n="optA_hc_h">[Sub-topic C]</span></h4><p><span data-i18n="optA_hc">[Detail for [Sub-topic C].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optA_hd_h">[Best for]</span></h4><p><span data-i18n="optA_hd">[Detail for [Best for].]</span></p></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== Option tab: Option B ===== -->
+    <div class="cs-pane" id="cs-b" data-button="OptionB">
+      <h3 data-i18n="optB_head" class="ec-title">[Option B — heading]</h3>
+      <div class="pane-intro"><div class="vthumb vthumb-sm" data-vid="1" role="button" aria-label="Play video" data-i18n-aria="aria_play" tabindex="0" style="--vbg:linear-gradient(135deg,#4a3a5e,#20182c)" data-vbg="bgrad"><div class="vthumb-cap"><div data-i18n="optB_vid" class="vthumb-title">[Intro video — Option B]</div></div><span class="vthumb-play"><svg width="30" height="30" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><path d="M18 14l14 9-14 9z" fill="#fff"/></svg></span></div><p data-i18n="optB_desc" class="ec-desc">[Intro paragraph for Option B. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]</p></div>
+
+      <div class="toggle closed" data-tile="cs-b-pc"><span class="chev">&#9662;</span><h3 data-i18n="optB_pctitle" class="ec-title">Pros &amp; Cons — Option B</h3></div>
+      <div id="cs-b-pc" class="hidden">
+        <div class="ec-grid">
+          <div class="ec-box pros"><h4 data-i18n="optB_prosh">Pros</h4><ul><li><span data-i18n="optB_pro1">[Advantage one]</span></li><li><span data-i18n="optB_pro2">[Advantage two]</span></li><li><span data-i18n="optB_pro3">[Advantage three]</span></li></ul></div>
+          <div class="ec-box cons"><h4 data-i18n="optB_consh">Cons</h4><ul><li><span data-i18n="optB_con1">[Drawback one]</span></li><li><span data-i18n="optB_con2">[Drawback two]</span></li><li><span data-i18n="optB_con3">[Drawback three]</span></li></ul></div>
+        </div>
+      </div>
+
+      <div class="ec-how">
+        <div class="toggle closed" data-tile="csHow-b"><span class="chev">&#9662;</span><h3 data-i18n="optB_howtitle" class="ec-title">How Option B Works</h3></div>
+        <div id="csHow-b" class="hidden">
+          <div class="ec-grid ec-how-grid"><div class="ec-box info"><h4><span data-i18n="optB_ha_h">[Sub-topic A]</span></h4><p><span data-i18n="optB_ha">[Detail for [Sub-topic A].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optB_hb_h">[Sub-topic B]</span></h4><p><span data-i18n="optB_hb">[Detail for [Sub-topic B].]</span></p></div></div>
+          <div class="ec-grid ec-how-grid" style="margin-top:24px"><div class="ec-box info"><h4><span data-i18n="optB_hc_h">[Sub-topic C]</span></h4><p><span data-i18n="optB_hc">[Detail for [Sub-topic C].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optB_hd_h">[Best for]</span></h4><p><span data-i18n="optB_hd">[Detail for [Best for].]</span></p></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== Option tab: Option C ===== -->
+    <div class="cs-pane" id="cs-c" data-button="OptionC">
+      <h3 data-i18n="optC_head" class="ec-title">[Option C — heading]</h3>
+      <div class="pane-intro"><div class="vthumb vthumb-sm" data-vid="1" role="button" aria-label="Play video" data-i18n-aria="aria_play" tabindex="0" style="--vbg:linear-gradient(135deg,#2e4f47,#14211d)" data-vbg="cgrad"><div class="vthumb-cap"><div data-i18n="optC_vid" class="vthumb-title">[Intro video — Option C]</div></div><span class="vthumb-play"><svg width="30" height="30" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><path d="M18 14l14 9-14 9z" fill="#fff"/></svg></span></div><p data-i18n="optC_desc" class="ec-desc">[Intro paragraph for Option C. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]</p></div>
+
+      <div class="toggle closed" data-tile="cs-c-pc"><span class="chev">&#9662;</span><h3 data-i18n="optC_pctitle" class="ec-title">Pros &amp; Cons — Option C</h3></div>
+      <div id="cs-c-pc" class="hidden">
+        <div class="ec-grid">
+          <div class="ec-box pros"><h4 data-i18n="optC_prosh">Pros</h4><ul><li><span data-i18n="optC_pro1">[Advantage one]</span></li><li><span data-i18n="optC_pro2">[Advantage two]</span></li><li><span data-i18n="optC_pro3">[Advantage three]</span></li></ul></div>
+          <div class="ec-box cons"><h4 data-i18n="optC_consh">Cons</h4><ul><li><span data-i18n="optC_con1">[Drawback one]</span></li><li><span data-i18n="optC_con2">[Drawback two]</span></li><li><span data-i18n="optC_con3">[Drawback three]</span></li></ul></div>
+        </div>
+      </div>
+
+      <div class="ec-how">
+        <div class="toggle closed" data-tile="csHow-c"><span class="chev">&#9662;</span><h3 data-i18n="optC_howtitle" class="ec-title">How Option C Works</h3></div>
+        <div id="csHow-c" class="hidden">
+          <div class="ec-grid ec-how-grid"><div class="ec-box info"><h4><span data-i18n="optC_ha_h">[Sub-topic A]</span></h4><p><span data-i18n="optC_ha">[Detail for [Sub-topic A].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optC_hb_h">[Sub-topic B]</span></h4><p><span data-i18n="optC_hb">[Detail for [Sub-topic B].]</span></p></div></div>
+          <div class="ec-grid ec-how-grid" style="margin-top:24px"><div class="ec-box info"><h4><span data-i18n="optC_hc_h">[Sub-topic C]</span></h4><p><span data-i18n="optC_hc">[Detail for [Sub-topic C].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optC_hd_h">[Best for]</span></h4><p><span data-i18n="optC_hd">[Detail for [Best for].]</span></p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Option tab: Option D ===== -->
+    <div class="cs-pane" id="cs-d" data-button="OptionD">
+      <h3 data-i18n="optD_head" class="ec-title">[Option D — heading]</h3>
+      <div class="pane-intro"><div class="vthumb vthumb-sm" data-vid="1" role="button" aria-label="Play video" data-i18n-aria="aria_play" tabindex="0" style="--vbg:linear-gradient(135deg,#5e4a3a,#2c2018)" data-vbg="dgrad"><div class="vthumb-cap"><div data-i18n="optD_vid" class="vthumb-title">[Intro video — Option D]</div></div><span class="vthumb-play"><svg width="30" height="30" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><path d="M18 14l14 9-14 9z" fill="#fff"/></svg></span></div><p data-i18n="optD_desc" class="ec-desc">[Intro paragraph for Option D. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]</p></div>
+
+      <div class="toggle closed" data-tile="cs-d-pc"><span class="chev">&#9662;</span><h3 data-i18n="optD_pctitle" class="ec-title">Pros &amp; Cons — Option D</h3></div>
+      <div id="cs-d-pc" class="hidden">
+        <div class="ec-grid">
+          <div class="ec-box pros"><h4 data-i18n="optD_prosh">Pros</h4><ul><li><span data-i18n="optD_pro1">[Advantage one]</span></li><li><span data-i18n="optD_pro2">[Advantage two]</span></li><li><span data-i18n="optD_pro3">[Advantage three]</span></li></ul></div>
+          <div class="ec-box cons"><h4 data-i18n="optD_consh">Cons</h4><ul><li><span data-i18n="optD_con1">[Drawback one]</span></li><li><span data-i18n="optD_con2">[Drawback two]</span></li><li><span data-i18n="optD_con3">[Drawback three]</span></li></ul></div>
+        </div>
+      </div>
+
+      <div class="ec-how">
+        <div class="toggle closed" data-tile="csHow-d"><span class="chev">&#9662;</span><h3 data-i18n="optD_howtitle" class="ec-title">How Option D Works</h3></div>
+        <div id="csHow-d" class="hidden">
+          <div class="ec-grid ec-how-grid"><div class="ec-box info"><h4><span data-i18n="optD_ha_h">[Sub-topic A]</span></h4><p><span data-i18n="optD_ha">[Detail for [Sub-topic A].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optD_hb_h">[Sub-topic B]</span></h4><p><span data-i18n="optD_hb">[Detail for [Sub-topic B].]</span></p></div></div>
+          <div class="ec-grid ec-how-grid" style="margin-top:24px"><div class="ec-box info"><h4><span data-i18n="optD_hc_h">[Sub-topic C]</span></h4><p><span data-i18n="optD_hc">[Detail for [Sub-topic C].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optD_hd_h">[Best for]</span></h4><p><span data-i18n="optD_hd">[Detail for [Best for].]</span></p></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== Option tab: Option E ===== -->
+    <div class="cs-pane" id="cs-e" data-button="OptionE">
+      <h3 data-i18n="optE_head" class="ec-title">[Option E — heading]</h3>
+      <div class="pane-intro"><div class="vthumb vthumb-sm" data-vid="1" role="button" aria-label="Play video" data-i18n-aria="aria_play" tabindex="0" style="--vbg:linear-gradient(135deg,#2e4a4f,#141f21)" data-vbg="egrad"><div class="vthumb-cap"><div data-i18n="optE_vid" class="vthumb-title">[Intro video — Option E]</div></div><span class="vthumb-play"><svg width="30" height="30" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><path d="M18 14l14 9-14 9z" fill="#fff"/></svg></span></div><p data-i18n="optE_desc" class="ec-desc">[Intro paragraph for Option E. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]</p></div>
+
+      <div class="toggle closed" data-tile="cs-e-pc"><span class="chev">&#9662;</span><h3 data-i18n="optE_pctitle" class="ec-title">Pros &amp; Cons — Option E</h3></div>
+      <div id="cs-e-pc" class="hidden">
+        <div class="ec-grid">
+          <div class="ec-box pros"><h4 data-i18n="optE_prosh">Pros</h4><ul><li><span data-i18n="optE_pro1">[Advantage one]</span></li><li><span data-i18n="optE_pro2">[Advantage two]</span></li><li><span data-i18n="optE_pro3">[Advantage three]</span></li></ul></div>
+          <div class="ec-box cons"><h4 data-i18n="optE_consh">Cons</h4><ul><li><span data-i18n="optE_con1">[Drawback one]</span></li><li><span data-i18n="optE_con2">[Drawback two]</span></li><li><span data-i18n="optE_con3">[Drawback three]</span></li></ul></div>
+        </div>
+      </div>
+
+      <div class="ec-how">
+        <div class="toggle closed" data-tile="csHow-e"><span class="chev">&#9662;</span><h3 data-i18n="optE_howtitle" class="ec-title">How Option E Works</h3></div>
+        <div id="csHow-e" class="hidden">
+          <div class="ec-grid ec-how-grid"><div class="ec-box info"><h4><span data-i18n="optE_ha_h">[Sub-topic A]</span></h4><p><span data-i18n="optE_ha">[Detail for [Sub-topic A].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optE_hb_h">[Sub-topic B]</span></h4><p><span data-i18n="optE_hb">[Detail for [Sub-topic B].]</span></p></div></div>
+          <div class="ec-grid ec-how-grid" style="margin-top:24px"><div class="ec-box info"><h4><span data-i18n="optE_hc_h">[Sub-topic C]</span></h4><p><span data-i18n="optE_hc">[Detail for [Sub-topic C].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optE_hd_h">[Best for]</span></h4><p><span data-i18n="optE_hd">[Detail for [Best for].]</span></p></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== Option tab: Option F ===== -->
+    <div class="cs-pane" id="cs-f" data-button="OptionF">
+      <h3 data-i18n="optF_head" class="ec-title">[Option F — heading]</h3>
+      <div class="pane-intro"><div class="vthumb vthumb-sm" data-vid="1" role="button" aria-label="Play video" data-i18n-aria="aria_play" tabindex="0" style="--vbg:linear-gradient(135deg,#5e3a4a,#2c1820)" data-vbg="fgrad"><div class="vthumb-cap"><div data-i18n="optF_vid" class="vthumb-title">[Intro video — Option F]</div></div><span class="vthumb-play"><svg width="30" height="30" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><path d="M18 14l14 9-14 9z" fill="#fff"/></svg></span></div><p data-i18n="optF_desc" class="ec-desc">[Intro paragraph for Option F. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]</p></div>
+
+      <div class="toggle closed" data-tile="cs-f-pc"><span class="chev">&#9662;</span><h3 data-i18n="optF_pctitle" class="ec-title">Pros &amp; Cons — Option F</h3></div>
+      <div id="cs-f-pc" class="hidden">
+        <div class="ec-grid">
+          <div class="ec-box pros"><h4 data-i18n="optF_prosh">Pros</h4><ul><li><span data-i18n="optF_pro1">[Advantage one]</span></li><li><span data-i18n="optF_pro2">[Advantage two]</span></li><li><span data-i18n="optF_pro3">[Advantage three]</span></li></ul></div>
+          <div class="ec-box cons"><h4 data-i18n="optF_consh">Cons</h4><ul><li><span data-i18n="optF_con1">[Drawback one]</span></li><li><span data-i18n="optF_con2">[Drawback two]</span></li><li><span data-i18n="optF_con3">[Drawback three]</span></li></ul></div>
+        </div>
+      </div>
+
+      <div class="ec-how">
+        <div class="toggle closed" data-tile="csHow-f"><span class="chev">&#9662;</span><h3 data-i18n="optF_howtitle" class="ec-title">How Option F Works</h3></div>
+        <div id="csHow-f" class="hidden">
+          <div class="ec-grid ec-how-grid"><div class="ec-box info"><h4><span data-i18n="optF_ha_h">[Sub-topic A]</span></h4><p><span data-i18n="optF_ha">[Detail for [Sub-topic A].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optF_hb_h">[Sub-topic B]</span></h4><p><span data-i18n="optF_hb">[Detail for [Sub-topic B].]</span></p></div></div>
+          <div class="ec-grid ec-how-grid" style="margin-top:24px"><div class="ec-box info"><h4><span data-i18n="optF_hc_h">[Sub-topic C]</span></h4><p><span data-i18n="optF_hc">[Detail for [Sub-topic C].]</span></p></div><div class="ec-box info"><h4><span data-i18n="optF_hd_h">[Best for]</span></h4><p><span data-i18n="optF_hd">[Detail for [Best for].]</span></p></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== Tile-level: Compare ===== -->
+    <div class="subsec-head toggle closed" data-tile="csCmpBody"><span class="chev">&#9662;</span><h2 data-i18n="cmp_title">[Compare Options]</h2></div>
+    <div id="csCmpBody" class="hidden">
+      <div id="csCmpChecks" class="sc-cmp-checks"><label><input type="checkbox" value="a" checked/><span data-i18n="chk_a">Option A</span></label><label><input type="checkbox" value="b" checked/><span data-i18n="chk_b">Option B</span></label><label><input type="checkbox" value="c" checked/><span data-i18n="chk_c">Option C</span></label><label><input type="checkbox" value="d" checked/><span data-i18n="chk_d">Option D</span></label><label><input type="checkbox" value="e" checked/><span data-i18n="chk_e">Option E</span></label><label><input type="checkbox" value="f" checked/><span data-i18n="chk_f">Option F</span></label></div>
+      <div id="csCmpWrap" class="sc-cmp-wrap"><table id="csCmpTable" class="sc-cmp-table">
+        <tr><th  data-i18n="th_topic">Topic</th><th data-cst="a" data-i18n="th_a">Option A</th><th data-cst="b" data-i18n="th_b">Option B</th><th data-cst="c" data-i18n="th_c">Option C</th><th data-cst="d" data-i18n="th_d">Option D</th><th data-cst="e" data-i18n="th_e">Option E</th><th data-cst="f" data-i18n="th_f">Option F</th></tr>
+        <tr><td data-i18n="cmp1">[Attribute 1]</td><td data-cst="a" data-i18n="cmp1_a">[A&#8217;s value]</td><td data-cst="b" data-i18n="cmp1_b">[B&#8217;s value]</td><td data-cst="c" data-i18n="cmp1_c">[C&#8217;s value]</td><td data-cst="d" data-i18n="cmp1_d">[D&#8217;s value]</td><td data-cst="e" data-i18n="cmp1_e">[E&#8217;s value]</td><td data-cst="f" data-i18n="cmp1_f">[F&#8217;s value]</td></tr>
+        <tr><td data-i18n="cmp2">[Attribute 2]</td><td data-cst="a" data-i18n="cmp2_a">[A&#8217;s value]</td><td data-cst="b" data-i18n="cmp2_b">[B&#8217;s value]</td><td data-cst="c" data-i18n="cmp2_c">[C&#8217;s value]</td><td data-cst="d" data-i18n="cmp2_d">[D&#8217;s value]</td><td data-cst="e" data-i18n="cmp2_e">[E&#8217;s value]</td><td data-cst="f" data-i18n="cmp2_f">[F&#8217;s value]</td></tr>
+        <tr><td data-i18n="cmp3">[Attribute 3]</td><td data-cst="a" data-i18n="cmp3_a">[A&#8217;s value]</td><td data-cst="b" data-i18n="cmp3_b">[B&#8217;s value]</td><td data-cst="c" data-i18n="cmp3_c">[C&#8217;s value]</td><td data-cst="d" data-i18n="cmp3_d">[D&#8217;s value]</td><td data-cst="e" data-i18n="cmp3_e">[E&#8217;s value]</td><td data-cst="f" data-i18n="cmp3_f">[F&#8217;s value]</td></tr>
+        <tr><td data-i18n="cmp4">[Attribute 4]</td><td data-cst="a" data-i18n="cmp4_a">[A&#8217;s value]</td><td data-cst="b" data-i18n="cmp4_b">[B&#8217;s value]</td><td data-cst="c" data-i18n="cmp4_c">[C&#8217;s value]</td><td data-cst="d" data-i18n="cmp4_d">[D&#8217;s value]</td><td data-cst="e" data-i18n="cmp4_e">[E&#8217;s value]</td><td data-cst="f" data-i18n="cmp4_f">[F&#8217;s value]</td></tr>
+        <tr><td data-i18n="cmp5">[Best for]</td><td data-cst="a" data-i18n="cmp5_a">[A&#8217;s fit]</td><td data-cst="b" data-i18n="cmp5_b">[B&#8217;s fit]</td><td data-cst="c" data-i18n="cmp5_c">[C&#8217;s fit]</td><td data-cst="d" data-i18n="cmp5_d">[D&#8217;s fit]</td><td data-cst="e" data-i18n="cmp5_e">[E&#8217;s fit]</td><td data-cst="f" data-i18n="cmp5_f">[F&#8217;s fit]</td></tr>
+      </table></div>
+    </div>
+
+    <!-- ===== Tile-level: Calculator (pale-yellow card) ===== -->
+    <div class="subsec-head toggle closed sc-calc-head" data-tile="csCalcBody"><span class="chev">&#9662;</span><h2 data-i18n="calc_title">[Calculator]</h2><span class="quick-calc-note" aria-hidden="true"><svg width="22" height="13" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 H3 M10 1 L3 7 L10 13"/></svg><span data-i18n="qc_note">Quick Calculator</span></span></div>
+    <div id="csCalcBody" class="hidden sc-calc-body">
+      <div id="csRoot">
+        <div id="csCalc">
+          <div class="cs-field"><label for="calcStart" data-i18n="lbl_calcStart">[Starting amount]</label><input id="calcStart" type="text" inputmode="numeric" value="$1,000"/></div>
+          <div class="cs-field"><label for="calcMonthly" data-i18n="lbl_calcMonthly">[Monthly amount]</label><input id="calcMonthly" type="text" inputmode="numeric" value="$200"/></div>
+          <div class="cs-field"><label for="calcYears" data-i18n="lbl_calcYears">[Years]</label><input id="calcYears" type="text" inputmode="numeric" value="10"/></div>
+          <div class="cs-field"><label for="calcRate" data-i18n="lbl_calcRate">[Annual growth]</label><input id="calcRate" type="text" inputmode="numeric" value="6%"/></div>
+          <div class="cs-field"><label for="calcMode" data-i18n="lbl_calcMode">[Mode]</label><select id="calcMode">
+            <option value="std" data-i18n="mode_std">[Choice one]</option><option value="agg" data-i18n="mode_agg">[Choice two]</option><option value="cons" data-i18n="mode_cons">[Choice three]</option>
+          </select></div>
+        </div>
+        <div class="cs-results">
+          <div class="cs-kpi"><div class="l" data-i18n="kpi_calcR_total">[Projected total]</div><div class="v" id="calcR_total">&#8212;</div></div><div class="cs-kpi"><div class="l" data-i18n="kpi_calcR_contrib">[Total contributed]</div><div class="v" id="calcR_contrib">&#8212;</div></div><div class="cs-kpi"><div class="l" data-i18n="kpi_calcR_growth">[Growth]</div><div class="v" id="calcR_growth">&#8212;</div></div><div class="cs-kpi"><div class="l" data-i18n="kpi_calcR_mult">[Multiple]</div><div class="v" id="calcR_mult">&#8212;</div></div>
+        </div>
+        <p class="cs-note" id="calcR_note"></p>
+      </div>
+    </div>
+
+    <!-- ===== Always-visible disclosures (small gray type) ===== -->
+    <div class="sc-disclaimer" role="note">
+      <span data-i18n="disc_1">The above is not legal or tax advice.</span>
+      <span data-i18n="disc_2">Past performance is no guarantee of future success.</span>
+      <span data-i18n="disc_3">Investments may lose money.</span>
+    </div>
+
+  </div>
+</div>
+<!-- ===== Language + theme toggles: below the component, right-aligned ===== -->
+<div class="tmpl-controls">
+  <div class="tmpl-seg" id="themeToggle" role="group" aria-label="Theme" data-i18n-aria="aria_theme">
+    <button type="button" data-set-theme="light" class="on"><span data-i18n="th_light">Light</span></button>
+    <button type="button" data-set-theme="dark"><span data-i18n="th_dark">Dark</span></button>
+  </div>
+  <div class="tmpl-seg" id="langToggle" role="group" aria-label="Language" data-i18n-aria="aria_language">
+    <button type="button" data-lang="en" class="on">English</button>
+    <button type="button" data-lang="es">Español</button>
+  </div>
+</div>
+</div></div>
+<script>
+/* ===== Shared shell kernel (generic) ===== */
+(function(){
+  'use strict';
+  function scInitSections(root){
+    (root||document).querySelectorAll('[data-tile]:not(.sc-item)').forEach(t=>{
+      if(t.dataset.scWired) return; t.dataset.scWired='1';
+      if(!t.hasAttribute('role')) t.setAttribute('role','button');
+      if(!t.hasAttribute('tabindex')) t.setAttribute('tabindex','0');
+      if(!t.hasAttribute('aria-controls') && t.dataset.tile) t.setAttribute('aria-controls', t.dataset.tile);
+      const sync=()=>t.setAttribute('aria-expanded', String(!t.classList.contains('closed')));
+      sync();
+      const toggle=()=>{ t.classList.toggle('closed'); const b=document.getElementById(t.dataset.tile); if(b) b.classList.toggle('hidden'); sync(); };
+      t.addEventListener('click',toggle);
+      t.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+    });
+  }
+  function scInitTypeTabs(root, prefix, col){
+    root=root||document;
+    const tablist=root.querySelector('#'+prefix+'Tabs');
+    if(tablist && !tablist.hasAttribute('role')){ tablist.setAttribute('role','tablist'); tablist.setAttribute('data-i18n-aria','aria_tabs'); tablist.setAttribute('aria-label','Choose a tab'); }
+    const btns=[...root.querySelectorAll('#'+prefix+'Tabs button')];
+    function selectPane(b){
+      const oldPane=document.querySelector('.'+prefix+'-pane.on');
+      const states=oldPane?[...oldPane.querySelectorAll('.toggle:not(.sc-no-mirror)')].map(t=>t.classList.contains('closed')):null;
+      btns.forEach(x=>{ const on=x===b; x.classList.toggle('on',on); x.classList.remove('tab-hl'); x.setAttribute('aria-selected',String(on)); x.setAttribute('tabindex',on?'0':'-1'); });
+      document.querySelectorAll('.'+prefix+'-pane').forEach(x=>x.classList.toggle('on',x.id===prefix+'-'+b.dataset[prefix]));
+      if(states){ const np=document.querySelector('.'+prefix+'-pane.on');
+        if(np) [...np.querySelectorAll('.toggle:not(.sc-no-mirror)')].forEach((t,i)=>{
+          if(i>=states.length) return;
+          const dt=t.getAttribute('data-tile'), body=dt?document.getElementById(dt):t.nextElementSibling;
+          t.classList.toggle('closed',states[i]); if(body) body.classList.toggle('hidden',states[i]);
+          t.setAttribute('aria-expanded', String(!states[i]));
+        });
+      }
+    }
+    btns.forEach((b,idx)=>{
+      const key=b.dataset[prefix];
+      if(!b.hasAttribute('role')) b.setAttribute('role','tab');
+      if(!b.id) b.id=prefix+'tab-'+key;
+      b.setAttribute('aria-controls', prefix+'-'+key);
+      const on=b.classList.contains('on');
+      b.setAttribute('aria-selected', String(on));
+      b.setAttribute('tabindex', on?'0':'-1');
+      const pane=document.getElementById(prefix+'-'+key);
+      if(pane){ if(!pane.hasAttribute('role')) pane.setAttribute('role','tabpanel'); if(!pane.hasAttribute('tabindex')) pane.setAttribute('tabindex','0'); pane.setAttribute('aria-labelledby', b.id); }
+      if(b.dataset.scWired) return; b.dataset.scWired='1';
+      b.addEventListener('click',()=>selectPane(b));
+      b.addEventListener('keydown',e=>{
+        let n=null;
+        if(e.key==='ArrowRight'||e.key==='ArrowDown') n=btns[(idx+1)%btns.length];
+        else if(e.key==='ArrowLeft'||e.key==='ArrowUp') n=btns[(idx-1+btns.length)%btns.length];
+        else if(e.key==='Home') n=btns[0];
+        else if(e.key==='End') n=btns[btns.length-1];
+        if(n){ e.preventDefault(); n.focus(); n.click(); }
+      });
+    });
+    if(col) root.querySelectorAll('#'+prefix+'CmpChecks input').forEach(cb=>{
+      if(cb.dataset.scWired) return; cb.dataset.scWired='1';
+      cb.addEventListener('change',()=>{ document.querySelectorAll('[data-'+col+'="'+cb.value+'"]').forEach(el=>el.style.display=cb.checked?'':'none'); });
+    });
+  }
+  /* data-goto: overview tiles / chips jump to a tab pane (value = a tab's data-cs key). */
+  function scInitGoto(root){
+    (root||document).querySelectorAll('[data-goto]').forEach(el=>{
+      if(el.dataset.scGotoWired) return; el.dataset.scGotoWired='1';
+      const go=()=>{
+        const tab=document.querySelector('#csTabs button[data-cs="'+el.dataset.goto+'"]');
+        if(!tab) return;
+        tab.click(); tab.focus();
+        const card=document.getElementById('componentCard');
+        if(card && card.scrollIntoView) card.scrollIntoView({behavior:'smooth',block:'start'});
+      };
+      el.addEventListener('click',go);
+      el.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
+    });
+  }
+  window.SC = { initSections: scInitSections, initTypeTabs: scInitTypeTabs, initGoto: scInitGoto };
+  function updMainW(){
+    var am=document.getElementById('appMain'); if(!am) return;
+    var w=am.getBoundingClientRect().width;
+    document.documentElement.style.setProperty('--main-w', w+'px');
+    var tier = w<600?'xs' : w<1100?'md' : 'lg';
+    am.classList.toggle('mw-xs',tier==='xs');
+    am.classList.toggle('mw-md',tier==='md'); am.classList.toggle('mw-lg',tier==='lg');
+    am.classList.toggle('main-narrow', tier==='xs');
+  }
+  function init(){
+    if(!document.documentElement.hasAttribute('data-theme')) document.documentElement.dataset.theme='light';
+    scInitSections(document);
+    scInitTypeTabs(document,'cs','cst');
+    scInitGoto(document);
+    updMainW();
+  }
+  window.addEventListener('resize', updMainW);
+  if(document.readyState!=='loading') init(); else window.addEventListener('DOMContentLoaded', init);
+})();
+</script>
+<script>
+/* ===== Calculator (#csRoot) — ILLUSTRATIVE future-value example (language-aware) ===== */
+(function(){
+  'use strict';
+  const $=id=>document.getElementById(id);
+  if(!$('csCalc')) return;
+  const num=v=>{ const n=parseFloat(String(v).replace(/[^0-9.\-]/g,'')); return isFinite(n)?n:0; };
+  const money=n=>'$'+Math.round(n).toLocaleString('en-US');
+  const MODE={ std:1, agg:1.25, cons:0.75 };
+  const NOTE={
+    en:r=>'Illustrative projection only — not advice. Assumes '+r+'% annual growth, compounded yearly. Edit the formula in the calculator script.',
+    es:r=>'Proyección ilustrativa únicamente — no es asesoramiento. Supone un '+r+'% de crecimiento anual, capitalizado cada año. Edite la fórmula en el script de la calculadora.'
+  };
+  function lang(){ return window.LANG||'en'; }
+  function run(){
+    const start=num($('calcStart').value), monthly=num($('calcMonthly').value);
+    const years=Math.max(0,num($('calcYears').value));
+    const rate=num($('calcRate').value)/100 * (MODE[$('calcMode').value]||1);
+    const r=rate, n=years, grow=Math.pow(1+r,n);
+    const total=start*grow + (r>0 ? monthly*12*((grow-1)/r) : monthly*12*n);
+    const contrib=start+monthly*12*n, growth=Math.max(0,total-contrib);
+    const mult=contrib>0?(total/contrib):0;
+    $('calcR_total').textContent=money(total);
+    $('calcR_contrib').textContent=money(contrib);
+    $('calcR_growth').textContent=money(growth);
+    $('calcR_mult').textContent=(mult?mult.toFixed(2):'0.00')+'×';
+    $('calcR_note').textContent=(NOTE[lang()]||NOTE.en)((rate*100).toFixed(1));
+  }
+  $('csCalc').addEventListener('input', run);
+  $('csCalc').addEventListener('change', run);
+  (window.__i18nHooks=window.__i18nHooks||[]).push(run);
+  run();
+})();
+</script>
+<script>
+/* ===== Reference data table (#dataRoot / #dataTable) — language-aware ===== */
+(function(){
+  'use strict';
+  var root=document.getElementById('dataRoot'); if(!root) return;
+  var table=document.getElementById('dataTable');
+  var search=document.getElementById('dataSearch');
+  var thead=table.tHead||table.createTHead();
+  var tbody=table.tBodies[0]||table.createTBody();
+  function lang(){ return window.LANG||'en'; }
+
+  var DATA_COLS=[
+    {label:{en:'Item',es:'Elemento'},type:'text'},
+    {label:{en:'Category',es:'Categoría'},type:'text'},
+    {label:{en:'Region',es:'Región'},type:'text'},
+    {label:{en:'Value A',es:'Valor A'},type:'num'},
+    {label:{en:'Value B',es:'Valor B'},type:'num'},
+    {label:{en:'Percent',es:'Porcentaje'},type:'num'},
+    {label:{en:'Rating',es:'Calificación'},type:'text'},
+    {label:{en:'Website',es:'Sitio web'},type:'link'}
+  ];
+  var CAT={en:['Type X','Type Y','Type Z'],es:['Tipo X','Tipo Y','Tipo Z']};
+  var REG={en:['North','South','East','West'],es:['Norte','Sur','Este','Oeste']};
+  // rows carry indices into CAT/REG so they translate; [name, catIdx, regIdx, A, B, pct, rating, site]
+  var RAW=[
+    ['Sample Item 01',0,0,1240,3400,42,'A','example.com'],
+    ['Sample Item 02',1,1,980,2100,61,'B','example.org'],
+    ['Sample Item 03',0,2,2050,5300,28,'A','example.net'],
+    ['Sample Item 04',2,3,760,1500,73,'C','example.com'],
+    ['Sample Item 05',1,0,1610,4200,55,'B','example.org'],
+    ['Sample Item 06',0,1,1340,2900,47,'A','example.net'],
+    ['Sample Item 07',2,2,540,1200,66,'C','example.com'],
+    ['Sample Item 08',1,3,1880,4800,33,'B','example.org'],
+    ['Sample Item 09',0,0,990,2600,58,'A','example.net'],
+    ['Sample Item 10',2,1,1450,3100,51,'C','example.com']
+  ];
+  var MSG={en:'No rows match that search.',es:'Ninguna fila coincide con la búsqueda.'};
+  var sortCol=-1, sortDir=1;
+  function rowVals(r){ var lg=lang(); return [r[0],CAT[lg][r[1]],REG[lg][r[2]],r[3],r[4],r[5],r[6],r[7]]; }
+  function buildHead(){
+    var lg=lang(), tr=document.createElement('tr');
+    DATA_COLS.forEach(function(c,i){
+      var th=document.createElement('th'); if(i===0) th.className='sticky';
+      var inner=document.createElement('span'); inner.className='th-in';
+      var lab=document.createElement('span'); lab.className='th-label'; lab.textContent=c.label[lg]||c.label.en; inner.appendChild(lab);
+      var arr=document.createElement('span'); arr.className='sortarr'; arr.textContent='▴';  /* one glyph, rotated for "down" so both directions are identical in size/shape */
+      if(i===sortCol){ arr.classList.add('active'); if(sortDir<0) arr.classList.add('down'); }
+      else { arr.classList.add('down'); }
+      th.appendChild(inner); th.appendChild(arr);
+      th.setAttribute('role','button'); th.setAttribute('tabindex','0');
+      th.setAttribute('aria-sort', i===sortCol ? (sortDir>0?'ascending':'descending') : 'none');
+      var doSort=function(){ if(sortCol===i){sortDir*=-1;} else {sortCol=i;sortDir=1;} render(); };
+      th.addEventListener('click',doSort);
+      th.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); doSort(); } });
+      tr.appendChild(th);
+    });
+    thead.innerHTML=''; thead.appendChild(tr);
+  }
+  function render(){
+    buildHead();
+    var q=(search.value||'').trim().toLowerCase();
+    var rows=RAW.map(rowVals);
+    if(q.length>=2) rows=rows.filter(function(r){ return String(r[0]).toLowerCase().indexOf(q)>=0; });
+    if(sortCol>=0){ var t=DATA_COLS[sortCol].type;
+      rows.sort(function(a,b){ var x=a[sortCol],y=b[sortCol];
+        return t==='num' ? (Number(x)-Number(y))*sortDir : String(x).localeCompare(String(y))*sortDir; });
+    }
+    tbody.innerHTML='';
+    if(!rows.length){ tbody.innerHTML='<tr><td class="data-none" colspan="'+DATA_COLS.length+'">'+(MSG[lang()]||MSG.en)+'</td></tr>'; return; }
+    rows.forEach(function(r){
+      var tr=document.createElement('tr');
+      DATA_COLS.forEach(function(c,i){
+        var td=document.createElement('td'); if(i===0) td.className='sticky';
+        if(c.type==='link' && r[i]){ var a=document.createElement('a'); a.href='https://'+r[i]; a.target='_blank'; a.rel='noopener'; a.textContent=r[i]; td.appendChild(a); }
+        else if(c.type==='num'){ td.textContent=(r[i]==null)?'—':Number(r[i]).toLocaleString('en-US'); }
+        else { td.textContent=r[i]; }
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+  }
+  search.addEventListener('input', render);
+  document.getElementById('dataSearchBtn').addEventListener('click', render);
+  (window.__i18nHooks=window.__i18nHooks||[]).push(render);
+  render();
+})();
+</script>
+<script>
+/* ===== Sample chart (#sampleChart) — line + area, two series (language-aware) ===== */
+(function(){
+  'use strict';
+  var svg=document.getElementById('sampleChart'); if(!svg) return;
+  var NS='http://www.w3.org/2000/svg';
+  var CHART={
+    labels:{en:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+            es:['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']},
+    s1:[12,18,15,24,30,28,36,40,38,46,52,58],
+    s2:[10,12,14,13,18,20,19,24,26,25,30,34],
+    name1:{en:'Series A',es:'Serie A'}, name2:{en:'Series B',es:'Serie B'}
+  };
+  var W=720,H=360,padL=44,padR=16,padT=18,padB=34;
+  var show={s1:true,s2:true};
+  function lang(){ return window.LANG||'en'; }
+  function css(v){ return (getComputedStyle(document.documentElement).getPropertyValue(v)||'').trim()||'#888'; }
+  function labels(){ return CHART.labels[lang()]||CHART.labels.en; }
+  function maxV(){ var v=[]; if(show.s1)v=v.concat(CHART.s1); if(show.s2)v=v.concat(CHART.s2); return Math.max.apply(null,v.concat([1])); }
+  function x(i){ var n=labels().length; return padL+(W-padL-padR)*(n<2?0:i/(n-1)); }
+  function y(v,mx){ return padT+(H-padT-padB)*(1-v/mx); }
+  function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e; }
+  function draw(){
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    var mx=maxV(), grid=css('--grid'), axis=css('--axis'), c1=css('--cat1'), c2=css('--cat2'), L=labels();
+    for(var g=0;g<=4;g++){ var gv=mx*g/4, gy=y(gv,mx);
+      svg.appendChild(el('line',{x1:padL,y1:gy,x2:W-padR,y2:gy,stroke:grid,'stroke-width':1}));
+      var t=el('text',{x:padL-8,y:gy+4,'text-anchor':'end','font-size':11,fill:axis,'font-family':'var(--font-ui)'}); t.textContent=Math.round(gv); svg.appendChild(t);
+    }
+    svg.appendChild(el('line',{x1:padL,y1:H-padB,x2:W-padR,y2:H-padB,stroke:axis,'stroke-width':1}));
+    L.forEach(function(lab,i){ if(i%2) return; var t=el('text',{x:x(i),y:H-padB+18,'text-anchor':'middle','font-size':11,fill:axis,'font-family':'var(--font-ui)'}); t.textContent=lab; svg.appendChild(t); });
+    function series(arr,color){
+      var line='';
+      arr.forEach(function(v,i){ line+=(i?'L':'M')+x(i)+' '+y(v,mx)+' '; });
+      var area='M'+x(0)+' '+(H-padB)+' '+arr.map(function(v,i){return 'L'+x(i)+' '+y(v,mx);}).join(' ')+' L'+x(arr.length-1)+' '+(H-padB)+' Z';
+      svg.appendChild(el('path',{d:area,fill:color,'fill-opacity':0.12,stroke:'none'}));
+      svg.appendChild(el('path',{d:line.trim(),fill:'none',stroke:color,'stroke-width':2.5,'stroke-linejoin':'round','stroke-linecap':'round'}));
+      arr.forEach(function(v,i){ svg.appendChild(el('circle',{cx:x(i),cy:y(v,mx),r:3,fill:color})); });
+    }
+    if(show.s2) series(CHART.s2,c2);
+    if(show.s1) series(CHART.s1,c1);
+  }
+  function legend(){
+    var box=document.getElementById('chartLegend'); if(!box) return; var lg=lang();
+    box.innerHTML='<span><span class="dot" style="background:var(--cat1)"></span>'+(CHART.name1[lg]||CHART.name1.en)+'</span>'+
+                  '<span><span class="dot" style="background:var(--cat2)"></span>'+(CHART.name2[lg]||CHART.name2.en)+'</span>';
+  }
+  var tb=document.getElementById('chartToolbar');
+  if(tb) tb.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+    [].forEach.call(tb.querySelectorAll('button'),function(x){x.classList.toggle('on',x===b);});
+    var s=b.getAttribute('data-series'); show={s1:(s!=='s2'),s2:(s!=='s1')}; draw(); });
+  function refresh(){ legend(); draw(); }
+  (window.__i18nHooks=window.__i18nHooks||[]).push(refresh);
+  refresh();
+  window.addEventListener('resize', draw);
+  var obs=new MutationObserver(function(){ draw(); });
+  var body=document.getElementById('cs-ov-chart'); if(body) obs.observe(body,{attributes:true,attributeFilter:['class']});
+  obs.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
+<script>
+/* ===== Video thumbnails + illustrative modal (featured, list, and intro corner thumbs) ===== */
+(function(){
+  'use strict';
+  var GRADS={
+    grad0:'linear-gradient(135deg,#3a4a63,#161d27)', grad1:'linear-gradient(135deg,#4b3b63,#221a2f)',
+    grad2:'linear-gradient(135deg,#2f5049,#15231f)', grad3:'linear-gradient(135deg,#5a4636,#241a12)',
+    agrad:'linear-gradient(135deg,#39506b,#1a2330)', bgrad:'linear-gradient(135deg,#4a3a5e,#20182c)',
+    cgrad:'linear-gradient(135deg,#2e4f47,#14211d)'
+  };
+  function grad(k){ return GRADS[k]||GRADS.grad0; }
+  var featured=document.querySelector('.sc-videos .vthumb');
+  var list=document.querySelectorAll('.sc-vid-list li');
+
+  /* ============================================================================
+     EXTERNAL VIDEO PLAYER REQUIREMENT (production):
+     The posters/modal below are ILLUSTRATIVE ONLY — no video plays in the template.
+     A real video player MUST be callable from an external source (the host app) to
+     actually play each asset (named per the asset convention):
+       - Desktop / tablet widths: play INSIDE the modal (replace the poster region).
+       - Mobile widths (main-narrow): play FULL-WIDTH INLINE where the thumbnail expands
+         (the .vplaying container), not in the modal.
+     Wire the host player to openModal()/inlinePlay() below.
+     ============================================================================ */
+  var back=document.createElement('div'); back.className='vid-modal-backdrop'; back.hidden=true;
+  back.innerHTML=''
+    +'<div class="vid-modal" role="dialog" aria-modal="true" aria-labelledby="vmTitle" aria-label="Video preview" data-i18n-aria="aria_videopreview">'
+    +'  <div class="vid-modal-poster" id="vmPoster"><div class="vid-modal-cap"><div class="vid-modal-ptitle" id="vmPTitle"></div></div>'
+    +'    <span class="vid-modal-play"><svg width="60" height="60" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"/><path d="M18 14l14 9-14 9z" fill="#fff"/></svg></span>'
+    +'  </div>'
+    +'  <div class="vid-modal-head"><div class="vid-modal-title-block"><div class="vid-modal-title" id="vmTitle"></div><div class="vid-modal-time" id="vmTime"></div></div>'
+    +'    <button class="vid-modal-close" id="vmClose" aria-label="Close" data-i18n-aria="aria_close">✕</button></div>'
+    +'  <div class="vid-modal-body"><p data-i18n="vm_illustrative">Illustrative example — no video plays.</p></div>'
+    +'  <div class="vid-modal-foot" data-i18n="vm_foot">Placeholder preview for template purposes.</div>'
+    +'</div>';
+  document.body.appendChild(back);
+  var vmPoster=back.querySelector('#vmPoster'), vmPTitle=back.querySelector('#vmPTitle'),
+      vmTitle=back.querySelector('#vmTitle'), vmTime=back.querySelector('#vmTime');
+  var TIMEWORD={en:'Running time ',es:'Duración '};
+  var lastFocus=null;
+  function focusables(){ return back.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])'); }
+  function openModal(title,time,key){
+    lastFocus=document.activeElement;
+    vmPTitle.textContent=title; vmTitle.textContent=title;
+    vmTime.textContent=time?((TIMEWORD[window.LANG||'en']||TIMEWORD.en)+time):'';
+    vmPoster.style.setProperty('--vbg', grad(key)); back.hidden=false;
+    var f=focusables(); if(f.length) f[0].focus();
+  }
+  function close(){ back.hidden=true; if(lastFocus && lastFocus.focus) lastFocus.focus(); }
+  back.addEventListener('keydown',function(e){
+    if(e.key!=='Tab') return; var f=focusables(); if(!f.length) return;
+    var first=f[0], last=f[f.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  });
+  back.addEventListener('click',function(e){ if(e.target===back) close(); });
+  back.querySelector('#vmClose').addEventListener('click', close);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !back.hidden) close(); });
+  function narrow(){ var am=document.getElementById('appMain'); return am && am.classList.contains('main-narrow'); }
+  function inlinePlay(el){ el.classList.add('vplaying'); }  /* mobile inline 'play' = expand to full width */
+  /* ===== External asset naming convention =====
+     Each video element resolves to files named  <Component>_<Button>_Thumbnail_<n>.jpeg  and
+     <Component>_<Button>_Video_<n>.mp4  — from data-component (on #componentCard), data-button
+     (on the pane) and data-vid (on the element). The resolved names are written back as
+     data-thumbnail-file / data-video-file so external hosts can read/supply them. If
+     window.TEMPLATE_ASSET_BASE (a URL prefix) is set, real thumbnails are loaded automatically;
+     otherwise the CSS-gradient placeholder remains. */
+  var ASSET_BASE = window.TEMPLATE_ASSET_BASE || '';
+  function safeName(v, dflt){ v=String(v||'').replace(/[^A-Za-z0-9]/g,''); return v||dflt; }  /* sanitize: PascalCase ASCII alphanumeric only */
+  function nameOf(el, kind){
+    var c=el.closest('[data-component]'), b=el.closest('[data-button]');
+    var comp=safeName(c&&c.getAttribute('data-component'),'Component');
+    var btn =safeName(b&&b.getAttribute('data-button'),'Section');
+    var idx = String(el.getAttribute('data-vid')||'1').replace(/[^0-9]/g,'')||'1';
+    return comp+'_'+btn+'_'+kind+'_'+idx;
+  }
+  document.querySelectorAll('.vthumb, .vthumb-sm, .sc-vid-list li').forEach(function(el){
+    var thumb=nameOf(el,'Thumbnail')+'.jpeg', video=nameOf(el,'Video')+'.mp4';
+    el.setAttribute('data-thumbnail-file', thumb);
+    el.setAttribute('data-video-file', video);
+    if(ASSET_BASE && (el.classList.contains('vthumb')||el.classList.contains('vthumb-sm'))){
+      el.style.setProperty('--vbg', 'url("'+ASSET_BASE+thumb+'")');
+      el.setAttribute('data-vbg', thumb);
+    }
+  });
+
+  if(featured){
+    function selectInline(li){
+      var key=li.getAttribute('data-vbg')||'grad0';
+      var span=li.querySelector('[data-i18n]')||li.childNodes[0];
+      var title=(span&&span.textContent||'').trim();
+      featured.style.setProperty('--vbg', grad(key));
+      var ft=featured.querySelector('.vthumb-title'); if(ft) ft.textContent=title;
+      featured.setAttribute('data-vbg', key);
+      featured.dataset.dur=(li.querySelector('.sc-vid-dur')||{}).textContent||'';
+    }
+    list.forEach(function(li){
+      li.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); li.click(); } });
+      li.addEventListener('click',function(){
+        selectInline(li);
+        if(narrow()){ inlinePlay(featured); }
+      });
+    });
+    function openFeatured(){ var ft=featured.querySelector('.vthumb-title'); if(narrow()){ inlinePlay(featured); } else { openModal(ft?ft.textContent:'Video', featured.dataset.dur||'', featured.getAttribute('data-vbg')); } }
+    featured.addEventListener('click', openFeatured);
+    featured.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openFeatured(); } });
+  }
+
+  // Intro corner thumbnails (.vthumb-sm): modal above mobile, inline (full-width) at mobile.
+  document.querySelectorAll('.vthumb-sm').forEach(function(v){
+    function openIt(){ var t=v.querySelector('.vthumb-title'); if(narrow()){ inlinePlay(v); } else { openModal(t?t.textContent:'Video','', v.getAttribute('data-vbg')); } }
+    v.addEventListener('click', openIt);
+    v.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openIt(); } });
+  });
+  /* Mobile: clicking anywhere outside an inline-playing video reverts it to the thumbnail. */
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.vthumb.vplaying').forEach(function(v){ if(!v.contains(e.target)) v.classList.remove('vplaying'); });
+  });
+  /* External adapter surface: a host page can drive playback via these hooks.
+     Replace the illustrative behavior by wiring a real player inside/after these calls. */
+  window.TEXT_COMPONENT_VIDEO = { openModal: openModal, inlinePlay: inlinePlay, closeModal: close };
+})();
+</script>
+<script>
+/* ===== i18n (EN/ES) + language & theme toggles ===== */
+(function(){
+  'use strict';
+  var DATA = {"strings": {"sec_types": {"en": "[Category grid heading]", "es": "[Título de la cuadrícula de categorías]"}, "ty1_h": {"en": "[CATEGORY ONE]", "es": "[CATEGORÍA UNO]"}, "ty1_b": {"en": "[Placeholder description one — two to four sentences summarizing what this category is and the key things a reader should know.]", "es": "[Descripción de marcador de posición uno — de dos a cuatro oraciones que resumen qué es esta categoría y lo clave que el lector debe saber.]"}, "ty2_h": {"en": "[CATEGORY TWO]", "es": "[CATEGORÍA DOS]"}, "ty2_b": {"en": "[Placeholder description two — two to four sentences summarizing what this category is and the key things a reader should know.]", "es": "[Descripción de marcador de posición dos — de dos a cuatro oraciones que resumen qué es esta categoría y lo clave que el lector debe saber.]"}, "ty3_h": {"en": "[CATEGORY THREE]", "es": "[CATEGORÍA TRES]"}, "ty3_b": {"en": "[Placeholder description three — two to four sentences summarizing what this category is and the key things a reader should know.]", "es": "[Descripción de marcador de posición tres — de dos a cuatro oraciones que resumen qué es esta categoría y lo clave que el lector debe saber.]"}, "ty4_h": {"en": "[CATEGORY FOUR]", "es": "[CATEGORÍA CUATRO]"}, "ty4_b": {"en": "[Placeholder description four — two to four sentences summarizing what this category is and the key things a reader should know.]", "es": "[Descripción de marcador de posición cuatro — de dos a cuatro oraciones que resumen qué es esta categoría y lo clave que el lector debe saber.]"}, "ov_head": {"en": "[Overview - heading]", "es": "[Resumen - título]"}, "aria_play": {"en": "Play video", "es": "Reproducir video"}, "aria_theme": {"en": "Theme", "es": "Tema"}, "aria_language": {"en": "Language", "es": "Idioma"}, "aria_close": {"en": "Close", "es": "Cerrar"}, "aria_search": {"en": "Search", "es": "Buscar"}, "aria_tabs": {"en": "Choose a tab", "es": "Elegir una pestaña"}, "aria_chart": {"en": "Sample chart", "es": "Gráfico de muestra"}, "aria_videopreview": {"en": "Video preview", "es": "Vista previa de video"}, "disc_1": {"en": "The above is not legal or tax advice.", "es": "Lo anterior no constituye asesoramiento legal ni fiscal."}, "disc_2": {"en": "Past performance is no guarantee of future success.", "es": "El rendimiento pasado no garantiza resultados futuros."}, "disc_3": {"en": "Investments may lose money.", "es": "Las inversiones pueden perder valor."}, "ov_intro": {"en": "[Introductory paragraph for this component. Summarize what it covers and who it's for — this sits at the top of the Overview tab, above the sections below.]", "es": "[Párrafo introductorio de este componente. Resuma qué cubre y para quién es — aparece al inicio de la pestaña Resumen, sobre las secciones siguientes.]"}, "ov_vid": {"en": "[Overview video]", "es": "[Video de resumen]"}, "nav_more": {"en": "[Learn more] &#8594;", "es": "[Más información] &#8594;"}, "nav_t1_n": {"en": "[Option A]", "es": "[Opción A]"}, "nav_t1_l": {"en": "[One-line placeholder description of this topic.]", "es": "[Descripción de marcador de posición de una línea de este tema.]"}, "nav_t2_n": {"en": "[Option B]", "es": "[Opción B]"}, "nav_t2_l": {"en": "[One-line placeholder description of this topic.]", "es": "[Descripción de marcador de posición de una línea de este tema.]"}, "nav_t3_n": {"en": "[Option C]", "es": "[Opción C]"}, "nav_t3_l": {"en": "[One-line placeholder description of this topic.]", "es": "[Descripción de marcador de posición de una línea de este tema.]"}, "nav_t4_n": {"en": "[Option D]", "es": "[Opción D]"}, "nav_t4_l": {"en": "[One-line placeholder description of this topic.]", "es": "[Descripción de marcador de posición de una línea de este tema.]"}, "nav_t5_n": {"en": "[Option E]", "es": "[Opción E]"}, "nav_t5_l": {"en": "[One-line placeholder description of this topic.]", "es": "[Descripción de marcador de posición de una línea de este tema.]"}, "nav_t6_n": {"en": "[Option F]", "es": "[Opción F]"}, "nav_t6_l": {"en": "[One-line placeholder description of this topic.]", "es": "[Descripción de marcador de posición de una línea de este tema.]"}, "title": {"en": "[Component Title]", "es": "[Título del componente]"}, "sec_data": {"en": "[Reference Data Table]", "es": "[Tabla de datos de referencia]"}, "note_search": {"en": "Searchable List", "es": "Lista con búsqueda"}, "sec_chart": {"en": "[Sample Chart]", "es": "[Gráfico de muestra]"}, "ch_both": {"en": "Both series", "es": "Ambas series"}, "ch_s1": {"en": "Series A only", "es": "Solo serie A"}, "ch_s2": {"en": "Series B only", "es": "Solo serie B"}, "ch_note": {"en": "Illustrative sample data &#8212; replace the CHART values in the &#8220;Sample chart&#8221; script with your own series.", "es": "Datos de muestra ilustrativos &#8212; sustituya los valores de CHART en el script del gráfico por sus propias series."}, "sec_guide": {"en": "[Overview / Guidance]", "es": "[Resumen / Orientación]"}, "g_p1": {"en": "[Opening guidance paragraph. Orient the reader and help them choose among the options below.]", "es": "[Párrafo de orientación inicial. Oriente al lector y ayúdele a elegir entre las opciones siguientes.]"}, "g_l1": {"en": "[When to pick Option A]", "es": "[Cuándo elegir la Opción A]"}, "g_l1t": {"en": " &#8212; [one line of reasoning].", "es": " &#8212; [una línea de justificación]."}, "g_l2": {"en": "[When to pick Option B]", "es": "[Cuándo elegir la Opción B]"}, "g_l2t": {"en": " &#8212; [one line of reasoning].", "es": " &#8212; [una línea de justificación]."}, "g_l3": {"en": "[When to pick Option C]", "es": "[Cuándo elegir la Opción C]"}, "g_l3t": {"en": " &#8212; [one line of reasoning].", "es": " &#8212; [una línea de justificación]."}, "g_p2": {"en": "[Closing thought or common approach.]", "es": "[Idea final o enfoque habitual.]"}, "sec_videos": {"en": "[Videos]", "es": "[Videos]"}, "vid1": {"en": "[Featured video title]", "es": "[Título del video destacado]"}, "cmp_title": {"en": "[Compare Options]", "es": "[Comparar opciones]"}, "calc_title": {"en": "[Calculator]", "es": "[Calculadora]"}, "qc_note": {"en": "Quick Calculator", "es": "Calculadora rápida"}, "tab_overview": {"en": "Overview", "es": "Resumen"}, "tab_a": {"en": "Option A", "es": "Opción A"}, "tab_b": {"en": "Option B", "es": "Opción B"}, "tab_c": {"en": "Option C", "es": "Opción C"}, "vid1b": {"en": "[Featured video title]", "es": "[Título del video destacado]"}, "vid2": {"en": "[Video two title]", "es": "[Título del video dos]"}, "vid3": {"en": "[Video three title]", "es": "[Título del video tres]"}, "vid4": {"en": "[Video four title]", "es": "[Título del video cuatro]"}, "optA_head": {"en": "[Option A — heading]", "es": "[Opción A — título]"}, "optA_desc": {"en": "[Intro paragraph for Option A. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]", "es": "[Párrafo introductorio de Opción A. Sustitúyalo por una descripción sencilla de esta opción: qué es, a quién le conviene y lo más importante que hay que saber.]"}, "optA_vid": {"en": "[Intro video — Option A]", "es": "[Video introductorio — Opción A]"}, "optA_prosh": {"en": "Pros", "es": "Ventajas"}, "optA_consh": {"en": "Cons", "es": "Contras"}, "optA_pro1": {"en": "[Advantage one]", "es": "[Ventaja uno]"}, "optA_pro2": {"en": "[Advantage two]", "es": "[Ventaja dos]"}, "optA_pro3": {"en": "[Advantage three]", "es": "[Ventaja tres]"}, "optA_con1": {"en": "[Drawback one]", "es": "[Desventaja uno]"}, "optA_con2": {"en": "[Drawback two]", "es": "[Desventaja dos]"}, "optA_con3": {"en": "[Drawback three]", "es": "[Desventaja tres]"}, "optA_pctitle": {"en": "Pros &amp; Cons — Option A", "es": "Ventajas y desventajas — Opción A"}, "optA_howtitle": {"en": "How Option A Works", "es": "Cómo funciona Opción A"}, "optA_ha_h": {"en": "[Sub-topic A]", "es": "[Subtema A]"}, "optA_ha": {"en": "[Detail for [Sub-topic A].]", "es": "[Detalle de [Subtema A].]"}, "optA_hb_h": {"en": "[Sub-topic B]", "es": "[Subtema B]"}, "optA_hb": {"en": "[Detail for [Sub-topic B].]", "es": "[Detalle de [Subtema B].]"}, "optA_hc_h": {"en": "[Sub-topic C]", "es": "[Subtema C]"}, "optA_hc": {"en": "[Detail for [Sub-topic C].]", "es": "[Detalle de [Subtema C].]"}, "optA_hd_h": {"en": "[Best for]", "es": "[Ideal para]"}, "optA_hd": {"en": "[Detail for [Best for].]", "es": "[Detalle de [Ideal para].]"}, "optB_head": {"en": "[Option B — heading]", "es": "[Opción B — título]"}, "optB_desc": {"en": "[Intro paragraph for Option B. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]", "es": "[Párrafo introductorio de Opción B. Sustitúyalo por una descripción sencilla de esta opción: qué es, a quién le conviene y lo más importante que hay que saber.]"}, "optB_vid": {"en": "[Intro video — Option B]", "es": "[Video introductorio — Opción B]"}, "optB_prosh": {"en": "Pros", "es": "Ventajas"}, "optB_consh": {"en": "Cons", "es": "Contras"}, "optB_pro1": {"en": "[Advantage one]", "es": "[Ventaja uno]"}, "optB_pro2": {"en": "[Advantage two]", "es": "[Ventaja dos]"}, "optB_pro3": {"en": "[Advantage three]", "es": "[Ventaja tres]"}, "optB_con1": {"en": "[Drawback one]", "es": "[Desventaja uno]"}, "optB_con2": {"en": "[Drawback two]", "es": "[Desventaja dos]"}, "optB_con3": {"en": "[Drawback three]", "es": "[Desventaja tres]"}, "optB_pctitle": {"en": "Pros &amp; Cons — Option B", "es": "Ventajas y desventajas — Opción B"}, "optB_howtitle": {"en": "How Option B Works", "es": "Cómo funciona Opción B"}, "optB_ha_h": {"en": "[Sub-topic A]", "es": "[Subtema A]"}, "optB_ha": {"en": "[Detail for [Sub-topic A].]", "es": "[Detalle de [Subtema A].]"}, "optB_hb_h": {"en": "[Sub-topic B]", "es": "[Subtema B]"}, "optB_hb": {"en": "[Detail for [Sub-topic B].]", "es": "[Detalle de [Subtema B].]"}, "optB_hc_h": {"en": "[Sub-topic C]", "es": "[Subtema C]"}, "optB_hc": {"en": "[Detail for [Sub-topic C].]", "es": "[Detalle de [Subtema C].]"}, "optB_hd_h": {"en": "[Best for]", "es": "[Ideal para]"}, "optB_hd": {"en": "[Detail for [Best for].]", "es": "[Detalle de [Ideal para].]"}, "optC_head": {"en": "[Option C — heading]", "es": "[Opción C — título]"}, "optC_desc": {"en": "[Intro paragraph for Option C. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]", "es": "[Párrafo introductorio de Opción C. Sustitúyalo por una descripción sencilla de esta opción: qué es, a quién le conviene y lo más importante que hay que saber.]"}, "optC_vid": {"en": "[Intro video — Option C]", "es": "[Video introductorio — Opción C]"}, "optC_prosh": {"en": "Pros", "es": "Ventajas"}, "optC_consh": {"en": "Cons", "es": "Contras"}, "optC_pro1": {"en": "[Advantage one]", "es": "[Ventaja uno]"}, "optC_pro2": {"en": "[Advantage two]", "es": "[Ventaja dos]"}, "optC_pro3": {"en": "[Advantage three]", "es": "[Ventaja tres]"}, "optC_con1": {"en": "[Drawback one]", "es": "[Desventaja uno]"}, "optC_con2": {"en": "[Drawback two]", "es": "[Desventaja dos]"}, "optC_con3": {"en": "[Drawback three]", "es": "[Desventaja tres]"}, "optC_pctitle": {"en": "Pros &amp; Cons — Option C", "es": "Ventajas y desventajas — Opción C"}, "optC_howtitle": {"en": "How Option C Works", "es": "Cómo funciona Opción C"}, "optC_ha_h": {"en": "[Sub-topic A]", "es": "[Subtema A]"}, "optC_ha": {"en": "[Detail for [Sub-topic A].]", "es": "[Detalle de [Subtema A].]"}, "optC_hb_h": {"en": "[Sub-topic B]", "es": "[Subtema B]"}, "optC_hb": {"en": "[Detail for [Sub-topic B].]", "es": "[Detalle de [Subtema B].]"}, "optC_hc_h": {"en": "[Sub-topic C]", "es": "[Subtema C]"}, "optC_hc": {"en": "[Detail for [Sub-topic C].]", "es": "[Detalle de [Subtema C].]"}, "optC_hd_h": {"en": "[Best for]", "es": "[Ideal para]"}, "optC_hd": {"en": "[Detail for [Best for].]", "es": "[Detalle de [Ideal para].]"}, "chk_a": {"en": "Option A", "es": "Opción A"}, "chk_b": {"en": "Option B", "es": "Opción B"}, "chk_c": {"en": "Option C", "es": "Opción C"}, "th_topic": {"en": "Topic", "es": "Tema"}, "th_a": {"en": "Option A", "es": "Opción A"}, "th_b": {"en": "Option B", "es": "Opción B"}, "th_c": {"en": "Option C", "es": "Opción C"}, "cmp1": {"en": "[Attribute 1]", "es": "[Atributo 1]"}, "cmp1_a": {"en": "[A&#8217;s value]", "es": "[valor de A]"}, "cmp1_b": {"en": "[B&#8217;s value]", "es": "[valor de B]"}, "cmp1_c": {"en": "[C&#8217;s value]", "es": "[valor de C]"}, "cmp2": {"en": "[Attribute 2]", "es": "[Atributo 2]"}, "cmp2_a": {"en": "[A&#8217;s value]", "es": "[valor de A]"}, "cmp2_b": {"en": "[B&#8217;s value]", "es": "[valor de B]"}, "cmp2_c": {"en": "[C&#8217;s value]", "es": "[valor de C]"}, "cmp3": {"en": "[Attribute 3]", "es": "[Atributo 3]"}, "cmp3_a": {"en": "[A&#8217;s value]", "es": "[valor de A]"}, "cmp3_b": {"en": "[B&#8217;s value]", "es": "[valor de B]"}, "cmp3_c": {"en": "[C&#8217;s value]", "es": "[valor de C]"}, "cmp4": {"en": "[Attribute 4]", "es": "[Atributo 4]"}, "cmp4_a": {"en": "[A&#8217;s value]", "es": "[valor de A]"}, "cmp4_b": {"en": "[B&#8217;s value]", "es": "[valor de B]"}, "cmp4_c": {"en": "[C&#8217;s value]", "es": "[valor de C]"}, "cmp5": {"en": "[Best for]", "es": "[Ideal para]"}, "cmp5_a": {"en": "[A&#8217;s fit]", "es": "[perfil de A]"}, "cmp5_b": {"en": "[B&#8217;s fit]", "es": "[perfil de B]"}, "cmp5_c": {"en": "[C&#8217;s fit]", "es": "[perfil de C]"}, "lbl_calcStart": {"en": "[Starting amount]", "es": "[Cantidad inicial]"}, "lbl_calcMonthly": {"en": "[Monthly amount]", "es": "[Aporte mensual]"}, "lbl_calcYears": {"en": "[Years]", "es": "[Años]"}, "lbl_calcRate": {"en": "[Annual growth]", "es": "[Crecimiento anual]"}, "lbl_calcMode": {"en": "[Mode]", "es": "[Modo]"}, "mode_std": {"en": "[Choice one]", "es": "[Opción uno]"}, "mode_agg": {"en": "[Choice two]", "es": "[Opción dos]"}, "mode_cons": {"en": "[Choice three]", "es": "[Opción tres]"}, "kpi_calcR_total": {"en": "[Projected total]", "es": "[Total proyectado]"}, "kpi_calcR_contrib": {"en": "[Total contributed]", "es": "[Total aportado]"}, "kpi_calcR_growth": {"en": "[Growth]", "es": "[Crecimiento]"}, "kpi_calcR_mult": {"en": "[Multiple]", "es": "[Múltiplo]"}, "th_light": {"en": "Light", "es": "Claro"}, "th_dark": {"en": "Dark", "es": "Oscuro"}, "vm_illustrative": {"en": "Illustrative example — no video plays.", "es": "Ejemplo ilustrativo — no se reproduce ningún video."}, "vm_foot": {"en": "Placeholder preview for template purposes.", "es": "Vista previa de marcador de posición para la plantilla."}, "optD_head": {"en": "[Option D — heading]", "es": "[Opción D — título]"}, "optD_desc": {"en": "[Intro paragraph for Option D. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]", "es": "[Párrafo introductorio de Opción D. Sustitúyalo por una descripción sencilla de esta opción: qué es, a quién le conviene y lo más importante que hay que saber.]"}, "optD_vid": {"en": "[Intro video — Option D]", "es": "[Video introductorio — Opción D]"}, "optD_prosh": {"en": "Pros", "es": "Ventajas"}, "optD_consh": {"en": "Cons", "es": "Contras"}, "optD_pro1": {"en": "[Advantage one]", "es": "[Ventaja uno]"}, "optD_pro2": {"en": "[Advantage two]", "es": "[Ventaja dos]"}, "optD_pro3": {"en": "[Advantage three]", "es": "[Ventaja tres]"}, "optD_con1": {"en": "[Drawback one]", "es": "[Desventaja uno]"}, "optD_con2": {"en": "[Drawback two]", "es": "[Desventaja dos]"}, "optD_con3": {"en": "[Drawback three]", "es": "[Desventaja tres]"}, "optD_pctitle": {"en": "Pros &amp; Cons — Option D", "es": "Ventajas y desventajas — Opción D"}, "optD_howtitle": {"en": "How Option D Works", "es": "Cómo funciona Opción D"}, "optD_ha_h": {"en": "[Sub-topic A]", "es": "[Subtema A]"}, "optD_ha": {"en": "[Detail for [Sub-topic A].]", "es": "[Detalle de [Subtema A].]"}, "optD_hb_h": {"en": "[Sub-topic B]", "es": "[Subtema B]"}, "optD_hb": {"en": "[Detail for [Sub-topic B].]", "es": "[Detalle de [Subtema B].]"}, "optD_hc_h": {"en": "[Sub-topic C]", "es": "[Subtema C]"}, "optD_hc": {"en": "[Detail for [Sub-topic C].]", "es": "[Detalle de [Subtema C].]"}, "optD_hd_h": {"en": "[Best for]", "es": "[Ideal para]"}, "optD_hd": {"en": "[Detail for [Best for].]", "es": "[Detalle de [Ideal para].]"}, "tab_d": {"en": "Option D", "es": "Opción D"}, "chk_d": {"en": "Option D", "es": "Opción D"}, "th_d": {"en": "Option D", "es": "Opción D"}, "cmp1_d": {"en": "[D&#8217;s value]", "es": "[valor de D]"}, "cmp2_d": {"en": "[D&#8217;s value]", "es": "[valor de D]"}, "cmp3_d": {"en": "[D&#8217;s value]", "es": "[valor de D]"}, "cmp4_d": {"en": "[D&#8217;s value]", "es": "[valor de D]"}, "cmp5_d": {"en": "[D&#8217;s fit]", "es": "[perfil de D]"}, "optE_head": {"en": "[Option E — heading]", "es": "[Opción E — título]"}, "optE_desc": {"en": "[Intro paragraph for Option E. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]", "es": "[Párrafo introductorio de Opción E. Sustitúyalo por una descripción sencilla de esta opción: qué es, a quién le conviene y lo más importante que hay que saber.]"}, "optE_vid": {"en": "[Intro video — Option E]", "es": "[Video introductorio — Opción E]"}, "optE_prosh": {"en": "Pros", "es": "Ventajas"}, "optE_consh": {"en": "Cons", "es": "Contras"}, "optE_pro1": {"en": "[Advantage one]", "es": "[Ventaja uno]"}, "optE_pro2": {"en": "[Advantage two]", "es": "[Ventaja dos]"}, "optE_pro3": {"en": "[Advantage three]", "es": "[Ventaja tres]"}, "optE_con1": {"en": "[Drawback one]", "es": "[Desventaja uno]"}, "optE_con2": {"en": "[Drawback two]", "es": "[Desventaja dos]"}, "optE_con3": {"en": "[Drawback three]", "es": "[Desventaja tres]"}, "optE_pctitle": {"en": "Pros &amp; Cons — Option E", "es": "Ventajas y desventajas — Opción E"}, "optE_howtitle": {"en": "How Option E Works", "es": "Cómo funciona Opción E"}, "optE_ha_h": {"en": "[Sub-topic A]", "es": "[Subtema A]"}, "optE_ha": {"en": "[Detail for [Sub-topic A].]", "es": "[Detalle de [Subtema A].]"}, "optE_hb_h": {"en": "[Sub-topic B]", "es": "[Subtema B]"}, "optE_hb": {"en": "[Detail for [Sub-topic B].]", "es": "[Detalle de [Subtema B].]"}, "optE_hc_h": {"en": "[Sub-topic C]", "es": "[Subtema C]"}, "optE_hc": {"en": "[Detail for [Sub-topic C].]", "es": "[Detalle de [Subtema C].]"}, "optE_hd_h": {"en": "[Best for]", "es": "[Ideal para]"}, "optE_hd": {"en": "[Detail for [Best for].]", "es": "[Detalle de [Ideal para].]"}, "tab_e": {"en": "Option E", "es": "Opción E"}, "chk_e": {"en": "Option E", "es": "Opción E"}, "th_e": {"en": "Option E", "es": "Opción E"}, "cmp1_e": {"en": "[E&#8217;s value]", "es": "[valor de E]"}, "cmp2_e": {"en": "[E&#8217;s value]", "es": "[valor de E]"}, "cmp3_e": {"en": "[E&#8217;s value]", "es": "[valor de E]"}, "cmp4_e": {"en": "[E&#8217;s value]", "es": "[valor de E]"}, "cmp5_e": {"en": "[E&#8217;s fit]", "es": "[perfil de E]"}, "optF_head": {"en": "[Option F — heading]", "es": "[Opción F — título]"}, "optF_desc": {"en": "[Intro paragraph for Option F. Replace with a plain-language description of this option: what it is, who it fits, and the single most important thing to know.]", "es": "[Párrafo introductorio de Opción F. Sustitúyalo por una descripción sencilla de esta opción: qué es, a quién le conviene y lo más importante que hay que saber.]"}, "optF_vid": {"en": "[Intro video — Option F]", "es": "[Video introductorio — Opción F]"}, "optF_prosh": {"en": "Pros", "es": "Ventajas"}, "optF_consh": {"en": "Cons", "es": "Contras"}, "optF_pro1": {"en": "[Advantage one]", "es": "[Ventaja uno]"}, "optF_pro2": {"en": "[Advantage two]", "es": "[Ventaja dos]"}, "optF_pro3": {"en": "[Advantage three]", "es": "[Ventaja tres]"}, "optF_con1": {"en": "[Drawback one]", "es": "[Desventaja uno]"}, "optF_con2": {"en": "[Drawback two]", "es": "[Desventaja dos]"}, "optF_con3": {"en": "[Drawback three]", "es": "[Desventaja tres]"}, "optF_pctitle": {"en": "Pros &amp; Cons — Option F", "es": "Ventajas y desventajas — Opción F"}, "optF_howtitle": {"en": "How Option F Works", "es": "Cómo funciona Opción F"}, "optF_ha_h": {"en": "[Sub-topic A]", "es": "[Subtema A]"}, "optF_ha": {"en": "[Detail for [Sub-topic A].]", "es": "[Detalle de [Subtema A].]"}, "optF_hb_h": {"en": "[Sub-topic B]", "es": "[Subtema B]"}, "optF_hb": {"en": "[Detail for [Sub-topic B].]", "es": "[Detalle de [Subtema B].]"}, "optF_hc_h": {"en": "[Sub-topic C]", "es": "[Subtema C]"}, "optF_hc": {"en": "[Detail for [Sub-topic C].]", "es": "[Detalle de [Subtema C].]"}, "optF_hd_h": {"en": "[Best for]", "es": "[Ideal para]"}, "optF_hd": {"en": "[Detail for [Best for].]", "es": "[Detalle de [Ideal para].]"}, "tab_f": {"en": "Option F", "es": "Opción F"}, "chk_f": {"en": "Option F", "es": "Opción F"}, "th_f": {"en": "Option F", "es": "Opción F"}, "cmp1_f": {"en": "[F&#8217;s value]", "es": "[valor de F]"}, "cmp2_f": {"en": "[F&#8217;s value]", "es": "[valor de F]"}, "cmp3_f": {"en": "[F&#8217;s value]", "es": "[valor de F]"}, "cmp4_f": {"en": "[F&#8217;s value]", "es": "[valor de F]"}, "cmp5_f": {"en": "[F&#8217;s fit]", "es": "[perfil de F]"}}, "placeholders": {"en": {"dataSearch": "Search the table…"}, "es": {"dataSearch": "Buscar en la tabla…"}}};
+  var STR=DATA.strings, PH=DATA.placeholders;
+  /* ===== External embed configuration =====
+     Supply window.TEMPLATE_CONFIG = { theme:'light'|'dark', lang:'en'|'es' } (or URL
+     ?embed=1&theme=light&lang=en) to HIDE the Light/Dark + English/Espanol toggles and lock
+     those states (defaults: light + English). With NO config, the working toggles are shown. */
+  (function(){
+    var cfg=window.TEMPLATE_CONFIG||null, qs=null;
+    try{ qs=new URLSearchParams(location.search); }catch(e){}
+    var urlHas = qs && (qs.has('embed')||qs.has('theme')||qs.has('lang')||qs.get('controls')==='off');
+    if(cfg || urlHas){
+      var theme=(cfg&&cfg.theme)||(qs&&qs.get('theme'))||'light';
+      var lang =(cfg&&cfg.lang) ||(qs&&qs.get('lang')) ||'en';
+      document.documentElement.dataset.theme = (theme==='dark'?'dark':'light');
+      window.LANG = (lang==='es'?'es':'en');
+      document.documentElement.setAttribute('data-embed','1');
+    }
+  })();
+  window.LANG = window.LANG || 'en';
+  function applyLang(lang){
+    window.LANG = (lang==='es')?'es':'en';
+    document.documentElement.lang = window.LANG;
+    document.querySelectorAll('[data-i18n]').forEach(function(elm){
+      var rec=STR[elm.getAttribute('data-i18n')]; if(!rec) return;
+      var v=rec[window.LANG]; if(v==null) v=rec.en; if(v!=null) elm.innerHTML=v;
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function(elm){ var rec=STR[elm.getAttribute('data-i18n-aria')]; if(!rec) return; var v=rec[window.LANG]; if(v==null) v=rec.en; if(v!=null) elm.setAttribute('aria-label', v); });
+    var ph=(PH[window.LANG]||PH.en||{}); for(var id in ph){ var e=document.getElementById(id); if(e) e.setAttribute('placeholder',ph[id]); }
+    (window.__i18nHooks||[]).forEach(function(fn){ try{ fn(); }catch(e){} });
+  }
+  window.applyLang=applyLang;
+  var lt=document.getElementById('langToggle');
+  if(lt) lt.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+    [].forEach.call(lt.querySelectorAll('button'),function(x){x.classList.toggle('on',x===b);});
+    applyLang(b.getAttribute('data-lang')); });
+  var tt=document.getElementById('themeToggle');
+  if(tt) tt.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+    [].forEach.call(tt.querySelectorAll('button'),function(x){x.classList.toggle('on',x===b);});
+    document.documentElement.dataset.theme = (b.getAttribute('data-set-theme')==='dark')?'dark':'light'; });
+  function boot(){ applyLang(window.LANG); }
+  if(document.readyState!=='loading') boot(); else document.addEventListener('DOMContentLoaded', boot);
+})();
+</script>
+</body>
+</html>
