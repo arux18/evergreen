@@ -266,13 +266,18 @@
   html[data-theme="dark"] .sv-zone{fill:#ffffff;}
   #savingsWrap .rank-note{font-size:16px;}
   html[data-theme="dark"] #savingsWrap .rank-note{color:#c6c9d0;font-size:16px;}
-  /* "Do you have these items?" checklist */
+  /* Hemlock Checkbox — custom styled for all themes */
+  input[type=checkbox]{-webkit-appearance:none;appearance:none;width:20px;height:20px;
+       border:1px solid #D5D3D0;border-radius:4px;background:#fff;position:relative;cursor:pointer;flex:0 0 auto;}
+  input[type=checkbox]:checked{border:2px solid #0e0e0e;background:#fff;}
+  input[type=checkbox]:checked::after{content:"";position:absolute;left:5px;top:1px;width:6px;height:11px;
+       border:solid #0e0e0e;border-width:0 2px 2px 0;transform:rotate(45deg);}
+  html[data-theme="dark"] input[type=checkbox]{border-color:#D5D3D0;background:transparent;}
+  html[data-theme="dark"] input[type=checkbox]:checked{border-color:#fff;background:transparent;}
+  html[data-theme="dark"] input[type=checkbox]:checked::after{border-color:#fff;}
   .checklist{display:flex;flex-direction:column;gap:12px;}
-  .check-item{display:flex;align-items:center;gap:12px;font-size:16px;color:var(--ink);cursor:pointer;}
-  .check-item input{width:20px;height:20px;accent-color:var(--accent);flex:0 0 auto;}
-  html[data-theme="dark"] .check-item input{-webkit-appearance:none;appearance:none;border:1px solid #D5D3D0;border-radius:4px;background:#fff;position:relative;cursor:pointer;}
-  html[data-theme="dark"] .check-item input:checked{background:var(--accent);border-color:var(--accent);}
-  html[data-theme="dark"] .check-item input:checked::after{content:"";position:absolute;left:7px;top:3px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+  .check-item{display:flex;align-items:center;gap:12px;font:400 16px/1.5 var(--font-ui);color:#403D3A;cursor:pointer;}
+  html[data-theme="dark"] .check-item{color:var(--ink);}
   .radioset{display:flex;flex-direction:column;gap:12px;}
   .radio-row{display:flex;align-items:center;gap:12px;font-size:16px;cursor:pointer;}
   .radio-row input{width:20px;height:20px;accent-color:var(--accent);}
@@ -355,8 +360,8 @@
   .sl-twohead .sl-row{margin-bottom:0;}
   .sl-twohead .sl-valcell{text-align:right;line-height:1.2;}
   .detail-note{font-size:13px;color:var(--faint);line-height:1.4;margin:6px 0 0;}
-  .checkrow{display:flex;align-items:center;gap:12px;font-size:16px;margin:8px 0 32px;}
-  .checkrow input{width:20px;height:20px;accent-color:var(--accent);}
+  .checkrow{display:flex;align-items:center;gap:12px;font:400 16px/1.5 var(--font-ui);color:#403D3A;margin:8px 0 32px;cursor:pointer;}
+  html[data-theme="dark"] .checkrow{color:var(--ink);}
   .acct-hint{display:none;font-size:13px;color:var(--muted);margin:-22px 0 26px;}
   .acct-hint.on{display:block;}
   /* click-to-edit blue slider value */
