@@ -224950,15 +224950,15 @@
                   "name": "contactFormSection",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": "$y:spacing-sm",
                   "children": [
                     {
                       "type": "text",
                       "id": "g5lxdy",
                       "name": "formLabel",
-                      "fill": "#2D2926",
+                      "fill": "$y:text.primary",
                       "content": "Send Us a Message",
-                      "fontFamily": "Heebo",
+                      "fontFamily": "$y:typo-primary-base-font-family",
                       "fontSize": 16,
                       "fontWeight": "500"
                     },
@@ -224967,108 +224967,41 @@
                       "id": "A2m07n",
                       "name": "formCard",
                       "width": "fill_container",
-                      "fill": "#FFFFFF",
-                      "cornerRadius": 12,
-                      "stroke": "#E8E6E0",
+                      "fill": "$y:surface.card",
+                      "cornerRadius": "$y:radius",
+                      "stroke": "$y:border",
                       "strokeWidth": 1,
                       "strokeAlignment": "inner",
                       "layout": "vertical",
-                      "gap": 16,
-                      "padding": [
-                        20,
-                        24
-                      ],
+                      "gap": "$y:spacing-md",
+                      "padding": "$y:spacing-md",
                       "children": [
                         {
-                          "type": "frame",
                           "id": "ugs3M",
-                          "name": "subjectGroup",
+                          "type": "ref",
+                          "ref": "forms:OWCgJ",
+                          "name": "subjectSelect",
                           "width": "fill_container",
-                          "layout": "vertical",
-                          "gap": 6,
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "R3fClE",
-                              "fill": "#2D2926",
-                              "content": "Subject",
-                              "fontFamily": "Heebo",
-                              "fontSize": 13,
-                              "fontWeight": "500"
-                            },
-                            {
-                              "type": "frame",
-                              "id": "g7gRj",
-                              "name": "subjectInput",
-                              "width": "fill_container",
-                              "height": 44,
-                              "fill": "#f7f5f0",
-                              "cornerRadius": 8,
-                              "stroke": "#E8E6E0",
-                              "strokeWidth": 1,
-                              "strokeAlignment": "inner",
-                              "padding": [
-                                0,
-                                14
-                              ],
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "PUezO",
-                                  "fill": "#A09A8C",
-                                  "content": "Select a topic...",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                          "descendants": {
+                            "J2jwu7": {
+                              "content": "Select a topic..."
                             }
-                          ]
+                          }
                         },
                         {
-                          "type": "frame",
                           "id": "RygS2",
-                          "name": "messageGroup",
+                          "type": "ref",
+                          "ref": "forms:C9RIKo",
+                          "name": "messageTextArea",
                           "width": "fill_container",
-                          "layout": "vertical",
-                          "gap": 6,
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "JXqH7",
-                              "fill": "#2D2926",
-                              "content": "Message",
-                              "fontFamily": "Heebo",
-                              "fontSize": 13,
-                              "fontWeight": "500"
+                          "descendants": {
+                            "V31lF": {
+                              "content": "Message"
                             },
-                            {
-                              "type": "frame",
-                              "id": "SsJOe",
-                              "name": "messageInput",
-                              "width": "fill_container",
-                              "height": 100,
-                              "fill": "#f7f5f0",
-                              "cornerRadius": 8,
-                              "stroke": "#E8E6E0",
-                              "strokeWidth": 1,
-                              "strokeAlignment": "inner",
-                              "layout": "vertical",
-                              "padding": 14,
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "TiJvz",
-                                  "fill": "#A09A8C",
-                                  "content": "Describe how we can help you...",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                            "PK5Ix": {
+                              "content": "Describe how we can help you..."
                             }
-                          ]
+                          }
                         },
                         {
                           "type": "frame",
@@ -225078,38 +225011,15 @@
                           "justifyContent": "end",
                           "children": [
                             {
-                              "type": "frame",
                               "id": "SCuey",
+                              "type": "ref",
+                              "ref": "actions:Dwlbq",
                               "name": "submitBtn",
-                              "fill": "#2D2926",
-                              "cornerRadius": 8,
-                              "gap": 8,
-                              "padding": [
-                                12,
-                                28
-                              ],
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "icon",
-                                  "id": "yJzFF",
-                                  "width": 16,
-                                  "height": 16,
-                                  "icon": "send",
-                                  "library": "lucide",
-                                  "fill": "#FFFFFF"
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "zSY0v",
-                                  "fill": "#FFFFFF",
-                                  "content": "Send Message",
-                                  "fontFamily": "Heebo",
-                                  "fontSize": 14,
-                                  "fontWeight": "500"
+                              "descendants": {
+                                "R5bjd": {
+                                  "content": "Send Message"
                                 }
-                              ]
+                              }
                             }
                           ]
                         }
@@ -226274,7 +226184,10 @@
     }
   },
   "imports": {
-    "y": "../../design-system/in-progress/hemlock-library.lib.pen"
+    "y": "../../design-system/in-progress/hemlock-library.lib.pen",
+    "forms": "../0-ideation/openui-forms.lib.pen",
+    "actions": "../0-ideation/openui-actions.lib.pen",
+    "layout": "../0-ideation/openui-layout.lib.pen"
   },
   "fileToken": "8f262a33-34e3-4547-86a5-d15819333a84",
   "fonts": [
