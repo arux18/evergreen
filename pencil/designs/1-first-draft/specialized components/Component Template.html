@@ -155,8 +155,8 @@ html[data-theme="dark"] #appMain.mw-xs .card{padding-left:24px !important;paddin
   #dataTable td:not(.sticky){font-variant-numeric:tabular-nums;}
   #dataTable td a{color:var(--accent);text-decoration:none;} #dataTable td a:hover{text-decoration:underline;}
   #dataTable .data-none{text-align:center;color:var(--muted);padding:18px;white-space:normal;}
-  .th-in{display:block;} .th-label{display:block;white-space:normal;}
-  .sortarr{position:absolute;right:8px;bottom:8px;color:#B5B1AB;pointer-events:none;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;}
+  .th-in{display:inline;} .th-label{white-space:normal;}
+  .sortarr{color:#B5B1AB;pointer-events:none;display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;vertical-align:middle;margin-left:2px;}
   .sortarr svg{width:14px;height:14px;}
   .sortarr.active{color:var(--accent);}
   /* chart */
@@ -751,7 +751,7 @@ html[data-theme="dark"]{--bill:radial-gradient(120% 130% at 50% 100%,#7094FB 0%,
       } else {
         arr.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>';
       }
-      th.appendChild(inner); th.appendChild(arr);
+      inner.appendChild(arr); th.appendChild(inner);
       th.setAttribute('role','button'); th.setAttribute('tabindex','0');
       th.setAttribute('aria-sort', i===sortCol ? (sortDir>0?'ascending':'descending') : 'none');
       var doSort=function(){ if(sortCol===i){sortDir*=-1;} else {sortCol=i;sortDir=1;} render(); };
