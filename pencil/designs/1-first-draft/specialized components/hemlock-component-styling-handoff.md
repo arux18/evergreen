@@ -140,6 +140,7 @@
 |---------|------|------|--------|-------|-------------|
 | Body base | `--font-ui` (Heebo) | 16px | 400 | `--ink` (#0e0e0e) | 1.5 |
 | h2 (Section Title) | `--font-serif` (Noto Serif) | 20px | 400 | `--ink` | — |
+| h2 **Component Title** (`.card-head h2`) | `--font-serif` (Noto Serif) | 24px | 600 | `--ink` | — |
 | `.ec-title` (Section Title) | `--font-serif` (Noto Serif) | 20px | 400 | `--ink` | — |
 | `.ec-desc` (Body copy / intro paragraphs) | Heebo | 16px | 400 | `#403D3A` (text-body) | 1.5 |
 | `.cs-ov-text p, li` (Guidance body) | Heebo | 16px | 400 | `#403D3A` (text-body) | 1.5 |
@@ -225,7 +226,7 @@
 | Display | `flex`, `flex-direction: column` |
 | Gap | `var(--space-2xs)` (6px) |
 | Padding | `var(--space-md)` (16px) |
-| Border | `1px solid var(--border)` |
+| Border | `1px solid #C6D6FC` (blue-200) |
 | Border-radius | `var(--radius-md)` (12px) |
 | Background | `var(--surface-1)` (white) |
 | Grid | `repeat(auto-fill, minmax(215px, 1fr))` with `var(--space-sm)` gap |
@@ -235,7 +236,7 @@
 
 | Property | Value |
 |----------|-------|
-| Border-color | `#ebf0fe` (blue-100) |
+| Border-color | `#3A6AF8` (blue-600) |
 | Transform | `translateY(-2px)` |
 | Box-shadow | `0 8px 24px rgba(58,106,248,.12)` |
 
@@ -420,8 +421,9 @@
 | Text-transform | `uppercase` |
 | Letter-spacing | `.03em` |
 | Border-radius | `4px` |
-| Padding | `3px 10px` |
+| Padding | `4px 10px 3px` (extra top for all-caps optical centering) |
 | Display | `inline-flex` |
+| Labels | "LISTINGS" (data table), "CALCULATOR" (calculator section) |
 
 ---
 
@@ -569,6 +571,7 @@
 | Font-size | `12px` |
 | Line-height | `1.6` |
 | Color | `var(--faint)` (#8A8680) |
+| Text | "For information and educational purposes only. Not professional investment, tax, legal, or estate planning advice. Examples shown are illustrative only. Outcomes will vary and investments may lose money." |
 
 ---
 
