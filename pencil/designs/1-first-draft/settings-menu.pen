@@ -6,7 +6,7 @@
       "id": "ZPyLp",
       "x": 21551,
       "y": 2622,
-      "name": "Settings - Nav and Chat Open",
+      "name": "Settings",
       "clip": true,
       "width": 1440,
       "height": 900,
@@ -705,28 +705,17 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "frame",
-                          "id": "S0Ffr",
-                          "name": "iconBg",
-                          "width": 44,
-                          "height": 44,
-                          "fill": "$y:color-taupe-100",
-                          "cornerRadius": "$y:radius-xs",
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "DHYOL",
-                              "name": "profileIcon",
-                              "width": 20,
-                              "height": 20,
-                              "icon": "user",
+                          "id": "nU55y",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "x": 24,
+                          "y": 21.5,
+                          "descendants": {
+                            "p:yGc18": {
                               "library": "lucide",
-                              "fill": "$y:color-gray-600"
+                              "icon": "user"
                             }
-                          ]
+                          }
                         },
                         {
                           "type": "frame",
@@ -753,7 +742,7 @@
                               "fill": "$y:color-gray-400",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Manage your personal information and preferences",
+                              "content": "Manage your personal information and preferences.",
                               "fontFamily": "Heebo",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -790,28 +779,17 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "frame",
-                          "id": "AnA1T",
-                          "name": "iconBg",
-                          "width": 44,
-                          "height": 44,
-                          "fill": "$y:color-taupe-100",
-                          "cornerRadius": "$y:radius-xs",
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "jqbWH",
-                              "name": "contactIcon",
-                              "width": 20,
-                              "height": 20,
-                              "icon": "mail",
+                          "id": "W1Ijp",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "x": 24,
+                          "y": 21.5,
+                          "descendants": {
+                            "p:yGc18": {
                               "library": "lucide",
-                              "fill": "$y:color-gray-600"
+                              "icon": "mail"
                             }
-                          ]
+                          }
                         },
                         {
                           "type": "frame",
@@ -838,7 +816,7 @@
                               "fill": "$y:color-gray-400",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
-                              "content": "Get in touch with our support team",
+                              "content": "Get in touch with our support team.",
                               "fontFamily": "Heebo",
                               "fontSize": 13,
                               "fontWeight": "normal"
@@ -1262,6 +1240,367 @@
                               "fill": "$chat.send.icon"
                             }
                           ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "p6CnqM",
+      "x": 23045,
+      "y": 2622,
+      "name": "Mobile - Settings",
+      "clip": true,
+      "width": 390,
+      "height": 844,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "dOJ1x",
+          "name": "statusBar",
+          "width": "fill_container",
+          "height": 54,
+          "padding": [
+            16,
+            20
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "qDquS",
+              "name": "time",
+              "fill": "#0E0E0E",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "OJdja",
+              "name": "statusIcons",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "R9LmiI",
+                  "name": "signal",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "signal",
+                  "library": "lucide",
+                  "fill": "#0E0E0E"
+                },
+                {
+                  "type": "icon",
+                  "id": "L9gAih",
+                  "name": "wifi",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "wifi",
+                  "library": "lucide",
+                  "fill": "#0E0E0E"
+                },
+                {
+                  "type": "icon",
+                  "id": "cRqs5",
+                  "name": "battery",
+                  "width": 22,
+                  "height": 16,
+                  "icon": "battery-full",
+                  "library": "lucide",
+                  "fill": "#0E0E0E"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "id9CX",
+          "name": "mobileHeader",
+          "width": "fill_container",
+          "height": 48,
+          "gap": 12,
+          "padding": [
+            0,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "IjbJ0",
+              "name": "menuIcon",
+              "width": 22,
+              "height": 22,
+              "icon": "panel-left",
+              "library": "lucide",
+              "fill": "$y:color-gray-700"
+            },
+            {
+              "type": "frame",
+              "id": "cJ5qr",
+              "name": "greetingArea",
+              "width": "fill_container",
+              "gap": "$O:spacing-3xs",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Zayjy",
+                  "name": "greeting",
+                  "fill": "#2d2926",
+                  "content": "Settings",
+                  "fontFamily": "Noto Serif",
+                  "fontSize": 20,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "x9g7U",
+                  "x": 613,
+                  "y": 0,
+                  "name": "logo",
+                  "enabled": false,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "F1Of2i",
+                      "name": "logoMain",
+                      "fill": "$nav.text.primary",
+                      "content": "evergreen",
+                      "fontFamily": "Manrope",
+                      "fontSize": 20,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "FurWd",
+                      "name": "logoSuffix",
+                      "fill": "$nav.text.primary",
+                      "textGrowth": "fixed-width-height",
+                      "width": "fit_content(24)",
+                      "height": "fit_content(25)",
+                      "content": ".ai",
+                      "textAlignVertical": "middle",
+                      "fontFamily": "Spectral",
+                      "fontSize": 24,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "icon",
+              "id": "kMoZd",
+              "name": "chatIcon",
+              "width": 22,
+              "height": 22,
+              "icon": "message-circle",
+              "library": "lucide",
+              "fill": "$y:color-gray-700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DyoKF",
+          "name": "contentArea",
+          "width": "fill_container",
+          "height": "fit_content(1020)",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Vpu9C",
+              "name": "contentColumn",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": "$forms:spacing-md",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "N5Vl2",
+                  "name": "subtitle",
+                  "fill": "$y:color-gray-400",
+                  "content": "Manage your account and preferences.",
+                  "fontFamily": "Heebo",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "bejCF",
+                  "name": "settingsMenu",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$y:spacing-xs",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ujO10",
+                      "name": "Profile",
+                      "width": "fill_container",
+                      "fill": "$y:colors-background-surface",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:colors-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": "$y:spacing-sm",
+                      "padding": [
+                        20,
+                        "$y:spacing-md"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "dCu5D",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "x": 24,
+                          "y": 31,
+                          "descendants": {
+                            "p:yGc18": {
+                              "library": "lucide",
+                              "icon": "user"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "X4W7j",
+                          "name": "textGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": "$y:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ofESL",
+                              "name": "profileTitle",
+                              "fill": "$y:color-gray-800",
+                              "content": "Profile",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "R9wiS9",
+                              "name": "profileDesc",
+                              "fill": "$y:color-gray-400",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Manage your personal information and preferences.",
+                              "fontFamily": "Heebo",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "fMuPE",
+                          "name": "profileChevron",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$y:color-gray-400"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "i9Y06",
+                      "name": "Contact Us",
+                      "width": "fill_container",
+                      "fill": "$y:colors-background-surface",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:colors-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": "$y:spacing-sm",
+                      "padding": [
+                        20,
+                        "$y:spacing-md"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "tjR99",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "x": 24,
+                          "y": 21.5,
+                          "descendants": {
+                            "p:yGc18": {
+                              "library": "lucide",
+                              "icon": "mail"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "FX3zW",
+                          "name": "textGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": "$y:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "S0WZ7",
+                              "name": "contactTitle",
+                              "fill": "$y:color-gray-800",
+                              "content": "Contact Us",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Ey8az",
+                              "name": "contactDesc",
+                              "fill": "$y:color-gray-400",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Get in touch with our support team.",
+                              "fontFamily": "Heebo",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "hoHBm",
+                          "name": "contactChevron",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$y:color-gray-400"
                         }
                       ]
                     }
@@ -2251,10 +2590,71 @@
     "forms:spacing-md": {
       "type": "number",
       "value": 24
+    },
+    "O:spacing-3xs": {
+      "type": "number",
+      "value": 4
+    },
+    "p:colors-text-header": {
+      "type": "color",
+      "value": "#0e0e0e"
+    },
+    "p:typo-primary-lg-semibold-font-size": {
+      "type": "number",
+      "value": 18
+    },
+    "p:typo-primary-lg-semibold-font-family": {
+      "type": "string",
+      "value": "Heebo"
+    },
+    "p:typo-primary-lg-semibold-font-weight": {
+      "type": "string",
+      "value": "600"
+    },
+    "p:colors-text-body": {
+      "type": "color",
+      "value": "#403D3A"
+    },
+    "p:typo-primary-base-regular-font-size": {
+      "type": "number",
+      "value": 14
+    },
+    "p:typo-primary-base-regular-font-family": {
+      "type": "string",
+      "value": "Heebo"
+    },
+    "p:typo-primary-base-regular-font-weight": {
+      "type": "string",
+      "value": "normal"
+    },
+    "actions:btn.secondary.bg": {
+      "type": "color",
+      "value": "#FFFFFF00"
+    },
+    "actions:btn.secondary.border": {
+      "type": "color",
+      "value": "#DCD8CB"
+    },
+    "actions:radius.full": {
+      "type": "number",
+      "value": 999
+    },
+    "actions:text.primary": {
+      "type": "color",
+      "value": "#2D2926"
+    },
+    "actions:typo-primary-sm-semibold-font-size": {
+      "type": "number",
+      "value": 14
+    },
+    "actions:typo-primary-sm-semibold-font-family": {
+      "type": "string",
+      "value": "Heebo"
     }
   },
   "imports": {
-    "y": "../../design-system/in-progress/hemlock-library.lib.pen"
+    "y": "../../design-system/in-progress/hemlock-library.lib.pen",
+    "p": "../0-ideation/openui-actions.lib.pen"
   },
   "fileToken": "08501c97-8b70-4539-8629-03ee7b171674",
   "fonts": [
