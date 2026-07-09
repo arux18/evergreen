@@ -107,58 +107,6 @@
     },
     {
       "type": "frame",
-      "id": "kQEvm",
-      "x": 0,
-      "y": -528,
-      "name": "component/Button Disabled",
-      "reusable": true,
-      "width": 113,
-      "height": 48,
-      "fill": "$gray-200",
-      "cornerRadius": 8,
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "h9yPI",
-          "name": "Label",
-          "fill": "$gray-400",
-          "content": "Continue",
-          "fontFamily": "Heebo",
-          "fontSize": 16,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "TcIsT",
-      "x": 0,
-      "y": -656,
-      "name": "component/Button Active",
-      "reusable": true,
-      "width": 113,
-      "height": 48,
-      "fill": "$black",
-      "cornerRadius": 8,
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "KfG9a",
-          "name": "Label",
-          "fill": "$white",
-          "content": "Continue",
-          "fontFamily": "Heebo",
-          "fontSize": 16,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
       "id": "ZKQb2",
       "x": 0,
       "y": -784,
@@ -721,7 +669,7 @@
     },
     {
       "type": "frame",
-      "id": "pg5om",
+      "id": "l3ZmYA",
       "x": 0,
       "y": -2144,
       "name": "component/Bottom Bar Disabled",
@@ -735,17 +683,36 @@
       "alignItems": "center",
       "children": [
         {
-          "id": "b3017",
-          "type": "ref",
-          "ref": "kQEvm",
+          "type": "frame",
+          "id": "e64a2m",
           "name": "Button Disabled",
-          "width": "fill_container"
+          "width": "fill_container",
+          "fill": "$btn.primary.disabled.bg",
+          "cornerRadius": 9999,
+          "padding": [
+            8,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "zHa0N",
+              "name": "Label",
+              "fill": "$btn.primary.disabled.text",
+              "content": "Continue",
+              "fontFamily": "Heebo",
+              "fontSize": 16,
+              "fontWeight": "600"
+            }
+          ]
         }
       ]
     },
     {
       "type": "frame",
-      "id": "YhHrB",
+      "id": "JIe51",
       "x": 0,
       "y": -2336,
       "name": "component/Bottom Bar Active",
@@ -759,11 +726,30 @@
       "alignItems": "center",
       "children": [
         {
-          "id": "cJLc5",
-          "type": "ref",
-          "ref": "TcIsT",
+          "type": "frame",
+          "id": "Ars7K",
           "name": "Button Active",
-          "width": "fill_container"
+          "width": "fill_container",
+          "fill": "$btn.primary.bg",
+          "cornerRadius": 9999,
+          "padding": [
+            8,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "b6HrH",
+              "name": "Label",
+              "fill": "$btn.primary.text",
+              "content": "Continue",
+              "fontFamily": "Heebo",
+              "fontSize": 16,
+              "fontWeight": "600"
+            }
+          ]
         }
       ]
     },
@@ -920,10 +906,11 @@
                   ],
                   "children": [
                     {
-                      "id": "uitfH",
+                      "id": "oGFvz",
                       "type": "ref",
-                      "ref": "kQEvm",
-                      "name": "Continue Button"
+                      "ref": "jyo6l",
+                      "name": "Continue Button",
+                      "width": "fill_container"
                     }
                   ]
                 },
@@ -1140,10 +1127,11 @@
                   ],
                   "children": [
                     {
-                      "id": "VAVAe",
+                      "id": "opWv8",
                       "type": "ref",
-                      "ref": "TcIsT",
-                      "name": "Continue Button"
+                      "ref": "bUFYD",
+                      "name": "Continue Button",
+                      "width": "fill_container"
                     }
                   ]
                 },
@@ -2266,14 +2254,47 @@
           ]
         },
         {
+          "type": "frame",
           "id": "gxj0X",
-          "type": "ref",
-          "ref": "pg5om",
-          "name": "Bottom Bar",
+          "layoutPosition": "absolute",
           "x": 0,
           "y": 1100,
+          "name": "Bottom Bar",
           "width": 390,
-          "layoutPosition": "absolute"
+          "height": 112,
+          "fill": "$white",
+          "layout": "vertical",
+          "padding": 32,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "P9jKC0",
+              "name": "Button Disabled",
+              "width": "fill_container",
+              "fill": "$btn.primary.disabled.bg",
+              "cornerRadius": 9999,
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "K4W9C3",
+                  "name": "Label",
+                  "fill": "$btn.primary.disabled.text",
+                  "content": "Continue",
+                  "fontFamily": "Heebo",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2469,14 +2490,47 @@
           ]
         },
         {
+          "type": "frame",
           "id": "Ppb8x",
-          "type": "ref",
-          "ref": "pg5om",
-          "name": "Bottom Bar",
+          "layoutPosition": "absolute",
           "x": 0,
           "y": 732,
+          "name": "Bottom Bar",
           "width": 390,
-          "layoutPosition": "absolute"
+          "height": 112,
+          "fill": "$white",
+          "layout": "vertical",
+          "padding": 32,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "a6YIN",
+              "name": "Button Disabled",
+              "width": "fill_container",
+              "fill": "$btn.primary.disabled.bg",
+              "cornerRadius": 9999,
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "A14kN",
+                  "name": "Label",
+                  "fill": "$btn.primary.disabled.text",
+                  "content": "Continue",
+                  "fontFamily": "Heebo",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2683,14 +2737,47 @@
           ]
         },
         {
+          "type": "frame",
           "id": "mCfBY",
-          "type": "ref",
-          "ref": "YhHrB",
-          "name": "Bottom Bar",
+          "layoutPosition": "absolute",
           "x": 0,
           "y": 1104,
+          "name": "Bottom Bar",
           "width": 390,
-          "layoutPosition": "absolute"
+          "height": 112,
+          "fill": "$white",
+          "layout": "vertical",
+          "padding": 32,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "IEfVl",
+              "name": "Button Active",
+              "width": "fill_container",
+              "fill": "$btn.primary.bg",
+              "cornerRadius": 9999,
+              "padding": [
+                8,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fPPY8",
+                  "name": "Label",
+                  "fill": "$btn.primary.text",
+                  "content": "Continue",
+                  "fontFamily": "Heebo",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -3237,6 +3324,62 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "jyo6l",
+      "x": 0,
+      "y": -528,
+      "name": "component/Button Disabled",
+      "reusable": true,
+      "fill": "$btn.primary.disabled.bg",
+      "cornerRadius": 9999,
+      "padding": [
+        8,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "UPLou",
+          "name": "Label",
+          "fill": "$btn.primary.disabled.text",
+          "content": "Continue",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "bUFYD",
+      "x": 0,
+      "y": -656,
+      "name": "component/Button Active",
+      "reusable": true,
+      "fill": "$btn.primary.bg",
+      "cornerRadius": 9999,
+      "padding": [
+        8,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "l6K1L",
+          "name": "Label",
+          "fill": "$btn.primary.text",
+          "content": "Continue",
+          "fontFamily": "Heebo",
+          "fontSize": 16,
+          "fontWeight": "600"
+        }
+      ]
     }
   ],
   "variables": {
@@ -3319,6 +3462,66 @@
     "font-family": {
       "type": "string",
       "value": "Heebo"
+    },
+    "btn.primary.bg": {
+      "type": "color",
+      "value": "#0e0e0e"
+    },
+    "btn.primary.hover": {
+      "type": "color",
+      "value": "#2D2926"
+    },
+    "btn.primary.pressed": {
+      "type": "color",
+      "value": "#403D3A"
+    },
+    "btn.primary.text": {
+      "type": "color",
+      "value": "#EEEDEB"
+    },
+    "btn.primary.disabled.bg": {
+      "type": "color",
+      "value": "#D5D3D0"
+    },
+    "btn.primary.disabled.text": {
+      "type": "color",
+      "value": "#8A8680"
+    },
+    "btn.secondary.bg": {
+      "type": "color",
+      "value": "#00000000"
+    },
+    "btn.secondary.hover.bg": {
+      "type": "color",
+      "value": "#00000000"
+    },
+    "btn.secondary.pressed.bg": {
+      "type": "color",
+      "value": "#EEEDEB"
+    },
+    "btn.secondary.border": {
+      "type": "color",
+      "value": "#D5D3D0"
+    },
+    "btn.ghost.bg": {
+      "type": "color",
+      "value": "#00000000"
+    },
+    "btn.ghost.hover.bg": {
+      "type": "color",
+      "value": "#EEEDEB"
+    },
+    "btn.ghost.pressed.bg": {
+      "type": "color",
+      "value": "#D5D3D0"
+    },
+    "divider": {
+      "type": "color",
+      "value": "#EEEDEB"
+    },
+    "radius.full": {
+      "type": "number",
+      "value": 9999
     }
   },
   "imports": {
