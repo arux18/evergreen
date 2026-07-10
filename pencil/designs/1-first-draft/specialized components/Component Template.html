@@ -244,6 +244,7 @@ html[data-theme="dark"] #appMain.mw-xs .card{padding-left:24px !important;paddin
     --accent:#5A86FF; --accent-hover:#8FB0FF; --accent-subtle:rgba(58,106,248,.18);
     --accent-2:#2FD4C4; --accent-3:#9A86FF; --accent-4:#E3B972;   /* secondary accents */
     --pos:#34D399; --neg:#F87171;
+    --taupe-100:rgba(90,134,255,0.08); --taupe-pressed:rgba(90,134,255,0.16); --taupe-border:#243350;
     --calc-bg:#12203C; --backdrop:rgba(225,230,240,0.22);  /* modal scrim: whiter tint over the dark page */
     --page-bg:#070A10; --grid:#26324C; --grid2:#26324C; --axis:#5E6E90;
     --cat1:#5A86FF; --cat2:#2FD4C4;   /* chart series: primary blue + secondary teal */
@@ -271,7 +272,10 @@ html[data-theme="dark"] #appMain.mw-xs .card{padding-left:24px !important;paddin
   html[data-theme="dark"] .cs-kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:#9A86FF;opacity:.95;}
   /* KPI top bars are uniformly #9A86FF via the base ::before above. */
   html[data-theme="dark"] #dataTable thead th{background:linear-gradient(180deg,#17263F,#101A2E);}
+  html[data-theme="dark"] .sc-cmp-table th{background:linear-gradient(180deg,#17263F,#101A2E);}
   html[data-theme="dark"] #dataTable .sortarr{color:#8695B5;} html[data-theme="dark"] #dataTable .sortarr.active{color:var(--accent);}
+  html[data-theme="dark"] #dataTable td,html[data-theme="dark"] .sc-cmp-table td{color:var(--muted);}
+  html[data-theme="dark"] #dataTable td:first-child,html[data-theme="dark"] .sc-cmp-table td:first-child{color:var(--ink);}
   html[data-theme="dark"] .vthumb,html[data-theme="dark"] .vid-modal-poster{background:radial-gradient(120% 130% at 50% 100%,var(--hero-1) 0%,var(--hero-2) 18%,var(--hero-3) 34%,var(--hero-4) 46%,var(--hero-5) 58%,var(--hero-6) 70%,var(--hero-7) 80%,var(--hero-8) 90%);}
   html[data-theme="dark"] .cs-pane > .toggle,html[data-theme="dark"] .subsec-head.toggle,html[data-theme="dark"] .ec-how > .toggle{border-image:linear-gradient(90deg,rgba(90,134,255,0.55),rgba(47,212,196,0.18) 55%,transparent) 1;}
   /* dark bottom (disclosures) line = solid, non-fading, same as the left end of the lines above */
