@@ -8,27 +8,27 @@
 
 ### Core Surfaces & Text
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--surface-1` | `#FFFFFF` | Primary background (cards, inputs, rows) |
-| `--surface-2` | `#F8F7F6` | Secondary background |
-| `--nest` | `#F8F7F6` | Nested container bg |
-| `--border` | `#EEEDEB` | Default borders |
-| `--border-strong` | `#D5D3D0` | Emphasized borders (search input, section dividers) |
-| `--ink` | `#0e0e0e` | Primary text, headings |
-| `--muted` | `#5E5954` | Secondary text, labels |
-| `--faint` | `#8A8680` | Tertiary text, captions |
-| `--inverse` | `#FFFFFF` | Text on dark backgrounds |
-| `--page-bg` | `#FFFFFF` | Page background |
+| Token | Light Value | Dark Value | Usage |
+|-------|-------------|------------|-------|
+| `--surface-1` | `#FFFFFF` | `#0E1524` | Primary background (cards, inputs, rows) |
+| `--surface-2` | `#F8F7F6` | `#121B2E` | Secondary background |
+| `--nest` | `#F8F7F6` | `#131C30` | Nested container bg |
+| `--border` | `#EEEDEB` | `#243350` | Default borders |
+| `--border-strong` | `#D5D3D0` | `#33476E` | Emphasized borders (search input, section dividers) |
+| `--ink` | `#0e0e0e` | `#EAF0FF` | Primary text, headings |
+| `--muted` | `#5E5954` | `#9DB0D2` | Secondary text, labels |
+| `--faint` | `#8A8680` | `#8A9BBF` | Tertiary text, captions |
+| `--inverse` | `#FFFFFF` | `#0B1220` | Text on dark backgrounds |
+| `--page-bg` | `#FFFFFF` | `#070A10` | Page background |
 
 ### Accent & Blue Palette
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--accent` | `#3a6af8` | Primary accent (blue-600) |
-| `--accent-hover` | `#2952cc` | Accent hover state (blue-700) |
-| `--accent-subtle` | `#ebf0fe` | Accent background tint (blue-100) |
-| `--accent-fill` | `rgba(58,106,248,0.15)` | 15% accent overlay |
+| Token | Light Value | Dark Value | Usage |
+|-------|-------------|------------|-------|
+| `--accent` | `#3a6af8` | `#5A86FF` | Primary accent (blue-600) |
+| `--accent-hover` | `#2952cc` | `#8FB0FF` | Accent hover state (blue-700) |
+| `--accent-subtle` | `#ebf0fe` | `rgba(58,106,248,.18)` | Accent background tint (blue-100) |
+| `--accent-fill` | `rgba(58,106,248,0.15)` | — | 15% accent overlay |
 
 ### Taupe Palette (Tables, Segmented Controls)
 
@@ -53,28 +53,29 @@
 
 ### Status Colors
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--pos` | `#148338` | Positive/success |
-| `--neg` | `#c82320` | Negative/error |
-| `--warn` | `#c85f1a` | Warning/orange |
-| `--pros-accent` | `#148338` | Pros tile accent |
-| `--pros-bg` | `rgba(20,131,56,.07)` | Pros tile background |
-| `--pros-border` | `rgba(20,131,56,.25)` | Pros tile border |
-| `--cons-accent` | `#c82320` | Cons tile accent |
-| `--cons-bg` | `rgba(200,35,32,.06)` | Cons tile background |
-| `--cons-border` | `rgba(200,35,32,.22)` | Cons tile border |
-| `--info-accent` | `#3A6AF8` | Info tile accent (blue-600) |
-| `--info-bg` | `rgba(58,106,248,.06)` | Info tile background |
-| `--info-border` | `rgba(58,106,248,.24)` | Info tile border |
+| Token | Light Value | Dark Value | Usage |
+|-------|-------------|------------|-------|
+| `--pos` | `#148338` | `#34D399` | Positive/success |
+| `--neg` | `#c82320` | `#F87171` | Negative/error |
+| `--warn` | `#c85f1a` | — | Warning/orange |
+| `--pros-accent` | `#148338` | `#5FE0A8` | Pros tile accent |
+| `--pros-bg` | `rgba(20,131,56,.07)` | `rgba(52,211,153,0.16)` | Pros tile background |
+| `--pros-border` | `rgba(20,131,56,.25)` | `rgba(52,211,153,0.32)` | Pros tile border |
+| `--cons-accent` | `#c82320` | `#FCA5A5` | Cons tile accent |
+| `--cons-bg` | `rgba(200,35,32,.06)` | `rgba(248,113,113,0.15)` | Cons tile background |
+| `--cons-border` | `rgba(200,35,32,.22)` | `rgba(248,113,113,0.30)` | Cons tile border |
+| `--info-accent` | `#3A6AF8` | `#9A86FF` | Info tile accent |
+| `--info-bg` | `rgba(58,106,248,.06)` | `rgba(154,134,255,0.16)` | Info tile background |
+| `--info-border` | `rgba(58,106,248,.24)` | `rgba(154,134,255,0.32)` | Info tile border |
 
 ### Shadows
 
-| Token | Value |
-|-------|-------|
-| `--tile-shadow` | `0 4px 12px #0000001A` |
-| `--panel-shadow-hover` | `0 8px 24px #0000001F` |
-| `--modal-shadow` | `0 16px 40px #00000029` |
+| Token | Light Value | Dark Value |
+|-------|-------------|------------|
+| `--tile-shadow` | `0 4px 12px #0000001A` | `0 0 0 1px rgba(120,150,255,0.06), 0 16px 40px rgba(0,0,0,0.60)` |
+| `--panel-shadow-hover` | `0 8px 24px #0000001F` | — |
+| `--modal-shadow` | `0 16px 40px #00000029` | — |
+| `--backdrop` | `rgba(45,41,38,0.34)` | `rgba(225,230,240,0.22)` |
 
 ### Button Tokens
 
@@ -226,14 +227,25 @@ Placed directly after the tabs container, before content panes.
 
 ## 4. Card Container
 
+| Property | Light Value | Dark Value |
+|----------|-------------|------------|
+| Background | `var(--surface-1)` | `linear-gradient(180deg, #0F1728 0%, #0C1220 58%, #0A0F1B 100%)` |
+| Border | `1px solid var(--border)` | `1px solid var(--border)` (#243350) |
+| Border-radius | `var(--radius-md)` (12px) | same |
+| Padding | `var(--space-xl)` top/sides, `var(--space-3xl)` bottom | same |
+| Box-shadow | `var(--tile-shadow)` | `0 0 0 1px rgba(120,150,255,0.06), 0 26px 64px rgba(0,0,0,0.62)` |
+| Margin-bottom | `var(--space-2xl)` | same |
+
+### Mobile (`mw-xs` tier) Card Overrides
+
 | Property | Value |
 |----------|-------|
-| Background | `var(--surface-1)` |
-| Border | `1px solid var(--border)` |
-| Border-radius | `var(--radius-md)` (12px) |
-| Padding | `var(--space-xl)` top/sides, `var(--space-3xl)` bottom |
-| Box-shadow | `var(--tile-shadow)` |
-| Margin-bottom | `var(--space-2xl)` |
+| Border | `none` |
+| Border-radius | `0` |
+| Box-shadow | `inset 0 1px 0 #595959, inset 0 -1px 0 #595959` (hairlines top/bottom) |
+| Padding-left/right | `0` (content uses parent gutter) |
+
+In dark mode at mobile, the page-level padding is removed (`padding-left:0; padding-right:0`) and the card gets `padding-left:24px; padding-right:24px` so content stays inset but the card fills edge-to-edge.
 
 ---
 
@@ -264,13 +276,19 @@ Placed directly after the tabs container, before content panes.
 | Grid | `repeat(auto-fill, minmax(215px, 1fr))` with `var(--space-sm)` gap |
 | Transition | `transform .16s ease, box-shadow .16s ease, border-color .16s ease` |
 
-### Hover State
+### Dark Mode Container
 
 | Property | Value |
 |----------|-------|
-| Border-color | `#3A6AF8` (blue-600) |
-| Transform | `translateY(-2px)` |
-| Box-shadow | `0 8px 24px rgba(58,106,248,.12)` |
+| Background | `linear-gradient(180deg, #121B2E, #0E1524)` |
+
+### Hover State
+
+| Property | Light | Dark |
+|----------|-------|------|
+| Border-color | `#3A6AF8` (blue-600) | `#3A6AF8` |
+| Transform | `translateY(-2px)` | `translateY(-2px)` |
+| Box-shadow | `0 8px 24px rgba(58,106,248,.12)` | `0 10px 24px rgba(120,150,190,0.28)` |
 
 ### Title (`.pc-name`)
 
@@ -399,19 +417,19 @@ Placed directly after the tabs container, before content panes.
 
 ### Default (Unsorted)
 
-| Property | Value |
-|----------|-------|
-| Icon | Lucide `chevrons-up-down` (both arrows) |
-| Size | `16px × 16px` |
-| Color | `#0e0e0e` (colors-icons-full) |
+| Property | Light | Dark |
+|----------|-------|------|
+| Icon | Lucide `chevrons-up-down` (both arrows) | same |
+| Size | `16px × 16px` | same |
+| Color | `#0e0e0e` (colors-icons-full) | `#8695B5` |
 
 ### Active (Sorted)
 
-| Property | Value |
-|----------|-------|
-| Icon | Lucide `chevron-up` (ascending) or `chevron-down` (descending) |
-| Size | `16px × 16px` |
-| Color | `#3A6AF8` (colors-icons-action / blue-600) |
+| Property | Light | Dark |
+|----------|-------|------|
+| Icon | Lucide `chevron-up` (ascending) or `chevron-down` (descending) | same |
+| Size | `16px × 16px` | same |
+| Color | `#3A6AF8` (colors-icons-action / blue-600) | `var(--accent)` (#5A86FF) |
 
 ### SVG Markup
 
@@ -457,16 +475,16 @@ Placed directly after the tabs container, before content panes.
 
 ## 10. Blue Label Chips (`.quick-calc-note`)
 
-| Property | Value |
-|----------|-------|
-| Background | `#3A6AF8` (blue-600) |
-| Color | `#ffffff` (white) |
-| Font-size | `11px` |
-| Font-weight | `600` |
-| Text-transform | `uppercase` |
-| Letter-spacing | `.03em` |
-| Border-radius | `4px` |
-| Padding | `4px 10px 3px` (extra top for all-caps optical centering) |
+| Property | Light | Dark |
+|----------|-------|------|
+| Background | `#3A6AF8` (blue-600) | `#5A86FF` (blue-500) |
+| Color | `#ffffff` (white) | `#ffffff` (white) |
+| Font-size | `11px` | same |
+| Font-weight | `600` | same |
+| Text-transform | `uppercase` | same |
+| Letter-spacing | `.03em` | same |
+| Border-radius | `4px` | same |
+| Padding | `4px 10px 3px` (extra top for all-caps optical centering) | same |
 | Display | `inline-flex` |
 | Labels | "LISTINGS" (data table), "CALCULATOR" (calculator section) |
 
@@ -483,30 +501,37 @@ Placed directly after the tabs container, before content panes.
 
 ### Pros (`.ec-box.pros`)
 
-| Property | Value |
-|----------|-------|
-| Background | `linear-gradient(90deg, var(--pros-bg), #ffffff)` |
-| Border-color | `var(--pros-border)` |
-| Title color | `var(--pros-accent)` (#148338) |
-| Accent strip | `var(--pros-accent)` |
+| Property | Light | Dark |
+|----------|-------|------|
+| Background | `linear-gradient(90deg, var(--pros-bg), #ffffff)` | `linear-gradient(to right, rgba(52,211,153,0.16), rgba(18,54,42,0.10))` |
+| Border-color | `var(--pros-border)` | `rgba(52,211,153,0.32)` |
+| Title color | `var(--pros-accent)` (#148338) | `#5FE0A8` |
+| Accent strip | `var(--pros-accent)` | `#5FE0A8` |
 
 ### Cons (`.ec-box.cons`)
 
-| Property | Value |
-|----------|-------|
-| Background | `linear-gradient(90deg, var(--cons-bg), #ffffff)` |
-| Border-color | `var(--cons-border)` |
-| Title color | `var(--cons-accent)` (#c82320) |
-| Accent strip | `var(--cons-accent)` |
+| Property | Light | Dark |
+|----------|-------|------|
+| Background | `linear-gradient(90deg, var(--cons-bg), #ffffff)` | `linear-gradient(to right, rgba(248,113,113,0.15), rgba(66,20,20,0.10))` |
+| Border-color | `var(--cons-border)` | `rgba(248,113,113,0.30)` |
+| Title color | `var(--cons-accent)` (#c82320) | `#FCA5A5` |
+| Accent strip | `var(--cons-accent)` | `#FCA5A5` |
 
 ### Info (`.ec-box.info`)
 
+| Property | Light | Dark |
+|----------|-------|------|
+| Background | `linear-gradient(90deg, var(--info-bg), #ffffff)` | `linear-gradient(to right, rgba(154,134,255,0.16), rgba(40,32,70,0.10))` |
+| Border-color | `var(--info-border)` | `rgba(154,134,255,0.32)` |
+| Title color | `var(--info-accent)` (#3A6AF8) | `#C3B4FF` |
+| Accent strip | `var(--info-accent)` | `#9A86FF` |
+
+### Generic Box Dark Mode (`.ec-box` base without pros/cons/info)
+
 | Property | Value |
 |----------|-------|
-| Background | `linear-gradient(90deg, var(--info-bg), #ffffff)` |
-| Border-color | `var(--info-border)` |
-| Title color | `var(--info-accent)` (#3A6AF8) |
-| Accent strip | `var(--info-accent)` |
+| Background | `linear-gradient(180deg, #121B2E, #0E1524)` |
+| Border-color | `var(--border)` (#243350) |
 
 ---
 
@@ -560,15 +585,25 @@ Placed directly after the tabs container, before content panes.
 | Input border | `1px solid var(--border)`, radius `var(--radius-xs)` |
 | Input font | `14px`, `var(--font-ui)` |
 
-### KPI Cards (`.cs-kpi`)
+### Calculator Panel Dark Mode
 
 | Property | Value |
 |----------|-------|
-| Border | `1px solid var(--border)` |
-| Border-radius | `var(--radius-sm)` (10px) |
-| Padding | `14px var(--space-md)` |
-| Label | 12px, `var(--muted)` |
-| Value | 22px, 600 weight, `var(--ink)`, `tabular-nums` |
+| Background | `radial-gradient(120% 140% at 100% 0%, rgba(154,134,255,0.12), transparent 55%), linear-gradient(160deg, #16233F 0%, #101A30 55%, #0C1424 100%)` |
+| Border-color | `#2A3B5E` |
+| Box-shadow | `inset 0 1px 0 rgba(255,255,255,0.05), 0 18px 42px rgba(0,0,0,0.50)` |
+
+### KPI Cards (`.cs-kpi`)
+
+| Property | Light | Dark |
+|----------|-------|------|
+| Background | `var(--surface-1)` | `linear-gradient(180deg, #111A2C, #0D1421)` |
+| Border | `1px solid var(--border)` | `1px solid var(--border)` (#243350) |
+| Border-radius | `var(--radius-sm)` (10px) | `0 0 10px 10px` (square top; top bar reaches edge) |
+| Padding | `14px var(--space-md)` | same |
+| Label | 12px, `var(--muted)` | same |
+| Value | 22px, 600 weight, `var(--ink)`, `tabular-nums` | same |
+| Top accent bar (dark only) | — | `2px` tall `::before`, `#9A86FF`, full width |
 
 ---
 
@@ -581,6 +616,7 @@ Placed directly after the tabs container, before content panes.
 | Gradient overlay | left-to-right dark fade for text readability |
 | Title | White, 17px (full), 11px (small), 700 weight |
 | Play icon | Circle + triangle SVG, white |
+| Dark mode border | `1px solid #595959` (only in dark mode) |
 
 ### Small (`.vthumb-sm`)
 
@@ -636,7 +672,18 @@ Placed directly after the tabs container, before content panes.
 
 ---
 
-## 19. Responsive Behavior
+## 19. Dark Mode Page Background
+
+| Property | Value |
+|----------|-------|
+| Body background | `radial-gradient(150% 90% at 50% 100%, rgba(112,148,251,0.22) 0%, rgba(88,115,192,0.17) 18%, rgba(63,81,133,0.13) 34%, rgba(51,64,103,0.10) 48%, rgba(39,48,73,0.07) 60%, rgba(26,31,44,0.04) 70%, rgba(7,10,16,0) 82%), #070A10` |
+| Background-attachment | `fixed` |
+
+> The dark mode page uses a subtle blue-purple radial ombre anchored to the bottom of the viewport. This provides a gradient "glow" effect behind the card.
+
+---
+
+## 20. Responsive Behavior
 
 ### Gutter Tiers (by component width via JS)
 
@@ -655,7 +702,7 @@ Placed directly after the tabs container, before content panes.
 
 ---
 
-## 20. Icon Conventions
+## 21. Icon Conventions
 
 | Context | Color | Size |
 |---------|-------|------|
@@ -668,7 +715,7 @@ Placed directly after the tabs container, before content panes.
 
 ---
 
-## 21. Key Color Mappings Summary
+## 22. Key Color Mappings Summary
 
 | Role | Hex (Light) | Hex (Dark) | Token |
 |------|-------------|------------|-------|
@@ -690,7 +737,7 @@ Placed directly after the tabs container, before content panes.
 
 ---
 
-## 22. What NOT to Do
+## 23. What NOT to Do
 
 - **No purple.** All accent/categorical colors use the blue palette from Hemlock.
 - **No `var(--ink)` for body copy.** Body paragraphs use `#403D3A` (text-body), not `#0e0e0e`. In dark mode, body copy uses `var(--muted)` (#9DB0D2), not `var(--ink)`.
