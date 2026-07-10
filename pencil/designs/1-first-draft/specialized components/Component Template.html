@@ -651,7 +651,7 @@ html[data-theme="dark"]{--bill:radial-gradient(120% 130% at 50% 100%,#7094FB 0%,
     var am=document.getElementById('appMain'); if(!am) return;
     var w=am.getBoundingClientRect().width;
     document.documentElement.style.setProperty('--main-w', w+'px');
-    var tier = w<600?'xs' : w<1100?'md' : 'lg';
+    var tier = w<640?'xs' : w<1100?'md' : 'lg';
     am.classList.toggle('mw-xs',tier==='xs');
     am.classList.toggle('mw-md',tier==='md'); am.classList.toggle('mw-lg',tier==='lg');
     am.classList.toggle('main-narrow', tier==='xs');
