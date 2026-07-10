@@ -140,7 +140,7 @@
 |---------|------|------|--------|-------|-------------|
 | Body base | `--font-ui` (Heebo) | 16px | 400 | `--ink` (#0e0e0e) | 1.5 |
 | h2 (Section Title) | `--font-serif` (Noto Serif) | 20px | 400 | `--ink` | — |
-| h2 **Component Title** (`.card-head h2`) | `--font-serif` (Noto Serif) | 24px | 600 | `--ink` | — |
+| h2 **Component Title** (`.card-head h2`) | `--font-serif` (Noto Serif) | 24px | 600 | `#031e64` (navy/blue-900) | — |
 | `.ec-title` (Section Title) | `--font-serif` (Noto Serif) | 20px | 400 | `--ink` | — |
 | `.ec-desc` (Body copy / intro paragraphs) | Heebo | 16px | 400 | `#403D3A` (text-body) | 1.5 |
 | `.cs-ov-text p, li` (Guidance body) | Heebo | 16px | 400 | `#403D3A` (text-body) | 1.5 |
@@ -148,35 +148,36 @@
 
 ---
 
-## 3. Segmented Control (Navigation Tabs)
+## 3. Underline Tabs (Navigation Tabs)
 
 ### Container (`.sc-tabs`)
 
 | Property | Value |
 |----------|-------|
 | Display | `flex` with `flex-wrap: wrap` |
-| Gap | `var(--space-3xs)` (4px) between items |
-| Background | `var(--taupe-100)` (#F7F5F0) |
-| Border | `none` |
-| Border-radius | `var(--radius-2xl)` (24px) |
-| Padding | `var(--space-xs)` (8px) all sides |
-| Margin | `var(--space-xl)` top, `var(--space-2xl)` bottom |
-| Align-items | `center` |
+| Gap | `4px 18px` (4px row-gap, 18px column-gap) |
+| Background | none |
+| Border | none |
+| Border-radius | none |
+| Padding | none |
+| Margin | `0` top, `0` bottom |
 
 ### Tab Buttons (`.sc-tabs button`)
 
 | Property | Value |
 |----------|-------|
 | Background | `transparent` |
-| Color | `#403D3A` (text-body) |
+| Color | `#716E6A` (gray-500) |
 | Border | `0` |
-| Border-radius | `var(--radius-full)` (pill) |
-| Padding | `8px 24px` |
-| Font-size | `14px` |
+| Border-radius | `0` |
+| Padding | `4px 2px` |
+| Font-size | `13px` |
 | Font-weight | `400` |
 | Font-family | `var(--font-ui)` |
-| Line-height | `1.43` |
+| Line-height | `normal` |
 | White-space | `nowrap` |
+| Text-transform | `uppercase` |
+| Letter-spacing | `0.5px` |
 | Transition | `all 150ms ease` |
 | Hover color | `var(--ink)` |
 
@@ -184,11 +185,22 @@
 
 | Property | Value |
 |----------|-------|
-| Background | `var(--surface-1)` (white) |
-| Color | `var(--ink)` |
+| Color | `var(--accent)` (#3a6af8) |
 | Font-weight | `600` |
-| Border-radius | `var(--radius-full)` |
-| Box-shadow | `0 1px 2px rgba(0,0,0,0.08)` |
+| Text-decoration | `underline` |
+| Text-decoration-color | `var(--accent)` (#3a6af8) |
+| Text-decoration-thickness | `2px` |
+| Text-underline-offset | `4px` |
+
+### Divider (`.sc-divider`)
+
+Placed directly after the tabs container, before content panes.
+
+| Property | Value |
+|----------|-------|
+| Height | `1px` |
+| Background | `var(--border-strong)` (#D5D3D0) |
+| Margin | `20px 0 30px` (20px above, 30px below) |
 
 ---
 
@@ -597,15 +609,15 @@
 
 | Tier | Width | Padding |
 |------|-------|---------|
-| xs | < 600px | 24px |
-| md | 600–1099px | 36px |
+| xs | < 640px | 24px |
+| md | 640–1099px | 36px |
 | lg | ≥ 1100px | 56px; content capped at 1100px, centered |
 
 ### Mobile Overrides (`#appMain.main-narrow`)
 
-- Segmented control buttons: `min-height: 44px` (touch targets)
+- Underline tab buttons: `padding: 4px 2px` (consistent with base)
 - Intro video moves below paragraph, stacks vertically
-- Category grid collapses to single column at < 599px
+- Category grid collapses to single column at < 640px
 - Step rows collapse to single column
 
 ---
