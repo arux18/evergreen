@@ -32,12 +32,12 @@
 
 ### Taupe Palette (Tables, Segmented Controls)
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--taupe-100` | `#F7F5F0` | Table headers, segmented control bg, hover rows |
-| `--taupe-pressed` | `#EDEAE3` | Pressed/active row state |
-| `--taupe-border` | `#E3DFD6` | Taupe border accent |
-| `--calc-bg` | `#F7F5F0` | Calculator panel bg (same as taupe-100) |
+| Token | Value | Dark Mode Value | Usage |
+|-------|-------|-----------------|-------|
+| `--taupe-100` | `#F7F5F0` | `#141E36` | Table headers, hover rows |
+| `--taupe-pressed` | `#EDEAE3` | `#1A2747` | Pressed/active row state |
+| `--taupe-border` | `#E3DFD6` | `#243350` | Taupe border accent |
+| `--calc-bg` | `#F7F5F0` | `#12203C` | Calculator panel bg |
 
 ### Categorical Colors (Charts)
 
@@ -136,15 +136,16 @@
 
 ## 2. Global Typography
 
-| Element | Font | Size | Weight | Color | Line-Height |
-|---------|------|------|--------|-------|-------------|
-| Body base | `--font-ui` (Heebo) | 16px | 400 | `--ink` (#0e0e0e) | 1.5 |
-| h2 (Section Title) | `--font-serif` (Noto Serif) | 20px | 400 | `--ink` | — |
-| h2 **Component Title** (`.card-head h2`) | `--font-serif` (Noto Serif) | 24px | 600 | `#031e64` (navy/blue-900) | — |
-| `.ec-title` (Section Title) | `--font-serif` (Noto Serif) | 20px | 400 | `--ink` | — |
-| `.ec-desc` (Body copy / intro paragraphs) | Heebo | 16px | 400 | `#403D3A` (text-body) | 1.5 |
-| `.cs-ov-text p, li` (Guidance body) | Heebo | 16px | 400 | `#403D3A` (text-body) | 1.5 |
-| Label text (table labels, field labels) | Heebo | 12–14px | 500–600 | `--muted` (#5E5954) | — |
+| Element | Font | Size | Weight | Color | Dark Mode Color | Line-Height |
+|---------|------|------|--------|-------|-----------------|-------------|
+| Body base | `--font-ui` (Heebo) | 16px | 400 | `--ink` (#0e0e0e) | `--ink` (#EAF0FF) | 1.5 |
+| h2 (Section Title) | `--font-serif` (Noto Serif) | 20px | 400 | `--ink` | `--ink` (#EAF0FF) | — |
+| h2 **Component Title** (`.card-head h2`) | `--font-serif` (Noto Serif) | 24px | 600 | `#031e64` (navy/blue-900) | `--ink` (#EAF0FF) | — |
+| `.ec-title` (Section Title) | `--font-serif` (Noto Serif) | 20px | 400 | `--ink` | `--ink` (#EAF0FF) | — |
+| `.ec-desc` (Body copy / intro paragraphs) | Heebo | 16px | 400 | `#403D3A` (text-body) | `--muted` (#9DB0D2) | 1.5 |
+| `.cs-ov-text p, li` (Guidance body) | Heebo | 16px | 400 | `#403D3A` (text-body) | `--muted` (#9DB0D2) | 1.5 |
+| `.sc-plan-card .pc-line` (Option tile desc) | Heebo | 13px | 400 | `#403D3A` (text-body) | `--muted` (#9DB0D2) | 1.45 |
+| Label text (table labels, field labels) | Heebo | 12–14px | 500–600 | `--muted` (#5E5954) | `--muted` (#9DB0D2) | — |
 
 ---
 
@@ -283,11 +284,11 @@ Placed directly after the tabs container, before content panes.
 
 ### Body Copy (`.pc-line`)
 
-| Property | Value |
-|----------|-------|
-| Font-size | `13px` |
-| Color | `#403D3A` (text-body) |
-| Line-height | `1.45` |
+| Property | Value | Dark Mode |
+|----------|-------|-----------|
+| Font-size | `13px` | — |
+| Color | `#403D3A` (text-body) | `var(--muted)` (#9DB0D2) |
+| Line-height | `1.45` | — |
 
 ---
 
@@ -315,38 +316,38 @@ Placed directly after the tabs container, before content panes.
 
 ### Header Row (`thead th`)
 
-| Property | Value |
-|----------|-------|
-| Background | `var(--taupe-100)` (#F7F5F0) |
-| Color | `var(--ink)` (#0e0e0e) |
-| Font-weight | `600` |
-| Font-size | `14px` |
-| Padding | `12px 16px` |
-| Border-bottom | `1px solid var(--accent-subtle)` (#ebf0fe — blue-100) |
-| Border-radius | `8px 0 0 0` (first), `0 8px 0 0` (last) — top corners only |
-| Vertical-align | `middle` |
-| No vertical borders | `border-right: none` |
+| Property | Value | Dark Mode |
+|----------|-------|-----------|
+| Background | `var(--taupe-100)` (#F7F5F0) | `linear-gradient(180deg, #17263F, #101A2E)` |
+| Color | `var(--ink)` (#0e0e0e) | `var(--ink)` (#EAF0FF) |
+| Font-weight | `600` | — |
+| Font-size | `14px` | — |
+| Padding | `12px 16px` | — |
+| Border-bottom | `1px solid var(--accent-subtle)` (#ebf0fe — blue-100) | — |
+| Border-radius | `8px 0 0 0` (first), `0 8px 0 0` (last) — top corners only | — |
+| Vertical-align | `middle` | — |
+| No vertical borders | `border-right: none` | — |
 
 ### Data Cells (`td`)
 
-| Property | Value |
-|----------|-------|
-| Height | `52px` |
-| Padding | `16px` |
-| Color | `#403D3A` (text-body) |
-| Border-bottom | `1px solid var(--border)` |
-| No vertical borders | `border-right: none` |
-| White-space | `nowrap` |
-| Numeric values | `font-variant-numeric: tabular-nums` |
+| Property | Value | Dark Mode |
+|----------|-------|-----------|
+| Height | `52px` | — |
+| Padding | `16px` | — |
+| Color | `#403D3A` (text-body) | `var(--muted)` (#9DB0D2) |
+| Border-bottom | `1px solid var(--border)` | — |
+| No vertical borders | `border-right: none` | — |
+| White-space | `nowrap` | — |
+| Numeric values | `font-variant-numeric: tabular-nums` | — |
 
 ### First Column (Sticky Label)
 
-| Property | Value |
-|----------|-------|
-| Position | `sticky; left: 0` |
-| Font-weight | `600` |
-| Color | `var(--ink)` |
-| Text-align | `left` |
+| Property | Value | Dark Mode |
+|----------|-------|-----------|
+| Position | `sticky; left: 0` | — |
+| Font-weight | `600` | — |
+| Color | `var(--ink)` | `var(--ink)` (#EAF0FF) |
+| Text-align | `left` | — |
 
 ### Row Hover State
 
@@ -371,6 +372,19 @@ Placed directly after the tabs container, before content panes.
 |----------|-------|
 | Color | `var(--accent)` (#3a6af8) |
 | Text-decoration | `none` (underline on hover) |
+
+### Dark Mode Table Overrides (`html[data-theme="dark"]`)
+
+| Selector | Property | Value |
+|----------|----------|-------|
+| `#dataTable thead th` | Background | `linear-gradient(180deg, #17263F, #101A2E)` |
+| `.sc-cmp-table th` | Background | `linear-gradient(180deg, #17263F, #101A2E)` |
+| `#dataTable td`, `.sc-cmp-table td` | Color | `var(--muted)` (#9DB0D2) |
+| `#dataTable td:first-child`, `.sc-cmp-table td:first-child` | Color | `var(--ink)` (#EAF0FF) |
+| Row hover (`tbody tr:hover td`) | Background | `var(--taupe-100)` → `#141E36` (opaque) |
+| Row active (`tbody tr:active td`) | Background | `var(--taupe-pressed)` → `#1A2747` (opaque) |
+
+> **Important:** Dark mode taupe tokens MUST be opaque (not rgba) because sticky first-column cells (`position:sticky`) overlap scrolled content. Semi-transparent backgrounds cause text bleed-through on hover.
 
 ---
 
@@ -656,32 +670,34 @@ Placed directly after the tabs container, before content panes.
 
 ## 21. Key Color Mappings Summary
 
-| Role | Hex | Token |
-|------|-----|-------|
-| Primary text | `#0e0e0e` | `--ink` |
-| Body text | `#403D3A` | text-body |
-| Secondary text | `#5E5954` | `--muted` |
-| Caption text | `#8A8680` | `--faint` |
-| Primary accent | `#3A6AF8` | blue-600 / `--accent` |
-| Accent hover | `#2952CC` | blue-700 |
-| Dark accent | `#163196` | blue-800 |
-| Accent tint/bg | `#ebf0fe` | blue-100 / `--accent-subtle` |
-| Table header bg | `#F7F5F0` | `--taupe-100` |
-| Row hover bg | `#F7F5F0` | `--taupe-100` |
-| Row pressed bg | `#EDEAE3` | `--taupe-pressed` |
-| Default border | `#EEEDEB` | `--border` |
-| Strong border | `#D5D3D0` | `--border-strong` |
-| Success | `#148338` | `--pos` |
-| Error | `#c82320` | `--neg` |
+| Role | Hex (Light) | Hex (Dark) | Token |
+|------|-------------|------------|-------|
+| Primary text | `#0e0e0e` | `#EAF0FF` | `--ink` |
+| Body text | `#403D3A` | `#9DB0D2` | text-body / `--muted` in dark |
+| Secondary text | `#5E5954` | `#9DB0D2` | `--muted` |
+| Caption text | `#8A8680` | `#6B7FA3` | `--faint` |
+| Primary accent | `#3A6AF8` | `#5A86FF` | blue-600 / `--accent` |
+| Accent hover | `#2952CC` | `#7AA0FF` | blue-700 |
+| Dark accent | `#163196` | `#A3BFFF` | blue-800 |
+| Accent tint/bg | `#ebf0fe` | `#1A2747` | blue-100 / `--accent-subtle` |
+| Table header bg | `#F7F5F0` | gradient `#17263F→#101A2E` | `--taupe-100` / gradient in dark |
+| Row hover bg | `#F7F5F0` | `#141E36` | `--taupe-100` (opaque in dark) |
+| Row pressed bg | `#EDEAE3` | `#1A2747` | `--taupe-pressed` (opaque in dark) |
+| Default border | `#EEEDEB` | `#243350` | `--border` |
+| Strong border | `#D5D3D0` | `#324566` | `--border-strong` |
+| Success | `#148338` | `#34D399` | `--pos` |
+| Error | `#c82320` | `#F87171` | `--neg` |
 
 ---
 
 ## 22. What NOT to Do
 
 - **No purple.** All accent/categorical colors use the blue palette from Hemlock.
-- **No `var(--ink)` for body copy.** Body paragraphs use `#403D3A` (text-body), not `#0e0e0e`.
+- **No `var(--ink)` for body copy.** Body paragraphs use `#403D3A` (text-body), not `#0e0e0e`. In dark mode, body copy uses `var(--muted)` (#9DB0D2), not `var(--ink)`.
 - **No vertical table borders.** Only bottom borders on rows.
 - **No accordion chevrons.** Sections are always expanded, no collapse functionality.
 - **No hardcoded gray sort arrows.** Use Lucide SVG icons with `currentColor`.
 - **No `position:absolute` on sort icons.** They flow inline with header text.
 - **No Inter font.** Always use Heebo (primary) or Noto Serif (section headings only).
+- **No `rgba()` backgrounds on dark mode hover rows.** Dark mode taupe tokens must be opaque hex values to prevent text bleed-through on `position:sticky` columns.
+- **No light mode `#403D3A` in dark mode.** Body copy (`#403D3A`) is a light-mode-only value; dark mode must override to `var(--muted)`.
