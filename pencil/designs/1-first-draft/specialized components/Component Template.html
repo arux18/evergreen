@@ -69,15 +69,16 @@ html[data-theme="dark"] #appMain.mw-xs .card{padding-left:24px !important;paddin
   .card{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-xl);padding-bottom:var(--space-3xl);margin-bottom:var(--space-2xl);box-shadow:var(--tile-shadow);}
   .card-head{display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);flex-wrap:wrap;margin-bottom:var(--space-md);}
   h2{font-family:var(--font-serif);font-size:20px;margin:0;font-weight:400;color:var(--ink);}
-  .card-head h2{font-size:24px;font-weight:600;}
+  .card-head h2{font-size:24px;font-weight:600;color:#031e64;}
 #componentCard .card-head{margin-top:12px}
   .toggle{display:flex;justify-content:flex-start;align-items:center;gap:var(--space-xs);user-select:none;}
   .toggle .chev{display:none;}
   .hidden{display:none !important;}
-  .sc-tabs{display:flex;flex-wrap:wrap;gap:var(--space-3xs);margin-top:var(--space-xl);margin-bottom:var(--space-2xl);background:var(--taupe-100);border:none;border-radius:var(--radius-2xl);padding:var(--space-xs);align-items:center;}
-  .sc-tabs button{background:transparent;color:#403D3A;border:0;border-radius:var(--radius-full);padding:8px 24px;font-size:14px;font-weight:400;cursor:pointer;font-family:var(--font-ui);line-height:1.43;white-space:nowrap;transition:all 150ms ease;}
+  .sc-tabs{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:0;margin-bottom:0;}
+  .sc-tabs button{background:transparent;color:var(--muted);border:0;border-radius:0;padding:4px 2px;font-size:13px;font-weight:300;cursor:pointer;font-family:var(--font-ui);line-height:1.43;white-space:nowrap;text-transform:uppercase;letter-spacing:0.5px;transition:all 150ms ease;}
   .sc-tabs button:hover{color:var(--ink);}
-  .sc-tabs button.on{background:var(--surface-1);color:var(--ink);font-weight:600;border-radius:var(--radius-full);box-shadow:0 1px 2px rgba(0,0,0,0.08);}
+  .sc-tabs button.on{color:var(--accent);font-weight:600;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px;}
+  .sc-divider{height:1px;background:var(--border-strong);margin:20px 0 30px;}
   .cs-pane{display:none;} .cs-pane.on{display:block;}
   .ec-title{font-family:var(--font-serif);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 10px;}
   .ec-desc{font-size:16px;line-height:1.5;color:#403D3A;max-width:920px;margin:0 0 28px;}
@@ -234,7 +235,7 @@ html[data-theme="dark"] #appMain.mw-xs .card{padding-left:24px !important;paddin
   #appMain.main-narrow .pane-intro > .vthumb-sm{order:2;align-self:flex-start;float:none;width:200px;max-width:100%;margin:0;}
   #appMain.main-narrow .vthumb.vplaying{width:100%;max-width:none;align-self:stretch;}
   /* Touch tap targets on mobile: tab pills >=44px tall (sortable table headers are already the full ~56px sticky th). */
-  #appMain.main-narrow .sc-tabs button{min-height:44px;display:inline-flex;align-items:center;}
+  #appMain.main-narrow .sc-tabs button{min-height:44px;display:inline-flex;align-items:center;padding:6px 2px;}
 
   html[data-theme="dark"]{
 --surface-1:#0E1524; --surface-2:#121B2E; --nest:#131C30;
@@ -254,10 +255,11 @@ html[data-theme="dark"] #appMain.mw-xs .card{padding-left:24px !important;paddin
 }
   html[data-theme="dark"] body{background:radial-gradient(150% 90% at 50% 100%,rgba(112,148,251,0.22) 0%,rgba(88,115,192,0.17) 18%,rgba(63,81,133,0.13) 34%,rgba(51,64,103,0.10) 48%,rgba(39,48,73,0.07) 60%,rgba(26,31,44,0.04) 70%,rgba(7,10,16,0) 82%),#070A10;background-attachment:fixed;}
   html[data-theme="dark"] .card{background:linear-gradient(180deg,#0F1728 0%,#0C1220 58%,#0A0F1B 100%);border-color:var(--border);box-shadow:0 0 0 1px rgba(120,150,255,0.06),0 26px 64px rgba(0,0,0,0.62);}
-  html[data-theme="dark"] .sc-tabs{background:#121B2E;border:none;}
+  html[data-theme="dark"] .sc-tabs{background:transparent;}
   html[data-theme="dark"] .sc-tabs button{color:var(--muted);}
   html[data-theme="dark"] .sc-tabs button:hover{color:var(--ink);}
-  html[data-theme="dark"] .sc-tabs button.on{background:linear-gradient(135deg,#5A86FF 0%,#295CCC 100%);color:#fff;box-shadow:0 4px 16px rgba(58,106,248,0.45);}
+  html[data-theme="dark"] .sc-tabs button.on{color:var(--accent);text-decoration-color:var(--accent);}
+  html[data-theme="dark"] .card-head h2{color:var(--ink);}
   html[data-theme="dark"] .ec-box{background:linear-gradient(180deg,#121B2E,#0E1524);border-color:var(--border);}
   html[data-theme="dark"] .ec-box.pros{background:linear-gradient(to right,rgba(52,211,153,0.16),rgba(18,54,42,0.10));border-color:rgba(52,211,153,0.32);} html[data-theme="dark"] .ec-box.pros h4{color:#5FE0A8;}
   html[data-theme="dark"] .ec-box.cons{background:linear-gradient(to right,rgba(248,113,113,0.15),rgba(66,20,20,0.10));border-color:rgba(248,113,113,0.30);} html[data-theme="dark"] .ec-box.cons h4{color:#FCA5A5;}
@@ -320,6 +322,7 @@ html[data-theme="dark"]{--bill:radial-gradient(120% 130% at 50% 100%,#7094FB 0%,
     <div id="csTabs" class="sc-tabs">
       <button data-cs="overview" data-i18n="tab_overview" class="on">Overview</button><button data-cs="a" data-i18n="tab_a">Option A</button><button data-cs="b" data-i18n="tab_b">Option B</button><button data-cs="c" data-i18n="tab_c">Option C</button><button data-cs="d" data-i18n="tab_d">Option D</button><button data-cs="e" data-i18n="tab_e">Option E</button><button data-cs="f" data-i18n="tab_f">Option F</button>
     </div>
+    <div class="sc-divider"></div>
 
     <!-- ===== Overview pane ===== -->
     <div class="cs-pane on" id="cs-overview" data-button="Overview">
