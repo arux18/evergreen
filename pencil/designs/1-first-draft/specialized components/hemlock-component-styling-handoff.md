@@ -150,6 +150,13 @@
 
 ## 3. Underline Tabs (Navigation Tabs)
 
+### Header-to-Tabs Spacing (`.card-head`)
+
+| Property | Value |
+|----------|-------|
+| Margin-bottom | `var(--space-md)` (16px) — gap between component title and tabs |
+| Margin-top | `0` (inside `#componentCard`) |
+
 ### Container (`.sc-tabs`)
 
 | Property | Value |
@@ -178,6 +185,7 @@
 | White-space | `nowrap` |
 | Text-transform | `uppercase` |
 | Letter-spacing | `0.5px` |
+| Cursor | `pointer` |
 | Transition | `all 150ms ease` |
 | Hover color | `var(--ink)` |
 
@@ -201,6 +209,17 @@ Placed directly after the tabs container, before content panes.
 | Height | `1px` |
 | Background | `var(--border-strong)` (#D5D3D0) |
 | Margin | `20px 0 30px` (20px above, 30px below) |
+
+### Dark Mode Overrides (`html[data-theme="dark"]`)
+
+| Selector | Property | Value |
+|----------|----------|-------|
+| `.sc-tabs` | Background | `transparent` |
+| `.sc-tabs button` | Color | `var(--muted)` (#9DB0D2 in dark) |
+| `.sc-tabs button:hover` | Color | `var(--ink)` (#EAF0FF in dark) |
+| `.sc-tabs button.on` | Color | `var(--accent)` (#5A86FF in dark) |
+| `.sc-tabs button.on` | Text-decoration-color | `var(--accent)` (#5A86FF in dark) |
+| `.card-head h2` | Color | `var(--ink)` (#EAF0FF in dark) |
 
 ---
 
@@ -617,7 +636,7 @@ Placed directly after the tabs container, before content panes.
 
 - Underline tab buttons: `padding: 4px 2px` (consistent with base)
 - Intro video moves below paragraph, stacks vertically
-- Category grid collapses to single column at < 640px
+- Category grid collapses to single column via `@container (max-width:599px)` (container width, not viewport)
 - Step rows collapse to single column
 
 ---
