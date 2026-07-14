@@ -72,7 +72,7 @@
 
 | Token | Light Value | Dark Value |
 |-------|-------------|------------|
-| `--tile-shadow` | `0 4px 12px #0000001A` | `0 0 0 1px rgba(120,150,255,0.06), 0 16px 40px rgba(0,0,0,0.60)` |
+| `--tile-shadow` | `0 0 12px #2d292629` | `0 0 0 1px rgba(120,150,255,0.06), 0 16px 40px rgba(0,0,0,0.60)` |
 | `--panel-shadow-hover` | `0 8px 24px #0000001F` | — |
 | `--modal-shadow` | `0 16px 40px #00000029` | — |
 | `--backdrop` | `rgba(45,41,38,0.34)` | `rgba(225,230,240,0.22)` |
@@ -230,10 +230,10 @@ Placed directly after the tabs container, before content panes.
 | Property | Light Value | Dark Value |
 |----------|-------------|------------|
 | Background | `var(--surface-1)` | `linear-gradient(180deg, #0F1728 0%, #0C1220 58%, #0A0F1B 100%)` |
-| Border | `1px solid var(--border)` | `1px solid var(--border)` (#243350) |
+| Border | `none` (disabled) | `none` (disabled) |
 | Border-radius | `var(--radius-md)` (12px) | same |
 | Padding | `var(--space-xl)` top/sides, `var(--space-3xl)` bottom | same |
-| Box-shadow | `var(--tile-shadow)` | `0 0 0 1px rgba(120,150,255,0.06), 0 26px 64px rgba(0,0,0,0.62)` |
+| Box-shadow | `0 0 12px #2d292629` | `0 0 0 1px rgba(120,150,255,0.06), 0 26px 64px rgba(0,0,0,0.62)` |
 | Margin-bottom | `var(--space-2xl)` | same |
 
 ### Mobile (`mw-xs` tier) Card Overrides
