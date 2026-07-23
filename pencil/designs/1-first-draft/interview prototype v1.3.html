@@ -47,7 +47,7 @@
 <title>Evergreen — Interview Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&amp;family=Noto+Serif:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:wght@400;600&amp;display=swap" rel="stylesheet">
 <style>
   :root{
   /* Hemlock Design System (Component Template.html) — light tokens mapped onto the
@@ -236,7 +236,7 @@ html[data-theme="dark"] body{
   /* Eyebrow row: phase left, de-emphasized Skip right (not in the bottom nav). */
   .stage-head{
     display:flex; align-items:center; justify-content:space-between; gap:12px;
-    margin-bottom:8px; width:100%;
+    margin-bottom:20px; width:100%;   /* 20px air above progress so the line ≠ eyebrow underline */
   }
   .stage-head .phase{flex:1; min-width:0; margin-bottom:0}
   /* Skip de-emphasized per business brief (don't encourage skipping) but intentionally NOT hidden — keeping it discoverable avoids a dark pattern. Final placement/copy is Amanda's call. */
@@ -269,6 +269,7 @@ html[data-theme="dark"] body{
   /* Nav cluster left-aligned: Back then Next/Finish (12px), optional secondaries after.
      Skip lives top-right on .stage-head — not in this row.
      Progress lives under .stage-head; nav keeps its own top spacing. */
+  /* Back vs Next gap — 12px; keep left-aligned nav cluster. */
   .stage .nav{margin-top:72px; padding-top:0; border-top:0; display:flex; align-items:center; justify-content:flex-start; gap:12px; flex-wrap:wrap}
   .nav-back{display:inline-flex; align-items:center}
   .nav-actions{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
@@ -353,7 +354,7 @@ html[data-theme="dark"] body{
     font:inherit; font-weight:700; font-size:24px; color:inherit; line-height:1.2;
     width:auto; min-width:2.5ch; max-width:7ch; padding:0 2px; margin:0;
     border:1px solid transparent; border-radius:4px; background:transparent;
-    text-align:right; -moz-appearance:textfield;
+    text-align:left; -moz-appearance:textfield;
   }
   .slider-value input[type=number]::-webkit-outer-spin-button,
   .slider-value input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
@@ -361,7 +362,7 @@ html[data-theme="dark"] body{
     outline:none; border-color:var(--accent); background:var(--card);
   }
   .num-suffix-wrap{
-    display:inline-flex; align-items:baseline; justify-content:flex-end; gap:0;
+    display:inline-flex; align-items:baseline; justify-content:flex-start; gap:0;
     border:0; background:transparent; padding:0; border-radius:0;
   }
   .num-suffix-wrap input.has-suffix{
@@ -402,29 +403,45 @@ html[data-theme="dark"] body{
   /* margin-top here collapses with h1.headline's margin-bottom (also 28px) since nothing
      sits between them but the plain .answers wrapper — so it has to clearly exceed 28px to
      produce any visible extra gap above the first row. */
-  .taxrate-table{width:100%; margin-top:40px}
-  /* Full stage width: label left, value flush right via margin-left:auto. */
-  .taxrate-row{display:flex; justify-content:flex-start; align-items:baseline; gap:20px; padding:6px 0}
-  .taxrate-row .trl{font-family:"Noto Serif",Georgia,serif; font-weight:400; font-size:22px; color:var(--ink)}
-  .taxrate-row .trv{font-family:"Noto Serif",Georgia,serif; font-weight:400; font-size:22px; font-variant-numeric:tabular-nums; color:var(--ink); margin-left:auto; text-align:right; min-width:70px}
+  .taxrate-table{
+    width:100%; margin-top:40px; box-sizing:border-box;
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:8px 20px; overflow:hidden;
+  }
+  .taxrate-row{
+    display:flex; justify-content:flex-start; align-items:baseline; gap:12px;
+    padding:14px 0;
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  /* Separators between component rows only (not before Total — that uses line-strong). */
+  .taxrate-row:not(.total) + .taxrate-row:not(.total){ border-top:1px solid var(--line) }
+  .taxrate-row .trl{
+    font:inherit; font-weight:400; font-size:15.5px; line-height:1.35; color:var(--muted);
+    min-width:0; flex:1 1 auto; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .taxrate-row .trv{
+    font:inherit; font-weight:400; font-size:15.5px; line-height:1.35; color:var(--ink);
+    font-variant-numeric:tabular-nums; margin-left:auto; text-align:right;
+    flex:0 0 auto; white-space:nowrap;
+  }
+  .taxrate-row.zero .trl,
+  .taxrate-row.zero .trv{ color:var(--faint) }
   .taxrate-row.total{
-    margin-top:10px; padding-top:14px; border-top:0; position:relative;
+    border-top:1px solid var(--line-strong);
+    margin:0 -20px -8px; padding:16px 20px;
+    background:var(--accent-soft);
+    align-items:center;
   }
-  /* Looser dash than CSS `border:dashed` (which packs short ticks). Dash 5 / gap 9. */
-  .taxrate-row.total::before{
-    content:""; position:absolute; left:0; right:0; top:0; height:1.5px;
-    background:repeating-linear-gradient(
-      to right,
-      var(--line-strong) 0 5px,
-      transparent 5px 14px
-    );
+  .taxrate-row.total .trl{font-weight:600; font-size:15.5px; color:var(--ink); flex:0 1 auto}
+  .taxrate-row.total .trv{font-weight:700; font-size:22px; color:var(--accent-text)}
+  @media (max-width:402px){
+    .taxrate-table{padding:8px 16px}
+    .taxrate-row.total{margin-left:-16px; margin-right:-16px; padding-left:16px; padding-right:16px}
   }
-  .taxrate-row.total .trl{font-weight:700; color:var(--ink)}
-  .taxrate-row.total .trv{font-weight:700; color:var(--ink)}
-  @media (max-width:639px){   /* tablet + mobile: smaller table type */
-    .taxrate-row .trl, .taxrate-row .trv{font-size:18px}
+  @container interview (max-width:402px){
+    .taxrate-table{padding:8px 16px}
+    .taxrate-row.total{margin-left:-16px; margin-right:-16px; padding-left:16px; padding-right:16px}
   }
-  @container interview (max-width:639px){ .taxrate-row .trl, .taxrate-row .trv{font-size:18px} }   /* container-query twin */
   textarea.free{
     width:100%; max-width:560px; min-height:110px; padding:14px 16px; border-radius:12px;
     border:1.5px solid var(--line); background:var(--card); resize:vertical; line-height:1.5; font-size:15.5px;
@@ -662,13 +679,57 @@ html[data-theme="dark"] body{
 
   /* ── interview close (ghost X) ───────────── */
   /* Inset equals page side gutter (--margin) so top/right edges match content margins —
-     on mobile the old 14px sat on the bezel and collided with .stage-skip ("Not now"). */
+     on mobile the old 14px sat on the bezel and collided with .stage-skip ("Skip this question"). */
   #interviewClose{
     position:absolute; top:var(--margin); right:var(--margin); z-index:5;
     width:32px; height:32px; display:grid; place-items:center;
     background:transparent; border:0; border-radius:8px; color:var(--faint);
   }
   #interviewClose:hover{color:var(--muted); background:var(--accent-soft)}
+  /* Leave-interview confirm — OpenUI Modal (0Jdtu5): 320 card, 24 pad, 16 gap, actions end. */
+  #leaveDialog{
+    position:fixed; inset:0; z-index:32; display:none;
+    align-items:center; justify-content:center;
+    padding:24px var(--margin); box-sizing:border-box;
+    pointer-events:none;
+  }
+  #leaveDialog.open{display:flex}
+  .leave-dialog-card{
+    pointer-events:auto; width:100%; max-width:320px;
+    display:flex; flex-direction:column; gap:16px;
+    background:var(--card);   /* $colors-background-surface — white light / #0E1524 dark */
+    border:1px solid var(--line);   /* $colors-borders-light */
+    border-radius:16px;   /* $radius-sm */
+    box-shadow:0 8px 24px #0000001A;
+    padding:24px; box-sizing:border-box;
+  }
+  .leave-dialog-card h2{
+    margin:0; font-family:"Heebo",sans-serif;
+    font-size:16px; font-weight:600; line-height:1.35; color:var(--ink);   /* typo-primary-base-semibold */
+  }
+  .leave-dialog-card p{
+    margin:0; font-family:"Heebo",sans-serif;
+    font-size:14px; font-weight:400; line-height:1.5; color:#403D3A;   /* $colors-text-body / typo-primary-sm-regular */
+  }
+  html[data-theme="dark"] .leave-dialog-card p{ color:var(--muted) }
+  .leave-dialog-actions{
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px;   /* $spacing-2xs, end like Modal */
+  }
+  /* Compact Modal buttons — not the 48px stage nav CTAs. Padding $spacing-2xs / $spacing-sm. */
+  .leave-dialog-actions .btn.primary,
+  .leave-dialog-actions .btn.secondary.leave-quit{
+    height:auto; min-height:0; padding:8px 16px; font-size:14px; font-weight:600; line-height:1.35;
+    border-radius:99px; box-shadow:none;
+  }
+  .leave-dialog-actions .btn.secondary.leave-quit{
+    background:transparent; border:1px solid var(--line); color:var(--ink);
+  }
+  .leave-dialog-actions .btn.secondary.leave-quit:hover{
+    background:var(--btnSecondary-hover); border-color:var(--line-strong);
+  }
+  @media (max-width:402px){
+    .leave-dialog-actions{ width:100% }
+  }
 
   /* DEMO ONLY: theme toggle for design review. Remove before handoff — production theme comes from the host View panel. */
   #demoThemeToggle{
@@ -716,7 +777,8 @@ html[data-theme="dark"] body{
   @media (max-width:389px){ #modeToggles{ display:none } }   /* mobile: toggles hidden, panel button only — matches the reduced chrome already used at this tier */
   #backdrop{position:fixed; inset:0; background:rgba(45,41,38,.34); z-index:30; opacity:0; pointer-events:none; transition:opacity .25s}
   #backdrop.open{opacity:1; pointer-events:auto}
-html[data-theme="dark"] #backdrop{background:rgba(225,230,240,.22)}   /* Hemlock dark scrim: whiter tint over the dark page */
+  /* Dark theme: keep a dark scrim (OpenUI Modal overlay #00000066), not a light wash. */
+  html[data-theme="dark"] #backdrop{background:rgba(0,0,0,.55)}
   #panel{
     position:fixed; left:0; right:0; bottom:0; z-index:31; background:var(--card);
     border-radius:20px 20px 0 0; box-shadow:0 -18px 60px rgba(24,39,32,.25);
@@ -881,7 +943,7 @@ html[data-theme="dark"] #backdrop{background:rgba(225,230,240,.22)}   /* Hemlock
 </head>
 <body>
 <div id="app">
-  <button type="button" id="interviewClose" aria-label="Close" title="Close" data-i18n-title="closeX_title" onclick="closePage()">
+  <button type="button" id="interviewClose" aria-label="Close" title="Close" data-i18n-title="closeX_title" onclick="requestClosePage()">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
 </button>
   <header>
@@ -916,7 +978,17 @@ html[data-theme="dark"] #backdrop{background:rgba(225,230,240,.22)}   /* Hemlock
   </div>
 </div>
 
-<div id="backdrop" onclick="Panel.close()"></div>
+<div id="backdrop" onclick="onBackdropClick()"></div>
+<div id="leaveDialog" role="dialog" aria-modal="true" aria-labelledby="leaveDialogTitle" hidden>
+  <div class="leave-dialog-card">
+    <h2 id="leaveDialogTitle" data-i18n="leave_title">Leave the interview?</h2>
+    <p data-i18n="leave_body">Your answers so far won't be saved.</p>
+    <div class="leave-dialog-actions">
+      <button type="button" class="btn secondary leave-quit" id="leaveConfirmBtn" data-i18n="leave_quit">Leave</button>
+      <button type="button" class="btn primary" id="leaveKeepGoing" data-i18n="leave_keep">Keep going</button>
+    </div>
+  </div>
+</div>
 <div id="panel">
   <div class="panel-grip"></div>
   <div class="panel-head" id="panelTabs"></div>
@@ -965,11 +1037,12 @@ html[data-theme="dark"] #backdrop{background:rgba(225,230,240,.22)}   /* Hemlock
    5. Continuous progress bar under the eyebrow row (.stage-head); full content width,
       section-based fill %. Replaces the original hidden header step-count bar.
    8. Skip de-emphasized: removed from bottom nav (Back + Next/Finish only); quiet
-      top-right text link on the eyebrow row ("Skip" / "Omitir");
+      top-right text link on the eyebrow row ("Skip this question" / "Omitir esta pregunta" via STR nav_skip);
       same Engine.skip() handler. Intentionally still visible (not a dark pattern).
    6. Internal tooling (#panel, #bottombar/#modeToggles) hidden unless ?internal=1; theme
       follows prefers-color-scheme when not internal; #demoThemeToggle is review-only.
-   7. Close control is #interviewClose (same closePage()); legacy #closeX removed as duplicate.
+   7. Close control is #interviewClose — mid-flow confirms via #leaveDialog (Keep going / Leave);
+      on the finished/closing screen it closes immediately (nothing left to lose).
    ═══════════════════════════════════════════════════════════════════════════════ */
 /* ═══════════════════ DATA ═══════════════════ */
 const DATA = {
@@ -4095,7 +4168,7 @@ const STR = {
   nav_next:           {en:"Next", es:"Siguiente"},
   nav_finish:         {en:"Finish", es:"Finalizar"},
   nav_back:           {en:"Back", es:"Atrás"},
-  nav_skip:           {en:"Skip", es:"Omitir"},
+  nav_skip:           {en:"Skip this question", es:"Omitir esta pregunta"},
   nav_suggest:        {en:"Suggest a Question", es:"Sugerir una pregunta"},
   progress_aria:      {en:"Interview progress", es:"Progreso de la entrevista"},
   nav_advisor:        {en:"Talk to AI Advisor", es:"Hablar con el asesor de IA"},
@@ -4106,6 +4179,11 @@ const STR = {
   chat_message_label: {en:"Message", es:"Mensaje"},
   chat_response_label:{en:"Response", es:"Respuesta"},
   closeX_title:       {en:"Close", es:"Cerrar"},
+  // Leave-interview confirm (X) — distinct from per-question skip (nav_skip).
+  leave_title:        {en:"Leave the interview?", es:"¿Salir de la entrevista?"},
+  leave_body:         {en:"Your answers so far won't be saved.", es:"Tus respuestas no se guardarán."},
+  leave_keep:         {en:"Keep going", es:"Continuar"},
+  leave_quit:         {en:"Leave", es:"Salir"},
   chat_nudge:         {en:"Talk to your AI Advisor in the message box in the lower right-hand corner of the screen.", es:"Habla con tu asesor de IA en el cuadro de mensajes en la esquina inferior derecha de la pantalla."},
   nav_register:       {en:"Register Now", es:"Regístrate ahora"},
   // Register page (FID_REGISTER)
@@ -5044,10 +5122,11 @@ function showFinishConfirm(qid){
   wrap.appendChild(box);
   sendFin.focus();
 }
-// The "x" in the corner is a close/exit affordance on every page. Browsers block
-// scripted window.close() on tabs the user navigated to directly, so this can't
-// actually close the tab in most real contexts — show a toast instead for other
-// not-wired-up prototype controls.
+// The "x" in the corner is a close/exit affordance on every page. Mid-flow it asks for
+// confirmation (LeaveConfirm) so a misclick doesn't wipe answers; on the finish/closing
+// screen (S.finished) it closes immediately. Browsers block scripted window.close() on
+// tabs the user navigated to directly, so this can't actually close the tab in most real
+// contexts — the #app fade-out is the prototype stand-in.
 function closePage(){
   const app = document.getElementById("app");
   if (app.classList.contains("closing")) return;   // ignore repeat clicks mid-animation
@@ -5058,6 +5137,58 @@ function closePage(){
     app.style.display = "none";   // fully removed from layout — not just invisible
   });
 }
+// Mid-flow close gate. Finished/closing screen → closePage() directly (nothing left to lose).
+function requestClosePage(){
+  if (S.finished){ closePage(); return; }
+  LeaveConfirm.show();
+}
+function onBackdropClick(){
+  if (LeaveConfirm.open) LeaveConfirm.dismiss();
+  else Panel.close();
+}
+const LeaveConfirm = {
+  open:false,
+  show(){
+    if (this.open) return;
+    if (Panel.open) Panel.close();
+    this.open = true;
+    const dlg = document.getElementById("leaveDialog");
+    if (!dlg) return;
+    // Refresh STR so EN/ES match current language without waiting for a full re-render.
+    dlg.querySelectorAll("[data-i18n]").forEach(elm => { elm.textContent = t(elm.getAttribute("data-i18n")); });
+    dlg.hidden = false;
+    dlg.classList.add("open");
+    document.getElementById("backdrop").classList.add("open");
+    const keep = document.getElementById("leaveKeepGoing");
+    if (keep) keep.focus();
+  },
+  dismiss(){
+    if (!this.open) return;
+    this.open = false;
+    const dlg = document.getElementById("leaveDialog");
+    if (dlg){ dlg.classList.remove("open"); dlg.hidden = true; }
+    if (!Panel.open) document.getElementById("backdrop").classList.remove("open");
+    const x = document.getElementById("interviewClose");
+    if (x) x.focus();
+  },
+  leave(){
+    // Tear down without returning focus to X — the app is about to fade out.
+    this.open = false;
+    const dlg = document.getElementById("leaveDialog");
+    if (dlg){ dlg.classList.remove("open"); dlg.hidden = true; }
+    document.getElementById("backdrop").classList.remove("open");
+    closePage();
+  },
+};
+window.requestClosePage = requestClosePage;
+window.onBackdropClick = onBackdropClick;
+window.LeaveConfirm = LeaveConfirm;
+(function wireLeaveConfirm(){
+  const keep = document.getElementById("leaveKeepGoing");
+  const quit = document.getElementById("leaveConfirmBtn");
+  if (keep) keep.onclick = () => LeaveConfirm.dismiss();
+  if (quit) quit.onclick = () => LeaveConfirm.leave();
+})();
 function fmtAnswer(a){
   if (!a) return "—";
   if (a.skipped) return t("val_skipped");
@@ -5723,7 +5854,8 @@ function renderInput(root, q){
         [["federal", t("taxrate_federal"), federal], ["obamacare", t("taxrate_obamacare"), obamacare],
          ["state", stateLabel, statePct], ["local", localLabel, localPct], ["total", t("taxrate_total"), total]]
           .forEach(([key, label, pct]) => {
-            const row = el("div","taxrate-row" + (key === "total" ? " total" : ""));
+            const isZero = key !== "total" && Number(pct.toFixed(1)) === 0;
+            const row = el("div","taxrate-row" + (key === "total" ? " total" : "") + (isZero ? " zero" : ""));
             row.appendChild(el("span","trl", label));
             row.appendChild(el("span","trv", pct.toFixed(1) + "%"));
             table.appendChild(row);
@@ -6570,6 +6702,10 @@ function paintSettings(body){
 
 /* ═══════════════ KEYBOARD & BOOT ═══════════════ */
 document.addEventListener("keydown", e => {
+  if (LeaveConfirm.open){
+    if (e.key === "Escape"){ e.preventDefault(); LeaveConfirm.dismiss(); }
+    return;
+  }
   if (Panel.open) { if (e.key === "Escape") Panel.close(); return; }
   const tag = (document.activeElement || {}).tagName;
   if (e.key === "Enter" && tag !== "TEXTAREA"){
