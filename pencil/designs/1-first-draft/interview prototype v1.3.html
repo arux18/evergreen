@@ -61,8 +61,23 @@
   --accent:#3A6AF8; --accent-hover:#2952CC; --accent-text:#3A6AF8;   /* ~4.6:1 on white — passes AA for text */
   --accent-fill:rgba(58,106,248,.15);   /* selected pill/scale fill (Hemlock --accent-fill) */
   --accent-soft:rgba(58,106,248,.08);   /* hover tints (suggest button, active flowcard, etc.) */
-  --info-bg:rgba(58,106,248,.06); --info-border:rgba(58,106,248,.24);   /* notice boxes = Hemlock info tile */
+  --info-accent:#3A6AF8; --info-bg:rgba(58,106,248,.06); --info-border:rgba(58,106,248,.24);   /* Hemlock info tile (Component Template .ec-box.info) */
   --danger:#C82320;
+  /* Hemlock button tokens (Component Template.html) */
+  --btnPrimary-bg:#3A6AF8; --btnPrimary-hover:#2952CC; --btnPrimary-text:#ffffff;
+  --btnSecondary-bg:transparent; --btnSecondary-border:#D5D3D0; --btnSecondary-text:#0E0E0E;
+  /* Template secondary hover is #F8F7F6 (for white card surfaces) — invisible on our taupe
+     --bg #F7F5F0, so use white lift instead. Same role: quiet fill on hover. */
+  --btnSecondary-hover:#FFFFFF;
+  --btnLink-text:#3A6AF8; --btnLink-hover:#2952CC;
+  --progress-track:#E3DFD6;   /* Hemlock --taupe-border — warm taupe track (not cool gray --line-strong) */
+  /* Form-field states. Placeholder: warm gray hint (light theme). Disabled: recessed taupe
+     fill + softened border + dimmed text — clearly inert without vanishing. */
+  --placeholder:#6E6963;               /* = --faint (warm gray) */
+  --input-disabled-bg:#F2EFE9;         /* --card-2 taupe: recessed vs the white input */
+  --input-disabled-line:#E3DFD6;       /* taupe border, softer than --line-strong */
+  --input-disabled-text:#A5A09A;       /* dimmed warm gray (between --line-strong and --faint) */
+  --slider-track:#E4E4E4;              /* Hemlock Welcome slider unfilled track (light) */
   --radius:12px; --shadow:0 4px 12px #0000001A;
   --margin:32px;                     /* page side margins: desktop */
   font-size:16px;
@@ -81,10 +96,22 @@ html[data-theme="dark"]{
   --link-text:#8FB0FF;
   --accent-fill:rgba(90,134,255,.22);
   --accent-soft:rgba(90,134,255,.12);
-  --info-bg:rgba(90,134,255,.12); --info-border:rgba(90,134,255,.32);
+  /* Dark info tile matches Component Template (.ec-box.info dark) — soft purple strip/fill, not blue. */
+  --info-accent:#9A86FF; --info-bg:rgba(154,134,255,.16); --info-border:rgba(154,134,255,.32);
+  --btnPrimary-bg:#5A86FF; --btnPrimary-hover:#8FB0FF; --btnPrimary-text:#ffffff;
+  --btnSecondary-bg:transparent; --btnSecondary-border:#33476E; --btnSecondary-hover:rgba(255,255,255,.06); --btnSecondary-text:#EAF0FF;
+  --btnLink-text:#8FB0FF; --btnLink-hover:#8FB0FF;
+  --progress-track:#22304E;   /* dim navy track — quiet until the accent fill moves over it */
+  /* Form-field states, dark: placeholder from the navy palette (blue-gray, NOT neutral gray)
+     so hints sit inside the navy card family; disabled recesses below the card surface. */
+  --placeholder:#7C92BE;               /* navy blue-gray hint — dimmer than --muted, bluer than --faint */
+  --input-disabled-bg:#0B101B;         /* darker than --card #0E1524: recessed */
+  --input-disabled-line:#1D2A44;       /* dimmer than --line #243350 */
+  --input-disabled-text:#5D7095;       /* dimmed navy text */
+  --slider-track:#2A3550;              /* Hemlock-style unfilled track, navy (not cool gray) */
   --shadow:0 0 0 1px rgba(120,150,255,.06),0 16px 40px rgba(0,0,0,.60);
 }
-html[data-theme="dark"] .btn.link:not(.skip){color:var(--link-text)}
+html[data-theme="dark"] .btn.link:not(.skip):not(.finish-discard):not(.finish-stay){color:var(--link-text)}
 html[data-theme="dark"] .btn.ghost{color:var(--link-text); border-color:var(--link-text)}
 html[data-theme="dark"] .chip, html[data-theme="dark"] .chip button{color:var(--link-text)}
 html[data-theme="dark"] .flowchip{color:var(--link-text)}
@@ -107,7 +134,7 @@ html[data-theme="dark"] body{
   html[data-theme="dark"] .badge{ background:#1c2436; color:#9db0d2; border-color:#2a3550; }
   html[data-theme="dark"] .badge.sens-Medium{ background:#2a2416; border-color:#4a3c1a; color:#e3b972; }
   html[data-theme="dark"] .badge.sens-High{ background:#2e1a1a; border-color:#4a2323; }
-  html[data-theme="dark"] .chat-icon-btn.send,
+  html[data-theme="dark"] .chat-icon-btn.send:not(.ready),
   html[data-theme="dark"] .btn.primary:disabled{ background:#2a3550; color:#cbd5e8; }
   *{box-sizing:border-box; margin:0; padding:0}
   html,body{height:100%}
@@ -143,8 +170,6 @@ html[data-theme="dark"] body{
     border:1px solid var(--green-line); padding:4px 11px; border-radius:99px; white-space:nowrap;
   }
   .stepcount{margin-left:auto; font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums}
-  #progressbar{display:none; height:4px; background:var(--line); margin:16px var(--margin) 0; border-radius:2px; overflow:hidden}
-  #progressbar>div{height:100%; width:0%; background:var(--green); border-radius:2px; transition:width .35s ease}
 
   main{
     flex:1; min-height:0; overflow-y:auto; display:flex; justify-content:center; padding:120px var(--margin) 170px; position:relative;
@@ -164,7 +189,7 @@ html[data-theme="dark"] body{
      exactly the kind of block-end padding some engines have historically ignored. The script's
      SCROLL_HEADROOM constant subtracts this invisible padding back out of the reel-transition
      travel math so page transitions don't slow down. */
-  .stage{width:100%; max-width:640px; margin-inline:auto; padding-bottom:600px}
+  .stage{position:relative; width:100%; max-width:640px; margin-inline:auto; padding-bottom:600px}
   .stage.reel-enter{animation-name:reelEnter; animation-duration:500ms; animation-timing-function:linear; animation-fill-mode:both}
   .stage-ghost{
     position:absolute; top:120px; left:50%; transform:translateX(-50%); width:calc(100% - var(--margin)*2); max-width:640px;
@@ -183,20 +208,50 @@ html[data-theme="dark"] body{
     22%{opacity:0}
     to{opacity:0; transform:translateX(-50%) translateY(var(--reel-to,0px))}
   }
-  @media (max-width:639px){   /* tablet + mobile: eyebrow sits 40px from the top instead of 120px */
-    main{padding-top:40px}
-    .stage-ghost{top:40px}
+  @media (max-width:639px){   /* tablet + mobile: clear the close control, then start stage */
+    /* Close sits at top/right = --margin (32×32). Stage starts below it + 36px gap. */
+    main{padding-top:calc(var(--margin) + 68px)}
+    .stage-ghost{top:calc(var(--margin) + 68px)}
   }
   /* container-query twin: same values, but triggered by main's own (possibly sidebar-shrunk)
      width instead of the real viewport — see body.sidebar-open and main's container-type above */
   @container interview (max-width:639px){
-    main{--margin:30px; padding-top:40px}
-    .stage-ghost{top:40px}
+    main{--margin:30px; padding-top:calc(var(--margin) + 68px)}
+    .stage-ghost{top:calc(var(--margin) + 68px)}
   }
   @container interview (max-width:389px){ main{--margin:20px} }   /* mobile-only equivalent; wins over the 639px block above at narrower widths */
-  .phase{font-size:16px; text-transform:uppercase; letter-spacing:.14em; color:var(--accent-text); font-weight:400; margin-bottom:14px}
+  /* Continuous progress bar — under .stage-head (eyebrow + Skip), full content width.
+     Fill % from sectionProgress. Theme tokens for light/dark. */
+  .stage-progress{
+    width:100%; height:2px; border-radius:1px; background:var(--progress-track);
+    overflow:hidden; margin:0 0 36px; pointer-events:none;
+  }
+  .stage-progress > div{
+    height:100%; width:0%; background:var(--accent); border-radius:1px;
+    transition:width .25s ease;
+  }
+  .phase{font-size:16px; text-transform:uppercase; letter-spacing:.14em; color:var(--accent-text); font-weight:400; margin-bottom:14px; min-width:0}
   @media (max-width:639px){ .phase{font-size:15px} }   /* tablet + mobile */
   @container interview (max-width:639px){ .phase{font-size:15px} }   /* container-query twin */
+  /* Eyebrow row: phase left, de-emphasized Skip right (not in the bottom nav). */
+  .stage-head{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    margin-bottom:8px; width:100%;
+  }
+  .stage-head .phase{flex:1; min-width:0; margin-bottom:0}
+  /* Skip de-emphasized per business brief (don't encourage skipping) but intentionally NOT hidden — keeping it discoverable avoids a dark pattern. Final placement/copy is Amanda's call. */
+  .stage-skip{
+    flex:none; align-self:center;
+    background:transparent; border:0; box-shadow:none;
+    color:var(--faint); font-size:13px; font-weight:400; line-height:1.3;
+    text-decoration:none; cursor:pointer;
+    padding:12px 8px; min-height:44px; min-width:44px;
+    margin:-12px -8px -12px 0; white-space:nowrap;
+  }
+  .stage-skip:hover, .stage-skip:focus-visible{
+    text-decoration:underline; text-underline-offset:3px; outline:none;
+  }
+  .stage-skip:focus-visible{ box-shadow:0 0 0 2px var(--bg), 0 0 0 4px var(--accent); border-radius:4px; }
   h1.headline{
     font-family:"Noto Serif",Georgia,"Times New Roman",serif; font-weight:400;
     font-size:34px; line-height:1.15; letter-spacing:-.01em; margin-bottom:28px;
@@ -211,23 +266,52 @@ html[data-theme="dark"] body{
 
   /* ── inputs ─────────────────────────────── */
   .answers{margin-bottom:0}
-  .stage .nav{margin-top:48px; padding-top:16px; border-top:1px solid color-mix(in srgb, var(--line-strong) 50%, transparent)}
-  @media (min-width:640px){ .stage .nav{padding-top:32px} }   /* desktop only: more air above Next */
-  @container interview (min-width:640px){ .stage .nav{padding-top:32px} }   /* container-query twin */
-  @container interview (max-width:639px){ .stage .nav{padding-top:16px} }   /* undoes the boost above when the sidebar has narrowed main below 640px even though the real viewport hasn't */
-  .navright{margin-left:auto; display:flex; align-items:center; gap:8px}
-  .navsep{color:var(--ink); font-size:15px}
-  .stage .nav .btn.skip{padding-right:0}  /* right edge of "Skip" = right end of the rule above */
-  .btn.link.skip{
-    background:transparent; border:0; color:var(--faint); font-size:14.5px; font-weight:500;
-    text-decoration:none; padding:12px 10px;
+  /* Nav cluster left-aligned: Back then Next/Finish (12px), optional secondaries after.
+     Skip lives top-right on .stage-head — not in this row.
+     Progress lives under .stage-head; nav keeps its own top spacing. */
+  .stage .nav{margin-top:72px; padding-top:0; border-top:0; display:flex; align-items:center; justify-content:flex-start; gap:12px; flex-wrap:wrap}
+  .nav-back{display:inline-flex; align-items:center}
+  .nav-actions{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+  .nav-forward{display:inline-flex; align-items:center; gap:12px; flex-wrap:wrap}
+  /* Shared nav CTA metrics — keeps Back/Next optically level (same height, padding, icon box). */
+  .btn.primary,
+  .btn.secondary{
+    display:inline-flex; align-items:center; justify-content:center; gap:6px;
+    box-sizing:border-box; height:48px; min-height:48px; padding:0 28px;
+    border-radius:99px; font-size:15.5px; font-weight:600; line-height:1;
+    white-space:nowrap; text-decoration:none; box-shadow:none;
   }
-  .btn.link.skip:hover{text-decoration:underline; text-underline-offset:3px}
-  html[data-theme="dark"] .btn.link.skip{color:var(--muted)}
-  .btn.link.back{display:inline-flex; align-items:center; gap:6px}
+  .btn.secondary{
+    /* Hemlock --btnSecondary: transparent fill, neutral border/text — Back = secondary CTA. */
+    background:var(--btnSecondary-bg); color:var(--btnSecondary-text);
+    border:1px solid var(--btnSecondary-border);
+  }
+  .btn.secondary:hover{
+    background:var(--btnSecondary-hover); color:var(--btnSecondary-text);
+    border-color:color-mix(in srgb, var(--btnSecondary-border) 70%, var(--ink));
+    text-decoration:none;
+  }
+  .btn.primary svg,
+  .btn.secondary svg{
+    flex:none; display:block; width:18px; height:18px;
+  }
+  /* Lucide chevron paths sit off-center in the viewBox — nudge so icon+label read level. */
+  .btn.secondary svg{transform:translateX(-1px)}
+  .btn.primary svg{transform:translateX(1px)}
+  .btn.primary span,
+  .btn.secondary span{display:block; line-height:1}
+  /* Suggest sits under the chat composer (W002), not in the nav row with Finish/Next. */
+  .btn.suggest-inline{
+    display:inline-flex; align-items:center; gap:8px; margin-top:14px;
+    background:transparent; color:var(--accent-text); box-shadow:none;
+    border:1.5px solid var(--accent); border-radius:99px;   /* Hemlock outlined buttons are pills (--radius-full), not 8px */
+    padding:10px 18px; font-size:14.5px; font-weight:600; min-height:44px;
+  }
+  .btn.suggest-inline:hover:not(:disabled){background:var(--accent-soft)}
+  .btn.suggest-inline svg{flex:none}
   .pills{display:flex; flex-wrap:wrap; gap:10px; padding:24px 0}
   .pill{
-    padding:12px 18px; border-radius:99px; background:var(--card); border:1.5px solid var(--line-strong);
+    padding:12px 18px; border-radius:8px; background:var(--card); border:1.5px solid var(--line-strong);
     font-size:15.5px; transition:all .13s ease; color:var(--ink);
   }
   .pill:hover{border-color:var(--accent); transform:translateY(-1px)}
@@ -236,7 +320,7 @@ html[data-theme="dark"] body{
   .limit-note{font-size:12.5px; color:var(--faint); margin-top:10px}
   .scale-row{display:flex; gap:10px; align-items:stretch}
   .scale-btn{
-    flex:1; max-width:86px; padding:16px 0; border-radius:12px; background:var(--card);
+    flex:1; max-width:86px; padding:16px 0; border-radius:8px; background:var(--card);   /* 8px = --radius-xs, matches .pill (both are answer buttons) */
     border:1.5px solid var(--line-strong); font-size:18px; font-weight:600; transition:all .13s;
   }
   .scale-btn:hover{border-color:var(--accent)}
@@ -247,80 +331,94 @@ html[data-theme="dark"] body{
      at equal specificity regardless of viewport, which is exactly what happened here the
      first time (the base rule, appearing later in source, was silently winning at every
      width). */
-  @media (max-width:639px){   /* tablet + mobile: shorter answer buttons */
-    .pill{padding:9px 16px}
+  @media (max-width:639px){   /* tablet + mobile: scale-btn only (pills keep desktop padding) */
     .scale-btn{padding:12px 0}
   }
   @container interview (max-width:639px){   /* container-query twin */
-    .pill{padding:9px 16px}
     .scale-btn{padding:12px 0}
   }
   .scale-ends{display:flex; justify-content:space-between; margin-top:8px; font-size:12.5px; color:var(--faint); max-width:470px}
-  .slider-wrap{max-width:470px}
-  .slider-value{
-    font-family:"Noto Serif",Georgia,serif; font-size:40px; color:var(--accent-text); margin-bottom:6px; display:flex; align-items:baseline; gap:10px;
+  /* ── Sliders (Hemlock Welcome pattern — Component Template has no range UI) ──
+     ONE look for every step: Age / Savings % / Income / Assets / Home / Mortgage /
+     and the six projection what-if rows. Value = Heebo 700 24px accent; track = 4px;
+     thumb = 20px accent + white ring + soft shadow. */
+  .slider-wrap{max-width:470px; width:100%}
+  .slider-value,
+  .slider-value.money{
+    font-family:"Heebo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-weight:700; font-size:24px; line-height:1.2; color:var(--accent-text);
+    margin-bottom:4px; display:flex; align-items:baseline; justify-content:flex-start; gap:2px;
   }
   .slider-value input[type=number]{
-    width:110px; font-family:"Noto Serif",Georgia,serif; font-weight:400; font-size:30px; color:var(--accent-text);
-    padding:2px 10px; border:1.5px solid var(--line); border-radius:10px; background:var(--card);
-    text-align:right;
+    font:inherit; font-weight:700; font-size:24px; color:inherit; line-height:1.2;
+    width:auto; min-width:2.5ch; max-width:7ch; padding:0 2px; margin:0;
+    border:1px solid transparent; border-radius:4px; background:transparent;
+    text-align:right; -moz-appearance:textfield;
+  }
+  .slider-value input[type=number]::-webkit-outer-spin-button,
+  .slider-value input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
+  .slider-value input[type=number]:focus{
+    outline:none; border-color:var(--accent); background:var(--card);
   }
   .num-suffix-wrap{
-    display:inline-flex; align-items:center; justify-content:flex-end;
-    border:1.5px solid var(--line); border-radius:10px; background:var(--card);
-    padding:2px 10px;
+    display:inline-flex; align-items:baseline; justify-content:flex-end; gap:0;
+    border:0; background:transparent; padding:0; border-radius:0;
   }
   .num-suffix-wrap input.has-suffix{
-    width:70px; border:none; background:transparent; padding:0; border-radius:0;
+    width:auto; min-width:2ch; max-width:4ch; border:none; background:transparent; padding:0; border-radius:0;
   }
   .num-suffix{
-    font-family:"Noto Serif",Georgia,serif; font-size:30px; color:var(--accent-text); pointer-events:none;
+    font:inherit; font-weight:700; font-size:24px; line-height:1.2; color:inherit; pointer-events:none;
   }
-  /* Every slider: thin light-grey track, orange fill (painted by paintRangeTrack based on
-     value), plain orange thumb, no focus outline. -webkit-appearance:none is required —
-     without it Chrome/Safari ignore track/thumb overrides entirely and keep native theme
-     colors, which is why this used to show a dark outline and a black unfilled track. */
+  /* Track 4px / thumb 20px — same metrics as Hemlock Welcome_v1_3. paintRangeTrack()
+     draws the filled (accent) vs unfilled (--slider-track) split for WebKit. */
   input[type=range]{
     width:100%; -webkit-appearance:none; appearance:none;
-    outline:none; background:var(--line); border-radius:4px; height:8px; cursor:pointer;
+    outline:none; border:none; background:var(--slider-track); border-radius:3px;
+    height:4px; margin:10px 0 0; cursor:pointer;
   }
   input[type=range]:focus{outline:none}
-  input[type=range]::-webkit-slider-runnable-track{-webkit-appearance:none; background:transparent; height:8px; border-radius:4px}
+  input[type=range]:focus-visible{outline:2px solid var(--accent); outline-offset:4px}
+  input[type=range]::-webkit-slider-runnable-track{
+    -webkit-appearance:none; background:transparent; height:4px; border:none; border-radius:3px;
+  }
   input[type=range]::-webkit-slider-thumb{
-    -webkit-appearance:none; width:20px; height:20px; margin-top:-6px; border-radius:50%;
-    background:var(--accent); border:none; cursor:pointer;
+    -webkit-appearance:none; width:20px; height:20px; margin-top:-8px; border-radius:50%;
+    background:var(--accent); border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.2); cursor:pointer;
   }
-  input[type=range]::-moz-range-track{background:var(--line); height:8px; border-radius:4px}
-  input[type=range]::-moz-range-progress{background:var(--accent); height:8px; border-radius:4px}
+  input[type=range]::-moz-range-track{
+    background:var(--slider-track); height:4px; border:none; border-radius:3px;
+  }
+  input[type=range]::-moz-range-progress{
+    background:var(--accent); height:4px; border-radius:3px;
+  }
   input[type=range]::-moz-range-thumb{
-    width:20px; height:20px; border-radius:50%; background:var(--accent); border:none; cursor:pointer;
+    width:20px; height:20px; border-radius:50%; background:var(--accent);
+    border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.2); cursor:pointer;
   }
-  /* Projections-page sliders only: tracks ~25% thinner than the global 8px — 6px in light
-     mode, 4px in dark mode (dark was already thinner, at 5px, per an earlier request; both
-     reduced ~25% again per design request). Thumb stays 20px; its margin-top is recentered
-     per track height: -(20-6)/2 = -7px light, -(20-4)/2 = -8px dark. */
-  .proj-sliders input[type=range]{height:6px}
-  .proj-sliders input[type=range]::-webkit-slider-runnable-track{height:6px}
-  .proj-sliders input[type=range]::-webkit-slider-thumb{margin-top:-7px}
-  .proj-sliders input[type=range]::-moz-range-track{height:6px}
-  .proj-sliders input[type=range]::-moz-range-progress{height:6px}
-  html[data-theme="dark"] .proj-sliders input[type=range]{height:4px}
-  html[data-theme="dark"] .proj-sliders input[type=range]::-webkit-slider-runnable-track{height:4px}
-  html[data-theme="dark"] .proj-sliders input[type=range]::-webkit-slider-thumb{margin-top:-8px}
-  html[data-theme="dark"] .proj-sliders input[type=range]::-moz-range-track{height:4px}
-  html[data-theme="dark"] .proj-sliders input[type=range]::-moz-range-progress{height:4px}
-  .slider-minmax{display:flex; justify-content:space-between; font-size:12.5px; color:var(--faint)}
+  html[data-theme="dark"] input[type=range]::-webkit-slider-thumb,
+  html[data-theme="dark"] input[type=range]::-moz-range-thumb{border-color:var(--card)}
+  .slider-minmax{display:flex; justify-content:space-between; font-size:12.5px; color:var(--faint); margin-top:6px}
   /* margin-top here collapses with h1.headline's margin-bottom (also 28px) since nothing
      sits between them but the plain .answers wrapper — so it has to clearly exceed 28px to
      produce any visible extra gap above the first row. */
-  .taxrate-table{max-width:300px; margin-top:40px; margin-left:24px}
-  /* .trv is pushed flush right via margin-left:auto so the values line up as a column —
-     that auto margin (not the gap below) is what actually sets the visible space between
-     the two columns, so tightening it means narrowing the table's own max-width above. */
+  .taxrate-table{width:100%; margin-top:40px}
+  /* Full stage width: label left, value flush right via margin-left:auto. */
   .taxrate-row{display:flex; justify-content:flex-start; align-items:baseline; gap:20px; padding:6px 0}
-  .taxrate-row .trl{font-family:"Noto Serif",Georgia,serif; font-weight:400; font-size:22px; width:170px; color:var(--ink)}
+  .taxrate-row .trl{font-family:"Noto Serif",Georgia,serif; font-weight:400; font-size:22px; color:var(--ink)}
   .taxrate-row .trv{font-family:"Noto Serif",Georgia,serif; font-weight:400; font-size:22px; font-variant-numeric:tabular-nums; color:var(--ink); margin-left:auto; text-align:right; min-width:70px}
-  .taxrate-row.total{margin-top:10px; padding-top:14px; border-top:1.5px solid var(--line-strong)}
+  .taxrate-row.total{
+    margin-top:10px; padding-top:14px; border-top:0; position:relative;
+  }
+  /* Looser dash than CSS `border:dashed` (which packs short ticks). Dash 5 / gap 9. */
+  .taxrate-row.total::before{
+    content:""; position:absolute; left:0; right:0; top:0; height:1.5px;
+    background:repeating-linear-gradient(
+      to right,
+      var(--line-strong) 0 5px,
+      transparent 5px 14px
+    );
+  }
   .taxrate-row.total .trl{font-weight:700; color:var(--ink)}
   .taxrate-row.total .trv{font-weight:700; color:var(--ink)}
   @media (max-width:639px){   /* tablet + mobile: smaller table type */
@@ -331,14 +429,29 @@ html[data-theme="dark"] body{
     width:100%; max-width:560px; min-height:110px; padding:14px 16px; border-radius:12px;
     border:1.5px solid var(--line); background:var(--card); resize:vertical; line-height:1.5; font-size:15.5px;
   }
-  textarea.free:focus,input.textline:focus,.slider-value input[type=number]:focus{outline:none; border-color:var(--accent)}
+  textarea.free:focus,input.textline:focus{outline:none; border-color:var(--accent)}
   .chat-input-wrap{position:relative; width:100%}
   textarea.free.chat{
     width:100%; max-width:none; min-height:122px; max-height:260px; font-size:18px; line-height:1.5;
-    padding:18px 142px 18px 20px; resize:none; overflow-y:auto; border-radius:14px;
+    padding:18px 142px 18px 20px; resize:none; overflow-y:auto; border-radius:12px;   /* --radius-md; 14px is off the Hemlock radius scale */
   }
-  textarea.free.chat::placeholder{color:var(--green-line); opacity:1}   /* soft Hemlock blue; avoids warm --muted/--faint grey */
-  html[data-theme="dark"] textarea.free.chat::placeholder{color:var(--green-2)}   /* --green-line is too dark on dark cards */
+  /* Placeholders — ALL text inputs/textareas (zip, register, combo, age, chat…).
+     One token per theme: light = warm gray, dark = navy blue-gray (see --placeholder).
+     opacity:1 overrides Firefox's default placeholder dimming. */
+  input.textline::placeholder,
+  textarea.free::placeholder{color:var(--placeholder); opacity:1}
+  /* Disabled fields (e.g. ZIP while "Outside the U.S." is checked): recessed fill, softened
+     border, dimmed text + placeholder, not-allowed cursor. WCAG exempts disabled controls
+     from contrast minimums — dimming IS the affordance. */
+  input.textline:disabled,
+  textarea.free:disabled{
+    background:var(--input-disabled-bg);
+    border-color:var(--input-disabled-line);
+    color:var(--input-disabled-text);
+    cursor:not-allowed;
+  }
+  input.textline:disabled::placeholder,
+  textarea.free:disabled::placeholder{color:var(--input-disabled-text)}
   .chat-icons{position:absolute; right:10px; bottom:14px; display:flex; align-items:center; gap:6px}
   .chat-icon-btn{
     width:38px; height:38px; flex:0 0 auto; padding:0; border-radius:50%; display:flex;
@@ -347,7 +460,7 @@ html[data-theme="dark"] body{
   .chat-icon-btn svg{width:18px; height:18px}
   .chat-icon-btn:hover{border-color:var(--green); color:var(--green)}
   .chat-icon-btn.send{border-color:transparent; background:#D5D3D0; color:#fff; cursor:not-allowed}
-  .chat-icon-btn.send.ready{background:var(--green); cursor:pointer; box-shadow:0 4px 14px rgba(58,106,248,.30)}
+  .chat-icon-btn.send.ready{background:var(--green); cursor:pointer}   /* no glow — Hemlock buttons carry no accent shadow */
   .chat-icon-btn.send.ready:hover{background:var(--green-2); color:#fff}
   @media (max-width:389px){   /* mobile only */
     textarea.free.chat{padding-right:118px}
@@ -359,19 +472,81 @@ html[data-theme="dark"] body{
     .chat-icon-btn{width:34px; height:34px}
     .chat-icons{right:8px; bottom:12px}
   }
+  /* Chat step: when the box has unsent text the send arrow is the only filled primary —
+     Finish softens to outlined so there is never two competing filled CTAs on one screen. */
+  .btn.primary.finish-secondary{
+    background:transparent; color:var(--accent-text); border:1.5px solid var(--accent); box-shadow:none;
+  }
+  .btn.primary.finish-secondary:hover:not(:disabled){background:var(--accent-soft); transform:none}
+  /* Finish confirm — unsaved-draft prompt (UX: Save | Discard | Stay). Hemlock:
+     borderless container (.ec-how .ec-box:not(.info)); primary = --btnPrimary; discard =
+     tertiary --faint text; stay = quiet cancel. Replaces Finish in-flow (not a floating
+     absolute stack — that read as a broken popover over Skip/Finish). */
+  .finish-wrap{display:inline-flex; flex-direction:column; align-items:flex-start; max-width:100%}
+  .finish-confirm{
+    display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+    width:max-content; max-width:min(100%, 420px);
+    margin:0; padding:0; background:transparent; border:0; box-shadow:none;
+  }
+  .finish-confirm-q{font-size:13px; line-height:1.45; color:var(--muted); text-align:right; font-weight:400}
+  .finish-confirm-actions{
+    display:flex; flex-wrap:wrap; gap:8px 16px; justify-content:flex-end; align-items:center;
+  }
+  .finish-confirm .btn.primary{
+    padding:12px 22px; font-size:14.5px; min-height:44px;   /* radius stays pill (Hemlock buttons = --radius-full) */
+  }
+  .finish-confirm .btn.link.finish-discard,
+  .finish-confirm .btn.link.finish-stay{
+    background:transparent; border:0; box-shadow:none;
+    font-size:14px; font-weight:500; padding:10px 8px; min-height:44px;
+  }
+  .finish-confirm .btn.link.finish-stay{color:var(--muted)}
+  .finish-confirm .btn.link.finish-stay:hover{color:var(--ink); text-decoration:underline; text-underline-offset:3px}
+  .finish-confirm .btn.link.finish-discard{color:var(--faint)}
+  .finish-confirm .btn.link.finish-discard:hover{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
+  html[data-theme="dark"] .finish-confirm .btn.link.finish-stay{color:var(--muted)}
+  html[data-theme="dark"] .finish-confirm .btn.link.finish-stay:hover{color:var(--ink)}
+  html[data-theme="dark"] .finish-confirm .btn.link.finish-discard{color:var(--faint)}
+  html[data-theme="dark"] .finish-confirm .btn.link.finish-discard:hover{color:var(--muted)}
+  @media (max-width:402px){
+    .finish-confirm{align-items:stretch; width:100%; max-width:100%}
+    .finish-confirm-q{text-align:left}
+    .finish-confirm-actions{justify-content:flex-start}
+  }
   .zip-row{display:flex; align-items:center; gap:20px; flex-wrap:wrap}
-  input.textline.zip{width:150px}
   .zip-outside{display:flex; align-items:center; gap:9px; font-size:15px; color:var(--ink); cursor:pointer}
-  .notice-orange{
-  /* Class name kept (created from JS in zip()/info()) — visually this is now the
-     Hemlock "info" tile, not orange. Rename to .notice-info in a follow-up pass. */
-  background:var(--info-bg); border:1px solid var(--info-border); color:var(--ink);
-  font-size:14.5px; line-height:1.45; border-radius:10px; padding:12px 16px; margin-top:14px; max-width:470px;
-}
+  /* Inline info notices (ZIP outside U.S., tax-rate ZIP missing, etc.).
+     Visual = Hemlock Component Template `.ec-box.info`: left accent strip, square left
+     corners, soft blue→white gradient, 8px right radius. Legacy class `.notice-orange`
+     kept as an alias so older call sites still resolve. */
+  .notice-info, .notice-orange{
+    position:relative; width:100%; max-width:none; margin:14px 0 0;
+    box-sizing:border-box;
+    background:linear-gradient(90deg, var(--info-bg), #ffffff);
+    border:1px solid var(--info-border);
+    border-radius:0 8px 8px 0;
+    padding:14px 16px 14px 28px;
+    color:var(--ink);
+    font-size:13px; line-height:1.5; font-weight:400;
+  }
+  .notice-info::before, .notice-orange::before{
+    content:""; position:absolute; left:0; top:-1px; bottom:-1px; width:6px;
+    border-radius:0; background:var(--info-accent);
+  }
+  html[data-theme="dark"] .notice-info,
+  html[data-theme="dark"] .notice-orange{
+    background:linear-gradient(to right, rgba(154,134,255,.16), rgba(40,32,70,.10));
+    border-color:rgba(154,134,255,.32);
+  }
+  html[data-theme="dark"] .notice-info::before,
+  html[data-theme="dark"] .notice-orange::before{ background:#9A86FF; }
   .zip-outside input{width:17px; height:17px; accent-color:var(--green)}
   input.textline{
     width:100%; max-width:470px; padding:13px 16px; border-radius:12px; border:1.5px solid var(--line); background:var(--card); font-size:15.5px;
   }
+  /* Must follow input.textline so width:100% does not stretch ZIP to full stage width
+     (visible as a huge empty field under the tax-rate missing-ZIP notice). */
+  input.textline.zip{width:150px; max-width:150px}
   .search-wrap{position:relative; max-width:470px}
   .search-list{
     position:absolute; top:calc(100% + 6px); left:0; right:0; background:var(--card); border:1px solid var(--line);
@@ -419,32 +594,17 @@ html[data-theme="dark"] body{
   .proj-legend span{display:inline-flex; align-items:center; gap:6px}
   .proj-legend i{width:12px; height:12px; border-radius:3px; display:inline-block; flex:none}
   .proj-legend i.line{width:14px; height:0; border-top:2px dashed var(--muted); border-radius:0}
-  /* Six live "what-if" sliders (age, income, savings rate, assets, home equity, retirement
-     age) feeding the chart above — laid out two-per-row on wider screens, one-per-row on
-     narrow ones. Each slider reuses the same .slider-wrap/.slider-value/.slider-minmax
-     look as the real interview sliders (slider()/moneyslider() elsewhere in this file). */
+  /* Six live "what-if" sliders — same track/thumb/value chrome as slider()/moneyslider();
+     only the label+value row layout is denser for the two-column grid. */
   .proj-sliders{display:grid; grid-template-columns:1fr 1fr; gap:8px 32px; margin-top:28px; align-items:start; width:100%; max-width:700px}   /* max-width matches .proj-chart-frame's cap so the slider columns never run wider than the chart above */
   .proj-slider-item{margin-top:18px}
   /* Label and value share one row (value flush right, directly above the track) instead of
      the value getting its own line — cuts a full line of height off each of the six
      sliders. margin-bottom is intentionally tight so the track sits close beneath. */
-  .proj-slider-item-label{display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:14px; color:var(--muted); margin-bottom:4px}
+  .proj-slider-item-label{display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:14px; color:var(--muted); margin-bottom:0}
+  .proj-slider-item-label .slider-value{margin-bottom:0}
   @media (max-width:639px){ .proj-sliders{grid-template-columns:1fr} }
-  /* Halved "orange number" display (per request, to save vertical space) — and a fixed,
-     shared height for that value row so a plain slider's bordered number box and a money
-     slider's bare, larger dollar text always occupy the same vertical space. Without this,
-     the two control types resolve to slightly different heights and the range tracks below
-     them (and the titles above, once rows differ in height) drift out of line with each
-     other across the two-column grid. */
-  .proj-sliders .slider-value{font-size:20px; height:32px; align-items:center; margin-bottom:0}
-  .proj-sliders .slider-value input[type=number]{font-size:15px; width:60px; padding:2px 8px}
-  /* .has-suffix (the Savings rate box) needs its own, more specific override: the general
-     rule just above was accidentally winning the padding tie-break too (same specificity,
-     later in source order), leaving only ~16px of content width inside a 32px box — enough
-     to hide the number entirely behind the "%" sign. Adding .has-suffix here outranks it. */
-  .proj-sliders .slider-value input[type=number].has-suffix{width:32px; padding:0}
-  .proj-sliders .num-suffix-wrap{padding:2px 8px}
-  .proj-sliders .num-suffix{font-size:15px}
+  .proj-sliders .slider-wrap{max-width:none}
 
   /* ── register (lead-capture) ── */
   .reg-wrap{max-width:520px}
@@ -468,24 +628,21 @@ html[data-theme="dark"] body{
   }
   html[data-theme="dark"] .below-next-note.placeholder-note{ background:#5c4813; color:#ffe9a8; }
 
-  /* ── nav ─────────────────────────────── */
-  /* flex-wrap so that when the row runs out of horizontal space, whichever button doesn't
-     fit drops to a new line as a whole button — paired with .btn's white-space:nowrap and
-     flex-shrink:0 below, which stop a button from ever compressing/wrapping its OWN label
-     onto two lines instead. In the common case (primary Next/Register button + one second
-     button like Advisor/suggest/skip) this means the second button is what drops below the
-     first once space runs out, since it's the one that doesn't fit. */
+  /* Base .nav used outside the interview stage (e.g. finish screen). Stage nav overrides live with .stage .nav above. */
   .nav{display:flex; align-items:center; gap:12px; margin-top:6px; flex-wrap:wrap}
-  .below-next-note{margin:6px 0 22px; font-size:15.5px; line-height:1.55; color:var(--muted); max-width:56ch}
+  .below-next-note{margin:6px 0 22px; font-size:15.5px; line-height:1.55; color:var(--muted); max-width:none; width:100%}
   .btn{
     padding:13px 30px; border-radius:99px; font-size:15.5px; font-weight:600; transition:all .15s;
     white-space:nowrap; flex-shrink:0;
   }
-  .btn.primary{background:var(--green); color:#fff; box-shadow:0 4px 14px rgba(58,106,248,.30)}
-  .btn.primary:hover:not(:disabled){background:var(--green-2); transform:translateY(-1px)}
-  .btn.primary:disabled{background:#D5D3D0; color:#fff; cursor:not-allowed; box-shadow:none}
+  /* Stage Back/Next metrics live with .btn.primary/.btn.secondary above (shared height/padding).
+     Color tokens only here so other .btn.primary uses (finish screen, etc.) stay consistent. */
+  .btn.primary{background:var(--btnPrimary-bg); color:var(--btnPrimary-text); border:1px solid transparent}
+  .btn.primary:hover:not(:disabled){background:var(--btnPrimary-hover)}
+  .btn.primary:disabled{background:#D5D3D0; color:#fff; cursor:not-allowed; box-shadow:none; border-color:transparent}
   .btn.suggest{
-    background:var(--card); color:var(--accent-text); box-shadow:none;
+    /* Hemlock outlined-accent buttons (.tmpl-toolbar button) sit on a transparent fill. */
+    background:var(--btnSecondary-bg); color:var(--accent-text); box-shadow:none;
     border:1.5px solid var(--accent); padding:11.5px 28.5px;
   }
   .btn.suggest:hover:not(:disabled){background:var(--accent-soft); transform:translateY(-1px)}
@@ -504,8 +661,10 @@ html[data-theme="dark"] body{
   .btn.link:hover{text-decoration:underline; text-underline-offset:3px}
 
   /* ── interview close (ghost X) ───────────── */
+  /* Inset equals page side gutter (--margin) so top/right edges match content margins —
+     on mobile the old 14px sat on the bezel and collided with .stage-skip ("Not now"). */
   #interviewClose{
-    position:absolute; top:14px; right:14px; z-index:5;
+    position:absolute; top:var(--margin); right:var(--margin); z-index:5;
     width:32px; height:32px; display:grid; place-items:center;
     background:transparent; border:0; border-radius:8px; color:var(--faint);
   }
@@ -677,7 +836,9 @@ html[data-theme="dark"] #backdrop{background:rgba(225,230,240,.22)}   /* Hemlock
   }
   .toast{
     position:fixed; bottom:86px; left:50%; transform:translateX(-50%) translateY(20px); z-index:60;
-    background:var(--ink); color:#fff; font-size:13.5px; padding:10px 20px; border-radius:99px; opacity:0; transition:all .25s; pointer-events:none;
+    /* Invert surface: --ink is dark in light theme / light in dark theme, so pair it with
+       --card (opposite polarity) instead of hardcoded #fff — that broke contrast in dark mode. */
+    background:var(--ink); color:var(--card); font-size:13.5px; padding:10px 20px; border-radius:99px; opacity:0; transition:all .25s; pointer-events:none;
   }
   .toast.show{opacity:1; transform:translateX(-50%)}
   /* Persistent (non-fading) nudge shown on every page once a response has been emitted into
@@ -700,22 +861,20 @@ html[data-theme="dark"] #backdrop{background:rgba(225,230,240,.22)}   /* Hemlock
   @media (max-width:389px){   /* mobile only */
     .scale-btn{max-width:none}
     header{padding:12px var(--margin) 8px; gap:8px}
-    main{padding:40px var(--margin) 170px}
+    main{padding:calc(var(--margin) + 68px) var(--margin) 170px}
     .flowchip{max-width:36vw; overflow:hidden; text-overflow:ellipsis}
     .brand span{display:none}                /* hide "· Interview prototype" tag on phones */
     h1.headline{font-size:26px}
     .btn{padding:12px 22px}
     .panel-head{flex-wrap:wrap; row-gap:4px}
     .panel-body{overflow-x:auto}             /* bank table scrolls sideways instead of crushing */
-    .slider-value{font-size:34px}
     .phase{font-size:13px}
   }
   @container interview (max-width:389px){   /* container-query twin — content-area rules only; header/flowchip/brand/panel are chrome and excluded */
     .scale-btn{max-width:none}
-    main{padding:40px var(--margin) 170px}
+    main{padding:calc(var(--margin) + 68px) var(--margin) 170px}
     h1.headline{font-size:26px}
     .btn{padding:12px 22px}
-    .slider-value{font-size:34px}
     .phase{font-size:13px}
   }
 </style>
@@ -730,7 +889,6 @@ html[data-theme="dark"] #backdrop{background:rgba(225,230,240,.22)}   /* Hemlock
     <div class="flowchip" id="flowChip"></div>
     <div class="stepcount" id="stepCount"></div>
   </header>
-  <div id="progressbar"><div></div></div>
   <main><div class="stage" id="stage"></div></main>
 </div>
 
@@ -790,6 +948,29 @@ html[data-theme="dark"] #backdrop{background:rgba(225,230,240,.22)}   /* Hemlock
 
 <script>
 "use strict";
+/* ═══ DEVIATIONS FROM ORIGINAL PROTOTYPE (v1.1 Bill / v1.2 first commit 848039e) ═══
+   Baseline: no v1.1 in repo; logic compared to first git commit of
+   "interview prototype v1.2.html" (848039e — already Hemlock-tokenized). Engine,
+   FIDUCIARY steps/showIf, emitToChatSidebar, answer storage, Skip/Back, and all
+   non-chat input renderers are unchanged. Intentional logic/UX deltas only:
+   1. Nav reorder: Back left, Skip+Next/Finish right (wizard convention); no pipe separators.
+   2. Description note (.below-next-note) moved between headline and answers (was below nav).
+   3. Suggest a Question moved under the W002 chat composer; same FID_SUGGEST_FLAG + next().
+   4. Send vs Finish on chat steps (W002 / FID_HELP_CHAT): in-input arrow alone emits to
+      sidebar; Finish ends the flow via Engine.next()/skip (q1=A) and does not emit — with
+      unsent draft, inline confirm ("Send & finish" / "Finish without sending" / "Keep editing").
+      Original Finish emitted and stayed. Empty/never-sent Finish records Engine.skip()
+      {v:null, skipped:true} so the step is not absent from answers (q2=B); if a question was
+      sent, that answer is kept and Finish just advances.
+   5. Continuous progress bar under the eyebrow row (.stage-head); full content width,
+      section-based fill %. Replaces the original hidden header step-count bar.
+   8. Skip de-emphasized: removed from bottom nav (Back + Next/Finish only); quiet
+      top-right text link on the eyebrow row ("Skip" / "Omitir");
+      same Engine.skip() handler. Intentionally still visible (not a dark pattern).
+   6. Internal tooling (#panel, #bottombar/#modeToggles) hidden unless ?internal=1; theme
+      follows prefers-color-scheme when not internal; #demoThemeToggle is review-only.
+   7. Close control is #interviewClose (same closePage()); legacy #closeX removed as duplicate.
+   ═══════════════════════════════════════════════════════════════════════════════ */
 /* ═══════════════════ DATA ═══════════════════ */
 const DATA = {
   "bank": [
@@ -3911,11 +4092,12 @@ const STR = {
   panel_toggle:      {en:"Control panel", es:"Panel de control"},
   th_light:           {en:"Light", es:"Claro"},
   th_dark:            {en:"Dark", es:"Oscuro"},
-  nav_next:           {en:"Next →", es:"Siguiente →"},
+  nav_next:           {en:"Next", es:"Siguiente"},
   nav_finish:         {en:"Finish", es:"Finalizar"},
   nav_back:           {en:"Back", es:"Atrás"},
   nav_skip:           {en:"Skip", es:"Omitir"},
   nav_suggest:        {en:"Suggest a Question", es:"Sugerir una pregunta"},
+  progress_aria:      {en:"Interview progress", es:"Progreso de la entrevista"},
   nav_advisor:        {en:"Talk to AI Advisor", es:"Hablar con el asesor de IA"},
   advisor_fallback:   {en:"I'd like to talk to an advisor about my finances.", es:"Me gustaría hablar con un asesor sobre mis finanzas."},
   chat_head:          {en:"AI Advisor", es:"Asesor de IA"},
@@ -3954,6 +4136,10 @@ const STR = {
   chat_ask:           {en:"Ask", es:"Preguntar"},
   chat_attach_toast:  {en:"Attachments aren't wired up in this prototype.", es:"Los archivos adjuntos no están habilitados en este prototipo."},
   chat_voice_toast:   {en:"Voice input isn't wired up in this prototype.", es:"La entrada de voz no está habilitada en este prototipo."},
+  finish_confirm_q:   {en:"Send your question first?", es:"¿Enviar tu pregunta primero?"},
+  finish_confirm_send:{en:"Send & finish", es:"Enviar y finalizar"},
+  finish_confirm_skip:{en:"Finish without sending", es:"Finalizar sin enviar"},
+  finish_confirm_stay:{en:"Keep editing", es:"Seguir editando"},
   // Long-term projections (FID_PROJECTIONS) — the six slider labels, chart legend, and the
   // chart's own "Retire" line label
   proj_current_age:   {en:"Current age", es:"Edad actual"},
@@ -4523,13 +4709,14 @@ function el(tag, cls, text){
   if (text != null) n.textContent = text;
   return n;
 }
-// Paints the orange-filled / light-grey-unfilled two-tone look on a range input.
+// Paints the accent-filled / --slider-track-unfilled two-tone look on a range input.
 // Chrome/Safari only show accent-color on the thumb once -webkit-appearance:none is
 // set (see the input[type=range] CSS), so the "filled" portion has to be drawn by hand
 // as a gradient sized to the current value's percentage across the track.
+// Same tokens as Hemlock Welcome paintRange() — accent fill, --slider-track remainder.
 function paintRangeTrack(rangeEl, pct){
   const p = Math.max(0, Math.min(100, pct));
-  rangeEl.style.background = `linear-gradient(to right, var(--accent) 0%, var(--accent) ${p}%, var(--line) ${p}%, var(--line) 100%)`;
+  rangeEl.style.background = `linear-gradient(to right, var(--accent) 0%, var(--accent) ${p}%, var(--slider-track) ${p}%, var(--slider-track) 100%)`;
 }
 // The fixed #bottombar overlaps the bottom of main's scrollable area — main's own
 // padding-bottom exists purely to keep scrolled content clear of it. #bottombar's height
@@ -4785,12 +4972,12 @@ function emitToChatSidebar(questionText){
   S.chatResponded = true;
   openChatSidebar();
 }
-// Shared by both "Fire away." (W002) and "How can I help?" (FID_HELP_CHAT): on Next/Send,
-// emit whatever free-text question is currently in the page's box. MOVE-and-KEEP semantics:
+// Shared by both "Fire away." (W002) and "How can I help?" (FID_HELP_CHAT): the in-input
+// send arrow is the ONLY control that emits the typed question. MOVE-and-KEEP semantics:
 // the submitted question travels verbatim into the sidebar's message box AND is stored as
 // the step's answer (so later hand-off summaries show the last question asked, never
-// "Skipped"), while the page's own big box clears, ready for a follow-up — Next/Send
-// re-disable until something new is typed (see the chat branch in updateNavState()).
+// "Skipped"), while the page's own big box clears and keeps focus for a follow-up.
+// Finish never calls this — it finishes the step (with an inline confirm if a draft remains).
 function emitCurrentChatAnswer(qid){
   const ta = document.querySelector("#stage textarea.free.chat");
   const text = ta && ta.value.trim();
@@ -4798,12 +4985,69 @@ function emitCurrentChatAnswer(qid){
   Engine.setAnswer(qid, text);            // keep the last-sent question as this step's stored answer
   emitToChatSidebar(text);                // the summary built here shows it as this step's answer
   ta.value = "";
-  ta.dispatchEvent(new Event("input"));   // autoGrow + syncSend + updateNavState → box shrinks, Send/Next disable
+  ta.dispatchEvent(new Event("input"));   // autoGrow + syncSend + updateNavState → box shrinks, arrow idle
+  ta.focus();
+}
+function chatHasDraft(){
+  const ta = document.querySelector("#stage textarea.free.chat");
+  return !!(ta && ta.value.trim());
+}
+function chatStepEverSent(qid){
+  // True once the send arrow has stored a real answer for this chat step (not skipped).
+  return hasAnswer(S.answers[qid]);
+}
+// Finish on a chat step (W002 / FID_HELP_CHAT): always ends the step via Engine.next path.
+// If nothing was ever sent, record a Skip first so the step isn't absent from answers
+// (audit q2=B). If at least one question was sent, keep that answer — do not overwrite.
+function finishChatStep(qid){
+  if (chatStepEverSent(qid)) Engine.next();
+  else Engine.skip();   // sets {v:null, skipped:true} then next()
+}
+function dismissFinishConfirm(){
+  const box = document.getElementById("finishConfirm");
+  if (box) box.remove();
+  const next = document.getElementById("nextBtn");
+  if (next){ next.hidden = false; next.removeAttribute("aria-hidden"); }
+}
+// Unsaved-draft confirm: replaces Finish in the nav (in-flow), classic Save | Discard | Stay.
+// Does not float as an absolute popover over Skip/Finish — that competed with nav hierarchy.
+function showFinishConfirm(qid){
+  if (document.getElementById("finishConfirm")) return;
+  const next = document.getElementById("nextBtn");
+  if (!next) return;
+  let wrap = next.closest(".finish-wrap");
+  if (!wrap){
+    wrap = el("div","finish-wrap");
+    next.parentNode.insertBefore(wrap, next);
+    wrap.appendChild(next);
+  }
+  next.hidden = true;
+  next.setAttribute("aria-hidden","true");
+  const box = el("div","finish-confirm");
+  box.id = "finishConfirm";
+  box.setAttribute("role","group");
+  box.setAttribute("aria-label", t("finish_confirm_q"));
+  box.appendChild(el("span","finish-confirm-q", t("finish_confirm_q")));
+  const actions = el("div","finish-confirm-actions");
+  // Order (LTR): Stay → Discard → Save — Cancel/stay left, primary right (desktop convention).
+  const stay = el("button","btn link finish-stay", t("finish_confirm_stay"));
+  stay.type = "button";
+  stay.onclick = () => dismissFinishConfirm();
+  const skipFin = el("button","btn link finish-discard", t("finish_confirm_skip"));
+  skipFin.type = "button";
+  skipFin.onclick = () => finishChatStep(qid);
+  const sendFin = el("button","btn primary", t("finish_confirm_send"));
+  sendFin.type = "button";
+  sendFin.onclick = () => { emitCurrentChatAnswer(qid); Engine.next(); };
+  actions.append(stay, skipFin, sendFin);
+  box.appendChild(actions);
+  wrap.appendChild(box);
+  sendFin.focus();
 }
 // The "x" in the corner is a close/exit affordance on every page. Browsers block
 // scripted window.close() on tabs the user navigated to directly, so this can't
-// actually close the tab in most real contexts — show a toast instead, same as
-// the other not-wired-up prototype controls (chat attachments, voice input, etc.).
+// actually close the tab in most real contexts — show a toast instead for other
+// not-wired-up prototype controls.
 function closePage(){
   const app = document.getElementById("app");
   if (app.classList.contains("closing")) return;   // ignore repeat clicks mid-animation
@@ -4942,17 +5186,60 @@ function render(){
   if (!vis.includes(S.cur)) S.cur = vis[0] ?? 0;
   const pos = vis.indexOf(S.cur);
   const q = resolveStep(f.steps[S.cur]);
-  renderQuestion(stage, q, {pos, total:vis.length, hidden: f.steps.length - vis.length});
+  renderQuestion(stage, q, {pos, total:vis.length, hidden: f.steps.length - vis.length,
+                            sections: sectionProgress(f, vis, S.cur)});
   setProgress(pos, vis.length);
   enterStage();
 }
 function setProgress(pos, total, full){
-  const pct = full ? 100 : (total ? ((pos) / total) * 100 : 0);
-  document.querySelector("#progressbar>div").style.width = pct + "%";
-  document.getElementById("stepCount").textContent =
-    S.preview ? "question preview" :
-    full ? "complete" :
-    total ? `${pos+1} of ${total}` : "";
+  // Internal-only readout in the hidden header (#app>header is display:none) — the
+  // user-facing indicator is the continuous .stage-progress bar in renderQuestion().
+  // Deliberately NOT via STR: no user-facing "X of Y" text exists anymore.
+  const stepCount = document.getElementById("stepCount");
+  if (stepCount){
+    stepCount.textContent =
+      S.preview ? "question preview" :
+      full ? "complete" :
+      total ? `${pos + 1} of ${total}` : "";
+  }
+}
+
+// ── Section-grouped progress (drives the continuous bar fill %) ──
+// Fiduciary steps each carry a UNIQUE phase/eyebrow ("Stage of life", "ZIP code", ...), so
+// grouping literally "by phase" would expose ~15 units. This map merges them into 4
+// user-meaningful sections. W002/FID_SUGGEST_TOPIC form their own section so the AI-chat
+// branch gets a short path once W001 picks it. Recomputed per render from Engine.visible().
+// Steps NOT in this map (Short/Medium/Long/Adaptive) fall back to their phase label.
+const FID_SECTION_OF = {
+  W001:"about", FID_STAGE:"about", FID_MINDSET:"about", FID_PARTNER:"about", FID_AGE:"about", FID_ZIP:"about",
+  FID_INCOME:"money", FID_TAXRATE:"money", FID_SAVINGSRATE:"money", FID_ASSETS:"money", FID_HORIZON:"money",
+  FID_HOME:"home", FID_HOME_VALUE:"home", FID_MORTGAGE:"home", FID_RENT_BUY:"home", FID_PROJECTIONS:"home",
+  FID_REGISTER:"wrap", FID_OBJECTIVES:"wrap", FID_HELP_CHAT:"wrap", FID_NEXTSTEPS:"wrap",
+  W002:"ask", FID_SUGGEST_TOPIC:"ask",
+};
+function sectionKeyOf(step){
+  if (FID_SECTION_OF[step.qid]) return FID_SECTION_OF[step.qid];
+  const c = CUR[step.qid] || {}, b = BANK[step.qid] || {};
+  return step.phase || c.phase || b.bucket || "misc";
+}
+function sectionProgress(f, vis, cur){
+  // Ordered unique sections over the currently-VISIBLE path. Branch answers reshape vis.
+  const keys = [], perSection = {};
+  vis.forEach(i => {
+    const k = sectionKeyOf(f.steps[i]);
+    if (!perSection[k]){ keys.push(k); perSection[k] = []; }
+    perSection[k].push(i);
+  });
+  const curKey = sectionKeyOf(f.steps[cur]);
+  const current = Math.max(0, keys.indexOf(curKey));
+  const inSec = perSection[curKey] || [];
+  const answered = Math.max(0, inSec.indexOf(cur));   // steps completed within this section
+  const fraction = inSec.length ? answered / inSec.length : 0;
+  // Overall fill: completed sections + fractional progress in the current one → 0–100.
+  // Back decrements current/fraction via Engine.hist, so the bar animates backward same cycle.
+  const pct = keys.length ? ((current + fraction) / keys.length) * 100 : 0;
+  return { keys, counts: keys.map(k => perSection[k].length),
+           current, fraction, pct };
 }
 
 function renderQuestion(stage, q, ctx){
@@ -4968,7 +5255,37 @@ function renderQuestion(stage, q, ctx){
     bn.appendChild(x);
     stage.appendChild(bn);
   }
-  if (q.phase) stage.appendChild(el("div","phase", q.phase));
+
+  // Eyebrow row: phase left + de-emphasized Skip right (not in the bottom nav).
+  // Skip de-emphasized per business brief (don't encourage skipping) but intentionally NOT hidden — keeping it discoverable avoids a dark pattern. Final placement/copy is Amanda's call.
+  if (q.phase || !ctx.previewMode){
+    const head = el("div","stage-head");
+    if (q.phase) head.appendChild(el("div","phase", q.phase));
+    if (!ctx.previewMode){
+      const skip = el("button","stage-skip", t("nav_skip"));
+      skip.type = "button";
+      skip.setAttribute("aria-label", t("nav_skip"));
+      skip.onclick = () => Engine.skip();
+      head.appendChild(skip);
+    }
+    stage.appendChild(head);
+  }
+  // Progress under the eyebrow row — full-width fill, same render() cycle as Back so fill
+  // animates backward. Display-only; does not affect Engine answers.
+  if (!ctx.previewMode && ctx.sections && ctx.sections.keys.length){
+    const sp = ctx.sections;
+    const pct = Math.max(0, Math.min(100, sp.pct));
+    const prog = el("div","stage-progress");
+    prog.setAttribute("role","progressbar");
+    prog.setAttribute("aria-valuemin","0");
+    prog.setAttribute("aria-valuemax","100");
+    prog.setAttribute("aria-valuenow", String(Math.round(pct)));
+    prog.setAttribute("aria-label", t("progress_aria"));
+    const fill = el("div");
+    fill.style.width = pct + "%";
+    prog.appendChild(fill);
+    stage.appendChild(prog);
+  }
   if (S.settings.debug){
     const mb = el("div","meta-badges");
     mb.appendChild(el("span","badge", q.qid));
@@ -5015,11 +5332,17 @@ function renderQuestion(stage, q, ctx){
     // button now defers the chat hand-off (see its onclick below), so it reads "Next" like any
     // other step rather than implying the interview itself is done.
     const isLastStep = ctx.pos === ctx.total - 1;
-    const next = el("button","btn primary",
+    const nextLabel =
       (q.qid === "FID_SUGGEST_TOPIC" || q.qid === "FID_OBJECTIVES") ? t("nav_next") :
       (q.qid === "FID_REGISTER") ? t("nav_register") :
-      (isLastStep ? t("nav_finish") : t("nav_next")));
+      (isLastStep ? t("nav_finish") : t("nav_next"));
+    const next = el("button","btn primary");
     next.id = "nextBtn";
+    next.appendChild(el("span", null, nextLabel));
+    // Lucide chevron-right (not arrow) — only on plain Next, not Finish/Register.
+    if (nextLabel === t("nav_next")){
+      next.insertAdjacentHTML("beforeend", '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>');
+    }
     next.onclick = () => {
       if (q.qid === "FID_OBJECTIVES"){
         const picked = flat(S.answers.FID_OBJECTIVES && S.answers.FID_OBJECTIVES.v);
@@ -5041,7 +5364,11 @@ function renderQuestion(stage, q, ctx){
           return;
         }
       }
-      if (q.qid === "FID_HELP_CHAT"){ emitCurrentChatAnswer(q.qid); return; }   // was: jumpToQid("FID_END_INTERVIEW")
+      if (q.qid === "FID_HELP_CHAT"){
+        // Send arrow owns emit; Finish ends the flow (q1=A). Empty/never-sent → skip (q2=B).
+        if (chatHasDraft()){ showFinishConfirm(q.qid); return; }
+        finishChatStep(q.qid); return;
+      }
       if (q.qid === "FID_SUGGEST_TOPIC"){                                       // was: jumpToQid("FID_END_SUGGESTED")
         // Hand-off now waits for this Next click instead of firing the moment a topic bubble
         // is picked (see single() in renderInput()) — Next stays disabled until a topic is
@@ -5050,7 +5377,11 @@ function renderQuestion(stage, q, ctx){
         if (picked) emitToChatSidebar(QUESTION_TEXT[picked] || picked);
         return;
       }
-      if (q.qid === "W002"){ emitCurrentChatAnswer(q.qid); return; }            // was: falls through to Engine.next() -> FID_END_DIRECT
+      if (q.qid === "W002"){
+        // Send arrow owns emit; Finish ends the flow (q1=A). Empty/never-sent → skip (q2=B).
+        if (chatHasDraft()){ showFinishConfirm(q.qid); return; }
+        finishChatStep(q.qid); return;
+      }
       if (q.qid === "FID_NEXTSTEPS"){
         // Hand-off waits for this (Finish-labeled) click instead of firing on pick — same
         // deferred pattern as FID_SUGGEST_TOPIC. Next stays disabled until a topic is
@@ -5061,29 +5392,44 @@ function renderQuestion(stage, q, ctx){
       }
       Engine.next();
     };
-    nav.appendChild(next);                       // flush left
+
+    // Left cluster: Back, then Next/Finish (12px via .stage .nav gap), then optional secondaries.
+    if (S.hist.length){
+      const left = el("div","nav-back");
+      const back = el("button","btn secondary");
+      back.type = "button";
+      // Lucide chevron-left (not arrow-left).
+      back.insertAdjacentHTML("afterbegin", '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>');
+      back.appendChild(el("span", null, t("nav_back")));
+      back.onclick = () => Engine.back();
+      left.appendChild(back);
+      nav.appendChild(left);
+    }
+
+    // Next/Finish immediately after Back so the primary pair sits left with 12px between.
+    const forward = el("div","nav-forward");
+    // Wrap Finish so the chat-step confirm can anchor just above it (transient, not stage-width).
+    const finishWrap = el("div","finish-wrap");
+    finishWrap.appendChild(next);
+    forward.appendChild(finishWrap);
+    nav.appendChild(forward);
+
+    // Optional secondaries after the Back/Next pair (Register skip, Talk to AI Advisor).
+    const actions = el("div","nav-actions");
     if (q.qid === "FID_REGISTER"){
       // PRODUCTION: Register Now must navigate to the host app's registration process
       // (see the FID_REGISTER step comment). In this prototype it needs no special onclick case —
       // register() below only ever lets it become enabled once S.answers.FID_REGISTER
       // already holds the real "First Last (email)" string, so the default Engine.next()
       // fallthrough at the end of this handler already does the right thing. This second,
-      // white/orange-outline button is the explicit "skip registering" path.
+      // outlined button is the explicit "skip registering" path.
       const skipReg = el("button","btn suggest",t("reg_skip"));
       skipReg.type = "button";
       skipReg.onclick = () => Engine.skip();
-      nav.appendChild(skipReg);
+      actions.appendChild(skipReg);
     }
-    if (q.qid === "W002"){
-      const sug = el("button","btn primary suggest",t("nav_suggest"));
-      sug.id = "suggestBtn";
-      sug.type = "button";
-      sug.onclick = () => {
-        Engine.setAnswer("FID_SUGGEST_FLAG", true);
-        Engine.next();
-      };
-      nav.appendChild(sug);
-    }
+    // Suggest a Question used to live here as a filled primary competing with Next — moved
+    // under the W002 chat composer (see chat() renderer) so the nav keeps one filled CTA.
     if (q.qid === "FID_NEXTSTEPS" || q.qid === "FID_OBJECTIVES"){
       const advisor = el("button","btn advisor",t("nav_advisor"));
       advisor.type = "button";
@@ -5104,22 +5450,9 @@ function renderQuestion(stage, q, ctx){
         const picked = S.answers.FID_NEXTSTEPS && !S.answers.FID_NEXTSTEPS.skipped ? S.answers.FID_NEXTSTEPS.v : null;
         emitToChatSidebar(picked ? (QUESTION_TEXT[picked] || picked) : t("advisor_fallback"));
       };
-      nav.appendChild(advisor);
+      actions.appendChild(advisor);
     }
-    const right = el("div","navright");          // "Back | Skip" flush right
-    if (S.hist.length){
-      const back = el("button","btn link back");
-      back.insertAdjacentHTML("afterbegin", '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>');
-      back.appendChild(document.createTextNode(t("nav_back")));
-      back.onclick = () => Engine.back();
-      right.appendChild(back);
-      right.appendChild(el("span","navsep","|"));
-    }
-    const skip = el("button","btn link skip",t("nav_skip"));
-    skip.type = "button";
-    skip.onclick = () => Engine.skip();
-    right.appendChild(skip);
-    nav.appendChild(right);
+    if (actions.childNodes.length) nav.appendChild(actions);
   }
   stage.appendChild(nav);
   updateNavState();
@@ -5129,13 +5462,16 @@ function updateNavState(){
   if (!btn) return;
   const q = resolveStep(flow().steps[S.cur]);
   if (q.renderer === "chat"){
-    // Chat steps: Next tracks the BOX, not the stored answer — the answer retains the
-    // last-sent question (so it appears in later hand-off summaries), while Next/Send
-    // disable whenever the box is empty (e.g., right after a send clears it).
-    const ta = document.querySelector("#stage textarea.free.chat");
-    btn.disabled = !(ta && ta.value.trim());
+    // Chat steps are optional: Finish/Next is always enabled and does NOT track the box.
+    // Typing only lights the in-input send arrow. When a draft is present, Finish softens
+    // to outlined (.finish-secondary) so the send arrow is the single filled primary.
+    const hasDraft = chatHasDraft();
+    btn.disabled = false;
+    btn.classList.toggle("finish-secondary", hasDraft);
+    if (!hasDraft) dismissFinishConfirm();
   } else {
     btn.disabled = !hasAnswer(S.answers[q.qid]);
+    btn.classList.remove("finish-secondary");
   }
   const sug = document.getElementById("suggestBtn");
   if (sug) sug.disabled = false;   // full blue from the start, regardless of chat content
@@ -5360,7 +5696,7 @@ function renderInput(root, q){
 
         if (!validZip && !outsideUS){
           // ZIP hasn't been entered (or was skipped) — ask again right here.
-          wrap.appendChild(el("p","notice-orange", t("taxrate_missing_zip")));
+          wrap.appendChild(el("p","notice-info", t("taxrate_missing_zip")));
           const row = el("div","zip-row");
           const inp = el("input","textline zip");
           inp.placeholder = t("zip_placeholder");
@@ -5376,7 +5712,7 @@ function renderInput(root, q){
           row.appendChild(inp);
           wrap.appendChild(row);
         } else if (outsideUS){
-          wrap.appendChild(el("p","notice-orange", t("taxrate_outside")));
+          wrap.appendChild(el("p","notice-info", t("taxrate_outside")));
         }
 
         const total = federal + obamacare + statePct + localPct;
@@ -5623,16 +5959,15 @@ function renderInput(root, q){
       send.disabled = true;
       send.onclick = () => {
         if (send.disabled) return;
-        if (q.qid === "FID_HELP_CHAT"){ emitCurrentChatAnswer(q.qid); return; }   // was: jumpToQid("FID_END_INTERVIEW")
-        if (q.qid === "W002"){ emitCurrentChatAnswer(q.qid); return; }            // was: falls through to Engine.next() -> FID_END_DIRECT
+        // In-input arrow is the ONLY send path — Finish never reaches emitCurrentChatAnswer.
+        if (q.qid === "FID_HELP_CHAT" || q.qid === "W002"){ emitCurrentChatAnswer(q.qid); return; }
         Engine.next();
       };
 
       const autoGrow = () => { ta.style.height = "auto"; ta.style.height = Math.min(ta.scrollHeight, 260) + "px"; };
       const syncSend = () => { const has = !!ta.value.trim(); send.disabled = !has; send.classList.toggle("ready", has); };
-      // Typing no longer writes into S.answers — the draft is DOM-only; only SENDING stores
-      // it (as the last-sent question, via emitCurrentChatAnswer). Next's enabled state on
-      // chat steps reads the box directly (see updateNavState's chat branch).
+      // Typing is DOM-only until send; Finish stays enabled and only softens visually
+      // (see updateNavState chat branch) — it does not light up as a second filled primary.
       ta.oninput = () => { autoGrow(); syncSend(); updateNavState(); };
       // Enter submits (same as the send icon); Shift+Enter still makes a newline. The global
       // Enter-presses-Next handler deliberately ignores textareas, so this is the chat boxes'
@@ -5643,6 +5978,20 @@ function renderInput(root, q){
       icons.append(plus, mic, send);
       wrap.append(ta, icons);
       root.appendChild(wrap);
+      // Suggest is a content action that feeds this chat — keep it under the composer, not
+      // in the nav row next to Next/Finish (see Amanda nav redesign). Lucide sparkles icon.
+      if (q.qid === "W002"){
+        const sug = el("button","btn suggest-inline","");
+        sug.id = "suggestBtn";
+        sug.type = "button";
+        sug.insertAdjacentHTML("afterbegin", '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>');
+        sug.appendChild(document.createTextNode(t("nav_suggest")));
+        sug.onclick = () => {
+          Engine.setAnswer("FID_SUGGEST_FLAG", true);
+          Engine.next();
+        };
+        root.appendChild(sug);
+      }
       autoGrow();
       // Autofocusing on a fixed timer used to fight the reel transition: focusing a textarea
       // mid-scroll can make the browser auto-scroll it into view, colliding with our own
@@ -5668,7 +6017,7 @@ function renderInput(root, q){
       // regardless of language, since it's compared elsewhere (isOutside above, and
       // outsideUS in the FID_TAXRATE info() renderer).
       lbl.append(cb, t("zip_outside_label"));
-      const notice = el("div","notice-orange", t("zip_outside_notice"));
+      const notice = el("div","notice-info", t("zip_outside_notice"));
       notice.style.display = isOutside ? "" : "none";
       const apply = () => {
         if (cb.checked){
