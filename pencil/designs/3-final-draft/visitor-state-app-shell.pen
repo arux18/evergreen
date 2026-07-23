@@ -111382,16 +111382,217 @@
                   ]
                 },
                 {
-                  "id": "XQFcF",
-                  "type": "ref",
-                  "ref": "y:bMlax",
-                  "name": "registerBtn",
+                  "type": "frame",
+                  "id": "dRegGrp",
+                  "name": "registerGroup",
                   "width": "fill_container",
-                  "descendants": {
-                    "y:sFmUs": {
-                      "content": "Register"
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "id": "XQFcF",
+                      "type": "ref",
+                      "ref": "y:bMlax",
+                      "name": "registerBtn",
+                      "width": "fill_container",
+                      "descendants": {
+                        "y:sFmUs": {
+                          "content": "Register"
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "dRegCap",
+                      "name": "betaCaption",
+                      "width": "fill_container",
+                      "fill": "$nav.text.secondary",
+                      "content": "Free during beta",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
                     }
-                  }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dBenefits",
+                  "name": "benefits",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dBenHdg",
+                      "name": "benefitsHeading",
+                      "width": "fill_container",
+                      "fill": "$nav.text.primary",
+                      "content": "Save your progress",
+                      "fontFamily": "Noto Serif",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dBenList",
+                      "name": "benefitsList",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "dRow1",
+                          "name": "benefitRow",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "start",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "dChk1",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$G:accent.default"
+                            },
+                            {
+                              "type": "text",
+                              "id": "dTxt1",
+                              "width": "fill_container",
+                              "fill": "$nav.text.primary",
+                              "content": "Pick up where you left off",
+                              "lineHeight": 1.4,
+                              "fontFamily": "Heebo",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "dRow2",
+                          "name": "benefitRow",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "start",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "dChk2",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$G:accent.default"
+                            },
+                            {
+                              "type": "text",
+                              "id": "dTxt2",
+                              "width": "fill_container",
+                              "fill": "$nav.text.primary",
+                              "content": "Connect your accounts for always-current advice",
+                              "lineHeight": 1.4,
+                              "fontFamily": "Heebo",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "dRow3",
+                          "name": "benefitRow",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "start",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "dChk3",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$G:accent.default"
+                            },
+                            {
+                              "type": "text",
+                              "id": "dTxt3",
+                              "width": "fill_container",
+                              "fill": "$nav.text.primary",
+                              "content": "Build your personalized dashboard",
+                              "lineHeight": 1.4,
+                              "fontFamily": "Heebo",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dDivider",
+                  "name": "divider",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$nav.border"
+                },
+                {
+                  "type": "frame",
+                  "id": "dSecurity",
+                  "name": "security",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "dSecRow",
+                      "name": "secureRow",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "dSecIcon",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "lock",
+                          "library": "lucide",
+                          "fill": "$nav.text.primary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "dSecTitle",
+                          "fill": "$nav.text.primary",
+                          "content": "Secure. Private. Protected.",
+                          "fontFamily": "Heebo",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "dSecBody",
+                      "name": "secureBody",
+                      "width": "fill_container",
+                      "fill": "$nav.text.secondary",
+                      "content": "Your data is encrypted, read-only, and never sold.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Heebo",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
                 }
               ]
             }
@@ -112051,16 +112252,217 @@
                   ]
                 },
                 {
-                  "id": "oM97M",
-                  "type": "ref",
-                  "ref": "y:bMlax",
-                  "name": "registerBtn",
+                  "type": "frame",
+                  "id": "mRegGrp",
+                  "name": "registerGroup",
                   "width": "fill_container",
-                  "descendants": {
-                    "y:sFmUs": {
-                      "content": "Register"
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "id": "oM97M",
+                      "type": "ref",
+                      "ref": "y:bMlax",
+                      "name": "registerBtn",
+                      "width": "fill_container",
+                      "descendants": {
+                        "y:sFmUs": {
+                          "content": "Register"
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "mRegCap",
+                      "name": "betaCaption",
+                      "width": "fill_container",
+                      "fill": "$nav.text.secondary",
+                      "content": "Free during beta",
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
                     }
-                  }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mBenefits",
+                  "name": "benefits",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mBenHdg",
+                      "name": "benefitsHeading",
+                      "width": "fill_container",
+                      "fill": "$nav.text.primary",
+                      "content": "Save your progress",
+                      "fontFamily": "Noto Serif",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "mBenList",
+                      "name": "benefitsList",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "mRow1",
+                          "name": "benefitRow",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "start",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "mChk1",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$G:accent.default"
+                            },
+                            {
+                              "type": "text",
+                              "id": "mTxt1",
+                              "width": "fill_container",
+                              "fill": "$nav.text.primary",
+                              "content": "Pick up where you left off",
+                              "lineHeight": 1.4,
+                              "fontFamily": "Heebo",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "mRow2",
+                          "name": "benefitRow",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "start",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "mChk2",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$G:accent.default"
+                            },
+                            {
+                              "type": "text",
+                              "id": "mTxt2",
+                              "width": "fill_container",
+                              "fill": "$nav.text.primary",
+                              "content": "Connect your accounts for always-current advice",
+                              "lineHeight": 1.4,
+                              "fontFamily": "Heebo",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "mRow3",
+                          "name": "benefitRow",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "start",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "mChk3",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$G:accent.default"
+                            },
+                            {
+                              "type": "text",
+                              "id": "mTxt3",
+                              "width": "fill_container",
+                              "fill": "$nav.text.primary",
+                              "content": "Build your personalized dashboard",
+                              "lineHeight": 1.4,
+                              "fontFamily": "Heebo",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mDivider",
+                  "name": "divider",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$nav.border"
+                },
+                {
+                  "type": "frame",
+                  "id": "mSecurity",
+                  "name": "security",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "mSecRow",
+                      "name": "secureRow",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "mSecIcon",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "lock",
+                          "library": "lucide",
+                          "fill": "$nav.text.primary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "mSecTitle",
+                          "fill": "$nav.text.primary",
+                          "content": "Secure. Private. Protected.",
+                          "fontFamily": "Heebo",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "mSecBody",
+                      "name": "secureBody",
+                      "width": "fill_container",
+                      "fill": "$nav.text.secondary",
+                      "content": "Your data is encrypted, read-only, and never sold.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Heebo",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
                 }
               ]
             }
