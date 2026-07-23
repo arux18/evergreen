@@ -1,0 +1,537 @@
+{
+  "version": "2.14",
+  "children": [
+    {
+      "type": "frame",
+      "id": "wjaPanel",
+      "x": 0,
+      "y": 0,
+      "name": "Welcome — Just Ask (Center Panel)",
+      "clip": true,
+      "width": 912,
+      "height": 820,
+      "fill": "$G:colors-background-light",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "padding": [40, 48, 24, 48],
+      "children": [
+        {
+          "type": "frame",
+          "id": "wjaHero",
+          "name": "Hero",
+          "width": 600,
+          "layout": "vertical",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "wjaEyebrow",
+              "name": "Eyebrow",
+              "width": "fit_content",
+              "fill": "$G:color-blue-100",
+              "cornerRadius": "$G:radius-full",
+              "padding": [6, 14],
+              "layout": "horizontal",
+              "alignItems": "center",
+              "gap": "$G:spacing-2xs",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wjaOrb",
+                  "name": "Orb",
+                  "width": 14,
+                  "height": 14,
+                  "cornerRadius": "$G:radius-full",
+                  "fill": "$G:color-blue-600",
+                  "layout": "none"
+                },
+                {
+                  "type": "text",
+                  "id": "wjaEyebrowText",
+                  "name": "Eyebrow Label",
+                  "fill": "$G:colors-text-action",
+                  "content": "Your AI financial advisor",
+                  "textGrowth": "auto",
+                  "fontFamily": "$G:font-family-primary",
+                  "fontSize": "$G:typo-primary-xs-regular-font-size",
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "wjaEyebrowDivider",
+                  "name": "Divider",
+                  "width": 1,
+                  "height": 12,
+                  "fill": "$G:color-blue-300",
+                  "layout": "none"
+                },
+                {
+                  "type": "text",
+                  "id": "wjaBeta",
+                  "name": "Beta",
+                  "fill": "$G:colors-text-action",
+                  "content": "Beta",
+                  "textGrowth": "auto",
+                  "letterSpacing": 0.5,
+                  "fontFamily": "$G:font-family-primary",
+                  "fontSize": "$G:typo-primary-xs-regular-font-size",
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wjaHeadlineWrap",
+              "name": "Headline Wrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "alignItems": "center",
+              "padding": [26, 0, 0, 0],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wjaHeadline1",
+                  "name": "Headline Line 1",
+                  "fill": "$G:colors-text-header",
+                  "content": "Your money,",
+                  "textAlign": "center",
+                  "textGrowth": "auto",
+                  "lineHeight": 1.05,
+                  "fontFamily": "$G:font-family-secondary",
+                  "fontSize": "$G:typo-secondary-4xl-regular-font-size",
+                  "fontWeight": "400"
+                },
+                {
+                  "type": "frame",
+                  "id": "wjaHeadline2",
+                  "name": "Headline Line 2",
+                  "width": "fit_content",
+                  "layout": "horizontal",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "gap": 0,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wjaHeadline2a",
+                      "name": "in",
+                      "fill": "$G:colors-text-header",
+                      "content": "in ",
+                      "textGrowth": "auto",
+                      "lineHeight": 1.05,
+                      "fontFamily": "$G:font-family-secondary",
+                      "fontSize": "$G:typo-secondary-4xl-regular-font-size",
+                      "fontWeight": "400"
+                    },
+                    {
+                      "type": "text",
+                      "id": "wjaHeadline2b",
+                      "name": "plain English.",
+                      "fill": "$G:colors-text-action",
+                      "content": "plain English.",
+                      "textGrowth": "auto",
+                      "lineHeight": 1.05,
+                      "fontStyle": "italic",
+                      "fontFamily": "$G:font-family-secondary",
+                      "fontSize": "$G:typo-secondary-4xl-regular-font-size",
+                      "fontWeight": "400"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wjaSubheadWrap",
+              "name": "Subhead Wrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "alignItems": "center",
+              "padding": [20, 0, 0, 0],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wjaSubhead",
+                  "name": "Subhead",
+                  "fill": "$G:colors-text-meta",
+                  "content": "Ask anything about your finances and get tailored answers grounded in your situation. No account linking required to start — just ask.",
+                  "textAlign": "center",
+                  "textGrowth": "fixed-width",
+                  "width": 466,
+                  "lineHeight": 1.55,
+                  "fontFamily": "$G:font-family-primary",
+                  "fontSize": "$G:typo-primary-base-regular-font-size",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wjaLabelWrap",
+              "name": "Prompt Label Wrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "alignItems": "center",
+              "padding": [38, 0, 0, 0],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wjaPromptLabel",
+                  "name": "Prompt Label",
+                  "fill": "$G:colors-text-meta",
+                  "content": "FOR EXAMPLE, YOU CAN ASK",
+                  "textAlign": "center",
+                  "textGrowth": "auto",
+                  "letterSpacing": 1,
+                  "fontFamily": "$G:font-family-primary",
+                  "fontSize": "$G:typo-primary-2xs-regular-font-size",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wjaPromptsWrap",
+              "name": "Prompts Wrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": "$G:spacing-xs",
+              "padding": [14, 0, 0, 0],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wjaPromptRow1",
+                  "name": "Prompt Row 1",
+                  "width": "fill_container",
+                  "layout": "horizontal",
+                  "gap": "$G:spacing-xs",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "wjaPrompt1",
+                      "name": "Prompt Card 1",
+                      "width": "fill_container",
+                      "fill": "$G:colors-background-surface",
+                      "cornerRadius": "$G:radius-xs",
+                      "stroke": "$G:colors-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "padding": [14, 16],
+                      "layout": "horizontal",
+                      "alignItems": "center",
+                      "gap": "$G:spacing-xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "wjaQ1",
+                          "name": "Q Icon",
+                          "width": 26,
+                          "height": 26,
+                          "fill": "$G:color-blue-100",
+                          "cornerRadius": "$G:radius-2xs",
+                          "layout": "vertical",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "wjaQ1t",
+                              "name": "?",
+                              "fill": "$G:colors-text-action",
+                              "content": "?",
+                              "textGrowth": "auto",
+                              "fontFamily": "$G:font-family-primary",
+                              "fontSize": "$G:typo-primary-sm-regular-font-size",
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "wjaPrompt1t",
+                          "name": "Prompt 1 Text",
+                          "fill": "$G:colors-text-meta",
+                          "content": "When should I exercise my RSUs?",
+                          "textGrowth": "auto",
+                          "fontFamily": "$G:font-family-primary",
+                          "fontSize": "$G:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wjaPrompt2",
+                      "name": "Prompt Card 2",
+                      "width": "fill_container",
+                      "fill": "$G:colors-background-surface",
+                      "cornerRadius": "$G:radius-xs",
+                      "stroke": "$G:colors-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "padding": [14, 16],
+                      "layout": "horizontal",
+                      "alignItems": "center",
+                      "gap": "$G:spacing-xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "wjaQ2",
+                          "name": "Q Icon",
+                          "width": 26,
+                          "height": 26,
+                          "fill": "$G:color-blue-100",
+                          "cornerRadius": "$G:radius-2xs",
+                          "layout": "vertical",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "wjaQ2t",
+                              "name": "?",
+                              "fill": "$G:colors-text-action",
+                              "content": "?",
+                              "textGrowth": "auto",
+                              "fontFamily": "$G:font-family-primary",
+                              "fontSize": "$G:typo-primary-sm-regular-font-size",
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "wjaPrompt2t",
+                          "name": "Prompt 2 Text",
+                          "fill": "$G:colors-text-meta",
+                          "content": "How do I plan for early retirement?",
+                          "textGrowth": "auto",
+                          "fontFamily": "$G:font-family-primary",
+                          "fontSize": "$G:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wjaPromptRow2",
+                  "name": "Prompt Row 2",
+                  "width": "fill_container",
+                  "layout": "horizontal",
+                  "gap": "$G:spacing-xs",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "wjaPrompt3",
+                      "name": "Prompt Card 3",
+                      "width": "fill_container",
+                      "fill": "$G:colors-background-surface",
+                      "cornerRadius": "$G:radius-xs",
+                      "stroke": "$G:colors-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "padding": [14, 16],
+                      "layout": "horizontal",
+                      "alignItems": "center",
+                      "gap": "$G:spacing-xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "wjaQ3",
+                          "name": "Q Icon",
+                          "width": 26,
+                          "height": 26,
+                          "fill": "$G:color-blue-100",
+                          "cornerRadius": "$G:radius-2xs",
+                          "layout": "vertical",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "wjaQ3t",
+                              "name": "?",
+                              "fill": "$G:colors-text-action",
+                              "content": "?",
+                              "textGrowth": "auto",
+                              "fontFamily": "$G:font-family-primary",
+                              "fontSize": "$G:typo-primary-sm-regular-font-size",
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "wjaPrompt3t",
+                          "name": "Prompt 3 Text",
+                          "fill": "$G:colors-text-meta",
+                          "content": "What's the best strategy for my 401(k)?",
+                          "textGrowth": "auto",
+                          "fontFamily": "$G:font-family-primary",
+                          "fontSize": "$G:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wjaPrompt4",
+                      "name": "Prompt Card 4",
+                      "width": "fill_container",
+                      "fill": "$G:colors-background-surface",
+                      "cornerRadius": "$G:radius-xs",
+                      "stroke": "$G:colors-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "padding": [14, 16],
+                      "layout": "horizontal",
+                      "alignItems": "center",
+                      "gap": "$G:spacing-xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "wjaQ4",
+                          "name": "Q Icon",
+                          "width": 26,
+                          "height": 26,
+                          "fill": "$G:color-blue-100",
+                          "cornerRadius": "$G:radius-2xs",
+                          "layout": "vertical",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "wjaQ4t",
+                              "name": "?",
+                              "fill": "$G:colors-text-action",
+                              "content": "?",
+                              "textGrowth": "auto",
+                              "fontFamily": "$G:font-family-primary",
+                              "fontSize": "$G:typo-primary-sm-regular-font-size",
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "wjaPrompt4t",
+                          "name": "Prompt 4 Text",
+                          "fill": "$G:colors-text-meta",
+                          "content": "Should I rent or buy in today's market?",
+                          "textGrowth": "auto",
+                          "fontFamily": "$G:font-family-primary",
+                          "fontSize": "$G:typo-primary-sm-regular-font-size",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wjaCueWrap",
+              "name": "Cue Wrap",
+              "width": "fill_container",
+              "layout": "horizontal",
+              "justifyContent": "end",
+              "alignItems": "center",
+              "gap": "$G:spacing-2xs",
+              "padding": [28, 0, 0, 0],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wjaCueText",
+                  "name": "Cue Text",
+                  "fill": "$G:colors-text-action",
+                  "content": "Type your question in the chat",
+                  "textGrowth": "auto",
+                  "fontFamily": "$G:font-family-primary",
+                  "fontSize": "$G:typo-primary-md-semibold-font-size",
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "icon",
+                  "id": "wjaCueArrow",
+                  "name": "Cue Arrow",
+                  "width": 22,
+                  "height": 22,
+                  "icon": "arrow-right",
+                  "library": "lucide",
+                  "fill": "$G:colors-icons-action"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wjaSecurityWrap",
+              "name": "Security Wrap",
+              "width": "fill_container",
+              "layout": "horizontal",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "gap": "$G:spacing-2xs",
+              "padding": [24, 0, 0, 0],
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "wjaLock",
+                  "name": "Lock",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "lock",
+                  "library": "lucide",
+                  "fill": "$G:colors-icons-meta"
+                },
+                {
+                  "type": "text",
+                  "id": "wjaSecurityText",
+                  "name": "Security Text",
+                  "fill": "$G:colors-text-meta",
+                  "content": "Your financial data stays private — and it's always yours.",
+                  "textGrowth": "auto",
+                  "fontFamily": "$G:font-family-primary",
+                  "fontSize": "$G:typo-primary-xs-regular-font-size",
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wjaDisclaimerWrap",
+              "name": "Disclaimer Wrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "alignItems": "center",
+              "padding": [56, 0, 0, 0],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wjaDisclaimer",
+                  "name": "Disclaimer",
+                  "fill": "$G:colors-text-meta",
+                  "content": "Evergreen.ai provides information to help you understand your finances. It is not a substitute for professional financial advice.",
+                  "textAlign": "center",
+                  "textGrowth": "fixed-width",
+                  "width": 560,
+                  "lineHeight": 1.5,
+                  "fontFamily": "$G:font-family-primary",
+                  "fontSize": "$G:typo-primary-2xs-regular-font-size",
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "imports": {
+    "G": "../../design-system/in-progress/hemlock-library.lib.pen"
+  }
+}
