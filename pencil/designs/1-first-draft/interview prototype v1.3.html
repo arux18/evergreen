@@ -492,7 +492,7 @@ html[data-theme="dark"] body{
   }
   /* Chat step: when the box has unsent text the send arrow is the only filled primary —
      Finish softens to outlined so there is never two competing filled CTAs on one screen.
-     While the finish-send confirm dialog is open, Send & finish is the single filled primary. */
+     While the finish-send confirm dialog is open, Send & Finish is the single filled primary. */
   .btn.primary.finish-secondary{
     background:transparent; color:var(--accent-text); border:1.5px solid var(--accent); box-shadow:none;
   }
@@ -646,7 +646,7 @@ html[data-theme="dark"] body{
 
   /* ── interview close (ghost X) ───────────── */
   /* Inset equals page side gutter (--margin) so top/right edges match content margins —
-     on mobile the old 14px sat on the bezel and collided with .stage-skip ("Skip this question"). */
+     on mobile the old 14px sat on the bezel and collided with .stage-skip ("Skip This Question"). */
   #interviewClose{
     position:absolute; top:var(--margin); right:var(--margin); z-index:5;
     width:32px; height:32px; display:grid; place-items:center;
@@ -1001,7 +1001,7 @@ html[data-theme="dark"] body{
    3. Suggest a Question moved under the W002 chat composer; same FID_SUGGEST_FLAG + next().
    4. Send vs Finish on chat steps (W002 / FID_HELP_CHAT): in-input arrow alone emits to
       sidebar; Finish ends the flow via Engine.next()/skip (q1=A) and does not emit — with
-      unsent draft, shared #confirmDialog modal ("Send & finish" / "Discard & finish";
+      unsent draft, shared #confirmDialog modal ("Send & Finish" / "Discard & Finish";
       Esc / backdrop = keep editing). Same shell as leave-interview confirm.
       Original Finish emitted and stayed. Empty/never-sent Finish records Engine.skip()
       {v:null, skipped:true} so the step is not absent from answers (q2=B); if a question was
@@ -1009,12 +1009,12 @@ html[data-theme="dark"] body{
    5. Continuous progress bar under the eyebrow row (.stage-head); full content width,
       section-based fill %. Replaces the original hidden header step-count bar.
    8. Skip de-emphasized: removed from bottom nav (Back + Next/Finish only); quiet
-      top-right text link on the eyebrow row ("Skip this question" / "Omitir esta pregunta" via STR nav_skip);
+      top-right text link on the eyebrow row ("Skip This Question" / "Omitir Esta Pregunta" via STR nav_skip);
       same Engine.skip() handler. Intentionally still visible (not a dark pattern).
    6. Internal tooling (#panel, #bottombar/#modeToggles) hidden unless ?internal=1; theme
       follows prefers-color-scheme when not internal; #demoThemeToggle is review-only.
    7. Close control is #interviewClose — mid-flow confirms via shared #confirmDialog
-      (Keep going / Leave); on the finished/closing screen it closes immediately.
+      (Keep Going / Leave); on the finished/closing screen it closes immediately.
    ═══════════════════════════════════════════════════════════════════════════════ */
 /* ═══════════════════ DATA ═══════════════════ */
 const DATA = {
@@ -3922,7 +3922,7 @@ const CUR  = {}; DATA.curated.forEach(c => CUR[c.qid] = c);
 // (Not in DATA.bank, so it stays out of the bank table and the generator.)
 BANK["W001"] = {
   id:"W001", bucket:"MONEY QUESTIONS?", cat:"Welcome",  // bucket renders as the eyebrow
-  q:"We’d like to get to know you.",                                            // headline (Noto Serif)
+  q:"We’d like to get to know you",                                            // headline (Noto Serif)
   sub:null,
   opts:["OK, just ask","I have a specific question"],
   unlocks:null, input:"Bubbles (single)", sens:"Low", opt:"Optional",
@@ -3933,7 +3933,7 @@ const WELCOME_STEP = { qid:"W001" };
 // Chat step — shown only when the welcome answer is "I have a specific question".
 BANK["W002"] = {
   id:"W002", bucket:"ASK YOUR AI ADVISOR", cat:"Welcome",   // bucket renders as the eyebrow
-  q:"Fire away.",
+  q:"Fire away",
   sub:null, opts:null, unlocks:null, input:"Chat", sens:"Low", opt:"Optional",
   persona:"All", pri:null, rank:null, tier:""
 };
@@ -4140,11 +4140,11 @@ const STR = {
   nav_next:           {en:"Next", es:"Siguiente"},
   nav_finish:         {en:"Finish", es:"Finalizar"},
   nav_back:           {en:"Back", es:"Atrás"},
-  nav_skip:           {en:"Skip this question", es:"Omitir esta pregunta"},
+  nav_skip:           {en:"Skip This Question", es:"Omitir Esta Pregunta"},
   nav_suggest:        {en:"Suggest a Question", es:"Sugerir una pregunta"},
   progress_aria:      {en:"Interview progress", es:"Progreso de la entrevista"},
   nav_advisor:        {en:"Talk to AI Advisor", es:"Hablar con el asesor de IA"},
-  advisor_fallback:   {en:"I'd like to talk to an advisor about my finances.", es:"Me gustaría hablar con un asesor sobre mis finanzas."},
+  advisor_fallback:   {en:"I'd like to talk to an advisor about my finances", es:"Me gustaría hablar con un asesor sobre mis finanzas"},
   chat_head:          {en:"AI Advisor", es:"Asesor de IA"},
   chat_tag:           {en:"simulated host chat sidebar", es:"barra de chat simulada del host"},
   chat_close:         {en:"Close", es:"Cerrar"},
@@ -4153,18 +4153,18 @@ const STR = {
   closeX_title:       {en:"Close", es:"Cerrar"},
   // Leave-interview confirm (X) — distinct from per-question skip (nav_skip).
   leave_title:        {en:"Leave the interview?", es:"¿Salir de la entrevista?"},
-  leave_body:         {en:"Your answers so far won't be saved.", es:"Tus respuestas no se guardarán."},
-  leave_keep:         {en:"Keep going", es:"Continuar"},
+  leave_body:         {en:"Your answers so far won't be saved", es:"Tus respuestas no se guardarán"},
+  leave_keep:         {en:"Keep Going", es:"Continuar"},
   leave_quit:         {en:"Leave", es:"Salir"},
-  chat_nudge:         {en:"Talk to your AI Advisor in the message box in the lower right-hand corner of the screen.", es:"Habla con tu asesor de IA en el cuadro de mensajes en la esquina inferior derecha de la pantalla."},
+  chat_nudge:         {en:"Talk to your AI Advisor in the message box in the lower right-hand corner of the screen", es:"Habla con tu asesor de IA en el cuadro de mensajes en la esquina inferior derecha de la pantalla"},
   nav_register:       {en:"Register Now", es:"Regístrate ahora"},
   // Register page (FID_REGISTER)
-  reg_copy:           {en:"Register so we can recognize you and save your information for your next visit. All we need is your name and email. This step is optional.", es:"Regístrate para que podamos reconocerte y guardar tu información para tu próxima visita. Solo necesitamos tu nombre y tu correo electrónico. Este paso es opcional."},
+  reg_copy:           {en:"Register so we can recognize you and save your information for your next visit All we need is your name and email This step is optional", es:"Regístrate para que podamos reconocerte y guardar tu información para tu próxima visita Solo necesitamos tu nombre y tu correo electrónico Este paso es opcional"},
   reg_first:          {en:"First name", es:"Nombre"},
   reg_last:           {en:"Last name", es:"Apellido"},
   reg_email:          {en:"Email", es:"Correo electrónico"},
-  reg_error:          {en:"Please enter a valid email address.", es:"Introduce un correo electrónico válido."},
-  reg_error_first:    {en:"Please enter your first name.", es:"Introduce tu nombre."},
+  reg_error:          {en:"Please enter a valid email address", es:"Introduce un correo electrónico válido"},
+  reg_error_first:    {en:"Please enter your first name", es:"Introduce tu nombre"},
   // ZIP entry (FID_ZIP) and the ZIP prompt embedded in the tax-rate page (FID_TAXRATE)
   zip_placeholder:    {en:"Zip code", es:"Código postal"},
   zip_outside_label:  {en:"Outside the U.S.", es:"Fuera de EE. UU."},
@@ -4173,8 +4173,8 @@ const STR = {
   // ZIP-dependent notices. stateLabel/localLabel themselves (the real state/city names
   // computeTaxRates() returns once a valid ZIP is entered) are left in English — the
   // underlying 50-state/local tax dataset isn't translated, only this page's own chrome is.
-  taxrate_missing_zip:{en:"State and Local taxes are shown as 0.0% until you enter your ZIP code — enter it below.", es:"Los impuestos estatales y locales se muestran como 0.0% hasta que ingreses tu código postal. Ingrésalo a continuación."},   // only when ZIP wasn't answered yet and we still offer an on-page field
-  taxrate_skipped_zip:{en:"State and Local taxes are shown as 0.0% because you skipped the ZIP code step.", es:"Los impuestos estatales y locales se muestran como 0.0% porque omitiste el paso del código postal."},
+  taxrate_missing_zip:{en:"State and Local taxes are shown as 0.0% until you enter your ZIP code — enter it below", es:"Los impuestos estatales y locales se muestran como 0.0% hasta que ingreses tu código postal Ingrésalo a continuación"},   // only when ZIP wasn't answered yet and we still offer an on-page field
+  taxrate_skipped_zip:{en:"State and Local taxes are shown as 0.0% because you skipped the ZIP code step", es:"Los impuestos estatales y locales se muestran como 0.0% porque omitiste el paso del código postal"},
   taxrate_outside:    {en:"We are a registered investment advisor in the United States and do not currently advise people who reside outside of the U.S.", es:"Somos un asesor de inversiones registrado en los Estados Unidos y actualmente no asesoramos a personas que residen fuera de EE. UU."},   // same RIA wording as zip_outside_notice (kept as its own key in case the two pages ever diverge); the State/Local rows below it stay visible at 0.0%
   taxrate_federal:    {en:"Federal", es:"Federal"},
   taxrate_obamacare:  {en:"Obamacare tax", es:"Impuesto de Obamacare"},
@@ -4186,12 +4186,12 @@ const STR = {
   chat_add_file:      {en:"Add a file", es:"Adjuntar un archivo"},
   chat_speak:         {en:"Speak instead of typing", es:"Hablar en lugar de escribir"},
   chat_ask:           {en:"Ask", es:"Preguntar"},
-  chat_attach_toast:  {en:"Attachments aren't wired up in this prototype.", es:"Los archivos adjuntos no están habilitados en este prototipo."},
-  chat_voice_toast:   {en:"Voice input isn't wired up in this prototype.", es:"La entrada de voz no está habilitada en este prototipo."},
+  chat_attach_toast:  {en:"Attachments aren't wired up in this prototype", es:"Los archivos adjuntos no están habilitados en este prototipo"},
+  chat_voice_toast:   {en:"Voice input isn't wired up in this prototype", es:"La entrada de voz no está habilitada en este prototipo"},
   finish_confirm_q:   {en:"Send your question first?", es:"¿Enviar tu pregunta primero?"},
-  finish_confirm_body:{en:"You typed a question but haven't sent it.", es:"Escribiste una pregunta pero no la has enviado."},
-  finish_confirm_send:{en:"Send & finish", es:"Enviar y finalizar"},
-  finish_confirm_skip:{en:"Discard & finish", es:"Descartar y finalizar"},
+  finish_confirm_body:{en:"You typed a question but haven't sent it", es:"Escribiste una pregunta pero no la has enviado"},
+  finish_confirm_send:{en:"Send & Finish", es:"Enviar y Finalizar"},
+  finish_confirm_skip:{en:"Discard & Finish", es:"Descartar y Finalizar"},
   // Long-term projections (FID_PROJECTIONS) — the six slider labels, chart legend, and the
   // chart's own "Retire" line label
   proj_current_age:   {en:"Current age", es:"Edad actual"},
@@ -4204,8 +4204,8 @@ const STR = {
   proj_retire_label:  {en:"Retire", es:"Jubilación"},
   // Fiduciary closing hand-off screen (shown when a final step is skipped — see renderFinish())
   closing_eyebrow:    {en:"LET'S GET STARTED", es:"EMPECEMOS"},
-  closing_headline:   {en:"Talk to your AI advisor.", es:"Habla con tu asesor de IA."},
-  closing_copy:       {en:"Enter your question in the message box on the lower right corner.", es:"Escribe tu pregunta en el cuadro de mensajes en la esquina inferior derecha."},
+  closing_headline:   {en:"Talk to your AI advisor", es:"Habla con tu asesor de IA"},
+  closing_copy:       {en:"Enter your question in the message box on the lower right corner", es:"Escribe tu pregunta en el cuadro de mensajes en la esquina inferior derecha"},
   // Register page's secondary skip button (plain "Next", no arrow — sits beside "Register Now")
   reg_skip:           {en:"Next", es:"Siguiente"},   // unused — FID_REGISTER decline is corner Skip
   // Chat-sidebar answer summary + shared answer-state values
@@ -4214,8 +4214,8 @@ const STR = {
   val_unseen:         {en:"Unseen", es:"No vista"},
   // Generic finish/summary screen (Short/Medium/Long/Adaptive)
   fin_eyebrow:        {en:"All done", es:"Todo listo"},
-  fin_headline:       {en:"That’s everything we need to get started.", es:"Eso es todo lo que necesitamos para comenzar."},
-  fin_subhead:        {en:"Here’s what you shared. In the real product this would now personalize the dashboard and your advisor’s first answer.", es:"Esto es lo que compartiste. En el producto real, esto personalizaría el panel y la primera respuesta de tu asesor."},
+  fin_headline:       {en:"That’s everything we need to get started", es:"Eso es todo lo que necesitamos para comenzar"},
+  fin_subhead:        {en:"Here’s what you shared In the real product this would now personalize the dashboard and your advisor’s first answer", es:"Esto es lo que compartiste En el producto real, esto personalizaría el panel y la primera respuesta de tu asesor"},
   fin_answered:       {en:"answered", es:"respondidas"},
   fin_skipped:        {en:"skipped", es:"omitidas"},
   fin_hidden:         {en:"hidden by logic", es:"ocultas por lógica"},
@@ -4269,8 +4269,8 @@ const MONEY_BRACKETS = [
 // step itself (everything else); both are already unified into q.phase/q.headline by the time
 // resolveStep() returns. A qid missing here just keeps showing its English text.
 const STEP_ES = {
-  W001:              { phase:"¿Preguntas de dinero?", headline:"Nos gustaría conocerte." },
-  W002:              { phase:"Pregúntale a tu asesor de IA", headline:"Adelante, pregunta." },
+  W001:              { phase:"¿Preguntas de dinero?", headline:"Nos gustaría conocerte" },
+  W002:              { phase:"Pregúntale a tu asesor de IA", headline:"Adelante, pregunta" },
   FID_SUGGEST_TOPIC: { phase:"Muchas personas preguntan", headline:"¿Qué te gustaría saber?" },
   FID_STAGE:         { phase:"Etapa de vida", headline:"¿En qué etapa de la vida te encuentras?" },
   FID_MINDSET:       { phase:"Tu forma de pensar", headline:"¿Qué preguntas financieras tienes en mente ahora mismo?" },
@@ -4278,7 +4278,7 @@ const STEP_ES = {
   FID_AGE:           { phase:"La edad es solo un número", headline:"¿Qué edad tienes?" },
   FID_ZIP:           { phase:"Código postal", headline:"¿Dónde vives?" },
   FID_INCOME:        { phase:"Ingreso familiar", headline:"Para efectos fiscales, ¿cuál es tu ingreso?" },
-  FID_TAXRATE:       { phase:"Tasa impositiva marginal", headline:"Esta es tu tasa impositiva aproximada." },
+  FID_TAXRATE:       { phase:"Tasa impositiva marginal", headline:"Esta es tu tasa impositiva aproximada" },
   FID_SAVINGSRATE:   { phase:"Tasa de ahorro", headline:"¿Qué porcentaje de tu ingreso estás ahorrando?" },
   FID_ASSETS:        { phase:"Tus activos financieros", headline:"¿Cuánto tienes en ahorros e inversiones?" },
   FID_HORIZON:       { phase:"Necesidades financieras", headline:"¿Cuándo planeas usar este dinero?" },
@@ -4286,8 +4286,8 @@ const STEP_ES = {
   FID_HOME_VALUE:    { phase:"Tu casa es tu castillo", headline:"¿Cuál es el valor de tu vivienda?" },
   FID_MORTGAGE:      { phase:"Hipoteca y HELOC", headline:"Si tienes una hipoteca, ¿cuál es el saldo?" },
   FID_RENT_BUY:      { phase:"Alquilar o comprar", headline:"¿Estás pensando en comprar una vivienda?" },
-  FID_PROJECTIONS:   { phase:"Proyecciones a largo plazo", headline:"Explora tus posibles futuros financieros." },
-  FID_REGISTER:      { phase:"Regístrate gratis", headline:"Guarda tu información." },
+  FID_PROJECTIONS:   { phase:"Proyecciones a largo plazo", headline:"Explora tus posibles futuros financieros" },
+  FID_REGISTER:      { phase:"Regístrate gratis", headline:"Guarda tu información" },
   FID_OBJECTIVES:    { phase:"Tus objetivos", headline:"¿Cuáles son tus mayores preocupaciones?" },
   FID_HELP_CHAT:     { phase:"Pregúntale a tu asesor de IA", headline:"¿Cómo puedo ayudarte?" },
   FID_NEXTSTEPS:     { phase:"Próximos pasos", headline:"¿Por dónde te gustaría empezar?" },
@@ -4377,62 +4377,62 @@ function optLabel(qid, opt){
 // "New Text"). Any step not listed here keeps the lorem-ipsum placeholder (see the fallback
 // in renderQuestion()) since the sheet didn't specify copy for it.
 const NOTE_TEXT = {
-  W001: "We aim to give you personalized information and advice. The more we know about you, the better we can serve you.",
-  FID_STAGE: "Choose the stage that most closely resembles your situation.",
-  FID_MINDSET: "You may select more than one option.",
-  FID_PARTNER: "If you have a spouse or partner, this will make a difference in your financial planning.",
-  FID_AGE: "People's financial needs and desires often change as they get older.",
-  FID_ZIP: "State and local taxes depend on your state and city of residence.",
-  FID_INCOME: 'Unless you file "married filing separately", your taxes are based on the taxable income of your household. Include earned income, investment income, Social Security payments, and other sources of income.',
-  FID_TAXRATE: 'This represents the "marginal" tax rate on your next dollar of income, which is very different than the average tax rate on all of your income. Different tax rates apply to different types of income, and these rates are for ordinary investment income which applies to interest income and short-term capital gains. The federal rate is based on the single-filer tax brackets regardless of filing status; the state and local rates use married-filing-jointly brackets when you told us you\'re planning with a spouse or partner. This is a very rough estimate based on your stated income minus the standard deduction. Your actual taxes are a far more complicated calculation which we can help you understand more broadly as we learn more about your situation.',
-  FID_SAVINGSRATE: "This is the percentage of your gross household income from all sources that you regularly put into the savings and investments. With compounding, the earlier you start saving, the faster you will build your emergency and long-term financial resources. Most households should target a savings rate of 10% to 20%.",
-  FID_ASSETS: "This includes bank accounts, brokerage accounts, and retirement accounts like 401k, IRA, and Roth IRA accounts but does not include the value of your residence or second home.",
-  FID_HORIZON: 'This is sometimes called your "time horizon" or when you may need or want to use the money. Among other things, it indicates whether you should focus on building an emergency fund or long-term wealth.',
-  FID_HOME: "Your home could be an apartment, condo, co-op, or house.",
-  FID_HOME_VALUE: "Provide a rough estimate of what you think your home could sell for today.",
-  FID_MORTGAGE: "Include the balance of any mortgage and/or home equity loan (HELOC).",
+  W001: "We aim to give you personalized information and advice The more we know about you, the better we can serve you",
+  FID_STAGE: "Choose the stage that most closely resembles your situation",
+  FID_MINDSET: "You may select more than one option",
+  FID_PARTNER: "If you have a spouse or partner, this will make a difference in your financial planning",
+  FID_AGE: "People's financial needs and desires often change as they get older",
+  FID_ZIP: "State and local taxes depend on your state and city of residence",
+  FID_INCOME: 'Unless you file "married filing separately", your taxes are based on the taxable income of your household Include earned income, investment income, Social Security payments, and other sources of income',
+  FID_TAXRATE: 'This represents the "marginal" tax rate on your next dollar of income, which is very different than the average tax rate on all of your income Different tax rates apply to different types of income, and these rates are for ordinary investment income which applies to interest income and short-term capital gains The federal rate is based on the single-filer tax brackets regardless of filing status; the state and local rates use married-filing-jointly brackets when you told us you\'re planning with a spouse or partner This is a very rough estimate based on your stated income minus the standard deduction Your actual taxes are a far more complicated calculation which we can help you understand more broadly as we learn more about your situation',
+  FID_SAVINGSRATE: "This is the percentage of your gross household income from all sources that you regularly put into the savings and investments With compounding, the earlier you start saving, the faster you will build your emergency and long-term financial resources Most households should target a savings rate of 10% to 20%",
+  FID_ASSETS: "This includes bank accounts, brokerage accounts, and retirement accounts like 401k, IRA, and Roth IRA accounts but does not include the value of your residence or second home",
+  FID_HORIZON: 'This is sometimes called your "time horizon" or when you may need or want to use the money Among other things, it indicates whether you should focus on building an emergency fund or long-term wealth',
+  FID_HOME: "Your home could be an apartment, condo, co-op, or house",
+  FID_HOME_VALUE: "Provide a rough estimate of what you think your home could sell for today",
+  FID_MORTGAGE: "Include the balance of any mortgage and/or home equity loan (HELOC)",
   FID_RENT_BUY: "Do you want to purchase a home in the next three years?",
-  FID_OBJECTIVES: "Select all that apply.",
-  FID_HELP_CHAT: "Ask us any financial question and we will insert it into the chat sidebar on the right and either ask some clarifying questions or provide our response.",
-  W002: "Ask us any financial question and we will insert it into the chat sidebar on the right and either ask some clarifying questions or provide our response.",
-  FID_SUGGEST_TOPIC: "Select a question, and we will start the conversation.",
-  FID_NEXTSTEPS: "Select a topic, and we will start the conversation.",
+  FID_OBJECTIVES: "Select all that apply",
+  FID_HELP_CHAT: "Ask us any financial question and we will insert it into the chat sidebar on the right and either ask some clarifying questions or provide our response",
+  W002: "Ask us any financial question and we will insert it into the chat sidebar on the right and either ask some clarifying questions or provide our response",
+  FID_SUGGEST_TOPIC: "Select a question, and we will start the conversation",
+  FID_NEXTSTEPS: "Select a topic, and we will start the conversation",
   FID_PROJECTIONS: [
-    "This is a quick but <i>extremely</i> simplistic calculator to project your assets across many decades. We also have highly detailed and comprehensive Lifetime Planning software that is available to you at any time. Just ask your AI advisor in the lower right-hand corner of this page.",
-    "For information and educational purposes only. Not professional investment, tax, legal, or estate planning advice. Examples shown are illustrative only. Outcomes will vary and investments may lose money.",
+    "This is a quick but <i>extremely</i> simplistic calculator to project your assets across many decades We also have highly detailed and comprehensive Lifetime Planning software that is available to you at any time Just ask your AI advisor in the lower right-hand corner of this page",
+    "For information and educational purposes only Not professional investment, tax, legal, or estate planning advice Examples shown are illustrative only Outcomes will vary and investments may lose money",
   ],
   // Info-tile stand-in (notice-info) until real regulatory disclosure copy lands.
-  FID_REGISTER: "[Functional instructions and regulatory disclosures to come.]",
+  FID_REGISTER: "[Functional instructions and regulatory disclosures to come]",
 };
 // Spanish translations of NOTE_TEXT above, same qid keys and same string-or-array-of-strings
 // shape per entry. A qid missing here just keeps showing its (still-correct) English text —
 // see the belowNoteRaw lookup in renderQuestion(), which checks this first when LANG is "es".
 const NOTE_TEXT_ES = {
-  W001: "Nuestro objetivo es brindarte información y asesoramiento personalizados. Cuanto más sepamos sobre ti, mejor podremos ayudarte.",
-  FID_STAGE: "Elige la etapa que más se parezca a tu situación.",
-  FID_MINDSET: "Puedes seleccionar más de una opción.",
-  FID_PARTNER: "Si tienes cónyuge o pareja, esto influirá en tu planificación financiera.",
-  FID_AGE: "Las necesidades y deseos financieros de las personas suelen cambiar con la edad.",
-  FID_ZIP: "Los impuestos estatales y locales dependen del estado y la ciudad donde resides.",
-  FID_INCOME: 'A menos que declares como "casado que presenta por separado", tus impuestos se basan en el ingreso tributable de tu hogar. Incluye el ingreso laboral, el ingreso por inversiones, los pagos del Seguro Social y otras fuentes de ingreso.',
-  FID_TAXRATE: 'Esto representa la tasa impositiva "marginal" sobre tu próximo dólar de ingreso, que es muy distinta de la tasa impositiva promedio sobre la totalidad de tu ingreso. Se aplican tasas distintas según el tipo de ingreso, y estas corresponden al ingreso de inversión ordinario —intereses y ganancias de capital a corto plazo—. La tasa federal se basa en los tramos para declarantes solteros, sin importar tu estado civil fiscal; las tasas estatales y locales usan los tramos de declaración conjunta cuando nos indicaste que planificas con cónyuge o pareja. Es una estimación muy aproximada, calculada sobre el ingreso que indicaste menos la deducción estándar. Tus impuestos reales implican un cálculo mucho más complejo, que podemos ayudarte a entender mejor a medida que conozcamos tu situación con más detalle.',
-  FID_SAVINGSRATE: "Este es el porcentaje de tu ingreso familiar bruto, de todas las fuentes, que destinas regularmente al ahorro y a las inversiones. Gracias al interés compuesto, cuanto antes empieces a ahorrar, más rápido construirás tus reservas de emergencia y tu patrimonio a largo plazo. La mayoría de los hogares debería aspirar a una tasa de ahorro de entre el 10% y el 20%.",
-  FID_ASSETS: "Esto incluye cuentas bancarias, cuentas de corretaje y cuentas de jubilación como 401(k), IRA y Roth IRA, pero no incluye el valor de tu residencia principal ni de una segunda vivienda.",
-  FID_HORIZON: 'A esto a veces se le llama tu "horizonte temporal", es decir, cuándo podrías necesitar o querer usar el dinero. Entre otras cosas, indica si deberías enfocarte en construir un fondo de emergencia o en generar patrimonio a largo plazo.',
-  FID_HOME: "Tu vivienda puede ser un apartamento, un condominio, una cooperativa de vivienda o una casa.",
-  FID_HOME_VALUE: "Da un estimado aproximado de por cuánto crees que podrías vender tu casa hoy.",
-  FID_MORTGAGE: "Incluye el saldo de cualquier hipoteca y/o préstamo sobre el valor de la vivienda (HELOC).",
+  W001: "Nuestro objetivo es brindarte información y asesoramiento personalizados Cuanto más sepamos sobre ti, mejor podremos ayudarte",
+  FID_STAGE: "Elige la etapa que más se parezca a tu situación",
+  FID_MINDSET: "Puedes seleccionar más de una opción",
+  FID_PARTNER: "Si tienes cónyuge o pareja, esto influirá en tu planificación financiera",
+  FID_AGE: "Las necesidades y deseos financieros de las personas suelen cambiar con la edad",
+  FID_ZIP: "Los impuestos estatales y locales dependen del estado y la ciudad donde resides",
+  FID_INCOME: 'A menos que declares como "casado que presenta por separado", tus impuestos se basan en el ingreso tributable de tu hogar Incluye el ingreso laboral, el ingreso por inversiones, los pagos del Seguro Social y otras fuentes de ingreso',
+  FID_TAXRATE: 'Esto representa la tasa impositiva "marginal" sobre tu próximo dólar de ingreso, que es muy distinta de la tasa impositiva promedio sobre la totalidad de tu ingreso Se aplican tasas distintas según el tipo de ingreso, y estas corresponden al ingreso de inversión ordinario —intereses y ganancias de capital a corto plazo— La tasa federal se basa en los tramos para declarantes solteros, sin importar tu estado civil fiscal; las tasas estatales y locales usan los tramos de declaración conjunta cuando nos indicaste que planificas con cónyuge o pareja Es una estimación muy aproximada, calculada sobre el ingreso que indicaste menos la deducción estándar Tus impuestos reales implican un cálculo mucho más complejo, que podemos ayudarte a entender mejor a medida que conozcamos tu situación con más detalle',
+  FID_SAVINGSRATE: "Este es el porcentaje de tu ingreso familiar bruto, de todas las fuentes, que destinas regularmente al ahorro y a las inversiones Gracias al interés compuesto, cuanto antes empieces a ahorrar, más rápido construirás tus reservas de emergencia y tu patrimonio a largo plazo La mayoría de los hogares debería aspirar a una tasa de ahorro de entre el 10% y el 20%",
+  FID_ASSETS: "Esto incluye cuentas bancarias, cuentas de corretaje y cuentas de jubilación como 401(k), IRA y Roth IRA, pero no incluye el valor de tu residencia principal ni de una segunda vivienda",
+  FID_HORIZON: 'A esto a veces se le llama tu "horizonte temporal", es decir, cuándo podrías necesitar o querer usar el dinero Entre otras cosas, indica si deberías enfocarte en construir un fondo de emergencia o en generar patrimonio a largo plazo',
+  FID_HOME: "Tu vivienda puede ser un apartamento, un condominio, una cooperativa de vivienda o una casa",
+  FID_HOME_VALUE: "Da un estimado aproximado de por cuánto crees que podrías vender tu casa hoy",
+  FID_MORTGAGE: "Incluye el saldo de cualquier hipoteca y/o préstamo sobre el valor de la vivienda (HELOC)",
   FID_RENT_BUY: "¿Piensas comprar una vivienda en los próximos tres años?",
-  FID_OBJECTIVES: "Selecciona todas las opciones que correspondan.",
-  FID_HELP_CHAT: "Haznos cualquier pregunta financiera y la colocaremos en la barra de chat de la derecha; luego te haremos algunas preguntas aclaratorias o te daremos nuestra respuesta.",
-  W002: "Haznos cualquier pregunta financiera y la colocaremos en la barra de chat de la derecha; luego te haremos algunas preguntas aclaratorias o te daremos nuestra respuesta.",
-  FID_SUGGEST_TOPIC: "Selecciona una pregunta y comenzaremos la conversación.",
-  FID_NEXTSTEPS: "Selecciona un tema y comenzaremos la conversación.",
+  FID_OBJECTIVES: "Selecciona todas las opciones que correspondan",
+  FID_HELP_CHAT: "Haznos cualquier pregunta financiera y la colocaremos en la barra de chat de la derecha; luego te haremos algunas preguntas aclaratorias o te daremos nuestra respuesta",
+  W002: "Haznos cualquier pregunta financiera y la colocaremos en la barra de chat de la derecha; luego te haremos algunas preguntas aclaratorias o te daremos nuestra respuesta",
+  FID_SUGGEST_TOPIC: "Selecciona una pregunta y comenzaremos la conversación",
+  FID_NEXTSTEPS: "Selecciona un tema y comenzaremos la conversación",
   FID_PROJECTIONS: [
-    "Esta es una calculadora rápida pero <i>extremadamente</i> simplificada para proyectar tus activos a lo largo de muchas décadas. También contamos con un software de Lifetime Planning (planificación de vida) muy detallado e integral, disponible para ti en cualquier momento. Solo pregúntale a tu asesor de IA en la esquina inferior derecha de esta página.",
-    "Solo con fines informativos y educativos. No constituye asesoramiento profesional de inversión, fiscal, legal ni de planificación patrimonial. Los ejemplos mostrados son solo ilustrativos. Los resultados pueden variar y las inversiones pueden perder valor.",
+    "Esta es una calculadora rápida pero <i>extremadamente</i> simplificada para proyectar tus activos a lo largo de muchas décadas También contamos con un software de Lifetime Planning (planificación de vida) muy detallado e integral, disponible para ti en cualquier momento Solo pregúntale a tu asesor de IA en la esquina inferior derecha de esta página",
+    "Solo con fines informativos y educativos No constituye asesoramiento profesional de inversión, fiscal, legal ni de planificación patrimonial Los ejemplos mostrados son solo ilustrativos Los resultados pueden variar y las inversiones pueden perder valor",
   ],
-  FID_REGISTER: "[Próximamente: instrucciones funcionales y avisos regulatorios.]",
+  FID_REGISTER: "[Próximamente: instrucciones funcionales y avisos regulatorios]",
 };
 
 // ── Topic-area buttons → actual question text ───────────────────────────────────────────
@@ -4610,7 +4610,7 @@ const FIDUCIARY = {
       brackets: MONEY_BRACKETS,
     },
     {
-      qid:"FID_TAXRATE", showIf: NOT_ASKED_AI, phase:"MARGINAL TAX RATE", headline:"Here's your approximate tax rate.",
+      qid:"FID_TAXRATE", showIf: NOT_ASKED_AI, phase:"MARGINAL TAX RATE", headline:"Here's your approximate tax rate",
       input:"Info",
     },
     {
@@ -4652,7 +4652,7 @@ const FIDUCIARY = {
       // answers (age, income, savings rate, assets, home equity) forward as an annual
       // stacked-bar chart, with a single "retirement age" slider driving the retire line.
       // See the projections() renderer for the simplified projection math.
-      qid:"FID_PROJECTIONS", showIf: NOT_ASKED_AI, phase:"Long-Term Projections", headline:"Explore your possible financial futures.",
+      qid:"FID_PROJECTIONS", showIf: NOT_ASKED_AI, phase:"Long-Term Projections", headline:"Explore your possible financial futures",
       input:"Projections",
     },
     { // Lightweight lead-capture step — see the register() renderer. PRODUCTION NOTE: the
@@ -4662,9 +4662,9 @@ const FIDUCIARY = {
       // that in by recording the formatted answer and advancing to the next step. The
       // primary is labeled "Register Now" and stays disabled until first name + valid email
       // validate; register() then setAnswer("First Last (email)") and Next fallthrough runs
-      // Engine.next(). Declining is the corner "Skip this question" link (Engine.skip()) —
+      // Engine.next(). Declining is the corner "Skip This Question" link (Engine.skip()) —
       // there is no second forward nav button on this step.
-      qid:"FID_REGISTER", showIf: NOT_ASKED_AI, phase:"REGISTER FOR FREE", headline:"Save your information.",
+      qid:"FID_REGISTER", showIf: NOT_ASKED_AI, phase:"REGISTER FOR FREE", headline:"Save your information",
       input:"Register",
     },
     {
@@ -5052,7 +5052,7 @@ function finishChatStep(qid){
 }
 function finishConfirmOpen(){ return ConfirmDialog.open && ConfirmDialog.kind === "finishSend"; }
 function syncChatSendWithConfirm(){
-  // While the finish-send dialog is open, "Send & finish" is the only filled primary — idle the in-input arrow.
+  // While the finish-send dialog is open, "Send & Finish" is the only filled primary — idle the in-input arrow.
   const send = document.querySelector("#stage .chat-icon-btn.send");
   if (!send) return;
   if (finishConfirmOpen()){
@@ -5206,7 +5206,7 @@ const LeaveConfirm = {
       body: t("leave_body"),
       primaryLabel: t("leave_keep"),
       secondaryLabel: t("leave_quit"),
-      onPrimary: null,   // Keep going = dismiss only; focus returns to X
+      onPrimary: null,   // Keep Going = dismiss only; focus returns to X
       onSecondary: () => { closePage(); },
       returnFocus: () => document.getElementById("interviewClose"),
     });
@@ -5473,7 +5473,7 @@ function renderQuestion(stage, q, ctx){
   // Rendered via innerHTML (not textContent) so a paragraph can carry light inline markup
   // like <i> — safe here since every NOTE_TEXT value is first-party copy, never user input.
   const belowNoteRaw = (window.LANG === "es" && NOTE_TEXT_ES[q.qid]) || NOTE_TEXT[q.qid] ||
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
   (Array.isArray(belowNoteRaw) ? belowNoteRaw : [belowNoteRaw]).forEach(para => {
     const p = el("p","below-next-note" + (q.qid === "FID_REGISTER" ? " notice-info placeholder-note" : ""));
     p.innerHTML = para;
