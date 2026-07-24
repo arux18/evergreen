@@ -111,7 +111,7 @@ html[data-theme="dark"]{
   --slider-track:#2A3550;              /* Hemlock-style unfilled track, navy (not cool gray) */
   --shadow:0 0 0 1px rgba(120,150,255,.06),0 16px 40px rgba(0,0,0,.60);
 }
-html[data-theme="dark"] .btn.link:not(.skip):not(.finish-discard):not(.finish-stay){color:var(--link-text)}
+html[data-theme="dark"] .btn.link:not(.skip){color:var(--link-text)}
 html[data-theme="dark"] .btn.ghost{color:var(--link-text); border-color:var(--link-text)}
 html[data-theme="dark"] .chip, html[data-theme="dark"] .chip button{color:var(--link-text)}
 html[data-theme="dark"] .flowchip{color:var(--link-text)}
@@ -301,13 +301,14 @@ html[data-theme="dark"] body{
   .btn.primary svg{transform:translateX(1px)}
   .btn.primary span,
   .btn.secondary span{display:block; line-height:1}
-  /* Suggest sits under the chat composer (W002), not in the nav row with Finish/Next. */
+  /* Suggest sits under the chat composer (W002); Talk to AI Advisor under Objectives pills. */
   .btn.suggest-inline{
     display:inline-flex; align-items:center; gap:8px; margin-top:14px;
     background:transparent; color:var(--accent-text); box-shadow:none;
     border:1.5px solid var(--accent); border-radius:99px;   /* Hemlock outlined buttons are pills (--radius-full), not 8px */
     padding:10px 18px; font-size:14.5px; font-weight:600; min-height:44px;
   }
+  .btn.suggest-inline.advisor-inline{ margin-top:24px }   /* Objectives: 24px below pills, before nav */
   .btn.suggest-inline:hover:not(:disabled){background:var(--accent-soft)}
   .btn.suggest-inline svg{flex:none}
   .pills{display:flex; flex-wrap:wrap; gap:10px; padding:24px 0}
@@ -490,46 +491,14 @@ html[data-theme="dark"] body{
     .chat-icons{right:8px; bottom:12px}
   }
   /* Chat step: when the box has unsent text the send arrow is the only filled primary —
-     Finish softens to outlined so there is never two competing filled CTAs on one screen. */
+     Finish softens to outlined so there is never two competing filled CTAs on one screen.
+     While the finish-send confirm dialog is open, Send & finish is the single filled primary. */
   .btn.primary.finish-secondary{
     background:transparent; color:var(--accent-text); border:1.5px solid var(--accent); box-shadow:none;
   }
   .btn.primary.finish-secondary:hover:not(:disabled){background:var(--accent-soft); transform:none}
-  /* Finish confirm — unsaved-draft prompt (UX: Save | Discard | Stay). Hemlock:
-     borderless container (.ec-how .ec-box:not(.info)); primary = --btnPrimary; discard =
-     tertiary --faint text; stay = quiet cancel. Replaces Finish in-flow (not a floating
-     absolute stack — that read as a broken popover over Skip/Finish). */
-  .finish-wrap{display:inline-flex; flex-direction:column; align-items:flex-start; max-width:100%}
-  .finish-confirm{
-    display:flex; flex-direction:column; align-items:flex-end; gap:8px;
-    width:max-content; max-width:min(100%, 420px);
-    margin:0; padding:0; background:transparent; border:0; box-shadow:none;
-  }
-  .finish-confirm-q{font-size:13px; line-height:1.45; color:var(--muted); text-align:right; font-weight:400}
-  .finish-confirm-actions{
-    display:flex; flex-wrap:wrap; gap:8px 16px; justify-content:flex-end; align-items:center;
-  }
-  .finish-confirm .btn.primary{
-    padding:12px 22px; font-size:14.5px; min-height:44px;   /* radius stays pill (Hemlock buttons = --radius-full) */
-  }
-  .finish-confirm .btn.link.finish-discard,
-  .finish-confirm .btn.link.finish-stay{
-    background:transparent; border:0; box-shadow:none;
-    font-size:14px; font-weight:500; padding:10px 8px; min-height:44px;
-  }
-  .finish-confirm .btn.link.finish-stay{color:var(--muted)}
-  .finish-confirm .btn.link.finish-stay:hover{color:var(--ink); text-decoration:underline; text-underline-offset:3px}
-  .finish-confirm .btn.link.finish-discard{color:var(--faint)}
-  .finish-confirm .btn.link.finish-discard:hover{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
-  html[data-theme="dark"] .finish-confirm .btn.link.finish-stay{color:var(--muted)}
-  html[data-theme="dark"] .finish-confirm .btn.link.finish-stay:hover{color:var(--ink)}
-  html[data-theme="dark"] .finish-confirm .btn.link.finish-discard{color:var(--faint)}
-  html[data-theme="dark"] .finish-confirm .btn.link.finish-discard:hover{color:var(--muted)}
-  @media (max-width:402px){
-    .finish-confirm{align-items:stretch; width:100%; max-width:100%}
-    .finish-confirm-q{text-align:left}
-    .finish-confirm-actions{justify-content:flex-start}
-  }
+  /* Finish button wrap — layout only; confirm UI is the shared #confirmDialog modal. */
+  .finish-wrap{display:inline-flex; align-items:center; max-width:none}
   .zip-row{display:flex; align-items:center; gap:20px; flex-wrap:wrap}
   .zip-outside{display:flex; align-items:center; gap:9px; font-size:15px; color:var(--ink); cursor:pointer}
   /* Inline info notices (ZIP outside U.S., tax-rate ZIP missing, etc.).
@@ -631,23 +600,21 @@ html[data-theme="dark"] body{
      470px) — so the email box runs exactly as long as first name + gap + last name, and its
      right edge lines up with the last-name box's right edge. */
   .reg-wrap .reg-field input.textline{max-width:none}
-  @media (max-width:389px){ .reg-row{display:block} }   /* mobile only: too narrow for two fields — stack again (block keeps .reg-field's own margins) */
-  @container interview (max-width:389px){ .reg-row{display:block} }   /* container-query twin */
+  @media (max-width:402px){ .reg-row{display:block} }   /* name fields stack */
+  @container interview (max-width:402px){ .reg-row{display:block} }
   .reg-copy{font-size:16px; line-height:1.55; color:var(--muted); margin-bottom:30px}
   .reg-field{margin-bottom:18px}
   .reg-field label{display:block; font-size:13px; font-weight:600; color:var(--muted); margin-bottom:6px}
-  .reg-error{font-size:13.5px; color:var(--danger); margin:-8px 0 16px; max-width:470px; display:none}
+  .reg-field input.textline.invalid{border-color:var(--danger)}
+  .reg-error{font-size:14px; line-height:1.4; color:var(--danger); margin:6px 0 0; display:none}
   .reg-error.show{display:block}
-  /* Yellow "this is placeholder copy" flag — see NOTE_TEXT.FID_REGISTER. */
-  .below-next-note.placeholder-note{
-    display:inline-block; background:#fef3c7; color:#78350f;
-    padding:10px 16px; border-radius:10px;
-  }
-  html[data-theme="dark"] .below-next-note.placeholder-note{ background:#5c4813; color:#ffe9a8; }
-
   /* Base .nav used outside the interview stage (e.g. finish screen). Stage nav overrides live with .stage .nav above. */
   .nav{display:flex; align-items:center; gap:12px; margin-top:6px; flex-wrap:wrap}
   .below-next-note{margin:6px 0 22px; font-size:15.5px; line-height:1.55; color:var(--muted); max-width:none; width:100%}
+  /* FID_REGISTER stand-in — must follow .below-next-note so info-tile type/color wins over muted note text. */
+  .below-next-note.notice-info{
+    font-size:13px; line-height:1.5; font-weight:400; color:var(--ink);
+  }
   .btn{
     padding:13px 30px; border-radius:99px; font-size:15.5px; font-weight:600; transition:all .15s;
     white-space:nowrap; flex-shrink:0;
@@ -686,15 +653,16 @@ html[data-theme="dark"] body{
     background:transparent; border:0; border-radius:8px; color:var(--faint);
   }
   #interviewClose:hover{color:var(--muted); background:var(--accent-soft)}
-  /* Leave-interview confirm — OpenUI Modal (0Jdtu5): 320 card, 24 pad, 16 gap, actions end. */
-  #leaveDialog{
+  /* Shared confirm modal — OpenUI Modal (0Jdtu5): used by leave-interview AND finish-send.
+     One CSS source so both dialogs are visually identical by construction. */
+  .confirm-dialog{
     position:fixed; inset:0; z-index:32; display:none;
     align-items:center; justify-content:center;
     padding:24px var(--margin); box-sizing:border-box;
     pointer-events:none;
   }
-  #leaveDialog.open{display:flex}
-  .leave-dialog-card{
+  .confirm-dialog.open{display:flex}
+  .confirm-dialog-card{
     pointer-events:auto; width:100%; max-width:320px;
     display:flex; flex-direction:column; gap:16px;
     background:var(--card);   /* $colors-background-surface — white light / #0E1524 dark */
@@ -703,32 +671,34 @@ html[data-theme="dark"] body{
     box-shadow:0 8px 24px #0000001A;
     padding:24px; box-sizing:border-box;
   }
-  .leave-dialog-card h2{
+  .confirm-dialog-card h2{
     margin:0; font-family:"Heebo",sans-serif;
     font-size:16px; font-weight:600; line-height:1.35; color:var(--ink);   /* typo-primary-base-semibold */
   }
-  .leave-dialog-card p{
+  .confirm-dialog-card p{
     margin:0; font-family:"Heebo",sans-serif;
     font-size:14px; font-weight:400; line-height:1.5; color:#403D3A;   /* $colors-text-body / typo-primary-sm-regular */
   }
-  html[data-theme="dark"] .leave-dialog-card p{ color:var(--muted) }
-  .leave-dialog-actions{
-    display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px;   /* $spacing-2xs, end like Modal */
+  html[data-theme="dark"] .confirm-dialog-card p{ color:var(--muted) }
+  .confirm-dialog-actions{
+    display:flex; flex-wrap:nowrap; align-items:center; justify-content:flex-end; gap:8px;
+    width:100%;   /* OpenUI Actions: fill_container, gap 8, end — one row */
   }
-  /* Compact Modal buttons — not the 48px stage nav CTAs. Padding $spacing-2xs / $spacing-sm. */
-  .leave-dialog-actions .btn.primary,
-  .leave-dialog-actions .btn.secondary.leave-quit{
-    height:auto; min-height:0; padding:8px 16px; font-size:14px; font-weight:600; line-height:1.35;
-    border-radius:99px; box-shadow:none;
+  /* Compact Modal buttons — fixed 37px height (OpenUI Cancel/Confirm), equal flex width.
+     Both get a 1px border (primary transparent) so boxes match; padding horizontal only. */
+  .confirm-dialog-actions .btn.primary,
+  .confirm-dialog-actions .btn.secondary.confirm-dialog-secondary{
+    flex:1 1 0; min-width:0; flex-shrink:1;
+    box-sizing:border-box; height:37px; min-height:37px; max-height:37px; padding:0 16px;
+    font-size:14px; font-weight:600; line-height:1;
+    border:1px solid transparent; border-radius:99px; box-shadow:none;
+    white-space:nowrap; text-align:center; justify-content:center;
   }
-  .leave-dialog-actions .btn.secondary.leave-quit{
-    background:transparent; border:1px solid var(--line); color:var(--ink);
+  .confirm-dialog-actions .btn.secondary.confirm-dialog-secondary{
+    background:transparent; border-color:var(--line); color:var(--ink);
   }
-  .leave-dialog-actions .btn.secondary.leave-quit:hover{
+  .confirm-dialog-actions .btn.secondary.confirm-dialog-secondary:hover{
     background:var(--btnSecondary-hover); border-color:var(--line-strong);
-  }
-  @media (max-width:402px){
-    .leave-dialog-actions{ width:100% }
   }
 
   /* DEMO ONLY: theme toggle for design review. Remove before handoff — production theme comes from the host View panel. */
@@ -979,13 +949,14 @@ html[data-theme="dark"] body{
 </div>
 
 <div id="backdrop" onclick="onBackdropClick()"></div>
-<div id="leaveDialog" role="dialog" aria-modal="true" aria-labelledby="leaveDialogTitle" hidden>
-  <div class="leave-dialog-card">
-    <h2 id="leaveDialogTitle" data-i18n="leave_title">Leave the interview?</h2>
-    <p data-i18n="leave_body">Your answers so far won't be saved.</p>
-    <div class="leave-dialog-actions">
-      <button type="button" class="btn secondary leave-quit" id="leaveConfirmBtn" data-i18n="leave_quit">Leave</button>
-      <button type="button" class="btn primary" id="leaveKeepGoing" data-i18n="leave_keep">Keep going</button>
+<!-- Shared confirm modal shell — Leave interview + Finish-with-draft both fill this via ConfirmDialog. -->
+<div id="confirmDialog" class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="confirmDialogTitle" hidden>
+  <div class="confirm-dialog-card">
+    <h2 id="confirmDialogTitle"></h2>
+    <p id="confirmDialogBody"></p>
+    <div class="confirm-dialog-actions">
+      <button type="button" class="btn secondary confirm-dialog-secondary" id="confirmDialogSecondary"></button>
+      <button type="button" class="btn primary" id="confirmDialogPrimary"></button>
     </div>
   </div>
 </div>
@@ -1030,7 +1001,8 @@ html[data-theme="dark"] body{
    3. Suggest a Question moved under the W002 chat composer; same FID_SUGGEST_FLAG + next().
    4. Send vs Finish on chat steps (W002 / FID_HELP_CHAT): in-input arrow alone emits to
       sidebar; Finish ends the flow via Engine.next()/skip (q1=A) and does not emit — with
-      unsent draft, inline confirm ("Send & finish" / "Finish without sending" / "Keep editing").
+      unsent draft, shared #confirmDialog modal ("Send & finish" / "Discard & finish";
+      Esc / backdrop = keep editing). Same shell as leave-interview confirm.
       Original Finish emitted and stayed. Empty/never-sent Finish records Engine.skip()
       {v:null, skipped:true} so the step is not absent from answers (q2=B); if a question was
       sent, that answer is kept and Finish just advances.
@@ -1041,8 +1013,8 @@ html[data-theme="dark"] body{
       same Engine.skip() handler. Intentionally still visible (not a dark pattern).
    6. Internal tooling (#panel, #bottombar/#modeToggles) hidden unless ?internal=1; theme
       follows prefers-color-scheme when not internal; #demoThemeToggle is review-only.
-   7. Close control is #interviewClose — mid-flow confirms via #leaveDialog (Keep going / Leave);
-      on the finished/closing screen it closes immediately (nothing left to lose).
+   7. Close control is #interviewClose — mid-flow confirms via shared #confirmDialog
+      (Keep going / Leave); on the finished/closing screen it closes immediately.
    ═══════════════════════════════════════════════════════════════════════════════ */
 /* ═══════════════════ DATA ═══════════════════ */
 const DATA = {
@@ -4187,11 +4159,12 @@ const STR = {
   chat_nudge:         {en:"Talk to your AI Advisor in the message box in the lower right-hand corner of the screen.", es:"Habla con tu asesor de IA en el cuadro de mensajes en la esquina inferior derecha de la pantalla."},
   nav_register:       {en:"Register Now", es:"Regístrate ahora"},
   // Register page (FID_REGISTER)
-  reg_copy:           {en:"Register so we can recognize you and save your information for your next visit. All we need is your name and email.", es:"Regístrate para que podamos reconocerte y guardar tu información para tu próxima visita. Solo necesitamos tu nombre y tu correo electrónico."},
+  reg_copy:           {en:"Register so we can recognize you and save your information for your next visit. All we need is your name and email. This step is optional.", es:"Regístrate para que podamos reconocerte y guardar tu información para tu próxima visita. Solo necesitamos tu nombre y tu correo electrónico. Este paso es opcional."},
   reg_first:          {en:"First name", es:"Nombre"},
   reg_last:           {en:"Last name", es:"Apellido"},
   reg_email:          {en:"Email", es:"Correo electrónico"},
-  reg_error:          {en:"Please enter a valid email address.", es:"Ingresa una dirección de correo electrónico válida."},
+  reg_error:          {en:"Please enter a valid email address.", es:"Introduce un correo electrónico válido."},
+  reg_error_first:    {en:"Please enter your first name.", es:"Introduce tu nombre."},
   // ZIP entry (FID_ZIP) and the ZIP prompt embedded in the tax-rate page (FID_TAXRATE)
   zip_placeholder:    {en:"Zip code", es:"Código postal"},
   zip_outside_label:  {en:"Outside the U.S.", es:"Fuera de EE. UU."},
@@ -4200,7 +4173,8 @@ const STR = {
   // ZIP-dependent notices. stateLabel/localLabel themselves (the real state/city names
   // computeTaxRates() returns once a valid ZIP is entered) are left in English — the
   // underlying 50-state/local tax dataset isn't translated, only this page's own chrome is.
-  taxrate_missing_zip:{en:"State and Local taxes are shown as 0.0% until you enter your ZIP code — enter it below.", es:"Los impuestos estatales y locales se muestran como 0.0% hasta que ingreses tu código postal. Ingrésalo a continuación."},   // aligned with the table below it, whose State/Local rows stay visible at 0.0% until a ZIP arrives
+  taxrate_missing_zip:{en:"State and Local taxes are shown as 0.0% until you enter your ZIP code — enter it below.", es:"Los impuestos estatales y locales se muestran como 0.0% hasta que ingreses tu código postal. Ingrésalo a continuación."},   // only when ZIP wasn't answered yet and we still offer an on-page field
+  taxrate_skipped_zip:{en:"State and Local taxes are shown as 0.0% because you skipped the ZIP code step.", es:"Los impuestos estatales y locales se muestran como 0.0% porque omitiste el paso del código postal."},
   taxrate_outside:    {en:"We are a registered investment advisor in the United States and do not currently advise people who reside outside of the U.S.", es:"Somos un asesor de inversiones registrado en los Estados Unidos y actualmente no asesoramos a personas que residen fuera de EE. UU."},   // same RIA wording as zip_outside_notice (kept as its own key in case the two pages ever diverge); the State/Local rows below it stay visible at 0.0%
   taxrate_federal:    {en:"Federal", es:"Federal"},
   taxrate_obamacare:  {en:"Obamacare tax", es:"Impuesto de Obamacare"},
@@ -4215,9 +4189,9 @@ const STR = {
   chat_attach_toast:  {en:"Attachments aren't wired up in this prototype.", es:"Los archivos adjuntos no están habilitados en este prototipo."},
   chat_voice_toast:   {en:"Voice input isn't wired up in this prototype.", es:"La entrada de voz no está habilitada en este prototipo."},
   finish_confirm_q:   {en:"Send your question first?", es:"¿Enviar tu pregunta primero?"},
+  finish_confirm_body:{en:"You typed a question but haven't sent it.", es:"Escribiste una pregunta pero no la has enviado."},
   finish_confirm_send:{en:"Send & finish", es:"Enviar y finalizar"},
-  finish_confirm_skip:{en:"Finish without sending", es:"Finalizar sin enviar"},
-  finish_confirm_stay:{en:"Keep editing", es:"Seguir editando"},
+  finish_confirm_skip:{en:"Discard & finish", es:"Descartar y finalizar"},
   // Long-term projections (FID_PROJECTIONS) — the six slider labels, chart legend, and the
   // chart's own "Retire" line label
   proj_current_age:   {en:"Current age", es:"Edad actual"},
@@ -4233,7 +4207,7 @@ const STR = {
   closing_headline:   {en:"Talk to your AI advisor.", es:"Habla con tu asesor de IA."},
   closing_copy:       {en:"Enter your question in the message box on the lower right corner.", es:"Escribe tu pregunta en el cuadro de mensajes en la esquina inferior derecha."},
   // Register page's secondary skip button (plain "Next", no arrow — sits beside "Register Now")
-  reg_skip:           {en:"Next", es:"Siguiente"},
+  reg_skip:           {en:"Next", es:"Siguiente"},   // unused — FID_REGISTER decline is corner Skip
   // Chat-sidebar answer summary + shared answer-state values
   chat_summary_label: {en:"Answers given during the interview", es:"Respuestas dadas durante la entrevista"},
   val_skipped:        {en:"Skipped", es:"Omitida"},
@@ -4418,7 +4392,7 @@ const NOTE_TEXT = {
   FID_HOME_VALUE: "Provide a rough estimate of what you think your home could sell for today.",
   FID_MORTGAGE: "Include the balance of any mortgage and/or home equity loan (HELOC).",
   FID_RENT_BUY: "Do you want to purchase a home in the next three years?",
-  FID_OBJECTIVES: 'You may select more than one option unless you select "Something else".',
+  FID_OBJECTIVES: "Select all that apply.",
   FID_HELP_CHAT: "Ask us any financial question and we will insert it into the chat sidebar on the right and either ask some clarifying questions or provide our response.",
   W002: "Ask us any financial question and we will insert it into the chat sidebar on the right and either ask some clarifying questions or provide our response.",
   FID_SUGGEST_TOPIC: "Select a question, and we will start the conversation.",
@@ -4427,8 +4401,7 @@ const NOTE_TEXT = {
     "This is a quick but <i>extremely</i> simplistic calculator to project your assets across many decades. We also have highly detailed and comprehensive Lifetime Planning software that is available to you at any time. Just ask your AI advisor in the lower right-hand corner of this page.",
     "For information and educational purposes only. Not professional investment, tax, legal, or estate planning advice. Examples shown are illustrative only. Outcomes will vary and investments may lose money.",
   ],
-  // Yellow-highlighted on purpose (see the "placeholder-note" class added in renderQuestion())
-  // — a visible reminder that this is stand-in copy, not the real disclosure text.
+  // Info-tile stand-in (notice-info) until real regulatory disclosure copy lands.
   FID_REGISTER: "[Functional instructions and regulatory disclosures to come.]",
 };
 // Spanish translations of NOTE_TEXT above, same qid keys and same string-or-array-of-strings
@@ -4450,7 +4423,7 @@ const NOTE_TEXT_ES = {
   FID_HOME_VALUE: "Da un estimado aproximado de por cuánto crees que podrías vender tu casa hoy.",
   FID_MORTGAGE: "Incluye el saldo de cualquier hipoteca y/o préstamo sobre el valor de la vivienda (HELOC).",
   FID_RENT_BUY: "¿Piensas comprar una vivienda en los próximos tres años?",
-  FID_OBJECTIVES: 'Puedes seleccionar más de una opción, a menos que elijas "Algo más".',
+  FID_OBJECTIVES: "Selecciona todas las opciones que correspondan.",
   FID_HELP_CHAT: "Haznos cualquier pregunta financiera y la colocaremos en la barra de chat de la derecha; luego te haremos algunas preguntas aclaratorias o te daremos nuestra respuesta.",
   W002: "Haznos cualquier pregunta financiera y la colocaremos en la barra de chat de la derecha; luego te haremos algunas preguntas aclaratorias o te daremos nuestra respuesta.",
   FID_SUGGEST_TOPIC: "Selecciona una pregunta y comenzaremos la conversación.",
@@ -4686,15 +4659,11 @@ const FIDUCIARY = {
       // "Register Now" button must navigate to the host app's registration process, and once
       // that registration completes the person does NOT return to the interview — the
       // hand-off ends the interview session. This prototype has no host app, so it stands
-      // that in by recording the formatted answer and advancing to the next step. Doesn't gate on a real
-      // answer the way most steps do: the primary button is relabeled "Register Now" and
-      // stays disabled until all three fields validate, at which point register() itself
-      // calls Engine.setAnswer with the formatted "First Last (email)" string, so the
-      // default Engine.next() fallthrough in the nav button's onclick already does the
-      // right thing with no qid-specific case needed there. A second, suggest-styled
-      // (white, orange-outline) "Next" button (added in the nav-building code below, like
-      // FID_PROJECTIONS's old Lifetime Planning button) lets someone move on without
-      // registering — it calls Engine.skip().
+      // that in by recording the formatted answer and advancing to the next step. The
+      // primary is labeled "Register Now" and stays disabled until first name + valid email
+      // validate; register() then setAnswer("First Last (email)") and Next fallthrough runs
+      // Engine.next(). Declining is the corner "Skip this question" link (Engine.skip()) —
+      // there is no second forward nav button on this step.
       qid:"FID_REGISTER", showIf: NOT_ASKED_AI, phase:"REGISTER FOR FREE", headline:"Save your information.",
       input:"Register",
     },
@@ -5081,47 +5050,128 @@ function finishChatStep(qid){
   if (chatStepEverSent(qid)) Engine.next();
   else Engine.skip();   // sets {v:null, skipped:true} then next()
 }
-function dismissFinishConfirm(){
-  const box = document.getElementById("finishConfirm");
-  if (box) box.remove();
-  const next = document.getElementById("nextBtn");
-  if (next){ next.hidden = false; next.removeAttribute("aria-hidden"); }
-}
-// Unsaved-draft confirm: replaces Finish in the nav (in-flow), classic Save | Discard | Stay.
-// Does not float as an absolute popover over Skip/Finish — that competed with nav hierarchy.
-function showFinishConfirm(qid){
-  if (document.getElementById("finishConfirm")) return;
-  const next = document.getElementById("nextBtn");
-  if (!next) return;
-  let wrap = next.closest(".finish-wrap");
-  if (!wrap){
-    wrap = el("div","finish-wrap");
-    next.parentNode.insertBefore(wrap, next);
-    wrap.appendChild(next);
+function finishConfirmOpen(){ return ConfirmDialog.open && ConfirmDialog.kind === "finishSend"; }
+function syncChatSendWithConfirm(){
+  // While the finish-send dialog is open, "Send & finish" is the only filled primary — idle the in-input arrow.
+  const send = document.querySelector("#stage .chat-icon-btn.send");
+  if (!send) return;
+  if (finishConfirmOpen()){
+    send.classList.remove("ready");
+    send.disabled = true;
+    return;
   }
-  next.hidden = true;
-  next.setAttribute("aria-hidden","true");
-  const box = el("div","finish-confirm");
-  box.id = "finishConfirm";
-  box.setAttribute("role","group");
-  box.setAttribute("aria-label", t("finish_confirm_q"));
-  box.appendChild(el("span","finish-confirm-q", t("finish_confirm_q")));
-  const actions = el("div","finish-confirm-actions");
-  // Order (LTR): Stay → Discard → Save — Cancel/stay left, primary right (desktop convention).
-  const stay = el("button","btn link finish-stay", t("finish_confirm_stay"));
-  stay.type = "button";
-  stay.onclick = () => dismissFinishConfirm();
-  const skipFin = el("button","btn link finish-discard", t("finish_confirm_skip"));
-  skipFin.type = "button";
-  skipFin.onclick = () => finishChatStep(qid);
-  const sendFin = el("button","btn primary", t("finish_confirm_send"));
-  sendFin.type = "button";
-  sendFin.onclick = () => { emitCurrentChatAnswer(qid); Engine.next(); };
-  actions.append(stay, skipFin, sendFin);
-  box.appendChild(actions);
-  wrap.appendChild(box);
-  sendFin.focus();
+  const ta = document.querySelector("#stage textarea.free.chat");
+  const has = !!(ta && ta.value.trim());
+  send.disabled = !has;
+  send.classList.toggle("ready", has);
 }
+function dismissFinishConfirm(){
+  if (!finishConfirmOpen()) return;
+  ConfirmDialog.dismiss();
+}
+// Unsaved-draft confirm: shared #confirmDialog (same shell as leave). Nav row untouched.
+// Esc / backdrop = keep editing; focus returns to Finish.
+function showFinishConfirm(qid){
+  if (ConfirmDialog.open) return;
+  ConfirmDialog.show({
+    kind: "finishSend",
+    title: t("finish_confirm_q"),
+    body: t("finish_confirm_body"),
+    primaryLabel: t("finish_confirm_send"),
+    secondaryLabel: t("finish_confirm_skip"),
+    onPrimary: () => { emitCurrentChatAnswer(qid); Engine.next(); },
+    onSecondary: () => { finishChatStep(qid); },
+    returnFocus: () => document.getElementById("nextBtn"),
+  });
+  syncChatSendWithConfirm();
+}
+// Shared confirm modal — Leave interview + Finish-with-draft. One DOM/CSS shell.
+const ConfirmDialog = {
+  open: false,
+  kind: null,
+  _onPrimary: null,
+  _onSecondary: null,
+  _returnFocus: null,
+  _onKeydown: null,
+  show({ kind, title, body, primaryLabel, secondaryLabel, onPrimary, onSecondary, returnFocus }){
+    if (this.open) return;
+    if (Panel.open) Panel.close();
+    this.open = true;
+    this.kind = kind;
+    this._onPrimary = onPrimary || null;
+    this._onSecondary = onSecondary || null;
+    this._returnFocus = returnFocus || null;
+    const dlg = document.getElementById("confirmDialog");
+    const pri = document.getElementById("confirmDialogPrimary");
+    const sec = document.getElementById("confirmDialogSecondary");
+    if (!dlg || !pri || !sec) return;
+    document.getElementById("confirmDialogTitle").textContent = title;
+    document.getElementById("confirmDialogBody").textContent = body;
+    pri.textContent = primaryLabel;
+    sec.textContent = secondaryLabel;
+    dlg.hidden = false;
+    dlg.classList.add("open");
+    document.getElementById("backdrop").classList.add("open");
+    pri.focus();
+    // Focus trap: Tab cycles primary ↔ secondary only.
+    this._onKeydown = e => {
+      if (!this.open) return;
+      if (e.key !== "Tab") return;
+      const focusables = [sec, pri];
+      const i = focusables.indexOf(document.activeElement);
+      e.preventDefault();
+      if (e.shiftKey) focusables[(i <= 0 ? focusables.length : i) - 1].focus();
+      else focusables[(i + 1) % focusables.length].focus();
+    };
+    document.addEventListener("keydown", this._onKeydown, true);
+  },
+  _tearDown(){
+    if (!this.open) return;
+    this.open = false;
+    const wasFinish = this.kind === "finishSend";
+    this.kind = null;
+    const dlg = document.getElementById("confirmDialog");
+    if (dlg){ dlg.classList.remove("open"); dlg.hidden = true; }
+    if (!Panel.open) document.getElementById("backdrop").classList.remove("open");
+    if (this._onKeydown){
+      document.removeEventListener("keydown", this._onKeydown, true);
+      this._onKeydown = null;
+    }
+    this._onPrimary = this._onSecondary = null;
+    if (wasFinish) syncChatSendWithConfirm();
+  },
+  dismiss(){
+    // Esc / backdrop — keep editing / keep going. Focus returns to opener.
+    if (!this.open) return;
+    const focusFn = this._returnFocus;
+    this._tearDown();
+    const el = focusFn && focusFn();
+    if (el && typeof el.focus === "function") el.focus();
+  },
+  primary(){
+    if (!this.open) return;
+    const fn = this._onPrimary;
+    const focusFn = this._returnFocus;
+    this._tearDown();
+    if (fn) fn();
+    else {
+      const el = focusFn && focusFn();
+      if (el && typeof el.focus === "function") el.focus();
+    }
+  },
+  secondary(){
+    if (!this.open) return;
+    const fn = this._onSecondary;
+    this._tearDown();
+    if (fn) fn();
+  },
+};
+(function wireConfirmDialog(){
+  const pri = document.getElementById("confirmDialogPrimary");
+  const sec = document.getElementById("confirmDialogSecondary");
+  if (pri) pri.onclick = () => ConfirmDialog.primary();
+  if (sec) sec.onclick = () => ConfirmDialog.secondary();
+})();
 // The "x" in the corner is a close/exit affordance on every page. Mid-flow it asks for
 // confirmation (LeaveConfirm) so a misclick doesn't wipe answers; on the finish/closing
 // screen (S.finished) it closes immediately. Browsers block scripted window.close() on
@@ -5143,52 +5193,30 @@ function requestClosePage(){
   LeaveConfirm.show();
 }
 function onBackdropClick(){
-  if (LeaveConfirm.open) LeaveConfirm.dismiss();
+  if (ConfirmDialog.open) ConfirmDialog.dismiss();
   else Panel.close();
 }
 const LeaveConfirm = {
-  open:false,
+  get open(){ return ConfirmDialog.open && ConfirmDialog.kind === "leave"; },
   show(){
-    if (this.open) return;
-    if (Panel.open) Panel.close();
-    this.open = true;
-    const dlg = document.getElementById("leaveDialog");
-    if (!dlg) return;
-    // Refresh STR so EN/ES match current language without waiting for a full re-render.
-    dlg.querySelectorAll("[data-i18n]").forEach(elm => { elm.textContent = t(elm.getAttribute("data-i18n")); });
-    dlg.hidden = false;
-    dlg.classList.add("open");
-    document.getElementById("backdrop").classList.add("open");
-    const keep = document.getElementById("leaveKeepGoing");
-    if (keep) keep.focus();
+    if (ConfirmDialog.open) return;
+    ConfirmDialog.show({
+      kind: "leave",
+      title: t("leave_title"),
+      body: t("leave_body"),
+      primaryLabel: t("leave_keep"),
+      secondaryLabel: t("leave_quit"),
+      onPrimary: null,   // Keep going = dismiss only; focus returns to X
+      onSecondary: () => { closePage(); },
+      returnFocus: () => document.getElementById("interviewClose"),
+    });
   },
-  dismiss(){
-    if (!this.open) return;
-    this.open = false;
-    const dlg = document.getElementById("leaveDialog");
-    if (dlg){ dlg.classList.remove("open"); dlg.hidden = true; }
-    if (!Panel.open) document.getElementById("backdrop").classList.remove("open");
-    const x = document.getElementById("interviewClose");
-    if (x) x.focus();
-  },
-  leave(){
-    // Tear down without returning focus to X — the app is about to fade out.
-    this.open = false;
-    const dlg = document.getElementById("leaveDialog");
-    if (dlg){ dlg.classList.remove("open"); dlg.hidden = true; }
-    document.getElementById("backdrop").classList.remove("open");
-    closePage();
-  },
+  dismiss(){ if (this.open) ConfirmDialog.dismiss(); },
 };
 window.requestClosePage = requestClosePage;
 window.onBackdropClick = onBackdropClick;
 window.LeaveConfirm = LeaveConfirm;
-(function wireLeaveConfirm(){
-  const keep = document.getElementById("leaveKeepGoing");
-  const quit = document.getElementById("leaveConfirmBtn");
-  if (keep) keep.onclick = () => LeaveConfirm.dismiss();
-  if (quit) quit.onclick = () => LeaveConfirm.leave();
-})();
+window.ConfirmDialog = ConfirmDialog;
 function fmtAnswer(a){
   if (!a) return "—";
   if (a.skipped) return t("val_skipped");
@@ -5447,7 +5475,7 @@ function renderQuestion(stage, q, ctx){
   const belowNoteRaw = (window.LANG === "es" && NOTE_TEXT_ES[q.qid]) || NOTE_TEXT[q.qid] ||
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
   (Array.isArray(belowNoteRaw) ? belowNoteRaw : [belowNoteRaw]).forEach(para => {
-    const p = el("p","below-next-note" + (q.qid === "FID_REGISTER" ? " placeholder-note" : ""));
+    const p = el("p","below-next-note" + (q.qid === "FID_REGISTER" ? " notice-info placeholder-note" : ""));
     p.innerHTML = para;
     stage.appendChild(p);
   });
@@ -5521,6 +5549,12 @@ function renderQuestion(stage, q, ctx){
         if (picked) emitToChatSidebar(QUESTION_TEXT[picked] || picked);
         return;
       }
+      if (q.qid === "FID_REGISTER"){
+        // Re-validate on click; show inline errors and stay put if first name / email fail.
+        if (typeof regValidateSubmit === "function" && !regValidateSubmit()) return;
+        Engine.next();
+        return;
+      }
       Engine.next();
     };
 
@@ -5539,45 +5573,22 @@ function renderQuestion(stage, q, ctx){
 
     // Next/Finish immediately after Back so the primary pair sits left with 12px between.
     const forward = el("div","nav-forward");
-    // Wrap Finish so the chat-step confirm can anchor just above it (transient, not stage-width).
+    // finish-wrap: layout hook for Finish visual state (.finish-secondary); confirm is #confirmDialog.
     const finishWrap = el("div","finish-wrap");
     finishWrap.appendChild(next);
     forward.appendChild(finishWrap);
     nav.appendChild(forward);
 
-    // Optional secondaries after the Back/Next pair (Register skip, Talk to AI Advisor).
+    // Optional secondaries after the Back/Next pair.
+    // FID_OBJECTIVES: "Talk to AI Advisor" lives under the pills (suggest-inline), not here.
+    // FID_REGISTER: only "Register Now" forward — decline via corner Skip (Engine.skip()).
     const actions = el("div","nav-actions");
-    if (q.qid === "FID_REGISTER"){
-      // PRODUCTION: Register Now must navigate to the host app's registration process
-      // (see the FID_REGISTER step comment). In this prototype it needs no special onclick case —
-      // register() below only ever lets it become enabled once S.answers.FID_REGISTER
-      // already holds the real "First Last (email)" string, so the default Engine.next()
-      // fallthrough at the end of this handler already does the right thing. This second,
-      // outlined button is the explicit "skip registering" path.
-      const skipReg = el("button","btn suggest",t("reg_skip"));
-      skipReg.type = "button";
-      skipReg.onclick = () => Engine.skip();
-      actions.appendChild(skipReg);
-    }
-    // Suggest a Question used to live here as a filled primary competing with Next — moved
-    // under the W002 chat composer (see chat() renderer) so the nav keeps one filled CTA.
-    if (q.qid === "FID_NEXTSTEPS" || q.qid === "FID_OBJECTIVES"){
+    if (q.qid === "FID_NEXTSTEPS"){
       const advisor = el("button","btn advisor",t("nav_advisor"));
       advisor.type = "button";
       advisor.onclick = () => {
-        if (q.qid === "FID_OBJECTIVES"){
-          // Sequence change: from THIS page, "Talk to AI Advisor" now routes to the
-          // "How can I help?" chat instead of straight to the end. Same flag-then-jump
-          // pattern as the "Something else" detour above, since FID_HELP_CHAT is gated
-          // on FID_HELP_FLAG and Engine.jump() would otherwise refuse it as hidden.
-          Engine.setAnswer("FID_HELP_FLAG", true);
-          jumpToQid("FID_HELP_CHAT");
-          return;
-        }
-        // FID_NEXTSTEPS: the eliminated FID_END_INTERVIEW page used to be this button's
-        // destination — emit into the sidebar and stay here instead. Use whatever topic
-        // was already picked on this page if there is one; otherwise a generic fallback,
-        // since the button is clickable even before any topic here has been chosen.
+        // FID_NEXTSTEPS: emit into the sidebar and stay. Use whatever topic was already
+        // picked on this page if there is one; otherwise a generic fallback.
         const picked = S.answers.FID_NEXTSTEPS && !S.answers.FID_NEXTSTEPS.skipped ? S.answers.FID_NEXTSTEPS.v : null;
         emitToChatSidebar(picked ? (QUESTION_TEXT[picked] || picked) : t("advisor_fallback"));
       };
@@ -5609,7 +5620,9 @@ function updateNavState(){
 }
 
 /* ── input renderers ── */
+let regValidateSubmit = null;   // set by register(); Register Now click re-validates via this
 function renderInput(root, q){
+  regValidateSubmit = null;
   const cur = S.answers[q.qid];
   const val = cur && !cur.skipped ? cur.v : undefined;
   const R = {
@@ -5666,6 +5679,19 @@ function renderInput(root, q){
         wrap.appendChild(p);
       });
       root.appendChild(wrap);
+      // Objectives: contextual "Talk to AI Advisor" under pills (nav stays Back + Next only).
+      // Same handler as before — flag + jump to FID_HELP_CHAT (gated on FID_HELP_FLAG).
+      if (q.qid === "FID_OBJECTIVES"){
+        const advisor = el("button","btn suggest-inline advisor-inline","");
+        advisor.type = "button";
+        advisor.insertAdjacentHTML("afterbegin", '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>');
+        advisor.appendChild(document.createTextNode(t("nav_advisor")));
+        advisor.onclick = () => {
+          Engine.setAnswer("FID_HELP_FLAG", true);
+          jumpToQid("FID_HELP_CHAT");
+        };
+        root.appendChild(advisor);
+      }
       // "Choose up to N · x selected" helper line removed per design review.
       // The limit itself still applies (over-limit clicks show a brief toast).
     },
@@ -5826,22 +5852,28 @@ function renderInput(root, q){
         }
 
         if (!validZip && !outsideUS){
-          // ZIP hasn't been entered (or was skipped) — ask again right here.
-          wrap.appendChild(el("p","notice-info", t("taxrate_missing_zip")));
-          const row = el("div","zip-row");
-          const inp = el("input","textline zip");
-          inp.placeholder = t("zip_placeholder");
-          inp.maxLength = 5; inp.inputMode = "numeric"; inp.autocomplete = "postal-code";
-          inp.oninput = () => {
-            const digits = inp.value.replace(/\D/g, "");
-            if (inp.value !== digits) inp.value = digits;
-            if (/^\d{5}$/.test(digits)){
-              Engine.setAnswer("FID_ZIP", digits);
-              buildTable();
-            }
-          };
-          row.appendChild(inp);
-          wrap.appendChild(row);
+          const zipSkipped = !!(zipAns && zipAns.skipped);
+          if (zipSkipped){
+            // They declined ZIP on the prior step — don't re-ask here; table keeps State/Local at 0.0%.
+            wrap.appendChild(el("p","notice-info", t("taxrate_skipped_zip")));
+          } else {
+            // ZIP never recorded (e.g. jumped here) — optional on-page catch-up field.
+            wrap.appendChild(el("p","notice-info", t("taxrate_missing_zip")));
+            const row = el("div","zip-row");
+            const inp = el("input","textline zip");
+            inp.placeholder = t("zip_placeholder");
+            inp.maxLength = 5; inp.inputMode = "numeric"; inp.autocomplete = "postal-code";
+            inp.oninput = () => {
+              const digits = inp.value.replace(/\D/g, "");
+              if (inp.value !== digits) inp.value = digits;
+              if (/^\d{5}$/.test(digits)){
+                Engine.setAnswer("FID_ZIP", digits);
+                buildTable();
+              }
+            };
+            row.appendChild(inp);
+            wrap.appendChild(row);
+          }
         } else if (outsideUS){
           wrap.appendChild(el("p","notice-info", t("taxrate_outside")));
         }
@@ -6022,10 +6054,9 @@ function renderInput(root, q){
       redrawChart();
     },
     // Lightweight lead-capture form (First name / Last name / Email). Deliberately doesn't
-    // auto-answer at mount (unlike info()/projections()) — the primary nav button starts
-    // disabled and only becomes enabled (see updateNavState(), driven by hasAnswer()) once
-    // validate() below calls Engine.setAnswer with a real value, which only happens once all
-    // three fields are filled and the email looks well-formed.
+    // auto-answer at mount (unlike info()/projections()) — Register Now starts disabled and
+    // only enables once first name + valid email pass; last name is optional. Declining is
+    // the corner Skip link (Engine.skip()), not a second nav button.
     register(){
       const wrap = el("div","reg-wrap");
       root.appendChild(wrap);
@@ -6033,17 +6064,44 @@ function renderInput(root, q){
 
       const state = { first:"", last:"", email:"" };
       const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const errorEl = el("div","reg-error", t("reg_error"));
+      const fields = {};
 
-      const validate = () => {
-        const filled = !!(state.first.trim() && state.last.trim() && state.email.trim());
-        const emailOk = !state.email.trim() || emailRe.test(state.email.trim());
-        const ready = filled && emailOk;
-        errorEl.classList.toggle("show", !!(state.email.trim() && !emailOk));
-        // Truthy value -> hasAnswer() true -> nextBtn enables itself via the same generic
-        // updateNavState() path every other step already uses; empty string keeps it
-        // disabled without needing to touch the button directly from in here.
-        Engine.setAnswer("FID_REGISTER", ready ? `${state.first.trim()} ${state.last.trim()} (${state.email.trim()})` : "");
+      const isEmailOk = () => emailRe.test(state.email.trim());
+      const isFirstOk = () => !!state.first.trim();
+      const isReady = () => isFirstOk() && isEmailOk();
+
+      const setFieldError = (key, show, msg) => {
+        const f = fields[key];
+        if (!f) return;
+        f.inp.classList.toggle("invalid", !!show);
+        f.err.textContent = msg || "";
+        f.err.classList.toggle("show", !!show);
+      };
+
+      const syncAnswer = () => {
+        // Truthy value → hasAnswer() → Register Now enables via updateNavState().
+        // Last name optional — included in the formatted string when present.
+        const last = state.last.trim();
+        const name = last ? `${state.first.trim()} ${last}` : state.first.trim();
+        Engine.setAnswer("FID_REGISTER", isReady() ? `${name} (${state.email.trim()})` : "");
+      };
+
+      const clearErrorOnEdit = key => {
+        setFieldError(key, false, "");
+      };
+
+      regValidateSubmit = () => {
+        let ok = true;
+        if (!isFirstOk()){
+          setFieldError("first", true, t("reg_error_first"));
+          ok = false;
+        }
+        if (!isEmailOk()){
+          setFieldError("email", true, t("reg_error"));
+          ok = false;
+        }
+        syncAnswer();
+        return ok;
       };
 
       const mkField = (key, label, type, autocomplete) => {
@@ -6051,8 +6109,22 @@ function renderInput(root, q){
         row.appendChild(el("label",null,label));
         const inp = el("input","textline");
         inp.type = type; inp.autocomplete = autocomplete;
-        inp.oninput = () => { state[key] = inp.value; validate(); };
+        const err = el("div","reg-error");
+        err.setAttribute("role","alert");
+        inp.oninput = () => {
+          state[key] = inp.value;
+          clearErrorOnEdit(key);
+          syncAnswer();
+        };
+        if (key === "email"){
+          inp.onblur = () => {
+            // Show format error once the field has been left (empty or malformed both fail).
+            if (!isEmailOk()) setFieldError("email", true, t("reg_error"));
+          };
+        }
         row.appendChild(inp);
+        row.appendChild(err);
+        fields[key] = { inp, err };
         return row;
       };
       // First and Last name share one line (see .reg-row CSS); email gets its own row below.
@@ -6061,8 +6133,7 @@ function renderInput(root, q){
       nameRow.appendChild(mkField("last",  t("reg_last"),  "text", "family-name"));
       wrap.appendChild(nameRow);
       wrap.appendChild(mkField("email", t("reg_email"), "email", "email"));
-      wrap.appendChild(errorEl);
-      validate();   // starts everything disabled/hidden since all three fields are empty
+      syncAnswer();   // starts Register Now disabled
     },
     chat(){
       const wrap = el("div","chat-input-wrap");
@@ -6097,10 +6168,19 @@ function renderInput(root, q){
       };
 
       const autoGrow = () => { ta.style.height = "auto"; ta.style.height = Math.min(ta.scrollHeight, 260) + "px"; };
-      const syncSend = () => { const has = !!ta.value.trim(); send.disabled = !has; send.classList.toggle("ready", has); };
+      const syncSend = () => {
+        if (finishConfirmOpen()){ syncChatSendWithConfirm(); return; }
+        const has = !!ta.value.trim();
+        send.disabled = !has;
+        send.classList.toggle("ready", has);
+      };
       // Typing is DOM-only until send; Finish stays enabled and only softens visually
-      // (see updateNavState chat branch) — it does not light up as a second filled primary.
-      ta.oninput = () => { autoGrow(); syncSend(); updateNavState(); };
+      // (see updateNavState chat branch). Editing the draft dismisses the finish-send dialog
+      // (same as Esc / backdrop — keep editing).
+      ta.oninput = () => {
+        if (finishConfirmOpen()) dismissFinishConfirm();
+        autoGrow(); syncSend(); updateNavState();
+      };
       // Enter submits (same as the send icon); Shift+Enter still makes a newline. The global
       // Enter-presses-Next handler deliberately ignores textareas, so this is the chat boxes'
       // own submit path.
@@ -6702,8 +6782,8 @@ function paintSettings(body){
 
 /* ═══════════════ KEYBOARD & BOOT ═══════════════ */
 document.addEventListener("keydown", e => {
-  if (LeaveConfirm.open){
-    if (e.key === "Escape"){ e.preventDefault(); LeaveConfirm.dismiss(); }
+  if (ConfirmDialog.open){
+    if (e.key === "Escape"){ e.preventDefault(); ConfirmDialog.dismiss(); }
     return;
   }
   if (Panel.open) { if (e.key === "Escape") Panel.close(); return; }
