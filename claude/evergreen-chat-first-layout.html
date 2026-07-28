@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evergreen.ai — Chat-first layout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Noto+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg-main: #F7F5F0;
+    --bg-surface: #FFFFFF;
+    --bg-light: #F8F7F6;
+    --text-header: #0e0e0e;
+    --text-body: #403D3A;
+    --text-meta: #5E5954;
+    --text-placeholder: #B5B1AB;
+    --text-action: #3a6af8;
+    --text-deposit: #148338;
+    --text-reverse: #FFFFFF;
+    --border-light: #EEEDEB;
+    --border-dark: #D5D3D0;
+    --border-component: #DCD8CB;
+    --nav-bg: #F7F5F0;
+    --nav-border: #E3DFD6;
+    --nav-hover: #EDEAE3;
+    --nav-text-primary: #2D2926;
+    --nav-text-secondary: #5E5954;
+    --nav-icon: #8A8680;
+    --chat-border: #E3DFD6;
+    --chat-bubble-user: #F7F5F0;
+    --chat-input-bg: #FFFFFF;
+    --chat-divider: #EDEAE3;
+    --chat-placeholder: #8A8680;
+    --chat-send-bg: #2D2926;
+    --chat-text-primary: #2D2926;
+    --chat-text-secondary: #5E5954;
+    --btn-primary-bg: #0e0e0e;
+    --btn-primary-text: #EEEDEB;
+    --btn-secondary-border: #D5D3D0;
+    --btn-secondary-text: #2D2926;
+    --chart-1: #8951F0;
+    --chart-2: #06B6D4;
+    --chart-3: #312E81;
+    --chart-4: #3B82F6;
+    --chart-5: #0F766E;
+    --chart-6: #38BDF8;
+    --radius-card: 16px;
+    --radius-card-elevated: 24px;
+    --radius-input: 8px;
+    --radius-pill: 9999px;
+    --font-primary: 'Heebo', sans-serif;
+    --font-heading: 'Noto Serif', serif;
+    --shadow-sm: 0 1px 2px #00000014;
+    --shadow-md: 0 4px 12px #0000001A;
+  }
+  html, body { height: 100%; margin: 0; }
+  body { font-family: var(--font-primary); background: var(--bg-main); color: var(--text-body); }
+  .frame { width: 100%; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+  /* --- Nav --- */
+  .top-nav {
+    background: var(--nav-bg); border-bottom: 1px solid var(--nav-border);
+    padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+  }
+  .top-nav-left { display: flex; align-items: center; gap: 24px; }
+  .logo { font-family: var(--font-heading); font-weight: 600; font-size: 16px; color: var(--text-header); cursor: pointer; }
+  .logo .dot { color: var(--text-meta); }
+  .nav-links { display: flex; gap: 4px; font-size: 14px; }
+  .nav-link {
+    color: var(--nav-text-secondary); cursor: pointer; padding: 6px 12px;
+    border-radius: var(--radius-pill); transition: all 150ms ease; user-select: none;
+  }
+  .nav-link:hover { background: var(--nav-hover); color: var(--nav-text-primary); }
+  .nav-link.active { color: var(--nav-text-primary); font-weight: 600; background: var(--nav-hover); }
+  .top-nav-right { display: flex; align-items: center; gap: 12px; }
+  .icon-btn {
+    width: 32px; height: 32px; border-radius: var(--radius-input); border: none; background: none;
+    display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 150ms ease;
+  }
+  .icon-btn:hover { background: var(--nav-hover); }
+  .icon-btn i { font-size: 18px; color: var(--nav-icon); }
+  .avatar {
+    width: 32px; height: 32px; border-radius: var(--radius-pill);
+    background: var(--btn-primary-bg); display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600; color: var(--text-reverse); cursor: pointer;
+  }
+  .avatar:hover { opacity: 0.85; }
+
+  /* --- Main --- */
+  .main { display: flex; flex: 1; min-height: 0; }
+
+  /* --- Chat panel --- */
+  .chat-panel {
+    display: flex; flex-direction: column; background: var(--bg-main);
+    min-width: 320px; flex-shrink: 0;
+  }
+  .chat-messages {
+    flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto;
+  }
+  .msg-ai { display: flex; gap: 12px; align-items: flex-start; animation: fadeUp 300ms ease; }
+  .ai-icon {
+    width: 28px; height: 28px; border-radius: var(--radius-pill);
+    background: var(--bg-surface); border: 1px solid var(--border-component);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .ai-icon i { font-size: 14px; color: var(--text-action); }
+  .msg-ai .body { font-size: 14px; line-height: 1.6; color: var(--chat-text-primary); }
+  .msg-ai .body strong { font-weight: 600; }
+  .msg-ai .body .sub { margin-top: 8px; font-size: 14px; color: var(--chat-text-secondary); }
+  .msg-user { display: flex; justify-content: flex-end; animation: fadeUp 200ms ease; }
+  .msg-user .bubble {
+    background: var(--chat-bubble-user); border: 1px solid var(--border-component);
+    border-radius: var(--radius-card); padding: 10px 16px; font-size: 14px; max-width: 80%; color: var(--chat-text-primary);
+  }
+
+  /* View reference chip in chat */
+  .view-ref {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+    background: var(--bg-surface); border: 1px solid var(--border-component);
+    border-radius: var(--radius-input); padding: 6px 12px; font-size: 12px; font-weight: 500;
+    color: var(--text-action); cursor: pointer; transition: all 150ms ease;
+  }
+  .view-ref:hover { background: var(--nav-hover); border-color: var(--text-action); }
+  .view-ref i { font-size: 14px; }
+
+  /* Typing indicator */
+  .typing-indicator { display: flex; gap: 12px; align-items: flex-start; }
+  .typing-dots { display: flex; gap: 4px; padding: 12px 0; }
+  .typing-dots span {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--text-placeholder);
+    animation: bounce 1.2s infinite;
+  }
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Chat input */
+  .chat-input-area {
+    padding: 12px 20px 16px 20px; flex-shrink: 0;
+  }
+  .chat-input-divider {
+    height: 1px; background: var(--border-light); margin-bottom: 10px;
+  }
+  .chat-input {
+    display: flex; flex-direction: column;
+    background: var(--chat-input-bg); border: 1px solid var(--border-light);
+    border-radius: var(--radius-card); padding: 16px;
+    transition: border-color 150ms ease;
+  }
+  .chat-input:focus-within { border-color: var(--text-action); }
+  .chat-input input {
+    font-size: 16px; color: var(--chat-text-primary); border: none; outline: none;
+    background: transparent; font-family: var(--font-primary);
+    line-height: 24px; min-height: 24px;
+  }
+  .chat-input input::placeholder { color: var(--chat-placeholder); }
+  .chat-input-actions {
+    display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px;
+  }
+  .mic-btn {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--border-dark); background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 150ms ease; flex-shrink: 0;
+  }
+  .mic-btn:hover { border-color: var(--text-meta); background: var(--nav-hover); }
+  .mic-btn i { font-size: 20px; color: var(--chat-text-secondary); }
+  .send-btn {
+    width: 40px; height: 40px; border-radius: 50%; border: none;
+    background: var(--chat-send-bg); display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 150ms ease; flex-shrink: 0;
+  }
+  .send-btn:hover { background: var(--text-action); }
+  .send-btn i { font-size: 18px; color: var(--text-reverse); }
+
+  /* --- Resize handle --- */
+  .resize-handle {
+    width: 6px; background: transparent; cursor: col-resize;
+    position: relative; flex-shrink: 0; z-index: 10;
+  }
+  .resize-handle::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 2px;
+    width: 1px; background: var(--chat-border);
+  }
+  .resize-handle:hover::before, .resize-handle.active::before {
+    width: 3px; left: 1px; background: var(--text-action); border-radius: 2px;
+  }
+
+  /* --- View panel (right) --- */
+  .view-panel {
+    background: var(--bg-surface); flex: 1; min-width: 320px;
+    display: flex; flex-direction: column; min-height: 0;
+  }
+  .view-toolbar {
+    padding: 12px 16px; display: flex; align-items: center; justify-content: flex-end;
+    flex-shrink: 0; gap: 8px;
+  }
+  .pinned-count-btn {
+    font-size: 12px; font-family: var(--font-primary); font-weight: 600;
+    color: var(--btn-secondary-text); background: none;
+    border: 1px solid var(--btn-secondary-border); border-radius: var(--radius-pill);
+    padding: 6px 14px; cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    transition: all 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .pinned-count-btn:hover { background: var(--nav-hover); }
+  .pinned-count-btn.active { background: var(--btn-primary-bg); color: var(--btn-primary-text); border-color: var(--btn-primary-bg); }
+  .pinned-count-btn i { font-size: 14px; }
+
+  /* Active view (AI-generated, takes over right panel) */
+  .view-active {
+    flex: 1; display: flex; flex-direction: column; padding: 0 24px 24px;
+    animation: fadeUp 400ms ease; min-height: 0;
+  }
+  .view-active.hidden { display: none; }
+  .view-title-bar {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;
+  }
+  .view-title {
+    font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--text-header);
+  }
+  .view-subtitle { font-size: 13px; color: var(--text-meta); margin-top: 2px; }
+  .pin-btn {
+    font-size: 13px; font-family: var(--font-primary); font-weight: 600;
+    color: var(--text-action); background: none; border: 1px solid var(--btn-secondary-border);
+    border-radius: var(--radius-pill); padding: 6px 16px; cursor: pointer; white-space: nowrap;
+    display: flex; align-items: center; gap: 6px; transition: all 150ms ease;
+  }
+  .pin-btn:hover { background: var(--text-action); color: var(--text-reverse); border-color: var(--text-action); }
+  .pin-btn i { font-size: 14px; }
+  .pin-btn.pinned { background: var(--text-deposit); color: var(--text-reverse); border-color: var(--text-deposit); pointer-events: none; }
+
+  /* Full-size chart */
+  .chart-container {
+    flex: 1; display: flex; flex-direction: column; min-height: 0;
+    background: var(--bg-light); border: 1px solid var(--border-component);
+    border-radius: var(--radius-card); padding: 24px;
+  }
+  .chart-bars {
+    flex: 1; display: flex; align-items: flex-end; gap: 16px; padding: 16px 0;
+    min-height: 120px;
+  }
+  .chart-bar-col {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .chart-val { font-size: 14px; font-weight: 700; color: var(--text-header); }
+  .chart-bar {
+    width: 100%; max-width: 80px; border-radius: 6px;
+    transition: height 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .chart-label { font-size: 13px; color: var(--text-meta); font-weight: 500; }
+  .chart-summary {
+    margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-component);
+    display: flex; gap: 32px;
+  }
+  .chart-stat-label { font-size: 12px; color: var(--text-meta); margin-bottom: 2px; }
+  .chart-stat-value { font-size: 16px; font-weight: 700; color: var(--text-header); }
+  .chart-stat-value.positive { color: var(--text-deposit); }
+
+  /* Pinned views grid */
+  .view-pinned {
+    flex: 1; padding: 0 16px 16px; display: flex; flex-wrap: wrap;
+    gap: 12px; align-content: flex-start; overflow-y: auto;
+  }
+  .view-pinned.hidden { display: none; }
+  .pinned-card {
+    background: var(--bg-surface); border: 1px solid var(--border-component);
+    border-radius: var(--radius-card); padding: 16px;
+    flex: 1 1 280px; min-width: 240px;
+    cursor: pointer; transition: all 200ms ease; animation: cardIn 300ms ease;
+  }
+  .pinned-card:hover { box-shadow: var(--shadow-md); border-color: var(--border-dark); }
+  @keyframes cardIn { from { opacity: 0; transform: scale(0.95) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  .pinned-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .pinned-card-header .label { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--text-header); }
+  .card-menu-btn {
+    width: 24px; height: 24px; border-radius: var(--radius-input); border: none; background: none;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    transition: background 150ms ease; position: relative;
+  }
+  .card-menu-btn:hover { background: var(--nav-hover); }
+  .card-menu-btn i { font-size: 14px; color: var(--nav-icon); }
+  .card-dropdown {
+    display: none; position: absolute; top: 100%; right: 0; margin-top: 4px;
+    background: var(--bg-surface); border: 1px solid var(--border-component);
+    border-radius: var(--radius-input); box-shadow: var(--shadow-md);
+    min-width: 140px; z-index: 20; overflow: hidden;
+  }
+  .card-dropdown.open { display: block; }
+  .card-dropdown-item {
+    padding: 8px 12px; font-size: 13px; color: var(--text-body); cursor: pointer;
+    display: flex; align-items: center; gap: 8px; transition: background 100ms ease;
+  }
+  .card-dropdown-item:hover { background: var(--nav-hover); }
+  .card-dropdown-item i { font-size: 14px; color: var(--nav-icon); }
+  .card-dropdown-item.danger { color: #dc3545; }
+  .card-dropdown-item.danger i { color: #dc3545; }
+  .metrics { display: flex; gap: 16px; }
+  .metric .lbl { font-size: 12px; color: var(--text-meta); }
+  .metric .val { font-size: 18px; font-weight: 600; color: var(--text-header); }
+  .pinned-card .footnote { margin-top: 8px; font-size: 12px; color: var(--text-meta); }
+  .donut-row { display: flex; gap: 12px; align-items: center; }
+  .donut {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: conic-gradient(var(--chart-1) 0% 45%, var(--chart-4) 45% 75%, var(--chart-2) 75% 90%, var(--chart-5) 90% 100%);
+    position: relative;
+  }
+  .donut::after { content: ''; position: absolute; inset: 12px; border-radius: 50%; background: var(--bg-surface); }
+  .donut-legend { font-size: 12px; color: var(--text-meta); line-height: 1.6; }
+  .spending-rows { font-size: 14px; color: var(--text-meta); line-height: 2; }
+  .spending-row { display: flex; justify-content: space-between; }
+  .spending-row .amount { color: var(--text-header); font-weight: 600; }
+  .empty-slot {
+    border: 1px dashed var(--border-dark); border-radius: var(--radius-card);
+    padding: 24px; text-align: center; font-size: 14px; color: var(--text-placeholder);
+    flex: 1 1 280px; min-width: 240px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: var(--btn-primary-bg); color: var(--text-reverse);
+    padding: 10px 20px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 500;
+    display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-md);
+    opacity: 0; transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1); z-index: 100;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast i { font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <div class="top-nav">
+    <div class="top-nav-left">
+      <span class="logo">evergreen<span class="dot">.ai</span></span>
+      <div class="nav-links">
+        <span class="nav-link active">Home</span>
+        <span class="nav-link">Accounts</span>
+        <span class="nav-link">Activity</span>
+        <span class="nav-link">Investments</span>
+      </div>
+    </div>
+    <div class="top-nav-right">
+      <button class="icon-btn"><i class="ti ti-bell" aria-hidden="true"></i></button>
+      <div class="avatar">SP</div>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- Chat panel (left, taupe) -->
+    <div class="chat-panel" id="chatPanel" style="width: 40%;">
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg-ai">
+          <div class="ai-icon"><i class="ti ti-sparkles" aria-hidden="true"></i></div>
+          <div class="body">
+            Good morning, Sylvia. Your net worth grew 2.3% this month to <strong>$2.4M</strong>. Your savings rate is tracking above target at 33.5%.
+            <div class="sub">I noticed your grocery spending is up 18% — a few larger Whole Foods runs. Everything else is in normal range.</div>
+          </div>
+        </div>
+
+        <div class="msg-user">
+          <div class="bubble">Show me my retirement projection</div>
+        </div>
+
+        <div class="msg-ai">
+          <div class="ai-icon"><i class="ti ti-sparkles" aria-hidden="true"></i></div>
+          <div class="body">
+            Here's your lifetime projection. At your current pace, you're on track for <strong>$16.8M</strong> by age 65.
+            <div class="view-ref" onclick="showActiveView()">
+              <i class="ti ti-chart-bar" aria-hidden="true"></i>
+              Lifetime projection
+              <i class="ti ti-arrow-right" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <div class="chat-input-divider"></div>
+        <div class="chat-input">
+          <input type="text" id="chatInput" placeholder="Ask me any financial question..." autocomplete="off">
+          <div class="chat-input-actions">
+            <button class="mic-btn" aria-label="Voice input"><i class="ti ti-microphone" aria-hidden="true"></i></button>
+            <button class="send-btn" id="sendBtn"><i class="ti ti-arrow-up" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resize-handle" id="resizeHandle"></div>
+
+    <!-- View panel (right, white) -->
+    <div class="view-panel" id="viewPanel">
+      <div class="view-toolbar">
+        <button class="pinned-count-btn" id="pinnedCountBtn" onclick="togglePinnedGrid()">
+          <i class="ti ti-pin" aria-hidden="true"></i>
+          <span id="pinnedCountText">3 pinned views</span>
+        </button>
+      </div>
+
+      <!-- Active view: Lifetime projection -->
+      <div class="view-active" id="viewActive">
+        <div class="view-title-bar">
+          <div>
+            <div class="view-title">Lifetime projection</div>
+            <div class="view-subtitle">Projected net worth by age at current trajectory</div>
+          </div>
+          <button class="pin-btn" id="pinBtn" onclick="pinCurrentView()">
+            <i class="ti ti-pin" aria-hidden="true"></i>
+            Pin View
+          </button>
+        </div>
+        <div class="chart-container">
+          <div class="chart-bars" id="chartBars">
+            <div class="chart-bar-col">
+              <span class="chart-val">$2.4M</span>
+              <div class="chart-bar" style="height: 15%; background: var(--chart-3);"></div>
+              <span class="chart-label">Now</span>
+            </div>
+            <div class="chart-bar-col">
+              <span class="chart-val">$3.8M</span>
+              <div class="chart-bar" style="height: 24%; background: var(--chart-1);"></div>
+              <span class="chart-label">40</span>
+            </div>
+            <div class="chart-bar-col">
+              <span class="chart-val">$7.2M</span>
+              <div class="chart-bar" style="height: 44%; background: var(--chart-4);"></div>
+              <span class="chart-label">50</span>
+            </div>
+            <div class="chart-bar-col">
+              <span class="chart-val">$12.5M</span>
+              <div class="chart-bar" style="height: 74%; background: var(--chart-2);"></div>
+              <span class="chart-label">60</span>
+            </div>
+            <div class="chart-bar-col">
+              <span class="chart-val">$16.8M</span>
+              <div class="chart-bar" style="height: 100%; background: var(--chart-6);"></div>
+              <span class="chart-label">65</span>
+            </div>
+          </div>
+          <div class="chart-summary">
+            <div>
+              <div class="chart-stat-label">Current net worth</div>
+              <div class="chart-stat-value">$2.4M</div>
+            </div>
+            <div>
+              <div class="chart-stat-label">Projected at 65</div>
+              <div class="chart-stat-value positive">$16.8M</div>
+            </div>
+            <div>
+              <div class="chart-stat-label">Confidence</div>
+              <div class="chart-stat-value positive">94%</div>
+            </div>
+            <div>
+              <div class="chart-stat-label">Savings rate</div>
+              <div class="chart-stat-value">33.5%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pinned views grid (hidden until toggled) -->
+      <div class="view-pinned hidden" id="viewPinned">
+        <div class="pinned-card">
+          <div class="pinned-card-header">
+            <div class="label">
+              <i class="ti ti-chart-bar" style="font-size: 14px; color: var(--chart-4);" aria-hidden="true"></i>
+              Monthly planning
+            </div>
+            <button class="card-menu-btn" onclick="toggleCardMenu(this)">
+              <i class="ti ti-dots" aria-hidden="true"></i>
+              <div class="card-dropdown">
+                <div class="card-dropdown-item"><i class="ti ti-maximize"></i>Expand</div>
+                <div class="card-dropdown-item"><i class="ti ti-refresh"></i>Refresh</div>
+                <div class="card-dropdown-item danger" onclick="unpinCard(this)"><i class="ti ti-pin-off"></i>Unpin</div>
+              </div>
+            </button>
+          </div>
+          <div class="metrics">
+            <div class="metric"><div class="lbl">Net worth</div><div class="val">$2.4M</div></div>
+            <div class="metric"><div class="lbl">Savings rate</div><div class="val" style="color: var(--text-deposit);">24%</div></div>
+            <div class="metric"><div class="lbl">Monthly</div><div class="val">$8,200</div></div>
+          </div>
+          <div class="footnote">On track for $16.8M at age 65</div>
+        </div>
+
+        <div class="pinned-card">
+          <div class="pinned-card-header">
+            <div class="label">
+              <i class="ti ti-chart-donut" style="font-size: 14px; color: var(--chart-1);" aria-hidden="true"></i>
+              Asset allocation
+            </div>
+            <button class="card-menu-btn" onclick="toggleCardMenu(this)">
+              <i class="ti ti-dots" aria-hidden="true"></i>
+              <div class="card-dropdown">
+                <div class="card-dropdown-item"><i class="ti ti-maximize"></i>Expand</div>
+                <div class="card-dropdown-item"><i class="ti ti-refresh"></i>Refresh</div>
+                <div class="card-dropdown-item danger" onclick="unpinCard(this)"><i class="ti ti-pin-off"></i>Unpin</div>
+              </div>
+            </button>
+          </div>
+          <div class="donut-row">
+            <div class="donut"></div>
+            <div class="donut-legend">
+              <span style="color: var(--chart-1);">45%</span> Equities
+              <span style="color: var(--text-placeholder);">|</span>
+              <span style="color: var(--chart-4);">30%</span> Bonds
+              <span style="color: var(--text-placeholder);">|</span>
+              <span style="color: var(--chart-2);">15%</span> Real estate
+            </div>
+          </div>
+        </div>
+
+        <div class="pinned-card">
+          <div class="pinned-card-header">
+            <div class="label">
+              <i class="ti ti-receipt" style="font-size: 14px; color: #fa7720;" aria-hidden="true"></i>
+              Spending this month
+            </div>
+            <button class="card-menu-btn" onclick="toggleCardMenu(this)">
+              <i class="ti ti-dots" aria-hidden="true"></i>
+              <div class="card-dropdown">
+                <div class="card-dropdown-item"><i class="ti ti-maximize"></i>Expand</div>
+                <div class="card-dropdown-item"><i class="ti ti-refresh"></i>Refresh</div>
+                <div class="card-dropdown-item danger" onclick="unpinCard(this)"><i class="ti ti-pin-off"></i>Unpin</div>
+              </div>
+            </button>
+          </div>
+          <div class="spending-rows">
+            <div class="spending-row"><span>Housing</span><span class="amount">$3,200</span></div>
+            <div class="spending-row"><span>Groceries <span style="color: #fa7720;">+18%</span></span><span class="amount">$890</span></div>
+            <div class="spending-row"><span>Transportation</span><span class="amount">$420</span></div>
+          </div>
+        </div>
+
+        <div class="empty-slot">Begin chat to pin a view here.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="ti ti-check" aria-hidden="true"></i><span id="toastText"></span></div>
+
+<script>
+  // --- Resize handle ---
+  const handle = document.getElementById('resizeHandle');
+  const chatPanel = document.getElementById('chatPanel');
+  const mainEl = document.querySelector('.main');
+  let dragging = false;
+
+  handle.addEventListener('mousedown', e => {
+    dragging = true; handle.classList.add('active');
+    document.body.style.cursor = 'col-resize'; document.body.style.userSelect = 'none';
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    const rect = mainEl.getBoundingClientRect();
+    const pct = ((e.clientX - rect.left) / rect.width) * 100;
+    chatPanel.style.width = Math.min(Math.max(pct, 25), 70) + '%';
+  });
+  document.addEventListener('mouseup', () => {
+    if (!dragging) return; dragging = false; handle.classList.remove('active');
+    document.body.style.cursor = ''; document.body.style.userSelect = '';
+  });
+
+  // --- Nav links ---
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-link.active')?.classList.remove('active');
+      link.classList.add('active');
+    });
+  });
+
+  // --- View panel toggle ---
+  let showingPinned = false;
+  let pinnedCount = 3;
+
+  function togglePinnedGrid() {
+    showingPinned = !showingPinned;
+    document.getElementById('viewActive').classList.toggle('hidden', showingPinned);
+    document.getElementById('viewPinned').classList.toggle('hidden', !showingPinned);
+    document.getElementById('pinnedCountBtn').classList.toggle('active', showingPinned);
+  }
+
+  function showActiveView() {
+    showingPinned = false;
+    document.getElementById('viewActive').classList.remove('hidden');
+    document.getElementById('viewPinned').classList.add('hidden');
+    document.getElementById('pinnedCountBtn').classList.remove('active');
+  }
+
+  // --- Pin current view ---
+  function pinCurrentView() {
+    const btn = document.getElementById('pinBtn');
+    btn.innerHTML = '<i class="ti ti-check" aria-hidden="true"></i>Pinned';
+    btn.classList.add('pinned');
+    pinnedCount++;
+    updatePinnedCount();
+
+    // Remove empty slot if present
+    const slot = document.querySelector('.empty-slot');
+    if (slot) slot.remove();
+
+    // Add card to pinned grid
+    const card = document.createElement('div');
+    card.className = 'pinned-card';
+    card.innerHTML = `
+      <div class="pinned-card-header">
+        <div class="label">
+          <i class="ti ti-chart-line" style="font-size: 14px; color: var(--chart-6);"></i>
+          Lifetime projection
+        </div>
+        <button class="card-menu-btn" onclick="toggleCardMenu(this)">
+          <i class="ti ti-dots"></i>
+          <div class="card-dropdown">
+            <div class="card-dropdown-item"><i class="ti ti-maximize"></i>Expand</div>
+            <div class="card-dropdown-item"><i class="ti ti-refresh"></i>Refresh</div>
+            <div class="card-dropdown-item danger" onclick="unpinCard(this)"><i class="ti ti-pin-off"></i>Unpin</div>
+          </div>
+        </button>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="lbl">Current</div><div class="val">$2.4M</div></div>
+        <div class="metric"><div class="lbl">Age 65</div><div class="val" style="color: var(--text-deposit);">$16.8M</div></div>
+      </div>
+      <div class="footnote">On track — 94% confidence</div>
+    `;
+    document.getElementById('viewPinned').appendChild(card);
+    showToast('View pinned to dashboard');
+  }
+
+  // --- Chat ---
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('sendBtn');
+
+  const aiResponses = [
+    {
+      text: 'Your Roth IRA contributions are maxed for 2026 at <strong>$7,000</strong>. You have $4,200 remaining in your 401(k) match this year.',
+      sub: 'Consider front-loading your 401(k) to capture the full employer match by Q3.',
+      view: { title: 'Retirement accounts', icon: 'ti-wallet', color: 'var(--chart-1)' }
+    },
+    {
+      text: 'Your emergency fund is at <strong>$48,000</strong> — about 6 months of expenses. That\'s right in the recommended range.',
+      sub: 'Given current rates, your HYSA is earning roughly $180/month in interest.',
+      view: null
+    },
+    {
+      text: 'Here\'s your tax situation. You\'re projected to owe <strong>$12,400</strong> this year with an effective rate of 22.3%.',
+      sub: 'A backdoor Roth conversion could save roughly $2,100 in taxes over the next 5 years.',
+      view: { title: 'Tax projection', icon: 'ti-file-dollar', color: 'var(--chart-5)' }
+    },
+    {
+      text: 'Your portfolio has outperformed the S&P 500 by <strong>1.8%</strong> year-to-date. Risk-adjusted returns look strong with a Sharpe ratio of 1.42.',
+      sub: 'Your current allocation is well-diversified across 6 asset classes.',
+      view: { title: 'Portfolio performance', icon: 'ti-trending-up', color: 'var(--chart-4)' }
+    },
+  ];
+  let responseIndex = 0;
+
+  function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    const userMsg = document.createElement('div');
+    userMsg.className = 'msg-user';
+    userMsg.innerHTML = '<div class="bubble">' + escapeHtml(text) + '</div>';
+    chatMessages.appendChild(userMsg);
+    chatInput.value = '';
+    scrollChat();
+
+    const typing = document.createElement('div');
+    typing.className = 'typing-indicator';
+    typing.innerHTML = '<div class="ai-icon"><i class="ti ti-sparkles"></i></div><div class="typing-dots"><span></span><span></span><span></span></div>';
+    chatMessages.appendChild(typing);
+    scrollChat();
+
+    setTimeout(() => {
+      typing.remove();
+      const r = aiResponses[responseIndex % aiResponses.length];
+      responseIndex++;
+      let viewRefHtml = '';
+      if (r.view) {
+        viewRefHtml = '<div class="view-ref" onclick="showActiveView()"><i class="' + r.view.icon + '"></i>' + r.view.title + '<i class="ti ti-arrow-right"></i></div>';
+      }
+      const aiMsg = document.createElement('div');
+      aiMsg.className = 'msg-ai';
+      aiMsg.innerHTML = '<div class="ai-icon"><i class="ti ti-sparkles"></i></div><div class="body">' + r.text + '<div class="sub">' + r.sub + '</div>' + viewRefHtml + '</div>';
+      chatMessages.appendChild(aiMsg);
+      scrollChat();
+    }, 1200 + Math.random() * 800);
+  }
+
+  function scrollChat() { chatMessages.scrollTop = chatMessages.scrollHeight; }
+  function escapeHtml(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+  sendBtn.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
+
+  // --- Card menu ---
+  function toggleCardMenu(btn) {
+    const dropdown = btn.querySelector('.card-dropdown');
+    const isOpen = dropdown.classList.contains('open');
+    document.querySelectorAll('.card-dropdown.open').forEach(d => d.classList.remove('open'));
+    if (!isOpen) dropdown.classList.add('open');
+  }
+
+  function unpinCard(item) {
+    const card = item.closest('.pinned-card');
+    card.style.transition = 'opacity 200ms ease, transform 200ms ease';
+    card.style.opacity = '0'; card.style.transform = 'scale(0.95)';
+    setTimeout(() => { card.remove(); pinnedCount--; updatePinnedCount(); showToast('View unpinned'); }, 200);
+  }
+
+  function updatePinnedCount() {
+    document.getElementById('pinnedCountText').textContent = pinnedCount + ' pinned view' + (pinnedCount !== 1 ? 's' : '');
+  }
+
+  // --- Toast ---
+  function showToast(text) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toastText').textContent = text;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.card-menu-btn')) {
+      document.querySelectorAll('.card-dropdown.open').forEach(d => d.classList.remove('open'));
+    }
+  });
+</script>
+</body>
+</html>
