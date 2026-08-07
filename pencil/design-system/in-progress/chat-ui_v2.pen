@@ -3836,6 +3836,35 @@
                 },
                 {
                   "type": "frame",
+                  "id": "MzoZn",
+                  "name": "Chat / Panel Toggle Button",
+                  "context": "Floating panel toggle button. 34×34 circle, white fill, #a5bcfc border, panel-right icon in accent blue (#3a6af8). Replaces the chat header — floats at the top-right of the chat panel with a 16px inset. Tap to show/hide the side view.",
+                  "reusable": true,
+                  "width": 34,
+                  "height": 34,
+                  "fill": "#ffffff",
+                  "cornerRadius": 9999,
+                  "stroke": "#a5bcfc",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "KSlnN",
+                      "name": "icon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "panel-right",
+                      "library": "lucide",
+                      "fill": "#3a6af8"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
                   "id": "OBNxk",
                   "name": "Chat / Header",
                   "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
@@ -3977,6 +4006,7 @@
                   "context": "Input Field / Empty — Shown when no text has been entered. Contains placeholder text and the button row (voice, send disabled). Outer padding: 12t/20r/20b/20l. Inner field: $chat.input.bg, border $chat.input.border, radius $chat.input.radius.",
                   "reusable": true,
                   "width": "fill_container",
+                  "fill": "$chat.bg",
                   "stroke": {
                     "type": "color",
                     "color": "#E8E6E0",
@@ -3987,103 +4017,53 @@
                   },
                   "strokeAlignment": "inner",
                   "strokeLinejoin": "round",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$chat.shadow",
+                    "offset": {
+                      "x": 0,
+                      "y": -4
+                    },
+                    "blur": 4
+                  },
                   "layout": "vertical",
-                  "gap": 12,
                   "padding": [
-                    12,
                     20,
-                    20,
-                    20
+                    16
                   ],
                   "children": [
                     {
                       "type": "frame",
-                      "id": "zontz",
-                      "name": "inputField",
+                      "id": "xxTM3",
+                      "name": "rowButtons",
                       "width": "fill_container",
-                      "fill": "$chat.input.bg",
-                      "cornerRadius": "$chat.input.radius",
-                      "stroke": "$chat.input.border",
-                      "strokeWidth": 1,
-                      "strokeAlignment": "inner",
-                      "layout": "vertical",
-                      "gap": 24,
-                      "padding": 12,
+                      "gap": 8,
+                      "alignItems": "center",
                       "children": [
                         {
                           "type": "text",
-                          "id": "tO2lE",
+                          "id": "Rowqh",
                           "name": "placeholder",
                           "fill": "$chat.text.placeholder",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
                           "content": "Ask me any financial question...",
                           "fontFamily": "Heebo",
-                          "fontSize": 14,
+                          "fontSize": 16,
                           "fontWeight": "normal"
                         },
                         {
-                          "type": "frame",
-                          "id": "esvKR",
-                          "name": "rowButtons",
-                          "width": "fill_container",
-                          "gap": 8,
-                          "justifyContent": "end",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "YCug3",
-                              "name": "Chat / Voice Button / Default",
-                              "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
-                              "width": 34,
-                              "height": 34,
-                              "fill": "#00000000",
-                              "cornerRadius": 9999,
-                              "stroke": "#a5bcfc",
-                              "strokeWidth": 1,
-                              "strokeAlignment": "inner",
-                              "layout": "vertical",
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "icon",
-                                  "id": "ZnNk6",
-                                  "name": "icon",
-                                  "width": 16,
-                                  "height": 16,
-                                  "icon": "mic",
-                                  "library": "lucide",
-                                  "fill": "#3a6af8"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "NlOtL",
-                              "name": "Chat / Send Button / Disabled",
-                              "context": "Disabled state of the send button. Shown when the input field is empty or processing. 34×34 pill, muted fill ($chat.send.bg.disabled) with white icon. States: disabled.",
-                              "width": 34,
-                              "height": 34,
-                              "fill": "$chat.send.bg.disabled",
-                              "cornerRadius": 9999,
-                              "layout": "vertical",
-                              "justifyContent": "center",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "icon",
-                                  "id": "M0awp",
-                                  "name": "sendIcon",
-                                  "width": 20,
-                                  "height": 20,
-                                  "icon": "arrow-up",
-                                  "library": "lucide",
-                                  "fill": "#FFFFFF"
-                                }
-                              ]
-                            }
-                          ]
+                          "id": "VAqjs",
+                          "type": "ref",
+                          "ref": "N2Y3f",
+                          "name": "voiceBtn"
+                        },
+                        {
+                          "id": "tMqF7",
+                          "type": "ref",
+                          "ref": "e411LF",
+                          "name": "sendBtn"
                         }
                       ]
                     }
@@ -5290,12 +5270,7 @@
                       "type": "ref",
                       "ref": "sIHVs",
                       "width": "fill_container",
-                      "name": "inp1",
-                      "descendants": {
-                        "NlOtL": {
-                          "fill": "#c8d6fd"
-                        }
-                      }
+                      "name": "inp1"
                     }
                   ]
                 },
@@ -5407,24 +5382,6 @@
                           }
                         },
                         {
-                          "id": "I6Gap",
-                          "type": "ref",
-                          "ref": "vPKw1",
-                          "width": "fill_container",
-                          "name": "m2_3",
-                          "descendants": {
-                            "oArwT": {
-                              "width": "fit_content"
-                            },
-                            "OXFUM": {
-                              "content": "Anything unusual in my spending?",
-                              "width": "fit_content(256)",
-                              "height": "fit_content(21)",
-                              "textGrowth": "auto"
-                            }
-                          }
-                        },
-                        {
                           "id": "WCnJg",
                           "type": "ref",
                           "ref": "sSgx0",
@@ -5456,50 +5413,6 @@
                   "textGrowth": "fixed-width",
                   "width": 360,
                   "content": "Chat Panel (Active Conversation)\n360×600 · messages justify-end\nuser bubbles right · AI bubbles left\ntyping input at bottom",
-                  "fontFamily": "Heebo",
-                  "fontSize": 11,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "n4iOIa",
-              "name": "cardConversation",
-              "height": 988,
-              "fill": "#FAFAF8",
-              "cornerRadius": 8,
-              "stroke": "#E8E6E0",
-              "strokeWidth": 1,
-              "strokeAlignment": "inner",
-              "layout": "vertical",
-              "gap": 12,
-              "padding": 20,
-              "children": [
-                {
-                  "type": "text",
-                  "id": "aRpSl",
-                  "fill": "#8A8680",
-                  "content": "Panel / Close View",
-                  "fontFamily": "Heebo",
-                  "fontSize": 11,
-                  "fontWeight": "600",
-                  "letterSpacing": 0.5
-                },
-                {
-                  "id": "qav42",
-                  "type": "ref",
-                  "ref": "k8DxI",
-                  "name": "Chat / Panel / Close View"
-                },
-                {
-                  "type": "text",
-                  "id": "YNe64",
-                  "name": "lbl",
-                  "fill": "#8A8680",
-                  "textGrowth": "fixed-width",
-                  "width": 360,
-                  "content": "Chat Panel (Close View button)\n360×600 · messages justify-end\nuser bubbles right · AI bubbles left\nshown when View is open and user wants to close it",
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
@@ -6933,7 +6846,7 @@
               "flipY": false,
               "height": "fit_content",
               "x": 121,
-              "y": 384
+              "y": 443
             },
             {
               "id": "weSCm",
@@ -6945,24 +6858,6 @@
               "descendants": {
                 "H1M8K1": {
                   "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early."
-                }
-              }
-            },
-            {
-              "id": "UV7Ve",
-              "type": "ref",
-              "ref": "vPKw1",
-              "width": "fill_container",
-              "name": "m2_3",
-              "descendants": {
-                "oArwT": {
-                  "width": "fit_content"
-                },
-                "OXFUM": {
-                  "content": "Anything unusual in my spending?",
-                  "width": "fit_content(256)",
-                  "height": "fit_content(21)",
-                  "textGrowth": "auto"
                 }
               }
             },
@@ -31812,6 +31707,17 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "dmhZZ",
+      "x": 6000,
+      "y": 5159,
+      "name": "tmpScratch",
+      "width": "fit_content(360)",
+      "height": "fit_content(34)",
+      "layout": "vertical",
+      "gap": 16
     }
   ],
   "themes": {
