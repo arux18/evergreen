@@ -8248,123 +8248,6 @@
           "children": [
             {
               "type": "frame",
-              "id": "k18Xn",
-              "name": "cardHeaderDesktop",
-              "width": 400,
-              "fill": "#FFFFFF",
-              "cornerRadius": 8,
-              "stroke": "#E8E6E0",
-              "strokeWidth": 1,
-              "strokeAlignment": "inner",
-              "layout": "vertical",
-              "gap": 12,
-              "padding": 20,
-              "children": [
-                {
-                  "type": "text",
-                  "id": "c0b9oQ",
-                  "name": "title",
-                  "fill": "#8A8680",
-                  "content": "Chat / Header (desktop panels)",
-                  "fontFamily": "Heebo",
-                  "fontSize": 11,
-                  "fontWeight": "600",
-                  "letterSpacing": 0.5
-                },
-                {
-                  "type": "frame",
-                  "id": "t2LAV",
-                  "name": "Chat / Header",
-                  "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
-                  "reusable": true,
-                  "width": 360,
-                  "stroke": "$chat.divider",
-                  "strokeWidth": {
-                    "bottom": 0.5
-                  },
-                  "strokeAlignment": "inner",
-                  "strokeLinejoin": "round",
-                  "padding": [
-                    16,
-                    20
-                  ],
-                  "justifyContent": "space_between",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "J3LYO",
-                      "name": "left",
-                      "gap": 8,
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "id": "KpQC1",
-                          "type": "ref",
-                          "ref": "F0IE3n",
-                          "name": "Chat / Close Button / Default"
-                        },
-                        {
-                          "type": "text",
-                          "id": "L8Gni",
-                          "name": "chatTitle",
-                          "fill": "$chat.text.primary",
-                          "content": "Chat",
-                          "fontFamily": "Noto Serif",
-                          "fontSize": 16,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "ncHkG",
-                      "name": "showViewBtn",
-                      "context": "Show View toggle button for the chat header. Pill-shaped outline button that appears on desktop when the center panel view is hidden. Tap to reveal the view.",
-                      "cornerRadius": 9999,
-                      "stroke": "#D5D3D0",
-                      "strokeWidth": 1,
-                      "strokeAlignment": "inner",
-                      "gap": 8,
-                      "padding": [
-                        6,
-                        12
-                      ],
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "SRrWD",
-                          "name": "Label",
-                          "fill": "#403D3A",
-                          "content": "Show View",
-                          "lineHeight": 1.5,
-                          "textAlign": "center",
-                          "fontFamily": "Heebo",
-                          "fontSize": 12,
-                          "fontWeight": "500"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "text",
-                  "id": "b7Co4e",
-                  "name": "lbl",
-                  "fill": "#8A8680",
-                  "textGrowth": "fixed-width",
-                  "width": 360,
-                  "content": "Chat Panel Header\n360 wide · padding 16/20 · bottom border 0.5px $chat.divider\ntitle Noto Serif 16 · close button (new blue style) left\nshow-view pill right",
-                  "fontFamily": "Heebo",
-                  "fontSize": 11,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
               "id": "f0xlfc",
               "name": "cardWelcome",
               "height": 988,
@@ -8414,13 +8297,6 @@
                   "layout": "vertical",
                   "justifyContent": "space_between",
                   "children": [
-                    {
-                      "id": "vDrpe",
-                      "type": "ref",
-                      "ref": "t2LAV",
-                      "width": "fill_container",
-                      "name": "h1"
-                    },
                     {
                       "type": "frame",
                       "id": "dCrL5",
@@ -8496,6 +8372,15 @@
                       "ref": "eF87b",
                       "width": "fill_container",
                       "name": "inp1"
+                    },
+                    {
+                      "id": "y2hluY",
+                      "type": "ref",
+                      "ref": "F0IE3n",
+                      "name": "fabClose",
+                      "layoutPosition": "absolute",
+                      "x": 312,
+                      "y": 16
                     }
                   ]
                 },
@@ -8565,13 +8450,6 @@
                   "justifyContent": "space_between",
                   "children": [
                     {
-                      "id": "a3pOxt",
-                      "type": "ref",
-                      "ref": "t2LAV",
-                      "width": "fill_container",
-                      "name": "h2"
-                    },
-                    {
                       "type": "frame",
                       "id": "J1dY8",
                       "name": "chatMessages",
@@ -8639,6 +8517,15 @@
                       "ref": "W4uBj",
                       "width": "fill_container",
                       "name": "inp2"
+                    },
+                    {
+                      "id": "K0JPS",
+                      "type": "ref",
+                      "ref": "F0IE3n",
+                      "name": "fabClose",
+                      "layoutPosition": "absolute",
+                      "x": 312,
+                      "y": 16
                     }
                   ]
                 },
@@ -8753,13 +8640,6 @@
                   "justifyContent": "space_between",
                   "children": [
                     {
-                      "id": "W0mVW",
-                      "type": "ref",
-                      "ref": "t2LAV",
-                      "width": "fill_container",
-                      "name": "header"
-                    },
-                    {
                       "type": "frame",
                       "id": "kYCXa",
                       "name": "chatMessages",
@@ -8825,6 +8705,15 @@
                       "ref": "eF87b",
                       "width": "fill_container",
                       "name": "input"
+                    },
+                    {
+                      "id": "fyKPL",
+                      "type": "ref",
+                      "ref": "F0IE3n",
+                      "name": "fabClose",
+                      "layoutPosition": "absolute",
+                      "x": 312,
+                      "y": 16
                     }
                   ]
                 },
@@ -8894,13 +8783,6 @@
                   "layout": "vertical",
                   "justifyContent": "space_between",
                   "children": [
-                    {
-                      "id": "EOTa5",
-                      "type": "ref",
-                      "ref": "t2LAV",
-                      "width": "fill_container",
-                      "name": "header"
-                    },
                     {
                       "type": "frame",
                       "id": "B1Ob24",
@@ -9049,6 +8931,15 @@
                       "ref": "eF87b",
                       "width": "fill_container",
                       "name": "input"
+                    },
+                    {
+                      "id": "JJm06",
+                      "type": "ref",
+                      "ref": "F0IE3n",
+                      "name": "fabClose",
+                      "layoutPosition": "absolute",
+                      "x": 312,
+                      "y": 16
                     }
                   ]
                 },
@@ -9119,13 +9010,6 @@
                   "justifyContent": "space_between",
                   "children": [
                     {
-                      "id": "xPDVr",
-                      "type": "ref",
-                      "ref": "t2LAV",
-                      "width": "fill_container",
-                      "name": "h3"
-                    },
-                    {
                       "type": "frame",
                       "id": "hvtjb",
                       "name": "chatMessages",
@@ -9171,6 +9055,15 @@
                       "ref": "i2f20",
                       "width": "fill_container",
                       "name": "inp3"
+                    },
+                    {
+                      "id": "jGoXT",
+                      "type": "ref",
+                      "ref": "F0IE3n",
+                      "name": "fabClose",
+                      "layoutPosition": "absolute",
+                      "x": 312,
+                      "y": 16
                     }
                   ]
                 },
@@ -9240,13 +9133,6 @@
                   "justifyContent": "space_between",
                   "children": [
                     {
-                      "id": "fOP6b",
-                      "type": "ref",
-                      "ref": "t2LAV",
-                      "width": "fill_container",
-                      "name": "h4"
-                    },
-                    {
                       "type": "frame",
                       "id": "C7pqo",
                       "name": "chatMessages",
@@ -9289,6 +9175,15 @@
                       "ref": "HikqE",
                       "width": "fill_container",
                       "name": "inp4"
+                    },
+                    {
+                      "id": "eRvBB",
+                      "type": "ref",
+                      "ref": "F0IE3n",
+                      "name": "fabClose",
+                      "layoutPosition": "absolute",
+                      "x": 312,
+                      "y": 16
                     }
                   ]
                 },
@@ -36131,6 +36026,10 @@
       "type": "color",
       "value": "$blue.600"
     },
+    "blue.600": {
+      "type": "color",
+      "value": "#3A6AF8"
+    },
     "chat.bubble.user.bg": {
       "type": "color",
       "value": "$nav.bg"
@@ -36179,6 +36078,10 @@
       "type": "color",
       "value": "$blue.500"
     },
+    "blue.500": {
+      "type": "color",
+      "value": "#7094FB"
+    },
     "chat.voice.timer": {
       "type": "color",
       "value": "#5E5954"
@@ -36195,9 +36098,17 @@
       "type": "color",
       "value": "$blue.50"
     },
+    "blue.50": {
+      "type": "color",
+      "value": "#EBF0FE"
+    },
     "chat.close.pressed.bg": {
       "type": "color",
       "value": "$blue.100"
+    },
+    "blue.100": {
+      "type": "color",
+      "value": "#C8D6FD"
     },
     "chat.send.icon": {
       "type": "color",
@@ -36207,9 +36118,17 @@
       "type": "color",
       "value": "$blue.700"
     },
+    "blue.700": {
+      "type": "color",
+      "value": "#2952CC"
+    },
     "chat.send.bg.pressed": {
       "type": "color",
       "value": "$blue.800"
+    },
+    "blue.800": {
+      "type": "color",
+      "value": "#163196"
     },
     "chat.send.bg.disabled": {
       "type": "color",
@@ -36593,6 +36512,10 @@
       "type": "color",
       "value": "$blue.200"
     },
+    "blue.200": {
+      "type": "color",
+      "value": "#A5BCFC"
+    },
     "chat.navtoggle.icon": {
       "type": "color",
       "value": "$blue.600"
@@ -36616,39 +36539,11 @@
     "chat.navtoggle.pressed.icon": {
       "type": "color",
       "value": "$blue.700"
-    },
-    "blue.50": {
-      "type": "color",
-      "value": "#EBF0FE"
-    },
-    "blue.100": {
-      "type": "color",
-      "value": "#C8D6FD"
-    },
-    "blue.200": {
-      "type": "color",
-      "value": "#A5BCFC"
-    },
-    "blue.500": {
-      "type": "color",
-      "value": "#7094FB"
-    },
-    "blue.600": {
-      "type": "color",
-      "value": "#3A6AF8"
-    },
-    "blue.700": {
-      "type": "color",
-      "value": "#2952CC"
-    },
-    "blue.800": {
-      "type": "color",
-      "value": "#163196"
     }
   },
   "imports": {
-    "g": "hemlock-library.lib.pen",
-    "p": "../complete/chat-ui.lib.pen"
+    "p": "chat-ui.lib.pen",
+    "g": "../in-progress/hemlock-library.lib.pen"
   },
   "fileToken": "242fc38e-6fb5-4fec-ab13-7de143ce80fd"
 }
