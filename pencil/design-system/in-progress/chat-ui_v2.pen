@@ -1080,7 +1080,7 @@
                           "height": 34,
                           "fill": "#00000000",
                           "cornerRadius": 9999,
-                          "stroke": "$chat.chip.border",
+                          "stroke": "#a5bcfc",
                           "strokeWidth": 1,
                           "strokeAlignment": "inner",
                           "layout": "vertical",
@@ -1095,7 +1095,7 @@
                               "height": 16,
                               "icon": "microphone",
                               "library": "phosphor",
-                              "fill": "$chat.icon"
+                              "fill": "#3a6af8"
                             }
                           ]
                         },
@@ -6146,236 +6146,6 @@
                   "fontFamily": "Heebo",
                   "fontSize": 11,
                   "fontWeight": "500"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "LCYKi",
-      "x": 181,
-      "y": 5159,
-      "name": "Chat / Panel / Empty - OLD Outline Buttons",
-      "clip": true,
-      "width": 390,
-      "height": 844,
-      "fill": "#ffffff",
-      "stroke": "#DCD8CB",
-      "strokeWidth": 1,
-      "strokeAlignment": "inner",
-      "effect": {
-        "type": "shadow",
-        "shadowType": "outer",
-        "color": "#2D292628",
-        "offset": {
-          "x": 0,
-          "y": 2
-        },
-        "blur": 28,
-        "spread": 2
-      },
-      "layout": "vertical",
-      "justifyContent": "space_between",
-      "children": [
-        {
-          "type": "frame",
-          "id": "fdNRe",
-          "name": "chatMessages",
-          "clip": true,
-          "width": "fill_container",
-          "height": "fill_container",
-          "layout": "vertical",
-          "gap": 16,
-          "padding": [
-            16,
-            20
-          ],
-          "justifyContent": "center",
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "text",
-              "id": "K7lot",
-              "name": "greeting",
-              "fill": "#2D2926",
-              "content": "Ask me any financial question...",
-              "fontFamily": "Noto Serif",
-              "fontSize": 20,
-              "fontWeight": "normal"
-            },
-            {
-              "type": "frame",
-              "id": "R8dER",
-              "name": "Chips",
-              "layout": "vertical",
-              "gap": 16,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "m3xE4",
-                  "name": "chip1",
-                  "context": "Prompt chip (default state). Pill-shaped suggestion button shown below the input field. Displays a pre-written financial question the user can tap to send. Font: 14px Geist, fill $chat.chip.bg, border $chat.chip.border, radius $chat.chip.radius. States: default, hover, pressed.",
-                  "fill": "$chat.chip.bg",
-                  "cornerRadius": "$chat.chip.radius",
-                  "stroke": "$chat.chip.border",
-                  "strokeWidth": 1,
-                  "strokeAlignment": "inner",
-                  "padding": [
-                    12,
-                    16
-                  ],
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "KxGxS",
-                      "name": "label",
-                      "fill": "$chat.text.secondary",
-                      "content": "What's a donor-advised fund?",
-                      "lineHeight": 1.25,
-                      "textAlign": "center",
-                      "fontFamily": "Heebo",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "qEzQE",
-              "layoutPosition": "absolute",
-              "x": 342,
-              "y": 16,
-              "name": "Chat / Close Button / Default",
-              "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
-              "fill": "$chat.chip.bg",
-              "cornerRadius": 9999,
-              "stroke": "$chat.chip.border",
-              "strokeWidth": 1,
-              "strokeAlignment": "inner",
-              "layout": "vertical",
-              "padding": 8,
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon",
-                  "id": "Zhefm",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "icon": "panel-right",
-                  "library": "lucide",
-                  "fill": "$chat.icon"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "X2pJE",
-          "name": "inputField",
-          "width": "fill_container",
-          "fill": "$chat.bg",
-          "stroke": "$chat.input.border",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "effect": {
-            "type": "shadow",
-            "shadowType": "outer",
-            "color": "$chat.shadow",
-            "offset": {
-              "x": 0,
-              "y": -4
-            },
-            "blur": 4
-          },
-          "layout": "vertical",
-          "padding": [
-            20,
-            16
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "z3sJu",
-              "name": "rowButtons",
-              "width": "fill_container",
-              "gap": 8,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "h42iJV",
-                  "name": "placeholder",
-                  "fill": "$chat.text.placeholder",
-                  "textGrowth": "fixed-width",
-                  "width": "fill_container",
-                  "content": "Ask me any financial question...",
-                  "fontFamily": "Heebo",
-                  "fontSize": 16,
-                  "fontWeight": "normal"
-                },
-                {
-                  "type": "frame",
-                  "id": "oLe7Y",
-                  "name": "Chat / Voice Button / Default",
-                  "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
-                  "width": 34,
-                  "height": 34,
-                  "fill": "#ffffff",
-                  "cornerRadius": 9999,
-                  "stroke": "$chat.chip.border",
-                  "strokeWidth": 1,
-                  "strokeAlignment": "inner",
-                  "layout": "vertical",
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "MdgTv",
-                      "name": "icon",
-                      "width": 16,
-                      "height": 16,
-                      "icon": "mic",
-                      "library": "lucide",
-                      "fill": "$chat.icon"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "fOWnn",
-                  "name": "Chat / Send Button / Disabled",
-                  "context": "Disabled state of the send button. Shown when the input field is empty or processing. 34×34 pill, muted fill ($chat.send.bg.disabled) with white icon. States: disabled.",
-                  "width": 34,
-                  "height": 34,
-                  "fill": "$chat.send.bg.disabled",
-                  "cornerRadius": 9999,
-                  "layout": "vertical",
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "Y8k3X",
-                      "name": "sendIcon",
-                      "width": 20,
-                      "height": 20,
-                      "icon": "arrow-up",
-                      "library": "lucide",
-                      "fill": "#FFFFFF"
-                    }
-                  ]
                 }
               ]
             }
@@ -28015,11 +27785,13 @@
                         {
                           "type": "group",
                           "id": "H8PVR5",
+                          "name": "secureDescription",
                           "layout": "vertical",
                           "padding": [
                             0,
                             "$y:spacing-4xs"
                           ],
+                          "width": "fill_container",
                           "children": [
                             {
                               "type": "text",
@@ -31447,7 +31219,7 @@
                           "height": 34,
                           "fill": "#00000000",
                           "cornerRadius": 9999,
-                          "stroke": "$chat.chip.border",
+                          "stroke": "#a5bcfc",
                           "strokeWidth": 1,
                           "strokeAlignment": "inner",
                           "layout": "vertical",
@@ -31462,7 +31234,7 @@
                               "height": 16,
                               "icon": "mic",
                               "library": "lucide",
-                              "fill": "$chat.icon"
+                              "fill": "#3a6af8"
                             }
                           ]
                         },
@@ -31689,7 +31461,7 @@
                           "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
                           "width": 34,
                           "height": 34,
-                          "fill": "#00000000",
+                          "fill": "#ffffff",
                           "cornerRadius": 9999,
                           "stroke": "#a5bcfc",
                           "strokeWidth": 1,
@@ -31750,7 +31522,7 @@
       "id": "REpBg",
       "x": 4560.884594065672,
       "y": 5159,
-      "name": "Chat / Panel / FAB Test — With Outline",
+      "name": "Chat / Panel / Conversation — FAB",
       "clip": true,
       "width": 390,
       "height": 844,
@@ -31788,36 +31560,6 @@
           "children": [
             {
               "type": "frame",
-              "id": "k7WaWF",
-              "layoutPosition": "absolute",
-              "x": 342,
-              "y": 16,
-              "name": "Chat / Close Button / Default",
-              "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
-              "fill": "$chat.chip.bg",
-              "cornerRadius": 9999,
-              "stroke": "$chat.chip.border",
-              "strokeWidth": 1,
-              "strokeAlignment": "inner",
-              "layout": "vertical",
-              "padding": 8,
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon",
-                  "id": "oECSs",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "icon": "panel-right",
-                  "library": "lucide",
-                  "fill": "$chat.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
               "id": "PBpZI",
               "name": "msgAI",
               "width": "fill_container",
@@ -31829,7 +31571,7 @@
                   "fill": "$chat.text.primary",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "Great question — a traditional IRA gives you a tax deduction now and you pay taxes when you withdraw, while a Roth IRA is funded with after-tax money and then grows completely tax-free.",
+                  "content": "Great question — a traditional IRA gives you a great tax deduction now and you pay taxes when you withdraw, while a Roth IRA is funded with after-tax money and then grows completely tax-free.",
                   "fontFamily": "Heebo",
                   "fontSize": 14,
                   "fontWeight": "normal"
@@ -31841,12 +31583,19 @@
               "id": "P5901N",
               "name": "msgUser",
               "width": "fill_container",
+              "padding": [
+                0,
+                0,
+                0,
+                32
+              ],
               "justifyContent": "end",
               "children": [
                 {
                   "type": "frame",
                   "id": "EbmXF",
                   "name": "bubble",
+                  "width": "fill_container",
                   "fill": "$chat.bubble.user.bg",
                   "cornerRadius": 12,
                   "stroke": "$chat.bubble.user.border",
@@ -31862,7 +31611,7 @@
                       "name": "text",
                       "fill": "$chat.text.secondary",
                       "textGrowth": "fixed-width",
-                      "width": 210,
+                      "width": "fill_container",
                       "content": "Which one saves me more if I expect to be in a higher tax bracket later?",
                       "fontFamily": "Heebo",
                       "fontSize": 14,
@@ -31982,9 +31731,9 @@
                   "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
                   "width": 34,
                   "height": 34,
-                  "fill": "#ffffff",
+                  "fill": "#00000000",
                   "cornerRadius": 9999,
-                  "stroke": "$chat.chip.border",
+                  "stroke": "#a5bcfc",
                   "strokeWidth": 1,
                   "strokeAlignment": "inner",
                   "layout": "vertical",
@@ -31999,7 +31748,7 @@
                       "height": 16,
                       "icon": "mic",
                       "library": "lucide",
-                      "fill": "$chat.icon"
+                      "fill": "#3a6af8"
                     }
                   ]
                 },
@@ -32031,293 +31780,34 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "Fucms",
-      "x": 5030.884594065672,
-      "y": 5159,
-      "name": "Chat / Panel / FAB Test — No Outline",
-      "clip": true,
-      "width": 390,
-      "height": 844,
-      "fill": "#ffffff",
-      "stroke": "#DCD8CB",
-      "strokeWidth": 1,
-      "strokeAlignment": "inner",
-      "effect": {
-        "type": "shadow",
-        "shadowType": "outer",
-        "color": "#2D292628",
-        "offset": {
-          "x": 0,
-          "y": 2
-        },
-        "blur": 28,
-        "spread": 2
-      },
-      "layout": "vertical",
-      "justifyContent": "space_between",
-      "children": [
-        {
-          "type": "frame",
-          "id": "b4toB",
-          "name": "chatMessages",
-          "clip": true,
-          "width": "fill_container",
-          "height": "fill_container",
-          "layout": "vertical",
-          "gap": 16,
-          "padding": [
-            16,
-            20
-          ],
-          "children": [
-            {
-              "type": "frame",
-              "id": "PIZJA",
-              "layoutPosition": "absolute",
-              "x": 342,
-              "y": 16,
-              "name": "Chat / Close Button / Default",
-              "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
-              "fill": "$chat.chip.bg",
-              "cornerRadius": 9999,
-              "stroke": "#00000000",
-              "strokeWidth": 1,
-              "strokeAlignment": "inner",
-              "layout": "vertical",
-              "padding": 8,
-              "justifyContent": "center",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon",
-                  "id": "SzJE4",
-                  "name": "icon",
-                  "width": 16,
-                  "height": 16,
-                  "icon": "panel-right",
-                  "library": "lucide",
-                  "fill": "$chat.icon"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "UXg0V",
-              "name": "msgAI",
-              "width": "fill_container",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "m0ueL",
-                  "name": "text",
-                  "fill": "$chat.text.primary",
-                  "textGrowth": "fixed-width",
-                  "width": "fill_container",
-                  "content": "Great question — a traditional IRA gives you a tax deduction now and you pay taxes when you withdraw, while a Roth IRA is funded with after-tax money and then grows completely tax-free.",
-                  "fontFamily": "Heebo",
-                  "fontSize": 14,
-                  "fontWeight": "normal"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "SRAjJ",
-              "name": "msgUser",
-              "width": "fill_container",
-              "justifyContent": "end",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "phvwW",
-                  "name": "bubble",
-                  "fill": "$chat.bubble.user.bg",
-                  "cornerRadius": 12,
-                  "stroke": "$chat.bubble.user.border",
-                  "strokeWidth": 1,
-                  "padding": [
-                    12,
-                    16
-                  ],
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "xGosT",
-                      "name": "text",
-                      "fill": "$chat.text.secondary",
-                      "textGrowth": "fixed-width",
-                      "width": 210,
-                      "content": "Which one saves me more if I expect to be in a higher tax bracket later?",
-                      "fontFamily": "Heebo",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "PeNtY",
-              "name": "msgAI",
-              "width": "fill_container",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "fxEeo",
-                  "name": "text",
-                  "fill": "$chat.text.primary",
-                  "textGrowth": "fixed-width",
-                  "width": "fill_container",
-                  "content": "If you expect a higher bracket in retirement, the Roth usually wins — you lock in today's lower rate. For example, $6,000 in a Roth grows to roughly $46,000 in 30 years at a 7% average return, and every dollar of that is yours.",
-                  "fontFamily": "Heebo",
-                  "fontSize": 14,
-                  "fontWeight": "normal"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "I0gIUL",
-              "name": "msgUser",
-              "width": "fill_container",
-              "justifyContent": "end",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "sYT2S",
-                  "name": "bubble",
-                  "fill": "$chat.bubble.user.bg",
-                  "cornerRadius": 12,
-                  "stroke": "$chat.bubble.user.border",
-                  "strokeWidth": 1,
-                  "padding": [
-                    12,
-                    16
-                  ],
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "PNLYT",
-                      "name": "text",
-                      "fill": "$chat.text.secondary",
-                      "textGrowth": "fixed-width",
-                      "width": 210,
-                      "content": "Show me a table comparing both.",
-                      "fontFamily": "Heebo",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
         },
         {
           "type": "frame",
-          "id": "HUG94",
-          "name": "inputField",
-          "width": "fill_container",
-          "fill": "$chat.bg",
-          "stroke": "$chat.input.border",
+          "id": "k7WaWF",
+          "layoutPosition": "absolute",
+          "x": 337,
+          "y": 20,
+          "name": "Chat / Close Button / Default",
+          "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
+          "fill": "#ffffff",
+          "cornerRadius": 9999,
+          "stroke": "#a5bcfc",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
-          "effect": {
-            "type": "shadow",
-            "shadowType": "outer",
-            "color": "$chat.shadow",
-            "offset": {
-              "x": 0,
-              "y": -4
-            },
-            "blur": 4
-          },
           "layout": "vertical",
-          "padding": [
-            20,
-            16
-          ],
+          "padding": 8,
+          "justifyContent": "center",
+          "alignItems": "center",
           "children": [
             {
-              "type": "frame",
-              "id": "LpaNO",
-              "name": "rowButtons",
-              "width": "fill_container",
-              "gap": 8,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "AgoKv",
-                  "name": "placeholder",
-                  "fill": "$chat.text.placeholder",
-                  "textGrowth": "fixed-width",
-                  "width": "fill_container",
-                  "content": "Ask me any financial question...",
-                  "fontFamily": "Heebo",
-                  "fontSize": 16,
-                  "fontWeight": "normal"
-                },
-                {
-                  "type": "frame",
-                  "id": "xv00Q",
-                  "name": "Chat / Voice Button / Default",
-                  "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
-                  "width": 34,
-                  "height": 34,
-                  "fill": "#ffffff",
-                  "cornerRadius": 9999,
-                  "stroke": "$chat.chip.border",
-                  "strokeWidth": 1,
-                  "strokeAlignment": "inner",
-                  "layout": "vertical",
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "uTGmZ",
-                      "name": "icon",
-                      "width": 16,
-                      "height": 16,
-                      "icon": "mic",
-                      "library": "lucide",
-                      "fill": "$chat.icon"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "R7YDN0",
-                  "name": "Chat / Send Button / Disabled",
-                  "context": "Disabled state of the send button. Shown when the input field is empty or processing. 34×34 pill, muted fill ($chat.send.bg.disabled) with white icon. States: disabled.",
-                  "width": 34,
-                  "height": 34,
-                  "fill": "$chat.send.bg.disabled",
-                  "cornerRadius": 9999,
-                  "layout": "vertical",
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "E9FMf",
-                      "name": "sendIcon",
-                      "width": 20,
-                      "height": 20,
-                      "icon": "arrow-up",
-                      "library": "lucide",
-                      "fill": "#FFFFFF"
-                    }
-                  ]
-                }
-              ]
+              "type": "icon",
+              "id": "oECSs",
+              "name": "icon",
+              "width": 16,
+              "height": 16,
+              "icon": "panel-right",
+              "library": "lucide",
+              "fill": "#3a6af8"
             }
           ]
         }
