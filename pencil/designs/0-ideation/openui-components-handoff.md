@@ -140,3 +140,27 @@ Build screens using ONLY the components listed below. Each component has interac
 - Charts accept `labels` (x-axis) and `series` (data arrays)
 - All interactive components should show appropriate states based on context
 - Reference the Hemlock library for exact variable names when styling
+
+## Type & Spacing Rules (binding for all OpenUI screens)
+
+The OpenUI libs carry local tokens that mirror the Hemlock scale and values 1:1 (verified against `hemlock-library.lib.pen`). Never redefine a token value inside a lib or screen — if a value needs to change, it changes in Hemlock first.
+
+### Type roles — one spec per role
+
+| Role | Spec | Used for |
+|------|------|----------|
+| **Body prose** | `typo-primary-base-regular` — 16px, line-height 1.5, `$colors-text-body` | **All** reading text: TextContent/medium paragraphs, MarkDownRenderer paragraphs and bullets, ListBlock/ListItem items, TextCallout, Callout body |
+| **Meta** | `typo-primary-sm-regular` — 14px, line-height 1.43, `$colors-text-meta` | Subtitles, descriptions, hints, captions, timestamps |
+| **Block title** | `typo-primary-sm-semibold` — 14px, line-height 1.43, `$colors-text-header` | ListBlock header, Callout title, chip labels |
+| **Emphasis** | `typo-primary-base-semibold` — 16px, line-height 1.5, `$colors-text-header` | MarkDownRenderer headings and bold inline, CardHeader/Card titles |
+| **Lead-in** | `typo-primary-md-regular` — 18px, line-height 1.56, `$colors-text-body` | TextContent/large |
+| **Section title** | `typo-primary-lg-semibold` — 20px, line-height 1.4, `$colors-text-header` | TextContent/large-heavy |
+| **Caption** | `typo-primary-xs-*` — 12px, line-height 1.33 | Chart axes, table meta, image captions |
+
+### Rules
+
+1. **Body prose has exactly one spec.** Bullets in a ListBlock are body prose and render at 16px, identical to a MarkDownRenderer paragraph. No component picks its own reading size.
+2. **Line-height is always explicit.** Never leave it unset (font auto ≈ 1.47 for Heebo produces inconsistent rhythm across sizes). Use the ratio from the table above for the token's scale step.
+3. **fontFamily, fontSize, and fontWeight must come from the same scale step** — e.g. `$typo-primary-sm-semibold-*` together, never sm family with base size.
+4. **All spacing uses `$spacing-*` tokens** (2/4/8/12/16/24/32). No hardcoded padding or gaps.
+5. **Lint before approval:** run `python3 lint-openui-text-styles.py` (in this folder). It must report 0 errors before a screen using these libs is approved.
