@@ -1,5 +1,7 @@
 # OpenUI Priority Styling — Text & Spacing
 
+> **Status (2026-08-10):** Findings 1–5 are now **resolved** — all 8 libs carry canonical Hemlock-value tokens (base = 16px), line-heights are set explicitly everywhere to Hemlock ratios, P0 components were restyled (body prose = 16/1.5), and `lint-openui-text-styles.py` enforces the rules. See "Type & Spacing Rules" in `openui-components-handoff.md`. The priority tiers below remain the roadmap for the remaining Hemlock-equivalent work (P1–P3).
+
 Priority list for customized Hemlock styling of the OpenUI component libraries (`openui-*.lib.pen`), focused on typography, spacing, and content-pattern usage (paragraphs vs. bullet lists vs. callouts). Companion to `openui-components-handoff.md`.
 
 Audit basis: all 8 OpenUI lib files, cross-referenced against `hemlock-library.lib.pen` (351 components, 1,044 tokens) and the approved screens that import OpenUI (`login.pen`, `contact-us.pen`, `settings-menu.pen`, `View-Presentation-Ideation.pen`).
