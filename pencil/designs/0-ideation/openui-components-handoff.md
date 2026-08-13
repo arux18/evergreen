@@ -89,14 +89,14 @@ Build screens using ONLY the components listed below. **"Vendor description" is 
 
 | Component | Vendor description | Port status |
 |-----------|--------------------|-------------|
-| **Callout** | Status banner. Variants: `neutral` \| `info` \| `warning` \| `success` (vendor maps `error` → warning). Optional reactive `visible` with 3s auto-dismiss | **differs** — ours has 4 static variants incl. a real `error` (backlog B3) |
-| **TextCallout** | Compact status note: `variant` (neutral/info/warning/success/danger) + `title` + `description` | **differs** — ours is a single-sentence emphasis bar, no title/variants (backlog B4) |
+| ~~**Callout**~~ | Status banner. Variants: `neutral` \| `info` \| `warning` \| `success` (vendor maps `error` → warning) | **removed from the shown palette (2026-08-13)** — TextCallout carries all status duty; backlog B3 retires it from the port |
+| **TextCallout** | Compact status note: `variant` (neutral/info/warning/success/danger) + `title` + `description`. **The only status-note component in the shown palette** | **differs** — ours is a single-sentence emphasis bar, no title/variants (backlog B4, now the top feedback-lib priority) |
 | **MessageLoading** | Animated loading indicator | ported |
 | **Skeleton / TableSkeleton** | Loading placeholders (TableSkeleton is what Table renders while queries load) | ported |
 
 ### Charts
 
-Vendor ships bar, line, area, pie, radar, scatter charts. Ours adds horizontal-bar, radial, single-stacked-bar, and mini variants — **and has a v1/v2 duplication** (`openui-charts.lib.pen` vs `openui-charts-v2.lib.pen`). Ported, consolidation pending (backlog B5).
+`openui-charts-v2.lib.pen` is the single chart library — v1 (`openui-charts.lib.pen`) is legacy, kept only because `View-Presentation-Ideation.pen` still imports it. **Shown set:** BarChart, HorizontalBarChart, LineChart, AreaChart, **DonutChart** (in place of PieChart), RadarChart + ScatterChart (re-added 2026-08-13), SingleStackedBarChart, Mini* (line/area/bar). **Not shown:** PieChart, RadialChart.
 
 ### Chat surfaces (OpenUI Chat Library)
 
@@ -126,10 +126,10 @@ Each rule is given twice: **Design** = what we do in Pencil; **Prompt copy** = t
 - **Prompt copy [vendor]:** "Use ListBlock when presenting a set of options or steps the user can click to select."
 - **Prompt copy [Evergreen]:** "Plain, non-actionable lists belong in markdown bullets inside text — never ListBlock."
 
-### R4 — Callouts are status, not structure
+### R4 — Status notes: TextCallout only (Callout is not in the palette)
 
-- **Design:** Callout = out-of-band status banner (info/success/warning), title + body, used sparingly and never as a response headline. TextCallout = one compact status note inside an answer (variant + title + description).
-- **Prompt copy [Evergreen]:** "Never lead a response with a Callout. Use Callout only for status that is out-of-band from the answer text; use TextCallout for a single key point inside the answer."
+- **Design:** TextCallout is the only in-answer status component — one compact note (variant + title + description), never a headline, never the opening element. Callout is **not shown** (removed 2026-08-13); do not use it in new screens.
+- **Prompt copy [Evergreen]:** "Do not use Callout. Status inside an answer goes in a TextCallout (variant + title + description), and never leads the response — lead with a paragraph."
 
 ### R5 — Long answers fold into sections
 
@@ -154,9 +154,9 @@ No `.pen` changes yet — each item gets its own visual review in Pencil before 
 |---|------|------|--------------|
 | B1 | `openui-content.lib.pen` | TextContent sizes | Vendor: `small` \| `default` \| `large` \| `small-heavy` \| `large-heavy`. Rename `medium`→`default`, add `small-heavy` |
 | B2 | `openui-data-display.lib.pen` | ListBlock/ListItem | Vendor: number/image indicators, optional subtitle + image + action (clickable). Ours: static bullets |
-| B3 | `openui-feedback.lib.pen` | Callout variants | Vendor: neutral/info/warning/success, `error`→warning, optional 3s auto-dismiss. Decide: keep our real `error` variant (recommended for finance) |
+| B3 | `openui-feedback.lib.pen` | Retire Callout from the port | Callout removed from the shown palette 2026-08-13 — strip the 4 Callout variants after confirming nothing references them |
 | B4 | `openui-feedback.lib.pen` | TextCallout rebuild | Vendor: variant + title + description compact status note |
-| B5 | `openui-charts*.lib.pen` | Chart consolidation | Dedupe v1/v2; align chart set to vendor (bar/line/area/pie/radar/scatter) + our approved extras |
+| B5 | `openui-charts-v2.lib.pen` | Chart consolidation | **Done 2026-08-13:** v2 is the single lib, Radar/Scatter re-added, extras (HorizontalBar, SingleStackedBar, Mini*) confirmed shown. v1 kept as legacy for `View-Presentation-Ideation.pen`. Remaining: P3 style pass on the shown set |
 | B6 | `openui-layout.lib.pen` | Add SectionBlock/SectionItem | Collapsible, stream-aware sections |
 | B7 | new `openui-chat.lib.pen` | Port chat surfaces | FullScreen, Copilot, BottomTray, ToolCall, ToolResult |
 | B8 | all | Border token reconciliation | Actions-lib chip border `#DCD8CB` vs Hemlock `colors-borders-dark` `#D5D3D0` — pick one upstream |
