@@ -1,10 +1,24 @@
 # OpenUI Priority Styling — Text & Spacing
 
-> **Status (2026-08-10):** Findings 1–5 are now **resolved** — all 8 libs carry canonical Hemlock-value tokens (base = 16px), line-heights are set explicitly everywhere to Hemlock ratios, P0 components were restyled (body prose = 16/1.5), and `lint-openui-text-styles.py` enforces the rules. See "Type & Spacing Rules" in `openui-components-handoff.md`. The priority tiers below remain the roadmap for the remaining Hemlock-equivalent work (P1–P3).
+> **Status (2026-08-13):** Findings 1–5 are **resolved** (canonical Hemlock-value tokens, explicit line-heights, P0 restyle, lint gate). **Palette decision (show-list):** the GenUI palette will **not** show `Callout`, `RadialChart`, or `PieChart`; it **will** show `DonutChart` (in place of PieChart), `RadarChart`, `ScatterChart`, and `TextCallout`. RadarChart + ScatterChart have been re-added to `openui-charts-v2.lib.pen` (v2 is now the single chart lib). See "Shown-palette decisions" below.
+>
+> _Earlier status (2026-08-10): canonical token sync, P0 restyle, lint script._
 
 Priority list for customized Hemlock styling of the OpenUI component libraries (`openui-*.lib.pen`), focused on typography, spacing, and content-pattern usage (paragraphs vs. bullet lists vs. callouts). Companion to `openui-components-handoff.md`.
 
-Audit basis: all 8 OpenUI lib files, cross-referenced against `hemlock-library.lib.pen` (351 components, 1,044 tokens) and the approved screens that import OpenUI (`login.pen`, `contact-us.pen`, `settings-menu.pen`, `View-Presentation-Ideation.pen`).
+Audit basis: all 8 OpenUI lib files, cross-referenced against `hemlock-library.lib.pen` (351 components, 1,044 tokens), the vendor catalog (`@openuidev/react-ui` `genui-lib` source, 2026-08-13), and the approved screens that import OpenUI (`login.pen`, `contact-us.pen`, `settings-menu.pen`, `View-Presentation-Ideation.pen`).
+
+## Shown-palette decisions (2026-08-13)
+
+| Component | Decision | Consequence |
+|-----------|----------|-------------|
+| **Callout** | NOT shown | Removed from P0 styling list. TextCallout becomes the **only** status-note component — its vendor-spec rebuild (variant + title + description, incl. `danger`) moves up in priority (backlog B4). |
+| **TextCallout** | Shown | Now carries all in-answer status duty that Callout used to cover. |
+| **PieChart** | NOT shown | DonutChart replaces it. Note: the vendor library still ships "pie" — the removal must also happen in the LLM palette/catalog copy, or the model may still emit PieChart (see CAL-927 prohibited list). |
+| **RadialChart** | NOT shown | Consistent with the vendor catalog, which never had it. Exists only in the legacy `openui-charts.lib.pen` (v1), which is now superseded by v2. |
+| **DonutChart** | Shown (in place of PieChart) | Lives in v2; styling as per P3. |
+| **RadarChart** | Shown | Re-added to v2 (Default + Hover) from v1, 2026-08-13. |
+| **ScatterChart** | Shown | Re-added to v2 (Default + Hover) from v1, 2026-08-13. |
 
 ---
 
@@ -30,8 +44,9 @@ These components decide how paragraphs, bullet points, and emphasis render in ch
 | **MarkDownRenderer** | content | No Hemlock equivalent exists — must be built. Define the full type ramp for markdown output (headings, paragraph, bold/inline emphasis, links), block spacing (currently `gap: $spacing-sm`), paragraph internal spacing (`$spacing-3xs`), list indent (`padding-left: $spacing-sm`) and bullet style. Bind all sizes/line-heights to Hemlock `typo-primary-*` tokens. This component owns the paragraphs-vs-bullets decision in practice. |
 | **TextContent** (small / medium / large / large-heavy) | content | Fix the type-scale drift (Finding 1): map small → `typo-primary-sm` (14px), medium → `base` (16px), large → `md` (18px), large-heavy → `lg-semibold` (20px). Replace raw `lineHeight: 1.5 / 1.3` with the matching `-line-height` tokens. |
 | **ListBlock / ListItem** | data-display | Align item text to base size (match MarkDownRenderer lists — Finding 5). Token-bind the bullet marker (currently a literal `•` text node), item gap (`$spacing-2xs`), row padding (`[$spacing-2xs, 0]`), and header title/subtitle styles. Hemlock already has a `ListBlock` with 8 variants — reconcile the two rather than maintaining both. |
-| **TextCallout** | feedback | No Hemlock equivalent — must be built. Current spec: `padding: [$spacing-xs, $spacing-sm]`, `gap: $spacing-xs`, `$hover.bg` fill, `$radius` corner, accent bar in `$text.secondary`, text sm-regular with no line-height. Needs Hemlock surface/text tokens and a defined text size. |
-| **Callout** (info / success / warning / error) | feedback | Hemlock equivalent exists (7 variants) — verify the mapping and retire the OpenUI copy. Title sm-semibold + body sm-regular need line-heights; confirm `callout.*.bg/border/icon` tokens map to Hemlock status colors (the migrate script already has this mapping). |
+| **TextCallout** | feedback | **Elevated to sole status-note component** (Callout is not shown). Rebuild to vendor spec (backlog B4): variant (neutral/info/warning/success/danger) + title + description, all on Hemlock tokens. Current port is only a single-sentence emphasis bar: `padding: [$spacing-xs, $spacing-sm]`, `gap: $spacing-xs`, `$hover.bg` fill, `$radius` corner, accent bar in `$text.secondary`. |
+
+~~Callout~~ — **removed from the shown palette (2026-08-13)**; no styling work. The OpenUI copy gets retired with the feedback-lib cleanup (backlog B3).
 
 ## P1 — High (frame the text content)
 
@@ -62,7 +77,7 @@ These components decide how paragraphs, bullet points, and emphasis render in ch
 
 | Component | File | What needs custom styling |
 |-----------|------|---------------------------|
-| **All chart components** | charts, charts-v2 | Axis labels, tick text, tooltips, and legends all use xs-regular/xs-semibold on `$colors-text-meta/body` — token-bind these and set line-heights. **Consolidate v1 and v2 first**: the two files duplicate ~20 components (v2 swaps Pie/Radar/Scatter/Radial for Donut). Styling work done before deduplication will be thrown away. Note Hemlock already ships a full styled chart set (Bar, Donut, Gauge, KpiCard, Sparkline, ChartTooltip, ChartLegend, etc.) — evaluate whether OpenUI charts should be retired in favor of those instead of restyled. |
+| **Shown chart components** | charts-v2 | Axis labels, tick text, tooltips, and legends all use xs-regular/xs-semibold on `$colors-text-meta/body` — token-bind these and set line-heights. **v2 is now the single chart lib** (2026-08-13): RadarChart and ScatterChart were re-added from v1; v1 is superseded. Shown set: BarChart, HorizontalBarChart, LineChart, AreaChart, DonutChart (replaces PieChart), RadarChart, ScatterChart, SingleStackedBarChart, Mini* (extras all confirmed shown 2026-08-13). Not shown: PieChart, RadialChart. Note Hemlock already ships a full styled chart set (Bar, Donut, Gauge, KpiCard, Sparkline, ChartTooltip, ChartLegend, etc.) — evaluate whether OpenUI charts should be retired in favor of those instead of restyled. |
 
 ---
 
@@ -75,7 +90,7 @@ Styling priorities above assume these usage conventions, so each pattern has exa
 | **Paragraph** (TextContent, or markdown `p` via MarkDownRenderer) | Default for all prose. Narrative answers, explanations, summaries. Medium/base (16px) is the default body size; small for timestamps/meta; large/large-heavy for lead-ins and section titles. | Anything that is a set of discrete comparable items. |
 | **Bullet list** (markdown list via MarkDownRenderer) | Short unordered items inside a flowing AI answer — the inline default. | Items needing titles, descriptions, tags, or actions. |
 | **ListBlock / ListItem** | Structured lists that stand on their own: "Next steps", checklists, numbered procedures, radio-selectable options. Has its own header (title + subtitle). | Inline lists mid-paragraph — use markdown bullets instead. |
-| **TextCallout** | Inline emphasis of a single key sentence or figure inside an answer (e.g. a portfolio value or key takeaway). | Warnings/errors — too weak; multi-sentence content — too small. |
-| **Callout** | Out-of-band status communication: info, success, warning, error. Always has a title + body. | Emphasizing ordinary answer content — use TextCallout. |
+| **TextCallout** | The **only** in-answer status component (variant + title + description per vendor spec; e.g. a key figure or takeaway with status color). | Headlines; multi-sentence content. |
+| ~~Callout~~ | **Not shown** (removed from the palette, 2026-08-13). Status duty moved to TextCallout. | — |
 
-Because both list components and both callout components must be visually consistent with TextContent, **P0 items must be styled as one system, not as isolated components** — the body text size, line-height, and block spacing chosen for TextContent cascade into MarkDownRenderer, ListBlock, TextCallout, and Callout.
+Because the list components and TextCallout must be visually consistent with TextContent, **P0 items must be styled as one system, not as isolated components** — the body text size, line-height, and block spacing chosen for TextContent cascade into MarkDownRenderer, ListBlock, and TextCallout.
