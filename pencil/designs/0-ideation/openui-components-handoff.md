@@ -96,7 +96,7 @@ Build screens using ONLY the components listed below. **"Vendor description" is 
 
 ### Charts
 
-`openui-charts-v2.lib.pen` is the single chart library — v1 (`openui-charts.lib.pen`) is legacy, kept only because `View-Presentation-Ideation.pen` still imports it. **Shown set:** BarChart, HorizontalBarChart, LineChart, AreaChart, **DonutChart** (in place of PieChart), RadarChart + ScatterChart (re-added 2026-08-13), SingleStackedBarChart, Mini* (line/area/bar). **Not shown:** PieChart, RadialChart.
+`openui-charts-v2.lib.pen` is the single chart library — v1 (`openui-charts.lib.pen`) is legacy, kept only because `View-Presentation-Ideation.pen` still imports it. **Shown set:** BarChart, HorizontalBarChart, LineChart, AreaChart, **DonutChart** (in place of PieChart), SingleStackedBarChart, Mini* (line/area/bar), **HeatmapChart** (added 2026-08-17). **Not shown:** PieChart, RadialChart; RadarChart and ScatterChart cut 2026-08-17 (may return later).
 
 ### Chat surfaces (OpenUI Chat Library)
 
@@ -156,7 +156,7 @@ No `.pen` changes yet — each item gets its own visual review in Pencil before 
 | B2 | `openui-data-display.lib.pen` | ListBlock/ListItem | Vendor: number/image indicators, optional subtitle + image + action (clickable). Ours: static bullets |
 | B3 | `openui-feedback.lib.pen` | Retire Callout from the port | Callout removed from the shown palette 2026-08-13 — strip the 4 Callout variants after confirming nothing references them |
 | B4 | `openui-feedback.lib.pen` | TextCallout rebuild | Vendor: variant + title + description compact status note |
-| B5 | `openui-charts-v2.lib.pen` | Chart consolidation | **Done 2026-08-13:** v2 is the single lib, Radar/Scatter re-added, extras (HorizontalBar, SingleStackedBar, Mini*) confirmed shown. v1 kept as legacy for `View-Presentation-Ideation.pen`. Remaining: P3 style pass on the shown set |
+| B5 | `openui-charts-v2.lib.pen` | Chart consolidation | **Done 2026-08-17:** v2 is the single lib; shown set finalized (Donut replaces Pie; HeatmapChart added from Hemlock; Radar/Scatter cut, may return). v1 kept as legacy for `View-Presentation-Ideation.pen`. Remaining: P3 style pass on the shown set |
 | B6 | `openui-layout.lib.pen` | Add SectionBlock/SectionItem | Collapsible, stream-aware sections |
 | B7 | new `openui-chat.lib.pen` | Port chat surfaces | FullScreen, Copilot, BottomTray, ToolCall, ToolResult |
 | B8 | all | Border token reconciliation | Actions-lib chip border `#DCD8CB` vs Hemlock `colors-borders-dark` `#D5D3D0` — pick one upstream |

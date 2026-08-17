@@ -17,8 +17,9 @@ Audit basis: all 8 OpenUI lib files, cross-referenced against `hemlock-library.l
 | **PieChart** | NOT shown | DonutChart replaces it. Note: the vendor library still ships "pie" — the removal must also happen in the LLM palette/catalog copy, or the model may still emit PieChart (see CAL-927 prohibited list). |
 | **RadialChart** | NOT shown | Consistent with the vendor catalog, which never had it. Exists only in the legacy `openui-charts.lib.pen` (v1), which is now superseded by v2. |
 | **DonutChart** | Shown (in place of PieChart) | Lives in v2; styling as per P3. |
-| **RadarChart** | Shown | Re-added to v2 (Default + Hover) from v1, 2026-08-13. |
-| **ScatterChart** | Shown | Re-added to v2 (Default + Hover) from v1, 2026-08-13. |
+| **RadarChart** | NOT shown (2026-08-17) | Cut from v2 (had been briefly re-added). May return later. Note: this now **aligns** with CAL-927, which removed Radar from the production palette. |
+| **ScatterChart** | NOT shown (2026-08-17) | Cut from v2 alongside Radar; may return later. Divergence note: CAL-927 kept Scatter — our cut is a product decision beyond the tickets. |
+| **HeatmapChart** | Shown (2026-08-17) | Ported from Hemlock's `component/HeatmapChart` into v2 (sequential blue scale tokens added). |
 
 ---
 
@@ -77,7 +78,7 @@ These components decide how paragraphs, bullet points, and emphasis render in ch
 
 | Component | File | What needs custom styling |
 |-----------|------|---------------------------|
-| **Shown chart components** | charts-v2 | Axis labels, tick text, tooltips, and legends all use xs-regular/xs-semibold on `$colors-text-meta/body` — token-bind these and set line-heights. **v2 is now the single chart lib** (2026-08-13): RadarChart and ScatterChart were re-added from v1; v1 is superseded. Shown set: BarChart, HorizontalBarChart, LineChart, AreaChart, DonutChart (replaces PieChart), RadarChart, ScatterChart, SingleStackedBarChart, Mini* (extras all confirmed shown 2026-08-13). Not shown: PieChart, RadialChart. Note Hemlock already ships a full styled chart set (Bar, Donut, Gauge, KpiCard, Sparkline, ChartTooltip, ChartLegend, etc.) — evaluate whether OpenUI charts should be retired in favor of those instead of restyled. |
+| **Shown chart components** | charts-v2 | Axis labels, tick text, tooltips, and legends all use xs-regular/xs-semibold on `$colors-text-meta/body` — token-bind these and set line-heights. **v2 is now the single chart lib** (2026-08-13): RadarChart and ScatterChart were re-added from v1; v1 is superseded. Shown set: BarChart, HorizontalBarChart, LineChart, AreaChart, DonutChart (replaces PieChart), SingleStackedBarChart, Mini*, HeatmapChart (added 2026-08-17). Not shown: PieChart, RadialChart; RadarChart + ScatterChart cut 2026-08-17 (may return later). Note Hemlock already ships a full styled chart set (Bar, Donut, Gauge, KpiCard, Sparkline, ChartTooltip, ChartLegend, etc.) — evaluate whether OpenUI charts should be retired in favor of those instead of restyled. |
 
 ---
 
