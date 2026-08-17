@@ -35514,7 +35514,7 @@
     {
       "type": "frame",
       "id": "zCR5r",
-      "x": 3794,
+      "x": 3950,
       "y": 3765,
       "name": "View - D - Nav and Chat Hidden",
       "clip": true,
@@ -58865,7 +58865,7 @@
     {
       "type": "frame",
       "id": "LIuTZ",
-      "x": 5286,
+      "x": 6034,
       "y": 3765,
       "name": "Settings - M - Profile - Nav and Chat Hidden",
       "clip": true,
@@ -60056,6 +60056,76 @@
           ]
         }
       ]
+    },
+    {
+      "type": "context",
+      "id": "WQehJ",
+      "x": -506,
+      "y": 3247,
+      "name": "Composer — button visibility",
+      "width": 340,
+      "height": 0,
+      "content": "Composer buttons — what shows when\n\nEmpty: voice (default) + send disabled.\nTyping / expanded: voice (default) + send enabled. On expanded, text wraps around the bottom-right cluster — no reserved empty column.\nRecording: voice switches to active (filled); send stays disabled.\nTranscribing: voice disabled at 40% opacity; send disabled.\nWhile the AI is generating: stop replaces send. Voice is unchanged from the current input state.\n\nTokens — send: $chat.send.bg, .hover, .pressed, .disabled. Stop reuses $chat.send.bg. Voice: transparent fill, $blue.200 border, $blue.600 icon; active swaps to the filled $chat.voice.active.bg; disabled keeps the outline at 40% opacity."
+    },
+    {
+      "type": "context",
+      "id": "FCAN0",
+      "x": 5438,
+      "y": 3765,
+      "name": "Hide-chat FAB — desktop",
+      "width": 340,
+      "height": 0,
+      "content": "Hide-chat FAB (desktop)\n\nReplaces the chat header. Floats at the top-right of the chat panel, 16px inset. Same hide/show behavior as the old header arrow.\n\nFill: $chat.bg — the chat panel surface. Always opaque, so message text cannot show through. Messages scroll underneath; the button never covers the input.\n\nIcon: $blue.600. Border is conditional — no outline at rest; draw the 1px $blue.200 outline only when content is scrolling beneath the button."
+    },
+    {
+      "type": "context",
+      "id": "C0Ly6",
+      "x": 6472,
+      "y": 3765,
+      "name": "Mobile FABs + static pages",
+      "width": 340,
+      "height": 0,
+      "content": "Mobile Menu + Chat FABs\n\nBoth FABs sit stacked in the top-right corner. On static pages — Settings, for now — they stay pinned there as the page scrolls; they do not travel with the content.\n\nThe Menu FAB opens the Menu, not the Dashboard.\n\nFill: $chat.navtoggle.bg — the shell surface they float over, always opaque. Border $chat.navtoggle.border, icon $chat.navtoggle.icon."
+    },
+    {
+      "type": "context",
+      "id": "g5gTA",
+      "x": 3562,
+      "y": 3765,
+      "name": "Header bar removed",
+      "width": 340,
+      "height": 0,
+      "content": "No header bar on views or static pages\n\nThe view area no longer has a header bar — there is no “Good morning, Sylvia” chrome above the view. The view uses the full area.\n\nOn static pages that have no generated view (Settings, for now), put the page title in the page container itself. Do not leave it in a header-bar slot — that bar is gone on mobile and desktop."
+    },
+    {
+      "type": "context",
+      "id": "Zi6tp",
+      "x": 5579,
+      "y": 1185,
+      "name": "Collapsed-panel FABs",
+      "width": 340,
+      "height": 0,
+      "content": "Collapsed-panel FABs (both panels hidden)\n\nWhen nav and chat are both closed, two 34×34 FABs float over the content: nav (panel-left) at the top-left, chat (message-circle) at the top-right, each 16px inset. The icons show what will open.\n\nClose / hide controls use arrows (arrow-left-to-line, arrow-right-to-line). Open / show controls use the panel icons.\n\nBoth use the nav-toggle tokens: fill $chat.navtoggle.bg (opaque), border $chat.navtoggle.border, icon $chat.navtoggle.icon. Hover $chat.navtoggle.hover.bg; pressed $chat.navtoggle.pressed.bg with $chat.navtoggle.pressed.icon."
+    },
+    {
+      "type": "context",
+      "id": "riTFf",
+      "x": -506,
+      "y": 2563,
+      "name": "Close FAB — conditional border",
+      "width": 340,
+      "height": 0,
+      "content": "Chat close FAB — outline rule\n\nNo border at rest. Show the 1px $blue.200 outline only when content scrolls underneath, so the button stays distinct from messages passing behind it.\n\nFill stays opaque in every state — $chat.bg on the desktop chat panel, the shell surface on mobile. Never rgba: text must not bleed through."
+    },
+    {
+      "type": "context",
+      "id": "Nf3Uh",
+      "x": -506,
+      "y": 175,
+      "name": "Color tokens & dark mode",
+      "width": 340,
+      "height": 0,
+      "content": "Color tokens & dark mode\n\nSpecify roles, not hex. Every color in these notes and components names a token, so dark mode is a theme switch rather than a redesign.\n\nPrimitives are fixed: $blue.600 is always #3A6AF8, taupe-100 is always #F7F5F0. A ramp step does not change meaning when the theme flips.\n\nSemantic tokens carry the light/dark pair on the G:mode axis — $chat.bg, $chat.send.bg, $chat.navtoggle.*. The dark pass fills those values in; components are never duplicated for dark.\n\nAccent shifts in dark (per Hemlock): primary $blue.600 → $blue.500, hover $blue.700 → $blue.400, selected fill $blue.100 → $blue.800. Taupe and gray ramps invert.\n\nThe FAB rule already covers dark: the fill is the surface underneath, always opaque — never rgba.\n\nGaps to close in the dark pass:\n• $chat.navtoggle.bg is hardcoded #ffffff — it should alias the mobile shell surface token.\n• The close FAB strokes $blue.200 directly; give it a semantic outline token so it can lighten on dark surfaces.\n• Disabled send ($chat.send.bg.disabled → $blue.100) is too light on a dark surface; it should ride the accent-subtle step ($blue.800)."
     }
   ],
   "themes": {
