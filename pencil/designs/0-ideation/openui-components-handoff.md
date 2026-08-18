@@ -4,6 +4,8 @@ When creating screens in Pencil, use the OpenUI component library below. All com
 
 ## Source of Truth (read first)
 
+**Terminology — "port."** A *port* is a faithful re-creation of someone else's component library in a different medium, where the original stays the source of truth. Our `.pen` files are the port; the vendor's React library is the original. So a difference between the two is a defect in our port, not a design choice; a component we haven't drawn yet is a gap in the port, not evidence the vendor lacks it; and vendor naming wins even where ours reads better. **Hemlock is not a port** — it is our own design system and answers to no upstream.
+
 **Our `.pen` libraries are a design port of the vendor component library `@openuidev/react-ui`** ([thesysdev/openui](https://github.com/thesysdev/openui), docs at openui.com). Production renders the vendor library when `flags.rolloutGenUiDsLibrary` is ON (`app-shell.tsx` — read the ternary, not the flag name). Therefore:
 
 1. **Component names, props, and variants in our port must match the vendor catalog exactly** — engineering renders what the vendor library supports, not what we draw.
