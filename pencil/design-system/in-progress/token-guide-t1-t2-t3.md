@@ -85,8 +85,8 @@ T2  colors-background-rowHover:
       dark  → $color-navy-app          ← the theme switches HERE
 
 T3  colors-btnPrimaryBg:
-      light → $color-gray-900          (dark button on a light surface)
-      dark  → $color-navylight-800     (light button on a dark surface — inversion)
+      light → $color-blue-600          (accent on a light surface)
+      dark  → $color-blue-500          (a step lighter so it doesn't glare on dark)
 
 Component AccountRow/hover → fill: $colors-background-rowHover   ← the only correct way
 ```
