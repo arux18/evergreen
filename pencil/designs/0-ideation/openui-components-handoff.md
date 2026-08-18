@@ -96,7 +96,7 @@ Build screens using ONLY the components listed below. **"Vendor description" is 
 
 ### Charts
 
-`openui-charts-v2.lib.pen` is the single chart library — v1 (`openui-charts.lib.pen`) is legacy, kept only because `View-Presentation-Ideation.pen` still imports it. **Shown set:** BarChart, HorizontalBarChart, LineChart, AreaChart, **DonutChart** (in place of PieChart), SingleStackedBarChart, Mini* (line/area/bar), **HeatmapChart** (added 2026-08-17). **Not shown:** PieChart, RadialChart; RadarChart and ScatterChart cut 2026-08-17 (may return later).
+`openui-charts-v2.lib.pen` is the single chart library — v1 (`openui-charts.lib.pen`) is legacy, kept only because `View-Presentation-Ideation.pen` still imports it. **Shown set:** BarChart, HorizontalBarChart, LineChart, AreaChart, **DonutChart** (in place of PieChart), SingleStackedBarChart, Mini* (line/area/bar), **HeatmapChart** (added 2026-08-17 — two variants: sequential blue default, and Positive-Negative red/green for gains/losses or vs-benchmark data). **Not shown:** PieChart, RadialChart; RadarChart and ScatterChart cut 2026-08-17 (may return later).
 
 ### Chat surfaces (OpenUI Chat Library)
 

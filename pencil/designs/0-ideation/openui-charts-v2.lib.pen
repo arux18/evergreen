@@ -5156,18 +5156,38 @@
                   ]
                 },
                 {
+                  "type": "frame",
                   "id": "Dmd6m",
-                  "type": "ref",
-                  "ref": "S84mG",
+                  "name": "CardHeader",
                   "width": "fill_container",
-                  "descendants": {
-                    "GMZAZ/nZEDL": {
-                      "content": "Sector Performance"
+                  "layout": "vertical",
+                  "gap": "$spacing-3xs",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Dmd6mt",
+                      "name": "Title",
+                      "fill": "$colors-text-header",
+                      "content": "Sector Performance",
+                      "lineHeight": 1.5556,
+                      "fontFamily": "$typo-primary-md-semibold-font-family",
+                      "fontSize": "$typo-primary-md-semibold-font-size",
+                      "fontWeight": "600"
                     },
-                    "EznMR/FHA10": {
-                      "content": "Year-to-date returns by sector"
+                    {
+                      "type": "text",
+                      "id": "Dmd6md",
+                      "name": "Description",
+                      "fill": "$colors-text-meta",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Year-to-date returns by sector",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$typo-primary-base-regular-font-family",
+                      "fontSize": "$typo-primary-base-regular-font-size",
+                      "fontWeight": "normal"
                     }
-                  }
+                  ]
                 }
               ]
             }
@@ -5175,6 +5195,239 @@
         }
       ],
       "x": 800,
+      "y": 3579
+    },
+    {
+      "type": "frame",
+      "id": "ZHtoG",
+      "name": "HeatmapChart / Positive-Negative",
+      "reusable": true,
+      "width": 520,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "tNSWV",
+          "name": "component/Card",
+          "width": "fill_container",
+          "fill": "$colors-background-surface",
+          "cornerRadius": "$radius-sm",
+          "stroke": "$colors-borders-light",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "layout": "vertical",
+          "gap": "$spacing-sm",
+          "padding": "$spacing-md",
+          "children": [
+            {
+              "type": "frame",
+              "id": "KBAT8",
+              "name": "chartContent",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": "$spacing-sm",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "nOdpr",
+                  "name": "cellGrid",
+                  "width": "fill_container",
+                  "gap": "$spacing-xs",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qul6F",
+                      "name": "Tech",
+                      "width": "fill_container",
+                      "height": 80,
+                      "fill": "$colors-background-success-bold",
+                      "cornerRadius": "$radius-xs",
+                      "layout": "vertical",
+                      "gap": "$spacing-2xs",
+                      "padding": "$spacing-sm",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "tpDWI",
+                          "fill": "$colors-text-reverse",
+                          "content": "Tech",
+                          "fontFamily": "$typo-primary-xs-semibold-font-family",
+                          "fontSize": "$typo-primary-xs-semibold-font-size",
+                          "fontWeight": "600",
+                          "letterSpacing": "$typo-primary-xs-semibold-letter-spacing",
+                          "lineHeight": 1.3333
+                        },
+                        {
+                          "type": "text",
+                          "id": "SknTl",
+                          "fill": "$colors-text-reverse",
+                          "content": "+18.2%",
+                          "fontFamily": "$typo-primary-sm-semibold-font-family",
+                          "fontSize": "$typo-primary-sm-semibold-font-size",
+                          "fontWeight": "600",
+                          "letterSpacing": "$typo-primary-sm-semibold-letter-spacing",
+                          "lineHeight": 1.4286
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KsEEy",
+                      "name": "Health",
+                      "width": "fill_container",
+                      "height": 80,
+                      "fill": "$colors-background-success-strong",
+                      "cornerRadius": "$radius-xs",
+                      "layout": "vertical",
+                      "gap": "$spacing-2xs",
+                      "padding": "$spacing-sm",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "GY9Kx",
+                          "fill": "$colors-text-header",
+                          "content": "Health",
+                          "fontFamily": "$typo-primary-xs-semibold-font-family",
+                          "fontSize": "$typo-primary-xs-semibold-font-size",
+                          "fontWeight": "600",
+                          "letterSpacing": "$typo-primary-xs-semibold-letter-spacing",
+                          "lineHeight": 1.3333
+                        },
+                        {
+                          "type": "text",
+                          "id": "HpS50",
+                          "fill": "$colors-text-header",
+                          "content": "+8.5%",
+                          "fontFamily": "$typo-primary-sm-semibold-font-family",
+                          "fontSize": "$typo-primary-sm-semibold-font-size",
+                          "fontWeight": "600",
+                          "letterSpacing": "$typo-primary-sm-semibold-letter-spacing",
+                          "lineHeight": 1.4286
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "eOqVz",
+                      "name": "Finance",
+                      "width": "fill_container",
+                      "height": 80,
+                      "fill": "$colors-background-success-soft",
+                      "cornerRadius": "$radius-xs",
+                      "layout": "vertical",
+                      "gap": "$spacing-2xs",
+                      "padding": "$spacing-sm",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "M5v1Ny",
+                          "fill": "$colors-text-header",
+                          "content": "Finance",
+                          "fontFamily": "$typo-primary-xs-semibold-font-family",
+                          "fontSize": "$typo-primary-xs-semibold-font-size",
+                          "fontWeight": "600",
+                          "letterSpacing": "$typo-primary-xs-semibold-letter-spacing",
+                          "lineHeight": 1.3333
+                        },
+                        {
+                          "type": "text",
+                          "id": "NdIls",
+                          "fill": "$colors-text-header",
+                          "content": "+4.1%",
+                          "fontFamily": "$typo-primary-sm-semibold-font-family",
+                          "fontSize": "$typo-primary-sm-semibold-font-size",
+                          "fontWeight": "600",
+                          "letterSpacing": "$typo-primary-sm-semibold-letter-spacing",
+                          "lineHeight": 1.4286
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "VyS8W",
+                      "name": "Energy",
+                      "width": "fill_container",
+                      "height": 80,
+                      "fill": "$colors-background-error-strong",
+                      "cornerRadius": "$radius-xs",
+                      "layout": "vertical",
+                      "gap": "$spacing-2xs",
+                      "padding": "$spacing-sm",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "FFsjX",
+                          "fill": "$colors-text-header",
+                          "content": "Energy",
+                          "fontFamily": "$typo-primary-xs-semibold-font-family",
+                          "fontSize": "$typo-primary-xs-semibold-font-size",
+                          "fontWeight": "600",
+                          "letterSpacing": "$typo-primary-xs-semibold-letter-spacing",
+                          "lineHeight": 1.3333
+                        },
+                        {
+                          "type": "text",
+                          "id": "m4A5V",
+                          "fill": "$colors-text-header",
+                          "content": "-6.3%",
+                          "fontFamily": "$typo-primary-sm-semibold-font-family",
+                          "fontSize": "$typo-primary-sm-semibold-font-size",
+                          "fontWeight": "600",
+                          "letterSpacing": "$typo-primary-sm-semibold-letter-spacing",
+                          "lineHeight": 1.4286
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rIA53",
+                  "name": "CardHeader",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$spacing-3xs",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rIA53t",
+                      "name": "Title",
+                      "fill": "$colors-text-header",
+                      "content": "Sector Performance",
+                      "lineHeight": 1.5556,
+                      "fontFamily": "$typo-primary-md-semibold-font-family",
+                      "fontSize": "$typo-primary-md-semibold-font-size",
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "rIA53d",
+                      "name": "Description",
+                      "fill": "$colors-text-meta",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Year-to-date returns by sector",
+                      "lineHeight": 1.5,
+                      "fontFamily": "$typo-primary-base-regular-font-family",
+                      "fontSize": "$typo-primary-base-regular-font-size",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "x": 1380,
       "y": 3579
     }
   ],
@@ -5358,6 +5611,38 @@
     "typo-primary-xs-semibold-letter-spacing": {
       "type": "number",
       "value": 0
+    },
+    "typo-primary-md-semibold-font-size": {
+      "type": "number",
+      "value": 18
+    },
+    "typo-primary-md-semibold-font-family": {
+      "type": "string",
+      "value": "Heebo"
+    },
+    "typo-primary-base-regular-font-size": {
+      "type": "number",
+      "value": 16
+    },
+    "typo-primary-base-regular-font-family": {
+      "type": "string",
+      "value": "Heebo"
+    },
+    "colors-background-error-strong": {
+      "type": "color",
+      "value": "#fdaba9"
+    },
+    "colors-background-success-bold": {
+      "type": "color",
+      "value": "#10642b"
+    },
+    "colors-background-success-soft": {
+      "type": "color",
+      "value": "#a9fdc4"
+    },
+    "colors-background-success-strong": {
+      "type": "color",
+      "value": "#68fc97"
     }
   },
   "fileToken": "c5236207-ea99-4e80-9263-53eca5fd0a16"

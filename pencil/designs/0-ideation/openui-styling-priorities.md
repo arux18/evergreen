@@ -19,7 +19,7 @@ Audit basis: all 8 OpenUI lib files, cross-referenced against `hemlock-library.l
 | **DonutChart** | Shown (in place of PieChart) | Lives in v2; styling as per P3. |
 | **RadarChart** | NOT shown (2026-08-17) | Cut from v2 (had been briefly re-added). May return later. Note: this now **aligns** with CAL-927, which removed Radar from the production palette. |
 | **ScatterChart** | NOT shown (2026-08-17) | Cut from v2 alongside Radar; may return later. Divergence note: CAL-927 kept Scatter — our cut is a product decision beyond the tickets. |
-| **HeatmapChart** | Shown (2026-08-17) | Ported from Hemlock's `component/HeatmapChart` into v2 (sequential blue scale tokens added). |
+| **HeatmapChart** | Shown (2026-08-17) | Ported from Hemlock's `component/HeatmapChart` into v2 — **two variants**: default (sequential blue scale) and **Positive-Negative** (diverging red/green via `colors-background-error-strong` / `colors-background-success-*`). Variant selection is description-driven — the catalog copy must say when to use each (see note below). |
 
 ---
 
