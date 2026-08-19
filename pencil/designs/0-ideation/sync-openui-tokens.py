@@ -138,6 +138,85 @@ def sync_file(path: Path, hv: dict, themes, write: bool):
     return changed, skipped, missing
 
 
+def screen_axis(data):
+    """Pick the theme axis a screen file already uses, else the switcher axis."""
+    vs = data.get("variables", {})
+    for v in vs.values():
+        val = v.get("value")
+        if isinstance(val, list):
+            for e in val:
+                t = e.get("theme") or {}
+                for k, val2 in t.items():
+                    if str(val2).lower() in ("light", "dark"):
+                        return k, "light", "dark"  # reuse existing axis + casing
+    return "🎨 Colors", "Light", "Dark"
+
+
+def sync_screen(path: Path, hv: dict, write: bool):
+    """Theme a screen file's variables from Hemlock (prefix-stripped lookup).
+
+    - Prefixed vars (e.g. "G:colors-text-header") are flattened import copies —
+      always re-synced to current Hemlock values.
+    - Unprefixed vars already themed are re-synced unconditionally.
+    - Unthemed local vars sync only if their current value (resolving local $refs)
+      matches Hemlock's light value; anything else is reported as a possible
+      intentional difference.
+    """
+    data = json.loads(path.read_text())
+    vs = data.get("variables", {})
+    if not vs:
+        return [], [], []
+    axis, light_v, dark_v = screen_axis(data)
+
+    def local_resolve(value, depth=0):
+        if isinstance(value, str) and value.startswith("$") and depth < 6:
+            target = value[1:]
+            target_def = vs.get(target) or vs.get(target.split(":", 1)[-1])
+            if target_def is None and ":" in target:
+                target_def = vs.get(target)
+            if target_def is not None:
+                tv = target_def.get("value")
+                if isinstance(tv, list):
+                    e = next((e for e in tv if any(str(x).lower() == "light" for x in (e.get("theme") or {}).values())), tv[0])
+                    tv = e.get("value")
+                return local_resolve(tv, depth + 1)
+            return value
+        return value
+
+    changed, skipped, missing = [], [], []
+    for name, definition in vs.items():
+        base = name.split(":", 1)[1] if ":" in name else name
+        hv_def = hv.get(base)
+        if not hv_def:
+            missing.append(name)
+            continue
+        hv_val = hv_def.get("value")
+        if not isinstance(hv_val, list):
+            continue
+        cur = definition.get("value")
+        already_themed = isinstance(cur, list)
+        if not already_themed and ":" not in name:
+            cur_resolved = local_resolve(cur)
+            h_light = resolve(hv, base, {"_": "light"})
+            if h_light is None or str(cur_resolved).lower() != str(h_light).lower():
+                skipped.append(name)
+                continue
+        new_val = []
+        for mode in ("light", "dark"):
+            new_val.append({"value": resolve(hv, base, {"_": mode}),
+                            "theme": {axis: light_v if mode == "light" else dark_v}})
+        if cur != new_val:
+            changed.append(name)
+            if write:
+                definition["value"] = new_val
+    if changed and write:
+        themes = data.get("themes")
+        if not themes:
+            data["themes"] = {"🎨 Colors": ["Light", "Dark"]}
+        path.write_text(json.dumps(data, indent=2) + "\n")
+    return changed, skipped, missing
+
+
 def main() -> int:
     write = "--write" in sys.argv
     check = "--check" in sys.argv
@@ -160,6 +239,18 @@ def main() -> int:
             print("\nDRIFT DETECTED — run `python3 sync-openui-tokens.py --write` and review in Pencil before committing.")
             return 1
         print("\nAll lib tokens match Hemlock (both themes).")
+    screens = HERE.parents[1] / "designs/4-approved"
+    if screens.is_dir():
+        print("\n--- screens (4-approved) ---")
+        for sp in sorted(screens.glob("*.pen")):
+            changed, skipped, missing = sync_screen(sp, hv, write)
+            status = "would update" if not write else "updated"
+            if changed:
+                print(f"{sp.name}: {status} {len(changed)} token(s)")
+            else:
+                print(f"{sp.name}: in sync")
+            if skipped:
+                print(f"  left as-is (differ from Hemlock light): {len(skipped)}: {', '.join(skipped[:6])}{' …' if len(skipped) > 6 else ''}")
     return 0
 
 
