@@ -15,6 +15,12 @@ Usage:
 When dark variants land in Hemlock: run with --write, then --check, then open the
 files in Pencil for a visual pass and commit.
 
+Theme-axis note: Hemlock keys most themed entries to its "0. mode" axis (light/dark)
+and chart scales to "🎨 Colors" (Light/Dark). The Pencil toolbar theme switcher (and
+the node pins it creates) operates on "🎨 Colors", so this script writes lib entries
+keyed to "🎨 Colors": Light/Dark — otherwise the switcher does nothing in the libs.
+Hemlock itself is never modified.
+
 KNOWN_DIFFERENCES below lists tokens that are deliberately NOT Hemlock's values
 (e.g. the actions-lib blue button system, approved 2026-08-10). They are skipped
 and reported. When a dark variant for one of these is designed and added to
@@ -79,6 +85,18 @@ def current_light(value):
     return value
 
 
+def canonical_theme(td):
+    """Map Hemlock's theme axes onto the switcher axis used in the libs."""
+    if not td:
+        return td
+    vals = [str(v).lower() for v in td.values()]
+    if "light" in vals:
+        return {"🎨 Colors": "Light"}
+    if "dark" in vals:
+        return {"🎨 Colors": "Dark"}
+    return td
+
+
 def sync_file(path: Path, hv: dict, themes, write: bool):
     """Returns (changed, skipped, missing) lists of variable names."""
     data = json.loads(path.read_text())
@@ -101,13 +119,13 @@ def sync_file(path: Path, hv: dict, themes, write: bool):
                 if write:
                     definition["value"] = target
             continue
-        # themed in Hemlock — rebuild themed entries, preserving each entry's axis
+        # themed in Hemlock — rebuild themed entries on the switcher axis
         new_val = []
         for e in hv_val:
-            td = e.get("theme")
+            td = canonical_theme(e.get("theme"))
             raw = e.get("value")
             if isinstance(raw, str) and raw.startswith("$"):
-                raw = resolve(hv, raw[1:], td)
+                raw = resolve(hv, raw[1:], e.get("theme"))
             new_val.append({"value": raw, "theme": td})
         if definition.get("value") != new_val:
             changed.append(name)
