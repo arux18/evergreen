@@ -36,6 +36,8 @@ The `"variables"` object at the bottom of the JSON defines design tokens with op
 
 Canvas elements reference variables with `$` prefix: `"fill": "$token.name"`.
 
+**Color binds must be semantic (T2/T3), never primitive (T1).** `$colors-text-body` themes; `$color-gray-700` and `#403D3A` do not. Light/dark pairs live on the semantic token, not on the primitive. See the `semantic-color-tokens` skill.
+
 ## Token Naming Convention
 
 Use `namespace.token` format (e.g., `accent.default`, `surface.primary`, `text.secondary`). Do NOT use CSS-variable-style `--` prefixed names (e.g., `--accent-primary`). If legacy `--*` tokens exist, migrate canvas references to the `namespace.token` equivalents and delete the `--*` variable definitions.
