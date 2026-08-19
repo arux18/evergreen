@@ -7,6 +7,9 @@
  * and reports each value that is not on the design-system spacing scale,
  * with its node path and the two nearest tokens.
  *
+ * Also reports duplicate same-named reusable components (a wrong-node hazard:
+ * agents transferring styles can implement/verify against the wrong spec).
+ *
  * Advisory-first policy (2026-08-19): default mode ALWAYS exits 0 — the report
  * is the gate artifact, reviewed and acknowledged by the design owner before a
  * design moves to pencil/designs/4-approved/. Pass --strict to exit 1 on any
@@ -54,10 +57,20 @@ function numericValues(raw) {
   return [] // strings are variable refs (already token-bound); objects are ignored
 }
 
-function walk(node, path, findings, counts) {
+function walk(node, path, findings, counts, components) {
   if (!node || typeof node !== 'object' || Array.isArray(node)) return
   const label = node.name || node.id || '?'
   const here = path.concat(label)
+
+  if (node.reusable === true && node.name) {
+    const list = components.get(node.name) || []
+    list.push({
+      id: node.id ?? null,
+      path: here.join(' > '),
+      spec: JSON.stringify({ padding: node.padding ?? null, gap: node.gap ?? null }),
+    })
+    components.set(node.name, list)
+  }
 
   for (const prop of PROPS) {
     for (const value of numericValues(node[prop])) {
@@ -78,8 +91,20 @@ function walk(node, path, findings, counts) {
   }
 
   for (const child of node.children || []) {
-    walk(child, here, findings, counts)
+    walk(child, here, findings, counts, components)
   }
+}
+
+// Same-named reusable components are a wrong-node hazard for style transfer:
+// an agent matching by name may implement/verify against the wrong spec.
+function duplicateComponents(components) {
+  const duplicates = []
+  for (const [name, nodes] of components) {
+    if (nodes.length < 2) continue
+    const specsDiffer = new Set(nodes.map((n) => n.spec)).size > 1
+    duplicates.push({ name, specsDiffer, nodes })
+  }
+  return duplicates
 }
 
 function main() {
@@ -96,17 +121,19 @@ function main() {
   const pen = JSON.parse(fs.readFileSync(file, 'utf8'))
   const findings = []
   const counts = { total: 0, onScale: 0, offScale: 0 }
+  const components = new Map()
 
   for (const root of pen.children || []) {
-    walk(root, [], findings, counts)
+    walk(root, [], findings, counts, components)
   }
 
+  const duplicates = duplicateComponents(components)
   const pct = counts.total === 0 ? 0 : Math.round((counts.offScale / counts.total) * 1000) / 10
 
   if (json) {
     console.log(
       JSON.stringify(
-        { file, scale: SCALE, summary: { ...counts, offScalePct: pct }, findings },
+        { file, scale: SCALE, summary: { ...counts, offScalePct: pct }, findings, duplicates },
         null,
         2,
       ),
@@ -115,8 +142,13 @@ function main() {
     for (const f of findings) {
       console.log(`OFF-SCALE ${f.property}=${f.value} nearest ${f.nearestTokens} at ${f.path}${f.id ? ` [${f.id}]` : ''}`)
     }
+    for (const d of duplicates) {
+      console.log(
+        `DUPLICATE-NAME "${d.name}" x${d.nodes.length}${d.specsDiffer ? ' with DIFFERING padding/gap specs' : ' (same spec)'}: ${d.nodes.map((n) => `${n.id ?? '?'} at ${n.path}`).join(' | ')}`,
+      )
+    }
     console.log(
-      `\n${file}: ${counts.total} spacing values — ${counts.onScale} on-scale, ${counts.offScale} off-scale (${pct}%)`,
+      `\n${file}: ${counts.total} spacing values — ${counts.onScale} on-scale, ${counts.offScale} off-scale (${pct}%); ${duplicates.length} duplicate component name${duplicates.length === 1 ? '' : 's'}`,
     )
   }
 
