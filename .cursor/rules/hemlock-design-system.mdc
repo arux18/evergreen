@@ -9,9 +9,10 @@ When a `.pen` file has `hemlock-library.lib.pen` imported as a library, **always
 
 1. **Components first.** Before creating a new element, check if a matching Hemlock component exists. Use it.
 2. **Variables first.** Use Hemlock design tokens (colors, typography, spacing) for all styling. Do not hardcode values that Hemlock already defines.
-3. **No duplication.** Do not recreate components or variables that Hemlock already provides. Reference the library version.
-4. **Extend, don't replace.** If Hemlock doesn't cover a need, create a new local component or variable — but still use Hemlock tokens for its styling where possible.
-5. **Match visuals, not data.** When copying or replicating elements, match the rendered visual output. Do not carry over hidden or disabled properties (e.g. invisible strokes, disabled fills) from source nodes. If a property isn't visible in the design, it doesn't belong in the output.
-6. **Use component refs, not raw frames.** When a Hemlock component exists for a pattern (e.g. AccountRow for list items), always use `ref` instances of that component and override descendants — never copy raw hand-built frames that bypass the component.
-7. **Heebo is the primary font.** Always use `Heebo` for all text. Do not use Inter or any other font unless explicitly told otherwise. The secondary font is `Noto Serif` (used only when specifically requested).
-8. **Ask when unclear.** If you're unsure which component to use, how to style something, or whether a property should be included — ask before proceeding. Don't guess.
+3. **Semantic colors only.** Never bind fills, strokes, or text to primitives (`$color-blue-600`, `$color-gray-700`) or raw hex. Use T2/T3 semantics (`$colors-text-body`, `$colors-background-surface`) so light and dark themes can switch. If no role token exists, create one — do not fall through to a primitive. See the `semantic-color-tokens` skill.
+4. **No duplication.** Do not recreate components or variables that Hemlock already provides. Reference the library version.
+5. **Extend, don't replace.** If Hemlock doesn't cover a need, create a new local component or variable — but still use Hemlock tokens for its styling where possible.
+6. **Match visuals, not data.** When copying or replicating elements, match the rendered visual output. Do not carry over hidden or disabled properties (e.g. invisible strokes, disabled fills) from source nodes. If a property isn't visible in the design, it doesn't belong in the output.
+7. **Use component refs, not raw frames.** When a Hemlock component exists for a pattern (e.g. AccountRow for list items), always use `ref` instances of that component and override descendants — never copy raw hand-built frames that bypass the component.
+8. **Heebo is the primary font.** Always use `Heebo` for all text. Do not use Inter or any other font unless explicitly told otherwise. The secondary font is `Noto Serif` (used only when specifically requested).
+9. **Ask when unclear.** If you're unsure which component to use, how to style something, or whether a property should be included — ask before proceeding. Don't guess.
