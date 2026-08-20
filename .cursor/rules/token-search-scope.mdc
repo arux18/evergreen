@@ -1,0 +1,16 @@
+# Token Search Scope
+
+When answering questions about Hemlock design tokens (where a token is used, what references it, whether it's orphaned, etc.), **always search the full design surface**, not just the library file.
+
+## Search Scope
+
+1. **Library:** `pencil/design-system/in-progress/hemlock-library.lib.pen`
+2. **OpenUI libs:** `pencil/designs/0-ideation/openui-*.pen` (actions, charts, charts-v2, content, data-display, forms, feedback, layout, restyle-before-after)
+3. **Approved designs:** `pencil/designs/4-approved/**/*.pen` (all files)
+
+## Rules
+
+1. **Never declare a token "unused" or "orphaned" from the library alone.** A token with no consumers inside `hemlock-library.lib.pen` may still be referenced by OpenUI libs or approved screens.
+2. **Check both disk and live editor state.** Use Grep on the files AND the Pencil MCP `execute` tool (`Get` with a visitor, `GetVariables`) on the relevant `.pen` files — the editor model can differ from disk.
+3. **Trace aliases before concluding.** Resolve `$token` references through the variable chain; a component using `colors-background-success-bold` indirectly uses whichever primitive that semantic token points at per theme.
+4. **Report per-file.** When listing usages, name the file and node so the user can jump to it.
