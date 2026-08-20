@@ -34,7 +34,7 @@ Give engineering:
 | **NOT SHOWN** | Do not put in the GenUI palette. Do not implement as a chat response component. |
 | **NOT PORTED** | No `.pen` yet. No implementation rules here. |
 
-**Engineering implements LOCKED only.** DRAFT exists so the handoff file stays complete as we restyle layout, content, data-display, forms, actions, feedback, and the remaining charts — not so wrappers ship early. If Pencil and a DRAFT section disagree, Pencil + a contract edit win; do not invent a third interpretation. LOCKED chart pieces today: **shared chrome**, **BarChart**, **HorizontalBarChart**, **LineChart/AreaChart** (full = curved `monotone`, minis = straight `linear`), **SingleStackedBarChart**, **Mini charts** (sparkline only). Still DRAFT: DonutChart (restyled 2026-08-20, awaiting visual accept) and HeatmapChart (Sept 1 WO, low priority; Q16 deferred).
+**Engineering implements LOCKED only.** DRAFT exists so the handoff file stays complete as we restyle layout, content, data-display, forms, actions, feedback, and the remaining charts — not so wrappers ship early. If Pencil and a DRAFT section disagree, Pencil + a contract edit win; do not invent a third interpretation. LOCKED chart pieces today: **shared chrome**, **BarChart**, **HorizontalBarChart**, **LineChart/AreaChart** (full = curved `monotone`, minis = straight `linear`), **SingleStackedBarChart**, **Mini charts** (sparkline only), **DonutChart** (HTML template port, accepted 2026-08-20). Still DRAFT: HeatmapChart only (Sept 1 WO, low priority; Q16 deferred).
 
 ### Section template (for promoting DRAFT → LOCKED)
 
@@ -193,7 +193,7 @@ Dark sequential **inverts** (matches Hemlock navy sequential): in light, darker 
 | **BarChart** | **LOCKED** | charts-v2 |
 | **HorizontalBarChart** | **LOCKED** | charts-v2 |
 | **LineChart / AreaChart** | **LOCKED** — full charts curved, minis straight (2026-08-20) | charts-v2 |
-| DonutChart | DRAFT — restyled 2026-08-20 (HTML template port), awaiting visual accept | charts-v2 |
+| **DonutChart** | **LOCKED** (2026-08-20 — HTML template port, visually accepted) | charts-v2 |
 | **SingleStackedBarChart** | **LOCKED** (2026-08-20) | charts-v2 |
 | **MiniLineChart / MiniAreaChart / MiniBarChart** | **LOCKED** (2026-08-20) | charts-v2 |
 | HeatmapChart | DRAFT — in Sept 1 WO, **low priority**; Q16 text contrast deferred | charts-v2 |
@@ -453,7 +453,7 @@ This supersedes handoff R7's "straight everywhere" for full-size charts. Monoton
 
 ## DonutChart
 
-**Status:** DRAFT — restyled 2026-08-20 from the Component Template v2.0 HTML (hover, tooltip, center labels); awaiting visual accept  
+**Status:** LOCKED (2026-08-20 — restyled from the Component Template v2.0 HTML; visually accepted)  
 **Visual:** Donut Chart (`of7TM`), Hover (`Ah1gA`)  
 **Not shown:** PieChart — do not implement pie.
 
