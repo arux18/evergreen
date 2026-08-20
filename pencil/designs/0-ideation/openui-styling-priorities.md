@@ -6,6 +6,10 @@
 
 Priority list for customized Hemlock styling of the OpenUI component libraries (`openui-*.lib.pen`), focused on typography, spacing, and content-pattern usage (paragraphs vs. bullet lists vs. callouts). Companion to `openui-components-handoff.md`.
 
+**How to implement:** `openui-implementation-contract.md` — one file, every shown component (palette + layout/type/spacing/hover). **LOCKED:** shared chart chrome, BarChart, HorizontalBarChart, LineChart/AreaChart (full curved, minis straight), SingleStackedBarChart, Mini charts (include light **and** dark token values). Other sections are **DRAFT (as-drawn)** while restyling continues — update the contract when Pencil changes; do not treat DRAFT as a freeze. Do not add per-component `*-implementation.md` files. Pencil libs go with that markdown as visual QA.
+
+**Epic priority order (2026-08-20, per design):** high-priority items are ① **all BarChart variants** (locked, ready now), ② **all Table variants** (`openui-data-display.lib.pen` — after charts), ③ **headers/text** (`openui-content.lib.pen` — after charts). HeatmapChart ships in the same Sept 1 work order at **low priority**. **OPEN reminder — Q16:** heatmap text contrast per theme is deferred; remind design before locking heatmap text colors.
+
 Audit basis: all 8 OpenUI lib files, cross-referenced against `hemlock-library.lib.pen` (351 components, 1,044 tokens), the vendor catalog (`@openuidev/react-ui` `genui-lib` source, 2026-08-13), and the approved screens that import OpenUI (`login.pen`, `contact-us.pen`, `settings-menu.pen`, `View-Presentation-Ideation.pen`).
 
 ## Shown-palette decisions (2026-08-13)
@@ -78,7 +82,7 @@ These components decide how paragraphs, bullet points, and emphasis render in ch
 
 | Component | File | What needs custom styling |
 |-----------|------|---------------------------|
-| **Shown chart components** | charts-v2 | Axis labels, tick text, tooltips, and legends all use xs-regular/xs-semibold on `$colors-text-meta/body` — token-bind these and set line-heights. **v2 is now the single chart lib** (2026-08-13): RadarChart and ScatterChart were re-added from v1; v1 is superseded. Shown set: BarChart, HorizontalBarChart, LineChart, AreaChart, DonutChart (replaces PieChart), SingleStackedBarChart, Mini*, HeatmapChart (added 2026-08-17). Not shown: PieChart, RadialChart; RadarChart + ScatterChart cut 2026-08-17 (may return later). Note Hemlock already ships a full styled chart set (Bar, Donut, Gauge, KpiCard, Sparkline, ChartTooltip, ChartLegend, etc.) — evaluate whether OpenUI charts should be retired in favor of those instead of restyled. |
+| **Shown chart components** | charts-v2 | Axis labels, tick text, tooltips, and legends all use xs-regular/xs-semibold on `$colors-text-meta/body` — token-bind these and set line-heights. **All shown chart rules live in `openui-implementation-contract.md`.** LOCKED: shared chrome, BarChart, HorizontalBarChart, Line/Area (full curved `monotone`, minis straight `linear`), SingleStackedBar, Mini charts (light + dark). DonutChart restyled 2026-08-20 (HTML template port: 0.75 ring, center labels, hover dim, Share/Value tooltip) — awaiting accept. HeatmapChart low priority (Q16 contrast deferred). **v2 is the single chart lib.** Shown set: BarChart, HorizontalBarChart, LineChart, AreaChart, DonutChart (replaces PieChart), SingleStackedBarChart, Mini*, HeatmapChart. Not shown: PieChart, RadialChart; RadarChart + ScatterChart cut 2026-08-17. |
 
 ---
 
