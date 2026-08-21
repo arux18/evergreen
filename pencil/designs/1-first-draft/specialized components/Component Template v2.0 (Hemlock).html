@@ -3879,9 +3879,11 @@ function T2_CHART_MAXH(hard,floor){
    info boxes; the donut dims/inspects on hover and presses on click (center swaps to the slice);
    the default gauge is driven by a live house slider; heatmap tiles and treemap nodes carry HTML
    info boxes. Lines are 2px (thinner than the sheets, per Bill); legend swatches follow the
-   ChartLegend master (8px circles, rev HK). PALETTE NOTE (rev HK2): series/slices take SEEDED,
-   per-chart-varied colors from pal() over the safe categorical pool — greens and reds are RESERVED
-   for positive/negative values; axis tick labels are always 11px sem-text-meta, never series-tinted. */
+   ChartLegend master (8px circles, rev HK). PALETTE NOTE (rev HK3): series/slices take pal() —
+   the FULL curated chart-categorical/color-01..15 run in its designed order, ROTATED from a
+   per-instance seeded offset (title + variant id), so every variant card starts at a different
+   color; the pos/neg STATUS inks (sem-text-deposit / sem-text-error) are never used as series
+   colors; axis tick labels are always 11px sem-text-meta, never series-tinted. */
 (function(){
   'use strict';
   var NS='http://www.w3.org/2000/svg', GID=0;
@@ -3896,28 +3898,20 @@ function T2_CHART_MAXH(hard,floor){
   function tokens(){
     /* HEMLOCK rev HK (2026-08-21): palette + chrome read straight from the Hemlock-mapped vars.
        cats = the FULL chart-categorical/color-01..15 run; the a11y theme only defines 7, so empties
-       are dropped. rev HK2: series/slices NO LONGER index cats directly — they go through pal()
-       (seeded varied assignment over catsSafe, greens/reds reserved for pos/neg). seq =
-       chart-sequential/seq-100..700; single-series charts (area, timeline, gauge, waterfall totals)
-       draw with seq-500 per the masters. The old rev-V "darken 0.85 in dark mode" multipliers are
-       retired — the dark values of the Hemlock palette are already tuned for dark surfaces. */
+       are dropped. rev HK3: series/slices go through pal() — a per-INSTANCE rotation of the full
+       curated palette (see pal's comment). seq = chart-sequential/seq-100..700; single-series charts
+       (area, timeline, gauge, waterfall totals) draw with seq-500 per the masters. The old rev-V
+       "darken 0.85 in dark mode" multipliers are retired — the dark values of the Hemlock palette
+       are already tuned for dark surfaces. */
     var dark=document.documentElement.getAttribute('data-theme')==='dark';
     var cats=[],seq=[],i,c;
     for(i=1;i<=15;i++){ c=cvRoot('--cat'+i); if(c) cats.push(c); }
     for(i=1;i<=7;i++){ c=cvRoot('--seq'+i); if(c) seq.push(c); }
     if(!seq.length) seq=[cvRoot('--accent')];
-    /* rev HK2 (2026-08-21): catsSafe = the categorical pool minus RESERVED hues — greens and reds
-       belong to positive/negative values only (house rule). On the full 15-color palette that drops
-       color-05 + color-07 (green family) and color-12 (brick red) by index so light and dark stay in
-       lockstep; any other palette length falls back to a hue test. Series NEVER draw from pos/neg. */
-    var catsSafe;
-    if(cats.length===15){ catsSafe=cats.filter(function(_,k){ return k!==4&&k!==6&&k!==11; }); }
-    else { catsSafe=cats.filter(function(h){ try{ var r=hexRgb(h);
-      if(r[1]>r[0]*1.25&&r[1]>r[2]*1.05) return false;      /* green-dominant */
-      if(r[0]>r[1]*1.8&&r[0]>r[2]*1.8) return false;        /* red-dominant  */
-      return true; }catch(e){ return true; } }); }
-    if(!catsSafe.length) catsSafe=cats.slice();
-    return { dark:dark, cats:cats, catsSafe:catsSafe, seq:seq, seq5:seq[4]||seq[seq.length-1],
+    /* rev HK3: the rev HK2 catsSafe pool-exclusion is RETIRED — the curated 15-color palette contains
+       no semantic green/red (those live in sem-text-deposit / sem-text-error, which series never use),
+       and dropping the teal/brown steps scrambled the designed hue pairing. */
+    return { dark:dark, cats:cats, seq:seq, seq5:seq[4]||seq[seq.length-1],
       grid:cvRoot('--grid'),axis:cvRoot('--axis'),ink:cvRoot('--ink'),muted:cvRoot('--muted'),
       body:cvRoot('--text-body'),accent:cvRoot('--accent'),pos:cvRoot('--pos'),neg:cvRoot('--neg'),
       orange:cvRoot('--orange')||'#EA580C',surface:cvRoot('--surface-1'),border:cvRoot('--border'),
@@ -3937,20 +3931,20 @@ function T2_CHART_MAXH(hard,floor){
   }
   function hexRgb(h){ h=h.replace('#',''); if(h.length===3) h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
     return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
-  /* rev HK2: pal(T,cfg,n) — the ONLY way series/slices get categorical colors. Each chart hashes its
-     own (language-stable) English title to an offset + coprime stride into T.catsSafe, so different
-     charts start in different palette regions instead of every chart opening purple→cyan→indigo, while
-     re-renders (hover, resize, theme) stay deterministic. Greens/reds never appear (reserved for
-     pos/neg via catsSafe). Past one full pool pass, colors recycle at 62% then 38% tints (donut rule). */
-  function pal(T,cfg,n){
-    var pool=T.catsSafe, L=pool.length, s='';
-    try{ s=String((cfg&&cfg.title&&(cfg.title.en||cfg.title))||'')+'|'+(cfg&&cfg.type||''); }catch(e){}
+  /* rev HK3 (2026-08-21, per design): pal(T,cfg,n,v) — the ONLY way series/slices get categorical
+     colors. The pool is the FULL curated chart-categorical/color-01..15 run in its designed order
+     (adjacent hues are deliberately contrast-paired — rev HK2's strides/exclusions scrambled that and
+     are retired). Each card ROTATES the palette from a seeded starting offset — the seed hashes the
+     chart's English title PLUS the variant id, so every INSTANCE of every variant starts at a
+     different color while hover/resize/theme re-renders stay deterministic. Past one full pass,
+     colors recycle at 62% then 38% tints (donut rule). The pos/neg STATUS colors (sem-text-deposit /
+     sem-text-error) are not in the palette and must never be used as generic series colors. */
+  function pal(T,cfg,n,v){
+    var pool=T.cats, L=pool.length, s='';
+    try{ s=String((cfg&&cfg.title&&(cfg.title.en||cfg.title))||'')+'|'+String((v&&v.id)||''); }catch(e){}
     var h=5381,i; for(i=0;i<s.length;i++) h=(((h<<5)+h)^s.charCodeAt(i))>>>0;
-    function gcd(a,b){ while(b){ var t=a%b; a=b; b=t; } return a; }
-    var strides=[5,7,11,3,1], st=strides[(h>>4)%strides.length];
-    if(gcd(st,L)!==1){ st=1; for(i=0;i<strides.length;i++){ if(gcd(strides[i],L)===1){ st=strides[i]; break; } } }
     var off=h%L, out=[];
-    for(i=0;i<n;i++){ var k=(off+i*st)%L, round=Math.floor(i/L);
+    for(i=0;i<n;i++){ var k=(off+i)%L, round=Math.floor(i/L);
       out.push(round===0?pool[k]:rgba(pool[k],round===1?0.62:0.38)); }
     return out;
   }
@@ -4187,7 +4181,7 @@ function T2_CHART_MAXH(hard,floor){
     var svg=svgBase(card,pick(cfg.title));
     var g=frame(svg,T,{yTicks:cfg.yTicks,flush:v.nocard});
     var n=cfg.series[0].vals.length, X=function(i){ return g.x0+(g.x1-g.x0)*i/(n-1); };
-    var CS=pal(T,cfg,cfg.series.length);  /* rev HK2: seeded varied palette (greens/reds reserved) */
+    var CS=pal(T,cfg,cfg.series.length,v);  /* rev HK3: per-instance palette rotation */
     for(var si=cfg.series.length-1;si>=0;si--){
       var sN=cfg.series[si], c=CS[si];
       var pts=sN.vals.map(function(val,i){ return [X(i),g.Y(val)]; });
@@ -4211,9 +4205,9 @@ function T2_CHART_MAXH(hard,floor){
     cfg.yTicks.forEach(function(tv){ if(done) return; ticks.push(tv); if(tv>=maxV) done=true; });
     var g=frame(svg,T,{yTicks:ticks,fmt:fmt});
     var nc=cfg.cats.length, ns=cfg.series.length;
-    /* rev HK2: seeded varied palette per chart (was color-01,02,03… for every chart) — greens/reds
-       stay reserved for pos/neg. Dark values are already dark-tuned (rev-V darkening stays retired). */
-    var CS=pal(T,cfg,cfg.series.length);
+    /* rev HK3: per-instance palette rotation (was color-01,02,03… for every chart). Dark values are
+       already dark-tuned (rev-V darkening stays retired). */
+    var CS=pal(T,cfg,cfg.series.length,v);
     /* rev U: the space between bars/groups is NEVER wider than one bar — group gap = bw, edges = bw/2,
        4px between bars inside a group; solve bw so it all fills the flush width exactly */
     var g1=4;
@@ -4243,9 +4237,9 @@ function T2_CHART_MAXH(hard,floor){
     var svg=E('svg',{viewBox:'0 0 320 320',role:'img','aria-label':pick(cfg.title)});
     svg.style.display='block'; svg.style.width='100%'; svg.style.height='auto'; box.appendChild(svg);
     var cx=160,cy=160,r1=150,r0=112,total=0; cfg.slices.forEach(function(sl){ total+=sl.v; });
-    /* rev HK2: slices draw from pal() — seeded varied walk of the SAFE categorical pool (greens/reds
-       reserved for pos/neg), 12 distinct hues before tint-recycling at 62%/38%. */
-    var colors=pal(T,cfg,cfg.slices.length);
+    /* rev HK3: slices walk the FULL curated palette in its designed order (15 distinct hues before
+       tint-recycling at 62%/38%), rotated from a per-instance seeded offset. */
+    var colors=pal(T,cfg,cfg.slices.length,v);
     var centerG=E('g',{'pointer-events':'none'},svg), paths=[];
     function drawCenter(valTxt,lblTxt){
       while(centerG.firstChild) centerG.removeChild(centerG.firstChild);
@@ -4311,7 +4305,7 @@ function T2_CHART_MAXH(hard,floor){
   };
   R.dual=function(card,cfg,v,T){
     var svg=svgBase(card,pick(cfg.title));
-    var CS=pal(T,cfg,2);  /* rev HK2: seeded pair (was cats[0]/cats[1] = purple/cyan on every dual chart) */
+    var CS=pal(T,cfg,2,v);  /* rev HK3: per-instance rotated pair (was cats[0]/cats[1] = purple/cyan on every dual chart) */
     /* rev HK2: BOTH axes' tick labels are 11px sem-text-meta per the ChartAxisGrid master — the rev S/T
        series-tinted labels are retired (they went purple when color-01 became purple). The legend, not
        the axis ink, carries the series-to-axis mapping. */
@@ -4326,7 +4320,7 @@ function T2_CHART_MAXH(hard,floor){
     E('path',{d:smoothPath(pts),fill:'none',stroke:CS[0],'stroke-width':LWv(),'stroke-linecap':'round'},svg);
     cfg.dots.forEach(function(val,i){ E('circle',{cx:X(i),cy:RY(val),r:3,fill:CS[1]},svg); });
     (v.events||[]).forEach(function(ev){
-      var x=g.x0+(g.x1-g.x0)*ev.t, c=T.catsSafe[ev.c%T.catsSafe.length];
+      var x=g.x0+(g.x1-g.x0)*ev.t, c=T.cats[ev.c%T.cats.length];
       E('line',{x1:x,y1:g.y0-4,x2:x,y2:g.y1,stroke:c,'stroke-width':1.5,'stroke-dasharray':'5 5'},svg);
       var anchor=(x>g.x1-110)?'end':'start';
       TX(svg,anchor==='start'?x+6:x-6,g.y0+8,pick(ev.label),T.ink,12.5,anchor,600);
@@ -4441,7 +4435,7 @@ function T2_CHART_MAXH(hard,floor){
     if(v.today) TX(svg,X(jI)-8,g.y1-8,pick(v.today),T.body,12,'end',600);
     /* rev HK2: actual = the chart's seeded pal() color (was color-01 = purple on every proj chart),
        projected = dashed sem-text-disabled per the ProjectedVsActualChart master. */
-    var CA=pal(T,cfg,1)[0];
+    var CA=pal(T,cfg,1,v)[0];
     E('path',{d:smoothPath(aPts),fill:'none',stroke:CA,'stroke-width':LWv(),'stroke-linecap':'round'},svg);
     E('path',{d:linePath(pPts),fill:'none',stroke:T.disabled,'stroke-width':LWv(),'stroke-dasharray':'8 7','stroke-linecap':'round'},svg);
     E('circle',{cx:X(jI),cy:g.Y(cfg.actual[cfg.actual.length-1]),r:4.5,fill:CA,stroke:T.surface,'stroke-width':2},svg);
@@ -4465,13 +4459,13 @@ function T2_CHART_MAXH(hard,floor){
     E('path',{d:d+' L'+g.x1+' '+g.y1+' L'+g.x0+' '+g.y1+' Z',fill:fadeFill(svg,T.seq5,g.y0,g.y1)},svg);
     E('path',{d:d,fill:'none',stroke:T.seq5,'stroke-width':LWv(),'stroke-linecap':'round'},svg);
     (v.events||[]).forEach(function(ev){
-      var x=g.x0+(g.x1-g.x0)*ev.t, c=T.catsSafe[ev.c%T.catsSafe.length];
+      var x=g.x0+(g.x1-g.x0)*ev.t, c=T.cats[ev.c%T.cats.length];
       E('line',{x1:x,y1:g.y0-4,x2:x,y2:g.y1,stroke:c,'stroke-width':1.5,'stroke-dasharray':'5 5'},svg);
       var anchor=(x>g.x1-110)?'end':'start';
       TX(svg,anchor==='start'?x+6:x-6,g.y0+8,pick(ev.label),T.ink,12.5,anchor,600);
     });
     xLabels(svg,T,g,cfg.x,cfg.x.map(function(_,i){ return i/(cfg.x.length-1); }));
-    var by=g.y1+34, phaseCols=pal(T,cfg,3), prev=0;  /* rev HK2: phase bars from the seeded palette */
+    var by=g.y1+34, phaseCols=pal(T,cfg,3,v), prev=0;  /* rev HK3: phase bars from the per-instance rotation */
     cfg.phases.forEach(function(ph,i){
       var xA=g.x0+(g.x1-g.x0)*prev, xB=g.x0+(g.x1-g.x0)*ph.t;
       E('rect',{x:xA+(i?2:0),y:by,width:xB-xA-(i?2:0),height:7,rx:3.5,fill:phaseCols[i%3]},svg);
@@ -4492,7 +4486,7 @@ function T2_CHART_MAXH(hard,floor){
     if(st&&st.h) box.style.aspectRatio='720 / '+st.h;  /* rev Z: dragged height via aspect (nodes are %-positioned) */
     /* HEMLOCK rev HK: nodes = chart-categorical color-01..05 per the TreemapChart master;
        rev-V dark darkening retired (dark palette values are already dark-tuned). */
-    var cols=pal(T,cfg,5);  /* rev HK2: seeded varied palette (was color-01..05 on every treemap) */
+    var cols=pal(T,cfg,5,v);  /* rev HK3: per-instance rotation (was color-01..05 on every treemap) */
     cfg.nodes.forEach(function(nd,i){
       var el=H('div','tn',box);
       el.style.left=nd.x+'%'; el.style.top=nd.y+'%'; el.style.width=nd.w+'%'; el.style.height=nd.h+'%';
@@ -4553,7 +4547,7 @@ function T2_CHART_MAXH(hard,floor){
     var cx=160,cy=160, R1i=94,R1o=120, R2i=122,R2o=150;
     var GAPW=2, PAD1=GAPW/((R1i+R1o)/2), PAD2=GAPW/((R2i+R2o)/2);
     var total=0; cfg.groups.forEach(function(gp){ gp.subs.forEach(function(su){ total+=su.v; }); });
-    var pCols=pal(T,cfg,4);  /* rev HK2: groups from the seeded palette (was color-01..04 on every dual donut) */
+    var pCols=pal(T,cfg,cfg.groups.length,v);  /* rev HK3: groups EXTEND the full categorical palette (per-instance rotation), not a fixed color-01..04 */
     function seg(r0,r1,a0,a1){
       function P(r,ang){ return (cx+r*Math.cos(ang)).toFixed(2)+' '+(cy+r*Math.sin(ang)).toFixed(2); }
       var large=(a1-a0)>Math.PI?1:0;
@@ -4745,13 +4739,13 @@ function T2_CHART_MAXH(hard,floor){
   function legendFor(cfg,v,T,card){
     if(cfg.type==='proj'){
       var lg=H('div','t2ck-legend',card);
-      var s1=H('span','lg',lg); var l1=H('span','ln',s1); l1.style.borderTopColor=pal(T,cfg,1)[0]; H('span','',s1,pick(cfg.legend[0]));  /* rev HK2: matches the proj renderer's seeded color */
+      var s1=H('span','lg',lg); var l1=H('span','ln',s1); l1.style.borderTopColor=pal(T,cfg,1,v)[0]; H('span','',s1,pick(cfg.legend[0]));  /* rev HK3: matches the proj renderer's per-instance color */
       var s2=H('span','lg',lg); var l2=H('span','ln dash',s2); l2.style.borderTopColor=T.disabled; H('span','',s2,pick(cfg.legend[1]));  /* HEMLOCK rev HK: projected = sem-text-disabled */
       return lg;
     }
     if(!cfg.series) return null;
     var lg2=H('div','t2ck-legend',card);
-    var LC=pal(T,cfg,cfg.series.length);  /* rev HK2: same seeded colors the renderer drew with */
+    var LC=pal(T,cfg,cfg.series.length,v);  /* rev HK3: same per-instance colors the renderer drew with */
     cfg.series.forEach(function(sN,i){
       var col=LC[i];
       var sp=H('span','lg',lg2); var dot=H('span','dot',sp); dot.style.background=col; H('span','',sp,pick(sN.label));

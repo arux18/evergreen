@@ -229,17 +229,19 @@ For components that draw their own buttons rather than the `--tk-*` widgets. Lig
 
 ## 7. Charts
 
-### Template series slots (`--cat1..15`) — rev HK/HK2
+### Template series slots (`--cat1..15`) — rev HK/HK3
 
 **Both modes carry the full Hemlock categorical palette** (`--cat1..15` = `chart-categorical/color-01..15`, table below), superseding the old 7-slot blue-led light palette — the earlier series-discontinuity flag is **resolved** (a series keeps its hue family across themes).
 
-**Assignment rules (rev HK2, per design 2026-08-21):**
+**Assignment rules (rev HK3, per design 2026-08-21 — supersedes rev HK2's stride/pool-exclusion scheme):**
 
-1. **Series/slices never index the palette in fixed order.** Every chart derives a stable per-chart offset + stride (seeded from its English title), so different charts open in different palette regions — no more "every chart starts purple, cyan, navy."
-2. **Greens and reds are RESERVED for positive/negative values.** Generic series draw from the safe pool only (15 minus color-05/-07 green family and color-12 brick — 12 hues); pos/neg semantics use `sem-text-deposit` / `sem-text-error` and the status backgrounds.
-3. **Axis tick labels are never series-tinted** — always 11px `sem-text-meta`, both axes (dual-axis included; the legend carries the series-to-axis mapping).
-4. Past one full pool pass, colors recycle at 62% then 38% tints (donut rule).
-5. Diverging heatmap (positive-negative) uses the **status background tokens** per `openui-charts-v2` `HeatmapChart/positive-negative`: positives bucket into `sem-background-success-soft/-strong/-bold` (bold takes `sem-text-reverse`), negatives take `sem-background-error-strong`; all other tiles take `sem-text-header`. *(Q16: per-theme heatmap text contrast is still open with design — do not lock text inks yet.)*
+1. **The pool is the FULL curated palette in its designed order** (`color-01..15`). Do not skip, filter, or stride through it — the adjacency of the curated order is intentional. *(Rev HK2 dropped color-05/-07/-12 and walked with strides; both retired — they scrambled the palette and changed the donut, which was already correct.)*
+2. **Every chart INSTANCE rotates the palette from its own seeded offset.** The seed hashes the chart's English title **plus the variant id**, so two variants of the same chart (default vs compact vs no-card) start at different colors — no "same three colors in every variant of an area chart" — while hover/resize/theme re-renders stay deterministic.
+3. **The pos/neg STATUS inks are never series colors.** `sem-text-deposit` (green) / `sem-text-error` (red) and the status backgrounds are reserved for positive/negative semantics (waterfall gains/losses, diverging heatmap, deltas). The categorical palette itself contains no semantic green/red, so no pool filtering is needed.
+4. **Axis tick labels are never series-tinted** — always 11px `sem-text-meta`, both axes (dual-axis included; the legend carries the series-to-axis mapping).
+5. Past one full palette pass, colors recycle at 62% then 38% tints (donut rule).
+6. **The dual donut walks the same palette** — group colors come from the per-instance rotation (not a fixed color-01..04), and each group's outer-ring subdivisions are alpha tints of the parent color.
+7. Diverging heatmap (positive-negative) uses the **status background tokens** per `openui-charts-v2` `HeatmapChart/positive-negative`: positives bucket into `sem-background-success-soft/-strong/-bold` (bold takes `sem-text-reverse`), negatives take `sem-background-error-strong`; all other tiles take `sem-text-header`. *(Q16: per-theme heatmap text contrast is still open with design — do not lock text inks yet.)*
 
 ### Hemlock categorical palette (full 15, both modes)
 
