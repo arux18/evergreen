@@ -1,5 +1,7 @@
 # Data Visualization Design Token Specification
 
+> **⚠️ SUPERSEDED (2026-08-21).** This spec describes the pre-Hemlock system: green-tinted grays, `color.*` dot naming, the old blue ramp (`#295CCC`), and themed primitives. Current canon: `../in-progress/design-system.md` and `../in-progress/hemlock-html-handoff.md`, with `../in-progress/hemlock-library.lib.pen` as the token source of truth (`prim-*` static paint / `sem-*` themed semantics / `shadow-*-color` elevation). Retained as historical reference only — **do not feed to code-generating agents**.
+
 > **Purpose:** Complete token system for designing and building financial data visualization components. Covers Figma variables, CSS custom properties, and AI-agent-readable markdown handoff. Feed this spec to an LLM (e.g., Cursor IDE) to generate any financial chart or UI with brand consistency.
 >
 > **Scope:** Monte Carlo simulations, stock option calculators, retirement planners, portfolio dashboards, tax planning tools, and any data-rich financial interface.

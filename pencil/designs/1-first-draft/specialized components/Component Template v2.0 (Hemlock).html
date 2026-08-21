@@ -512,8 +512,8 @@
     /* Hemlock sequential ramp — chart-sequential/seq-100..700 (light). Single-series charts
        (area, timeline, gauge, waterfall totals) draw with seq-500 per the Hemlock chart masters. */
     --seq1:#EBF0FE; --seq2:#C8D6FD; --seq3:#A5BCFC; --seq4:#7094FB; --seq5:#5A82F9; --seq6:#3A6AF8; --seq7:#2952CC;
-    --tile-shadow:0 4px 12px rgba(0,0,0,0.10); --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.12);  /* prim-shadow-md 10% / prim-shadow-lg 12% — already token-exact */
-    --modal-shadow:0 16px 40px rgba(0,0,0,0.16);  /* prim-shadow-overlay-color 16% */
+    --tile-shadow:0 4px 12px rgba(0,0,0,0.10); --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.12);  /* shadow-md-color 10% / shadow-lg-color 12% — already token-exact */
+    --modal-shadow:0 16px 40px rgba(0,0,0,0.16);  /* shadow-overlay-color 16% */
     --backdrop:rgba(45,41,38,0.34);  /* sem-background-scrim #2D292657 (token added 2026-08-21) */
     /* semantic accents — light values here; dark values redefined in the dark :root block */
     --pos-strong:#148338; --neg-strong:#C82320; --info:#3A6AF8; --info-title:#3A6AF8; --hairline:#595959;  /* sem-text-deposit (green-500) / sem-text-error (red-600) / sem-icons-action + sem-text-action (blue-600) — light info stays accent-blue per the integrity ruling; dark info is sky */
@@ -818,7 +818,7 @@
   .tmpl-seg{display:inline-flex;gap:0;padding:4px;background:var(--calc-bg);border:0;border-radius:999px;}
   .tmpl-seg button{background:transparent;color:var(--text-body);border:0;border-radius:999px;padding:6px 16px;font-size:var(--fs-14);font-weight:400;font-family:var(--font-ui);line-height:1.43;cursor:pointer;}
   .tmpl-seg button.on{background:var(--surface-1);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08);}
-  html[data-theme="dark"] .tmpl-seg button.on{box-shadow:0 1px 2px rgba(0,0,0,.28);}  /* prim-shadow-sm-color dark */
+  html[data-theme="dark"] .tmpl-seg button.on{box-shadow:0 1px 2px rgba(0,0,0,.5);}  /* shadow-sm-color dark — lifted Aug 21 */
   /* video modal */
   .vid-modal-backdrop{position:fixed;inset:0;background:var(--backdrop);display:flex;align-items:center;justify-content:center;z-index:200;padding:24px;}
   .vid-modal-backdrop[hidden]{display:none;}
@@ -881,9 +881,9 @@
     /* Hemlock sequential ramp — chart-sequential/seq-100..700 (dark: blue ramp inverted). */
     --seq1:#163196; --seq2:#2952CC; --seq3:#3A6AF8; --seq4:#5A82F9; --seq5:#7094FB; --seq6:#A5BCFC; --seq7:#C8D6FD;
     --pros-bg:#12291C; --pros-border:#245234; --cons-bg:#3A1B1E; --cons-border:#542427; --info-bg:#10263C; --info-border:#16304A;  /* flat opaque status surfaces: sem-background-success/-error/-info + their border roles */
-    --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.45);  /* ring kept; black layer = prim-shadow-lg-color 45% */
-    --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.36);  /* prim-shadow-md-color 36% */
-    --modal-shadow:0 16px 40px rgba(0,0,0,0.64);  /* prim-shadow-overlay-color 64% */
+    --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.70);  /* ring kept; black layer = shadow-lg-color 70% (lifted Aug 21) */
+    --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.60);  /* shadow-md-color 60% (lifted Aug 21) */
+    --modal-shadow:0 16px 40px rgba(0,0,0,0.85);  /* shadow-overlay-color 85% (lifted Aug 21) */
     /* brand hero ombre (bottom -> top); also the video-poster fallback — outside the token system, unchanged */
     --hero-1:#7094FB; --hero-2:#5873C0; --hero-3:#3F5185; --hero-4:#334067;
     --hero-5:#273049; --hero-6:#1A1F2C; --hero-7:#14161D; --hero-8:#0E0E0E;
@@ -916,7 +916,7 @@
   html[data-theme="dark"] #appMain.mw-mobile .card,html[data-theme="dark"] #appMain.mw-tablet .card{padding-left:var(--space-24) !important;padding-right:var(--space-24) !important;}
   html[data-theme="dark"] .vthumb{border:1px solid var(--hairline);}  /* darker-gray outline in dark mode only */
   html[data-theme="dark"] .sc-plan-card{background:var(--surface-2);border-color:var(--border-strong);}  /* HEMLOCK: flat sem-background-light #18223A — gradients retired */
-  html[data-theme="dark"] .sc-plan-card:hover:where(html.ptr-fine *),html[data-theme="dark"] .sc-plan-card:focus-visible{background:var(--row-hover);border-color:var(--accent);box-shadow:0 10px 24px rgba(0,0,0,0.36);}  /* HEMLOCK: hover = navy-500 #172642 (one step lighter), action-blue border, prim-shadow-md 36% */
+  html[data-theme="dark"] .sc-plan-card:hover:where(html.ptr-fine *),html[data-theme="dark"] .sc-plan-card:focus-visible{background:var(--row-hover);border-color:var(--accent);box-shadow:0 10px 24px rgba(0,0,0,0.60);}  /* HEMLOCK: hover = navy-500 #172642 (one step lighter), action-blue border, shadow-md-color 60% (lifted Aug 21) */
   html[data-theme="dark"] .sc-tabs-wrap{background:var(--taupe-100);}  /* HEMLOCK: dark taupe band = sem-background-rowHover #172642 */
   html[data-theme="dark"] .sc-tabs button{color:var(--muted);}
   html[data-theme="dark"] .sc-tabs button:hover:where(html.ptr-fine *){color:var(--ink);}
@@ -927,12 +927,12 @@
   /* pros/cons h4 text and ::before strips now theme via --pos-strong / --neg-strong */
   /* HEMLOCK: dark info tiles are SKY, not purple */
   html[data-theme="dark"] .sc-box.info{background:var(--info-bg);border-color:var(--info-border);}  /* flat opaque sem-background-info #10263C / sem-borders-info #16304A; info h4 text + ::before strip theme via --info-title / --info (sky-250) */
-  html[data-theme="dark"] .sc-calc-body:not(.hidden){background:var(--calc-bg);border-color:var(--taupe-border);box-shadow:0 18px 42px rgba(0,0,0,0.45);}  /* HEMLOCK: flat sem-background-sunken #0C1222, sem-borders-dark #22314F, prim-shadow-lg 45% — purple radial + gradient retired */
+  html[data-theme="dark"] .sc-calc-body:not(.hidden){background:var(--calc-bg);border-color:var(--taupe-border);box-shadow:0 18px 42px rgba(0,0,0,0.70);}  /* HEMLOCK: flat sem-background-sunken #0C1222, sem-borders-dark #22314F, shadow-lg-color 70% (lifted Aug 21) — purple radial + gradient retired */
   html[data-theme="dark"] .sc-kpi{background:var(--surface-2);border-color:var(--border);position:relative;overflow:hidden;border-radius:0 0 var(--radius-md) var(--radius-md);}  /* HEMLOCK: flat sem-background-light #18223A; square top corners; top bar reaches the outline */
   html[data-theme="dark"] .sc-kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent-3);opacity:.95;}
   /* KPI top bars are uniformly --accent-3 via the base ::before above. */
   html[data-theme="dark"] .sc-data-table thead th{background:var(--calc-bg);}  /* HEMLOCK rev HK: sem-background-sunken (navy-900 #0C1222) per the table-header masters — was surface-2 */
-  html[data-theme="dark"] .sc-data-table th.sticky,html[data-theme="dark"] .sc-data-table td.sticky,html[data-theme="dark"] .sc-cmp-table th:first-child,html[data-theme="dark"] .sc-cmp-table td:first-child{box-shadow:8px 0 8px -8px rgba(0,0,0,0.45);}  /* HEMLOCK: prim-shadow-lg 45% */
+  html[data-theme="dark"] .sc-data-table th.sticky,html[data-theme="dark"] .sc-data-table td.sticky,html[data-theme="dark"] .sc-cmp-table th:first-child,html[data-theme="dark"] .sc-cmp-table td:first-child{box-shadow:8px 0 8px -8px rgba(0,0,0,0.70);}  /* HEMLOCK: shadow-lg-color 70% (lifted Aug 21) */
   html[data-theme="dark"] .sc-data-table .sortarr{color:#52637F;} html[data-theme="dark"] .sc-data-table .sortarr.active{color:var(--accent);}  /* HEMLOCK: unsorted = sem-icons-subtle */
   html[data-theme="dark"] .vthumb,html[data-theme="dark"] .vid-modal-poster{background:radial-gradient(120% 130% at 50% 100%,var(--hero-1) 0%,var(--hero-2) 18%,var(--hero-3) 34%,var(--hero-4) 46%,var(--hero-5) 58%,var(--hero-6) 70%,var(--hero-7) 80%,var(--hero-8) 90%);}
   html[data-theme="dark"] .cs-pane > .toggle,html[data-theme="dark"] .subsec-head.toggle,html[data-theme="dark"] .sc-how > .toggle{border-image:linear-gradient(90deg,rgba(90,130,249,0.55),rgba(132,230,204,0.18) 55%,transparent) 1;}  /* HEMLOCK: re-derived from prim-blue-500 + sem-chart-cat-7 */
@@ -1013,8 +1013,8 @@
     --tk-error:#C82320; --tk-error-subtle:#FFEAEA;  /* sem-text-error (red-600, from #B91C1C) / sem-background-error (red-50, from #FEE2E2) */
     --tk-track:#D5D3D0; --tk-off:#EDEAE3; --tk-thumb-dis:#EEEDEB;  /* sem-sliderTrack (gray-200, from #D8D9D8) / sem-toggleTrackOff (taupe-200 — rev HK: adopted over the old gray-300) / prim-gray-100 (from #EEEFEE) */
     --tk-ton:#EBF0FE; --tk-border-input:#DCD8CB; --tk-focus:#0E0E0E;  /* rev HK: sem-toggleTrackOn (blue-100) / sem-borders-dark (taupe-350) for input+checkbox outlines / sem-borders-focus (gray-900) for the checked check+radio */
-    --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.08);  /* prim-shadow-sm-color 8% (from 5%) */
-    --tk-shadow-dd:0 4px 12px rgba(0,0,0,0.12);  /* prim-shadow-lg-color 12% — exact */
+    --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.08);  /* shadow-sm-color 8% (from 5%) */
+    --tk-shadow-dd:0 4px 12px rgba(0,0,0,0.12);  /* shadow-lg-color 12% — exact */
   }
   html[data-theme="dark"] #appMain,html[data-theme="dark"] .t2-rd-backdrop{
     /* HEMLOCK: widget layer re-based on sem-* tokens (supersedes rev E's #0075FF native-accent ruling).
@@ -1031,8 +1031,8 @@
     --tk-error:#F87171; --tk-error-subtle:#3A1B1E;  /* sem-text-error (red-350) / sem-background-error (reddark-200) */
     --tk-track:#22314F; --tk-off:#172642; --tk-thumb-dis:#131C31;  /* sem-sliderTrack (navy-300) / sem-toggleTrackOff (navy-500) / sem-background-disabled (navy-700) */
     --tk-ton:#031E64; --tk-border-input:#22314F; --tk-focus:#7094FB;  /* rev HK: sem-toggleTrackOn (blue-900) / sem-borders-dark (navy-300) / checked glyphs use FULL-opacity blue-400 — the token sem-borders-focus dark is #7094FB59 (35% ring alpha), too faint for a check glyph; flagged */
-    --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.28),0 0 0 1px rgba(255,255,255,0.04);  /* prim-shadow-sm-color 28% */
-    --tk-shadow-dd:0 4px 16px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.05);  /* prim-shadow-lg-color 45% */
+    --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.50),0 0 0 1px rgba(255,255,255,0.04);  /* shadow-sm-color 50% (lifted Aug 21) */
+    --tk-shadow-dd:0 4px 16px rgba(0,0,0,0.70),0 0 0 1px rgba(255,255,255,0.05);  /* shadow-lg-color 70% (lifted Aug 21) */
   }
   /* HEMLOCK rev HK: dark thumb override retired — the shared .tkt-thumb rule is now #FFFFFF (sem-toggleKnob) in both modes, and checked knobs take sem-toggleKnobOn via --tk-accent */
   .ui-row{display:flex;flex-wrap:wrap;gap:16px 22px;align-items:flex-start;margin:12px 0 2px;}  /* top-aligned so specimen captions share one baseline regardless of control height */
@@ -1178,7 +1178,7 @@
   .tkseg{display:inline-flex;gap:0;background:var(--calc-bg);border-radius:999px;padding:4px;}
   .tkseg button{border:none;background:transparent;color:var(--text-body);border-radius:999px;padding:8px 24px;font-family:var(--font-ui);font-size:14px;font-weight:400;line-height:1.43;cursor:pointer;}
   .tkseg button.on{background:var(--surface-1);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08);}
-  html[data-theme="dark"] .tkseg button.on{box-shadow:0 1px 2px rgba(0,0,0,.28);}  /* prim-shadow-sm-color dark */
+  html[data-theme="dark"] .tkseg button.on{box-shadow:0 1px 2px rgba(0,0,0,.5);}  /* shadow-sm-color dark — lifted Aug 21 */
   .tkseg button:focus-visible{outline:none;box-shadow:0 0 0 3px var(--tk-accent-subtle);}
   /* rev D: custom-dropdown facade over a hidden native select (calculator Mode field — no system popup) */
   .t2-native-hidden{position:absolute !important;width:1px !important;height:1px !important;opacity:0 !important;pointer-events:none !important;margin:0 !important;padding:0 !important;border:0 !important;}
@@ -1398,7 +1398,7 @@
   .t2ck-dlegend .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}  /* HEMLOCK rev HK: 8px circle per ChartLegend master */
   /* rev R: operable chart-kit — HTML info box (heatmap/treemap), hover lifts, gauge slider, page-level section hiding */
   .t2ck-tip{position:absolute;z-index:40;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.18);padding:8px 12px;pointer-events:none;font:400 12px var(--font-ui);color:var(--text-body);min-width:150px;max-width:260px;}  /* HEMLOCK rev HK: ChartTooltip master — pad $spacing-2xs/$spacing-xs (8/12), radius-2xs 8, 12px sem-text-body rows, sem-borders-light hairline, shadow-lg */
-  html[data-theme="dark"] .t2ck-tip{background:#1E2B49;border-color:var(--border);box-shadow:0 8px 24px rgba(0,0,0,0.45);}  /* HEMLOCK rev HK: sem-background-elevated (navy-600 #1E2B49) — brighter than the card, per the ChartTooltip master */
+  html[data-theme="dark"] .t2ck-tip{background:#1E2B49;border-color:var(--border);box-shadow:0 8px 24px rgba(0,0,0,0.70);}  /* HEMLOCK rev HK: sem-background-elevated (navy-600 #1E2B49) — brighter than the card, per the ChartTooltip master; shadow-lg-color 70% (lifted Aug 21) */
   .t2ck-tip .tt{font:600 12px var(--font-ui);color:var(--muted);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}  /* HEMLOCK rev HK: tooltip header 12px semibold sem-text-meta per master */
   .t2ck-tip .tr2{display:flex;align-items:center;gap:8px;margin-top:4px;}  /* HEMLOCK rev HK: row gap $spacing-2xs 8, row spacing $spacing-3xs 4 */
   .t2ck-tip .tr2 .dot{width:10px;height:10px;border-radius:50%;flex:0 0 auto;}  /* HEMLOCK rev HK: 10px circle marker per ChartTooltip master */

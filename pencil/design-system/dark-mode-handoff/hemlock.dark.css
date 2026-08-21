@@ -11,6 +11,10 @@
    O12/O13 RESOLVED (Amanda, Aug 20): our navy/navylight ramps are
    canon — pen-only steps (navy-surface #1C2943, the whole pen
    navy + navy-border groups) are REMOVED from the pen file.
+   Aug 21: shadow colors renamed prim-shadow-*-color → shadow-*-color
+   (semantics, not paint) and dark shadow alphas lifted to
+   50/60/70/85% so elevation reads on navy; sem-navShadow is now
+   visible in dark (was flat).
    ============================================================ */
 
 html[data-theme="dark"] {
@@ -42,7 +46,7 @@ html[data-theme="dark"] {
   --prim-greendark-100: #245234; --prim-greendark-200: #1A3A26; --prim-greendark-300: #12291C;
   --prim-orangedark-100: #5E3A18; --prim-orangedark-200: #472C13; --prim-orangedark-300: #33200F;
   --prim-reddark-100: #542427; --prim-reddark-200: #3A1B1E; --prim-reddark-300: #2C1518;
-  --prim-shadow-sm-color: #00000047; --prim-shadow-md-color: #0000005C; --prim-shadow-lg-color: #00000073; --prim-shadow-overlay-color: #000000A3; /* dark: black @ 28/36/45/64% (light: 8/10/12/16%) — approved Aug 20 */
+  --shadow-sm-color: #00000080; --shadow-md-color: #00000099; --shadow-lg-color: #000000B3; --shadow-overlay-color: #000000D9; /* dark: black @ 50/60/70/85% (light: 8/10/12/16%) — lifted Aug 21 so elevation stays visible on navy; renamed off prim- (shadow colors are semantic, not paint) */
 
   /* ---- SYSTEM: background ---- */
   --sem-background-light: var(--prim-navy-600);
@@ -202,7 +206,7 @@ html[data-theme="dark"] {
   --sem-navHoverBg: var(--prim-navy-600);
   --sem-navPressedBg: var(--prim-navy-400);
   --sem-navHoverText: var(--prim-navylight-800);
-  --sem-navShadow: transparent;                               /* flat — glow lives on chat */
+  --sem-navShadow: var(--shadow-sm-color);                  /* visible in dark (Aug 21) — was flat/transparent; chat keeps its blue glow */
   --sem-navToggleBg: var(--prim-navy-600);
   --sem-navToggleBorder: var(--prim-navy-50);
   --sem-navToggleIcon: var(--prim-blue-400);

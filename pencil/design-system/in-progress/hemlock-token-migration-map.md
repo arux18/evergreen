@@ -2,6 +2,8 @@
 
 **Generated:** 2026-08-20
 **Status:** ✅ **MIGRATION EXECUTED** (2026-08-20) — `chat-nav-refresh.pen` now consumes `hemlock-library.lib.pen` exclusively; `chat-ui.lib.pen` has been unlinked. See "Resolution" at the end of this document. This map is retained as the audit record of how every source token was mapped.
+
+> **Post-migration note (2026-08-21):** the `prim-shadow-*-color` targets referenced below were renamed to `shadow-*-color` (shadow colors are semantics, not paint) and their dark alphas were lifted from 28/36/45/64% to 50/60/70/85%. The mapping logic is unaffected.
 **Hemlock target:** `pencil/design-system/in-progress/hemlock-library.lib.pen` (439 variables — 21 semantic tokens were minted during execution, see Resolution)
 **Sources:**
 - `pencil/design-system/complete/chat-ui.lib.pen` — 47 local tokens

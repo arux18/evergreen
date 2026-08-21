@@ -55,8 +55,8 @@ This is the **single source of truth** for the Evergreen design system as implem
 Hemlock is a **two-theme system**. Every color token in `hemlock-library.lib.pen` is themed on the `🎨 Colors` axis with two modes: **Light** and **Dark** (navy).
 
 - **T1 primitives (`prim-*`) are static** — the same paint in both modes. Both palettes (warm light neutrals AND the navy/navylight dark ramps) live side by side in T1.
-- **T2/T3 semantics (`sem-*`) are themed** — every semantic token is a light/dark pair pointing at different primitives. The theme switches in this layer and only in this layer. 193 of 219 semantic tokens carry a distinct dark value; the rest are deliberately identical in both modes (e.g. blue action colors that already pass contrast on navy).
-- **The only themed primitives** are the four `prim-shadow-*-color` tokens: shadows are black glows in light mode and soft blue glows in dark mode by design.
+- **T2/T3 semantics (`sem-*`) are themed** — every semantic token is a light/dark pair pointing at different primitives. The theme switches in this layer and only in this layer. 209 of 247 semantic color tokens carry a distinct dark value; the rest are deliberately identical in both modes (e.g. blue action colors that already pass contrast on navy).
+- **Shadow colors (`shadow-*-color`) are themed but carry no `prim-` prefix** — they change per theme, so they are semantics by nature, named to read as one elevation family with `shadow-{size}-blur`/`y`. In dark mode they are **lifted** (black @ 50/60/70/85%) so elevation stays visible on navy.
 - Components bind **only** to `sem-*` tokens (or non-color tokens like `radius-*`). Never to `prim-*`, never to raw hex.
 
 Naming: `prim-{palette}-{step}` for primitives, `sem-{category}-{role}` for system semantics (T2), `sem-{component}{Role}{State}` for component tokens (T3).
@@ -625,16 +625,16 @@ Always assign in priority order.
 
 ### Elevation / Shadows
 
-Each shadow is defined by y-offset and blur (`shadow-{size}-y`, `shadow-{size}-blur`) plus a **themed** color primitive (`prim-shadow-{size}-color`). Shadow colors are the one deliberate exception to "primitives are static": black glows in light, soft blue glows in dark.
+Each shadow is defined by y-offset and blur (`shadow-{size}-y`, `shadow-{size}-blur`) plus a themed color (`shadow-{size}-color`). Shadow colors change per theme, so they are semantics by nature — they carry no `prim-` prefix, keeping the elevation scale reading as one family. In dark mode they are **lifted** (much higher alpha black) so elevation stays visible on navy surfaces.
 
 | Shadow | Y-offset | Blur | Light color | Dark color | Usage |
 |---|---|---|---|---|---|
-| `shadow-sm` | `1px` | `2px` | `#00000014` | `#00000047` | Subtle elevation |
-| `shadow-md` | `4px` | `12px` | `#0000001A` | `#0000005C` | Cards, dropdowns |
-| `shadow-lg` | `8px` | `24px` | `#0000001F` | `#00000073` | Modals, popovers |
-| `shadow-overlay` | `16px` | `40px` | `#00000029` | `#000000A3` | Full overlays |
+| `shadow-sm` | `1px` | `2px` | `#00000014` | `#00000080` | Subtle elevation |
+| `shadow-md` | `4px` | `12px` | `#0000001A` | `#00000099` | Cards, dropdowns |
+| `shadow-lg` | `8px` | `24px` | `#0000001F` | `#000000B3` | Modals, popovers |
+| `shadow-overlay` | `16px` | `40px` | `#00000029` | `#000000D9` | Full overlays |
 
-In dark mode, elevation leans on borders and lightened surfaces; shadows are soft blue glows rather than black drops.
+In dark mode, elevation leans on lightened surfaces, and shadows get **stronger**, not weaker — a shadow that disappears isn't doing its job. (The one colored glow is `sem-chatShadow`: a soft blue halo on the chat panel, dark-only. Scrims are a separate role — `sem-background-scrim` — and are not part of the shadow ramp.)
 
 ### Motion / Easing
 

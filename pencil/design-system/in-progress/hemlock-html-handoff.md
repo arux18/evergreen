@@ -423,22 +423,39 @@ Full new scale:
 
 ## 7. Shadows
 
+Shadow colors are themed tokens named `--shadow-{size}-color` — no `prim-` prefix, because a value that changes per theme is a semantic, not a primitive. In dark mode the alpha is **lifted** so elevation stays visible on navy.
+
+| Color token | Light | Dark |
+|------|-------|------|
+| `--shadow-sm-color` | `#00000014` (8%) | `#00000080` (50%) |
+| `--shadow-md-color` | `#0000001A` (10%) | `#00000099` (60%) |
+| `--shadow-lg-color` | `#0000001F` (12%) | `#000000B3` (70%) |
+| `--shadow-overlay-color` | `#00000029` (16%) | `#000000D9` (85%) |
+
+Composite shadows (geometry is theme-invariant; only the color resolves differently):
+
 | Old | New CSS |
 |-----|---------|
-| `--shadow-sm` | `0 1px 2px #00000014` |
-| `--shadow-md` | `0 4px 12px #0000001A` |
-| `--shadow-lg` | `0 8px 24px #0000001F` |
-| `--shadow-dropdown` | `0 4px 12px #0000001A` (same as md) |
-| `--shadow-overlay` | `0 16px 40px #00000029` |
+| `--shadow-sm` | `0 1px 2px var(--shadow-sm-color)` |
+| `--shadow-md` | `0 4px 12px var(--shadow-md-color)` |
+| `--shadow-lg` | `0 8px 24px var(--shadow-lg-color)` |
+| `--shadow-dropdown` | `0 4px 12px var(--shadow-md-color)` (same as md) |
+| `--shadow-overlay` | `0 16px 40px var(--shadow-overlay-color)` |
 
 ```css
 :root {
-  --shadow-sm: 0 1px 2px #00000014;
-  --shadow-md: 0 4px 12px #0000001A;
-  --shadow-lg: 0 8px 24px #0000001F;
-  --shadow-overlay: 0 16px 40px #00000029;
+  --shadow-sm-color: #00000014;
+  --shadow-md-color: #0000001A;
+  --shadow-lg-color: #0000001F;
+  --shadow-overlay-color: #00000029;
+  --shadow-sm: 0 1px 2px var(--shadow-sm-color);
+  --shadow-md: 0 4px 12px var(--shadow-md-color);
+  --shadow-lg: 0 8px 24px var(--shadow-lg-color);
+  --shadow-overlay: 0 16px 40px var(--shadow-overlay-color);
 }
 ```
+
+(Dark values for the four colors live in the §16 override block. Scrims are a separate role — `--sem-background-scrim` — not part of the shadow ramp.)
 
 ---
 
@@ -632,7 +649,7 @@ Categorical palette (unchanged values, but use these token names):
 - [ ] Focus ring: dark (`prim-gray-900`) in light mode, translucent blue in dark mode
 - [ ] Update all spacing token names (`space-N` → `spacing-Nxs/sm/md/lg/xl`)
 - [ ] Update radius values (old scale was much smaller)
-- [ ] Shadow colors are themed: black glows in light, soft blue glows in dark
+- [ ] Shadow colors (`--shadow-*-color`, no `prim-` prefix) are themed: black @ 8/10/12/16% in light, **lifted to 50/60/70/85% in dark** so elevation stays visible on navy
 - [ ] Reduce `--motion-normal` from 250ms → 200ms; `--motion-slow` from 400ms → 300ms
 - [ ] Add z-index layer tokens
 - [ ] Apply nav/chat taupe backgrounds (light) and navy backgrounds (dark)
@@ -898,6 +915,7 @@ Copy-paste this as your root variables (light theme defaults):
   --sem-btnSecondaryTextActive: var(--prim-blue-700);
   --sem-btnSecondaryTextDisabled: var(--prim-blue-300);
   --sem-btnSecondaryTextHover: var(--prim-blue-700);
+  --sem-cardShadow: var(--shadow-sm-color);     /* resolves per theme via the shadow color */
   --sem-chatBg: var(--prim-taupe-100);
   --sem-chatBorder: var(--prim-taupe-350);
   --sem-chatBubbleAi: #FFFFFF00;
@@ -923,7 +941,7 @@ Copy-paste this as your root variables (light theme defaults):
   --sem-chatSendBgHover: var(--sem-btnPrimaryBgHover);
   --sem-chatSendBgPressed: var(--sem-btnPrimaryBgActive);
   --sem-chatSendIcon: var(--sem-btnPrimaryText);
-  --sem-chatShadow: #2D292628;
+  --sem-chatShadow: #00000000;                  /* light is explicitly none; dark gets a blue glow (§16) */
   --sem-chatStopBg: var(--sem-btnPrimaryBg);
   --sem-chatStopBgHover: var(--sem-btnPrimaryBgHover);
   --sem-chatStopBgPressed: var(--sem-btnPrimaryBgActive);
@@ -1047,14 +1065,14 @@ Copy-paste this as your root variables (light theme defaults):
   --radius-full: 9999px;
 
   /* Shadows (colors are themed — see dark block) */
-  --prim-shadow-sm-color: #00000014;
-  --prim-shadow-md-color: #0000001A;
-  --prim-shadow-lg-color: #0000001F;
-  --prim-shadow-overlay-color: #00000029;
-  --shadow-sm: 0 1px 2px var(--prim-shadow-sm-color);
-  --shadow-md: 0 4px 12px var(--prim-shadow-md-color);
-  --shadow-lg: 0 8px 24px var(--prim-shadow-lg-color);
-  --shadow-overlay: 0 16px 40px var(--prim-shadow-overlay-color);
+  --shadow-sm-color: #00000014;
+  --shadow-md-color: #0000001A;
+  --shadow-lg-color: #0000001F;
+  --shadow-overlay-color: #00000029;
+  --shadow-sm: 0 1px 2px var(--shadow-sm-color);
+  --shadow-md: 0 4px 12px var(--shadow-md-color);
+  --shadow-lg: 0 8px 24px var(--shadow-lg-color);
+  --shadow-overlay: 0 16px 40px var(--shadow-overlay-color);
 
   /* Motion */
   --duration-fast: 150ms;
@@ -1249,7 +1267,7 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-navSettingsIcon: var(--prim-blue-400);
   --sem-navSettingsPressedBg: var(--prim-navy-400);
   --sem-navSettingsPressedIcon: var(--prim-blue-300);
-  --sem-navShadow: #00000000;
+  --sem-navShadow: var(--shadow-sm-color);      /* visible in dark (Aug 21) — was flat */
   --sem-navTextDisabled: var(--prim-navylight-100);
   --sem-navTextPrimary: var(--prim-navylight-800);
   --sem-navTextSecondary: var(--prim-navylight-500);
@@ -1295,10 +1313,10 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-toggleTrackOff: var(--prim-navy-500);
   --sem-toggleTrackOn: var(--prim-blue-900);
 
-  /* Themed shadow colors — soft blue glows on navy */
-  --prim-shadow-sm-color: #00000047;
-  --prim-shadow-md-color: #0000005C;
-  --prim-shadow-lg-color: #00000073;
-  --prim-shadow-overlay-color: #000000A3;
+  /* Themed shadow colors — lifted black so elevation reads on navy */
+  --shadow-sm-color: #00000080;
+  --shadow-md-color: #00000099;
+  --shadow-lg-color: #000000B3;
+  --shadow-overlay-color: #000000D9;
 }
 ```

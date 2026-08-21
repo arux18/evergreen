@@ -138,7 +138,7 @@ Warning-surface roles (no template vars yet, available if needed): light `sem-ba
 
 | Template var | Light (kept) | **Dark (new)** | Token |
 |---|---|---|---|
-| `--backdrop` | `rgba(45,41,38,0.34)` | **`rgba(0,0,0,0.64)`** | **`sem-background-scrim`** — added to `hemlock-library.lib.pen` 2026-08-21 (`#2D292657` light / `#000000A3` dark). Note: `prim-shadow-overlay-color` is the *shadow-ramp* color (16% light / 64% black dark) used inside `box-shadow`s, not a scrim role — hence the new token. The two coincide in dark. |
+| `--backdrop` | `rgba(45,41,38,0.34)` | **`rgba(0,0,0,0.64)`** | **`sem-background-scrim`** — added to `hemlock-library.lib.pen` 2026-08-21 (`#2D292657` light / `#000000A3` dark). Note: `shadow-overlay-color` is the *shadow-ramp* color (16% light / 85% black dark — lifted Aug 21) used inside `box-shadow`s, not a scrim role — hence the new token. (The two used to coincide in dark at 64%; the overlay shadow was lifted to 85% on Aug 21 so elevation reads on navy.) |
 
 ---
 
@@ -158,7 +158,7 @@ Everything else in light renders pixel-identically. These are the only values th
 | `--tk-error` / `--tk-error-subtle` | `#B91C1C`/`#FEE2E2` | **`#C82320`/`#FFEAEA`** | red-600 / red-50. |
 | `--tk-track` / `--tk-off` / `--tk-thumb-dis` | `#D8D9D8`/`#B6B9B7`/`#EEEFEE` | **`#D5D3D0`/`#EDEAE3`/`#EEEDEB`** | gray-200 / taupe-200 / gray-100. `--tk-off` now takes Hemlock's own `sem-toggleTrackOff` (rev HK; was gray-300). |
 | `--tk-ton` / `--tk-border-input` / `--tk-focus` *(new, rev HK)* | — | **`#EBF0FE`/`#DCD8CB`/`#0E0E0E`** | `sem-toggleTrackOn` (blue-100) / `sem-borders-dark` (taupe-350, input+checkbox outlines) / `sem-borders-focus` (gray-900 — checked check glyph, radio dot & ring). |
-| `--tk-shadow-sm` | 5% black | **8% black** | `prim-shadow-sm-color`. |
+| `--tk-shadow-sm` | 5% black | **8% black** | `shadow-sm-color`. |
 
 ---
 
@@ -181,8 +181,8 @@ Scoped to `#appMain` and `.t2-rd-backdrop`. Buttons follow `sem-btnPrimary*`; se
 | `--tk-error` / `--tk-error-subtle` | `sem-text-error` / `sem-background-error` | **`#F87171`/`#3A1B1E`** | `#F87171`/`#450A0A` |
 | `--tk-track` / `--tk-off` / `--tk-thumb-dis` | `sem-sliderTrack` / `sem-toggleTrackOff` / `sem-background-disabled` | **`#22314F`/`#172642`/`#131C31`** | `#26324C`/`#33476E`/`#141E36` |
 | `--tk-ton` / `--tk-border-input` / `--tk-focus` *(new, rev HK)* | `sem-toggleTrackOn` / `sem-borders-dark` / `sem-borders-focus`* | **`#031E64`/`#22314F`/`#7094FB`** | — |
-| `--tk-shadow-sm` | `prim-shadow-sm-color` 28% | **`0 1px 3px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.04)`** | 50% |
-| `--tk-shadow-dd` | `prim-shadow-lg-color` 45% | **`0 4px 16px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05)`** | 60% |
+| `--tk-shadow-sm` | `shadow-sm-color` 50% | **`0 1px 3px rgba(0,0,0,0.50), 0 0 0 1px rgba(255,255,255,0.04)`** | 50% |
+| `--tk-shadow-dd` | `shadow-lg-color` 70% | **`0 4px 16px rgba(0,0,0,0.70), 0 0 0 1px rgba(255,255,255,0.05)`** | 60% |
 
 Rule-level companions applied in the HTML:
 
@@ -284,15 +284,15 @@ What the companion HTML applies. Dark gradients from v2.0 are **retired in favor
 | Page body | flat `#101729` | **flat `var(--page-bg)` `#131C31`** (`sem-background-surface`) |
 | Card (chrome tile) | same-as-page, outline-defined | Same principle — `var(--surface-1)` `#131C31` = page, outline-defined, 1px blue-tint ring kept |
 | Tab band (`.sc-tabs-wrap`) | `#141E36` | **`var(--taupe-100)` `#172642`** |
-| Option tiles (`.sc-plan-card`) | vertical gradient | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)`; hover **flat `var(--row-hover)` `#172642`** + border `var(--accent)` + `0 10px 24px rgba(0,0,0,0.36)` |
+| Option tiles (`.sc-plan-card`) | vertical gradient | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)`; hover **flat `var(--row-hover)` `#172642`** + border `var(--accent)` + `0 10px 24px rgba(0,0,0,0.60)` |
 | Generic boxes (`.sc-box`), checklist cards | gradients | **flat `var(--surface-2)` `#18223A`** |
 | Pros / Cons / Info tiles | translucent green/red/**purple** gradients | **flat opaque `var(--pros-bg)`/`var(--cons-bg)`/`var(--info-bg)`** with token borders — info is **sky** |
 | Table headers (data + compare) | gradient | **flat `var(--surface-2)` `#18223A`** (`sem-background-elevated`) |
 | Row hover / pressed | `#12203C`/`#1B2C4F` | **`#172642`/`#202C4E`** — opaque |
-| Sticky-column edge shadow | `rgba(0,0,0,.6)` | **`rgba(0,0,0,0.45)`** (`prim-shadow-lg-color`) |
+| Sticky-column edge shadow | `rgba(0,0,0,.6)` | **`rgba(0,0,0,0.70)`** (`shadow-lg-color`) |
 | Sort arrows | unsorted `#8695B5`, sorted white | unsorted **`#52637F`** (`sem-icons-subtle`), sorted **`#7094FB`** (`sem-icons-action`) |
 | KPI cards (`.sc-kpi`) | gradient, purple bar `#9A86FF` | **flat `var(--surface-2)`**, top bar `var(--accent-3)` **`#B198F0`** (`sem-chart-cat-1`, flagged) |
-| Calculator body | purple radial + navy gradient | **flat `var(--calc-bg)` `#0C1222`**, border `var(--taupe-border)` `#22314F`, shadow `0 18px 42px rgba(0,0,0,0.45)` |
+| Calculator body | purple radial + navy gradient | **flat `var(--calc-bg)` `#0C1222`**, border `var(--taupe-border)` `#22314F`, shadow `0 18px 42px rgba(0,0,0,0.70)` |
 | Tooltips (`#t2Tip`, `.t2ck-tip`) | gradients / `#17263F` | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)` |
 | Dropdown menus (single-select) | `#070A10` | **`#090E1B`** (`prim-navy-950`) |
 | Selected dropdown item | accent bg + white text | **blue-500 bg + black text** (`--tk-btn-accent` + `--tk-text-inverse`) |
@@ -311,13 +311,13 @@ What the companion HTML applies. Dark gradients from v2.0 are **retired in favor
 
 | Role | Hemlock token | Light | Dark |
 |---|---|---|---|
-| Small (controls) | `prim-shadow-sm-color` | black @ 8% | black @ 28% |
-| Medium (panels, hover lifts) | `prim-shadow-md-color` | black @ 10% | black @ 36% |
-| Large (dropdowns, tiles) | `prim-shadow-lg-color` | black @ 12% | black @ 45% |
-| Shadow overlay (modal box-shadows) | `prim-shadow-overlay-color` | black @ 16% | black @ 64% |
+| Small (controls) | `shadow-sm-color` | black @ 8% | black @ 50% |
+| Medium (panels, hover lifts) | `shadow-md-color` | black @ 10% | black @ 60% |
+| Large (dropdowns, tiles) | `shadow-lg-color` | black @ 12% | black @ 70% |
+| Shadow overlay (modal box-shadows) | `shadow-overlay-color` | black @ 16% | black @ 85% |
 | **Scrim (backdrops)** | **`sem-background-scrim`** | `#2D292657` (`rgba(45,41,38,0.34)`) | `#000000A3` (`rgba(0,0,0,0.64)`) |
 
-Template mappings — light (unchanged): `--tile-shadow` 10%, `--panel-shadow-hover` 12%, `--modal-shadow` 16%. Dark: `--tile-shadow: 0 0 0 1px rgba(120,150,255,0.06), 0 16px 40px rgba(0,0,0,0.45)` · `--panel-shadow-hover: 0 8px 24px rgba(0,0,0,0.36)` · `--modal-shadow: 0 16px 40px rgba(0,0,0,0.64)`.
+Template mappings — light (unchanged): `--tile-shadow` 10%, `--panel-shadow-hover` 12%, `--modal-shadow` 16%. Dark (lifted Aug 21 so elevation reads on navy): `--tile-shadow: 0 0 0 1px rgba(120,150,255,0.06), 0 16px 40px rgba(0,0,0,0.70)` · `--panel-shadow-hover: 0 8px 24px rgba(0,0,0,0.60)` · `--modal-shadow: 0 16px 40px rgba(0,0,0,0.85)`.
 
 **Focus:** `sem-borders-focus` — light `#0E0E0E`, dark `rgba(112,148,251,0.35)` (blue-400 @ 35%). Pattern: `box-shadow: 0 0 0 3px <value>;`. `sem-borders-focus-inverted`: `#FFFFFF` light / `#0E0E0E` dark.
 
@@ -416,9 +416,9 @@ html[data-theme="dark"]{
   --cat5:#4FC0A6; --cat6:#84D2F7; --cat7:#84E6CC;                  /* sem-chart-cat-1..7 */
   --grid:#26324C; --grid2:#26324C; --axis:#5E6E90;                 /* no Hemlock tokens yet — reference values */
   /* shadows & scrims */
-  --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.45);  /* prim-shadow-lg-color 45% */
-  --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.36);                             /* prim-shadow-md-color 36% */
-  --modal-shadow:0 16px 40px rgba(0,0,0,0.64);                                  /* prim-shadow-overlay-color 64% */
+  --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.70);  /* shadow-lg-color 70% */
+  --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.60);                             /* shadow-md-color 60% */
+  --modal-shadow:0 16px 40px rgba(0,0,0,0.85);                                  /* shadow-overlay-color 85% */
   --backdrop:rgba(0,0,0,0.64);                                                  /* sem-background-scrim */
   /* brand hero ombre — outside the token system, unchanged */
   --hero-1:#7094FB; --hero-2:#5873C0; --hero-3:#3F5185; --hero-4:#334067;
@@ -446,8 +446,8 @@ html[data-theme="dark"] .t2-rd-backdrop{
   --tk-ton:#031E64;               /* sem-toggleTrackOn (prim-blue-900) */
   --tk-border-input:#22314F;      /* sem-borders-dark (prim-navy-300) */
   --tk-focus:#7094FB;             /* sem-borders-focus — FULL blue-400; token's 35% ring alpha is illegible as a glyph */
-  --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.28),0 0 0 1px rgba(255,255,255,0.04);   /* prim-shadow-sm-color */
-  --tk-shadow-dd:0 4px 16px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.05);  /* prim-shadow-lg-color */
+  --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.50),0 0 0 1px rgba(255,255,255,0.04);   /* shadow-sm-color */
+  --tk-shadow-dd:0 4px 16px rgba(0,0,0,0.70),0 0 0 1px rgba(255,255,255,0.05);  /* shadow-lg-color */
 }
 
 /* rule-level companions (see §5/§8) */
@@ -637,4 +637,4 @@ The `sem-chat*` (24 tokens) and `sem-nav*` (19 tokens) families theme the chat p
 - **taupe** (100→900): `#F7F5F0 #EDEAE3 #E8E6E0(250) #E3DFD6 #DCD8CB(350) #BCB49E #9D937B #877F68 #6C6451 #4B4435 #322C20`
 - **darktints:** skydark `#16304A #10263C` · greendark `#245234 #1A3A26 #12291C` · orangedark `#5E3A18 #472C13 #33200F` · reddark `#542427 #3A1B1E #2C1518`
 - **status accents (dark):** green-350 `#4ADE80` (+muted `#74D791`) · red-350 `#F87171` / red-250 `#FCA5A5` (+muted `#E5807E`) · orange-400 `#FB924D` (+muted `#EA9C62`) · sky-250 `#38BDF8`
-- **shadow colors:** light 8/10/12/16% black · dark 28/36/45/64% black · scrim: `sem-background-scrim` `#2D292657` light / `#000000A3` dark
+- **shadow colors:** light 8/10/12/16% black · dark 50/60/70/85% black (lifted Aug 21 so elevation reads on navy) · scrim: `sem-background-scrim` `#2D292657` light / `#000000A3` dark

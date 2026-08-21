@@ -490,8 +490,8 @@
       "ref": "navylight.800"
     },
     "shadow": {
-      "dark": "transparent",
-      "note": "flat — glow lives on chat"
+      "ref": "shadows.sm-color",
+      "note": "visible in dark (Aug 21) — was flat/transparent; chat keeps the blue glow"
     },
     "toggleBg": {
       "ref": "navy.600"
@@ -1025,18 +1025,22 @@
     }
   },
   "shadows": {
-    "$description": "Mode-specific shadow colors — approved Aug 20. Light: 8/10/12/16%.",
+    "$description": "Mode-specific shadow colors — token names shadow-{size}-color (renamed off prim- Aug 21: semantics, not paint). Dark alphas lifted Aug 21 so elevation stays visible on navy. Light: black @ 8/10/12/16%. Dark: black @ 50/60/70/85%.",
     "sm-color": {
-      "dark": "#00000047"
+      "light": "#00000014",
+      "dark": "#00000080"
     },
     "md-color": {
-      "dark": "#0000005C"
+      "light": "#0000001A",
+      "dark": "#00000099"
     },
     "lg-color": {
-      "dark": "#00000073"
+      "light": "#0000001F",
+      "dark": "#000000B3"
     },
     "overlay-color": {
-      "dark": "#000000A3"
+      "light": "#00000029",
+      "dark": "#000000D9"
     }
   },
   "$naming": "CSS variable scheme (Amanda, Aug 20): no colors- prefix; T1 primitives = prim-* (prim-blue-100); T2 system + T3 component semantics = sem-* (sem-background-light, sem-btnSecondaryBg). Typography (pen): text* → text-size*, line* → line-height*. JSON keys stay structural (group nesting encodes the tier)."
