@@ -156,7 +156,8 @@ Everything else in light renders pixel-identically. These are the only values th
 | `--tk-surface-2/3` | `#F5F5F5`/`#EBEBEB` | **`#F8F7F6`/`#EEEDEB`** | gray-50 / gray-100. |
 | `--tk-border` / `--tk-border-strong` | `#E5E5E5`/`#D4D4D4` | **`#EEEDEB`/`#D5D3D0`** | `sem-borders-light` / `sem-borders-muted`. |
 | `--tk-error` / `--tk-error-subtle` | `#B91C1C`/`#FEE2E2` | **`#C82320`/`#FFEAEA`** | red-600 / red-50. |
-| `--tk-track` / `--tk-off` / `--tk-thumb-dis` | `#D8D9D8`/`#B6B9B7`/`#EEEFEE` | **`#D5D3D0`/`#B5B1AB`/`#EEEDEB`** | gray-200 / gray-300 / gray-100. (Hemlock's own toggle-off role is `sem-toggleTrackOff #EDEAE3` if a component builds toggles from tokens.) |
+| `--tk-track` / `--tk-off` / `--tk-thumb-dis` | `#D8D9D8`/`#B6B9B7`/`#EEEFEE` | **`#D5D3D0`/`#EDEAE3`/`#EEEDEB`** | gray-200 / taupe-200 / gray-100. `--tk-off` now takes Hemlock's own `sem-toggleTrackOff` (rev HK; was gray-300). |
+| `--tk-ton` / `--tk-border-input` / `--tk-focus` *(new, rev HK)* | — | **`#EBF0FE`/`#DCD8CB`/`#0E0E0E`** | `sem-toggleTrackOn` (blue-100) / `sem-borders-dark` (taupe-350, input+checkbox outlines) / `sem-borders-focus` (gray-900 — checked check glyph, radio dot & ring). |
 | `--tk-shadow-sm` | 5% black | **8% black** | `prim-shadow-sm-color`. |
 
 ---
@@ -179,15 +180,20 @@ Scoped to `#appMain` and `.t2-rd-backdrop`. Buttons follow `sem-btnPrimary*`; se
 | `--tk-border` / `--tk-border-strong` | per §2.8 | **`var(--border)`/`var(--border-strong)`** | same refs |
 | `--tk-error` / `--tk-error-subtle` | `sem-text-error` / `sem-background-error` | **`#F87171`/`#3A1B1E`** | `#F87171`/`#450A0A` |
 | `--tk-track` / `--tk-off` / `--tk-thumb-dis` | `sem-sliderTrack` / `sem-toggleTrackOff` / `sem-background-disabled` | **`#22314F`/`#172642`/`#131C31`** | `#26324C`/`#33476E`/`#141E36` |
+| `--tk-ton` / `--tk-border-input` / `--tk-focus` *(new, rev HK)* | `sem-toggleTrackOn` / `sem-borders-dark` / `sem-borders-focus`* | **`#031E64`/`#22314F`/`#7094FB`** | — |
 | `--tk-shadow-sm` | `prim-shadow-sm-color` 28% | **`0 1px 3px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.04)`** | 50% |
 | `--tk-shadow-dd` | `prim-shadow-lg-color` 45% | **`0 4px 16px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05)`** | 60% |
 
 Rule-level companions applied in the HTML:
 
-- **Toggle thumb** is white in both modes (`sem-toggleKnob #FFFFFF`) — the dark build adds `html[data-theme="dark"] .tkt-thumb{background:#FFFFFF;}` because the shared rule paints it `--tk-surface-1`.
+- **Toggle (rev HK, per ToggleSwitch master):** OFF = `sem-toggleTrackOff` track + WHITE `sem-toggleKnob` knob (both modes); ON = **pale `sem-toggleTrackOn` track** (blue-100 light / blue-900 dark) with a **blue `sem-toggleKnobOn` knob** (= `--tk-accent`). The old accent-filled on-track is retired.
+- **Checkbox / radio (rev HK, per Checkbox master):** 20px box, `$radius-3xs` 4, resting 1px `sem-borders-dark` outline. **Checked is an OUTLINE style** — box stays surface, 2px `sem-borders-focus` ring, 14px check glyph (or 10px radio dot) in the same focus ink. The old filled-accent box is retired.
+- **Inputs / selects (rev HK, per Input & Select masters):** `$radius-3xs` 4 (was 6), 1px `sem-borders-dark`. The compact 36px height is kept — the master's 58px floating-label field is a different size class.
+- **Slider (rev HK, per Slider master):** 20px `sem-sliderAccent` thumb with a 2px WHITE stroke (both modes).
+- **Buttons (rev HK, per Button masters):** label weight 500 (was 600); pill radius, gap 8. The master's single size = the template's `-lg` class (12/24 pad, 16px).
 - **Selected dropdown items (dark)** use `--tk-btn-accent` + `--tk-text-inverse` (blue-500 fill, black label) — white-on-accent fails contrast on blue-400.
 - **Unchecked check/radio rings (dark)** use `var(--tk-border-strong)` `#33476E` (replaces the one-off `#5E6E90`).
-- The dedicated focus token for real components is `sem-borders-focus`: light `#0E0E0E`, dark `rgba(112,148,251,0.35)`. The template reuses `--tk-accent-subtle` for both ring and selected fills.
+- *`sem-borders-focus` dark caveat:* the token is `rgba(112,148,251,0.35)` — a focus-RING alpha. A 35%-alpha check glyph is illegible, so `--tk-focus` dark uses **full-opacity blue-400 `#7094FB`**; flagged for design.
 
 ---
 
@@ -354,7 +360,8 @@ Exactly what `Component Template v2.0 (Hemlock).html` ships. Light `:root` (only
   --tk-surface-1:#FFFFFF; --tk-surface-2:#F8F7F6; --tk-surface-3:#EEEDEB;
   --tk-border:#EEEDEB; --tk-border-strong:#D5D3D0;
   --tk-error:#C82320; --tk-error-subtle:#FFEAEA;
-  --tk-track:#D5D3D0; --tk-off:#B5B1AB; --tk-thumb-dis:#EEEDEB;
+  --tk-track:#D5D3D0; --tk-off:#EDEAE3; --tk-thumb-dis:#EEEDEB;
+  --tk-ton:#EBF0FE; --tk-border-input:#DCD8CB; --tk-focus:#0E0E0E;
   --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.08);
   --tk-shadow-dd:0 4px 12px rgba(0,0,0,0.12);
 }
@@ -436,6 +443,9 @@ html[data-theme="dark"] .t2-rd-backdrop{
   --tk-track:#22314F;             /* sem-sliderTrack (prim-navy-300) */
   --tk-off:#172642;               /* sem-toggleTrackOff (prim-navy-500) */
   --tk-thumb-dis:#131C31;         /* sem-background-disabled (prim-navy-700) */
+  --tk-ton:#031E64;               /* sem-toggleTrackOn (prim-blue-900) */
+  --tk-border-input:#22314F;      /* sem-borders-dark (prim-navy-300) */
+  --tk-focus:#7094FB;             /* sem-borders-focus — FULL blue-400; token's 35% ring alpha is illegible as a glyph */
   --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.28),0 0 0 1px rgba(255,255,255,0.04);   /* prim-shadow-sm-color */
   --tk-shadow-dd:0 4px 16px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.05);  /* prim-shadow-lg-color */
 }
