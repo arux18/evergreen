@@ -1,5 +1,7 @@
 # Hemlock two-themes playbook — Phase 5 handoff
 
+> **⚠️ SUPERSEDED (2026-08-20).** This document describes an intermediate experiment state and is retained only as an audit trail. The dark theme has since **shipped**: the axis is now `🎨 Colors` (`Light` / `Dark`), tokens were renamed to `prim-*` / `sem-*`, and the navy palette replaced the values below. Current canon: `../../design-system.md` and `../../hemlock-html-handoff.md`.
+
 Branch: `hemlock-dark-theme` (do **not** merge to `develop`)
 
 ## Axis / themes

@@ -1,8 +1,8 @@
 # Hemlock Design System — HTML/CSS Handoff
 
-> **Purpose:** Apply these changes to any HTML/CSS that references the old Evergreen design system tokens.
+> **Purpose:** Apply these changes to any HTML/CSS that references the old Evergreen design system tokens. Token names use the current Hemlock nomenclature (`--prim-*` primitives, `--sem-*` semantics) and every semantic token now has a **navy dark theme** value (see §16).
 > **Source of truth:** `hemlock-library.lib.pen`
-> **Date:** 2026-07-06
+> **Date:** 2026-08-20
 
 ---
 
@@ -17,8 +17,8 @@
 
 ```css
 :root {
-  --font-family-primary: 'Heebo', sans-serif;
-  --font-family-secondary: 'Noto Serif', serif;
+  --font-primary: 'Heebo', sans-serif;
+  --font-secondary: 'Noto Serif', serif;
 }
 ```
 
@@ -45,15 +45,90 @@
 
 ```css
 :root {
-  --color-taupe-100: #F7F5F0;
-  --color-taupe-200: #EDEAE3;
-  --color-taupe-300: #E3DFD6;
-  --color-taupe-400: #BCB49E;
-  --color-taupe-500: #9D937B;
-  --color-taupe-600: #877F68;
-  --color-taupe-700: #6C6451;
-  --color-taupe-800: #4B4435;
-  --color-taupe-900: #322C20;
+  --prim-taupe-100: #F7F5F0;
+  --prim-taupe-200: #EDEAE3;
+  --prim-taupe-300: #E3DFD6;
+  --prim-taupe-400: #BCB49E;
+  --prim-taupe-500: #9D937B;
+  --prim-taupe-600: #877F68;
+  --prim-taupe-700: #6C6451;
+  --prim-taupe-800: #4B4435;
+  --prim-taupe-900: #322C20;
+}
+```
+
+### Navy & Navylight (NEW — dark theme palettes)
+
+Dark-theme surfaces (navy) and dark-theme text/icons (navylight). Static primitives — they do not change per theme; the dark theme simply points semantic tokens at them.
+
+```css
+:root {
+  --prim-navy-50: #33476E;
+  --prim-navy-100: #2E4066;
+  --prim-navy-200: #2A3A5C;
+  --prim-navy-300: #22314F;
+  --prim-navy-400: #202C4E;
+  --prim-navy-500: #172642;
+  --prim-navy-600: #18223A;
+  --prim-navy-700: #131C31;
+  --prim-navy-800: #101729;
+  --prim-navy-900: #0C1222;
+  --prim-navy-950: #090E1B;
+}
+```
+
+```css
+:root {
+  --prim-navylight-100: #3A485F;
+  --prim-navylight-200: #52637F;
+  --prim-navylight-300: #697DA0;
+  --prim-navylight-400: #889CBF;
+  --prim-navylight-500: #9DAFCD;
+  --prim-navylight-600: #B3C1DB;
+  --prim-navylight-700: #C8D4E9;
+  --prim-navylight-800: #D8E1F0;
+  --prim-navylight-900: #E9EEF7;
+}
+```
+
+### Dark status ramps & muted primitives (NEW)
+
+```css
+:root {
+  --prim-reddark-100: #542427;
+  --prim-reddark-200: #3A1B1E;
+  --prim-reddark-300: #2C1518;
+  --prim-greendark-100: #245234;
+  --prim-greendark-200: #1A3A26;
+  --prim-greendark-300: #12291C;
+  --prim-orangedark-100: #5E3A18;
+  --prim-orangedark-200: #472C13;
+  --prim-orangedark-300: #33200F;
+  --prim-skydark-100: #16304A;
+  --prim-skydark-200: #10263C;
+  --prim-green-350-muted: #74D791;
+  --prim-orange-400-muted: #EA9C62;
+  --prim-orange-500-muted: #E68550;
+  --prim-red-350-muted: #E5807E;
+  --prim-red-400-muted: #E56D66;
+  --prim-sky-300-muted: #5CA8E7;
+}
+```
+
+### Half-step primitives (NEW)
+
+Exact chat/nav values promoted into the ramps:
+
+```css
+:root {
+  --prim-gray-250: #C0BAB2;
+  --prim-gray-350: #A8A49E;
+  --prim-taupe-250: #E8E6E0;
+  --prim-taupe-350: #DCD8CB;
+  --prim-red-250: #FCA5A5;
+  --prim-red-350: #F87171;
+  --prim-green-350: #4ADE80;
+  --prim-sky-250: #38BDF8;
 }
 ```
 
@@ -76,16 +151,16 @@
 
 ```css
 :root {
-  --color-green-50: #e9fff0;
-  --color-green-100: #a9fdc4;
-  --color-green-200: #68fc97;
-  --color-green-300: #27fb6b;
-  --color-green-400: #1ebf51;
-  --color-green-500: #148338;
-  --color-green-600: #10642b;
-  --color-green-700: #0b461e;
-  --color-green-800: #062811;
-  --color-green-900: #020a04;
+  --prim-green-50: #e9fff0;
+  --prim-green-100: #a9fdc4;
+  --prim-green-200: #68fc97;
+  --prim-green-300: #27fb6b;
+  --prim-green-400: #1ebf51;
+  --prim-green-500: #148338;
+  --prim-green-600: #10642b;
+  --prim-green-700: #0b461e;
+  --prim-green-800: #062811;
+  --prim-green-900: #020a04;
 }
 ```
 
@@ -93,16 +168,16 @@
 
 ```css
 :root {
-  --color-red-50: #ffeaea;
-  --color-red-100: #fed5d4;
-  --color-red-200: #fdaba9;
-  --color-red-300: #fc807e;
-  --color-red-400: #fb5653;
-  --color-red-500: #fa2c28;
-  --color-red-600: #c82320;
-  --color-red-700: #961a18;
-  --color-red-800: #641210;
-  --color-red-900: #320908;
+  --prim-red-50: #ffeaea;
+  --prim-red-100: #fed5d4;
+  --prim-red-200: #fdaba9;
+  --prim-red-300: #fc807e;
+  --prim-red-400: #fb5653;
+  --prim-red-500: #fa2c28;
+  --prim-red-600: #c82320;
+  --prim-red-700: #961a18;
+  --prim-red-800: #641210;
+  --prim-red-900: #320908;
 }
 ```
 
@@ -110,16 +185,16 @@
 
 ```css
 :root {
-  --color-orange-50: #fff1e9;
-  --color-orange-100: #fee4d2;
-  --color-orange-200: #fdc9a6;
-  --color-orange-300: #fcad79;
-  --color-orange-400: #fb924d;
-  --color-orange-500: #fa7720;
-  --color-orange-600: #c85f1a;
-  --color-orange-700: #964713;
-  --color-orange-800: #64300d;
-  --color-orange-900: #321806;
+  --prim-orange-50: #fff1e9;
+  --prim-orange-100: #fee4d2;
+  --prim-orange-200: #fdc9a6;
+  --prim-orange-300: #fcad79;
+  --prim-orange-400: #fb924d;
+  --prim-orange-500: #fa7720;
+  --prim-orange-600: #c85f1a;
+  --prim-orange-700: #964713;
+  --prim-orange-800: #64300d;
+  --prim-orange-900: #321806;
 }
 ```
 
@@ -127,16 +202,16 @@
 
 ```css
 :root {
-  --color-sky-50: #ebf6ff;
-  --color-sky-100: #aedcfe;
-  --color-sky-200: #72c2fe;
-  --color-sky-300: #35a8fd;
-  --color-sky-400: #2e90da;
-  --color-sky-500: #2679b6;
-  --color-sky-600: #1f6193;
-  --color-sky-700: #174a6f;
-  --color-sky-800: #10324c;
-  --color-sky-900: #081b28;
+  --prim-sky-50: #ebf6ff;
+  --prim-sky-100: #aedcfe;
+  --prim-sky-200: #72c2fe;
+  --prim-sky-300: #35a8fd;
+  --prim-sky-400: #2e90da;
+  --prim-sky-500: #2679b6;
+  --prim-sky-600: #1f6193;
+  --prim-sky-700: #174a6f;
+  --prim-sky-800: #10324c;
+  --prim-sky-900: #081b28;
 }
 ```
 
@@ -144,74 +219,76 @@
 
 ## 3. Semantic Color Mapping
 
+Every semantic token is now a **light/dark pair**. Light values below are the `:root` defaults; dark values apply under `[data-theme="dark"]` (§16).
+
 ### Backgrounds
 
-| Old token | New token | New value |
-|-----------|-----------|-----------|
-| `--surface-primary` / `#FFFFFF` | `--colors-background-surface` | `#ffffff` |
-| `--surface-secondary` / `#F5F5F5` | `--colors-background-main` | `#F7F5F0` (taupe-100) |
-| `--surface-tertiary` / `#EBEBEB` | `--colors-background-light` | `#F8F7F6` (gray-50) |
+| Old token | New token | Light | Dark |
+|-----------|-----------|-------|------|
+| `--surface-primary` / `#FFFFFF` | `--sem-background-surface` | `#ffffff` | `#131C31` |
+| `--surface-secondary` / `#F5F5F5` | `--sem-background-main` | `#F7F5F0` | `#101729` |
+| `--surface-tertiary` / `#EBEBEB` | `--sem-background-light` | `#F8F7F6` | `#18223A` |
 
 ### Text
 
-| Old token | New token | New value |
-|-----------|-----------|-----------|
-| `--text-primary` / `#171717` | `--colors-text-header` | `#0e0e0e` (gray-900) |
-| — | `--colors-text-body` | `#403D3A` (gray-700) |
-| `--text-secondary` / `#525252` | `--colors-text-meta` | `#5E5954` (gray-600) |
-| `--text-tertiary` / `#737373` | `--colors-text-placeholder` | `#B5B1AB` (gray-300) |
-| `--text-accent` / `#3A6AF8` | `--colors-text-action` | `#3a6af8` (blue-600) |
-| `--text-inverse` / `#FFFFFF` | `--colors-text-reverse` | `#ffffff` |
-| — | `--colors-text-error` | `#c82320` (red-600) |
-| — | `--colors-text-disabled` | `#B5B1AB` (gray-300) |
-| — | `--colors-text-deposit` | `#148338` (green-500) |
+| Old token | New token | Light | Dark |
+|-----------|-----------|-------|------|
+| `--text-primary` / `#171717` | `--sem-text-header` | `#0e0e0e` | `#D8E1F0` |
+| — | `--sem-text-body` | `#403D3A` | `#B3C1DB` |
+| `--text-secondary` / `#525252` | `--sem-text-meta` | `#5E5954` | `#697DA0` |
+| `--text-tertiary` / `#737373` | `--sem-text-placeholder` | `#716E6A` | `#52637F` |
+| `--text-accent` / `#3A6AF8` | `--sem-text-action` | `#3a6af8` | `#5A82F9` |
+| `--text-inverse` / `#FFFFFF` | `--sem-text-reverse` | `#ffffff` | `#0E0E0E` |
+| — | `--sem-text-error` | `#c82320` | `#F87171` |
+| — | `--sem-text-disabled` | `#B5B1AB` | `#3A485F` |
+| — | `--sem-text-deposit` | `#148338` | `#4ADE80` |
 
 ### Borders
 
-| Old token | New token | New value |
-|-----------|-----------|-----------|
-| `--border-primary` / `#E5E5E5` | `--colors-borders-light` | `#EEEDEB` (gray-100) |
-| `--border-secondary` / `#D4D4D4` | `--colors-borders-dark` | `#D5D3D0` (gray-200) |
-| `--border-focus` / `#3A6AF8` | `--colors-borders-focus` | `#0e0e0e` (gray-900) |
-| — | `--colors-borders-error` | `#c82320` (red-600) |
+| Old token | New token | Light | Dark |
+|-----------|-----------|-------|------|
+| `--border-primary` / `#E5E5E5` | `--sem-borders-light` | `#EEEDEB` | `#131C31` |
+| `--border-secondary` / `#D4D4D4` | `--sem-borders-dark` | `#DCD8CB` | `#22314F` |
+| `--border-focus` / `#3A6AF8` | `--sem-borders-focus` | `#0e0e0e` | `#7094FB59` |
+| — | `--sem-borders-error` | `#c82320` | `#F87171` |
 
-**Important:** Focus ring is now **dark** (`gray-900`) not blue.
+**Important:** the focus ring is **dark** (`prim-gray-900`) in light mode and a translucent blue glow (`#7094FB59`) in dark mode.
 
 ### Icons
 
-```css
-:root {
-  --colors-icons-full: #0e0e0e;    /* gray-900 — primary */
-  --colors-icons-meta: #5E5954;    /* gray-600 — secondary */
-  --colors-icons-muted: #B5B1AB;   /* gray-300 — disabled */
-  --colors-icons-action: #3a6af8;  /* blue-600 — interactive */
-  --colors-icons-error: #c82320;   /* red-600 — error */
-  --colors-icons-reverse: #ffffff; /* white — on dark bg */
-}
-```
+| Old token | New token | Light | Dark |
+|-----------|-----------|-------|------|
+| — | `--sem-icons-full` | `#0e0e0e` | `#B3C1DB` |
+| — | `--sem-icons-meta` | `#5E5954` | `#697DA0` |
+| — | `--sem-icons-muted` | `#B5B1AB` | `#3A485F` |
+| — | `--sem-icons-action` | `#3a6af8` | `#7094FB` |
+| — | `--sem-icons-error` | `#c82320` | `#F87171` |
+| — | `--sem-icons-reverse` | `#ffffff` | `#0E0E0E` |
 
 ---
 
 ## 4. Button Tokens
 
-### Primary Button (was blue, NOW dark/charcoal)
+> **Changed again (2026-08):** the primary button is **blue** (`prim-blue-600`), not charcoal. All button colors below are the current Hemlock values; dark-theme values in comments.
+
+### Primary Button
 
 ```css
 .btn-primary {
-  background: #0e0e0e;      /* gray-900 (was blue-600) */
-  color: #EEEDEB;           /* gray-100 */
+  background: var(--sem-btnPrimaryBg);      /* #3a6af8 · dark #5A82F9 */
+  color: var(--sem-btnPrimaryText);         /* #ffffff · dark #000000 */
 }
 .btn-primary:hover {
-  background: #2D2926;      /* gray-800 */
-  color: #ffffff;
+  background: var(--sem-btnPrimaryBgHover); /* #2952cc · dark #7094FB */
+  color: var(--sem-btnPrimaryTextHover);    /* #ffffff · dark #090E1B */
 }
 .btn-primary:active {
-  background: #403D3A;      /* gray-700 */
-  color: #ffffff;
+  background: var(--sem-btnPrimaryBgActive);
+  color: var(--sem-btnPrimaryTextActive);
 }
 .btn-primary:disabled {
-  background: #D5D3D0;      /* gray-200 */
-  color: #8A8680;           /* gray-400 */
+  background: var(--sem-btnPrimaryBgDisabled); /* #c8d6fd · dark #163196 */
+  color: var(--sem-btnPrimaryTextDisabled);
 }
 ```
 
@@ -220,22 +297,22 @@
 ```css
 .btn-secondary {
   background: transparent;
-  border: 1px solid #D5D3D0;  /* gray-200 */
-  color: #2D2926;              /* gray-800 */
+  border: 1px solid var(--sem-btnSecondaryBorder); /* #a5bcfc · dark #33476E */
+  color: var(--sem-btnSecondaryText);              /* #3a6af8 · dark #7094FB */
 }
 .btn-secondary:hover {
-  border-color: #5E5954;       /* gray-600 */
-  color: #2D2926;
+  border-color: var(--sem-btnSecondaryBorderHover);
+  color: var(--sem-btnSecondaryTextHover);
 }
 .btn-secondary:active {
-  background: #EEEDEB;        /* gray-100 */
-  border-color: #EEEDEB;
-  color: #403D3A;             /* gray-700 */
+  background: var(--sem-btnSecondaryBgActive);
+  border-color: var(--sem-btnSecondaryBorderActive);
+  color: var(--sem-btnSecondaryTextActive);
 }
 .btn-secondary:disabled {
   background: transparent;
-  border-color: #D5D3D0;      /* gray-200 */
-  color: #8A8680;             /* gray-400 */
+  border-color: var(--sem-btnSecondaryBorderDisabled);
+  color: var(--sem-btnSecondaryTextDisabled);
 }
 ```
 
@@ -243,16 +320,16 @@
 
 ```css
 .btn-destructive {
-  background: #c82320;      /* red-600 */
-  color: #EEEDEB;           /* gray-100 */
+  background: var(--sem-btnDestructionBg);      /* #c82320 · dark #C82320 */
+  color: var(--sem-btnDestructionText);
 }
 .btn-destructive:hover {
-  background: #fa2c28;      /* red-500 */
-  color: #ffffff;
+  background: var(--sem-btnDestructionBgHover);
+  color: var(--sem-btnDestructionTextHover);
 }
 .btn-destructive:active {
-  background: #961a18;      /* red-700 */
-  color: #ffffff;
+  background: var(--sem-btnDestructionBgActive);
+  color: var(--sem-btnDestructionTextActive);
 }
 ```
 
@@ -260,13 +337,13 @@
 
 ```css
 .btn-link {
-  color: #3a6af8;           /* blue-600 */
+  color: var(--sem-btnLinkText);          /* #3a6af8 · dark #7094FB */
 }
 .btn-link:hover {
-  color: #2952cc;           /* blue-700 */
+  color: var(--sem-btnLinkTextHover);
 }
 .btn-link:active {
-  color: #2679b6;           /* sky-500 */
+  color: var(--sem-btnLinkTextActive);
 }
 ```
 
@@ -446,27 +523,27 @@ Full new scale:
 
 ```css
 .nav-panel {
-  background: #F7F5F0;          /* taupe-100 */
-  border-right: 1px solid #E3DFD6; /* taupe-300 */
+  background: var(--sem-navBg);                /* #F7F5F0 · dark #090E1B */
+  border-right: 1px solid var(--sem-navBorder); /* #DCD8CB · dark transparent */
 }
 .nav-item {
-  color: #2D2926;               /* gray-800 */
+  color: var(--sem-navTextPrimary);            /* #2D2926 · dark #D8E1F0 */
 }
 .nav-item:hover {
-  background: #EDEAE3;          /* taupe-200 */
-  color: #2D2926;
+  background: var(--sem-navHoverBg);           /* #EDEAE3 · dark #18223A */
+  color: var(--sem-navHoverText);
 }
 .nav-item.active {
-  background: #E3DFD6;          /* taupe-300 */
+  background: var(--sem-navActiveBg);          /* #DCD8CB · dark #18223A */
 }
 .nav-item .icon {
-  color: #8A8680;               /* gray-400 */
+  color: var(--sem-navIcon);                   /* #8A8680 · dark #9DAFCD */
 }
 .nav-item-secondary {
-  color: #5E5954;               /* gray-600 */
+  color: var(--sem-navTextSecondary);          /* #5E5954 · dark #9DAFCD */
 }
 .nav-divider {
-  border-color: #EDEAE3;        /* taupe-200 */
+  border-color: var(--sem-navDivider);         /* #E8E6E0 · dark #22314F */
 }
 ```
 
@@ -476,38 +553,41 @@ Full new scale:
 
 ```css
 .chat-panel {
-  background: #F7F5F0;          /* taupe-100 */
-  border-left: 1px solid #E3DFD6; /* taupe-300 */
+  background: var(--sem-chatBg);               /* #F7F5F0 · dark #090E1B */
+  border-left: 1px solid var(--sem-chatBorder); /* #DCD8CB · dark #33476E */
 }
 .chat-input {
-  background: #ffffff;
-  color: #2D2926;               /* gray-800 */
+  background: var(--sem-chatInputBg);          /* #ffffff · dark #090E1B */
+  border: 1px solid var(--sem-chatInputBorder);
+  color: var(--sem-chatTextPrimary);
+}
+.chat-input:focus {
+  border-color: var(--sem-chatInputBorderActive);
 }
 .chat-input::placeholder {
-  color: #8A8680;               /* gray-400 */
+  color: var(--sem-chatPlaceholder);           /* #A8A49E · dark #52637F */
 }
 .chat-send-btn {
-  background: #2D2926;          /* gray-800 */
-  color: #ffffff;
+  background: var(--sem-chatSendBg);           /* #3a6af8 · dark #5A82F9 — BLUE, not charcoal */
+  color: var(--sem-chatSendIcon);
 }
+.chat-send-btn:hover { background: var(--sem-chatSendBgHover); }
+.chat-send-btn:active { background: var(--sem-chatSendBgPressed); }
+.chat-send-btn:disabled { background: var(--sem-chatSendBgDisabled); }
 .chat-bubble-user {
-  background: #F7F5F0;          /* taupe-100 */
+  background: var(--sem-chatBubbleUser);       /* #F7F5F0 · dark #18223A */
+  border: 1px solid var(--sem-chatBubbleUserBorder);
+}
+.chat-bubble-ai {
+  background: var(--sem-chatBubbleAi);         /* transparent in both themes */
 }
 .chat-divider {
-  border-color: #EDEAE3;        /* taupe-200 */
+  border-color: var(--sem-chatDivider);        /* #E8E6E0 · dark #131C31 */
 }
-.chat-chip:hover {
-  background: #EDEAE3;          /* taupe-200 */
-}
-.chat-chip:active {
-  background: #E3DFD6;          /* taupe-300 */
-}
-.chat-text-primary {
-  color: #2D2926;               /* gray-800 */
-}
-.chat-text-secondary {
-  color: #5E5954;               /* gray-600 */
-}
+.chat-chip:hover { background: var(--sem-chatChipHover); }
+.chat-chip:active { background: var(--sem-chatChipPressed); }
+.chat-text-primary { color: var(--sem-chatTextPrimary); }
+.chat-text-secondary { color: var(--sem-chatTextSecondary); }
 ```
 
 ---
@@ -542,148 +622,399 @@ Categorical palette (unchanged values, but use these token names):
 
 - [ ] Replace all `Cormorant Garamond` → `Noto Serif`
 - [ ] Replace all `Inter` → `Heebo`
+- [ ] Rename all custom properties: `--color-*` → `--prim-*`, `--colors-*` → `--sem-*`
 - [ ] Update gray hex values (green-tint → warm neutrals)
 - [ ] Add taupe ramp variables
-- [ ] Update blue-400 from `#9BB3FC` → `#7094fb`
-- [ ] Update blue-500 from `#7094FB` → `#5a82f9`
-- [ ] Update blue-800 from `#152354` → `#163196`
-- [ ] Update blue-900 from `#1E3A8A` → `#031e64`
+- [ ] Add navy + navylight ramps (dark theme palettes)
+- [ ] Add dark status ramps (`--prim-reddark-*`, `--prim-greendark-*`, `--prim-orangedark-*`, `--prim-skydark-*`) and muted primitives
 - [ ] Replace green/red/orange/sky ramps entirely (different color science)
-- [ ] Change primary button: blue → dark charcoal (`gray-900`)
-- [ ] Change focus ring: blue → dark (`gray-900`)
+- [ ] Primary button and chat send button are **blue** (`prim-blue-600`), not charcoal
+- [ ] Focus ring: dark (`prim-gray-900`) in light mode, translucent blue in dark mode
 - [ ] Update all spacing token names (`space-N` → `spacing-Nxs/sm/md/lg/xl`)
 - [ ] Update radius values (old scale was much smaller)
-- [ ] Update shadow values (simpler, single-layer)
-- [ ] Reduce `--motion-normal` from 250ms → 200ms
-- [ ] Reduce `--motion-slow` from 400ms → 300ms
+- [ ] Shadow colors are themed: black glows in light, soft blue glows in dark
+- [ ] Reduce `--motion-normal` from 250ms → 200ms; `--motion-slow` from 400ms → 300ms
 - [ ] Add z-index layer tokens
-- [ ] Apply nav panel taupe background
-- [ ] Apply chat panel taupe background
+- [ ] Apply nav/chat taupe backgrounds (light) and navy backgrounds (dark)
+- [ ] Add the `[data-theme="dark"]` override block (§16)
 - [ ] Verify no `#F9FAF9`, `#EEEFEE`, `#D8D9D8` etc. remain (old gray values)
 
 ---
 
 ## 15. Complete CSS Custom Properties Block
 
-Copy-paste this as your root variables:
+Copy-paste this as your root variables (light theme defaults):
 
 ```css
 :root {
   /* Fonts */
-  --font-family-primary: 'Heebo', sans-serif;
-  --font-family-secondary: 'Noto Serif', serif;
+  --font-primary: 'Heebo', sans-serif;
+  --font-secondary: 'Noto Serif', serif;
+
+  /* Primitives (static in both themes) */
+  /* Base */
+  --prim-base-white: #ffffff;
+  --prim-base-black: #000000;
 
   /* Gray */
-  --color-gray-50: #F8F7F6;
-  --color-gray-100: #EEEDEB;
-  --color-gray-200: #D5D3D0;
-  --color-gray-300: #B5B1AB;
-  --color-gray-400: #8A8680;
-  --color-gray-500: #716E6A;
-  --color-gray-600: #5E5954;
-  --color-gray-700: #403D3A;
-  --color-gray-800: #2D2926;
-  --color-gray-900: #0e0e0e;
+  --prim-gray-50: #F8F7F6;
+  --prim-gray-100: #EEEDEB;
+  --prim-gray-200: #D5D3D0;
+  --prim-gray-250: #C0BAB2;
+  --prim-gray-300: #B5B1AB;
+  --prim-gray-350: #A8A49E;
+  --prim-gray-400: #8A8680;
+  --prim-gray-500: #716E6A;
+  --prim-gray-600: #5E5954;
+  --prim-gray-700: #403D3A;
+  --prim-gray-800: #2D2926;
+  --prim-gray-900: #0e0e0e;
 
   /* Taupe */
-  --color-taupe-100: #F7F5F0;
-  --color-taupe-200: #EDEAE3;
-  --color-taupe-300: #E3DFD6;
-  --color-taupe-400: #BCB49E;
-  --color-taupe-500: #9D937B;
-  --color-taupe-600: #877F68;
-  --color-taupe-700: #6C6451;
-  --color-taupe-800: #4B4435;
-  --color-taupe-900: #322C20;
+  --prim-taupe-100: #F7F5F0;
+  --prim-taupe-200: #EDEAE3;
+  --prim-taupe-250: #E8E6E0;
+  --prim-taupe-300: #E3DFD6;
+  --prim-taupe-350: #DCD8CB;
+  --prim-taupe-400: #BCB49E;
+  --prim-taupe-500: #9D937B;
+  --prim-taupe-600: #877F68;
+  --prim-taupe-700: #6C6451;
+  --prim-taupe-800: #4B4435;
+  --prim-taupe-900: #322C20;
+
+  /* Navy */
+  --prim-navy-50: #33476E;
+  --prim-navy-100: #2E4066;
+  --prim-navy-200: #2A3A5C;
+  --prim-navy-300: #22314F;
+  --prim-navy-400: #202C4E;
+  --prim-navy-500: #172642;
+  --prim-navy-600: #18223A;
+  --prim-navy-700: #131C31;
+  --prim-navy-800: #101729;
+  --prim-navy-900: #0C1222;
+  --prim-navy-950: #090E1B;
+
+  /* Navylight */
+  --prim-navylight-100: #3A485F;
+  --prim-navylight-200: #52637F;
+  --prim-navylight-300: #697DA0;
+  --prim-navylight-400: #889CBF;
+  --prim-navylight-500: #9DAFCD;
+  --prim-navylight-600: #B3C1DB;
+  --prim-navylight-700: #C8D4E9;
+  --prim-navylight-800: #D8E1F0;
+  --prim-navylight-900: #E9EEF7;
 
   /* Blue */
-  --color-blue-100: #ebf0fe;
-  --color-blue-200: #c8d6fd;
-  --color-blue-300: #a5bcfc;
-  --color-blue-400: #7094fb;
-  --color-blue-500: #5a82f9;
-  --color-blue-600: #3a6af8;
-  --color-blue-700: #2952cc;
-  --color-blue-800: #163196;
-  --color-blue-900: #031e64;
+  --prim-blue-100: #ebf0fe;
+  --prim-blue-200: #c8d6fd;
+  --prim-blue-300: #a5bcfc;
+  --prim-blue-400: #7094FB;
+  --prim-blue-500: #5A82F9;
+  --prim-blue-600: #3a6af8;
+  --prim-blue-700: #2952cc;
+  --prim-blue-800: #163196;
+  --prim-blue-900: #031e64;
 
   /* Red */
-  --color-red-50: #ffeaea;
-  --color-red-100: #fed5d4;
-  --color-red-200: #fdaba9;
-  --color-red-300: #fc807e;
-  --color-red-400: #fb5653;
-  --color-red-500: #fa2c28;
-  --color-red-600: #c82320;
-  --color-red-700: #961a18;
-  --color-red-800: #641210;
-  --color-red-900: #320908;
+  --prim-red-50: #ffeaea;
+  --prim-red-100: #fed5d4;
+  --prim-red-200: #fdaba9;
+  --prim-red-250: #FCA5A5;
+  --prim-red-300: #FC807E;
+  --prim-red-350: #F87171;
+  --prim-red-350-muted: #E5807E;
+  --prim-red-400: #fb5653;
+  --prim-red-400-muted: #E56D66;
+  --prim-red-500: #fa2c28;
+  --prim-red-600: #c82320;
+  --prim-red-700: #961a18;
+  --prim-red-800: #641210;
+  --prim-red-900: #320908;
+
+  /* Reddark */
+  --prim-reddark-100: #542427;
+  --prim-reddark-200: #3A1B1E;
+  --prim-reddark-300: #2C1518;
 
   /* Green */
-  --color-green-50: #e9fff0;
-  --color-green-100: #a9fdc4;
-  --color-green-200: #68fc97;
-  --color-green-300: #27fb6b;
-  --color-green-400: #1ebf51;
-  --color-green-500: #148338;
-  --color-green-600: #10642b;
-  --color-green-700: #0b461e;
-  --color-green-800: #062811;
-  --color-green-900: #020a04;
+  --prim-green-50: #e9fff0;
+  --prim-green-100: #a9fdc4;
+  --prim-green-200: #68fc97;
+  --prim-green-300: #27FB6B;
+  --prim-green-350: #4ADE80;
+  --prim-green-350-muted: #74D791;
+  --prim-green-400: #1ebf51;
+  --prim-green-500: #148338;
+  --prim-green-600: #10642b;
+  --prim-green-700: #0b461e;
+  --prim-green-800: #062811;
+  --prim-green-900: #020a04;
+
+  /* Greendark */
+  --prim-greendark-100: #245234;
+  --prim-greendark-200: #1A3A26;
+  --prim-greendark-300: #12291C;
 
   /* Orange */
-  --color-orange-50: #fff1e9;
-  --color-orange-100: #fee4d2;
-  --color-orange-200: #fdc9a6;
-  --color-orange-300: #fcad79;
-  --color-orange-400: #fb924d;
-  --color-orange-500: #fa7720;
-  --color-orange-600: #c85f1a;
-  --color-orange-700: #964713;
-  --color-orange-800: #64300d;
-  --color-orange-900: #321806;
+  --prim-orange-50: #fff1e9;
+  --prim-orange-100: #fee4d2;
+  --prim-orange-200: #fdc9a6;
+  --prim-orange-300: #fcad79;
+  --prim-orange-400: #FB924D;
+  --prim-orange-400-muted: #EA9C62;
+  --prim-orange-500: #fa7720;
+  --prim-orange-500-muted: #E68550;
+  --prim-orange-600: #c85f1a;
+  --prim-orange-700: #964713;
+  --prim-orange-800: #64300d;
+  --prim-orange-900: #321806;
+
+  /* Orangedark */
+  --prim-orangedark-100: #5E3A18;
+  --prim-orangedark-200: #472C13;
+  --prim-orangedark-300: #33200F;
 
   /* Sky */
-  --color-sky-50: #ebf6ff;
-  --color-sky-100: #aedcfe;
-  --color-sky-200: #72c2fe;
-  --color-sky-300: #35a8fd;
-  --color-sky-400: #2e90da;
-  --color-sky-500: #2679b6;
-  --color-sky-600: #1f6193;
-  --color-sky-700: #174a6f;
-  --color-sky-800: #10324c;
-  --color-sky-900: #081b28;
+  --prim-sky-50: #ebf6ff;
+  --prim-sky-100: #aedcfe;
+  --prim-sky-200: #72c2fe;
+  --prim-sky-250: #38BDF8;
+  --prim-sky-300: #35a8fd;
+  --prim-sky-300-muted: #5CA8E7;
+  --prim-sky-400: #2e90da;
+  --prim-sky-500: #2679b6;
+  --prim-sky-600: #1f6193;
+  --prim-sky-700: #174a6f;
+  --prim-sky-800: #10324c;
+  --prim-sky-900: #081b28;
 
-  /* Semantic: Background */
-  --colors-background-surface: #ffffff;
-  --colors-background-main: var(--color-taupe-100);
-  --colors-background-light: var(--color-gray-50);
+  /* Skydark */
+  --prim-skydark-100: #16304A;
+  --prim-skydark-200: #10263C;
 
-  /* Semantic: Text */
-  --colors-text-header: var(--color-gray-900);
-  --colors-text-body: var(--color-gray-700);
-  --colors-text-meta: var(--color-gray-600);
-  --colors-text-placeholder: var(--color-gray-300);
-  --colors-text-disabled: var(--color-gray-300);
-  --colors-text-action: var(--color-blue-600);
-  --colors-text-error: var(--color-red-600);
-  --colors-text-deposit: var(--color-green-500);
-  --colors-text-reverse: #ffffff;
-
-  /* Semantic: Borders */
-  --colors-borders-light: var(--color-gray-100);
-  --colors-borders-dark: var(--color-gray-200);
-  --colors-borders-error: var(--color-red-600);
-  --colors-borders-focus: var(--color-gray-900);
-
-  /* Semantic: Icons */
-  --colors-icons-full: var(--color-gray-900);
-  --colors-icons-meta: var(--color-gray-600);
-  --colors-icons-muted: var(--color-gray-300);
-  --colors-icons-action: var(--color-blue-600);
-  --colors-icons-error: var(--color-red-600);
-  --colors-icons-reverse: #ffffff;
+  /* Semantics — light values (overridden by [data-theme="dark"]) */
+  --sem-background-action: var(--prim-blue-600);
+  --sem-background-disabled: var(--prim-gray-50);
+  --sem-background-elevated: var(--prim-base-white);
+  --sem-background-error: var(--prim-red-50);
+  --sem-background-error-strong: var(--prim-red-200);
+  --sem-background-highlight: var(--prim-blue-100);
+  --sem-background-hover: var(--prim-gray-50);
+  --sem-background-info: var(--prim-sky-50);
+  --sem-background-info-strong: var(--prim-sky-100);
+  --sem-background-light: var(--prim-gray-50);
+  --sem-background-main: var(--prim-taupe-100);
+  --sem-background-muted: var(--prim-gray-200);
+  --sem-background-rowHover: var(--prim-taupe-100);
+  --sem-background-rowPressed: var(--prim-taupe-200);
+  --sem-background-subtle: var(--prim-gray-100);
+  --sem-background-success: var(--prim-green-50);
+  --sem-background-success-bold: var(--prim-green-600);
+  --sem-background-success-soft: var(--prim-green-100);
+  --sem-background-success-strong: var(--prim-green-200);
+  --sem-background-sunken: var(--prim-taupe-100);
+  --sem-background-surface: var(--prim-base-white);
+  --sem-background-warning: var(--prim-orange-50);
+  --sem-background-warning-strong: var(--prim-orange-200);
+  --sem-borders-action: var(--prim-blue-600);
+  --sem-borders-action-subtle: var(--prim-blue-300);
+  --sem-borders-dark: var(--prim-taupe-350);
+  --sem-borders-disabled: var(--prim-gray-300);
+  --sem-borders-error: var(--prim-red-600);
+  --sem-borders-error-strong: var(--prim-red-700);
+  --sem-borders-error-subtle: var(--prim-red-100);
+  --sem-borders-focus: var(--prim-gray-900);
+  --sem-borders-focus-inverted: var(--prim-base-white);
+  --sem-borders-hover: var(--prim-gray-400);
+  --sem-borders-info: var(--prim-sky-100);
+  --sem-borders-light: var(--prim-gray-100);
+  --sem-borders-muted: var(--prim-gray-200);
+  --sem-borders-strong: var(--prim-gray-250);
+  --sem-borders-success: var(--prim-green-100);
+  --sem-borders-warning: var(--prim-orange-100);
+  --sem-btnDestructionBg: var(--prim-red-600);
+  --sem-btnDestructionBgActive: var(--prim-red-700);
+  --sem-btnDestructionBgDisabled: var(--prim-gray-200);
+  --sem-btnDestructionBgHover: var(--prim-red-500);
+  --sem-btnDestructionText: var(--prim-gray-100);
+  --sem-btnDestructionTextActive: var(--prim-base-white);
+  --sem-btnDestructionTextDisabled: var(--prim-gray-600);
+  --sem-btnDestructionTextHover: var(--prim-base-white);
+  --sem-btnLinkBg: #00000000;
+  --sem-btnLinkBgActive: var(--prim-blue-200);
+  --sem-btnLinkBgDisabled: #00000000;
+  --sem-btnLinkBgHover: var(--prim-blue-100);
+  --sem-btnLinkBorderPressed: var(--prim-blue-700);
+  --sem-btnLinkText: var(--prim-blue-600);
+  --sem-btnLinkTextActive: var(--prim-blue-800);
+  --sem-btnLinkTextDisabled: var(--prim-blue-300);
+  --sem-btnLinkTextHover: var(--prim-blue-700);
+  --sem-btnLinkTextPressed: var(--prim-blue-800);
+  --sem-btnPrimaryBg: var(--prim-blue-600);
+  --sem-btnPrimaryBgActive: var(--prim-blue-800);
+  --sem-btnPrimaryBgDisabled: var(--prim-blue-200);
+  --sem-btnPrimaryBgHover: var(--prim-blue-700);
+  --sem-btnPrimaryInvertedBg: var(--prim-base-white);
+  --sem-btnPrimaryInvertedBgActive: var(--prim-blue-200);
+  --sem-btnPrimaryInvertedBgDisabled: var(--prim-base-white);
+  --sem-btnPrimaryInvertedBgHover: var(--prim-blue-100);
+  --sem-btnPrimaryInvertedBorder: var(--prim-blue-300);
+  --sem-btnPrimaryInvertedBorderActive: var(--prim-blue-300);
+  --sem-btnPrimaryInvertedBorderDisabled: var(--prim-blue-100);
+  --sem-btnPrimaryInvertedBorderHover: var(--prim-blue-300);
+  --sem-btnPrimaryInvertedText: var(--prim-blue-600);
+  --sem-btnPrimaryInvertedTextActive: var(--prim-blue-700);
+  --sem-btnPrimaryInvertedTextDisabled: var(--prim-blue-300);
+  --sem-btnPrimaryInvertedTextHover: var(--prim-blue-700);
+  --sem-btnPrimaryText: var(--prim-base-white);
+  --sem-btnPrimaryTextActive: var(--prim-base-white);
+  --sem-btnPrimaryTextDisabled: var(--prim-base-white);
+  --sem-btnPrimaryTextHover: var(--prim-base-white);
+  --sem-btnSecondaryBg: #00000000;
+  --sem-btnSecondaryBgActive: var(--prim-blue-200);
+  --sem-btnSecondaryBgDisabled: #00000000;
+  --sem-btnSecondaryBgHover: var(--prim-blue-100);
+  --sem-btnSecondaryBorder: var(--prim-blue-300);
+  --sem-btnSecondaryBorderActive: var(--prim-blue-300);
+  --sem-btnSecondaryBorderDisabled: var(--prim-blue-100);
+  --sem-btnSecondaryBorderHover: var(--prim-blue-300);
+  --sem-btnSecondaryBorderPressed: var(--prim-blue-300);
+  --sem-btnSecondaryInvertedBg: #00000000;
+  --sem-btnSecondaryInvertedBgActive: #ffffff1a;
+  --sem-btnSecondaryInvertedBgDisabled: #00000000;
+  --sem-btnSecondaryInvertedBgHover: #ffffff1a;
+  --sem-btnSecondaryInvertedBorder: var(--prim-gray-200);
+  --sem-btnSecondaryInvertedBorderActive: #00000000;
+  --sem-btnSecondaryInvertedBorderDisabled: var(--prim-gray-300);
+  --sem-btnSecondaryInvertedBorderHover: var(--prim-base-white);
+  --sem-btnSecondaryInvertedText: var(--prim-base-white);
+  --sem-btnSecondaryInvertedTextActive: var(--prim-gray-200);
+  --sem-btnSecondaryInvertedTextDisabled: var(--prim-gray-300);
+  --sem-btnSecondaryInvertedTextHover: var(--prim-base-white);
+  --sem-btnSecondaryText: var(--prim-blue-600);
+  --sem-btnSecondaryTextActive: var(--prim-blue-700);
+  --sem-btnSecondaryTextDisabled: var(--prim-blue-300);
+  --sem-btnSecondaryTextHover: var(--prim-blue-700);
+  --sem-chatBg: var(--prim-taupe-100);
+  --sem-chatBorder: var(--prim-taupe-350);
+  --sem-chatBubbleAi: #FFFFFF00;
+  --sem-chatBubbleUser: var(--prim-taupe-100);
+  --sem-chatBubbleUserBorder: var(--prim-taupe-350);
+  --sem-chatChipHover: var(--prim-taupe-200);
+  --sem-chatChipPressed: var(--prim-taupe-300);
+  --sem-chatCloseBorder: var(--prim-blue-300);
+  --sem-chatCloseHoverBg: var(--prim-blue-100);
+  --sem-chatCloseIcon: var(--prim-blue-600);
+  --sem-chatClosePressedBg: var(--prim-blue-200);
+  --sem-chatClosePressedIcon: var(--prim-blue-700);
+  --sem-chatDivider: var(--prim-taupe-250);
+  --sem-chatIcon: var(--prim-gray-600);
+  --sem-chatInputBg: var(--sem-background-surface);
+  --sem-chatInputBorder: var(--prim-taupe-250);
+  --sem-chatInputBorderActive: var(--prim-gray-250);
+  --sem-chatInputBorderRecording: var(--prim-blue-600);
+  --sem-chatPlaceholder: var(--prim-gray-350);
+  --sem-chatRecordingDot: var(--prim-blue-600);
+  --sem-chatSendBg: var(--sem-btnPrimaryBg);
+  --sem-chatSendBgDisabled: var(--sem-btnPrimaryBgDisabled);
+  --sem-chatSendBgHover: var(--sem-btnPrimaryBgHover);
+  --sem-chatSendBgPressed: var(--sem-btnPrimaryBgActive);
+  --sem-chatSendIcon: var(--sem-btnPrimaryText);
+  --sem-chatShadow: #2D292628;
+  --sem-chatStopBg: var(--sem-btnPrimaryBg);
+  --sem-chatStopBgHover: var(--sem-btnPrimaryBgHover);
+  --sem-chatStopBgPressed: var(--sem-btnPrimaryBgActive);
+  --sem-chatStopIcon: var(--sem-btnPrimaryText);
+  --sem-chatTextPrimary: var(--prim-gray-800);
+  --sem-chatTextSecondary: var(--prim-gray-600);
+  --sem-chatVoiceActiveBg: var(--prim-blue-600);
+  --sem-chatVoiceActiveIcon: var(--sem-btnPrimaryText);
+  --sem-chatVoiceBgDisabled: var(--sem-btnPrimaryBgDisabled);
+  --sem-chatVoiceBorder: var(--prim-blue-300);
+  --sem-chatVoiceCancelIcon: var(--prim-gray-400);
+  --sem-chatVoiceHoverBg: var(--prim-blue-100);
+  --sem-chatVoiceIcon: var(--prim-blue-600);
+  --sem-chatVoicePressedBg: var(--prim-blue-200);
+  --sem-chatVoicePressedIcon: var(--prim-blue-700);
+  --sem-chatVoicePulse: #3A6AF828;
+  --sem-chatVoiceTimer: var(--prim-gray-600);
+  --sem-chatVoiceWaveform: var(--prim-blue-400);
+  --sem-dragHandle: var(--prim-gray-900);
+  --sem-icons-action: var(--prim-blue-600);
+  --sem-icons-error: var(--prim-red-600);
+  --sem-icons-error-soft: var(--prim-red-400);
+  --sem-icons-full: var(--prim-gray-900);
+  --sem-icons-info: var(--prim-sky-300);
+  --sem-icons-info-strong: var(--prim-sky-400);
+  --sem-icons-meta: var(--prim-gray-600);
+  --sem-icons-muted: var(--prim-gray-300);
+  --sem-icons-reverse: var(--prim-base-white);
+  --sem-icons-subtle: var(--prim-gray-400);
+  --sem-icons-success: var(--prim-green-400);
+  --sem-icons-success-strong: var(--prim-green-600);
+  --sem-icons-warning: var(--prim-orange-400);
+  --sem-icons-warning-strong: var(--prim-orange-600);
+  --sem-navActiveBg: var(--prim-taupe-350);
+  --sem-navBg: var(--prim-taupe-100);
+  --sem-navBorder: var(--prim-taupe-350);
+  --sem-navDivider: var(--prim-taupe-250);
+  --sem-navHoverBg: var(--prim-taupe-200);
+  --sem-navHoverText: var(--prim-gray-800);
+  --sem-navIcon: var(--prim-gray-400);
+  --sem-navPressedBg: var(--prim-taupe-300);
+  --sem-navSettingsHoverBg: var(--prim-blue-100);
+  --sem-navSettingsIcon: var(--prim-blue-600);
+  --sem-navSettingsPressedBg: var(--prim-blue-200);
+  --sem-navSettingsPressedIcon: var(--prim-blue-700);
+  --sem-navShadow: #2D292628;
+  --sem-navTextDisabled: var(--prim-gray-300);
+  --sem-navTextPrimary: var(--prim-gray-800);
+  --sem-navTextSecondary: var(--prim-gray-600);
+  --sem-navToggleBg: var(--sem-btnPrimaryInvertedBg);
+  --sem-navToggleBorder: var(--prim-blue-300);
+  --sem-navToggleHoverBg: var(--prim-blue-100);
+  --sem-navToggleHoverBorder: var(--prim-blue-300);
+  --sem-navToggleIcon: var(--prim-blue-600);
+  --sem-navTogglePressedBg: var(--prim-blue-200);
+  --sem-navTogglePressedBorder: var(--prim-blue-300);
+  --sem-navTogglePressedIcon: var(--prim-blue-700);
+  --sem-paginationDot: var(--prim-gray-200);
+  --sem-paginationDotActive: var(--prim-gray-700);
+  --sem-progressFill: var(--sem-btnPrimaryBgActive);
+  --sem-scrollbarThumb: var(--prim-gray-300);
+  --sem-sliderAccent: var(--prim-blue-600);
+  --sem-sliderAccentDisabled: var(--prim-gray-300);
+  --sem-sliderTrack: var(--prim-gray-200);
+  --sem-tagBg: var(--prim-blue-100);
+  --sem-tagBorder: var(--prim-blue-300);
+  --sem-tagText: var(--prim-blue-700);
+  --sem-text-action: var(--prim-blue-600);
+  --sem-text-body: var(--prim-gray-700);
+  --sem-text-body-error: var(--prim-red-800);
+  --sem-text-deposit: var(--prim-green-500);
+  --sem-text-disabled: var(--prim-gray-300);
+  --sem-text-error: var(--prim-red-600);
+  --sem-text-error-body-strong: var(--prim-red-700);
+  --sem-text-error-title: var(--prim-red-600);
+  --sem-text-header: var(--prim-gray-900);
+  --sem-text-info-title: var(--prim-sky-600);
+  --sem-text-meta: var(--prim-gray-600);
+  --sem-text-placeholder: var(--prim-gray-500);
+  --sem-text-reverse: var(--prim-base-white);
+  --sem-text-strong: var(--prim-gray-800);
+  --sem-text-subtle: var(--prim-gray-400);
+  --sem-text-success-body: var(--prim-green-700);
+  --sem-text-success-title: var(--prim-green-600);
+  --sem-text-warning-body: var(--prim-orange-700);
+  --sem-text-warning-title: var(--prim-orange-600);
+  --sem-toggleKnob: var(--prim-base-white);
+  --sem-toggleKnobOn: var(--prim-blue-600);
+  --sem-toggleLoadingTrack: var(--prim-gray-100);
+  --sem-toggleTrackOff: var(--prim-taupe-200);
+  --sem-toggleTrackOn: var(--prim-blue-100);
 
   /* Spacing */
   --spacing-4xs: 2px;
@@ -715,11 +1046,15 @@ Copy-paste this as your root variables:
   --radius-5xl: 128px;
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px #00000014;
-  --shadow-md: 0 4px 12px #0000001A;
-  --shadow-lg: 0 8px 24px #0000001F;
-  --shadow-overlay: 0 16px 40px #00000029;
+  /* Shadows (colors are themed — see dark block) */
+  --prim-shadow-sm-color: #00000014;
+  --prim-shadow-md-color: #0000001A;
+  --prim-shadow-lg-color: #0000001F;
+  --prim-shadow-overlay-color: #00000029;
+  --shadow-sm: 0 1px 2px var(--prim-shadow-sm-color);
+  --shadow-md: 0 4px 12px var(--prim-shadow-md-color);
+  --shadow-lg: 0 8px 24px var(--prim-shadow-lg-color);
+  --shadow-overlay: 0 16px 40px var(--prim-shadow-overlay-color);
 
   /* Motion */
   --duration-fast: 150ms;
@@ -755,5 +1090,215 @@ Copy-paste this as your root variables:
   --chart-cat-13: #FB923C;
   --chart-cat-14: #CA8A04;
   --chart-cat-15: #FACC15;
+}
+```
+
+---
+
+## 16. Dark Theme Override Block (NEW)
+
+The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>`. Only semantic tokens (and the four shadow colors) change — primitives stay untouched.
+
+```css
+[data-theme="dark"] {
+  --sem-background-action: var(--prim-blue-500);
+  --sem-background-disabled: var(--prim-navy-700);
+  --sem-background-elevated: var(--prim-navy-600);
+  --sem-background-error: var(--prim-reddark-200);
+  --sem-background-error-strong: var(--prim-reddark-100);
+  --sem-background-highlight: var(--prim-skydark-100);
+  --sem-background-hover: var(--prim-navy-500);
+  --sem-background-info: var(--prim-skydark-200);
+  --sem-background-info-strong: var(--prim-skydark-100);
+  --sem-background-light: var(--prim-navy-600);
+  --sem-background-main: var(--prim-navy-800);
+  --sem-background-muted: var(--prim-navy-500);
+  --sem-background-rowHover: var(--prim-navy-500);
+  --sem-background-rowPressed: var(--prim-navy-400);
+  --sem-background-subtle: var(--prim-navy-600);
+  --sem-background-success: var(--prim-greendark-300);
+  --sem-background-success-bold: var(--prim-green-500);
+  --sem-background-success-soft: var(--prim-greendark-200);
+  --sem-background-success-strong: var(--prim-greendark-100);
+  --sem-background-sunken: var(--prim-navy-900);
+  --sem-background-surface: var(--prim-navy-700);
+  --sem-background-warning: var(--prim-orangedark-300);
+  --sem-background-warning-strong: var(--prim-orangedark-100);
+  --sem-borders-action: var(--prim-blue-500);
+  --sem-borders-action-subtle: var(--prim-navy-50);
+  --sem-borders-dark: var(--prim-navy-300);
+  --sem-borders-disabled: var(--prim-navy-200);
+  --sem-borders-error: var(--prim-red-350);
+  --sem-borders-error-strong: var(--prim-red-250);
+  --sem-borders-error-subtle: var(--prim-reddark-100);
+  --sem-borders-focus: #7094FB59;
+  --sem-borders-focus-inverted: var(--prim-gray-900);
+  --sem-borders-hover: var(--prim-navy-50);
+  --sem-borders-info: var(--prim-skydark-100);
+  --sem-borders-light: var(--prim-navy-700);
+  --sem-borders-muted: var(--prim-navy-200);
+  --sem-borders-strong: var(--prim-navy-50);
+  --sem-borders-success: var(--prim-greendark-100);
+  --sem-borders-warning: var(--prim-orangedark-100);
+  --sem-btnDestructionBgDisabled: var(--prim-navy-300);
+  --sem-btnDestructionTextDisabled: var(--prim-navylight-100);
+  --sem-btnLinkBgActive: var(--prim-navy-400);
+  --sem-btnLinkBgHover: var(--prim-navy-500);
+  --sem-btnLinkBorderPressed: var(--prim-blue-500);
+  --sem-btnLinkText: var(--prim-blue-400);
+  --sem-btnLinkTextActive: var(--prim-blue-500);
+  --sem-btnLinkTextDisabled: var(--prim-navylight-100);
+  --sem-btnLinkTextHover: var(--prim-blue-300);
+  --sem-btnLinkTextPressed: var(--prim-blue-500);
+  --sem-btnPrimaryBg: var(--prim-blue-500);
+  --sem-btnPrimaryBgActive: var(--prim-blue-600);
+  --sem-btnPrimaryBgDisabled: var(--prim-blue-800);
+  --sem-btnPrimaryBgHover: var(--prim-blue-400);
+  --sem-btnPrimaryInvertedBg: var(--prim-navy-700);
+  --sem-btnPrimaryInvertedBgActive: var(--prim-navy-400);
+  --sem-btnPrimaryInvertedBgDisabled: var(--prim-navy-700);
+  --sem-btnPrimaryInvertedBgHover: var(--prim-navy-500);
+  --sem-btnPrimaryInvertedBorder: var(--prim-navy-50);
+  --sem-btnPrimaryInvertedBorderActive: var(--prim-navy-50);
+  --sem-btnPrimaryInvertedBorderDisabled: var(--prim-navy-300);
+  --sem-btnPrimaryInvertedBorderHover: var(--prim-blue-500);
+  --sem-btnPrimaryInvertedText: var(--prim-blue-400);
+  --sem-btnPrimaryInvertedTextActive: var(--prim-blue-300);
+  --sem-btnPrimaryInvertedTextDisabled: var(--prim-navylight-100);
+  --sem-btnPrimaryInvertedTextHover: var(--prim-blue-300);
+  --sem-btnPrimaryText: var(--prim-base-black);
+  --sem-btnPrimaryTextActive: var(--prim-base-black);
+  --sem-btnPrimaryTextDisabled: var(--prim-blue-500);
+  --sem-btnPrimaryTextHover: var(--prim-navy-950);
+  --sem-btnSecondaryBgActive: var(--prim-navy-400);
+  --sem-btnSecondaryBgHover: var(--prim-navy-500);
+  --sem-btnSecondaryBorder: var(--prim-navy-50);
+  --sem-btnSecondaryBorderActive: var(--prim-navy-50);
+  --sem-btnSecondaryBorderDisabled: var(--prim-navy-300);
+  --sem-btnSecondaryBorderHover: var(--prim-blue-500);
+  --sem-btnSecondaryBorderPressed: var(--prim-blue-500);
+  --sem-btnSecondaryText: var(--prim-blue-400);
+  --sem-btnSecondaryTextActive: var(--prim-blue-300);
+  --sem-btnSecondaryTextDisabled: var(--prim-navylight-100);
+  --sem-btnSecondaryTextHover: var(--prim-blue-300);
+  --sem-chatBg: var(--prim-navy-950);
+  --sem-chatBorder: var(--prim-navy-50);
+  --sem-chatBubbleUser: var(--prim-navy-600);
+  --sem-chatBubbleUserBorder: #00000000;
+  --sem-chatChipHover: var(--prim-navy-500);
+  --sem-chatChipPressed: var(--prim-navy-400);
+  --sem-chatCloseBorder: var(--prim-navy-50);
+  --sem-chatCloseHoverBg: var(--prim-navy-500);
+  --sem-chatCloseIcon: var(--prim-blue-400);
+  --sem-chatClosePressedBg: var(--prim-navy-400);
+  --sem-chatClosePressedIcon: var(--prim-blue-300);
+  --sem-chatDivider: var(--prim-navy-700);
+  --sem-chatIcon: var(--prim-blue-300);
+  --sem-chatInputBg: var(--prim-navy-950);
+  --sem-chatInputBorder: var(--prim-navy-500);
+  --sem-chatInputBorderActive: var(--prim-navy-50);
+  --sem-chatInputBorderRecording: var(--prim-blue-500);
+  --sem-chatPlaceholder: var(--prim-navylight-200);
+  --sem-chatRecordingDot: var(--prim-blue-500);
+  --sem-chatSendBg: var(--sem-btnPrimaryBg);
+  --sem-chatSendBgDisabled: var(--sem-btnPrimaryBgDisabled);
+  --sem-chatSendBgHover: var(--sem-btnPrimaryBgHover);
+  --sem-chatSendBgPressed: var(--sem-btnPrimaryBgActive);
+  --sem-chatSendIcon: var(--sem-btnPrimaryText);
+  --sem-chatShadow: #9BB3FC24;
+  --sem-chatStopBg: var(--sem-btnPrimaryBg);
+  --sem-chatStopBgHover: var(--sem-btnPrimaryBgHover);
+  --sem-chatStopBgPressed: var(--sem-btnPrimaryBgActive);
+  --sem-chatStopIcon: var(--sem-btnPrimaryText);
+  --sem-chatTextPrimary: var(--prim-blue-100);
+  --sem-chatTextSecondary: var(--prim-navylight-600);
+  --sem-chatVoiceActiveBg: var(--sem-btnPrimaryBg);
+  --sem-chatVoiceActiveIcon: var(--sem-btnPrimaryText);
+  --sem-chatVoiceBgDisabled: #00000000;
+  --sem-chatVoiceBorder: var(--prim-navy-50);
+  --sem-chatVoiceCancelIcon: var(--prim-navylight-400);
+  --sem-chatVoiceHoverBg: var(--prim-navy-500);
+  --sem-chatVoiceIcon: var(--prim-blue-400);
+  --sem-chatVoicePressedBg: var(--prim-navy-400);
+  --sem-chatVoicePressedIcon: var(--prim-blue-300);
+  --sem-chatVoicePulse: #7094FB28;
+  --sem-chatVoiceTimer: var(--prim-navylight-500);
+  --sem-dragHandle: var(--prim-navylight-600);
+  --sem-icons-action: var(--prim-blue-400);
+  --sem-icons-error: var(--prim-red-350);
+  --sem-icons-error-soft: var(--prim-red-350-muted);
+  --sem-icons-full: var(--prim-navylight-600);
+  --sem-icons-info: var(--prim-sky-250);
+  --sem-icons-info-strong: var(--prim-sky-300);
+  --sem-icons-meta: var(--prim-navylight-300);
+  --sem-icons-muted: var(--prim-navylight-100);
+  --sem-icons-reverse: var(--prim-gray-900);
+  --sem-icons-subtle: var(--prim-navylight-200);
+  --sem-icons-success: var(--prim-green-350);
+  --sem-icons-success-strong: var(--prim-green-300);
+  --sem-icons-warning-strong: var(--prim-orange-500-muted);
+  --sem-navActiveBg: var(--prim-navy-600);
+  --sem-navBg: var(--prim-navy-950);
+  --sem-navBorder: #00000000;
+  --sem-navDivider: var(--prim-navy-300);
+  --sem-navHoverBg: var(--prim-navy-600);
+  --sem-navHoverText: var(--prim-navylight-800);
+  --sem-navIcon: var(--prim-navylight-500);
+  --sem-navPressedBg: var(--prim-navy-400);
+  --sem-navSettingsHoverBg: var(--prim-navy-500);
+  --sem-navSettingsIcon: var(--prim-blue-400);
+  --sem-navSettingsPressedBg: var(--prim-navy-400);
+  --sem-navSettingsPressedIcon: var(--prim-blue-300);
+  --sem-navShadow: #00000000;
+  --sem-navTextDisabled: var(--prim-navylight-100);
+  --sem-navTextPrimary: var(--prim-navylight-800);
+  --sem-navTextSecondary: var(--prim-navylight-500);
+  --sem-navToggleBg: var(--prim-navy-600);
+  --sem-navToggleBorder: var(--prim-navy-50);
+  --sem-navToggleHoverBg: var(--prim-navy-500);
+  --sem-navToggleHoverBorder: var(--prim-navy-50);
+  --sem-navToggleIcon: var(--prim-blue-400);
+  --sem-navTogglePressedBg: var(--prim-navy-400);
+  --sem-navTogglePressedBorder: var(--prim-navy-50);
+  --sem-navTogglePressedIcon: var(--prim-blue-300);
+  --sem-paginationDot: var(--prim-navy-300);
+  --sem-paginationDotActive: var(--prim-navylight-600);
+  --sem-progressFill: var(--sem-btnPrimaryBgActive);
+  --sem-scrollbarThumb: var(--prim-navy-300);
+  --sem-sliderAccent: var(--prim-blue-400);
+  --sem-sliderAccentDisabled: var(--prim-navy-50);
+  --sem-sliderTrack: var(--prim-navy-300);
+  --sem-tagBg: var(--prim-blue-900);
+  --sem-tagBorder: var(--prim-navy-50);
+  --sem-tagText: var(--prim-blue-300);
+  --sem-text-action: var(--prim-blue-500);
+  --sem-text-body: var(--prim-navylight-600);
+  --sem-text-body-error: var(--prim-red-250);
+  --sem-text-deposit: var(--prim-green-350);
+  --sem-text-disabled: var(--prim-navylight-100);
+  --sem-text-error: var(--prim-red-350);
+  --sem-text-error-body-strong: var(--prim-red-250);
+  --sem-text-error-title: var(--prim-red-350);
+  --sem-text-header: var(--prim-navylight-800);
+  --sem-text-info-title: var(--prim-sky-250);
+  --sem-text-meta: var(--prim-navylight-300);
+  --sem-text-placeholder: var(--prim-navylight-200);
+  --sem-text-reverse: var(--prim-gray-900);
+  --sem-text-strong: var(--prim-navylight-800);
+  --sem-text-subtle: var(--prim-navylight-200);
+  --sem-text-success-body: var(--prim-green-350-muted);
+  --sem-text-success-title: var(--prim-green-350);
+  --sem-text-warning-body: var(--prim-orange-400-muted);
+  --sem-text-warning-title: var(--prim-orange-400);
+  --sem-toggleKnobOn: var(--prim-blue-400);
+  --sem-toggleLoadingTrack: var(--prim-navy-600);
+  --sem-toggleTrackOff: var(--prim-navy-500);
+  --sem-toggleTrackOn: var(--prim-blue-900);
+
+  /* Themed shadow colors — soft blue glows on navy */
+  --prim-shadow-sm-color: #00000047;
+  --prim-shadow-md-color: #0000005C;
+  --prim-shadow-lg-color: #00000073;
+  --prim-shadow-overlay-color: #000000A3;
 }
 ```

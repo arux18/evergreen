@@ -1,10 +1,10 @@
 # Evergreen Design System — Hemlock
 
-> **Version:** 2.0.0
-> **Last updated:** 2026-07-06
+> **Version:** 2.1.0
+> **Last updated:** 2026-08-20
 > **Visual canvas:** `hemlock-library.lib.pen`
 > **Audience:** Freya (front-end engineering agent), gen-UI renderer, human designers/developers
-> **Scope:** Everything — tokens, accessibility, primitives, shell chrome, gen-UI components, charts, dashboard widgets, edge states
+> **Scope:** Everything — tokens (light + navy dark theme), accessibility, primitives, shell chrome, gen-UI components, charts, dashboard widgets, edge states
 
 ---
 
@@ -14,7 +14,7 @@ This is the **single source of truth** for the Evergreen design system as implem
 
 **For Freya / gen-UI renderer:**
 - Every component uses a consistent pattern: **Name · Variants · States · Tokens · Keyboard/ARIA · Gen-UI invocation**
-- Token references use `$` prefix (e.g., `$color-blue-600`). In code, map to CSS custom properties or your framework's token system.
+- Token references use `$` prefix (e.g., `$prim-blue-600`). In code, map to CSS custom properties or your framework's token system.
 - Components marked `[PLANNED]` are specced but not yet in `.lib.pen`. Build to spec; canvas will follow.
 
 **For gen-UI (AI output):**
@@ -50,285 +50,505 @@ This is the **single source of truth** for the Evergreen design system as implem
 
 ## 01 · Design Tokens
 
-### Color Primitives
+### Theming model
 
-Foundation variables in `hemlock-library.lib.pen`.
+Hemlock is a **two-theme system**. Every color token in `hemlock-library.lib.pen` is themed on the `🎨 Colors` axis with two modes: **Light** and **Dark** (navy).
+
+- **T1 primitives (`prim-*`) are static** — the same paint in both modes. Both palettes (warm light neutrals AND the navy/navylight dark ramps) live side by side in T1.
+- **T2/T3 semantics (`sem-*`) are themed** — every semantic token is a light/dark pair pointing at different primitives. The theme switches in this layer and only in this layer. 193 of 219 semantic tokens carry a distinct dark value; the rest are deliberately identical in both modes (e.g. blue action colors that already pass contrast on navy).
+- **The only themed primitives** are the four `prim-shadow-*-color` tokens: shadows are black glows in light mode and soft blue glows in dark mode by design.
+- Components bind **only** to `sem-*` tokens (or non-color tokens like `radius-*`). Never to `prim-*`, never to raw hex.
+
+Naming: `prim-{palette}-{step}` for primitives, `sem-{category}-{role}` for system semantics (T2), `sem-{component}{Role}{State}` for component tokens (T3).
+
+### Color Primitives (T1, static)
+
+#### Base
 
 | Token | Value | Usage |
 |---|---|---|
-| `color-base-white` | `#ffffff` | Absolute white |
-| `color-base-black` | `#000000` | Absolute black |
+| `prim-base-white` | `#ffffff` | Absolute white |
+| `prim-base-black` | `#000000` | Absolute black |
 
 #### Gray ramp (warm neutrals)
 
 | Token | Value | Usage |
 |---|---|---|
-| `color-gray-50` | `#F8F7F6` | Lightest bg |
-| `color-gray-100` | `#EEEDEB` | Subtle bg, borders |
-| `color-gray-200` | `#D5D3D0` | Borders, dividers |
-| `color-gray-300` | `#B5B1AB` | Disabled, placeholders |
-| `color-gray-400` | `#8A8680` | Muted UI, icons |
-| `color-gray-500` | `#716E6A` | Tertiary text |
-| `color-gray-600` | `#5E5954` | Secondary text |
-| `color-gray-700` | `#403D3A` | Body text |
-| `color-gray-800` | `#2D2926` | Emphasis |
-| `color-gray-900` | `#0e0e0e` | Headers, primary text |
+| `prim-gray-50` | `#F8F7F6` | Lightest bg |
+| `prim-gray-100` | `#EEEDEB` | Subtle bg, borders |
+| `prim-gray-200` | `#D5D3D0` | Borders, dividers |
+| `prim-gray-250` | `#C0BAB2` | Chat input focused border |
+| `prim-gray-300` | `#B5B1AB` | Disabled, placeholders |
+| `prim-gray-350` | `#A8A49E` | Chat input placeholder |
+| `prim-gray-400` | `#8A8680` | Muted UI, icons |
+| `prim-gray-500` | `#716E6A` | Tertiary text |
+| `prim-gray-600` | `#5E5954` | Secondary text |
+| `prim-gray-700` | `#403D3A` | Body text |
+| `prim-gray-800` | `#2D2926` | Emphasis |
+| `prim-gray-900` | `#0e0e0e` | Headers, primary text |
 
 #### Taupe ramp (brand warm neutrals)
 
 | Token | Value | Usage |
 |---|---|---|
-| `color-taupe-100` | `#F7F5F0` | Nav/chat background |
-| `color-taupe-200` | `#EDEAE3` | Hover states, dividers |
-| `color-taupe-300` | `#E3DFD6` | Active states, borders |
-| `color-taupe-400` | `#BCB49E` | Muted accents |
-| `color-taupe-500` | `#9D937B` | Tertiary elements |
-| `color-taupe-600` | `#877F68` | Secondary elements |
-| `color-taupe-700` | `#6C6451` | Emphasis |
-| `color-taupe-800` | `#4B4435` | Strong |
-| `color-taupe-900` | `#322C20` | Maximum contrast |
+| `prim-taupe-100` | `#F7F5F0` | Nav/chat background |
+| `prim-taupe-200` | `#EDEAE3` | Hover states, dividers |
+| `prim-taupe-250` | `#E8E6E0` | Chat/nav dividers |
+| `prim-taupe-300` | `#E3DFD6` | Active states, borders |
+| `prim-taupe-350` | `#DCD8CB` | Chat/nav borders |
+| `prim-taupe-400` | `#BCB49E` | Muted accents |
+| `prim-taupe-500` | `#9D937B` | Tertiary elements |
+| `prim-taupe-600` | `#877F68` | Secondary elements |
+| `prim-taupe-700` | `#6C6451` | Emphasis |
+| `prim-taupe-800` | `#4B4435` | Strong |
+| `prim-taupe-900` | `#322C20` | Maximum contrast |
+
+#### Navy ramp (dark theme surfaces)
+
+| Token | Value | Usage |
+|---|---|---|
+| `prim-navy-50` | `#33476E` | Dark strongest border / focus |
+| `prim-navy-100` | `#2E4066` | Dark strong borders |
+| `prim-navy-200` | `#2A3A5C` | Dark emphasized borders |
+| `prim-navy-300` | `#22314F` | Dark borders, pressed states |
+| `prim-navy-400` | `#202C4E` | Dark emphasis surface |
+| `prim-navy-500` | `#172642` | Dark active surface |
+| `prim-navy-600` | `#18223A` | Dark raised surface |
+| `prim-navy-700` | `#131C31` | Dark main surface / card bg |
+| `prim-navy-800` | `#101729` | Dark page canvas |
+| `prim-navy-900` | `#0C1222` | Dark deep surface |
+| `prim-navy-950` | `#090E1B` | Dark app canvas, nav/chat bg |
+
+#### Navylight ramp (dark theme text & icons)
+
+| Token | Value | Usage |
+|---|---|---|
+| `prim-navylight-100` | `#3A485F` | Dark placeholder |
+| `prim-navylight-200` | `#52637F` | Dark muted text |
+| `prim-navylight-300` | `#697DA0` | Dark disabled text |
+| `prim-navylight-400` | `#889CBF` | Dark muted icons |
+| `prim-navylight-500` | `#9DAFCD` | Dark secondary text |
+| `prim-navylight-600` | `#B3C1DB` | Dark body text |
+| `prim-navylight-700` | `#C8D4E9` | Dark primary text |
+| `prim-navylight-800` | `#D8E1F0` | Dark emphasis text |
+| `prim-navylight-900` | `#E9EEF7` | Dark headers |
 
 #### Blue ramp (accent)
 
 | Token | Value | Usage |
 |---|---|---|
-| `color-blue-100` | `#ebf0fe` | Selected backgrounds |
-| `color-blue-200` | `#c8d6fd` | Light highlights |
-| `color-blue-300` | `#a5bcfc` | Lighter blue |
-| `color-blue-400` | `#7094fb` | Medium accent |
-| `color-blue-500` | `#5a82f9` | Medium-strong |
-| `color-blue-600` | `#3a6af8` | Primary accent |
-| `color-blue-700` | `#2952cc` | Hover |
-| `color-blue-800` | `#163196` | Dark blue surfaces |
-| `color-blue-900` | `#031e64` | Deepest accent |
+| `prim-blue-100` | `#ebf0fe` | Selected backgrounds |
+| `prim-blue-200` | `#c8d6fd` | Light highlights |
+| `prim-blue-300` | `#a5bcfc` | Lighter blue |
+| `prim-blue-400` | `#7094FB` | Medium accent |
+| `prim-blue-500` | `#5A82F9` | Medium-strong; dark-mode primary accent |
+| `prim-blue-600` | `#3a6af8` | Primary accent (light mode) |
+| `prim-blue-700` | `#2952cc` | Hover |
+| `prim-blue-800` | `#163196` | Dark blue surfaces |
+| `prim-blue-900` | `#031e64` | Deepest accent |
 
 #### Red ramp (error / expense)
 
 | Token | Value | Usage |
 |---|---|---|
-| `color-red-50` | `#ffeaea` | Error/expense bg |
-| `color-red-100` | `#fed5d4` | Light error bg |
-| `color-red-200` | `#fdaba9` | Light error |
-| `color-red-300` | `#fc807e` | Medium error |
-| `color-red-400` | `#fb5653` | Error/expense text |
-| `color-red-500` | `#fa2c28` | Strong error |
-| `color-red-600` | `#c82320` | Error borders, destructive |
-| `color-red-700` | `#961a18` | Dark error |
-| `color-red-800` | `#641210` | Error text on light bg |
-| `color-red-900` | `#320908` | Deepest error |
+| `prim-red-50` | `#ffeaea` |  |
+| `prim-red-100` | `#fed5d4` |  |
+| `prim-red-200` | `#fdaba9` |  |
+| `prim-red-250` | `#FCA5A5` |  |
+| `prim-red-300` | `#FC807E` |  |
+| `prim-red-350` | `#F87171` |  |
+| `prim-red-400` | `#fb5653` |  |
+| `prim-red-500` | `#fa2c28` |  |
+| `prim-red-600` | `#c82320` |  |
+| `prim-red-700` | `#961a18` |  |
+| `prim-red-800` | `#641210` |  |
+| `prim-red-900` | `#320908` |  |
 
 #### Green ramp (success / income / deposit)
 
 | Token | Value | Usage |
 |---|---|---|
-| `color-green-50` | `#e9fff0` | Success/income bg |
-| `color-green-100` | `#a9fdc4` | Light success |
-| `color-green-200` | `#68fc97` | Medium-light success |
-| `color-green-300` | `#27fb6b` | Medium success |
-| `color-green-400` | `#1ebf51` | Success accent |
-| `color-green-500` | `#148338` | Income/deposit text |
-| `color-green-600` | `#10642b` | Dark success |
-| `color-green-700` | `#0b461e` | Darker success |
-| `color-green-800` | `#062811` | Deep success |
-| `color-green-900` | `#020a04` | Deepest success |
+| `prim-green-50` | `#e9fff0` |  |
+| `prim-green-100` | `#a9fdc4` |  |
+| `prim-green-200` | `#68fc97` |  |
+| `prim-green-300` | `#27FB6B` |  |
+| `prim-green-350` | `#4ADE80` |  |
+| `prim-green-400` | `#1ebf51` |  |
+| `prim-green-500` | `#148338` |  |
+| `prim-green-600` | `#10642b` |  |
+| `prim-green-700` | `#0b461e` |  |
+| `prim-green-800` | `#062811` |  |
+| `prim-green-900` | `#020a04` |  |
 
 #### Orange ramp (warning / debt)
 
 | Token | Value | Usage |
 |---|---|---|
-| `color-orange-50` | `#fff1e9` | Warning/debt bg |
-| `color-orange-100` | `#fee4d2` | Light warning |
-| `color-orange-200` | `#fdc9a6` | Medium-light warning |
-| `color-orange-300` | `#fcad79` | Medium warning |
-| `color-orange-400` | `#fb924d` | Warning accent |
-| `color-orange-500` | `#fa7720` | Strong warning |
-| `color-orange-600` | `#c85f1a` | Dark warning |
-| `color-orange-700` | `#964713` | Darker warning |
-| `color-orange-800` | `#64300d` | Deep warning |
-| `color-orange-900` | `#321806` | Deepest warning |
+| `prim-orange-50` | `#fff1e9` |  |
+| `prim-orange-100` | `#fee4d2` |  |
+| `prim-orange-200` | `#fdc9a6` |  |
+| `prim-orange-300` | `#fcad79` |  |
+| `prim-orange-400` | `#FB924D` |  |
+| `prim-orange-500` | `#fa7720` |  |
+| `prim-orange-600` | `#c85f1a` |  |
+| `prim-orange-700` | `#964713` |  |
+| `prim-orange-800` | `#64300d` |  |
+| `prim-orange-900` | `#321806` |  |
 
 #### Sky ramp (savings / info)
 
 | Token | Value | Usage |
 |---|---|---|
-| `color-sky-50` | `#ebf6ff` | Savings/info bg |
-| `color-sky-100` | `#aedcfe` | Light info |
-| `color-sky-200` | `#72c2fe` | Medium-light info |
-| `color-sky-300` | `#35a8fd` | Medium info |
-| `color-sky-400` | `#2e90da` | Info accent |
-| `color-sky-500` | `#2679b6` | Savings text |
-| `color-sky-600` | `#1f6193` | Dark info |
-| `color-sky-700` | `#174a6f` | Darker info |
-| `color-sky-800` | `#10324c` | Deep info |
-| `color-sky-900` | `#081b28` | Deepest info |
+| `prim-sky-50` | `#ebf6ff` |  |
+| `prim-sky-100` | `#aedcfe` |  |
+| `prim-sky-200` | `#72c2fe` |  |
+| `prim-sky-250` | `#38BDF8` |  |
+| `prim-sky-300` | `#35a8fd` |  |
+| `prim-sky-400` | `#2e90da` |  |
+| `prim-sky-500` | `#2679b6` |  |
+| `prim-sky-600` | `#1f6193` |  |
+| `prim-sky-700` | `#174a6f` |  |
+| `prim-sky-800` | `#10324c` |  |
+| `prim-sky-900` | `#081b28` |  |
 
-### Semantic Colors
+#### Dark-mode status ramps
+
+Short ramps used by dark-mode status semantics (washes and strong fills tuned for navy surfaces):
+
+| Token | Value | Usage |
+|---|---|---|
+| `prim-reddark-100` | `#542427` |  |
+| `prim-reddark-200` | `#3A1B1E` |  |
+| `prim-reddark-300` | `#2C1518` |  |
+| `prim-greendark-100` | `#245234` |  |
+| `prim-greendark-200` | `#1A3A26` |  |
+| `prim-greendark-300` | `#12291C` |  |
+| `prim-orangedark-100` | `#5E3A18` |  |
+| `prim-orangedark-200` | `#472C13` |  |
+| `prim-orangedark-300` | `#33200F` |  |
+| `prim-skydark-100` | `#16304A` |  |
+| `prim-skydark-200` | `#10263C` |  |
+
+#### Muted status primitives
+
+Softened status colors for de-emphasized data (e.g. inactive chart series):
+
+| Token | Value | Usage |
+|---|---|---|
+| `prim-green-350-muted` | `#74D791` |  |
+| `prim-orange-400-muted` | `#EA9C62` |  |
+| `prim-orange-500-muted` | `#E68550` |  |
+| `prim-red-350-muted` | `#E5807E` |  |
+| `prim-red-400-muted` | `#E56D66` |  |
+| `prim-sky-300-muted` | `#5CA8E7` |  |
+
+### Semantic Colors (T2/T3, themed)
+
+Every table below shows the **Light** and **Dark** bindings. Cells show the primitive reference and its resolved hex.
 
 #### Background & surface
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-background-surface` | `$color-base-white` | Main surface / card bg |
-| `colors-background-main` | `$color-taupe-100` | Page canvas, nav/chat bg |
-| `colors-background-light` | `$color-gray-50` | Subtle section bg |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-background-action` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` | Background action |
+| `sem-background-disabled` | `$prim-gray-50` → `#F8F7F6` | `$prim-navy-700` → `#131C31` | Background disabled |
+| `sem-background-elevated` | `$prim-base-white` → `#ffffff` | `$prim-navy-600` → `#18223A` | Background elevated |
+| `sem-background-error` | `$prim-red-50` → `#ffeaea` | `$prim-reddark-200` → `#3A1B1E` | Background error |
+| `sem-background-error-strong` | `$prim-red-200` → `#fdaba9` | `$prim-reddark-100` → `#542427` | Background error strong |
+| `sem-background-highlight` | `$prim-blue-100` → `#ebf0fe` | `$prim-skydark-100` → `#16304A` | Background highlight |
+| `sem-background-hover` | `$prim-gray-50` → `#F8F7F6` | `$prim-navy-500` → `#172642` | Background hover |
+| `sem-background-info` | `$prim-sky-50` → `#ebf6ff` | `$prim-skydark-200` → `#10263C` | Background info |
+| `sem-background-info-strong` | `$prim-sky-100` → `#aedcfe` | `$prim-skydark-100` → `#16304A` | Background info strong |
+| `sem-background-light` | `$prim-gray-50` → `#F8F7F6` | `$prim-navy-600` → `#18223A` | Subtle section bg |
+| `sem-background-main` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-800` → `#101729` | Page canvas, nav/chat bg |
+| `sem-background-muted` | `$prim-gray-200` → `#D5D3D0` | `$prim-navy-500` → `#172642` | Background muted |
+| `sem-background-rowHover` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-500` → `#172642` | Background row hover |
+| `sem-background-rowPressed` | `$prim-taupe-200` → `#EDEAE3` | `$prim-navy-400` → `#202C4E` | Background row pressed |
+| `sem-background-subtle` | `$prim-gray-100` → `#EEEDEB` | `$prim-navy-600` → `#18223A` | Background subtle |
+| `sem-background-success` | `$prim-green-50` → `#e9fff0` | `$prim-greendark-300` → `#12291C` | Background success |
+| `sem-background-success-bold` | `$prim-green-600` → `#10642b` | `$prim-green-500` → `#148338` | Background success bold |
+| `sem-background-success-soft` | `$prim-green-100` → `#a9fdc4` | `$prim-greendark-200` → `#1A3A26` | Background success soft |
+| `sem-background-success-strong` | `$prim-green-200` → `#68fc97` | `$prim-greendark-100` → `#245234` | Background success strong |
+| `sem-background-sunken` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-900` → `#0C1222` | Background sunken |
+| `sem-background-surface` | `$prim-base-white` → `#ffffff` | `$prim-navy-700` → `#131C31` | Main surface / card bg |
+| `sem-background-warning` | `$prim-orange-50` → `#fff1e9` | `$prim-orangedark-300` → `#33200F` | Background warning |
+| `sem-background-warning-strong` | `$prim-orange-200` → `#fdc9a6` | `$prim-orangedark-100` → `#5E3A18` | Background warning strong |
 
 #### Borders
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-borders-light` | `$color-gray-100` | Default borders |
-| `colors-borders-dark` | `$color-gray-200` | Emphasized borders |
-| `colors-borders-error` | `$color-red-600` | Error state borders |
-| `colors-borders-focus` | `$color-gray-900` | Focus ring (dark) |
-| `colors-borders-focus-inverted` | `$color-base-white` | Focus ring on dark bg |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-borders-action` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` | Borders action |
+| `sem-borders-action-subtle` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Borders action subtle |
+| `sem-borders-dark` | `$prim-taupe-350` → `#DCD8CB` | `$prim-navy-300` → `#22314F` | Emphasized borders |
+| `sem-borders-disabled` | `$prim-gray-300` → `#B5B1AB` | `$prim-navy-200` → `#2A3A5C` | Borders disabled |
+| `sem-borders-error` | `$prim-red-600` → `#c82320` | `$prim-red-350` → `#F87171` | Error state borders |
+| `sem-borders-error-strong` | `$prim-red-700` → `#961a18` | `$prim-red-250` → `#FCA5A5` | Borders error strong |
+| `sem-borders-error-subtle` | `$prim-red-100` → `#fed5d4` | `$prim-reddark-100` → `#542427` | Borders error subtle |
+| `sem-borders-focus` | `$prim-gray-900` → `#0e0e0e` | `#7094FB59` | Focus ring |
+| `sem-borders-focus-inverted` | `$prim-base-white` → `#ffffff` | `$prim-gray-900` → `#0E0E0E` | Focus ring on dark bg |
+| `sem-borders-hover` | `$prim-gray-400` → `#8A8680` | `$prim-navy-50` → `#33476E` | Borders hover |
+| `sem-borders-info` | `$prim-sky-100` → `#aedcfe` | `$prim-skydark-100` → `#16304A` | Borders info |
+| `sem-borders-light` | `$prim-gray-100` → `#EEEDEB` | `$prim-navy-700` → `#131C31` | Default borders |
+| `sem-borders-muted` | `$prim-gray-200` → `#D5D3D0` | `$prim-navy-200` → `#2A3A5C` | Borders muted |
+| `sem-borders-strong` | `$prim-gray-250` → `#C0BAB2` | `$prim-navy-50` → `#33476E` | Borders strong |
+| `sem-borders-success` | `$prim-green-100` → `#a9fdc4` | `$prim-greendark-100` → `#245234` | Borders success |
+| `sem-borders-warning` | `$prim-orange-100` → `#fee4d2` | `$prim-orangedark-100` → `#5E3A18` | Borders warning |
 
 #### Text
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-text-header` | `$color-gray-900` | Headings, primary |
-| `colors-text-body` | `$color-gray-700` | Body text |
-| `colors-text-meta` | `$color-gray-600` | Secondary / helper |
-| `colors-text-placeholder` | `$color-gray-300` | Placeholder text |
-| `colors-text-disabled` | `$color-gray-300` | Disabled text |
-| `colors-text-action` | `$color-blue-600` | Links, action text |
-| `colors-text-error` | `$color-red-600` | Error messages |
-| `colors-text-body-error` | `$color-red-800` | Error body text |
-| `colors-text-deposit` | `$color-green-500` | Income / deposit values |
-| `colors-text-reverse` | `$color-base-white` | Text on dark surfaces |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-text-action` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` | Links, action text |
+| `sem-text-body` | `$prim-gray-700` → `#403D3A` | `$prim-navylight-600` → `#B3C1DB` | Body text |
+| `sem-text-body-error` | `$prim-red-800` → `#641210` | `$prim-red-250` → `#FCA5A5` | Error body text |
+| `sem-text-deposit` | `$prim-green-500` → `#148338` | `$prim-green-350` → `#4ADE80` | Income / deposit values |
+| `sem-text-disabled` | `$prim-gray-300` → `#B5B1AB` | `$prim-navylight-100` → `#3A485F` | Disabled text |
+| `sem-text-error` | `$prim-red-600` → `#c82320` | `$prim-red-350` → `#F87171` | Error messages |
+| `sem-text-error-body-strong` | `$prim-red-700` → `#961a18` | `$prim-red-250` → `#FCA5A5` | Text error body strong |
+| `sem-text-error-title` | `$prim-red-600` → `#c82320` | `$prim-red-350` → `#F87171` | Text error title |
+| `sem-text-header` | `$prim-gray-900` → `#0e0e0e` | `$prim-navylight-800` → `#D8E1F0` | Headings, primary |
+| `sem-text-info-title` | `$prim-sky-600` → `#1f6193` | `$prim-sky-250` → `#38BDF8` | Text info title |
+| `sem-text-meta` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-300` → `#697DA0` | Secondary / helper |
+| `sem-text-placeholder` | `$prim-gray-500` → `#716E6A` | `$prim-navylight-200` → `#52637F` | Placeholder text |
+| `sem-text-reverse` | `$prim-base-white` → `#ffffff` | `$prim-gray-900` → `#0E0E0E` | Text on inverse surfaces |
+| `sem-text-strong` | `$prim-gray-800` → `#2D2926` | `$prim-navylight-800` → `#D8E1F0` | Text strong |
+| `sem-text-subtle` | `$prim-gray-400` → `#8A8680` | `$prim-navylight-200` → `#52637F` | Text subtle |
+| `sem-text-success-body` | `$prim-green-700` → `#0b461e` | `$prim-green-350-muted` → `#74D791` | Text success body |
+| `sem-text-success-title` | `$prim-green-600` → `#10642b` | `$prim-green-350` → `#4ADE80` | Text success title |
+| `sem-text-warning-body` | `$prim-orange-700` → `#964713` | `$prim-orange-400-muted` → `#EA9C62` | Text warning body |
+| `sem-text-warning-title` | `$prim-orange-600` → `#c85f1a` | `$prim-orange-400` → `#FB924D` | Text warning title |
 
 #### Icons
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-icons-full` | `$color-gray-900` | Primary icons |
-| `colors-icons-meta` | `$color-gray-600` | Secondary icons |
-| `colors-icons-muted` | `$color-gray-300` | Disabled icons |
-| `colors-icons-action` | `$color-blue-600` | Interactive icons |
-| `colors-icons-error` | `$color-red-600` | Error icons |
-| `colors-icons-reverse` | `$color-base-white` | Icons on dark bg |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-icons-action` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` | Interactive icons |
+| `sem-icons-error` | `$prim-red-600` → `#c82320` | `$prim-red-350` → `#F87171` | Error icons |
+| `sem-icons-error-soft` | `$prim-red-400` → `#fb5653` | `$prim-red-350-muted` → `#E5807E` | Icons error soft |
+| `sem-icons-full` | `$prim-gray-900` → `#0e0e0e` | `$prim-navylight-600` → `#B3C1DB` | Primary icons |
+| `sem-icons-info` | `$prim-sky-300` → `#35a8fd` | `$prim-sky-250` → `#38BDF8` | Icons info |
+| `sem-icons-info-strong` | `$prim-sky-400` → `#2e90da` | `$prim-sky-300` → `#35A8FD` | Icons info strong |
+| `sem-icons-meta` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-300` → `#697DA0` | Secondary icons |
+| `sem-icons-muted` | `$prim-gray-300` → `#B5B1AB` | `$prim-navylight-100` → `#3A485F` | Disabled icons |
+| `sem-icons-reverse` | `$prim-base-white` → `#ffffff` | `$prim-gray-900` → `#0E0E0E` | Icons on inverse bg |
+| `sem-icons-subtle` | `$prim-gray-400` → `#8A8680` | `$prim-navylight-200` → `#52637F` | Icons subtle |
+| `sem-icons-success` | `$prim-green-400` → `#1ebf51` | `$prim-green-350` → `#4ADE80` | Icons success |
+| `sem-icons-success-strong` | `$prim-green-600` → `#10642b` | `$prim-green-300` → `#27FB6B` | Icons success strong |
+| `sem-icons-warning` | `$prim-orange-400` → `#FB924D` | `$prim-orange-400` → `#FB924D` | Icons warning |
+| `sem-icons-warning-strong` | `$prim-orange-600` → `#c85f1a` | `$prim-orange-500-muted` → `#E68550` | Icons warning strong |
 
 #### Button — Primary
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-btnPrimaryBg` | `$color-gray-900` | Default fill |
-| `colors-btnPrimaryBgHover` | `$color-gray-800` | Hover fill |
-| `colors-btnPrimaryBgActive` | `$color-gray-700` | Pressed fill |
-| `colors-btnPrimaryBgDisabled` | `$color-gray-200` | Disabled fill |
-| `colors-btnPrimaryText` | `$color-gray-100` | Default text |
-| `colors-btnPrimaryTextHover` | `$color-base-white` | Hover text |
-| `colors-btnPrimaryTextActive` | `$color-base-white` | Pressed text |
-| `colors-btnPrimaryTextDisabled` | `$color-gray-400` | Disabled text |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-btnPrimaryBg` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` | Btn primary bg |
+| `sem-btnPrimaryBgHover` | `$prim-blue-700` → `#2952cc` | `$prim-blue-400` → `#7094FB` | Btn primary bg hover |
+| `sem-btnPrimaryBgActive` | `$prim-blue-800` → `#163196` | `$prim-blue-600` → `#3A6AF8` | Btn primary bg active |
+| `sem-btnPrimaryBgDisabled` | `$prim-blue-200` → `#c8d6fd` | `$prim-blue-800` → `#163196` | Btn primary bg disabled |
+| `sem-btnPrimaryText` | `$prim-base-white` → `#ffffff` | `$prim-base-black` → `#000000` | Btn primary text |
+| `sem-btnPrimaryTextHover` | `$prim-base-white` → `#ffffff` | `$prim-navy-950` → `#090E1B` | Btn primary text hover |
+| `sem-btnPrimaryTextActive` | `$prim-base-white` → `#ffffff` | `$prim-base-black` → `#000000` | Btn primary text active |
+| `sem-btnPrimaryTextDisabled` | `$prim-base-white` → `#ffffff` | `$prim-blue-500` → `#5A82F9` | Btn primary text disabled |
 
 #### Button — Primary Inverted
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-btnPrimaryInvertedBg` | `$color-gray-50` | Default fill |
-| `colors-btnPrimaryInvertedBgHover` | `$color-base-white` | Hover fill |
-| `colors-btnPrimaryInvertedBgActive` | `$color-gray-100` | Pressed fill |
-| `colors-btnPrimaryInvertedBgDisabled` | `$color-gray-50` | Disabled fill |
-| `colors-btnPrimaryInvertedText` | `$color-gray-700` | Default text |
-| `colors-btnPrimaryInvertedTextHover` | `$color-gray-900` | Hover text |
-| `colors-btnPrimaryInvertedTextActive` | `$color-gray-700` | Pressed text |
-| `colors-btnPrimaryInvertedTextDisabled` | `$color-gray-300` | Disabled text |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-btnPrimaryInvertedBg` | `$prim-base-white` → `#ffffff` | `$prim-navy-700` → `#131C31` | Btn primary inverted bg |
+| `sem-btnPrimaryInvertedBgHover` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-500` → `#172642` | Btn primary inverted bg hover |
+| `sem-btnPrimaryInvertedBgActive` | `$prim-blue-200` → `#c8d6fd` | `$prim-navy-400` → `#202C4E` | Btn primary inverted bg active |
+| `sem-btnPrimaryInvertedBgDisabled` | `$prim-base-white` → `#ffffff` | `$prim-navy-700` → `#131C31` | Btn primary inverted bg disabled |
+| `sem-btnPrimaryInvertedText` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` | Btn primary inverted text |
+| `sem-btnPrimaryInvertedTextHover` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` | Btn primary inverted text hover |
+| `sem-btnPrimaryInvertedTextActive` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` | Btn primary inverted text active |
+| `sem-btnPrimaryInvertedTextDisabled` | `$prim-blue-300` → `#a5bcfc` | `$prim-navylight-100` → `#3A485F` | Btn primary inverted text disabled |
+| `sem-btnPrimaryInvertedBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Btn primary inverted border |
+| `sem-btnPrimaryInvertedBorderHover` | `$prim-blue-300` → `#a5bcfc` | `$prim-blue-500` → `#5A82F9` | Btn primary inverted border hover |
+| `sem-btnPrimaryInvertedBorderActive` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Btn primary inverted border active |
+| `sem-btnPrimaryInvertedBorderDisabled` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-300` → `#22314F` | Btn primary inverted border disabled |
 
 #### Button — Secondary
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-btnSecondaryBg` | `#00000000` | Transparent fill |
-| `colors-btnSecondaryBgHover` | `#00000000` | Hover fill |
-| `colors-btnSecondaryBgActive` | `$color-gray-100` | Pressed fill |
-| `colors-btnSecondaryBgDisabled` | `#00000000` | Disabled fill |
-| `colors-btnSecondaryBorder` | `$color-gray-200` | Default border |
-| `colors-btnSecondaryBorderHover` | `$color-gray-600` | Hover border |
-| `colors-btnSecondaryBorderActive` | `$color-gray-100` | Pressed border |
-| `colors-btnSecondaryBorderDisabled` | `$color-gray-200` | Disabled border |
-| `colors-btnSecondaryText` | `$color-gray-800` | Default text |
-| `colors-btnSecondaryTextHover` | `$color-gray-800` | Hover text |
-| `colors-btnSecondaryTextActive` | `$color-gray-700` | Pressed text |
-| `colors-btnSecondaryTextDisabled` | `$color-gray-400` | Disabled text |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-btnSecondaryBg` | `#00000000` | `#00000000` | Btn secondary bg |
+| `sem-btnSecondaryBgHover` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-500` → `#172642` | Btn secondary bg hover |
+| `sem-btnSecondaryBgActive` | `$prim-blue-200` → `#c8d6fd` | `$prim-navy-400` → `#202C4E` | Btn secondary bg active |
+| `sem-btnSecondaryBgDisabled` | `#00000000` | `#00000000` | Btn secondary bg disabled |
+| `sem-btnSecondaryText` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` | Btn secondary text |
+| `sem-btnSecondaryTextHover` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` | Btn secondary text hover |
+| `sem-btnSecondaryTextActive` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` | Btn secondary text active |
+| `sem-btnSecondaryTextDisabled` | `$prim-blue-300` → `#a5bcfc` | `$prim-navylight-100` → `#3A485F` | Btn secondary text disabled |
+| `sem-btnSecondaryBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Btn secondary border |
+| `sem-btnSecondaryBorderHover` | `$prim-blue-300` → `#a5bcfc` | `$prim-blue-500` → `#5A82F9` | Btn secondary border hover |
+| `sem-btnSecondaryBorderActive` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Btn secondary border active |
+| `sem-btnSecondaryBorderPressed` | `$prim-blue-300` → `#a5bcfc` | `$prim-blue-500` → `#5A82F9` | Btn secondary border pressed |
+| `sem-btnSecondaryBorderDisabled` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-300` → `#22314F` | Btn secondary border disabled |
 
 #### Button — Secondary Inverted
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-btnSecondaryInvertedBg` | `#00000000` | Transparent fill |
-| `colors-btnSecondaryInvertedBgHover` | `#ffffff1a` | Hover fill (white 10%) |
-| `colors-btnSecondaryInvertedBgActive` | `#ffffff1a` | Pressed fill |
-| `colors-btnSecondaryInvertedBgDisabled` | `#00000000` | Disabled fill |
-| `colors-btnSecondaryInvertedBorder` | `$color-gray-200` | Default border |
-| `colors-btnSecondaryInvertedBorderHover` | `$color-base-white` | Hover border |
-| `colors-btnSecondaryInvertedBorderActive` | `#00000000` | Pressed border |
-| `colors-btnSecondaryInvertedBorderDisabled` | `$color-gray-300` | Disabled border |
-| `colors-btnSecondaryInvertedText` | `$color-base-white` | Default text |
-| `colors-btnSecondaryInvertedTextHover` | `$color-base-white` | Hover text |
-| `colors-btnSecondaryInvertedTextActive` | `$color-gray-200` | Pressed text |
-| `colors-btnSecondaryInvertedTextDisabled` | `$color-gray-300` | Disabled text |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-btnSecondaryInvertedBg` | `#00000000` | `#00000000` | Btn secondary inverted bg |
+| `sem-btnSecondaryInvertedBgHover` | `#ffffff1a` | `#FFFFFF1A` | Btn secondary inverted bg hover |
+| `sem-btnSecondaryInvertedBgActive` | `#ffffff1a` | `#FFFFFF1A` | Btn secondary inverted bg active |
+| `sem-btnSecondaryInvertedBgDisabled` | `#00000000` | `#00000000` | Btn secondary inverted bg disabled |
+| `sem-btnSecondaryInvertedText` | `$prim-base-white` → `#ffffff` | `$prim-base-white` → `#FFFFFF` | Btn secondary inverted text |
+| `sem-btnSecondaryInvertedTextHover` | `$prim-base-white` → `#ffffff` | `$prim-base-white` → `#FFFFFF` | Btn secondary inverted text hover |
+| `sem-btnSecondaryInvertedTextActive` | `$prim-gray-200` → `#D5D3D0` | `$prim-gray-200` → `#D5D3D0` | Btn secondary inverted text active |
+| `sem-btnSecondaryInvertedTextDisabled` | `$prim-gray-300` → `#B5B1AB` | `$prim-gray-300` → `#B5B1AB` | Btn secondary inverted text disabled |
+| `sem-btnSecondaryInvertedBorder` | `$prim-gray-200` → `#D5D3D0` | `$prim-gray-200` → `#D5D3D0` | Btn secondary inverted border |
+| `sem-btnSecondaryInvertedBorderHover` | `$prim-base-white` → `#ffffff` | `$prim-base-white` → `#FFFFFF` | Btn secondary inverted border hover |
+| `sem-btnSecondaryInvertedBorderActive` | `#00000000` | `#00000000` | Btn secondary inverted border active |
+| `sem-btnSecondaryInvertedBorderDisabled` | `$prim-gray-300` → `#B5B1AB` | `$prim-gray-300` → `#B5B1AB` | Btn secondary inverted border disabled |
 
 #### Button — Destructive
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-btnDestructionBg` | `$color-red-600` | Default fill |
-| `colors-btnDestructionBgHover` | `$color-red-500` | Hover fill |
-| `colors-btnDestructionBgActive` | `$color-red-700` | Pressed fill |
-| `colors-btnDestructionBgDisabled` | `$color-gray-200` | Disabled fill |
-| `colors-btnDestructionText` | `$color-gray-100` | Default text |
-| `colors-btnDestructionTextHover` | `$color-base-white` | Hover text |
-| `colors-btnDestructionTextActive` | `$color-base-white` | Pressed text |
-| `colors-btnDestructionTextDisabled` | `$color-gray-600` | Disabled text |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-btnDestructionBg` | `$prim-red-600` → `#c82320` | `$prim-red-600` → `#C82320` | Btn destruction bg |
+| `sem-btnDestructionBgHover` | `$prim-red-500` → `#fa2c28` | `$prim-red-500` → `#FA2C28` | Btn destruction bg hover |
+| `sem-btnDestructionBgActive` | `$prim-red-700` → `#961a18` | `$prim-red-700` → `#961A18` | Btn destruction bg active |
+| `sem-btnDestructionBgDisabled` | `$prim-gray-200` → `#D5D3D0` | `$prim-navy-300` → `#22314F` | Btn destruction bg disabled |
+| `sem-btnDestructionText` | `$prim-gray-100` → `#EEEDEB` | `$prim-gray-100` → `#EEEDEB` | Btn destruction text |
+| `sem-btnDestructionTextHover` | `$prim-base-white` → `#ffffff` | `$prim-base-white` → `#FFFFFF` | Btn destruction text hover |
+| `sem-btnDestructionTextActive` | `$prim-base-white` → `#ffffff` | `$prim-base-white` → `#FFFFFF` | Btn destruction text active |
+| `sem-btnDestructionTextDisabled` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-100` → `#3A485F` | Btn destruction text disabled |
 
 #### Button — Link
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-btnLinkText` | `$color-blue-600` | Default text |
-| `colors-btnLinkTextHover` | `$color-blue-700` | Hover text |
-| `colors-btnLinkTextActive` | `$color-sky-500` | Active text |
-| `colors-btnLinkTextPressed` | `$color-blue-800` | Pressed text |
-| `colors-btnLinkTextDisabled` | `$color-gray-300` | Disabled text |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-btnLinkBg` | `#00000000` | `#00000000` | Btn link bg |
+| `sem-btnLinkBgHover` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-500` → `#172642` | Btn link bg hover |
+| `sem-btnLinkBgActive` | `$prim-blue-200` → `#c8d6fd` | `$prim-navy-400` → `#202C4E` | Btn link bg active |
+| `sem-btnLinkBgDisabled` | `#00000000` | `#00000000` | Btn link bg disabled |
+| `sem-btnLinkText` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` | Btn link text |
+| `sem-btnLinkTextHover` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` | Btn link text hover |
+| `sem-btnLinkTextActive` | `$prim-blue-800` → `#163196` | `$prim-blue-500` → `#5A82F9` | Btn link text active |
+| `sem-btnLinkTextPressed` | `$prim-blue-800` → `#163196` | `$prim-blue-500` → `#5A82F9` | Btn link text pressed |
+| `sem-btnLinkTextDisabled` | `$prim-blue-300` → `#a5bcfc` | `$prim-navylight-100` → `#3A485F` | Btn link text disabled |
+| `sem-btnLinkBorderPressed` | `$prim-blue-700` → `#2952cc` | `$prim-blue-500` → `#5A82F9` | Btn link border pressed |
+
+#### Controls (toggle · tag · slider · pagination · misc)
+
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-dragHandle` | `$prim-gray-900` → `#0e0e0e` | `$prim-navylight-600` → `#B3C1DB` | Drag handle |
+| `sem-paginationDot` | `$prim-gray-200` → `#D5D3D0` | `$prim-navy-300` → `#22314F` | Pagination dot |
+| `sem-paginationDotActive` | `$prim-gray-700` → `#403D3A` | `$prim-navylight-600` → `#B3C1DB` | Active pagination dot |
+| `sem-progressFill` | `$sem-btnPrimaryBgActive` → `#163196` | `$sem-btnPrimaryBgActive` → `#3A6AF8` | Progress bar fill |
+| `sem-scrollbarThumb` | `$prim-gray-300` → `#B5B1AB` | `$prim-navy-300` → `#22314F` | Scrollbar thumb |
+| `sem-sliderAccent` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` | Slider filled track / thumb |
+| `sem-sliderAccentDisabled` | `$prim-gray-300` → `#B5B1AB` | `$prim-navy-50` → `#33476E` | Slider disabled accent |
+| `sem-sliderTrack` | `$prim-gray-200` → `#D5D3D0` | `$prim-navy-300` → `#22314F` | Slider track |
+| `sem-tagBg` | `$prim-blue-100` → `#ebf0fe` | `$prim-blue-900` → `#031E64` | Tag background |
+| `sem-tagBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Tag border |
+| `sem-tagText` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` | Tag text |
+| `sem-toggleKnob` | `$prim-base-white` → `#ffffff` | `$prim-base-white` → `#FFFFFF` | Toggle knob |
+| `sem-toggleKnobOn` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` | Toggle knob (on) |
+| `sem-toggleLoadingTrack` | `$prim-gray-100` → `#EEEDEB` | `$prim-navy-600` → `#18223A` | Toggle loading track |
+| `sem-toggleTrackOff` | `$prim-taupe-200` → `#EDEAE3` | `$prim-navy-500` → `#172642` | Toggle track (off) |
+| `sem-toggleTrackOn` | `$prim-blue-100` → `#ebf0fe` | `$prim-blue-900` → `#031E64` | Toggle track (on) |
 
 #### Navigation
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-navBg` | `$color-taupe-100` | Nav panel bg |
-| `colors-navBorder` | `$color-taupe-300` | Nav border |
-| `colors-navDivider` | `$color-taupe-200` | Nav section divider |
-| `colors-navHoverBg` | `$color-taupe-200` | Item hover bg |
-| `colors-navHoverText` | `$color-gray-800` | Item hover text |
-| `colors-navActiveBg` | `$color-taupe-300` | Active item bg |
-| `colors-navPressedBg` | `$color-taupe-300` | Pressed item bg |
-| `colors-navIcon` | `$color-gray-400` | Nav icons |
-| `colors-navTextPrimary` | `$color-gray-800` | Primary nav text |
-| `colors-navTextSecondary` | `$color-gray-600` | Secondary nav text |
-| `colors-navTextDisabled` | `$color-gray-300` | Disabled nav text |
-| `colors-navShadow` | `#2D292628` | Nav shadow |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-navActiveBg` | `$prim-taupe-350` → `#DCD8CB` | `$prim-navy-600` → `#18223A` | Active item bg |
+| `sem-navBg` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-950` → `#090E1B` | Nav panel bg |
+| `sem-navBorder` | `$prim-taupe-350` → `#DCD8CB` | `#00000000` | Nav border |
+| `sem-navDivider` | `$prim-taupe-250` → `#E8E6E0` | `$prim-navy-300` → `#22314F` | Nav section divider |
+| `sem-navHoverBg` | `$prim-taupe-200` → `#EDEAE3` | `$prim-navy-600` → `#18223A` | Item hover bg |
+| `sem-navHoverText` | `$prim-gray-800` → `#2D2926` | `$prim-navylight-800` → `#D8E1F0` | Item hover text |
+| `sem-navIcon` | `$prim-gray-400` → `#8A8680` | `$prim-navylight-500` → `#9DAFCD` | Nav icons |
+| `sem-navPressedBg` | `$prim-taupe-300` → `#E3DFD6` | `$prim-navy-400` → `#202C4E` | Pressed item bg |
+| `sem-navShadow` | `#2D292628` | `#00000000` | Nav panel shadow |
+| `sem-navTextDisabled` | `$prim-gray-300` → `#B5B1AB` | `$prim-navylight-100` → `#3A485F` | Disabled nav text |
+| `sem-navTextPrimary` | `$prim-gray-800` → `#2D2926` | `$prim-navylight-800` → `#D8E1F0` | Primary nav text |
+| `sem-navTextSecondary` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-500` → `#9DAFCD` | Secondary nav text |
 
-#### Chat
+#### Nav toggle & settings buttons
 
-| Token | Resolves to | Usage |
-|---|---|---|
-| `colors-chatBg` | `$color-taupe-100` | Chat panel bg |
-| `colors-chatBorder` | `$color-taupe-300` | Chat panel border |
-| `colors-chatDivider` | `$color-taupe-200` | Message divider |
-| `colors-chatBubbleUser` | `$color-taupe-100` | User message bg |
-| `colors-chatInputBg` | `$color-base-white` | Input field bg |
-| `colors-chatPlaceholder` | `$color-gray-400` | Input placeholder |
-| `colors-chatTextPrimary` | `$color-gray-800` | Primary chat text |
-| `colors-chatTextSecondary` | `$color-gray-600` | Secondary chat text |
-| `colors-chatSendBg` | `$color-gray-800` | Send button bg |
-| `colors-chatChipHover` | `$color-taupe-200` | Chip hover bg |
-| `colors-chatChipPressed` | `$color-taupe-300` | Chip pressed bg |
-| `colors-chatShadow` | `#2D292628` | Chat shadow |
-| `colors-chatVoiceActiveBg` | `$color-blue-600` | Voice active bg |
-| `colors-chatVoiceActiveIcon` | `$color-base-white` | Voice active icon |
-| `colors-chatVoicePulse` | `$color-blue-100` | Voice pulse ring |
-| `colors-chatVoiceWaveform` | `$color-blue-400` | Waveform color |
-| `colors-chatVoiceTimer` | `$color-gray-600` | Timer text |
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-navSettingsHoverBg` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-500` → `#172642` | Settings hover bg |
+| `sem-navSettingsIcon` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` | Settings button icon |
+| `sem-navSettingsPressedBg` | `$prim-blue-200` → `#c8d6fd` | `$prim-navy-400` → `#202C4E` | Settings pressed bg |
+| `sem-navSettingsPressedIcon` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` | Settings pressed icon |
+| `sem-navToggleBg` | `$sem-btnPrimaryInvertedBg` → `#ffffff` | `$prim-navy-600` → `#18223A` | Nav toggle bg |
+| `sem-navToggleBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Nav toggle border |
+| `sem-navToggleHoverBg` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-500` → `#172642` | Nav toggle hover bg |
+| `sem-navToggleHoverBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Nav toggle hover border |
+| `sem-navToggleIcon` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` | Nav toggle icon |
+| `sem-navTogglePressedBg` | `$prim-blue-200` → `#c8d6fd` | `$prim-navy-400` → `#202C4E` | Nav toggle pressed bg |
+| `sem-navTogglePressedBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Nav toggle pressed border |
+| `sem-navTogglePressedIcon` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` | Nav toggle pressed icon |
+
+#### Chat — panel & messages
+
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-chatBg` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-950` → `#090E1B` | Chat panel bg |
+| `sem-chatBorder` | `$prim-taupe-350` → `#DCD8CB` | `$prim-navy-50` → `#33476E` | Chat panel border |
+| `sem-chatBubbleAi` | `#FFFFFF00` | `#FFFFFF00` | AI message bg (transparent) |
+| `sem-chatBubbleUser` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-600` → `#18223A` | User message bg |
+| `sem-chatBubbleUserBorder` | `$prim-taupe-350` → `#DCD8CB` | `#00000000` | User message border |
+| `sem-chatChipHover` | `$prim-taupe-200` → `#EDEAE3` | `$prim-navy-500` → `#172642` | Chip hover bg |
+| `sem-chatChipPressed` | `$prim-taupe-300` → `#E3DFD6` | `$prim-navy-400` → `#202C4E` | Chip pressed bg |
+| `sem-chatDivider` | `$prim-taupe-250` → `#E8E6E0` | `$prim-navy-700` → `#131C31` | Message divider |
+| `sem-chatIcon` | `$prim-gray-600` → `#5E5954` | `$prim-blue-300` → `#A5BCFC` | Chat header icons |
+| `sem-chatPlaceholder` | `$prim-gray-350` → `#A8A49E` | `$prim-navylight-200` → `#52637F` | Input placeholder |
+| `sem-chatShadow` | `#2D292628` | `#9BB3FC24` | Input field shadow |
+| `sem-chatTextPrimary` | `$prim-gray-800` → `#2D2926` | `$prim-blue-100` → `#EBF0FE` | Primary chat text |
+| `sem-chatTextSecondary` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-600` → `#B3C1DB` | Secondary chat text |
+
+#### Chat — input field
+
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-chatInputBg` | `$sem-background-surface` → `#ffffff` | `$prim-navy-950` → `#090E1B` | Input field bg |
+| `sem-chatInputBorder` | `$prim-taupe-250` → `#E8E6E0` | `$prim-navy-500` → `#172642` | Input border |
+| `sem-chatInputBorderActive` | `$prim-gray-250` → `#C0BAB2` | `$prim-navy-50` → `#33476E` | Input border (focused) |
+| `sem-chatInputBorderRecording` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` | Input border while recording |
+| `sem-chatRecordingDot` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` | Recording indicator dot |
+
+#### Chat — send & stop buttons
+
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-chatSendBg` | `$sem-btnPrimaryBg` → `#3a6af8` | `$sem-btnPrimaryBg` → `#5A82F9` | Send button bg |
+| `sem-chatSendBgDisabled` | `$sem-btnPrimaryBgDisabled` → `#c8d6fd` | `$sem-btnPrimaryBgDisabled` → `#163196` | Send disabled bg |
+| `sem-chatSendBgHover` | `$sem-btnPrimaryBgHover` → `#2952cc` | `$sem-btnPrimaryBgHover` → `#7094FB` | Send hover bg |
+| `sem-chatSendBgPressed` | `$sem-btnPrimaryBgActive` → `#163196` | `$sem-btnPrimaryBgActive` → `#3A6AF8` | Send pressed bg |
+| `sem-chatSendIcon` | `$sem-btnPrimaryText` → `#ffffff` | `$sem-btnPrimaryText` → `#000000` | Send button icon |
+| `sem-chatStopBg` | `$sem-btnPrimaryBg` → `#3a6af8` | `$sem-btnPrimaryBg` → `#5A82F9` | Stop button bg |
+| `sem-chatStopBgHover` | `$sem-btnPrimaryBgHover` → `#2952cc` | `$sem-btnPrimaryBgHover` → `#7094FB` | Stop hover bg |
+| `sem-chatStopBgPressed` | `$sem-btnPrimaryBgActive` → `#163196` | `$sem-btnPrimaryBgActive` → `#3A6AF8` | Stop pressed bg |
+| `sem-chatStopIcon` | `$sem-btnPrimaryText` → `#ffffff` | `$sem-btnPrimaryText` → `#000000` | Stop button icon |
+
+#### Chat — voice & close buttons
+
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `sem-chatCloseBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Close button border |
+| `sem-chatCloseHoverBg` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-500` → `#172642` | Close hover bg |
+| `sem-chatCloseIcon` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` | Close button icon |
+| `sem-chatClosePressedBg` | `$prim-blue-200` → `#c8d6fd` | `$prim-navy-400` → `#202C4E` | Close pressed bg |
+| `sem-chatClosePressedIcon` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` | Close pressed icon |
+| `sem-chatVoiceActiveBg` | `$prim-blue-600` → `#3a6af8` | `$sem-btnPrimaryBg` → `#5A82F9` | Voice active bg |
+| `sem-chatVoiceActiveIcon` | `$sem-btnPrimaryText` → `#ffffff` | `$sem-btnPrimaryText` → `#000000` | Voice active icon |
+| `sem-chatVoiceBgDisabled` | `$sem-btnPrimaryBgDisabled` → `#c8d6fd` | `#00000000` | Voice disabled bg |
+| `sem-chatVoiceBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Voice button border |
+| `sem-chatVoiceCancelIcon` | `$prim-gray-400` → `#8A8680` | `$prim-navylight-400` → `#889CBF` | Voice cancel icon |
+| `sem-chatVoiceHoverBg` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-500` → `#172642` | Voice hover bg |
+| `sem-chatVoiceIcon` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` | Voice button icon |
+| `sem-chatVoicePressedBg` | `$prim-blue-200` → `#c8d6fd` | `$prim-navy-400` → `#202C4E` | Voice pressed bg |
+| `sem-chatVoicePressedIcon` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` | Voice pressed icon |
+| `sem-chatVoicePulse` | `#3A6AF828` | `#7094FB28` | Voice pulse ring |
+| `sem-chatVoiceTimer` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-500` → `#9DAFCD` | Timer text |
+| `sem-chatVoiceWaveform` | `$prim-blue-400` → `#7094FB` | `$prim-blue-400` → `#7094FB` | Waveform color |
 
 ### Chart Palettes
 
@@ -358,13 +578,14 @@ Always assign in priority order.
 
 | Token | Resolves to | Usage |
 |---|---|---|
-| `chart-sequential/seq-100` | `$color-blue-100` | Lightest fill |
-| `chart-sequential/seq-200` | `$color-blue-200` | Light fill |
-| `chart-sequential/seq-300` | `$color-blue-300` | Medium-light |
-| `chart-sequential/seq-400` | `$color-blue-400` | Medium |
-| `chart-sequential/seq-500` | `$color-blue-500` | Medium-strong |
-| `chart-sequential/seq-600` | `$color-blue-600` | Strong |
-| `chart-sequential/seq-700` | `$color-blue-700` | Darkest fill |
+| `chart-sequential/seq-100` | `$prim-blue-100` → `#ebf0fe` | Lightest fill |
+| `chart-sequential/seq-200` | `$prim-blue-200` → `#c8d6fd` | Light fill |
+| `chart-sequential/seq-300` | `$prim-blue-300` → `#a5bcfc` | Medium-light |
+| `chart-sequential/seq-400` | `$prim-blue-400` → `#7094FB` | Medium |
+| `chart-sequential/seq-500` | `$prim-blue-500` → `#5A82F9` | Medium-strong |
+| `chart-sequential/seq-600` | `$prim-blue-600` → `#3a6af8` | Strong |
+| `chart-sequential/seq-700` | `$prim-blue-700` → `#2952cc` | Darkest fill |
+| `chart-threshold` | `$sem-background-action` → `#3a6af8` | Threshold / reference lines |
 
 ### Spacing
 
@@ -391,9 +612,9 @@ Always assign in priority order.
 | `radius-4xs` | `2px` | Hairline rounding |
 | `radius-3xs` | `4px` | Tags, small badges |
 | `radius-2xs` | `8px` | Inputs, buttons, chips |
-| `radius-xs` | `12px` | Cards, dropdowns |
+| `radius-xs` | `12px` | Cards, dropdowns, chat input & bubbles |
 | `radius-sm` | `16px` | Panels, modals |
-| `radius-md` | `24px` | Large containers |
+| `radius-md` | `24px` | Large containers, chat chips |
 | `radius-lg` | `32px` | Extra-large containers |
 | `radius-xl` | `40px` | Rounded panels |
 | `radius-2xl` | `48px` | Large rounded surfaces |
@@ -404,14 +625,16 @@ Always assign in priority order.
 
 ### Elevation / Shadows
 
-Each shadow is defined by three sub-tokens (y-offset, blur, color):
+Each shadow is defined by y-offset and blur (`shadow-{size}-y`, `shadow-{size}-blur`) plus a **themed** color primitive (`prim-shadow-{size}-color`). Shadow colors are the one deliberate exception to "primitives are static": black glows in light, soft blue glows in dark.
 
-| Shadow | Y-offset | Blur | Color | Usage |
-|---|---|---|---|---|
-| `shadow-sm` | `1px` | `2px` | `#00000014` (8%) | Subtle elevation |
-| `shadow-md` | `4px` | `12px` | `#0000001A` (10%) | Cards, dropdowns |
-| `shadow-lg` | `8px` | `24px` | `#0000001F` (12%) | Modals, popovers |
-| `shadow-overlay` | `16px` | `40px` | `#00000029` (16%) | Full overlays |
+| Shadow | Y-offset | Blur | Light color | Dark color | Usage |
+|---|---|---|---|---|---|
+| `shadow-sm` | `1px` | `2px` | `#00000014` | `#00000047` | Subtle elevation |
+| `shadow-md` | `4px` | `12px` | `#0000001A` | `#0000005C` | Cards, dropdowns |
+| `shadow-lg` | `8px` | `24px` | `#0000001F` | `#00000073` | Modals, popovers |
+| `shadow-overlay` | `16px` | `40px` | `#00000029` | `#000000A3` | Full overlays |
+
+In dark mode, elevation leans on borders and lightened surfaces; shadows are soft blue glows rather than black drops.
 
 ### Motion / Easing
 
@@ -445,12 +668,14 @@ Each shadow is defined by three sub-tokens (y-offset, blur, color):
 
 | Token | Value | Usage |
 |---|---|---|
-| `font-family-primary` | Heebo | UI font — body, numbers, labels, all UI text |
-| `font-family-secondary` | Noto Serif | Headings, editorial content |
+| `font-primary` | Heebo | UI font — body, numbers, labels, all UI text |
+| `font-secondary` | Noto Serif | Headings, editorial content |
+
+Font families are themed on the `🆎 Typography` axis (`desktop` / `mobile`) — currently identical in both modes.
 
 ### Type Scale
 
-The typography system uses a `typo-{family}-{size}-{weight}` naming convention. Each token set includes `font-family`, `font-size`, `font-weight`, `letter-spacing`, and `line-height`.
+Type sizes and line heights are separate token families: `text-size-{step}` (px) and `line-height-{step}` (unitless ratio). Line height in px = size × ratio.
 
 | Size token | Font size | Line height | Usage |
 |---|---|---|---|
@@ -480,13 +705,13 @@ The typography system uses a `typo-{family}-{size}-{weight}` naming convention. 
 
 ### Token naming pattern
 
-Full token example: `typo-primary-sm-semibold-font-size` → `14`
+The `.pen` file exposes typography as three flat token families:
 
-Pattern: `typo-{primary|secondary}-{size}-{weight}-{property}`
+- `font-primary` / `font-secondary` — family names (`Heebo`, `Noto Serif`)
+- `text-size-{2xs…8xl}` — font size in px (e.g. `text-size-sm` → `14`)
+- `line-height-{2xs…8xl}` — unitless ratio (e.g. `line-height-sm` → `1.4286`, so 14px × 1.4286 = 20px)
 
-Available properties: `font-family`, `font-size`, `font-weight`, `letter-spacing`, `line-height`
-
-Link variants append `-link` before the property: `typo-primary-sm-semibold-link-font-weight`
+Weights are applied per text style in the design, not tokenized.
 
 ### Typography Rules
 
@@ -539,7 +764,7 @@ Gaps: 8px min between adjacent interactive elements; 12px+ between destructive a
 
 ### Focus
 
-- Visible ring on every interactive element: `$colors-borders-focus` (dark) or `$colors-borders-focus-inverted` (on dark bg), ≥2px, 3:1 contrast
+- Visible ring on every interactive element: `$sem-borders-focus` (dark) or `$sem-borders-focus-inverted` (on dark bg), ≥2px, 3:1 contrast
 - Order: newNav → mainPanel header → KPI row (L→R) → main content (top→bottom, L→R) → chatPanel
 
 ### Motion
@@ -642,11 +867,11 @@ Gaps: 8px min between adjacent interactive elements; 12px+ between destructive a
 
 ### Layout tokens
 
-- Nav background: `$colors-navBg` (`$color-taupe-100`)
-- Nav border: `$colors-navBorder` (`$color-taupe-300`)
-- Chat background: `$colors-chatBg` (`$color-taupe-100`)
-- Chat border: `$colors-chatBorder` (`$color-taupe-300`)
-- Main surface: `$colors-background-surface` (`$color-base-white`)
+- Nav background: `$sem-navBg` (light `$prim-taupe-100` / dark `$prim-navy-950`)
+- Nav border: `$sem-navBorder` (light `$prim-taupe-350` / dark transparent — dark nav is borderless)
+- Chat background: `$sem-chatBg` (light `$prim-taupe-100` / dark `$prim-navy-950`)
+- Chat border: `$sem-chatBorder` (light `$prim-taupe-350` / dark `$prim-navy-50`)
+- Main surface: `$sem-background-surface` (light `$prim-base-white` / dark `$prim-navy-700`)
 
 ### Layout behavior
 
@@ -673,16 +898,16 @@ Gaps: 8px min between adjacent interactive elements; 12px+ between destructive a
 
 | Variant | Fill | Text | Border |
 |---|---|---|---|
-| `Button` (primary) | `$colors-btnPrimaryBg` | `$colors-btnPrimaryText` | none |
-| `Button/secondary` | transparent | `$colors-btnSecondaryText` | `$colors-btnSecondaryBorder` |
-| `Button/outline` | transparent | `$colors-btnSecondaryText` | `$colors-btnSecondaryBorder` |
-| `Button/text` | transparent | `$colors-btnLinkText` | none |
+| `Button` (primary) | `$sem-btnPrimaryBg` | `$sem-btnPrimaryText` | none |
+| `Button/secondary` | transparent | `$sem-btnSecondaryText` | `$sem-btnSecondaryBorder` |
+| `Button/outline` | transparent | `$sem-btnSecondaryText` | `$sem-btnSecondaryBorder` |
+| `Button/text` | transparent | `$sem-btnLinkText` | none |
 
 Sub-variants with icons: `/icon-left`, `/icon-right`
 
 **States per variant:** Default, Hover, Active, Disabled (all token-driven via semantic button colors)
 **Shape:** `$radius-2xs` (8px)
-**Focus ring:** `$colors-borders-focus`, 2px
+**Focus ring:** `$sem-borders-focus`, 2px
 
 ### Input Fields
 
@@ -1121,9 +1346,9 @@ Sub-variants with icons: `/icon-left`, `/icon-right`
 
 ### Chart design rules
 
-- **Background:** always `$colors-background-surface` (white). Never gray or tinted.
-- **Axis labels:** `xs` size (12px), `$colors-text-meta`
-- **Tooltip:** `$colors-background-surface` bg, `shadow-md`, max 240px
+- **Background:** always `$sem-background-surface` (white in light, `$prim-navy-700` in dark). Never gray or tinted.
+- **Axis labels:** `xs` size (12px), `$sem-text-meta`
+- **Tooltip:** `$sem-background-surface` bg, `shadow-md`, max 240px
 - **Legend:** bottom placement default, click-to-toggle via `InteractiveLegend`
 - **Threshold lines:** Goal = dashed, Benchmark = dotted, Limit = solid
 - **Chart text scaling:** NEVER scale text with chart. Use fixed pixel sizes.

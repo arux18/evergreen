@@ -1,7 +1,8 @@
 # Token Migration Map → Hemlock Library
 
 **Generated:** 2026-08-20
-**Hemlock target:** `pencil/design-system/in-progress/hemlock-library.lib.pen` (436 variables)
+**Status:** ✅ **MIGRATION EXECUTED** (2026-08-20) — `chat-nav-refresh.pen` now consumes `hemlock-library.lib.pen` exclusively; `chat-ui.lib.pen` has been unlinked. See "Resolution" at the end of this document. This map is retained as the audit record of how every source token was mapped.
+**Hemlock target:** `pencil/design-system/in-progress/hemlock-library.lib.pen` (439 variables — 21 semantic tokens were minted during execution, see Resolution)
 **Sources:**
 - `pencil/design-system/complete/chat-ui.lib.pen` — 47 local tokens
 - `pencil/design-system/complete/chat-nav-refresh.pen` — 1412 tokens (local + imported legacy namespaces)
@@ -37,13 +38,13 @@
 | `chat.input.bg` | #FFFFFF | `sem-chatInputBg` | #FFFFFF / #1C2943 | ◐ light matches | dark differs: #FFFFFF vs #1C2943 |
 | `chat.send.bg` | #3C3C3C | `sem-chatSendBg` | #3A6AF8 / #7094FB | ~ role match | value updated by design: #3C3C3C vs #3A6AF8 / #7094FB |
 | `chat.bubble.user.bg` | #F7F5F0 | `sem-chatBubbleUser` | #F7F5F0 / #090E1B | ◐ light matches | dark differs: #F7F5F0 vs #090E1B |
-| `chat.bubble.user.border` | #DCD8CB | `sem-borders-dark` | #DCD8CB / #22314F | ? by value | Hemlock has sem-chatBubbleUser (bg) only; use sem-chatBorder if a border is needed |
+| `chat.bubble.user.border` | #DCD8CB | `sem-chatBubbleUserBorder` | #DCD8CB / #00000000 | ✓ exact | resolved 2026-08-20: dedicated token minted |
 | `chat.chip.bg` | #F7F5F0 | `sem-background-main` | #F7F5F0 / #101729 | ? by value | no dedicated chip bg; value equals sem-chatBg |
 | `chat.chip.border` | #DCD8CB | `sem-borders-dark` | #DCD8CB / #22314F | ? by value | no dedicated chip border; value equals sem-chatBorder |
 | `chat.shadow` | #2D292628 | `sem-chatShadow` | #2D292628 / #00000066 | ◐ light matches | dark differs: #2D292628 vs #00000066 |
 | `nav.shadow` | #2D292628 | `sem-navShadow` | #2D292628 / #00000066 | ◐ light matches | dark differs: #2D292628 vs #00000066 |
-| `chat.radius` | 12 | — | — | ✗ no equivalent | 12px step missing from Hemlock radius scale (sm=16) |
-| `chat.bubble.radius` | 12 | — | — | ✗ no equivalent | 12px step missing from Hemlock radius scale |
+| `chat.radius` | 12 | `radius-xs` | 12 | ✓ exact | resolved 2026-08-20: `radius-xs` = 12 exists in the final scale |
+| `chat.bubble.radius` | 12 | `radius-xs` | 12 | ✓ exact | resolved 2026-08-20: `radius-xs` = 12 exists in the final scale |
 | `chat.chip.radius` | 24 | `radius-md` | 24 | ✓ exact |  |
 | `chat.voice.active.bg` | #3A6AF8 | `sem-chatVoiceActiveBg` | #3A6AF8 / #9BB3FC | ◐ light matches | dark differs: #3A6AF8 vs #9BB3FC |
 | `chat.voice.active.icon` | #FFFFFF | `sem-chatVoiceActiveIcon` | #FFFFFF / #000000 | ◐ light matches | dark differs: #FFFFFF vs #000000 |
@@ -63,9 +64,9 @@
 | `nav.pressed.bg` | #E3DFD6 | `sem-navPressedBg` | #E3DFD6 / #22314F | ◐ light matches | dark differs: #E3DFD6 vs #22314F |
 | `chat.voice.cancel.icon` | #8A8680 | `sem-chatVoiceCancelIcon` | #8A8680 / #889CBF | ◐ light matches | dark differs: #8A8680 vs #889CBF |
 | `chat.input.border` | #E8E6E0 | `sem-chatInputBorder` | #E8E6E0 / #22314F | ◐ light matches | dark differs: #E8E6E0 vs #22314F |
-| `chat.input.radius` | 12 | — | — | ✗ no equivalent | 12px step missing from Hemlock radius scale |
+| `chat.input.radius` | 12 | `radius-xs` | 12 | ✓ exact | resolved 2026-08-20: `radius-xs` = 12 exists in the final scale |
 | `chat.input.border.active` | #C0BAB2 | `sem-chatInputBorderActive` | #C0BAB2 / #33476E | ◐ light matches | dark differs: #C0BAB2 vs #33476E |
-| `chat.bubble.ai.bg` | #FFFFFF00 | — | — | ✗ no equivalent | transparent AI-bubble bg; no Hemlock token |
+| `chat.bubble.ai.bg` | #FFFFFF00 | `sem-chatBubbleAi` | #FFFFFF00 / #FFFFFF00 | ✓ exact | resolved 2026-08-20: token minted (transparent in both modes) |
 | `nav.text.disabled` | #B5B1AB | `sem-navTextDisabled` | #B5B1AB / #697DA0 | ◐ light matches | dark differs: #B5B1AB vs #697DA0 |
 | `nav.icon` | #8A8680 | `sem-navIcon` | #8A8680 / #889CBF | ◐ light matches | dark differs: #8A8680 vs #889CBF |
 | `nav.active.bg` | #DCD8CB | `sem-navActiveBg` | #DCD8CB / #18223A | ◐ light matches | dark differs: #DCD8CB vs #18223A |
@@ -105,13 +106,13 @@
 | `chat.send.bg` | #3A6AF8 | `sem-chatSendBg` | #3A6AF8 / #7094FB | ◐ light matches | dark differs: #3A6AF8 vs #7094FB |
 | `blue.600` | #3A6AF8 | `prim-blue-600` | #3A6AF8 | ✓ exact |  |
 | `chat.bubble.user.bg` | #F7F5F0 | `sem-chatBubbleUser` | #F7F5F0 / #090E1B | ◐ light matches | dark differs: #F7F5F0 vs #090E1B |
-| `chat.bubble.user.border` | #DCD8CB | `sem-borders-dark` | #DCD8CB / #22314F | ? by value | Hemlock has sem-chatBubbleUser (bg) only; use sem-chatBorder if a border is needed |
+| `chat.bubble.user.border` | #DCD8CB | `sem-chatBubbleUserBorder` | #DCD8CB / #00000000 | ✓ exact | resolved 2026-08-20: dedicated token minted |
 | `chat.chip.bg` | #F7F5F0 | `sem-background-main` | #F7F5F0 / #101729 | ? by value | no dedicated chip bg; value equals sem-chatBg |
 | `chat.chip.border` | #DCD8CB | `sem-borders-dark` | #DCD8CB / #22314F | ? by value | no dedicated chip border; value equals sem-chatBorder |
 | `chat.shadow` | #2D292628 | `sem-chatShadow` | #2D292628 / #00000066 | ◐ light matches | dark differs: #2D292628 vs #00000066 |
 | `nav.shadow` | #2D292628 | `sem-navShadow` | #2D292628 / #00000066 | ◐ light matches | dark differs: #2D292628 vs #00000066 |
-| `chat.radius` | 12 | — | — | ✗ no equivalent | 12px step missing from Hemlock radius scale (sm=16) |
-| `chat.bubble.radius` | 12 | — | — | ✗ no equivalent | 12px step missing from Hemlock radius scale |
+| `chat.radius` | 12 | `radius-xs` | 12 | ✓ exact | resolved 2026-08-20: `radius-xs` = 12 exists in the final scale |
+| `chat.bubble.radius` | 12 | `radius-xs` | 12 | ✓ exact | resolved 2026-08-20: `radius-xs` = 12 exists in the final scale |
 | `chat.chip.radius` | 24 | `radius-md` | 24 | ✓ exact |  |
 | `chat.voice.active.bg` | #3A6AF8 | `sem-chatVoiceActiveBg` | #3A6AF8 / #9BB3FC | ◐ light matches | dark differs: #3A6AF8 vs #9BB3FC |
 | `chat.voice.active.icon` | #FFFFFF | `sem-chatVoiceActiveIcon` | #FFFFFF / #000000 | ◐ light matches | dark differs: #FFFFFF vs #000000 |
@@ -136,9 +137,9 @@
 | `nav.pressed.bg` | #E3DFD6 | `sem-navPressedBg` | #E3DFD6 / #22314F | ◐ light matches | dark differs: #E3DFD6 vs #22314F |
 | `chat.voice.cancel.icon` | #8A8680 | `sem-chatVoiceCancelIcon` | #8A8680 / #889CBF | ◐ light matches | dark differs: #8A8680 vs #889CBF |
 | `chat.input.border` | #E8E6E0 | `sem-chatInputBorder` | #E8E6E0 / #22314F | ◐ light matches | dark differs: #E8E6E0 vs #22314F |
-| `chat.input.radius` | 12 | — | — | ✗ no equivalent | 12px step missing from Hemlock radius scale |
+| `chat.input.radius` | 12 | `radius-xs` | 12 | ✓ exact | resolved 2026-08-20: `radius-xs` = 12 exists in the final scale |
 | `chat.input.border.active` | #C0BAB2 | `sem-chatInputBorderActive` | #C0BAB2 / #33476E | ◐ light matches | dark differs: #C0BAB2 vs #33476E |
-| `chat.bubble.ai.bg` | #FFFFFF00 | — | — | ✗ no equivalent | transparent AI-bubble bg; no Hemlock token |
+| `chat.bubble.ai.bg` | #FFFFFF00 | `sem-chatBubbleAi` | #FFFFFF00 / #FFFFFF00 | ✓ exact | resolved 2026-08-20: token minted (transparent in both modes) |
 | `nav.text.disabled` | #B5B1AB | `sem-navTextDisabled` | #B5B1AB / #697DA0 | ◐ light matches | dark differs: #B5B1AB vs #697DA0 |
 | `nav.icon` | #8A8680 | `sem-navIcon` | #8A8680 / #889CBF | ◐ light matches | dark differs: #8A8680 vs #889CBF |
 | `nav.active.bg` | #DCD8CB | `sem-navActiveBg` | #DCD8CB / #18223A | ◐ light matches | dark differs: #DCD8CB vs #18223A |
@@ -173,13 +174,13 @@
 | `p:chat.input.bg` | #FFFFFF | `sem-chatInputBg` | #FFFFFF / #1C2943 | ◐ light matches | dark differs: #FFFFFF vs #1C2943 |
 | `p:chat.send.bg` | #3C3C3C | `sem-chatSendBg` | #3A6AF8 / #7094FB | ~ role match | value updated by design: #3C3C3C vs #3A6AF8 / #7094FB |
 | `p:chat.bubble.user.bg` | #F7F5F0 | `sem-chatBubbleUser` | #F7F5F0 / #090E1B | ◐ light matches | dark differs: #F7F5F0 vs #090E1B |
-| `p:chat.bubble.user.border` | #DCD8CB | `sem-borders-dark` | #DCD8CB / #22314F | ? by value | Hemlock has sem-chatBubbleUser (bg) only; use sem-chatBorder if a border is needed |
+| `p:chat.bubble.user.border` | #DCD8CB | `sem-chatBubbleUserBorder` | #DCD8CB / #00000000 | ✓ exact | resolved 2026-08-20: dedicated token minted |
 | `p:chat.chip.bg` | #F7F5F0 | `sem-background-main` | #F7F5F0 / #101729 | ? by value | no dedicated chip bg; value equals sem-chatBg |
 | `p:chat.chip.border` | #DCD8CB | `sem-borders-dark` | #DCD8CB / #22314F | ? by value | no dedicated chip border; value equals sem-chatBorder |
 | `p:chat.shadow` | #2D292628 | `sem-chatShadow` | #2D292628 / #00000066 | ◐ light matches | dark differs: #2D292628 vs #00000066 |
 | `p:nav.shadow` | #2D292628 | `sem-navShadow` | #2D292628 / #00000066 | ◐ light matches | dark differs: #2D292628 vs #00000066 |
-| `p:chat.radius` | 12 | — | — | ✗ no equivalent | 12px step missing from Hemlock radius scale (sm=16) |
-| `p:chat.bubble.radius` | 12 | — | — | ✗ no equivalent | 12px step missing from Hemlock radius scale |
+| `p:chat.radius` | 12 | `radius-xs` | 12 | ✓ exact | resolved 2026-08-20: `radius-xs` = 12 exists in the final scale |
+| `p:chat.bubble.radius` | 12 | `radius-xs` | 12 | ✓ exact | resolved 2026-08-20: `radius-xs` = 12 exists in the final scale |
 | `p:chat.chip.radius` | 24 | `radius-md` | 24 | ✓ exact |  |
 | `p:chat.voice.active.bg` | #3A6AF8 | `sem-chatVoiceActiveBg` | #3A6AF8 / #9BB3FC | ◐ light matches | dark differs: #3A6AF8 vs #9BB3FC |
 | `p:chat.voice.active.icon` | #FFFFFF | `sem-chatVoiceActiveIcon` | #FFFFFF / #000000 | ◐ light matches | dark differs: #FFFFFF vs #000000 |
@@ -199,9 +200,9 @@
 | `p:nav.pressed.bg` | #E3DFD6 | `sem-navPressedBg` | #E3DFD6 / #22314F | ◐ light matches | dark differs: #E3DFD6 vs #22314F |
 | `p:chat.voice.cancel.icon` | #8A8680 | `sem-chatVoiceCancelIcon` | #8A8680 / #889CBF | ◐ light matches | dark differs: #8A8680 vs #889CBF |
 | `p:chat.input.border` | #E8E6E0 | `sem-chatInputBorder` | #E8E6E0 / #22314F | ◐ light matches | dark differs: #E8E6E0 vs #22314F |
-| `p:chat.input.radius` | 12 | — | — | ✗ no equivalent | 12px step missing from Hemlock radius scale |
+| `p:chat.input.radius` | 12 | `radius-xs` | 12 | ✓ exact | resolved 2026-08-20: `radius-xs` = 12 exists in the final scale |
 | `p:chat.input.border.active` | #C0BAB2 | `sem-chatInputBorderActive` | #C0BAB2 / #33476E | ◐ light matches | dark differs: #C0BAB2 vs #33476E |
-| `p:chat.bubble.ai.bg` | #FFFFFF00 | — | — | ✗ no equivalent | transparent AI-bubble bg; no Hemlock token |
+| `p:chat.bubble.ai.bg` | #FFFFFF00 | `sem-chatBubbleAi` | #FFFFFF00 / #FFFFFF00 | ✓ exact | resolved 2026-08-20: token minted (transparent in both modes) |
 | `p:nav.text.disabled` | #B5B1AB | `sem-navTextDisabled` | #B5B1AB / #697DA0 | ◐ light matches | dark differs: #B5B1AB vs #697DA0 |
 | `p:nav.icon` | #8A8680 | `sem-navIcon` | #8A8680 / #889CBF | ◐ light matches | dark differs: #8A8680 vs #889CBF |
 | `p:nav.active.bg` | #DCD8CB | `sem-navActiveBg` | #DCD8CB / #18223A | ◐ light matches | dark differs: #DCD8CB vs #18223A |
@@ -1540,8 +1541,45 @@
 
 ---
 
-## Known gaps (✗ / ? rows, deduplicated by base name)
+## Resolution — migration executed (2026-08-20)
 
-- **12px radius** (`chat.radius`, `chat.bubble.radius`, `chat.input.radius`): Hemlock's scale starts at `radius-sm` = 16. Either add a `radius-2sm` (12) token to Hemlock or accept 16.
-- **Granular typography** (`typo-*-font-weight`, `typo-*-letter-spacing`): Hemlock has `text-size-*` / `line-height-*` / `font-*` only. Weights and letter-spacing must be set per-component or added as new Hemlock tokens.
-- **AI bubble transparent bg** (`chat.bubble.ai.bg`): intentional transparency; likely needs no token.
+The migration this map was drafted for has been **completed**:
+
+- `chat-nav-refresh.pen` no longer defines any local variables or theme axes. All 296 color/radius/font binding sites reference `hemlock-library.lib.pen` tokens (`g:` import). Light-mode rendering verified 1:1 against the pre-migration baseline.
+- `chat-ui.lib.pen` import was removed (it had zero live usages).
+- Local palette swatch rows were relabeled to `prim-blue-*` and bound to Hemlock primitives; hard values unchanged.
+- `sem-chatShadow` **light** value was corrected in Hemlock to `#2D292628` (was transparent), matching the original chat/nav input shadow.
+
+### Tokens minted in Hemlock during execution (21)
+
+| New token | Light | Dark |
+|---|---|---|
+| `sem-chatVoiceIcon` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` |
+| `sem-chatVoiceHoverBg` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-500` → `#172642` |
+| `sem-chatVoicePressedBg` | `$prim-blue-200` → `#c8d6fd` | `$prim-navy-400` → `#202C4E` |
+| `sem-chatVoicePressedIcon` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` |
+| `sem-chatVoiceBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` |
+| `sem-chatCloseIcon` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` |
+| `sem-chatCloseBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` |
+| `sem-chatClosePressedIcon` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` |
+| `sem-chatStopBg` | `$sem-btnPrimaryBg` → `#3a6af8` | `$sem-btnPrimaryBg` → `#5A82F9` |
+| `sem-chatStopBgHover` | `$sem-btnPrimaryBgHover` → `#2952cc` | `$sem-btnPrimaryBgHover` → `#7094FB` |
+| `sem-chatStopBgPressed` | `$sem-btnPrimaryBgActive` → `#163196` | `$sem-btnPrimaryBgActive` → `#3A6AF8` |
+| `sem-chatStopIcon` | `$sem-btnPrimaryText` → `#ffffff` | `$sem-btnPrimaryText` → `#000000` |
+| `sem-chatInputBorderRecording` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` |
+| `sem-chatRecordingDot` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` |
+| `sem-chatBubbleAi` | `#FFFFFF00` → `#FFFFFF00` | `#FFFFFF00` → `#FFFFFF00` |
+| `sem-chatBubbleUserBorder` | `$prim-taupe-350` → `#DCD8CB` | `#00000000` → `#00000000` |
+| `sem-tagBorder` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` |
+| `sem-navSettingsIcon` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-400` → `#7094FB` |
+| `sem-navSettingsHoverBg` | `$prim-blue-100` → `#ebf0fe` | `$prim-navy-500` → `#172642` |
+| `sem-navSettingsPressedBg` | `$prim-blue-200` → `#c8d6fd` | `$prim-navy-400` → `#202C4E` |
+| `sem-navSettingsPressedIcon` | `$prim-blue-700` → `#2952cc` | `$prim-blue-300` → `#A5BCFC` |
+
+### Gap dispositions
+
+- **12px radius** (`chat.radius`, `chat.bubble.radius`, `chat.input.radius`) → `radius-xs` (12px) — the final Hemlock radius scale includes it. 24px chip radius → `radius-md`.
+- **Fonts** (`font.primary`, `font-family-*`) → `font-primary` (Heebo) / `font-secondary` (Noto Serif).
+- **Granular typography** (`typo-*-font-weight`, `typo-*-letter-spacing`) → intentionally **not tokenized**. Hemlock exposes `text-size-*` and `line-height-*`; weights and letter-spacing are set per text style in the design. The old `g:typo-*` imports were removed with the migration.
+- **AI bubble transparent bg** (`chat.bubble.ai.bg`) → `sem-chatBubbleAi` (transparent in both modes), minted so the role stays explicit for gen-UI/front-end implementers.
+- **Legacy alias namespaces** (`y:`, `Q:`, `G:`, `e:`, `k:`, `O:`, `p:`) → all removed; nothing binds to them anymore.
