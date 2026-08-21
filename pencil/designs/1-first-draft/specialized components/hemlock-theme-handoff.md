@@ -1,167 +1,199 @@
-# Hemlock Dark Mode — Specialized Component Handoff
+# Hemlock Theme — Specialized Component Handoff (Light + Dark)
 
-> **Purpose:** Complete dark-mode styling reference for specialized HTML components built on **Component Template v2.0**. You already have the light-mode values — this document gives you the **dark values** from the Hemlock design system, keyed to the template's own CSS custom properties, with the Hemlock semantic token each one maps to (so future library updates can be diffed against this file).
+> **Purpose:** Complete two-theme styling reference for specialized HTML components built on **Component Template v2.0**, keyed to the template's own CSS custom properties, with the Hemlock token each one maps to (so future library updates can be diffed against this file).
 >
-> **Companion file:** `Component Template v2.0 (Hemlock Dark).html` — a working duplicate of the template with every dark value below already applied. Open it in a browser, switch the Theme toggle to Dark, and treat it as the visual source of truth. The pristine template is `Component Template v2.0.html` (same folder).
+> **The two themes follow different rules (Amanda, 2026-08-21):**
+> - **Light = integrity-preserving.** The template's original light design is kept. Each value is annotated with the Hemlock token it already equals; the handful of values with no exact Hemlock equivalent are snapped to the *nearest* Hemlock step (all near-invisible deltas, listed in §4).
+> - **Dark = Hemlock redesign.** Dark values come from the Hemlock library's navy dark theme and supersede the template v2.0 built-in dark block entirely.
 >
-> **Source of truth chain:** `hemlock-library.lib.pen` (the Hemlock library — `sem-*` semantic tokens on the `🎨 Colors` Light/Dark axis, resolving to `prim-*` primitives) ← `Evergreen.ai_DarkMode_DesignHandoff` package (Amanda, 2026-08-20). The `.pen` library and that package were verified value-identical on 2026-08-20.
+> **Companion file:** `Component Template v2.0 (Hemlock).html` — a working duplicate of the template with both themes applied. The pristine template is `Component Template v2.0.html` (same folder).
 >
-> **Supersedes:** the dark-mode columns of `_Archive/hemlock-component-styling-handoff.md` and the built-in dark block of `_Archive/Component Template.html`. Light-mode values in the archived doc are unaffected.
+> **Source of truth chain:** `hemlock-library.lib.pen` (the Hemlock library — `sem-*` semantic tokens on the `🎨 Colors` Light/Dark axis, resolving to `prim-*` primitives) ← `Evergreen.ai_DarkMode_DesignHandoff` package (2026-08-20). The `.pen` library and that package were verified value-identical on 2026-08-20.
+>
+> **Supersedes:** `_Archive/hemlock-component-styling-handoff.md` and the built-in dark block of `_Archive/Component Template.html`.
 
 ---
 
 ## 1. How to Apply
 
-Dark mode is activated by `html[data-theme="dark"]`. Every value in this document lives in one of two dark-scoped custom-property blocks (copy-paste blocks in §10):
+Dark mode is activated by `html[data-theme="dark"]`. Values live in two custom-property blocks per theme (copy-paste blocks in §10):
 
-1. The **core block** on `html[data-theme="dark"]` — surfaces, text, borders, accents, status, charts, shadows.
-2. The **widget block** on `html[data-theme="dark"] #appMain, html[data-theme="dark"] .t2-rd-backdrop` — the `--tk-*` layer (buttons, dropdowns, checks, radios, switches, sliders, segmented controls).
-
-Light mode: **no changes.** Your existing light values stay exactly as they are.
+1. The **core block** — `:root` (light) / `html[data-theme="dark"]` — surfaces, text, borders, accents, status, charts, shadows.
+2. The **widget block** — scoped to `#appMain, .t2-rd-backdrop` — the `--tk-*` layer (buttons, dropdowns, checks, radios, switches, sliders, segmented controls).
 
 ---
 
-## 2. System Rules (read before styling anything)
+## 2. System Rules
 
-These are the Hemlock dark-theme principles baked into every value below. They come from the approved Aug 20 design rulings.
+These Hemlock dark-theme principles (approved Aug 20) govern every dark value. Light is exempt where noted — light keeps the template's original treatments.
 
-1. **Elevation = lighter surface, not shadow.** The navy ramp runs `navy-950 #090E1B` (darkest) → `navy-50 #33476E` (lightest). Page sits on `navy-800`, cards on `navy-700`, raised tiles/headers/tooltips/menus on `navy-600`. A thing that floats is *lighter*, not outlined or shadow-lifted. Shadows still exist but they deepen (see §9) — they support, they don't carry.
-2. **State fills are opaque navy steps — never alpha.** Hover `navy-500 #172642`, pressed `navy-400 #202C4E`. Alpha survives in exactly five places: the modal/drawer scrim, the focus ring, the chat glow, the voice pulse, and chart area washes. Everything else is opaque (semi-transparent fills bleed through sticky table columns).
-3. **Blue is the primary accent; sky is informational only.** Actions, links, selected states = blue (`prim-blue-400/500`). Info tiles, info icons, informational alerts = sky (`prim-sky-250 #38BDF8`). **Dark info is no longer purple** — the template v2.0's purple info tiles (`#9A86FF`) are superseded.
-4. **Primary buttons carry BLACK text in dark.** `sem-btnPrimaryBg` = `prim-blue-500 #5A82F9` with `sem-btnPrimaryText` = `prim-base-black #000000` (hover text: `navy-950 #090E1B`). White-on-blue is a light-mode-only pairing.
-5. **Statuses are desaturated for navy.** Success `green-350 #4ADE80`, error `red-350 #F87171`, warning `orange-400 #FB924D`, with `-muted` steps for body copy. Status *surfaces* are the flattened `*dark` tint primitives (e.g. `greendark-300 #12291C`) — opaque, not rgba washes.
-6. **Text uses the navylight ramp.** Headers `navylight-800 #D8E1F0`, body `navylight-600 #B3C1DB`, meta `navylight-300 #697DA0`, subtle/captions `navylight-200 #52637F`. The old template dark text values (`#EAF0FF`, `#9DB0D2`, `#C9D4EA`) are superseded.
-7. **Borders shift roles in dark.** `sem-borders-light` (the light-mode default hairline) becomes `navy-700 #131C31` — *the same value as the surface*, so on-surface hairlines deliberately disappear and lightness does the separating. Where a **visible** outline is needed, use `sem-borders-muted #2A3A5C`; emphasized rules/control outlines use `sem-borders-strong #33476E`. The template mapping in §3 already makes this choice for you.
+1. **Elevation = lighter surface, not shadow (dark).** The navy ramp runs `navy-950 #090E1B` (darkest) → `navy-50 #33476E` (lightest). The app shell sits on `navy-800 #101729` (`sem-background-main`); the component surface — **including the template's `--page-bg` and card, which are both the surface role** — is `navy-700 #131C31`; raised tiles/headers/tooltips/menus are `navy-600 #18223A`. A thing that floats is *lighter*. Shadows still exist but deepen (§9) — they support, they don't carry.
+2. **The template "page" is the component's surface, not the app shell.** `--page-bg` → `sem-background-surface` (white light / `#131C31` dark). The host app supplies `sem-background-main` behind the embedded component.
+3. **Dark state fills are opaque navy steps — never alpha.** Hover `navy-500 #172642`, pressed `navy-400 #202C4E`. Alpha survives in exactly five places: scrims, the focus ring, the chat glow, the voice pulse, and chart washes. (Light keeps its original alpha washes for status tiles — they're exact Hemlock primitives at low opacity.)
+4. **Blue is the primary accent; sky is informational (dark).** Dark info tiles/icons are sky (`prim-sky-250 #38BDF8`) — **not purple**. Light info stays accent-blue per the integrity ruling; flag to design if cross-theme consistency is ever wanted.
+5. **Primary buttons carry BLACK text in dark.** `sem-btnPrimaryBg` `#5A82F9` + `sem-btnPrimaryText` `#000000` (hover text `navy-950`). White-on-blue is light-mode-only.
+6. **Dark statuses are desaturated:** success `green-350 #4ADE80`, error `red-350 #F87171`, warning `orange-400 #FB924D`, with `-muted` steps for body copy. Dark status *surfaces* are the flattened `*dark` tint primitives (opaque).
+7. **Dark text uses the navylight ramp:** headers `#D8E1F0`, body `#B3C1DB`, meta `#697DA0`, subtle `#52637F`.
+8. **Borders shift roles in dark.** `sem-borders-light` dark is `navy-700 #131C31` — same value as the surface, so on-surface hairlines deliberately vanish. The template's `--border` therefore carries `sem-borders-light` in light (`#EEEDEB`) but `sem-borders-muted` in dark (`#2A3A5C`, the visible-outline role); `--border-strong` carries `sem-borders-muted` in light (`#D5D3D0`) but `sem-borders-strong` in dark (`#33476E`). The per-mode role split is intentional — the template collapses four Hemlock border roles into two vars.
 
 ---
 
-## 3. Core Tokens (template var → Hemlock token → dark value)
+## 3. Core Tokens (template var → Hemlock mapping, both themes)
 
-Light values are listed for reference only — they are yours already and do not change. "Was (v2.0)" is the template's superseded built-in dark value.
+"Light" is the template's original value (kept — exact token matches unless marked *snapped*). "Dark" is the Hemlock redesign; "was (v2.0)" is the superseded template dark value.
 
 ### Surfaces
 
-| Template var | Hemlock token | Light | **Dark (new)** | Was (v2.0) | Notes |
+| Template var | Light (kept) | = Hemlock (light) | **Dark (new)** | Hemlock (dark) | was (v2.0) |
 |---|---|---|---|---|---|
-| `--page-bg` | `sem-background-main` → `prim-navy-800` | `#FFFFFF` | **`#101729`** | `#101729` | Unchanged — the template already matched. |
-| `--surface-1` | `sem-background-surface` → `prim-navy-700` | `#FFFFFF` | **`#131C31`** | `#0E1524` | Cards, inputs, table cells, rows. |
-| `--surface-2` | `sem-background-light` → `prim-navy-600` | `#F8F7F6` | **`#18223A`** | `#121B2E` | Also `sem-background-elevated` / `sem-background-subtle` resolve here — raised tiles, table headers, tooltips, modals. |
-| `--nest` | `sem-background-subtle` → `prim-navy-600` | `#F8F7F6` | **`#18223A`** | `#131C30` | Nested containers. |
-| `--calc-bg` | `sem-background-sunken` → `prim-navy-900` | `#F7F5F0` | **`#0C1222`** | `#12203C` | Sunken panels (calculator body). |
+| `--page-bg` | `#FFFFFF` | `sem-background-surface` | **`#131C31`** | `sem-background-surface` (navy-700) | `#101729` |
+| `--surface-1` | `#FFFFFF` | `sem-background-surface` | **`#131C31`** | `sem-background-surface` | `#0E1524` |
+| `--surface-2` | `#F8F7F6` | `sem-background-light` | **`#18223A`** | `sem-background-light` / `-elevated` (navy-600) | `#121B2E` |
+| `--nest` | `#F8F7F6` | `sem-background-subtle` | **`#18223A`** | `sem-background-subtle` | `#131C30` |
+| `--calc-bg` | `#F7F5F0` | `sem-background-sunken` | **`#0C1222`** | `sem-background-sunken` (navy-900) | `#12203C` |
+
+In dark, `--page-bg` = `--surface-1` = `#131C31`: page and card are the same flat surface, outline-defined (the template's original rev MJ dark design). Raised elements inside sit one step lighter (`#18223A`).
 
 ### Text
 
-| Template var | Hemlock token | Light | **Dark (new)** | Was (v2.0) | Notes |
+| Template var | Light (kept) | = Hemlock (light) | **Dark (new)** | Hemlock (dark) | was (v2.0) |
 |---|---|---|---|---|---|
-| `--ink` | `sem-text-header` → `prim-navylight-800` | `#0E0E0E` | **`#D8E1F0`** | `#EAF0FF` | Headings, primary text. |
-| `--text-body` | `sem-text-body` → `prim-navylight-600` | `#403D3A` | **`#B3C1DB`** | `#C9D4EA` | Body copy. |
-| `--muted` | `sem-text-meta` → `prim-navylight-300` | `#5E5954` | **`#697DA0`** | `#9DB0D2` | Labels, secondary text. ≈4.1:1 on `--surface-1` — use for labels/meta, not small body copy (body copy is `--text-body`). |
-| `--faint` | `sem-text-subtle` → `prim-navylight-200` | `#767169` | **`#52637F`** | `#8A9BBF` | Captions, disclosures. |
-| `--inverse` | `sem-text-reverse` → `prim-gray-900` | `#FFFFFF` | **`#0E0E0E`** | `#0B1220` | Text on inverted fills. |
+| `--ink` | `#0E0E0E` | `sem-text-header` | **`#D8E1F0`** | `sem-text-header` (navylight-800) | `#EAF0FF` |
+| `--text-body` | `#403D3A` | `sem-text-body` | **`#B3C1DB`** | `sem-text-body` (navylight-600) | `#C9D4EA` |
+| `--muted` | `#5E5954` | `sem-text-meta` | **`#697DA0`** | `sem-text-meta` (navylight-300) | `#9DB0D2` |
+| `--faint` | `#8A8680` ⚠ *changed from `#767169` — ruling C* | `sem-text-subtle` | **`#52637F`** | `sem-text-subtle` (navylight-200) | `#8A9BBF` |
+| `--inverse` | `#FFFFFF` | `sem-text-reverse` | **`#0E0E0E`** | `sem-text-reverse` (gray-900) | `#0B1220` |
+
+> ⚠ **`--faint` ruling C (Amanda, 2026-08-21):** the template had darkened `--faint` to `#767169` for WCAG AA on small disclosure text. The canon `sem-text-subtle` value `#8A8680` is restored; the AA miss (≈3.5:1 on white) is accepted and **flagged to design**. If a component needs AA small text in this slot, `sem-text-placeholder #716E6A` passes.
 
 ### Borders
 
-| Template var | Hemlock token | Light | **Dark (new)** | Was (v2.0) | Notes |
+| Template var | Light (kept) | = Hemlock (light) | **Dark (new)** | Hemlock (dark) | was (v2.0) |
 |---|---|---|---|---|---|
-| `--border` | `sem-borders-muted` → `prim-navy-200` | `#EEEDEB` | **`#2A3A5C`** | `#243350` | The template uses `--border` wherever a *visible* component outline is needed (inputs, tiles, menus), so it maps to the muted step. See the note below. |
-| `--border-strong` | `sem-borders-strong` → `prim-navy-50` | `#D5D3D0` | **`#33476E`** | `#33476E` | Section rules, control outlines. Template already matched. |
-| `--taupe-border` | `sem-borders-dark` → `prim-navy-300` | `#E3DFD6` | **`#22314F`** | `#243350` | Taupe-accent borders (calc panel). |
-| `--hairline` | — (static) | `#595959` | **`#595959`** | `#595959` | Unchanged; video-thumb outline + no-chrome insets. |
+| `--border` | `#EEEDEB` | `sem-borders-light` | **`#2A3A5C`** | `sem-borders-muted` (navy-200) | `#243350` |
+| `--border-strong` | `#D5D3D0` | `sem-borders-muted` | **`#33476E`** | `sem-borders-strong` (navy-50) | `#33476E` |
+| `--taupe-border` | `#E3DFD6` | `prim-taupe-300` (exact; nearest semantic: `sem-borders-dark #DCD8CB`) | **`#22314F`** | `sem-borders-dark` (navy-300) | `#243350` |
+| `--hairline` | `#595959` | — static, both modes | `#595959` | — | `#595959` |
 
-> **Border mapping note.** By light-value identity `--border` (#EEEDEB) equals `sem-borders-light`, whose dark value is `navy-700 #131C31` — *identical to the surface*, i.e. invisible. That is intentional in Hemlock (rule §2.7): on-surface hairlines vanish and elevation separates. The template collapses "hairline" and "component outline" into one var, so this handoff maps `--border` to the **visible** role (`sem-borders-muted`). If your component wants the pure Hemlock divider-less look (e.g. dark tables without row rules), use `sem-borders-light #131C31` for those specific dividers.
+See §2.8 for why `--border`/`--border-strong` carry different Hemlock roles per mode. If a component wants the pure Hemlock divider-less dark look (e.g. tables without row rules), use `sem-borders-light` dark `#131C31` for those dividers.
 
 ### Accent & interaction
 
-| Template var | Hemlock token | Light | **Dark (new)** | Was (v2.0) | Notes |
+| Template var | Light (kept) | = Hemlock (light) | **Dark (new)** | Hemlock (dark) | was (v2.0) |
 |---|---|---|---|---|---|
-| `--accent` | `sem-background-action` / `sem-text-action` → `prim-blue-500` | `#3A6AF8` | **`#5A82F9`** | `#5A86FF` | Primary accent. |
-| `--accent-hover` | `sem-btnPrimaryBgHover` → `prim-blue-400` | `#2952CC` | **`#7094FB`** | `#8FB0FF` | Hover steps go *lighter* in dark. |
-| `--accent-subtle` | `sem-background-highlight` → `prim-skydark-100` | `#EBF0FE` | **`#16304A`** | `rgba(58,106,248,.18)` | Now opaque (rule §2.2). |
-| `--accent-fill` | derived: `prim-blue-500` @ 15% | `rgba(58,106,248,0.15)` | **`rgba(90,130,249,0.15)`** | — (not overridden) | Chart area wash — one of the surviving alphas. |
-| `--brand-blue` | alias of `--accent` | `var(--accent)` | **`var(--accent)`** | same | No change needed. |
-| `--row-hover` | `sem-background-rowHover` → `prim-navy-500` | `var(--taupe-100)` | **`#172642`** | `#12203C` | Opaque — sticky columns. |
-| `--row-pressed` | `sem-background-rowPressed` → `prim-navy-400` | `var(--taupe-pressed)` | **`#202C4E`** | `#1B2C4F` | Opaque. |
-| `--taupe-100` | `sem-background-rowHover` → `prim-navy-500` | `#F7F5F0` | **`#172642`** | `#141E36` | Tab band, taupe surfaces. |
-| `--taupe-pressed` | `sem-background-rowPressed` → `prim-navy-400` | `#EDEAE3` | **`#202C4E`** | `#1B2C4F` | |
+| `--accent` | `#3A6AF8` | `sem-background-action` / `sem-text-action` (blue-600) | **`#5A82F9`** | same roles (blue-500) | `#5A86FF` |
+| `--accent-hover` | `#2952CC` | `sem-btnPrimaryBgHover` (blue-700) | **`#7094FB`** | `sem-btnPrimaryBgHover` (blue-400 — hover goes *lighter* in dark) | `#8FB0FF` |
+| `--accent-subtle` | `#EBF0FE` | `sem-background-highlight` (blue-100) | **`#16304A`** | `sem-background-highlight` (skydark-100, opaque) | `rgba(58,106,248,.18)` |
+| `--accent-fill` | `rgba(58,106,248,0.15)` | `prim-blue-600` @ 15% | **`rgba(90,130,249,0.15)`** | `prim-blue-500` @ 15% (chart wash — surviving alpha) | — |
+| `--brand-blue` | `var(--accent)` | alias | `var(--accent)` | alias | — |
+| `--row-hover` | `var(--taupe-100)` `#F7F5F0` | `sem-background-rowHover` | **`#172642`** | `sem-background-rowHover` (navy-500, opaque) | `#12203C` |
+| `--row-pressed` | `var(--taupe-pressed)` `#EDEAE3` | `sem-background-rowPressed` | **`#202C4E`** | `sem-background-rowPressed` (navy-400, opaque) | `#1B2C4F` |
+| `--taupe-100` | `#F7F5F0` | `sem-background-rowHover` | **`#172642`** | `sem-background-rowHover` | `#141E36` |
+| `--taupe-pressed` | `#EDEAE3` | `sem-background-rowPressed` | **`#202C4E`** | `sem-background-rowPressed` | `#1B2C4F` |
 
-### Secondary accents
+### Secondary accents (dark-only vars)
 
-These template vars have no 1:1 Hemlock accent role; they map to the nearest chart-palette entries. Flagged for future reconciliation.
+`--accent-2/3/4` exist only in the dark block (light rules never read them). No 1:1 Hemlock accent roles exist; they map to nearest chart-palette entries — flagged.
 
-| Template var | Nearest Hemlock token | Light | **Dark (new)** | Was (v2.0) |
-|---|---|---|---|---|
-| `--accent-2` (teal) | `sem-chart-cat-7` | `#2FD4C4` *(yours)* | **`#84E6CC`** | `#2FD4C4` |
-| `--accent-3` (purple — KPI overlines) | `sem-chart-cat-1` | — | **`#B198F0`** | `#9A86FF` |
-| `--accent-4` (gold) | `sem-chart-cat-14` | — | **`#D9A02E`** | `#E3B972` |
+| Template var | **Dark (new)** | Nearest Hemlock | was (v2.0) |
+|---|---|---|---|
+| `--accent-2` (teal) | **`#84E6CC`** | `sem-chart-cat-7` dark | `#2FD4C4` |
+| `--accent-3` (purple — KPI overlines) | **`#B198F0`** | `sem-chart-cat-1` dark | `#9A86FF` |
+| `--accent-4` (gold) | **`#D9A02E`** | `sem-chart-cat-14` dark | `#E3B972` |
 
 ### Status & semantic accents
 
-| Template var | Hemlock token | Light | **Dark (new)** | Was (v2.0) | Notes |
+| Template var | Light (kept) | = Hemlock (light) | **Dark (new)** | Hemlock (dark) | was (v2.0) |
 |---|---|---|---|---|---|
-| `--pos` | `sem-text-deposit` → `prim-green-350` | `#148338` | **`#4ADE80`** | `#34D399` | |
-| `--pos-strong` | `sem-text-success-title` → `prim-green-350` | `#148338` | **`#4ADE80`** | `#5FE0A8` | Pros titles/strips. |
-| `--pos-mid` | `sem-text-success-body` → `prim-green-350-muted` | `#22C55E` | **`#74D791`** | — | Nearest role (success body copy). |
-| `--pos-soft` | `prim-green-350` (static paint) | `#4ADE80` | **`#4ADE80`** | — | Same both modes. |
-| `--neg` | `sem-text-error` → `prim-red-350` | `#C82320` | **`#F87171`** | `#F87171` | |
-| `--neg-strong` | `sem-text-error-body-strong` → `prim-red-250` | `#C82320` | **`#FCA5A5`** | `#FCA5A5` | Cons titles/strips. |
-| `--neg-soft` | `prim-red-350` (static paint) | `#F87171` | **`#F87171`** | — | Same both modes. |
-| `--warn` | `sem-text-warning-title` → `prim-orange-400` | `#C85F1A` | **`#FB924D`** | — | |
-| `--info` | `sem-icons-info` → `prim-sky-250` | `#3A6AF8` *(yours)* | **`#38BDF8`** | `#9A86FF` | **Sky, not purple** (rule §2.3). Info-tile strip. |
-| `--info-title` | `sem-text-info-title` → `prim-sky-250` | `#3A6AF8` *(yours)* | **`#38BDF8`** | `#C3B4FF` | Info-tile title. |
-| `--orange` | — (no Hemlock role) | `#EA580C` | **`#EA580C`** | — | Retained; flag if a role is minted. |
+| `--pos` | `#148338` | `sem-text-deposit` (green-500) | **`#4ADE80`** | `sem-text-deposit` (green-350) | `#34D399` |
+| `--pos-strong` | `#148338` | `sem-text-deposit` | **`#4ADE80`** | `sem-text-success-title` | `#5FE0A8` |
+| `--pos-mid` | `#1EBF51` *snapped from `#22C55E`* | `sem-icons-success` | **`#74D791`** | `sem-text-success-body` (green-350-muted) | — |
+| `--pos-soft` | `#4ADE80` | `prim-green-350` (static) | `#4ADE80` | same | — |
+| `--neg` | `#C82320` | `sem-text-error` (red-600) | **`#F87171`** | `sem-text-error` (red-350) | `#F87171` |
+| `--neg-strong` | `#C82320` | `sem-text-error` | **`#FCA5A5`** | `sem-text-error-body-strong` (red-250) | `#FCA5A5` |
+| `--neg-soft` | `#F87171` | `prim-red-350` (static) | `#F87171` | same | — |
+| `--warn` | `#C85F1A` | `sem-text-warning-title` (orange-600) | **`#FB924D`** | `sem-text-warning-title` (orange-400) | — |
+| `--info` | `#3A6AF8` | `sem-icons-action` (accent blue — integrity ruling) | **`#38BDF8`** | `sem-icons-info` (sky-250 — **sky, not purple**) | `#9A86FF` |
+| `--info-title` | `#3A6AF8` | `sem-text-action` | **`#38BDF8`** | `sem-text-info-title` (sky-250) | `#C3B4FF` |
+| `--orange` | `#EA580C` | — (no Hemlock role; retained) | `#EA580C` | — | — |
+
+> **Cross-theme note (flagged):** light info is accent-blue, dark info is sky. Also `--pos-strong`/`--neg-strong` intensify in light (`= --pos`/`--neg`) but use distinct desaturated steps in dark. Both are consequences of light-integrity + dark-redesign; revisit if cross-theme consistency is wanted.
 
 ### Status tile surfaces (pros / cons / info)
 
-Dark tiles are **flat opaque token surfaces** — the v2.0 translucent gradients are retired.
+Light keeps the original primitive-alpha washes painted as a wash-to-white gradient. Dark uses **flat opaque darktint surfaces** (v2.0's translucent dark gradients are retired).
 
-| Template var | Hemlock token | Light (yours) | **Dark (new)** | Was (v2.0, via gradient rules) |
+| Template var | Light (kept) | = Hemlock (light) | **Dark (new)** | Hemlock (dark) |
 |---|---|---|---|---|
-| `--pros-bg` | `sem-background-success` → `prim-greendark-300` | `rgba(20,131,56,.07)` | **`#12291C`** | `rgba(52,211,153,0.16)` gradient |
-| `--pros-border` | `sem-borders-success` → `prim-greendark-100` | `rgba(20,131,56,.25)` | **`#245234`** | `rgba(52,211,153,0.32)` |
-| `--cons-bg` | `sem-background-error` → `prim-reddark-200` | `rgba(200,35,32,.06)` | **`#3A1B1E`** | `rgba(248,113,113,0.15)` gradient |
-| `--cons-border` | `sem-borders-error-subtle` → `prim-reddark-100` | `rgba(200,35,32,.22)` | **`#542427`** | `rgba(248,113,113,0.30)` |
-| `--info-bg` | `sem-background-info` → `prim-skydark-200` | `rgba(58,106,248,.06)` | **`#10263C`** | purple gradient |
-| `--info-border` | `sem-borders-info` → `prim-skydark-100` | `rgba(58,106,248,.24)` | **`#16304A`** | `rgba(154,134,255,0.32)` |
+| `--pros-bg` | `rgba(20,131,56,.07)` | `prim-green-500` @ 7% | **`#12291C`** | `sem-background-success` (greendark-300) |
+| `--pros-border` | `rgba(20,131,56,.25)` | `prim-green-500` @ 25% | **`#245234`** | `sem-borders-success` (greendark-100) |
+| `--cons-bg` | `rgba(200,35,32,.06)` | `prim-red-600` @ 6% | **`#3A1B1E`** | `sem-background-error` (reddark-200) |
+| `--cons-border` | `rgba(200,35,32,.22)` | `prim-red-600` @ 22% | **`#542427`** | `sem-borders-error-subtle` (reddark-100) |
+| `--info-bg` | `rgba(58,106,248,.06)` | `prim-blue-600` @ 6% | **`#10263C`** | `sem-background-info` (skydark-200) |
+| `--info-border` | `rgba(58,106,248,.24)` | `prim-blue-600` @ 24% | **`#16304A`** | `sem-borders-info` (skydark-100) |
 
-Related warning-surface roles (no template vars yet, available if your component needs them): `sem-background-warning #33200F`, `sem-background-warning-strong #5E3A18`, `sem-borders-warning #5E3A18`.
+Warning-surface roles (no template vars yet, available if needed): light `sem-background-warning #FFF1E9` / dark `#33200F`; `-strong` `#FDC9A6` / `#5E3A18`.
+
+### Scrim
+
+| Template var | Light (kept) | **Dark (new)** | Token |
+|---|---|---|---|
+| `--backdrop` | `rgba(45,41,38,0.34)` | **`rgba(0,0,0,0.64)`** | **`sem-background-scrim`** — added to `hemlock-library.lib.pen` 2026-08-21 (`#2D292657` light / `#000000A3` dark). Note: `prim-shadow-overlay-color` is the *shadow-ramp* color (16% light / 64% black dark) used inside `box-shadow`s, not a scrim role — hence the new token. The two coincide in dark. |
 
 ---
 
-## 4. Widget Token Layer (`--tk-*`)
+## 4. Light-Mode Deltas (the complete list)
 
-Scoped to `#appMain` and `.t2-rd-backdrop`. Buttons follow the `sem-btnPrimary*` family; selection controls follow the slider/toggle/icon action roles.
+Everything else in light renders pixel-identically. These are the only values that changed, all snapped to the nearest Hemlock step:
 
-| Template var | Hemlock token | **Dark (new)** | Was (v2.0) | Notes |
-|---|---|---|---|---|
-| `--tk-accent` | `sem-sliderAccent` / `sem-toggleKnobOn` / `sem-icons-action` → `prim-blue-400` | **`#7094FB`** | `#0075FF` | Checks, radios, switches, slider fill, dropdown selected border, focus icons. |
-| `--tk-accent-hover` | `sem-btnLinkTextHover` → `prim-blue-300` | **`#A5BCFC`** | `#9BB3FC` | |
-| `--tk-accent-subtle` | `sem-background-highlight` → `prim-skydark-100` | **`#16304A`** | `#152354` | Selected fills + the template's focus rings. For your real components the dedicated focus token is `sem-borders-focus: rgba(112,148,251,0.35)`. |
-| `--tk-btn-accent` | `sem-btnPrimaryBg` → `prim-blue-500` | **`#5A82F9`** | `#0075FF` | |
-| `--tk-btn-accent-hover` | `sem-btnPrimaryBgHover` → `prim-blue-400` | **`#7094FB`** | `#3392FF` | |
-| `--tk-text-inverse` | `sem-btnPrimaryText` → `prim-base-black` | **`#000000`** | `#FFFFFF` | **Black label on primary buttons** (rule §2.4). Also the checkbox glyph on the blue-400 checked box. |
-| `--tk-text-1/2/3` | `sem-text-header/meta/subtle` | **`var(--ink)` / `var(--muted)` / `var(--faint)`** | same refs | Resolve to the new navylight values. |
-| `--tk-surface-1/2` | `sem-background-surface/light` | **`var(--surface-1)` / `var(--surface-2)`** | same refs | |
-| `--tk-surface-3` | `sem-background-muted` → `prim-navy-500` | **`#172642`** | `#1B2C4F` | |
-| `--tk-border` | `sem-borders-muted` → `prim-navy-200` | **`var(--border)` = `#2A3A5C`** | `var(--border)` | |
-| `--tk-border-strong` | `sem-borders-strong` → `prim-navy-50` | **`var(--border-strong)` = `#33476E`** | `var(--border-strong)` | Also unchecked check/radio rings (was a brightened one-off `#5E6E90`). |
-| `--tk-error` | `sem-text-error` → `prim-red-350` | **`#F87171`** | `#F87171` | |
-| `--tk-error-subtle` | `sem-background-error` → `prim-reddark-200` | **`#3A1B1E`** | `#450A0A` | |
-| `--tk-track` | `sem-sliderTrack` → `prim-navy-300` | **`#22314F`** | `#26324C` | |
-| `--tk-off` | `sem-toggleTrackOff` → `prim-navy-500` | **`#172642`** | `#33476E` | |
-| `--tk-thumb-dis` | `sem-background-disabled` → `prim-navy-700` | **`#131C31`** | `#141E36` | |
-| `--tk-shadow-sm` | `prim-shadow-sm-color` (28%) | **`0 1px 3px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.04)`** | `…0.5…` | |
-| `--tk-shadow-dd` | `prim-shadow-lg-color` (45%) | **`0 4px 16px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05)`** | `…0.6…` | |
-
-Two rule-level notes applied in the companion HTML:
-
-- **Toggle thumb** stays white in dark (`sem-toggleKnob #FFFFFF` both modes) — the template's thumb reads `--tk-surface-1`, so the dark build adds `html[data-theme="dark"] .tkt-thumb{background:#FFFFFF;}`.
-- **Selected dropdown items** use `--tk-btn-accent` + `--tk-text-inverse` (blue-500 fill, black label) — the old white-on-accent pairing fails contrast on blue-400.
+| Var | Was | Now | Why |
+|---|---|---|---|
+| `--faint` | `#767169` | **`#8A8680`** | Ruling C — canon `sem-text-subtle`; AA miss accepted + flagged (§3 Text). **The only visible change.** |
+| `--pos-mid` | `#22C55E` | **`#1EBF51`** | `sem-icons-success` — nearest step. |
+| `--cat4` | `#7AA0F9` | **`#7094FB`** | `prim-blue-400` — nearest step. |
+| `--tk-accent-hover`, `--tk-btn-accent-hover` | `#295CCC` | **`#2952CC`** | Canon blue-700 (the template's own comment flags the near-miss). |
+| `--tk-text-1/2/3` | `#171717`/`#525252`/`#737373` | **`#0E0E0E`/`#5E5954`/`#716E6A`** | gray-900 / gray-600 / gray-500 (`sem-text-header`/`-meta`/`-placeholder`). |
+| `--tk-surface-2/3` | `#F5F5F5`/`#EBEBEB` | **`#F8F7F6`/`#EEEDEB`** | gray-50 / gray-100. |
+| `--tk-border` / `--tk-border-strong` | `#E5E5E5`/`#D4D4D4` | **`#EEEDEB`/`#D5D3D0`** | `sem-borders-light` / `sem-borders-muted`. |
+| `--tk-error` / `--tk-error-subtle` | `#B91C1C`/`#FEE2E2` | **`#C82320`/`#FFEAEA`** | red-600 / red-50. |
+| `--tk-track` / `--tk-off` / `--tk-thumb-dis` | `#D8D9D8`/`#B6B9B7`/`#EEEFEE` | **`#D5D3D0`/`#B5B1AB`/`#EEEDEB`** | gray-200 / gray-300 / gray-100. (Hemlock's own toggle-off role is `sem-toggleTrackOff #EDEAE3` if a component builds toggles from tokens.) |
+| `--tk-shadow-sm` | 5% black | **8% black** | `prim-shadow-sm-color`. |
 
 ---
 
-## 5. Buttons — Full Hemlock Matrix (resolved hex, dark)
+## 5. Widget Token Layer (`--tk-*`), dark
 
-For components that draw their own buttons rather than the `--tk-*` widgets. Light values are in your existing spec; dark below. Disabled dim: **45% opacity** in dark (38% light).
+Scoped to `#appMain` and `.t2-rd-backdrop`. Buttons follow `sem-btnPrimary*`; selection controls follow the slider/toggle/icon action roles.
+
+| Template var | Hemlock token | **Dark (new)** | was (v2.0) |
+|---|---|---|---|
+| `--tk-accent` | `sem-sliderAccent` / `sem-toggleKnobOn` / `sem-icons-action` (blue-400) | **`#7094FB`** | `#0075FF` |
+| `--tk-accent-hover` | `sem-btnLinkTextHover` (blue-300) | **`#A5BCFC`** | `#9BB3FC` |
+| `--tk-accent-subtle` | `sem-background-highlight` (skydark-100) | **`#16304A`** | `#152354` |
+| `--tk-btn-accent` | `sem-btnPrimaryBg` (blue-500) | **`#5A82F9`** | `#0075FF` |
+| `--tk-btn-accent-hover` | `sem-btnPrimaryBgHover` (blue-400) | **`#7094FB`** | `#3392FF` |
+| `--tk-text-inverse` | `sem-btnPrimaryText` | **`#000000`** (black label on dark primary fills) | `#FFFFFF` |
+| `--tk-text-1/2/3` | `sem-text-header/meta/subtle` | **`var(--ink)`/`var(--muted)`/`var(--faint)`** | same refs |
+| `--tk-surface-1/2` | `sem-background-surface/light` | **`var(--surface-1)`/`var(--surface-2)`** | same refs |
+| `--tk-surface-3` | `sem-background-muted` (navy-500) | **`#172642`** | `#1B2C4F` |
+| `--tk-border` / `--tk-border-strong` | per §2.8 | **`var(--border)`/`var(--border-strong)`** | same refs |
+| `--tk-error` / `--tk-error-subtle` | `sem-text-error` / `sem-background-error` | **`#F87171`/`#3A1B1E`** | `#F87171`/`#450A0A` |
+| `--tk-track` / `--tk-off` / `--tk-thumb-dis` | `sem-sliderTrack` / `sem-toggleTrackOff` / `sem-background-disabled` | **`#22314F`/`#172642`/`#131C31`** | `#26324C`/`#33476E`/`#141E36` |
+| `--tk-shadow-sm` | `prim-shadow-sm-color` 28% | **`0 1px 3px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.04)`** | 50% |
+| `--tk-shadow-dd` | `prim-shadow-lg-color` 45% | **`0 4px 16px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05)`** | 60% |
+
+Rule-level companions applied in the HTML:
+
+- **Toggle thumb** is white in both modes (`sem-toggleKnob #FFFFFF`) — the dark build adds `html[data-theme="dark"] .tkt-thumb{background:#FFFFFF;}` because the shared rule paints it `--tk-surface-1`.
+- **Selected dropdown items (dark)** use `--tk-btn-accent` + `--tk-text-inverse` (blue-500 fill, black label) — white-on-accent fails contrast on blue-400.
+- **Unchecked check/radio rings (dark)** use `var(--tk-border-strong)` `#33476E` (replaces the one-off `#5E6E90`).
+- The dedicated focus token for real components is `sem-borders-focus`: light `#0E0E0E`, dark `rgba(112,148,251,0.35)`. The template reuses `--tk-accent-subtle` for both ring and selected fills.
+
+---
+
+## 6. Buttons — Full Hemlock Matrix (resolved hex, dark)
+
+For components that draw their own buttons rather than the `--tk-*` widgets. Light values equal the template's current light spec. Disabled dim: **45% opacity** dark (38% light).
 
 | Family / state | Bg | Text | Border |
 |---|---|---|---|
@@ -189,102 +221,146 @@ For components that draw their own buttons rather than the `--tk-*` widgets. Lig
 
 ---
 
-## 6. Charts
+## 7. Charts
 
-### Categorical palette (`--cat1..7` → `sem-chart-cat-1..7`)
+### Template series slots (`--cat1..7`)
 
-The full Hemlock categorical set is 15 colors; the template exposes the first 7. **Heads-up:** the Hemlock *light* palette differs from the template's current light values (Hemlock cat-1 is purple `#8951F0`; the template's is blue `#3A6AF8`). Light is out of scope here — but flag the divergence when light reconciliation happens.
+Per the integrity ruling, **light keeps the template's blue-led palette** (every value is an exact Hemlock paint; `--cat4` snapped `#7AA0F9→#7094FB`). **Dark uses the Hemlock categorical palette.**
 
-| Token | Light (Hemlock) | **Dark** | Token | Light (Hemlock) | **Dark** |
+| Slot | Light (kept) | = Hemlock paint | **Dark (new)** | = Hemlock token |
+|---|---|---|---|---|
+| `--cat1` | `#3A6AF8` | `prim-blue-600` | **`#B198F0`** | `sem-chart-cat-1` |
+| `--cat2` | `#06B6D4` | `chart-cat-2` (light) | **`#5FD3E6`** | `sem-chart-cat-2` |
+| `--cat3` | `#163196` | `prim-blue-800` | **`#8480D9`** | `sem-chart-cat-3` |
+| `--cat4` | `#7094FB` *snapped* | `prim-blue-400` | **`#7AA0F5`** | `sem-chart-cat-4` |
+| `--cat5` | `#0F766E` | `chart-cat-5` (light) | **`#4FC0A6`** | `sem-chart-cat-5` |
+| `--cat6` | `#CA8A04` | `chart-cat-14` (light) | **`#84D2F7`** | `sem-chart-cat-6` |
+| `--cat7` | `#FB923C` | `chart-cat-13` (light) | **`#84E6CC`** | `sem-chart-cat-7` |
+
+> ⚠ **Flagged — series color discontinuity:** a series drawn with `--cat1` is **blue in light and purple in dark** (light keeps its palette; dark follows the Hemlock token gallery). If series continuity across themes matters for a component, either use the full Hemlock palette in both modes (below) or raise for a ruling.
+
+### Hemlock categorical palette (full 15, both modes)
+
+| Token | Light | Dark | Token | Light | Dark |
 |---|---|---|---|---|---|
-| cat-1 | `#8951F0` | **`#B198F0`** | cat-9 | `#C026D3` | **`#DB74E6`** |
-| cat-2 | `#06B6D4` | **`#5FD3E6`** | cat-10 | `#E73CAE` | **`#F485BE`** |
-| cat-3 | `#312E81` | **`#8480D9`** | cat-11 | `#E879A8` | **`#E89FB0`** |
-| cat-4 | `#3B82F6` | **`#7AA0F5`** | cat-12 | `#92400E` | **`#CE7E5B`** |
-| cat-5 | `#0F766E` | **`#4FC0A6`** | cat-13 | `#FB923C` | **`#F0985A`** |
-| cat-6 | `#38BDF8` | **`#84D2F7`** | cat-14 | `#CA8A04` | **`#D9A02E`** |
-| cat-7 | `#2DD4BF` | **`#84E6CC`** | cat-15 | `#FACC15` | **`#F3DE6F`** |
-| cat-8 | `#A78BFA` | **`#C7BAF7`** | | | |
+| cat-1 | `#8951F0` | `#B198F0` | cat-9 | `#C026D3` | `#DB74E6` |
+| cat-2 | `#06B6D4` | `#5FD3E6` | cat-10 | `#E73CAE` | `#F485BE` |
+| cat-3 | `#312E81` | `#8480D9` | cat-11 | `#E879A8` | `#E89FB0` |
+| cat-4 | `#3B82F6` | `#7AA0F5` | cat-12 | `#92400E` | `#CE7E5B` |
+| cat-5 | `#0F766E` | `#4FC0A6` | cat-13 | `#FB923C` | `#F0985A` |
+| cat-6 | `#38BDF8` | `#84D2F7` | cat-14 | `#CA8A04` | `#D9A02E` |
+| cat-7 | `#2DD4BF` | `#84E6CC` | cat-15 | `#FACC15` | `#F3DE6F` |
+| cat-8 | `#A78BFA` | `#C7BAF7` | | | |
 
 ### Sequential ramp (`sem-chart-seq-*`) — blue palette, depth reversed in dark
 
-| Token | Light | **Dark** |
-|---|---|---|
-| seq-100 | `#EBF0FE` (blue-100) | **`#163196`** (blue-800) |
-| seq-200 | `#C8D6FD` | **`#2952CC`** |
-| seq-300 | `#A5BCFC` | **`#3A6AF8`** |
-| seq-400 | `#7094FB` | **`#5A82F9`** |
-| seq-500 | `#5A82F9` | **`#7094FB`** |
-| seq-600 | `#3A6AF8` | **`#A5BCFC`** |
-| seq-700 | `#2952CC` | **`#C8D6FD`** |
+| Token | Light | Dark | | Token | Light | Dark |
+|---|---|---|---|---|---|---|
+| seq-100 | `#EBF0FE` | `#163196` | | seq-500 | `#5A82F9` | `#7094FB` |
+| seq-200 | `#C8D6FD` | `#2952CC` | | seq-600 | `#3A6AF8` | `#A5BCFC` |
+| seq-300 | `#A5BCFC` | `#3A6AF8` | | seq-700 | `#2952CC` | `#C8D6FD` |
+| seq-400 | `#7094FB` | `#5A82F9` | | | | |
 
 ### Threshold & scaffold
 
-- `sem-chart-threshold` → `sem-background-action`: **`#5A82F9`** dark (`#3A6AF8` light). **Never orange.**
-- Chart scaffold (`--grid #26324C`, `--grid2 #26324C`, `--axis #5E6E90`) has **no Hemlock tokens yet** — these are the accepted AreaChart reference-sheet values, retained as-is. Flag for future tokenization.
-- Area washes keep alpha (rule §2.2): `--accent-fill: rgba(90,130,249,0.15)` dark.
+- `sem-chart-threshold` → `sem-background-action`: `#3A6AF8` light / **`#5A82F9`** dark. **Never orange.**
+- Chart scaffold (`--grid`, `--grid2`, `--axis`, `--zero`, `--det`) has **no Hemlock tokens** — original values retained in both modes (light `#EEEFEE/#D8D9D8/#B6B9B7/#B6B9B7/#5E5954`; dark `#26324C/#26324C/#5E6E90`). Flagged for future tokenization.
+- Area washes keep alpha: `--accent-fill` `rgba(58,106,248,0.15)` light / `rgba(90,130,249,0.15)` dark.
 
 ---
 
-## 7. Component Recipes (dark)
+## 8. Component Recipes (dark)
 
-What the companion HTML applies, rule by rule. Gradients from v2.0's dark treatments are **retired in favor of flat token surfaces** (rule §2.1).
+What the companion HTML applies. Dark gradients from v2.0 are **retired in favor of flat token surfaces** (§2.1). Light treatments are unchanged.
 
 | Component | v2.0 dark treatment | **Hemlock dark treatment** |
 |---|---|---|
-| Page body | flat `#101729` | Same — `var(--page-bg)` `#101729` (`sem-background-main`). |
-| Card (chrome tile) | same flat color as page, outline-defined | **`var(--surface-1)` `#131C31`** — the card now sits one step *lighter* than the page (elevation, §2.1), keeping its 1px blue-tint ring. |
+| Page body | flat `#101729` | **flat `var(--page-bg)` `#131C31`** (`sem-background-surface`) |
+| Card (chrome tile) | same-as-page, outline-defined | Same principle — `var(--surface-1)` `#131C31` = page, outline-defined, 1px blue-tint ring kept |
 | Tab band (`.sc-tabs-wrap`) | `#141E36` | **`var(--taupe-100)` `#172642`** |
-| Option tiles (`.sc-plan-card`) | vertical gradient `#121B2E→#0E1524` | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)`; hover **flat `var(--row-hover)` `#172642`** + border `var(--accent)` + `0 10px 24px rgba(0,0,0,0.36)` |
+| Option tiles (`.sc-plan-card`) | vertical gradient | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)`; hover **flat `var(--row-hover)` `#172642`** + border `var(--accent)` + `0 10px 24px rgba(0,0,0,0.36)` |
 | Generic boxes (`.sc-box`), checklist cards | gradients | **flat `var(--surface-2)` `#18223A`** |
-| Pros / Cons / Info tiles | translucent green/red/**purple** gradients | **flat opaque `var(--pros-bg)` / `var(--cons-bg)` / `var(--info-bg)`** with their token borders — info is **sky** (§3). Titles/strips via `--pos-strong` / `--neg-strong` / `--info-title` / `--info`. |
-| Table headers (data + compare) | gradient `#17263F→#101A2E` | **flat `var(--surface-2)` `#18223A`** (`sem-background-elevated`) |
-| Row hover / pressed | `#12203C` / `#1B2C4F` | **`#172642` / `#202C4E`** — opaque (sticky columns, §2.2) |
+| Pros / Cons / Info tiles | translucent green/red/**purple** gradients | **flat opaque `var(--pros-bg)`/`var(--cons-bg)`/`var(--info-bg)`** with token borders — info is **sky** |
+| Table headers (data + compare) | gradient | **flat `var(--surface-2)` `#18223A`** (`sem-background-elevated`) |
+| Row hover / pressed | `#12203C`/`#1B2C4F` | **`#172642`/`#202C4E`** — opaque |
 | Sticky-column edge shadow | `rgba(0,0,0,.6)` | **`rgba(0,0,0,0.45)`** (`prim-shadow-lg-color`) |
-| Sort arrows | unsorted `#8695B5`, sorted **white** | unsorted **`#52637F`** (`sem-icons-subtle`), sorted **`#7094FB`** (`sem-icons-action`) |
-| KPI cards (`.sc-kpi`) | gradient `#111A2C→#0D1421`, purple top bar `#9A86FF` | **flat `var(--surface-2)`**, top bar `var(--accent-3)` → **`#B198F0`** (`sem-chart-cat-1` — nearest role, flagged) |
-| Calculator body | purple radial + navy gradient | **flat `var(--calc-bg)` `#0C1222`** (`sem-background-sunken`), border `var(--taupe-border)` `#22314F`, shadow `0 18px 42px rgba(0,0,0,0.45)` |
-| Tooltips (`#t2Tip`, `.t2ck-tip`) | gradients / `#17263F` | **flat `var(--surface-2)` `#18223A`** (elevated), border `var(--border-strong)` |
-| Dropdown menus (single-select) | `#070A10` | **`#090E1B`** (`prim-navy-950` — the deleted `#070A10`'s successor step) |
-| Selected dropdown item | `--tk-accent` bg + white text | **`--tk-btn-accent` `#5A82F9` bg + `--tk-text-inverse` `#000000` text** |
-| Check/radio unchecked rings | `#5E6E90` one-off | **`var(--tk-border-strong)` `#33476E`** |
-| Toggle thumb | `--tk-surface-1` (navy) | **`#FFFFFF`** (`sem-toggleKnob`, both modes) |
-| Row-detail modal | gradient; scrim `rgba(20,32,60,0.62)` | **flat `var(--surface-2)`**; scrim **`rgba(0,0,0,0.64)`** (`prim-shadow-overlay-color`) |
-| Modal / video backdrop (`--backdrop`) | light-tinted `rgba(225,230,240,0.22)` | **`rgba(0,0,0,0.64)`** — scrims are black in dark (§2.2) |
-| Disclosure top rules (gradient border-image) | `rgba(90,134,255,.55)→rgba(47,212,196,.18)` | **`rgba(90,130,249,0.55)→rgba(132,230,204,0.18)`** — re-derived from the new accent + cat-7 |
-| Select chevron (native) | `#A3A3A3` glyph | **`#697DA0`** (`sem-icons-meta`) |
-| Attention badges (`.sc-title-badge`) | `#6E52FF` both modes | **unchanged `#6E52FF`** — no Hemlock role exists; Bill's rev E ruling stands until a `sem-` badge role is minted. Flagged. |
-| Hero ombre / video posters (`--hero-1..8`) | brand radial gradient | **unchanged** — brand gradient, outside the token system. |
+| Sort arrows | unsorted `#8695B5`, sorted white | unsorted **`#52637F`** (`sem-icons-subtle`), sorted **`#7094FB`** (`sem-icons-action`) |
+| KPI cards (`.sc-kpi`) | gradient, purple bar `#9A86FF` | **flat `var(--surface-2)`**, top bar `var(--accent-3)` **`#B198F0`** (`sem-chart-cat-1`, flagged) |
+| Calculator body | purple radial + navy gradient | **flat `var(--calc-bg)` `#0C1222`**, border `var(--taupe-border)` `#22314F`, shadow `0 18px 42px rgba(0,0,0,0.45)` |
+| Tooltips (`#t2Tip`, `.t2ck-tip`) | gradients / `#17263F` | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)` |
+| Dropdown menus (single-select) | `#070A10` | **`#090E1B`** (`prim-navy-950`) |
+| Selected dropdown item | accent bg + white text | **blue-500 bg + black text** (`--tk-btn-accent` + `--tk-text-inverse`) |
+| Check/radio unchecked rings | `#5E6E90` | **`var(--tk-border-strong)` `#33476E`** |
+| Toggle thumb | navy (`--tk-surface-1`) | **`#FFFFFF`** (`sem-toggleKnob`) |
+| Row-detail modal | gradient; scrim `rgba(20,32,60,0.62)` | **flat `var(--surface-2)`**; scrim **`rgba(0,0,0,0.64)`** (`sem-background-scrim`) |
+| Modal / video backdrop (`--backdrop`) | `rgba(225,230,240,0.22)` | **`rgba(0,0,0,0.64)`** (`sem-background-scrim`) |
+| Disclosure top rules (gradient border-image) | `rgba(90,134,255,.55)→rgba(47,212,196,.18)` | **`rgba(90,130,249,0.55)→rgba(132,230,204,0.18)`** — re-derived from blue-500 + cat-7 |
+| Select chevron (native) | `#A3A3A3` | **`#697DA0`** (`sem-icons-meta`) |
+| Attention badges (`.sc-title-badge`) | `#6E52FF` both modes | **unchanged `#6E52FF`** — no Hemlock role; flagged |
+| Hero ombre / video posters | brand gradients | **unchanged** — outside the token system |
 
 ---
 
-## 8. Focus
+## 9. Shadows, Overlays & Focus
 
-- Canonical dark focus ring: **`sem-borders-focus: rgba(112,148,251,0.35)`** (blue-400 @ 35% — one of the surviving alphas). Light's focus is `gray-900`.
-- Recommended pattern: `box-shadow: 0 0 0 3px rgba(112,148,251,0.35);`
-- The template's `--tk-*` widgets reuse `--tk-accent-subtle` (`#16304A`, opaque) for both the ring and selected fills — acceptable inside the template, but new components should bind the dedicated focus token.
-- `sem-borders-focus-inverted` (focus on inverted fills): `#0E0E0E` dark.
-
----
-
-## 9. Shadows & Overlays
-
-Dark shadows deepen; they don't replace surface elevation (§2.1).
-
-| Role | Hemlock token | Light | **Dark** |
+| Role | Hemlock token | Light | Dark |
 |---|---|---|---|
-| Small (controls) | `prim-shadow-sm-color` | black @ 8% | **black @ 28%** (`#00000047`) |
-| Medium (panels, hover lifts) | `prim-shadow-md-color` | black @ 10% | **black @ 36%** (`#0000005C`) |
-| Large (dropdowns, tiles) | `prim-shadow-lg-color` | black @ 12% | **black @ 45%** (`#00000073`) |
-| Overlay / scrim / modal | `prim-shadow-overlay-color` | black @ 16% | **black @ 64%** (`#000000A3`) |
+| Small (controls) | `prim-shadow-sm-color` | black @ 8% | black @ 28% |
+| Medium (panels, hover lifts) | `prim-shadow-md-color` | black @ 10% | black @ 36% |
+| Large (dropdowns, tiles) | `prim-shadow-lg-color` | black @ 12% | black @ 45% |
+| Shadow overlay (modal box-shadows) | `prim-shadow-overlay-color` | black @ 16% | black @ 64% |
+| **Scrim (backdrops)** | **`sem-background-scrim`** | `#2D292657` (`rgba(45,41,38,0.34)`) | `#000000A3` (`rgba(0,0,0,0.64)`) |
 
-Template mappings: `--tile-shadow: 0 0 0 1px rgba(120,150,255,0.06), 0 16px 40px rgba(0,0,0,0.45)` · `--panel-shadow-hover: 0 8px 24px rgba(0,0,0,0.36)` · `--modal-shadow: 0 16px 40px rgba(0,0,0,0.64)` · `--backdrop: rgba(0,0,0,0.64)`.
+Template mappings — light (unchanged): `--tile-shadow` 10%, `--panel-shadow-hover` 12%, `--modal-shadow` 16%. Dark: `--tile-shadow: 0 0 0 1px rgba(120,150,255,0.06), 0 16px 40px rgba(0,0,0,0.45)` · `--panel-shadow-hover: 0 8px 24px rgba(0,0,0,0.36)` · `--modal-shadow: 0 16px 40px rgba(0,0,0,0.64)`.
+
+**Focus:** `sem-borders-focus` — light `#0E0E0E`, dark `rgba(112,148,251,0.35)` (blue-400 @ 35%). Pattern: `box-shadow: 0 0 0 3px <value>;`. `sem-borders-focus-inverted`: `#FFFFFF` light / `#0E0E0E` dark.
 
 ---
 
-## 10. Copy-Paste Dark Blocks
+## 10. Copy-Paste Blocks
 
-These are exactly the blocks applied in `Component Template v2.0 (Hemlock Dark).html`.
+Exactly what `Component Template v2.0 (Hemlock).html` ships. Light `:root` (only the color-relevant lines; layout scales unchanged):
+
+```css
+:root{
+  --surface-1:#FFFFFF; --surface-2:#F8F7F6; --nest:#F8F7F6;      /* sem-background-surface / -light / -subtle */
+  --border:#EEEDEB; --border-strong:#D5D3D0;                     /* sem-borders-light / sem-borders-muted */
+  --ink:#0E0E0E; --muted:#5E5954; --faint:#8A8680; --inverse:#FFFFFF;  /* sem-text-header / -meta / -subtle (ruling C) / -reverse */
+  --accent:#3A6AF8; --accent-hover:#2952CC; --accent-subtle:#EBF0FE;   /* action blue-600 / btnPrimaryBgHover blue-700 / background-highlight */
+  --calc-bg:#F7F5F0;                                             /* sem-background-sunken */
+  --pos:#148338; --pos-mid:#1EBF51; --neg:#C82320; --warn:#C85F1A;
+  --pos-soft:#4ADE80; --neg-soft:#F87171;
+  --page-bg:#FFFFFF;                                             /* sem-background-surface — host app supplies background-main */
+  --taupe-100:#F7F5F0; --taupe-pressed:#EDEAE3; --taupe-border:#E3DFD6;  /* rowHover / rowPressed / prim-taupe-300 */
+  --grid:#EEEFEE; --grid2:#D8D9D8; --axis:#B6B9B7; --zero:#B6B9B7; --det:#5E5954; --orange:#EA580C;  /* untokenized — retained */
+  --accent-fill:rgba(58,106,248,0.15);
+  --cat1:#3A6AF8; --cat2:#06B6D4; --cat3:#163196; --cat4:#7094FB;
+  --cat5:#0F766E; --cat6:#CA8A04; --cat7:#FB923C;                /* blue-led palette kept; all exact Hemlock paints */
+  --tile-shadow:0 4px 12px rgba(0,0,0,0.10); --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.12);
+  --modal-shadow:0 16px 40px rgba(0,0,0,0.16);
+  --backdrop:rgba(45,41,38,0.34);                                /* sem-background-scrim */
+  --pos-strong:#148338; --neg-strong:#C82320; --info:#3A6AF8; --info-title:#3A6AF8; --hairline:#595959;
+  --pros-bg:rgba(20,131,56,.07); --pros-border:rgba(20,131,56,.25);   /* prim-green-500 washes */
+  --cons-bg:rgba(200,35,32,.06); --cons-border:rgba(200,35,32,.22);   /* prim-red-600 washes */
+  --info-bg:rgba(58,106,248,.06); --info-border:rgba(58,106,248,.24); /* prim-blue-600 washes */
+  --text-body:#403D3A;
+  --row-hover:var(--taupe-100); --row-pressed:var(--taupe-pressed);
+}
+
+#appMain,.t2-rd-backdrop{  /* light widget layer — nearest-Hemlock snaps */
+  --tk-accent:#3A6AF8; --tk-accent-hover:#2952CC; --tk-accent-subtle:#EBF0FE;
+  --tk-btn-accent:#3A6AF8; --tk-btn-accent-hover:#2952CC;
+  --tk-text-inverse:#FFFFFF; --tk-text-1:#0E0E0E; --tk-text-2:#5E5954; --tk-text-3:#716E6A;
+  --tk-surface-1:#FFFFFF; --tk-surface-2:#F8F7F6; --tk-surface-3:#EEEDEB;
+  --tk-border:#EEEDEB; --tk-border-strong:#D5D3D0;
+  --tk-error:#C82320; --tk-error-subtle:#FFEAEA;
+  --tk-track:#D5D3D0; --tk-off:#B5B1AB; --tk-thumb-dis:#EEEDEB;
+  --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.08);
+  --tk-shadow-dd:0 4px 12px rgba(0,0,0,0.12);
+}
+```
+
+Dark:
 
 ```css
 html[data-theme="dark"]{
@@ -292,7 +368,7 @@ html[data-theme="dark"]{
   --surface-1:#131C31;            /* sem-background-surface (prim-navy-700) */
   --surface-2:#18223A;            /* sem-background-light / -elevated / -subtle (prim-navy-600) */
   --nest:#18223A;                 /* sem-background-subtle */
-  --page-bg:#101729;              /* sem-background-main (prim-navy-800) */
+  --page-bg:#131C31;              /* sem-background-surface — the template "page" is the component surface; the host app supplies sem-background-main #101729 */
   --calc-bg:#0C1222;              /* sem-background-sunken (prim-navy-900) */
   /* borders */
   --border:#2A3A5C;               /* sem-borders-muted (prim-navy-200) — visible-outline role; pure hairlines = sem-borders-light #131C31 */
@@ -336,7 +412,7 @@ html[data-theme="dark"]{
   --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.45);  /* prim-shadow-lg-color 45% */
   --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.36);                             /* prim-shadow-md-color 36% */
   --modal-shadow:0 16px 40px rgba(0,0,0,0.64);                                  /* prim-shadow-overlay-color 64% */
-  --backdrop:rgba(0,0,0,0.64);                                                  /* prim-shadow-overlay-color */
+  --backdrop:rgba(0,0,0,0.64);                                                  /* sem-background-scrim */
   /* brand hero ombre — outside the token system, unchanged */
   --hero-1:#7094FB; --hero-2:#5873C0; --hero-3:#3F5185; --hero-4:#334067;
   --hero-5:#273049; --hero-6:#1A1F2C; --hero-7:#14161D; --hero-8:#0E0E0E;
@@ -364,7 +440,7 @@ html[data-theme="dark"] .t2-rd-backdrop{
   --tk-shadow-dd:0 4px 16px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.05);  /* prim-shadow-lg-color */
 }
 
-/* rule-level companions (see §7) */
+/* rule-level companions (see §5/§8) */
 html[data-theme="dark"] .tkt-thumb{background:#FFFFFF;}  /* sem-toggleKnob — white both modes */
 ```
 
@@ -374,43 +450,50 @@ html[data-theme="dark"] .tkt-thumb{background:#FFFFFF;}  /* sem-toggleKnob — w
 
 | Value | Where | Status |
 |---|---|---|
-| `--hero-1..8` / `--hero-ombre` | hero glow, video posters | Brand gradient — outside the token system. Unchanged. |
+| `--hero-1..8` / `--hero-ombre` | hero glow, video posters | Brand gradients — outside the token system. Unchanged both modes. |
 | `.sc-title-badge #6E52FF` | LISTINGS / CALCULATOR badges | Bill's rev E ruling (both modes). No `sem-` badge role exists yet. |
-| `--grid / --grid2 / --axis` | chart scaffold | AreaChart reference-sheet values. Candidates for future `sem-chart-*` scaffold tokens. |
+| `--grid / --grid2 / --axis / --zero / --det` | chart scaffold | Original values retained both modes. Candidates for future `sem-chart-*` scaffold tokens. |
 | `--orange #EA580C` | chart/status extra | No Hemlock role; unchanged. |
-| `--zero #B6B9B7`, `--det #5E5954` | chart scaffold (not dark-overridden in v2.0 either) | Consider `--axis` / `--muted` respectively if they surface in your component. |
 | `--hairline #595959` | video-thumb outline, no-chrome insets | Static by design. |
 
+## 12. Open Flags for Design
+
+1. **`--faint` AA miss (ruling C):** `#8A8680` on white ≈ 3.5:1 — fails AA for small text. `sem-text-placeholder #716E6A` passes if needed.
+2. **Chart series discontinuity:** `--cat1` is blue in light, purple in dark (§7).
+3. **Info color discontinuity:** accent-blue in light, sky in dark (§3).
+4. **`--accent-2/3/4`, `--pos-mid`:** nearest-role mappings, not exact tokens.
+5. **Badge `#6E52FF`, hero gradients, chart scaffold:** unmapped (§11).
+
 ---
 
-## 12. WCAG Notes
+## 13. WCAG Notes
 
 - `sem-btnLinkText` dark (`#7094FB` on `#101729`): **6.2:1** — approved ruling.
-- Primary button black-on-blue-500: passes AA (this is *why* dark buttons are black-text).
-- `sem-text-meta` (`#697DA0`) on `sem-background-surface` (`#131C31`): ≈4.1:1 — labels and meta only; body copy must use `sem-text-body` (`#B3C1DB`).
-- Disabled states are exempt (dim: 45% dark / 38% light).
-- Check both themes at AA: text ≥ 4.5:1, large text & UI graphics ≥ 3:1.
+- Dark primary buttons: black-on-blue-500 passes AA (that's *why* dark buttons are black-text).
+- `sem-text-meta` dark (`#697DA0` on `#131C31`): ≈4.1:1 — labels/meta only; body copy uses `sem-text-body #B3C1DB`.
+- `--faint` light `#8A8680`: see flag §12.1.
+- Disabled states exempt (dim: 45% dark / 38% light).
 
 ---
 
-## 13. What NOT To Do (dark edition)
+## 14. What NOT To Do
 
-- **No purple info tiles.** Dark info is sky (`#38BDF8` titles/strips, `#10263C` surface). Purple survives only in the chart categorical palette and the (flagged) title badge.
-- **No white text on primary buttons.** Dark primary = black text on blue-500.
-- **No alpha state fills.** Hover/pressed/selected are opaque navy steps. Alpha only for: scrim, focus ring, chat glow, voice pulse, chart washes.
-- **No light-tinted scrims.** Dark scrim = black @ 64%.
-- **No gradient tile/header backgrounds.** Elevation = one lighter navy step, flat.
+- **No purple info tiles in dark.** Dark info is sky. Purple survives only in the chart palette and the (flagged) badge.
+- **No white text on dark primary buttons.** Dark primary = black text on blue-500.
+- **No alpha state fills in dark.** Hover/pressed/selected are opaque navy steps. Alpha only for: scrims, focus ring, chat glow, voice pulse, chart washes (and light's original status-tile washes).
+- **No light-tinted scrims in dark.** Dark scrim = black @ 64% (`sem-background-scrim`).
+- **No gradient tile/header backgrounds in dark.** Elevation = one lighter navy step, flat. (Light keeps its original wash-to-white tile treatment.)
 - **No taupe in dark.** Every taupe role maps to a navy step (`#172642` / `#202C4E` / `#22314F`).
-- **No reusing the old template dark text values** (`#EAF0FF`, `#9DB0D2`, `#C9D4EA`, `#8A9BBF`) — the navylight ramp is canon.
 - **No hand-picked navy.** If a navy isn't one of the 11 ramp steps (`#33476E #2E4066 #2A3A5C #22314F #202C4E #172642 #18223A #131C31 #101729 #0C1222 #090E1B`), it's wrong.
-- **No orange thresholds in charts.** Threshold = action blue.
+- **No orange chart thresholds.** Threshold = action blue.
+- **No redesigning light.** Light is integrity-locked: original values, nearest-Hemlock annotations. Don't "modernize" light treatments to match dark.
 - **Don't "improve" any hex.** If a value looks wrong, flag it to the design team; don't substitute.
 
 ---
 
-## Appendix A — Full Hemlock Semantic Reference (dark)
+## Appendix A — Full Hemlock Semantic Reference
 
-Complete `sem-*` set from `hemlock-library.lib.pen`, resolved to hex, for future diffing. Format: `token → dark primitive = dark hex` (light hex in parentheses).
+Complete `sem-*` set from `hemlock-library.lib.pen`, resolved to hex, for future diffing. Format: token → dark primitive = dark hex (light hex in parentheses).
 
 ### Backgrounds
 
@@ -429,6 +512,7 @@ Complete `sem-*` set from `hemlock-library.lib.pen`, resolved to hex, for future
 | sem-background-disabled | prim-navy-700 | `#131C31` | `#F8F7F6` |
 | sem-background-action | prim-blue-500 | `#5A82F9` | `#3A6AF8` |
 | sem-background-highlight | prim-skydark-100 | `#16304A` | `#EBF0FE` |
+| sem-background-scrim | — literal | `#000000A3` | `#2D292657` |
 | sem-background-info | prim-skydark-200 | `#10263C` | `#EBF6FF` |
 | sem-background-info-strong | prim-skydark-100 | `#16304A` | `#AEDCFE` |
 | sem-background-success | prim-greendark-300 | `#12291C` | `#E9FFF0` |
@@ -526,11 +610,11 @@ Complete `sem-*` set from `hemlock-library.lib.pen`, resolved to hex, for future
 
 ### Buttons
 
-Resolved matrix in §5. Raw refs: `sem-btnPrimary*`, `sem-btnPrimaryInverted*`, `sem-btnSecondary*`, `sem-btnSecondaryInverted*`, `sem-btnDestruction*`, `sem-btnLink*` — all present in `hemlock-library.lib.pen` with the §5 values.
+Resolved dark matrix in §6. Raw refs: `sem-btnPrimary*`, `sem-btnPrimaryInverted*`, `sem-btnSecondary*`, `sem-btnSecondaryInverted*`, `sem-btnDestruction*`, `sem-btnLink*` — all present in `hemlock-library.lib.pen`.
 
 ### Chat & Nav (different surface — not used by the component template; listed for completeness)
 
-The `sem-chat*` (24 tokens) and `sem-nav*` (19 tokens) families theme the chat panel and navigation, per `chat-nav-refresh.pen`. Key dark anchors: `sem-chatBg #090E1B`, `sem-chatInputBg #090E1B`, `sem-chatBorder #33476E`, `sem-chatTextPrimary #EBF0FE` (prim-blue-100), `sem-chatShadow` glow `0 0 32px rgba(155,179,252,0.14), 0 0 10px rgba(155,179,252,0.10)` (dark-only; light is none), `sem-navBg #090E1B`, `sem-navBorder transparent`. If your component ever embeds in those surfaces, pull values from `hemlock-library.lib.pen` directly.
+The `sem-chat*` (24 tokens) and `sem-nav*` (19 tokens) families theme the chat panel and navigation, per `chat-nav-refresh.pen`. Key dark anchors: `sem-chatBg #090E1B`, `sem-chatInputBg #090E1B`, `sem-chatBorder #33476E`, `sem-chatTextPrimary #EBF0FE` (prim-blue-100), `sem-chatShadow` glow `0 0 32px rgba(155,179,252,0.14), 0 0 10px rgba(155,179,252,0.10)` (dark-only; light is none), `sem-navBg #090E1B`, `sem-navBorder transparent`. If a component ever embeds in those surfaces, pull values from `hemlock-library.lib.pen` directly.
 
 ---
 
@@ -539,6 +623,8 @@ The `sem-chat*` (24 tokens) and `sem-nav*` (19 tokens) families theme the chat p
 - **navy** (50→950, lightest→darkest): `#33476E #2E4066 #2A3A5C #22314F #202C4E #172642 #18223A #131C31 #101729 #0C1222 #090E1B`
 - **navylight** (100→900, darkest→lightest): `#3A485F #52637F #697DA0 #889CBF #9DAFCD #B3C1DB #C8D4E9 #D8E1F0 #E9EEF7`
 - **blue** (100→900): `#EBF0FE #C8D6FD #A5BCFC #7094FB #5A82F9 #3A6AF8 #2952CC #163196 #031E64`
+- **gray** (50→900): `#F8F7F6 #EEEDEB #D5D3D0 #C0BAB2(250) #B5B1AB #A8A49E(350) #8A8680 #716E6A #5E5954 #403D3A #2D2926 #0E0E0E`
+- **taupe** (100→900): `#F7F5F0 #EDEAE3 #E8E6E0(250) #E3DFD6 #DCD8CB(350) #BCB49E #9D937B #877F68 #6C6451 #4B4435 #322C20`
 - **darktints:** skydark `#16304A #10263C` · greendark `#245234 #1A3A26 #12291C` · orangedark `#5E3A18 #472C13 #33200F` · reddark `#542427 #3A1B1E #2C1518`
 - **status accents (dark):** green-350 `#4ADE80` (+muted `#74D791`) · red-350 `#F87171` / red-250 `#FCA5A5` (+muted `#E5807E`) · orange-400 `#FB924D` (+muted `#EA9C62`) · sky-250 `#38BDF8`
-- **shadow colors:** light 8/10/12/16% black · dark 28/36/45/64% black
+- **shadow colors:** light 8/10/12/16% black · dark 28/36/45/64% black · scrim: `sem-background-scrim` `#2D292657` light / `#000000A3` dark

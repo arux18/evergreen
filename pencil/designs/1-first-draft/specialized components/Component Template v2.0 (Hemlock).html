@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Text Component Template v2.0 — Hemlock Dark</title>
+<title>Text Component Template v2.0 — Hemlock</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
@@ -488,26 +488,32 @@
 <!-- Text Component Template v1.9.1 (2026-07-23) — executable reference implementation, house styling (adopted 2026-07-07; scrolling taupe tab band adopted 2026-07-11; asset model + "page" terminology adopted 2026-07-12; Chrome/No-chrome toggle + dark tile bottom glow adopted 2026-07-19). v1.9: dark mode adds a centered bottom glow on the tile — 760x520px ellipse at 50% 100%, hero blues #8FB0FF→#7094FB, topmost background layer, visible on every page/tab and in no-chrome mode. v1.8: adds a third segmented control (Chrome/No-chrome) below the tile — html[data-chrome="off"] removes the desktop-tier tile outline/radius/drop-shadow in favor of the narrow-tier hairline insets (i18n 188 → 191 keys: chr_chrome, chr_nochrome, aria_chrome). v1.7: "button" renamed to "page" (data-page); external assets follow <ComponentName>_<PageName>_<AssetType>_<n>[_v<version>] and resolve external→internal→placeholder per data-asset-mode (§20); the Overview "Videos" section was removed (corner intro videos remain; the .sc-videos engine stays as an optional widget). [v1.9.1-era governance, SUPERSEDED at v2.0 — see the v2.0 header above: the prototype is canonical for rendering/behavior; the PRD and Spec govern data semantics, accessibility, security, and compliance; disagreements are adjudicated as defects.] The v1.9 Component Spec defined the intended contract and its verbatim blocks were extracted from this file; under v1.9 a disagreement was decided in the Spec first. v1.9.1 (2026-07-23): dark :root adds values for the three taupe surface tokens — --taupe-100:#141E36 (band), --taupe-pressed:#1B2C4F, --taupe-border:#243350 — the last light-taupe remnants reachable in dark mode; the demo's own visuals are unchanged (its taupe usages were already shadowed by explicit dark rules), but derived components inheriting these tokens now theme correctly. See CHANGELOG.md. -->
 <style>
 
+  /* ===== HEMLOCK LIGHT (2026-08-21) — integrity-preserving mapping (Amanda ruling): the template's
+     original light design is KEPT; each value is annotated with the Hemlock token it equals, and the
+     few values with no exact Hemlock equivalent are snapped to the nearest Hemlock step. Actual value
+     changes are only: --faint #767169 -> #8A8680 (ruling C: canon sem-text-subtle restored; AA miss on
+     small disclosure text accepted + flagged), --pos-mid #22C55E -> #1EBF51, --cat4 #7AA0F9 -> #7094FB,
+     and the --tk-* gray snaps below. Full mapping: hemlock-theme-handoff.md. ===== */
   :root{
---surface-1:#FFFFFF; --surface-2:#F8F7F6; --nest:#F8F7F6;
-    --border:#EEEDEB; --border-strong:#D5D3D0;
-    --ink:#0E0E0E; --muted:#5E5954; --faint:#767169; --inverse:#FFFFFF;  /* --faint darkened from the handoff value #8A8680 for WCAG AA (>=4.5:1) on small disclosure text */
-    --accent:#3A6AF8; --accent-hover:#2952CC; --accent-subtle:#EBF0FE; --calc-bg:#F7F5F0; --brand-blue:var(--accent);  /* brand-blue is an alias of --accent */
+--surface-1:#FFFFFF; --surface-2:#F8F7F6; --nest:#F8F7F6;  /* sem-background-surface / sem-background-light / sem-background-subtle — exact */
+    --border:#EEEDEB; --border-strong:#D5D3D0;  /* sem-borders-light / sem-borders-muted (gray-200) — exact. NOTE: in dark, --border-strong carries sem-borders-strong; the template's two-border system maps to different Hemlock roles per mode */
+    --ink:#0E0E0E; --muted:#5E5954; --faint:#8A8680; --inverse:#FFFFFF;  /* sem-text-header / sem-text-meta / sem-text-subtle / sem-text-reverse. --faint: canon #8A8680 restored over the WCAG-darkened #767169 (Amanda ruling C, 2026-08-21) — the AA miss on small disclosure text is accepted and flagged to design */
+    --accent:#3A6AF8; --accent-hover:#2952CC; --accent-subtle:#EBF0FE; --calc-bg:#F7F5F0; --brand-blue:var(--accent);  /* sem-background-action+sem-text-action (blue-600) / sem-btnPrimaryBgHover (blue-700) / sem-background-highlight (blue-100) / sem-background-sunken (taupe-100) — all exact; brand-blue is an alias of --accent */
     /* status/palette colors below (except --page-bg) are provided for components built on this template; the demo itself doesn't use all of them */
-    --pos:#148338; --pos-mid:#22C55E; --neg:#C82320; --warn:#C85F1A; --pos-soft:#4ADE80; --neg-soft:#F87171; --page-bg:#FFFFFF; --taupe-100:#F7F5F0; --taupe-pressed:#EDEAE3; --taupe-border:#E3DFD6;
-    --grid:#EEEFEE; --grid2:#D8D9D8; --axis:#B6B9B7; --zero:#B6B9B7; --det:#5E5954; --orange:#EA580C;
-    --accent-fill:rgba(58,106,248,0.15);
-    --cat1:#3A6AF8; --cat2:#06B6D4; --cat3:#163196; --cat4:#7AA0F9; --cat5:#0F766E; --cat6:#CA8A04; --cat7:#FB923C;  /* categorical palette (blue-led, no purple); chart series use --cat1/--cat2 */
-    --tile-shadow:0 4px 12px rgba(0,0,0,0.10); --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.12);  /* elevation */
-    --modal-shadow:0 16px 40px rgba(0,0,0,0.16);
-    --backdrop:rgba(45,41,38,0.34);
+    --pos:#148338; --pos-mid:#1EBF51; --neg:#C82320; --warn:#C85F1A; --pos-soft:#4ADE80; --neg-soft:#F87171; --page-bg:#FFFFFF; --taupe-100:#F7F5F0; --taupe-pressed:#EDEAE3; --taupe-border:#E3DFD6;  /* sem-text-deposit / sem-icons-success (snapped from #22C55E) / sem-text-error / sem-text-warning-title / prim-green-350 + prim-red-350 statics / sem-background-surface (the template "page" IS the component surface — the host app supplies sem-background-main behind it) / sem-background-rowHover / sem-background-rowPressed / prim-taupe-300 (exact; nearest semantic is sem-borders-dark #DCD8CB) */
+    --grid:#EEEFEE; --grid2:#D8D9D8; --axis:#B6B9B7; --zero:#B6B9B7; --det:#5E5954; --orange:#EA580C;  /* chart scaffold — no Hemlock tokens yet; retained as-is */
+    --accent-fill:rgba(58,106,248,0.15);  /* prim-blue-600 @ 15% — chart wash */
+    --cat1:#3A6AF8; --cat2:#06B6D4; --cat3:#163196; --cat4:#7094FB; --cat5:#0F766E; --cat6:#CA8A04; --cat7:#FB923C;  /* original blue-led palette kept (integrity ruling), each an exact Hemlock paint: prim-blue-600 / chart-cat-2 / prim-blue-800 / prim-blue-400 (snapped from #7AA0F9) / chart-cat-5 / chart-cat-14 / chart-cat-13. Hemlock's own 15-color categorical palette (purple-led) is documented in the handoff for real multi-series charts */
+    --tile-shadow:0 4px 12px rgba(0,0,0,0.10); --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.12);  /* prim-shadow-md 10% / prim-shadow-lg 12% — already token-exact */
+    --modal-shadow:0 16px 40px rgba(0,0,0,0.16);  /* prim-shadow-overlay-color 16% */
+    --backdrop:rgba(45,41,38,0.34);  /* sem-background-scrim #2D292657 (token added 2026-08-21) */
     /* semantic accents — light values here; dark values redefined in the dark :root block */
-    --pos-strong:#148338; --neg-strong:#C82320; --info:#3A6AF8; --info-title:#3A6AF8; --hairline:#595959;
-    /* semantic tiles + text + row-state tokens */
-    --pros-bg:rgba(20,131,56,.07); --pros-border:rgba(20,131,56,.25);
-    --cons-bg:rgba(200,35,32,.06); --cons-border:rgba(200,35,32,.22);
-    --info-bg:rgba(58,106,248,.06); --info-border:rgba(58,106,248,.24);
-    --text-body:#403D3A;
+    --pos-strong:#148338; --neg-strong:#C82320; --info:#3A6AF8; --info-title:#3A6AF8; --hairline:#595959;  /* sem-text-deposit (green-500) / sem-text-error (red-600) / sem-icons-action + sem-text-action (blue-600) — light info stays accent-blue per the integrity ruling; dark info is sky */
+    /* semantic tiles + text + row-state tokens — light keeps its primitive-alpha washes (each base color is an exact Hemlock primitive); dark overrides use flat opaque darktint surfaces */
+    --pros-bg:rgba(20,131,56,.07); --pros-border:rgba(20,131,56,.25);  /* prim-green-500 @ 7% / 25% */
+    --cons-bg:rgba(200,35,32,.06); --cons-border:rgba(200,35,32,.22);  /* prim-red-600 @ 6% / 22% */
+    --info-bg:rgba(58,106,248,.06); --info-border:rgba(58,106,248,.24);  /* prim-blue-600 @ 6% / 24% */
+    --text-body:#403D3A;  /* sem-text-body */
     --row-hover:var(--taupe-100); --row-pressed:var(--taupe-pressed);
     /* layout scales — each equals the literal it replaced, so there is no visual change */
     --max-w:1080px; --chart-vb-w:720;  /* --chart-vb-w must match the sample chart's SVG viewBox width */
@@ -671,7 +677,7 @@
   .sc-box h4{margin:0 0 8px;font-size:var(--fs-13);text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
   .sc-box.pros h4,.sc-box.cons h4{font-size:var(--fs-13);margin:0 0 10px;}
   .sc-box p{margin:0;font-size:var(--fs-13);line-height:1.5;} .sc-box ul{margin:0;padding-left:18px;font-size:var(--fs-13);line-height:1.5;} .sc-box li{margin-bottom:5px;}
-  .sc-box.pros{background:linear-gradient(90deg,var(--pros-bg),#ffffff);border-color:var(--pros-border);} .sc-box.pros h4{color:var(--pos-strong);}
+  .sc-box.pros{background:linear-gradient(90deg,var(--pros-bg),#ffffff);border-color:var(--pros-border);} .sc-box.pros h4{color:var(--pos-strong);}  /* light keeps the original wash-to-white treatment (integrity ruling); dark overrides below are flat opaque Hemlock surfaces */
   .sc-box.cons{background:linear-gradient(90deg,var(--cons-bg),#ffffff);border-color:var(--cons-border);} .sc-box.cons h4{color:var(--neg-strong);}
   .sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
   #cs-ov-types .sc-grid{grid-template-columns:repeat(2,minmax(0,1fr));}  /* Category grid: true 2x2 (collapses to 1 column below the desktop tier via the 639px container rule) */
@@ -682,7 +688,7 @@
   .sc-box.pros::before,.sc-box.cons::before,.sc-box.info::before{content:'';position:absolute;left:0;top:-1px;bottom:-1px;width:6px;border-radius:0;}
   .sc-box.pros::before{background:var(--pos-strong);} .sc-box.cons::before{background:var(--neg-strong);}
   /* info tiles (blue in light mode; dark overrides to purple) — same treatment as Pros/Cons */
-  .sc-box.info{background:linear-gradient(90deg,var(--info-bg),#ffffff);border-color:var(--info-border);} .sc-box.info h4{color:var(--info-title);} .sc-box.info::before{background:var(--info);}
+  .sc-box.info{background:linear-gradient(90deg,var(--info-bg),#ffffff);border-color:var(--info-border);} .sc-box.info h4{color:var(--info-title);} .sc-box.info::before{background:var(--info);}  /* light info stays accent-blue (integrity ruling); dark info is SKY via the dark :root */
   .sc-ov-text p,.sc-ov-text li{font-size:var(--fs-16);line-height:1.5;color:var(--text-body);}
   .sc-ov-text > p{padding-left:26px;}  /* align guidance paragraphs with the section title text + bullet markers */
   /* video thumbnails */
@@ -833,12 +839,12 @@
   /* Respect reduced-motion: drop the tile lift and chevron-rotate transitions */
   @media (prefers-reduced-motion:reduce){ .sc-plan-card,.toggle .chev{transition:none;} }
 
-  /* ===== HEMLOCK DARK BUILD (2026-08-20) =====
+  /* ===== HEMLOCK DARK (2026-08-20, page-bg corrected 2026-08-21) =====
      Every dark value below is re-based onto the Hemlock library's navy dark theme
      (source of truth: hemlock-library.lib.pen, sem-* / prim-* tokens; verified against the
      Evergreen.ai_DarkMode_DesignHandoff package). Each line notes the Hemlock semantic token it
-     carries. Full mapping + rationale: hemlock-dark-mode-handoff.md (same folder).
-     Light mode is untouched. Key system shifts vs the v2.0 dark block:
+     carries. Light is re-based in the :root block above. Full mapping + rationale:
+     hemlock-theme-handoff.md (same folder). Key system shifts vs the v2.0 dark block:
      elevation = lighter navy surface (flat, no gradients); state fills are opaque navy steps;
      info is SKY not purple; dark primary buttons carry BLACK text; scrims are black @64%. */
   html[data-theme="dark"]{
@@ -850,11 +856,11 @@
     --accent-2:#84E6CC; --accent-3:#B198F0; --accent-4:#D9A02E;   /* secondary accents — nearest Hemlock roles: sem-chart-cat-7 / cat-1 / cat-14 (flagged in handoff §11) */
     --pos-strong:#4ADE80; --neg-strong:#FCA5A5; --info:#38BDF8; --info-title:#38BDF8;   /* sem-text-success-title (green-350) / sem-text-error-body-strong (red-250) / sem-icons-info + sem-text-info-title (sky-250 — SKY, not purple; --hairline stays #595959) */
     --pos:#4ADE80; --neg:#F87171; --warn:#FB924D; --pos-mid:#74D791;  /* sem-text-deposit (green-350) / sem-text-error (red-350) / sem-text-warning-title (orange-400) / sem-text-success-body (green-350-muted) */
-    --calc-bg:#0C1222; --backdrop:rgba(0,0,0,0.64);  /* sem-background-sunken (navy-900) / prim-shadow-overlay-color #000000A3 — dark scrims are black, not light-tinted */
+    --calc-bg:#0C1222; --backdrop:rgba(0,0,0,0.64);  /* sem-background-sunken (navy-900) / sem-background-scrim #000000A3 — dark scrims are black, not light-tinted */
     --text-body:#B3C1DB;  /* sem-text-body (navylight-600) */
     --row-hover:#172642; --row-pressed:#202C4E;  /* sem-background-rowHover (navy-500) / sem-background-rowPressed (navy-400) — opaque for sticky columns */
     --taupe-100:#172642; --taupe-pressed:#202C4E; --taupe-border:#22314F;  /* taupe roles map to navy steps: sem-background-rowHover / sem-background-rowPressed / sem-borders-dark (navy-300) */
-    --page-bg:#101729;  /* sem-background-main (navy-800) — unchanged from rev MY */ --grid:#26324C; --grid2:#26324C; --axis:#5E6E90;  /* chart scaffold — no Hemlock tokens yet; AreaChart reference-sheet values retained */
+    --page-bg:#131C31;  /* sem-background-surface (navy-700) — Amanda 2026-08-21: the template "page" is the component's SURFACE, not the app shell; the host app supplies sem-background-main #101729 behind the embedded component */ --grid:#26324C; --grid2:#26324C; --axis:#5E6E90;  /* chart scaffold — no Hemlock tokens yet; AreaChart reference-sheet values retained */
     --cat1:#B198F0; --cat2:#5FD3E6; --cat3:#8480D9; --cat4:#7AA0F5; --cat5:#4FC0A6; --cat6:#84D2F7; --cat7:#84E6CC;   /* sem-chart-cat-1..7 dark */
     --pros-bg:#12291C; --pros-border:#245234; --cons-bg:#3A1B1E; --cons-border:#542427; --info-bg:#10263C; --info-border:#16304A;  /* flat opaque status surfaces: sem-background-success/-error/-info + their border roles */
     --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.45);  /* ring kept; black layer = prim-shadow-lg-color 45% */
@@ -876,7 +882,7 @@
      chart cards, info boxes, dropdown menus and the tooltip keep their own dark treatments — the
      --surface-* tokens are deliberately NOT touched, because every component reads them. */
   html[data-theme="dark"] body{background:var(--page-bg);}  /* rev MO: drive from the token (sem-background-main #101729 in dark) rather than repeating the literal — matches how Accounts v2 does it; identical rendering */
-  html[data-theme="dark"] .card{background:var(--surface-1);border-color:var(--border);box-shadow:0 0 0 1px rgba(120,150,255,0.06);}  /* HEMLOCK: card = sem-background-surface #131C31, one step LIGHTER than the page (#101729) — elevation via surface lightness replaces rev MJ's flat same-as-page tile. Ring kept. */
+  html[data-theme="dark"] .card{background:var(--surface-1);border-color:var(--border);box-shadow:0 0 0 1px rgba(120,150,255,0.06);}  /* HEMLOCK: card = sem-background-surface #131C31 = --page-bg (both are the surface role) — flat, outline-defined per rev MJ; raised elements inside sit one step lighter (#18223A). Ring kept. */
   /* MOBILE rev MJ: the chrome tile is the SAME flat colour as the viewport — it is defined by its
      OUTLINE alone. The v1.9 bottom glow + vertical gradient (Spec §22.10) is retired in the mobile build.
      THE 64px DROP SHADOW IS ALSO GONE, and that was not obvious from the CSS: `0 26px 64px
@@ -978,15 +984,18 @@
      Widgets are CUSTOM-DRAWN (no native select popups / checkbox glyphs / range chrome):
      dropdowns (single + multi w/ checkboxes), entry boxes + stepper, checks/radios/switch, slider, segmented. */
   #appMain,.t2-rd-backdrop{  /* rev D: --tk-* scope widened #cs-ov-buttons -> card; rev L: -> #appMain so the control radios below the card resolve the same tokens; rev AJ: + .t2-rd-backdrop — the row-detail modal mounts on <body>, OUTSIDE #appMain, so its var(--tk-*) reads (close-button focus ring, line ~1135) resolved to nothing and the ring never rendered (defect found via SC-037 v0.38's identical modal bug). Audit 2026-07-26: every other body-mounted element (.vid-modal-backdrop, #t2Tip) reads only :root tokens or literals — the #t2SplitDivider and split-iframe entries went with the swipe compare at rev MK — this is the sole body-mounted --tk-* consumer. */
-    --tk-accent:#3A6AF8; --tk-accent-hover:#295CCC; --tk-accent-subtle:#EBF0FE;
-    --tk-btn-accent:#3A6AF8; --tk-btn-accent-hover:#295CCC;  /* buttons track the doc accent in light */
-    --tk-text-inverse:#FFFFFF; --tk-text-1:#171717; --tk-text-2:#525252; --tk-text-3:#737373;
-    --tk-surface-1:#FFFFFF; --tk-surface-2:#F5F5F5; --tk-surface-3:#EBEBEB;
-    --tk-border:#E5E5E5; --tk-border-strong:#D4D4D4;
-    --tk-error:#B91C1C; --tk-error-subtle:#FEE2E2;
-    --tk-track:#D8D9D8; --tk-off:#B6B9B7; --tk-thumb-dis:#EEEFEE;
-    --tk-shadow-sm:0 1px 2px rgba(0,0,0,0.05);
-    --tk-shadow-dd:0 4px 12px rgba(0,0,0,0.12);
+    /* HEMLOCK LIGHT (2026-08-21, integrity ruling): each widget token snapped to the NEAREST Hemlock
+       value — the old neutral grays land on Hemlock's warm gray steps; the #295CCC near-miss hover
+       snaps to canon blue-700 #2952CC. Deltas are all near-invisible. */
+    --tk-accent:#3A6AF8; --tk-accent-hover:#2952CC; --tk-accent-subtle:#EBF0FE;  /* sem-icons-action (blue-600) / sem-btnLinkTextHover (blue-700, snapped from #295CCC) / sem-background-highlight — exact */
+    --tk-btn-accent:#3A6AF8; --tk-btn-accent-hover:#2952CC;  /* sem-btnPrimaryBg / sem-btnPrimaryBgHover (snapped from #295CCC) */
+    --tk-text-inverse:#FFFFFF; --tk-text-1:#0E0E0E; --tk-text-2:#5E5954; --tk-text-3:#716E6A;  /* sem-btnPrimaryText / sem-text-header (gray-900, from #171717) / sem-text-meta (gray-600, from #525252) / sem-text-placeholder (gray-500, from #737373 — nearest step; passes AA unlike gray-400) */
+    --tk-surface-1:#FFFFFF; --tk-surface-2:#F8F7F6; --tk-surface-3:#EEEDEB;  /* sem-background-surface / sem-background-light (from #F5F5F5) / sem-background-subtle (gray-100, from #EBEBEB) */
+    --tk-border:#EEEDEB; --tk-border-strong:#D5D3D0;  /* sem-borders-light (gray-100, from #E5E5E5) / sem-borders-muted (gray-200, from #D4D4D4) */
+    --tk-error:#C82320; --tk-error-subtle:#FFEAEA;  /* sem-text-error (red-600, from #B91C1C) / sem-background-error (red-50, from #FEE2E2) */
+    --tk-track:#D5D3D0; --tk-off:#B5B1AB; --tk-thumb-dis:#EEEDEB;  /* sem-sliderTrack (gray-200, from #D8D9D8) / prim-gray-300 (from #B6B9B7; Hemlock's own toggle-off role is sem-toggleTrackOff #EDEAE3) / prim-gray-100 (from #EEEFEE) */
+    --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.08);  /* prim-shadow-sm-color 8% (from 5%) */
+    --tk-shadow-dd:0 4px 12px rgba(0,0,0,0.12);  /* prim-shadow-lg-color 12% — exact */
   }
   html[data-theme="dark"] #appMain,html[data-theme="dark"] .t2-rd-backdrop{
     /* HEMLOCK: widget layer re-based on sem-* tokens (supersedes rev E's #0075FF native-accent ruling).
@@ -1468,7 +1477,7 @@
   .t2-rd-rows tbody tr{cursor:pointer;}
   .t2-rd-backdrop{position:fixed;inset:0;background:var(--backdrop);display:flex;align-items:center;justify-content:center;z-index:220;padding:24px;}
   .t2-rd-backdrop[hidden]{display:none;}
-  html[data-theme="dark"] .t2-rd-backdrop{background:rgba(0,0,0,0.64);}  /* HEMLOCK: dark scrims are black — prim-shadow-overlay-color #000000A3 */
+  html[data-theme="dark"] .t2-rd-backdrop{background:rgba(0,0,0,0.64);}  /* HEMLOCK: dark scrims are black — sem-background-scrim #000000A3 */
   .t2-rd-modal{background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--modal-shadow);width:420px;max-width:100%;max-height:80vh;overflow:auto;padding:18px 22px 20px;}
   html[data-theme="dark"] .t2-rd-modal{background:var(--surface-2);}  /* HEMLOCK: flat sem-background-elevated #18223A */
   .t2-rd-head{display:flex;align-items:flex-start;gap:12px;}
