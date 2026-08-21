@@ -229,21 +229,17 @@ For components that draw their own buttons rather than the `--tk-*` widgets. Lig
 
 ## 7. Charts
 
-### Template series slots (`--cat1..7`)
+### Template series slots (`--cat1..15`) — rev HK/HK2
 
-Per the integrity ruling, **light keeps the template's blue-led palette** (every value is an exact Hemlock paint; `--cat4` snapped `#7AA0F9→#7094FB`). **Dark uses the Hemlock categorical palette.**
+**Both modes carry the full Hemlock categorical palette** (`--cat1..15` = `chart-categorical/color-01..15`, table below), superseding the old 7-slot blue-led light palette — the earlier series-discontinuity flag is **resolved** (a series keeps its hue family across themes).
 
-| Slot | Light (kept) | = Hemlock paint | **Dark (new)** | = Hemlock token |
-|---|---|---|---|---|
-| `--cat1` | `#3A6AF8` | `prim-blue-600` | **`#B198F0`** | `sem-chart-cat-1` |
-| `--cat2` | `#06B6D4` | `chart-cat-2` (light) | **`#5FD3E6`** | `sem-chart-cat-2` |
-| `--cat3` | `#163196` | `prim-blue-800` | **`#8480D9`** | `sem-chart-cat-3` |
-| `--cat4` | `#7094FB` *snapped* | `prim-blue-400` | **`#7AA0F5`** | `sem-chart-cat-4` |
-| `--cat5` | `#0F766E` | `chart-cat-5` (light) | **`#4FC0A6`** | `sem-chart-cat-5` |
-| `--cat6` | `#CA8A04` | `chart-cat-14` (light) | **`#84D2F7`** | `sem-chart-cat-6` |
-| `--cat7` | `#FB923C` | `chart-cat-13` (light) | **`#84E6CC`** | `sem-chart-cat-7` |
+**Assignment rules (rev HK2, per design 2026-08-21):**
 
-> ⚠ **Flagged — series color discontinuity:** a series drawn with `--cat1` is **blue in light and purple in dark** (light keeps its palette; dark follows the Hemlock token gallery). If series continuity across themes matters for a component, either use the full Hemlock palette in both modes (below) or raise for a ruling.
+1. **Series/slices never index the palette in fixed order.** Every chart derives a stable per-chart offset + stride (seeded from its English title), so different charts open in different palette regions — no more "every chart starts purple, cyan, navy."
+2. **Greens and reds are RESERVED for positive/negative values.** Generic series draw from the safe pool only (15 minus color-05/-07 green family and color-12 brick — 12 hues); pos/neg semantics use `sem-text-deposit` / `sem-text-error` and the status backgrounds.
+3. **Axis tick labels are never series-tinted** — always 11px `sem-text-meta`, both axes (dual-axis included; the legend carries the series-to-axis mapping).
+4. Past one full pool pass, colors recycle at 62% then 38% tints (donut rule).
+5. Diverging heatmap (positive-negative) uses the **status background tokens** per `openui-charts-v2` `HeatmapChart/positive-negative`: positives bucket into `sem-background-success-soft/-strong/-bold` (bold takes `sem-text-reverse`), negatives take `sem-background-error-strong`; all other tiles take `sem-text-header`. *(Q16: per-theme heatmap text contrast is still open with design — do not lock text inks yet.)*
 
 ### Hemlock categorical palette (full 15, both modes)
 
@@ -270,8 +266,9 @@ Per the integrity ruling, **light keeps the template's blue-led palette** (every
 ### Threshold & scaffold
 
 - `sem-chart-threshold` → `sem-background-action`: `#3A6AF8` light / **`#5A82F9`** dark. **Never orange.**
-- Chart scaffold (`--grid`, `--grid2`, `--axis`, `--zero`, `--det`) has **no Hemlock tokens** — original values retained in both modes (light `#EEEFEE/#D8D9D8/#B6B9B7/#B6B9B7/#5E5954`; dark `#26324C/#26324C/#5E6E90`). Flagged for future tokenization.
+- Chart scaffold (rev HK, per ChartAxisGrid master): gridlines = `sem-borders-light` (`#EEEDEB` light / `sem-borders-muted #2A3A5C` dark — visibility ruling), axis/zero line = `sem-borders-dark` light / `sem-borders-strong` dark; tick labels 11px `sem-text-meta`.
 - Area washes keep alpha: `--accent-fill` `rgba(58,106,248,0.15)` light / `rgba(90,130,249,0.15)` dark.
+- Diverging heatmap tile values (rev HK2): light `#A9FDC4`/`#68FC97`/`#10642B` (+`#FDABA9` neg), dark `#1A3A26`/`#245234`/`#148338` (+`#542427` neg); bold-tile ink = `sem-text-reverse` (`#FFFFFF` light / `#0E0E0E` dark).
 
 ---
 
