@@ -501,9 +501,17 @@
     --accent:#3A6AF8; --accent-hover:#2952CC; --accent-subtle:#EBF0FE; --calc-bg:#F7F5F0; --brand-blue:var(--accent);  /* sem-background-action+sem-text-action (blue-600) / sem-btnPrimaryBgHover (blue-700) / sem-background-highlight (blue-100) / sem-background-sunken (taupe-100) — all exact; brand-blue is an alias of --accent */
     /* status/palette colors below (except --page-bg) are provided for components built on this template; the demo itself doesn't use all of them */
     --pos:#148338; --pos-mid:#1EBF51; --neg:#C82320; --warn:#C85F1A; --pos-soft:#4ADE80; --neg-soft:#F87171; --page-bg:#FFFFFF; --taupe-100:#F7F5F0; --taupe-pressed:#EDEAE3; --taupe-border:#E3DFD6;  /* sem-text-deposit / sem-icons-success (snapped from #22C55E) / sem-text-error / sem-text-warning-title / prim-green-350 + prim-red-350 statics / sem-background-surface (the template "page" IS the component surface — the host app supplies sem-background-main behind it) / sem-background-rowHover / sem-background-rowPressed / prim-taupe-300 (exact; nearest semantic is sem-borders-dark #DCD8CB) */
-    --grid:#EEEFEE; --grid2:#D8D9D8; --axis:#B6B9B7; --zero:#B6B9B7; --det:#5E5954; --orange:#EA580C;  /* chart scaffold — no Hemlock tokens yet; retained as-is */
+    --grid:#EEEDEB; --grid2:#D5D3D0; --axis:#DCD8CB; --zero:#DCD8CB; --det:#5E5954; --orange:#EA580C;  /* chart scaffold snapped to Hemlock ChartAxisGrid: grid = sem-borders-light, strong grid = sem-borders-muted, axis/zero line = sem-borders-dark (taupe-350); tick-label TEXT now uses --muted (sem-text-meta) per the master */
     --accent-fill:rgba(58,106,248,0.15);  /* prim-blue-600 @ 15% — chart wash */
-    --cat1:#3A6AF8; --cat2:#06B6D4; --cat3:#163196; --cat4:#7094FB; --cat5:#0F766E; --cat6:#CA8A04; --cat7:#FB923C;  /* original blue-led palette kept (integrity ruling), each an exact Hemlock paint: prim-blue-600 / chart-cat-2 / prim-blue-800 / prim-blue-400 (snapped from #7AA0F9) / chart-cat-5 / chart-cat-14 / chart-cat-13. Hemlock's own 15-color categorical palette (purple-led) is documented in the handoff for real multi-series charts */
+    /* Full Hemlock categorical palette — chart-categorical/color-01..15 (light). Charts assign
+       series/slices in this order; 15 distinct hues before any color repeats (the old 7-color
+       blue-led cycle caused visible repeats on the donut). */
+    --cat1:#8951F0; --cat2:#06B6D4; --cat3:#312E81; --cat4:#3B82F6; --cat5:#0F766E;
+    --cat6:#38BDF8; --cat7:#2DD4BF; --cat8:#A78BFA; --cat9:#C026D3; --cat10:#E73CAE;
+    --cat11:#E879A8; --cat12:#92400E; --cat13:#FB923C; --cat14:#CA8A04; --cat15:#FACC15;
+    /* Hemlock sequential ramp — chart-sequential/seq-100..700 (light). Single-series charts
+       (area, timeline, gauge, waterfall totals) draw with seq-500 per the Hemlock chart masters. */
+    --seq1:#EBF0FE; --seq2:#C8D6FD; --seq3:#A5BCFC; --seq4:#7094FB; --seq5:#5A82F9; --seq6:#3A6AF8; --seq7:#2952CC;
     --tile-shadow:0 4px 12px rgba(0,0,0,0.10); --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.12);  /* prim-shadow-md 10% / prim-shadow-lg 12% — already token-exact */
     --modal-shadow:0 16px 40px rgba(0,0,0,0.16);  /* prim-shadow-overlay-color 16% */
     --backdrop:rgba(45,41,38,0.34);  /* sem-background-scrim #2D292657 (token added 2026-08-21) */
@@ -744,9 +752,9 @@
   .data-wrap{overflow:auto;max-height:460px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-1);}
   .sc-data-table{border-collapse:separate;border-spacing:0;font-size:var(--fs-14);line-height:1.43;table-layout:auto;width:100%;min-width:640px;}  /* responsive columns; horizontal scroll (sticky first col) when narrower than 640 */
   .sc-data-table th,.sc-data-table td{background:var(--surface-1);border-bottom:1px solid var(--border);border-right:none;padding:12px 16px;text-align:right;overflow:hidden;text-overflow:ellipsis;}  /* no vertical table borders (v1.5 table model) */
-  .sc-data-table thead th{position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;font-weight:600;background:var(--calc-bg);color:var(--ink);vertical-align:middle;white-space:normal;line-height:1.2;padding:12px 16px;border-bottom:1px solid var(--accent-subtle);}
+  .sc-data-table thead th{position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;font-weight:600;font-size:var(--fs-12);text-transform:uppercase;letter-spacing:.02em;background:var(--calc-bg);color:var(--muted);vertical-align:middle;white-space:normal;line-height:1.2;padding:8px 16px;border-bottom:1px solid var(--border);}  /* HEMLOCK rev HK: TableHeaderCell master — 12px semibold UPPERCASE sem-text-meta on the sem-background-sunken band; accent underline retired for a sem-borders-light hairline */
   .sc-data-table thead th:first-child{border-radius:8px 0 0 0;} .sc-data-table thead th:last-child{border-radius:0 8px 0 0;}
-  .sc-data-table td{white-space:nowrap;padding:16px;}
+  .sc-data-table td{white-space:nowrap;padding:12px 16px;}  /* HEMLOCK rev HK: row padding $spacing-xs 12 per TransactionRow master */
   .sc-data-table tbody tr:hover td:where(html.ptr-fine *){background:var(--row-hover);transition:background 150ms ease;}
   .sc-data-table tbody tr:hover td:first-child:where(html.ptr-fine *){border-radius:12px 0 0 12px;} .sc-data-table tbody tr:hover td:last-child:where(html.ptr-fine *){border-radius:0 12px 12px 0;}
   .sc-data-table tbody tr:active td{background:var(--row-pressed);}
@@ -760,7 +768,7 @@
   .sc-data-table td a{color:var(--accent);text-decoration:none;} .sc-data-table td a:hover:where(html.ptr-fine *){text-decoration:underline;}
   .sc-data-table .data-none{text-align:center;color:var(--muted);padding:18px;white-space:normal;}
   .th-in{display:block;} .th-label{display:inline;white-space:normal;}  /* inline so the sort icon flows with the text and wraps underneath when narrow */
-  .sortarr{display:inline-flex;vertical-align:middle;margin-left:2px;color:var(--ink);pointer-events:none;}  /* Lucide icons inline with header text */
+  .sortarr{display:inline-flex;vertical-align:middle;margin-left:2px;color:var(--muted);pointer-events:none;}  /* HEMLOCK rev HK: sort glyph rides the sem-text-meta header ink (TableHeaderCell/sortable) */
   .sortarr svg{width:16px;height:16px;display:block;}
   .sortarr.active{color:var(--accent);}
   /* chart */
@@ -768,7 +776,7 @@
   .tmpl-toolbar button{background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-pill);padding:6px 12px;font-size:var(--fs-13);font-family:var(--font-ui);cursor:pointer;}
   .tmpl-toolbar button.on{background:var(--accent);color:#fff;}
   .legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:var(--fs-12);margin:10px 0 18px;align-items:center;}
-  .legend .dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+  .legend .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle;}  /* HEMLOCK rev HK: 8px circle per ChartLegend master */
   .chartbox{position:relative;width:100%;height:360px;} .chartbox svg{display:block;width:100%;height:100%;}
   /* comparison */
   .sc-cmp-checks{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px;}
@@ -776,7 +784,7 @@
   .sc-cmp-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-1);}  /* frame the table via the wrapper (no vertical cell borders) */
   .sc-cmp-table{border-collapse:separate;border-spacing:0;table-layout:auto;width:100%;font-size:var(--fs-14);line-height:1.43;}  /* responsive columns; horizontal scroll (sticky first col) when too narrow */
   .sc-cmp-table th,.sc-cmp-table td{border-right:none;border-bottom:1px solid var(--border);padding:12px 16px;text-align:left;vertical-align:top;position:relative;color:var(--text-body);}
-  .sc-cmp-table tr:first-child th{border-bottom:1px solid var(--accent-subtle);}
+  .sc-cmp-table tr:first-child th{border-bottom:1px solid var(--border);font-size:var(--fs-12);text-transform:uppercase;letter-spacing:.02em;color:var(--muted);padding:8px 16px;}  /* HEMLOCK rev HK: header row per TableHeaderCell master (12px semibold uppercase sem-text-meta; hairline replaces the accent underline) */
   .sc-cmp-table tr:first-child th:first-child{border-radius:8px 0 0 0;} .sc-cmp-table tr:first-child th:last-child{border-radius:0 8px 0 0;}
   .sc-cmp-table tr:last-child td{border-bottom:none;}  /* avoid a doubled seam against the .sc-cmp-wrap frame */
   .sc-cmp-table tbody tr:hover td:where(html.ptr-fine *), .sc-cmp-table tr:hover td:where(html.ptr-fine *){background:var(--row-hover);transition:background 150ms ease;}
@@ -803,9 +811,14 @@
   /* toggles below component */
   .tmpl-controls{display:flex;justify-content:flex-end;gap:12px;margin:14px 0 4px;}
   html[data-embed] .tmpl-controls{display:none !important;}  /* embed mode: toggles hidden, theme/lang locked by config */
-  .tmpl-seg{display:inline-flex;gap:4px;padding:4px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-md);}
-  .tmpl-seg button{background:transparent;color:var(--muted);border:0;border-radius:7px;padding:6px 16px;font-size:var(--fs-14);font-weight:500;font-family:var(--font-ui);line-height:1.4;cursor:pointer;}
-  .tmpl-seg button.on{background:var(--surface-1);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.10);}
+  /* HEMLOCK rev HK: SegmentedControl master — PILL container (radius-full) padded $spacing-3xs 4 on
+     sem-background-sunken (no border), pill items, resting label sem-text-body 400, selected pill =
+     sem-background-surface + shadow-sm + sem-text-header 600. (.tmpl-seg keeps its compact 6/16
+     padding — it's the template's own chrome switcher, a compact variant of the same recipe.) */
+  .tmpl-seg{display:inline-flex;gap:0;padding:4px;background:var(--calc-bg);border:0;border-radius:999px;}
+  .tmpl-seg button{background:transparent;color:var(--text-body);border:0;border-radius:999px;padding:6px 16px;font-size:var(--fs-14);font-weight:400;font-family:var(--font-ui);line-height:1.43;cursor:pointer;}
+  .tmpl-seg button.on{background:var(--surface-1);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08);}
+  html[data-theme="dark"] .tmpl-seg button.on{box-shadow:0 1px 2px rgba(0,0,0,.28);}  /* prim-shadow-sm-color dark */
   /* video modal */
   .vid-modal-backdrop{position:fixed;inset:0;background:var(--backdrop);display:flex;align-items:center;justify-content:center;z-index:200;padding:24px;}
   .vid-modal-backdrop[hidden]{display:none;}
@@ -860,8 +873,13 @@
     --text-body:#B3C1DB;  /* sem-text-body (navylight-600) */
     --row-hover:#172642; --row-pressed:#202C4E;  /* sem-background-rowHover (navy-500) / sem-background-rowPressed (navy-400) — opaque for sticky columns */
     --taupe-100:#172642; --taupe-pressed:#202C4E; --taupe-border:#22314F;  /* taupe roles map to navy steps: sem-background-rowHover / sem-background-rowPressed / sem-borders-dark (navy-300) */
-    --page-bg:#131C31;  /* sem-background-surface (navy-700) — Amanda 2026-08-21: the template "page" is the component's SURFACE, not the app shell; the host app supplies sem-background-main #101729 behind the embedded component */ --grid:#26324C; --grid2:#26324C; --axis:#5E6E90;  /* chart scaffold — no Hemlock tokens yet; AreaChart reference-sheet values retained */
-    --cat1:#B198F0; --cat2:#5FD3E6; --cat3:#8480D9; --cat4:#7AA0F5; --cat5:#4FC0A6; --cat6:#84D2F7; --cat7:#84E6CC;   /* sem-chart-cat-1..7 dark */
+    --page-bg:#131C31;  /* sem-background-surface (navy-700) — Amanda 2026-08-21: the template "page" is the component's SURFACE, not the app shell; the host app supplies sem-background-main #101729 behind the embedded component */ --grid:#2A3A5C; --grid2:#2A3A5C; --axis:#33476E;  /* chart scaffold snapped to Hemlock: grid = sem-borders-muted (dark borders-light #131C31 vanishes on the navy cards — visibility ruling), axis/zero line = sem-borders-strong (navy-50); tick-label TEXT uses --muted (sem-text-meta) */
+    /* Full Hemlock categorical palette — chart-categorical/color-01..15 (dark). */
+    --cat1:#B198F0; --cat2:#5FD3E6; --cat3:#8480D9; --cat4:#7AA0F5; --cat5:#4FC0A6;
+    --cat6:#84D2F7; --cat7:#84E6CC; --cat8:#C7BAF7; --cat9:#DB74E6; --cat10:#F485BE;
+    --cat11:#E89FB0; --cat12:#CE7E5B; --cat13:#F0985A; --cat14:#D9A02E; --cat15:#F3DE6F;
+    /* Hemlock sequential ramp — chart-sequential/seq-100..700 (dark: blue ramp inverted). */
+    --seq1:#163196; --seq2:#2952CC; --seq3:#3A6AF8; --seq4:#5A82F9; --seq5:#7094FB; --seq6:#A5BCFC; --seq7:#C8D6FD;
     --pros-bg:#12291C; --pros-border:#245234; --cons-bg:#3A1B1E; --cons-border:#542427; --info-bg:#10263C; --info-border:#16304A;  /* flat opaque status surfaces: sem-background-success/-error/-info + their border roles */
     --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.45);  /* ring kept; black layer = prim-shadow-lg-color 45% */
     --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.36);  /* prim-shadow-md-color 36% */
@@ -913,7 +931,7 @@
   html[data-theme="dark"] .sc-kpi{background:var(--surface-2);border-color:var(--border);position:relative;overflow:hidden;border-radius:0 0 var(--radius-md) var(--radius-md);}  /* HEMLOCK: flat sem-background-light #18223A; square top corners; top bar reaches the outline */
   html[data-theme="dark"] .sc-kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent-3);opacity:.95;}
   /* KPI top bars are uniformly --accent-3 via the base ::before above. */
-  html[data-theme="dark"] .sc-data-table thead th{background:var(--surface-2);}  /* HEMLOCK: flat sem-background-elevated #18223A — header gradient retired */
+  html[data-theme="dark"] .sc-data-table thead th{background:var(--calc-bg);}  /* HEMLOCK rev HK: sem-background-sunken (navy-900 #0C1222) per the table-header masters — was surface-2 */
   html[data-theme="dark"] .sc-data-table th.sticky,html[data-theme="dark"] .sc-data-table td.sticky,html[data-theme="dark"] .sc-cmp-table th:first-child,html[data-theme="dark"] .sc-cmp-table td:first-child{box-shadow:8px 0 8px -8px rgba(0,0,0,0.45);}  /* HEMLOCK: prim-shadow-lg 45% */
   html[data-theme="dark"] .sc-data-table .sortarr{color:#52637F;} html[data-theme="dark"] .sc-data-table .sortarr.active{color:var(--accent);}  /* HEMLOCK: unsorted = sem-icons-subtle */
   html[data-theme="dark"] .vthumb,html[data-theme="dark"] .vid-modal-poster{background:radial-gradient(120% 130% at 50% 100%,var(--hero-1) 0%,var(--hero-2) 18%,var(--hero-3) 34%,var(--hero-4) 46%,var(--hero-5) 58%,var(--hero-6) 70%,var(--hero-7) 80%,var(--hero-8) 90%);}
@@ -957,7 +975,7 @@
      surface-1 cells, --row-hover tint with 12px rounded row end-caps, --row-pressed :active state.
      Ported to the Compare table (the only other table). Dark mode only — light is unchanged.
      Selectors cover both DOM-appended rows (direct <tr> children) and parser-created tbody. */
-  html[data-theme="dark"] .sc-cmp-table th{background:var(--surface-2);}  /* HEMLOCK: flat sem-background-elevated #18223A — header gradient retired */
+  html[data-theme="dark"] .sc-cmp-table th{background:var(--calc-bg);}  /* HEMLOCK rev HK: sem-background-sunken (navy-900 #0C1222) per the table-header masters — was surface-2 */
   html[data-theme="dark"] .sc-cmp-table td{background:var(--surface-1);}
   html[data-theme="dark"] .sc-cmp-table tbody tr:hover td:where(html.ptr-fine *),html[data-theme="dark"] .sc-cmp-table tr:hover td:where(html.ptr-fine *){background:var(--row-hover);transition:background 150ms ease;}
   html[data-theme="dark"] .sc-cmp-table tbody tr:hover td:first-child:where(html.ptr-fine *),html[data-theme="dark"] .sc-cmp-table tr:hover td:first-child:where(html.ptr-fine *){border-radius:12px 0 0 12px;}
@@ -993,7 +1011,8 @@
     --tk-surface-1:#FFFFFF; --tk-surface-2:#F8F7F6; --tk-surface-3:#EEEDEB;  /* sem-background-surface / sem-background-light (from #F5F5F5) / sem-background-subtle (gray-100, from #EBEBEB) */
     --tk-border:#EEEDEB; --tk-border-strong:#D5D3D0;  /* sem-borders-light (gray-100, from #E5E5E5) / sem-borders-muted (gray-200, from #D4D4D4) */
     --tk-error:#C82320; --tk-error-subtle:#FFEAEA;  /* sem-text-error (red-600, from #B91C1C) / sem-background-error (red-50, from #FEE2E2) */
-    --tk-track:#D5D3D0; --tk-off:#B5B1AB; --tk-thumb-dis:#EEEDEB;  /* sem-sliderTrack (gray-200, from #D8D9D8) / prim-gray-300 (from #B6B9B7; Hemlock's own toggle-off role is sem-toggleTrackOff #EDEAE3) / prim-gray-100 (from #EEEFEE) */
+    --tk-track:#D5D3D0; --tk-off:#EDEAE3; --tk-thumb-dis:#EEEDEB;  /* sem-sliderTrack (gray-200, from #D8D9D8) / sem-toggleTrackOff (taupe-200 — rev HK: adopted over the old gray-300) / prim-gray-100 (from #EEEFEE) */
+    --tk-ton:#EBF0FE; --tk-border-input:#DCD8CB; --tk-focus:#0E0E0E;  /* rev HK: sem-toggleTrackOn (blue-100) / sem-borders-dark (taupe-350) for input+checkbox outlines / sem-borders-focus (gray-900) for the checked check+radio */
     --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.08);  /* prim-shadow-sm-color 8% (from 5%) */
     --tk-shadow-dd:0 4px 12px rgba(0,0,0,0.12);  /* prim-shadow-lg-color 12% — exact */
   }
@@ -1011,10 +1030,11 @@
     --tk-border:var(--border); --tk-border-strong:var(--border-strong);
     --tk-error:#F87171; --tk-error-subtle:#3A1B1E;  /* sem-text-error (red-350) / sem-background-error (reddark-200) */
     --tk-track:#22314F; --tk-off:#172642; --tk-thumb-dis:#131C31;  /* sem-sliderTrack (navy-300) / sem-toggleTrackOff (navy-500) / sem-background-disabled (navy-700) */
+    --tk-ton:#031E64; --tk-border-input:#22314F; --tk-focus:#7094FB;  /* rev HK: sem-toggleTrackOn (blue-900) / sem-borders-dark (navy-300) / checked glyphs use FULL-opacity blue-400 — the token sem-borders-focus dark is #7094FB59 (35% ring alpha), too faint for a check glyph; flagged */
     --tk-shadow-sm:0 1px 3px rgba(0,0,0,0.28),0 0 0 1px rgba(255,255,255,0.04);  /* prim-shadow-sm-color 28% */
     --tk-shadow-dd:0 4px 16px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.05);  /* prim-shadow-lg-color 45% */
   }
-  html[data-theme="dark"] .tkt-thumb{background:#FFFFFF;}  /* HEMLOCK: sem-toggleKnob is WHITE in both modes (the shared rule paints it --tk-surface-1, which is navy in dark) */
+  /* HEMLOCK rev HK: dark thumb override retired — the shared .tkt-thumb rule is now #FFFFFF (sem-toggleKnob) in both modes, and checked knobs take sem-toggleKnobOn via --tk-accent */
   .ui-row{display:flex;flex-wrap:wrap;gap:16px 22px;align-items:flex-start;margin:12px 0 2px;}  /* top-aligned so specimen captions share one baseline regardless of control height */
   .ui-spec{display:flex;flex-direction:column;gap:6px;align-items:flex-start;min-width:0;}
   .ui-cap{font-size:var(--fs-11);font-weight:500;color:var(--tk-text-2,var(--muted));text-transform:uppercase;letter-spacing:.05em;}  /* form.field.label: xs / medium / uppercase / wide */
@@ -1043,7 +1063,7 @@
   .ui-search.has-text .sr-clear{display:inline-flex;}
   .ui-search .sr-clear svg{width:12px;height:12px;}
   /* --- buttons (token spec: pill, semibold, 28/36/44) --- */
-  .ui-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:var(--radius-pill);height:36px;padding:8px 16px;font-family:var(--font-ui);font-size:14px;font-weight:600;line-height:1;cursor:pointer;transition:background 150ms ease,color 150ms ease,border-color 150ms ease,box-shadow 150ms ease,transform 150ms ease;}
+  .ui-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:var(--radius-pill);height:36px;padding:8px 16px;font-family:var(--font-ui);font-size:14px;font-weight:500;line-height:1;cursor:pointer;transition:background 150ms ease,color 150ms ease,border-color 150ms ease,box-shadow 150ms ease,transform 150ms ease;}  /* HEMLOCK rev HK: Button master — pill, gap $spacing-2xs 8, label weight 500 (was 600); master's one size = the -lg class (12/24 pad, 16px), compact sizes kept as template chrome */
   .ui-btn:focus-visible{outline:none;box-shadow:0 0 0 3px var(--tk-accent-subtle);}
   .ui-btn:active:not(:disabled){transform:scale(0.98);}
   .ui-btn:disabled{opacity:.38;cursor:not-allowed;}
@@ -1066,7 +1086,7 @@
   .ui-btn-icon svg{width:16px;height:16px;display:block;}
   /* --- entry boxes (input tokens: h36, radius.md 6, 2px accent focus, 2px error, disabled surface-2) --- */
   .ui-field{display:flex;flex-direction:column;gap:4px;}
-  .ui-input{height:36px;width:150px;border-radius:6px;border:1px solid var(--tk-border);background:var(--tk-surface-1);color:var(--tk-text-1);padding:8px 12px;font-family:var(--font-ui);font-size:14px;transition:border-color 100ms ease;}
+  .ui-input{height:36px;width:150px;border-radius:4px;border:1px solid var(--tk-border-input);background:var(--tk-surface-1);color:var(--tk-text-1);padding:8px 12px;font-family:var(--font-ui);font-size:14px;transition:border-color 100ms ease;}  /* HEMLOCK rev HK: Input master — $radius-3xs 4, 1px sem-borders-dark (compact height kept; the master's 58px floating-label field is a different size class) */
   .ui-input::placeholder{color:var(--tk-text-3);}
   .ui-input:hover:not(:disabled):not(:focus):where(html.ptr-fine *){border-color:var(--tk-border-strong);}
   .ui-input:focus{outline:none;border:2px solid var(--tk-accent);padding:7px 11px;}
@@ -1076,7 +1096,7 @@
   .ui-help.err{color:var(--tk-error);}
   .ui-num{text-align:right;font-variant-numeric:tabular-nums;}
   .ui-stepper{display:flex;align-items:stretch;height:36px;}
-  .ui-stepper .ui-input{width:96px;border-radius:6px 0 0 6px;}
+  .ui-stepper .ui-input{width:96px;border-radius:4px 0 0 4px;}  /* HEMLOCK rev HK: radius-3xs */
   .ui-stepper .st-btn{width:28px;border:1px solid var(--tk-border);border-left:none;background:transparent;color:var(--tk-text-2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0;font:inherit;}
   .ui-stepper .st-btn:hover:where(html.ptr-fine *){background:var(--tk-surface-3);}
   .ui-stepper .st-btn:last-child{border-radius:0 6px 6px 0;}
@@ -1084,7 +1104,7 @@
   .ui-stepper .st-btn:focus-visible{outline:none;box-shadow:0 0 0 3px var(--tk-accent-subtle);position:relative;z-index:1;}
   /* --- custom dropdowns (dropdown tokens: menu radius.md/shadow.dropdown/pad 4; items 8x12 radius.sm, subtle hover, accent selected + checkmark) --- */
   .tkdd{position:relative;width:200px;}
-  .tkdd-trigger{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;height:36px;padding:8px 12px;border:1px solid var(--tk-border);border-radius:6px;background:var(--tk-surface-1);color:var(--tk-text-1);font-family:var(--font-ui);font-size:14px;cursor:pointer;transition:border-color 100ms ease;}
+  .tkdd-trigger{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;height:36px;padding:8px 12px;border:1px solid var(--tk-border-input);border-radius:4px;background:var(--tk-surface-1);color:var(--tk-text-1);font-family:var(--font-ui);font-size:14px;cursor:pointer;transition:border-color 100ms ease;}  /* HEMLOCK rev HK: Select master — $radius-3xs 4, 1px sem-borders-dark */
   .tkdd-trigger:hover:where(html.ptr-fine *){border-color:var(--tk-border-strong);}
   .tkdd-trigger:focus-visible{outline:none;box-shadow:0 0 0 3px var(--tk-accent-subtle);}
   .tkdd.open .tkdd-trigger{border:2px solid var(--tk-accent);padding:7px 11px;}
@@ -1103,29 +1123,35 @@
   .tkdd-item .tk-check{visibility:hidden;flex:0 0 auto;color:var(--tk-accent);display:inline-flex;}
   .tkdd-item .tk-check svg{width:16px;height:16px;}
   .tkdd-item[aria-selected="true"] .tk-check{visibility:visible;}
-  .tkdd-item[aria-checked="true"] .tkc-box{background:var(--tk-accent);border-color:var(--tk-accent);}
+  .tkdd-item[aria-checked="true"] .tkc-box{background:var(--tk-surface-1);border:2px solid var(--tk-focus);}  /* HEMLOCK rev HK: outline-style checked box (Checkbox/checked master) */
   .tkdd-item[aria-checked="true"] .tkc-box svg{opacity:1;transform:scale(1);}
   .tkdd-divider{height:1px;background:var(--tk-border);margin:4px 0;}
   /* --- custom checks / radios (18px, 1.5px border.strong, accent fill, white 12px glyph, 3px subtle focus ring) --- */
   .tkc{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--tk-text-1);cursor:pointer;position:relative;}
   .tkc input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
-  .tkc-box{width:18px;height:18px;border-radius:4px;border:1.5px solid var(--tk-border-strong);background:var(--tk-surface-1);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;transition:background 100ms ease,border-color 100ms ease;}
-  .tkc-box svg{width:12px;height:12px;color:var(--tk-text-inverse);opacity:0;transform:scale(.6);transition:opacity 100ms ease,transform 100ms ease;}
-  .tkc input:checked + .tkc-box{background:var(--tk-accent);border-color:var(--tk-accent);}
+  /* HEMLOCK rev HK: Checkbox master — 20px box, $radius-3xs 4, 1px sem-borders-dark resting; CHECKED is an
+     OUTLINE style (box stays surface, 2px sem-borders-focus ring, check glyph in the same focus ink) — the
+     old filled-accent box is retired. Light focus ink = gray-900; dark uses full blue-400 (see --tk-focus). */
+  .tkc-box{width:20px;height:20px;border-radius:4px;border:1px solid var(--tk-border-input);background:var(--tk-surface-1);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;transition:background 100ms ease,border-color 100ms ease;}
+  .tkc-box svg{width:14px;height:14px;color:var(--tk-focus);opacity:0;transform:scale(.6);transition:opacity 100ms ease,transform 100ms ease;}
+  .tkc input:checked + .tkc-box{background:var(--tk-surface-1);border:2px solid var(--tk-focus);}
   .tkc input:checked + .tkc-box svg{opacity:1;transform:scale(1);}
   .tkc input:focus-visible + .tkc-box{box-shadow:0 0 0 3px var(--tk-accent-subtle);}
   .tkc-box.rad{border-radius:var(--radius-pill);}
-  .tkc-box.rad::after{content:'';width:10px;height:10px;border-radius:var(--radius-pill);background:var(--tk-accent);transform:scale(0);transition:transform 100ms ease;}
-  .tkc input:checked + .tkc-box.rad{background:var(--tk-surface-1);border-color:var(--tk-accent);}
+  .tkc-box.rad::after{content:'';width:10px;height:10px;border-radius:var(--radius-pill);background:var(--tk-focus);transform:scale(0);transition:transform 100ms ease;}  /* HEMLOCK rev HK: dot rides the focus ink like the check glyph */
+  .tkc input:checked + .tkc-box.rad{background:var(--tk-surface-1);border-color:var(--tk-focus);}
   .tkc input:checked + .tkc-box.rad::after{transform:scale(1);}
   .tkc.dis{opacity:.38;cursor:not-allowed;}
   /* --- toggle switch (36x20 pill track, 16px thumb 2px->18px) --- */
   .tkt{display:inline-flex;align-items:center;gap:12px;font-size:14px;color:var(--tk-text-1);cursor:pointer;position:relative;}
   .tkt input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
   .tkt-track{width:36px;height:20px;border-radius:var(--radius-pill);background:var(--tk-off);position:relative;transition:background 100ms ease;flex:0 0 auto;}
-  .tkt-thumb{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:var(--radius-pill);background:var(--tk-surface-1);box-shadow:var(--tk-shadow-sm);transition:left 100ms ease;}
-  .tkt input:checked + .tkt-track{background:var(--tk-accent);}
-  .tkt input:checked + .tkt-track .tkt-thumb{left:18px;}
+  /* HEMLOCK rev HK: ToggleSwitch master — OFF: sem-toggleTrackOff track + WHITE sem-toggleKnob;
+     ON: PALE sem-toggleTrackOn track (blue-100 / blue-900) with a BLUE sem-toggleKnobOn knob — the old
+     accent-filled on-track is retired. Compact 36×20 geometry kept (master is 72×36, same recipe). */
+  .tkt-thumb{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:var(--radius-pill);background:#FFFFFF;box-shadow:var(--tk-shadow-sm);transition:left 100ms ease,background 100ms ease;}
+  .tkt input:checked + .tkt-track{background:var(--tk-ton);}
+  .tkt input:checked + .tkt-track .tkt-thumb{left:18px;background:var(--tk-accent);}
   .tkt input:focus-visible + .tkt-track{box-shadow:0 0 0 3px var(--tk-accent-subtle);}
   .tkt.dis{opacity:.38;cursor:not-allowed;}
   .tkt.dis .tkt-track{background:var(--tk-track);}
@@ -1133,11 +1159,11 @@
   /* --- slider (4px pill track, accent fill, 18px thumb w/ 2px surface border; value above; uppercase endpoints) --- */
   .tksl{width:240px;position:relative;}
   .tksl input[type="range"]{-webkit-appearance:none;appearance:none;display:block;width:100%;height:4px;border-radius:var(--radius-pill);background:linear-gradient(to right,var(--tk-accent) 0%,var(--tk-accent) var(--sl-pct,60%),var(--tk-track) var(--sl-pct,60%),var(--tk-track) 100%);outline:none;margin:0;cursor:pointer;}
-  .tksl input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:var(--radius-pill);background:var(--tk-accent);border:2px solid var(--tk-surface-1);box-shadow:var(--tk-shadow-sm);transition:transform 100ms ease;}
+  .tksl input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:var(--radius-pill);background:var(--tk-accent);border:2px solid #FFFFFF;box-shadow:var(--tk-shadow-sm);transition:transform 100ms ease;}  /* HEMLOCK rev HK: Slider master — 20px sem-sliderAccent thumb with a 2px WHITE stroke (both modes) */
   .tksl input[type="range"]:hover:where(html.ptr-fine *)::-webkit-slider-thumb{transform:scale(1.15);}
   .tksl input[type="range"]:active::-webkit-slider-thumb{transform:scale(1.0);}
   .tksl input[type="range"]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px var(--tk-accent-subtle);}
-  .tksl input[type="range"]::-moz-range-thumb{width:18px;height:18px;border-radius:var(--radius-pill);background:var(--tk-accent);border:2px solid var(--tk-surface-1);box-shadow:var(--tk-shadow-sm);}
+  .tksl input[type="range"]::-moz-range-thumb{width:20px;height:20px;border-radius:var(--radius-pill);background:var(--tk-accent);border:2px solid #FFFFFF;box-shadow:var(--tk-shadow-sm);}  /* HEMLOCK rev HK: 20px, white stroke */
   /* rev F: fixed slider labels — mixed-case [Label] flush LEFT above the 0% endpoint; the live value flush
      RIGHT above the 100% endpoint (the value no longer tracks the thumb; --sl-pct still drives the fill) */
   .tksl .sl-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
@@ -1145,9 +1171,14 @@
   .tksl .sl-bubble{font-size:14px;color:var(--tk-text-1);font-variant-numeric:tabular-nums;white-space:nowrap;}
   .tksl .sl-ends{display:flex;justify-content:space-between;margin-top:4px;font-size:var(--fs-11);font-weight:600;letter-spacing:.05em;color:var(--tk-text-3);text-transform:uppercase;}
   /* --- segmented control (surface-2 band, radius.md, active = surface-1 + shadow.sm) --- */
-  .tkseg{display:inline-flex;gap:2px;background:var(--tk-surface-2);border-radius:6px;padding:3px;}
-  .tkseg button{border:none;background:transparent;color:var(--tk-text-2);border-radius:4px;padding:8px 16px;font-family:var(--font-ui);font-size:13px;font-weight:500;cursor:pointer;}
-  .tkseg button.on{background:var(--tk-surface-1);color:var(--tk-text-1);box-shadow:var(--tk-shadow-sm);}
+  /* HEMLOCK rev HK: SegmentedControl master — pill container padded $spacing-3xs 4 on
+     sem-background-sunken, pill items padded $spacing-2xs/$spacing-md (8/24), labels $text-size-sm
+     14: resting sem-text-body 400, selected sem-text-header 600 on a sem-background-surface pill
+     with shadow-sm. */
+  .tkseg{display:inline-flex;gap:0;background:var(--calc-bg);border-radius:999px;padding:4px;}
+  .tkseg button{border:none;background:transparent;color:var(--text-body);border-radius:999px;padding:8px 24px;font-family:var(--font-ui);font-size:14px;font-weight:400;line-height:1.43;cursor:pointer;}
+  .tkseg button.on{background:var(--surface-1);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08);}
+  html[data-theme="dark"] .tkseg button.on{box-shadow:0 1px 2px rgba(0,0,0,.28);}  /* prim-shadow-sm-color dark */
   .tkseg button:focus-visible{outline:none;box-shadow:0 0 0 3px var(--tk-accent-subtle);}
   /* rev D: custom-dropdown facade over a hidden native select (calculator Mode field — no system popup) */
   .t2-native-hidden{position:absolute !important;width:1px !important;height:1px !important;opacity:0 !important;pointer-events:none !important;margin:0 !important;padding:0 !important;border:0 !important;}
@@ -1285,8 +1316,8 @@
      visually, so 100vw added a full viewport of dead scroll range whenever the table h-overflowed.
      --t2-fillw is kept per-wrap by a ResizeObserver: 0 while the table overflows, the exact remainder
      when narrowed columns underfill. */
-  .sc-data-table thead th:last-child::after,.sc-cmp-table tr:first-child th:last-child::after{content:'';position:absolute;top:0;bottom:-1px;left:100%;width:var(--t2-fillw,0px);background:var(--calc-bg);border-bottom:1px solid var(--accent-subtle);pointer-events:none;}
-  html[data-theme="dark"] .sc-data-table thead th:last-child::after,html[data-theme="dark"] .sc-cmp-table tr:first-child th:last-child::after{background:var(--surface-2);}  /* HEMLOCK: matches the flat header surface */
+  .sc-data-table thead th:last-child::after,.sc-cmp-table tr:first-child th:last-child::after{content:'';position:absolute;top:0;bottom:-1px;left:100%;width:var(--t2-fillw,0px);background:var(--calc-bg);border-bottom:1px solid var(--border);pointer-events:none;}  /* HEMLOCK rev HK: hairline matches the new header underline */
+  html[data-theme="dark"] .sc-data-table thead th:last-child::after,html[data-theme="dark"] .sc-cmp-table tr:first-child th:last-child::after{background:var(--calc-bg);}  /* HEMLOCK rev HK: matches the sunken header surface */
   /* total-row convention: mark a totals row with class "sc-total" — full-width fill the same way as headers.
      rev AF (per Bill): the bar is TAUPE — var(--taupe-100) themes itself (light #F7F5F0, dark #141E36 since
      v1.9.1), so the old dark gradient overrides are gone; the sticky first cell keeps the taupe too.
@@ -1314,7 +1345,7 @@
   /* ===== TEST 2 (rev Q, 2026-07-25): Chart Kit pages — card shells, captions, legends, HTML charts ===== */
   .t2ck-grid{display:flex;flex-direction:column;gap:26px;margin-bottom:36px;}
   .t2ck-cap{font:500 11px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px;}
-  .t2ck-card{position:relative;background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:16px;}
+  .t2ck-card{position:relative;background:var(--surface-1);border:1px solid var(--border);border-radius:16px;padding:24px;}  /* HEMLOCK rev HK: chart Card per master — $radius-sm 16, $spacing-md 24, sem-background-surface on sem-borders-light */
   html[data-theme="dark"] .t2ck-card{background:var(--surface-2);border-color:var(--border-strong);}  /* HEMLOCK: flat sem-background-light #18223A */
   .t2ck-card.compact{max-width:520px;}
   .t2ck-card.nocard{border:none;border-radius:0;padding:0;background:transparent !important;}
@@ -1323,11 +1354,11 @@
      its title and subtitle ABOVE the plot. Kept as a no-op guard so a derived component that still
      emits the class does not render an unstyled block. */
   .t2ck-head.below{margin:2px 0 12px;}
-  .t2ck-title{font:600 18px/1.3 var(--font-ui);color:var(--ink);}
-  .t2ck-sub{font:400 14px/1.4 var(--font-ui);color:var(--muted);margin-top:2px;}
-  .t2ck-legend{display:flex;flex-wrap:wrap;gap:16px;margin:10px 0 4px;font:400 13px var(--font-ui);color:var(--text-body);align-items:center;}
-  .t2ck-legend .lg{display:inline-flex;align-items:center;gap:6px;}
-  .t2ck-legend .dot{width:10px;height:10px;border-radius:2px;flex:0 0 auto;}  /* rev R: house legend swatch = rounded SQUARE (matches the kernel chart legend), not a circle */
+  .t2ck-title{font:600 16px/1.4 var(--font-ui);color:var(--ink);}  /* HEMLOCK rev HK: chart title 16px semibold sem-text-header per the OpenUI contract */
+  .t2ck-sub{font:400 13px/1.4 var(--font-ui);color:var(--muted);margin-top:2px;}  /* HEMLOCK rev HK: subtitle 13px sem-text-meta */
+  .t2ck-legend{display:flex;flex-wrap:wrap;gap:16px;margin:10px 0 4px;font:400 14px var(--font-ui);color:var(--text-body);align-items:center;}  /* HEMLOCK rev HK: legend labels $text-size-sm 14 sem-text-body, item gap $spacing-sm 16, per ChartLegend master */
+  .t2ck-legend .lg{display:inline-flex;align-items:center;gap:4px;}  /* HEMLOCK rev HK: marker-to-label gap $spacing-3xs 4 */
+  .t2ck-legend .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}  /* HEMLOCK rev HK: 8px CIRCLE marker per ChartLegend master (retires the rev-R house square) */
   .t2ck-legend .ln{width:20px;border-top:2.5px solid;display:inline-block;}
   .t2ck-legend .ln.dash{border-top-style:dashed;}
   .t2ck-heat{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;}
@@ -1364,13 +1395,13 @@
   .t2ck-dbox{flex:0 1 300px;min-width:220px;}
   .t2ck-dlegend{columns:2;column-gap:18px;font:400 12.5px var(--font-ui);color:var(--text-body);flex:0 1 auto;max-width:340px;}  /* rev Y: shrink-wrapped (was flex:1 stretch) — the donut legend's second column sits close to the first instead of drifting across the leftover row width */
   .t2ck-dlegend .li{display:flex;align-items:center;gap:7px;margin:0 0 7px;break-inside:avoid;}
-  .t2ck-dlegend .dot{width:9px;height:9px;border-radius:2px;flex:0 0 auto;}
+  .t2ck-dlegend .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}  /* HEMLOCK rev HK: 8px circle per ChartLegend master */
   /* rev R: operable chart-kit — HTML info box (heatmap/treemap), hover lifts, gauge slider, page-level section hiding */
-  .t2ck-tip{position:absolute;z-index:40;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.18);padding:10px 14px 11px;pointer-events:none;font:400 12.5px var(--font-ui);color:var(--text-body);min-width:150px;max-width:260px;}
-  html[data-theme="dark"] .t2ck-tip{background:var(--surface-2);border-color:var(--border-strong);box-shadow:0 8px 24px rgba(0,0,0,0.45);}  /* HEMLOCK: elevated surface #18223A, sem-borders-strong, prim-shadow-lg 45% (keeps rev AF's intent: brighter than the card, not near-black) */
-  .t2ck-tip .tt{font:600 13px var(--font-ui);color:var(--ink);margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}  /* rev T: overflowing names truncate, no tooltip */
-  .t2ck-tip .tr2{display:flex;align-items:center;gap:7px;margin-top:4px;}
-  .t2ck-tip .tr2 .dot{width:10px;height:10px;border-radius:2px;flex:0 0 auto;}
+  .t2ck-tip{position:absolute;z-index:40;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.18);padding:8px 12px;pointer-events:none;font:400 12px var(--font-ui);color:var(--text-body);min-width:150px;max-width:260px;}  /* HEMLOCK rev HK: ChartTooltip master — pad $spacing-2xs/$spacing-xs (8/12), radius-2xs 8, 12px sem-text-body rows, sem-borders-light hairline, shadow-lg */
+  html[data-theme="dark"] .t2ck-tip{background:#1E2B49;border-color:var(--border);box-shadow:0 8px 24px rgba(0,0,0,0.45);}  /* HEMLOCK rev HK: sem-background-elevated (navy-600 #1E2B49) — brighter than the card, per the ChartTooltip master */
+  .t2ck-tip .tt{font:600 12px var(--font-ui);color:var(--muted);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}  /* HEMLOCK rev HK: tooltip header 12px semibold sem-text-meta per master */
+  .t2ck-tip .tr2{display:flex;align-items:center;gap:8px;margin-top:4px;}  /* HEMLOCK rev HK: row gap $spacing-2xs 8, row spacing $spacing-3xs 4 */
+  .t2ck-tip .tr2 .dot{width:10px;height:10px;border-radius:50%;flex:0 0 auto;}  /* HEMLOCK rev HK: 10px circle marker per ChartTooltip master */
   .t2ck-tip .tr2 .lb{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .t2ck-tip .tr2 .vl{font-weight:600;color:var(--ink);}
   .t2ck-heat .ht{transition:transform 150ms ease, box-shadow 150ms ease;cursor:default;}
@@ -3862,16 +3893,28 @@ function T2_CHART_MAXH(hard,floor){
   function pick(o){ return (o&&typeof o==='object'&&!(o instanceof Array))?(o[lang()]||o.en||''):(o==null?'':o); }
   function cvRoot(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || getComputedStyle(document.body).getPropertyValue(n).trim(); }
   function tokens(){
+    /* HEMLOCK rev HK (2026-08-21): palette + chrome read straight from the Hemlock-mapped vars.
+       cats = the FULL chart-categorical/color-01..15 run (15 distinct hues — the old 7-slot cycle
+       repeated colors on big donuts); the a11y theme only defines 7, so empties are dropped and
+       every consumer indexes with % cats.length. seq = chart-sequential/seq-100..700; single-series
+       charts (area, timeline, gauge, waterfall totals) draw with seq-500 per the Hemlock masters.
+       The old rev-V "darken 0.85 in dark mode" multipliers are retired — the dark values of the
+       Hemlock palette are already tuned for dark surfaces. */
     var dark=document.documentElement.getAttribute('data-theme')==='dark';
-    var c3=cvRoot('--cat3')||'#163196';
-    return { dark:dark,
-      cats:[cvRoot('--cat1'),cvRoot('--cat2'),dark?(cvRoot('--cat4')||'#7AA0F9'):c3,cvRoot('--cat4'),cvRoot('--cat5'),cvRoot('--cat6'),cvRoot('--cat7')],
+    var cats=[],seq=[],i,c;
+    for(i=1;i<=15;i++){ c=cvRoot('--cat'+i); if(c) cats.push(c); }
+    for(i=1;i<=7;i++){ c=cvRoot('--seq'+i); if(c) seq.push(c); }
+    if(!seq.length) seq=[cvRoot('--accent')];
+    return { dark:dark, cats:cats, seq:seq, seq5:seq[4]||seq[seq.length-1],
       grid:cvRoot('--grid'),axis:cvRoot('--axis'),ink:cvRoot('--ink'),muted:cvRoot('--muted'),
       body:cvRoot('--text-body'),accent:cvRoot('--accent'),pos:cvRoot('--pos'),neg:cvRoot('--neg'),
       orange:cvRoot('--orange')||'#EA580C',surface:cvRoot('--surface-1'),border:cvRoot('--border'),
-      borderStrong:cvRoot('--border-strong'),track:dark?'#26324C':'#E8E7E4',
-      /* rev AF: dark info boxes = navy slightly brighter than the card background (SC-037-proven pair) */
-      tipBg:dark?'#17263F':cvRoot('--surface-1'),tipBorder:dark?'#2E4368':cvRoot('--border') };
+      borderStrong:cvRoot('--border-strong'),
+      /* gauge track = sem-borders-light (light) / sem-borders-muted (dark visibility ruling) */
+      track:dark?'#2A3A5C':'#EEEDEB',
+      disabled:dark?'#3A485F':'#B5B1AB',  /* sem-text-disabled */
+      /* info boxes per ChartTooltip master: sem-background-elevated on a sem-borders-light hairline */
+      tipBg:dark?'#1E2B49':'#FFFFFF',tipBorder:dark?'#131C31':'#EEEDEB' };
   }
   function hexRgb(h){ h=h.replace('#',''); if(h.length===3) h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
     return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
@@ -3932,10 +3975,13 @@ function T2_CHART_MAXH(hard,floor){
     var x0=0,x1=W,y0=padT,y1=Hh-padB;
     var ticks=o.yTicks,min=ticks[0],max=ticks[ticks.length-1];
     function Y(v){ return y1-(v-min)/(max-min)*(y1-y0); }
+    /* HEMLOCK rev HK: per ChartAxisGrid master — gridlines 1px sem-borders-light (dashed in the
+       master; kept solid here, pre-existing house choice), axis line 1px sem-borders-dark, tick
+       labels 11px sem-text-meta ($text-size-2xs; was 12px axis-gray). */
     ticks.forEach(function(tv){
       var yy=Y(tv);
       if(tv!==min||o.gridAtMin) E('line',{x1:x0,y1:yy,x2:x1,y2:yy,stroke:T.grid,'stroke-width':1},svg);
-      TX(svg,4,yy-5,(o.fmt||money)(tv),o.tickColor||T.axis,12,'start');
+      TX(svg,4,yy-5,(o.fmt||money)(tv),o.tickColor||T.muted,11,'start');
     });
     E('line',{x1:x0,y1:y1,x2:x1,y2:y1,stroke:T.axis,'stroke-width':1},svg);
     return {x0:x0,x1:x1,y0:y0,y1:y1,Y:Y,W:W,H:Hh,flush:true};
@@ -3944,7 +3990,7 @@ function T2_CHART_MAXH(hard,floor){
     labels.forEach(function(l,i){
       var xx=g.x0+(g.x1-g.x0)*pos[i];
       var anchor=i===0?'start':(i===labels.length-1?'end':'middle');
-      TX(svg,xx,g.y1+22,pick(l),T.axis,12,anchor);
+      TX(svg,xx,g.y1+22,pick(l),T.muted,11,anchor);  /* HEMLOCK rev HK: tick labels 11px sem-text-meta */
     });
   }
   function linePath(pts){ return pts.map(function(p,i){ return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1); }).join(' '); }
@@ -3980,14 +4026,17 @@ function T2_CHART_MAXH(hard,floor){
     if(x+w*k>vbW-6) x=vbW-6-w*k; if(x<6) x=6;
     if(y+h*k>vbH-8&&y>h*k+12) y=y-h*k-24; if(y<6) y=6;
     var g=E('g',{'pointer-events':'none',transform:'translate('+x+' '+y+') scale('+k+')'},svg);
-    E('rect',{x:0,y:0,width:w,height:h,rx:8,fill:T.tipBg||T.surface,stroke:T.tipBorder||T.border,filter:shadowFilter(svg)},g);  /* rev AF: navy in dark */
-    TX(g,14,24,trunc(pick(title),Math.floor((w-28)/6.8)),T.ink,13,'start',600);
+    /* HEMLOCK rev HK: per ChartTooltip master — sem-background-elevated card, radius-2xs 8,
+       header 12px semibold sem-text-meta, 10px CIRCLE markers, 12px sem-text-body labels,
+       semibold sem-text-header values. */
+    E('rect',{x:0,y:0,width:w,height:h,rx:8,fill:T.tipBg||T.surface,stroke:T.tipBorder||T.border,filter:shadowFilter(svg)},g);
+    TX(g,14,24,trunc(pick(title),Math.floor((w-28)/6.8)),T.muted,12,'start',600);
     rows.forEach(function(r,i){
       var yy=24+(i+1)*rh-3;
-      E('rect',{x:14,y:yy-12,width:10,height:10,rx:2,fill:r.c},g);
+      E('circle',{cx:19,cy:yy-7,r:5,fill:r.c},g);
       var valW=String(r.value).length*6.8+10;
-      TX(g,31,yy,trunc(pick(r.label),Math.floor((w-45-valW)/6.4)),T.body,12.5);
-      TX(g,w-14,yy,r.value,T.ink,13,'end',600);
+      TX(g,31,yy,trunc(pick(r.label),Math.floor((w-45-valW)/6.4)),T.body,12);
+      TX(g,w-14,yy,r.value,T.ink,12,'end',600);
     });
     return g;
   }
@@ -4002,7 +4051,7 @@ function T2_CHART_MAXH(hard,floor){
       svg.appendChild(live);
       if(i==null) return;
       var x=o.X(i);
-      E('line',{x1:x,y1:g.y0-6,x2:x,y2:g.y1,stroke:T.axis,'stroke-width':1.5,'stroke-dasharray':'5 5'},live);
+      E('line',{x1:x,y1:g.y0-6,x2:x,y2:g.y1,stroke:T.muted,'stroke-width':1,'stroke-dasharray':'5 5'},live);  /* HEMLOCK rev HK: scrubber = 1px sem-text-meta per the chart contract */
       var topY=g.y1;
       (o.marks(i)||[]).forEach(function(m){ topY=Math.min(topY,m.y);
         E('circle',{cx:x,cy:m.y,r:4,fill:m.c,stroke:T.surface,'stroke-width':2},live);
@@ -4081,18 +4130,20 @@ function T2_CHART_MAXH(hard,floor){
     var n=cfg.vals.length, X=function(i){ return g.x0+(g.x1-g.x0)*i/(n-1); };
     var pts=cfg.vals.map(function(val,i){ return [X(i),g.Y(val)]; });
     var d=smoothPath(pts);
-    E('path',{d:d+' L'+g.x1+' '+g.y1+' L'+g.x0+' '+g.y1+' Z',fill:fadeFill(svg,T.cats[0],g.y0,g.y1),stroke:'none'},svg);
+    /* HEMLOCK rev HK: single-series area = chart-sequential/seq-500 line + seq gradient fade,
+       per the AreaChart master (categorical colors are reserved for multi-series). */
+    E('path',{d:d+' L'+g.x1+' '+g.y1+' L'+g.x0+' '+g.y1+' Z',fill:fadeFill(svg,T.seq5,g.y0,g.y1),stroke:'none'},svg);
     if(v.ref&&cfg.ref){
       var ry=g.Y(cfg.ref.v);
       E('line',{x1:g.x0,y1:ry,x2:g.x1,y2:ry,stroke:T.orange,'stroke-width':2,'stroke-dasharray':'9 7'},svg);
       TX(svg,g.x0+16,ry-10,pick(cfg.ref.label),T.orange,13,'start',500);
     }
-    E('path',{d:d,fill:'none',stroke:T.cats[0],'stroke-width':LWv(),'stroke-linecap':'round'},svg);
+    E('path',{d:d,fill:'none',stroke:T.seq5,'stroke-width':LWv(),'stroke-linecap':'round'},svg);
     xLabels(svg,T,g,cfg.xTicks.map(function(i){return cfg.x[i];}),cfg.xTicks.map(function(i){return i/(n-1);}));
     var lbl=(cfg.tip&&cfg.tip.rows&&cfg.tip.rows[0].label)||cfg.title;
     xyHover(svg,card,T,g,{n:n,X:X,
-      marks:function(i){ return [{y:g.Y(cfg.vals[i]),c:T.cats[0]}]; },
-      rows:function(i){ return [{c:T.cats[0],label:lbl,value:moneyFull(cfg.vals[i])}]; },
+      marks:function(i){ return [{y:g.Y(cfg.vals[i]),c:T.seq5}]; },
+      rows:function(i){ return [{c:T.seq5,label:lbl,value:moneyFull(cfg.vals[i])}]; },
       title:function(i){ return pick(cfg.x[i]); },
       initial:(v.tip&&cfg.tip)?cfg.tip.i:null});
   };
@@ -4123,8 +4174,9 @@ function T2_CHART_MAXH(hard,floor){
     cfg.yTicks.forEach(function(tv){ if(done) return; ticks.push(tv); if(tv>=maxV) done=true; });
     var g=frame(svg,T,{yTicks:ticks,fmt:fmt});
     var nc=cfg.cats.length, ns=cfg.series.length;
-    /* rev V: dark mode — bars slightly darker (legend + info-box swatches match via CS) */
-    var CS=cfg.series.map(function(_,si){ return T.dark?shade(T.cats[si],0.85):T.cats[si]; });
+    /* HEMLOCK rev HK: series take chart-categorical/color-01,02,03… straight — the dark palette
+       values are already dark-tuned, so the old rev-V 0.85 darkening is retired. */
+    var CS=cfg.series.map(function(_,si){ return T.cats[si%T.cats.length]; });
     /* rev U: the space between bars/groups is NEVER wider than one bar — group gap = bw, edges = bw/2,
        4px between bars inside a group; solve bw so it all fills the flush width exactly */
     var g1=4;
@@ -4134,10 +4186,10 @@ function T2_CHART_MAXH(hard,floor){
       var cx0=g.x0+bw/2+ci*slot;
       cfg.series.forEach(function(sN,si){
         var val=sN.vals[ci], x=cx0+si*(bw+g1), y=g.Y(val);
-        E('rect',{x:x,y:y,width:bw,height:g.y1-y,rx:3,fill:CS[si]},svg);
+        E('rect',{x:x,y:y,width:bw,height:g.y1-y,rx:2,fill:CS[si]},svg);  /* HEMLOCK rev HK: bar top radius 2 per BarChart master */
         if(v.labels) TX(svg,x+bw/2,y-7,valFmt(val),T.body,12,'middle',600);
       });
-      TX(svg,cx0+groupW/2,g.y1+22,pick(c),T.axis,12,ci===nc-1?'end':'middle');
+      TX(svg,cx0+groupW/2,g.y1+22,pick(c),T.muted,11,ci===nc-1?'end':'middle');  /* HEMLOCK rev HK: 11px sem-text-meta */
     });
     slotHover(svg,card,T,g,{n:nc,
       center:function(i){ return g.x0+bw/2+i*slot+groupW/2; },
@@ -4154,7 +4206,10 @@ function T2_CHART_MAXH(hard,floor){
     var svg=E('svg',{viewBox:'0 0 320 320',role:'img','aria-label':pick(cfg.title)});
     svg.style.display='block'; svg.style.width='100%'; svg.style.height='auto'; box.appendChild(svg);
     var cx=160,cy=160,r1=150,r0=112,total=0; cfg.slices.forEach(function(sl){ total+=sl.v; });
-    var colors=cfg.slices.map(function(_,i){ var base=T.cats[i%7],round=Math.floor(i/7); return round===0?base:rgba(base,round===1?0.62:0.38); });
+    /* HEMLOCK rev HK: slices walk the FULL categorical palette in order (color-01..15 per the
+       DonutChart master) — 15 distinct hues before any tint-recycling. The old 7-slot cycle put
+       near-identical blues next to each other on big donuts. */
+    var colors=cfg.slices.map(function(_,i){ var N=T.cats.length,base=T.cats[i%N],round=Math.floor(i/N); return round===0?base:rgba(base,round===1?0.62:0.38); });
     var centerG=E('g',{'pointer-events':'none'},svg), paths=[];
     function drawCenter(valTxt,lblTxt){
       while(centerG.firstChild) centerG.removeChild(centerG.firstChild);
@@ -4233,7 +4288,7 @@ function T2_CHART_MAXH(hard,floor){
     E('path',{d:smoothPath(pts),fill:'none',stroke:T.cats[0],'stroke-width':LWv(),'stroke-linecap':'round'},svg);
     cfg.dots.forEach(function(val,i){ E('circle',{cx:X(i),cy:RY(val),r:3,fill:T.cats[1]},svg); });
     (v.events||[]).forEach(function(ev){
-      var x=g.x0+(g.x1-g.x0)*ev.t, c=T.cats[ev.c%7];
+      var x=g.x0+(g.x1-g.x0)*ev.t, c=T.cats[ev.c%T.cats.length];
       E('line',{x1:x,y1:g.y0-4,x2:x,y2:g.y1,stroke:c,'stroke-width':1.5,'stroke-dasharray':'5 5'},svg);
       var anchor=(x>g.x1-110)?'end':'start';
       TX(svg,anchor==='start'?x+6:x-6,g.y0+8,pick(ev.label),T.ink,12.5,anchor,600);
@@ -4254,8 +4309,10 @@ function T2_CHART_MAXH(hard,floor){
     var A0=150*Math.PI/180, SPAN=240*Math.PI/180;
     function P(ang){ return (cx+r*Math.cos(ang)).toFixed(2)+' '+(cy+r*Math.sin(ang)).toFixed(2); }
     function arc(a0,a1){ var large=(a1-a0)>Math.PI?1:0; return 'M'+P(a0)+' A'+r+' '+r+' 0 '+large+' 1 '+P(a1); }
-    var color=v.tone==='warn'?T.orange:(v.tone==='pos'?T.pos:T.accent);
-    if(T.dark&&v.tone) color=shade(color,0.85);  /* rev V: dark mode — the red and green tones slightly darker */
+    /* HEMLOCK rev HK: default gauge arc = chart-sequential/seq-500 per the GaugeChart master;
+       tone arcs use the semantic status colors straight (dark values are already dark-tuned —
+       rev-V darkening retired). */
+    var color=v.tone==='warn'?T.orange:(v.tone==='pos'?T.pos:T.seq5);
     if(st.v==null) st.v=v.v;
     E('path',{d:arc(A0,A0+SPAN),fill:'none',stroke:T.track,'stroke-width':sw,'stroke-linecap':'round'},svg);
     var valArc=E('path',{d:arc(A0,A0+SPAN*Math.max(0.02,Math.min(1,st.v/100))),fill:'none',stroke:color,'stroke-width':sw,'stroke-linecap':'round'},svg);
@@ -4267,8 +4324,8 @@ function T2_CHART_MAXH(hard,floor){
     if(v.minmax){
       /* rev U: numbers sit AT the arc ends, tucked inward — '0' immediately right of the left end,
          '100' immediately left of the right end */
-      TX(svg,cx-r*0.866+sw/2+8,cy+r*0.5+4,'0',T.axis,fE,'start');
-      TX(svg,cx+r*0.866-sw/2-8,cy+r*0.5+4,'100',T.axis,fE,'end');
+      TX(svg,cx-r*0.866+sw/2+8,cy+r*0.5+4,'0',T.muted,fE,'start');    /* HEMLOCK rev HK: min/max = sem-text-meta */
+      TX(svg,cx+r*0.866-sw/2-8,cy+r*0.5+4,'100',T.muted,fE,'end');
     }
     if(v.slider){
       var sl=H('div','tksl t2ck-gslider',card);
@@ -4303,7 +4360,17 @@ function T2_CHART_MAXH(hard,floor){
       if(v.posneg){
         if(c.v>=0){ var tp=c.v/mx; bg=tp>0.8?T.pos:rgba(T.pos,0.22+0.5*tp); fg=tp>0.8?'#FFFFFF':(T.dark?T.ink:'#14532D'); }
         else { bg=rgba(T.neg,0.34); fg=T.dark?T.ink:T.neg; }
-      } else { bg=rgba(T.accent,0.10+0.85*t); fg=t>0.52?'#FFFFFF':T.ink; }
+      } else {
+        /* HEMLOCK rev HK: tiles walk the chart-sequential ramp (seq-100..700) per the HeatmapChart
+           master, instead of accent-alpha washes. Text flips per the master: light theme — deep
+           ramp steps take sem-text-reverse (white), the seq-400 band takes gray-900, pale steps
+           take sem-text-header; dark theme — the ramp inverts (high = pale blue), so high steps
+           take gray-900 and low (deep navy) steps keep the light header ink. */
+        var N=T.seq.length, idx=Math.max(0,Math.min(N-1,Math.round(t*(N-1))));
+        bg=T.seq[idx];
+        fg=T.dark ? (idx>=Math.ceil(N*0.55)?'#0E0E0E':T.ink)
+                  : (idx>=Math.ceil(N*0.65)?'#FFFFFF':(idx>=Math.ceil(N*0.4)?'#0E0E0E':T.ink));
+      }
       var tile=H('div','ht',grid); tile.style.background=bg; tile.style.color=fg;
       H('div','hl',tile,pick(c.label));
       H('div','hv',tile,(c.v>0?'+':'')+c.v+'%');
@@ -4316,7 +4383,7 @@ function T2_CHART_MAXH(hard,floor){
     if(v.words){
       var sc=H('div','t2ck-scale',card);
       H('span','',sc,pick(cfg.scale.low));
-      var bar=H('span','bar',sc); bar.style.background='linear-gradient(90deg,'+rgba(T.accent,0.06)+','+T.accent+')';
+      var bar=H('span','bar',sc); bar.style.background='linear-gradient(90deg,'+T.seq[0]+','+T.seq[T.seq.length-1]+')';  /* HEMLOCK rev HK: scale bar sweeps the sequential ramp */
       H('span','',sc,pick(cfg.scale.high));
     }
   };
@@ -4329,15 +4396,17 @@ function T2_CHART_MAXH(hard,floor){
     var pPts=cfg.proj.map(function(val,i){ return [X(jI+i),g.Y(val)]; });
     E('line',{x1:X(jI),y1:g.y0-6,x2:X(jI),y2:g.y1,stroke:T.axis,'stroke-width':1.5,'stroke-dasharray':'5 5'},svg);
     if(v.today) TX(svg,X(jI)-8,g.y1-8,pick(v.today),T.body,12,'end',600);
+    /* HEMLOCK rev HK: actual = chart-categorical/color-01, projected = dashed sem-text-disabled,
+       per the ProjectedVsActualChart master. */
     E('path',{d:smoothPath(aPts),fill:'none',stroke:T.cats[0],'stroke-width':LWv(),'stroke-linecap':'round'},svg);
-    E('path',{d:linePath(pPts),fill:'none',stroke:T.muted,'stroke-width':LWv(),'stroke-dasharray':'8 7','stroke-linecap':'round'},svg);
+    E('path',{d:linePath(pPts),fill:'none',stroke:T.disabled,'stroke-width':LWv(),'stroke-dasharray':'8 7','stroke-linecap':'round'},svg);
     E('circle',{cx:X(jI),cy:g.Y(cfg.actual[cfg.actual.length-1]),r:4.5,fill:T.cats[0],stroke:T.surface,'stroke-width':2},svg);
     var xt=[0,2,4,6];
     xLabels(svg,T,g,xt.map(function(i){return cfg.x[i/2];}),xt.map(function(i){return i/(n-1);}));
     xyHover(svg,card,T,g,{n:n,X:X,
-      marks:function(i){ var val=(i<=jI)?cfg.actual[i]:cfg.proj[i-jI]; return [{y:g.Y(val),c:(i<=jI)?T.cats[0]:T.muted}]; },
+      marks:function(i){ var val=(i<=jI)?cfg.actual[i]:cfg.proj[i-jI]; return [{y:g.Y(val),c:(i<=jI)?T.cats[0]:T.disabled}]; },
       rows:function(i){ var isA=i<=jI, val=isA?cfg.actual[i]:cfg.proj[i-jI];
-        return [{c:isA?T.cats[0]:T.muted,label:cfg.legend[isA?0:1],value:'$'+val+'K'}]; },
+        return [{c:isA?T.cats[0]:T.disabled,label:cfg.legend[isA?0:1],value:'$'+val+'K'}]; },
       title:function(i){ return pick(cfg.x[Math.min(cfg.x.length-1,Math.round(i/2))]); },
       initial:null});
   };
@@ -4347,16 +4416,18 @@ function T2_CHART_MAXH(hard,floor){
     var n=cfg.vals.length, X=function(i){ return g.x0+(g.x1-g.x0)*i/(n-1); };
     var pts=cfg.vals.map(function(val,i){ return [X(i),g.Y(val)]; });
     var d=smoothPath(pts);
-    E('path',{d:d+' L'+g.x1+' '+g.y1+' L'+g.x0+' '+g.y1+' Z',fill:fadeFill(svg,T.cats[0],g.y0,g.y1)},svg);
-    E('path',{d:d,fill:'none',stroke:T.cats[0],'stroke-width':LWv(),'stroke-linecap':'round'},svg);
+    /* HEMLOCK rev HK: timeline line = chart-sequential/seq-500 + seq fade, phase bars =
+       chart-categorical color-03 / color-01 / color-05, per the TimelineScrubberChart master. */
+    E('path',{d:d+' L'+g.x1+' '+g.y1+' L'+g.x0+' '+g.y1+' Z',fill:fadeFill(svg,T.seq5,g.y0,g.y1)},svg);
+    E('path',{d:d,fill:'none',stroke:T.seq5,'stroke-width':LWv(),'stroke-linecap':'round'},svg);
     (v.events||[]).forEach(function(ev){
-      var x=g.x0+(g.x1-g.x0)*ev.t, c=T.cats[ev.c%7];
+      var x=g.x0+(g.x1-g.x0)*ev.t, c=T.cats[ev.c%T.cats.length];
       E('line',{x1:x,y1:g.y0-4,x2:x,y2:g.y1,stroke:c,'stroke-width':1.5,'stroke-dasharray':'5 5'},svg);
       var anchor=(x>g.x1-110)?'end':'start';
       TX(svg,anchor==='start'?x+6:x-6,g.y0+8,pick(ev.label),T.ink,12.5,anchor,600);
     });
     xLabels(svg,T,g,cfg.x,cfg.x.map(function(_,i){ return i/(cfg.x.length-1); }));
-    var by=g.y1+34, phaseCols=[T.cats[2],T.accent,T.cats[4]], prev=0;
+    var by=g.y1+34, phaseCols=[T.cats[2],T.cats[0],T.cats[4]], prev=0;
     cfg.phases.forEach(function(ph,i){
       var xA=g.x0+(g.x1-g.x0)*prev, xB=g.x0+(g.x1-g.x0)*ph.t;
       E('rect',{x:xA+(i?2:0),y:by,width:xB-xA-(i?2:0),height:7,rx:3.5,fill:phaseCols[i%3]},svg);
@@ -4367,16 +4438,17 @@ function T2_CHART_MAXH(hard,floor){
     });
     function phaseAt(t){ for(var i=0;i<cfg.phases.length;i++){ if(t<=cfg.phases[i].t) return cfg.phases[i]; } return cfg.phases[cfg.phases.length-1]; }
     xyHover(svg,card,T,g,{n:n,X:X,
-      marks:function(i){ return [{y:g.Y(cfg.vals[i]),c:T.cats[0]}]; },
-      rows:function(i){ return [{c:T.cats[0],label:phaseAt(i/(n-1)).label,value:'$'+cfg.vals[i]+'K'}]; },
+      marks:function(i){ return [{y:g.Y(cfg.vals[i]),c:T.seq5}]; },
+      rows:function(i){ return [{c:T.seq5,label:phaseAt(i/(n-1)).label,value:'$'+cfg.vals[i]+'K'}]; },
       title:function(i){ return pick(cfg.x[Math.round(i/(n-1)*(cfg.x.length-1))]); },
       initial:null});
   };
   R.tree=function(card,cfg,v,T,st){
     var box=H('div','t2ck-tree',card);
     if(st&&st.h) box.style.aspectRatio='720 / '+st.h;  /* rev Z: dragged height via aspect (nodes are %-positioned) */
+    /* HEMLOCK rev HK: nodes = chart-categorical color-01..05 per the TreemapChart master;
+       rev-V dark darkening retired (dark palette values are already dark-tuned). */
     var cols=[T.cats[0],T.cats[1],T.cats[2],T.cats[3],T.cats[4]];
-    if(T.dark) cols=cols.map(function(c){ return shade(c,0.85); });  /* rev V: dark mode — node blocks slightly darker */
     cfg.nodes.forEach(function(nd,i){
       var el=H('div','tn',box);
       el.style.left=nd.x+'%'; el.style.top=nd.y+'%'; el.style.width=nd.w+'%'; el.style.height=nd.h+'%';
@@ -4396,8 +4468,9 @@ function T2_CHART_MAXH(hard,floor){
     var g=frame(svg,T,{yTicks:cfg.yTicks,padB:v.labels?64:42,H:v.labels?382:360,flush:v.nocard});
     /* rev U: bars TWICE as wide as the gaps between them (gap = bw/2, edges = bw/4) */
     var n=cfg.steps.length, bw=(g.x1-g.x0)/(1.5*n), slot=bw*1.5;
-    /* rev V: dark mode — bar colors slightly darker (info-box swatches match) */
-    var CA=T.dark?shade(T.accent,0.85):T.accent, CP=T.dark?shade(T.pos,0.85):T.pos, CN=T.dark?shade(T.neg,0.85):T.neg;
+    /* HEMLOCK rev HK: totals = chart-sequential/seq-500, gains = sem-text-deposit, losses =
+       sem-text-error, per the WaterfallChart master (rev-V dark darkening retired). */
+    var CA=T.seq5, CP=T.pos, CN=T.neg;
     var run=0, prevEdge=null, runs=[];
     cfg.steps.forEach(function(st2,i){
       var x=g.x0+bw/4+slot*i, top,bot,fill;
@@ -4408,7 +4481,7 @@ function T2_CHART_MAXH(hard,floor){
       if(prevEdge!=null) E('line',{x1:prevEdge[0],y1:prevEdge[1],x2:x,y2:(st2.kind==='neg'?top:(st2.kind==='abs'?g.Y(st2.v):bot)),stroke:T.axis,'stroke-width':1.5},svg);  /* rev U: connectors more visible */
       E('rect',{x:x,y:top,width:bw,height:Math.max(2,bot-top),rx:2,fill:fill},svg);
       prevEdge=[x+bw, st2.kind==='neg'?bot:top];
-      TX(svg,x+bw/2,g.y1+22,pick(st2.label),T.axis,12,'middle');
+      TX(svg,x+bw/2,g.y1+22,pick(st2.label),T.muted,11,'middle');  /* HEMLOCK rev HK: 11px sem-text-meta */
       if(v.labels){
         var lab=st2.kind==='abs'?('$'+st2.v+'K'):((st2.v>0?'+$':'-$')+Math.abs(st2.v)+'K');
         TX(svg,x+bw/2,g.y1+44,lab,st2.kind==='abs'?T.ink:(st2.kind==='pos'?T.pos:T.neg),13,'middle',600);
@@ -4436,7 +4509,7 @@ function T2_CHART_MAXH(hard,floor){
     var cx=160,cy=160, R1i=94,R1o=120, R2i=122,R2o=150;
     var GAPW=2, PAD1=GAPW/((R1i+R1o)/2), PAD2=GAPW/((R2i+R2o)/2);
     var total=0; cfg.groups.forEach(function(gp){ gp.subs.forEach(function(su){ total+=su.v; }); });
-    var pCols=[T.cats[0],T.cats[4],T.cats[5],T.cats[1]];
+    var pCols=[T.cats[0],T.cats[1],T.cats[2],T.cats[3]];  /* HEMLOCK rev HK: groups take color-01..04 in palette order */
     function seg(r0,r1,a0,a1){
       function P(r,ang){ return (cx+r*Math.cos(ang)).toFixed(2)+' '+(cy+r*Math.sin(ang)).toFixed(2); }
       var large=(a1-a0)>Math.PI?1:0;
@@ -4554,7 +4627,10 @@ function T2_CHART_MAXH(hard,floor){
     var Hh=(st&&st.h)||430;  /* rev Z: dragged height — pxPer re-solves so the flows fill it */
     var svg=svgBase(card,pick(cfg.title),Hh);
     var NW=12,padT=14,padB=14,GAP=14;
-    var CMAP={blue:T.cats[0],lblue:T.cats[3],cyan:T.cats[1],teal:T.cats[4],green:T.pos,gold:T.cats[5],orange:T.cats[6],warn:T.orange,gray:T.axis,muted:T.muted};
+    /* HEMLOCK rev HK: named slots re-pinned onto the full categorical palette so each name keeps
+       its hue family — blue=color-04, lblue=color-06 (sky), cyan=color-02, teal=color-05,
+       gold=color-14, orange=color-13; green stays sem-text-deposit (money-positive role). */
+    var CMAP={blue:T.cats[3],lblue:T.cats[5],cyan:T.cats[1],teal:T.cats[4],green:T.pos,gold:T.cats[13]||T.cats[5],orange:T.cats[12]||T.cats[6],warn:T.orange,gray:T.axis,muted:T.muted};
     var colX=[0, 354-NW/2, 720-NW];
     var nodes={}; cfg.nodes.forEach(function(nd){ nodes[nd.id]={def:nd,inV:0,outV:0}; });
     cfg.flows.forEach(function(f){ nodes[f.s].outV+=f.v; nodes[f.t].inV+=f.v; });
@@ -4626,14 +4702,13 @@ function T2_CHART_MAXH(hard,floor){
     if(cfg.type==='proj'){
       var lg=H('div','t2ck-legend',card);
       var s1=H('span','lg',lg); var l1=H('span','ln',s1); l1.style.borderTopColor=T.cats[0]; H('span','',s1,pick(cfg.legend[0]));
-      var s2=H('span','lg',lg); var l2=H('span','ln dash',s2); l2.style.borderTopColor=T.muted; H('span','',s2,pick(cfg.legend[1]));
+      var s2=H('span','lg',lg); var l2=H('span','ln dash',s2); l2.style.borderTopColor=T.disabled; H('span','',s2,pick(cfg.legend[1]));  /* HEMLOCK rev HK: projected = sem-text-disabled */
       return lg;
     }
     if(!cfg.series) return null;
     var lg2=H('div','t2ck-legend',card);
-    var darkBars=(cfg.type==='bar'||cfg.type==='bench')&&T.dark;  /* rev V: legend swatches match the darkened bars */
     cfg.series.forEach(function(sN,i){
-      var col=T.cats[i%7]; if(darkBars) col=shade(col,0.85);
+      var col=T.cats[i%T.cats.length];  /* HEMLOCK rev HK: swatches match the un-shaded palette series */
       var sp=H('span','lg',lg2); var dot=H('span','dot',sp); dot.style.background=col; H('span','',sp,pick(sN.label));
     });
     return lg2;
