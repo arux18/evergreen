@@ -530,7 +530,7 @@
        the dark values are set explicitly in the dark block below. Row hover/pressed stay on the seq
        ramp (rev HK4). --row-hover/--row-pressed above stay taupe for NON-table hovers (plan cards,
        comparison pills, nudge buttons). */
-    --table-head-bg:#163196; --table-head-ink:#FFFFFF; --table-total-bg:#2952CC;
+    --table-head-bg:#163196; --table-head-ink:#FFFFFF; --table-total-bg:var(--seq3);  /* rev HK8: totals bar = chart-sequential seq-300 (auto-themes; #A5BCFC light / #3A6AF8 dark) with sem-text-header ink */
     --table-row-hover:var(--seq1); --table-row-pressed:var(--seq2);
     /* rev HK6 FROZEN-COLUMN RULE (per design): a table whose frozen/pinned column carries the seq-100
        highlight steps its row states one ramp step deeper — hover seq-200, pressed seq-300 — so the
@@ -896,9 +896,10 @@
     --cat11:#E89FB0; --cat12:#CE7E5B; --cat13:#F0985A; --cat14:#D9A02E; --cat15:#F3DE6F;
     /* Hemlock sequential ramp — chart-sequential/seq-100..700 (dark: blue ramp inverted). */
     --seq1:#163196; --seq2:#2952CC; --seq3:#3A6AF8; --seq4:#5A82F9; --seq5:#7094FB; --seq6:#A5BCFC; --seq7:#C8D6FD;
-    /* rev HK7: table bands = primary-button tokens, dark values: header sem-btnPrimaryBgActive (blue-600),
-       totals sem-btnPrimaryBgHover (blue-400), ink sem-btnPrimaryText (black on the vivid dark-blue fills) */
-    --table-head-bg:#3A6AF8; --table-head-ink:#0E0E0E; --table-total-bg:#7094FB;
+    /* rev HK7: header band = primary-button tokens, dark values: sem-btnPrimaryBgActive (blue-600),
+       ink sem-btnPrimaryText (black on the vivid dark-blue fill). rev HK8: totals bar rides --seq3
+       (auto-themes — no dark override needed). */
+    --table-head-bg:#3A6AF8; --table-head-ink:#0E0E0E;
     --pros-bg:#12291C; --pros-border:#245234; --cons-bg:#3A1B1E; --cons-border:#542427; --info-bg:#10263C; --info-border:#16304A;  /* flat opaque status surfaces: sem-background-success/-error/-info + their border roles */
     --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.70);  /* ring kept; black layer = shadow-lg-color 70% (lifted Aug 21) */
     --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.60);  /* shadow-md-color 60% (lifted Aug 21) */
@@ -1346,16 +1347,16 @@
      rev-X ::after fill extension. */
   /* rev AH (per Bill): the Total row is the same height as the header row — it takes the header's
      vertical metrics (12px padding, line-height 1.2) instead of the data cells' 16px padding */
-  tr.sc-total td{position:sticky;bottom:0;z-index:2;background:var(--table-total-bg);color:var(--table-head-ink);font-weight:600;border-top:1px solid var(--border-strong);box-shadow:none;padding:12px 16px;line-height:1.2;}  /* rev HK7 (per design): totals bar = sem-btnPrimaryBgHover band + sem-btnPrimaryText ink — one button-state step lighter than the sem-btnPrimaryBgActive header (supersedes rev HK6's seq-200+ink). Contrast: 6.6:1 light, 6.9:1 dark. */
-  .sc-data-table tr.sc-total td:not(.sticky){color:var(--table-head-ink);font-variant-numeric:tabular-nums;}  /* rev HK7: outguns the .sc-data-table td:not(.sticky) text-body ink */
+  tr.sc-total td{position:sticky;bottom:0;z-index:2;background:var(--table-total-bg);color:var(--ink);font-weight:600;border-top:1px solid var(--border-strong);box-shadow:none;padding:12px 16px;line-height:1.2;}  /* rev HK8 (per design): totals bar = seq-300 band + sem-text-header ink (supersedes rev HK7's btnPrimaryBgHover band). Flagged: dark seq-300 = blue-600 = the dark header fill, and dark ink on it is ~3.5:1. */
+  .sc-data-table tr.sc-total td:not(.sticky){color:var(--ink);font-variant-numeric:tabular-nums;}  /* rev HK8: outguns the .sc-data-table td:not(.sticky) text-body ink */
   /* MOBILE rev ML (Bill, 2026-08-02): CARD MODE IS REMOVED — the data table has one layout, the
      table. Below 640 it keeps the v2.0 behaviour: .sc-data-table holds min-width:640px so the wrap
      scrolls horizontally with the first column pinned. Deleted with it: the #appMain.tbl-cards rule
      set (block-level table/rows/cells, the td::before label column, the unpinned totals card, and the
      suppressions for the column grip / row scrubber / overlay scrollbars). The engine's data-label
      stamping went too — card mode's ::before was its only consumer. */
-  .sc-data-table tr.sc-total td.sticky{position:sticky;left:0;bottom:0;z-index:3;background:var(--table-total-bg);color:var(--table-head-ink);box-shadow:none;}  /* rev HK7: btnPrimaryBgHover band, btnPrimaryText label */
-  tr.sc-total td:last-child::after{content:'';position:absolute;top:-1px;bottom:0;left:100%;width:var(--t2-fillw,0px);background:var(--table-total-bg);border-top:1px solid var(--border-strong);pointer-events:none;}  /* rev X: measured, not 100vw; rev HK7: extension strip matches the btnPrimaryBgHover band */
+  .sc-data-table tr.sc-total td.sticky{position:sticky;left:0;bottom:0;z-index:3;background:var(--table-total-bg);color:var(--ink);box-shadow:none;}  /* rev HK8: seq-300 band, text-header label */
+  tr.sc-total td:last-child::after{content:'';position:absolute;top:-1px;bottom:0;left:100%;width:var(--t2-fillw,0px);background:var(--table-total-bg);border-top:1px solid var(--border-strong);pointer-events:none;}  /* rev X: measured, not 100vw; rev HK8: extension strip matches the seq-300 band */
   /* ===== TEST 2 (rev P, 2026-07-25) ===== */
   /* remove the wide light-gray divider between column 1 and column 2 — it was the pinned column's
      scroll-affordance fade shadow (both tables, both themes) */
