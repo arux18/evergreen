@@ -762,10 +762,9 @@
   .sc-data-table thead th{position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;font-weight:600;font-size:var(--fs-12);text-transform:uppercase;letter-spacing:.02em;background:var(--table-head-bg);color:var(--table-head-ink);vertical-align:middle;white-space:normal;line-height:1.2;padding:8px 16px;border-bottom:1px solid var(--border);}  /* rev HK4: header band = chart-sequential seq-700, ink = seq-100 (was sunken taupe + meta-gray) */
   .sc-data-table thead th:first-child{border-radius:8px 0 0 0;} .sc-data-table thead th:last-child{border-radius:0 8px 0 0;}
   .sc-data-table td{white-space:nowrap;padding:12px 16px;}  /* HEMLOCK rev HK: row padding $spacing-xs 12 per TransactionRow master */
-  .sc-data-table tbody tr:hover td:where(html.ptr-fine *){background:var(--table-row-hover);transition:background 150ms ease;}  /* rev HK4: seq-100 wash */
-  .sc-data-table tbody tr:hover td:first-child:where(html.ptr-fine *){border-radius:12px 0 0 12px;} .sc-data-table tbody tr:hover td:last-child:where(html.ptr-fine *){border-radius:0 12px 12px 0;}
-  .sc-data-table tbody tr:active td{background:var(--table-row-pressed);}  /* rev HK4: seq-200 */
-  .sc-data-table tbody tr:active td:first-child{border-radius:12px 0 0 12px;} .sc-data-table tbody tr:active td:last-child{border-radius:0 12px 12px 0;}
+  .sc-data-table tbody tr:not(.sc-total):hover td:where(html.ptr-fine *){background:var(--table-row-hover);transition:background 150ms ease;}  /* rev HK4: seq-100 wash; rev HK5: the totals bar is not interactive — no hover */
+  .sc-data-table tbody tr:not(.sc-total):active td{background:var(--table-row-pressed);}  /* rev HK4: seq-200 */
+  /* rev HK5 (per design): the 12px hover/pressed row end-caps are RETIRED — rows stay square in all states */
   .sc-data-table tbody tr:last-child td{border-bottom:none;}  /* avoid a doubled seam against the .data-wrap frame */
   .sc-data-table th.sticky,.sc-data-table td.sticky{position:sticky;left:0;z-index:1;font-weight:600;color:var(--ink);text-align:left;}
   .sc-data-table thead th.sticky{color:var(--table-head-ink);}  /* rev HK4: the sticky-column --ink above must not darken the header's first cell on the seq-700 band */
@@ -796,8 +795,9 @@
   .sc-cmp-table tr:first-child th:first-child{border-radius:8px 0 0 0;} .sc-cmp-table tr:first-child th:last-child{border-radius:0 8px 0 0;}
   .sc-cmp-table tr:last-child td{border-bottom:none;}  /* avoid a doubled seam against the .sc-cmp-wrap frame */
   .sc-cmp-table tbody tr:hover td:where(html.ptr-fine *), .sc-cmp-table tr:hover td:where(html.ptr-fine *){background:var(--table-row-hover);transition:background 150ms ease;}  /* rev HK4: seq-100 wash */
+  .sc-cmp-table tbody tr:active td, .sc-cmp-table tr:active td{background:var(--table-row-pressed);}  /* rev HK5: light mode was missing the pressed state the dark block already had */
   .sc-cmp-table th:first-child,.sc-cmp-table td:first-child{border-left:none;position:sticky;left:0;z-index:2;font-weight:600;white-space:nowrap;color:var(--ink);}
-  .sc-cmp-table td:first-child{background:var(--surface-1);}
+  .sc-cmp-table td:first-child{background:var(--seq1);}  /* rev HK5 (per design): frozen column highlighted in chart-sequential seq-100 (was surface-1; seq-200 tried and softened same day) */
   .sc-cmp-table th{background:var(--table-head-bg);font-size:var(--fs-14);font-weight:600;color:var(--table-head-ink);}  /* rev HK4: seq-700 band + seq-100 ink */
   .sc-cmp-table tr:first-child th:first-child{color:var(--table-head-ink);}  /* rev HK4: the sticky-first-cell ink rule above would put dark --ink on the blue band */
   .sc-cmp-table th:not(:first-child),.sc-cmp-table td:not(:first-child){min-width:140px;}  /* keeps columns readable; wrapper scrolls when they don't all fit */
@@ -986,12 +986,10 @@
      Selectors cover both DOM-appended rows (direct <tr> children) and parser-created tbody. */
   html[data-theme="dark"] .sc-cmp-table th{background:var(--table-head-bg);}  /* rev HK4: seq-700 band (pale in dark — inverted ramp) */
   html[data-theme="dark"] .sc-cmp-table td{background:var(--surface-1);}
+  html[data-theme="dark"] .sc-cmp-table td:first-child{background:var(--seq1);}  /* rev HK5: frozen column stays seq-100 in dark (the td rule above outweighs the base first-child rule) */
   html[data-theme="dark"] .sc-cmp-table tbody tr:hover td:where(html.ptr-fine *),html[data-theme="dark"] .sc-cmp-table tr:hover td:where(html.ptr-fine *){background:var(--table-row-hover);transition:background 150ms ease;}  /* rev HK4: seq-100 (deep navy-blue in dark) */
-  html[data-theme="dark"] .sc-cmp-table tbody tr:hover td:first-child:where(html.ptr-fine *),html[data-theme="dark"] .sc-cmp-table tr:hover td:first-child:where(html.ptr-fine *){border-radius:12px 0 0 12px;}
-  html[data-theme="dark"] .sc-cmp-table tbody tr:hover td:last-child:where(html.ptr-fine *),html[data-theme="dark"] .sc-cmp-table tr:hover td:last-child:where(html.ptr-fine *){border-radius:0 12px 12px 0;}
   html[data-theme="dark"] .sc-cmp-table tbody tr:active td,html[data-theme="dark"] .sc-cmp-table tr:active td{background:var(--table-row-pressed);}  /* rev HK4: seq-200 */
-  html[data-theme="dark"] .sc-cmp-table tbody tr:active td:first-child,html[data-theme="dark"] .sc-cmp-table tr:active td:first-child{border-radius:12px 0 0 12px;}
-  html[data-theme="dark"] .sc-cmp-table tbody tr:active td:last-child,html[data-theme="dark"] .sc-cmp-table tr:active td:last-child{border-radius:0 12px 12px 0;}
+  /* rev HK5 (per design): the 12px hover/pressed row end-caps are RETIRED — rows stay square in all states */
   /* TEST 2 (rev E, 2026-07-25): attention badges (LISTINGS / CALCULATOR) — one purple across BOTH modes:
      #6E52FF (hsl(250,100%,66%), the darker shade of the #9A86FF overline purple; white text 4.9:1 AA).
      History: light was accent blue → #9A86FF (rev D) → darkened per Bill (rev E); dark was #9A86FF (rev C)
@@ -1328,23 +1326,25 @@
   .sc-data-table thead th:last-child::after,.sc-cmp-table tr:first-child th:last-child::after{content:'';position:absolute;top:0;bottom:-1px;left:100%;width:var(--t2-fillw,0px);background:var(--table-head-bg);border-bottom:1px solid var(--border);pointer-events:none;}  /* rev HK4: extension strip matches the seq-700 band */
   html[data-theme="dark"] .sc-data-table thead th:last-child::after,html[data-theme="dark"] .sc-cmp-table tr:first-child th:last-child::after{background:var(--table-head-bg);}  /* rev HK4: matches the seq-700 band */
   /* total-row convention: mark a totals row with class "sc-total" — full-width fill the same way as headers.
-     rev AF (per Bill): the bar is TAUPE — var(--taupe-100) themes itself (light #F7F5F0, dark #141E36 since
-     v1.9.1), so the old dark gradient overrides are gone; the sticky first cell keeps the taupe too.
+     rev HK5 (per design, 2026-08-21): the bar mirrors the HEADER — seq-700 band + seq-100 ink via
+     --table-head-bg/--table-head-ink (auto-themes; supersedes rev AF's taupe ruling). It is not
+     interactive: the row hover/pressed rules exclude .sc-total.
      rev AG (per Bill): the bar is PINNED to the bottom of the scroll wrap exactly as the header row is
      pinned to the top — position:sticky bottom:0 at the header's z-index; the corner (sticky-column)
      cell pins on BOTH axes, one z above, mirroring the header corner. Sticky still positions the
      rev-X ::after fill extension. */
   /* rev AH (per Bill): the Total row is the same height as the header row — it takes the header's
      vertical metrics (12px padding, line-height 1.2) instead of the data cells' 16px padding */
-  tr.sc-total td{position:sticky;bottom:0;z-index:2;background:var(--taupe-100);font-weight:600;border-top:1px solid var(--border-strong);box-shadow:none;padding:12px 16px;line-height:1.2;}
+  tr.sc-total td{position:sticky;bottom:0;z-index:2;background:var(--table-head-bg);color:var(--table-head-ink);font-weight:600;border-top:1px solid var(--border-strong);box-shadow:none;padding:12px 16px;line-height:1.2;}  /* rev HK5 (per design): totals bar mirrors the header — seq-700 band + seq-100 ink, bookending the table (was taupe) */
+  .sc-data-table tr.sc-total td:not(.sticky){color:var(--table-head-ink);font-variant-numeric:tabular-nums;}  /* rev HK5: outguns the .sc-data-table td:not(.sticky) text-body ink */
   /* MOBILE rev ML (Bill, 2026-08-02): CARD MODE IS REMOVED — the data table has one layout, the
      table. Below 640 it keeps the v2.0 behaviour: .sc-data-table holds min-width:640px so the wrap
      scrolls horizontally with the first column pinned. Deleted with it: the #appMain.tbl-cards rule
      set (block-level table/rows/cells, the td::before label column, the unpinned totals card, and the
      suppressions for the column grip / row scrubber / overlay scrollbars). The engine's data-label
      stamping went too — card mode's ::before was its only consumer. */
-  .sc-data-table tr.sc-total td.sticky{position:sticky;left:0;bottom:0;z-index:3;background:var(--taupe-100);box-shadow:none;}
-  tr.sc-total td:last-child::after{content:'';position:absolute;top:-1px;bottom:0;left:100%;width:var(--t2-fillw,0px);background:var(--taupe-100);border-top:1px solid var(--border-strong);pointer-events:none;}  /* rev X: measured, not 100vw */
+  .sc-data-table tr.sc-total td.sticky{position:sticky;left:0;bottom:0;z-index:3;background:var(--table-head-bg);color:var(--table-head-ink);box-shadow:none;}  /* rev HK5: seq-700 band (the .sticky --ink rule must not darken the corner cell) */
+  tr.sc-total td:last-child::after{content:'';position:absolute;top:-1px;bottom:0;left:100%;width:var(--t2-fillw,0px);background:var(--table-head-bg);border-top:1px solid var(--border-strong);pointer-events:none;}  /* rev X: measured, not 100vw; rev HK5: extension strip matches the seq-700 band */
   /* ===== TEST 2 (rev P, 2026-07-25) ===== */
   /* remove the wide light-gray divider between column 1 and column 2 — it was the pinned column's
      scroll-affordance fade shadow (both tables, both themes) */
@@ -2759,15 +2759,16 @@ function T2_CHART_MAXH(hard,floor){
         var th=document.createElement('th'); if(i===0) th.className='sticky';
         var inner=document.createElement('span'); inner.className='th-in';
         var lab=document.createElement('span'); lab.className='th-label'; lab.textContent=t(c.label); inner.appendChild(lab);
-        /* rev Y: only the ACTIVELY SORTED column shows a chevron (single, up or down) —
-           unsorted columns render none (the double up/down affordance is gone) */
+        /* rev HK5 (2026-08-21, per design): EVERY sortable column shows a resting double up/down
+           chevron so the sort affordance is discoverable (supersedes rev Y's no-glyph ruling);
+           the actively sorted column swaps it for the single bold chevron (.active). */
         var ICO_UP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>';
         var ICO_DOWN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-        if(i===sortCol){
-          var arr=document.createElement('span'); arr.className='sortarr active';
-          arr.innerHTML=(sortDir>0?ICO_UP:ICO_DOWN);
-          inner.appendChild(arr);
-        }
+        var ICO_BOTH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>';
+        var arr=document.createElement('span');
+        if(i===sortCol){ arr.className='sortarr active'; arr.innerHTML=(sortDir>0?ICO_UP:ICO_DOWN); }
+        else { arr.className='sortarr'; arr.innerHTML=ICO_BOTH; }
+        inner.appendChild(arr);
         th.appendChild(inner);
         th.setAttribute('role','button'); th.setAttribute('tabindex','0');
         th.setAttribute('aria-sort', i===sortCol ? (sortDir>0?'ascending':'descending') : 'none');
