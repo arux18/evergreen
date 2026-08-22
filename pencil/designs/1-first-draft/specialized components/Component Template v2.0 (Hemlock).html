@@ -523,6 +523,13 @@
     --info-bg:rgba(58,106,248,.06); --info-border:rgba(58,106,248,.24);  /* prim-blue-600 @ 6% / 24% */
     --text-body:#403D3A;  /* sem-text-body */
     --row-hover:var(--taupe-100); --row-pressed:var(--taupe-pressed);
+    /* rev HK4 (2026-08-21, per design): TABLE-specific chrome rides the chart-sequential ramp and
+       auto-themes through the --seq vars (the dark ramp is inverted, so the dark header goes pale).
+       Header band = seq-700, header ink = seq-100 (palest step — max contrast on the deep band),
+       row hover = seq-100, row pressed = seq-200 (one step deeper than hover). --row-hover/--row-pressed
+       above stay taupe for NON-table hovers (plan cards, comparison pills, nudge buttons). */
+    --table-head-bg:var(--seq7); --table-head-ink:var(--seq1);
+    --table-row-hover:var(--seq1); --table-row-pressed:var(--seq2);
     /* layout scales — each equals the literal it replaced, so there is no visual change */
     --max-w:1080px; --chart-vb-w:720;  /* --chart-vb-w must match the sample chart's SVG viewBox width */
     --radius-sm:4px; --radius:8px; --radius-md:10px; --radius-lg:12px; --radius-xl:14px; --radius-pill:9999px;  /* 6px (modal close) & 7px (segmented control) are intentional one-offs */
@@ -752,15 +759,16 @@
   .data-wrap{overflow:auto;max-height:460px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-1);}
   .sc-data-table{border-collapse:separate;border-spacing:0;font-size:var(--fs-14);line-height:1.43;table-layout:auto;width:100%;min-width:640px;}  /* responsive columns; horizontal scroll (sticky first col) when narrower than 640 */
   .sc-data-table th,.sc-data-table td{background:var(--surface-1);border-bottom:1px solid var(--border);border-right:none;padding:12px 16px;text-align:right;overflow:hidden;text-overflow:ellipsis;}  /* no vertical table borders (v1.5 table model) */
-  .sc-data-table thead th{position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;font-weight:600;font-size:var(--fs-12);text-transform:uppercase;letter-spacing:.02em;background:var(--calc-bg);color:var(--muted);vertical-align:middle;white-space:normal;line-height:1.2;padding:8px 16px;border-bottom:1px solid var(--border);}  /* HEMLOCK rev HK: TableHeaderCell master — 12px semibold UPPERCASE sem-text-meta on the sem-background-sunken band; accent underline retired for a sem-borders-light hairline */
+  .sc-data-table thead th{position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;font-weight:600;font-size:var(--fs-12);text-transform:uppercase;letter-spacing:.02em;background:var(--table-head-bg);color:var(--table-head-ink);vertical-align:middle;white-space:normal;line-height:1.2;padding:8px 16px;border-bottom:1px solid var(--border);}  /* rev HK4: header band = chart-sequential seq-700, ink = seq-100 (was sunken taupe + meta-gray) */
   .sc-data-table thead th:first-child{border-radius:8px 0 0 0;} .sc-data-table thead th:last-child{border-radius:0 8px 0 0;}
   .sc-data-table td{white-space:nowrap;padding:12px 16px;}  /* HEMLOCK rev HK: row padding $spacing-xs 12 per TransactionRow master */
-  .sc-data-table tbody tr:hover td:where(html.ptr-fine *){background:var(--row-hover);transition:background 150ms ease;}
+  .sc-data-table tbody tr:hover td:where(html.ptr-fine *){background:var(--table-row-hover);transition:background 150ms ease;}  /* rev HK4: seq-100 wash */
   .sc-data-table tbody tr:hover td:first-child:where(html.ptr-fine *){border-radius:12px 0 0 12px;} .sc-data-table tbody tr:hover td:last-child:where(html.ptr-fine *){border-radius:0 12px 12px 0;}
-  .sc-data-table tbody tr:active td{background:var(--row-pressed);}
+  .sc-data-table tbody tr:active td{background:var(--table-row-pressed);}  /* rev HK4: seq-200 */
   .sc-data-table tbody tr:active td:first-child{border-radius:12px 0 0 12px;} .sc-data-table tbody tr:active td:last-child{border-radius:0 12px 12px 0;}
   .sc-data-table tbody tr:last-child td{border-bottom:none;}  /* avoid a doubled seam against the .data-wrap frame */
   .sc-data-table th.sticky,.sc-data-table td.sticky{position:sticky;left:0;z-index:1;font-weight:600;color:var(--ink);text-align:left;}
+  .sc-data-table thead th.sticky{color:var(--table-head-ink);}  /* rev HK4: the sticky-column --ink above must not darken the header's first cell on the seq-700 band */
   .sc-data-table thead th.sticky{z-index:3;}
   /* scroll affordance: subtle right edge on the pinned column (vertical borders were removed in the v1.5 table model) */
   .sc-data-table th.sticky,.sc-data-table td.sticky,.sc-cmp-table th:first-child,.sc-cmp-table td:first-child{box-shadow:8px 0 8px -8px rgba(15,23,42,.15);}
@@ -768,9 +776,9 @@
   .sc-data-table td a{color:var(--accent);text-decoration:none;} .sc-data-table td a:hover:where(html.ptr-fine *){text-decoration:underline;}
   .sc-data-table .data-none{text-align:center;color:var(--muted);padding:18px;white-space:normal;}
   .th-in{display:block;} .th-label{display:inline;white-space:normal;}  /* inline so the sort icon flows with the text and wraps underneath when narrow */
-  .sortarr{display:inline-flex;vertical-align:middle;margin-left:2px;color:var(--muted);pointer-events:none;}  /* HEMLOCK rev HK: sort glyph rides the sem-text-meta header ink (TableHeaderCell/sortable) */
+  .sortarr{display:inline-flex;vertical-align:middle;margin-left:2px;color:var(--seq3);pointer-events:none;}  /* rev HK4: unsorted glyph = seq-300 (quiet against the seq-700 band; meta-gray vanished on blue) */
   .sortarr svg{width:16px;height:16px;display:block;}
-  .sortarr.active{color:var(--accent);}
+  .sortarr.active{color:var(--table-head-ink);}  /* rev HK4: sorted glyph = full seq-100 header ink (accent blue was invisible on the seq-700 band) */
   /* chart */
   .tmpl-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:2px 0 14px;}
   .tmpl-toolbar button{background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-pill);padding:6px 12px;font-size:var(--fs-13);font-family:var(--font-ui);cursor:pointer;}
@@ -784,13 +792,14 @@
   .sc-cmp-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-1);}  /* frame the table via the wrapper (no vertical cell borders) */
   .sc-cmp-table{border-collapse:separate;border-spacing:0;table-layout:auto;width:100%;font-size:var(--fs-14);line-height:1.43;}  /* responsive columns; horizontal scroll (sticky first col) when too narrow */
   .sc-cmp-table th,.sc-cmp-table td{border-right:none;border-bottom:1px solid var(--border);padding:12px 16px;text-align:left;vertical-align:top;position:relative;color:var(--text-body);}
-  .sc-cmp-table tr:first-child th{border-bottom:1px solid var(--border);font-size:var(--fs-12);text-transform:uppercase;letter-spacing:.02em;color:var(--muted);padding:8px 16px;}  /* HEMLOCK rev HK: header row per TableHeaderCell master (12px semibold uppercase sem-text-meta; hairline replaces the accent underline) */
+  .sc-cmp-table tr:first-child th{border-bottom:1px solid var(--border);font-size:var(--fs-12);text-transform:uppercase;letter-spacing:.02em;color:var(--table-head-ink);padding:8px 16px;}  /* rev HK4: header ink = seq-100 on the seq-700 band (was meta-gray on sunken taupe) */
   .sc-cmp-table tr:first-child th:first-child{border-radius:8px 0 0 0;} .sc-cmp-table tr:first-child th:last-child{border-radius:0 8px 0 0;}
   .sc-cmp-table tr:last-child td{border-bottom:none;}  /* avoid a doubled seam against the .sc-cmp-wrap frame */
-  .sc-cmp-table tbody tr:hover td:where(html.ptr-fine *), .sc-cmp-table tr:hover td:where(html.ptr-fine *){background:var(--row-hover);transition:background 150ms ease;}
+  .sc-cmp-table tbody tr:hover td:where(html.ptr-fine *), .sc-cmp-table tr:hover td:where(html.ptr-fine *){background:var(--table-row-hover);transition:background 150ms ease;}  /* rev HK4: seq-100 wash */
   .sc-cmp-table th:first-child,.sc-cmp-table td:first-child{border-left:none;position:sticky;left:0;z-index:2;font-weight:600;white-space:nowrap;color:var(--ink);}
   .sc-cmp-table td:first-child{background:var(--surface-1);}
-  .sc-cmp-table th{background:var(--calc-bg);font-size:var(--fs-14);font-weight:600;color:var(--ink);}
+  .sc-cmp-table th{background:var(--table-head-bg);font-size:var(--fs-14);font-weight:600;color:var(--table-head-ink);}  /* rev HK4: seq-700 band + seq-100 ink */
+  .sc-cmp-table tr:first-child th:first-child{color:var(--table-head-ink);}  /* rev HK4: the sticky-first-cell ink rule above would put dark --ink on the blue band */
   .sc-cmp-table th:not(:first-child),.sc-cmp-table td:not(:first-child){min-width:140px;}  /* keeps columns readable; wrapper scrolls when they don't all fit */
   /* calculator */
   .sc-calc-body:not(.hidden){background:var(--calc-bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:30px;}  /* >=30px from the calculator card to the divider line below (it's excluded from the generic open-body rule) */
@@ -931,9 +940,9 @@
   html[data-theme="dark"] .sc-kpi{background:var(--surface-2);border-color:var(--border);position:relative;overflow:hidden;border-radius:0 0 var(--radius-md) var(--radius-md);}  /* HEMLOCK: flat sem-background-light #18223A; square top corners; top bar reaches the outline */
   html[data-theme="dark"] .sc-kpi::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent-3);opacity:.95;}
   /* KPI top bars are uniformly --accent-3 via the base ::before above. */
-  html[data-theme="dark"] .sc-data-table thead th{background:var(--calc-bg);}  /* HEMLOCK rev HK: sem-background-sunken (navy-900 #0C1222) per the table-header masters — was surface-2 */
+  html[data-theme="dark"] .sc-data-table thead th{background:var(--table-head-bg);}  /* rev HK4: seq-700 (dark ramp is inverted, so the dark band goes pale blue #C8D6FD with navy seq-100 ink) */
   html[data-theme="dark"] .sc-data-table th.sticky,html[data-theme="dark"] .sc-data-table td.sticky,html[data-theme="dark"] .sc-cmp-table th:first-child,html[data-theme="dark"] .sc-cmp-table td:first-child{box-shadow:8px 0 8px -8px rgba(0,0,0,0.70);}  /* HEMLOCK: shadow-lg-color 70% (lifted Aug 21) */
-  html[data-theme="dark"] .sc-data-table .sortarr{color:#52637F;} html[data-theme="dark"] .sc-data-table .sortarr.active{color:var(--accent);}  /* HEMLOCK: unsorted = sem-icons-subtle */
+  html[data-theme="dark"] .sc-data-table .sortarr{color:var(--seq3);} html[data-theme="dark"] .sc-data-table .sortarr.active{color:var(--table-head-ink);}  /* rev HK4: glyphs ride the ramp (seq-300 unsorted / seq-100 sorted) on the pale dark band */
   html[data-theme="dark"] .vthumb,html[data-theme="dark"] .vid-modal-poster{background:radial-gradient(120% 130% at 50% 100%,var(--hero-1) 0%,var(--hero-2) 18%,var(--hero-3) 34%,var(--hero-4) 46%,var(--hero-5) 58%,var(--hero-6) 70%,var(--hero-7) 80%,var(--hero-8) 90%);}
   html[data-theme="dark"] .cs-pane > .toggle,html[data-theme="dark"] .subsec-head.toggle,html[data-theme="dark"] .sc-how > .toggle{border-image:linear-gradient(90deg,rgba(90,130,249,0.55),rgba(132,230,204,0.18) 55%,transparent) 1;}  /* HEMLOCK: re-derived from prim-blue-500 + sem-chart-cat-7 */
   /* dark bottom (disclosures) line = solid, non-fading, same as the left end of the lines above */
@@ -975,12 +984,12 @@
      surface-1 cells, --row-hover tint with 12px rounded row end-caps, --row-pressed :active state.
      Ported to the Compare table (the only other table). Dark mode only — light is unchanged.
      Selectors cover both DOM-appended rows (direct <tr> children) and parser-created tbody. */
-  html[data-theme="dark"] .sc-cmp-table th{background:var(--calc-bg);}  /* HEMLOCK rev HK: sem-background-sunken (navy-900 #0C1222) per the table-header masters — was surface-2 */
+  html[data-theme="dark"] .sc-cmp-table th{background:var(--table-head-bg);}  /* rev HK4: seq-700 band (pale in dark — inverted ramp) */
   html[data-theme="dark"] .sc-cmp-table td{background:var(--surface-1);}
-  html[data-theme="dark"] .sc-cmp-table tbody tr:hover td:where(html.ptr-fine *),html[data-theme="dark"] .sc-cmp-table tr:hover td:where(html.ptr-fine *){background:var(--row-hover);transition:background 150ms ease;}
+  html[data-theme="dark"] .sc-cmp-table tbody tr:hover td:where(html.ptr-fine *),html[data-theme="dark"] .sc-cmp-table tr:hover td:where(html.ptr-fine *){background:var(--table-row-hover);transition:background 150ms ease;}  /* rev HK4: seq-100 (deep navy-blue in dark) */
   html[data-theme="dark"] .sc-cmp-table tbody tr:hover td:first-child:where(html.ptr-fine *),html[data-theme="dark"] .sc-cmp-table tr:hover td:first-child:where(html.ptr-fine *){border-radius:12px 0 0 12px;}
   html[data-theme="dark"] .sc-cmp-table tbody tr:hover td:last-child:where(html.ptr-fine *),html[data-theme="dark"] .sc-cmp-table tr:hover td:last-child:where(html.ptr-fine *){border-radius:0 12px 12px 0;}
-  html[data-theme="dark"] .sc-cmp-table tbody tr:active td,html[data-theme="dark"] .sc-cmp-table tr:active td{background:var(--row-pressed);}
+  html[data-theme="dark"] .sc-cmp-table tbody tr:active td,html[data-theme="dark"] .sc-cmp-table tr:active td{background:var(--table-row-pressed);}  /* rev HK4: seq-200 */
   html[data-theme="dark"] .sc-cmp-table tbody tr:active td:first-child,html[data-theme="dark"] .sc-cmp-table tr:active td:first-child{border-radius:12px 0 0 12px;}
   html[data-theme="dark"] .sc-cmp-table tbody tr:active td:last-child,html[data-theme="dark"] .sc-cmp-table tr:active td:last-child{border-radius:0 12px 12px 0;}
   /* TEST 2 (rev E, 2026-07-25): attention badges (LISTINGS / CALCULATOR) — one purple across BOTH modes:
@@ -1316,8 +1325,8 @@
      visually, so 100vw added a full viewport of dead scroll range whenever the table h-overflowed.
      --t2-fillw is kept per-wrap by a ResizeObserver: 0 while the table overflows, the exact remainder
      when narrowed columns underfill. */
-  .sc-data-table thead th:last-child::after,.sc-cmp-table tr:first-child th:last-child::after{content:'';position:absolute;top:0;bottom:-1px;left:100%;width:var(--t2-fillw,0px);background:var(--calc-bg);border-bottom:1px solid var(--border);pointer-events:none;}  /* HEMLOCK rev HK: hairline matches the new header underline */
-  html[data-theme="dark"] .sc-data-table thead th:last-child::after,html[data-theme="dark"] .sc-cmp-table tr:first-child th:last-child::after{background:var(--calc-bg);}  /* HEMLOCK rev HK: matches the sunken header surface */
+  .sc-data-table thead th:last-child::after,.sc-cmp-table tr:first-child th:last-child::after{content:'';position:absolute;top:0;bottom:-1px;left:100%;width:var(--t2-fillw,0px);background:var(--table-head-bg);border-bottom:1px solid var(--border);pointer-events:none;}  /* rev HK4: extension strip matches the seq-700 band */
+  html[data-theme="dark"] .sc-data-table thead th:last-child::after,html[data-theme="dark"] .sc-cmp-table tr:first-child th:last-child::after{background:var(--table-head-bg);}  /* rev HK4: matches the seq-700 band */
   /* total-row convention: mark a totals row with class "sc-total" — full-width fill the same way as headers.
      rev AF (per Bill): the bar is TAUPE — var(--taupe-100) themes itself (light #F7F5F0, dark #141E36 since
      v1.9.1), so the old dark gradient overrides are gone; the sticky first cell keeps the taupe too.
@@ -1477,12 +1486,13 @@
   #appMain.mw-tablet .cs-pane > .toggle.closed,#appMain.mw-mobile .cs-pane > .toggle.closed,#appMain.mw-tablet .subsec-head.toggle.closed,#appMain.mw-mobile .subsec-head.toggle.closed,#appMain.mw-tablet .sc-how > .toggle.closed,#appMain.mw-mobile .sc-how > .toggle.closed{padding-top:8px;margin-bottom:8px;}
   #appMain.mw-tablet .cs-pane > .toggle:not(.closed),#appMain.mw-mobile .cs-pane > .toggle:not(.closed),#appMain.mw-tablet .subsec-head.toggle:not(.closed),#appMain.mw-mobile .subsec-head.toggle:not(.closed),#appMain.mw-tablet .sc-how > .toggle:not(.closed),#appMain.mw-mobile .sc-how > .toggle:not(.closed){margin-bottom:13px;}
   #appMain.mw-mobile .sc-desc,#appMain.mw-tablet .sc-desc,#appMain.mw-mobile .sc-ov-text,#appMain.mw-tablet .sc-ov-text{font-size:14px;}
-  /* rev J: the sorted column gets a THICK accent chevron (white in dark).
+  /* rev J: the sorted column gets a THICK chevron.
      rev Y: unsorted columns show NO chevron at all — only the actively sorted column renders one
-     (single, up or down); the faint double up/down glyphs and their rules are gone. */
-  .sc-data-table .sortarr.active{color:var(--accent);}
+     (single, up or down); the faint double up/down glyphs and their rules are gone.
+     rev HK4: chevron ink = seq-100 header ink, both themes (accent blue was invisible on the seq-700 band). */
+  .sc-data-table .sortarr.active{color:var(--table-head-ink);}
   .sc-data-table .sortarr.active svg{stroke-width:3px;}
-  html[data-theme="dark"] .sc-data-table .sortarr.active{color:#7094FB;}  /* HEMLOCK: sorted chevron = sem-icons-action blue-400 (supersedes the white ruling made against the pre-Hemlock navy tables) */
+  html[data-theme="dark"] .sc-data-table .sortarr.active{color:var(--table-head-ink);}
   /* row scrubber: grab bar under a vertically-truncated table wrap; drag = grow/shrink the visible area */
   .t2-rowscrub{display:none;height:14px;align-items:center;justify-content:center;cursor:row-resize;touch-action:none;user-select:none;margin-top:2px;}
   html.ptr-coarse .t2-rowscrub{position:relative;}

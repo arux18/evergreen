@@ -286,10 +286,10 @@ What the companion HTML applies. Dark gradients from v2.0 are **retired in favor
 | Option tiles (`.sc-plan-card`) | vertical gradient | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)`; hover **flat `var(--row-hover)` `#172642`** + border `var(--accent)` + `0 10px 24px rgba(0,0,0,0.60)` |
 | Generic boxes (`.sc-box`), checklist cards | gradients | **flat `var(--surface-2)` `#18223A`** |
 | Pros / Cons / Info tiles | translucent green/red/**purple** gradients | **flat opaque `var(--pros-bg)`/`var(--cons-bg)`/`var(--info-bg)`** with token borders — info is **sky** |
-| Table headers (data + compare) | gradient | **flat `var(--surface-2)` `#18223A`** (`sem-background-elevated`) |
-| Row hover / pressed | `#12203C`/`#1B2C4F` | **`#172642`/`#202C4E`** — opaque |
+| Table headers (data + compare) — rev HK4 | gradient | **band = `chart-sequential/seq-700`** (`#2952CC` deep blue light / **`#C8D6FD` pale blue dark** — the dark ramp is inverted), **ink = `seq-100`** (`#EBF0FE` light / `#163196` dark), 12px semibold uppercase kept |
+| Table row hover / pressed — rev HK4 | `#12203C`/`#1B2C4F` | **`seq-100` / `seq-200`** (`#EBF0FE`/`#C8D6FD` light, `#163196`/`#2952CC` dark). Non-table hovers (plan cards, comparison pills, nudge buttons) stay on `sem-background-rowHover`/`-rowPressed`. |
 | Sticky-column edge shadow | `rgba(0,0,0,.6)` | **`rgba(0,0,0,0.70)`** (`shadow-lg-color`) |
-| Sort arrows | unsorted `#8695B5`, sorted white | unsorted **`#52637F`** (`sem-icons-subtle`), sorted **`#7094FB`** (`sem-icons-action`) |
+| Sort arrows — rev HK4 | unsorted `#8695B5`, sorted white | unsorted **`seq-300`**, sorted **`seq-100`** (= header ink; both themes — accent blue vanished on the seq-700 band) |
 | KPI cards (`.sc-kpi`) | gradient, purple bar `#9A86FF` | **flat `var(--surface-2)`**, top bar `var(--accent-3)` **`#B198F0`** (`sem-chart-cat-1`, flagged) |
 | Calculator body | purple radial + navy gradient | **flat `var(--calc-bg)` `#0C1222`**, border `var(--taupe-border)` `#22314F`, shadow `0 18px 42px rgba(0,0,0,0.70)` |
 | Tooltips (`#t2Tip`, `.t2ck-tip`) | gradients / `#17263F` | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)` |
