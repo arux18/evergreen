@@ -497,7 +497,7 @@
   :root{
 --surface-1:#FFFFFF; --surface-2:#F8F7F6; --nest:#F8F7F6;  /* sem-background-surface / sem-background-light / sem-background-subtle — exact */
     --border:#EEEDEB; --border-strong:#D5D3D0;  /* sem-borders-light / sem-borders-muted (gray-200) — exact. NOTE: in dark, --border-strong carries sem-borders-strong; the template's two-border system maps to different Hemlock roles per mode */
-    --ink:#0E0E0E; --muted:#5E5954; --faint:#8A8680; --inverse:#FFFFFF;  /* sem-text-header / sem-text-meta / sem-text-subtle / sem-text-reverse. --faint: canon #8A8680 restored over the WCAG-darkened #767169 (Amanda ruling C, 2026-08-21) — the AA miss on small disclosure text is accepted and flagged to design */
+    --ink:#2952CC; --text-header:#0E0E0E; --muted:#5E5954; --faint:#8A8680; --inverse:#FFFFFF;  /* rev HK9 (Amanda, 2026-08-21): --ink remapped GLOBALLY to sem-btnPrimaryBgHover (blue-700) — all headings/emphasis text goes brand blue. --text-header pins the old sem-text-header value for spots that must stay neutral (totals bar). --muted sem-text-meta / --faint sem-text-subtle (canon #8A8680 restored over the WCAG-darkened #767169, Amanda ruling C — AA miss accepted and flagged) / --inverse sem-text-reverse */
     --accent:#3A6AF8; --accent-hover:#2952CC; --accent-subtle:#EBF0FE; --calc-bg:#F7F5F0; --brand-blue:var(--accent);  /* sem-background-action+sem-text-action (blue-600) / sem-btnPrimaryBgHover (blue-700) / sem-background-highlight (blue-100) / sem-background-sunken (taupe-100) — all exact; brand-blue is an alias of --accent */
     /* status/palette colors below (except --page-bg) are provided for components built on this template; the demo itself doesn't use all of them */
     --pos:#148338; --pos-mid:#1EBF51; --neg:#C82320; --warn:#C85F1A; --pos-soft:#4ADE80; --neg-soft:#F87171; --page-bg:#FFFFFF; --taupe-100:#F7F5F0; --taupe-pressed:#EDEAE3; --taupe-border:#E3DFD6;  /* sem-text-deposit / sem-icons-success (snapped from #22C55E) / sem-text-error / sem-text-warning-title / prim-green-350 + prim-red-350 statics / sem-background-surface (the template "page" IS the component surface — the host app supplies sem-background-main behind it) / sem-background-rowHover / sem-background-rowPressed / prim-taupe-300 (exact; nearest semantic is sem-borders-dark #DCD8CB) */
@@ -523,14 +523,17 @@
     --info-bg:rgba(58,106,248,.06); --info-border:rgba(58,106,248,.24);  /* prim-blue-600 @ 6% / 24% */
     --text-body:#403D3A;  /* sem-text-body */
     --row-hover:var(--taupe-100); --row-pressed:var(--taupe-pressed);
-    /* rev HK7 (2026-08-21, per design): table BANDS ride the PRIMARY-BUTTON tokens (supersedes rev
-       HK4's seq-700/seq-100 header): header = sem-btnPrimaryBgActive (blue-800 light / blue-600 dark),
-       totals bar = sem-btnPrimaryBgHover (blue-700 light / blue-400 dark), band ink = sem-btnPrimaryText
-       (white light / black dark — Hemlock's own on-primary pairing). These aren't on the seq ramp, so
-       the dark values are set explicitly in the dark block below. Row hover/pressed stay on the seq
-       ramp (rev HK4). --row-hover/--row-pressed above stay taupe for NON-table hovers (plan cards,
-       comparison pills, nudge buttons). */
-    --table-head-bg:#163196; --table-head-ink:#FFFFFF; --table-total-bg:var(--seq3);  /* rev HK8: totals bar = chart-sequential seq-300 (auto-themes; #A5BCFC light / #3A6AF8 dark) with sem-text-header ink */
+    /* rev HK10 (Amanda, 2026-08-21): TOKEN-SYMMETRIC table scheme — every table color is the SAME
+       token in both modes and theme-flips via the seq ramp / semantic vars; the dark block carries NO
+       table overrides. Supersedes rev HK7's primary-button bands (whose dark values collided with the
+       seq-300 totals) and restores the rev HK4 seq-700 header:
+         header       = seq-700 band + seq-100 ink   (#2952CC/#EBF0FE light — 5.7:1; #C8D6FD/#163196 dark — 7.4:1)
+         totals bar   = seq-200 band + --text-header ink (#C8D6FD/#0E0E0E light — 13.3:1; #2952CC/#D8E1F0 dark — 5.0:1)
+         row states   = hover seq-100 / pressed seq-200 (frozen-column tables step deeper, below)
+         row labels   = --text-header (neutral — the rev HK9 brand-blue --ink is for headings, not table labels)
+       --row-hover/--row-pressed above stay taupe for NON-table hovers (plan cards, comparison pills,
+       nudge buttons). */
+    --table-head-bg:var(--seq7); --table-head-ink:var(--seq1); --table-total-bg:var(--seq2);
     --table-row-hover:var(--seq1); --table-row-pressed:var(--seq2);
     /* rev HK6 FROZEN-COLUMN RULE (per design): a table whose frozen/pinned column carries the seq-100
        highlight steps its row states one ramp step deeper — hover seq-200, pressed seq-300 — so the
@@ -569,10 +572,10 @@
      #appMain so both the component and its picker menu resolve them.
      THE CHEVRON READS --fs-sec-title TOO (rev MX), so it keeps tracking the section title through this
      change with no second edit — which is the whole reason it was expressed as a ratio. */
-  #appMain{--fs-comp-title:22px;--fs-sec-title:18px;--fs-pick:16px;}
-  #appMain.main-narrow{--fs-comp-title:18px;--fs-sec-title:15px;--fs-pick:14px;}
-  html[data-view="a11y"] #appMain{--fs-comp-title:33px;--fs-sec-title:27px;--fs-pick:24px;}                       /* x1.5 */
-  html[data-view="a11y"] #appMain.main-narrow{--fs-comp-title:27px;--fs-sec-title:22.5px;--fs-pick:21px;}         /* x1.5 */
+  #appMain{--fs-comp-title:24px;--fs-sec-title:18px;--fs-pick:16px;}                                              /* rev HK9 (Amanda): comp title 24px desktop (was 22) */
+  #appMain.main-narrow{--fs-comp-title:20px;--fs-sec-title:15px;--fs-pick:14px;}                                  /* rev HK9: comp title 20px mobile (was 18) */
+  html[data-view="a11y"] #appMain{--fs-comp-title:36px;--fs-sec-title:27px;--fs-pick:24px;}                       /* x1.5 */
+  html[data-view="a11y"] #appMain.main-narrow{--fs-comp-title:30px;--fs-sec-title:22.5px;--fs-pick:21px;}         /* x1.5 */
   #appMain.mw-mobile .card,#appMain.mw-tablet .card{border:none !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;padding-right:0 !important;}
   /* No-chrome mode (html[data-chrome="off"], set by the Chrome/No-chrome toggle): at desktop, remove the tile outline + shadow the same way the narrow tiers do above — no border/radius/drop-shadow, --hairline inset hairlines top & bottom. Desktop gutter, tile padding and --max-w cap are unchanged (edge-to-edge content remains a narrow-tier behavior). Narrow tiers already have chrome removed, so this rule is desktop-only. */
   html[data-chrome="off"] #appMain.mw-desktop .card{border:none !important;border-radius:0 !important;box-shadow:none !important;}
@@ -773,7 +776,7 @@
   .sc-data-table tbody tr:not(.sc-total):active td{background:var(--table-row-pressed);}  /* rev HK4: seq-200 */
   /* rev HK5 (per design): the 12px hover/pressed row end-caps are RETIRED — rows stay square in all states */
   .sc-data-table tbody tr:last-child td{border-bottom:none;}  /* avoid a doubled seam against the .data-wrap frame */
-  .sc-data-table th.sticky,.sc-data-table td.sticky{position:sticky;left:0;z-index:1;font-weight:600;color:var(--ink);text-align:left;}
+  .sc-data-table th.sticky,.sc-data-table td.sticky{position:sticky;left:0;z-index:1;font-weight:600;color:var(--text-header);text-align:left;}  /* rev HK10: row labels stay NEUTRAL (--text-header) — the rev HK9 brand-blue --ink made dark tables a wall of blues */
   .sc-data-table thead th.sticky{color:var(--table-head-ink);}  /* rev HK4: the sticky-column --ink above must not darken the header's first cell on the seq-700 band */
   .sc-data-table thead th.sticky{z-index:3;}
   /* scroll affordance: subtle right edge on the pinned column (vertical borders were removed in the v1.5 table model) */
@@ -803,7 +806,7 @@
   .sc-cmp-table tr:last-child td{border-bottom:none;}  /* avoid a doubled seam against the .sc-cmp-wrap frame */
   .sc-cmp-table tbody tr:hover td:where(html.ptr-fine *), .sc-cmp-table tr:hover td:where(html.ptr-fine *){background:var(--table-row-hover-fz);transition:background 150ms ease;}  /* rev HK6: frozen-column rule — hover seq-200 (this table's pinned column is highlighted seq-100) */
   .sc-cmp-table tbody tr:active td, .sc-cmp-table tr:active td{background:var(--table-row-pressed-fz);}  /* rev HK5: light mode was missing the pressed state; rev HK6: frozen-column rule — pressed seq-300 */
-  .sc-cmp-table th:first-child,.sc-cmp-table td:first-child{border-left:none;position:sticky;left:0;z-index:2;font-weight:600;white-space:nowrap;color:var(--ink);}
+  .sc-cmp-table th:first-child,.sc-cmp-table td:first-child{border-left:none;position:sticky;left:0;z-index:2;font-weight:600;white-space:nowrap;color:var(--text-header);}  /* rev HK10: neutral row labels (see data-table sticky rule) */
   .sc-cmp-table td:first-child{background:var(--seq1);}  /* rev HK5 (per design): frozen column highlighted in chart-sequential seq-100 (was surface-1; seq-200 tried and softened same day) */
   .sc-cmp-table th{background:var(--table-head-bg);font-size:var(--fs-14);font-weight:600;color:var(--table-head-ink);}  /* rev HK4: seq-700 band + seq-100 ink */
   .sc-cmp-table tr:first-child th:first-child{color:var(--table-head-ink);}  /* rev HK4: the sticky-first-cell ink rule above would put dark --ink on the blue band */
@@ -879,7 +882,7 @@
   html[data-theme="dark"]{
 --surface-1:#131C31; --surface-2:#18223A; --nest:#18223A;  /* sem-background-surface (navy-700) / sem-background-light (navy-600) / sem-background-subtle (navy-600) */
     --border:#2A3A5C; --border-strong:#33476E;  /* sem-borders-muted (navy-200) — visible-outline role; pure hairlines = sem-borders-light #131C31 / sem-borders-strong (navy-50) */
-    --ink:#D8E1F0; --muted:#697DA0; --faint:#52637F; --inverse:#0E0E0E;  /* sem-text-header (navylight-800) / sem-text-meta (navylight-300) / sem-text-subtle (navylight-200) / sem-text-reverse (gray-900) */
+    --ink:#7094FB; --text-header:#D8E1F0; --muted:#697DA0; --faint:#52637F; --inverse:#0E0E0E;  /* rev HK9: --ink = sem-btnPrimaryBgHover dark (blue-400) — global brand-blue ink; --text-header pins sem-text-header (navylight-800) for the totals bar. --muted sem-text-meta (navylight-300) / --faint sem-text-subtle (navylight-200) / --inverse sem-text-reverse (gray-900) */
     --accent:#5A82F9; --accent-hover:#7094FB; --accent-subtle:#16304A;  /* sem-background-action+sem-text-action (blue-500) / sem-btnPrimaryBgHover (blue-400) / sem-background-highlight (skydark-100, OPAQUE) */
     --accent-fill:rgba(90,130,249,0.15);  /* derived: prim-blue-500 @ 15% — chart wash, one of the surviving alphas */
     --accent-2:#84E6CC; --accent-3:#B198F0; --accent-4:#D9A02E;   /* secondary accents — nearest Hemlock roles: sem-chart-cat-7 / cat-1 / cat-14 (flagged in handoff §11) */
@@ -896,10 +899,8 @@
     --cat11:#E89FB0; --cat12:#CE7E5B; --cat13:#F0985A; --cat14:#D9A02E; --cat15:#F3DE6F;
     /* Hemlock sequential ramp — chart-sequential/seq-100..700 (dark: blue ramp inverted). */
     --seq1:#163196; --seq2:#2952CC; --seq3:#3A6AF8; --seq4:#5A82F9; --seq5:#7094FB; --seq6:#A5BCFC; --seq7:#C8D6FD;
-    /* rev HK7: header band = primary-button tokens, dark values: sem-btnPrimaryBgActive (blue-600),
-       ink sem-btnPrimaryText (black on the vivid dark-blue fill). rev HK8: totals bar rides --seq3
-       (auto-themes — no dark override needed). */
-    --table-head-bg:#3A6AF8; --table-head-ink:#0E0E0E;
+    /* rev HK10: NO table overrides here — --table-head-bg/-ink/--table-total-bg ride the seq ramp
+       and --text-header, which theme-flip on their own (token-symmetric scheme, see the root block). */
     --pros-bg:#12291C; --pros-border:#245234; --cons-bg:#3A1B1E; --cons-border:#542427; --info-bg:#10263C; --info-border:#16304A;  /* flat opaque status surfaces: sem-background-success/-error/-info + their border roles */
     --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.70);  /* ring kept; black layer = shadow-lg-color 70% (lifted Aug 21) */
     --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.60);  /* shadow-md-color 60% (lifted Aug 21) */
@@ -1347,15 +1348,15 @@
      rev-X ::after fill extension. */
   /* rev AH (per Bill): the Total row is the same height as the header row — it takes the header's
      vertical metrics (12px padding, line-height 1.2) instead of the data cells' 16px padding */
-  tr.sc-total td{position:sticky;bottom:0;z-index:2;background:var(--table-total-bg);color:var(--ink);font-weight:600;border-top:1px solid var(--border-strong);box-shadow:none;padding:12px 16px;line-height:1.2;}  /* rev HK8 (per design): totals bar = seq-300 band + sem-text-header ink (supersedes rev HK7's btnPrimaryBgHover band). Flagged: dark seq-300 = blue-600 = the dark header fill, and dark ink on it is ~3.5:1. */
-  .sc-data-table tr.sc-total td:not(.sticky){color:var(--ink);font-variant-numeric:tabular-nums;}  /* rev HK8: outguns the .sc-data-table td:not(.sticky) text-body ink */
+  tr.sc-total td{position:sticky;bottom:0;z-index:2;background:var(--table-total-bg);color:var(--text-header);font-weight:600;border-top:1px solid var(--border-strong);box-shadow:none;padding:12px 16px;line-height:1.2;}  /* rev HK10: totals bar = seq-200 band + --text-header ink, token-symmetric (13.3:1 light / 5.0:1 dark ✓); supersedes rev HK8's seq-300 whose dark ink failed AA */
+  .sc-data-table tr.sc-total td:not(.sticky){color:var(--text-header);font-variant-numeric:tabular-nums;}  /* rev HK8/HK9: outguns the .sc-data-table td:not(.sticky) text-body ink */
   /* MOBILE rev ML (Bill, 2026-08-02): CARD MODE IS REMOVED — the data table has one layout, the
      table. Below 640 it keeps the v2.0 behaviour: .sc-data-table holds min-width:640px so the wrap
      scrolls horizontally with the first column pinned. Deleted with it: the #appMain.tbl-cards rule
      set (block-level table/rows/cells, the td::before label column, the unpinned totals card, and the
      suppressions for the column grip / row scrubber / overlay scrollbars). The engine's data-label
      stamping went too — card mode's ::before was its only consumer. */
-  .sc-data-table tr.sc-total td.sticky{position:sticky;left:0;bottom:0;z-index:3;background:var(--table-total-bg);color:var(--ink);box-shadow:none;}  /* rev HK8: seq-300 band, text-header label */
+  .sc-data-table tr.sc-total td.sticky{position:sticky;left:0;bottom:0;z-index:3;background:var(--table-total-bg);color:var(--text-header);box-shadow:none;}  /* rev HK10: seq-200 band, neutral text-header label */
   tr.sc-total td:last-child::after{content:'';position:absolute;top:-1px;bottom:0;left:100%;width:var(--t2-fillw,0px);background:var(--table-total-bg);border-top:1px solid var(--border-strong);pointer-events:none;}  /* rev X: measured, not 100vw; rev HK8: extension strip matches the seq-300 band */
   /* ===== TEST 2 (rev P, 2026-07-25) ===== */
   /* remove the wide light-gray divider between column 1 and column 2 — it was the pinned column's

@@ -58,13 +58,16 @@ In dark, `--page-bg` = `--surface-1` = `#131C31`: page and card are the same fla
 
 | Template var | Light (kept) | = Hemlock (light) | **Dark (new)** | Hemlock (dark) | was (v2.0) |
 |---|---|---|---|---|---|
-| `--ink` | `#0E0E0E` | `sem-text-header` | **`#D8E1F0`** | `sem-text-header` (navylight-800) | `#EAF0FF` |
+| `--ink` — **rev HK9** | **`#2952CC`** | **`sem-btnPrimaryBgHover`** (blue-700) | **`#7094FB`** | `sem-btnPrimaryBgHover` (blue-400) | `#EAF0FF` |
+| `--text-header` — **new, rev HK9** | `#0E0E0E` | `sem-text-header` | **`#D8E1F0`** | `sem-text-header` (navylight-800) | — |
 | `--text-body` | `#403D3A` | `sem-text-body` | **`#B3C1DB`** | `sem-text-body` (navylight-600) | `#C9D4EA` |
 | `--muted` | `#5E5954` | `sem-text-meta` | **`#697DA0`** | `sem-text-meta` (navylight-300) | `#9DB0D2` |
 | `--faint` | `#8A8680` ⚠ *changed from `#767169` — ruling C* | `sem-text-subtle` | **`#52637F`** | `sem-text-subtle` (navylight-200) | `#8A9BBF` |
 | `--inverse` | `#FFFFFF` | `sem-text-reverse` | **`#0E0E0E`** | `sem-text-reverse` (gray-900) | `#0B1220` |
 
 > ⚠ **`--faint` ruling C (Amanda, 2026-08-21):** the template had darkened `--faint` to `#767169` for WCAG AA on small disclosure text. The canon `sem-text-subtle` value `#8A8680` is restored; the AA miss (≈3.5:1 on white) is accepted and **flagged to design**. If a component needs AA small text in this slot, `sem-text-placeholder #716E6A` passes.
+
+> **`--ink` rev HK9 (Amanda, 2026-08-21):** `--ink` is remapped **globally** from `sem-text-header` to **`sem-btnPrimaryBgHover`** — every heading, emphasis label, and chart ink-styled text renders in brand blue (`#2952CC` light / `#7094FB` dark). Contrast: 6.6:1 on white light ✓, ~5.9:1 on the dark surface ✓. The old neutral value lives on as **`--text-header`** (= `sem-text-header`), used where text must stay neutral — the totals bar and, per **rev HK10**, all table row labels (sticky/frozen columns), so tables don't drown in blue next to their blue bands and links. The accessible view keeps its own white/black ink overrides.
 
 ### Borders
 
@@ -286,13 +289,14 @@ What the companion HTML applies. Dark gradients from v2.0 are **retired in favor
 | Option tiles (`.sc-plan-card`) | vertical gradient | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)`; hover **flat `var(--row-hover)` `#172642`** + border `var(--accent)` + `0 10px 24px rgba(0,0,0,0.60)` |
 | Generic boxes (`.sc-box`), checklist cards | gradients | **flat `var(--surface-2)` `#18223A`** |
 | Pros / Cons / Info tiles | translucent green/red/**purple** gradients | **flat opaque `var(--pros-bg)`/`var(--cons-bg)`/`var(--info-bg)`** with token borders — info is **sky** |
-| Table headers (data + compare) — rev HK7 | gradient | **band = `sem-btnPrimaryBgActive`** (`#163196` blue-800 light / `#3A6AF8` blue-600 dark), **ink = `sem-btnPrimaryText`** (white light / black dark — Hemlock's on-primary pairing), 12px semibold uppercase kept. *(Supersedes rev HK4's seq-700/seq-100.)* Contrast: 10.9:1 light; **4.3:1 dark — marginally under AA 4.5 for 12px text, but it is Hemlock's own primary-button pairing; flagged.* |
+| Table headers (data + compare) — **rev HK10** | gradient | **band = `chart-sequential/seq-700` + ink = `seq-100`** (`#2952CC`/`#EBF0FE` light — 5.7:1 ✓; `#C8D6FD`/`#163196` dark — 7.4:1 ✓), 12px semibold uppercase kept. **TOKEN-SYMMETRIC: the same two tokens serve both modes — the seq ramp self-inverts in dark, so the theme flips with zero dark-block overrides.** *(Restores rev HK4's pairing; supersedes rev HK7's primary-button bands, whose dark values collided with the seq totals bar and failed AA.)* |
 | Table row hover / pressed — rev HK4/HK6 | `#12203C`/`#1B2C4F` | Default: **hover `seq-100` / pressed `seq-200`** (`#EBF0FE`/`#C8D6FD` light, `#163196`/`#2952CC` dark), both themes on both tables (rev HK5 added the missing light pressed state to the compare table). **Rows stay square in all states** — the 12px hover/pressed end-caps are retired. Non-table hovers (plan cards, comparison pills, nudge buttons) stay on `sem-background-rowHover`/`-rowPressed`. **See the FROZEN-COLUMN RULE below for tables with a highlighted pinned column.** |
 | **FROZEN-COLUMN RULE — rev HK6 (general rule, any table built from this template)** | — | **When a table's frozen/pinned column carries the `seq-100` highlight, its row states step one ramp step deeper: hover = `seq-200`, pressed = `seq-300`** (`--table-row-hover-fz`/`--table-row-pressed-fz`) — otherwise the hover wash is indistinguishable from the always-on column tint. Tables without a highlighted frozen column keep the default hover `seq-100` / pressed `seq-200`. Applied to the Compare Options table in the template. |
-| Totals bar (`tr.sc-total`) — rev HK8 | taupe `var(--taupe-100)` | **`chart-sequential/seq-300` band + `sem-text-header` ink** (`#A5BCFC` bg / `#0E0E0E` ink light; `#3A6AF8` bg / `#D8E1F0` ink dark) — rides `--table-total-bg:var(--seq3)`, auto-themes. *(Supersedes rev HK7's btnPrimaryBgHover band.)* **Flagged for design:** dark `seq-300` = blue-600 = the dark header fill, so header and totals are the same band in dark mode, and the dark ink pairing is ~3.5:1 (under AA 4.5). Light is 10.5:1 ✓. **Not interactive — no hover/pressed** (row-state rules exclude `.sc-total`). |
+| Totals bar (`tr.sc-total`) — **rev HK10** | taupe `var(--taupe-100)` | **`chart-sequential/seq-200` band + `--text-header` ink** (`#C8D6FD`/`#0E0E0E` light — 13.3:1 ✓; `#2952CC`/`#D8E1F0` dark — 5.0:1 ✓) — token-symmetric, rides `--table-total-bg:var(--seq2)`. *(Supersedes rev HK8's seq-300, whose dark value collided with the old header fill and whose dark ink failed AA at ~3.5:1.)* **Not interactive — no hover/pressed** (row-state rules exclude `.sc-total`). |
+| Table row labels (sticky/frozen column text) — **rev HK10** | `var(--ink)` | **`--text-header`** (`sem-text-header`: `#0E0E0E` light / `#D8E1F0` dark) — row labels stay NEUTRAL in both modes. The rev HK9 brand-blue `--ink` is for headings/titles, not table labels — blue labels next to blue links and blue bands made dark tables a wall of blues. Dark frozen column: 9.4:1 ✓ (was 3.8:1 marginal with blue ink). |
 | Compare-table frozen column — rev HK5/HK6 | `var(--surface-1)` | **`chart-sequential/seq-100`** (`#EBF0FE` pale blue light / `#163196` deep navy dark) — highlights the pinned Topic column (`seq-200` was tried and softened same day). Triggers the FROZEN-COLUMN RULE above. |
 | Sticky-column edge shadow | `rgba(0,0,0,.6)` | **`rgba(0,0,0,0.70)`** (`shadow-lg-color`) |
-| Sort affordance — rev HK6 | unsorted `#8695B5`, sorted white | **Only the sorted column shows a chevron** (single, up/down — minimal, no header crowding), **and the table loads with a default sort (first column, ascending)** so one chevron is always visible from first paint — that's the discoverability cue (supersedes rev HK5's resting glyphs on every column). Active chevron ink = **`sem-btnPrimaryText`** (= header ink, white light / black dark; rev HK7 — rides `--table-head-ink` so it always matches the band). |
+| Sort affordance — rev HK6 | unsorted `#8695B5`, sorted white | **Only the sorted column shows a chevron** (single, up/down — minimal, no header crowding), **and the table loads with a default sort (first column, ascending)** so one chevron is always visible from first paint — that's the discoverability cue (supersedes rev HK5's resting glyphs on every column). Active chevron ink rides **`--table-head-ink`** so it always matches the band (rev HK10: `seq-100` — `#EBF0FE` light / `#163196` dark). |
 | KPI cards (`.sc-kpi`) | gradient, purple bar `#9A86FF` | **flat `var(--surface-2)`**, top bar `var(--accent-3)` **`#B198F0`** (`sem-chart-cat-1`, flagged) |
 | Calculator body | purple radial + navy gradient | **flat `var(--calc-bg)` `#0C1222`**, border `var(--taupe-border)` `#22314F`, shadow `0 18px 42px rgba(0,0,0,0.70)` |
 | Tooltips (`#t2Tip`, `.t2ck-tip`) | gradients / `#17263F` | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)` |
@@ -333,7 +337,7 @@ Exactly what `Component Template v2.0 (Hemlock).html` ships. Light `:root` (only
 :root{
   --surface-1:#FFFFFF; --surface-2:#F8F7F6; --nest:#F8F7F6;      /* sem-background-surface / -light / -subtle */
   --border:#EEEDEB; --border-strong:#D5D3D0;                     /* sem-borders-light / sem-borders-muted */
-  --ink:#0E0E0E; --muted:#5E5954; --faint:#8A8680; --inverse:#FFFFFF;  /* sem-text-header / -meta / -subtle (ruling C) / -reverse */
+  --ink:#2952CC; --text-header:#0E0E0E; --muted:#5E5954; --faint:#8A8680; --inverse:#FFFFFF;  /* rev HK9: --ink = sem-btnPrimaryBgHover (global brand-blue headings); --text-header = sem-text-header (neutral — totals bar, table row labels); -meta / -subtle (ruling C) / -reverse */
   --accent:#3A6AF8; --accent-hover:#2952CC; --accent-subtle:#EBF0FE;   /* action blue-600 / btnPrimaryBgHover blue-700 / background-highlight */
   --calc-bg:#F7F5F0;                                             /* sem-background-sunken */
   --pos:#148338; --pos-mid:#1EBF51; --neg:#C82320; --warn:#C85F1A;
@@ -384,7 +388,8 @@ html[data-theme="dark"]{
   --border-strong:#33476E;        /* sem-borders-strong (prim-navy-50) */
   --taupe-border:#22314F;         /* sem-borders-dark (prim-navy-300) */
   /* text */
-  --ink:#D8E1F0;                  /* sem-text-header (prim-navylight-800) */
+  --ink:#7094FB;                  /* rev HK9: sem-btnPrimaryBgHover dark (prim-blue-400) — global brand-blue headings */
+  --text-header:#D8E1F0;          /* sem-text-header (prim-navylight-800) — neutral ink for totals bar + table row labels */
   --text-body:#B3C1DB;            /* sem-text-body (prim-navylight-600) */
   --muted:#697DA0;                /* sem-text-meta (prim-navylight-300) */
   --faint:#52637F;                /* sem-text-subtle (prim-navylight-200) */
