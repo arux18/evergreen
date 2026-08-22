@@ -497,7 +497,8 @@
   :root{
 --surface-1:#FFFFFF; --surface-2:#F8F7F6; --nest:#F8F7F6;  /* sem-background-surface / sem-background-light / sem-background-subtle — exact */
     --border:#EEEDEB; --border-strong:#D5D3D0;  /* sem-borders-light / sem-borders-muted (gray-200) — exact. NOTE: in dark, --border-strong carries sem-borders-strong; the template's two-border system maps to different Hemlock roles per mode */
-    --ink:#2952CC; --text-header:#0E0E0E; --muted:#5E5954; --faint:#8A8680; --inverse:#FFFFFF;  /* rev HK9 (Amanda, 2026-08-21): --ink remapped GLOBALLY to sem-btnPrimaryBgHover (blue-700) — all headings/emphasis text goes brand blue. --text-header pins the old sem-text-header value for spots that must stay neutral (totals bar). --muted sem-text-meta / --faint sem-text-subtle (canon #8A8680 restored over the WCAG-darkened #767169, Amanda ruling C — AA miss accepted and flagged) / --inverse sem-text-reverse */
+    --ink:#0E0E0E; --text-header:#0E0E0E; --muted:#5E5954; --faint:#8A8680; --inverse:#FFFFFF;  /* rev HK13 (Amanda, 2026-08-22): --ink REVERTED to sem-text-header (near-black) — rev HK9's global brand-blue ink also hit non-header text (heatmap tile labels, data text), which was never the goal. --text-header kept as an alias: table rules reference it and it lets tables diverge from body ink later if needed. --muted sem-text-meta / --faint sem-text-subtle (canon #8A8680, Amanda ruling C — AA miss accepted and flagged) / --inverse sem-text-reverse */
+    --heading:#2952CC;  /* rev HK13 (Amanda): brand-blue HEADING ink = sem-btnPrimaryBgHover — lands ONLY on true headings (component title, section h2/.sc-title, chart titles), never on data/tile/body text (that's --ink). 6.6:1 on white ✓ */
     --accent:#3A6AF8; --accent-hover:#2952CC; --accent-subtle:#EBF0FE; --calc-bg:#F7F5F0; --brand-blue:var(--accent);  /* sem-background-action+sem-text-action (blue-600) / sem-btnPrimaryBgHover (blue-700) / sem-background-highlight (blue-100) / sem-background-sunken (taupe-100) — all exact; brand-blue is an alias of --accent */
     /* status/palette colors below (except --page-bg) are provided for components built on this template; the demo itself doesn't use all of them */
     --pos:#148338; --pos-mid:#1EBF51; --neg:#C82320; --warn:#C85F1A; --pos-soft:#4ADE80; --neg-soft:#F87171; --page-bg:#FFFFFF; --taupe-100:#F7F5F0; --taupe-pressed:#EDEAE3; --taupe-border:#E3DFD6;  /* sem-text-deposit / sem-icons-success (snapped from #22C55E) / sem-text-error / sem-text-warning-title / prim-green-350 + prim-red-350 statics / sem-background-surface (the template "page" IS the component surface — the host app supplies sem-background-main behind it) / sem-background-rowHover / sem-background-rowPressed / prim-taupe-300 (exact; nearest semantic is sem-borders-dark #DCD8CB) */
@@ -511,7 +512,7 @@
     --cat11:#E879A8; --cat12:#92400E; --cat13:#FB923C; --cat14:#CA8A04; --cat15:#FACC15;
     /* Hemlock sequential ramp — chart-sequential/seq-100..700 (light). Single-series charts
        (area, timeline, gauge, waterfall totals) draw with seq-500 per the Hemlock chart masters. */
-    --seq1:#EBF0FE; --seq2:#C8D6FD; --seq3:#A5BCFC; --seq4:#7094FB; --seq5:#5A82F9; --seq6:#3A6AF8; --seq7:#2952CC;
+    --seq1:#EBF0FE; --seq2:#C8D6FD; --seq3:#A5BCFC; --seq4:#85A0FC; --seq5:#5A82F9; --seq6:#3A6AF8; --seq7:#2952CC;  /* PREVIEW (pending Amanda): seq-400 #7094FB → #85A0FC — evens the light ramp's mid jump (L* ~68 instead of ~64); would become a new blue-350 primitive + seq-400 light rebind in Hemlock if approved */
     --tile-shadow:0 4px 12px rgba(0,0,0,0.10); --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.12);  /* shadow-md-color 10% / shadow-lg-color 12% — already token-exact */
     --modal-shadow:0 16px 40px rgba(0,0,0,0.16);  /* shadow-overlay-color 16% */
     --backdrop:rgba(45,41,38,0.34);  /* sem-background-scrim #2D292657 (token added 2026-08-21) */
@@ -589,8 +590,8 @@
      band out of the flow and left the title sitting on the intro. Narrow tiers take 24px, in
      proportion to the smaller title. */
   #appMain.main-narrow .card-head{margin-bottom:24px;}
-  h2{font-family:var(--font-serif);font-size:var(--fs-sec-title);margin:0;font-weight:400;color:var(--ink);}  /* rev MY: section titles are serif 18/400 desktop, 15 narrow — via --fs-sec-title, not the shared --fs-20 */
-  .sc-comp-title{font-family:var(--font-serif);font-size:var(--fs-comp-title);font-weight:400;margin:0;color:var(--ink);letter-spacing:.01em;line-height:1;}
+  h2{font-family:var(--font-serif);font-size:var(--fs-sec-title);margin:0;font-weight:400;color:var(--heading);}  /* rev MY: section titles are serif 18/400 desktop, 15 narrow — via --fs-sec-title, not the shared --fs-20. rev HK13: heading ink = --heading (sem-btnPrimaryBgHover) */
+  .sc-comp-title{font-family:var(--font-serif);font-size:var(--fs-comp-title);font-weight:400;margin:0;color:var(--heading);letter-spacing:.01em;line-height:1;}  /* rev HK13: brand-blue heading ink */
   /* ===== rev MP: component-title page picker, ported from PF-002 Accounts v2 onto template tokens.
      The heading WRAPS the button (a <button>'s content model is phrasing content, so <button><h2>
      would be invalid and would bury a heading inside a control); the button is transparent so the
@@ -699,7 +700,7 @@
   .sc-tabs button:hover:where(html.ptr-fine *){color:var(--ink);}
   .sc-tabs button.on{color:var(--accent);font-weight:600;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px;}
   .cs-pane{display:none;} .cs-pane.on{display:block;}
-  .sc-title{font-family:var(--font-serif);font-size:var(--fs-sec-title);font-weight:400;color:var(--ink);margin:0;}  /* rev MO: 0 0 10px -> 0, matching Accounts (inside a toggle it was already 0; this aligns the standalone case) */
+  .sc-title{font-family:var(--font-serif);font-size:var(--fs-sec-title);font-weight:400;color:var(--heading);margin:0;}  /* rev MO: 0 0 10px -> 0, matching Accounts (inside a toggle it was already 0; this aligns the standalone case). rev HK13: heading ink */
   .sc-desc{font-size:var(--fs-16);line-height:1.5;color:var(--text-body);max-width:920px;margin:0 0 28px;}
   .sc-box{background:var(--nest);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:18px;}
   .sc-box h4{margin:0 0 8px;font-size:var(--fs-13);text-transform:uppercase;letter-spacing:.05em;font-weight:600;}
@@ -885,7 +886,8 @@
   html[data-theme="dark"]{
 --surface-1:#131C31; --surface-2:#18223A; --nest:#18223A;  /* sem-background-surface (navy-700) / sem-background-light (navy-600) / sem-background-subtle (navy-600) */
     --border:#2A3A5C; --border-strong:#33476E;  /* sem-borders-muted (navy-200) — visible-outline role; pure hairlines = sem-borders-light #131C31 / sem-borders-strong (navy-50) */
-    --ink:#7094FB; --text-header:#D8E1F0; --muted:#697DA0; --faint:#52637F; --inverse:#0E0E0E;  /* rev HK9: --ink = sem-btnPrimaryBgHover dark (blue-400) — global brand-blue ink; --text-header pins sem-text-header (navylight-800) for the totals bar. --muted sem-text-meta (navylight-300) / --faint sem-text-subtle (navylight-200) / --inverse sem-text-reverse (gray-900) */
+    --ink:#D8E1F0; --text-header:#D8E1F0; --muted:#697DA0; --faint:#52637F; --inverse:#0E0E0E;  /* rev HK13: --ink reverted to sem-text-header (navylight-800) — see root block; --text-header stays as its alias. --muted sem-text-meta (navylight-300) / --faint sem-text-subtle (navylight-200) / --inverse sem-text-reverse (gray-900) */
+  --heading:#7094FB;  /* rev HK13: heading ink = sem-btnPrimaryBgHover dark (blue-400) — headings only, ~5.9:1 on the dark surface ✓ */
     --accent:#5A82F9; --accent-hover:#7094FB; --accent-subtle:#16304A;  /* sem-background-action+sem-text-action (blue-500) / sem-btnPrimaryBgHover (blue-400) / sem-background-highlight (skydark-100, OPAQUE) */
     --accent-fill:rgba(90,130,249,0.15);  /* derived: prim-blue-500 @ 15% — chart wash, one of the surviving alphas */
     --accent-2:#84E6CC; --accent-3:#B198F0; --accent-4:#D9A02E;   /* secondary accents — nearest Hemlock roles: sem-chart-cat-7 / cat-1 / cat-14 (flagged in handoff §11) */
@@ -1379,7 +1381,7 @@
      its title and subtitle ABOVE the plot. Kept as a no-op guard so a derived component that still
      emits the class does not render an unstyled block. */
   .t2ck-head.below{margin:2px 0 12px;}
-  .t2ck-title{font:600 16px/1.4 var(--font-ui);color:var(--ink);}  /* HEMLOCK rev HK: chart title 16px semibold sem-text-header per the OpenUI contract */
+  .t2ck-title{font:600 16px/1.4 var(--font-ui);color:var(--heading);}  /* HEMLOCK rev HK: chart title 16px semibold per the OpenUI contract. rev HK13: heading ink (sem-btnPrimaryBgHover) — chart titles count as headers */
   .t2ck-sub{font:400 13px/1.4 var(--font-ui);color:var(--muted);margin-top:2px;}  /* HEMLOCK rev HK: subtitle 13px sem-text-meta */
   .t2ck-legend{display:flex;flex-wrap:wrap;gap:16px;margin:10px 0 4px;font:400 14px var(--font-ui);color:var(--text-body);align-items:center;}  /* HEMLOCK rev HK: legend labels $text-size-sm 14 sem-text-body, item gap $spacing-sm 16, per ChartLegend master */
   .t2ck-legend .lg{display:inline-flex;align-items:center;gap:4px;}  /* HEMLOCK rev HK: marker-to-label gap $spacing-3xs 4 */
