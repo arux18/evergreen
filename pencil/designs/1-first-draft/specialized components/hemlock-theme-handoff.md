@@ -70,6 +70,8 @@ In dark, `--page-bg` = `--surface-1` = `#131C31`: page and card are the same fla
 
 > **Heading ink — rev HK13 (Amanda, 2026-08-22), supersedes rev HK9:** rev HK9 had remapped `--ink` globally to brand blue, which also colored non-header text (heatmap tile labels, data values). Rev HK13 splits the roles: **`--ink` is back to neutral `sem-text-header`** for body/emphasis/data text, and a **new `--heading` var carries `sem-btnPrimaryBgHover`** (`#2952CC` light / `#7094FB` dark — 6.6:1 / ~5.9:1 ✓) applied ONLY to true headings: the component title (`.sc-comp-title`), section titles (`h2`, `.sc-title`), and chart titles (`.t2ck-title`). `--text-header` remains as a neutral alias used by the table rules (totals bar, row labels per rev HK10). The accessible view keeps its own white/black ink overrides.
 
+> **Component title sizing — rev HK9 (Amanda, 2026-08-21):** `.sc-comp-title` rides `--fs-comp-title` = **24px desktop / 20px narrow** (was 22/18). The accessible view scales ×1.5: 36px desktop / 30px narrow. (`--fs-sec-title` 18/15 and `--fs-pick` 16/14 are unchanged.)
+
 ### Borders
 
 | Template var | Light (kept) | = Hemlock (light) | **Dark (new)** | Hemlock (dark) | was (v2.0) |
@@ -267,7 +269,9 @@ For components that draw their own buttons rather than the `--tk-*` widgets. Lig
 | seq-100 | `#EBF0FE` | `#163196` | | seq-500 | `#5A82F9` | `#7094FB` |
 | seq-200 | `#C8D6FD` | `#2952CC` | | seq-600 | `#3A6AF8` | `#A5BCFC` |
 | seq-300 | `#A5BCFC` | `#3A6AF8` | | seq-700 | `#2952CC` | `#C8D6FD` |
-| seq-400 | `#7094FB` | `#5A82F9` | | | | |
+| seq-400 | `#7094FB` ⚠ | `#5A82F9` | | | | |
+
+> ⚠ **seq-400 light PREVIEW (pending Amanda, 2026-08-22):** the template currently ships `--seq4:#85A0FC` light as a live preview to even out the ramp's mid jump (`#A5BCFC → #7094FB` is its widest step). Hemlock's `sem-chart-seq-400` is still `#7094FB`. If approved, Hemlock gains a `prim-blue-350 #85A0FC` primitive and `seq-400` rebinds to it in light (dark unchanged); if rejected, the template reverts to `#7094FB`.
 
 ### Threshold & scaffold
 
@@ -292,12 +296,12 @@ What the companion HTML applies. Dark gradients from v2.0 are **retired in favor
 | Pros / Cons / Info tiles | translucent green/red/**purple** gradients | **flat opaque `var(--pros-bg)`/`var(--cons-bg)`/`var(--info-bg)`** with token borders — info is **sky** |
 | Table headers (data + compare) — **rev HK11 (Amanda)** | gradient | **band = `sem-btnPrimaryBgHover` + ink = `sem-btnPrimaryText`** (via `--accent-hover`/`--inverse`: `#2952CC`/white light — 6.6:1 ✓; `#7094FB`/`#0E0E0E` dark — 6.9:1 ✓), 12px semibold uppercase kept. **Why this token: its light value equals seq-700's raw `#2952CC`, but its dark value is the hand-tuned mid blue — not the seq ramp's glaring pale end (raw seq-700, rev HK10) and not the vivid blue-600 (BgActive, rev HK7).** Token-symmetric — same tokens both modes, zero dark-block overrides. |
 | Table row hover / pressed — **rev HK12** | `#12203C`/`#1B2C4F` | **hover `seq-200` / pressed `seq-300`** (`#C8D6FD`/`#A5BCFC` light, `#2952CC`/`#3A6AF8` dark), both themes on both tables. *(Rev HK12 swapped hover with the totals bar per design — hover was seq-100 — and stepped pressed to seq-300 to stay distinct. The default states now equal the frozen-column steps, so both tables match.)* **Rows stay square in all states** — the 12px hover/pressed end-caps are retired. Non-table hovers (plan cards, comparison pills, nudge buttons) stay on `sem-background-rowHover`/`-rowPressed`. |
-| **FROZEN-COLUMN RULE — rev HK6 (general rule, any table built from this template)** | — | **When a table's frozen/pinned column carries the `seq-100` highlight, its row states step one ramp step deeper: hover = `seq-200`, pressed = `seq-300`** (`--table-row-hover-fz`/`--table-row-pressed-fz`) — otherwise the hover wash is indistinguishable from the always-on column tint. Tables without a highlighted frozen column keep the default hover `seq-100` / pressed `seq-200`. Applied to the Compare Options table in the template. |
+| **FROZEN-COLUMN RULE — rev HK6 (general rule, any table built from this template)** | — | **When a table's frozen/pinned column carries the `seq-100` highlight, its row states step one ramp step deeper than the column tint: hover = `seq-200`, pressed = `seq-300`** (`--table-row-hover-fz`/`--table-row-pressed-fz`) — otherwise the hover wash is indistinguishable from the always-on column tint. *(Since rev HK12 the DEFAULT states land on the same steps — hover `seq-200` / pressed `seq-300` — so both tables currently match; the `-fz` vars are kept separate in case they diverge again.)* Applied to the Compare Options table in the template. |
 | Totals bar (`tr.sc-total`) — **rev HK12** | taupe `var(--taupe-100)` | **`chart-sequential/seq-100` band + `--text-header` ink** (`#EBF0FE`/`#0E0E0E` light — 17:1 ✓; `#163196`/`#D8E1F0` dark — 9.4:1 ✓) — token-symmetric, rides `--table-total-bg:var(--seq1)`. *(Rev HK12 swapped this with the row hover — totals was seq-200.)* **Not interactive — no hover/pressed** (row-state rules exclude `.sc-total`). |
 | Table row labels (sticky/frozen column text) — **rev HK10** | `var(--ink)` | **`--text-header`** (`sem-text-header`: `#0E0E0E` light / `#D8E1F0` dark) — row labels stay NEUTRAL in both modes. Brand blue is for headings only (`--heading`, rev HK13), not table labels — blue labels next to blue links and blue bands made dark tables a wall of blues. Dark frozen column: 9.4:1 ✓ (was 3.8:1 marginal with blue ink). |
 | Compare-table frozen column — rev HK5/HK6 | `var(--surface-1)` | **`chart-sequential/seq-100`** (`#EBF0FE` pale blue light / `#163196` deep navy dark) — highlights the pinned Topic column (`seq-200` was tried and softened same day). Triggers the FROZEN-COLUMN RULE above. |
 | Sticky-column edge shadow | `rgba(0,0,0,.6)` | **`rgba(0,0,0,0.70)`** (`shadow-lg-color`) |
-| Sort affordance — rev HK6 | unsorted `#8695B5`, sorted white | **Only the sorted column shows a chevron** (single, up/down — minimal, no header crowding), **and the table loads with a default sort (first column, ascending)** so one chevron is always visible from first paint — that's the discoverability cue (supersedes rev HK5's resting glyphs on every column). Active chevron ink rides **`--table-head-ink`** so it always matches the band (rev HK10: `seq-100` — `#EBF0FE` light / `#163196` dark). |
+| Sort affordance — rev HK6 | unsorted `#8695B5`, sorted white | **Only the sorted column shows a chevron** (single, up/down — minimal, no header crowding), **and the table loads with a default sort (first column, ascending)** so one chevron is always visible from first paint — that's the discoverability cue (supersedes rev HK5's resting glyphs on every column). Active chevron ink rides **`--table-head-ink`** so it always matches the band (rev HK11: `sem-btnPrimaryText` via `--inverse` — white light / `#0E0E0E` dark). |
 | KPI cards (`.sc-kpi`) | gradient, purple bar `#9A86FF` | **flat `var(--surface-2)`**, top bar `var(--accent-3)` **`#B198F0`** (`sem-chart-cat-1`, flagged) |
 | Calculator body | purple radial + navy gradient | **flat `var(--calc-bg)` `#0C1222`**, border `var(--taupe-border)` `#22314F`, shadow `0 18px 42px rgba(0,0,0,0.70)` |
 | Tooltips (`#t2Tip`, `.t2ck-tip`) | gradients / `#17263F` | **flat `var(--surface-2)` `#18223A`**, border `var(--border-strong)` |
@@ -358,7 +362,13 @@ Exactly what `Component Template v2.0 (Hemlock).html` ships. Light `:root` (only
   --cons-bg:rgba(200,35,32,.06); --cons-border:rgba(200,35,32,.22);   /* prim-red-600 washes */
   --info-bg:rgba(58,106,248,.06); --info-border:rgba(58,106,248,.24); /* prim-blue-600 washes */
   --text-body:#403D3A;
-  --row-hover:var(--taupe-100); --row-pressed:var(--taupe-pressed);
+  --row-hover:var(--taupe-100); --row-pressed:var(--taupe-pressed);   /* NON-table hovers only (plan cards, pills, nudges) */
+  --seq1:#EBF0FE; --seq2:#C8D6FD; --seq3:#A5BCFC; --seq4:#7094FB;    /* sem-chart-seq-100..400 — NOTE: template currently previews seq4 #85A0FC (pending, see §7) */
+  --seq5:#5A82F9; --seq6:#3A6AF8; --seq7:#2952CC;                    /* sem-chart-seq-500..700 */
+  --table-head-bg:var(--accent-hover); --table-head-ink:var(--inverse);  /* rev HK11: sem-btnPrimaryBgHover band + sem-btnPrimaryText ink */
+  --table-total-bg:var(--seq1);                                          /* rev HK12: totals bar seq-100 (+ --text-header ink) */
+  --table-row-hover:var(--seq2); --table-row-pressed:var(--seq3);        /* rev HK12: hover seq-200 / pressed seq-300 */
+  --table-row-hover-fz:var(--seq2); --table-row-pressed-fz:var(--seq3);  /* rev HK6 frozen-column steps — currently equal to the defaults */
 }
 
 #appMain,.t2-rd-backdrop{  /* light widget layer — nearest-Hemlock snaps */
@@ -424,6 +434,10 @@ html[data-theme="dark"]{
   /* charts */
   --cat1:#B198F0; --cat2:#5FD3E6; --cat3:#8480D9; --cat4:#7AA0F5;
   --cat5:#4FC0A6; --cat6:#84D2F7; --cat7:#84E6CC;                  /* sem-chart-cat-1..7 */
+  --seq1:#163196; --seq2:#2952CC; --seq3:#3A6AF8; --seq4:#5A82F9;  /* sem-chart-seq — ramp self-inverts in dark */
+  --seq5:#7094FB; --seq6:#A5BCFC; --seq7:#C8D6FD;
+  /* NO table-var overrides here: --table-head-bg/-ink, --table-total-bg and the row-state vars ride
+     --accent-hover/--inverse and the seq ramp, which theme-flip on their own (token-symmetric, rev HK10-HK12) */
   --grid:#26324C; --grid2:#26324C; --axis:#5E6E90;                 /* no Hemlock tokens yet — reference values */
   /* shadows & scrims */
   --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.70);  /* shadow-lg-color 70% */
