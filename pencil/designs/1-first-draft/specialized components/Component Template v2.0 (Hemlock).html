@@ -523,22 +523,25 @@
     --info-bg:rgba(58,106,248,.06); --info-border:rgba(58,106,248,.24);  /* prim-blue-600 @ 6% / 24% */
     --text-body:#403D3A;  /* sem-text-body */
     --row-hover:var(--taupe-100); --row-pressed:var(--taupe-pressed);
-    /* rev HK10 (Amanda, 2026-08-21): TOKEN-SYMMETRIC table scheme — every table color is the SAME
-       token in both modes and theme-flips via the seq ramp / semantic vars; the dark block carries NO
-       table overrides. Supersedes rev HK7's primary-button bands (whose dark values collided with the
-       seq-300 totals) and restores the rev HK4 seq-700 header:
-         header       = seq-700 band + seq-100 ink   (#2952CC/#EBF0FE light — 5.7:1; #C8D6FD/#163196 dark — 7.4:1)
-         totals bar   = seq-200 band + --text-header ink (#C8D6FD/#0E0E0E light — 13.3:1; #2952CC/#D8E1F0 dark — 5.0:1)
-         row states   = hover seq-100 / pressed seq-200 (frozen-column tables step deeper, below)
+    /* rev HK11 (Amanda, 2026-08-21): TOKEN-SYMMETRIC table scheme — every table rule references the
+       same vars in both modes; the dark block carries NO table overrides. Header band =
+       sem-btnPrimaryBgHover (via --accent-hover): its LIGHT value #2952CC equals seq-700's raw value,
+       but its DARK value #7094FB is the hand-tuned mid blue — not the seq ramp's glaring pale end
+       (raw seq-700, rev HK10) and not the vivid blue-600 (BgActive, rev HK7). Ink =
+       sem-btnPrimaryText (via --inverse: white light / black dark) — Hemlock's on-primary pairing:
+         header       = --accent-hover + --inverse ink (#2952CC/#FFF light — 6.6:1; #7094FB/#0E0E0E dark — 6.9:1)
+         totals bar   = seq-100 band + --text-header ink (#EBF0FE/#0E0E0E light — 17:1; #163196/#D8E1F0 dark — 9.4:1)
+         row states   = hover seq-200 / pressed seq-300 (rev HK12: hover and totals SWAPPED per design;
+                        pressed stepped to seq-300 so it stays distinct from the new seq-200 hover)
          row labels   = --text-header (neutral — the rev HK9 brand-blue --ink is for headings, not table labels)
        --row-hover/--row-pressed above stay taupe for NON-table hovers (plan cards, comparison pills,
        nudge buttons). */
-    --table-head-bg:var(--seq7); --table-head-ink:var(--seq1); --table-total-bg:var(--seq2);
-    --table-row-hover:var(--seq1); --table-row-pressed:var(--seq2);
+    --table-head-bg:var(--accent-hover); --table-head-ink:var(--inverse); --table-total-bg:var(--seq1);
+    --table-row-hover:var(--seq2); --table-row-pressed:var(--seq3);  /* rev HK12: hover/totals swapped (hover was seq-100); pressed follows one step deeper */
     /* rev HK6 FROZEN-COLUMN RULE (per design): a table whose frozen/pinned column carries the seq-100
-       highlight steps its row states one ramp step deeper — hover seq-200, pressed seq-300 — so the
-       hover wash stays distinguishable from the always-on column tint. Tables without a highlighted
-       frozen column keep hover seq-100 / pressed seq-200 above. */
+       highlight steps its row states one ramp step deeper than the column tint — hover seq-200,
+       pressed seq-300. rev HK12 made the default states land on the same steps, so both tables now
+       share hover seq-200 / pressed seq-300; the -fz vars stay separate in case they diverge again. */
     --table-row-hover-fz:var(--seq2); --table-row-pressed-fz:var(--seq3);
     /* layout scales — each equals the literal it replaced, so there is no visual change */
     --max-w:1080px; --chart-vb-w:720;  /* --chart-vb-w must match the sample chart's SVG viewBox width */
