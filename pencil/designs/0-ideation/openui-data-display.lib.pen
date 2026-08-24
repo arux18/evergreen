@@ -1,5 +1,5 @@
 {
-  "version": "2.14",
+  "version": "2.17",
   "children": [
     {
       "type": "frame",
@@ -10,7 +10,7 @@
       "reusable": true,
       "clip": true,
       "width": 600,
-      "fill": "$colors-background-surface",
+      "fill": "$sem-background-surface",
       "cornerRadius": [
         "$radius-2xs",
         "$radius-2xs",
@@ -30,18 +30,16 @@
           "id": "SGYgf",
           "name": "TableHeader",
           "width": "fill_container",
-          "fill": "$color-taupe-100",
+          "fill": "$prim-taupe-100",
           "cornerRadius": "$radius-2xs",
-          "stroke": "$colors-borders-light",
+          "stroke": "$sem-borders-light",
           "strokeWidth": {
             "bottom": 1
           },
           "strokeAlignment": "inner",
+          "strokeLinejoin": "round",
           "gap": "$spacing-sm",
-          "padding": [
-            "$spacing-xs",
-            "$spacing-xs"
-          ],
+          "padding": "$spacing-xs",
           "alignItems": "center",
           "children": [
             {
@@ -56,13 +54,13 @@
                   "type": "text",
                   "id": "JM8Ip",
                   "name": "Label",
-                  "fill": "$colors-text-meta",
+                  "fill": "$sem-text-meta",
                   "content": "DATE",
+                  "lineHeight": 1.3333,
                   "fontFamily": "$typo-primary-xs-semibold-font-family",
                   "fontSize": "$typo-primary-xs-semibold-font-size",
                   "fontWeight": "600",
-                  "letterSpacing": 0.5,
-                  "lineHeight": 1.3333
+                  "letterSpacing": 0.5
                 },
                 {
                   "type": "icon",
@@ -70,9 +68,9 @@
                   "name": "SortIcon",
                   "width": 12,
                   "height": 12,
-                  "icon": "arrow-down",
+                  "icon": "chevron-down",
                   "library": "lucide",
-                  "fill": "$colors-text-meta"
+                  "fill": "#3a6af8"
                 }
               ]
             },
@@ -89,23 +87,26 @@
                   "id": "zZe9m",
                   "name": "Label",
                   "rotation": 0.10860985732954768,
-                  "fill": "$colors-text-meta",
+                  "fill": "$sem-text-meta",
                   "content": "DESCRIPTION",
+                  "lineHeight": 1.3333,
                   "fontFamily": "$typo-primary-xs-semibold-font-family",
                   "fontSize": "$typo-primary-xs-semibold-font-size",
                   "fontWeight": "600",
-                  "letterSpacing": 0.5,
-                  "lineHeight": 1.3333
+                  "letterSpacing": 0.5
                 },
                 {
                   "type": "icon",
                   "id": "G97GS7",
+                  "x": 86.03018225043537,
+                  "y": 2.077705164299239,
                   "name": "SortIcon",
+                  "enabled": false,
                   "width": 12,
                   "height": 12,
                   "icon": "arrow-up-down",
                   "library": "lucide",
-                  "fill": "$colors-text-meta"
+                  "fill": "$sem-text-meta"
                 }
               ]
             },
@@ -121,23 +122,26 @@
                   "type": "text",
                   "id": "T06UJy",
                   "name": "Label",
-                  "fill": "$colors-text-meta",
+                  "fill": "$sem-text-meta",
                   "content": "CATEGORY",
+                  "lineHeight": 1.3333,
                   "fontFamily": "$typo-primary-xs-semibold-font-family",
                   "fontSize": "$typo-primary-xs-semibold-font-size",
                   "fontWeight": "600",
-                  "letterSpacing": 0.5,
-                  "lineHeight": 1.3333
+                  "letterSpacing": 0.5
                 },
                 {
                   "type": "icon",
                   "id": "U1J6KA",
+                  "x": 69,
+                  "y": 2,
                   "name": "SortIcon",
+                  "enabled": false,
                   "width": 12,
                   "height": 12,
                   "icon": "arrow-up-down",
                   "library": "lucide",
-                  "fill": "$colors-text-meta"
+                  "fill": "$sem-text-meta"
                 }
               ]
             },
@@ -154,23 +158,26 @@
                   "type": "text",
                   "id": "SEGtB",
                   "name": "Label",
-                  "fill": "$colors-text-meta",
+                  "fill": "$sem-text-meta",
                   "content": "AMOUNT",
+                  "lineHeight": 1.3333,
                   "fontFamily": "$typo-primary-xs-semibold-font-family",
                   "fontSize": "$typo-primary-xs-semibold-font-size",
                   "fontWeight": "600",
-                  "letterSpacing": 0.5,
-                  "lineHeight": 1.3333
+                  "letterSpacing": 0.5
                 },
                 {
                   "type": "icon",
                   "id": "iXgFH",
+                  "x": 78,
+                  "y": 2,
                   "name": "SortIcon",
+                  "enabled": false,
                   "width": 12,
                   "height": 12,
                   "icon": "arrow-up-down",
                   "library": "lucide",
-                  "fill": "$colors-text-meta"
+                  "fill": "$sem-text-meta"
                 }
               ]
             }
@@ -181,11 +188,12 @@
           "id": "CwEbx",
           "name": "TableRow",
           "width": "fill_container",
-          "stroke": "$colors-borders-light",
+          "stroke": "$sem-borders-light",
           "strokeWidth": {
             "bottom": 1
           },
           "strokeAlignment": "inner",
+          "strokeLinejoin": "round",
           "gap": "$spacing-sm",
           "padding": [
             "$spacing-xs",
@@ -203,12 +211,12 @@
                   "type": "text",
                   "id": "NgY0P",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "Jun 10",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -222,12 +230,12 @@
                   "type": "text",
                   "id": "kJg5C",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "Whole Foods Market",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -241,12 +249,12 @@
                   "type": "text",
                   "id": "U3Lwh",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "Groceries",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -261,12 +269,12 @@
                   "type": "text",
                   "id": "OAxLn",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "-$84.32",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -277,11 +285,12 @@
           "id": "cqsfL",
           "name": "TableRow",
           "width": "fill_container",
-          "stroke": "$colors-borders-light",
+          "stroke": "$sem-borders-light",
           "strokeWidth": {
             "bottom": 1
           },
           "strokeAlignment": "inner",
+          "strokeLinejoin": "round",
           "gap": "$spacing-sm",
           "padding": [
             "$spacing-xs",
@@ -299,12 +308,12 @@
                   "type": "text",
                   "id": "ddorc",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "Jun 9",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -318,12 +327,12 @@
                   "type": "text",
                   "id": "ppv5c",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "Netflix Subscription",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -337,12 +346,12 @@
                   "type": "text",
                   "id": "Fwj2z",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "Entertainment",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -357,12 +366,12 @@
                   "type": "text",
                   "id": "oR2hM",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "-$15.99",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -390,12 +399,12 @@
                   "type": "text",
                   "id": "OXNQP",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "Jun 8",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -409,12 +418,12 @@
                   "type": "text",
                   "id": "Z0jnRd",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "Direct Deposit - Salary",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -428,12 +437,12 @@
                   "type": "text",
                   "id": "Q0rj1o",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "content": "Income",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -448,12 +457,12 @@
                   "type": "text",
                   "id": "H7OBh",
                   "name": "Value",
-                  "fill": "$colors-text-deposit",
+                  "fill": "$sem-text-deposit",
                   "content": "+$3,200.00",
+                  "lineHeight": 1.4286,
                   "fontFamily": "$typo-primary-sm-regular-font-family",
                   "fontSize": "$typo-primary-sm-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.4286
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -468,7 +477,7 @@
       "y": 40,
       "name": "Tag / Default",
       "reusable": true,
-      "fill": "$color-blue-100",
+      "fill": "$prim-blue-100",
       "cornerRadius": "$radius-3xs",
       "padding": [
         "$spacing-3xs",
@@ -480,12 +489,12 @@
           "type": "text",
           "id": "tZkEP8",
           "name": "Label",
-          "fill": "$color-blue-700",
+          "fill": "$prim-blue-700",
           "content": "Active",
+          "lineHeight": 1.3333,
           "fontFamily": "$typo-primary-xs-regular-font-family",
           "fontSize": "$typo-primary-xs-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.3333
+          "fontWeight": "normal"
         }
       ]
     },
@@ -496,7 +505,7 @@
       "y": 40,
       "name": "Tag / Pending",
       "reusable": true,
-      "fill": "$color-orange-100",
+      "fill": "$prim-orange-100",
       "cornerRadius": "$radius-3xs",
       "padding": [
         "$spacing-3xs",
@@ -508,12 +517,12 @@
           "type": "text",
           "id": "tyH73I",
           "name": "Label",
-          "fill": "$color-orange-700",
+          "fill": "$prim-orange-700",
           "content": "Pending",
+          "lineHeight": 1.3333,
           "fontFamily": "$typo-primary-xs-regular-font-family",
           "fontSize": "$typo-primary-xs-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.3333
+          "fontWeight": "normal"
         }
       ]
     },
@@ -524,7 +533,7 @@
       "y": 40,
       "name": "Tag / Error",
       "reusable": true,
-      "fill": "$color-red-100",
+      "fill": "$prim-red-100",
       "cornerRadius": "$radius-3xs",
       "padding": [
         "$spacing-3xs",
@@ -536,12 +545,12 @@
           "type": "text",
           "id": "tEsf8U",
           "name": "Label",
-          "fill": "$color-red-700",
+          "fill": "$prim-red-700",
           "content": "Action required",
+          "lineHeight": 1.3333,
           "fontFamily": "$typo-primary-xs-regular-font-family",
           "fontSize": "$typo-primary-xs-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.3333
+          "fontWeight": "normal"
         }
       ]
     },
@@ -552,7 +561,7 @@
       "y": 40,
       "name": "Tag / Positive",
       "reusable": true,
-      "fill": "$color-green-100",
+      "fill": "$prim-green-100",
       "cornerRadius": "$radius-3xs",
       "padding": [
         "$spacing-3xs",
@@ -564,12 +573,12 @@
           "type": "text",
           "id": "t4gcTX",
           "name": "Label",
-          "fill": "$color-green-700",
+          "fill": "$prim-green-700",
           "content": "+4.2%",
+          "lineHeight": 1.3333,
           "fontFamily": "$typo-primary-xs-regular-font-family",
           "fontSize": "$typo-primary-xs-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.3333
+          "fontWeight": "normal"
         }
       ]
     },
@@ -580,7 +589,7 @@
       "y": 40,
       "name": "Tag / Large",
       "reusable": true,
-      "fill": "$color-blue-100",
+      "fill": "$prim-blue-100",
       "cornerRadius": "$radius-3xs",
       "padding": [
         "$spacing-3xs",
@@ -592,12 +601,12 @@
           "type": "text",
           "id": "tx21JX",
           "name": "Label",
-          "fill": "$color-blue-700",
+          "fill": "$prim-blue-700",
           "content": "Large Default",
+          "lineHeight": 1.4286,
           "fontFamily": "$typo-primary-sm-regular-font-family",
           "fontSize": "$typo-primary-sm-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.4286
+          "fontWeight": "normal"
         }
       ]
     },
@@ -616,12 +625,12 @@
           "type": "text",
           "id": "thiYuZ",
           "name": "Label",
-          "fill": "$colors-text-meta",
+          "fill": "$sem-text-meta",
           "content": "COLUMN",
+          "lineHeight": 1.3333,
           "fontFamily": "$typo-primary-xs-semibold-font-family",
           "fontSize": "$typo-primary-xs-semibold-font-size",
-          "fontWeight": "600",
-          "lineHeight": 1.3333
+          "fontWeight": "600"
         },
         {
           "type": "icon",
@@ -631,7 +640,7 @@
           "height": 12,
           "icon": "arrow-up-down",
           "library": "lucide",
-          "fill": "$colors-text-meta"
+          "fill": "$sem-text-meta"
         }
       ]
     },
@@ -650,7 +659,7 @@
           "type": "frame",
           "id": "fauxZ5",
           "name": "Tag",
-          "fill": "$color-blue-100",
+          "fill": "$prim-blue-100",
           "cornerRadius": "$radius-3xs",
           "padding": [
             "$spacing-3xs",
@@ -662,12 +671,12 @@
               "type": "text",
               "id": "tshumF",
               "name": "Label",
-              "fill": "$color-blue-700",
+              "fill": "$prim-blue-700",
               "content": "Active",
+              "lineHeight": 1.3333,
               "fontFamily": "$typo-primary-xs-regular-font-family",
               "fontSize": "$typo-primary-xs-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.3333
+              "fontWeight": "normal"
             }
           ]
         },
@@ -675,7 +684,7 @@
           "type": "frame",
           "id": "feb33E",
           "name": "Tag",
-          "fill": "$color-orange-100",
+          "fill": "$prim-orange-100",
           "cornerRadius": "$radius-3xs",
           "padding": [
             "$spacing-3xs",
@@ -687,12 +696,12 @@
               "type": "text",
               "id": "t0wxXr",
               "name": "Label",
-              "fill": "$color-orange-700",
+              "fill": "$prim-orange-700",
               "content": "Pending",
+              "lineHeight": 1.3333,
               "fontFamily": "$typo-primary-xs-regular-font-family",
               "fontSize": "$typo-primary-xs-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.3333
+              "fontWeight": "normal"
             }
           ]
         },
@@ -700,7 +709,7 @@
           "type": "frame",
           "id": "fprWV6",
           "name": "Tag",
-          "fill": "$color-red-100",
+          "fill": "$prim-red-100",
           "cornerRadius": "$radius-3xs",
           "padding": [
             "$spacing-3xs",
@@ -712,12 +721,12 @@
               "type": "text",
               "id": "t9vGlW",
               "name": "Label",
-              "fill": "$color-red-700",
+              "fill": "$prim-red-700",
               "content": "Action required",
+              "lineHeight": 1.3333,
               "fontFamily": "$typo-primary-xs-regular-font-family",
               "fontSize": "$typo-primary-xs-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.3333
+              "fontWeight": "normal"
             }
           ]
         },
@@ -725,7 +734,7 @@
           "type": "frame",
           "id": "fon6wR",
           "name": "Tag",
-          "fill": "$color-green-100",
+          "fill": "$prim-green-100",
           "cornerRadius": "$radius-3xs",
           "padding": [
             "$spacing-3xs",
@@ -737,12 +746,12 @@
               "type": "text",
               "id": "tOjgg0",
               "name": "Label",
-              "fill": "$color-green-700",
+              "fill": "$prim-green-700",
               "content": "+4.2%",
+              "lineHeight": 1.3333,
               "fontFamily": "$typo-primary-xs-regular-font-family",
               "fontSize": "$typo-primary-xs-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.3333
+              "fontWeight": "normal"
             }
           ]
         }
@@ -758,7 +767,7 @@
       "clip": true,
       "width": 480,
       "cornerRadius": "$radius-2xs",
-      "stroke": "$colors-borders-dark",
+      "stroke": "$sem-borders-dark",
       "strokeWidth": 1,
       "layout": "vertical",
       "children": [
@@ -767,7 +776,7 @@
           "id": "fL6jkM",
           "name": "Header",
           "width": "fill_container",
-          "fill": "$color-taupe-100",
+          "fill": "$prim-taupe-100",
           "padding": [
             "$spacing-3xs",
             "$spacing-sm"
@@ -779,12 +788,12 @@
               "type": "text",
               "id": "tIjufs",
               "name": "Language",
-              "fill": "$colors-text-meta",
+              "fill": "$sem-text-meta",
               "content": "typescript",
+              "lineHeight": 1.3333,
               "fontFamily": "$typo-primary-xs-semibold-font-family",
               "fontSize": "$typo-primary-xs-semibold-font-size",
-              "fontWeight": "600",
-              "lineHeight": 1.3333
+              "fontWeight": "600"
             },
             {
               "type": "frame",
@@ -801,18 +810,18 @@
                   "height": 12,
                   "icon": "copy",
                   "library": "lucide",
-                  "fill": "$colors-text-meta"
+                  "fill": "$sem-text-meta"
                 },
                 {
                   "type": "text",
                   "id": "tTNGC3",
                   "name": "Label",
-                  "fill": "$colors-text-meta",
+                  "fill": "$sem-text-meta",
                   "content": "Copy",
+                  "lineHeight": 1.3333,
                   "fontFamily": "$typo-primary-xs-regular-font-family",
                   "fontSize": "$typo-primary-xs-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.3333
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -823,7 +832,7 @@
           "id": "fhuGrL",
           "name": "Body",
           "width": "fill_container",
-          "fill": "$color-gray-900",
+          "fill": "$prim-gray-900",
           "layout": "vertical",
           "gap": "$spacing-3xs",
           "padding": "$spacing-sm",
@@ -832,45 +841,45 @@
               "type": "text",
               "id": "tTm43N",
               "name": "Line1",
-              "fill": "$colors-text-reverse",
+              "fill": "$sem-text-reverse",
               "content": "interface Portfolio {",
+              "lineHeight": 1.4286,
               "fontFamily": "$typo-primary-sm-regular-font-family",
               "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "fontWeight": "normal"
             },
             {
               "type": "text",
               "id": "toYfUy",
               "name": "Line2",
-              "fill": "$colors-text-reverse",
+              "fill": "$sem-text-reverse",
               "content": "  totalValue: number;",
+              "lineHeight": 1.4286,
               "fontFamily": "$typo-primary-sm-regular-font-family",
               "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "fontWeight": "normal"
             },
             {
               "type": "text",
               "id": "tt7hFs",
               "name": "Line3",
-              "fill": "$colors-text-reverse",
+              "fill": "$sem-text-reverse",
               "content": "  currency: string;",
+              "lineHeight": 1.4286,
               "fontFamily": "$typo-primary-sm-regular-font-family",
               "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "fontWeight": "normal"
             },
             {
               "type": "text",
               "id": "tyaXfJ",
               "name": "Line4",
-              "fill": "$colors-text-reverse",
+              "fill": "$sem-text-reverse",
               "content": "}",
+              "lineHeight": 1.4286,
               "fontFamily": "$typo-primary-sm-regular-font-family",
               "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "fontWeight": "normal"
             }
           ]
         }
@@ -886,7 +895,7 @@
       "clip": true,
       "width": 320,
       "height": 180,
-      "fill": "$color-gray-100",
+      "fill": "$prim-gray-100",
       "cornerRadius": "$radius-2xs",
       "layout": "vertical",
       "justifyContent": "center",
@@ -929,7 +938,7 @@
           "height": 32,
           "icon": "image",
           "library": "lucide",
-          "fill": "$colors-text-meta"
+          "fill": "$sem-text-meta"
         }
       ]
     },
@@ -951,7 +960,7 @@
           "clip": true,
           "width": "fill_container",
           "height": 180,
-          "fill": "$color-gray-100",
+          "fill": "$prim-gray-100",
           "cornerRadius": "$radius-2xs",
           "layout": "vertical",
           "justifyContent": "center",
@@ -994,7 +1003,7 @@
               "height": 32,
               "icon": "image",
               "library": "lucide",
-              "fill": "$colors-text-meta"
+              "fill": "$sem-text-meta"
             }
           ]
         },
@@ -1002,23 +1011,23 @@
           "type": "text",
           "id": "tmY3XT",
           "name": "Caption",
-          "fill": "$colors-text-body",
+          "fill": "$sem-text-body",
           "content": "Morning light over the valley.",
+          "lineHeight": 1.4286,
           "fontFamily": "$typo-primary-sm-regular-font-family",
           "fontSize": "$typo-primary-sm-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.4286
+          "fontWeight": "normal"
         },
         {
           "type": "text",
           "id": "tjCElB",
           "name": "Credit",
-          "fill": "$colors-text-meta",
+          "fill": "$sem-text-meta",
           "content": "Photo by Jane Doe",
+          "lineHeight": 1.3333,
           "fontFamily": "$typo-primary-xs-regular-font-family",
           "fontSize": "$typo-primary-xs-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.3333
+          "fontWeight": "normal"
         }
       ]
     },
@@ -1048,7 +1057,7 @@
               "clip": true,
               "width": "fill_container",
               "height": 120,
-              "fill": "$color-gray-100",
+              "fill": "$prim-gray-100",
               "cornerRadius": "$radius-2xs",
               "layout": "vertical",
               "justifyContent": "center",
@@ -1091,7 +1100,7 @@
                   "height": 20,
                   "icon": "image",
                   "library": "lucide",
-                  "fill": "$colors-text-meta"
+                  "fill": "$sem-text-meta"
                 }
               ]
             },
@@ -1102,7 +1111,7 @@
               "clip": true,
               "width": "fill_container",
               "height": 120,
-              "fill": "$color-gray-100",
+              "fill": "$prim-gray-100",
               "cornerRadius": "$radius-2xs",
               "layout": "vertical",
               "justifyContent": "center",
@@ -1145,7 +1154,7 @@
                   "height": 20,
                   "icon": "image",
                   "library": "lucide",
-                  "fill": "$colors-text-meta"
+                  "fill": "$sem-text-meta"
                 }
               ]
             }
@@ -1166,7 +1175,7 @@
               "clip": true,
               "width": "fill_container",
               "height": 120,
-              "fill": "$color-gray-100",
+              "fill": "$prim-gray-100",
               "cornerRadius": "$radius-2xs",
               "layout": "vertical",
               "justifyContent": "center",
@@ -1209,7 +1218,7 @@
                   "height": 20,
                   "icon": "image",
                   "library": "lucide",
-                  "fill": "$colors-text-meta"
+                  "fill": "$sem-text-meta"
                 }
               ]
             },
@@ -1220,7 +1229,7 @@
               "clip": true,
               "width": "fill_container",
               "height": 120,
-              "fill": "$color-gray-100",
+              "fill": "$prim-gray-100",
               "cornerRadius": "$radius-2xs",
               "layout": "vertical",
               "justifyContent": "center",
@@ -1263,7 +1272,7 @@
                   "height": 20,
                   "icon": "image",
                   "library": "lucide",
-                  "fill": "$colors-text-meta"
+                  "fill": "$sem-text-meta"
                 }
               ]
             }
@@ -1285,18 +1294,18 @@
           "type": "text",
           "id": "liMrk1",
           "name": "Marker",
-          "fill": "$colors-text-body",
-          "content": "\u2022",
+          "fill": "$sem-text-body",
+          "content": "•",
+          "lineHeight": 1.5,
           "fontFamily": "$typo-primary-base-regular-font-family",
           "fontSize": "$typo-primary-base-regular-font-size",
-          "fontWeight": "$typo-primary-base-regular-font-weight",
-          "lineHeight": 1.5
+          "fontWeight": "$typo-primary-base-regular-font-weight"
         },
         {
           "type": "text",
           "id": "liTxt1",
           "name": "Text",
-          "fill": "$colors-text-body",
+          "fill": "$sem-text-body",
           "textGrowth": "fixed-width",
           "width": "fill_container",
           "content": "Review your account allocation",
@@ -1330,20 +1339,20 @@
               "type": "text",
               "id": "lbTit1",
               "name": "Title",
-              "fill": "$colors-text-header",
+              "fill": "$sem-text-header",
               "textGrowth": "fixed-width",
               "width": "fill_container",
               "content": "Next steps",
+              "lineHeight": 1.4286,
               "fontFamily": "$typo-primary-sm-semibold-font-family",
               "fontSize": "$typo-primary-sm-semibold-font-size",
-              "fontWeight": "600",
-              "lineHeight": 1.4286
+              "fontWeight": "600"
             },
             {
               "type": "text",
               "id": "lbSub1",
               "name": "Description",
-              "fill": "$colors-text-meta",
+              "fill": "$sem-text-meta",
               "textGrowth": "fixed-width",
               "width": "fill_container",
               "content": "Recommended actions based on your portfolio review.",
@@ -1383,18 +1392,18 @@
                       "type": "text",
                       "id": "lbMk01",
                       "name": "Marker",
-                      "fill": "$colors-text-body",
-                      "content": "\u2022",
+                      "fill": "$sem-text-body",
+                      "content": "•",
+                      "lineHeight": 1.5,
                       "fontFamily": "$typo-primary-base-regular-font-family",
                       "fontSize": "$typo-primary-base-regular-font-size",
-                      "fontWeight": "$typo-primary-base-regular-font-weight",
-                      "lineHeight": 1.5
+                      "fontWeight": "$typo-primary-base-regular-font-weight"
                     },
                     {
                       "type": "text",
                       "id": "lbTx01",
                       "name": "Text",
-                      "fill": "$colors-text-body",
+                      "fill": "$sem-text-body",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Review your account allocation",
@@ -1409,7 +1418,7 @@
                   "type": "rectangle",
                   "id": "lbSp01",
                   "name": "Separator",
-                  "fill": "$colors-borders-light",
+                  "fill": "$sem-borders-light",
                   "width": "fill_container",
                   "height": 1
                 }
@@ -1437,18 +1446,18 @@
                       "type": "text",
                       "id": "lbMk02",
                       "name": "Marker",
-                      "fill": "$colors-text-body",
-                      "content": "\u2022",
+                      "fill": "$sem-text-body",
+                      "content": "•",
+                      "lineHeight": 1.5,
                       "fontFamily": "$typo-primary-base-regular-font-family",
                       "fontSize": "$typo-primary-base-regular-font-size",
-                      "fontWeight": "$typo-primary-base-regular-font-weight",
-                      "lineHeight": 1.5
+                      "fontWeight": "$typo-primary-base-regular-font-weight"
                     },
                     {
                       "type": "text",
                       "id": "lbTx02",
                       "name": "Text",
-                      "fill": "$colors-text-body",
+                      "fill": "$sem-text-body",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Compare monthly spending trends",
@@ -1463,7 +1472,7 @@
                   "type": "rectangle",
                   "id": "lbSp02",
                   "name": "Separator",
-                  "fill": "$colors-borders-light",
+                  "fill": "$sem-borders-light",
                   "width": "fill_container",
                   "height": 1
                 }
@@ -1484,18 +1493,18 @@
                   "type": "text",
                   "id": "lbMk03",
                   "name": "Marker",
-                  "fill": "$colors-text-body",
-                  "content": "\u2022",
+                  "fill": "$sem-text-body",
+                  "content": "•",
+                  "lineHeight": 1.5,
                   "fontFamily": "$typo-primary-base-regular-font-family",
                   "fontSize": "$typo-primary-base-regular-font-size",
-                  "fontWeight": "$typo-primary-base-regular-font-weight",
-                  "lineHeight": 1.5
+                  "fontWeight": "$typo-primary-base-regular-font-weight"
                 },
                 {
                   "type": "text",
                   "id": "lbTx03",
                   "name": "Text",
-                  "fill": "$colors-text-body",
+                  "fill": "$sem-text-body",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
                   "content": "Set up automatic contributions",
@@ -1511,54 +1520,26 @@
       ]
     }
   ],
+  "themes": {
+    "🎨 Colors": [
+      "Light",
+      "Dark"
+    ]
+  },
   "variables": {
-    "color-taupe-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#F7F5F0",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#F7F5F0",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-borders-light": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#EEEDEB",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#131E34",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
     "radius-2xs": {
       "type": "number",
       "value": [
         {
           "value": 8,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 8,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -1569,13 +1550,13 @@
         {
           "value": 16,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 16,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -1586,30 +1567,13 @@
         {
           "value": 12,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 12,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-text-meta": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#5E5954",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#697DA0",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -1620,13 +1584,13 @@
         {
           "value": "Heebo",
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": "Heebo",
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -1637,285 +1601,13 @@
         {
           "value": 12,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 12,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-blue-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#ebf0fe",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#ebf0fe",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-blue-700": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#2952cc",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#2952cc",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-gray-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#EEEDEB",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#EEEDEB",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-gray-900": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#0e0e0e",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#0e0e0e",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-green-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#a9fdc4",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#a9fdc4",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-green-700": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#0b461e",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#0b461e",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-orange-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#fee4d2",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#fee4d2",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-orange-700": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#964713",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#964713",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-red-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#fed5d4",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#fed5d4",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-red-700": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#961a18",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#961a18",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-background-surface": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#ffffff",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#131C31",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-borders-dark": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#DCD8CB",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#22314F",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-text-body": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#403D3A",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#B3C1DB",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-text-deposit": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#148338",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#4ADE80",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-text-header": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#0e0e0e",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#D8E1F0",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-text-reverse": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#ffffff",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#0e0e0e",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -1926,13 +1618,13 @@
         {
           "value": 4,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 4,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -1943,13 +1635,13 @@
         {
           "value": 8,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 8,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -1960,13 +1652,13 @@
         {
           "value": 4,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 4,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -1977,13 +1669,13 @@
         {
           "value": "Heebo",
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": "Heebo",
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -1994,13 +1686,13 @@
         {
           "value": 16,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 16,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -2011,13 +1703,13 @@
         {
           "value": "400",
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": "400",
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -2028,13 +1720,13 @@
         {
           "value": "Heebo",
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": "Heebo",
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -2045,13 +1737,13 @@
         {
           "value": 14,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 14,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -2062,13 +1754,13 @@
         {
           "value": "Heebo",
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": "Heebo",
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -2079,13 +1771,13 @@
         {
           "value": 14,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 14,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -2096,13 +1788,13 @@
         {
           "value": "Heebo",
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": "Heebo",
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -2113,13 +1805,13 @@
         {
           "value": 12,
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": 12,
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
           }
         }
       ]
@@ -2130,34 +1822,340 @@
         {
           "value": "400",
           "theme": {
-            "\ud83c\udfa8 Colors": "Light"
+            "🎨 Colors": "Light"
           }
         },
         {
           "value": "400",
           "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-taupe-100": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#F7F5F0",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#F7F5F0",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "sem-borders-light": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#EEEDEB",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#131E34",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "sem-text-meta": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#5E5954",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#697DA0",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-blue-100": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ebf0fe",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#ebf0fe",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-blue-700": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#2952cc",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#2952cc",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-gray-100": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#EEEDEB",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#EEEDEB",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-gray-900": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#0e0e0e",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#0e0e0e",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-green-100": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#a9fdc4",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#a9fdc4",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-green-700": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#0b461e",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#0b461e",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-orange-100": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fee4d2",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#fee4d2",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-orange-700": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#964713",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#964713",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-red-100": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#fed5d4",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#fed5d4",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "prim-red-700": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#961a18",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#961a18",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "sem-background-surface": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#131C31",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "sem-borders-dark": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#DCD8CB",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#22314F",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "sem-text-body": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#403D3A",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#B3C1DB",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "sem-text-deposit": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#148338",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#4ADE80",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "sem-text-header": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#0e0e0e",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#D8E1F0",
+          "theme": {
+            "🎨 Colors": "Dark"
+          }
+        }
+      ]
+    },
+    "sem-text-reverse": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#ffffff",
+          "theme": {
+            "🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "#0e0e0e",
+          "theme": {
+            "🎨 Colors": "Dark"
           }
         }
       ]
     }
   },
-  "fileToken": "c3a4440b-00b9-42db-9d74-08232e3e23d4",
-  "themes": {
-    "0. mode": [
-      "light",
-      "dark"
-    ],
-    "\ud83c\udfa8 Colors": [
-      "Light",
-      "Dark"
-    ],
-    "\ud83c\udd8e Typography": [
-      "Font Size",
-      "Font Weight"
-    ],
-    "\u2194\ufe0f Spacing/Radius": [
-      "Default"
-    ]
-  }
+  "fileToken": "c3a4440b-00b9-42db-9d74-08232e3e23d4"
 }
