@@ -1,5 +1,5 @@
 {
-  "version": "2.14",
+  "version": "2.17",
   "children": [
     {
       "type": "frame",
@@ -373,6 +373,7 @@
                 "top": 0.5
               },
               "strokeAlignment": "inner",
+              "strokeLinejoin": "round",
               "layout": "vertical",
               "gap": 10,
               "padding": [
@@ -673,7 +674,7 @@
                   "type": "text",
                   "id": "NueZH",
                   "name": "subtitle",
-                  "fill": "$y:color-gray-400",
+                  "fill": "$y:sem-text-meta",
                   "content": "Manage your account and preferences.",
                   "fontFamily": "Heebo",
                   "fontSize": 14,
@@ -692,9 +693,9 @@
                       "id": "CVFah",
                       "name": "Profile",
                       "width": "fill_container",
-                      "fill": "$y:colors-background-surface",
+                      "fill": "$y:sem-background-surface",
                       "cornerRadius": "$y:radius-xs",
-                      "stroke": "$y:colors-borders-light",
+                      "stroke": "$y:sem-borders-light",
                       "strokeWidth": 1,
                       "strokeAlignment": "inner",
                       "gap": "$y:spacing-sm",
@@ -729,7 +730,7 @@
                               "type": "text",
                               "id": "Z131R",
                               "name": "profileTitle",
-                              "fill": "$y:color-gray-800",
+                              "fill": "$y:sem-text-body",
                               "content": "Profile",
                               "fontFamily": "Heebo",
                               "fontSize": 16,
@@ -739,7 +740,7 @@
                               "type": "text",
                               "id": "ZdSk8",
                               "name": "profileDesc",
-                              "fill": "$y:color-gray-400",
+                              "fill": "$y:sem-text-meta",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Manage your personal information and preferences.",
@@ -757,7 +758,7 @@
                           "height": 20,
                           "icon": "chevron-right",
                           "library": "lucide",
-                          "fill": "$y:color-gray-400"
+                          "fill": "$y:sem-text-meta"
                         }
                       ]
                     },
@@ -766,9 +767,9 @@
                       "id": "Y4B9Xy",
                       "name": "Contact Us",
                       "width": "fill_container",
-                      "fill": "$y:colors-background-surface",
+                      "fill": "$y:sem-background-surface",
                       "cornerRadius": "$y:radius-xs",
-                      "stroke": "$y:colors-borders-light",
+                      "stroke": "$y:sem-borders-light",
                       "strokeWidth": 1,
                       "strokeAlignment": "inner",
                       "gap": "$y:spacing-sm",
@@ -803,7 +804,7 @@
                               "type": "text",
                               "id": "PLtDB",
                               "name": "contactTitle",
-                              "fill": "$y:color-gray-800",
+                              "fill": "$y:sem-text-body",
                               "content": "Contact Us",
                               "fontFamily": "Heebo",
                               "fontSize": 16,
@@ -813,7 +814,7 @@
                               "type": "text",
                               "id": "XANKp",
                               "name": "contactDesc",
-                              "fill": "$y:color-gray-400",
+                              "fill": "$y:sem-text-meta",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Get in touch with our support team.",
@@ -831,7 +832,7 @@
                           "height": 20,
                           "icon": "chevron-right",
                           "library": "lucide",
-                          "fill": "$y:color-gray-400"
+                          "fill": "$y:sem-text-meta"
                         }
                       ]
                     }
@@ -842,412 +843,11 @@
           ]
         },
         {
-          "type": "frame",
-          "id": "sFpGk",
+          "id": "l8wEd0",
+          "type": "ref",
+          "ref": "Od5wM",
           "name": "chat",
-          "clip": true,
-          "width": 360,
-          "height": "fill_container",
-          "fill": "#f7f5f0ff",
-          "cornerRadius": 12,
-          "stroke": "#DCD8CB",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "effect": {
-            "type": "shadow",
-            "shadowType": "outer",
-            "color": "#2D292628",
-            "offset": {
-              "x": 0,
-              "y": 2
-            },
-            "blur": 28,
-            "spread": 2
-          },
-          "layout": "vertical",
-          "justifyContent": "space_between",
-          "children": [
-            {
-              "type": "frame",
-              "id": "sXlHZ",
-              "name": "h2",
-              "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
-              "width": "fill_container",
-              "stroke": "$chat.divider",
-              "strokeWidth": {
-                "bottom": 0.5
-              },
-              "strokeAlignment": "inner",
-              "padding": [
-                16,
-                20
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "P2AU6Q",
-                  "name": "left",
-                  "gap": 4,
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "YEX4P",
-                      "name": "Chat / Close Button / Default",
-                      "context": "Close button for the chat panel. 28\u00d728, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
-                      "width": 28,
-                      "height": 28,
-                      "cornerRadius": 6,
-                      "layout": "vertical",
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "OSuey",
-                          "name": "icon",
-                          "width": 16,
-                          "height": 16,
-                          "icon": "arrow-right-to-line",
-                          "library": "lucide",
-                          "fill": "$chat.icon"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "aAlYV",
-                      "name": "chatTitle",
-                      "fill": "$chat.text.primary",
-                      "content": "Chat",
-                      "fontFamily": "Noto Serif",
-                      "fontSize": 16,
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "YRLmm",
-                  "name": "btn",
-                  "fill": {
-                    "type": "color",
-                    "color": "$Q:colors-btnPrimaryInvertedBg",
-                    "enabled": false
-                  },
-                  "cornerRadius": "$Q:radius-full",
-                  "stroke": "$Q:colors-borders-dark",
-                  "strokeWidth": 1,
-                  "strokeAlignment": "inner",
-                  "gap": "$Q:spacing-2xs",
-                  "padding": [
-                    6,
-                    12
-                  ],
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "pdqBb",
-                      "name": "Label",
-                      "fill": "$Q:colors-btnPrimaryInvertedText",
-                      "content": "Show View",
-                      "lineHeight": 1.5,
-                      "textAlign": "center",
-                      "fontFamily": "$Q:typo-primary-base-font-family",
-                      "fontSize": 12,
-                      "fontWeight": "500",
-                      "letterSpacing": "$Q:typo-primary-base-letter-spacing"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "t0Wes",
-              "name": "chatMessages",
-              "clip": true,
-              "width": "fill_container",
-              "height": "fill_container",
-              "layout": "vertical",
-              "gap": 14,
-              "padding": [
-                16,
-                20
-              ],
-              "justifyContent": "end",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "pPLEB",
-                  "name": "m2_1",
-                  "context": "Message / User \u2014 Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
-                  "width": "fill_container",
-                  "padding": [
-                    0,
-                    0,
-                    0,
-                    "$Q:spacing-lg"
-                  ],
-                  "justifyContent": "end",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "N4RQM",
-                      "name": "bubble",
-                      "width": "fill_container",
-                      "fill": "$chat.bubble.user.bg",
-                      "cornerRadius": "$chat.bubble.radius",
-                      "stroke": "$chat.bubble.user.border",
-                      "strokeWidth": 1,
-                      "strokeAlignment": "inner",
-                      "padding": [
-                        12,
-                        16
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "pMtAR",
-                          "name": "text",
-                          "fill": "$chat.text.secondary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "How am I tracking against my savings goal?",
-                          "fontFamily": "Heebo",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "F0Cik",
-                  "name": "m2_2",
-                  "context": "Message / AI \u2014 Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
-                  "width": "fill_container",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "aF7Wb",
-                      "name": "bubble",
-                      "width": "fill_container",
-                      "fill": "$chat.bubble.ai.bg",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "apWnQ",
-                          "name": "text",
-                          "fill": "$chat.text.primary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early.",
-                          "fontFamily": "Heebo",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "Pev3g",
-                  "name": "m2_3",
-                  "context": "Message / User \u2014 Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
-                  "width": "fill_container",
-                  "padding": [
-                    0,
-                    0,
-                    0,
-                    "$Q:spacing-lg"
-                  ],
-                  "justifyContent": "end",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "cFKTK",
-                      "name": "bubble",
-                      "fill": "$chat.bubble.user.bg",
-                      "cornerRadius": "$chat.bubble.radius",
-                      "stroke": "$chat.bubble.user.border",
-                      "strokeWidth": 1,
-                      "strokeAlignment": "inner",
-                      "padding": [
-                        12,
-                        16
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "NWm75",
-                          "name": "text",
-                          "fill": "$chat.text.secondary",
-                          "content": "Anything unusual in my spending?",
-                          "fontFamily": "Heebo",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "Aloml",
-                  "name": "m2_4",
-                  "context": "Message / AI \u2014 Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
-                  "width": "fill_container",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "uNMna",
-                      "name": "bubble",
-                      "width": "fill_container",
-                      "fill": "$chat.bubble.ai.bg",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "sgoHe",
-                          "name": "text",
-                          "fill": "$chat.text.primary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "Groceries are up 18% vs. your 3 month average, driven by a few larger Whole Foods runs. Everything else is within normal ranges.",
-                          "fontFamily": "Heebo",
-                          "fontSize": 14,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "PeLGM",
-              "name": "inp2",
-              "context": "Input Field / Typing \u2014 Shown when the user has entered text. Border thickens to 1.5px $chat.input.border.active. Send button becomes enabled. Text displays in $chat.text.secondary.",
-              "width": "fill_container",
-              "stroke": {
-                "type": "color",
-                "color": "#E8E6E0",
-                "enabled": false
-              },
-              "strokeWidth": {
-                "top": 0.5
-              },
-              "strokeAlignment": "inner",
-              "layout": "vertical",
-              "gap": 12,
-              "padding": [
-                12,
-                20,
-                20,
-                20
-              ],
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "GIy0F",
-                  "name": "inputField",
-                  "width": "fill_container",
-                  "fill": "$chat.input.bg",
-                  "cornerRadius": "$chat.input.radius",
-                  "stroke": "$chat.input.border.active",
-                  "strokeWidth": 1.5,
-                  "strokeAlignment": "inner",
-                  "layout": "vertical",
-                  "gap": 24,
-                  "padding": 12,
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "DB5ds",
-                      "name": "text",
-                      "fill": "$chat.text.secondary",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "What do my holdings look like this month?",
-                      "fontFamily": "Heebo",
-                      "fontSize": 14,
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "NLuCp",
-                      "name": "rowButtons",
-                      "width": "fill_container",
-                      "gap": 8,
-                      "justifyContent": "end",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "L5CaC",
-                          "name": "Chat / Voice Button / Default",
-                          "context": "Voice input button (default state). 34\u00d734 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
-                          "width": 34,
-                          "height": 34,
-                          "fill": "#00000000",
-                          "cornerRadius": 9999,
-                          "stroke": "$chat.chip.border",
-                          "strokeWidth": 1,
-                          "strokeAlignment": "inner",
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "nfj6z",
-                              "name": "icon",
-                              "width": 16,
-                              "height": 16,
-                              "icon": "mic",
-                              "library": "lucide",
-                              "fill": "$chat.icon"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "z63GVF",
-                          "name": "Chat / Send Button / Default",
-                          "context": "Primary send button for submitting chat messages. 34\u00d734 pill, dark fill ($chat.send.bg) with white arrow-up icon. Place at the right end of the input field button row. States: default, hover, pressed, disabled.",
-                          "width": 34,
-                          "height": 34,
-                          "fill": "$chat.send.bg",
-                          "cornerRadius": 9999,
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "VUjfT",
-                              "name": "sendIcon",
-                              "width": 20,
-                              "height": 20,
-                              "icon": "arrow-up",
-                              "library": "lucide",
-                              "fill": "$chat.send.icon"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+          "height": "fill_container"
         }
       ]
     },
@@ -1348,7 +948,7 @@
               "height": 22,
               "icon": "panel-left",
               "library": "lucide",
-              "fill": "$y:color-gray-700"
+              "fill": "$y:sem-icons-full"
             },
             {
               "type": "frame",
@@ -1415,7 +1015,7 @@
               "height": 22,
               "icon": "message-circle",
               "library": "lucide",
-              "fill": "$y:color-gray-700"
+              "fill": "$y:sem-icons-full"
             }
           ]
         },
@@ -1442,7 +1042,7 @@
                   "type": "text",
                   "id": "N5Vl2",
                   "name": "subtitle",
-                  "fill": "$y:color-gray-400",
+                  "fill": "$y:sem-text-meta",
                   "content": "Manage your account and preferences.",
                   "fontFamily": "Heebo",
                   "fontSize": 14,
@@ -1461,9 +1061,9 @@
                       "id": "ujO10",
                       "name": "Profile",
                       "width": "fill_container",
-                      "fill": "$y:colors-background-surface",
+                      "fill": "$y:sem-background-surface",
                       "cornerRadius": "$y:radius-xs",
-                      "stroke": "$y:colors-borders-light",
+                      "stroke": "$y:sem-borders-light",
                       "strokeWidth": 1,
                       "strokeAlignment": "inner",
                       "gap": "$y:spacing-sm",
@@ -1498,7 +1098,7 @@
                               "type": "text",
                               "id": "ofESL",
                               "name": "profileTitle",
-                              "fill": "$y:color-gray-800",
+                              "fill": "$y:sem-text-body",
                               "content": "Profile",
                               "fontFamily": "Heebo",
                               "fontSize": 16,
@@ -1508,7 +1108,7 @@
                               "type": "text",
                               "id": "R9wiS9",
                               "name": "profileDesc",
-                              "fill": "$y:color-gray-400",
+                              "fill": "$y:sem-text-meta",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Manage your personal information and preferences.",
@@ -1526,7 +1126,7 @@
                           "height": 20,
                           "icon": "chevron-right",
                           "library": "lucide",
-                          "fill": "$y:color-gray-400"
+                          "fill": "$y:sem-text-meta"
                         }
                       ]
                     },
@@ -1535,9 +1135,9 @@
                       "id": "i9Y06",
                       "name": "Contact Us",
                       "width": "fill_container",
-                      "fill": "$y:colors-background-surface",
+                      "fill": "$y:sem-background-surface",
                       "cornerRadius": "$y:radius-xs",
-                      "stroke": "$y:colors-borders-light",
+                      "stroke": "$y:sem-borders-light",
                       "strokeWidth": 1,
                       "strokeAlignment": "inner",
                       "gap": "$y:spacing-sm",
@@ -1572,7 +1172,7 @@
                               "type": "text",
                               "id": "S0WZ7",
                               "name": "contactTitle",
-                              "fill": "$y:color-gray-800",
+                              "fill": "$y:sem-text-body",
                               "content": "Contact Us",
                               "fontFamily": "Heebo",
                               "fontSize": 16,
@@ -1582,7 +1182,7 @@
                               "type": "text",
                               "id": "Ey8az",
                               "name": "contactDesc",
-                              "fill": "$y:color-gray-400",
+                              "fill": "$y:sem-text-meta",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Get in touch with our support team.",
@@ -1600,7 +1200,7 @@
                           "height": 20,
                           "icon": "chevron-right",
                           "library": "lucide",
-                          "fill": "$y:color-gray-400"
+                          "fill": "$y:sem-text-meta"
                         }
                       ]
                     }
@@ -1609,6 +1209,266 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "v2HaEk",
+      "x": 21551,
+      "y": 1802,
+      "name": "Chat / Input Field / Empty",
+      "context": "Input Field / Empty — Shown when no text has been entered. Contains placeholder text and the button row (voice, send disabled). Outer padding: 12t/20r/20b/20l. Inner field: $y:sem-chatInputBg, border $y:sem-chatInputBorder, radius $y:radius-xs.",
+      "reusable": true,
+      "width": 360,
+      "layout": "vertical",
+      "gap": 12,
+      "padding": [
+        12,
+        20,
+        20,
+        20
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "y9hILj",
+          "name": "inputField",
+          "width": "fill_container",
+          "fill": "$y:sem-chatInputBg",
+          "cornerRadius": "$y:radius-xs",
+          "stroke": "$y:sem-chatInputBorder",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "c0Zo8",
+              "name": "placeholder",
+              "fill": "$y:sem-chatPlaceholder",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Ask me any financial question...",
+              "fontFamily": "Heebo",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "hgFjS",
+              "name": "rowButtons",
+              "width": "fill_container",
+              "gap": 8,
+              "justifyContent": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ksuLU",
+                  "name": "Chat / Voice Button / Default",
+                  "context": "Voice input button (default state). 34x34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
+                  "width": 34,
+                  "height": 34,
+                  "cornerRadius": 9999,
+                  "stroke": "$y:sem-chatVoiceBorder",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "LBsXF",
+                      "name": "icon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "mic",
+                      "library": "lucide",
+                      "fill": "$y:sem-chatVoiceIcon"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "eXWTC",
+                  "name": "Chat / Send Button / Disabled",
+                  "context": "Disabled state of the send button. Shown when the input field is empty or processing. 34x34 pill, muted fill ($y:sem-chatSendBgDisabled) with white icon. States: disabled.",
+                  "width": 34,
+                  "height": 34,
+                  "fill": "$y:sem-chatSendBgDisabled",
+                  "cornerRadius": 9999,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "USoeI",
+                      "name": "sendIcon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "arrow-up",
+                      "library": "lucide",
+                      "fill": "$y:sem-chatSendIcon"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Wv4Sf",
+      "x": 21971,
+      "y": 1802,
+      "name": "Chat / Close Button / Default",
+      "context": "Close button for the chat panel. 32x32 circle, $y:sem-chatBg fill, arrow-right-to-line icon in prim-blue-600. BORDER IS CONDITIONAL: render no outline at rest. Show the 1px prim-blue-300 border only when content scrolls beneath the button (e.g. messages passing under it) so it stays visually distinct from the content below; keep it borderless when only empty panel background is behind it. States: default, hover, pressed.",
+      "reusable": true,
+      "fill": "$y:sem-chatBg",
+      "cornerRadius": 9999,
+      "stroke": {
+        "type": "color",
+        "color": "$y:sem-chatCloseBorder",
+        "enabled": false
+      },
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "layout": "vertical",
+      "padding": 8,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "feQdR",
+          "name": "icon",
+          "width": 16,
+          "height": 16,
+          "icon": "arrow-right-to-line",
+          "library": "lucide",
+          "fill": "$y:sem-chatCloseIcon"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Od5wM",
+      "x": 22071,
+      "y": 1802,
+      "name": "Chat / Panel / Empty",
+      "reusable": true,
+      "clip": true,
+      "width": 360,
+      "height": 640,
+      "fill": "$y:sem-chatBg",
+      "cornerRadius": "$y:radius-xs",
+      "stroke": "$y:sem-chatBorder",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#2D292628",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 28,
+        "spread": 2
+      },
+      "layout": "vertical",
+      "justifyContent": "space_between",
+      "children": [
+        {
+          "type": "frame",
+          "id": "NTV1D",
+          "name": "chatMessages",
+          "clip": true,
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            16,
+            20
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "HxI8t",
+              "name": "greeting",
+              "fill": "$y:sem-chatTextPrimary",
+              "content": "Ask me any financial question...",
+              "fontFamily": "Noto Serif",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "uHzvX",
+              "name": "Chips",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Kzvv1",
+                  "name": "chip1",
+                  "context": "Prompt chip (default state). Pill-shaped suggestion button shown below the input field. Displays a pre-written financial question the user can tap to send. Font: 14px Heebo, fill $y:sem-chatBg, border $y:sem-navBorder, radius $y:radius-md. States: default, hover, pressed.",
+                  "fill": "$y:sem-chatBg",
+                  "cornerRadius": "$y:radius-md",
+                  "stroke": "$y:sem-navBorder",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZWha3",
+                      "name": "label",
+                      "fill": "$y:sem-chatTextSecondary",
+                      "content": "What's a donor-advised fund?",
+                      "lineHeight": 1.25,
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "GcTkt",
+          "type": "ref",
+          "ref": "v2HaEk",
+          "name": "inp1",
+          "width": "fill_container"
+        },
+        {
+          "id": "AwTLH",
+          "type": "ref",
+          "ref": "Wv4Sf",
+          "name": "fabClose",
+          "layoutPosition": "absolute",
+          "x": 312,
+          "y": 16
         }
       ]
     }
@@ -2819,13 +2679,13 @@
       "type": "string",
       "value": [
         {
-          "value": 600,
+          "value": "",
           "theme": {
             "G:mode": "light"
           }
         },
         {
-          "value": 600,
+          "value": "",
           "theme": {
             "G:mode": "dark"
           }
@@ -2887,13 +2747,13 @@
       "type": "string",
       "value": [
         {
-          "value": 400,
+          "value": "",
           "theme": {
             "G:mode": "light"
           }
         },
         {
-          "value": 400,
+          "value": "",
           "theme": {
             "G:mode": "dark"
           }
