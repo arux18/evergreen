@@ -1,0 +1,601 @@
+{
+  "contract": "design-capture/v1",
+  "componentId": "GC-004",
+  "slug": "time-series",
+  "penPath": "pencil/designs/4-approved/genui/GC-004-time-series.pen",
+  "contentHash": "sha256:ed11be3b2d701bd3ced20fd93c80d57a89fbab42cce930d258d2af894b4fe5e6",
+  "capturedAt": "2026-08-25T18:05:54Z",
+  "frames": [
+    "default",
+    "line-straight",
+    "scrub-right-edge",
+    "multi-series-legend",
+    "legend-hidden",
+    "tiles",
+    "series-hidden",
+    "markers-auto-axes",
+    "percent-two-series",
+    "narrow-scroll",
+    "config-error",
+    "static-print"
+  ],
+  "convergence": {
+    "iterationsUsed": 5,
+    "pencilVersion": "@pen.dev/cli 0.3.5",
+    "exportInvocation": "pen interactive --in <file.pen> --out <tmp.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import resolves. Re-export verified byte-deterministic across consecutive runs; default and static-print exports are byte-identical (the contract's identical-by-construction claim).",
+    "comparison": "pixelmatch threshold 0.1 (harness convention), per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-pen budget, not this loop's). Targets = NORMALIZED prototype, contract root #tsHost section.ts, Chromium via playwright 1.58.2 (headless shell 145.0.7632.6), deviceScaleFactor 2. Capture protocol: Google Fonts origins blocked + @font-face injection serving Heebo from the SAME TTF the .pen references (pencil/designs/fonts/Heebo-VariableFont_wght.ttf); browser launched with --font-render-hinting=none --disable-font-subpixel-positioning (aligns Chromium glyph metrics with the pen renderer's unhinted shaper); animations/transitions frozen; scrollbars hidden (chrome, not content); root nudged onto the integer CSS-pixel grid via position:relative top/left (paint-only, sub-pixel); fonts ready; pointer parked after contracted clicks; self-consistency gate (double screenshot, byte-equal).",
+    "iterationNotes": "It1 authoring from extracted geometry: 10/12 within budget (config-error 2.89%, narrow-scroll 1.29%) — cause: fractional root origin (0.25/0.75px) sub-pixel phase. It2 integer-grid snap: 11/12 (config-error 2.34%). It3 unhinted browser font metrics (long-string advance drift eliminated): 12/12 within budget, worst 0.465%. It4 baseline compensation at 6 font sizes measured by probe (pen places glyphs 1css px lower than Chromium at most sizes; 0 at 14/16px): worst 0.353%. It5 full per-size baseline table (19 sizes probed, tweaks -1/-2/0): final 0.024-0.159%. All tooling probes (export-scale, gradient, dash, shadow, baseline) ran outside the frame-fix budget as measurement, not fix rounds; the five iterations above are the honest author->export->compare rounds.",
+    "perState": [
+      {
+        "state": "default",
+        "diffPct": 0.04,
+        "geometryProbes": "pass",
+        "exportSha256": "9bead47616a0c5b99c16a7e9123cb38e3a422c49f5dbeed20015bc67aae38fd9"
+      },
+      {
+        "state": "line-straight",
+        "diffPct": 0.024,
+        "geometryProbes": "pass",
+        "exportSha256": "52884c726ac40aa22c16e172c2e7dbe5b7d209984b1a62ae69e509f0f3af718d"
+      },
+      {
+        "state": "scrub-right-edge",
+        "diffPct": 0.037,
+        "geometryProbes": "pass",
+        "exportSha256": "922da06cf272dffb28da1445f092208256cff057f6f9e7ee36a3a203589b2321"
+      },
+      {
+        "state": "multi-series-legend",
+        "diffPct": 0.121,
+        "geometryProbes": "pass",
+        "exportSha256": "2b371e619756b57091949094ef905dfdc0d1ac85d568c423e1599df28c2fb220"
+      },
+      {
+        "state": "legend-hidden",
+        "diffPct": 0.084,
+        "geometryProbes": "pass",
+        "exportSha256": "50462e9dbefb3cf619ec8a4657ab50715bb6069bbbc87de4e76bc1994d7a611c"
+      },
+      {
+        "state": "tiles",
+        "diffPct": 0.132,
+        "geometryProbes": "pass",
+        "exportSha256": "8076289b7a049dee68621c0a7633bd83a88ce4e85408d9f6ceac72ac152faa05"
+      },
+      {
+        "state": "series-hidden",
+        "diffPct": 0.112,
+        "geometryProbes": "pass",
+        "exportSha256": "bf4d4007e3f7795091d0f29ee399250e31263a018066ccf7fa71049603414c59"
+      },
+      {
+        "state": "markers-auto-axes",
+        "diffPct": 0.042,
+        "geometryProbes": "pass",
+        "exportSha256": "0fda273417d68fa43b56ed6ee915dce23404b9ba1a18e53ddfbe5e25b5dcf1f8"
+      },
+      {
+        "state": "percent-two-series",
+        "diffPct": 0.067,
+        "geometryProbes": "pass",
+        "exportSha256": "a45fb2f8503b9f8f2fe5c8126233d21523f58bedfa3ef3d9ccc0b43cac042bb6"
+      },
+      {
+        "state": "narrow-scroll",
+        "diffPct": 0.055,
+        "geometryProbes": "pass",
+        "exportSha256": "70fbf5c6b1564872d2cbfebb96612ed8b4d67bcef85f2511586c19d6fb18d86c"
+      },
+      {
+        "state": "config-error",
+        "diffPct": 0.159,
+        "geometryProbes": "pass",
+        "exportSha256": "0afc8b61947ef451c4eeb6c3c18ad824e03e2aeeb31720c7a0d21c72330a19ff"
+      },
+      {
+        "state": "static-print",
+        "diffPct": 0.04,
+        "geometryProbes": "pass",
+        "exportSha256": "9bead47616a0c5b99c16a7e9123cb38e3a422c49f5dbeed20015bc67aae38fd9"
+      }
+    ],
+    "waivers": []
+  },
+  "normalizationRecipe": {
+    "cssVariableInjections": [
+      {
+        "variable": "--surface-1",
+        "value": "#FFFFFF",
+        "token": "$sem-background-surface"
+      },
+      {
+        "variable": "--surface-2",
+        "value": "#F8F7F6",
+        "token": "$sem-background-hover"
+      },
+      {
+        "variable": "--border",
+        "value": "#EEEDEB",
+        "token": "$sem-borders-light"
+      },
+      {
+        "variable": "--ink",
+        "value": "#0E0E0E",
+        "token": "$sem-text-header"
+      },
+      {
+        "variable": "--muted",
+        "value": "#5E5954",
+        "token": "$sem-text-meta"
+      },
+      {
+        "variable": "--text-body",
+        "value": "#403D3A",
+        "token": "$sem-text-body"
+      },
+      {
+        "variable": "--accent",
+        "value": "#3A6AF8",
+        "token": "$sem-text-action"
+      },
+      {
+        "variable": "--neg",
+        "value": "#C82320",
+        "token": "$sem-borders-error / $sem-text-error"
+      },
+      {
+        "variable": "--grid",
+        "value": "#D5D3D0",
+        "token": "$sem-borders-muted"
+      },
+      {
+        "variable": "--axis",
+        "value": "#5E5954",
+        "token": "$sem-text-meta"
+      },
+      {
+        "variable": "--orange",
+        "value": "#3A6AF8",
+        "token": "$chart-threshold"
+      },
+      {
+        "variable": "--page-bg",
+        "value": "#FFFFFF",
+        "token": "$sem-background-surface"
+      },
+      {
+        "variable": "--cat1",
+        "value": "#8951F0",
+        "token": "$chart-categorical/color-01"
+      },
+      {
+        "variable": "--cat2",
+        "value": "#06B6D4",
+        "token": "$chart-categorical/color-02"
+      },
+      {
+        "variable": "--cat3",
+        "value": "#312E81",
+        "token": "$chart-categorical/color-03"
+      },
+      {
+        "variable": "--cat4",
+        "value": "#3B82F6",
+        "token": "$chart-categorical/color-04"
+      },
+      {
+        "variable": "--cat5",
+        "value": "#0F766E",
+        "token": "$chart-categorical/color-05"
+      },
+      {
+        "variable": "--cat6",
+        "value": "#38BDF8",
+        "token": "$chart-categorical/color-06"
+      },
+      {
+        "variable": "--cat7",
+        "value": "#2DD4BF",
+        "token": "$chart-categorical/color-07"
+      },
+      {
+        "variable": "--cat8",
+        "value": "#A78BFA",
+        "token": "$chart-categorical/color-08"
+      },
+      {
+        "variable": "--cat9",
+        "value": "#C026D3",
+        "token": "$chart-categorical/color-09"
+      },
+      {
+        "variable": "--cat10",
+        "value": "#E73CAE",
+        "token": "$chart-categorical/color-10"
+      },
+      {
+        "variable": "--cat11",
+        "value": "#E879A8",
+        "token": "$chart-categorical/color-11"
+      },
+      {
+        "variable": "--cat12",
+        "value": "#92400E",
+        "token": "$chart-categorical/color-12"
+      },
+      {
+        "variable": "--cat13",
+        "value": "#FB923C",
+        "token": "$chart-categorical/color-13"
+      },
+      {
+        "variable": "--cat14",
+        "value": "#CA8A04",
+        "token": "$chart-categorical/color-14"
+      },
+      {
+        "variable": "--cat15",
+        "value": "#FACC15",
+        "token": "$chart-categorical/color-15"
+      }
+    ],
+    "findReplaces": [
+      {
+        "from": "E('feDropShadow',{dx:0,dy:3,stdDeviation:5,'flood-color':'#000','flood-opacity':'0.16'},f);",
+        "to": "E('feDropShadow',{dx:0,dy:4,stdDeviation:6,'flood-color':'#000','flood-opacity':'0.10196078431372549'},f);",
+        "where": "shadowFilter (engine line 9135) -> shadow-md (shadow-md-y 4, shadow-md-blur 12 => stdDeviation 6) + $prim-shadow-md-color #0000001A"
+      },
+      {
+        "from": "E('stop',{offset:'0%','stop-color':color,'stop-opacity':'0.32'},g);",
+        "to": "E('stop',{offset:'0%','stop-color':color,'stop-opacity':'0.3215686274509804'},g);",
+        "where": "fadeFill top stop (engine line 9186) -> $chart-series-fade/color-NN-top alpha 0x52"
+      },
+      {
+        "from": "E('stop',{offset:'100%','stop-color':color,'stop-opacity':'0.02'},g);",
+        "to": "E('stop',{offset:'100%','stop-color':color,'stop-opacity':'0.0196078431372549'},g);",
+        "where": "fadeFill floor stop (engine line 9187) -> $chart-series-fade/color-NN-floor alpha 0x05"
+      }
+    ],
+    "fontSwap": "None required at the CSS layer: the prototype is already Heebo-native (--font-ui Heebo-first, SVG text hardcodes 'Heebo, sans-serif'). Serving mechanics: Google Fonts blocked at capture; Heebo served via injected @font-face from pencil/designs/fonts/Heebo-VariableFont_wght.ttf — the same file this .pen's fonts block references.",
+    "notes": "Identity injections (13 of 27) are recorded because the injection IS the reconciliation record even when Bill's value already equals the token value. Dark :root block left untouched — dark is uncontracted (design-rules rule 25) and arrives later as a token swap; every token bound here carries its dark value in the library/local definitions."
+  },
+  "tokenJudgmentCalls": [
+    {
+      "surface": "series color assignment (all plots, swatches, card rows, scrub dots)",
+      "prototypeValue": "blue-first categorical order --cat1..15 (#3B82F6 first; Bill's comment: \"Every swatch is drawn from v2.0 (Hemlock)'s 15-colour set; the ORDER is blue-first\")",
+      "boundToken": "$chart-categorical/color-01..15 in priority order",
+      "rationale": "Chart-series roles bind by SERIES ORDER to the palette's priority order (hemlock rule: \"Always assign in priority order\"), never by hue-matching. Series 1 turns purple #8951F0; slots 02/03/05/15 coincide with Bill's values. Marker colors ride the same cycle (next unused slots), preserving the never-repeats-a-line rule.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "gridlines (--grid #C8CAC9)",
+      "prototypeValue": "#C8CAC9",
+      "boundToken": "$sem-borders-muted",
+      "rationale": "Gridlines sit back as muted separators; no Hemlock chart-gridline role exists, and sem-borders-muted (#D5D3D0) is the named muted-border role. Value lightens slightly — token-true.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "axis baseline + tick stems + tick text + scrub line (--axis #6E7270, one coupled variable)",
+      "prototypeValue": "#6E7270",
+      "boundToken": "$sem-text-meta",
+      "rationale": "Hemlock chart rules name sem-text-meta for axis labels; the prototype couples baseline/stems/scrub-line to the same variable, so the coupled surfaces bind the same role (#5E5954). If the designer wants a dedicated axis-line role, that is a remap ruling.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "reference line + its label (--orange #EA580C default)",
+      "prototypeValue": "#EA580C",
+      "boundToken": "$chart-threshold",
+      "rationale": "Hemlock explicitly owns threshold/reference lines via chart-threshold (-> sem-background-action #3A6AF8). Role-first: the line turns blue. Deliberate, highly visible divergence from Bill's orange.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "info-card drop shadow (feDropShadow dy 3, stdDeviation 5, black 16%)",
+      "prototypeValue": "0 3px 10px rgba(0,0,0,0.16)",
+      "boundToken": "shadow-md role: $shadow-md-y 4 / $shadow-md-blur 12 / $y:prim-shadow-md-color #0000001A",
+      "rationale": "The floating info card is a card/tooltip; shadow-md is its named elevation. Rethemed in normalization (findReplaces) and bound in the .pen effect. NAMING DRIFT FLAGGED: skill docs name the color token shadow-md-color (no prefix, \"semantics by nature\"); the live library carries it as prim-shadow-md-color (themed #0000001A/#0000005C). Bound the live name; the doc/canvas naming divergence is a designer-visible report item, not improvised around.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "tile toggle hover background (--surface-2, unrendered in contracted states)",
+      "prototypeValue": "#F8F7F6",
+      "boundToken": "$sem-background-hover",
+      "rationale": "Button hover surface role (gray-50), not the taupe rowHover (rows, not buttons). Injection recorded for the normalization table; no frame renders it (hover uncontracted).",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "component composition (SVG-drawn info card, hand-rolled legend rows, Show/Hide tiles)",
+      "prototypeValue": "engine-drawn card with width formula 60+chars*6.4 and viewBox-aware scale clamp; flex legend; pill-button tiles",
+      "boundToken": "(none — frames carry prototype geometry with token paint)",
+      "rationale": "Hemlock has ChartTooltip / ChartLegend / InteractiveLegend, but they are different designs that cannot reproduce the executable spec's geometry (card scale-compensation clamp, edge push-back, tile pill semantics). Under the two-oracle split the .pen is the pixel oracle OF THIS PROTOTYPE; composing library components would fail every pixel compare. Divergence is designer-visible here, not silently resolved.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "gradient area fills (line color fading 32%->2%, one gradient per fill)",
+      "prototypeValue": "runtime SVG linearGradient stops: series color at stop-opacity 0.32 / 0.02",
+      "boundToken": "$chart-series-fade/color-01..03-top/-floor (created companions)",
+      "rationale": "Pen gradient stops bind color+position only (alpha rides the hex), so the fade RULE is materialized as token pairs — light derived from the light palette value, dark from the dark value. Alphas pinned to hex-representable 0x52/0x05 (82/255, 5/255) and the normalized prototype carries the same exact alphas (findReplaces), so a base-token swap mechanically re-derives the fades.",
+      "newTokenCreated": true,
+      "newToken": "chart-series-fade/color-01..03-top, chart-series-fade/color-01..03-floor"
+    }
+  ],
+  "designGaps": [
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-series-fade/color-01-top",
+      "prototypeValue": "series 1 area fill top stop: line color @ 32% opacity",
+      "lightValue": "#8951F052",
+      "darkValue": "#B198F052",
+      "appliesTo": [
+        "default",
+        "scrub-right-edge",
+        "multi-series-legend",
+        "legend-hidden",
+        "tiles",
+        "series-hidden",
+        "markers-auto-axes",
+        "percent-two-series",
+        "narrow-scroll",
+        "static-print"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-series-fade/color-01-floor",
+      "prototypeValue": "series 1 area fill floor stop: line color @ 2% opacity",
+      "lightValue": "#8951F005",
+      "darkValue": "#B198F005",
+      "appliesTo": [
+        "same frames as color-01-top"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-series-fade/color-02-top",
+      "prototypeValue": "series 2 area fill top stop",
+      "lightValue": "#06B6D452",
+      "darkValue": "#5FD3E652",
+      "appliesTo": [
+        "multi-series-legend",
+        "legend-hidden",
+        "tiles",
+        "percent-two-series",
+        "narrow-scroll"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-series-fade/color-02-floor",
+      "prototypeValue": "series 2 area fill floor stop",
+      "lightValue": "#06B6D405",
+      "darkValue": "#5FD3E605",
+      "appliesTo": [
+        "same frames as color-02-top"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-series-fade/color-03-top",
+      "prototypeValue": "series 3 area fill top stop",
+      "lightValue": "#312E8152",
+      "darkValue": "#8480D952",
+      "appliesTo": [
+        "multi-series-legend",
+        "legend-hidden",
+        "tiles",
+        "series-hidden",
+        "narrow-scroll"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-series-fade/color-03-floor",
+      "prototypeValue": "series 3 area fill floor stop",
+      "lightValue": "#312E8105",
+      "darkValue": "#8480D905",
+      "appliesTo": [
+        "same frames as color-03-top"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$text-size-caption",
+      "prototypeValue": "13px (tile labels, ref-line label, card title/values at nominal scale) — GC-001 recorded the same 13px gap; recurs here",
+      "lightValue": "13",
+      "darkValue": "13 (single-mode number, Typography desktop+mobile)",
+      "appliesTo": [
+        "tiles/series-hidden tile labels (HTML, bound to the local token)",
+        "SVG 13px surfaces carried as viewBox-scaled numerics"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$text-size-annotation (proposed; not locally created — SVG-scaled surfaces carry numerics)",
+      "prototypeValue": "12.5px SVG micro-copy: marker labels (600), card series-label rows (400)",
+      "lightValue": "12.5",
+      "darkValue": "12.5",
+      "appliesTo": [
+        "markers-auto-axes marker labels",
+        "card label rows in all card-bearing frames"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$line-height-solid",
+      "prototypeValue": "line-height 1.0 on chart micro-copy (SVG text has no leading; HTML chart text measured at solid boxes) — GC-001 gap recurs",
+      "lightValue": "1",
+      "darkValue": "1 (single-mode number)",
+      "appliesTo": [
+        "every text node in every frame"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "radius",
+      "token": "$radius-swatch",
+      "prototypeValue": "3px corner radius on legend (15px) and tile/card (13px) swatches — GC-001 gap recurs",
+      "lightValue": "3",
+      "darkValue": "3 (single-mode number)",
+      "appliesTo": [
+        "all swatch rectangles (HTML bound to the local token; SVG card swatches carried as scaled numerics)"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "spacing",
+      "token": "$spacing-chart-body-gap (proposed)",
+      "prototypeValue": ".ts-body flex gap 14px 26px (row/column) between plot and side legend",
+      "lightValue": "14 / 26 (bound positionally — frames use absolute layout from measured boxes)",
+      "darkValue": "same",
+      "appliesTo": [
+        "multi-series-legend",
+        "percent-two-series",
+        "narrow-scroll"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "spacing",
+      "token": "$spacing-tiles-gap (proposed)",
+      "prototypeValue": ".ts-tiles gap 10px between series tiles",
+      "lightValue": "10 (positional)",
+      "darkValue": "same",
+      "appliesTo": [
+        "tiles",
+        "series-hidden"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "spacing",
+      "token": "$spacing-tile-pad (proposed)",
+      "prototypeValue": "tile padding 7px 9px 7px 12px (7 and 9 off the spacing scale; 12 = spacing-xs)",
+      "lightValue": "7 / 9 (positional)",
+      "darkValue": "same",
+      "appliesTo": [
+        "tiles",
+        "series-hidden"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "spacing",
+      "token": "$spacing-toggle-pad-y (proposed)",
+      "prototypeValue": "pill toggle padding 5px 12px (5 off-scale)",
+      "lightValue": "5 (positional)",
+      "darkValue": "same",
+      "appliesTo": [
+        "tiles",
+        "series-hidden"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "non-token",
+      "token": null,
+      "prototypeValue": "A hidden series' tile swatch dims via node opacity 0.35 while its fill stays the enabled series token; the hidden label switches to the muted text token. Hemlock expresses disabled states via dedicated color tokens instead of opacity. Testable: the second tile's swatch node carries opacity 0.35 in series-hidden.",
+      "lightValue": "0.35 (opacity on the swatch node)",
+      "darkValue": "0.35",
+      "appliesTo": [
+        "series-hidden"
+      ],
+      "designerQuestion": "Adopt swatch-opacity as the hidden-series idiom for chart keys, or change the component to token-expressed disabled colors?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    }
+  ],
+  "fontSubstitutions": [
+    {
+      "prototypeFont": "Heebo (already the token font; prototype loads it from Google Fonts with a local-stack fallback)",
+      "boundFont": "Heebo ($font-primary), served from pencil/designs/fonts/Heebo-VariableFont_wght.ttf",
+      "scope": "all text — no family substitution required; only the serving source is pinned to the repo TTF"
+    }
+  ],
+  "prototypeDefectsSeen": [
+    {
+      "flag": "FLAG-D1 (already recorded, design-rules.md section 2)",
+      "note": "Tile toggle flips BOTH accessible name AND aria-pressed. Not pixel-visible; frames carry the rendered truth (Hide/Show verbs)."
+    },
+    {
+      "flag": "NEW: preset info-card scale is computed before the legend reflows the svg",
+      "note": "The engine computes the card's scale clamp k from the svg's rendered width AT render time, but the legend is appended AFTER the scrubber preset renders, shrinking the svg. In legend-bearing states the preset card renders at effective scale k*s = 0.8795 (below the 0.89 floor the clamp intends) instead of 1.0. Captured as rendered (multi-series-legend / legend-hidden / tiles / series-hidden frames carry it); geometry probe asserts the 194.4x104 vb card at the effective scale. A pointer-driven re-render (post-legend) would use the settled width — only the PRESET render has the stale k. Never fixed in frames."
+    },
+    {
+      "flag": "NEW: dark-mode info-card colors bypass the token layer",
+      "note": "Engine hardcodes tipBg #17263F / tipBorder #2E4368 for dark mode (line 9073) instead of reading tokens. Dark is uncontracted (rule 25) — no frame impact; flagged for the future dark-theme swap."
+    }
+  ],
+  "verdict": "captured"
+}
