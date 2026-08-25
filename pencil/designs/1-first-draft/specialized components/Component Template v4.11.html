@@ -474,7 +474,7 @@
     --seq1:#EBF0FE; --seq2:#C8D6FD; --seq3:#A5BCFC; --seq4:#85A0FC; --seq5:#5A82F9; --seq6:#3A6AF8; --seq7:#2952CC;
     /* shared row states for the Reference Data Table AND the Compare table - one very light blue */
     --table-row-hover:var(--seq1); --table-row-pressed:var(--seq2);
-    --table-total-bg:var(--page-bg);  /* TRIAL v2 (Amanda, 2026-08-25): totals bar = bg-main, flat — the white→taupe gradient is retired. Separation comes from the dark-taupe top rule + bold tabular figures + the tracked label, not a fill */
+    --table-total-bg:var(--taupe-100);  /* TRIAL v3 (Amanda, 2026-08-25): totals bar = sem-background-main — #F7F5F0 light (taupe-100 is the same value). NOT white — the bg-main misread is corrected */
     --catline-from:var(--accent); --catline-to:var(--seq2);  /* TRIAL: category-card outline gradient endpoints (light #3A6AF8 -> #C8D6FD). v3f: the light end bumped seq-100 -> seq-200 — seq-100 was so near-white the fade read as a band edge. HEMLOCK MIGRATION PENDING — Amanda will spec the token names in hemlock-library.lib.pen. */
     --tile-shadow:0 4px 12px rgba(0,0,0,0.10); --panel-shadow-hover:0 8px 24px rgba(0,0,0,0.12);  /* elevation */
     --modal-shadow:0 16px 40px rgba(0,0,0,0.16);
@@ -917,7 +917,7 @@
     /* shared dark row states: the Compare table's #12203C, lifted a step so the hover reads on the
        lighter dark surfaces, with a further step for :active. Both tables use this pair. */
     --table-row-hover:#192D54; --table-row-pressed:#223A6B;
-    --table-total-bg:var(--page-bg);  /* TRIAL v2 (Amanda): dark totals = bg-main too (#131C31) — flat, same as the row surface; the border-strong top rule carries the separation */
+    --table-total-bg:#101729;  /* TRIAL v3 (Amanda): dark totals = sem-background-main navy-800 #101729 — one step DARKER than the #131C31 row surface (a thing that floats is lighter; the base sits darker). No local token holds navy-800 — HEMLOCK MIGRATION candidate */
     --catline-to:var(--seq6);  /* TRIAL: dark gradient end = #A5BCFC, one step in from the pale end (v3f: same bump as light); --catline-from stays --accent, which themes itself */
     --tile-shadow:0 0 0 1px rgba(120,150,255,0.06),0 16px 40px rgba(0,0,0,0.70);
     /* brand hero ombre (bottom -> top); also the video-poster fallback */
