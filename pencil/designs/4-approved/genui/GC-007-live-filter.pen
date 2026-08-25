@@ -1,0 +1,1583 @@
+{
+ "version": "2.17",
+ "imports": {
+  "y": "../../../design-system/in-progress/hemlock-library.lib.pen"
+ },
+ "themes": {
+  "🎨 Colors": [
+   "Light",
+   "Dark"
+  ],
+  "🆎 Typography": [
+   "desktop",
+   "mobile"
+  ],
+  "↔️ Spacing/Radius": [
+   "Default"
+  ]
+ },
+ "variables": {
+  "sem-tableHeaderBandTop": {
+   "type": "color",
+   "value": [
+    {
+     "value": "#F7F5F0",
+     "theme": {
+      "🎨 Colors": "Light"
+     }
+    },
+    {
+     "value": "#172642",
+     "theme": {
+      "🎨 Colors": "Dark"
+     }
+    }
+   ]
+  },
+  "sem-tableHeaderBandBottom": {
+   "type": "color",
+   "value": [
+    {
+     "value": "#EDEAE3",
+     "theme": {
+      "🎨 Colors": "Light"
+     }
+    },
+    {
+     "value": "#1D2E50",
+     "theme": {
+      "🎨 Colors": "Dark"
+     }
+    }
+   ]
+  },
+  "text-size-caption": {
+   "type": "number",
+   "value": [
+    {
+     "value": 13,
+     "theme": {
+      "🆎 Typography": "desktop"
+     }
+    },
+    {
+     "value": 13,
+     "theme": {
+      "🆎 Typography": "mobile"
+     }
+    }
+   ]
+  },
+  "radius-menu": {
+   "type": "number",
+   "value": [
+    {
+     "value": 6,
+     "theme": {
+      "↔️ Spacing/Radius": "Default"
+     }
+    }
+   ]
+  }
+ },
+ "fonts": [
+  {
+   "name": "Heebo",
+   "url": "../../fonts/Heebo-VariableFont_wght.ttf",
+   "weight": [
+    100,
+    900
+   ],
+   "axes": [
+    {
+     "tag": "wght",
+     "start": 100,
+     "end": 900
+    }
+   ]
+  }
+ ],
+ "children": [
+  {
+   "type": "frame",
+   "id": "default",
+   "name": "default",
+   "x": 0,
+   "y": 0,
+   "width": 300,
+   "height": 190,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "fill": "$y:sem-background-surface",
+   "children": [
+    {
+     "type": "text",
+     "id": "default-label",
+     "name": "field label",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-2xs",
+     "fontWeight": "500",
+     "lineHeight": "$y:line-height-base",
+     "letterSpacing": 0.55,
+     "fill": "$y:sem-text-meta",
+     "content": "FILTER BY ACCOUNT TYPE"
+    },
+    {
+     "type": "frame",
+     "id": "default-table",
+     "name": "mini table",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 72.5,
+     "width": 300,
+     "height": 117.5,
+     "layout": "none",
+     "clip": true,
+     "cornerRadius": "$y:radius-2xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-light",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "children": [
+      {
+       "type": "rectangle",
+       "id": "default-band",
+       "name": "header band",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 1.0,
+       "width": 298,
+       "height": 37.5,
+       "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 90,
+        "colors": [
+         {
+          "color": "$sem-tableHeaderBandTop",
+          "position": 0
+         },
+         {
+          "color": "$sem-tableHeaderBandBottom",
+          "position": 1
+         }
+        ]
+       }
+      },
+      {
+       "type": "rectangle",
+       "id": "default-band-underline",
+       "name": "header underline",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 38.5,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-background-highlight"
+      },
+      {
+       "type": "text",
+       "id": "default-th-0",
+       "name": "header cell 0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 10.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "600",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-meta",
+       "content": "Account"
+      },
+      {
+       "type": "text",
+       "id": "default-th-1",
+       "name": "header cell 1",
+       "layoutPosition": "absolute",
+       "x": 222.22,
+       "y": 10.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "600",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-meta",
+       "content": "Type"
+      },
+      {
+       "type": "text",
+       "id": "default-td-0-0",
+       "name": "cell r0c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 49.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Chase Checking]"
+      },
+      {
+       "type": "text",
+       "id": "default-td-0-1",
+       "name": "cell r0c1",
+       "layoutPosition": "absolute",
+       "x": 222.22,
+       "y": 49.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "bank"
+      },
+      {
+       "type": "rectangle",
+       "id": "default-rowrule-0",
+       "name": "row rule 0",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 77.0,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-borders-light"
+      },
+      {
+       "type": "text",
+       "id": "default-td-1-0",
+       "name": "cell r1c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 87.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Marcus HYSA]"
+      },
+      {
+       "type": "text",
+       "id": "default-td-1-1",
+       "name": "cell r1c1",
+       "layoutPosition": "absolute",
+       "x": 222.22,
+       "y": 87.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "bank"
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "id": "default-trigger",
+     "name": "trigger",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 20.5,
+     "width": 180,
+     "height": 36,
+     "layout": "none",
+     "cornerRadius": "$y:radius-3xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-dark",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "children": [
+      {
+       "type": "text",
+       "id": "default-trigger-label",
+       "name": "trigger label",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 7.5,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$y:text-size-sm",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-header",
+       "content": "Banking"
+      },
+      {
+       "type": "icon",
+       "id": "default-chevron",
+       "name": "chevron",
+       "layoutPosition": "absolute",
+       "x": 151.0,
+       "y": 10.0,
+       "width": 16,
+       "height": 16,
+       "icon": "chevron-down",
+       "library": "lucide",
+       "fill": "$y:sem-icons-meta"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "frame",
+   "id": "menu-open",
+   "name": "menu-open",
+   "x": 380,
+   "y": 0,
+   "width": 300,
+   "height": 190,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "fill": "$y:sem-background-surface",
+   "children": [
+    {
+     "type": "text",
+     "id": "menu-open-label",
+     "name": "field label",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-2xs",
+     "fontWeight": "500",
+     "lineHeight": "$y:line-height-base",
+     "letterSpacing": 0.55,
+     "fill": "$y:sem-text-meta",
+     "content": "FILTER BY ACCOUNT TYPE"
+    },
+    {
+     "type": "frame",
+     "id": "menu-open-table",
+     "name": "mini table",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 72.5,
+     "width": 300,
+     "height": 117.5,
+     "layout": "none",
+     "clip": true,
+     "cornerRadius": "$y:radius-2xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-light",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "children": [
+      {
+       "type": "rectangle",
+       "id": "menu-open-band",
+       "name": "header band",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 1.0,
+       "width": 298,
+       "height": 37.5,
+       "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 90,
+        "colors": [
+         {
+          "color": "$sem-tableHeaderBandTop",
+          "position": 0
+         },
+         {
+          "color": "$sem-tableHeaderBandBottom",
+          "position": 1
+         }
+        ]
+       }
+      },
+      {
+       "type": "rectangle",
+       "id": "menu-open-band-underline",
+       "name": "header underline",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 38.5,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-background-highlight"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-th-0",
+       "name": "header cell 0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 10.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "600",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-meta",
+       "content": "Account"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-th-1",
+       "name": "header cell 1",
+       "layoutPosition": "absolute",
+       "x": 222.22,
+       "y": 10.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "600",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-meta",
+       "content": "Type"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-td-0-0",
+       "name": "cell r0c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 49.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Chase Checking]"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-td-0-1",
+       "name": "cell r0c1",
+       "layoutPosition": "absolute",
+       "x": 222.22,
+       "y": 49.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "bank"
+      },
+      {
+       "type": "rectangle",
+       "id": "menu-open-rowrule-0",
+       "name": "row rule 0",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 77.0,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-borders-light"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-td-1-0",
+       "name": "cell r1c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 87.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Marcus HYSA]"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-td-1-1",
+       "name": "cell r1c1",
+       "layoutPosition": "absolute",
+       "x": 222.22,
+       "y": 87.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "bank"
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "id": "menu-open-trigger",
+     "name": "trigger",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 20.5,
+     "width": 180,
+     "height": 36,
+     "layout": "none",
+     "cornerRadius": "$y:radius-3xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-action",
+     "strokeWidth": 2,
+     "strokeAlignment": "inner",
+     "children": [
+      {
+       "type": "text",
+       "id": "menu-open-trigger-label",
+       "name": "trigger label",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 7.5,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$y:text-size-sm",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-header",
+       "content": "Banking"
+      },
+      {
+       "type": "icon",
+       "id": "menu-open-chevron",
+       "name": "chevron",
+       "layoutPosition": "absolute",
+       "x": 151.0,
+       "y": 10.0,
+       "width": 16,
+       "height": 16,
+       "icon": "chevron-up",
+       "library": "lucide",
+       "fill": "$y:sem-icons-meta"
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "id": "menu-open-menu",
+     "name": "listbox menu",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 60.5,
+     "width": 180,
+     "height": 121,
+     "layout": "none",
+     "cornerRadius": "$radius-menu",
+     "fill": "$y:sem-background-elevated",
+     "stroke": "$y:sem-borders-dark",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "color": "$y:prim-shadow-md-color",
+      "offset": {
+       "x": 0,
+       "y": "$y:shadow-md-y"
+      },
+      "blur": "$y:shadow-md-blur"
+     },
+     "children": [
+      {
+       "type": "frame",
+       "id": "menu-open-item-0",
+       "name": "option all",
+       "layoutPosition": "absolute",
+       "x": 5.0,
+       "y": 5.0,
+       "width": 170,
+       "height": 37,
+       "layout": "none",
+       "cornerRadius": "$y:radius-3xs",
+       "children": [
+        {
+         "type": "text",
+         "id": "menu-open-item-0-label",
+         "name": "option label",
+         "layoutPosition": "absolute",
+         "x": 12.0,
+         "y": 8.0,
+         "fontFamily": "$y:font-primary",
+         "fontSize": "$y:text-size-sm",
+         "fontWeight": "400",
+         "lineHeight": "$y:line-height-base",
+         "fill": "$y:sem-text-header",
+         "content": "All accounts"
+        }
+       ]
+      },
+      {
+       "type": "frame",
+       "id": "menu-open-item-1",
+       "name": "option bank",
+       "layoutPosition": "absolute",
+       "x": 5.0,
+       "y": 42.0,
+       "width": 170,
+       "height": 37,
+       "layout": "none",
+       "cornerRadius": "$y:radius-3xs",
+       "children": [
+        {
+         "type": "text",
+         "id": "menu-open-item-1-label",
+         "name": "option label",
+         "layoutPosition": "absolute",
+         "x": 12.0,
+         "y": 8.0,
+         "fontFamily": "$y:font-primary",
+         "fontSize": "$y:text-size-sm",
+         "fontWeight": "500",
+         "lineHeight": "$y:line-height-base",
+         "fill": "$y:sem-text-action",
+         "content": "Banking"
+        },
+        {
+         "type": "icon",
+         "id": "menu-open-item-1-check",
+         "name": "checkmark",
+         "layoutPosition": "absolute",
+         "x": 142.0,
+         "y": 10.5,
+         "width": 16,
+         "height": 16,
+         "icon": "check",
+         "library": "lucide",
+         "fill": "$y:sem-icons-action"
+        }
+       ],
+       "fill": "$y:sem-background-highlight"
+      },
+      {
+       "type": "frame",
+       "id": "menu-open-item-2",
+       "name": "option inv",
+       "layoutPosition": "absolute",
+       "x": 5.0,
+       "y": 79.0,
+       "width": 170,
+       "height": 37,
+       "layout": "none",
+       "cornerRadius": "$y:radius-3xs",
+       "children": [
+        {
+         "type": "text",
+         "id": "menu-open-item-2-label",
+         "name": "option label",
+         "layoutPosition": "absolute",
+         "x": 12.0,
+         "y": 8.0,
+         "fontFamily": "$y:font-primary",
+         "fontSize": "$y:text-size-sm",
+         "fontWeight": "400",
+         "lineHeight": "$y:line-height-base",
+         "fill": "$y:sem-text-header",
+         "content": "Investments"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "frame",
+   "id": "menu-open-option-focus",
+   "name": "menu-open-option-focus",
+   "x": 760,
+   "y": 0,
+   "width": 300,
+   "height": 190,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "fill": "$y:sem-background-surface",
+   "children": [
+    {
+     "type": "text",
+     "id": "menu-open-option-focus-label",
+     "name": "field label",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-2xs",
+     "fontWeight": "500",
+     "lineHeight": "$y:line-height-base",
+     "letterSpacing": 0.55,
+     "fill": "$y:sem-text-meta",
+     "content": "FILTER BY ACCOUNT TYPE"
+    },
+    {
+     "type": "frame",
+     "id": "menu-open-option-focus-table",
+     "name": "mini table",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 72.5,
+     "width": 300,
+     "height": 117.5,
+     "layout": "none",
+     "clip": true,
+     "cornerRadius": "$y:radius-2xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-light",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "children": [
+      {
+       "type": "rectangle",
+       "id": "menu-open-option-focus-band",
+       "name": "header band",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 1.0,
+       "width": 298,
+       "height": 37.5,
+       "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 90,
+        "colors": [
+         {
+          "color": "$sem-tableHeaderBandTop",
+          "position": 0
+         },
+         {
+          "color": "$sem-tableHeaderBandBottom",
+          "position": 1
+         }
+        ]
+       }
+      },
+      {
+       "type": "rectangle",
+       "id": "menu-open-option-focus-band-underline",
+       "name": "header underline",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 38.5,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-background-highlight"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-option-focus-th-0",
+       "name": "header cell 0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 10.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "600",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-meta",
+       "content": "Account"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-option-focus-th-1",
+       "name": "header cell 1",
+       "layoutPosition": "absolute",
+       "x": 222.22,
+       "y": 10.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "600",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-meta",
+       "content": "Type"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-option-focus-td-0-0",
+       "name": "cell r0c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 49.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Chase Checking]"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-option-focus-td-0-1",
+       "name": "cell r0c1",
+       "layoutPosition": "absolute",
+       "x": 222.22,
+       "y": 49.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "bank"
+      },
+      {
+       "type": "rectangle",
+       "id": "menu-open-option-focus-rowrule-0",
+       "name": "row rule 0",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 77.0,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-borders-light"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-option-focus-td-1-0",
+       "name": "cell r1c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 87.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Marcus HYSA]"
+      },
+      {
+       "type": "text",
+       "id": "menu-open-option-focus-td-1-1",
+       "name": "cell r1c1",
+       "layoutPosition": "absolute",
+       "x": 222.22,
+       "y": 87.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "bank"
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "id": "menu-open-option-focus-trigger",
+     "name": "trigger",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 20.5,
+     "width": 180,
+     "height": 36,
+     "layout": "none",
+     "cornerRadius": "$y:radius-3xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-action",
+     "strokeWidth": 2,
+     "strokeAlignment": "inner",
+     "children": [
+      {
+       "type": "text",
+       "id": "menu-open-option-focus-trigger-label",
+       "name": "trigger label",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 7.5,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$y:text-size-sm",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-header",
+       "content": "Banking"
+      },
+      {
+       "type": "icon",
+       "id": "menu-open-option-focus-chevron",
+       "name": "chevron",
+       "layoutPosition": "absolute",
+       "x": 151.0,
+       "y": 10.0,
+       "width": 16,
+       "height": 16,
+       "icon": "chevron-up",
+       "library": "lucide",
+       "fill": "$y:sem-icons-meta"
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "id": "menu-open-option-focus-menu",
+     "name": "listbox menu",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 60.5,
+     "width": 180,
+     "height": 121,
+     "layout": "none",
+     "cornerRadius": "$radius-menu",
+     "fill": "$y:sem-background-elevated",
+     "stroke": "$y:sem-borders-dark",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "color": "$y:prim-shadow-md-color",
+      "offset": {
+       "x": 0,
+       "y": "$y:shadow-md-y"
+      },
+      "blur": "$y:shadow-md-blur"
+     },
+     "children": [
+      {
+       "type": "frame",
+       "id": "menu-open-option-focus-item-0",
+       "name": "option all",
+       "layoutPosition": "absolute",
+       "x": 5.0,
+       "y": 5.0,
+       "width": 170,
+       "height": 37,
+       "layout": "none",
+       "cornerRadius": "$y:radius-3xs",
+       "children": [
+        {
+         "type": "text",
+         "id": "menu-open-option-focus-item-0-label",
+         "name": "option label",
+         "layoutPosition": "absolute",
+         "x": 12.0,
+         "y": 8.0,
+         "fontFamily": "$y:font-primary",
+         "fontSize": "$y:text-size-sm",
+         "fontWeight": "400",
+         "lineHeight": "$y:line-height-base",
+         "fill": "$y:sem-text-header",
+         "content": "All accounts"
+        }
+       ]
+      },
+      {
+       "type": "frame",
+       "id": "menu-open-option-focus-item-1",
+       "name": "option bank",
+       "layoutPosition": "absolute",
+       "x": 5.0,
+       "y": 42.0,
+       "width": 170,
+       "height": 37,
+       "layout": "none",
+       "cornerRadius": "$y:radius-3xs",
+       "children": [
+        {
+         "type": "text",
+         "id": "menu-open-option-focus-item-1-label",
+         "name": "option label",
+         "layoutPosition": "absolute",
+         "x": 12.0,
+         "y": 8.0,
+         "fontFamily": "$y:font-primary",
+         "fontSize": "$y:text-size-sm",
+         "fontWeight": "500",
+         "lineHeight": "$y:line-height-base",
+         "fill": "$y:sem-text-action",
+         "content": "Banking"
+        },
+        {
+         "type": "icon",
+         "id": "menu-open-option-focus-item-1-check",
+         "name": "checkmark",
+         "layoutPosition": "absolute",
+         "x": 142.0,
+         "y": 10.5,
+         "width": 16,
+         "height": 16,
+         "icon": "check",
+         "library": "lucide",
+         "fill": "$y:sem-icons-action"
+        }
+       ],
+       "fill": "$y:sem-background-highlight"
+      },
+      {
+       "type": "frame",
+       "id": "menu-open-option-focus-item-2",
+       "name": "option inv",
+       "layoutPosition": "absolute",
+       "x": 5.0,
+       "y": 79.0,
+       "width": 170,
+       "height": 37,
+       "layout": "none",
+       "cornerRadius": "$y:radius-3xs",
+       "children": [
+        {
+         "type": "text",
+         "id": "menu-open-option-focus-item-2-label",
+         "name": "option label",
+         "layoutPosition": "absolute",
+         "x": 12.0,
+         "y": 8.0,
+         "fontFamily": "$y:font-primary",
+         "fontSize": "$y:text-size-sm",
+         "fontWeight": "400",
+         "lineHeight": "$y:line-height-base",
+         "fill": "$y:sem-text-header",
+         "content": "Investments"
+        }
+       ],
+       "fill": "$y:sem-background-highlight"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "frame",
+   "id": "filter-all",
+   "name": "filter-all",
+   "x": 1140,
+   "y": 0,
+   "width": 300,
+   "height": 266,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "fill": "$y:sem-background-surface",
+   "children": [
+    {
+     "type": "text",
+     "id": "filter-all-label",
+     "name": "field label",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-2xs",
+     "fontWeight": "500",
+     "lineHeight": "$y:line-height-base",
+     "letterSpacing": 0.55,
+     "fill": "$y:sem-text-meta",
+     "content": "FILTER BY ACCOUNT TYPE"
+    },
+    {
+     "type": "frame",
+     "id": "filter-all-table",
+     "name": "mini table",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 72.5,
+     "width": 300,
+     "height": 193.5,
+     "layout": "none",
+     "clip": true,
+     "cornerRadius": "$y:radius-2xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-light",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "children": [
+      {
+       "type": "rectangle",
+       "id": "filter-all-band",
+       "name": "header band",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 1.0,
+       "width": 298,
+       "height": 37.5,
+       "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 90,
+        "colors": [
+         {
+          "color": "$sem-tableHeaderBandTop",
+          "position": 0
+         },
+         {
+          "color": "$sem-tableHeaderBandBottom",
+          "position": 1
+         }
+        ]
+       }
+      },
+      {
+       "type": "rectangle",
+       "id": "filter-all-band-underline",
+       "name": "header underline",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 38.5,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-background-highlight"
+      },
+      {
+       "type": "text",
+       "id": "filter-all-th-0",
+       "name": "header cell 0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 10.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "600",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-meta",
+       "content": "Account"
+      },
+      {
+       "type": "text",
+       "id": "filter-all-th-1",
+       "name": "header cell 1",
+       "layoutPosition": "absolute",
+       "x": 228.98,
+       "y": 10.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "600",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-meta",
+       "content": "Type"
+      },
+      {
+       "type": "text",
+       "id": "filter-all-td-0-0",
+       "name": "cell r0c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 49.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Chase Checking]"
+      },
+      {
+       "type": "text",
+       "id": "filter-all-td-0-1",
+       "name": "cell r0c1",
+       "layoutPosition": "absolute",
+       "x": 228.98,
+       "y": 49.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "bank"
+      },
+      {
+       "type": "rectangle",
+       "id": "filter-all-rowrule-0",
+       "name": "row rule 0",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 77.0,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-borders-light"
+      },
+      {
+       "type": "text",
+       "id": "filter-all-td-1-0",
+       "name": "cell r1c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 87.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Marcus HYSA]"
+      },
+      {
+       "type": "text",
+       "id": "filter-all-td-1-1",
+       "name": "cell r1c1",
+       "layoutPosition": "absolute",
+       "x": 228.98,
+       "y": 87.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "bank"
+      },
+      {
+       "type": "rectangle",
+       "id": "filter-all-rowrule-1",
+       "name": "row rule 1",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 115.5,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-borders-light"
+      },
+      {
+       "type": "text",
+       "id": "filter-all-td-2-0",
+       "name": "cell r2c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 126.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Schwab Brokerage]"
+      },
+      {
+       "type": "text",
+       "id": "filter-all-td-2-1",
+       "name": "cell r2c1",
+       "layoutPosition": "absolute",
+       "x": 228.98,
+       "y": 126.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "inv"
+      },
+      {
+       "type": "rectangle",
+       "id": "filter-all-rowrule-2",
+       "name": "row rule 2",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 154.0,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-borders-light"
+      },
+      {
+       "type": "text",
+       "id": "filter-all-td-3-0",
+       "name": "cell r3c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 164.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Fidelity 403(b)]"
+      },
+      {
+       "type": "text",
+       "id": "filter-all-td-3-1",
+       "name": "cell r3c1",
+       "layoutPosition": "absolute",
+       "x": 228.98,
+       "y": 164.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "inv"
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "id": "filter-all-trigger",
+     "name": "trigger",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 20.5,
+     "width": 180,
+     "height": 36,
+     "layout": "none",
+     "cornerRadius": "$y:radius-3xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-dark",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "children": [
+      {
+       "type": "text",
+       "id": "filter-all-trigger-label",
+       "name": "trigger label",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 7.5,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$y:text-size-sm",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-header",
+       "content": "All accounts"
+      },
+      {
+       "type": "icon",
+       "id": "filter-all-chevron",
+       "name": "chevron",
+       "layoutPosition": "absolute",
+       "x": 151.0,
+       "y": 10.0,
+       "width": 16,
+       "height": 16,
+       "icon": "chevron-down",
+       "library": "lucide",
+       "fill": "$y:sem-icons-meta"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "frame",
+   "id": "filter-investments",
+   "name": "filter-investments",
+   "x": 1520,
+   "y": 0,
+   "width": 300,
+   "height": 189,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "fill": "$y:sem-background-surface",
+   "children": [
+    {
+     "type": "text",
+     "id": "filter-investments-label",
+     "name": "field label",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-2xs",
+     "fontWeight": "500",
+     "lineHeight": "$y:line-height-base",
+     "letterSpacing": 0.55,
+     "fill": "$y:sem-text-meta",
+     "content": "FILTER BY ACCOUNT TYPE"
+    },
+    {
+     "type": "frame",
+     "id": "filter-investments-table",
+     "name": "mini table",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 72.5,
+     "width": 300,
+     "height": 116.5,
+     "layout": "none",
+     "clip": true,
+     "cornerRadius": "$y:radius-2xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-light",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "children": [
+      {
+       "type": "rectangle",
+       "id": "filter-investments-band",
+       "name": "header band",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 1.0,
+       "width": 298,
+       "height": 37.5,
+       "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 90,
+        "colors": [
+         {
+          "color": "$sem-tableHeaderBandTop",
+          "position": 0
+         },
+         {
+          "color": "$sem-tableHeaderBandBottom",
+          "position": 1
+         }
+        ]
+       }
+      },
+      {
+       "type": "rectangle",
+       "id": "filter-investments-band-underline",
+       "name": "header underline",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 38.5,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-background-highlight"
+      },
+      {
+       "type": "text",
+       "id": "filter-investments-th-0",
+       "name": "header cell 0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 10.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "600",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-meta",
+       "content": "Account"
+      },
+      {
+       "type": "text",
+       "id": "filter-investments-th-1",
+       "name": "header cell 1",
+       "layoutPosition": "absolute",
+       "x": 228.98,
+       "y": 10.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "600",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-meta",
+       "content": "Type"
+      },
+      {
+       "type": "text",
+       "id": "filter-investments-td-0-0",
+       "name": "cell r0c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 49.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Schwab Brokerage]"
+      },
+      {
+       "type": "text",
+       "id": "filter-investments-td-0-1",
+       "name": "cell r0c1",
+       "layoutPosition": "absolute",
+       "x": 228.98,
+       "y": 49.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "inv"
+      },
+      {
+       "type": "rectangle",
+       "id": "filter-investments-rowrule-0",
+       "name": "row rule 0",
+       "layoutPosition": "absolute",
+       "x": 1,
+       "y": 77.0,
+       "width": 298,
+       "height": 1,
+       "fill": "$y:sem-borders-light"
+      },
+      {
+       "type": "text",
+       "id": "filter-investments-td-1-0",
+       "name": "cell r1c0",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 87.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "[Fidelity 403(b)]"
+      },
+      {
+       "type": "text",
+       "id": "filter-investments-td-1-1",
+       "name": "cell r1c1",
+       "layoutPosition": "absolute",
+       "x": 228.98,
+       "y": 87.0,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$text-size-caption",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-body",
+       "content": "inv"
+      }
+     ]
+    },
+    {
+     "type": "frame",
+     "id": "filter-investments-trigger",
+     "name": "trigger",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 20.5,
+     "width": 180,
+     "height": 36,
+     "layout": "none",
+     "cornerRadius": "$y:radius-3xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-dark",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "children": [
+      {
+       "type": "text",
+       "id": "filter-investments-trigger-label",
+       "name": "trigger label",
+       "layoutPosition": "absolute",
+       "x": 13.0,
+       "y": 7.5,
+       "fontFamily": "$y:font-primary",
+       "fontSize": "$y:text-size-sm",
+       "fontWeight": "400",
+       "lineHeight": "$y:line-height-base",
+       "fill": "$y:sem-text-header",
+       "content": "Investments"
+      },
+      {
+       "type": "icon",
+       "id": "filter-investments-chevron",
+       "name": "chevron",
+       "layoutPosition": "absolute",
+       "x": 151.0,
+       "y": 10.0,
+       "width": 16,
+       "height": 16,
+       "icon": "chevron-down",
+       "library": "lucide",
+       "fill": "$y:sem-icons-meta"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
