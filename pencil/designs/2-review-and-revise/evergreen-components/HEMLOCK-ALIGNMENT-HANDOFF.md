@@ -99,6 +99,25 @@ minimal label nudges — no content, layout, or design changes:
 The other 12 files are clean. Tight stacked node labels (title/value/detail lines) measure
 as font line-box grazes only — no visible ink collision — and were intentionally left alone.
 
+## SVG paint order: edges always under text
+
+In `19-household-map.html`, edge curves were interleaved with text in document order, so
+later edges painted **over** earlier labels (visible as lines crossing through
+`IRA designation ⚠ overrides the will`, `per stirpes`, `to trust on death`, and others).
+SVG paint order is document order, so the SVG children were reordered into layers:
+
+1. `<title>` (accessibility)
+2. edges — `<path>` / `<line>` (original relative order preserved)
+3. fills — `<rect>` / `<polygon>` (none in this file)
+4. node dots — `<circle>`
+5. all `<text>` labels (always on top)
+
+Geometry is unchanged — this is purely a paint-order fix. The same audit (does any
+`path`/`line` follow and intersect a `text` box?) was run on all 14 files; household-map
+was the only file affected. Note the deliberate exception this rule preserves: in
+`10-income-mountain.html` the dashed spending line stays **above** the stacked area fills
+(but still below all text) — that's chart linework over a fill, not over a label.
+
 ## Verification
 
 Every token replacement was count-asserted per file (all 14 matched exactly), and rendered
