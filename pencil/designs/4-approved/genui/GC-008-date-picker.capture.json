@@ -3,74 +3,368 @@
   "componentId": "GC-008",
   "slug": "date-picker",
   "penPath": "pencil/designs/4-approved/genui/GC-008-date-picker.pen",
-  "contentHash": "sha256:4f2a4a5954e82536ed7a3fb57529ad1e8a69af667af4a52e5a8856bcc4a0b306",
-  "capturedAt": "2026-08-25T18:40:00Z",
-  "frames": ["default", "open-month", "month-next", "day-selected-closed", "day-selected-reopened", "day-focus-visible"],
+  "contentHash": "sha256:982c52da6b782aea7f9343de1440f71c8f3853a2f069e60bc7cc182823b243b8",
+  "capturedAt": "2026-08-26T15:48:24Z",
+  "prototypeVersion": "002",
+  "frames": [
+    "default",
+    "open-month",
+    "month-next",
+    "day-selected-closed",
+    "day-selected-reopened",
+    "day-focus-visible"
+  ],
   "convergence": {
-    "iterationsUsed": 5,
+    "iterationsUsed": 1,
     "pencilVersion": "@pen.dev/cli 0.3.5",
-    "exportInvocation": "pen interactive --in <file.pen> --out <scratch.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import resolves. Re-export verified byte-deterministic across consecutive runs (per-frame sha256 identical).",
-    "comparison": "pixelmatch threshold 0.1 (harness convention), per-state budget 1.0% (dispatch default; the Gate-1 states.json pixelThreshold 0.03 is looser and not the loop standard); targets = NORMALIZED prototype, Chromium 145.0.7632.6 (playwright 1.58.0), deviceScaleFactor 2, viewport 1280x900, animations frozen, fonts ready, pointer parked, double-shot self-consistency gate byte-identical per state. CRITICAL RIG FACT (promote to environment facts): Linux headless Chromium renders LCD subpixel AA by default — the prototype's -webkit-font-smoothing:antialiased is macOS-only — so targets MUST be rendered with --disable-lcd-text for grayscale-AA parity with the pen rasterizer; without it, glyph color fringing alone pushed 200x36 closed-state frames to 1.3-1.9% (frame-area-inverse sensitivity). Heebo served to the render from the same TTF the .pen references (pencil/designs/fonts/Heebo-VariableFont_wght.ttf) via a local @font-face, network blocked.",
-    "captureGeometry": "Closed states: frame = contract root #uiDp1 (200x36). Open states: frame = root ∪ popover overflow (252x288 — 36 trigger + 4 gap + 248 popover), matching the states.json declared land-stage obligation that the story wrapper enclose the open popover.",
-    "iterationNotes": "It1: authored from the normalized render's measured geometry (element rects + Range text boxes), text at em-box positions, lineHeight solid — 0.97-4.06%, label text dominating. It2: measured vertical deltas (trigger label +1px css — its 21px line box centers differently than pen's solid-line-height model; month label +0.5px) + string-level letterSpacing from ink-width deltas — closed states 1.6-1.9%. It3: long strings split into one text node per word at browser-measured word boxes (pen lays Heebo advances out with per-glyph rounding that drifts from Chromium's fractional advances, string-dependent and in BOTH directions: 'Select' +2px, 'September' -2.5px) — 0.70-1.76%. It4: per-word letterSpacing compensation = inkDelta/(glyphs-1), e.g. 'Select' -0.4, 'September' +0.3125 — 0.55-1.33%, one state still failing; diff inspection then exposed the LCD-subpixel-AA rig artifact (capture-protocol fix, not an authoring change), and it4 against corrected grayscale targets measures 0.052-0.243%, all six states PASS. It5: simplification probe dropping the letterSpacing compensations — all states still pass (0.23-0.97%) but strictly worse everywhere, so the it4 artifact stands as final (GC-001 probe-and-keep-best precedent).",
+    "exportInvocation": "pen interactive --in <file.pen> --out <scratch.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import resolves. Re-export verified byte-deterministic across THREE consecutive runs (per-frame sha256 identical).",
+    "comparison": "pixelmatch threshold 0.1 (harness convention), per-state budget 1.0% (dispatch default); targets = NORMALIZED prototype, Chromium 151.0.7922.34 (playwright 1.58.x), deviceScaleFactor 2, viewport 1280x900, --disable-lcd-text (grayscale-AA parity, v001 rig fact), reducedMotion, network blocked, Heebo served locally from pencil/designs/fonts/Heebo-VariableFont_wght.ttf, fonts.ready awaited, double-shot self-consistency byte-identical per state. NEW RIG FACT (promote to environment facts): a real click step in a state's drive (day-selected-reopened reopens via a genuine trigger click) leaves the POINTER HOVERING the trigger — the capture protocol's pointer-parking must run AFTER the drive steps (mouse.move(0,0) + settle past the 100ms border transition), or the target banks the hover border (#8A8680) and the state fails at ~1.02%. Also observed: the trigger keeps :focus-visible after the commit-and-dismiss flow (R11 focus return) — its 3px #EBF0FE ring over the #F7F5F0 backdrop sits below the pixelmatch threshold in both selected states, consistent with the v001 converged result; no ring is authored, matching the contract descriptions.",
+    "captureGeometry": "Closed states: frame = contract root #uiDp1 (200x36). Open states: frame = root ∪ popover overflow (252x288 — 36 trigger + 4 gap + 248 popover), matching the states.json declared land-stage obligation that the story wrapper enclose the open popover. The union clip admits ~0.23%/state of sibling-widget bleed (the demo box's slider column edge, page context outside the contract root) into the strip right of the 200px trigger — present identically in every open-state target, counted against the budget, not reproduced in the frames (the .pen paints $sem-background-main there).",
+    "iterationNotes": "It1 (the only authoring round): v002 generated from the converged v001 approved document — state inventory and popover content are unchanged at v4.11, re-verified node-by-node against fresh normalized-render measurements (day/weekday/month/pill/ring positions identical to v001's to 0.01px) — plus the three measured v4.11 deltas: calendar icon paths at trigger (13,10) 16x16, label words +24px exact, nav chevron paths at popover-rel (18,18)/(222,18) 12x12 (FLAG-D2 rendered truth: 12x14 svg box under preserveAspectRatio meet -> 12x12 drawn content centered +1px). First compare: 5/6 pass, day-selected-reopened 1.021% — diff clustered on the trigger border; probe showed the target itself banked the HOVER border because the state's real reopen click left the pointer on the trigger (rig defect, not an authoring delta; the .pen was byte-identical across closed/reopened triggers while the two targets disagreed by 1452px). Pointer parking moved into the protocol after drive steps; the five untouched targets re-rendered byte-identical, and the same authored document measures 0.104-0.455% across all six states. v001's per-word letterSpacing compensations carried verbatim (identical strings, identical font) and hold.",
     "perState": [
-      { "state": "default", "diffPct": 0.052, "geometryProbes": "pass", "exportSha256": "d09ecb9eeb09a88b05a6532eadee60b3eba003b41d37cc9b40f08d817d9d5134" },
-      { "state": "open-month", "diffPct": 0.204, "geometryProbes": "pass", "exportSha256": "a9586a708b0495223b0587d17ea70e10e18b85091da2712340b2559df7b5d833" },
-      { "state": "month-next", "diffPct": 0.197, "geometryProbes": "pass", "exportSha256": "34895f32994ca827cff854d776501b0f0247ba98da21eae4cb3f965aa8d53a1b" },
-      { "state": "day-selected-closed", "diffPct": 0.243, "geometryProbes": "pass", "exportSha256": "405fdce894a28bef2c825fc44253b1a03e78f8b431d4d4e39d13e54261c0eaf9" },
-      { "state": "day-selected-reopened", "diffPct": 0.207, "geometryProbes": "pass", "exportSha256": "de2c6a78812d8ecb7b8f770d3c685558f54d8b20e3822e0d56dbaca2025cbe47" },
-      { "state": "day-focus-visible", "diffPct": 0.204, "geometryProbes": "pass", "exportSha256": "16258d7691c91b9b3c3989a2daab5abdae849fdf376ad1ec1229832a22567d9a" }
+      {
+        "state": "default",
+        "diffPct": 0.104,
+        "geometryProbes": "pass",
+        "exportSha256": "80ec76007fe5bb7ff953161fc4e4ddaf3eaacf37d45f843f6cdef1af063a38f5"
+      },
+      {
+        "state": "open-month",
+        "diffPct": 0.452,
+        "geometryProbes": "pass",
+        "exportSha256": "bd5e9fd0aa92f9527adbb1fc7089221315003c91e3a6218f3f53e383c7475d17"
+      },
+      {
+        "state": "month-next",
+        "diffPct": 0.445,
+        "geometryProbes": "pass",
+        "exportSha256": "7913771675afee4753d6ac0161320cc0262f088c82d945df7872bf78b8208e22"
+      },
+      {
+        "state": "day-selected-closed",
+        "diffPct": 0.326,
+        "geometryProbes": "pass",
+        "exportSha256": "e467ecf4a27c679f96d5556a9b9683ec4d9aea345e0ba31f9c808845bae00c5f"
+      },
+      {
+        "state": "day-selected-reopened",
+        "diffPct": 0.455,
+        "geometryProbes": "pass",
+        "exportSha256": "b803b718eb748573ce5982065f4ffae3f02d222953f6dd8ad487642239fd6db1"
+      },
+      {
+        "state": "day-focus-visible",
+        "diffPct": 0.452,
+        "geometryProbes": "pass",
+        "exportSha256": "8235d57270ded2bdb7a8d6fc1b4577c7269105dd7e067f22c3e4c0dffd663155"
+      }
     ],
-    "geometryProbesDetail": "29/29 assertions against the normalized render, carried verbatim into the frames: frame ids = state ids (order, verbatim); V-10 popover 252w / top 40 rel trigger / 7 cols x 31.1406; V-11 trigger 36x200 ref, day 13px on 27px cell, weekday 10px/600, month 14px/600, nav 26x26; R5 fixed 42-cell matrix both months; V-1 Aug 2026 6/31/5 first '26' last '5'; V-2 Sep 2026 2/30/10 first '30' last '10'; R8 exactly one .sel pill (Aug 15, in-month); R13 focus ring on grid cell 0 (July '26', .oth); R15 label 'August 15, 2026'; R3 placeholder 'Select a date…'; R4 popover radius 6; R2 trigger radius 4.",
+    "geometryProbesDetail": "40/40 assertions against the v002 normalized render AND the authored node tree: frame ids = state ids (order, verbatim, names = ids); V-10 popover 252w / top 40 / 7 cols x 31.14 + 2 gap; V-11 trigger 200x36, leading icon svg 16x16 (R3), trigger chevron 16x16, nav buttons 26x26, nav svg 12x14 rendered (FLAG-D2); R6 fixed 42-cell matrix both months; V-1 Aug 2026 6/31/5 first 26 last 5; V-2 Sep 2026 2/30/10 first 30 last 10; R9 exactly one .sel pill (in-month 15, $sem-background-action, 31.14x27); R14 focus ring on grid cell 0 (July 26 .oth, $sem-borders-focus 2px); R16 committed label \"August 15, 2026\"; R4 placeholder \"Select a date…\"; R2 trigger radius-3xs; R5 popover radius-menu; R10 chevrons $sem-text-meta.",
     "waivers": []
   },
   "normalizationRecipe": {
     "cssVariableInjections": [
-      { "variable": "--tk-surface-1", "value": "#FFFFFF", "token": "$sem-background-surface" },
-      { "variable": "--tk-border-input", "value": "#DCD8CB", "token": "$sem-borders-dark" },
-      { "variable": "--tk-border", "value": "#EEEDEB", "token": "$sem-borders-light" },
-      { "variable": "--tk-border-strong", "value": "#8A8680", "token": "$sem-borders-hover" },
-      { "variable": "--tk-text-1", "value": "#0E0E0E", "token": "$sem-text-header" },
-      { "variable": "--tk-text-2", "value": "#5E5954", "token": "$sem-text-meta" },
-      { "variable": "--tk-text-3", "value": "#716E6A", "token": "$sem-text-placeholder" },
-      { "variable": "--tk-text-inverse", "value": "#FFFFFF", "token": "$sem-text-reverse" },
-      { "variable": "--tk-accent", "value": "#3A6AF8", "token": "$sem-background-action (selection pill fill; the day-cell focus-ring consumer of this variable is remapped by find-replace below)" },
-      { "variable": "--tk-accent-subtle", "value": "#EBF0FE", "token": "$sem-background-highlight (hover washes + trigger/nav focus rings — pointer-parked, uncontracted as frames)" },
-      { "variable": "--tk-shadow-dd", "value": "0 4px 12px #0000001A", "token": "shadow-md family ($shadow-md-y / $shadow-md-blur / $prim-shadow-md-color)" }
+      {
+        "variable": "--tk-surface-1",
+        "value": "#FFFFFF",
+        "token": "$sem-background-surface"
+      },
+      {
+        "variable": "--tk-border-input",
+        "value": "#DCD8CB",
+        "token": "$sem-borders-dark"
+      },
+      {
+        "variable": "--tk-border",
+        "value": "#EEEDEB",
+        "token": "$sem-borders-light"
+      },
+      {
+        "variable": "--tk-border-strong",
+        "value": "#8A8680",
+        "token": "$sem-borders-hover"
+      },
+      {
+        "variable": "--tk-text-1",
+        "value": "#0E0E0E",
+        "token": "$sem-text-header"
+      },
+      {
+        "variable": "--tk-text-2",
+        "value": "#5E5954",
+        "token": "$sem-text-meta"
+      },
+      {
+        "variable": "--tk-text-3",
+        "value": "#716E6A",
+        "token": "$sem-text-placeholder"
+      },
+      {
+        "variable": "--tk-text-inverse",
+        "value": "#FFFFFF",
+        "token": "$sem-text-reverse"
+      },
+      {
+        "variable": "--tk-accent",
+        "value": "#3A6AF8",
+        "token": "$sem-background-action (selection pill fill) + $sem-icons-action (leading calendar icon — both roles resolve #3A6AF8 light, so ONE injection serves both; the day-cell focus-ring consumer is remapped by find-replace below)"
+      },
+      {
+        "variable": "--tk-accent-subtle",
+        "value": "#EBF0FE",
+        "token": "$sem-background-highlight (hover washes + trigger/nav focus rings — pointer-parked / below-threshold, uncontracted as frames)"
+      },
+      {
+        "variable": "--tk-shadow-dd",
+        "value": "0 4px 12px #0000001A",
+        "token": "shadow-md family ($shadow-md-y / $shadow-md-blur / $prim-shadow-md-color)"
+      }
     ],
     "findReplaces": [
-      { "from": ".ui-dp-day:focus-visible{outline:none;box-shadow:0 0 0 2px var(--tk-accent);}", "to": ".ui-dp-day:focus-visible{outline:none;box-shadow:0 0 0 2px #0E0E0E;}", "where": "day-cell focus ring rule (style line 1817) -> $sem-borders-focus; targeted because --tk-accent must stay accent blue for the .sel pill" },
-      { "from": "<link href=\"https://fonts.googleapis.com/css2?family=Heebo:...&display=swap\" rel=\"stylesheet\">", "to": "<style>@font-face{font-family:'Heebo';src:url('<local pencil/designs/fonts/Heebo-VariableFont_wght.ttf>');font-weight:100 900;}</style>", "where": "document head — deterministic network-free font serving from the same TTF the .pen references" }
+      {
+        "from": ".ui-dp-day:focus-visible{outline:none;box-shadow:0 0 0 2px var(--tk-accent);}",
+        "to": ".ui-dp-day:focus-visible{outline:none;box-shadow:0 0 0 2px #0E0E0E;}",
+        "where": "day-cell focus ring rule (standalone line 1882) -> $sem-borders-focus; targeted because --tk-accent must stay accent blue for the .sel pill and the leading calendar icon"
+      },
+      {
+        "from": "<link href=\"https://fonts.googleapis.com/css2?family=Heebo:...&display=swap\" rel=\"stylesheet\">",
+        "to": "<style>@font-face{font-family:'Heebo';src:url('<local pencil/designs/fonts/Heebo-VariableFont_wght.ttf>');font-weight:100 900;}</style>",
+        "where": "document head (line 388) — deterministic network-free font serving from the same TTF the .pen references"
+      }
     ],
-    "fontSwap": "NONE REQUIRED — the prototype already rides Heebo throughout the component (design-rules R17, --font-ui:'Heebo',...). The only font action was serving Heebo locally (above) instead of Google Fonts.",
-    "unchangedByDesign": "Values already equal to their token's light value injected unchanged: surface (#FFFFFF), trigger border (#DCD8CB = taupe-350 exactly), accent (#3A6AF8 = blue-600 exactly), accent-subtle (#EBF0FE = blue-100 exactly), text-inverse (#FFFFFF). The demo's taupe band behind the component (#F7F5F0) equals $sem-background-main's light value exactly — the frame backdrop binds that token with zero normalization."
+    "fontSwap": "NONE REQUIRED — the prototype already rides Heebo throughout the component (design-rules R18, --font-ui). The only font action was serving Heebo locally (above) instead of Google Fonts.",
+    "unchangedByDesign": "Values already equal to their token's light value injected unchanged: surface (#FFFFFF), trigger border (#DCD8CB = taupe-350 exactly), accent (#3A6AF8 = blue-600 exactly, serving both the pill role $sem-background-action and the NEW icon role $sem-icons-action), accent-subtle (#EBF0FE = blue-100 exactly), text-inverse (#FFFFFF). The demo's taupe band behind the component (#F7F5F0) equals $sem-background-main's light value exactly — the frame backdrop binds that token with zero normalization. The tk-* vars live on #appMain (not :root); injections applied there."
   },
   "tokenJudgmentCalls": [
-    { "surface": "primary ink (--tk-text-1: committed trigger label, month label, in-month day numbers)", "prototypeValue": "#171717", "boundToken": "$sem-text-header", "rationale": "Near-black control ink; sem-text-header (gray-900 #0E0E0E) is the primary-text role and nearest value. sem-text-body (#403D3A warm gray) is body-copy, reads distinctly lighter — rejected.", "newTokenCreated": false, "newToken": null },
-    { "surface": "secondary glyphs (--tk-text-2: chevron-down svg, nav ‹ › glyphs)", "prototypeValue": "#525252", "boundToken": "$sem-text-meta", "rationale": "Secondary glyph ink; text token chosen because the prototype consumes it via color/currentColor on text-like nodes. sem-icons-meta resolves identically in BOTH modes, so the icon-vs-text role question is moot at paint level.", "newTokenCreated": false, "newToken": null },
-    { "surface": "muted tertiary ink (--tk-text-3: placeholder label, weekday header, out-of-month days)", "prototypeValue": "#737373", "boundToken": "$sem-text-placeholder", "rationale": "One prototype variable serves three muted surfaces; the placeholder ROLE anchors it (R3 names it explicitly) and gray-500 #716E6A is the nearest step. sem-text-subtle (gray-400) too light for the weekday-header contrast — rejected.", "newTokenCreated": false, "newToken": null },
-    { "surface": "trigger border rest (--tk-border-input)", "prototypeValue": "#DCD8CB", "boundToken": "$sem-borders-dark", "rationale": "Exact primitive match (taupe-350) — the design system's warm chrome border role; no input-specific border token exists in the library.", "newTokenCreated": false, "newToken": null },
-    { "surface": "popover + nav-button borders (--tk-border)", "prototypeValue": "#E5E5E5", "boundToken": "$sem-borders-light", "rationale": "Default-border role; token value shifts the hairline to gray-100 #EEEDEB.", "newTokenCreated": false, "newToken": null },
-    { "surface": "trigger border hover (--tk-border-strong; renders in NO contracted frame — hover is pointer-fine CSS, pointer parked)", "prototypeValue": "#D4D4D4", "boundToken": "$sem-borders-hover", "rationale": "Role-first: the named hover-border role (gray-400 #8A8680) wins over the value-nearest sem-borders-muted; land-stage hover tests inherit the token, not Bill's hex.", "newTokenCreated": false, "newToken": null },
-    { "surface": "day-cell keyboard focus ring (frame day-focus-visible)", "prototypeValue": "box-shadow 0 0 0 2px var(--tk-accent) = #3A6AF8", "boundToken": "$sem-borders-focus", "rationale": "Hemlock's a11y contract names sem-borders-focus as THE focus ring; role-first binding turns the ring near-black (#0E0E0E light). Deliberate divergence from the prototype's accent-blue ring — the identical call GC-001 recorded for its legend focus ring.", "newTokenCreated": false, "newToken": null },
-    { "surface": "selection pill (.sel: fill + text)", "prototypeValue": "#3A6AF8 fill / #FFFFFF text / weight 600", "boundToken": "$sem-background-action + $sem-text-reverse", "rationale": "Selected-state action surface; exact value matches in light, and both tokens carry coordinated dark values (blue-500 fill / near-black text).", "newTokenCreated": false, "newToken": null },
-    { "surface": "popover drop shadow", "prototypeValue": "0 4px 12px rgba(0,0,0,0.12)", "boundToken": "$shadow-md-y / $shadow-md-blur / $prim-shadow-md-color", "rationale": "shadow-md's y/blur match exactly; color alpha reconciles 12% -> 10.2% (#0000001A). NAMING DRIFT FLAG: hemlock-design-system.md declares shadow colors carry no prefix ('shadow-md-color'), but hemlock-library.lib.pen names them prim-shadow-md-color (themed, so semantic in nature; the library's own components bind them directly). Bound the library reality; not improvised around.", "newTokenCreated": false, "newToken": null },
-    { "surface": "frame backdrop (region around trigger/popover inside the capture clip)", "prototypeValue": "#F7F5F0 (the demo page's taupe control band, #cs-buttons .sc-box)", "boundToken": "$sem-background-main", "rationale": "Exact value match to the page-canvas role (taupe-100); the floating popover reads against the app canvas, which is what the demo band deliberately mimics.", "newTokenCreated": false, "newToken": null },
-    { "surface": "component composition", "prototypeValue": "hand-rolled custom date picker (shared dropdown-chrome trigger + custom calendar popover)", "boundToken": "(none — frames drawn from prototype geometry)", "rationale": "hemlock-library HAS a DatePicker component family, but it is a different design (label/helper chrome, its own trigger and calendar) that cannot reproduce the executable spec's geometry (200px trigger on 36px dropdown chrome, 252px popover, fixed 42-cell matrix). Under the two-oracle split the .pen is the pixel oracle OF THIS prototype; composing the library component would fail every compare. Divergence is designer-visible here, not silently resolved — same call GC-001 recorded for DonutChart.", "newTokenCreated": false, "newToken": null },
-    { "surface": "popover stacking (prototype z-index 60)", "prototypeValue": "z-index: 60", "boundToken": "(not a frame property — flat frames stack by paint order)", "rationale": "Land stage should ride the design system's z-popover convention; recorded so the divergence (60 vs z-popover 200) is not lost.", "newTokenCreated": false, "newToken": null }
+    {
+      "surface": "leading calendar icon (NEW at v4.11: 16x16 Lucide calendar in the trigger, --tk-accent as FOREGROUND)",
+      "prototypeValue": "#3A6AF8 (--tk-accent; \"the calendar leads the date trigger, in the ACTION colour token (Amanda, 2026-08-25)\", standalone line 1867)",
+      "boundToken": "$sem-icons-action",
+      "rationale": "Role-first: an interactive-affordance ICON in the action colour is the sem-icons-action role (\"Interactive icons\"), not the background-action role the pill uses — light values are identical (#3A6AF8) but dark values deliberately diverge (icons blue-400 #7094FB vs background blue-500 #5A82F9), which is exactly the icon-vs-surface distinction the two roles exist for. This resolves the design-rules R19 note (v001 family suggestion refined to the icon tier). Same one-variable-many-roles split as v001 DJ-7/DJ-8.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "nav chevron SVG strokes (v4.11 Lucide chevron-left/right replacing the ‹ › text glyphs)",
+      "prototypeValue": "#525252 (--tk-text-2 via currentColor)",
+      "boundToken": "$sem-text-meta",
+      "rationale": "Carried from v001 DJ-2 — the same prototype variable, the same secondary-glyph role, now painting vector paths instead of text glyphs. sem-icons-meta resolves identically in BOTH modes, so the icon-vs-text question stays moot at paint level; kept text-meta for continuity with the trigger chevron.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "nav chevron drawn glyph box (FLAG-D2)",
+      "prototypeValue": "declared 14x14, RENDERED 12x14 svg box (UA button padding squeeze) -> 12x12 drawn content under preserveAspectRatio meet, +1px vertical centering",
+      "boundToken": "(geometry, not paint — authored as 12x12 paths at the measured drawn-content position)",
+      "rationale": "Pixel truth per the FLAG-D2 doctrine: the .pen banks what renders, not the 14x14 authored intent; the land-stage match-rendered-vs-authored decision stays tracked in flags.json FLAG-D2, unforced by this capture.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "primary ink (--tk-text-1: committed trigger label, month label, in-month day numbers)",
+      "prototypeValue": "#171717",
+      "boundToken": "$sem-text-header",
+      "rationale": "Carried from v001 DJ-1, re-affirmed on v002 evidence: near-black control ink; sem-text-header (gray-900 #0E0E0E) is the primary-text role and nearest value. sem-text-body (#403D3A warm gray) reads distinctly lighter — rejected.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "secondary glyphs (--tk-text-2: trigger chevron-down svg)",
+      "prototypeValue": "#525252",
+      "boundToken": "$sem-text-meta",
+      "rationale": "Carried from v001 DJ-2, re-affirmed.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "muted tertiary ink (--tk-text-3: placeholder label, weekday header, out-of-month days)",
+      "prototypeValue": "#737373",
+      "boundToken": "$sem-text-placeholder",
+      "rationale": "Carried from v001 DJ-3, re-affirmed: one prototype variable serves three muted surfaces; the placeholder ROLE anchors it (R4 names it explicitly), gray-500 #716E6A nearest step. sem-text-subtle too light for the weekday-header contrast — rejected.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "trigger border rest (--tk-border-input)",
+      "prototypeValue": "#DCD8CB",
+      "boundToken": "$sem-borders-dark",
+      "rationale": "Carried from v001 DJ-4, re-affirmed: exact primitive match (taupe-350), the warm chrome border role; no input-specific border token exists in the library.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "popover + nav-button borders (--tk-border)",
+      "prototypeValue": "#E5E5E5",
+      "boundToken": "$sem-borders-light",
+      "rationale": "Carried from v001 DJ-5, re-affirmed: default-border role; token value shifts the hairline to gray-100 #EEEDEB.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "trigger border hover (--tk-border-strong; renders in NO contracted frame — hover is pointer-fine CSS, pointer parked)",
+      "prototypeValue": "#D4D4D4",
+      "boundToken": "$sem-borders-hover",
+      "rationale": "Carried from v001 DJ-6, re-affirmed: role-first, the named hover-border role (gray-400 #8A8680) wins over value-nearest sem-borders-muted; land-stage hover tests inherit the token, not Bill's hex.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "day-cell keyboard focus ring (frame day-focus-visible)",
+      "prototypeValue": "box-shadow 0 0 0 2px var(--tk-accent) = #3A6AF8",
+      "boundToken": "$sem-borders-focus",
+      "rationale": "Carried from v001 DJ-7, re-affirmed: Hemlock's a11y contract names sem-borders-focus as THE focus ring; role-first binding turns the ring near-black (#0E0E0E light) — deliberate divergence from the prototype's accent-blue ring, the identical call GC-001 recorded.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "selection pill (.sel: fill + text)",
+      "prototypeValue": "#3A6AF8 fill / #FFFFFF text / weight 600",
+      "boundToken": "$sem-background-action + $sem-text-reverse",
+      "rationale": "Carried from v001 DJ-8, re-affirmed: selected-state action surface; exact value matches in light, coordinated dark values.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "popover drop shadow",
+      "prototypeValue": "0 4px 12px rgba(0,0,0,0.12)",
+      "boundToken": "$shadow-md-y / $shadow-md-blur / $prim-shadow-md-color",
+      "rationale": "Carried from v001 DJ-9, re-affirmed: shadow-md's y/blur match exactly; color alpha reconciles 12% -> 10.2% (#0000001A). NAMING DRIFT (still live at v002): hemlock-design-system.md declares shadow colors carry no prefix (shadow-md-color) but hemlock-library.lib.pen names them prim-shadow-md-color — bound the library reality, not improvised around.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "frame backdrop (region around trigger/popover inside the capture clip)",
+      "prototypeValue": "#F7F5F0 (the demo page's taupe control band)",
+      "boundToken": "$sem-background-main",
+      "rationale": "Carried from v001 DJ-10, re-affirmed: exact value match to the page-canvas role.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "component composition",
+      "prototypeValue": "hand-rolled custom date picker (shared dropdown-chrome trigger + custom calendar popover)",
+      "boundToken": "(none — frames drawn from prototype geometry)",
+      "rationale": "Carried from v001, re-affirmed at v4.11: hemlock-library HAS a DatePicker family, but it is a different design that cannot reproduce the executable spec's geometry (200px trigger on 36px dropdown chrome, 252px popover, fixed 42-cell matrix, leading action-colour icon). Under the two-oracle split the .pen is the pixel oracle OF THIS prototype; composing the library component would fail every compare. Divergence stays designer-visible.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "popover stacking (prototype z-index 60)",
+      "prototypeValue": "z-index: 60",
+      "boundToken": "(not a frame property — flat frames stack by paint order)",
+      "rationale": "Carried from v001: land stage should ride the design system's z-popover convention; recorded so the 60-vs-200 divergence is not lost.",
+      "newTokenCreated": false,
+      "newToken": null
+    }
   ],
   "designGaps": [
-    { "dimension": "typography", "token": "$text-size-caption", "prototypeValue": "13px (calendar day cells, all 42)", "lightValue": "13", "darkValue": "13 (single-mode number, Typography desktop+mobile)", "appliesTo": ["open-month", "month-next", "day-selected-reopened", "day-focus-visible — every day-cell text node"], "designerQuestion": "Adopt a 13px step into the type scale, or change the component to match the existing system (xs=12 or sm=14)? NOTE: GC-001 recorded the SAME proposed step for its tooltip series row — one designer ruling covers both.", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$text-size-micro", "prototypeValue": "10px/600 uppercase (weekday header S M T W T F S)", "lightValue": "10", "darkValue": "10 (single-mode number)", "appliesTo": ["open-month", "month-next", "day-selected-reopened", "day-focus-visible — weekday header row"], "designerQuestion": "Adopt a 10px micro-label step (below 2xs=11), or change the component to text-size-2xs (11)?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$text-size-glyph", "prototypeValue": "15px (nav-button ‹ › text glyphs)", "lightValue": "15", "darkValue": "15 (single-mode number)", "appliesTo": ["open-month", "month-next", "day-selected-reopened", "day-focus-visible — nav prev/next glyphs"], "designerQuestion": "Adopt a 15px glyph step, or change the component to sm (14) / an icon-based chevron pair?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$line-height-solid", "prototypeValue": "line-height: 1 (month label, weekday header, day cells; trigger label solid-placed from its measured 21px line box)", "lightValue": "1", "darkValue": "1 (single-mode number)", "appliesTo": ["every text node in every frame"], "designerQuestion": "Adopt a solid (1.0) line-height token for control micro-copy, or change the component to the scale's ratios (sm=1.4286)? NOTE: GC-001 recorded the SAME gap — one ruling covers both.", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "radius", "token": "$radius-menu", "prototypeValue": "6px (popover, nav buttons, day cells/selection pill/focus ring; the template's dropdown menu .tkdd-menu shares the same 6px)", "lightValue": "6", "darkValue": "6 (single-mode number)", "appliesTo": ["all open frames: popover chrome, nav buttons, selection pill, focus ring"], "designerQuestion": "Adopt a 6px menu/popover radius step, or change the component to radius-3xs (4) / radius-2xs (8)? NOTE: GC-001 recorded 6px as $radius-tooltip — same step, different purpose name; designer can unify under one name.", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "spacing", "token": "$spacing-popover-inset", "prototypeValue": "10px (popover inside padding; between 2xs=8 and xs=12)", "lightValue": "10 (bound positionally — frames use absolute layout from measured prototype boxes)", "darkValue": "10", "appliesTo": ["all open frames: popover content inset"], "designerQuestion": "Adopt a 10px step, or change the component to spacing-2xs (8) / spacing-xs (12)? NOTE: GC-001 hit 10px too (tooltip bottom padding).", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "spacing", "token": "$spacing-day-cell-pad", "prototypeValue": "7px (day-cell vertical padding -> 27px cell on 13px type)", "lightValue": "7 (positional)", "darkValue": "7", "appliesTo": ["all open frames: day-cell boxes"], "designerQuestion": "Adopt a 7px step, or change the component to spacing-2xs (8)? NOTE: GC-001 hit 7px too (tooltip rule gap).", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } }
+    {
+      "dimension": "typography",
+      "token": "$text-size-caption",
+      "prototypeValue": "13px (calendar day cells, all 42)",
+      "lightValue": "13",
+      "darkValue": "13 (single-mode number, Typography desktop+mobile)",
+      "appliesTo": [
+        "open-month",
+        "month-next",
+        "day-selected-reopened",
+        "day-focus-visible — every day-cell text node"
+      ],
+      "designerQuestion": "Adopt a 13px step into the type scale, or change the component to match the existing system (xs=12 or sm=14)? NOTE: GC-001 recorded the SAME proposed step — one designer ruling covers both. Carried unresolved from the v001 capture.",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$text-size-micro",
+      "prototypeValue": "10px/600 uppercase (weekday header S M T W T F S)",
+      "lightValue": "10",
+      "darkValue": "10 (single-mode number)",
+      "appliesTo": [
+        "open-month",
+        "month-next",
+        "day-selected-reopened",
+        "day-focus-visible — weekday header row"
+      ],
+      "designerQuestion": "Adopt a 10px micro-label step (below 2xs=11), or change the component to text-size-2xs (11)? Carried unresolved from the v001 capture.",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$line-height-solid",
+      "prototypeValue": "line-height: 1 (month label, weekday header, day cells; trigger label solid-placed from its measured 21px line box)",
+      "lightValue": "1",
+      "darkValue": "1 (single-mode number)",
+      "appliesTo": [
+        "every text node in every frame"
+      ],
+      "designerQuestion": "Adopt a solid (1.0) line-height token for control micro-copy, or change the component to the scale's ratios (sm=1.4286)? NOTE: GC-001 recorded the SAME gap. Carried unresolved from the v001 capture.",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "radius",
+      "token": "$radius-menu",
+      "prototypeValue": "6px (popover, nav buttons, day cells/selection pill/focus ring; the template's dropdown menu shares the same 6px)",
+      "lightValue": "6",
+      "darkValue": "6 (single-mode number)",
+      "appliesTo": [
+        "all open frames: popover chrome, nav buttons, selection pill, focus ring"
+      ],
+      "designerQuestion": "Adopt a 6px menu/popover radius step, or change the component to radius-3xs (4) / radius-2xs (8)? NOTE: GC-001 recorded 6px as $radius-tooltip — same step, different purpose name; designer can unify. Carried unresolved from the v001 capture.",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "spacing",
+      "token": "$spacing-popover-inset",
+      "prototypeValue": "10px (popover inside padding; between 2xs=8 and xs=12)",
+      "lightValue": "10 (bound positionally — frames use absolute layout from measured prototype boxes)",
+      "darkValue": "10",
+      "appliesTo": [
+        "all open frames: popover content inset"
+      ],
+      "designerQuestion": "Adopt a 10px step, or change the component to spacing-2xs (8) / spacing-xs (12)? NOTE: GC-001 hit 10px too. Carried unresolved from the v001 capture.",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "spacing",
+      "token": "$spacing-day-cell-pad",
+      "prototypeValue": "7px (day-cell vertical padding -> 27px cell on 13px type)",
+      "lightValue": "7 (positional)",
+      "darkValue": "7",
+      "appliesTo": [
+        "all open frames: day-cell boxes"
+      ],
+      "designerQuestion": "Adopt a 7px step, or change the component to spacing-2xs (8)? NOTE: GC-001 hit 7px too. Carried unresolved from the v001 capture.",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    }
   ],
   "fontSubstitutions": [],
   "prototypeDefectsSeen": [
-    { "flag": "FLAG-D1 (already recorded, design-rules.md section 2)", "note": "Confirmed while driving the contract's normalize steps: every Previous/Next nav click closes the popover (detached-button outside-click race); the navigated month persists. The contract's reopen-after-nav workaround behaved exactly as documented; no contracted frame depends on the popover surviving a nav click. Captured rendered truth; nothing fixed." }
+    {
+      "flag": "FLAG-D2 (already recorded, design-rules.md section 2 + flags.json)",
+      "note": "Confirmed while measuring the v002 deltas: both nav chevron SVGs declare 14x14 but render a 12x14 used box (UA button padding squeeze), drawn content 12x12 centered. Banked the rendered truth in the frames; nothing fixed; the land-stage glyph-box decision stays tracked under FLAG-D2."
+    },
+    {
+      "flag": "FLAG-D1-RESOLVED (historical record, design-rules.md section 2)",
+      "note": "Corroborated live: the popover stayed open through every Previous/Next click in all four open-state drives (composedPath fix) — the v002 normalize scripts ran with no reopen workaround, exactly as contracted."
+    }
   ],
   "verdict": "captured"
 }
