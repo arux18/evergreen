@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Generic component: Placement matrix · design handoff</title>
+<!--
+EVERGREEN INTELLIGENCE · GEN UI COMPONENT HANDOFF
+Component: PLACEMENT MATRIX (generic) — items × containers, current vs. recommended, dollar impact
+Generic component file: anatomy + data contract, then real instances re-using it unchanged.
+Design the skeleton once; every recipe inherits. LLM fills; component renders; engine computes.
+Register: private-bank / term-sheet. Verdict-first. Tabular numerals, hairline rules,
+two font weights (400/500), serif for hero numbers only. Dark mode required.
+DO NOT: gradients, shadows, decorative icons, extra color ramps, verdict below the evidence.
+
+HEMLOCK ALIGNMENT (2026-08-26) — palette aligned to hemlock-library.lib.pen tokens:
+cell states ✓ home/target → --pos · move → → --accent · — → --faint · constraint notes → --muted ·
+tables keep the quiet register (hairline rules, muted headers — band rejected) · no frozen column (prototype tables are
+not sticky; the seq-100 frozen-column rule stays available if one is added) ·
+fonts Heebo + Noto Serif · dark via html[data-theme="dark"] (Hemlock navy dark theme).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* HEMLOCK BASE — token values aligned to hemlock-library.lib.pen (2026-08-26).
+   Light = template integrity values, sky info, opaque status tiles; dark = Hemlock navy theme. Theme via html[data-theme]. */
+:root{
+--surface-1:#FFFFFF;--surface-2:#F8F7F6;--nest:#F8F7F6;--page-bg:#FFFFFF;
+--border:#EEEDEB;--border-strong:#D5D3D0;
+--ink:#0E0E0E;--text-header:#0E0E0E;--text-body:#403D3A;--muted:#5E5954;--faint:#8A8680;--inverse:#FFFFFF;
+--heading:#2952CC;
+--accent:#3A6AF8;--accent-hover:#2952CC;--accent-subtle:#EBF0FE;--accent-fill:rgba(58,106,248,0.15);
+--pos:#148338;--pos-mid:#1EBF51;--pos-strong:#148338;--pos-soft:#4ADE80;
+--neg:#C82320;--neg-strong:#C82320;--neg-soft:#F87171;
+--warn:#C85F1A;--info:#1F6193;--info-title:#1F6193;
+--pros-bg:#E9FFF0;--pros-border:#A9FDC4;
+--cons-bg:#FFEAEA;--cons-border:#FED5D4;
+--info-bg:#EBF6FF;--info-border:#AEDCFE;
+--warn-bg:#FFF1E9;--warn-border:#FEE4D2;
+--on-pos-fill:#10642B;--on-neg-fill:#641210;
+--seq1:#EBF0FE;--seq2:#C8D6FD;--seq3:#A5BCFC;--seq4:#7094FB;--seq5:#5A82F9;--seq6:#3A6AF8;--seq7:#2952CC;
+--cat1:#8951F0;--cat2:#06B6D4;--cat3:#312E81;--cat4:#3B82F6;--cat5:#0F766E;--cat6:#38BDF8;--cat7:#2DD4BF;--cat8:#A78BFA;
+--table-head-bg:var(--accent-hover);--table-head-ink:var(--inverse);--table-total-bg:var(--seq1);
+--font-sans:'Heebo',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--font-voice:'Noto Serif',Georgia,serif;}
+html[data-theme="dark"]{
+/* Hemlock navy dark theme (hemlock-library.lib.pen, Colors: Dark) — navy surfaces, navylight
+   text ramp, navy border steps. Accents, status, and chart tokens are the Hemlock dark values. */
+--surface-1:#131C31;--surface-2:#18223A;--nest:#18223A;--page-bg:#131C31;
+--border:#2A3A5C;--border-strong:#33476E;
+--ink:#D8E1F0;--text-header:#D8E1F0;--text-body:#B3C1DB;--muted:#697DA0;--faint:#52637F;--inverse:#0E0E0E;
+--heading:#7094FB;
+--accent:#5A82F9;--accent-hover:#7094FB;--accent-subtle:#16304A;--accent-fill:rgba(90,130,249,0.15);
+--pos:#4ADE80;--pos-mid:#74D791;--pos-strong:#4ADE80;
+--neg:#F87171;--neg-strong:#FCA5A5;
+--warn:#FB924D;--info:#38BDF8;--info-title:#38BDF8;
+--pros-bg:#12291C;--pros-border:#245234;
+--cons-bg:#3A1B1E;--cons-border:#542427;
+--info-bg:#10263C;--info-border:#16304A;
+--warn-bg:#33200F;--warn-border:#5E3A18;
+--on-pos-fill:#0E0E0E;--on-neg-fill:#0E0E0E;
+--seq1:#163196;--seq2:#2952CC;--seq3:#3A6AF8;--seq4:#5A82F9;--seq5:#7094FB;--seq6:#A5BCFC;--seq7:#C8D6FD;
+--cat1:#B198F0;--cat2:#5FD3E6;--cat3:#8480D9;--cat4:#7AA0F5;--cat5:#4FC0A6;--cat6:#84D2F7;--cat7:#84E6CC;--cat8:#C7BAF7;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--page-bg);max-width:680px;margin:3rem auto;padding:0 1.5rem;}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;}
+td,th{padding:7px 0;text-align:right;font-weight:400;}
+td:first-child,th:first-child{text-align:left;}
+.hd{color:var(--muted);font-size:12px;border-bottom:.5px solid var(--border);}
+.tot{font-weight:500;border-top:.5px solid var(--border-strong);}
+.kicker{font-size:14px;color:var(--muted);letter-spacing:.04em;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;}
+.hero{display:flex;align-items:baseline;gap:16px;margin-bottom:1.25rem;}
+.hero b{font-family:var(--font-voice);font-size:36px;font-weight:400;color:var(--ink);}
+.hero span{font-size:14px;color:var(--text-body);}
+.foot{font-size:12px;color:var(--faint);margin-top:.75rem;}
+.card{background:var(--surface-2);border-radius:8px;padding:10px 14px;}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:3px 9px;border-radius:999px;border:1px solid var(--border-strong);color:var(--text-body);}
+.inst{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.06em;margin:2.2rem 0 6px;}
+.inst b{color:var(--text-body);font-weight:500;}
+text{font-family:var(--font-sans);}
+#themeToggle{position:fixed;top:12px;right:16px;font-size:11px;color:var(--faint);text-decoration:none;letter-spacing:.04em;}
+</style>
+<script>document.documentElement.dataset.theme='light';/* LIGHT is the shipping target — the app has no dark mode yet; dark is toggle-only, for design review */</script>
+</head><body>
+<a href="#" id="themeToggle">light / dark</a>
+
+<div class="hero"><b>Placement matrix</b><span>generic component · what belongs where — and what moving it is worth</span></div><div style="font-size:14px;font-weight:500;margin-bottom:8px;">Anatomy — designed once, inherited by every instance</div>
+<div style="border:1px dashed var(--border-strong);border-radius:12px;padding:1rem 1.25rem;"><div style="font-size:12px;color:var(--muted);line-height:1.9;">① kicker + ② hero (the dollar value of correct placement)</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">③ rows = items · columns = containers (accounts, custodians, entities)</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">④ cell states: ✓ recommended home · move → (current, relocate) · —</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">⑤ per-row note where the WHY matters · ⑥ footer with constraints</div></div>
+<div style="font-size:12px;color:var(--muted);margin:.8rem 0 0;">Data contract: <code style="font-size:11px;">{ containers[], rows:[{item, cells:[state: home|move|none], note?}], hero_value }</code></div><div class="inst">INSTANCE · skill: <b>tax-aware-investing</b> · recipe: <b>asset_location</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Asset location · household, jointly optimized</span><span>$6.4M across 5 accounts</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">+$18,700/yr</b><span>estimated tax saved — same allocation, different addresses</span></div><table><tr class="hd"><th>Asset class</th><th>Taxable</th><th>Tax-deferred</th><th>Roth</th></tr><tr><td style="color:var(--text-body)">US equity (direct index)</td><td style="color:var(--pos);font-weight:500;">✓ hold</td><td style="color:var(--faint);">—</td><td style="color:var(--faint);">—</td></tr><tr><td style="color:var(--text-body)">Muni bonds</td><td style="color:var(--pos);font-weight:500;">✓ hold</td><td style="color:var(--faint);">—</td><td style="color:var(--faint);">—</td></tr><tr><td style="color:var(--text-body)">Taxable bonds / TIPS</td><td style="color:var(--accent);font-weight:500;">move →</td><td style="color:var(--pos);font-weight:500;">✓ target</td><td style="color:var(--faint);">—</td></tr><tr><td style="color:var(--text-body)">REITs</td><td style="color:var(--accent);font-weight:500;">move →</td><td style="color:var(--pos);font-weight:500;">✓ target</td><td style="color:var(--faint);">—</td></tr><tr><td style="color:var(--text-body)">High-growth / small-cap</td><td style="color:var(--faint);">—</td><td style="color:var(--accent);font-weight:500;">move →</td><td style="color:var(--pos);font-weight:500;">✓ target</td></tr><tr><td style="color:var(--text-body)">International (FTC)</td><td style="color:var(--pos);font-weight:500;">✓ hold</td><td style="color:var(--faint);">—</td><td style="color:var(--faint);">—</td></tr></table></div><div class="inst">INSTANCE · skill: <b>household-and-life-events</b> · recipe: <b>account_consolidation</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Account consolidation · 9 accounts → 5</span><span>reduces custodians from 4 to 2</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">−$4,100/yr and one login</b><span>fees, overlap, and orphaned 401(k)s eliminated</span></div><table><tr class="hd"><th>Account</th><th>Keep at Apex</th><th>Keep at Schwab</th><th>Close / transfer</th></tr><tr><td style="color:var(--text-body)">Old employer 401(k) ($412K)</td><td style="color:var(--accent);font-weight:500;">move →</td><td style="color:var(--faint);">—</td><td style="color:var(--muted);">from Fidelity</td></tr><tr><td style="color:var(--text-body)">Rollover IRA</td><td style="color:var(--pos);font-weight:500;">✓ consolidate here</td><td style="color:var(--faint);">—</td><td style="color:var(--faint);">—</td></tr><tr><td style="color:var(--text-body)">Legacy brokerage ($180K)</td><td style="color:var(--accent);font-weight:500;">move →</td><td style="color:var(--faint);">—</td><td style="color:var(--muted);">from E*Trade</td></tr><tr><td style="color:var(--text-body)">529 plans</td><td style="color:var(--faint);">—</td><td style="color:var(--pos);font-weight:500;">✓ hold</td><td style="color:var(--muted);">state benefit</td></tr><tr><td style="color:var(--text-body)">Treasury ladder</td><td style="color:var(--faint);">—</td><td style="color:var(--pos);font-weight:500;">✓ hold</td><td style="color:var(--faint);">—</td></tr></table></div><div class="inst">INSTANCE · skill: <b>estate-and-wealth-transfer</b> · recipe: <b>titling_placement</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Titling &amp; entity placement</span><span>estate + liability lens</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">Two assets are in the wrong hands</b><span>the duplex exposure and the taxable account's probate path</span></div><table><tr class="hd"><th>Asset</th><th>Joint / individual</th><th>Revocable trust</th><th>LLC</th></tr><tr><td style="color:var(--text-body)">Primary home</td><td style="color:var(--accent);font-weight:500;">move →</td><td style="color:var(--pos);font-weight:500;">✓ target</td><td style="color:var(--faint);">—</td></tr><tr><td style="color:var(--text-body)">Taxable brokerage $2.74M</td><td style="color:var(--accent);font-weight:500;">move →</td><td style="color:var(--pos);font-weight:500;">✓ target</td><td style="color:var(--faint);">—</td></tr><tr><td style="color:var(--text-body)">Rental duplex</td><td style="color:var(--faint);">—</td><td style="color:var(--faint);">—</td><td style="color:var(--pos);font-weight:500;">✓ hold</td></tr><tr><td style="color:var(--text-body)">Umbrella policy (new)</td><td style="color:var(--muted);">covers all</td><td style="color:var(--faint);">—</td><td style="color:var(--warn);font-weight:500;">required first</td></tr></table><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Retitling avoids probate and aligns with the estate plan — coordinate with counsel; education, not legal advice.</div></div>
+<script>(function(){var t=document.getElementById('themeToggle');t.addEventListener('click',function(e){e.preventDefault();var h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';});})();</script>
+</body></html>

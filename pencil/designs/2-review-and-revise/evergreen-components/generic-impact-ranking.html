@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Generic component: Impact ranking · design handoff</title>
+<!--
+EVERGREEN INTELLIGENCE · GEN UI COMPONENT HANDOFF
+Component: IMPACT RANKING / TORNADO (generic) — what actually moves any outcome
+Generic component file: anatomy + data contract, then real instances re-using it unchanged.
+Design the skeleton once; every recipe inherits. LLM fills; component renders; engine computes.
+Register: private-bank / term-sheet. Verdict-first. Tabular numerals, hairline rules,
+two font weights (400/500), serif for hero numbers only. Dark mode required.
+DO NOT: gradients, shadows, decorative icons, extra color ramps, verdict below the evidence.
+
+HEMLOCK ALIGNMENT (2026-08-26) — palette aligned to hemlock-library.lib.pen tokens:
+downside bars → --neg-soft, labels --neg · upside bars → --pos-soft, labels --pos
+(status hues used as semantics, never as series colors — §7 rule 3) · base-case line
+--border-strong · factor labels --text-body · fonts Heebo + Noto Serif ·
+dark via html[data-theme="dark"] (Hemlock navy dark theme).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* HEMLOCK BASE — token values aligned to hemlock-library.lib.pen (2026-08-26).
+   Light = template integrity values, sky info, opaque status tiles; dark = Hemlock navy theme. Theme via html[data-theme]. */
+:root{
+--surface-1:#FFFFFF;--surface-2:#F8F7F6;--nest:#F8F7F6;--page-bg:#FFFFFF;
+--border:#EEEDEB;--border-strong:#D5D3D0;
+--ink:#0E0E0E;--text-header:#0E0E0E;--text-body:#403D3A;--muted:#5E5954;--faint:#8A8680;--inverse:#FFFFFF;
+--heading:#2952CC;
+--accent:#3A6AF8;--accent-hover:#2952CC;--accent-subtle:#EBF0FE;--accent-fill:rgba(58,106,248,0.15);
+--pos:#148338;--pos-mid:#1EBF51;--pos-strong:#148338;--pos-soft:#4ADE80;
+--neg:#C82320;--neg-strong:#C82320;--neg-soft:#F87171;
+--warn:#C85F1A;--info:#1F6193;--info-title:#1F6193;
+--pros-bg:#E9FFF0;--pros-border:#A9FDC4;
+--cons-bg:#FFEAEA;--cons-border:#FED5D4;
+--info-bg:#EBF6FF;--info-border:#AEDCFE;
+--warn-bg:#FFF1E9;--warn-border:#FEE4D2;
+--on-pos-fill:#10642B;--on-neg-fill:#641210;
+--seq1:#EBF0FE;--seq2:#C8D6FD;--seq3:#A5BCFC;--seq4:#7094FB;--seq5:#5A82F9;--seq6:#3A6AF8;--seq7:#2952CC;
+--cat1:#8951F0;--cat2:#06B6D4;--cat3:#312E81;--cat4:#3B82F6;--cat5:#0F766E;--cat6:#38BDF8;--cat7:#2DD4BF;--cat8:#A78BFA;
+--table-head-bg:var(--accent-hover);--table-head-ink:var(--inverse);--table-total-bg:var(--seq1);
+--font-sans:'Heebo',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--font-voice:'Noto Serif',Georgia,serif;}
+html[data-theme="dark"]{
+/* Hemlock navy dark theme (hemlock-library.lib.pen, Colors: Dark) — navy surfaces, navylight
+   text ramp, navy border steps. Accents, status, and chart tokens are the Hemlock dark values. */
+--surface-1:#131C31;--surface-2:#18223A;--nest:#18223A;--page-bg:#131C31;
+--border:#2A3A5C;--border-strong:#33476E;
+--ink:#D8E1F0;--text-header:#D8E1F0;--text-body:#B3C1DB;--muted:#697DA0;--faint:#52637F;--inverse:#0E0E0E;
+--heading:#7094FB;
+--accent:#5A82F9;--accent-hover:#7094FB;--accent-subtle:#16304A;--accent-fill:rgba(90,130,249,0.15);
+--pos:#4ADE80;--pos-mid:#74D791;--pos-strong:#4ADE80;
+--neg:#F87171;--neg-strong:#FCA5A5;
+--warn:#FB924D;--info:#38BDF8;--info-title:#38BDF8;
+--pros-bg:#12291C;--pros-border:#245234;
+--cons-bg:#3A1B1E;--cons-border:#542427;
+--info-bg:#10263C;--info-border:#16304A;
+--warn-bg:#33200F;--warn-border:#5E3A18;
+--on-pos-fill:#0E0E0E;--on-neg-fill:#0E0E0E;
+--seq1:#163196;--seq2:#2952CC;--seq3:#3A6AF8;--seq4:#5A82F9;--seq5:#7094FB;--seq6:#A5BCFC;--seq7:#C8D6FD;
+--cat1:#B198F0;--cat2:#5FD3E6;--cat3:#8480D9;--cat4:#7AA0F5;--cat5:#4FC0A6;--cat6:#84D2F7;--cat7:#84E6CC;--cat8:#C7BAF7;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--page-bg);max-width:680px;margin:3rem auto;padding:0 1.5rem;}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;}
+td,th{padding:7px 0;text-align:right;font-weight:400;}
+td:first-child,th:first-child{text-align:left;}
+.hd{color:var(--muted);font-size:12px;border-bottom:.5px solid var(--border);}
+.tot{font-weight:500;border-top:.5px solid var(--border-strong);}
+.kicker{font-size:14px;color:var(--muted);letter-spacing:.04em;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;}
+.hero{display:flex;align-items:baseline;gap:16px;margin-bottom:1.25rem;}
+.hero b{font-family:var(--font-voice);font-size:36px;font-weight:400;color:var(--ink);}
+.hero span{font-size:14px;color:var(--text-body);}
+.foot{font-size:12px;color:var(--faint);margin-top:.75rem;}
+.card{background:var(--surface-2);border-radius:8px;padding:10px 14px;}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:3px 9px;border-radius:999px;border:1px solid var(--border-strong);color:var(--text-body);}
+.inst{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.06em;margin:2.2rem 0 6px;}
+.inst b{color:var(--text-body);font-weight:500;}
+text{font-family:var(--font-sans);}
+#themeToggle{position:fixed;top:12px;right:16px;font-size:11px;color:var(--faint);text-decoration:none;letter-spacing:.04em;}
+</style>
+<script>document.documentElement.dataset.theme='light';/* LIGHT is the shipping target — the app has no dark mode yet; dark is toggle-only, for design review */</script>
+</head><body>
+<a href="#" id="themeToggle">light / dark</a>
+
+<div class="hero"><b>Impact ranking</b><span>generic component · diverging bars around a base case, sorted widest first — the shape IS the answer</span></div><div style="font-size:14px;font-weight:500;margin-bottom:8px;">Anatomy — designed once, inherited by every instance</div>
+<div style="border:1px dashed var(--border-strong);border-radius:12px;padding:1rem 1.25rem;"><div style="font-size:12px;color:var(--muted);line-height:1.9;">① kicker + ② hero (names the dominant lever in one sentence)</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">③ diverging bars centered on base, downside coral / upside teal, sorted by total width</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">④ per-bar range labels · ⑤ base-case caption · ⑥ footer</div></div>
+<div style="font-size:12px;color:var(--muted);margin:.8rem 0 0;">Data contract: <code style="font-size:11px;">{ outcome_label, base:{label,value}, factors:[{label, low_delta, high_delta}] (component sorts) }</code></div><div class="inst">INSTANCE · skill: <b>retirement-and-goals</b> · recipe: <b>plan_sensitivity</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>What moves your plan</span><span>base success 87%</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">Retirement age dwarfs everything</b><span>±2 years moves success 3–7× more than any market assumption</span></div><svg viewBox="0 0 640 226"><line x1="358" x2="358" y1="12" y2="196" stroke="var(--border-strong)"/><rect x="97" y="20" width="261" height="17" rx="4" fill="var(--neg-soft)"/><rect x="358" y="20" width="205" height="17" rx="4" fill="var(--pos-soft)"/><text x="91" y="33" text-anchor="end" font-size="11" fill="var(--neg)">-14</text><text x="569" y="33" font-size="11" fill="var(--pos)">+11</text><text x="358" y="17" text-anchor="middle" font-size="11" fill="var(--text-body)">Retirement age ±2 yrs</text><rect x="190" y="54" width="168" height="17" rx="4" fill="var(--neg-soft)"/><rect x="358" y="54" width="168" height="17" rx="4" fill="var(--pos-soft)"/><text x="184" y="67" text-anchor="end" font-size="11" fill="var(--neg)">-9</text><text x="532" y="67" font-size="11" fill="var(--pos)">+9</text><text x="358" y="51" text-anchor="middle" font-size="11" fill="var(--text-body)">Savings rate ±$25K/yr</text><rect x="209" y="88" width="149" height="17" rx="4" fill="var(--neg-soft)"/><rect x="358" y="88" width="149" height="17" rx="4" fill="var(--pos-soft)"/><text x="203" y="101" text-anchor="end" font-size="11" fill="var(--neg)">-8</text><text x="513" y="101" font-size="11" fill="var(--pos)">+8</text><text x="358" y="85" text-anchor="middle" font-size="11" fill="var(--text-body)">Spending ±10%</text><rect x="228" y="122" width="130" height="17" rx="4" fill="var(--neg-soft)"/><rect x="358" y="122" width="112" height="17" rx="4" fill="var(--pos-soft)"/><text x="222" y="135" text-anchor="end" font-size="11" fill="var(--neg)">-7</text><text x="476" y="135" font-size="11" fill="var(--pos)">+6</text><text x="358" y="119" text-anchor="middle" font-size="11" fill="var(--text-body)">Market return ±1%</text><rect x="283" y="156" width="74" height="17" rx="4" fill="var(--neg-soft)"/><rect x="358" y="156" width="74" height="17" rx="4" fill="var(--pos-soft)"/><text x="277" y="169" text-anchor="end" font-size="11" fill="var(--neg)">-4</text><text x="438" y="169" font-size="11" fill="var(--pos)">+4</text><text x="358" y="153" text-anchor="middle" font-size="11" fill="var(--text-body)">Inflation ±0.5%</text><text x="358" y="216" text-anchor="middle" font-size="11" fill="var(--muted)">Δ success probability (pts) vs. base 87%</text></svg><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Controllable choices beat market assumptions — that's the trust-building message.</div></div><div class="inst">INSTANCE · skill: <b>real-estate</b> · recipe: <b>decision_sensitivity</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>What flips the rent-vs-buy verdict</span><span>base: renting wins by $330K over 7 years</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">It's an appreciation bet</b><span>only home appreciation can realistically close the gap — rates and rent growth barely move it</span></div><svg viewBox="0 0 640 226"><line x1="313" x2="313" y1="12" y2="196" stroke="var(--border-strong)"/><rect x="85" y="20" width="227" height="17" rx="4" fill="var(--neg-soft)"/><rect x="313" y="20" width="265" height="17" rx="4" fill="var(--pos-soft)"/><text x="79" y="33" text-anchor="end" font-size="11" fill="var(--neg)">-198K</text><text x="584" y="33" font-size="11" fill="var(--pos)">+231K</text><text x="313" y="17" text-anchor="middle" font-size="11" fill="var(--text-body)">Appreciation ±1.5%/yr</text><rect x="202" y="54" width="110" height="17" rx="4" fill="var(--neg-soft)"/><rect x="313" y="54" width="101" height="17" rx="4" fill="var(--pos-soft)"/><text x="196" y="67" text-anchor="end" font-size="11" fill="var(--neg)">-96K</text><text x="420" y="67" font-size="11" fill="var(--pos)">+88K</text><text x="313" y="51" text-anchor="middle" font-size="11" fill="var(--text-body)">Hold period ±3 yrs</text><rect x="231" y="88" width="82" height="17" rx="4" fill="var(--neg-soft)"/><rect x="313" y="88" width="85" height="17" rx="4" fill="var(--pos-soft)"/><text x="225" y="101" text-anchor="end" font-size="11" fill="var(--neg)">-71K</text><text x="404" y="101" font-size="11" fill="var(--pos)">+74K</text><text x="313" y="85" text-anchor="middle" font-size="11" fill="var(--text-body)">Mortgage rate ±0.75%</text><rect x="246" y="122" width="67" height="17" rx="4" fill="var(--neg-soft)"/><rect x="313" y="122" width="71" height="17" rx="4" fill="var(--pos-soft)"/><text x="240" y="135" text-anchor="end" font-size="11" fill="var(--neg)">-58K</text><text x="390" y="135" font-size="11" fill="var(--pos)">+62K</text><text x="313" y="119" text-anchor="middle" font-size="11" fill="var(--text-body)">Rent growth ±1%/yr</text><rect x="256" y="156" width="56" height="17" rx="4" fill="var(--neg-soft)"/><rect x="313" y="156" width="53" height="17" rx="4" fill="var(--pos-soft)"/><text x="250" y="169" text-anchor="end" font-size="11" fill="var(--neg)">-49K</text><text x="372" y="169" font-size="11" fill="var(--pos)">+46K</text><text x="313" y="153" text-anchor="middle" font-size="11" fill="var(--text-body)">Investment return ±1%</text><text x="313" y="216" text-anchor="middle" font-size="11" fill="var(--muted)">Δ 7-year advantage ($K) vs. base +330K rent</text></svg><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Decision sensitivity: renders after any comparison when the client asks 'what would change your answer.'</div></div>
+<script>(function(){var t=document.getElementById('themeToggle');t.addEventListener('click',function(e){e.preventDefault();var h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';});})();</script>
+</body></html>

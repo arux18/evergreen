@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Generic component: Paired delta · design handoff</title>
+<!--
+EVERGREEN INTELLIGENCE · GEN UI COMPONENT HANDOFF
+Component: PAIRED DELTA / DUMBBELL (generic) — any before→after per category
+Generic component file: anatomy + data contract, then real instances re-using it unchanged.
+Design the skeleton once; every recipe inherits. LLM fills; component renders; engine computes.
+Register: private-bank / term-sheet. Verdict-first. Tabular numerals, hairline rules,
+two font weights (400/500), serif for hero numbers only. Dark mode required.
+DO NOT: gradients, shadows, decorative icons, extra color ramps, verdict below the evidence.
+
+HEMLOCK ALIGNMENT (2026-08-26) — palette aligned to hemlock-library.lib.pen tokens:
+from-dot → --faint · to-dot → --pos · connector --border-strong · category labels --text-body ·
+value labels --muted · fonts Heebo + Noto Serif ·
+dark via html[data-theme="dark"] (Hemlock navy dark theme).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* HEMLOCK BASE — token values aligned to hemlock-library.lib.pen (2026-08-26).
+   Light = template integrity values, sky info, opaque status tiles; dark = Hemlock navy theme. Theme via html[data-theme]. */
+:root{
+--surface-1:#FFFFFF;--surface-2:#F8F7F6;--nest:#F8F7F6;--page-bg:#FFFFFF;
+--border:#EEEDEB;--border-strong:#D5D3D0;
+--ink:#0E0E0E;--text-header:#0E0E0E;--text-body:#403D3A;--muted:#5E5954;--faint:#8A8680;--inverse:#FFFFFF;
+--heading:#2952CC;
+--accent:#3A6AF8;--accent-hover:#2952CC;--accent-subtle:#EBF0FE;--accent-fill:rgba(58,106,248,0.15);
+--pos:#148338;--pos-mid:#1EBF51;--pos-strong:#148338;--pos-soft:#4ADE80;
+--neg:#C82320;--neg-strong:#C82320;--neg-soft:#F87171;
+--warn:#C85F1A;--info:#1F6193;--info-title:#1F6193;
+--pros-bg:#E9FFF0;--pros-border:#A9FDC4;
+--cons-bg:#FFEAEA;--cons-border:#FED5D4;
+--info-bg:#EBF6FF;--info-border:#AEDCFE;
+--warn-bg:#FFF1E9;--warn-border:#FEE4D2;
+--on-pos-fill:#10642B;--on-neg-fill:#641210;
+--seq1:#EBF0FE;--seq2:#C8D6FD;--seq3:#A5BCFC;--seq4:#7094FB;--seq5:#5A82F9;--seq6:#3A6AF8;--seq7:#2952CC;
+--cat1:#8951F0;--cat2:#06B6D4;--cat3:#312E81;--cat4:#3B82F6;--cat5:#0F766E;--cat6:#38BDF8;--cat7:#2DD4BF;--cat8:#A78BFA;
+--table-head-bg:var(--accent-hover);--table-head-ink:var(--inverse);--table-total-bg:var(--seq1);
+--font-sans:'Heebo',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--font-voice:'Noto Serif',Georgia,serif;}
+html[data-theme="dark"]{
+/* Hemlock navy dark theme (hemlock-library.lib.pen, Colors: Dark) — navy surfaces, navylight
+   text ramp, navy border steps. Accents, status, and chart tokens are the Hemlock dark values. */
+--surface-1:#131C31;--surface-2:#18223A;--nest:#18223A;--page-bg:#131C31;
+--border:#2A3A5C;--border-strong:#33476E;
+--ink:#D8E1F0;--text-header:#D8E1F0;--text-body:#B3C1DB;--muted:#697DA0;--faint:#52637F;--inverse:#0E0E0E;
+--heading:#7094FB;
+--accent:#5A82F9;--accent-hover:#7094FB;--accent-subtle:#16304A;--accent-fill:rgba(90,130,249,0.15);
+--pos:#4ADE80;--pos-mid:#74D791;--pos-strong:#4ADE80;
+--neg:#F87171;--neg-strong:#FCA5A5;
+--warn:#FB924D;--info:#38BDF8;--info-title:#38BDF8;
+--pros-bg:#12291C;--pros-border:#245234;
+--cons-bg:#3A1B1E;--cons-border:#542427;
+--info-bg:#10263C;--info-border:#16304A;
+--warn-bg:#33200F;--warn-border:#5E3A18;
+--on-pos-fill:#0E0E0E;--on-neg-fill:#0E0E0E;
+--seq1:#163196;--seq2:#2952CC;--seq3:#3A6AF8;--seq4:#5A82F9;--seq5:#7094FB;--seq6:#A5BCFC;--seq7:#C8D6FD;
+--cat1:#B198F0;--cat2:#5FD3E6;--cat3:#8480D9;--cat4:#7AA0F5;--cat5:#4FC0A6;--cat6:#84D2F7;--cat7:#84E6CC;--cat8:#C7BAF7;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--page-bg);max-width:680px;margin:3rem auto;padding:0 1.5rem;}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;}
+td,th{padding:7px 0;text-align:right;font-weight:400;}
+td:first-child,th:first-child{text-align:left;}
+.hd{color:var(--muted);font-size:12px;border-bottom:.5px solid var(--border);}
+.tot{font-weight:500;border-top:.5px solid var(--border-strong);}
+.kicker{font-size:14px;color:var(--muted);letter-spacing:.04em;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;}
+.hero{display:flex;align-items:baseline;gap:16px;margin-bottom:1.25rem;}
+.hero b{font-family:var(--font-voice);font-size:36px;font-weight:400;color:var(--ink);}
+.hero span{font-size:14px;color:var(--text-body);}
+.foot{font-size:12px;color:var(--faint);margin-top:.75rem;}
+.card{background:var(--surface-2);border-radius:8px;padding:10px 14px;}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:3px 9px;border-radius:999px;border:1px solid var(--border-strong);color:var(--text-body);}
+.inst{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.06em;margin:2.2rem 0 6px;}
+.inst b{color:var(--text-body);font-weight:500;}
+text{font-family:var(--font-sans);}
+#themeToggle{position:fixed;top:12px;right:16px;font-size:11px;color:var(--faint);text-decoration:none;letter-spacing:.04em;}
+</style>
+<script>document.documentElement.dataset.theme='light';/* LIGHT is the shipping target — the app has no dark mode yet; dark is toggle-only, for design review */</script>
+</head><body>
+<a href="#" id="themeToggle">light / dark</a>
+
+<div class="hero"><b>Paired delta</b><span>generic component · one dot pair per category — the delta is the message</span></div><div style="font-size:14px;font-weight:500;margin-bottom:8px;">Anatomy — designed once, inherited by every instance</div>
+<div style="border:1px dashed var(--border-strong);border-radius:12px;padding:1rem 1.25rem;"><div style="font-size:12px;color:var(--muted);line-height:1.9;">① kicker + ② hero (the direction of the whole shift in one sentence)</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">③ one row per category: label · connector · from-dot (gray) · to-dot (teal) · values</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">④ shared scale across rows · ⑤ legend · ⑥ footer</div></div>
+<div style="font-size:12px;color:var(--muted);margin:.8rem 0 0;">Data contract: <code style="font-size:11px;">{ unit, scale:{min,max}, rows:[{label, from, to}], legend:{from_label,to_label} }</code></div><div class="inst">INSTANCE · skill: <b>portfolio-analysis</b> · recipe: <b>allocation_shift</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Allocation shift · current → recommended</span><span>inside the decision receipt</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">Five moves, one direction</b><span>de-risk US concentration, fund international and real assets, put cash to work</span></div><svg viewBox="0 0 640 220"><text x="160" y="26" text-anchor="end" font-size="12" fill="var(--text-body)">US equity</text><line x1="463" x2="517" y1="22" y2="22" stroke="var(--border-strong)" stroke-width="2"/><circle cx="517" cy="22" r="6" fill="var(--faint)"/><circle cx="463" cy="22" r="6" fill="var(--pos)"/><text x="529" y="26" font-size="11" fill="var(--muted)">52% → 44%</text><text x="160" y="60" text-anchor="end" font-size="12" fill="var(--text-body)">International</text><line x1="250" x2="290" y1="56" y2="56" stroke="var(--border-strong)" stroke-width="2"/><circle cx="250" cy="56" r="6" fill="var(--faint)"/><circle cx="290" cy="56" r="6" fill="var(--pos)"/><text x="302" y="60" font-size="11" fill="var(--muted)">12% → 18%</text><text x="160" y="94" text-anchor="end" font-size="12" fill="var(--text-body)">Fixed income</text><line x1="317" x2="343" y1="90" y2="90" stroke="var(--border-strong)" stroke-width="2"/><circle cx="317" cy="90" r="6" fill="var(--faint)"/><circle cx="343" cy="90" r="6" fill="var(--pos)"/><text x="355" y="94" font-size="11" fill="var(--muted)">22% → 26%</text><text x="160" y="128" text-anchor="end" font-size="12" fill="var(--text-body)">Real assets</text><line x1="197" x2="217" y1="124" y2="124" stroke="var(--border-strong)" stroke-width="2"/><circle cx="197" cy="124" r="6" fill="var(--faint)"/><circle cx="217" cy="124" r="6" fill="var(--pos)"/><text x="229" y="128" font-size="11" fill="var(--muted)">4% → 7%</text><text x="160" y="162" text-anchor="end" font-size="12" fill="var(--text-body)">Cash</text><line x1="203" x2="237" y1="158" y2="158" stroke="var(--border-strong)" stroke-width="2"/><circle cx="237" cy="158" r="6" fill="var(--faint)"/><circle cx="203" cy="158" r="6" fill="var(--pos)"/><text x="249" y="162" font-size="11" fill="var(--muted)">10% → 5%</text><circle cx="440" cy="212" r="5" fill="var(--faint)"/><text x="450" y="216" font-size="11" fill="var(--muted)">from</text><circle cx="510" cy="212" r="5" fill="var(--pos)"/><text x="520" y="216" font-size="11" fill="var(--muted)">to</text></svg></div><div class="inst">INSTANCE · skill: <b>portfolio-analysis</b> · recipe: <b>fee_vs_category</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Your fund fees vs. category average · bps</span><span>after transition</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">Below average in every seat</b><span>weighted 11 bps vs. 46 bps category average</span></div><svg viewBox="0 0 640 186"><text x="160" y="26" text-anchor="end" font-size="12" fill="var(--text-body)">US large core</text><line x1="182" x2="322" y1="22" y2="22" stroke="var(--border-strong)" stroke-width="2"/><circle cx="322" cy="22" r="6" fill="var(--faint)"/><circle cx="182" cy="22" r="6" fill="var(--pos)"/><text x="334" y="26" font-size="11" fill="var(--muted)">38bps → 3bps</text><text x="160" y="60" text-anchor="end" font-size="12" fill="var(--text-body)">International</text><line x1="198" x2="378" y1="56" y2="56" stroke="var(--border-strong)" stroke-width="2"/><circle cx="378" cy="56" r="6" fill="var(--faint)"/><circle cx="198" cy="56" r="6" fill="var(--pos)"/><text x="390" y="60" font-size="11" fill="var(--muted)">52bps → 7bps</text><text x="160" y="94" text-anchor="end" font-size="12" fill="var(--text-body)">Fixed income</text><line x1="190" x2="334" y1="90" y2="90" stroke="var(--border-strong)" stroke-width="2"/><circle cx="334" cy="90" r="6" fill="var(--faint)"/><circle cx="190" cy="90" r="6" fill="var(--pos)"/><text x="346" y="94" font-size="11" fill="var(--muted)">41bps → 5bps</text><text x="160" y="128" text-anchor="end" font-size="12" fill="var(--text-body)">Real assets</text><line x1="246" x2="526" y1="124" y2="124" stroke="var(--border-strong)" stroke-width="2"/><circle cx="526" cy="124" r="6" fill="var(--faint)"/><circle cx="246" cy="124" r="6" fill="var(--pos)"/><text x="538" y="128" font-size="11" fill="var(--muted)">89bps → 19bps</text><circle cx="440" cy="178" r="5" fill="var(--faint)"/><text x="450" y="182" font-size="11" fill="var(--muted)">from</text><circle cx="510" cy="178" r="5" fill="var(--pos)"/><text x="520" y="182" font-size="11" fill="var(--muted)">to</text></svg><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Here the gray dot is the category average, teal is you — the legend redefines per recipe.</div></div><div class="inst">INSTANCE · skill: <b>retirement-and-goals</b> · recipe: <b>spending_shift</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Household spending · working years → retirement plan</span><span>$K/yr</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">$286K → $240K</b><span>housing and savings fall away; travel and health rise — deliberately</span></div><svg viewBox="0 0 640 220"><text x="160" y="26" text-anchor="end" font-size="12" fill="var(--text-body)">Housing</text><line x1="381" x2="519" y1="22" y2="22" stroke="var(--border-strong)" stroke-width="2"/><circle cx="519" cy="22" r="6" fill="var(--faint)"/><circle cx="381" cy="22" r="6" fill="var(--pos)"/><text x="531" y="26" font-size="11" fill="var(--muted)">96K → 58K</text><text x="160" y="60" text-anchor="end" font-size="12" fill="var(--text-body)">Travel &amp; leisure</text><line x1="272" x2="359" y1="56" y2="56" stroke="var(--border-strong)" stroke-width="2"/><circle cx="272" cy="56" r="6" fill="var(--pos)"/><circle cx="359" cy="56" r="6" fill="var(--pos)"/><text x="371" y="60" font-size="11" fill="var(--muted)">28K → 52K</text><text x="160" y="94" text-anchor="end" font-size="12" fill="var(--text-body)">Healthcare</text><line x1="221" x2="283" y1="90" y2="90" stroke="var(--border-strong)" stroke-width="2"/><circle cx="221" cy="90" r="6" fill="var(--faint)"/><circle cx="283" cy="90" r="6" fill="var(--pos)"/><text x="295" y="94" font-size="11" fill="var(--muted)">14K → 31K</text><text x="160" y="128" text-anchor="end" font-size="12" fill="var(--text-body)">Savings</text><line x1="170" x2="468" y1="124" y2="124" stroke="var(--border-strong)" stroke-width="2"/><circle cx="468" cy="124" r="6" fill="var(--faint)"/><circle cx="170" cy="124" r="6" fill="var(--pos)"/><text x="480" y="128" font-size="11" fill="var(--muted)">82K → 0K</text><text x="160" y="162" text-anchor="end" font-size="12" fill="var(--text-body)">Everything else</text><line x1="410" x2="530" y1="158" y2="158" stroke="var(--border-strong)" stroke-width="2"/><circle cx="410" cy="158" r="6" fill="var(--faint)"/><circle cx="530" cy="158" r="6" fill="var(--pos)"/><text x="542" y="162" font-size="11" fill="var(--muted)">66K → 99K</text><circle cx="440" cy="212" r="5" fill="var(--faint)"/><text x="450" y="216" font-size="11" fill="var(--muted)">from</text><circle cx="510" cy="212" r="5" fill="var(--pos)"/><text x="520" y="216" font-size="11" fill="var(--muted)">to</text></svg></div>
+<script>(function(){var t=document.getElementById('themeToggle');t.addEventListener('click',function(e){e.preventDefault();var h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';});})();</script>
+</body></html>

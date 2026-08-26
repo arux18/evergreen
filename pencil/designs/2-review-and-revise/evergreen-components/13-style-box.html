@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Style box · design handoff</title>
+<!--
+EVERGREEN INTELLIGENCE · GEN UI COMPONENT HANDOFF
+Component: Style box — 3×3 with benchmark deltas
+Single-hue heat, per-cell benchmark delta, verdict states whether tilts are intentional.
+Methodology note is mandatory (ours vs. Morningstar's).
+Register: private-bank / term-sheet. Verdict-first. Tabular numerals, hairline rules,
+two font weights (400/500), serif for hero numbers only. Dark mode required.
+DO NOT: gradients, shadows, decorative icons, extra color ramps, verdict below the evidence.
+
+HEMLOCK ALIGNMENT (2026-08-26) — palette aligned to hemlock-library.lib.pen tokens:
+single-hue heat re-based on the blue sequential ramp (§7): cell weight buckets → --seq1…--seq6
+(deeper = heavier; the ramp self-inverts in dark so "more" still reads as more) · cell ink follows
+the heatmap bold-tile rule — --inverse on the deepest cells, --ink on the rest, with the dark-mode
+flip point one step earlier (deep light cells are the luminous dark cells) · axis labels --muted ·
+fonts Heebo + Noto Serif · dark via html[data-theme="dark"] (Hemlock navy dark theme).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* HEMLOCK BASE — token values aligned to hemlock-library.lib.pen (2026-08-26).
+   Light = template integrity values, sky info, opaque status tiles; dark = Hemlock navy theme. Theme via html[data-theme]. */
+:root{
+--surface-1:#FFFFFF;--surface-2:#F8F7F6;--nest:#F8F7F6;--page-bg:#FFFFFF;
+--border:#EEEDEB;--border-strong:#D5D3D0;
+--ink:#0E0E0E;--text-header:#0E0E0E;--text-body:#403D3A;--muted:#5E5954;--faint:#8A8680;--inverse:#FFFFFF;
+--heading:#2952CC;
+--accent:#3A6AF8;--accent-hover:#2952CC;--accent-subtle:#EBF0FE;--accent-fill:rgba(58,106,248,0.15);
+--pos:#148338;--pos-mid:#1EBF51;--pos-strong:#148338;--pos-soft:#4ADE80;
+--neg:#C82320;--neg-strong:#C82320;--neg-soft:#F87171;
+--warn:#C85F1A;--info:#1F6193;--info-title:#1F6193;
+--pros-bg:#E9FFF0;--pros-border:#A9FDC4;
+--cons-bg:#FFEAEA;--cons-border:#FED5D4;
+--info-bg:#EBF6FF;--info-border:#AEDCFE;
+--warn-bg:#FFF1E9;--warn-border:#FEE4D2;
+--on-pos-fill:#10642B;--on-neg-fill:#641210;
+--seq1:#EBF0FE;--seq2:#C8D6FD;--seq3:#A5BCFC;--seq4:#7094FB;--seq5:#5A82F9;--seq6:#3A6AF8;--seq7:#2952CC;
+--cat1:#8951F0;--cat2:#06B6D4;--cat3:#312E81;--cat4:#3B82F6;--cat5:#0F766E;--cat6:#38BDF8;--cat7:#2DD4BF;--cat8:#A78BFA;
+--table-head-bg:var(--accent-hover);--table-head-ink:var(--inverse);--table-total-bg:var(--seq1);
+--font-sans:'Heebo',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--font-voice:'Noto Serif',Georgia,serif;}
+html[data-theme="dark"]{
+/* Hemlock navy dark theme (hemlock-library.lib.pen, Colors: Dark) — navy surfaces, navylight
+   text ramp, navy border steps. Accents, status, and chart tokens are the Hemlock dark values. */
+--surface-1:#131C31;--surface-2:#18223A;--nest:#18223A;--page-bg:#131C31;
+--border:#2A3A5C;--border-strong:#33476E;
+--ink:#D8E1F0;--text-header:#D8E1F0;--text-body:#B3C1DB;--muted:#697DA0;--faint:#52637F;--inverse:#0E0E0E;
+--heading:#7094FB;
+--accent:#5A82F9;--accent-hover:#7094FB;--accent-subtle:#16304A;--accent-fill:rgba(90,130,249,0.15);
+--pos:#4ADE80;--pos-mid:#74D791;--pos-strong:#4ADE80;
+--neg:#F87171;--neg-strong:#FCA5A5;
+--warn:#FB924D;--info:#38BDF8;--info-title:#38BDF8;
+--pros-bg:#12291C;--pros-border:#245234;
+--cons-bg:#3A1B1E;--cons-border:#542427;
+--info-bg:#10263C;--info-border:#16304A;
+--warn-bg:#33200F;--warn-border:#5E3A18;
+--on-pos-fill:#0E0E0E;--on-neg-fill:#0E0E0E;
+--seq1:#163196;--seq2:#2952CC;--seq3:#3A6AF8;--seq4:#5A82F9;--seq5:#7094FB;--seq6:#A5BCFC;--seq7:#C8D6FD;
+--cat1:#B198F0;--cat2:#5FD3E6;--cat3:#8480D9;--cat4:#7AA0F5;--cat5:#4FC0A6;--cat6:#84D2F7;--cat7:#84E6CC;--cat8:#C7BAF7;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--page-bg);max-width:680px;margin:3rem auto;padding:0 1.5rem;}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;}
+td,th{padding:7px 0;text-align:right;font-weight:400;}
+td:first-child,th:first-child{text-align:left;}
+.kicker{font-size:14px;color:var(--muted);letter-spacing:.04em;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;}
+.hero{display:flex;align-items:baseline;gap:16px;margin-bottom:1.25rem;}
+.hero b{font-family:var(--font-voice);font-size:36px;font-weight:400;color:var(--ink);}
+.hero span{font-size:14px;color:var(--text-body);}
+.foot{font-size:12px;color:var(--faint);margin-top:.75rem;}
+.card{background:var(--surface-2);border-radius:8px;padding:10px 14px;}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:4px 10px;border-radius:999px;border:1px solid var(--border-strong);color:var(--text-body);}
+text{font-family:var(--font-sans);}
+.ckA{color:#FFFFFF;}                             /* deep cells, light mode (seq5–6) */
+html[data-theme="dark"] .ckA{color:#0E0E0E;}     /* …which are the luminous cells in dark */
+.ckB{color:#0E0E0E;}                             /* mid cells, both modes (seq3–4) */
+.ckC{color:var(--ink);}                          /* pale light / deep dark cells (seq1–2) */
+.ckA,.ckB,.ckC{transition:none;}
+#themeToggle{position:fixed;top:12px;right:16px;font-size:11px;color:var(--faint);text-decoration:none;letter-spacing:.04em;}
+</style>
+<script>document.documentElement.dataset.theme='light';/* LIGHT is the shipping target — the app has no dark mode yet; dark is toggle-only, for design review */</script>
+</head><body>
+<a href="#" id="themeToggle">light / dark</a>
+
+<div class="kicker"><span>Equity style · your portfolio vs. benchmark</span><span>$3.1M equity sleeve</span></div>
+<div class="hero"><b>Large-blend core, as designed</b><span>73% large-cap · growth tilt +1pt vs. benchmark — within tolerance</span></div>
+<div style="display:grid;grid-template-columns:56px repeat(3,1fr);gap:8px;align-items:center;"><div></div><div style="text-align:center;font-size:12px;color:var(--muted)">Value</div><div style="text-align:center;font-size:12px;color:var(--muted)">Blend</div><div style="text-align:center;font-size:12px;color:var(--muted)">Growth</div><div style="font-size:12px;color:var(--muted)">Large</div><div style="background:var(--seq5);border-radius:8px;padding:12px 8px;text-align:center;" class="ckA">
+<div style="font-size:18px;font-weight:500;">24%</div>
+<div style="font-size:11px;opacity:.85;">+2 vs bench</div></div><div style="background:var(--seq6);border-radius:8px;padding:12px 8px;text-align:center;" class="ckA">
+<div style="font-size:18px;font-weight:500;">31%</div>
+<div style="font-size:11px;opacity:.85;">-2 vs bench</div></div><div style="background:var(--seq4);border-radius:8px;padding:12px 8px;text-align:center;" class="ckB">
+<div style="font-size:18px;font-weight:500;">18%</div>
+<div style="font-size:11px;opacity:.85;">-1 vs bench</div></div><div style="font-size:12px;color:var(--muted)">Mid</div><div style="background:var(--seq2);border-radius:8px;padding:12px 8px;text-align:center;" class="ckC">
+<div style="font-size:18px;font-weight:500;">6%</div>
+<div style="font-size:11px;opacity:.85;">· vs bench</div></div><div style="background:var(--seq3);border-radius:8px;padding:12px 8px;text-align:center;" class="ckB">
+<div style="font-size:18px;font-weight:500;">9%</div>
+<div style="font-size:11px;opacity:.85;">+1 vs bench</div></div><div style="background:var(--seq2);border-radius:8px;padding:12px 8px;text-align:center;" class="ckC">
+<div style="font-size:18px;font-weight:500;">5%</div>
+<div style="font-size:11px;opacity:.85;">-1 vs bench</div></div><div style="font-size:12px;color:var(--muted)">Small</div><div style="background:var(--seq1);border-radius:8px;padding:12px 8px;text-align:center;" class="ckC">
+<div style="font-size:18px;font-weight:500;">3%</div>
+<div style="font-size:11px;opacity:.85;">+1 vs bench</div></div><div style="background:var(--seq1);border-radius:8px;padding:12px 8px;text-align:center;" class="ckC">
+<div style="font-size:18px;font-weight:500;">2%</div>
+<div style="font-size:11px;opacity:.85;">· vs bench</div></div><div style="background:var(--seq1);border-radius:8px;padding:12px 8px;text-align:center;" class="ckC">
+<div style="font-size:18px;font-weight:500;">2%</div>
+<div style="font-size:11px;opacity:.85;">· vs bench</div></div></div>
+<p class="foot">Single-hue heat by weight; each cell carries its delta vs. benchmark. Document our own holdings-to-cell methodology — clients will compare to Morningstar.</p>
+<script>(function(){var t=document.getElementById('themeToggle');t.addEventListener('click',function(e){e.preventDefault();var h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';});})();</script>
+</body></html>

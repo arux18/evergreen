@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Generic component: Financial waterfall schedule · design handoff</title>
+<!--
+EVERGREEN INTELLIGENCE · GEN UI COMPONENT HANDOFF
+Component: FINANCIAL WATERFALL SCHEDULE (generic) — anatomy + four instances
+This file shows the GENERIC component once (anatomy + data contract), then real instances
+re-using it unchanged. Design the skeleton once; every instance inherits. The LLM only fills the
+schema; the component owns all rendering.
+Register: private-bank / term-sheet. Verdict-first. Tabular numerals, hairline rules,
+two font weights (400/500), serif for hero numbers only. Dark mode required.
+DO NOT: gradients, shadows, decorative icons, extra color ramps, verdict below the evidence.
+
+HEMLOCK ALIGNMENT (2026-08-26) — palette aligned to hemlock-library.lib.pen tokens:
+tables keep the quiet register — hairline rules, muted headers, weighted
+totals (banded header / seq-100 totals reviewed and rejected for proof tables) · card/track fills → --surface-2 ·
+fonts Heebo + Noto Serif · dark via html[data-theme="dark"] (Hemlock navy dark theme).
+Note: the anatomy's optional Δ row is not rendered by any instance; when used, paint it
+--accent-subtle with --ink text.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* HEMLOCK BASE — token values aligned to hemlock-library.lib.pen (2026-08-26).
+   Light = template integrity values, sky info, opaque status tiles; dark = Hemlock navy theme. Theme via html[data-theme]. */
+:root{
+--surface-1:#FFFFFF;--surface-2:#F8F7F6;--nest:#F8F7F6;--page-bg:#FFFFFF;
+--border:#EEEDEB;--border-strong:#D5D3D0;
+--ink:#0E0E0E;--text-header:#0E0E0E;--text-body:#403D3A;--muted:#5E5954;--faint:#8A8680;--inverse:#FFFFFF;
+--heading:#2952CC;
+--accent:#3A6AF8;--accent-hover:#2952CC;--accent-subtle:#EBF0FE;--accent-fill:rgba(58,106,248,0.15);
+--pos:#148338;--pos-mid:#1EBF51;--pos-strong:#148338;--pos-soft:#4ADE80;
+--neg:#C82320;--neg-strong:#C82320;--neg-soft:#F87171;
+--warn:#C85F1A;--info:#1F6193;--info-title:#1F6193;
+--pros-bg:#E9FFF0;--pros-border:#A9FDC4;
+--cons-bg:#FFEAEA;--cons-border:#FED5D4;
+--info-bg:#EBF6FF;--info-border:#AEDCFE;
+--warn-bg:#FFF1E9;--warn-border:#FEE4D2;
+--on-pos-fill:#10642B;--on-neg-fill:#641210;
+--seq1:#EBF0FE;--seq2:#C8D6FD;--seq3:#A5BCFC;--seq4:#7094FB;--seq5:#5A82F9;--seq6:#3A6AF8;--seq7:#2952CC;
+--cat1:#8951F0;--cat2:#06B6D4;--cat3:#312E81;--cat4:#3B82F6;--cat5:#0F766E;--cat6:#38BDF8;--cat7:#2DD4BF;--cat8:#A78BFA;
+--table-head-bg:var(--accent-hover);--table-head-ink:var(--inverse);--table-total-bg:var(--seq1);
+--font-sans:'Heebo',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--font-voice:'Noto Serif',Georgia,serif;}
+html[data-theme="dark"]{
+/* Hemlock navy dark theme (hemlock-library.lib.pen, Colors: Dark) — navy surfaces, navylight
+   text ramp, navy border steps. Accents, status, and chart tokens are the Hemlock dark values. */
+--surface-1:#131C31;--surface-2:#18223A;--nest:#18223A;--page-bg:#131C31;
+--border:#2A3A5C;--border-strong:#33476E;
+--ink:#D8E1F0;--text-header:#D8E1F0;--text-body:#B3C1DB;--muted:#697DA0;--faint:#52637F;--inverse:#0E0E0E;
+--heading:#7094FB;
+--accent:#5A82F9;--accent-hover:#7094FB;--accent-subtle:#16304A;--accent-fill:rgba(90,130,249,0.15);
+--pos:#4ADE80;--pos-mid:#74D791;--pos-strong:#4ADE80;
+--neg:#F87171;--neg-strong:#FCA5A5;
+--warn:#FB924D;--info:#38BDF8;--info-title:#38BDF8;
+--pros-bg:#12291C;--pros-border:#245234;
+--cons-bg:#3A1B1E;--cons-border:#542427;
+--info-bg:#10263C;--info-border:#16304A;
+--warn-bg:#33200F;--warn-border:#5E3A18;
+--on-pos-fill:#0E0E0E;--on-neg-fill:#0E0E0E;
+--seq1:#163196;--seq2:#2952CC;--seq3:#3A6AF8;--seq4:#5A82F9;--seq5:#7094FB;--seq6:#A5BCFC;--seq7:#C8D6FD;
+--cat1:#B198F0;--cat2:#5FD3E6;--cat3:#8480D9;--cat4:#7AA0F5;--cat5:#4FC0A6;--cat6:#84D2F7;--cat7:#84E6CC;--cat8:#C7BAF7;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--page-bg);max-width:680px;margin:3rem auto;padding:0 1.5rem;}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;}
+td,th{padding:7px 0;text-align:right;font-weight:400;}
+td:first-child,th:first-child{text-align:left;}
+.hd{color:var(--muted);font-size:12px;border-bottom:.5px solid var(--border);}
+.tot{font-weight:500;border-top:.5px solid var(--border-strong);}
+.kicker{font-size:14px;color:var(--muted);letter-spacing:.04em;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;}
+.hero{display:flex;align-items:baseline;gap:16px;margin-bottom:1.25rem;}
+.hero b{font-family:var(--font-voice);font-size:36px;font-weight:400;color:var(--ink);}
+.hero span{font-size:14px;color:var(--text-body);}
+.foot{font-size:12px;color:var(--faint);margin-top:.75rem;}
+.card{background:var(--surface-2);border-radius:8px;padding:10px 14px;}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:3px 9px;border-radius:999px;border:1px solid var(--border-strong);color:var(--text-body);}
+.inst{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.06em;margin:2.2rem 0 6px;}
+.inst b{color:var(--text-body);font-weight:500;}
+text{font-family:var(--font-sans);}
+#themeToggle{position:fixed;top:12px;right:16px;font-size:11px;color:var(--faint);text-decoration:none;letter-spacing:.04em;}
+</style>
+<script>document.documentElement.dataset.theme='light';/* LIGHT is the shipping target — the app has no dark mode yet; dark is toggle-only, for design review */</script>
+</head><body>
+<a href="#" id="themeToggle">light / dark</a>
+
+<div class="hero"><b>Financial waterfall schedule</b><span>generic component · the analysis as numbers: line items building to bottom lines</span></div><div style="font-size:14px;font-weight:500;margin-bottom:8px;">Anatomy — designed once, inherited by every instance</div>
+<div style="border:1px dashed var(--border-strong);border-radius:12px;padding:1rem 1.25rem;"><div style="font-size:12px;color:var(--muted);line-height:1.9;">① kicker — what is being scheduled · period · context tag</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">② hero — the bottom-line verdict, stated as a decision-relevant sentence</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">③ column headers — single | multi-period (years) | comparison (options) forms</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">④ line-item rows — signed amounts, indented sub-items, negatives in parentheses</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">⑤ subtotal rows — weighted by a stronger rule, never bold-only</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">⑥ bottom line(s) — one per column; comparison form adds a Δ row</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">⑦ disclosure footer — assumptions, always present</div></div>
+<div style="font-size:12px;color:var(--muted);margin:.8rem 0 0;">Data contract: <code style="font-size:11px;">{ form: single|multi_period|comparison, columns[], rows:[{label,amounts[],type:item|sub|subtotal}], bottom_lines[], delta_row?, disclosures[] } — totals computed by the component, never the LLM</code></div><div class="inst">INSTANCE · skill: <b>real-estate</b> · recipe: <b>run_rate_comparison (form: comparison)</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Cost of owning vs. renting · year one · $2.4M home vs. $9,500/mo</span><span>run-rate, not projection</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">$10.3K/mo more to own</b><span>$238,725 vs. $114,600 economic cost — before any appreciation</span></div><table><tr class="hd"><th></th><th>Own /mo</th><th>Own /yr</th><th>Rent /yr</th></tr><tr><td style="color:var(--text-body)">Mortgage (6.25%, 30-yr)</td><td style="">11,822</td><td style="">141,861</td><td style="">—</td></tr><tr><td style="color:var(--text-body)">&nbsp;&nbsp;· principal → equity</td><td style="">1,875</td><td style="">22,498</td><td style=""></td></tr><tr><td style="color:var(--text-body)">Property taxes + insurance + maintenance</td><td style="">8,300</td><td style="">99,600</td><td style="">600</td></tr><tr><td style="color:var(--text-body)">Rent</td><td style="">—</td><td style="">—</td><td style="">114,000</td></tr><tr class="tot"><td style="">Cash cost</td><td style="">20,122</td><td style="">241,461</td><td style="">114,600</td></tr><tr class="tot"><td style="">Economic cost (less equity &amp; tax benefit, plus opportunity cost)</td><td style="">19,894</td><td style="">238,725</td><td style="">114,600</td></tr></table><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Δ $124,125/yr favoring renting — appreciation must exceed ~5.2% of home value to close it. Same recipe fits: lease vs. buy a car, private school vs. public + invest, second home vs. renting one.</div></div><div class="inst">INSTANCE · skill: <b>real-estate</b> · recipe: <b>multi_year_comparison (form: comparison)</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Rent vs. buy · 7-year hold</span><span>cumulative</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">Renting wins by $330K</b><span>each option builds to its own bottom line</span></div><table><tr class="hd"><th></th><th>Buy</th><th>Rent</th></tr><tr><td style="color:var(--text-body)">Gross outflows</td><td style="">2,282,000</td><td style="">891,000</td></tr><tr><td style="color:var(--text-body)">Tax benefit / investment growth</td><td style="">(56,000)</td><td style="">(235,000)</td></tr><tr><td style="color:var(--text-body)">Net sale equity, yr 7</td><td style="">(1,240,000)</td><td style="">—</td></tr><tr class="tot"><td style="">Net 7-year cost</td><td style="">986,000</td><td style="">656,000</td></tr></table><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Condensed view — full line items expand on tap. Verdict names the condition that flips it (5.5%+ appreciation or 22+ years).</div></div><div class="inst">INSTANCE · skill: <b>portfolio-analysis</b> · recipe: <b>distribution_waterfall (form: single)</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Fund distribution · $1.0M committed · 2.2x gross</span><span>American waterfall, 8% pref</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">$1.96M to you (1.96x)</b><span>GP carry $240K = exactly 20% of profit ✓</span></div><table><tr class="hd"><th>Tier</th><th>Distributed</th><th>To you</th><th>Running</th></tr><tr><td style="color:var(--text-body)">1 · Return of capital</td><td style="">1,000,000</td><td style="">1,000,000</td><td style="">1,000,000</td></tr><tr><td style="color:var(--text-body)">2 · Preferred return 8%</td><td style="">360,000</td><td style="">360,000</td><td style="">1,360,000</td></tr><tr><td style="color:var(--text-body)">3 · GP catch-up</td><td style="">90,000</td><td style="">—</td><td style="">1,360,000</td></tr><tr><td style="color:var(--text-body)">4 · Split 80/20</td><td style="">750,000</td><td style="">600,000</td><td style="">1,960,000</td></tr><tr class="tot"><td style="">Total</td><td style="">2,200,000</td><td style="">1,960,000</td><td style=""></td></tr></table><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Check row is mandatory — it's how a sophisticated LP verifies the catch-up. Terms from the LPA, never defaults.</div></div><div class="inst">INSTANCE · skill: <b>tax-aware-investing</b> · recipe: <b>transition_cost (form: single)</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Transition to direct-index core · tax cost</span><span>$3.2M taxable</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">$104,720 (3.3%)</b><span>recovered in ~4 years of expected tax alpha</span></div><table><tr class="hd"><th></th><th>Amount</th></tr><tr><td style="color:var(--text-body)">Long-term gain realized</td><td style="">560,000</td></tr><tr><td style="color:var(--text-body)">Federal LTCG @ 20% + NIIT 3.8%</td><td style="">133,280</td></tr><tr><td style="color:var(--text-body)">Harvested losses applied</td><td style="">(28,560)</td></tr><tr class="tot"><td style="">Net transition tax</td><td style="">104,720</td></tr></table><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">All lots long-term; short-term lots would get their own lines at ordinary rates. Pairs with the decision receipt.</div></div>
+<script>(function(){var t=document.getElementById('themeToggle');t.addEventListener('click',function(e){e.preventDefault();var h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';});})();</script>
+</body></html>

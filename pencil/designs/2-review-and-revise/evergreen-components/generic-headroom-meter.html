@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Generic component: Headroom meter · design handoff</title>
+<!--
+EVERGREEN INTELLIGENCE · GEN UI COMPONENT HANDOFF
+Component: HEADROOM METER (generic) — one component, shown with three instances filled as the AI would fill them
+This file shows the GENERIC component once (anatomy + data contract), then three real instances
+re-using it unchanged. Design the skeleton once; every instance inherits. The LLM only fills the
+schema; the component owns all rendering. Same pattern as our generic time series.
+Register: private-bank / term-sheet. Verdict-first. Tabular numerals, hairline rules,
+two font weights (400/500), serif for hero numbers only. Dark mode required.
+DO NOT: gradients, shadows, decorative icons, extra color ramps, verdict below the evidence.
+
+HEMLOCK ALIGNMENT (2026-08-26) — palette aligned to hemlock-library.lib.pen tokens:
+safe zone → --pos / --pos-soft with --on-pos-fill ink · spill zone → --neg-soft with --on-neg-fill
+ink, caption --neg · "used capacity" fill (was purple) → --seq2 with --ink label — categorical,
+not info, so the no-purple-in-dark ruling does not apply but the palette still comes from the
+token system · warning caption → --warn · proof table in the quiet register (hairline rules, muted
+header, weighted total — band rejected) · instruction card --surface-2 flat · fonts Heebo + Noto Serif ·
+dark via html[data-theme="dark"] (Hemlock navy dark theme).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* HEMLOCK BASE — token values aligned to hemlock-library.lib.pen (2026-08-26).
+   Light = template integrity values, sky info, opaque status tiles; dark = Hemlock navy theme. Theme via html[data-theme]. */
+:root{
+--surface-1:#FFFFFF;--surface-2:#F8F7F6;--nest:#F8F7F6;--page-bg:#FFFFFF;
+--border:#EEEDEB;--border-strong:#D5D3D0;
+--ink:#0E0E0E;--text-header:#0E0E0E;--text-body:#403D3A;--muted:#5E5954;--faint:#8A8680;--inverse:#FFFFFF;
+--heading:#2952CC;
+--accent:#3A6AF8;--accent-hover:#2952CC;--accent-subtle:#EBF0FE;--accent-fill:rgba(58,106,248,0.15);
+--pos:#148338;--pos-mid:#1EBF51;--pos-strong:#148338;--pos-soft:#4ADE80;
+--neg:#C82320;--neg-strong:#C82320;--neg-soft:#F87171;
+--warn:#C85F1A;--info:#1F6193;--info-title:#1F6193;
+--pros-bg:#E9FFF0;--pros-border:#A9FDC4;
+--cons-bg:#FFEAEA;--cons-border:#FED5D4;
+--info-bg:#EBF6FF;--info-border:#AEDCFE;
+--warn-bg:#FFF1E9;--warn-border:#FEE4D2;
+--on-pos-fill:#10642B;--on-neg-fill:#641210;
+--seq1:#EBF0FE;--seq2:#C8D6FD;--seq3:#A5BCFC;--seq4:#7094FB;--seq5:#5A82F9;--seq6:#3A6AF8;--seq7:#2952CC;
+--cat1:#8951F0;--cat2:#06B6D4;--cat3:#312E81;--cat4:#3B82F6;--cat5:#0F766E;--cat6:#38BDF8;--cat7:#2DD4BF;--cat8:#A78BFA;
+--table-head-bg:var(--accent-hover);--table-head-ink:var(--inverse);--table-total-bg:var(--seq1);
+--font-sans:'Heebo',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--font-voice:'Noto Serif',Georgia,serif;}
+html[data-theme="dark"]{
+/* Hemlock navy dark theme (hemlock-library.lib.pen, Colors: Dark) — navy surfaces, navylight
+   text ramp, navy border steps. Accents, status, and chart tokens are the Hemlock dark values. */
+--surface-1:#131C31;--surface-2:#18223A;--nest:#18223A;--page-bg:#131C31;
+--border:#2A3A5C;--border-strong:#33476E;
+--ink:#D8E1F0;--text-header:#D8E1F0;--text-body:#B3C1DB;--muted:#697DA0;--faint:#52637F;--inverse:#0E0E0E;
+--heading:#7094FB;
+--accent:#5A82F9;--accent-hover:#7094FB;--accent-subtle:#16304A;--accent-fill:rgba(90,130,249,0.15);
+--pos:#4ADE80;--pos-mid:#74D791;--pos-strong:#4ADE80;
+--neg:#F87171;--neg-strong:#FCA5A5;
+--warn:#FB924D;--info:#38BDF8;--info-title:#38BDF8;
+--pros-bg:#12291C;--pros-border:#245234;
+--cons-bg:#3A1B1E;--cons-border:#542427;
+--info-bg:#10263C;--info-border:#16304A;
+--warn-bg:#33200F;--warn-border:#5E3A18;
+--on-pos-fill:#0E0E0E;--on-neg-fill:#0E0E0E;
+--seq1:#163196;--seq2:#2952CC;--seq3:#3A6AF8;--seq4:#5A82F9;--seq5:#7094FB;--seq6:#A5BCFC;--seq7:#C8D6FD;
+--cat1:#B198F0;--cat2:#5FD3E6;--cat3:#8480D9;--cat4:#7AA0F5;--cat5:#4FC0A6;--cat6:#84D2F7;--cat7:#84E6CC;--cat8:#C7BAF7;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--page-bg);max-width:680px;margin:3rem auto;padding:0 1.5rem;}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;}
+td,th{padding:7px 0;text-align:right;font-weight:400;}
+td:first-child,th:first-child{text-align:left;}
+.hd{color:var(--muted);font-size:12px;border-bottom:.5px solid var(--border);}
+.tot{font-weight:500;border-top:.5px solid var(--border-strong);}
+.kicker{font-size:14px;color:var(--muted);letter-spacing:.04em;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;}
+.hero{display:flex;align-items:baseline;gap:16px;margin-bottom:1.25rem;}
+.hero b{font-family:var(--font-voice);font-size:36px;font-weight:400;color:var(--ink);}
+.hero span{font-size:14px;color:var(--text-body);}
+.foot{font-size:12px;color:var(--faint);margin-top:.75rem;}
+.card{background:var(--surface-2);border-radius:8px;padding:10px 14px;}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:3px 9px;border-radius:999px;border:1px solid var(--border-strong);color:var(--text-body);}
+.inst{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.06em;margin:2.2rem 0 6px;}
+.inst b{color:var(--text-body);font-weight:500;}
+text{font-family:var(--font-sans);}
+#themeToggle{position:fixed;top:12px;right:16px;font-size:11px;color:var(--faint);text-decoration:none;letter-spacing:.04em;}
+</style>
+<script>document.documentElement.dataset.theme='light';/* LIGHT is the shipping target — the app has no dark mode yet; dark is toggle-only, for design review */</script>
+</head><body>
+<a href="#" id="themeToggle">light / dark</a>
+
+<div class="hero"><b>Headroom meter</b><span>generic component · answers "how much can I do X before Y?"</span></div>
+
+<div style="font-size:14px;font-weight:500;margin-bottom:8px;">Anatomy — designed once, inherited by every instance</div>
+<div style="border:1px dashed var(--border-strong);border-radius:12px;padding:1.1rem 1.25rem;color:var(--muted);">
+<div class="kicker"><span>① kicker — subject · period · filing context</span><span>② context tag</span></div>
+<div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;color:var(--muted);">③ hero — the actionable limit</b><span>④ one-line meaning</span></div>
+<div style="display:flex;height:30px;border-radius:8px;overflow:hidden;margin-bottom:5px;">
+<div style="width:58%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:12px;">⑤ capacity used / safe zone</div>
+<div style="width:42%;background:var(--surface-2);border-left:2px dashed var(--border-strong);display:flex;align-items:center;justify-content:center;font-size:12px;">⑤ spill / over-the-line zone</div></div>
+<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:1rem;"><span>⑥ left caption</span><span>⑥ warning caption</span></div>
+<div style="font-size:12px;border-top:.5px solid var(--border);padding-top:8px;">⑦ proof table — the math, rows to a weighted total</div>
+<div class="card" style="margin-top:.9rem;font-size:12px;">⑧ instruction — the "stop at $X" / "do this" line, optionally actionable</div>
+<div style="font-size:11px;margin-top:.6rem;">⑨ disclosure footer — always present</div>
+</div>
+<div style="font-size:12px;color:var(--muted);margin:.8rem 0 0;font-family:var(--font-sans);">Data contract (LLM fills; component renders; engine computes): <code style="font-size:11px;">{ kicker:{left,right}, hero:{value,context}, bar:{segments:[{label,width_pct,zone:safe|spill|used|remaining}]}, captions:{left,right}, table:{cols[],rows[],total_row}, instruction:{text,action?}, disclosures[] }</code></div>
+
+<div class="inst">INSTANCE · skill: <b>tax-planning</b> · recipe: <b>roth_conversion</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;">
+<div class="kicker"><span>Roth conversion · 2026 · married filing jointly</span><span>baseline taxable income $210,000</span></div>
+<div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">$64,488</b><span>to convert $250,000 · 25.8% effective</span></div>
+<div style="margin-bottom:1rem;"><div style="display:flex;height:30px;border-radius:8px;overflow:hidden;"><div style="width:.56%;min-width:3px;background:var(--pos);"></div><div style="width:76.9%;background:var(--pos-soft);display:flex;align-items:center;justify-content:center;"><span style="font-size:12px;font-weight:500;color:var(--on-pos-fill)">24% · $192,150</span></div><div style="width:22.6%;background:var(--neg-soft);display:flex;align-items:center;justify-content:center;"><span style="font-size:12px;font-weight:500;color:var(--on-neg-fill)">32% · $56,450</span></div></div>
+<div style="display:flex;justify-content:space-between;margin-top:5px;"><span style="font-size:12px;color:var(--muted)">22% room · $1,400</span><span style="font-size:12px;color:var(--neg);font-weight:500">$56,450 spills into 32%</span></div></div>
+<table><tr class="hd"><th>Bracket</th><th>Filled</th><th>Tax</th></tr><tr><td style="color:var(--text-body)">22% — remaining room</td><td style="">1,400</td><td style="">308</td></tr><tr><td style="color:var(--text-body)">24%</td><td style="">192,150</td><td style="">46,116</td></tr><tr><td style="color:var(--text-body)">32%</td><td style="">56,450</td><td style="">18,064</td></tr><tr class="tot"><td>Total</td><td>250,000</td><td>64,488</td></tr></table>
+<div class="card" style="margin-top:.9rem;font-size:14px;color:var(--text-body);">Cap the conversion at <b style="color:var(--ink);font-weight:500">$193,550</b> to keep every dollar out of the 32% bracket</div>
+<div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Illustrative 2026 brackets · federal only · not NII (no NIIT) · MAGI crosses IRMAA tier 2 — surcharge in 2028, per spouse</div>
+</div>
+<div class="inst">INSTANCE · skill: <b>equity-compensation</b> · recipe: <b>amt_exercise_headroom</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;">
+<div class="kicker"><span>ISO exercise · 2026 · 10,000 vested options</span><span>strike $12 · FMV $50 · spread $38/sh</span></div>
+<div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">4,100 shares</b><span>exercisable this year with zero AMT</span></div>
+<div style="margin-bottom:1rem;"><div style="display:flex;height:30px;border-radius:8px;overflow:hidden;"><div style="width:41%;background:var(--pos-soft);display:flex;align-items:center;justify-content:center;"><span style="font-size:12px;font-weight:500;color:var(--on-pos-fill)">AMT-free · $155,800 spread</span></div><div style="width:59%;background:var(--neg-soft);display:flex;align-items:center;justify-content:center;"><span style="font-size:12px;font-weight:500;color:var(--on-neg-fill)">AMT territory · 26¢ per $1</span></div></div>
+<div style="display:flex;justify-content:space-between;margin-top:5px;"><span style="font-size:12px;color:var(--muted)">0 shares</span><span style="font-size:12px;color:var(--neg);font-weight:500">full grant = $58,292 AMT</span></div></div>
+<table><tr class="hd"><th>Shares exercised</th><th>Spread</th><th>AMT owed</th></tr><tr><td style="color:var(--text-body)">4,100 (the headroom)</td><td style="">155,800</td><td style="">0</td></tr><tr><td style="color:var(--text-body)">7,000</td><td style="">266,000</td><td style="">28,652</td></tr><tr><td style="color:var(--text-body)">10,000 (full grant)</td><td style="">380,000</td><td style="">58,292</td></tr><tr class="tot"><td></td><td></td><td></td></tr></table>
+<div class="card" style="margin-top:.9rem;font-size:14px;color:var(--text-body);">Exercise <b style="color:var(--ink);font-weight:500">4,100 now</b>, revisit in January — headroom resets each tax year; AMT paid becomes a recoverable credit</div>
+<div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Illustrative 2026 AMT parameters · starts the LTCG clock · state AMT not shown</div>
+</div>
+<div class="inst">INSTANCE · skill: <b>estate-and-wealth-transfer</b> · recipe: <b>gift_exemption_meter</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;">
+<div class="kicker"><span>Gift &amp; estate exemption · household</span><span>as of Aug 2026</span></div>
+<div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">$25.4M runway</b><span>combined remaining exemption · plus $114K/yr that costs nothing</span></div>
+<div style="margin-bottom:1rem;"><div style="display:flex;height:30px;border-radius:8px;overflow:hidden;"><div style="width:15.3%;background:var(--seq2);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:500;color:var(--ink)">used $2.30M</span></div><div style="width:84.7%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;"><span style="font-size:12px;font-weight:500;color:var(--text-body)">remaining $12.70M per spouse</span></div></div>
+<div style="display:flex;justify-content:space-between;margin-top:5px;"><span style="font-size:12px;color:var(--muted)">2024 gifts to children's trusts</span><span style="font-size:12px;color:var(--muted)">lifetime exemption $15.0M (2026)</span></div></div>
+<table><tr class="hd"><th>Capacity</th><th>Amount</th><th>Notes</th></tr><tr><td style="color:var(--text-body)">Annual exclusion, this year</td><td style="">114,000</td><td style="">costs nothing</td></tr><tr><td style="color:var(--text-body)">529 superfund, per child</td><td style="">190,000</td><td style="">5 yrs at once</td></tr><tr><td style="color:var(--text-body)">Lifetime remaining — each spouse</td><td style="">12,700,000</td><td style="">portability preserved</td></tr><tr class="tot"><td>Combined runway</td><td>25,400,000</td><td></td></tr></table>
+<div class="card" style="margin-top:.9rem;font-size:14px;color:var(--text-body);">The <b style="color:var(--ink);font-weight:500">$114K annual exclusion</b> never touches the lifetime number — use it every year</div>
+<div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Illustrative 2026 exemption $15.0M/person · Form 709 filings on record · education only, not legal advice</div>
+</div>
+<p class="foot" style="margin-top:2rem;">One skeleton, three domains, zero per-instance design. Other recipes ready for the same slot-fill: gains realization budget, 0% LTCG harvest window, charitable AGI headroom, QCD capacity, IRMAA-safe conversion. Skills carry the recipe (which slots, what instruction register); the engine carries the numbers; the component carries all rendering.</p>
+<script>(function(){var t=document.getElementById('themeToggle');t.addEventListener('click',function(e){e.preventDefault();var h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';});})();</script>
+</body></html>

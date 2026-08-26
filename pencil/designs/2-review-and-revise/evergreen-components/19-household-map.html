@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Household map — relationship map (v5) · design handoff</title>
+<!--
+EVERGREEN INTELLIGENCE · GEN UI COMPONENT HANDOFF
+Component: HOUSEHOLD MAP — a true relationship map: people, entities, ownership and beneficiary flows
+Editorial register applied to a graph: typographic nodes (no boxes), curved hairline edges,
+solid = ownership/control, dashed = beneficiary designation, dotted = advised-not-custodied.
+The one red edge leaving the household IS the finding — only a map can show it.
+Register: private-bank / term-sheet. Verdict-first. Tabular numerals, hairline rules,
+two font weights (400/500), serif for hero numbers only. Dark mode required.
+DO NOT: gradients, shadows, decorative icons, extra color ramps, verdict below the evidence.
+
+HEMLOCK ALIGNMENT (2026-08-26) — palette aligned to hemlock-library.lib.pen tokens:
+node ink --ink / --text-body / --muted · edges --border-strong hairlines · the
+leaving-the-household edge, its node, and its label → --neg · amber flag count → --warn ·
+summary cards --surface-2 flat (no shadow, no gradient in dark) · title Noto Serif ·
+fonts Heebo + Noto Serif · dark via html[data-theme="dark"] (Hemlock navy dark theme).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* HEMLOCK BASE — token values aligned to hemlock-library.lib.pen (2026-08-26).
+   Light = template integrity values, sky info, opaque status tiles; dark = Hemlock navy theme. Theme via html[data-theme]. */
+:root{
+--surface-1:#FFFFFF;--surface-2:#F8F7F6;--nest:#F8F7F6;--page-bg:#FFFFFF;
+--border:#EEEDEB;--border-strong:#D5D3D0;
+--ink:#0E0E0E;--text-header:#0E0E0E;--text-body:#403D3A;--muted:#5E5954;--faint:#8A8680;--inverse:#FFFFFF;
+--heading:#2952CC;
+--accent:#3A6AF8;--accent-hover:#2952CC;--accent-subtle:#EBF0FE;--accent-fill:rgba(58,106,248,0.15);
+--pos:#148338;--pos-mid:#1EBF51;--pos-strong:#148338;--pos-soft:#4ADE80;
+--neg:#C82320;--neg-strong:#C82320;--neg-soft:#F87171;
+--warn:#C85F1A;--info:#1F6193;--info-title:#1F6193;
+--pros-bg:#E9FFF0;--pros-border:#A9FDC4;
+--cons-bg:#FFEAEA;--cons-border:#FED5D4;
+--info-bg:#EBF6FF;--info-border:#AEDCFE;
+--warn-bg:#FFF1E9;--warn-border:#FEE4D2;
+--on-pos-fill:#10642B;--on-neg-fill:#641210;
+--seq1:#EBF0FE;--seq2:#C8D6FD;--seq3:#A5BCFC;--seq4:#7094FB;--seq5:#5A82F9;--seq6:#3A6AF8;--seq7:#2952CC;
+--cat1:#8951F0;--cat2:#06B6D4;--cat3:#312E81;--cat4:#3B82F6;--cat5:#0F766E;--cat6:#38BDF8;--cat7:#2DD4BF;--cat8:#A78BFA;
+--table-head-bg:var(--accent-hover);--table-head-ink:var(--inverse);--table-total-bg:var(--seq1);
+--font-sans:'Heebo',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--font-voice:'Noto Serif',Georgia,serif;}
+html[data-theme="dark"]{
+/* Hemlock navy dark theme (hemlock-library.lib.pen, Colors: Dark) — navy surfaces, navylight
+   text ramp, navy border steps. Accents, status, and chart tokens are the Hemlock dark values. */
+--surface-1:#131C31;--surface-2:#18223A;--nest:#18223A;--page-bg:#131C31;
+--border:#2A3A5C;--border-strong:#33476E;
+--ink:#D8E1F0;--text-header:#D8E1F0;--text-body:#B3C1DB;--muted:#697DA0;--faint:#52637F;--inverse:#0E0E0E;
+--heading:#7094FB;
+--accent:#5A82F9;--accent-hover:#7094FB;--accent-subtle:#16304A;--accent-fill:rgba(90,130,249,0.15);
+--pos:#4ADE80;--pos-mid:#74D791;--pos-strong:#4ADE80;
+--neg:#F87171;--neg-strong:#FCA5A5;
+--warn:#FB924D;--info:#38BDF8;--info-title:#38BDF8;
+--pros-bg:#12291C;--pros-border:#245234;
+--cons-bg:#3A1B1E;--cons-border:#542427;
+--info-bg:#10263C;--info-border:#16304A;
+--warn-bg:#33200F;--warn-border:#5E3A18;
+--on-pos-fill:#0E0E0E;--on-neg-fill:#0E0E0E;
+--seq1:#163196;--seq2:#2952CC;--seq3:#3A6AF8;--seq4:#5A82F9;--seq5:#7094FB;--seq6:#A5BCFC;--seq7:#C8D6FD;
+--cat1:#B198F0;--cat2:#5FD3E6;--cat3:#8480D9;--cat4:#7AA0F5;--cat5:#4FC0A6;--cat6:#84D2F7;--cat7:#84E6CC;--cat8:#C7BAF7;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--page-bg);max-width:680px;margin:3rem auto;padding:0 1.5rem;}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;}
+td,th{padding:7px 0;text-align:right;font-weight:400;}
+td:first-child,th:first-child{text-align:left;}
+.kicker{font-size:14px;color:var(--muted);letter-spacing:.04em;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;}
+.hero{display:flex;align-items:baseline;gap:16px;margin-bottom:1.25rem;}
+.hero b{font-family:var(--font-voice);font-size:36px;font-weight:400;color:var(--ink);}
+.hero span{font-size:14px;color:var(--text-body);}
+.foot{font-size:12px;color:var(--faint);margin-top:.75rem;}
+.card{background:var(--surface-2);border-radius:8px;padding:10px 14px;}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:3px 9px;border-radius:999px;border:1px solid var(--border-strong);color:var(--text-body);}
+text{font-family:var(--font-sans);}
+#themeToggle{position:fixed;top:12px;right:16px;font-size:11px;color:var(--faint);text-decoration:none;letter-spacing:.04em;}
+</style>
+<script>document.documentElement.dataset.theme='light';/* LIGHT is the shipping target — the app has no dark mode yet; dark is toggle-only, for design review */</script>
+</head><body>
+<a href="#" id="themeToggle">light / dark</a>
+
+<div class="kicker"><span>Household map · relationships, ownership, and where money flows on death</span><span>generated · Aug 24, 2026</span></div>
+<div class="hero"><b>One arrow points outside the family</b><span>Evan's IRA still names his ex-spouse — the designation overrides the will</span></div>
+<svg viewBox="0 0 680 540" role="img" aria-label="Household relationship map"><title>Household relationship map</title><text x="340" y="26" text-anchor="middle" font-family="'Noto Serif',Georgia,serif" font-size="20" fill="var(--ink)">The Johnson Household</text><text x="340" y="43" text-anchor="middle" font-size="11" fill="var(--text-body)">$6.43M · Coral Gables, FL</text><circle cx="230" cy="80" r="3" fill="var(--muted)"/><text x="230" y="96" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink)">Evan, 44</text><circle cx="450" cy="80" r="3" fill="var(--muted)"/><text x="450" y="96" text-anchor="start" font-size="12" font-weight="500" fill="var(--ink)">Dana, 43</text><line x1="238" y1="80" x2="442" y2="80" stroke="var(--border-strong)"/><text x="340" y="74" text-anchor="middle" font-size="9" fill="var(--muted)">married · FL (no community property)</text><circle cx="110" cy="200" r="3" fill="var(--muted)"/><text x="110" y="216" text-anchor="middle" font-size="12" font-weight="500" fill="var(--ink)">Johnson Revocable Trust</text><text x="110" y="230" text-anchor="middle" font-size="11" fill="var(--text-body)" style="font-variant-numeric:tabular-nums">$3.20M · taxable</text><text x="110" y="243" text-anchor="middle" font-size="9.5" fill="var(--muted)">brokerage $2.74M · T-ladder $460K</text><circle cx="285" cy="235" r="3" fill="var(--muted)"/><text x="285" y="251" text-anchor="middle" font-size="12" font-weight="500" fill="var(--ink)">Evan — retirement</text><text x="285" y="265" text-anchor="middle" font-size="11" fill="var(--text-body)" style="font-variant-numeric:tabular-nums">$1.85M</text><text x="285" y="278" text-anchor="middle" font-size="9.5" fill="var(--muted)">401(k) $1.31M held away · IRA $410K · Roth $130K</text><circle cx="450" cy="235" r="3" fill="var(--muted)"/><text x="450" y="251" text-anchor="middle" font-size="12" font-weight="500" fill="var(--ink)">Dana — retirement</text><text x="450" y="265" text-anchor="middle" font-size="11" fill="var(--text-body)" style="font-variant-numeric:tabular-nums">$750K</text><text x="450" y="278" text-anchor="middle" font-size="9.5" fill="var(--muted)">403(b) $610K held away · Roth $140K</text><circle cx="590" cy="190" r="3" fill="var(--muted)"/><text x="590" y="206" text-anchor="middle" font-size="12" font-weight="500" fill="var(--ink)">EJ Rentals LLC</text><text x="590" y="220" text-anchor="middle" font-size="11" fill="var(--text-body)" style="font-variant-numeric:tabular-nums">$290K net</text><text x="590" y="233" text-anchor="middle" font-size="9.5" fill="var(--muted)">duplex · ($310K note)</text><circle cx="590" cy="330" r="3" fill="var(--muted)"/><text x="590" y="346" text-anchor="middle" font-size="12" font-weight="500" fill="var(--ink)">529 plans</text><text x="590" y="360" text-anchor="middle" font-size="11" fill="var(--text-body)" style="font-variant-numeric:tabular-nums">$180K</text><text x="590" y="373" text-anchor="middle" font-size="9.5" fill="var(--muted)">Maya + Leo · FL</text><circle cx="340" cy="440" r="3" fill="var(--muted)"/><text x="340" y="456" text-anchor="middle" font-size="12" font-weight="500" fill="var(--ink)">Maya, 12 · Leo, 9</text><text x="340" y="483" text-anchor="middle" font-size="9.5" fill="var(--muted)">contingent beneficiaries throughout</text><circle cx="85" cy="440" r="3" fill="var(--muted)"/><text x="85" y="456" text-anchor="middle" font-size="12" font-weight="500" fill="var(--neg)">ex-spouse</text><text x="85" y="483" text-anchor="middle" font-size="9.5" fill="var(--muted)">outdated designation</text><path d="M 226 86 Q 164 128 128 194" fill="none" stroke="var(--border-strong)" stroke-width="1"/><text x="171" y="134" text-anchor="middle" font-size="9" fill="var(--muted)">co-trustees · 50/50</text><path d="M 420 88 Q 263 60 165 186" fill="none" stroke="var(--border-strong)" stroke-width="1"/><path d="M 234 88 Q 268 154 279 227" fill="none" stroke="var(--border-strong)" stroke-width="1"/><text x="262" y="156" text-anchor="middle" font-size="9" fill="var(--muted)">owner</text><path d="M 452 88 Q 441 158 452 227" fill="none" stroke="var(--border-strong)" stroke-width="1"/><text x="446" y="158" text-anchor="middle" font-size="9" fill="var(--muted)">owner</text><path d="M 458 84 Q 527 121 576 182" fill="none" stroke="var(--border-strong)" stroke-width="1"/><path d="M 240 78 Q 443 10 580 174" fill="none" stroke="var(--border-strong)" stroke-width="1"/><text x="426" y="68" text-anchor="middle" font-size="9" fill="var(--muted)">Evan 100% member</text><path d="M 458 90 Q 483 225 582 320" fill="none" stroke="var(--border-strong)" stroke-width="1"/><text x="502" y="215" text-anchor="middle" font-size="9" fill="var(--muted)">account owner</text><path d="M 116 252 Q 191 360 302 430" fill="none" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="5 4"/><text x="200" y="350" text-anchor="middle" font-size="9" fill="var(--muted)">per stirpes</text><path d="M 452 287 Q 400 354 366 432" fill="none" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="5 4"/><text x="405" y="357" text-anchor="middle" font-size="9" fill="var(--muted)">spouse, then children</text><path d="M 588 240 Q 416 368 260 220" fill="none" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="5 4"/><text x="420" y="299" text-anchor="middle" font-size="9" fill="var(--muted)">to trust on death</text><path d="M 584 380 Q 486 393 396 436" fill="none" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="5 4"/><text x="488" y="400" text-anchor="middle" font-size="9" fill="var(--muted)">FBO children</text><path d="M 261 287 Q 163 339 99 430" fill="none" stroke="var(--neg)" stroke-width="1" stroke-dasharray="5 4"/><text x="171" y="349" text-anchor="middle" font-size="9" fill="var(--neg)">IRA designation ⚠ overrides the will</text><line x1="60" y1="512" x2="92" y2="512" stroke="var(--border-strong)"/><text x="98" y="516" font-size="9.5" fill="var(--muted)">ownership / control</text><line x1="220" y1="512" x2="252" y2="512" stroke="var(--border-strong)" stroke-dasharray="5 4"/><text x="258" y="516" font-size="9.5" fill="var(--muted)">beneficiary flow on death</text><line x1="420" y1="512" x2="452" y2="512" stroke="var(--neg)" stroke-dasharray="5 4"/><text x="458" y="516" font-size="9.5" fill="var(--neg)">flow leaving the household</text></svg>
+<div style="display:flex;gap:12px;margin-top:.8rem;">
+<div class="card" style="flex:1;text-align:center;"><div style="font-size:12px;color:var(--muted)">Total net worth</div><div style="font-size:18px;font-weight:500;">$6.43M</div></div>
+<div class="card" style="flex:1;text-align:center;"><div style="font-size:12px;color:var(--muted)">Advice coverage</div><div style="font-size:14px;font-weight:500;padding-top:3px;">$4.2M managed · $1.9M held away</div></div>
+<div class="card" style="flex:1;text-align:center;"><div style="font-size:12px;color:var(--muted)">Flags</div><div style="font-size:14px;font-weight:500;padding-top:3px;color:var(--neg);">1 red · <span style="color:var(--warn)">2 amber</span></div></div>
+</div>
+<div style="border-top:.5px solid var(--border);margin-top:1rem;padding-top:.8rem;font-size:14px;color:var(--text-body);">
+This quarter: fix the IRA beneficiary, bind the umbrella policy for the LLC exposure, and put the idle $340K to work. The map redraws itself when you do.</div>
+<p class="foot">Typographic nodes, curved hairline edges — no boxes. Solid = ownership, dashed = beneficiary flow, red = leaving the household. The registration detail (custody, titling, dates, team) lives one tap deeper; the map is the one-glance answer to "is everything pointed where we intend."</p>
+<script>(function(){var t=document.getElementById('themeToggle');t.addEventListener('click',function(e){e.preventDefault();var h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';});})();</script>
+</body></html>

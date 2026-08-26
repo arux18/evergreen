@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Generic component: Decision receipt · design handoff</title>
+<!--
+EVERGREEN INTELLIGENCE · GEN UI COMPONENT HANDOFF
+Component: DECISION RECEIPT (generic) — any decision or transition, date-stamped
+Generic component file: anatomy + data contract, then real instances re-using it unchanged.
+Design the skeleton once; every recipe inherits. LLM fills; component renders; engine computes.
+Register: private-bank / term-sheet. Verdict-first. Tabular numerals, hairline rules,
+two font weights (400/500), serif for hero numbers only. Dark mode required.
+DO NOT: gradients, shadows, decorative icons, extra color ramps, verdict below the evidence.
+
+HEMLOCK ALIGNMENT (2026-08-26) — palette aligned to hemlock-library.lib.pen tokens:
+teal → --pos family · coral → --neg family · amber → --warn · purple → --accent / --info
+(no purple info in dark, handoff §14) · red → --neg · gray → --faint · card/track fills →
+--surface-2 (flat navy step in dark) · tables keep the quiet register — hairline rules, muted 12px
+headers, weighted totals (the template's banded-header ruling, rev HK11, reviewed and rejected for
+receipt proof tables) · approval state rendered as a status chip (warn/pos/neg/info surfaces) ·
+fonts Heebo + Noto Serif · dark via html[data-theme="dark"] (Hemlock navy dark theme).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* HEMLOCK BASE — token values aligned to hemlock-library.lib.pen (2026-08-26).
+   Light = template integrity values, sky info, opaque status tiles; dark = Hemlock navy theme. Theme via html[data-theme]. */
+:root{
+--surface-1:#FFFFFF;--surface-2:#F8F7F6;--nest:#F8F7F6;--page-bg:#FFFFFF;
+--border:#EEEDEB;--border-strong:#D5D3D0;
+--ink:#0E0E0E;--text-header:#0E0E0E;--text-body:#403D3A;--muted:#5E5954;--faint:#8A8680;--inverse:#FFFFFF;
+--heading:#2952CC;
+--accent:#3A6AF8;--accent-hover:#2952CC;--accent-subtle:#EBF0FE;--accent-fill:rgba(58,106,248,0.15);
+--pos:#148338;--pos-mid:#1EBF51;--pos-strong:#148338;--pos-soft:#4ADE80;
+--neg:#C82320;--neg-strong:#C82320;--neg-soft:#F87171;
+--warn:#C85F1A;--info:#1F6193;--info-title:#1F6193;
+--pros-bg:#E9FFF0;--pros-border:#A9FDC4;
+--cons-bg:#FFEAEA;--cons-border:#FED5D4;
+--info-bg:#EBF6FF;--info-border:#AEDCFE;
+--warn-bg:#FFF1E9;--warn-border:#FEE4D2;
+--on-pos-fill:#10642B;--on-neg-fill:#641210;
+--seq1:#EBF0FE;--seq2:#C8D6FD;--seq3:#A5BCFC;--seq4:#7094FB;--seq5:#5A82F9;--seq6:#3A6AF8;--seq7:#2952CC;
+--cat1:#8951F0;--cat2:#06B6D4;--cat3:#312E81;--cat4:#3B82F6;--cat5:#0F766E;--cat6:#38BDF8;--cat7:#2DD4BF;--cat8:#A78BFA;
+--table-head-bg:var(--accent-hover);--table-head-ink:var(--inverse);--table-total-bg:var(--seq1);
+--font-sans:'Heebo',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--font-voice:'Noto Serif',Georgia,serif;}
+html[data-theme="dark"]{
+/* Hemlock navy dark theme (hemlock-library.lib.pen, Colors: Dark) — navy surfaces, navylight
+   text ramp, navy border steps. Accents, status, and chart tokens are the Hemlock dark values. */
+--surface-1:#131C31;--surface-2:#18223A;--nest:#18223A;--page-bg:#131C31;
+--border:#2A3A5C;--border-strong:#33476E;
+--ink:#D8E1F0;--text-header:#D8E1F0;--text-body:#B3C1DB;--muted:#697DA0;--faint:#52637F;--inverse:#0E0E0E;
+--heading:#7094FB;
+--accent:#5A82F9;--accent-hover:#7094FB;--accent-subtle:#16304A;--accent-fill:rgba(90,130,249,0.15);
+--pos:#4ADE80;--pos-mid:#74D791;--pos-strong:#4ADE80;
+--neg:#F87171;--neg-strong:#FCA5A5;
+--warn:#FB924D;--info:#38BDF8;--info-title:#38BDF8;
+--pros-bg:#12291C;--pros-border:#245234;
+--cons-bg:#3A1B1E;--cons-border:#542427;
+--info-bg:#10263C;--info-border:#16304A;
+--warn-bg:#33200F;--warn-border:#5E3A18;
+--on-pos-fill:#0E0E0E;--on-neg-fill:#0E0E0E;
+--seq1:#163196;--seq2:#2952CC;--seq3:#3A6AF8;--seq4:#5A82F9;--seq5:#7094FB;--seq6:#A5BCFC;--seq7:#C8D6FD;
+--cat1:#B198F0;--cat2:#5FD3E6;--cat3:#8480D9;--cat4:#7AA0F5;--cat5:#4FC0A6;--cat6:#84D2F7;--cat7:#84E6CC;--cat8:#C7BAF7;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--page-bg);max-width:680px;margin:3rem auto;padding:0 1.5rem;}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;}
+td,th{padding:7px 0;text-align:right;font-weight:400;}
+td:first-child,th:first-child{text-align:left;}
+.hd{color:var(--muted);font-size:12px;border-bottom:.5px solid var(--border);}
+.tot{font-weight:500;border-top:.5px solid var(--border-strong);}
+.kicker{font-size:14px;color:var(--muted);letter-spacing:.04em;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;}
+.hero{display:flex;align-items:baseline;gap:16px;margin-bottom:1.25rem;}
+.hero b{font-family:var(--font-voice);font-size:36px;font-weight:400;color:var(--ink);}
+.hero span{font-size:14px;color:var(--text-body);}
+.foot{font-size:12px;color:var(--faint);margin-top:.75rem;}
+.card{background:var(--surface-2);border-radius:8px;padding:10px 14px;}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:3px 9px;border-radius:999px;border:1px solid var(--border-strong);color:var(--text-body);}
+.chip-pend{color:var(--warn);background:var(--warn-bg);border-color:var(--warn-border);}
+.chip-ok{color:var(--pos);background:var(--pros-bg);border-color:var(--pros-border);}
+.chip-no{color:var(--neg);background:var(--cons-bg);border-color:var(--cons-border);}
+.chip-info{color:var(--info);background:var(--info-bg);border-color:var(--info-border);}
+.inst{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.06em;margin:2.2rem 0 6px;}
+.inst b{color:var(--text-body);font-weight:500;}
+text{font-family:var(--font-sans);}
+#themeToggle{position:fixed;top:12px;right:16px;font-size:11px;color:var(--faint);text-decoration:none;letter-spacing:.04em;}
+</style>
+<script>document.documentElement.dataset.theme='light';/* LIGHT is the shipping target — the app has no dark mode yet; dark is toggle-only, for design review */</script>
+</head><body>
+<a href="#" id="themeToggle">light / dark</a>
+
+<div class="hero"><b>Decision receipt</b><span>generic component · what changes, what it costs, what it earns — the compliance artifact and the trust artifact are one object</span></div><div style="font-size:14px;font-weight:500;margin-bottom:8px;">Anatomy — designed once, inherited by every instance</div>
+<div style="border:1px dashed var(--border-strong);border-radius:12px;padding:1rem 1.25rem;"><div style="font-size:12px;color:var(--muted);line-height:1.9;">① kicker — decision name · date · approval state (pending / approved / executed)</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">② hero — the decision in one sentence with its headline economics</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">③ from→to rows — the specific changes, aligned</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">④ impact strip — cost, benefit, and action counts as labeled figures</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">⑤ assumptions line — smallest register, always present</div><div style="font-size:12px;color:var(--muted);line-height:1.9;">⑥ optional action affordance (approve / ask why / see full schedule)</div></div>
+<div style="font-size:12px;color:var(--muted);margin:.8rem 0 0;">Data contract: <code style="font-size:11px;">{ decision, state, date, changes:[{label,from,to}], impacts:[{label,value,tone}], actions?, assumptions[] }</code></div><div class="inst">INSTANCE · skill: <b>tax-aware-investing</b> · recipe: <b>portfolio_transition</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Transition to direct-index core</span><span>Aug 24, 2026 · <span class="chip chip-pend">pending your approval</span></span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">One-time tax cost $104,720</b><span>recovered in ~4 years of expected tax alpha</span></div><table><tr class="hd"><th>What changes</th><th>From</th><th>To</th></tr><tr><td style="color:var(--text-body)">Concentrated tech position</td><td style="">41%</td><td style="">12%</td></tr><tr><td style="color:var(--text-body)">US direct-index sleeve</td><td style="">0%</td><td style="">34%</td></tr><tr><td style="color:var(--text-body)">Blended fund expense</td><td style="">0.62%</td><td style="">0.11%</td></tr></table><div style="border-top:.5px solid var(--border);margin-top:10px;padding-top:10px;display:flex;gap:22px;font-size:14px;flex-wrap:wrap;"><span><span style="color:var(--muted)">Trades</span> <span style="font-weight:500;">14 sells · 187 buys</span></span><span><span style="color:var(--muted)">Tax cost</span> <span style="font-weight:500;">$104,720</span></span><span><span style="color:var(--muted)">Fee delta</span> <span style="font-weight:500;color:var(--pos)">−$16,300/yr</span></span></div><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">20% LTCG + 3.8% NIIT · $120K harvested losses applied · FL · highest-basis lots first · full schedule attached</div></div><div class="inst">INSTANCE · skill: <b>tax-planning</b> · recipe: <b>conversion_execution</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Roth conversion · execute $193,550</span><span>Aug 24, 2026 · <span class="chip chip-ok">approved</span> · executes Dec 15</span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">Tax cost $46,424 (24.0%)</b><span>capped below the 32% bracket and IRMAA tier 2, per the headroom analysis</span></div><table><tr class="hd"><th>What changes</th><th>From</th><th>To</th></tr><tr><td style="color:var(--text-body)">Rollover IRA</td><td style="">$1,410,000</td><td style="">$1,216,450</td></tr><tr><td style="color:var(--text-body)">Roth IRA</td><td style="">$130,000</td><td style="">$323,550</td></tr><tr><td style="color:var(--text-body)">2026 est. tax payment (Q4)</td><td style="">$61,000</td><td style="">$107,424</td></tr></table><div style="border-top:.5px solid var(--border);margin-top:10px;padding-top:10px;display:flex;gap:22px;font-size:14px;flex-wrap:wrap;"><span><span style="color:var(--muted)">Withholding</span> <span style="font-weight:500;">none — paid from taxable</span></span><span><span style="color:var(--muted)">Deadline</span> <span style="font-weight:500;">Dec 31, 2026</span></span><span><span style="color:var(--muted)">Form</span> <span style="font-weight:500;">8606 · CPA notified</span></span></div><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Illustrative 2026 brackets · conversion is irrevocable · pairs with headroom meter instance</div></div><div class="inst">INSTANCE · skill: <b>real-estate</b> · recipe: <b>refi_decision (declined)</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;"><div class="kicker"><span>Refinance decision · 30-yr 6.25% → 15-yr 5.375%</span><span>Aug 24, 2026 · <span class="chip chip-no">declined</span></span></div><div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">Declined — breakeven 6.1 years</b><span>closing costs $19,200 vs. $263/mo savings; you plan to sell in ~4 years</span></div><table><tr class="hd"><th>What would change</th><th>From</th><th>To</th></tr><tr><td style="color:var(--text-body)">Rate / term</td><td style="">6.25% · 30-yr</td><td style="">5.375% · 15-yr</td></tr><tr><td style="color:var(--text-body)">Payment</td><td style="">$11,822/mo</td><td style="">$15,556/mo</td></tr><tr><td style="color:var(--text-body)">Lifetime interest</td><td style="">$2.34M</td><td style="">$0.88M</td></tr></table><div style="border-top:.5px solid var(--border);margin-top:10px;padding-top:10px;display:flex;gap:22px;font-size:14px;flex-wrap:wrap;"><span><span style="color:var(--muted)">Closing costs</span> <span style="font-weight:500;">$19,200</span></span><span><span style="color:var(--muted)">Breakeven</span> <span style="font-weight:500;">6.1 years</span></span><span><span style="color:var(--muted)">Your horizon</span> <span style="font-weight:500;color:var(--neg)">~4 years</span></span></div><div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Declined decisions get receipts too — the record of WHY not is as valuable as the record of what was done</div></div><div class="inst">INSTANCE · skill: <b>tax-planning</b> · recipe: <b>proactive_recommendation (state: recommended)</b></div>
+<div style="border:.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;">
+<div class="kicker"><span>Recommendation · fund a donor-advised fund with appreciated NVDA</span><span>Aug 24, 2026 · <span class="chip chip-info">recommended</span> — no action taken</span></div>
+<div class="hero" style="margin-bottom:1rem;"><b style="font-size:30px;">$54,516 of tax value</b><span>on a $100,000 gift you were planning to make in cash anyway</span></div>
+<table><tr class="hd"><th>What would change</th><th>From</th><th>To</th></tr>
+<tr><td style="color:var(--text-body)">NVDA position (lot 2, basis $18K)</td><td>$412,000</td><td>$312,000</td></tr>
+<tr><td style="color:var(--text-body)">Donor-advised fund</td><td>$0</td><td>$100,000</td></tr>
+<tr><td style="color:var(--text-body)">Single-stock concentration</td><td>41%</td><td>38%</td></tr></table>
+<div style="border-top:.5px solid var(--border);margin-top:10px;padding-top:10px;display:flex;gap:22px;font-size:14px;flex-wrap:wrap;">
+<span><span style="color:var(--muted)">Deduction</span> <span style="font-weight:500;">$100,000 · saves $35,000</span></span>
+<span><span style="color:var(--muted)">LTCG avoided</span> <span style="font-weight:500;">$82,000 · saves $19,516</span></span>
+<span><span style="color:var(--muted)">Deadline</span> <span style="font-weight:500;">Dec 31 for 2026 deduction</span></span></div>
+<div class="card" style="margin-top:.9rem;font-size:14px;color:var(--text-body);">Same charity, same $100K — gifting the stock instead of cash captures both the deduction and the gains you'd never pay. <b style="color:var(--ink);font-weight:500;">Explore this</b> · Ask why · Not now</div>
+<div style="font-size:11px;color:var(--muted);margin-top:.6rem;">Assumes 35% marginal + 20% LTCG + 3.8% NIIT · itemizing · 30% AGI limit clears · recommendation, not yet a transaction</div>
+</div>
+<p class="foot" style="margin-top:2rem;">Lifecycle states, one anatomy: suggested → recommended → pending approval → approved / declined → executed. The proactive suggestion, the formal recommendation, the approval, and the execution record are the same object moving through states — the advice audit trail an RIA wants, for free.</p>
+<script>(function(){var t=document.getElementById('themeToggle');t.addEventListener('click',function(e){e.preventDefault();var h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';});})();</script>
+</body></html>
