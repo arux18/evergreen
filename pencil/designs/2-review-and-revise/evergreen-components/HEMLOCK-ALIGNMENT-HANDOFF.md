@@ -2,7 +2,7 @@
 
 > **Date:** 2026-08-26
 > **Source of truth:** `pencil/design-system/in-progress/hemlock-library.lib.pen`
-> **Files:** 14 self-contained HTML handoffs (index + 13 components) in this folder
+> **Files:** 14 self-contained HTML handoffs (index + 13 components) in the `HTMLs/` subfolder
 > **Origin:** `evergreen-component-handoffs-hemlock.zip` (previously aligned to Component Template v2.0 on 2026-08-25)
 
 ---
@@ -75,7 +75,7 @@ Hemlock scale: 11 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36.
 ### 5. Radius snap
 
 `border-radius: 6px` → `8px` (`radius-2xs`) per `hemlock-html-handoff.md` §6 — 13 occurrences
-in `13-style-box.html` and `generic-headroom-meter.html`.
+in `HTMLs/13-style-box.html` and `HTMLs/generic-headroom-meter.html`.
 
 ### 6. Documentation in file headers
 
@@ -91,17 +91,17 @@ minimal label nudges — no content, layout, or design changes:
 
 | File | Collision | Fix |
 |---|---|---|
-| `19-household-map.html` | `401(k) $1.31M held away…` vs `403(b) $610K held away…` (Evan/Dana retirement sub-labels, 22px overlap) | Evan's label x 285→270, Dana's x 450→465 |
-| `19-household-map.html` | `per stirpes` vs `IRA designation ⚠ overrides the will` (full overlap) | `per stirpes` moved up-left along its own curve: (200,350)→(164,313) |
-| `19-household-map.html` | `married · FL (no community property)` vs `Evan 100% member` (28px overlap) | `Evan 100% member` x 426→462 |
-| `generic-timeline.html` | `IRMAA lookback` vs `Medicare` (7px overlap) | `IRMAA lookback` x 239→231, `Medicare` x 284→290 |
+| `HTMLs/19-household-map.html` | `401(k) $1.31M held away…` vs `403(b) $610K held away…` (Evan/Dana retirement sub-labels, 22px overlap) | Evan's label x 285→270, Dana's x 450→465 |
+| `HTMLs/19-household-map.html` | `per stirpes` vs `IRA designation ⚠ overrides the will` (full overlap) | `per stirpes` moved up-left along its own curve: (200,350)→(164,313) |
+| `HTMLs/19-household-map.html` | `married · FL (no community property)` vs `Evan 100% member` (28px overlap) | `Evan 100% member` x 426→462 |
+| `HTMLs/generic-timeline.html` | `IRMAA lookback` vs `Medicare` (7px overlap) | `IRMAA lookback` x 239→231, `Medicare` x 284→290 |
 
 The other 12 files are clean. Tight stacked node labels (title/value/detail lines) measure
 as font line-box grazes only — no visible ink collision — and were intentionally left alone.
 
 ## SVG paint order: edges always under text
 
-In `19-household-map.html`, edge curves were interleaved with text in document order, so
+In `HTMLs/19-household-map.html`, edge curves were interleaved with text in document order, so
 later edges painted **over** earlier labels (visible as lines crossing through
 `IRA designation ⚠ overrides the will`, `per stirpes`, `to trust on death`, and others).
 SVG paint order is document order, so the SVG children were reordered into layers:
@@ -115,7 +115,7 @@ SVG paint order is document order, so the SVG children were reordered into layer
 Geometry is unchanged — this is purely a paint-order fix. The same audit (does any
 `path`/`line` follow and intersect a `text` box?) was run on all 14 files; household-map
 was the only file affected. Note the deliberate exception this rule preserves: in
-`10-income-mountain.html` the dashed spending line stays **above** the stacked area fills
+`HTMLs/10-income-mountain.html` the dashed spending line stays **above** the stacked area fills
 (but still below all text) — that's chart linework over a fill, not over a label.
 
 ## Verification
