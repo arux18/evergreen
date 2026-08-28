@@ -7604,6 +7604,15 @@
       "width": 420,
       "height": 0,
       "content": "LineChart / Fan Bands — ported 2026-08-25 from Bryan's chart-chassis POC. Acceptance master for the FE-1920 shape.\n\nWhy this one first\n• Launch scope is increment 1: chassis + LineChart with fan bands. This is the first chart engineering builds, so it needed a master before the donut did.\n\nAC 7 — the whole point of the chart\n• The two bands and the median share ONE linear scale whose max is the LARGEST band, never the sum. In this data the y-domain max is 220,000; a stacking renderer would show ~378,695 and draw a chart that is wrong by 72%.\n• That is why the bands are overlaid, not stacked. If a future revision makes them stack, the chart is broken — this is the vendor defect the epic exists to fix.\n\nGeometry\n• Plot 692×208 inside a 744×240 box: 44px left gutter for y-tick labels, 24px bottom for x labels, 8px top.\n• The band and median paths are Bryan's d3 output carried over verbatim (contribution $600/mo state), so the master is his curve, not a redrawn approximation.\n• Bands are one colour at two opacities (0.14 outer, 0.26 inner) — nested percentile ranges read as depth, not as two separate series.\n• x labels are every other year, matching the POC's density rule.\n\nStates\n• Default — also the static/print master (principle 5): staticRender only drops listeners.\n• Hover — dashed guide at the snapped year, dot on the median, tooltip with median and p90. Snap-to-nearest-label is chassis behaviour, so the guide always lands on a year, never between two.\n• Error — AC 6. The card title stays and the plot is replaced by the failure block naming the offending input. The POC drives this state from the same chart, so it is part of the design, not an extrapolation.\n\nPencil limitation to know about\n• Pencil paths have no stroke-dasharray, so the hover guide is built as 35 short path segments (3 on, 3 off). It renders identically; just do not be surprised by the segment list when editing.\n\nPalette — same OPEN QUESTION as the donut\n• Bands and median bind to chart-sequential/seq-700, matching the POC's --band / --chart-1. Principle 6 allows exactly one defaultChartPalette and no colour props in the grammar, and the other charts in this file use chart-categorical. That decision is still upstream of this file.\n\nNo legend, by design\n• The POC's fan chart has none; the band meaning lives in the description, which is also what generates the aria-label (principle 7). Hover data stays reachable as text through the tooltip.\n\nSource\n• 05-charts-theory-of-operation.md · 03-chart-rendering-architecture.md · PRO-2673 · FE-1920."
+    },
+    {
+      "type": "note",
+      "id": "Dojuj",
+      "x": -857,
+      "y": 40,
+      "width": 250,
+      "height": 219,
+      "content": "The components were originally based on OpenUI."
     }
   ],
   "imports": {
