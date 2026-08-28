@@ -7,17 +7,14 @@
       "x": 0,
       "y": 212,
       "name": "TextCallout",
-      "theme": {
-        "🎨 Colors": "Light"
-      },
       "reusable": true,
       "width": 360,
-      "fill": "$prim-taupe-200",
-      "cornerRadius": "$radius-xs",
-      "gap": "$spacing-xs",
+      "fill": "$t:sem-chatBubbleUser",
+      "cornerRadius": "$t:radius-xs",
+      "gap": "$t:spacing-xs",
       "padding": [
-        "$spacing-xs",
-        "$spacing-sm"
+        "$t:spacing-xs",
+        "$t:spacing-sm"
       ],
       "alignItems": "center",
       "children": [
@@ -27,21 +24,21 @@
           "name": "Accent",
           "width": 3,
           "height": 24,
-          "fill": "$sem-text-meta",
-          "cornerRadius": 2
+          "fill": "$t:sem-text-meta",
+          "cornerRadius": "$t:radius-4xs"
         },
         {
           "type": "text",
           "id": "qYeTU",
           "name": "Text",
-          "fill": "$sem-text-body",
+          "fill": "$t:sem-text-body",
           "textGrowth": "fixed-width",
           "width": "fill_container",
           "content": "This is an inline text callout for emphasis.",
-          "lineHeight": 1.5,
-          "fontFamily": "$typo-primary-base-regular-font-family",
-          "fontSize": "$typo-primary-base-regular-font-size",
-          "fontWeight": "$typo-primary-base-regular-font-weight"
+          "lineHeight": "$t:line-height-base",
+          "fontFamily": "$t:font-primary",
+          "fontSize": "$t:text-size-base",
+          "fontWeight": "normal"
         }
       ]
     },
@@ -52,17 +49,17 @@
       "y": 300,
       "name": "MessageLoading",
       "reusable": true,
-      "fill": "$prim-taupe-200",
-      "cornerRadius": "$radius-xs",
-      "gap": "$spacing-2xs",
-      "padding": "$spacing-sm",
+      "fill": "$t:sem-chatBubbleUser",
+      "cornerRadius": "$t:radius-xs",
+      "gap": "$t:spacing-2xs",
+      "padding": "$t:spacing-sm",
       "alignItems": "center",
       "children": [
         {
           "type": "ellipse",
           "id": "tu5iD",
           "name": "dot1",
-          "fill": "$sem-text-placeholder",
+          "fill": "$t:sem-text-placeholder",
           "width": 8,
           "height": 8
         },
@@ -70,7 +67,7 @@
           "type": "ellipse",
           "id": "j2RxyP",
           "name": "dot2",
-          "fill": "$sem-text-meta",
+          "fill": "$t:sem-text-meta",
           "width": 8,
           "height": 8
         },
@@ -78,7 +75,7 @@
           "type": "ellipse",
           "id": "CiEqR",
           "name": "dot3",
-          "fill": "$sem-text-placeholder",
+          "fill": "$t:sem-text-placeholder",
           "width": 8,
           "height": 8
         }
@@ -94,16 +91,16 @@
       "clip": true,
       "width": 320,
       "height": 180,
-      "fill": "$prim-gray-100",
-      "cornerRadius": "$radius-xs",
+      "fill": "$t:sem-background-subtle",
+      "cornerRadius": "$t:radius-xs",
       "layout": "vertical",
-      "gap": "$spacing-sm",
-      "padding": "$spacing-md",
+      "gap": "$t:spacing-sm",
+      "padding": "$t:spacing-md",
       "justifyContent": "center",
       "children": [
         {
           "type": "rectangle",
-          "cornerRadius": 4,
+          "cornerRadius": "$t:radius-3xs",
           "id": "xG2CD",
           "name": "Line 1",
           "fill": {
@@ -116,15 +113,15 @@
             },
             "colors": [
               {
-                "color": "$prim-gray-200",
+                "color": "$t:sem-background-muted",
                 "position": 0
               },
               {
-                "color": "$prim-gray-100",
+                "color": "$t:sem-background-subtle",
                 "position": 0.4
               },
               {
-                "color": "$prim-gray-200",
+                "color": "$t:sem-background-muted",
                 "position": 0.8
               }
             ]
@@ -134,7 +131,7 @@
         },
         {
           "type": "rectangle",
-          "cornerRadius": 4,
+          "cornerRadius": "$t:radius-3xs",
           "id": "IfyG8",
           "name": "Line 2",
           "fill": {
@@ -147,15 +144,15 @@
             },
             "colors": [
               {
-                "color": "$prim-gray-200",
+                "color": "$t:sem-background-muted",
                 "position": 0
               },
               {
-                "color": "$prim-gray-100",
+                "color": "$t:sem-background-subtle",
                 "position": 0.4
               },
               {
-                "color": "$prim-gray-200",
+                "color": "$t:sem-background-muted",
                 "position": 0.8
               }
             ]
@@ -165,7 +162,7 @@
         },
         {
           "type": "rectangle",
-          "cornerRadius": 4,
+          "cornerRadius": "$t:radius-3xs",
           "id": "rMz3N",
           "name": "Line 3",
           "fill": {
@@ -178,15 +175,15 @@
             },
             "colors": [
               {
-                "color": "$prim-gray-200",
+                "color": "$t:sem-background-muted",
                 "position": 0
               },
               {
-                "color": "$prim-gray-100",
+                "color": "$t:sem-background-subtle",
                 "position": 0.4
               },
               {
-                "color": "$prim-gray-200",
+                "color": "$t:sem-background-muted",
                 "position": 0.8
               }
             ]
@@ -205,9 +202,9 @@
       "reusable": true,
       "clip": true,
       "width": 320,
-      "fill": "$sem-background-surface",
-      "cornerRadius": "$radius-xs",
-      "stroke": "$sem-borders-dark",
+      "fill": "$t:sem-background-surface",
+      "cornerRadius": "$t:radius-xs",
+      "stroke": "$t:sem-borders-dark",
       "strokeWidth": 1,
       "layout": "vertical",
       "children": [
@@ -216,16 +213,16 @@
           "id": "th8Hy",
           "name": "Header",
           "width": "fill_container",
-          "fill": "$prim-taupe-100",
-          "gap": "$spacing-sm",
+          "fill": "$t:sem-background-sunken",
+          "gap": "$t:spacing-sm",
           "padding": [
-            "$spacing-xs",
-            "$spacing-md"
+            "$t:spacing-xs",
+            "$t:spacing-md"
           ],
           "children": [
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "SjylM",
               "name": "Col 1",
               "fill": {
@@ -238,15 +235,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -256,7 +253,7 @@
             },
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "dTjAI",
               "name": "Col 2",
               "fill": {
@@ -269,15 +266,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -287,7 +284,7 @@
             },
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "Iqd2H",
               "name": "Col 3",
               "fill": {
@@ -300,15 +297,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -323,16 +320,16 @@
           "id": "oHUEM",
           "name": "Row 1",
           "width": "fill_container",
-          "fill": "$sem-background-surface",
-          "gap": "$spacing-sm",
+          "fill": "$t:sem-background-surface",
+          "gap": "$t:spacing-sm",
           "padding": [
-            "$spacing-xs",
-            "$spacing-md"
+            "$t:spacing-xs",
+            "$t:spacing-md"
           ],
           "children": [
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "P0z9a",
               "name": "Cell 1",
               "fill": {
@@ -345,15 +342,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -363,7 +360,7 @@
             },
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "rCILa",
               "name": "Cell 2",
               "fill": {
@@ -376,15 +373,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -394,7 +391,7 @@
             },
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "h8OuSo",
               "name": "Cell 3",
               "fill": {
@@ -407,15 +404,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -430,16 +427,16 @@
           "id": "qkhe2",
           "name": "Row 2",
           "width": "fill_container",
-          "fill": "$sem-background-surface",
-          "gap": "$spacing-sm",
+          "fill": "$t:sem-background-surface",
+          "gap": "$t:spacing-sm",
           "padding": [
-            "$spacing-xs",
-            "$spacing-md"
+            "$t:spacing-xs",
+            "$t:spacing-md"
           ],
           "children": [
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "YbkJy",
               "name": "Cell 1",
               "fill": {
@@ -452,15 +449,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -470,7 +467,7 @@
             },
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "rnHGv",
               "name": "Cell 2",
               "fill": {
@@ -483,15 +480,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -501,7 +498,7 @@
             },
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "oHhNE",
               "name": "Cell 3",
               "fill": {
@@ -514,15 +511,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -537,16 +534,16 @@
           "id": "M7TLY",
           "name": "Row 3",
           "width": "fill_container",
-          "fill": "$sem-background-surface",
-          "gap": "$spacing-sm",
+          "fill": "$t:sem-background-surface",
+          "gap": "$t:spacing-sm",
           "padding": [
-            "$spacing-xs",
-            "$spacing-md"
+            "$t:spacing-xs",
+            "$t:spacing-md"
           ],
           "children": [
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "V5442P",
               "name": "Cell 1",
               "fill": {
@@ -559,15 +556,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -577,7 +574,7 @@
             },
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "E30fwb",
               "name": "Cell 2",
               "fill": {
@@ -590,15 +587,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -608,7 +605,7 @@
             },
             {
               "type": "rectangle",
-              "cornerRadius": 4,
+              "cornerRadius": "$t:radius-3xs",
               "id": "x63EU",
               "name": "Cell 3",
               "fill": {
@@ -621,15 +618,15 @@
                 },
                 "colors": [
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0
                   },
                   {
-                    "color": "$prim-gray-100",
+                    "color": "$t:sem-background-subtle",
                     "position": 0.4
                   },
                   {
-                    "color": "$prim-gray-200",
+                    "color": "$t:sem-background-muted",
                     "position": 0.8
                   }
                 ]
@@ -650,7 +647,7 @@
       "clip": true,
       "width": 870,
       "height": 316,
-      "fill": "#FFFFFF",
+      "fill": "$t:sem-background-surface",
       "layout": "none",
       "children": [
         {
@@ -667,12 +664,12 @@
               "name": "Callout / Info",
               "reusable": true,
               "width": 360,
-              "fill": "$prim-sky-50",
-              "cornerRadius": "$radius-xs",
-              "stroke": "$prim-sky-100",
+              "fill": "$t:sem-background-info",
+              "cornerRadius": "$t:radius-xs",
+              "stroke": "$t:sem-borders-info",
               "strokeWidth": 1,
-              "gap": "$spacing-xs",
-              "padding": "$spacing-sm",
+              "gap": "$t:spacing-xs",
+              "padding": "$t:spacing-sm",
               "children": [
                 {
                   "type": "icon",
@@ -682,7 +679,7 @@
                   "height": 18,
                   "icon": "info",
                   "library": "lucide",
-                  "fill": "$prim-sky-600"
+                  "fill": "$t:sem-icons-info-strong"
                 },
                 {
                   "type": "frame",
@@ -690,33 +687,33 @@
                   "name": "Content",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": "$spacing-3xs",
+                  "gap": "$t:spacing-3xs",
                   "children": [
                     {
                       "type": "text",
                       "id": "U89o4",
                       "name": "Title",
-                      "fill": "$sem-text-header",
+                      "fill": "$t:sem-text-header",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Information",
-                      "lineHeight": 1.4286,
-                      "fontFamily": "$typo-primary-sm-semibold-font-family",
-                      "fontSize": "$typo-primary-sm-semibold-font-size",
-                      "fontWeight": "$typo-primary-sm-semibold-font-weight"
+                      "lineHeight": "$t:line-height-sm",
+                      "fontFamily": "$t:font-primary",
+                      "fontSize": "$t:text-size-sm",
+                      "fontWeight": "600"
                     },
                     {
                       "type": "text",
                       "id": "eZTQa",
                       "name": "Message",
-                      "fill": "$sem-text-body",
+                      "fill": "$t:sem-text-body",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "This is an informational callout with helpful context.",
-                      "lineHeight": 1.5,
-                      "fontFamily": "$typo-primary-base-regular-font-family",
-                      "fontSize": "$typo-primary-base-regular-font-size",
-                      "fontWeight": "$typo-primary-base-regular-font-weight"
+                      "lineHeight": "$t:line-height-base",
+                      "fontFamily": "$t:font-primary",
+                      "fontSize": "$t:text-size-base",
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -730,12 +727,12 @@
               "name": "Callout / Success",
               "reusable": true,
               "width": 360,
-              "fill": "$prim-green-50",
-              "cornerRadius": "$radius-xs",
-              "stroke": "$prim-green-100",
+              "fill": "$t:sem-background-success",
+              "cornerRadius": "$t:radius-xs",
+              "stroke": "$t:sem-borders-success",
               "strokeWidth": 1,
-              "gap": "$spacing-xs",
-              "padding": "$spacing-sm",
+              "gap": "$t:spacing-xs",
+              "padding": "$t:spacing-sm",
               "children": [
                 {
                   "type": "icon",
@@ -745,7 +742,7 @@
                   "height": 18,
                   "icon": "circle-check",
                   "library": "lucide",
-                  "fill": "$prim-green-600"
+                  "fill": "$t:sem-icons-success-strong"
                 },
                 {
                   "type": "frame",
@@ -753,33 +750,33 @@
                   "name": "Content",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": "$spacing-3xs",
+                  "gap": "$t:spacing-3xs",
                   "children": [
                     {
                       "type": "text",
                       "id": "zHDUT",
                       "name": "Title",
-                      "fill": "$sem-text-header",
+                      "fill": "$t:sem-text-header",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Success",
-                      "lineHeight": 1.4286,
-                      "fontFamily": "$typo-primary-sm-semibold-font-family",
-                      "fontSize": "$typo-primary-sm-semibold-font-size",
-                      "fontWeight": "$typo-primary-sm-semibold-font-weight"
+                      "lineHeight": "$t:line-height-sm",
+                      "fontFamily": "$t:font-primary",
+                      "fontSize": "$t:text-size-sm",
+                      "fontWeight": "600"
                     },
                     {
                       "type": "text",
                       "id": "Hvt6f",
                       "name": "Message",
-                      "fill": "$sem-text-body",
+                      "fill": "$t:sem-text-body",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Action completed successfully.",
-                      "lineHeight": 1.5,
-                      "fontFamily": "$typo-primary-base-regular-font-family",
-                      "fontSize": "$typo-primary-base-regular-font-size",
-                      "fontWeight": "$typo-primary-base-regular-font-weight"
+                      "lineHeight": "$t:line-height-base",
+                      "fontFamily": "$t:font-primary",
+                      "fontSize": "$t:text-size-base",
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -793,12 +790,12 @@
               "name": "Callout / Warning",
               "reusable": true,
               "width": 360,
-              "fill": "$prim-orange-50",
-              "cornerRadius": "$radius-xs",
-              "stroke": "$prim-orange-100",
+              "fill": "$t:sem-background-warning",
+              "cornerRadius": "$t:radius-xs",
+              "stroke": "$t:sem-borders-warning",
               "strokeWidth": 1,
-              "gap": "$spacing-xs",
-              "padding": "$spacing-sm",
+              "gap": "$t:spacing-xs",
+              "padding": "$t:spacing-sm",
               "children": [
                 {
                   "type": "icon",
@@ -808,7 +805,7 @@
                   "height": 18,
                   "icon": "triangle-alert",
                   "library": "lucide",
-                  "fill": "$prim-orange-600"
+                  "fill": "$t:sem-icons-warning-strong"
                 },
                 {
                   "type": "frame",
@@ -816,33 +813,33 @@
                   "name": "Content",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": "$spacing-3xs",
+                  "gap": "$t:spacing-3xs",
                   "children": [
                     {
                       "type": "text",
                       "id": "phQeb",
                       "name": "Title",
-                      "fill": "$sem-text-header",
+                      "fill": "$t:sem-text-header",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Warning",
-                      "lineHeight": 1.4286,
-                      "fontFamily": "$typo-primary-sm-semibold-font-family",
-                      "fontSize": "$typo-primary-sm-semibold-font-size",
-                      "fontWeight": "$typo-primary-sm-semibold-font-weight"
+                      "lineHeight": "$t:line-height-sm",
+                      "fontFamily": "$t:font-primary",
+                      "fontSize": "$t:text-size-sm",
+                      "fontWeight": "600"
                     },
                     {
                       "type": "text",
                       "id": "jNRJ4",
                       "name": "Message",
-                      "fill": "$sem-text-body",
+                      "fill": "$t:sem-text-body",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Please review before proceeding.",
-                      "lineHeight": 1.5,
-                      "fontFamily": "$typo-primary-base-regular-font-family",
-                      "fontSize": "$typo-primary-base-regular-font-size",
-                      "fontWeight": "$typo-primary-base-regular-font-weight"
+                      "lineHeight": "$t:line-height-base",
+                      "fontFamily": "$t:font-primary",
+                      "fontSize": "$t:text-size-base",
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -856,12 +853,12 @@
               "name": "Callout / Error",
               "reusable": true,
               "width": 360,
-              "fill": "$prim-red-50",
-              "cornerRadius": "$radius-xs",
-              "stroke": "$prim-red-100",
+              "fill": "$t:sem-background-error",
+              "cornerRadius": "$t:radius-xs",
+              "stroke": "$t:sem-borders-error-subtle",
               "strokeWidth": 1,
-              "gap": "$spacing-xs",
-              "padding": "$spacing-sm",
+              "gap": "$t:spacing-xs",
+              "padding": "$t:spacing-sm",
               "children": [
                 {
                   "type": "icon",
@@ -871,7 +868,7 @@
                   "height": 18,
                   "icon": "circle-x",
                   "library": "lucide",
-                  "fill": "$prim-red-600"
+                  "fill": "$t:sem-icons-error"
                 },
                 {
                   "type": "frame",
@@ -879,33 +876,33 @@
                   "name": "Content",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": "$spacing-3xs",
+                  "gap": "$t:spacing-3xs",
                   "children": [
                     {
                       "type": "text",
                       "id": "t21WzP",
                       "name": "Title",
-                      "fill": "$sem-text-header",
+                      "fill": "$t:sem-text-header",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Error",
-                      "lineHeight": 1.4286,
-                      "fontFamily": "$typo-primary-sm-semibold-font-family",
-                      "fontSize": "$typo-primary-sm-semibold-font-size",
-                      "fontWeight": "$typo-primary-sm-semibold-font-weight"
+                      "lineHeight": "$t:line-height-sm",
+                      "fontFamily": "$t:font-primary",
+                      "fontSize": "$t:text-size-sm",
+                      "fontWeight": "600"
                     },
                     {
                       "type": "text",
                       "id": "C8QhV",
                       "name": "Message",
-                      "fill": "$sem-text-body",
+                      "fill": "$t:sem-text-body",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Something went wrong. Please try again.",
-                      "lineHeight": 1.5,
-                      "fontFamily": "$typo-primary-base-regular-font-family",
-                      "fontSize": "$typo-primary-base-regular-font-size",
-                      "fontWeight": "$typo-primary-base-regular-font-weight"
+                      "lineHeight": "$t:line-height-base",
+                      "fontFamily": "$t:font-primary",
+                      "fontSize": "$t:text-size-base",
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -914,593 +911,19 @@
           ]
         }
       ]
+    },
+    {
+      "type": "note",
+      "id": "So6jt",
+      "x": -426.84555054534906,
+      "y": -256.773933365725,
+      "width": 250,
+      "height": 219,
+      "content": "The components were originally based on OpenUI."
     }
   ],
-  "themes": {
-    "🎨 Colors": [
-      "Light",
-      "Dark"
-    ]
-  },
-  "variables": {
-    "radius-xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 12,
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": 12,
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "spacing-2xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 8,
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": 8,
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "spacing-3xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 4,
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": 4,
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "spacing-md": {
-      "type": "number",
-      "value": [
-        {
-          "value": 24,
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": 24,
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "spacing-sm": {
-      "type": "number",
-      "value": [
-        {
-          "value": 16,
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": 16,
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "spacing-xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 12,
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": 12,
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-base-regular-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-base-regular-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 16,
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": 16,
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-base-regular-font-weight": {
-      "type": "string",
-      "value": [
-        {
-          "value": "400",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "400",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-sm-semibold-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-sm-semibold-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 14,
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": 14,
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-sm-semibold-font-weight": {
-      "type": "string",
-      "value": [
-        {
-          "value": "600",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "600",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-gray-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#EEEDEB",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#EEEDEB",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-gray-200": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#D5D3D0",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#D5D3D0",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-green-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#a9fdc4",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#a9fdc4",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-green-50": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#e9fff0",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#e9fff0",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-green-600": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#10642b",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#10642b",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-orange-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#fee4d2",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#fee4d2",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-orange-50": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#fff1e9",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#fff1e9",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-orange-600": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#c85f1a",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#c85f1a",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-red-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#fed5d4",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#fed5d4",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-red-50": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#ffeaea",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#ffeaea",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-red-600": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#c82320",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#c82320",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-sky-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#aedcfe",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#aedcfe",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-sky-50": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#ebf6ff",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#ebf6ff",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-sky-600": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#1f6193",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#1f6193",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-taupe-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#F7F5F0",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#F7F5F0",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "prim-taupe-200": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#EDEAE3",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#EDEAE3",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "sem-background-surface": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#ffffff",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#131C31",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "sem-borders-dark": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#DCD8CB",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#22314F",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "sem-text-body": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#403D3A",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#B3C1DB",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "sem-text-header": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#0e0e0e",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#D8E1F0",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "sem-text-meta": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#5E5954",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#697DA0",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "sem-text-placeholder": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#716E6A",
-          "theme": {
-            "🎨 Colors": "Light"
-          }
-        },
-        {
-          "value": "#52637F",
-          "theme": {
-            "🎨 Colors": "Dark"
-          }
-        }
-      ]
-    }
+  "imports": {
+    "t": "../../design-system/in-progress/hemlock-library.lib.pen"
   },
   "fileToken": "fb2f09b2-e38c-4cf6-8056-d8b553b03ab7"
 }
