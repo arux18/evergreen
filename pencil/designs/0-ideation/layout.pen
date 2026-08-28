@@ -1,5 +1,5 @@
 {
-  "version": "2.14",
+  "version": "2.17",
   "children": [
     {
       "type": "frame",
@@ -18,7 +18,7 @@
           "type": "rectangle",
           "id": "Z1qGs",
           "name": "Line",
-          "fill": "$colors-borders-light",
+          "fill": "$U:sem-borders-light",
           "width": "fill_container",
           "height": 1
         }
@@ -40,7 +40,7 @@
           "type": "rectangle",
           "id": "sRttR",
           "name": "Line",
-          "fill": "$colors-borders-light",
+          "fill": "$U:sem-borders-light",
           "width": 1,
           "height": "fill_container"
         }
@@ -54,56 +54,56 @@
       "name": "Card",
       "reusable": true,
       "width": 320,
-      "fill": "$colors-background-surface",
-      "cornerRadius": "$radius-sm",
-      "stroke": "$colors-borders-light",
+      "fill": "$U:sem-background-surface",
+      "cornerRadius": "$U:radius-sm",
+      "stroke": "$U:sem-borders-light",
       "strokeWidth": 1,
       "strokeAlignment": "inner",
       "layout": "vertical",
-      "gap": "$spacing-sm",
-      "padding": "$spacing-md",
+      "gap": "$U:spacing-sm",
+      "padding": "$U:spacing-md",
       "children": [
         {
           "type": "text",
           "id": "eJhYh",
           "name": "Title",
-          "fill": "$colors-text-header",
+          "fill": "$U:sem-text-header",
           "content": "Account Summary",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600",
-          "lineHeight": 1.5
+          "lineHeight": "$U:line-height-base",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-base",
+          "fontWeight": "600"
         },
         {
           "type": "text",
           "id": "ZLHPg",
           "name": "Description",
-          "fill": "$colors-text-body",
+          "fill": "$U:sem-text-body",
           "textGrowth": "fixed-width",
           "width": "fill_container",
           "content": "Your checking account balance and recent activity.",
-          "fontFamily": "$typo-primary-sm-regular-font-family",
-          "fontSize": "$typo-primary-sm-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.4286
+          "lineHeight": "$U:line-height-sm",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-sm",
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
           "id": "tmE2L",
           "name": "Footer",
           "width": "fill_container",
-          "gap": "$spacing-2xs",
+          "gap": "$U:spacing-2xs",
           "alignItems": "center",
           "children": [
             {
               "type": "frame",
               "id": "f80Cy",
               "name": "Button",
-              "fill": "$colors-text-header",
-              "cornerRadius": "$radius-full",
+              "fill": "$U:sem-btnPrimaryBg",
+              "cornerRadius": "$U:radius-full",
               "padding": [
-                "$spacing-2xs",
-                "$spacing-sm"
+                "$U:spacing-2xs",
+                "$U:spacing-sm"
               ],
               "justifyContent": "center",
               "alignItems": "center",
@@ -112,12 +112,12 @@
                   "type": "text",
                   "id": "AfBw8",
                   "name": "BtnLabel",
-                  "fill": "$colors-background-surface",
+                  "fill": "$U:sem-btnPrimaryText",
                   "content": "View Details",
-                  "fontFamily": "$typo-primary-sm-semibold-font-family",
-                  "fontSize": "$typo-primary-sm-semibold-font-size",
-                  "fontWeight": "600",
-                  "lineHeight": 1.4286
+                  "lineHeight": "$U:line-height-sm",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-sm",
+                  "fontWeight": "600"
                 }
               ]
             }
@@ -133,66 +133,66 @@
       "name": "Card / Elevated",
       "reusable": true,
       "width": 320,
-      "fill": "$colors-background-surface",
-      "cornerRadius": "$radius-sm",
-      "stroke": "$colors-borders-light",
+      "fill": "$U:sem-background-surface",
+      "cornerRadius": "$U:radius-sm",
+      "stroke": "$U:sem-borders-light",
       "strokeAlignment": "inner",
       "effect": {
         "type": "shadow",
         "shadowType": "outer",
-        "color": "$shadow-sm-color",
+        "color": "$U:prim-shadow-sm-color",
         "offset": {
           "x": 0,
-          "y": "$shadow-sm-y"
+          "y": "$U:shadow-sm-y"
         },
-        "blur": "$shadow-sm-blur"
+        "blur": "$U:shadow-sm-blur"
       },
       "layout": "vertical",
-      "gap": "$spacing-sm",
-      "padding": "$spacing-md",
+      "gap": "$U:spacing-sm",
+      "padding": "$U:spacing-md",
       "children": [
         {
           "type": "text",
           "id": "R2OruS",
           "name": "Title",
-          "fill": "$colors-text-header",
+          "fill": "$U:sem-text-header",
           "content": "Monthly Budget",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600",
-          "lineHeight": 1.5
+          "lineHeight": "$U:line-height-base",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-base",
+          "fontWeight": "600"
         },
         {
           "type": "text",
           "id": "OCOfx",
           "name": "Description",
-          "fill": "$colors-text-body",
+          "fill": "$U:sem-text-body",
           "textGrowth": "fixed-width",
           "width": "fill_container",
           "content": "Track your spending against your set budget goals.",
-          "fontFamily": "$typo-primary-sm-regular-font-family",
-          "fontSize": "$typo-primary-sm-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.4286
+          "lineHeight": "$U:line-height-sm",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-sm",
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
           "id": "qFp79",
           "name": "Footer",
           "width": "fill_container",
-          "gap": "$spacing-2xs",
+          "gap": "$U:spacing-2xs",
           "alignItems": "center",
           "children": [
             {
               "type": "frame",
               "id": "hNzX9",
               "name": "Button",
-              "cornerRadius": "$radius-full",
-              "stroke": "$colors-borders-dark",
+              "cornerRadius": "$U:radius-full",
+              "stroke": "$U:sem-borders-dark",
               "strokeWidth": 1,
               "padding": [
-                "$spacing-2xs",
-                "$spacing-sm"
+                "$U:spacing-2xs",
+                "$U:spacing-sm"
               ],
               "justifyContent": "center",
               "alignItems": "center",
@@ -201,12 +201,12 @@
                   "type": "text",
                   "id": "d5Ho3",
                   "name": "BtnLabel",
-                  "fill": "$colors-text-header",
+                  "fill": "$U:sem-text-header",
                   "content": "Manage Budget",
-                  "fontFamily": "$typo-primary-sm-semibold-font-family",
-                  "fontSize": "$typo-primary-sm-semibold-font-size",
-                  "fontWeight": "600",
-                  "lineHeight": 1.4286
+                  "lineHeight": "$U:line-height-sm",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-sm",
+                  "fontWeight": "600"
                 }
               ]
             }
@@ -222,12 +222,13 @@
       "name": "Tabs",
       "reusable": true,
       "width": 400,
-      "stroke": "$colors-borders-light",
+      "stroke": "$U:sem-borders-light",
       "strokeWidth": {
         "bottom": 1
       },
       "strokeAlignment": "inner",
-      "gap": "$spacing-2xs",
+      "strokeLinejoin": "round",
+      "gap": "$U:spacing-2xs",
       "alignItems": "center",
       "children": [
         {
@@ -238,7 +239,7 @@
           "height": 40,
           "layout": "vertical",
           "padding": [
-            "$spacing-xs",
+            "$U:spacing-xs",
             0,
             0,
             0
@@ -250,20 +251,20 @@
               "type": "text",
               "id": "AIbc5",
               "name": "Label",
-              "fill": "$colors-btnLinkText",
+              "fill": "$U:sem-btnLinkText",
               "content": "Overview",
+              "lineHeight": "$U:line-height-sm",
               "textAlign": "center",
-              "fontFamily": "$typo-primary-sm-semibold-font-family",
-              "fontSize": "$typo-primary-sm-semibold-font-size",
-              "fontWeight": "600",
-              "lineHeight": 1.4286
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "600"
             },
             {
               "type": "rectangle",
-              "cornerRadius": "$radius-full",
+              "cornerRadius": "$U:radius-full",
               "id": "Lw5Gc",
               "name": "Indicator",
-              "fill": "$colors-btnLinkText",
+              "fill": "$U:sem-btnLinkText",
               "width": "fill_container",
               "height": 2
             }
@@ -283,12 +284,12 @@
               "type": "text",
               "id": "mILOE",
               "name": "Label",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "content": "Transactions",
-              "fontFamily": "$typo-primary-sm-regular-font-family",
-              "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "normal"
             }
           ]
         },
@@ -306,12 +307,12 @@
               "type": "text",
               "id": "mzHac",
               "name": "Label",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "content": "Settings",
-              "fontFamily": "$typo-primary-sm-regular-font-family",
-              "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "normal"
             }
           ]
         }
@@ -325,38 +326,38 @@
       "name": "Card / Outlined",
       "reusable": true,
       "width": 320,
-      "fill": "$colors-background-surface",
-      "cornerRadius": "$radius-sm",
-      "stroke": "$colors-borders-dark",
+      "fill": "$U:sem-background-surface",
+      "cornerRadius": "$U:radius-sm",
+      "stroke": "$U:sem-borders-dark",
       "strokeWidth": 1,
       "strokeAlignment": "inner",
       "layout": "vertical",
-      "gap": "$spacing-sm",
-      "padding": "$spacing-md",
+      "gap": "$U:spacing-sm",
+      "padding": "$U:spacing-md",
       "children": [
         {
           "type": "text",
           "id": "coTit1",
           "name": "Title",
-          "fill": "$colors-text-header",
+          "fill": "$U:sem-text-header",
           "content": "Investment Goals",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600",
-          "lineHeight": 1.5
+          "lineHeight": "$U:line-height-base",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-base",
+          "fontWeight": "600"
         },
         {
           "type": "text",
           "id": "coDes1",
           "name": "Description",
-          "fill": "$colors-text-body",
+          "fill": "$U:sem-text-body",
           "textGrowth": "fixed-width",
           "width": "fill_container",
           "content": "Track progress toward your retirement and education targets.",
-          "fontFamily": "$typo-primary-sm-regular-font-family",
-          "fontSize": "$typo-primary-sm-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.4286
+          "lineHeight": "$U:line-height-sm",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-sm",
+          "fontWeight": "normal"
         }
       ]
     },
@@ -376,11 +377,11 @@
           "name": "AccordionItem / Open",
           "width": "fill_container",
           "layout": "vertical",
-          "gap": "$spacing-xs",
+          "gap": "$U:spacing-xs",
           "padding": [
             0,
             0,
-            "$spacing-md",
+            "$U:spacing-md",
             0
           ],
           "children": [
@@ -397,12 +398,12 @@
                   "type": "text",
                   "id": "PUfiW",
                   "name": "Title",
-                  "fill": "$colors-text-body",
+                  "fill": "$U:sem-text-body",
                   "content": "What is Evergreen?",
-                  "fontFamily": "$typo-primary-base-regular-font-family",
-                  "fontSize": "$typo-primary-base-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.5
+                  "lineHeight": "$U:line-height-base",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-base",
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "icon",
@@ -413,7 +414,7 @@
                   "height": 20,
                   "icon": "chevron-down",
                   "library": "lucide",
-                  "fill": "$colors-text-body"
+                  "fill": "$U:sem-text-body"
                 }
               ]
             },
@@ -421,14 +422,14 @@
               "type": "text",
               "id": "P8RfN",
               "name": "Content",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "textGrowth": "fixed-width",
               "width": "fill_container",
               "content": "Evergreen is a modern banking platform that helps you manage your finances with intelligent automation and real-time insights.",
-              "fontFamily": "$typo-primary-sm-regular-font-family",
-              "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "normal"
             }
           ]
         },
@@ -440,7 +441,7 @@
           "layout": "vertical",
           "padding": [
             0,
-            "$spacing-md"
+            "$U:spacing-md"
           ],
           "justifyContent": "center",
           "children": [
@@ -448,7 +449,7 @@
               "type": "rectangle",
               "id": "hP3RK",
               "name": "Line",
-              "fill": "$colors-borders-light",
+              "fill": "$U:sem-borders-light",
               "width": "fill_container",
               "height": 1
             }
@@ -474,12 +475,12 @@
                   "type": "text",
                   "id": "XdLQS",
                   "name": "Title",
-                  "fill": "$colors-text-body",
+                  "fill": "$U:sem-text-body",
                   "content": "How do I get started?",
-                  "fontFamily": "$typo-primary-base-regular-font-family",
-                  "fontSize": "$typo-primary-base-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.5
+                  "lineHeight": "$U:line-height-base",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-base",
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "icon",
@@ -489,7 +490,7 @@
                   "height": 20,
                   "icon": "chevron-down",
                   "library": "lucide",
-                  "fill": "$colors-text-body"
+                  "fill": "$U:sem-text-body"
                 }
               ]
             }
@@ -503,7 +504,7 @@
           "layout": "vertical",
           "padding": [
             0,
-            "$spacing-md"
+            "$U:spacing-md"
           ],
           "justifyContent": "center",
           "children": [
@@ -511,7 +512,7 @@
               "type": "rectangle",
               "id": "ug2fX",
               "name": "Line",
-              "fill": "$colors-borders-light",
+              "fill": "$U:sem-borders-light",
               "width": "fill_container",
               "height": 1
             }
@@ -537,12 +538,12 @@
                   "type": "text",
                   "id": "MlIHb",
                   "name": "Title",
-                  "fill": "$colors-text-body",
+                  "fill": "$U:sem-text-body",
                   "content": "Is my money safe?",
-                  "fontFamily": "$typo-primary-base-regular-font-family",
-                  "fontSize": "$typo-primary-base-regular-font-size",
-                  "fontWeight": "normal",
-                  "lineHeight": 1.5
+                  "lineHeight": "$U:line-height-base",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-base",
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "icon",
@@ -552,7 +553,7 @@
                   "height": 20,
                   "icon": "chevron-down",
                   "library": "lucide",
-                  "fill": "$colors-text-body"
+                  "fill": "$U:sem-text-body"
                 }
               ]
             }
@@ -568,11 +569,11 @@
       "name": "Stack / Vertical",
       "reusable": true,
       "width": "fit_content(280)",
-      "fill": "$color-taupe-100",
-      "cornerRadius": "$radius-xs",
+      "fill": "$U:sem-background-main",
+      "cornerRadius": "$U:radius-xs",
       "layout": "vertical",
-      "gap": "$spacing-sm",
-      "padding": "$spacing-md",
+      "gap": "$U:spacing-sm",
+      "padding": "$U:spacing-md",
       "children": [
         {
           "type": "frame",
@@ -580,9 +581,9 @@
           "name": "Item",
           "width": "fill_container",
           "height": 48,
-          "fill": "$colors-background-surface",
-          "cornerRadius": "$radius-2xs",
-          "stroke": "$colors-borders-light",
+          "fill": "$U:sem-background-surface",
+          "cornerRadius": "$U:radius-2xs",
+          "stroke": "$U:sem-borders-light",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
           "justifyContent": "center",
@@ -592,12 +593,12 @@
               "type": "text",
               "id": "8b2mQ",
               "name": "Label",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "content": "Stack item 1",
-              "fontFamily": "$typo-primary-sm-regular-font-family",
-              "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "normal"
             }
           ]
         },
@@ -607,9 +608,9 @@
           "name": "Item",
           "width": "fill_container",
           "height": 48,
-          "fill": "$colors-background-surface",
-          "cornerRadius": "$radius-2xs",
-          "stroke": "$colors-borders-light",
+          "fill": "$U:sem-background-surface",
+          "cornerRadius": "$U:radius-2xs",
+          "stroke": "$U:sem-borders-light",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
           "justifyContent": "center",
@@ -619,12 +620,12 @@
               "type": "text",
               "id": "K7hB9",
               "name": "Label",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "content": "Stack item 2",
-              "fontFamily": "$typo-primary-sm-regular-font-family",
-              "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "normal"
             }
           ]
         },
@@ -634,9 +635,9 @@
           "name": "Item",
           "width": "fill_container",
           "height": 48,
-          "fill": "$colors-background-surface",
-          "cornerRadius": "$radius-2xs",
-          "stroke": "$colors-borders-light",
+          "fill": "$U:sem-background-surface",
+          "cornerRadius": "$U:radius-2xs",
+          "stroke": "$U:sem-borders-light",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
           "justifyContent": "center",
@@ -646,12 +647,12 @@
               "type": "text",
               "id": "D7l6V",
               "name": "Label",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "content": "Stack item 3",
-              "fontFamily": "$typo-primary-sm-regular-font-family",
-              "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "normal"
             }
           ]
         }
@@ -664,10 +665,10 @@
       "y": 780,
       "name": "Stack / Horizontal",
       "reusable": true,
-      "fill": "$color-taupe-100",
-      "cornerRadius": "$radius-xs",
-      "gap": "$spacing-sm",
-      "padding": "$spacing-md",
+      "fill": "$U:sem-background-main",
+      "cornerRadius": "$U:radius-xs",
+      "gap": "$U:spacing-sm",
+      "padding": "$U:spacing-md",
       "alignItems": "center",
       "children": [
         {
@@ -676,9 +677,9 @@
           "name": "Item",
           "width": 120,
           "height": 72,
-          "fill": "$colors-background-surface",
-          "cornerRadius": "$radius-2xs",
-          "stroke": "$colors-borders-light",
+          "fill": "$U:sem-background-surface",
+          "cornerRadius": "$U:radius-2xs",
+          "stroke": "$U:sem-borders-light",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
           "justifyContent": "center",
@@ -688,12 +689,12 @@
               "type": "text",
               "id": "pTDNw",
               "name": "Label",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "content": "Item A",
-              "fontFamily": "$typo-primary-sm-regular-font-family",
-              "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "normal"
             }
           ]
         },
@@ -703,9 +704,9 @@
           "name": "Item",
           "width": 120,
           "height": 72,
-          "fill": "$colors-background-surface",
-          "cornerRadius": "$radius-2xs",
-          "stroke": "$colors-borders-light",
+          "fill": "$U:sem-background-surface",
+          "cornerRadius": "$U:radius-2xs",
+          "stroke": "$U:sem-borders-light",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
           "justifyContent": "center",
@@ -715,12 +716,12 @@
               "type": "text",
               "id": "FwGHi",
               "name": "Label",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "content": "Item B",
-              "fontFamily": "$typo-primary-sm-regular-font-family",
-              "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "normal"
             }
           ]
         },
@@ -730,9 +731,9 @@
           "name": "Item",
           "width": 120,
           "height": 72,
-          "fill": "$colors-background-surface",
-          "cornerRadius": "$radius-2xs",
-          "stroke": "$colors-borders-light",
+          "fill": "$U:sem-background-surface",
+          "cornerRadius": "$U:radius-2xs",
+          "stroke": "$U:sem-borders-light",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
           "justifyContent": "center",
@@ -742,12 +743,12 @@
               "type": "text",
               "id": "cjU2q",
               "name": "Label",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "content": "Item C",
-              "fontFamily": "$typo-primary-sm-regular-font-family",
-              "fontSize": "$typo-primary-sm-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "normal"
             }
           ]
         }
@@ -762,31 +763,31 @@
       "reusable": true,
       "width": 320,
       "layout": "vertical",
-      "gap": "$spacing-3xs",
+      "gap": "$U:spacing-3xs",
       "children": [
         {
           "type": "text",
           "id": "wqcnA",
           "name": "Title",
-          "fill": "$colors-text-header",
+          "fill": "$U:sem-text-header",
           "content": "Portfolio Overview",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600",
-          "lineHeight": 1.5
+          "lineHeight": "$U:line-height-base",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-base",
+          "fontWeight": "600"
         },
         {
           "type": "text",
           "id": "05Bee",
           "name": "Subtitle",
-          "fill": "$colors-text-meta",
+          "fill": "$U:sem-text-meta",
           "textGrowth": "fixed-width",
           "width": "fill_container",
           "content": "Updated daily with your latest balances",
-          "fontFamily": "$typo-primary-sm-regular-font-family",
-          "fontSize": "$typo-primary-sm-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.4286
+          "lineHeight": "$U:line-height-sm",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-sm",
+          "fontWeight": "normal"
         }
       ]
     },
@@ -798,35 +799,35 @@
       "name": "Card / Sunk",
       "reusable": true,
       "width": 320,
-      "fill": "$color-taupe-200",
-      "cornerRadius": "$radius-sm",
+      "fill": "$U:sem-background-light",
+      "cornerRadius": "$U:radius-sm",
       "layout": "vertical",
-      "gap": "$spacing-sm",
-      "padding": "$spacing-md",
+      "gap": "$U:spacing-sm",
+      "padding": "$U:spacing-md",
       "children": [
         {
           "type": "text",
           "id": "MlBHr",
           "name": "Title",
-          "fill": "$colors-text-header",
+          "fill": "$U:sem-text-header",
           "content": "Cash Reserve",
-          "fontFamily": "$typo-primary-base-semibold-font-family",
-          "fontSize": "$typo-primary-base-semibold-font-size",
-          "fontWeight": "600",
-          "lineHeight": 1.5
+          "lineHeight": "$U:line-height-base",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-base",
+          "fontWeight": "600"
         },
         {
           "type": "text",
           "id": "NFXCY",
           "name": "Description",
-          "fill": "$colors-text-body",
+          "fill": "$U:sem-text-body",
           "textGrowth": "fixed-width",
           "width": "fill_container",
           "content": "Funds set aside for upcoming expenses.",
-          "fontFamily": "$typo-primary-sm-regular-font-family",
-          "fontSize": "$typo-primary-sm-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.4286
+          "lineHeight": "$U:line-height-sm",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-sm",
+          "fontWeight": "normal"
         }
       ]
     },
@@ -841,7 +842,7 @@
       "height": 40,
       "layout": "vertical",
       "padding": [
-        "$spacing-xs",
+        "$U:spacing-xs",
         0,
         0,
         0
@@ -853,20 +854,20 @@
           "type": "text",
           "id": "jakMh",
           "name": "Label",
-          "fill": "$colors-btnLinkText",
+          "fill": "$U:sem-btnLinkText",
           "content": "Overview",
+          "lineHeight": "$U:line-height-sm",
           "textAlign": "center",
-          "fontFamily": "$typo-primary-sm-semibold-font-family",
-          "fontSize": "$typo-primary-sm-semibold-font-size",
-          "fontWeight": "600",
-          "lineHeight": 1.4286
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-sm",
+          "fontWeight": "600"
         },
         {
           "type": "rectangle",
-          "cornerRadius": "$radius-full",
+          "cornerRadius": "$U:radius-full",
           "id": "egQTL",
           "name": "Indicator",
-          "fill": "$colors-btnLinkText",
+          "fill": "$U:sem-btnLinkText",
           "width": "fill_container",
           "height": 2
         }
@@ -889,13 +890,13 @@
           "type": "text",
           "id": "GBhjf",
           "name": "Label",
-          "fill": "$colors-text-body",
+          "fill": "$U:sem-text-body",
           "content": "Transactions",
+          "lineHeight": "$U:line-height-sm",
           "textAlign": "center",
-          "fontFamily": "$typo-primary-sm-regular-font-family",
-          "fontSize": "$typo-primary-sm-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.4286
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-sm",
+          "fontWeight": "normal"
         }
       ]
     },
@@ -907,50 +908,50 @@
       "name": "Carousel",
       "reusable": true,
       "layout": "vertical",
-      "gap": "$spacing-sm",
+      "gap": "$U:spacing-sm",
       "children": [
         {
           "type": "frame",
           "id": "xRjmq",
           "name": "Track",
           "clip": true,
-          "gap": "$spacing-sm",
+          "gap": "$U:spacing-sm",
           "children": [
             {
               "type": "frame",
               "id": "FSg9T",
               "name": "Slide",
               "width": 200,
-              "fill": "$colors-background-surface",
-              "cornerRadius": "$radius-xs",
-              "stroke": "$colors-borders-light",
+              "fill": "$U:sem-background-surface",
+              "cornerRadius": "$U:radius-xs",
+              "stroke": "$U:sem-borders-light",
               "strokeWidth": 1,
               "strokeAlignment": "inner",
               "layout": "vertical",
-              "gap": "$spacing-2xs",
-              "padding": "$spacing-sm",
+              "gap": "$U:spacing-2xs",
+              "padding": "$U:spacing-sm",
               "children": [
                 {
                   "type": "text",
                   "id": "NpLvn",
                   "name": "Title",
-                  "fill": "$colors-text-header",
+                  "fill": "$U:sem-text-header",
                   "content": "Checking",
-                  "fontFamily": "$typo-primary-sm-semibold-font-family",
-                  "fontSize": "$typo-primary-sm-semibold-font-size",
-                  "fontWeight": "600",
-                  "lineHeight": 1.4286
+                  "lineHeight": "$U:line-height-sm",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-sm",
+                  "fontWeight": "600"
                 },
                 {
                   "type": "text",
                   "id": "UIKOw",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$U:sem-text-body",
                   "content": "$12,450.00",
-                  "fontFamily": "$typo-primary-lg-semibold-font-family",
-                  "fontSize": "$typo-primary-lg-semibold-font-size",
-                  "fontWeight": "600",
-                  "lineHeight": 1.4
+                  "lineHeight": "$U:line-height-lg",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-lg",
+                  "fontWeight": "600"
                 }
               ]
             },
@@ -959,36 +960,36 @@
               "id": "QcO2G",
               "name": "Slide",
               "width": 200,
-              "fill": "$colors-background-surface",
-              "cornerRadius": "$radius-xs",
-              "stroke": "$colors-borders-light",
+              "fill": "$U:sem-background-surface",
+              "cornerRadius": "$U:radius-xs",
+              "stroke": "$U:sem-borders-light",
               "strokeWidth": 1,
               "strokeAlignment": "inner",
               "layout": "vertical",
-              "gap": "$spacing-2xs",
-              "padding": "$spacing-sm",
+              "gap": "$U:spacing-2xs",
+              "padding": "$U:spacing-sm",
               "children": [
                 {
                   "type": "text",
                   "id": "PvGh9",
                   "name": "Title",
-                  "fill": "$colors-text-header",
+                  "fill": "$U:sem-text-header",
                   "content": "Savings",
-                  "fontFamily": "$typo-primary-sm-semibold-font-family",
-                  "fontSize": "$typo-primary-sm-semibold-font-size",
-                  "fontWeight": "600",
-                  "lineHeight": 1.4286
+                  "lineHeight": "$U:line-height-sm",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-sm",
+                  "fontWeight": "600"
                 },
                 {
                   "type": "text",
                   "id": "1Uyoo",
                   "name": "Value",
-                  "fill": "$colors-text-body",
+                  "fill": "$U:sem-text-body",
                   "content": "$48,200.00",
-                  "fontFamily": "$typo-primary-lg-semibold-font-family",
-                  "fontSize": "$typo-primary-lg-semibold-font-size",
-                  "fontWeight": "600",
-                  "lineHeight": 1.4
+                  "lineHeight": "$U:line-height-lg",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-lg",
+                  "fontWeight": "600"
                 }
               ]
             },
@@ -997,25 +998,25 @@
               "id": "r7NFO",
               "name": "Slide / Peek",
               "opacity": 0.5,
-              "fill": "$colors-background-surface",
-              "cornerRadius": "$radius-xs",
-              "stroke": "$colors-borders-light",
+              "fill": "$U:sem-background-surface",
+              "cornerRadius": "$U:radius-xs",
+              "stroke": "$U:sem-borders-light",
               "strokeWidth": 1,
               "strokeAlignment": "inner",
               "layout": "vertical",
-              "gap": "$spacing-2xs",
-              "padding": "$spacing-sm",
+              "gap": "$U:spacing-2xs",
+              "padding": "$U:spacing-sm",
               "children": [
                 {
                   "type": "text",
                   "id": "sxc3W",
                   "name": "Title",
-                  "fill": "$colors-text-header",
+                  "fill": "$U:sem-text-header",
                   "content": "Invest",
-                  "fontFamily": "$typo-primary-sm-semibold-font-family",
-                  "fontSize": "$typo-primary-sm-semibold-font-size",
-                  "fontWeight": "600",
-                  "lineHeight": 1.4286
+                  "lineHeight": "$U:line-height-sm",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-sm",
+                  "fontWeight": "600"
                 }
               ]
             }
@@ -1026,7 +1027,7 @@
           "id": "7ghAf",
           "name": "Dots",
           "width": "fill_container",
-          "gap": "$spacing-2xs",
+          "gap": "$U:spacing-2xs",
           "justifyContent": "center",
           "alignItems": "center",
           "children": [
@@ -1034,7 +1035,7 @@
               "type": "ellipse",
               "id": "G4cjx",
               "name": "Dot / Active",
-              "fill": "$colors-text-header",
+              "fill": "$U:sem-paginationDotActive",
               "width": 8,
               "height": 8
             },
@@ -1042,7 +1043,7 @@
               "type": "ellipse",
               "id": "jFV2X",
               "name": "Dot",
-              "fill": "$color-gray-200",
+              "fill": "$U:sem-paginationDot",
               "width": 8,
               "height": 8
             },
@@ -1050,7 +1051,7 @@
               "type": "ellipse",
               "id": "LvKcO",
               "name": "Dot",
-              "fill": "$color-gray-200",
+              "fill": "$U:sem-paginationDot",
               "width": 8,
               "height": 8
             }
@@ -1067,7 +1068,7 @@
       "reusable": true,
       "width": 420,
       "padding": [
-        "$spacing-sm",
+        "$U:spacing-sm",
         0
       ],
       "justifyContent": "center",
@@ -1079,7 +1080,7 @@
           "name": "Step / Complete",
           "width": 100,
           "layout": "vertical",
-          "gap": "$spacing-2xs",
+          "gap": "$U:spacing-2xs",
           "alignItems": "center",
           "children": [
             {
@@ -1088,8 +1089,8 @@
               "name": "Circle",
               "width": 32,
               "height": 32,
-              "fill": "$colors-text-header",
-              "cornerRadius": "$radius-full",
+              "fill": "$U:sem-background-action",
+              "cornerRadius": "$U:radius-full",
               "justifyContent": "center",
               "alignItems": "center",
               "children": [
@@ -1101,7 +1102,7 @@
                   "height": 16,
                   "icon": "check",
                   "library": "lucide",
-                  "fill": "$colors-background-surface"
+                  "fill": "$U:sem-icons-reverse"
                 }
               ]
             },
@@ -1109,13 +1110,13 @@
               "type": "text",
               "id": "54gK6",
               "name": "Label",
-              "fill": "$colors-text-header",
+              "fill": "$U:sem-text-header",
               "content": "Account",
+              "lineHeight": "$U:line-height-xs",
               "textAlign": "center",
-              "fontFamily": "$typo-primary-xs-regular-font-family",
-              "fontSize": "$typo-primary-xs-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.3333
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-xs",
+              "fontWeight": "normal"
             }
           ]
         },
@@ -1125,7 +1126,7 @@
           "name": "Connector",
           "width": 40,
           "height": 2,
-          "fill": "$colors-text-header",
+          "fill": "$U:sem-background-action",
           "layout": "none"
         },
         {
@@ -1134,7 +1135,7 @@
           "name": "Step / Active",
           "width": 100,
           "layout": "vertical",
-          "gap": "$spacing-2xs",
+          "gap": "$U:spacing-2xs",
           "alignItems": "center",
           "children": [
             {
@@ -1143,8 +1144,8 @@
               "name": "Circle",
               "width": 32,
               "height": 32,
-              "fill": "$colors-btnLinkText",
-              "cornerRadius": "$radius-full",
+              "fill": "$U:sem-background-action",
+              "cornerRadius": "$U:radius-full",
               "justifyContent": "center",
               "alignItems": "center",
               "children": [
@@ -1152,12 +1153,12 @@
                   "type": "text",
                   "id": "GTXVy",
                   "name": "Number",
-                  "fill": "$colors-background-surface",
+                  "fill": "$U:sem-text-reverse",
                   "content": "2",
-                  "fontFamily": "$typo-primary-sm-semibold-font-family",
-                  "fontSize": "$typo-primary-sm-semibold-font-size",
-                  "fontWeight": "600",
-                  "lineHeight": 1.4286
+                  "lineHeight": "$U:line-height-sm",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-sm",
+                  "fontWeight": "600"
                 }
               ]
             },
@@ -1165,13 +1166,13 @@
               "type": "text",
               "id": "dW4iN",
               "name": "Label",
-              "fill": "$colors-text-header",
+              "fill": "$U:sem-text-header",
               "content": "Verify",
+              "lineHeight": "$U:line-height-xs",
               "textAlign": "center",
-              "fontFamily": "$typo-primary-xs-semibold-font-family",
-              "fontSize": "$typo-primary-xs-semibold-font-size",
-              "fontWeight": "600",
-              "lineHeight": 1.3333
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-xs",
+              "fontWeight": "600"
             }
           ]
         },
@@ -1181,7 +1182,7 @@
           "name": "Connector",
           "width": 40,
           "height": 2,
-          "fill": "$colors-borders-light",
+          "fill": "$U:sem-borders-light",
           "layout": "none"
         },
         {
@@ -1190,7 +1191,7 @@
           "name": "Step / Upcoming",
           "width": 100,
           "layout": "vertical",
-          "gap": "$spacing-2xs",
+          "gap": "$U:spacing-2xs",
           "alignItems": "center",
           "children": [
             {
@@ -1199,9 +1200,9 @@
               "name": "Circle",
               "width": 32,
               "height": 32,
-              "fill": "$colors-background-surface",
-              "cornerRadius": "$radius-full",
-              "stroke": "$colors-borders-light",
+              "fill": "$U:sem-background-surface",
+              "cornerRadius": "$U:radius-full",
+              "stroke": "$U:sem-borders-light",
               "strokeWidth": 1,
               "strokeAlignment": "inner",
               "justifyContent": "center",
@@ -1211,12 +1212,12 @@
                   "type": "text",
                   "id": "4JOaI",
                   "name": "Number",
-                  "fill": "$colors-text-meta",
+                  "fill": "$U:sem-text-meta",
                   "content": "3",
-                  "fontFamily": "$typo-primary-sm-semibold-font-family",
-                  "fontSize": "$typo-primary-sm-semibold-font-size",
-                  "fontWeight": "600",
-                  "lineHeight": 1.4286
+                  "lineHeight": "$U:line-height-sm",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-sm",
+                  "fontWeight": "600"
                 }
               ]
             },
@@ -1224,13 +1225,13 @@
               "type": "text",
               "id": "j9Ode",
               "name": "Label",
-              "fill": "$colors-text-meta",
+              "fill": "$U:sem-text-meta",
               "content": "Fund",
+              "lineHeight": "$U:line-height-xs",
               "textAlign": "center",
-              "fontFamily": "$typo-primary-xs-regular-font-family",
-              "fontSize": "$typo-primary-xs-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.3333
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-xs",
+              "fontWeight": "normal"
             }
           ]
         }
@@ -1246,7 +1247,7 @@
       "clip": true,
       "width": 400,
       "height": 280,
-      "cornerRadius": "$radius-xs",
+      "cornerRadius": "$U:radius-xs",
       "layout": "none",
       "children": [
         {
@@ -1255,7 +1256,7 @@
           "x": 0,
           "y": 0,
           "name": "Overlay",
-          "fill": "#00000066",
+          "fill": "$U:sem-scrim",
           "width": 400,
           "height": 280
         },
@@ -1266,24 +1267,24 @@
           "y": 48,
           "name": "Dialog",
           "width": 320,
-          "fill": "$colors-background-surface",
-          "cornerRadius": "$radius-sm",
-          "stroke": "$colors-borders-light",
+          "fill": "$U:sem-background-elevated",
+          "cornerRadius": "$U:radius-sm",
+          "stroke": "$U:sem-borders-light",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "#0000001A",
+            "color": "$U:prim-shadow-lg-color",
             "offset": {
               "x": 0,
-              "y": 8
+              "y": "$U:shadow-lg-y"
             },
-            "blur": 24
+            "blur": "$U:shadow-lg-blur"
           },
           "layout": "vertical",
-          "gap": "$spacing-sm",
-          "padding": "$spacing-md",
+          "gap": "$U:spacing-sm",
+          "padding": "$U:spacing-md",
           "children": [
             {
               "type": "frame",
@@ -1297,12 +1298,12 @@
                   "type": "text",
                   "id": "EXNpa",
                   "name": "Title",
-                  "fill": "$colors-text-header",
+                  "fill": "$U:sem-text-header",
                   "content": "Confirm transfer",
-                  "fontFamily": "$typo-primary-base-semibold-font-family",
-                  "fontSize": "$typo-primary-base-semibold-font-size",
-                  "fontWeight": "600",
-                  "lineHeight": 1.5
+                  "lineHeight": "$U:line-height-base",
+                  "fontFamily": "$U:font-primary",
+                  "fontSize": "$U:text-size-base",
+                  "fontWeight": "600"
                 },
                 {
                   "type": "icon",
@@ -1312,7 +1313,7 @@
                   "height": 18,
                   "icon": "x",
                   "library": "lucide",
-                  "fill": "$colors-text-meta"
+                  "fill": "$U:sem-text-meta"
                 }
               ]
             },
@@ -1320,13 +1321,13 @@
               "type": "text",
               "id": "tTvvi",
               "name": "Body",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "textGrowth": "fixed-width",
               "width": "fill_container",
               "content": "Move $500.00 from Checking to Savings? This action can be reversed within 24 hours.",
-              "lineHeight": 1.4286,
-              "fontFamily": "$typo-primary-sm-regular-font-family",
-              "fontSize": "$typo-primary-sm-regular-font-size",
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
               "fontWeight": "normal"
             },
             {
@@ -1334,32 +1335,32 @@
               "id": "OCMt0",
               "name": "Actions",
               "width": "fill_container",
-              "gap": "$spacing-2xs",
+              "gap": "$U:spacing-2xs",
               "justifyContent": "end",
               "children": [
                 {
                   "type": "frame",
                   "id": "rmSQO",
                   "name": "Cancel",
-                  "cornerRadius": "$radius-full",
-                  "stroke": "$colors-borders-light",
+                  "cornerRadius": "$U:radius-full",
+                  "stroke": "$U:sem-borders-light",
                   "strokeWidth": 1,
                   "strokeAlignment": "inner",
                   "padding": [
-                    "$spacing-2xs",
-                    "$spacing-sm"
+                    "$U:spacing-2xs",
+                    "$U:spacing-sm"
                   ],
                   "children": [
                     {
                       "type": "text",
                       "id": "nkeS2",
                       "name": "Label",
-                      "fill": "$colors-text-body",
+                      "fill": "$U:sem-text-body",
                       "content": "Cancel",
-                      "fontFamily": "$typo-primary-sm-semibold-font-family",
-                      "fontSize": "$typo-primary-sm-semibold-font-size",
-                      "fontWeight": "600",
-                      "lineHeight": 1.4286
+                      "lineHeight": "$U:line-height-sm",
+                      "fontFamily": "$U:font-primary",
+                      "fontSize": "$U:text-size-sm",
+                      "fontWeight": "600"
                     }
                   ]
                 },
@@ -1367,23 +1368,23 @@
                   "type": "frame",
                   "id": "LPCMN",
                   "name": "Confirm",
-                  "fill": "$colors-text-header",
-                  "cornerRadius": "$radius-full",
+                  "fill": "$U:sem-btnPrimaryBg",
+                  "cornerRadius": "$U:radius-full",
                   "padding": [
-                    "$spacing-2xs",
-                    "$spacing-sm"
+                    "$U:spacing-2xs",
+                    "$U:spacing-sm"
                   ],
                   "children": [
                     {
                       "type": "text",
                       "id": "TU2uB",
                       "name": "Label",
-                      "fill": "$colors-background-surface",
+                      "fill": "$U:sem-btnPrimaryText",
                       "content": "Confirm",
-                      "fontFamily": "$typo-primary-sm-semibold-font-family",
-                      "fontSize": "$typo-primary-sm-semibold-font-size",
-                      "fontWeight": "600",
-                      "lineHeight": 1.4286
+                      "lineHeight": "$U:line-height-sm",
+                      "fontFamily": "$U:font-primary",
+                      "fontSize": "$U:text-size-sm",
+                      "fontWeight": "600"
                     }
                   ]
                 }
@@ -1402,11 +1403,11 @@
       "reusable": true,
       "width": 320,
       "layout": "vertical",
-      "gap": "$spacing-xs",
+      "gap": "$U:spacing-xs",
       "padding": [
         0,
         0,
-        "$spacing-md",
+        "$U:spacing-md",
         0
       ],
       "children": [
@@ -1423,12 +1424,12 @@
               "type": "text",
               "id": "aoTit1",
               "name": "Title",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "content": "What is Evergreen?",
-              "fontFamily": "$typo-primary-base-regular-font-family",
-              "fontSize": "$typo-primary-base-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.5
+              "lineHeight": "$U:line-height-base",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-base",
+              "fontWeight": "normal"
             },
             {
               "type": "icon",
@@ -1439,7 +1440,7 @@
               "height": 20,
               "icon": "chevron-down",
               "library": "lucide",
-              "fill": "$colors-text-body"
+              "fill": "$U:sem-text-body"
             }
           ]
         },
@@ -1447,14 +1448,14 @@
           "type": "text",
           "id": "aoCnt1",
           "name": "Content",
-          "fill": "$colors-text-body",
+          "fill": "$U:sem-text-body",
           "textGrowth": "fixed-width",
           "width": "fill_container",
           "content": "Evergreen is a modern banking platform that helps you manage your finances with intelligent automation and real-time insights.",
-          "fontFamily": "$typo-primary-sm-regular-font-family",
-          "fontSize": "$typo-primary-sm-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.4286
+          "lineHeight": "$U:line-height-sm",
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-sm",
+          "fontWeight": "normal"
         }
       ]
     },
@@ -1481,12 +1482,12 @@
               "type": "text",
               "id": "acTit1",
               "name": "Title",
-              "fill": "$colors-text-body",
+              "fill": "$U:sem-text-body",
               "content": "How do I get started?",
-              "fontFamily": "$typo-primary-base-regular-font-family",
-              "fontSize": "$typo-primary-base-regular-font-size",
-              "fontWeight": "normal",
-              "lineHeight": 1.5
+              "lineHeight": "$U:line-height-base",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-base",
+              "fontWeight": "normal"
             },
             {
               "type": "icon",
@@ -1496,7 +1497,7 @@
               "height": 20,
               "icon": "chevron-down",
               "library": "lucide",
-              "fill": "$colors-text-body"
+              "fill": "$U:sem-text-body"
             }
           ]
         }
@@ -1511,7 +1512,7 @@
       "reusable": true,
       "width": 100,
       "layout": "vertical",
-      "gap": "$spacing-2xs",
+      "gap": "$U:spacing-2xs",
       "alignItems": "center",
       "children": [
         {
@@ -1520,8 +1521,8 @@
           "name": "Circle",
           "width": 32,
           "height": 32,
-          "fill": "$colors-text-header",
-          "cornerRadius": "$radius-full",
+          "fill": "$U:sem-background-action",
+          "cornerRadius": "$U:radius-full",
           "justifyContent": "center",
           "alignItems": "center",
           "children": [
@@ -1533,7 +1534,7 @@
               "height": 16,
               "icon": "check",
               "library": "lucide",
-              "fill": "$colors-background-surface"
+              "fill": "$U:sem-icons-reverse"
             }
           ]
         },
@@ -1541,13 +1542,13 @@
           "type": "text",
           "id": "scLbl1",
           "name": "Label",
-          "fill": "$colors-text-header",
+          "fill": "$U:sem-text-header",
           "content": "Account",
+          "lineHeight": "$U:line-height-xs",
           "textAlign": "center",
-          "fontFamily": "$typo-primary-xs-regular-font-family",
-          "fontSize": "$typo-primary-xs-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.3333
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-xs",
+          "fontWeight": "normal"
         }
       ]
     },
@@ -1560,7 +1561,7 @@
       "reusable": true,
       "width": 100,
       "layout": "vertical",
-      "gap": "$spacing-2xs",
+      "gap": "$U:spacing-2xs",
       "alignItems": "center",
       "children": [
         {
@@ -1569,8 +1570,8 @@
           "name": "Circle",
           "width": 32,
           "height": 32,
-          "fill": "$colors-btnLinkText",
-          "cornerRadius": "$radius-full",
+          "fill": "$U:sem-background-action",
+          "cornerRadius": "$U:radius-full",
           "justifyContent": "center",
           "alignItems": "center",
           "children": [
@@ -1578,12 +1579,12 @@
               "type": "text",
               "id": "saNum1",
               "name": "Number",
-              "fill": "$colors-background-surface",
+              "fill": "$U:sem-text-reverse",
               "content": "2",
-              "fontFamily": "$typo-primary-sm-semibold-font-family",
-              "fontSize": "$typo-primary-sm-semibold-font-size",
-              "fontWeight": "600",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "600"
             }
           ]
         },
@@ -1591,13 +1592,13 @@
           "type": "text",
           "id": "saLbl1",
           "name": "Label",
-          "fill": "$colors-text-header",
+          "fill": "$U:sem-text-header",
           "content": "Verify",
+          "lineHeight": "$U:line-height-xs",
           "textAlign": "center",
-          "fontFamily": "$typo-primary-xs-semibold-font-family",
-          "fontSize": "$typo-primary-xs-semibold-font-size",
-          "fontWeight": "600",
-          "lineHeight": 1.3333
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-xs",
+          "fontWeight": "600"
         }
       ]
     },
@@ -1610,7 +1611,7 @@
       "reusable": true,
       "width": 100,
       "layout": "vertical",
-      "gap": "$spacing-2xs",
+      "gap": "$U:spacing-2xs",
       "alignItems": "center",
       "children": [
         {
@@ -1619,9 +1620,9 @@
           "name": "Circle",
           "width": 32,
           "height": 32,
-          "fill": "$colors-background-surface",
-          "cornerRadius": "$radius-full",
-          "stroke": "$colors-borders-light",
+          "fill": "$U:sem-background-surface",
+          "cornerRadius": "$U:radius-full",
+          "stroke": "$U:sem-borders-light",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
           "justifyContent": "center",
@@ -1631,12 +1632,12 @@
               "type": "text",
               "id": "suNum1",
               "name": "Number",
-              "fill": "$colors-text-meta",
+              "fill": "$U:sem-text-meta",
               "content": "3",
-              "fontFamily": "$typo-primary-sm-semibold-font-family",
-              "fontSize": "$typo-primary-sm-semibold-font-size",
-              "fontWeight": "600",
-              "lineHeight": 1.4286
+              "lineHeight": "$U:line-height-sm",
+              "fontFamily": "$U:font-primary",
+              "fontSize": "$U:text-size-sm",
+              "fontWeight": "600"
             }
           ]
         },
@@ -1644,647 +1645,28 @@
           "type": "text",
           "id": "suLbl1",
           "name": "Label",
-          "fill": "$colors-text-meta",
+          "fill": "$U:sem-text-meta",
           "content": "Fund",
+          "lineHeight": "$U:line-height-xs",
           "textAlign": "center",
-          "fontFamily": "$typo-primary-xs-regular-font-family",
-          "fontSize": "$typo-primary-xs-regular-font-size",
-          "fontWeight": "normal",
-          "lineHeight": 1.3333
+          "fontFamily": "$U:font-primary",
+          "fontSize": "$U:text-size-xs",
+          "fontWeight": "normal"
         }
       ]
+    },
+    {
+      "type": "note",
+      "id": "TyPn6",
+      "x": -409.25314485856643,
+      "y": 113.06537086408548,
+      "width": 250,
+      "height": 219,
+      "content": "The components were originally based on OpenUI."
     }
   ],
-  "variables": {
-    "colors-background-surface": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#ffffff",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#131C31",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-borders-light": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#EEEDEB",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#131E34",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-text-body": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#403D3A",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#B3C1DB",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-text-header": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#0e0e0e",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#D8E1F0",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-text-meta": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#5E5954",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#697DA0",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "radius-2xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 8,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 8,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "radius-full": {
-      "type": "number",
-      "value": [
-        {
-          "value": 9999,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 9999,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "radius-sm": {
-      "type": "number",
-      "value": [
-        {
-          "value": 16,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 16,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "spacing-2xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 8,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 8,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "spacing-md": {
-      "type": "number",
-      "value": [
-        {
-          "value": 24,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 24,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "spacing-sm": {
-      "type": "number",
-      "value": [
-        {
-          "value": 16,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 16,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "spacing-xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 12,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 12,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-base-semibold-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-base-semibold-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 16,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 16,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-sm-regular-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-sm-regular-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 14,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 14,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-xs-regular-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-xs-regular-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 12,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 12,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-base-regular-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 16,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 16,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-base-regular-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-gray-200": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#D5D3D0",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#D5D3D0",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-taupe-100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#F7F5F0",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#F7F5F0",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "color-taupe-200": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#EDEAE3",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#EDEAE3",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-borders-dark": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#DCD8CB",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#22314F",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "colors-btnLinkText": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#3a6af8",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#9BB3FC",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "radius-xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 12,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 12,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "shadow-sm-blur": {
-      "type": "number",
-      "value": [
-        {
-          "value": 2,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 2,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "shadow-sm-color": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#00000014",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "#00000038",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "shadow-sm-y": {
-      "type": "number",
-      "value": [
-        {
-          "value": 1,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 1,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "spacing-3xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 4,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 4,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-lg-semibold-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-lg-semibold-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 20,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 20,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-sm-semibold-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-sm-semibold-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 14,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 14,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-xs-semibold-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-xs-semibold-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 12,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Light"
-          }
-        },
-        {
-          "value": 12,
-          "theme": {
-            "\ud83c\udfa8 Colors": "Dark"
-          }
-        }
-      ]
-    }
+  "imports": {
+    "U": "../../design-system/in-progress/hemlock-library.lib.pen"
   },
-  "fileToken": "78ed96c0-9e06-447f-b02c-e71c31a45764",
-  "themes": {
-    "0. mode": [
-      "light",
-      "dark"
-    ],
-    "\ud83c\udfa8 Colors": [
-      "Light",
-      "Dark"
-    ],
-    "\ud83c\udd8e Typography": [
-      "Font Size",
-      "Font Weight"
-    ],
-    "\u2194\ufe0f Spacing/Radius": [
-      "Default"
-    ]
-  }
+  "fileToken": "78ed96c0-9e06-447f-b02c-e71c31a45764"
 }
