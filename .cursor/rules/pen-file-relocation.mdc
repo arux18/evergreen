@@ -1,0 +1,42 @@
+---
+description: How to move, rename, or reorganize .pen files without destroying their design token bindings
+globs: **/*.pen
+alwaysApply: false
+---
+
+# Moving `.pen` Files
+
+Before moving, renaming, or reorganizing any `.pen` file, read
+`pencil/moving-pen-files-agent-guide.md` and follow its procedure.
+
+A `.pen` stores each library as a path **relative to the file** plus a
+**prefix** that is baked into every token reference:
+
+```json
+"imports": { "H": "../../design-system/in-progress/hemlock-library.lib.pen" }
+```
+
+Relocate the file and that path dies. Pencil does not report the error — it
+discards every binding and substitutes defaults (`#000000`, `Inter`, `14`), then
+writes that loss to disk when the file is saved or closed.
+
+## Hard Rules
+
+- **Never** move or copy a `.pen` from inside Pencil ("Save As" elsewhere, dragging in a tree). It reassigns the import prefix, orphaning every `$OLD:` reference. Measured: `actions.pen` went from 242 `$H:` refs to 0, prefix `H` → `f`.
+- **Never** move while any `.pen` tab is open — the extension writes its stale model back to the old path on close.
+- **Never** "re-attach the library" to repair a moved file. That mints yet another prefix.
+- **Never** blind-replace `../../` with `../../../`. Sibling imports have no `../`, and files here import up to eight libraries.
+- **Never** rewrite a `.pen` with `json.dump` — patch the exact substring so the diff stays one line.
+
+## Procedure
+
+1. Have the user close every `.pen` tab and confirm.
+2. `git mv` the files.
+3. Recompute each import with the script in the guide — it resolves against the old directory and rebuilds the path relative to the new one.
+4. Fix any other file that imported something you moved.
+5. Have the user open one moved file and confirm it renders **before** committing.
+
+If styling looks wrong, tell the user immediately: **do not save, do not close
+the tab.** Until then the disk bytes are still correct and nothing is lost.
+
+Editing an open `.pen` is a different task — see `pencil-pen-file-editing.mdc`.
