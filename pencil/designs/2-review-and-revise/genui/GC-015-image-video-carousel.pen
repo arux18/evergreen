@@ -1,0 +1,4108 @@
+{
+ "version": "2.17",
+ "imports": {
+  "y": "../../../design-system/in-progress/hemlock-library.lib.pen"
+ },
+ "themes": {
+  "🎨 Colors": [
+   "Light",
+   "Dark"
+  ],
+  "🆎 Typography": [
+   "desktop",
+   "mobile"
+  ],
+  "↔️ Spacing/Radius": [
+   "Default"
+  ]
+ },
+ "variables": {
+  "sem-background-mediaTile": {
+   "type": "color",
+   "value": [
+    {
+     "value": "#F7F5F0",
+     "theme": {
+      "🎨 Colors": "Light"
+     }
+    },
+    {
+     "value": "#172642",
+     "theme": {
+      "🎨 Colors": "Dark"
+     }
+    }
+   ]
+  },
+  "sem-borders-mediaTile": {
+   "type": "color",
+   "value": [
+    {
+     "value": "#E3DFD6",
+     "theme": {
+      "🎨 Colors": "Light"
+     }
+    },
+    {
+     "value": "#22314F",
+     "theme": {
+      "🎨 Colors": "Dark"
+     }
+    }
+   ]
+  },
+  "sem-carouselDot": {
+   "type": "color",
+   "value": [
+    {
+     "value": "#C8CAC9",
+     "theme": {
+      "🎨 Colors": "Light"
+     }
+    },
+    {
+     "value": "#3C4A66",
+     "theme": {
+      "🎨 Colors": "Dark"
+     }
+    }
+   ]
+  },
+  "sem-carouselDotActive": {
+   "type": "color",
+   "value": [
+    {
+     "value": "#3A6AF8",
+     "theme": {
+      "🎨 Colors": "Light"
+     }
+    },
+    {
+     "value": "#5A82F9",
+     "theme": {
+      "🎨 Colors": "Dark"
+     }
+    }
+   ]
+  },
+  "sem-mediaFadeStrong": {
+   "type": "color",
+   "value": "#08070680"
+  },
+  "sem-mediaFadeMid": {
+   "type": "color",
+   "value": "#08070642"
+  },
+  "sem-mediaFadeFoot": {
+   "type": "color",
+   "value": "#08070661"
+  },
+  "sem-mediaFadeClear": {
+   "type": "color",
+   "value": "#08070600"
+  },
+  "sem-mediaChipBg": {
+   "type": "color",
+   "value": "#080706B8"
+  },
+  "sem-mediaLightboxScrim": {
+   "type": "color",
+   "value": "#0A0A0CDB"
+  },
+  "sem-mediaLightboxBarFade": {
+   "type": "color",
+   "value": "#08070699"
+  },
+  "sem-mediaLightboxCloseBg": {
+   "type": "color",
+   "value": "#0807068C"
+  },
+  "sem-mediaTextShadow": {
+   "type": "color",
+   "value": "#0000008C"
+  },
+  "sem-mediaTextShadowWarm": {
+   "type": "color",
+   "value": "#0807068C"
+  },
+  "sem-mediaLightboxTitleShadow": {
+   "type": "color",
+   "value": "#00000099"
+  },
+  "sem-mediaBadgeShadow": {
+   "type": "color",
+   "value": "#00000073"
+  },
+  "sem-text-onMedia": {
+   "type": "color",
+   "value": "#FFFFFF"
+  },
+  "sem-icons-onMedia": {
+   "type": "color",
+   "value": "#FFFFFF"
+  },
+  "sem-mediaBadgeRing": {
+   "type": "color",
+   "value": "#FFFFFFE6"
+  },
+  "radius-mediaThumb": {
+   "type": "number",
+   "value": 10
+  },
+  "text-size-mediaBody": {
+   "type": "number",
+   "value": 15
+  },
+  "text-size-mediaMeta": {
+   "type": "number",
+   "value": 13
+  },
+  "line-height-mediaHeadline": {
+   "type": "number",
+   "value": 1.35
+  },
+  "line-height-mediaBody": {
+   "type": "number",
+   "value": 1.55
+  },
+  "line-height-mediaModalTitle": {
+   "type": "number",
+   "value": 1.3
+  },
+  "line-height-mediaModalBody": {
+   "type": "number",
+   "value": 1.62
+  },
+  "letter-spacing-mediaEyebrow": {
+   "type": "number",
+   "value": 0.96
+  },
+  "letter-spacing-mediaChip": {
+   "type": "number",
+   "value": 0.24
+  }
+ },
+ "fonts": [
+  {
+   "name": "Heebo",
+   "url": "../../fonts/Heebo-VariableFont_wght.ttf",
+   "weight": [
+    100,
+    900
+   ],
+   "axes": [
+    {
+     "tag": "wght",
+     "start": 100,
+     "end": 900
+    }
+   ]
+  }
+ ],
+ "children": [
+  {
+   "type": "frame",
+   "id": "default-carousel",
+   "name": "default-carousel",
+   "x": 0,
+   "y": 0,
+   "width": 1008,
+   "height": 396,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n1",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n2",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/default-carousel--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n3",
+     "name": "iv-head line 0",
+     "x": 17,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 1"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n4",
+     "name": "iv-body line 0",
+     "x": 17,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n5",
+     "name": "iv-body line 1",
+     "x": 17,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n6",
+     "name": "iv-body line 2",
+     "x": 17,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n7",
+     "name": "iv-body line 3",
+     "x": 17,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n8",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 388,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n9",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 389,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/default-carousel--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n10",
+     "name": "iv-head line 0",
+     "x": 405,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 2"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n11",
+     "name": "iv-body line 0",
+     "x": 405,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n12",
+     "name": "iv-body line 1",
+     "x": 405,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n13",
+     "name": "iv-body line 2",
+     "x": 405,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n14",
+     "name": "iv-body line 3",
+     "x": 405,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n15",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 776,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n16",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 777,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/default-carousel--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n17",
+     "name": "iv-head line 0",
+     "x": 793,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 3"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n18",
+     "name": "iv-body line 0",
+     "x": 793,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n19",
+     "name": "iv-body line 1",
+     "x": 793,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n20",
+     "name": "iv-body line 2",
+     "x": 793,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n21",
+     "name": "iv-body line 3",
+     "x": 793,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n22",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 1164,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n23",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1165,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/default-carousel--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n24",
+     "name": "iv-head line 0",
+     "x": 1181,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 4"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n25",
+     "name": "iv-body line 0",
+     "x": 1181,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n26",
+     "name": "iv-body line 1",
+     "x": 1181,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n27",
+     "name": "iv-body line 2",
+     "x": 1181,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n28",
+     "name": "iv-body line 3",
+     "x": 1181,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n29",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 1552,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n30",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1553,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/default-carousel--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n31",
+     "name": "iv-head line 0",
+     "x": 1569,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 5"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n32",
+     "name": "iv-body line 0",
+     "x": 1569,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n33",
+     "name": "iv-body line 1",
+     "x": 1569,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n34",
+     "name": "iv-body line 2",
+     "x": 1569,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n35",
+     "name": "iv-body line 3",
+     "x": 1569,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n36",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 1940,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n37",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1941,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/default-carousel--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n38",
+     "name": "iv-head line 0",
+     "x": 1957,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 6"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n39",
+     "name": "iv-body line 0",
+     "x": 1957,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n40",
+     "name": "iv-body line 1",
+     "x": 1957,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n41",
+     "name": "iv-body line 2",
+     "x": 1957,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "default-carousel-n42",
+     "name": "iv-body line 3",
+     "x": 1957,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "default-carousel-n43",
+     "name": "paddle pill",
+     "layoutPosition": "absolute",
+     "x": 980,
+     "y": 179.828,
+     "width": 36,
+     "height": 36,
+     "cornerRadius": "$y:radius-full",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-muted",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": "$y:shadow-md-y"
+      },
+      "blur": "$y:shadow-md-blur",
+      "color": "$y:prim-shadow-md-color"
+     }
+    },
+    {
+     "type": "path",
+     "id": "default-carousel-n44",
+     "name": "paddle chevron next",
+     "layoutPosition": "absolute",
+     "x": 989,
+     "y": 188.828,
+     "width": 18,
+     "height": 18,
+     "viewBox": [
+      0,
+      0,
+      24,
+      24
+     ],
+     "geometry": "M9 18 L15 12 L9 6",
+     "stroke": "$y:sem-icons-action",
+     "strokeWidth": 2,
+     "strokeLinecap": "round",
+     "strokeLinejoin": "round"
+    },
+    {
+     "type": "ellipse",
+     "id": "default-carousel-n45",
+     "name": "dot active",
+     "layoutPosition": "absolute",
+     "x": 438.375,
+     "y": 378.547,
+     "width": 11.25,
+     "height": 11.25,
+     "fill": "$sem-carouselDotActive"
+    },
+    {
+     "type": "ellipse",
+     "id": "default-carousel-n46",
+     "name": "dot",
+     "layoutPosition": "absolute",
+     "x": 463.5,
+     "y": 379.672,
+     "width": 9.0,
+     "height": 9.0,
+     "fill": "$sem-carouselDot"
+    },
+    {
+     "type": "ellipse",
+     "id": "default-carousel-n47",
+     "name": "dot",
+     "layoutPosition": "absolute",
+     "x": 487.5,
+     "y": 379.672,
+     "width": 9.0,
+     "height": 9.0,
+     "fill": "$sem-carouselDot"
+    },
+    {
+     "type": "ellipse",
+     "id": "default-carousel-n48",
+     "name": "dot",
+     "layoutPosition": "absolute",
+     "x": 511.5,
+     "y": 379.672,
+     "width": 9.0,
+     "height": 9.0,
+     "fill": "$sem-carouselDot"
+    },
+    {
+     "type": "ellipse",
+     "id": "default-carousel-n49",
+     "name": "dot",
+     "layoutPosition": "absolute",
+     "x": 535.5,
+     "y": 379.672,
+     "width": 9.0,
+     "height": 9.0,
+     "fill": "$sem-carouselDot"
+    },
+    {
+     "type": "ellipse",
+     "id": "default-carousel-n50",
+     "name": "dot",
+     "layoutPosition": "absolute",
+     "x": 559.5,
+     "y": 379.672,
+     "width": 9.0,
+     "height": 9.0,
+     "fill": "$sem-carouselDot"
+    }
+   ],
+   "fill": "$y:sem-background-surface"
+  },
+  {
+   "type": "frame",
+   "id": "carousel-advanced",
+   "name": "carousel-advanced",
+   "x": 1108,
+   "y": 0,
+   "width": 1008,
+   "height": 396,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n51",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": -386,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n52",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": -385,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-advanced--m1.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n53",
+     "name": "iv-head line 0",
+     "x": -369,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 1"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n54",
+     "name": "iv-body line 0",
+     "x": -369,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n55",
+     "name": "iv-body line 1",
+     "x": -369,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n56",
+     "name": "iv-body line 2",
+     "x": -369,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n57",
+     "name": "iv-body line 3",
+     "x": -369,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n58",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 2,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n59",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 3,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-advanced--m1.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n60",
+     "name": "iv-head line 0",
+     "x": 19,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 2"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n61",
+     "name": "iv-body line 0",
+     "x": 19,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n62",
+     "name": "iv-body line 1",
+     "x": 19,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n63",
+     "name": "iv-body line 2",
+     "x": 19,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n64",
+     "name": "iv-body line 3",
+     "x": 19,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n65",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 390,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n66",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 391,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-advanced--m1.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n67",
+     "name": "iv-head line 0",
+     "x": 407,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 3"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n68",
+     "name": "iv-body line 0",
+     "x": 407,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n69",
+     "name": "iv-body line 1",
+     "x": 407,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n70",
+     "name": "iv-body line 2",
+     "x": 407,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n71",
+     "name": "iv-body line 3",
+     "x": 407,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n72",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 778,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n73",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 779,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-advanced--m1.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n74",
+     "name": "iv-head line 0",
+     "x": 795,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 4"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n75",
+     "name": "iv-body line 0",
+     "x": 795,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n76",
+     "name": "iv-body line 1",
+     "x": 795,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n77",
+     "name": "iv-body line 2",
+     "x": 795,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n78",
+     "name": "iv-body line 3",
+     "x": 795,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n79",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 1166,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n80",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1167,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-advanced--m1.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n81",
+     "name": "iv-head line 0",
+     "x": 1183,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 5"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n82",
+     "name": "iv-body line 0",
+     "x": 1183,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n83",
+     "name": "iv-body line 1",
+     "x": 1183,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n84",
+     "name": "iv-body line 2",
+     "x": 1183,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n85",
+     "name": "iv-body line 3",
+     "x": 1183,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n86",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 1554,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n87",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1555,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-advanced--m1.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n88",
+     "name": "iv-head line 0",
+     "x": 1571,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 6"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n89",
+     "name": "iv-body line 0",
+     "x": 1571,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n90",
+     "name": "iv-body line 1",
+     "x": 1571,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n91",
+     "name": "iv-body line 2",
+     "x": 1571,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-advanced-n92",
+     "name": "iv-body line 3",
+     "x": 1571,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n93",
+     "name": "paddle pill",
+     "layoutPosition": "absolute",
+     "x": -8,
+     "y": 179.828,
+     "width": 36,
+     "height": 36,
+     "cornerRadius": "$y:radius-full",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-muted",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": "$y:shadow-md-y"
+      },
+      "blur": "$y:shadow-md-blur",
+      "color": "$y:prim-shadow-md-color"
+     }
+    },
+    {
+     "type": "path",
+     "id": "carousel-advanced-n94",
+     "name": "paddle chevron prev",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 188.828,
+     "width": 18,
+     "height": 18,
+     "viewBox": [
+      0,
+      0,
+      24,
+      24
+     ],
+     "geometry": "M15 18 L9 12 L15 6",
+     "stroke": "$y:sem-icons-action",
+     "strokeWidth": 2,
+     "strokeLinecap": "round",
+     "strokeLinejoin": "round"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-advanced-n95",
+     "name": "paddle pill",
+     "layoutPosition": "absolute",
+     "x": 980,
+     "y": 179.828,
+     "width": 36,
+     "height": 36,
+     "cornerRadius": "$y:radius-full",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-muted",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": "$y:shadow-md-y"
+      },
+      "blur": "$y:shadow-md-blur",
+      "color": "$y:prim-shadow-md-color"
+     }
+    },
+    {
+     "type": "path",
+     "id": "carousel-advanced-n96",
+     "name": "paddle chevron next",
+     "layoutPosition": "absolute",
+     "x": 989,
+     "y": 188.828,
+     "width": 18,
+     "height": 18,
+     "viewBox": [
+      0,
+      0,
+      24,
+      24
+     ],
+     "geometry": "M9 18 L15 12 L9 6",
+     "stroke": "$y:sem-icons-action",
+     "strokeWidth": 2,
+     "strokeLinecap": "round",
+     "strokeLinejoin": "round"
+    },
+    {
+     "type": "ellipse",
+     "id": "carousel-advanced-n97",
+     "name": "dot",
+     "layoutPosition": "absolute",
+     "x": 439.5,
+     "y": 379.672,
+     "width": 9.0,
+     "height": 9.0,
+     "fill": "$sem-carouselDot"
+    },
+    {
+     "type": "ellipse",
+     "id": "carousel-advanced-n98",
+     "name": "dot active",
+     "layoutPosition": "absolute",
+     "x": 462.375,
+     "y": 378.547,
+     "width": 11.25,
+     "height": 11.25,
+     "fill": "$sem-carouselDotActive"
+    },
+    {
+     "type": "ellipse",
+     "id": "carousel-advanced-n99",
+     "name": "dot",
+     "layoutPosition": "absolute",
+     "x": 487.5,
+     "y": 379.672,
+     "width": 9.0,
+     "height": 9.0,
+     "fill": "$sem-carouselDot"
+    },
+    {
+     "type": "ellipse",
+     "id": "carousel-advanced-n100",
+     "name": "dot",
+     "layoutPosition": "absolute",
+     "x": 511.5,
+     "y": 379.672,
+     "width": 9.0,
+     "height": 9.0,
+     "fill": "$sem-carouselDot"
+    },
+    {
+     "type": "ellipse",
+     "id": "carousel-advanced-n101",
+     "name": "dot",
+     "layoutPosition": "absolute",
+     "x": 535.5,
+     "y": 379.672,
+     "width": 9.0,
+     "height": 9.0,
+     "fill": "$sem-carouselDot"
+    },
+    {
+     "type": "ellipse",
+     "id": "carousel-advanced-n102",
+     "name": "dot",
+     "layoutPosition": "absolute",
+     "x": 559.5,
+     "y": 379.672,
+     "width": 9.0,
+     "height": 9.0,
+     "fill": "$sem-carouselDot"
+    }
+   ],
+   "fill": "$y:sem-background-surface"
+  },
+  {
+   "type": "frame",
+   "id": "carousel-dots-off",
+   "name": "carousel-dots-off",
+   "x": 2216,
+   "y": 0,
+   "width": 1008,
+   "height": 360,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n103",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n104",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-dots-off--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n105",
+     "name": "iv-head line 0",
+     "x": 17,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 1"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n106",
+     "name": "iv-body line 0",
+     "x": 17,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n107",
+     "name": "iv-body line 1",
+     "x": 17,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n108",
+     "name": "iv-body line 2",
+     "x": 17,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n109",
+     "name": "iv-body line 3",
+     "x": 17,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n110",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 388,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n111",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 389,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-dots-off--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n112",
+     "name": "iv-head line 0",
+     "x": 405,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 2"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n113",
+     "name": "iv-body line 0",
+     "x": 405,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n114",
+     "name": "iv-body line 1",
+     "x": 405,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n115",
+     "name": "iv-body line 2",
+     "x": 405,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n116",
+     "name": "iv-body line 3",
+     "x": 405,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n117",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 776,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n118",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 777,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-dots-off--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n119",
+     "name": "iv-head line 0",
+     "x": 793,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 3"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n120",
+     "name": "iv-body line 0",
+     "x": 793,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n121",
+     "name": "iv-body line 1",
+     "x": 793,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n122",
+     "name": "iv-body line 2",
+     "x": 793,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n123",
+     "name": "iv-body line 3",
+     "x": 793,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n124",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 1164,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n125",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1165,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-dots-off--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n126",
+     "name": "iv-head line 0",
+     "x": 1181,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 4"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n127",
+     "name": "iv-body line 0",
+     "x": 1181,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n128",
+     "name": "iv-body line 1",
+     "x": 1181,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n129",
+     "name": "iv-body line 2",
+     "x": 1181,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n130",
+     "name": "iv-body line 3",
+     "x": 1181,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n131",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 1552,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n132",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1553,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-dots-off--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n133",
+     "name": "iv-head line 0",
+     "x": 1569,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 5"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n134",
+     "name": "iv-body line 0",
+     "x": 1569,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n135",
+     "name": "iv-body line 1",
+     "x": 1569,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n136",
+     "name": "iv-body line 2",
+     "x": 1569,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n137",
+     "name": "iv-body line 3",
+     "x": 1569,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n138",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 1940,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n139",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1941,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/carousel-dots-off--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n140",
+     "name": "iv-head line 0",
+     "x": 1957,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 6"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n141",
+     "name": "iv-body line 0",
+     "x": 1957,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n142",
+     "name": "iv-body line 1",
+     "x": 1957,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n143",
+     "name": "iv-body line 2",
+     "x": 1957,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "carousel-dots-off-n144",
+     "name": "iv-body line 3",
+     "x": 1957,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "carousel-dots-off-n145",
+     "name": "paddle pill",
+     "layoutPosition": "absolute",
+     "x": 980,
+     "y": 161.828,
+     "width": 36,
+     "height": 36,
+     "cornerRadius": "$y:radius-full",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-muted",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": "$y:shadow-md-y"
+      },
+      "blur": "$y:shadow-md-blur",
+      "color": "$y:prim-shadow-md-color"
+     }
+    },
+    {
+     "type": "path",
+     "id": "carousel-dots-off-n146",
+     "name": "paddle chevron next",
+     "layoutPosition": "absolute",
+     "x": 989,
+     "y": 170.828,
+     "width": 18,
+     "height": 18,
+     "viewBox": [
+      0,
+      0,
+      24,
+      24
+     ],
+     "geometry": "M9 18 L15 12 L9 6",
+     "stroke": "$y:sem-icons-action",
+     "strokeWidth": 2,
+     "strokeLinecap": "round",
+     "strokeLinejoin": "round"
+    }
+   ],
+   "fill": "$y:sem-background-surface"
+  },
+  {
+   "type": "frame",
+   "id": "responsive-rows",
+   "name": "responsive-rows",
+   "x": 3324,
+   "y": 0,
+   "width": 1008,
+   "height": 1126,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n147",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n148",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/responsive-rows--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n149",
+     "name": "iv-head line 0",
+     "x": 17,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 1"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n150",
+     "name": "iv-body line 0",
+     "x": 17,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n151",
+     "name": "iv-body line 1",
+     "x": 17,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n152",
+     "name": "iv-body line 2",
+     "x": 17,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n153",
+     "name": "iv-body line 3",
+     "x": 17,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n154",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 388,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n155",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 389,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/responsive-rows--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n156",
+     "name": "iv-head line 0",
+     "x": 405,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 2"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n157",
+     "name": "iv-body line 0",
+     "x": 405,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n158",
+     "name": "iv-body line 1",
+     "x": 405,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n159",
+     "name": "iv-body line 2",
+     "x": 405,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n160",
+     "name": "iv-body line 3",
+     "x": 405,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n161",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 384.172,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n162",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 385.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/responsive-rows--m2.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n163",
+     "name": "iv-head line 0",
+     "x": 17,
+     "y": 599.547,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 3"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n164",
+     "name": "iv-body line 0",
+     "x": 17,
+     "y": 630.844,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n165",
+     "name": "iv-body line 1",
+     "x": 17,
+     "y": 654.094,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n166",
+     "name": "iv-body line 2",
+     "x": 17,
+     "y": 677.344,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n167",
+     "name": "iv-body line 3",
+     "x": 17,
+     "y": 700.594,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n168",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 388,
+     "y": 384.172,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n169",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 389,
+     "y": 385.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/responsive-rows--m2.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n170",
+     "name": "iv-head line 0",
+     "x": 405,
+     "y": 599.547,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 4"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n171",
+     "name": "iv-body line 0",
+     "x": 405,
+     "y": 630.844,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n172",
+     "name": "iv-body line 1",
+     "x": 405,
+     "y": 654.094,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n173",
+     "name": "iv-body line 2",
+     "x": 405,
+     "y": 677.344,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n174",
+     "name": "iv-body line 3",
+     "x": 405,
+     "y": 700.594,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n175",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 768.844,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n176",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 769.0,
+     "width": 358,
+     "height": 203,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/responsive-rows--m4.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n177",
+     "name": "iv-head line 0",
+     "x": 17,
+     "y": 984.219,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 5"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n178",
+     "name": "iv-body line 0",
+     "x": 17,
+     "y": 1015.516,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n179",
+     "name": "iv-body line 1",
+     "x": 17,
+     "y": 1038.766,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n180",
+     "name": "iv-body line 2",
+     "x": 17,
+     "y": 1062.016,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n181",
+     "name": "iv-body line 3",
+     "x": 17,
+     "y": 1085.266,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n182",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 388,
+     "y": 768.844,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "responsive-rows-n183",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 389,
+     "y": 769.0,
+     "width": 358,
+     "height": 203,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/responsive-rows--m4.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n184",
+     "name": "iv-head line 0",
+     "x": 405,
+     "y": 984.219,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1 — 6"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n185",
+     "name": "iv-body line 0",
+     "x": 405,
+     "y": 1015.516,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n186",
+     "name": "iv-body line 1",
+     "x": 405,
+     "y": 1038.766,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n187",
+     "name": "iv-body line 2",
+     "x": 405,
+     "y": 1062.016,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "responsive-rows-n188",
+     "name": "iv-body line 3",
+     "x": 405,
+     "y": 1085.266,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    }
+   ],
+   "fill": "$y:sem-background-surface"
+  },
+  {
+   "type": "frame",
+   "id": "single-image-tile",
+   "name": "single-image-tile",
+   "x": 4432,
+   "y": 0,
+   "width": 1008,
+   "height": 356,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "single-image-tile-n189",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "single-image-tile-n190",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/single-image-tile--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "single-image-tile-n191",
+     "name": "iv-head line 0",
+     "x": 17,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1"
+    },
+    {
+     "type": "text",
+     "id": "single-image-tile-n192",
+     "name": "iv-body line 0",
+     "x": 17,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "single-image-tile-n193",
+     "name": "iv-body line 1",
+     "x": 17,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "single-image-tile-n194",
+     "name": "iv-body line 2",
+     "x": 17,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "single-image-tile-n195",
+     "name": "iv-body line 3",
+     "x": 17,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    }
+   ],
+   "fill": "$y:sem-background-surface"
+  },
+  {
+   "type": "frame",
+   "id": "single-image-bare-centered",
+   "name": "single-image-bare-centered",
+   "x": 5540,
+   "y": 0,
+   "width": 1008,
+   "height": 337,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "single-image-bare-centered-n196",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 324,
+     "y": -1.0,
+     "width": 360,
+     "height": 203,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/single-image-bare-centered--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "single-image-bare-centered-n197",
+     "name": "iv-head line 0",
+     "x": 326,
+     "y": 213.0,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review — 1"
+    },
+    {
+     "type": "text",
+     "id": "single-image-bare-centered-n198",
+     "name": "iv-body line 0",
+     "x": 326,
+     "y": 244.297,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions are"
+    },
+    {
+     "type": "text",
+     "id": "single-image-bare-centered-n199",
+     "name": "iv-body line 1",
+     "x": 326,
+     "y": 267.547,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "on pace, the equity sleeve drifted two points over"
+    },
+    {
+     "type": "text",
+     "id": "single-image-bare-centered-n200",
+     "name": "iv-body line 2",
+     "x": 326,
+     "y": 290.797,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "target, and one rebalancing trade would bring the mix"
+    },
+    {
+     "type": "text",
+     "id": "single-image-bare-centered-n201",
+     "name": "iv-body line 3",
+     "x": 326,
+     "y": 314.047,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "back inside its band."
+    }
+   ],
+   "fill": "$y:sem-background-surface"
+  },
+  {
+   "type": "frame",
+   "id": "single-image-square-right",
+   "name": "single-image-square-right",
+   "x": 6648,
+   "y": 0,
+   "width": 1008,
+   "height": 464,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "single-image-square-right-n202",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 768,
+     "y": -0.5,
+     "width": 240,
+     "height": 464.094,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "single-image-square-right-n203",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 769,
+     "y": 0.0,
+     "width": 238,
+     "height": 239,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/single-image-square-right--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "single-image-square-right-n204",
+     "name": "iv-head line 0",
+     "x": 785,
+     "y": 251.5,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Mid-year portfolio review"
+    },
+    {
+     "type": "text",
+     "id": "single-image-square-right-n205",
+     "name": "iv-head line 1",
+     "x": 785,
+     "y": 275.797,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "— 1"
+    },
+    {
+     "type": "text",
+     "id": "single-image-square-right-n206",
+     "name": "iv-body line 0",
+     "x": 785,
+     "y": 307.094,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the"
+    },
+    {
+     "type": "text",
+     "id": "single-image-square-right-n207",
+     "name": "iv-body line 1",
+     "x": 785,
+     "y": 330.344,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "half: contributions are on pace,"
+    },
+    {
+     "type": "text",
+     "id": "single-image-square-right-n208",
+     "name": "iv-body line 2",
+     "x": 785,
+     "y": 353.594,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "the equity sleeve drifted two"
+    },
+    {
+     "type": "text",
+     "id": "single-image-square-right-n209",
+     "name": "iv-body line 3",
+     "x": 785,
+     "y": 376.844,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "points over target, and one"
+    },
+    {
+     "type": "text",
+     "id": "single-image-square-right-n210",
+     "name": "iv-body line 4",
+     "x": 785,
+     "y": 400.094,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "rebalancing trade would bring"
+    },
+    {
+     "type": "text",
+     "id": "single-image-square-right-n211",
+     "name": "iv-body line 5",
+     "x": 785,
+     "y": 423.344,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "the mix back inside its band."
+    }
+   ],
+   "fill": "$y:sem-background-surface"
+  },
+  {
+   "type": "frame",
+   "id": "video-thumbnail",
+   "name": "video-thumbnail",
+   "x": 7756,
+   "y": 0,
+   "width": 1008,
+   "height": 356,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "video-thumbnail-n212",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "width": 360,
+     "height": 356.672,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "video-thumbnail-n213",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 0.0,
+     "width": 358,
+     "height": 202,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/video-thumbnail--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "rectangle",
+     "id": "video-thumbnail-n214",
+     "name": "foot fade",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 0.5,
+     "width": 358,
+     "height": 201.375,
+     "fill": {
+      "type": "gradient",
+      "gradientType": "linear",
+      "rotation": 0,
+      "center": {
+       "x": 0.5,
+       "y": 0.5
+      },
+      "size": {
+       "width": 1,
+       "height": 1
+      },
+      "colors": [
+       {
+        "color": "$sem-mediaFadeFoot",
+        "position": 0
+       },
+       {
+        "color": "$sem-mediaFadeClear",
+        "position": 0.34
+       },
+       {
+        "color": "$sem-mediaFadeClear",
+        "position": 1
+       }
+      ]
+     }
+    },
+    {
+     "type": "rectangle",
+     "id": "video-thumbnail-n215",
+     "name": "titled left fade",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 0.5,
+     "width": 358,
+     "height": 201.375,
+     "fill": {
+      "type": "gradient",
+      "gradientType": "linear",
+      "rotation": 270,
+      "center": {
+       "x": 0.5,
+       "y": 0.5
+      },
+      "size": {
+       "width": 1,
+       "height": 1
+      },
+      "colors": [
+       {
+        "color": "$sem-mediaFadeStrong",
+        "position": 0
+       },
+       {
+        "color": "$sem-mediaFadeMid",
+        "position": 0.3
+       },
+       {
+        "color": "$sem-mediaFadeClear",
+        "position": 0.56
+       },
+       {
+        "color": "$sem-mediaFadeClear",
+        "position": 1
+       }
+      ]
+     }
+    },
+    {
+     "type": "ellipse",
+     "id": "video-thumbnail-n216",
+     "name": "play badge ring",
+     "layoutPosition": "absolute",
+     "x": 306.667,
+     "y": 121.542,
+     "width": 36.667,
+     "height": 36.667,
+     "stroke": "$sem-mediaBadgeRing",
+     "strokeWidth": 2.75,
+     "strokeAlignment": "center",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 4,
+      "color": "$sem-mediaBadgeShadow"
+     }
+    },
+    {
+     "type": "path",
+     "id": "video-thumbnail-n217",
+     "name": "play triangle",
+     "layoutPosition": "absolute",
+     "x": 303,
+     "y": 117.875,
+     "width": 44,
+     "height": 44,
+     "viewBox": [
+      0,
+      0,
+      24,
+      24
+     ],
+     "geometry": "M10 8 L16 12 L10 16 Z",
+     "fill": "$sem-icons-onMedia",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 4,
+      "color": "$sem-mediaBadgeShadow"
+     }
+    },
+    {
+     "type": "rectangle",
+     "id": "video-thumbnail-n218",
+     "name": "duration chip",
+     "layoutPosition": "absolute",
+     "x": 306.281,
+     "y": 167.875,
+     "width": 40.719,
+     "height": 22,
+     "cornerRadius": "$y:radius-3xs",
+     "fill": "$sem-mediaChipBg"
+    },
+    {
+     "type": "text",
+     "id": "video-thumbnail-n219",
+     "name": "iv-dur line 0",
+     "x": 314.281,
+     "y": 172.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-xs",
+     "fontWeight": "600",
+     "lineHeight": 1.0,
+     "fill": "$sem-text-onMedia",
+     "content": "0:05",
+     "letterSpacing": "$letter-spacing-mediaChip"
+    },
+    {
+     "type": "text",
+     "id": "video-thumbnail-n220",
+     "name": "iv-thumb-eyebrow line 0",
+     "x": 34,
+     "y": 52.383,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-xs",
+     "fontWeight": "600",
+     "lineHeight": 1.0,
+     "fill": "$sem-text-onMedia",
+     "content": "EQUITY",
+     "letterSpacing": "$letter-spacing-mediaEyebrow",
+     "opacity": 0.92,
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 4,
+      "color": "$sem-mediaTextShadowWarm"
+     }
+    },
+    {
+     "type": "text",
+     "id": "video-thumbnail-n221",
+     "name": "iv-thumb-title line 0",
+     "x": 34,
+     "y": 71.367,
+     "fontFamily": "$y:font-primary",
+     "fontSize": 22.3125,
+     "fontWeight": "700",
+     "lineHeight": 1.16,
+     "fill": "$sem-text-onMedia",
+     "content": "Stock",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 4,
+      "color": "$sem-mediaTextShadow"
+     }
+    },
+    {
+     "type": "text",
+     "id": "video-thumbnail-n222",
+     "name": "iv-thumb-title line 1",
+     "x": 34,
+     "y": 97.242,
+     "fontFamily": "$y:font-primary",
+     "fontSize": 22.3125,
+     "fontWeight": "700",
+     "lineHeight": 1.16,
+     "fill": "$sem-text-onMedia",
+     "content": "Options",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 4,
+      "color": "$sem-mediaTextShadow"
+     }
+    },
+    {
+     "type": "text",
+     "id": "video-thumbnail-n223",
+     "name": "iv-thumb-title line 2",
+     "x": 34,
+     "y": 123.117,
+     "fontFamily": "$y:font-primary",
+     "fontSize": 22.3125,
+     "fontWeight": "700",
+     "lineHeight": 1.16,
+     "fill": "$sem-text-onMedia",
+     "content": "and RSUs",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 4,
+      "color": "$sem-mediaTextShadow"
+     }
+    },
+    {
+     "type": "text",
+     "id": "video-thumbnail-n224",
+     "name": "iv-head line 0",
+     "x": 17,
+     "y": 214.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Stock Options and RSUs"
+    },
+    {
+     "type": "text",
+     "id": "video-thumbnail-n225",
+     "name": "iv-body line 0",
+     "x": 17,
+     "y": 246.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions"
+    },
+    {
+     "type": "text",
+     "id": "video-thumbnail-n226",
+     "name": "iv-body line 1",
+     "x": 17,
+     "y": 269.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "are on pace, the equity sleeve drifted two points"
+    },
+    {
+     "type": "text",
+     "id": "video-thumbnail-n227",
+     "name": "iv-body line 2",
+     "x": 17,
+     "y": 292.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "over target, and one rebalancing trade would"
+    },
+    {
+     "type": "text",
+     "id": "video-thumbnail-n228",
+     "name": "iv-body line 3",
+     "x": 17,
+     "y": 315.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "bring the mix back inside its band."
+    }
+   ],
+   "fill": "$y:sem-background-surface"
+  },
+  {
+   "type": "frame",
+   "id": "video-modal-open",
+   "name": "video-modal-open",
+   "x": 8864,
+   "y": 0,
+   "width": 920,
+   "height": 688,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "video-modal-open-n229",
+     "name": "page backdrop (raster)",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 0,
+     "width": 920,
+     "height": 688,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/video-modal-open--backdrop.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "rectangle",
+     "id": "video-modal-open-n230",
+     "name": "scrim",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 0,
+     "width": 920,
+     "height": 688,
+     "fill": "$y:sem-background-scrim"
+    },
+    {
+     "type": "rectangle",
+     "id": "video-modal-open-n231",
+     "name": "modal shell",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 0,
+     "width": 920,
+     "height": 688,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$y:sem-background-surface",
+     "stroke": "$y:sem-borders-light",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "video-modal-open-n232",
+     "name": "player poster (raster)",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 0.0,
+     "width": 918,
+     "height": 518,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/video-modal-open--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "video-modal-open-n233",
+     "name": "ivm-cap-eyebrow line 0",
+     "x": 41,
+     "y": 137.188,
+     "fontFamily": "$y:font-primary",
+     "fontSize": 24,
+     "fontWeight": "600",
+     "lineHeight": 1.0,
+     "fill": "$sem-text-onMedia",
+     "content": "EQUITY",
+     "letterSpacing": 1.92,
+     "opacity": 0.92,
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 4,
+      "color": "$sem-mediaTextShadowWarm"
+     }
+    },
+    {
+     "type": "text",
+     "id": "video-modal-open-n234",
+     "name": "ivm-cap-title line 0",
+     "x": 41,
+     "y": 174.188,
+     "fontFamily": "$y:font-primary",
+     "fontSize": 63.75,
+     "fontWeight": "700",
+     "lineHeight": 1.08,
+     "fill": "$sem-text-onMedia",
+     "content": "Stock",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 4,
+      "color": "$sem-mediaTextShadow"
+     }
+    },
+    {
+     "type": "text",
+     "id": "video-modal-open-n235",
+     "name": "ivm-cap-title line 1",
+     "x": 41,
+     "y": 243.031,
+     "fontFamily": "$y:font-primary",
+     "fontSize": 63.75,
+     "fontWeight": "700",
+     "lineHeight": 1.08,
+     "fill": "$sem-text-onMedia",
+     "content": "Options",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 4,
+      "color": "$sem-mediaTextShadow"
+     }
+    },
+    {
+     "type": "text",
+     "id": "video-modal-open-n236",
+     "name": "ivm-cap-title line 2",
+     "x": 41,
+     "y": 311.875,
+     "fontFamily": "$y:font-primary",
+     "fontSize": 63.75,
+     "fontWeight": "700",
+     "lineHeight": 1.08,
+     "fill": "$sem-text-onMedia",
+     "content": "and RSUs",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 4,
+      "color": "$sem-mediaTextShadow"
+     }
+    },
+    {
+     "type": "text",
+     "id": "video-modal-open-n237",
+     "name": "ivm-title line 0",
+     "x": 23,
+     "y": 535.641,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-lg",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaModalTitle",
+     "fill": "$y:sem-text-header",
+     "content": "Stock Options and RSUs"
+    },
+    {
+     "type": "text",
+     "id": "video-modal-open-n238",
+     "name": "ivm-time line 0",
+     "x": 23,
+     "y": 567.141,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaMeta",
+     "fontWeight": "400",
+     "lineHeight": "$y:line-height-base",
+     "fill": "$y:sem-text-meta",
+     "content": "Running time 0:05"
+    },
+    {
+     "type": "path",
+     "id": "video-modal-open-n239",
+     "name": "close X",
+     "layoutPosition": "absolute",
+     "x": 873,
+     "y": 539.141,
+     "width": 18,
+     "height": 18,
+     "viewBox": [
+      0,
+      0,
+      24,
+      24
+     ],
+     "geometry": "M18 6 L6 18 M6 6 L18 18",
+     "stroke": "$y:sem-icons-meta",
+     "strokeWidth": 2,
+     "strokeLinecap": "round",
+     "strokeLinejoin": "round"
+    },
+    {
+     "type": "text",
+     "id": "video-modal-open-n240",
+     "name": "ivm-body-p line 0",
+     "x": 23,
+     "y": 601.141,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaModalBody",
+     "fill": "$y:sem-text-header",
+     "content": "Where the plan stands at the half: contributions are on pace, the equity sleeve drifted two points over target, and one rebalancing"
+    },
+    {
+     "type": "text",
+     "id": "video-modal-open-n241",
+     "name": "ivm-body-p line 1",
+     "x": 23,
+     "y": 625.438,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaModalBody",
+     "fill": "$y:sem-text-header",
+     "content": "trade would bring the mix back inside its band."
+    }
+   ]
+  },
+  {
+   "type": "frame",
+   "id": "image-lightbox-open",
+   "name": "image-lightbox-open",
+   "x": 9884,
+   "y": 0,
+   "width": 1280,
+   "height": 1400,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "image-lightbox-open-n242",
+     "name": "page backdrop (raster)",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 0,
+     "width": 1280,
+     "height": 1400,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/image-lightbox-open--backdrop.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "rectangle",
+     "id": "image-lightbox-open-n243",
+     "name": "scrim",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 0,
+     "width": 1280,
+     "height": 1400,
+     "fill": "$sem-mediaLightboxScrim"
+    },
+    {
+     "type": "rectangle",
+     "id": "image-lightbox-open-n244",
+     "name": "lightbox bar fade",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 0,
+     "width": 1280,
+     "height": 60,
+     "fill": {
+      "type": "gradient",
+      "gradientType": "linear",
+      "rotation": 180,
+      "center": {
+       "x": 0.5,
+       "y": 0.5
+      },
+      "size": {
+       "width": 1,
+       "height": 1
+      },
+      "colors": [
+       {
+        "color": "$sem-mediaLightboxBarFade",
+        "position": 0
+       },
+       {
+        "color": "$sem-mediaFadeClear",
+        "position": 1
+       }
+      ]
+     }
+    },
+    {
+     "type": "text",
+     "id": "image-lightbox-open-n245",
+     "name": "iv-lb-title line 0",
+     "x": 18,
+     "y": 19.25,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaModalTitle",
+     "fill": "$sem-text-onMedia",
+     "content": "Mid-year portfolio review — 1",
+     "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "offset": {
+       "x": 0,
+       "y": 1
+      },
+      "blur": 3,
+      "color": "$sem-mediaLightboxTitleShadow"
+     }
+    },
+    {
+     "type": "rectangle",
+     "id": "image-lightbox-open-n246",
+     "name": "lightbox close pill",
+     "layoutPosition": "absolute",
+     "x": 1226,
+     "y": 12,
+     "width": 36,
+     "height": 36,
+     "cornerRadius": "$y:radius-full",
+     "fill": "$sem-mediaLightboxCloseBg"
+    },
+    {
+     "type": "path",
+     "id": "image-lightbox-open-n247",
+     "name": "close X",
+     "layoutPosition": "absolute",
+     "x": 1235,
+     "y": 21,
+     "width": 18,
+     "height": 18,
+     "viewBox": [
+      0,
+      0,
+      24,
+      24
+     ],
+     "geometry": "M18 6 L6 18 M6 6 L18 18",
+     "stroke": "$sem-icons-onMedia",
+     "strokeWidth": 2,
+     "strokeLinecap": "round",
+     "strokeLinejoin": "round"
+    },
+    {
+     "type": "rectangle",
+     "id": "image-lightbox-open-n248",
+     "name": "lightbox photo (raster)",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": 296,
+     "width": 1280,
+     "height": 868,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/image-lightbox-open--m0.png",
+      "mode": "stretch"
+     }
+    }
+   ]
+  },
+  {
+   "type": "frame",
+   "id": "narrow-inline-play",
+   "name": "narrow-inline-play",
+   "x": 11264,
+   "y": 0,
+   "width": 432,
+   "height": 397,
+   "layout": "none",
+   "clip": true,
+   "theme": {
+    "🎨 Colors": "Light",
+    "🆎 Typography": "desktop",
+    "↔️ Spacing/Radius": "Default"
+   },
+   "children": [
+    {
+     "type": "rectangle",
+     "id": "narrow-inline-play-n249",
+     "name": "taupe tile",
+     "layoutPosition": "absolute",
+     "x": 0,
+     "y": -0.5,
+     "width": 432,
+     "height": 397.172,
+     "cornerRadius": "$y:radius-xs",
+     "fill": "$sem-background-mediaTile",
+     "stroke": "$sem-borders-mediaTile",
+     "strokeWidth": 1,
+     "strokeAlignment": "inner"
+    },
+    {
+     "type": "rectangle",
+     "id": "narrow-inline-play-n250",
+     "name": "media raster",
+     "layoutPosition": "absolute",
+     "x": 1,
+     "y": 0.0,
+     "width": 430,
+     "height": 243,
+     "fill": {
+      "type": "image",
+      "url": "./GC-015-image-video-carousel-assets/narrow-inline-play--m0.png",
+      "mode": "stretch"
+     }
+    },
+    {
+     "type": "text",
+     "id": "narrow-inline-play-n251",
+     "name": "iv-head line 0",
+     "x": 17,
+     "y": 255.375,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$y:text-size-md",
+     "fontWeight": "600",
+     "lineHeight": "$line-height-mediaHeadline",
+     "fill": "$y:sem-text-header",
+     "content": "Stock Options and RSUs"
+    },
+    {
+     "type": "text",
+     "id": "narrow-inline-play-n252",
+     "name": "iv-body line 0",
+     "x": 17,
+     "y": 286.672,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "Where the plan stands at the half: contributions are on"
+    },
+    {
+     "type": "text",
+     "id": "narrow-inline-play-n253",
+     "name": "iv-body line 1",
+     "x": 17,
+     "y": 309.922,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "pace, the equity sleeve drifted two points over target, and"
+    },
+    {
+     "type": "text",
+     "id": "narrow-inline-play-n254",
+     "name": "iv-body line 2",
+     "x": 17,
+     "y": 333.172,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "one rebalancing trade would bring the mix back inside its"
+    },
+    {
+     "type": "text",
+     "id": "narrow-inline-play-n255",
+     "name": "iv-body line 3",
+     "x": 17,
+     "y": 356.422,
+     "fontFamily": "$y:font-primary",
+     "fontSize": "$text-size-mediaBody",
+     "fontWeight": "400",
+     "lineHeight": "$line-height-mediaBody",
+     "fill": "$y:sem-text-body",
+     "content": "band."
+    }
+   ],
+   "fill": "$y:sem-background-surface"
+  }
+ ]
+}
