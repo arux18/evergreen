@@ -3,138 +3,714 @@
   "componentId": "GC-006",
   "slug": "form-controls",
   "penPath": "pencil/designs/4-approved/genui/GC-006-form-controls.pen",
-  "contentHash": "sha256:9eac1161b52ebd0ac9f8a171669a16654610486ca84696cb65bda6ec73cef1cf",
-  "capturedAt": "2026-08-25T19:20:00Z",
-  "prototypeVersion": "001",
-  "prototypeContentHash": "sha256:b2617c84a13ad102013443942e6e85e6d5542c14fc3783239caf568bc84bad72",
-  "assets": "pencil/designs/4-approved/genui/GC-006-form-controls-assets/ (6 PNGs) - the prototype's three embedded reference screenshots, pre-resampled at DPR2 per subpixel phase (default-phase set + entry-error-phase set, deduped by content hash). Raster documentation content per the Iron Law's raster exception; the assets folder promotes with the .pen so its relative URIs survive the lane move.",
-  "frames": ["default", "entry-focused", "entry-error", "stepper-stepped", "search-populated", "dropdown-single-open", "dropdown-single-selected", "dropdown-multi-open", "dropdown-multi-toggled", "selection-alternate", "slider-moved", "segmented-second", "pills-second", "tooltip-open", "slider-value-box", "all-disabled", "modal-record-detail", "modal-form-editor", "modal-explainer", "static-print"],
+  "contentHash": "sha256:0176f306314ba246e19f798153253e2ffc531bd84b695b9f1eef088486393a81",
+  "capturedAt": "2026-09-01T14:12:17Z",
+  "prototypeVersion": "002",
+  "prototypeContentHash": "sha256:fe8aaafbfa10da851bbc0d1720d522958d8d2fea7d5c9c104c535e8794bab651",
+  "assets": "none - v4.13 removed the Reference screenshots box (v4.12k), so the v002 capture carries no raster assets; the stale v001 GC-006-form-controls-assets/ folder is removed with this re-lock (its v001 .pen referent is preserved in history)",
+  "frames": [
+    "default",
+    "entry-focused",
+    "entry-error",
+    "stepper-stepped",
+    "search-populated",
+    "dropdown-single-open",
+    "dropdown-single-selected",
+    "dropdown-multi-open",
+    "dropdown-multi-toggled",
+    "selection-alternate",
+    "slider-moved",
+    "slider-value-modal",
+    "slider-value-box",
+    "segmented-second",
+    "pills-second",
+    "tooltip-open",
+    "all-disabled",
+    "modal-record-detail",
+    "modal-form-editor",
+    "modal-explainer",
+    "static-print"
+  ],
   "convergence": {
-    "iterationsUsed": 3,
+    "iterationsUsed": 1,
+    "iterationAccounting": "Two compare rounds were run; round 1 (1.2-1.96%) was INVALIDATED as an export-lab infrastructure failure, not an authoring defect: the export mirror reproduced design-specs' pencil/designs/fonts as a dangling symlink (it points at ../design-system/fonts), and pen 0.3.5 silently fell back to fetching Noto Sans from fonts.gstatic.com, so the exports rendered in the wrong font while the .pen was correct. With the fonts resolvable the UNMODIFIED document (byte-identical .pen, only the lab fixed) converged at 21/21 - honest iterations consumed: 1.",
     "pencilVersion": "@pen.dev/cli 0.3.5",
-    "pencilVersionNote": "Pinned per dispatch (finding 9). The .pen imports hemlock-library.lib.pen via a relative URI and Heebo + Noto Serif via ../../fonts URIs; re-export MUST run on 0.3.5 at the committed lane path so imports and fonts resolve.",
-    "exportInvocation": "pen interactive --in <lane-path>/GC-006-form-controls.pen --out <same>; execute({ input: 'Export([\"default\", ...all 20 ids], \"png\", \"<dir>\")' }) - default scale 2. Re-export verified byte-identical across consecutive runs (20/20 frames).",
-    "comparison": "pixelmatch threshold 0.1, per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-baseline knob, not this loop's). Targets = NORMALIZED prototype, Playwright 1.58 Chromium headless-shell 151, deviceScaleFactor 2 (matches pen export scale 2), non-file requests blocked, Heebo + Noto Serif served from the same TTFs the .pen references (pencil/designs/fonts/, via fontconfig), fonts.ready awaited, animations/transitions/caret frozen, pointer parked after steps. Pane states rendered at 1280x2700 viewport (document fits, zero scrolling - width-keyed layout identical to the contract's 1280x900; avoids scroll-dismiss/fixed-element pitfalls); modal states at the contract's 1280x900 with scroll pinned at 0. Contract steps driven verbatim except fill: value set + input dispatch + blur (matches the contract's described appearances - search icon at rest colour; the invalid border out-specificities :focus so entry-error is unaffected). Root clip = #cs-buttons rect (modal states: the body-mounted backdrop = full viewport, scrim + dimmed page included by design). 20/20 states rendered with zero page errors; capture path null-tested byte-identical across runs.",
-    "iterationNotes": "Iteration 1 (authored from CDP DOMSnapshot scene graphs of the normalized prototype: paint-ordered draw list, per-line text boxes, opacity-context grouping, svg path harvest, synthesized input-value/placeholder text, modeled range-input track/fill/thumb): 1.09-2.30% - two systematic defects surfaced: text placed 3-4px low (an HTML-side calibration reference error; the real-page evidence re-confirmed GC-001's model - pen centers the font's unrounded hhea box in the lineHeight box, Heebo 1.0479/0.4209, Noto Serif 1.069/0.293) and a slider-gradient parse bug (fill stop read as 0%). Iteration 2 (hhea-based text placement + slider fix): all states 0.26-0.74% except entry-error 1.43% - the reference-screenshot rasters were cropped at default's subpixel phase while entry-error's un-hidden helper line shifts the shots box +20.5px to a different phase. Iteration 3 (per-phase asset crops + per-(family,weight,size) subpixel text tunes measured from real textboxes): all 20 states 0.25-0.90%, standard met. Residual diff is cross-rasterizer text/edge anti-aliasing (pen vs Chromium), concentrated on glyph edges and 1px control borders. default==static-print exports are byte-identical, matching the contract's identical-by-construction claim.",
+    "pencilVersionNote": "Pinned per dispatch (finding 9). The .pen imports hemlock-library.lib.pen via a relative URI and Heebo + Noto Serif via ../../fonts URIs; re-export MUST run on 0.3.5 at the committed lane path so imports and fonts resolve - AND the fonts symlink target pencil/design-system/fonts must exist (see environmentFactsFeedback).",
+    "exportInvocation": "pen interactive --in <lane-path>/GC-006-form-controls.pen --out <same>; execute({ input: 'Export([\"default\", ...all 21 ids], \"png\", \"<dir>\")' }) - default scale 2. Re-export verified byte-identical across consecutive runs (21/21 frames).",
+    "comparison": "pixelmatch threshold 0.1, per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-baseline knob, not this loop's). Targets = NORMALIZED prototype, Playwright 1.58 Chromium headless-shell 151, deviceScaleFactor 2 (matches pen export scale 2), non-file requests blocked, Heebo + Noto Serif installed via fontconfig from the same TTFs the .pen references (pencil/design-system/fonts/, the symlink target of pencil/designs/fonts/), fontconfig hintnone/antialias/rgba-none (measured ~0.2pp tighter vs default hinting - pen shapes text with the font's own unhinted metrics, validated against hmtx advances), fonts.ready awaited, animations/transitions/caret frozen, pointer parked after steps, contract preShot re-asserted. Pane states rendered at 1280xfit viewport (document fits, zero scrolling - width-keyed layout identical to the contract's 1280x900; avoids the tooltip scroll-dismiss and fixed-element pitfalls; v001 precedent); modal states at the contract's 1280x900 with root = the body-mounted backdrop (full viewport: scrim + inert dimmed page included by design). Contract steps driven verbatim except fill: value set + input dispatch + blur (v001 precedent; matches described appearances). Frame clip = #cs-buttons border box floored to whole CSS px (1024x2631; entry-error 1024x2652 - the un-hidden helper line, contract-documented). 21/21 states rendered with zero page errors.",
+    "iterationNotes": "Authored from an in-page paint-order scene walker over the normalized prototype (per-char Range line boxes with text-transform applied, synthesized input value/placeholder/selection runs, ::before/::after modeling incl. CSS border-triangles as paths, ::marker boxes merged from CDP DOMSnapshot, range-input track/fill/thumb modeled per V2 with the 20px thumb as one ellipse + 2px sliderThumbEdge inner stroke, svg glyph harvest with viewBox-scaled stroke widths and rotate-180 as flipX+flipY, opacity contexts as nested groups). Text placement: pen centers the font's unrounded hhea box in the lineHeight box (v001 finding, re-verified from the TTFs: Heebo baseline fraction 0.81348, Noto Serif 0.888); solid line-height token + baseline-anchored per-line runs; zero per-(family,weight,size) tunes needed this round. Residual diff is cross-rasterizer glyph-edge and 1px-border anti-aliasing (pen vs Chromium), same class v001 recorded. default == static-print exports byte-identical, matching the contract's identical-by-construction claim.",
     "perState": [
-      { "state": "default", "diffPct": 0.743, "geometryProbes": "pass", "exportSha256": "53b02d94edc0d5f65390371d276e28e2532026633bd435c08d8cfaf89fa2c945" },
-      { "state": "entry-focused", "diffPct": 0.61, "geometryProbes": "pass", "exportSha256": "aeec6e3e013a4d629ca091aea9ac2850925a25f4da15f0a8f2a759f787ab37e8" },
-      { "state": "entry-error", "diffPct": 0.895, "geometryProbes": "pass", "exportSha256": "badbd592d23be554aa7f0fc37d1dfcdee414f9a944db22f03c8c8632836900f1" },
-      { "state": "stepper-stepped", "diffPct": 0.743, "geometryProbes": "pass", "exportSha256": "99fdc99a5632d2400bb9cabb8f8bfa49fd828015acd87ff6224c94049c304e6c" },
-      { "state": "search-populated", "diffPct": 0.744, "geometryProbes": "pass", "exportSha256": "f7714876e0ed9e2aff7536c3b30721ba4f474ec8825fa870c88fc707b8e0593d" },
-      { "state": "dropdown-single-open", "diffPct": 0.739, "geometryProbes": "pass", "exportSha256": "20628c210adfe239a7ad114ff1e3309c947c5b1f3dad146db34c8568afbc9c6f" },
-      { "state": "dropdown-single-selected", "diffPct": 0.743, "geometryProbes": "pass", "exportSha256": "c1f9cdb2381326f7d7699730aa17878e062b21041b71a321e7c99030ff313575" },
-      { "state": "dropdown-multi-open", "diffPct": 0.744, "geometryProbes": "pass", "exportSha256": "0609d6058984d266c83a14f5b8d0c5eebe9fbd1e89438b4115c75275f42d6775" },
-      { "state": "dropdown-multi-toggled", "diffPct": 0.741, "geometryProbes": "pass", "exportSha256": "035cddd6942004a20fa7bfc3ff6d4f55100153dc4b4dbf1711718c38541bcbd6" },
-      { "state": "selection-alternate", "diffPct": 0.742, "geometryProbes": "pass", "exportSha256": "b7d7b84f91c0e7d1c5e1c22ac831cb4fb1e1ba4759cc7375517dc9b31c2e7fc3" },
-      { "state": "slider-moved", "diffPct": 0.743, "geometryProbes": "pass", "exportSha256": "c66c4df45081d58658855c759056c7ae904461ead3f2a068900bef42a1ba3ca1" },
-      { "state": "segmented-second", "diffPct": 0.743, "geometryProbes": "pass", "exportSha256": "c834cec8df8746f9816ca5f49d3487dd44c8f11d8a4d1a50445bc3b5e4705aa6" },
-      { "state": "pills-second", "diffPct": 0.743, "geometryProbes": "pass", "exportSha256": "7a596dcd74b701c7a076d9363a9b492a4c57172214e5fd7e3d82c07fb32e660e" },
-      { "state": "tooltip-open", "diffPct": 0.744, "geometryProbes": "pass", "exportSha256": "c92f2072a0f6c27392ae262adc469254a4dd2318d3507210e8f1668a3cd586d2" },
-      { "state": "slider-value-box", "diffPct": 0.743, "geometryProbes": "pass", "exportSha256": "976b11a6f8229dc13b6a318b788014803aec7f1f0e1f2dbbb8aa8d750e0a8b00" },
-      { "state": "all-disabled", "diffPct": 0.712, "geometryProbes": "pass", "exportSha256": "72d42e0c892076607e23fed48b88a3faa77f7ea10bc75051f9403210d17180d6" },
-      { "state": "modal-record-detail", "diffPct": 0.254, "geometryProbes": "pass", "exportSha256": "49f608cbf2865eed8961a4594e0165714afa9474b12a21f89d83bf8e5f33fba7" },
-      { "state": "modal-form-editor", "diffPct": 0.263, "geometryProbes": "pass", "exportSha256": "37a6e0e4b60ee6bfc8bc0db60588117cf0a550c4f5de5ff43aa5dc2a8f23c1ae" },
-      { "state": "modal-explainer", "diffPct": 0.287, "geometryProbes": "pass", "exportSha256": "d550521225767527d9a7985c8b7f6437eca5920d4c367f36c9e32a9f40592abd" },
-      { "state": "static-print", "diffPct": 0.743, "geometryProbes": "pass", "exportSha256": "53b02d94edc0d5f65390371d276e28e2532026633bd435c08d8cfaf89fa2c945" }
+      {
+        "state": "default",
+        "diffPct": 0.483,
+        "geometryProbes": "pass",
+        "exportSha256": "6ad0833d5dfa3fd1c1176c22ba0641c914b58223ccfd55fce885c4c0ca52deb6"
+      },
+      {
+        "state": "entry-focused",
+        "diffPct": 0.483,
+        "geometryProbes": "pass",
+        "exportSha256": "1a990c46ce9274a41087f49558de620bbd1df41cc62f67d3beef377a240e3fe8"
+      },
+      {
+        "state": "entry-error",
+        "diffPct": 0.559,
+        "geometryProbes": "pass",
+        "exportSha256": "22c71a1b20bb8133604d6edbb50da0976bec937e8501c4b73a36a4d826b61cab"
+      },
+      {
+        "state": "stepper-stepped",
+        "diffPct": 0.483,
+        "geometryProbes": "pass",
+        "exportSha256": "3bde15e728a0210c5a9f99c0073acfc11f0bae6085d8ed0d8da18fc918d44304"
+      },
+      {
+        "state": "search-populated",
+        "diffPct": 0.482,
+        "geometryProbes": "pass",
+        "exportSha256": "029eea28526fd22eeec5a55fc783d6772f89eead68a44d502d26eaadc3a26db2"
+      },
+      {
+        "state": "dropdown-single-open",
+        "diffPct": 0.55,
+        "geometryProbes": "pass",
+        "exportSha256": "8974e60d075dd2c67af62d745fcdb5ee316e732adc22efef90fe722a79a62c09"
+      },
+      {
+        "state": "dropdown-single-selected",
+        "diffPct": 0.483,
+        "geometryProbes": "pass",
+        "exportSha256": "dd8cf66dd7126a2c5fb8f849a826981152ccda48438e5c838742408d230c0b8d"
+      },
+      {
+        "state": "dropdown-multi-open",
+        "diffPct": 0.53,
+        "geometryProbes": "pass",
+        "exportSha256": "b2214b5b26a3f9de44441c3203915d6db10a633d1e37f9c41219cf3c20b1fe40"
+      },
+      {
+        "state": "dropdown-multi-toggled",
+        "diffPct": 0.534,
+        "geometryProbes": "pass",
+        "exportSha256": "30ac70f05ce28ddfcf08f77c4a7d2cedb93ebe79aeae6cde3d886e059ed28fd0"
+      },
+      {
+        "state": "selection-alternate",
+        "diffPct": 0.482,
+        "geometryProbes": "pass",
+        "exportSha256": "451eb84895ff8978ba1597e44eb481a6a89126388ce66014435995fa6e986896"
+      },
+      {
+        "state": "slider-moved",
+        "diffPct": 0.483,
+        "geometryProbes": "pass",
+        "exportSha256": "669f18e9963405856e95f31628a662dc217ae998768dd06f42252e6ef633d9c0"
+      },
+      {
+        "state": "slider-value-modal",
+        "diffPct": 0.192,
+        "geometryProbes": "pass",
+        "exportSha256": "0557b0eb244b175573d3c7f80b8f824b31b66ab9f5429d8f558780d27833aa9d"
+      },
+      {
+        "state": "slider-value-box",
+        "diffPct": 0.482,
+        "geometryProbes": "pass",
+        "exportSha256": "45e683413fb687f275fd495bc6b9c90e3eb43d23102011821cdadbd7566a87d7"
+      },
+      {
+        "state": "segmented-second",
+        "diffPct": 0.483,
+        "geometryProbes": "pass",
+        "exportSha256": "a5ad46f4bfc75fc1b037870c6418bc8445006c705ff9775c834e37ec1e9f7b36"
+      },
+      {
+        "state": "pills-second",
+        "diffPct": 0.483,
+        "geometryProbes": "pass",
+        "exportSha256": "46d4f64c4b7d89be95e1c0aa3fdc35baff8f0f10805a68505c792ced32da63d5"
+      },
+      {
+        "state": "tooltip-open",
+        "diffPct": 0.509,
+        "geometryProbes": "pass",
+        "exportSha256": "1fa6ff775481ac080c8da7095b936e0f28276a6294c1de67be2aaca4801d01b8"
+      },
+      {
+        "state": "all-disabled",
+        "diffPct": 0.476,
+        "geometryProbes": "pass",
+        "exportSha256": "d04a01c87db2d0edf46b7ce0838843b6b8ac664e48797c5574fa1884b732c87d"
+      },
+      {
+        "state": "modal-record-detail",
+        "diffPct": 0.38,
+        "geometryProbes": "pass",
+        "exportSha256": "6feb69bf811dc0eae72ce683f1b6e3020cdd501966078c64475c777e14875889"
+      },
+      {
+        "state": "modal-form-editor",
+        "diffPct": 0.409,
+        "geometryProbes": "pass",
+        "exportSha256": "ae9e2878bb19393a2c7ca03f778235e575791d08a902cba1aa0ec976e5375f16"
+      },
+      {
+        "state": "modal-explainer",
+        "diffPct": 0.413,
+        "geometryProbes": "pass",
+        "exportSha256": "8a7f3161a0e7fff807db36f67ea87a5864c92522d424d6898b98b663add7988e"
+      },
+      {
+        "state": "static-print",
+        "diffPct": 0.483,
+        "geometryProbes": "pass",
+        "exportSha256": "6ad0833d5dfa3fd1c1176c22ba0641c914b58223ccfd55fce885c4c0ca52deb6"
+      }
     ],
-    "geometryProbesDetail": "The contract's probes asserted on the rendered scene data the frames carry verbatim: btn heights 28/36/44 (R3); input box 36h/r4/1px rest, 2px accent + pad 11 focused, 2px error invalid - height constant across all three (R8); stepper action 28w border-left 0 (R10 idiom); search clear 20px pill present only in search-populated (R11); checkbox 20x20 r4, 2px checked / 1px-computed unchecked (R15); toggle track 36x20 (R16); dropdown trigger 200x36, open = 2px accent (R8/R12); menu r6 pad4 (R13); slider 240w 4px track, slider-moved fill 30% with thumb center at x+10+(w-20)*0.30 (R17, thumb geometry pixel-verified: 20px border-box, 16px accent interior, 2px white edge); segmented band r6 pad3 (R19); pill r-pill pad 13/22 600 14px (R20); caption 11/500/uppercase/0.55px (R29); optdesc 13px padL30 (R22); textarea 280x104; tooltip fixed r6 12px maxw300 (R23); modal cards 640/520/560 r12 (R26); record-detail kv grid present; all-disabled uniform opacity 0.38 (R2). All pass.",
+    "geometryProbesDetail": "37 scene-data assertions (the .pen carries the scene verbatim): btn heights 28/36/44 + secondary 1px outline (R3/R4); entry box 36h constant with 1px rest / 2px focus / 2px invalid border compensation (R8); stepper 28w border-left 0 (R10); search clear glyph only in search-populated (R11); checkbox 20x20 r4, 2px checked vs 1px-computed unchecked - the contract-banked delta (R15); toggle 36x20 with OFF thumb at left+2 (R16); slider 240x4 track, 30% fill = 72px, thumb center x+10+(w-20)*0.30, readout '30%' (R17/R17b); segmented band r6 chip inset 3 (R19); selected pill filled at pill radius with inverse label (R20); optdesc lines (R22); tooltip r6 maxw 300 (R23); modal cards 640/560/520/520 r12 (R26); all-disabled 0.38 groups x44 (R2); captions 11/500/ls0.55 x40 (R29); 5 hyperlink surfaces + drawn underlines (R31); 16 kpi values 22px, barred squared-top [0,0,10,10] + 8 bars 2px at .95 group opacity, white kpi panel (R32). All pass.",
     "waivers": []
   },
   "normalizationRecipe": {
     "cssVariableInjections": [
-      { "variable": "--tk-btn-accent-hover", "value": "#2952CC", "token": "$y:sem-btnPrimaryBgHover" },
-      { "variable": "--tk-text-1", "value": "#0E0E0E", "token": "$y:sem-text-header" },
-      { "variable": "--tk-text-2", "value": "#5E5954", "token": "$y:sem-text-meta" },
-      { "variable": "--tk-text-3", "value": "#716E6A", "token": "$y:sem-text-placeholder" },
-      { "variable": "--tk-surface-2", "value": "#F8F7F6", "token": "$y:sem-background-light (segmented band) / $y:sem-background-disabled (disabled input bg) - same resolved value" },
-      { "variable": "--tk-surface-3", "value": "#EEEDEB", "token": "$y:sem-background-subtle (hover washes only - no contracted frame shows it)" },
-      { "variable": "--tk-border", "value": "#EEEDEB", "token": "$y:sem-borders-light" },
-      { "variable": "--tk-border-strong", "value": "#D5D3D0", "token": "$y:sem-borders-muted" },
-      { "variable": "--tk-error", "value": "#C82320", "token": "$y:sem-borders-error (borders) + $y:sem-text-error (text) - identical resolved pair" },
-      { "variable": "--tk-error-subtle", "value": "#FFEAEA", "token": "$y:sem-background-error (hover/focus washes only)" },
-      { "variable": "--tk-track", "value": "#D5D3D0", "token": "$y:sem-sliderTrack" },
-      { "variable": "--tk-off", "value": "#EDEAE3", "token": "$y:sem-toggleTrackOff (GC-001 precedent: Hemlock's own off design)" },
-      { "variable": "--tk-thumb-dis", "value": "#EEEDEB", "token": "$y:sem-background-subtle" },
-      { "variable": "--tk-shadow-sm", "value": "0 1px 2px rgba(0,0,0,0.078)", "token": "shadow-sm family: $y:shadow-sm-y / $y:shadow-sm-blur / $y:prim-shadow-sm-color" },
-      { "variable": "--tk-shadow-dd", "value": "0 4px 12px rgba(0,0,0,0.102)", "token": "shadow-md family: $y:shadow-md-y / $y:shadow-md-blur / $y:prim-shadow-md-color" },
-      { "variable": "--backdrop", "value": "rgba(45,41,38,0.341)", "token": "$y:sem-background-scrim (#2D292657 - Bill's rgba(45,41,38,0.34) is the same colour at alpha 0.340 vs 0.341)" },
-      { "variable": "--modal-shadow", "value": "0 16px 40px rgba(0,0,0,0.161)", "token": "shadow-overlay family: $y:shadow-overlay-y / $y:shadow-overlay-blur / $y:prim-shadow-overlay-color" },
-      { "variable": "--tk-accent", "value": "#3A6AF8 (unchanged)", "token": "per-surface: $y:sem-background-action (toggle on-track), $y:sem-borders-action (focus/open/checked borders), $y:sem-sliderAccent (slider fill+thumb), $y:sem-icons-action (check glyph, radio dot, focused search icon), $y:sem-text-action (selected dropdown item)" },
-      { "variable": "--tk-accent-subtle", "value": "#EBF0FE (unchanged)", "token": "$y:sem-background-highlight" },
-      { "variable": "--tk-border-input", "value": "#DCD8CB (unchanged)", "token": "$y:sem-borders-dark (value-exact: taupe-350)" },
-      { "variable": "--tk-focus", "value": "#3A6AF8 (unchanged)", "token": "$y:sem-borders-action (checked border) / $y:sem-icons-action (glyph/dot)" },
-      { "variable": "--tk-btn-accent", "value": "#3A6AF8 (unchanged)", "token": "$y:sem-btnPrimaryBg (primary fill) / $y:sem-btnSecondaryText + $y:sem-borders-action (secondary text/outline)" },
-      { "variable": "--tk-text-inverse", "value": "#FFFFFF (unchanged)", "token": "$y:sem-btnPrimaryText" },
-      { "variable": "--tk-surface-1", "value": "#FFFFFF (unchanged)", "token": "$y:sem-background-surface / $y:sem-toggleKnob (toggle thumb)" },
-      { "variable": "--ink", "value": "#0E0E0E (unchanged)", "token": "$y:sem-text-header (text) / $sem-pillOnBg (pill selected fill+border, created)" },
-      { "variable": "--muted", "value": "#5E5954 (unchanged)", "token": "$y:sem-text-meta / $y:sem-icons-meta (chevrons, stepper glyphs)" },
-      { "variable": "--faint", "value": "#767169 (unchanged)", "token": "$control-text-faint (created - see designGaps)" },
-      { "variable": "--surface-1", "value": "#FFFFFF (unchanged)", "token": "$y:sem-background-surface" },
-      { "variable": "--surface-2", "value": "#F8F7F6 (unchanged)", "token": "$y:sem-background-light (modal tags/logo tile)" },
-      { "variable": "--border", "value": "#EEEDEB (unchanged)", "token": "$y:sem-borders-light" },
-      { "variable": "--border-strong", "value": "#D5D3D0 (unchanged)", "token": "$y:sem-borders-muted" },
-      { "variable": "--accent", "value": "#3A6AF8 (unchanged)", "token": "$y:sem-text-action / $y:sem-borders-action by surface" },
-      { "variable": "--taupe-100", "value": "#F7F5F0 (unchanged)", "token": "$y:sem-background-sunken (sc-box panels + modal head band)" },
-      { "variable": "--taupe-border", "value": "#E3DFD6 (unchanged)", "token": "$sem-borders-panel (created - see designGaps)" },
-      { "variable": "--text-body", "value": "#403D3A (unchanged)", "token": "$y:sem-text-body" },
-      { "variable": "--inverse", "value": "#FFFFFF (unchanged)", "token": "$sem-pillOnText (created, coupled with $sem-pillOnBg)" },
-      { "variable": "--pos", "value": "#148338 (unchanged)", "token": "$y:sem-text-deposit" },
-      { "variable": "--neg", "value": "#C82320 (unchanged)", "token": "$y:sem-text-error (expense/negative tone - red ramp doubles as error/expense per the design system)" },
-      { "variable": "--page-bg", "value": "#FFFFFF (unchanged)", "token": "$y:sem-background-surface (frame fill)" },
-      { "variable": "--radius-pill", "value": "9999px (unchanged)", "token": "$y:radius-full" },
-      { "variable": "--radius-sm", "value": "4px (unchanged)", "token": "$y:radius-3xs" },
-      { "variable": "--radius", "value": "8px (unchanged)", "token": "$y:radius-2xs" },
-      { "variable": "--radius-lg", "value": "12px (unchanged)", "token": "$y:radius-xs" }
+      {
+        "variable": "--tk-text-1",
+        "value": "#0E0E0E",
+        "token": "$y:sem-text-header"
+      },
+      {
+        "variable": "--tk-text-2",
+        "value": "#5E5954",
+        "token": "$y:sem-text-meta / $y:sem-icons-meta"
+      },
+      {
+        "variable": "--tk-text-3",
+        "value": "#716E6A",
+        "token": "$y:sem-text-placeholder"
+      },
+      {
+        "variable": "--tk-surface-2",
+        "value": "#F8F7F6",
+        "token": "$y:sem-background-light / $y:sem-background-disabled"
+      },
+      {
+        "variable": "--tk-surface-3",
+        "value": "#EEEDEB",
+        "token": "$y:sem-background-subtle"
+      },
+      {
+        "variable": "--tk-border",
+        "value": "#EEEDEB",
+        "token": "$y:sem-borders-light"
+      },
+      {
+        "variable": "--tk-border-strong",
+        "value": "#D5D3D0",
+        "token": "$y:sem-borders-muted"
+      },
+      {
+        "variable": "--tk-error",
+        "value": "#C82320",
+        "token": "$y:sem-borders-error / $y:sem-text-error"
+      },
+      {
+        "variable": "--tk-error-subtle",
+        "value": "#FFEAEA",
+        "token": "$y:sem-background-error"
+      },
+      {
+        "variable": "--tk-track",
+        "value": "#D5D3D0",
+        "token": "$y:sem-sliderTrack"
+      },
+      {
+        "variable": "--tk-off",
+        "value": "#EDEAE3",
+        "token": "$y:sem-toggleTrackOff"
+      },
+      {
+        "variable": "--tk-thumb-dis",
+        "value": "#EEEDEB",
+        "token": "$y:sem-background-subtle"
+      },
+      {
+        "variable": "--tk-shadow-sm",
+        "value": "0 1px 2px rgba(0,0,0,0.078)",
+        "token": "shadow-sm family"
+      },
+      {
+        "variable": "--tk-shadow-dd",
+        "value": "0 4px 12px rgba(0,0,0,0.102)",
+        "token": "shadow-md family"
+      },
+      {
+        "variable": "--tk-btn-accent-hover",
+        "value": "#2952CC",
+        "token": "$y:sem-btnPrimaryBgHover"
+      },
+      {
+        "variable": "--modal-shadow",
+        "value": "0 16px 40px rgba(0,0,0,0.161)",
+        "token": "shadow-overlay family"
+      },
+      {
+        "variable": "--backdrop",
+        "value": "rgba(45,41,38,0.341)",
+        "token": "$y:sem-background-scrim"
+      }
     ],
+    "unchangedBindings": "Variables already token-value-exact bound WITHOUT normalization edits (v001 recipe carried): --tk-accent/-subtle/-border-input/-focus/-btn-accent/-text-inverse/-surface-1, --ink/--muted/--surface-1/-2/--border/--border-strong/--accent/--taupe-100/--taupe-border/--text-body/--inverse/--pos/--neg/--page-bg, radius set. v4.13 additions bound value-identically without edits: .ui-kpipanel literal #ffffff -> $y:sem-background-surface (R30 reconciliation input a), barred-tile ::before accent bar -> $y:sem-background-action inside an opacity-.95 group (R30 input b - the composite is preserved, not precomputed, because the group renders identically in both rasterizers), slider thumb 2px #FFFFFF edge -> $sem-sliderThumbEdge (v001 token).",
     "findReplaces": [],
-    "findReplacesNote": "Zero source edits beyond the 12 :root/#appMain variable-value injections above (asserted unique, recorded verbatim in the build tooling). Two in-scope literals were bound without normalization edits because their values already equal the chosen tokens' light values: .ui-shots img background #fff -> $y:sem-background-surface, and the slider thumb's deliberate 2px #FFFFFF edge (R17, both themes) -> $sem-sliderThumbEdge (created).",
-    "fontSwap": "No family change: the prototype's --font-ui already leads with Heebo and --font-serif with Noto Serif (asset-manifest note). Delivery swap only: Google Fonts blocked at render; Heebo + Noto Serif served from pencil/designs/fonts/*.ttf via fontconfig - the same TTFs the .pen's fonts entries reference ($y:font-primary / $y:font-secondary bound on every text node)."
+    "findReplacesNote": "Zero source edits beyond the 17 asserted-unique variable-value injections (v001's 12-entry class + v4.13's drifted --tk-btn-accent-hover raw #295CCC -> #2952CC). Recorded verbatim in normalization-applied.json within the build tooling.",
+    "fontSwap": "No family change: the prototype's --font-ui already leads with Heebo and --font-serif with Noto Serif. Delivery swap only: Google Fonts blocked at render; Heebo + Noto Serif installed via fontconfig (hintnone) from pencil/design-system/fonts/*.ttf - the same TTFs the .pen's fonts entries reference through the pencil/designs/fonts symlink ($y:font-primary / $y:font-secondary bound on every text node)."
   },
   "tokenJudgmentCalls": [
-    { "surface": "primary control text (--tk-text-1: input values, dropdown labels, control labels, segmented active, slider labels)", "prototypeValue": "#171717", "boundToken": "$y:sem-text-header", "rationale": "Bill's control text-1 is a near-black outside the Hemlock ramps (tailwind neutral-900). The role is the kit's strongest ink; sem-text-header owns that role (gray-900 #0E0E0E). Repaint #171717->#0E0E0E. sem-text-body (#403D3A) considered and rejected - visibly lighter than Bill's intent for control values.", "newTokenCreated": false, "newToken": null },
-    { "surface": "secondary control text (--tk-text-2: captions via .ui-cap, stepper/chevron glyphs, segmented rest labels)", "prototypeValue": "#525252", "boundToken": "$y:sem-text-meta (text) / $y:sem-icons-meta (svg glyphs)", "rationale": "Secondary/helper role; both tokens resolve #5E5954. Repaint #525252->#5E5954.", "newTokenCreated": false, "newToken": null },
-    { "surface": "tertiary control text (--tk-text-3: placeholders, ghost button text, disabled dropdown item, slider endpoint caps, search-clear glyph)", "prototypeValue": "#737373", "boundToken": "$y:sem-text-placeholder", "rationale": "gray-500 (#716E6A) is Hemlock's 'Tertiary text' step and sem-text-placeholder owns it. Repaint #737373->#716E6A. Bound on the search-clear icon too (a text-like tertiary affordance; sem-icons-subtle #8A8680 would repaint further from Bill's tone and split one kit role across two values).", "newTokenCreated": false, "newToken": null },
-    { "surface": "secondary/destructive button outlines ([Button]/[Open] pills, danger pill)", "prototypeValue": "border #3A6AF8 (accent) / #B91C1C -> normalized #C82320", "boundToken": "$y:sem-btnSecondaryText + $y:sem-borders-action / $y:sem-text-error + $y:sem-borders-error", "rationale": "Bill's kit doctrine is full-strength status/action OUTLINE pills (R4: no filled destructive). Hemlock's Button/secondary border token is pale blue-300 and its destructive is FILLED - binding those would repaint the kit's documented idiom. Text binds the exact-value role tokens; borders bind the action/error border roles; the idiom divergence itself is a non-token design gap below.", "newTokenCreated": false, "newToken": null },
-    { "surface": "ghost button text", "prototypeValue": "#737373 (normalized #716E6A)", "boundToken": "$y:sem-text-placeholder", "rationale": "Hemlock's Button/text variant is a blue link (sem-btnLinkText) - a different design. Bill's gray ghost button keeps the kit's tertiary text role; the missing gray-ghost variant is a non-token gap below.", "newTokenCreated": false, "newToken": null },
-    { "surface": "toggle switch (on-track / off-track / thumb)", "prototypeValue": "on #3A6AF8, off #B6B9B7, thumb #FFFFFF", "boundToken": "$y:sem-background-action / $y:sem-toggleTrackOff / $y:sem-toggleKnob", "rationale": "GC-001 precedent verbatim: Bill's filled-track switch inverts Hemlock's pale-track ToggleSwitch; binding toggleTrackOn (#EBF0FE) would break the coupled track/thumb contrast. On-track binds the action role (value-identical), off-track adopts toggleTrackOff (repaint #B6B9B7->#EDEAE3 - exactly Hemlock's own off design). Idiom divergence recorded as a non-token gap.", "newTokenCreated": false, "newToken": null },
-    { "surface": "disabled toggle (track / thumb)", "prototypeValue": "--tk-track #D8D9D8 / --tk-thumb-dis #EEEFEE", "boundToken": "$y:sem-sliderTrack / $y:sem-background-subtle", "rationale": "Hemlock has no toggle-disabled T3 pair. The disabled track adopts the slider-track gray (role: inert track, value repaint D8D9D8->D5D3D0); the disabled thumb the subtle background (EEEFEE->EEEDEB). Visible only in all-disabled under the uniform 0.38 dim.", "newTokenCreated": false, "newToken": null },
-    { "surface": "input resting border (--tk-border-input)", "prototypeValue": "#DCD8CB", "boundToken": "$y:sem-borders-dark", "rationale": "Value-exact (taupe-350) and role-plausible ('emphasized borders'). Hemlock's Input primitive exposes no T3 border token; kept distinct from --border/--border-strong bindings so Bill's three border tones stay three roles.", "newTokenCreated": false, "newToken": null },
-    { "surface": "sc-box specimen panels + modal head band", "prototypeValue": "#F7F5F0 (--taupe-100)", "boundToken": "$y:sem-background-sunken", "rationale": "Recessed tinted panel role; value-exact (taupe-100). sem-background-main (same value) rejected on role - these are surfaces within the page, not the page canvas.", "newTokenCreated": false, "newToken": null },
-    { "surface": "segmented control band", "prototypeValue": "#F5F5F5 (--tk-surface-2)", "boundToken": "$y:sem-background-light", "rationale": "Recessed band on a white card; gray-50 'Subtle section bg' is the nearest role+value (repaint F5F5F5->F8F7F6). sem-background-subtle (#EEEDEB) considered - a visibly bigger repaint of the band-vs-chip contrast Bill designed.", "newTokenCreated": false, "newToken": null },
-    { "surface": "modal negative values (record-detail 'neg' tone)", "prototypeValue": "#C82320 (--neg)", "boundToken": "$y:sem-text-error", "rationale": "Value-exact. The red ramp is documented 'error / expense'; Hemlock has no separate expense-text token (deposit has one). Designer may later want sem-text-expense - recorded here, not minted, since the error token is value- and family-exact.", "newTokenCreated": false, "newToken": null },
-    { "surface": "focus ring (tooltip-open trigger, the one contracted ring)", "prototypeValue": "box-shadow 0 0 0 3px #EBF0FE (--tk-accent-subtle; R7 idiom)", "boundToken": "spread shadow, color $y:sem-background-highlight", "rationale": "R7 is the kit's documented one-focus-ring idiom (3px accent-subtle wash). Hemlock's a11y contract names sem-borders-focus (near-black) - repainting the ring black would materially rewrite the kit's documented design, unlike GC-001's incidental accent ring. Captured faithfully on the highlight role (value-exact); the idiom conflict is a non-token design gap below.", "newTokenCreated": false, "newToken": null },
-    { "surface": "component composition (whole kit)", "prototypeValue": "hand-rolled widgets (custom chrome per R1)", "boundToken": "(none - frames carry the prototype's rendered geometry with token paint)", "rationale": "hemlock-library ships Button/Input/Select/Checkbox/Radio/ToggleSwitch/Slider/SegmentedControl/ModalDrawer components, but they are a different design that cannot reproduce this executable spec's probed geometry (pill 28/36/44 buttons vs radius-2xs buttons, 36x20/16px toggle, border-compensation idiom, modal kernel). Under the two-oracle split the .pen is the pixel oracle OF THIS prototype; composing library components would fail every pixel compare. Designer-visible via the non-token gaps.", "newTokenCreated": false, "newToken": null },
-    { "surface": "tooltip-open frame composition", "prototypeValue": "#uiTip is body-mounted fixed, 300px wide, left edge ~52px past the pane root's box", "boundToken": "(composition judgment)", "rationale": "The frame banks the CLIP: the tip is drawn at its true anchored position and the frame boundary clips the overhang, exactly matching the contract root's element screenshot (states.json capture note left the full-tip-vs-banked-clip choice to capture). The tip's full text and geometry are carried root-independently by vector V9 + probe tooltip-box.", "newTokenCreated": false, "newToken": null },
-    { "surface": "default frame crop (PENDING-P5)", "prototypeValue": "the 'Reference screenshots' box is inside #cs-buttons", "boundToken": "(composition judgment)", "rationale": "Included in the default/static-print frames: it is inside the contract root, pinned by the prototype contentHash, and design-rules section 3 says the frame banks the pane as rendered while the land-stage story omits the box (blueprint exclusion). The three screenshots ride as raster assets (documentation content, not tokenizable).", "newTokenCreated": false, "newToken": null }
+    {
+      "surface": "v001 mapping table (all unchanged widgets)",
+      "prototypeValue": "(carried)",
+      "boundToken": "(v001 recipe applied as the L2 seed)",
+      "rationale": "The dispatch declared \"first capture - derive the mapping yourself\", but the v001 capture handback (prototypeVersion 001, committed 2026-08-25) exists in the approved lane; per the prompt's seeding rule its recipe SEEDS this capture and settles the unchanged widgets: DJ-class calls carried verbatim - text-1/2/3 -> sem-text-header/meta/placeholder, outline action pills -> exact-value text roles + action/error border roles, gray ghost -> sem-text-placeholder, filled-track toggle -> sem-background-action + toggleKnob/toggleTrackOff, disabled toggle -> sem-sliderTrack + background-subtle, border-input -> sem-borders-dark, sc-box panels + modal head -> sem-background-sunken, segmented band -> sem-background-light, neg tone -> sem-text-error, focus ring -> sem-background-highlight spread shadow, composition = prototype geometry with token paint (never library components - the two-oracle split).",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "KPI white ground panel (.ui-kpipanel) and .sc-kpi tile surfaces",
+      "prototypeValue": "literal #ffffff (CSS 1306; R30 reconciliation input a)",
+      "boundToken": "$y:sem-background-surface",
+      "rationale": "Value-identical; role-exact (\"the plain-panel ground these tiles actually land on in most hosts\" = the main surface role). The literal is hereby reconciled - no normalization edit was needed.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "KPI barred tile top bar (.sc-kpi.barred::before)",
+      "prototypeValue": "--accent at opacity .95 (CSS 1036; R30 reconciliation input b)",
+      "boundToken": "$y:sem-background-action inside a group with opacity 0.95",
+      "rationale": "The .95 composite is a rendered-truth divergence the design system does not tokenize. Preserving the group opacity (rather than precomputing an opaque blend) keeps the token binding live for theming AND renders identically in both rasterizers (constant ground under the bar). Dark swaps to --accent-3 purple at the prototype - recorded in the designGaps entry.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "hyperlink underlines (.ui-link, 5 surfaces)",
+      "prototypeValue": "CSS text-decoration underline, 3px offset, accent",
+      "boundToken": "drawn 1px rectangles filled $y:sem-text-action at baseline+3",
+      "rationale": "pen text nodes carry no text-decoration; the underline is drawn geometry bound to the same role token as the link text, at the prototype's measured offset.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "live-filter facade table header band (pinned GC-007 specimen)",
+      "prototypeValue": "linear-gradient(#F7F5F0, #EDEAE3) (taupe-100 -> taupe-200)",
+      "boundToken": "$sem-tableHeaderBandTop / $sem-tableHeaderBandBottom (local pair, adopted verbatim from the GC-007 capture)",
+      "rationale": "GC-007 owns this specimen and already minted the local pair with dark values; re-minting a different name here would fork one design decision across two captures. Same gradient encoding (rotation 90, token stops).",
+      "newTokenCreated": true,
+      "newToken": "$sem-tableHeaderBandTop + $sem-tableHeaderBandBottom (re-declared locally; reconciliation rides GC-007's gap entry)"
+    },
+    {
+      "surface": "exact-value editor prefilled input (slider-value-modal): selected-text paint",
+      "prototypeValue": "UA default selection (the contract drives focus + select; prototype styles no ::selection)",
+      "boundToken": "$control-selection-wash (#3367D1 measured from the render) + $control-selection-text (#FFFFFF)",
+      "rationale": "The selection highlight is rendered truth of the contracted state but is USER-AGENT paint, not a design decision of Bill's. Captured faithfully on created local tokens; flagged as a design gap - the design system may want an explicit selection style (or the land-stage story may render the field focused-unselected).",
+      "newTokenCreated": true,
+      "newToken": "$control-selection-wash / $control-selection-text"
+    },
+    {
+      "surface": "tooltip-open frame composition",
+      "prototypeValue": "#uiTip body-mounted fixed; at 1280 the tip rect {x:905, w:250} vs root box x 128-1152 - ~3px right-edge overhang",
+      "boundToken": "(composition judgment)",
+      "rationale": "The frame banks the CLIP per the v001 PENDING-P5 CROP ruling (the standing precedent states.json cites): the tip draws at its true anchored position and the frame boundary clips the 3px overhang, exactly matching the contract root's element screenshot. Text and geometry carry root-independently via vector V9a + probe tooltip-box.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "default frame crop (whole-pane carve)",
+      "prototypeValue": "the v002 standalone keeps the WHOLE #cs-buttons pane incl. the date picker (GC-008), live filter (GC-007), and tabs/disclosure specimens",
+      "boundToken": "(composition judgment)",
+      "rationale": "design-rules section 3: the frame banks the pane as rendered (extraction gate verifies the section verbatim); the other-pipeline specimens are pinned pixels with no states/probes/grammar here. The land-stage kit story will differ by exactly these specimens - divergence settled at capture, per the contract.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "KPI value type size",
+      "prototypeValue": "22px/600 tabular (R32)",
+      "boundToken": "$text-size-kpi-value (created, 22)",
+      "rationale": "The 22 number exists locally only as $text-size-modal-title (a serif modal-head role); binding a KPI numeral to a modal-title token is role-wrong. Named by purpose per the gap doctrine.",
+      "newTokenCreated": true,
+      "newToken": "$text-size-kpi-value"
+    },
+    {
+      "surface": "KPI tile corner radius",
+      "prototypeValue": "10px (--radius-md; R32)",
+      "boundToken": "$radius-tile (created, 10)",
+      "rationale": "Hemlock radius scale steps 8 -> 12 with no 10; the tile family (and barred [0,0,10,10]) needs the role.",
+      "newTokenCreated": true,
+      "newToken": "$radius-tile"
+    }
   ],
   "designGaps": [
-    { "dimension": "color", "token": "$control-text-faint", "prototypeValue": "#767169 (--faint - Bill darkened the handoff value #8A8680 for WCAG AA on small disclosure text, source comment at the token block)", "lightValue": "#767169", "darkValue": "#8A9BBF (Bill's dark --faint)", "appliesTo": ["modal close glyph + tag text + explainer legal line (modal frames)", "option descriptions (.ui-optdesc, default/static-print and every pane frame)"], "designerQuestion": "Adopt an AA-passing faint-text step (sem-text-subtle currently #8A8680 fails 4.5:1 on white), or change the component to an existing role and accept the contrast regression Bill explicitly fixed?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "color", "token": "$sem-borders-panel", "prototypeValue": "#E3DFD6 (--taupe-border: border on taupe panels - taupe-300 exactly)", "lightValue": "#E3DFD6", "darkValue": "#22314F (Bill's dark --taupe-border)", "appliesTo": ["all 10 sc-box panel borders (every pane frame)", "modal head band border-bottom (modal frames)"], "designerQuestion": "Adopt a tinted-panel border role at taupe-300 (no sem token owns it; sem-borders-dark is taupe-350), or change the component to sem-borders-dark?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "color", "token": "$sem-pillOnBg + $sem-pillOnText (coupled pair)", "prototypeValue": "selected pill: background --ink #0E0E0E, text --inverse #FFFFFF, border --ink (R20)", "lightValue": "#0E0E0E / #FFFFFF", "darkValue": "#EAF0FF / #0B1220 (Bill's dark --ink / --inverse)", "appliesTo": ["pills-second + every frame showing the pill group"], "designerQuestion": "Adopt an ink-inverting selected-pill idiom (Hemlock's Tag/pill family is blue: tagBg/tagText), or change the component to the blue tag roles?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "color", "token": "$sem-sliderThumbEdge", "prototypeValue": "2px #FFFFFF thumb border, deliberately white in BOTH themes (R17: 'reads as the thumb's own edge')", "lightValue": "#FFFFFF", "darkValue": "#FFFFFF", "appliesTo": ["every frame showing a slider (default, slider-moved, slider-value-box, all-disabled, static-print)"], "designerQuestion": "Adopt a static-white slider-thumb edge token (Hemlock's Slider spec has no thumb border), or change the component to a borderless sem-sliderAccent thumb?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$text-size-control-sm", "prototypeValue": "13px (segmented buttons, option descriptions, box h4 headings, explainer h5 rubrics, modal kv labels)", "lightValue": "13", "darkValue": "13 (single-mode number)", "appliesTo": ["every frame (captions/descriptions)", "modal frames (kv labels, h5 rubrics)"], "designerQuestion": "Adopt a 13px step between xs (12) and sm (14), or change the component to one of those?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$text-size-body-prose", "prototypeValue": "15px (explainer body paragraphs, template chrome prose)", "lightValue": "15", "darkValue": "15 (single-mode number)", "appliesTo": ["modal-explainer body", "modal frames' dimmed page chrome"], "designerQuestion": "Adopt a 15px prose step, or change the component to sm (14) / base (16)?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$text-size-modal-title", "prototypeValue": "22px serif modal head title (R26: serif 22px/400)", "lightValue": "22", "darkValue": "22 (single-mode number)", "appliesTo": ["modal-record-detail", "modal-form-editor", "modal-explainer"], "designerQuestion": "Adopt a 22px title step between lg (20) and xl (24), or change the modal head to one of those?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$line-height-solid", "prototypeValue": "per-line text extraction anchors every rendered line at its measured baseline; CSS line heights (1, 1.35, 1.4, 1.45, 1.5, 1.62) are carried positionally", "lightValue": "1", "darkValue": "1 (single-mode number)", "appliesTo": ["every text node in every frame"], "designerQuestion": "Adopt a solid (1.0) line-height token for baseline-anchored capture type (same gap GC-001 recorded), or change the component to the scale's ratios?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "radius", "token": "$radius-menu", "prototypeValue": "6px (dropdown menu, tooltip, modal close button, stepper outer corner - the template's declared intentional one-off)", "lightValue": "6", "darkValue": "6 (single-mode number)", "appliesTo": ["dropdown-single-open", "dropdown-multi-open/toggled", "tooltip-open", "modal frames (close button)", "stepper (every pane frame)"], "designerQuestion": "Adopt a 6px step between 3xs (4) and 2xs (8), or change the component to one of those?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "Outline action idiom: secondary buttons are full-accent 1px outline pills and destructive is a status-colour outline pill - 'docs define no filled destructive' (R4). Hemlock's Button/secondary uses a pale blue-300 border and its Destructive is a filled red button. Testable: computed border-color of the secondary pill equals the action accent; no filled destructive exists in the kit.", "lightValue": "borders bound to $y:sem-borders-action / $y:sem-borders-error in this .pen", "darkValue": "same bindings (roles theme themselves)", "appliesTo": ["default", "all-disabled", "static-print", "every frame showing [Open]/[Button] pills"], "designerQuestion": "Adopt the outline-pill action idiom for kit controls, or change the component to Hemlock's button designs (pale secondary border, filled destructive)?", "reconciliation": { "ifAdopted": "document the idiom in the design system (non-token gap)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "Filled-track toggle: accent track + white 16px thumb on a 36x20 pill (R16) - Hemlock's ToggleSwitch expresses 'on' as pale toggleTrackOn (#EBF0FE) with an accent knob. Testable: checked track computed background equals the action accent; thumb stays white in both states.", "lightValue": "track $y:sem-background-action + thumb $y:sem-toggleKnob in this .pen", "darkValue": "same bindings", "appliesTo": ["default", "selection-alternate", "all-disabled", "every frame showing a toggle or Disable switch"], "designerQuestion": "Adopt the filled-track switch idiom (same question GC-001 raised for its legend switch), or change the component to compose Hemlock's ToggleSwitch (36x20/16px geometry is probed)?", "reconciliation": { "ifAdopted": "document the idiom in the design system (non-token gap)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "One-focus-ring idiom: box-shadow 0 0 0 3px accent-subtle on :focus-visible across every widget family, error-subtle on destructive (R7) - Hemlock's a11y contract names sem-borders-focus (near-black, >=2px). Testable: the focused tooltip trigger's computed box-shadow is a 3px spread of the highlight colour.", "lightValue": "ring color bound to $y:sem-background-highlight in this .pen (tooltip-open)", "darkValue": "same binding", "appliesTo": ["tooltip-open (the only contracted ring; the idiom governs all uncontracted focus states)"], "designerQuestion": "Adopt the accent-subtle wash ring for form controls, or change the component to the sem-borders-focus ring?", "reconciliation": { "ifAdopted": "document the idiom in the design system (non-token gap)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "Gray ghost button variant (tertiary text-3 label, surface-3 hover wash) - Hemlock's Button/text variant is a blue link. Testable: ghost button computed color equals the tertiary text tone, not the action blue.", "lightValue": "text bound to $y:sem-text-placeholder in this .pen", "darkValue": "same binding", "appliesTo": ["default", "all-disabled", "static-print"], "designerQuestion": "Adopt a gray ghost variant into the button family, or change the component to Button/text (blue)?", "reconciliation": { "ifAdopted": "document the idiom in the design system (non-token gap)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "Uniform disabled law: opacity .38 + cursor not-allowed across every widget family (R2) - Hemlock disables via dedicated disabled tokens (btnPrimaryBgDisabled, sem-background-disabled, sem-text-disabled), not a group dim. Testable: computed opacity of every [data-dis] control is 0.38 in the disabled state.", "lightValue": "group opacity 0.38 on the .pen nodes (all-disabled)", "darkValue": "same mechanics", "appliesTo": ["all-disabled"], "designerQuestion": "Adopt opacity-dim disabling for kit controls, or change the component to token-swapped disabled states?", "reconciliation": { "ifAdopted": "document the idiom in the design system (non-token gap)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "Border-compensation focus/invalid/open idiom: 1px->2px border with padding compensated 8/12->7/11 so geometry never shifts (R8) - Hemlock's Input/focus spec does not define this mechanism. Testable: input height and text position identical across rest/focused/invalid (probed).", "lightValue": "captured as rendered geometry in entry-focused/entry-error/dropdown-*-open frames", "darkValue": "same geometry", "appliesTo": ["entry-focused", "entry-error", "dropdown-single-open", "dropdown-multi-open", "dropdown-multi-toggled"], "designerQuestion": "Adopt border-compensation as the focus/invalid/open mechanism for inputs, or reconcile with the Input primitive's states?", "reconciliation": { "ifAdopted": "document the idiom in the design system (non-token gap)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "Hand-rolled widget geometry: pill buttons 28/36/44 (Hemlock Button radius-2xs), 20px r4 checkbox with 2px-border checked state (accent, never ink fill - R15), custom dropdown facade, modal kernel with 520/560/640 width tokens + taupe head band + serif title - hemlock-library's equivalents are different designs. Testable: design-rules R3/R15/R26 probes.", "lightValue": "frames carry the prototype's rendered geometry with token paint", "darkValue": "same geometry", "appliesTo": ["every frame"], "designerQuestion": "Adopt this kit as the canonical form-controls design (superseding the library's Button/Input/Select/Checkbox/ToggleSwitch/ModalDrawer variants for GenUI surfaces), or reconcile the two designs?", "reconciliation": { "ifAdopted": "document the idiom in the design system (non-token gap)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } }
+    {
+      "dimension": "color",
+      "token": "$control-text-faint",
+      "prototypeValue": "#767169 (--faint - Bill darkened the handoff value #8A8680 for WCAG AA on small disclosure text)",
+      "lightValue": "#767169",
+      "darkValue": "#8A9BBF (Bill's dark --faint)",
+      "appliesTo": [
+        "modal close glyph + tag text (modal frames)",
+        "option descriptions (.ui-optdesc, pane frames)"
+      ],
+      "designerQuestion": "Adopt an AA-passing faint-text step (sem-text-subtle currently #8A8680 fails 4.5:1 on white), or change the component to an existing role and accept the contrast regression Bill explicitly fixed? (v001 gap, carried - still bound in v002)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "color",
+      "token": "$sem-borders-panel",
+      "prototypeValue": "#E3DFD6 (--taupe-border: border on taupe panels - taupe-300 exactly)",
+      "lightValue": "#E3DFD6",
+      "darkValue": "#22314F (Bill's dark --taupe-border)",
+      "appliesTo": [
+        "all 11 sc-box panel borders (every pane frame)",
+        "modal head band border-bottom (modal frames)"
+      ],
+      "designerQuestion": "Adopt a tinted-panel border role at taupe-300 (no sem token owns it; sem-borders-dark is taupe-350), or change the component to sem-borders-dark? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "color",
+      "token": "$sem-pillOnBg + $sem-pillOnText (coupled pair)",
+      "prototypeValue": "selected pill: background --ink #0E0E0E, text --inverse #FFFFFF, border --ink (R20)",
+      "lightValue": "#0E0E0E / #FFFFFF",
+      "darkValue": "#EAF0FF / #0B1220 (Bill's dark --ink / --inverse)",
+      "appliesTo": [
+        "pills-second + every frame showing the pill group"
+      ],
+      "designerQuestion": "Adopt an ink-inverting selected-pill idiom (Hemlock's Tag/pill family is blue: tagBg/tagText), or change the component to the blue tag roles? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "color",
+      "token": "$sem-sliderThumbEdge",
+      "prototypeValue": "2px #FFFFFF thumb border, deliberately white in BOTH themes (R17)",
+      "lightValue": "#FFFFFF",
+      "darkValue": "#FFFFFF",
+      "appliesTo": [
+        "every frame showing a slider"
+      ],
+      "designerQuestion": "Adopt a static-white slider-thumb edge token (Hemlock's Slider spec has no thumb border), or change the component to a borderless sem-sliderAccent thumb? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "color",
+      "token": "$control-selection-wash + $control-selection-text (coupled pair)",
+      "prototypeValue": "UA default input selection paint over the prefilled '30' (contract drives focus+select; measured rgb(51,103,209) wash, white text; Chromium 151 Linux)",
+      "lightValue": "#3367D1 / #FFFFFF",
+      "darkValue": "#3367D1 / #FFFFFF (UA-derived - no authored dark pair exists)",
+      "appliesTo": [
+        "slider-value-modal"
+      ],
+      "designerQuestion": "NEW v002. Adopt an explicit text-selection style into the design language (values here are USER-AGENT defaults, not Bill's design), or specify the land-stage story renders the field focused-unselected so no selection paint is contracted?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "color",
+      "token": "$sem-tableHeaderBandTop + $sem-tableHeaderBandBottom",
+      "prototypeValue": "linear-gradient(#F7F5F0 -> #EDEAE3) on the live-filter facade table header (GC-007's specimen, pinned pixels here)",
+      "lightValue": "#F7F5F0 / #EDEAE3",
+      "darkValue": "#172642 / #1D2E50 (GC-007's recorded dark pair)",
+      "appliesTo": [
+        "default",
+        "static-print",
+        "all-disabled",
+        "every pane frame"
+      ],
+      "designerQuestion": "Same gap GC-007 recorded (its capture owns the designer question); re-declared locally so these frames bind tokens - reconcile once via GC-007's entry.",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$text-size-control-sm",
+      "prototypeValue": "13px (segmented buttons, box h4 headings, option descriptions, explainer h5 rubrics, modal kv labels)",
+      "lightValue": "13",
+      "darkValue": "13 (single-mode number)",
+      "appliesTo": [
+        "every frame"
+      ],
+      "designerQuestion": "Adopt a 13px step between xs (12) and sm (14), or change the component to one of those? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$text-size-body-prose",
+      "prototypeValue": "15px (explainer body prose, record-detail values, template chrome prose)",
+      "lightValue": "15",
+      "darkValue": "15 (single-mode number)",
+      "appliesTo": [
+        "modal frames",
+        "pane frames (kpi captions context)"
+      ],
+      "designerQuestion": "Adopt a 15px prose step, or change the component to sm (14) / base (16)? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$text-size-modal-title",
+      "prototypeValue": "22px serif modal head title (R26: serif 22px/400)",
+      "lightValue": "22",
+      "darkValue": "22 (single-mode number)",
+      "appliesTo": [
+        "modal-record-detail",
+        "modal-form-editor",
+        "modal-explainer",
+        "slider-value-modal"
+      ],
+      "designerQuestion": "Adopt a 22px title step between lg (20) and xl (24), or change the modal head to one of those? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$text-size-kpi-value",
+      "prototypeValue": "22px/600 tabular numbered-tile value (R32)",
+      "lightValue": "22",
+      "darkValue": "22 (single-mode number)",
+      "appliesTo": [
+        "default",
+        "static-print",
+        "all-disabled"
+      ],
+      "designerQuestion": "NEW v002. Adopt a 22px KPI-value step (role distinct from the serif modal title at the same number), or change the tile to lg (20) / xl (24)?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$line-height-solid",
+      "prototypeValue": "per-line extraction anchors every rendered line at its measured baseline; CSS line heights are carried positionally",
+      "lightValue": "1",
+      "darkValue": "1 (single-mode number)",
+      "appliesTo": [
+        "every text node in every frame"
+      ],
+      "designerQuestion": "Adopt a solid (1.0) line-height token for baseline-anchored capture type (same gap GC-001/v001 recorded), or change the component to the scale's ratios? (carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "radius",
+      "token": "$radius-menu",
+      "prototypeValue": "6px (dropdown menu, tooltip, modal close button, stepper outer corner - the template's declared intentional one-off)",
+      "lightValue": "6",
+      "darkValue": "6 (single-mode number)",
+      "appliesTo": [
+        "dropdown-open frames",
+        "tooltip-open",
+        "modal frames",
+        "every pane frame (stepper)"
+      ],
+      "designerQuestion": "Adopt a 6px step between 3xs (4) and 2xs (8), or change the component to one of those? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "radius",
+      "token": "$radius-tile",
+      "prototypeValue": "10px (--radius-md: .sc-kpi tiles + .ui-kpipanel; barred variant squares the top: [0,0,10,10])",
+      "lightValue": "10",
+      "darkValue": "10 (single-mode number)",
+      "appliesTo": [
+        "default",
+        "static-print",
+        "all-disabled"
+      ],
+      "designerQuestion": "NEW v002. Adopt a 10px step between 2xs (8) and xs (12) for the tile family, or change the tiles to one of those?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": null,
+      "prototypeValue": "NEW v002, dark-mode only: the barred KPI tile's 2px top bar swaps --accent to --accent-3 PURPLE in dark (R32, Comments item 1 \"purple in dark mode\"). This light-theme capture binds $y:sem-background-action inside an opacity-.95 group; no Hemlock token pair carries blue-light/purple-dark.",
+      "lightValue": "bar = sem-background-action @ .95 group",
+      "darkValue": "prototype dark = --accent-3 purple (untokenized)",
+      "appliesTo": [
+        "default",
+        "static-print",
+        "all-disabled (barred tiles)"
+      ],
+      "designerQuestion": "Adopt an accent-bar token pair with the purple dark value (e.g. sem-kpiBarAccent), or rule the dark bar stays on the action accent? (Dark theme is not contracted; recorded for the token reconciliation per design-rules section 3.)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "non-token",
+      "token": null,
+      "prototypeValue": "Outline action idiom: secondary buttons are full-accent 1px outline pills and destructive is a status-colour outline pill - \"docs define no filled destructive\" (R4). Hemlock's Button/secondary uses a pale blue-300 border and its Destructive is a filled red button.",
+      "lightValue": "borders bound to $y:sem-borders-action / $y:sem-borders-error in this .pen",
+      "darkValue": "same bindings (roles theme themselves)",
+      "appliesTo": [
+        "every frame showing [Open]/[Button] pills"
+      ],
+      "designerQuestion": "Adopt the outline-pill action idiom for kit controls, or change the component to Hemlock's button designs? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "non-token",
+      "token": null,
+      "prototypeValue": "Filled-track toggle: accent track + white 16px thumb on a 36x20 pill (R16) - Hemlock's ToggleSwitch expresses \"on\" as pale toggleTrackOn with an accent knob.",
+      "lightValue": "track $y:sem-background-action + thumb $y:sem-toggleKnob",
+      "darkValue": "same bindings",
+      "appliesTo": [
+        "default",
+        "selection-alternate",
+        "all-disabled",
+        "every frame showing a toggle or Disable switch"
+      ],
+      "designerQuestion": "Adopt the filled-track switch idiom, or change the component to compose Hemlock's ToggleSwitch? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "non-token",
+      "token": null,
+      "prototypeValue": "One-focus-ring idiom: box-shadow 0 0 0 3px accent-subtle on :focus-visible across every widget family (R7) - Hemlock's a11y contract names sem-borders-focus (near-black).",
+      "lightValue": "ring color bound to $y:sem-background-highlight (tooltip-open, the one contracted ring)",
+      "darkValue": "same binding",
+      "appliesTo": [
+        "tooltip-open"
+      ],
+      "designerQuestion": "Adopt the accent-subtle wash ring for form controls, or change the component to the sem-borders-focus ring? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "non-token",
+      "token": null,
+      "prototypeValue": "Gray ghost button variant (tertiary text-3 label) - Hemlock's Button/text variant is a blue link.",
+      "lightValue": "text bound to $y:sem-text-placeholder",
+      "darkValue": "same binding",
+      "appliesTo": [
+        "default",
+        "all-disabled",
+        "static-print"
+      ],
+      "designerQuestion": "Adopt a gray ghost variant into the button family, or change the component to Button/text (blue)? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "non-token",
+      "token": null,
+      "prototypeValue": "Uniform disabled law: opacity .38 + not-allowed across every widget family (R2) - Hemlock disables via dedicated disabled tokens.",
+      "lightValue": "group opacity 0.38 on the .pen nodes (44 groups)",
+      "darkValue": "same mechanics",
+      "appliesTo": [
+        "all-disabled"
+      ],
+      "designerQuestion": "Adopt opacity-dim disabling for kit controls, or change the component to token-swapped disabled states? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "non-token",
+      "token": null,
+      "prototypeValue": "Border-compensation focus/invalid/open idiom: 1px->2px border with padding compensated so geometry never shifts (R8) - Hemlock's Input/focus spec does not define this mechanism.",
+      "lightValue": "captured as rendered geometry (probed: height constant across rest/focused/invalid/open)",
+      "darkValue": "same geometry",
+      "appliesTo": [
+        "entry-focused",
+        "entry-error",
+        "dropdown-single-open",
+        "dropdown-multi-open",
+        "dropdown-multi-toggled"
+      ],
+      "designerQuestion": "Adopt border-compensation as the input state mechanism, or reconcile with the Input primitive's states? (v001 gap, carried)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "non-token",
+      "token": null,
+      "prototypeValue": "Hand-rolled widget geometry: pill 28/36/44 buttons, 20px r4 checkbox with 2px-border checked state, custom dropdown facade, modal kernel with 520/560/640 width tokens + taupe head band + serif title, NEW v4.13 hyperlink one-face idiom (14px underline offset 3 on <a> AND <button>) and .sc-kpi tile family - hemlock-library's equivalents are different designs.",
+      "lightValue": "frames carry the prototype's rendered geometry with token paint",
+      "darkValue": "same geometry",
+      "appliesTo": [
+        "every frame"
+      ],
+      "designerQuestion": "Adopt this kit as the canonical form-controls design for GenUI surfaces, or reconcile the two designs? (v001 gap, extended with the v4.13 hyperlink + numbered-tile idioms)",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    }
   ],
   "fontSubstitutions": [
-    { "prototypeFont": "Heebo (Google Fonts delivery; system stack fallback documented by the template)", "boundFont": "Heebo ($y:font-primary, from pencil/designs/fonts/Heebo-VariableFont_wght.ttf)", "scope": "all UI text (delivery-only substitution; family unchanged)" },
-    { "prototypeFont": "Noto Serif (Google Fonts delivery; modal head titles + template chrome page title)", "boundFont": "Noto Serif ($y:font-secondary, from pencil/designs/fonts/NotoSerif-VariableFont.ttf)", "scope": "modal titles (22/400) + dimmed page chrome title (24/500) in modal frames" }
+    {
+      "prototypeFont": "Heebo (Google Fonts delivery; system stack fallback)",
+      "boundFont": "Heebo ($y:font-primary, from pencil/design-system/fonts/Heebo-VariableFont_wght.ttf via the pencil/designs/fonts symlink)",
+      "scope": "all UI text (delivery-only substitution; family unchanged)"
+    },
+    {
+      "prototypeFont": "Noto Serif (Google Fonts delivery)",
+      "boundFont": "Noto Serif ($y:font-secondary, same delivery)",
+      "scope": "modal head titles (22/400) + dimmed page chrome serif titles in modal frames"
+    }
   ],
   "prototypeDefectsSeen": [
-    { "flag": "FLAG-D1 (already recorded, design-rules.md section 2)", "note": "Confirmed while capturing: the compliance line renders EMPTY in all three modal families (xm_legal has no writer). The modal frames bank the empty line as rendered; never fixed in the frames." },
-    { "flag": "FLAG-D3 (already recorded)", "note": "Confirmed: box headings still name removed widgets ('Tabs, disclosure & tooltip' with only the tooltip present, etc.). Captured verbatim." },
-    { "flag": "FLAG-D2 / FLAG-D4 (already recorded)", "note": "ARIA-only defects (segmented aria-pressed absent at rest; pill group carries no selection semantics) - no pixel impact; no frame action." }
+    {
+      "flag": "FLAG-D2 (design-rules section 2, carried unresolved)",
+      "note": "Confirmed while capturing: segmented control ships class=on with no aria-pressed at rest; stamped only after first interaction (segmented-second banks the post-interaction truth). ARIA-only - no pixel impact, no frame action."
+    },
+    {
+      "flag": "FLAG-D1b (design-rules section 2, cosmetic carry-over)",
+      "note": "Confirmed: the retired COMPLIANCE comment persists in v4.13 source and the writer-less .sc-modal-legal elements render EMPTY in all three families (correct banked truth per R28); the v4.13-new exact-value editor carries no legal element at all. Captured verbatim; never fixed in the frames."
+    }
   ],
-  "environmentFactsFeedback": "All injected facts held: pen CLI 0.3.5 exports deterministically via pen interactive Export; PENCIL_CLI_KEY accepted; DESIGN_SPECS_GITHUB_PAT scoped correctly; the packaged pencil-design.md skill copy is indeed superseded on CLI mechanics. One hard-won fact worth promoting: pen 0.3.5 places text by centering the font's UNROUNDED hhea box (Heebo 1.0479/0.4209, Noto Serif 1.069/0.293) in the lineHeight box - text-placement calibration against a synthetic HTML reference misleads (Chromium's integer-rounded per-size line-box metrics differ from its inline-text-box positions); calibrate against DOMSnapshot textBoxes of the real render instead, then apply per-(family,weight,size) sub-pixel tunes (~ +/-1 device px at DPR2).",
+  "environmentFactsFeedback": "Injected facts held: pen 0.3.5 deterministic Export via pen interactive; PENCIL_CLI_KEY accepted; DESIGN_SPECS_GITHUB_PAT scoped correctly; the packaged pencil-design.md skill copy is indeed superseded on CLI mechanics; the version field must be the STRING \"2.17\" (a JSON number fails document validation). THREE facts worth promoting: (1) design-specs pencil/designs/fonts is a SYMLINK to ../design-system/fonts - a naive mirror of the lane tree copies a dangling link, and pen 0.3.5 then SILENTLY substitutes Noto Sans fetched from fonts.gstatic.com (network!), reporting only a DEBUG-level \"Failed to load font family\" line; the exports render in the wrong font and cost one full compare round to localize. Any export lab must materialize pencil/design-system/fonts/. (2) The dispatch declared \"(none - first capture)\" for the prior normalization recipe, but the v001 GC-006 capture handback exists in the approved lane; it was used as the L2 seed per the prompt's seeding rule - dispatcher should inject prior recipes on re-oracles. (3) pen text shaping follows the font's own unhinted metrics (validated against hmtx advances; letterSpacing = CSS px applied in inter-glyph gaps) - render convergence targets with fontconfig hintnone so Chromium advances match (~0.2pp tighter than default hinting).",
   "verdict": "captured"
 }

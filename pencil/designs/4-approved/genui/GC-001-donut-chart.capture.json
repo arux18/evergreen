@@ -1,130 +1,717 @@
 {
-  "contract": "design-capture/v1",
-  "componentId": "GC-001",
-  "slug": "donut-chart",
-  "penPath": "pencil/designs/4-approved/genui/GC-001-donut-chart.pen",
-  "contentHash": "sha256:45749655339830eb5839117fdc079302c4fda6e010fb2eaae9190a99fb7a261f",
-  "capturedAt": "2026-08-25T18:05:00Z",
-  "prototypeVersion": "002",
-  "prototypeContentHash": "sha256:4f956f3af2080a226f61ec6369d89592d1d3ecec86080a9b112b55635e818377",
-  "supersedes": "v001 capture at the same lane path (contentHash sha256:50f9ba49bcd7d22a91a1de56bffd77c82d2b37fe1dbe8004607587b956de7981) - a re-oracle at prototype v002 per the fold ruling 2026-08-25; the v001 bytes remain hash-addressable in design-specs git history. The dispatch's '(none - first capture)' note was stale; the v001 recipe maps a different CSS-variable surface and could not seed v002's L2, so the mapping table was derived fresh as instructed.",
-  "frames": ["default", "slice-hover", "slice-pressed", "legend-hover", "legend-keyboard-focus", "legend-switch-off", "legend-values", "info-box-hover", "categorical-palette", "pie-variant", "pie-variant-hover", "config-error", "narrow-stacked", "static-print"],
-  "convergence": {
-    "iterationsUsed": 4,
-    "pencilVersion": "@pen.dev/cli 0.3.5",
-    "pencilVersionNote": "Pinned per dispatch (finding 9). This file imports hemlock-library.lib.pen via a relative URI; re-export MUST run on >=0.3.5 at the committed lane path so the import and the ../../fonts Heebo URI resolve.",
-    "exportInvocation": "pen interactive --in <lane-path>/GC-001-donut-chart.pen --out <same>; execute({ input: 'Export([\"default\", ...all 14 ids], \"png\", \"<dir>\")' }) - default scale 2. Re-export verified byte-identical across consecutive runs (all 14 frames).",
-    "comparison": "pixelmatch threshold 0.1, per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-baseline knob, not this loop's). Targets = NORMALIZED prototype, contract root section.dc, Playwright 1.58 Chromium headless-shell 145, deviceScaleFactor 2 (matches pen export scale 2), Google Fonts requests blocked, Heebo served from the same TTF the .pen references (pencil/designs/fonts/Heebo-VariableFont_wght.ttf via fontconfig), fonts.ready awaited, states driven via the states.json steps (synthetic PointerEvent dispatch per the contract), 14/14 states rendered with zero page errors.",
-    "iterationNotes": "Iteration 1 (authoring from extracted normalized-prototype scene graphs; pen text placement from a calibration probe - pen centers Heebo's font bounding box [asc 1.048/desc 0.421] in the lineHeight box; y = baseline - 0.8135*fontSize at lineHeight 1) converged all 14 states at 0.05-0.82%. Iteration 2 probed a global text-baseline tune of +/-0.5px: +0.5 regressed everywhere; -0.5 improved HTML-derived text (config-error 0.82->0.28) but regressed SVG-derived text - the two baseline families carry different systematic offsets (Chromium integer-rounds font metrics per size for HTML line boxes; SVG baselines are exact). Iteration 3 split the tune (HTML-only -0.5 / -0.25): -0.25 best (mean 0.169%, max 0.36%). Iteration 4 probed HTML -0.375: regressed vs -0.25 - plateau; iteration 3's -0.25 stands as final. Post-convergence, one token-binding defect (focus ring bound sem-text-header instead of sem-borders-focus - same resolved light value, zero pixel delta) was corrected and the full check suite re-run. default==static-print and slice-hover==slice-pressed exports are byte-identical, matching the contract's identical-by-construction claims.",
-    "perState": [
-      { "state": "default", "diffPct": 0.207, "geometryProbes": "pass", "exportSha256": "bad7fd18c86088ac4e303963cafafe1be69f1ddd8425d4a5c8bb9baface1a223" },
-      { "state": "slice-hover", "diffPct": 0.06, "geometryProbes": "pass", "exportSha256": "6a9f821a5bd052e86b3168e908564c235653f3d2bece81a9ba6dc046fbf22954" },
-      { "state": "slice-pressed", "diffPct": 0.06, "geometryProbes": "pass", "exportSha256": "6a9f821a5bd052e86b3168e908564c235653f3d2bece81a9ba6dc046fbf22954" },
-      { "state": "legend-hover", "diffPct": 0.089, "geometryProbes": "pass", "exportSha256": "fd94ceaf8b3459e220515abff6678c32e43e05ccc350895a9fc779070aee79ce" },
-      { "state": "legend-keyboard-focus", "diffPct": 0.06, "geometryProbes": "pass", "exportSha256": "0580f086d01078fc169c0cbd4056fdc0f469b284785f008a46ab7f0b5534853c" },
-      { "state": "legend-switch-off", "diffPct": 0.055, "geometryProbes": "pass", "exportSha256": "dc1ccd683b9241e75e94c8daa3a91a0ddb9fd1284e39825d935b7039c1afecf8" },
-      { "state": "legend-values", "diffPct": 0.249, "geometryProbes": "pass", "exportSha256": "de159766c847f3a1f9fcd222c9a66c0078de55a866e7dfefcad81f487d472a18" },
-      { "state": "info-box-hover", "diffPct": 0.259, "geometryProbes": "pass", "exportSha256": "dddea058cf0cb7b8ff9babeb5f724a019d88c7863ffb4aa1a2beddbffa13f153" },
-      { "state": "categorical-palette", "diffPct": 0.207, "geometryProbes": "pass", "exportSha256": "ee445b01169c0efe6ab27be519535eaf032f8ab3e697d2dac70d90f335211e13" },
-      { "state": "pie-variant", "diffPct": 0.165, "geometryProbes": "pass", "exportSha256": "9b859378dbc0ae8ec5ddef04847881612dd9b9c57625fff52c5493e24a85c0a0" },
-      { "state": "pie-variant-hover", "diffPct": 0.035, "geometryProbes": "pass", "exportSha256": "e990100a7d865ac6adcef4d46e05143e8302a8b000bfd1927bfcd4f52b30f41a" },
-      { "state": "config-error", "diffPct": 0.349, "geometryProbes": "pass", "exportSha256": "7751ba80161b7747d761e71b37d6ef3d927bf92744d5d73ac453dbe9d0d2fb14" },
-      { "state": "narrow-stacked", "diffPct": 0.36, "geometryProbes": "pass", "exportSha256": "a45057e383c70f3eb39b519db701071a2faa34ccb7a467424d4f158aa1cdeb89" },
-      { "state": "static-print", "diffPct": 0.207, "geometryProbes": "pass", "exportSha256": "bad7fd18c86088ac4e303963cafafe1be69f1ddd8425d4a5c8bb9baface1a223" }
-    ],
-    "geometryProbesDetail": "Design-rules section 4 vectors asserted against the .pen frames, which carry the prototype's rendered path data verbatim: V1/V2 donut slice 0 d = 'M162.10 10.01 A150 150 0 0 1 249.86 280.11 L227.09 249.68 A112 112 0 0 0 161.57 48.01 Z'; V3 slice 7 outer end 157.90 10.01; V4 pie slice 0 wedge 'M160 160 L160.00 10.00 A150 150 0 0 1 248.17 281.35 Z'; V5 pie slice 7 abuts 160.00 10.00; V6 explode offsets slice 0 translate(7.61,-2.47) and slice 1 translate(-0.51,7.98) in viewBox units, baked as node x/y at the 0.9375 svg scale; V9 dim = node opacity 0.28 on every non-focused slice; swatch 14x14 r3; switch track 36x20 pill, thumb 16px at left 18 (on) / 2 (off); focus ring solid 2px offset 1 (outer-aligned stroke); center value 34 viewBox units -> 31.875 rendered px, weight 600; error box radius-2xs, 1px border, 14px type, max-width 560 (rect carries it). All pass.",
-    "waivers": []
+ "contract": "design-capture/v1",
+ "componentId": "GC-001",
+ "slug": "donut-chart",
+ "penPath": "pencil/designs/4-approved/genui/GC-001-donut-chart.pen",
+ "contentHash": "sha256:84fa33a48f42440cdb4af229f1077f2d65129c48b01d296368d0db2f0a561ea2",
+ "capturedAt": "2026-09-01T14:20:00Z",
+ "prototypeVersion": "003",
+ "prototypeContentHash": "sha256:2b46c9594db692c887704069d08e48482ac932c4b1a62624badb7c26ff08345f",
+ "supersedes": "v002 capture at the same lane path (contentHash sha256:45749655339830eb5839117fdc079302c4fda6e010fb2eaae9190a99fb7a261f) - a re-oracle at prototype v003 (FE-2088, Component Template v4.13) per the standing re-oracle doctrine; v002 bytes remain hash-addressable in design-specs git history. The dispatch's '(none - first capture)' recipe note was stale (same stale note as the v002 dispatch): the v002 capture.json was used as the L2 SEED as the prompt directs - its mapping table carries forward verbatim where v4.13 left the surface unchanged, extended for the v4.13 deltas (legend switch REMOVED with its --tk-* injections; hue-07 charcoal REVALUED #3F4650/#9AA6B8; section title serif surface NEW; legend-percent NEW; pie hover now carries the info box).",
+ "frames": [
+  "default",
+  "slice-hover",
+  "slice-pressed",
+  "legend-hover",
+  "legend-keyboard-focus",
+  "legend-values",
+  "legend-percent",
+  "legend-off",
+  "section-title",
+  "categorical-palette",
+  "pie-variant",
+  "pie-variant-hover",
+  "config-error",
+  "narrow-stacked",
+  "static-print"
+ ],
+ "convergence": {
+  "iterationsUsed": 5,
+  "pencilVersion": "@pen.dev/cli 0.3.5",
+  "pencilVersionNote": "Pinned per dispatch (finding 9). The file imports hemlock-library.lib.pen and the ../../fonts TTFs via relative URIs; re-export MUST run on 0.3.5 at the committed lane path so both resolve.",
+  "exportInvocation": "pen interactive --in <lane-path>/GC-001-donut-chart.pen --out <scratch>; execute({ input: 'Export([\"default\", ...all 15 ids], \"png\", \"<dir>\")' }) - default scale 2. Re-export verified byte-identical across consecutive runs (all 15 frames). slice-pressed==slice-hover and static-print==default exports are byte-identical, matching the contract's identical-by-construction claims.",
+  "exportEnvironment": "linux-x64, node 22.14; fontconfig on the export host set to hintstyle=hintnone/antialias=true/rgba=none with the repo TTFs installed as system fonts - pen 0.3.5's rasterizer follows host fontconfig, so the recorded exportSha256 values are reproducible under this config. DETERMINISM CAVEAT FOR THE LAB: the pinned GC lab is macOS arm64; if its re-export hashes differ, suspect platform rasterization drift (fontconfig/FreeType vs CoreText), not authoring drift - the .pen bytes are the locked identity and contentHash is platform-independent.",
+  "comparison": "pixelmatch threshold 0.1, per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-baseline knob, not this loop's - v002 interpretation carried). Targets = NORMALIZED prototype, contract root #dcHost section.dc, Playwright 1.62.1 Chromium 151.0.7922.34 (the lab's pinned Chromium version), deviceScaleFactor 2 (matches pen export scale 2), Google Fonts blocked, Heebo + Noto Serif served via fontconfig from pencil/designs/fonts (the same TTFs the .pen references), unhinted rendering (hintnone - matches pen's design-metric advances), fonts.ready awaited, animations disabled at screenshot, states driven via the states.json steps (synthetic PointerEvent dispatch per the contract), capture-context pixel-grid snap (sub-pixel position:relative top/left nudge so 1px borders rasterize on the same device grid in both renderers), 15/15 states rendered with zero page errors.",
+  "iterationNotes": "Iteration 1 (authoring from extracted normalized-prototype scene graphs; text placed from TTF hhea metrics at lineHeight 1, baselines measured from Chromium's own canvas fontBoundingBox metrics) landed 13/15 under budget (0.4-0.9%), config-error 4.7%. Iteration 2 applied empirically measured per-class baseline tunes (svg-center +1.0 css, svg-card +0.5, legend +0.5, error +1.0, title 0 - pen 0.3.5 quantizes text baselines to integer css positions, calibration-probe verified). Iteration 3 probed letterSpacing compensation for config-error's accumulated advance drift (helped, insufficient). Iteration 4: root cause isolated to HINTED Chromium advances vs pen's unhinted design-metric advances - render context switched to fontconfig hintnone (affects both renderers on this host, target AND export), letterSpacing hack removed; every state improved 3-4x (most 0.03-0.18%), config-error 1.5%. Iteration 5: capture-context pixel-grid snap (the template layout leaves section.dc at a fractional y; Chromium snaps 1px borders to the css grid pre-transform, so the nudge is a real layout offset, not a transform) - config-error 0.893%, 15/15 PASS, no waivers. Infra corrections between iterations (Playwright 1.49->1.62 / Chromium 131->151 to match the lab, pixel-exact clip) did not consume authoring iterations.",
+  "perState": [
+   {
+    "state": "default",
+    "diffPct": 0.156,
+    "geometryProbes": "pass",
+    "exportSha256": "1e396da992c342d9e973da75483d8f07deb1240fc8722cf091783e89f915df3c"
+   },
+   {
+    "state": "slice-hover",
+    "diffPct": 0.132,
+    "geometryProbes": "pass",
+    "exportSha256": "27957b102c8b0c6c2b7078a9f36e7b5e4a8f23f02009782c415e8be98a3a9f57"
+   },
+   {
+    "state": "slice-pressed",
+    "diffPct": 0.132,
+    "geometryProbes": "pass",
+    "exportSha256": "27957b102c8b0c6c2b7078a9f36e7b5e4a8f23f02009782c415e8be98a3a9f57"
+   },
+   {
+    "state": "legend-hover",
+    "diffPct": 0.17,
+    "geometryProbes": "pass",
+    "exportSha256": "b9697d50a14c313cc037c1b01daf461051f46a675e5adce05982e8df9e095a01"
+   },
+   {
+    "state": "legend-keyboard-focus",
+    "diffPct": 0.132,
+    "geometryProbes": "pass",
+    "exportSha256": "64de17bbc2bfc74bfd8db563c611a3f0152b047805d8ee917be0ee0d2a49f2eb"
+   },
+   {
+    "state": "legend-values",
+    "diffPct": 0.17,
+    "geometryProbes": "pass",
+    "exportSha256": "6f5b5a6459580b3ff2dfe00296b15e255e0feddcfed910284cdfc83edf2495c5"
+   },
+   {
+    "state": "legend-percent",
+    "diffPct": 0.188,
+    "geometryProbes": "pass",
+    "exportSha256": "ca9393a8e7face39e0f9988822cea82cf751df9950d68c5d3d0f6ed1fba8b332"
+   },
+   {
+    "state": "legend-off",
+    "diffPct": 0.084,
+    "geometryProbes": "pass",
+    "exportSha256": "a6b60a7c49e22e6d03ca149a7dd97bc4b0c60920ae8d085cdbaca4085ff8294a"
+   },
+   {
+    "state": "section-title",
+    "diffPct": 0.165,
+    "geometryProbes": "pass",
+    "exportSha256": "22b4cc12193fd758169b3dd4a4cf336bdb4a9a1b95f1ef8fff32a52dd0bf902e"
+   },
+   {
+    "state": "categorical-palette",
+    "diffPct": 0.156,
+    "geometryProbes": "pass",
+    "exportSha256": "2460e86627be8d34cb4d6511077b4ec5a369cbd1eb61834feb3d76ca30527c09"
+   },
+   {
+    "state": "pie-variant",
+    "diffPct": 0.072,
+    "geometryProbes": "pass",
+    "exportSha256": "b58ca84c83c87334dfe539914862dca28a620f7ec7ad674830fa2e85437818fd"
+   },
+   {
+    "state": "pie-variant-hover",
+    "diffPct": 0.106,
+    "geometryProbes": "pass",
+    "exportSha256": "f08d8987ddc3e0520d23d4fdc73058efc7b02609fbdc73470e83aed823b95f53"
+   },
+   {
+    "state": "config-error",
+    "diffPct": 0.893,
+    "geometryProbes": "pass",
+    "exportSha256": "ba387d0c7cee6bd2c32bd360523e125dac8b7c5ae0505aacc2c1f1e94c5090dd"
+   },
+   {
+    "state": "narrow-stacked",
+    "diffPct": 0.244,
+    "geometryProbes": "pass",
+    "exportSha256": "db7287965a19786a3888403861de0e538224335fd220220a8b0d51849e579b32"
+   },
+   {
+    "state": "static-print",
+    "diffPct": 0.156,
+    "geometryProbes": "pass",
+    "exportSha256": "1e396da992c342d9e973da75483d8f07deb1240fc8722cf091783e89f915df3c"
+   }
+  ],
+  "geometryProbesDetail": "34/34 probes pass, asserted against the .pen frames (which carry the prototype's rendered path data verbatim): donut slice 0 d 'M162.10 10.01 A150 150 0 0 1 249.86 280.11 L227.09 249.68 A112 112 0 0 0 ...' (PAD 0.028 seam at 12 o'clock); pie slice 0 wedge 'M160 160 L160.00 10.00 A...' (PAD 0, abuts); v4.13 NO-EXPLODE law: zero slice offsets in every state; dim = node opacity 0.28 (slices) / 0.4 (rows) in all five focus states with row pairing (.on = sem-background-highlight); swatch 14x14 r3; focus ring solid 2px offset 1 outer-aligned on sem-borders-focus; center value 31.875px w600; 3-line focus readouts ($980K/40%/US Equities; $540K/22%/International Equities); slice-pressed==slice-hover and static-print==default structurally identical; legend 2-col default / single-col 420px values+percent modes with the contract figures; legend-off = no rows, chart+8 slices intact; section title serif 18/400 upper-left; categorical = chart-categorical/color-01..08 in priority order; ramp = hue-01..04 full+a60 interleaved ('the alphas ARE the palette'); info card 159.375x75 rx 7.5 shadow-md with 'US Equities / Share 40% / Value $980K'; error box 560 max-width radius-2xs 1px sem-borders-error 14px sem-text-error with the verbatim error copy; narrow-stacked legend below chart, chart centered; frame ids == state ids 1:1 verbatim.",
+  "waivers": []
+ },
+ "normalizationRecipe": {
+  "cssVariableInjections": [
+   {
+    "variable": "--page-bg",
+    "value": "#FFFFFF",
+    "token": "$y:sem-background-surface"
+   },
+   {
+    "variable": "--surface-1",
+    "value": "#FFFFFF",
+    "token": "$y:sem-background-surface"
+   },
+   {
+    "variable": "--border",
+    "value": "#EEEDEB",
+    "token": "$y:sem-borders-light"
+   },
+   {
+    "variable": "--ink",
+    "value": "#0E0E0E",
+    "token": "$y:sem-text-header"
+   },
+   {
+    "variable": "--muted",
+    "value": "#5E5954",
+    "token": "$y:sem-text-meta"
+   },
+   {
+    "variable": "--text-body",
+    "value": "#403D3A",
+    "token": "$y:sem-text-body"
+   },
+   {
+    "variable": "--accent",
+    "value": "#3A6AF8",
+    "token": "$chart-ramp/hue-01 (created; ramp read split off via findReplace, focus-ring read split to $y:sem-borders-focus)"
+   },
+   {
+    "variable": "--pos",
+    "value": "#148338",
+    "token": "$chart-ramp/hue-03 (created; ramp read split off via findReplace)"
+   },
+   {
+    "variable": "--neg",
+    "value": "#C82320",
+    "token": "$y:sem-borders-error (error-box border) + $y:sem-text-error (error-box text) - identical resolved pair in both modes"
+   },
+   {
+    "variable": "--cat1",
+    "value": "#8951F0",
+    "token": "$y:chart-categorical/color-01"
+   },
+   {
+    "variable": "--cat2",
+    "value": "#06B6D4",
+    "token": "$y:chart-categorical/color-02"
+   },
+   {
+    "variable": "--cat3",
+    "value": "#312E81",
+    "token": "$y:chart-categorical/color-03"
+   },
+   {
+    "variable": "--cat4",
+    "value": "#3B82F6",
+    "token": "$y:chart-categorical/color-04"
+   },
+   {
+    "variable": "--cat5",
+    "value": "#0F766E",
+    "token": "$y:chart-categorical/color-05"
+   },
+   {
+    "variable": "--cat6",
+    "value": "#38BDF8",
+    "token": "$y:chart-categorical/color-06"
+   },
+   {
+    "variable": "--cat7",
+    "value": "#2DD4BF",
+    "token": "$y:chart-categorical/color-07"
+   },
+   {
+    "variable": "--cat8",
+    "value": "#A78BFA",
+    "token": "$y:chart-categorical/color-08"
+   },
+   {
+    "variable": "--cat9",
+    "value": "#C026D3",
+    "token": "$y:chart-categorical/color-09"
+   },
+   {
+    "variable": "--cat10",
+    "value": "#E73CAE",
+    "token": "$y:chart-categorical/color-10"
+   },
+   {
+    "variable": "--cat11",
+    "value": "#E879A8",
+    "token": "$y:chart-categorical/color-11"
+   },
+   {
+    "variable": "--cat12",
+    "value": "#92400E",
+    "token": "$y:chart-categorical/color-12"
+   },
+   {
+    "variable": "--cat13",
+    "value": "#FB923C",
+    "token": "$y:chart-categorical/color-13"
+   },
+   {
+    "variable": "--cat14",
+    "value": "#CA8A04",
+    "token": "$y:chart-categorical/color-14"
+   },
+   {
+    "variable": "--cat15",
+    "value": "#FACC15",
+    "token": "$y:chart-categorical/color-15"
+   },
+   {
+    "variable": "--charcoal",
+    "value": "#3F4650",
+    "token": "$chart-ramp/hue-07 (created; v4.13 revalues Bill's charcoal - light #3F4650, dark #9AA6B8)"
+   },
+   {
+    "variable": "--table-row-hover",
+    "value": "#EBF0FE",
+    "token": "$y:sem-background-highlight"
+   },
+   {
+    "variable": "--radius-sm",
+    "value": "4px",
+    "token": "$y:radius-3xs"
+   }
+  ],
+  "findReplaces": [
+   {
+    "from": ".dc-legend .li:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}",
+    "to": ".dc-legend .li:focus-visible{outline:2px solid #0E0E0E;outline-offset:1px;}",
+    "where": ".dc-legend .li:focus-visible -> $y:sem-borders-focus"
+   },
+   {
+    "from": "cv(sec,'--accent')||'#3A6AF8'",
+    "to": "'#3A6AF8'",
+    "where": "RAMP builder hue 1 -> $chart-ramp/hue-01 (decouples the ramp from --accent)"
+   },
+   {
+    "from": "cv(sec,'--cat9')||'#8951F0'",
+    "to": "'#8951F0'",
+    "where": "RAMP builder hue 2 -> $chart-ramp/hue-02 (decouples the ramp from --cat9, which now carries categorical color-09)"
+   },
+   {
+    "from": "cv(sec,'--pos')||'#148338'",
+    "to": "'#148338'",
+    "where": "RAMP builder hue 3 -> $chart-ramp/hue-03"
+   },
+   {
+    "from": "cv(sec,'--cat12')||'#E73CAE'",
+    "to": "'#E73CAE'",
+    "where": "RAMP builder hue 4 -> $chart-ramp/hue-04 (decouples from --cat12 = categorical color-12)"
+   },
+   {
+    "from": "cv(sec,'--cat7')||'#FB923C'",
+    "to": "'#FB923C'",
+    "where": "RAMP builder hue 5 -> $chart-ramp/hue-05 (decouples from --cat7 = categorical color-07)"
+   },
+   {
+    "from": "cv(sec,'--cat14')||'#92400E'",
+    "to": "'#92400E'",
+    "where": "RAMP builder hue 6 -> $chart-ramp/hue-06 (decouples from --cat14 = categorical color-14)"
+   },
+   {
+    "from": "cv(sec,'--charcoal')||'#45423E'",
+    "to": "'#3F4650'",
+    "where": "RAMP builder hue 7 -> $chart-ramp/hue-07 (v4.13 charcoal #3F4650; the engine's fallback literal still carries the stale v4.5 value)"
+   },
+   {
+    "from": "E('feDropShadow',{dx:0,dy:3,stdDeviation:5,'flood-color':'#000','flood-opacity':'0.16'},f);\n    root.__dcShadowId=id;",
+    "to": "E('feDropShadow',{dx:0,dy:4,stdDeviation:6,'flood-color':'#000','flood-opacity':'0.102'},f);\n    root.__dcShadowId=id;",
+    "where": "pie info-card drop shadow -> shadow-md role ($y:shadow-md-y 4 / $y:shadow-md-blur 12 / $y:prim-shadow-md-color #0000001A): Hemlock chart rules pin the floating-card shadow to shadow-md"
+   },
+   {
+    "from": ".dc-tip{position:absolute;z-index:40;background:var(--dc-tip-bg);border:1px solid var(--dc-tip-border);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.18);",
+    "to": ".dc-tip{position:absolute;z-index:40;background:var(--dc-tip-bg);border:1px solid var(--dc-tip-border);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.122);",
+    "where": ".dc-tip cursor tip -> shadow-lg role; surface unreachable in contracted states, normalized for whole-surface coverage"
+   }
+  ],
+  "fontSwap": "No family change: the v003 prototype already names production Heebo (--font-ui) and Noto Serif (--font-serif; the v4.13 section title is the serif's first in-component consumer). Delivery swap only: Google Fonts requests blocked at render; Heebo + Noto Serif served via injected @font-face from pencil/designs/fonts/ - the same TTFs the .pen's fonts entries reference."
+ },
+ "tokenJudgmentCalls": [
+  {
+   "surface": "categorical palette (all 15 --cat* variables; categorical-palette frame slice/swatch fills)",
+   "prototypeValue": "Bill's blue-first ordering of the same 15 hues Hemlock owns (--cat1 #3B82F6 first; template comment: 'Every swatch is drawn from v2.0 (Hemlock)'s 15-colour set; the ORDER is blue-first')",
+   "boundToken": "$y:chart-categorical/color-01..15 by SERIES POSITION (priority order)",
+   "rationale": "Chart-series rule: bind chart-series roles in series order, never hue-match. Bill's set is the identical 15 hues in a different priority order, so the positional mapping deliberately reshuffles rendered hues (slice 0 purple #8951F0 instead of blue #3B82F6). Carried verbatim from the v002 capture ruling; the loop measured it (categorical-palette converged at 0.156%).",
+   "newTokenCreated": false,
+   "newToken": null
   },
-  "normalizationRecipe": {
-    "cssVariableInjections": [
-      { "variable": "--page-bg", "value": "#FFFFFF", "token": "$y:sem-background-surface" },
-      { "variable": "--surface-1", "value": "#FFFFFF", "token": "$y:sem-background-surface" },
-      { "variable": "--border", "value": "#EEEDEB", "token": "$y:sem-borders-light" },
-      { "variable": "--ink", "value": "#0E0E0E", "token": "$y:sem-text-header" },
-      { "variable": "--muted", "value": "#5E5954", "token": "$y:sem-text-meta" },
-      { "variable": "--text-body", "value": "#403D3A", "token": "$y:sem-text-body" },
-      { "variable": "--accent", "value": "#3A6AF8", "token": "$chart-ramp/hue-01 (created; ramp read split off via findReplace, focus-ring read split to $y:sem-borders-focus)" },
-      { "variable": "--pos", "value": "#148338", "token": "$chart-ramp/hue-03 (created; ramp read split off via findReplace)" },
-      { "variable": "--neg", "value": "#C82320", "token": "$y:sem-borders-error (error-box border) + $y:sem-text-error (error-box text) - identical resolved pair in both modes" },
-      { "variable": "--cat1", "value": "#8951F0", "token": "$y:chart-categorical/color-01" },
-      { "variable": "--cat2", "value": "#06B6D4", "token": "$y:chart-categorical/color-02" },
-      { "variable": "--cat3", "value": "#312E81", "token": "$y:chart-categorical/color-03" },
-      { "variable": "--cat4", "value": "#3B82F6", "token": "$y:chart-categorical/color-04" },
-      { "variable": "--cat5", "value": "#0F766E", "token": "$y:chart-categorical/color-05" },
-      { "variable": "--cat6", "value": "#38BDF8", "token": "$y:chart-categorical/color-06" },
-      { "variable": "--cat7", "value": "#2DD4BF", "token": "$y:chart-categorical/color-07" },
-      { "variable": "--cat8", "value": "#A78BFA", "token": "$y:chart-categorical/color-08" },
-      { "variable": "--cat9", "value": "#C026D3", "token": "$y:chart-categorical/color-09" },
-      { "variable": "--cat10", "value": "#E73CAE", "token": "$y:chart-categorical/color-10" },
-      { "variable": "--cat11", "value": "#E879A8", "token": "$y:chart-categorical/color-11" },
-      { "variable": "--cat12", "value": "#92400E", "token": "$y:chart-categorical/color-12" },
-      { "variable": "--cat13", "value": "#FB923C", "token": "$y:chart-categorical/color-13" },
-      { "variable": "--cat14", "value": "#CA8A04", "token": "$y:chart-categorical/color-14" },
-      { "variable": "--cat15", "value": "#FACC15", "token": "$y:chart-categorical/color-15" },
-      { "variable": "--table-row-hover", "value": "#EBF0FE", "token": "$y:sem-background-highlight" },
-      { "variable": "--charcoal", "value": "#45423E", "token": "$chart-ramp/hue-07 (created; ramp read split off via findReplace)" },
-      { "variable": "--radius-sm", "value": "4px", "token": "$y:radius-3xs" },
-      { "variable": "--radius-pill", "value": "9999px", "token": "$y:radius-full" },
-      { "variable": "--fs-14", "value": "14px", "token": "$y:text-size-sm" },
-      { "variable": "--tk-accent", "value": "#3A6AF8", "token": "$y:sem-background-action" },
-      { "variable": "--tk-accent-subtle", "value": "#EBF0FE", "token": "$y:sem-background-highlight" },
-      { "variable": "--tk-surface-1", "value": "#FFFFFF", "token": "$y:sem-toggleKnob" },
-      { "variable": "--tk-text-1", "value": "#403D3A", "token": "$y:sem-text-body (no visible surface consumes it - .tkt-lbl overrides with --text-body)" },
-      { "variable": "--tk-off", "value": "#EDEAE3", "token": "$y:sem-toggleTrackOff" },
-      { "variable": "--tk-shadow-sm", "value": "0 1px 2px rgba(0,0,0,0.078)", "token": "shadow-sm family: $y:shadow-sm-y / $y:shadow-sm-blur / $y:prim-shadow-sm-color" }
-    ],
-    "findReplaces": [
-      { "from": "outline:2px solid var(--accent)", "to": "outline:2px solid #0E0E0E", "where": ".dc-legend .li:focus-visible (style line 266) -> $y:sem-borders-focus" },
-      { "from": "cv(sec,'--accent')||'#3A6AF8'", "to": "'#3A6AF8'", "where": "RAMP builder hue 1 (script line 586) -> $chart-ramp/hue-01" },
-      { "from": "cv(sec,'--cat9')||'#8951F0'", "to": "'#8951F0'", "where": "RAMP builder hue 2 (script line 586) -> $chart-ramp/hue-02 (decouples the ramp from --cat9, which now carries categorical color-09)" },
-      { "from": "cv(sec,'--pos')||'#148338'", "to": "'#148338'", "where": "RAMP builder hue 3 (script line 587) -> $chart-ramp/hue-03" },
-      { "from": "cv(sec,'--cat12')||'#E73CAE'", "to": "'#E73CAE'", "where": "RAMP builder hue 4 (script line 587) -> $chart-ramp/hue-04" },
-      { "from": "cv(sec,'--cat7')||'#FB923C'", "to": "'#FB923C'", "where": "RAMP builder hue 5 (script line 588) -> $chart-ramp/hue-05" },
-      { "from": "cv(sec,'--cat14')||'#92400E'", "to": "'#92400E'", "where": "RAMP builder hue 6 (script line 588) -> $chart-ramp/hue-06" },
-      { "from": "cv(sec,'--charcoal')||'#45423E'", "to": "'#45423E'", "where": "RAMP builder hue 7 (script line 589) -> $chart-ramp/hue-07" },
-      { "from": "E('feDropShadow',{dx:0,dy:3,stdDeviation:5,'flood-color':'#000','flood-opacity':'0.16'},f);", "to": "E('feDropShadow',{dx:0,dy:4,stdDeviation:6,'flood-color':'#000','flood-opacity':'0.102'},f);", "where": "info-card drop shadow (script line 421) -> shadow-md role ($y:shadow-md-y 4 / $y:shadow-md-blur 12 / $y:prim-shadow-md-color #0000001A): Hemlock chart rules pin the floating-card shadow to shadow-md" },
-      { "from": "box-shadow:0 8px 24px rgba(0,0,0,.18);", "to": "box-shadow:0 8px 24px rgba(0,0,0,0.122);", "where": ".dc-tip cursor tip (style line 290) -> shadow-lg role; surface unreachable in contracted states, normalized for whole-surface coverage" }
-    ],
-    "fontSwap": "No family change: the v002 prototype already renders production Heebo (design-rules 27), so the Helvetica->Heebo substitution is a no-op. Delivery swap only: Google Fonts requests blocked at render; Heebo served from pencil/designs/fonts/Heebo-VariableFont_wght.ttf (fontconfig), the same TTF the .pen's fonts entry references."
+  {
+   "surface": "ramp palette (shipped default; 7 hues x full + 60%-alpha strengths)",
+   "prototypeValue": "blue #3A6AF8 / purple #8951F0 / green #148338 / pink #E73CAE / orange #FB923C / brown #92400E / charcoal #3F4650 (v4.13 revalues the charcoal from v002's #45423E), half-steps as rgba(...,0.6)",
+   "boundToken": "$chart-ramp/hue-01..07 + $chart-ramp/hue-01..07-a60 (created, local - carried from v002; hue-07 REVALUED to Bill's v4.13 pair #3F4650/#9AA6B8)",
+   "rationale": "Hemlock has no multi-hue ramp vocabulary (chart-sequential is single-hue blue; chart-categorical owns different roles). Created as a first-class chart-palette family with Bill's own dark values. 4 of 7 hues coincide with existing chart-categorical values - noted for the designer's remap option. The -a60 companions carry TRUE alpha (#...99): the half-steps composite over what is behind the chart (runtime-alpha doctrine carried from v002). NOTE: the engine's cv() fallback literal for charcoal still reads '#45423E' (stale v4.5 value) - the rendered truth is #3F4650 from :root; recorded in the normalization findReplace.",
+   "newTokenCreated": true,
+   "newToken": "chart-ramp/hue-01..07, chart-ramp/hue-01..07-a60"
   },
-  "tokenJudgmentCalls": [
-    { "surface": "categorical palette (all 15 --cat* variables; categorical-palette frame slice/swatch fills)", "prototypeValue": "Bill's blue-first ordering of the same 15 hues Hemlock owns (#3B82F6 first)", "boundToken": "$y:chart-categorical/color-01..15 by SERIES POSITION (priority order)", "rationale": "Chart-series rule: bind chart-series roles in series order, never hue-match. Bill's set is the identical 15 hues in a different priority order, so the positional mapping deliberately reshuffles rendered hues (slice 0 purple #8951F0 instead of blue #3B82F6). The alternative (hue-matching each --catN to its Hemlock twin) would preserve Bill's pixels but scramble the priority semantics.", "newTokenCreated": false, "newToken": null },
-    { "surface": "ramp palette (shipped default; 7 hues x full + 60%-alpha strengths)", "prototypeValue": "blue #3A6AF8 / purple #8951F0 / green #148338 / pink #E73CAE / orange #FB923C / brown #92400E / charcoal #45423E, half-steps as rgba(...,0.6)", "boundToken": "$chart-ramp/hue-01..07 + $chart-ramp/hue-01..07-a60 (created, local)", "rationale": "Hemlock has no multi-hue ramp vocabulary (chart-sequential is single-hue blue; chart-categorical owns different roles). Created as a first-class chart-palette family with Bill's own dark values (the prototype ships a complete dark token set). 4 of 7 hues coincide with existing chart-categorical values (hue-02=color-01, hue-04=color-10, hue-05=color-13, hue-06=color-12) - noted for the designer's remap option. The -a60 companions carry TRUE alpha (#...99) per the v002 doctrine (design-rules 9): the half-steps composite over what is behind the chart. PENDING-P3 posture: alpha kept, not precomputed.", "newTokenCreated": true, "newToken": "chart-ramp/hue-01..07, chart-ramp/hue-01..07-a60" },
-    { "surface": "focus dim (non-focused slices and legend rows in hover/press/focus states)", "prototypeValue": "runtime SVG opacity 0.28 (slices) / CSS opacity 0.4 (legend rows)", "boundToken": "(none - node opacity 0.28 / 0.4 on the .pen nodes)", "rationale": "v002 deliberately dims via runtime opacity (design-rules 9 - the opposite of v001's precomputed-solid doctrine; the dispatch template's anti-seam example is v001 text and does not govern v002). Carried as node opacity, the .pen-native equivalent, so a base-token swap re-derives the dimmed appearance for free. PENDING-P3 records the open designer question.", "newTokenCreated": false, "newToken": null },
-    { "surface": "legend row paired-highlight background (--table-row-hover)", "prototypeValue": "#EBF0FE", "boundToken": "$y:sem-background-highlight", "rationale": "Bill paints the paired highlight blue - selection/highlight semantics, value-identical to the highlight role (blue-100). The v001 precedent (sem-background-rowHover, warm taupe) was considered and rejected: v002's row state is a paired SELECTION highlight, not a generic row hover, and binding rowHover would repaint it taupe.", "newTokenCreated": false, "newToken": null },
-    { "surface": "legend keyboard focus ring", "prototypeValue": "#3A6AF8 (reuses --accent)", "boundToken": "$y:sem-borders-focus", "rationale": "Hemlock's a11y contract names sem-borders-focus as THE focus ring; role-first binding turns the ring near-black (#0E0E0E) in light. Deliberate divergence from the prototype's accent-blue ring (same call as the v001 capture).", "newTokenCreated": false, "newToken": null },
-    { "surface": "Legend switch (track on / track off / thumb)", "prototypeValue": "track on #3A6AF8, track off #B6B9B7, thumb #FFFFFF (iOS-style filled-track switch)", "boundToken": "$y:sem-background-action / $y:sem-toggleTrackOff / $y:sem-toggleKnob", "rationale": "Bill's switch idiom inverts Hemlock's ToggleSwitch (Hemlock: pale toggleTrackOn #EBF0FE + accent knob; Bill: accent track + white knob). Binding toggleTrackOn to Bill's track would break the coupled track/thumb contrast pair (white thumb on near-white track), so the on-track binds the T2 action role (value-identical) and the off-track adopts the toggleTrackOff role (repaint #B6B9B7 -> #EDEAE3, which is exactly Hemlock's own off design). The idiom divergence itself is recorded as a non-token design gap; composing the library ToggleSwitch was rejected because the geometry contract (36x20 track, 16px thumb at left 18/2) is probed against the prototype.", "newTokenCreated": false, "newToken": null },
-    { "surface": "shadows (info-card drop shadow, switch-thumb shadow, cursor-tip shadow)", "prototypeValue": "feDropShadow dy3 std5 black@16%; 0 1px 2px black@5%; 0 8px 24px black@18%", "boundToken": "$y:prim-shadow-md-color + shadow-md-y/blur; $y:prim-shadow-sm-color + shadow-sm-y/blur; shadow-lg family (tip unreachable in contracted states)", "rationale": "Hemlock chart rules pin floating-card shadows to shadow-md; the elevation family owns all shadows. Values repainted to the family's y/blur/alpha. NOTE - doc<->lib naming drift: the design-system doc and token guide name shadow colors 'shadow-{size}-color' (no prefix, 'semantic by nature... components may bind them directly'); the live hemlock-library.lib.pen carries them as 'prim-shadow-{size}-color'. They are themed light/dark pairs (functionally T2) and are the library's only shadow-color tokens, so the live names are bound directly and the drift is flagged for the design-system owner rather than minting shadow aliases.", "newTokenCreated": false, "newToken": null },
-    { "surface": "emphasis text (--ink: hole value, legend values, info-card title/value)", "prototypeValue": "#0E0E0E", "boundToken": "$y:sem-text-header", "rationale": "The strongest-ink text role; value-identical in light (#0E0E0E). sem-text-strong (#2D2926) considered and rejected on value+role (the hole value is the component's headline figure).", "newTokenCreated": false, "newToken": null },
-    { "surface": "component composition", "prototypeValue": "hand-rolled donut/pie chart (svg paths + HTML legend + switch)", "boundToken": "(none - frames carry the prototype's exact rendered geometry with token paint)", "rationale": "hemlock-library has DonutChart variants, but they are a different design that cannot reproduce the executable spec's geometry (angular seams PAD 0.028, explode vectors, measured stacking, pie wedges). Under the two-oracle split the .pen is the pixel oracle OF THIS prototype; composing the library component would fail every pixel compare. The divergence is designer-visible via the non-token gap below. The Legend switch similarly stays prototype-geometry (see the switch judgment call).", "newTokenCreated": false, "newToken": null }
-  ],
-  "designGaps": [
-    { "dimension": "chart-palette", "token": "$chart-ramp/hue-01 (+-a60 companion)", "prototypeValue": "#3A6AF8 (+rgba 0.6)", "lightValue": "#3A6AF8 / #3A6AF899", "darkValue": "#5A82F9 / #5A82F999 (Bill's own dark set)", "appliesTo": ["slices 0-1 + legend swatches 0-1 + info-card swatches in every ramp-palette frame"], "designerQuestion": "Adopt a multi-hue chart ramp into the design language, or change the component to an existing palette (chart-sequential / chart-categorical)?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "chart-palette", "token": "$chart-ramp/hue-02 (+-a60)", "prototypeValue": "#8951F0 (via --cat9)", "lightValue": "#8951F0 / #8951F099", "darkValue": "#B198F0 / #B198F099", "appliesTo": ["slices 2-3 + swatches 2-3, ramp frames"], "designerQuestion": "Adopt, or remap? (value coincides with chart-categorical/color-01 - aliasing is a candidate remap)", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "chart-palette", "token": "$chart-ramp/hue-03 (+-a60)", "prototypeValue": "#148338 (via --pos)", "lightValue": "#148338 / #14833899", "darkValue": "#4ADE80 / #4ADE8099", "appliesTo": ["slices 4-5 + swatches 4-5, ramp frames"], "designerQuestion": "Adopt, or remap? (value coincides with prim-green-500/sem-text-deposit light - a status hue doing chart-series duty)", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "chart-palette", "token": "$chart-ramp/hue-04 (+-a60)", "prototypeValue": "#E73CAE (via --cat12)", "lightValue": "#E73CAE / #E73CAE99", "darkValue": "#F485BE / #F485BE99", "appliesTo": ["slices 6-7 + swatches 6-7, ramp frames"], "designerQuestion": "Adopt, or remap? (coincides with chart-categorical/color-10)", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "chart-palette", "token": "$chart-ramp/hue-05 (+-a60)", "prototypeValue": "#FB923C (via --cat7)", "lightValue": "#FB923C / #FB923C99", "darkValue": "#F0985A / #F0985A99", "appliesTo": ["ramp steps 9-10 (unused by the 8-slice shipped data; defined for the full 14-step family)"], "designerQuestion": "Adopt, or remap? (coincides with chart-categorical/color-13)", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "chart-palette", "token": "$chart-ramp/hue-06 (+-a60)", "prototypeValue": "#92400E (via --cat14)", "lightValue": "#92400E / #92400E99", "darkValue": "#CE7E5B / #CE7E5B99", "appliesTo": ["ramp steps 11-12 (unused by shipped data)"], "designerQuestion": "Adopt, or remap? (coincides with chart-categorical/color-12)", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "chart-palette", "token": "$chart-ramp/hue-07 (+-a60)", "prototypeValue": "#45423E (--charcoal)", "lightValue": "#45423E / #45423E99", "darkValue": "#A9A49D / #A9A49D99", "appliesTo": ["ramp steps 13-14 (unused by shipped data)"], "designerQuestion": "Adopt? No Hemlock token carries this warm charcoal at all - the ramp's seventh hue is a wholly new paint.", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$text-size-legend-row", "prototypeValue": "12.5px (legend row type)", "lightValue": "12.5", "darkValue": "12.5 (single-mode number)", "appliesTo": ["all legend rows in every legend-bearing frame"], "designerQuestion": "Adopt a 12.5px step, or change the component to xs (12) / sm (14)?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$text-size-chart-value / -share / -label / -caption / -footnote", "prototypeValue": "SVG chart type is authored in viewBox units (34 / 16 / 15 / 13 / 12.5) and renders at the 0.9375 chart scale (size 300 of viewBox 320)", "lightValue": "31.875 / 15 / 14.0625 / 12.1875 / 11.71875 (rendered px - the frames carry rendered truth)", "darkValue": "same (single-mode numbers)", "appliesTo": ["hole readouts (all donut frames)", "info-card title/rows (info-box-hover)"], "designerQuestion": "Adopt chart-scale-relative type steps (34/16/15/13/12.5 viewBox units), or change the component to fixed scale sizes per the 'never scale chart text' rule (Hemlock chart rules section 09)? Note the prototype's SVG text scales with the chart box by construction - a genuine doctrine conflict to rule on.", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$line-height-solid", "prototypeValue": "SVG text has no line box; HTML legend rows use browser-default leading", "lightValue": "1", "darkValue": "1 (single-mode number)", "appliesTo": ["every text node in every frame (baseline-anchored placement)"], "designerQuestion": "Adopt a solid (1.0) line-height token for chart micro-copy, or change the component to the scale's ratios?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "radius", "token": "$radius-swatch", "prototypeValue": "3px (legend swatch corner radius; info-card swatches carry the same design value at chart scale, 2.8125 rendered)", "lightValue": "3", "darkValue": "3 (single-mode number)", "appliesTo": ["all legend swatches; info-card swatches (positional at chart scale)"], "designerQuestion": "Adopt a 3px radius step, or change the component to radius-4xs (2) / radius-3xs (4)?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "radius", "token": "$radius-chart-card", "prototypeValue": "8 viewBox units (info-card rx) -> 7.5 rendered px at chart scale", "lightValue": "7.5", "darkValue": "7.5 (single-mode number)", "appliesTo": ["info-box-hover: info card frame"], "designerQuestion": "Adopt (the design value is radius-2xs=8 at chart scale - arguably the same role), or change the component to draw the card outside the scaled svg so radius-2xs applies exactly?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "spacing", "token": "$spacing-chart-legend-gap (not minted - bound positionally; frames use absolute layout from measured prototype boxes)", "prototypeValue": "26px (.dc-wrap gap)", "lightValue": "26 (positional)", "darkValue": "26", "appliesTo": ["all frames with a visible legend"], "designerQuestion": "Adopt a 26px step, or change the component to spacing-md (24)?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "spacing", "token": "$spacing-legend-column-gap (positional)", "prototypeValue": "18px (legend column-gap)", "lightValue": "18 (positional)", "darkValue": "18", "appliesTo": ["two-column legend frames"], "designerQuestion": "Adopt an 18px step, or change the component to spacing-sm (16)?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "spacing", "token": "$spacing-swatch-label-gap (positional)", "prototypeValue": "9px (legend row internal gap; 10px in legend-values rows)", "lightValue": "9 / 10 (positional)", "darkValue": "9 / 10", "appliesTo": ["all legend rows"], "designerQuestion": "Adopt a 9/10px step, or change the component to spacing-2xs (8) / spacing-xs (12)?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "spacing", "token": "$spacing-legend-row-pad (positional)", "prototypeValue": "5px 4px (legend row padding; rows at margin-left -4 so hit areas touch)", "lightValue": "5/4 (positional)", "darkValue": "5/4", "appliesTo": ["all legend rows"], "designerQuestion": "Adopt, or change the component to a symmetric spacing-3xs (4) pad?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "Focus dim is runtime opacity BY DESIGN (v002): non-focused slices at SVG opacity 0.28, non-focused legend rows at CSS opacity 0.4, and the ramp half-steps are true rgba alpha compositing over whatever is behind the chart. Testable: computed opacity of a non-focused slice is 0.28 while any slice holds focus; ramp step 2 fill is rgba(58,106,248,0.6).", "lightValue": "node opacity 0.28 / 0.4 + #...99 alpha tokens in this .pen", "darkValue": "same mechanics", "appliesTo": ["slice-hover", "slice-pressed", "legend-hover", "legend-keyboard-focus", "pie-variant-hover", "all ramp frames"], "designerQuestion": "Adopt runtime-alpha dim/half-steps as the chart idiom (PENDING-P3), or change the component to precomputed opaque companion tokens (the v001 doctrine)?", "reconciliation": { "ifAdopted": "document the idiom in the design system (non-token gap: document in the design system)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "The Legend switch is an iOS-style filled-track switch (accent track + white 16px thumb, 36x20 pill, thumb left 2/18) - Hemlock's ToggleSwitch expresses 'on' as a pale toggleTrackOn (#EBF0FE) with an accent knob. Testable: track computed background equals the action accent when checked; thumb stays white in both states.", "lightValue": "track $y:sem-background-action + thumb $y:sem-toggleKnob in this .pen", "darkValue": "same bindings (action/knob roles theme themselves)", "appliesTo": ["default", "legend-switch-off", "and every frame showing the switch"], "designerQuestion": "Adopt the filled-track switch idiom for in-chart controls, or change the component to compose Hemlock's ToggleSwitch (geometry contract would need re-ruling: 36x20/16px thumb is probed)?", "reconciliation": { "ifAdopted": "document the idiom in the design system (non-token gap: document in the design system)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "Hand-rolled donut/pie geometry (angular seams PAD 0.028 rad capped at span/4, explode 8 units along mid-angle, measured stacked layout, pie wedges from center, two-half-arc full circles) - hemlock-library's DonutChart component is a different design that cannot express this. Testable: design-rules section 4 vectors V1-V10.", "lightValue": "frames carry the prototype's rendered path data verbatim with token paint", "darkValue": "same geometry", "appliesTo": ["every frame"], "designerQuestion": "Adopt this chart as the canonical PieChart/DonutChart design (superseding the library's DonutChart variants), or reconcile the two designs?", "reconciliation": { "ifAdopted": "document the idiom in the design system (non-token gap: document in the design system)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } }
-  ],
-  "fontSubstitutions": [
-    { "prototypeFont": "Heebo (Google Fonts delivery; Helvetica only as a documented system fallback)", "boundFont": "Heebo ($y:font-primary, from pencil/designs/fonts/Heebo-VariableFont_wght.ttf)", "scope": "all text (delivery-only substitution; family unchanged)" }
-  ],
-  "prototypeDefectsSeen": [
-    { "flag": "FLAG-D1 (already recorded, design-rules.md section 2)", "note": "Confirmed while capturing: the config-error render is a plain div with no ARIA alert semantics. Pixels banked as rendered in the config-error frame; no frame impact." },
-    { "flag": "FLAG-D2 (already recorded)", "note": "Confirmed: the error copy renders 'Donut Chart config error: ...' - captured verbatim in the config-error frame despite the served PieChart name; copy ruling rides flags.json." }
-  ],
-  "verdict": "captured"
+  {
+   "surface": "focus dim (non-focused slices and legend rows in the five focus states)",
+   "prototypeValue": "runtime SVG opacity 0.28 (slices) / CSS opacity 0.4 (legend rows)",
+   "boundToken": "(none - node opacity 0.28 / 0.4 on the .pen nodes)",
+   "rationale": "The dim IS runtime opacity by design (design-rules 7; v002 DJ-3 ruling carries forward unchanged per the v003 design-rules). Carried as node opacity, the .pen-native equivalent, so a base-token swap re-derives the dimmed appearance for free.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "legend row paired-highlight background (--table-row-hover)",
+   "prototypeValue": "#EBF0FE (= --seq1 in the v4.13 template)",
+   "boundToken": "$y:sem-background-highlight",
+   "rationale": "Paired SELECTION highlight semantics, value-identical to the highlight role (blue-100). sem-background-rowHover (warm taupe) considered and rejected - carried v002 ruling.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "legend keyboard focus ring",
+   "prototypeValue": "#3A6AF8 (reuses --accent)",
+   "boundToken": "$y:sem-borders-focus",
+   "rationale": "Hemlock's a11y contract names sem-borders-focus as THE focus ring; role-first binding turns the ring near-black (#0E0E0E) in light. Deliberate divergence from the prototype's accent-blue ring (same call as v001/v002).",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "shadows (pie info-card drop shadow; .dc-tip cursor tip - unreachable in contracted states)",
+   "prototypeValue": "feDropShadow dy3 std5 black@16%; 0 8px 24px black@18%",
+   "boundToken": "$y:prim-shadow-md-color + shadow-md y/blur (4/12, encoded at the 0.9375 chart scale as 3.75/11.25); tip normalized to the shadow-lg family",
+   "rationale": "Hemlock chart rules pin floating-card shadows to shadow-md. NOTE - doc<->lib naming drift carried from v002: the design-system doc names shadow colors 'shadow-{size}-color'; the live hemlock-library.lib.pen carries 'prim-shadow-{size}-color'. They are themed light/dark pairs (functionally T2) and are the library's only shadow-color tokens, so the live name is bound directly; drift remains flagged for the design-system owner.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "emphasis text (--ink: hole value, legend values, info-card title/value, section title)",
+   "prototypeValue": "#0E0E0E",
+   "boundToken": "$y:sem-text-header",
+   "rationale": "The strongest-ink text role; value-identical in light. Carried v002 ruling; the v4.13 section title joins the same binding (title ink = --ink).",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "section title (NEW v4.13 surface: h3.dc-title, '--font-serif' 18px w400 upper-left)",
+   "prototypeValue": "Noto Serif 18px / 400 / ink / margin 0 0 14px",
+   "boundToken": "$y:font-secondary + $y:text-size-md + $y:sem-text-header",
+   "rationale": "Role-first: the template names it the section-title family ('same face as .st-title'); Hemlock's serif face is font-secondary and text-size-md is exactly 18px, so face+size bind existing tokens with zero value drift. The 14px bottom margin has no spacing token - recorded as a positional spacing gap.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "component composition",
+   "prototypeValue": "hand-rolled donut/pie chart (svg paths + HTML legend)",
+   "boundToken": "(none - frames carry the prototype's exact rendered geometry with token paint)",
+   "rationale": "hemlock-library has DonutChart variants, but they are a different design that cannot reproduce the executable spec's geometry (angular seams PAD 0.028, measured stacking, pie wedges, info-box anchoring). Under the two-oracle split the .pen is the pixel oracle OF THIS prototype; composing the library component would fail every pixel compare. Designer-visible via the non-token gap. (v002's legend-switch judgment is RETIRED: v4.13 removed the control.)",
+   "newTokenCreated": false,
+   "newToken": null
+  }
+ ],
+ "designGaps": [
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-ramp/hue-01 (+-a60 companion)",
+   "prototypeValue": "#3A6AF8 (--accent)",
+   "lightValue": "#3A6AF8 / #3A6AF899",
+   "darkValue": "#5A82F9 / #5A82F999",
+   "appliesTo": [
+    "slices 0-1 + swatches 0-1 in every ramp frame"
+   ],
+   "designerQuestion": "Adopt a multi-hue chart ramp into the design language, or change the component to an existing palette (chart-sequential / chart-categorical)?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-ramp/hue-02 (+-a60 companion)",
+   "prototypeValue": "#8951F0 (via --cat9)",
+   "lightValue": "#8951F0 / #8951F099",
+   "darkValue": "#B198F0 / #B198F099",
+   "appliesTo": [
+    "slices 2-3 + swatches 2-3, ramp frames"
+   ],
+   "designerQuestion": "Adopt, or remap? (value coincides with chart-categorical/color-01 - aliasing is a candidate remap)",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-ramp/hue-03 (+-a60 companion)",
+   "prototypeValue": "#148338 (via --pos)",
+   "lightValue": "#148338 / #14833899",
+   "darkValue": "#4ADE80 / #4ADE8099",
+   "appliesTo": [
+    "slices 4-5 + swatches 4-5, ramp frames"
+   ],
+   "designerQuestion": "Adopt, or remap? (value coincides with prim-green-500 - a status hue doing chart-series duty)",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-ramp/hue-04 (+-a60 companion)",
+   "prototypeValue": "#E73CAE (via --cat12)",
+   "lightValue": "#E73CAE / #E73CAE99",
+   "darkValue": "#F485BE / #F485BE99",
+   "appliesTo": [
+    "slices 6-7 + swatches 6-7, ramp frames"
+   ],
+   "designerQuestion": "Adopt, or remap? (coincides with chart-categorical/color-10)",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-ramp/hue-05 (+-a60 companion)",
+   "prototypeValue": "#FB923C (via --cat7)",
+   "lightValue": "#FB923C / #FB923C99",
+   "darkValue": "#F0985A / #F0985A99",
+   "appliesTo": [
+    "ramp steps 9-10 (unused by the 8-slice shipped data; defined for the full 14-step family)"
+   ],
+   "designerQuestion": "Adopt, or remap? (coincides with chart-categorical/color-13)",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-ramp/hue-06 (+-a60 companion)",
+   "prototypeValue": "#92400E (via --cat14)",
+   "lightValue": "#92400E / #92400E99",
+   "darkValue": "#CE7E5B / #CE7E5B99",
+   "appliesTo": [
+    "ramp steps 11-12 (unused by shipped data)"
+   ],
+   "designerQuestion": "Adopt, or remap? (coincides with chart-categorical/color-12)",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-ramp/hue-07 (+-a60 companion)",
+   "prototypeValue": "#3F4650 (--charcoal - REVALUED at v4.13 from v002's #45423E/#A9A44D pair; Bill's new charcoal in both modes)",
+   "lightValue": "#3F4650 / #3F465099",
+   "darkValue": "#9AA6B8 / #9AA6B899",
+   "appliesTo": [
+    "ramp steps 13-14 (unused by shipped data)"
+   ],
+   "designerQuestion": "Adopt? No Hemlock token carries this cool charcoal at all - the ramp's seventh hue is a wholly new paint (and it moved between prototype versions: the token, not the consumers, absorbed the change - exactly why it is a semantic token).",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": "$text-size-legend-row",
+   "prototypeValue": "12.5px (legend row type)",
+   "lightValue": "12.5",
+   "darkValue": "12.5 (single-mode number)",
+   "appliesTo": [
+    "all legend rows in every legend-bearing frame"
+   ],
+   "designerQuestion": "Adopt a 12.5px step, or change the component to xs (12) / sm (14)?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": "$text-size-chart-value / -share / -label / -caption / -footnote",
+   "prototypeValue": "SVG chart type is authored in viewBox units (34 / 16 / 15 / 13 / 12.5) and renders at the 0.9375 chart scale (size 300 of viewBox 320)",
+   "lightValue": "31.875 / 15 / 14.0625 / 12.1875 / 11.71875 (rendered px - the frames carry rendered truth)",
+   "darkValue": "same (single-mode numbers)",
+   "appliesTo": [
+    "hole readouts (all donut frames)",
+    "info-card title/rows (pie-variant-hover)"
+   ],
+   "designerQuestion": "Adopt chart-scale-relative type steps, or change the component to fixed sizes per the 'never scale chart text' rule (Hemlock section 09)? The prototype's SVG text scales with the chart box by construction - a genuine doctrine conflict to rule on (carried unresolved from v002).",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": "$line-height-solid",
+   "prototypeValue": "SVG text has no line box; HTML legend rows use browser-default leading",
+   "lightValue": "1",
+   "darkValue": "1 (single-mode number)",
+   "appliesTo": [
+    "every text node in every frame (baseline-anchored placement)"
+   ],
+   "designerQuestion": "Adopt a solid (1.0) line-height token for chart micro-copy, or change the component to the scale's ratios?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "radius",
+   "token": "$radius-swatch",
+   "prototypeValue": "3px (legend swatch corner radius; info-card swatches carry the same design value at chart scale, 2.813 rendered)",
+   "lightValue": "3",
+   "darkValue": "3 (single-mode number)",
+   "appliesTo": [
+    "all legend swatches; info-card swatches (positional at chart scale)"
+   ],
+   "designerQuestion": "Adopt a 3px radius step, or change the component to radius-4xs (2) / radius-3xs (4)?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "radius",
+   "token": "$radius-chart-card",
+   "prototypeValue": "8 viewBox units (info-card rx) -> 7.5 rendered px at chart scale",
+   "lightValue": "7.5",
+   "darkValue": "7.5 (single-mode number)",
+   "appliesTo": [
+    "pie-variant-hover: info card frame"
+   ],
+   "designerQuestion": "Adopt (the design value is radius-2xs=8 at chart scale - arguably the same role), or change the component to draw the card outside the scaled svg so radius-2xs applies exactly?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "spacing",
+   "token": "$spacing-chart-legend-gap (not minted - bound positionally; frames use absolute layout from measured prototype boxes)",
+   "prototypeValue": "26px (.dc-wrap gap)",
+   "lightValue": "26 (positional)",
+   "darkValue": "26",
+   "appliesTo": [
+    "all frames with a visible legend"
+   ],
+   "designerQuestion": "Adopt a 26px step, or change the component to spacing-md (24)?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "spacing",
+   "token": "$spacing-legend-column-gap (positional)",
+   "prototypeValue": "18px (legend column-gap)",
+   "lightValue": "18 (positional)",
+   "darkValue": "18",
+   "appliesTo": [
+    "two-column legend frames"
+   ],
+   "designerQuestion": "Adopt an 18px step, or change the component to spacing-sm (16)?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "spacing",
+   "token": "$spacing-swatch-label-gap (positional)",
+   "prototypeValue": "9px (legend row internal gap; 8px in withvals rows)",
+   "lightValue": "9 / 8 (positional)",
+   "darkValue": "9 / 8",
+   "appliesTo": [
+    "all legend rows"
+   ],
+   "designerQuestion": "Adopt a 9/8px step, or change the component to spacing-2xs (8)?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "spacing",
+   "token": "$spacing-legend-row-pad (positional)",
+   "prototypeValue": "5px 4px (legend row padding; rows at margin-left -4 so hit areas touch)",
+   "lightValue": "5/4 (positional)",
+   "darkValue": "5/4",
+   "appliesTo": [
+    "all legend rows"
+   ],
+   "designerQuestion": "Adopt, or change the component to a symmetric spacing-3xs (4) pad?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "spacing",
+   "token": "$spacing-chart-title-gap (positional - NEW at v4.13)",
+   "prototypeValue": "14px (h3.dc-title margin-bottom, section title above the chart)",
+   "lightValue": "14 (positional)",
+   "darkValue": "14",
+   "appliesTo": [
+    "section-title"
+   ],
+   "designerQuestion": "Adopt a 14px step, or change the component to spacing-xs (12) / spacing-sm (16)?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "non-token",
+   "token": null,
+   "prototypeValue": "Focus dim is runtime opacity BY DESIGN: non-focused slices at SVG opacity 0.28, non-focused legend rows at CSS opacity 0.4, and the ramp half-steps are true rgba alpha compositing over whatever is behind the chart. Testable: computed opacity of a non-focused slice is 0.28 while any slice holds focus; ramp step 2 fill is rgba(58,106,248,0.6).",
+   "lightValue": "node opacity 0.28 / 0.4 + #...99 alpha tokens in this .pen",
+   "darkValue": "same mechanics",
+   "appliesTo": [
+    "slice-hover",
+    "slice-pressed",
+    "legend-hover",
+    "legend-keyboard-focus",
+    "pie-variant-hover",
+    "all ramp frames"
+   ],
+   "designerQuestion": "Adopt runtime-alpha dim/half-steps as the chart idiom, or change the component to precomputed opaque companion tokens (the v001 doctrine)? Carried unresolved from v002.",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "non-token",
+   "token": null,
+   "prototypeValue": "Hand-rolled donut/pie geometry (angular seams PAD 0.028 rad capped at span/4, NO explode at v4.13, measured stacked layout, pie wedges from center, two-half-arc full circles) - hemlock-library's DonutChart component is a different design that cannot express this. Testable: design-rules section 4 vectors.",
+   "lightValue": "frames carry the prototype's rendered path data verbatim with token paint",
+   "darkValue": "same geometry",
+   "appliesTo": [
+    "every frame"
+   ],
+   "designerQuestion": "Adopt this chart as the canonical PieChart/DonutChart design (superseding the library's DonutChart variants), or reconcile the two designs? (v4.13 removes the explode + legend switch, simplifying the delta vs the library.)",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  }
+ ],
+ "fontSubstitutions": [
+  {
+   "prototypeFont": "Heebo (Google Fonts delivery; Helvetica only as a documented system fallback)",
+   "boundFont": "Heebo ($y:font-primary, from pencil/designs/fonts/Heebo-VariableFont_wght.ttf)",
+   "scope": "all UI text (delivery-only substitution; family unchanged)"
+  },
+  {
+   "prototypeFont": "Noto Serif (Google Fonts delivery)",
+   "boundFont": "Noto Serif ($y:font-secondary, from pencil/designs/fonts/NotoSerif-VariableFont.ttf)",
+   "scope": "section title only (the v4.13 dc-title is the serif's first in-component consumer; delivery-only substitution)"
+  }
+ ],
+ "prototypeDefectsSeen": [
+  {
+   "flag": "FLAG-V3-D1 (already recorded, design-rules.md section 2)",
+   "note": "Confirmed while capturing: the config-error render is a plain div with no ARIA alert semantics. Pixels banked as rendered in the config-error frame; no frame impact."
+  },
+  {
+   "flag": "FLAG-V3-D2 (already recorded)",
+   "note": "Confirmed: the error copy renders 'Donut Chart config error: ...' - captured verbatim in the config-error frame despite the served PieChart name; copy ruling rides flags.json."
+  },
+  {
+   "flag": "(observation, not a defect flag)",
+   "note": "The RAMP builder's cv() fallback literal for charcoal still carries v4.5's '#45423E' while :root declares #3F4650 - dead code on any token-bearing host (the :root value always wins); noted so the land stage doesn't copy the stale literal."
+  }
+ ],
+ "verdict": "captured"
 }
