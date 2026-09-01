@@ -2,10 +2,9 @@
  "contract": "design-capture/v1",
  "componentId": "GC-013",
  "slug": "forms",
- "penPath": "pencil/designs/2-review-and-revise/genui/GC-013-forms.pen",
- "penPathNote": "NOT promoted to 4-approved: verdict is stopped (iteration cap-out with one state over budget, waiver requested below). The file at the in-review lane is the convergence-best document (iteration 4 configuration), fully self-checked (Iron Law clean, 41/41 geometry probes, 17/17 deterministic exports). On a judge waiver for mobile-single-column, promotion is mechanical: git mv to 4-approved + move this file beside it (no re-authoring).",
- "contentHash": "sha256:be5ca711f2b87c8a2f368a88b96db2a61bf8624ae33934eaa4858dccf9913983",
- "capturedAt": "2026-09-01T15:20:00Z",
+ "penPath": "pencil/designs/4-approved/genui/GC-013-forms.pen",
+ "contentHash": "sha256:07a7b4c20acf7da02b16302d31f31da045fd49cf7654e9d75c9fd594de490aca",
+ "capturedAt": "2026-09-01T16:05:00Z",
  "prototypeVersion": "001",
  "prototypeContentHash": "sha256:817b4028d8d71651d9731b4d48367cbf64fdaf2bbf3054be273f386c847fedb5",
  "frames": [
@@ -28,12 +27,12 @@
   "static-print"
  ],
  "convergence": {
-  "iterationsUsed": 5,
+  "iterationsUsed": 2,
   "pencilVersion": "@pen.dev/cli 0.3.5",
   "pencilVersionNote": "Pinned per dispatch (finding 9). The .pen imports hemlock-library.lib.pen via a relative URI and three faces via ../../fonts URIs (Heebo, Noto Serif, Noto Serif Italic - the italic face is REQUIRED for the fm-question role); re-export MUST run on 0.3.5 at the committed lane path so imports and fonts resolve.",
   "exportInvocation": "pen interactive --in <lane-path>/GC-013-forms.pen --out <same>; execute({ input: 'Export([\"default\", ...all 17 ids], \"png\", \"<dir>\")' }) - default scale 2. Re-export verified byte-identical across consecutive runs (17/17 frames). static-print export is byte-identical to default, matching the contract's identical-by-construction claim.",
   "comparison": "pixelmatch threshold 0.1, per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-baseline knob, not this loop's - GC-006 precedent). Targets = NORMALIZED prototype, Playwright 1.58 Chromium headless-shell 151, deviceScaleFactor 2 (matches pen export scale 2), non-file requests blocked, Heebo + Noto Serif (upright AND italic) served from the same TTFs the .pen references (design-specs pencil/designs/fonts/, via fontconfig; the wdth,wght duplicate TTFs removed so Chromium resolves the exact files), fonts.ready awaited, animations/transitions/caret frozen, textarea resize grip frozen out of both sides (resize:none - UA-painted chrome the .pen cannot carry), pointer parked after steps. Pane states rendered in a 4200px-tall viewport (document fits, zero scrolling - width-keyed layout identical to the contract viewports); dialog states at the contract 1280x900 with scroll pinned at 0. Contract steps driven verbatim; preShot re-assert executed. Frame = contract root border-box (dialog states: the body-mounted backdrop = full viewport, scrim + dimmed page included by design). 16/16 scene captures with zero page errors.",
-  "iterationNotes": "Iteration 1 (authored from CDP DOMSnapshot paint-ordered scenes of the normalized prototype + in-page harvest for SVG paths, input/textarea value+placeholder synthesis (DOMSnapshot carries no UA-shadow text), range-slider track/fill/thumb modeling, radio-dot ::after synthesis; text placed per the GC-006 hhea model - pen 0.3.5 centers the unrounded hhea box in the lineHeight box, Heebo 1.0479/0.4209, Noto Serif 1.069/0.293): 16/17 states 0.24-0.89%, mobile-single-column 1.47%. Iteration 2 (browser baselines snapped to the integer CSS-px grid - Chromium disables vertical subpixel text positioning): all states improved, mobile 1.22%. Iteration 3 (device-px baseline snap hypothesis + list ::marker disc synthesis for config-error): snap REGRESSED (reverted; integer-CSS snap is the correct model), marker synthesis kept (bullets: disc d=fontSize/3 centered 1.04*fontSize left of the li content edge - DOMSnapshot carries no marker boxes). Iteration 4 (per-(family,weight,size) vertical tunes calibrated by per-item local cross-correlation over all states, medians -0.6..+0.6 css): all desktop/dialog states 0.21-0.69%, mobile best 1.127%. Iteration 5 (box-edge device-grid snap hypothesis for the 1px-border residual bands): REGRESSED everywhere (Chromium does not snap painted box edges here; pen's fractional AA is the closer model) - reverted, iteration-4 document reproduced exactly (determinism re-verified). Residual diff is cross-rasterizer glyph-edge anti-aliasing (pen vs Chromium), concentrated on text; x-alignment measured exact (<0.02px median per face).",
+  "iterationNotes": "Iteration 1 (authored from CDP DOMSnapshot paint-ordered scenes of the normalized prototype + in-page harvest for SVG paths, input/textarea value+placeholder synthesis (DOMSnapshot carries no UA-shadow text), range-slider track/fill/thumb modeling, radio-dot ::after synthesis; text placed per the GC-006 hhea model - pen 0.3.5 centers the unrounded hhea box in the lineHeight box, Heebo 1.0479/0.4209, Noto Serif 1.069/0.293): 16/17 states 0.24-0.89%, mobile-single-column 1.47%. Iteration 2 (browser baselines snapped to the integer CSS-px grid - Chromium disables vertical subpixel text positioning): all states improved, mobile 1.22%. Iteration 3 (device-px baseline snap hypothesis + list ::marker disc synthesis for config-error): snap REGRESSED (reverted; integer-CSS snap is the correct model), marker synthesis kept (bullets: disc d=fontSize/3 centered 1.04*fontSize left of the li content edge - DOMSnapshot carries no marker boxes). Iteration 4 (per-(family,weight,size) vertical tunes calibrated by per-item local cross-correlation over all states, medians -0.6..+0.6 css): all desktop/dialog states 0.21-0.69%, mobile best 1.127%. Iteration 5 (box-edge device-grid snap hypothesis for the 1px-border residual bands): REGRESSED everywhere (Chromium does not snap painted box edges here; pen's fractional AA is the closer model) - reverted, iteration-4 document reproduced exactly (determinism re-verified). Residual diff is cross-rasterizer glyph-edge anti-aliasing (pen vs Chromium), concentrated on text; x-alignment measured exact (<0.02px median per face). RESUMED DISPATCH (2026-09-01, fresh budget): Iteration 1 (per-item alignment search: slide each mobile-frame node's export window over the target in device px, argmin mismatch): the residual was NOT pure glyph AA — ~55% was 1-device-px offsets on hairline borders and half-px text items (the mobile root lands at fractional page y 525.75; the authored .53-fraction coords sat one device row off the browser's painted rows). 20 nodes shifted 0.5 css px (entry-box borders, slider track/fill/thumb, toggle track/knob, radio ring, stepper button+glyph x, three action labels, five text blocks): 1.127% -> 0.643%. Iteration 2 (targeted: the tilehead closing rule — invisible to the window search because the header text dominates its rect's window; row-profile evidence showed the border 1 device px high): rule rect +0.5 css: 0.643% -> 0.577%. Stopped: converged mid-pack, residual is genuine cross-rasterizer glyph-edge AA. 16 untouched frames re-exported byte-identical throughout; mobile re-export deterministic across consecutive runs.",
   "perState": [
    {
     "state": "default",
@@ -127,9 +126,9 @@
    },
    {
     "state": "mobile-single-column",
-    "diffPct": 1.127,
+    "diffPct": 0.577,
     "geometryProbes": "pass",
-    "exportSha256": "fe4e599b21695e22c71562d0b2fde382c225d091464e16fc7c822f7a19d1d8de"
+    "exportSha256": "e1fd5ed2b7c5078bd57a44f1eb6e4adcc357563d367ad692b40fa474ef06f7b8"
    },
    {
     "state": "static-print",
@@ -140,14 +139,13 @@
   ],
   "geometryProbesDetail": "41/41 pass, asserted on the .pen nodes verbatim: tile r8/1px $sem-borders-panel/sunken fill (R2); title-owned closing rule present in default, absent in untitled-tilehead (R3, per-side bottom stroke); grid tracks via entry-box widths 282 (desktop R5) / 373 (tablet R6) / 316 (mobile R7) at 36h/r4/1px sem-borders-dark (GC-006 R8); stepper action 28w with left stroke 0 (R15); toggle track 36x20 - action fill on, toggleTrackOff off (GC-006 R16); slider 4px track+fill at 60% (default) / 25% (controls-alternate) with 20px thumb + 2px $sem-sliderThumbEdge + shadow-sm (R17); menu r6+shadow-md and 2px accent open trigger (select-open); required-errors 1px error borders on trigger wrappers + 2px on the focused first-invalid (R12); date popover 252w/r6 + accent selected day (R14); all four dialogs 560w/r12/overlay-shadow cards + sunken head bands + scrim token (R20); summary review rows 1px bottom rules (R21); config-error box 1px error border/r8/error bg (R22); tooltip r6/max-300 (R10); eyebrow $fm-text-eyebrow 12/600 + question $fm-text-question 28 italic serif (R4); tile title serif 24/500 (R3); caption 11/500/0.55 letterspacing (GC-006 R29); primary pill 36h radius-full (GC-006 R3); frame ids = state ids 1:1 verbatim.",
   "waivers": [],
-  "waiverRequested": [
-   {
-    "state": "mobile-single-column",
-    "diffPct": 1.127,
-    "budget": 1,
-    "evidence": "Iteration trajectory 1.472 -> 1.224 -> 1.631 (regression, reverted) -> 1.127 (best, banked) -> 1.265 (regression, reverted). Residual is uniform cross-rasterizer glyph-edge anti-aliasing across ~60 wrapped text lines at the 316px measure: x-alignment exact (<0.02px per-face medians), per-face dy medians ~0 after calibration, zero structural deltas (diff image shows edge ghosting only, no missing/misplaced elements). The 1.0% budget was calibrated on desktop-scale frames (GC-006 worst state: 0.90%); this 350x1372 frame carries ~3x the text coverage per frame pixel of the desktop states, so the same per-glyph AA noise lands ~1.1x budget. The state passes every geometry probe and the text layer is verbatim."
-   }
-  ]
+  "resumption": {
+   "resumedFrom": "design-specs commit 6fccba6 (in-review lane, verdict stopped: 5-iteration cap-out, waiver requested for mobile-single-column at 1.127%)",
+   "dispatchNote": "the re-dispatch's prior-recipe field said 'none - first capture' — stale: the stopped capture existed in the review lane; its settled normalizationRecipe and tokenJudgmentCalls seeded this run per the seeding rule (nothing re-derived)",
+   "round0Verification": "prototype hash re-verified; normalization rebuilt from the recipe (17 injections, zero find-replaces); all 17 targets re-rendered per the recorded methodology; prior document re-exported 17/17 byte-identical to the recorded exportSha256s; all 17 recorded diff percentages reproduced exactly",
+   "iterationsThisDispatch": 2,
+   "iterationsCumulative": 7
+  }
  },
  "normalizationRecipe": {
   "cssVariableInjections": [
@@ -787,20 +785,6 @@
    "note": "Hover-only value; zero contracted pixel impact (hover states are uncontracted, html.ptr-fine gated). Normalization injected the token value #2952CC ($y:sem-btnPrimaryBgHover). Flagged for the ledger; never fixed in the prototype."
   }
  ],
- "environmentFactsFeedback": "All injected facts held: @pen.dev/cli 0.3.5 exports deterministically via pen interactive Export (17/17 byte-identical across consecutive runs); PENCIL_CLI_KEY accepted; DESIGN_SPECS_GITHUB_PAT scoped as documented; the packaged pencil-design.md skill copy is superseded on CLI mechanics exactly as stated; GC-006's hhea text-placement constants re-verified. Facts worth promoting: (1) pen 0.3.5 text placement converges fastest by snapping the BROWSER baseline to the integer CSS-px grid first (Chromium disables vertical subpixel text positioning; device-grid 0.5px snapping REGRESSES - measured), then applying per-(family,weight,size) tunes calibrated by per-item local cross-correlation (medians here -0.6..+0.6 css; the dominant Heebo 400/14 face needed +0.43). (2) Do NOT snap rectangle/box edges to the device grid - Chromium does not pixel-snap painted box edges here and pen's fractional-coordinate AA is the closer model (snapping regressed every state ~2x). (3) DOMSnapshot carries NO input/textarea value or placeholder text (UA shadow) and NO list ::marker boxes - synthesize both (markers: disc d=fontSize/3, center 1.04*fontSize left of the li content edge, first-line middle). (4) textarea resize grips are UA paint - freeze with resize:none on both compare sides. (5) A same-message file-edit + node-run can race the file save in this workspace - one export cycle re-measured a stale byte-identical document (excluded from the iteration count as infra; verify the artifact changed before counting a round).",
- "verdict": "stopped",
- "stop": {
-  "kind": "iteration-cap-out (convergence)",
-  "detail": "The 5-honest-iteration cap is spent with one state over the 1.0% budget: mobile-single-column at 1.127% (best round, banked as the delivered document). All 16 other states converged (0.209-0.691%) and every geometry probe passes. The residual is characterized (uniform cross-rasterizer glyph-edge AA on the dense 316px-measure text; no structural deltas; x-exact; per-face dy calibrated) and a per-state waiver is requested in convergence.waiverRequested - never self-granted. On a judge waiver, promotion of the committed in-review .pen is mechanical (git mv + move this handback beside it); on a re-work ruling, the next round should start from the iteration-4 document and the environmentFactsFeedback calibration facts.",
-  "iterationTrajectory": {
-   "mobile-single-column": [
-    1.472,
-    1.224,
-    1.631,
-    1.127,
-    1.265
-   ],
-   "deliveredRound": 4
-  }
- }
+ "environmentFactsFeedback": "All injected facts held: @pen.dev/cli 0.3.5 exports deterministically via pen interactive Export (17/17 byte-identical across consecutive runs); PENCIL_CLI_KEY accepted; DESIGN_SPECS_GITHUB_PAT scoped as documented; the packaged pencil-design.md skill copy is superseded on CLI mechanics exactly as stated; GC-006's hhea text-placement constants re-verified. Facts worth promoting: (1) pen 0.3.5 text placement converges fastest by snapping the BROWSER baseline to the integer CSS-px grid first (Chromium disables vertical subpixel text positioning; device-grid 0.5px snapping REGRESSES - measured), then applying per-(family,weight,size) tunes calibrated by per-item local cross-correlation (medians here -0.6..+0.6 css; the dominant Heebo 400/14 face needed +0.43). (2) Do NOT snap rectangle/box edges to the device grid - Chromium does not pixel-snap painted box edges here and pen's fractional-coordinate AA is the closer model (snapping regressed every state ~2x). (3) DOMSnapshot carries NO input/textarea value or placeholder text (UA shadow) and NO list ::marker boxes - synthesize both (markers: disc d=fontSize/3, center 1.04*fontSize left of the li content edge, first-line middle). (4) textarea resize grips are UA paint - freeze with resize:none on both compare sides. (5) A same-message file-edit + node-run can race the file save in this workspace - one export cycle re-measured a stale byte-identical document (excluded from the iteration count as infra; verify the artifact changed before counting a round). RESUMED-DISPATCH facts worth promoting: (6) A dispatch can say first-capture while a stopped capture sits in the review lane — capture agents must check the lane before authoring (this run reused the settled mapping/recipe and spent its budget on the one failing state; re-authoring would have burned the budget re-deriving). (7) Playwright 1.58.2 here bundles Chromium headless-shell 145.0.7632.6 (prior run recorded 151): every recorded measurement reproduced EXACTLY, so the capture methodology is stable across these Chromium builds. (8) The last-mile residual after global per-face tunes is often NOT glyph AA: run a per-item window-slide alignment search (device-px argmin) — hairline borders offset by one device row read as uniform ~1.2k-px diff bands; text-dominated windows hide border offsets, so probe borders by row-profile when a band survives. (9) Playwright screenshot clip must be rounded to integer CSS px (Math.round of the rect) — flooring fractional heights yields off-by-one image sizes vs the frame (962.53 -> 1924 not 1926). (10) The global npm prefix is root-owned on this VM (EACCES): install @pen.dev/cli locally and call node_modules/.bin/pen.",
+ "verdict": "captured"
 }
