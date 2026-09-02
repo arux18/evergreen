@@ -3,88 +3,109 @@
   "componentId": "GC-004",
   "slug": "time-series",
   "penPath": "pencil/designs/4-approved/genui/GC-004-time-series.pen",
-  "contentHash": "sha256:ed11be3b2d701bd3ced20fd93c80d57a89fbab42cce930d258d2af894b4fe5e6",
-  "capturedAt": "2026-08-25T18:05:54Z",
+  "contentHash": "sha256:a9de8d28029c797f8386866629bbae0720843255534f4958571363d688018372",
+  "capturedAt": "2026-09-02T00:15:21Z",
   "frames": [
     "default",
+    "section-title",
     "line-straight",
-    "scrub-right-edge",
-    "multi-series-legend",
+    "legend-upper-right",
     "legend-hidden",
     "tiles",
     "series-hidden",
+    "daily-ref-preset",
+    "scrub-right-edge",
     "markers-auto-axes",
     "percent-two-series",
-    "narrow-scroll",
+    "narrow-squish",
+    "narrow-scroll-carets",
     "config-error",
     "static-print"
   ],
   "convergence": {
-    "iterationsUsed": 5,
+    "iterationsUsed": 2,
     "pencilVersion": "@pen.dev/cli 0.3.5",
-    "exportInvocation": "pen interactive --in <file.pen> --out <tmp.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import resolves. Re-export verified byte-deterministic across consecutive runs; default and static-print exports are byte-identical (the contract's identical-by-construction claim).",
-    "comparison": "pixelmatch threshold 0.1 (harness convention), per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-pen budget, not this loop's). Targets = NORMALIZED prototype, contract root #tsHost section.ts, Chromium via playwright 1.58.2 (headless shell 145.0.7632.6), deviceScaleFactor 2. Capture protocol: Google Fonts origins blocked + @font-face injection serving Heebo from the SAME TTF the .pen references (pencil/designs/fonts/Heebo-VariableFont_wght.ttf); browser launched with --font-render-hinting=none --disable-font-subpixel-positioning (aligns Chromium glyph metrics with the pen renderer's unhinted shaper); animations/transitions frozen; scrollbars hidden (chrome, not content); root nudged onto the integer CSS-pixel grid via position:relative top/left (paint-only, sub-pixel); fonts ready; pointer parked after contracted clicks; self-consistency gate (double screenshot, byte-equal).",
-    "iterationNotes": "It1 authoring from extracted geometry: 10/12 within budget (config-error 2.89%, narrow-scroll 1.29%) — cause: fractional root origin (0.25/0.75px) sub-pixel phase. It2 integer-grid snap: 11/12 (config-error 2.34%). It3 unhinted browser font metrics (long-string advance drift eliminated): 12/12 within budget, worst 0.465%. It4 baseline compensation at 6 font sizes measured by probe (pen places glyphs 1css px lower than Chromium at most sizes; 0 at 14/16px): worst 0.353%. It5 full per-size baseline table (19 sizes probed, tweaks -1/-2/0): final 0.024-0.159%. All tooling probes (export-scale, gradient, dash, shadow, baseline) ran outside the frame-fix budget as measurement, not fix rounds; the five iterations above are the honest author->export->compare rounds.",
+    "exportInvocation": "pen interactive --in <file.pen> --out <scratch.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import resolves. Re-export verified byte-deterministic across consecutive runs on the final file; default and static-print exports are byte-identical (the contract's identical-by-construction claim).",
+    "comparison": "pixelmatch threshold 0.1 (harness convention), per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-pen budget, not this loop's). Targets = NORMALIZED prototype, contract root #tsHost section.ts, Chromium via playwright 1.58.2 (headless shell 145.0.7632.6), deviceScaleFactor 2, viewport 1280x900 (420x800 for narrow-squish / narrow-scroll-carets per states.json). Capture protocol (v001 protocol carried): Google Fonts origins blocked + @font-face injection serving Heebo AND Noto Serif from the SAME TTFs the .pen references (pencil/designs/fonts/); --font-render-hinting=none --disable-font-subpixel-positioning; animations/transitions frozen; scrollbars hidden (chrome, not content); root nudged onto the integer CSS-pixel grid (paint-only); fonts ready; states driven by the states.json prototype steps verbatim; self-consistency gate (double screenshot, byte-equal). Geometry probes: per-state scene-derived pixel probes (dot centers, swatch centers, gridline/baseline rows, card interior) asserted target-vs-export agreement at the same coordinates — all pass.",
+    "iterationNotes": "Up-front measurement (not iterations): per-size pen-vs-Chromium text baseline calibration probe (17 Heebo sizes + Noto Serif 18) drove the ascent model, so It1 authored from extracted geometry landed 15/15 within the 1.0% budget (worst 0.573%) with all text ink boxes within +/-0.5 css px of the target. It1 defect found by node inspection (the numeric budget had absorbed it): the caret chevron path carried no stroke (SVG currentColor inheritance missed by the extractor); fixed the extraction, regenerated, re-exported. It2: 15/15 within budget, worst 0.559% (narrow-squish), all geometry probes pass. Residual is glyph-edge antialiasing between the pen renderer and Chromium (measured ink-box offsets <= 0.5 css px everywhere) — the irreducible cross-rasterizer class the SC standard anticipates. No waivers.",
     "perState": [
       {
         "state": "default",
-        "diffPct": 0.04,
+        "diffPct": 0.22,
         "geometryProbes": "pass",
-        "exportSha256": "9bead47616a0c5b99c16a7e9123cb38e3a422c49f5dbeed20015bc67aae38fd9"
+        "exportSha256": "ba89f2ae4b47afac82b0db5be5e9e29b0f1b1333f46ecdd763a0a69116aa1555"
+      },
+      {
+        "state": "section-title",
+        "diffPct": 0.206,
+        "geometryProbes": "pass",
+        "exportSha256": "a706f6fb1a62c6a7efccf8ea4d3a4db5f0003bd26fb6c74b44623a51e1c75f20"
       },
       {
         "state": "line-straight",
-        "diffPct": 0.024,
+        "diffPct": 0.189,
         "geometryProbes": "pass",
-        "exportSha256": "52884c726ac40aa22c16e172c2e7dbe5b7d209984b1a62ae69e509f0f3af718d"
+        "exportSha256": "aa0ac1681a0b3d96e65a1b87c98894a6114bd8da6f822ae418486a6a848339ad"
       },
       {
-        "state": "scrub-right-edge",
-        "diffPct": 0.037,
+        "state": "legend-upper-right",
+        "diffPct": 0.416,
         "geometryProbes": "pass",
-        "exportSha256": "922da06cf272dffb28da1445f092208256cff057f6f9e7ee36a3a203589b2321"
-      },
-      {
-        "state": "multi-series-legend",
-        "diffPct": 0.121,
-        "geometryProbes": "pass",
-        "exportSha256": "2b371e619756b57091949094ef905dfdc0d1ac85d568c423e1599df28c2fb220"
+        "exportSha256": "9ce4a83d37c61503ee6984c362edafe77bce5dc45e084cb549d82c4c43eceeba"
       },
       {
         "state": "legend-hidden",
-        "diffPct": 0.084,
+        "diffPct": 0.205,
         "geometryProbes": "pass",
-        "exportSha256": "50462e9dbefb3cf619ec8a4657ab50715bb6069bbbc87de4e76bc1994d7a611c"
+        "exportSha256": "f0536ae3d22376edac6b383c4a14aa5748292ce3a99fe05b46d0834e6333f257"
       },
       {
         "state": "tiles",
-        "diffPct": 0.132,
+        "diffPct": 0.257,
         "geometryProbes": "pass",
-        "exportSha256": "8076289b7a049dee68621c0a7633bd83a88ce4e85408d9f6ceac72ac152faa05"
+        "exportSha256": "df6240e5ea20e2050fd00830f58157680db9da94a95b0daa3f4862d4ca5e15db"
       },
       {
         "state": "series-hidden",
-        "diffPct": 0.112,
+        "diffPct": 0.228,
         "geometryProbes": "pass",
-        "exportSha256": "bf4d4007e3f7795091d0f29ee399250e31263a018066ccf7fa71049603414c59"
+        "exportSha256": "158738ce3cead80ef6040521d147c0ca50c60d471bf545ff62fffc88fe0707e0"
+      },
+      {
+        "state": "daily-ref-preset",
+        "diffPct": 0.109,
+        "geometryProbes": "pass",
+        "exportSha256": "df57cbf20c0bc1b9f8d7a9e84b913f02750e84e357bee53ab4ee5a50468ce683"
+      },
+      {
+        "state": "scrub-right-edge",
+        "diffPct": 0.109,
+        "geometryProbes": "pass",
+        "exportSha256": "685b7d0c07317f50597bb5a352896366ad92adf52dd2c18497054d7a721da46a"
       },
       {
         "state": "markers-auto-axes",
-        "diffPct": 0.042,
+        "diffPct": 0.153,
         "geometryProbes": "pass",
-        "exportSha256": "0fda273417d68fa43b56ed6ee915dce23404b9ba1a18e53ddfbe5e25b5dcf1f8"
+        "exportSha256": "a9ced7077fe9061c8540e5d16dcb09c63f5e8718beed813ee7187f59638065e5"
       },
       {
         "state": "percent-two-series",
-        "diffPct": 0.067,
+        "diffPct": 0.138,
         "geometryProbes": "pass",
-        "exportSha256": "a45fb2f8503b9f8f2fe5c8126233d21523f58bedfa3ef3d9ccc0b43cac042bb6"
+        "exportSha256": "0db2d4b19a078d38b5c0062446484a32cc536175a145113d27ccadd887e37656"
       },
       {
-        "state": "narrow-scroll",
-        "diffPct": 0.055,
+        "state": "narrow-squish",
+        "diffPct": 0.559,
         "geometryProbes": "pass",
-        "exportSha256": "70fbf5c6b1564872d2cbfebb96612ed8b4d67bcef85f2511586c19d6fb18d86c"
+        "exportSha256": "e680ed1adde372b9da79e2dfae2a16db9f796c441b2e8eac0319623114f43cb8"
+      },
+      {
+        "state": "narrow-scroll-carets",
+        "diffPct": 0.21,
+        "geometryProbes": "pass",
+        "exportSha256": "e770d8052de91cc927891e42796e4e427f80fba501556026664fbbcdaf5c9f05"
       },
       {
         "state": "config-error",
@@ -94,9 +115,9 @@
       },
       {
         "state": "static-print",
-        "diffPct": 0.04,
+        "diffPct": 0.22,
         "geometryProbes": "pass",
-        "exportSha256": "9bead47616a0c5b99c16a7e9123cb38e3a422c49f5dbeed20015bc67aae38fd9"
+        "exportSha256": "ba89f2ae4b47afac82b0db5be5e9e29b0f1b1333f46ecdd763a0a69116aa1555"
       }
     ],
     "waivers": []
@@ -117,6 +138,11 @@
         "variable": "--border",
         "value": "#EEEDEB",
         "token": "$sem-borders-light"
+      },
+      {
+        "variable": "--border-strong",
+        "value": "#C0BAB2",
+        "token": "$sem-borders-strong"
       },
       {
         "variable": "--ink",
@@ -141,7 +167,7 @@
       {
         "variable": "--neg",
         "value": "#C82320",
-        "token": "$sem-borders-error / $sem-text-error"
+        "token": "$sem-borders-error / $sem-text-error (error box); $chart-scrubber (created — scrubber line+ball)"
       },
       {
         "variable": "--grid",
@@ -237,50 +263,111 @@
         "variable": "--cat15",
         "value": "#FACC15",
         "token": "$chart-categorical/color-15"
+      },
+      {
+        "variable": "--ramp-step-blue",
+        "value": "#3A6AF8",
+        "token": "$chart-ramp/hue-01-blue (created)"
+      },
+      {
+        "variable": "--ramp-step-purple",
+        "value": "#8951F0",
+        "token": "$chart-ramp/hue-02-purple (created)"
+      },
+      {
+        "variable": "--ramp-step-green",
+        "value": "#148338",
+        "token": "$chart-ramp/hue-03-green (created)"
+      },
+      {
+        "variable": "--ramp-step-pink",
+        "value": "#E73CAE",
+        "token": "$chart-ramp/hue-04-pink (created)"
+      },
+      {
+        "variable": "--ramp-step-orange",
+        "value": "#FB923C",
+        "token": "$chart-ramp/hue-05-orange (created)"
+      },
+      {
+        "variable": "--ramp-step-brown",
+        "value": "#92400E",
+        "token": "$chart-ramp/hue-06-brown (created)"
+      },
+      {
+        "variable": "--ramp-step-charcoal",
+        "value": "#3F4650",
+        "token": "$chart-ramp/hue-07-charcoal (created)"
       }
     ],
     "findReplaces": [
       {
+        "from": "var blue=cvRoot('--accent')||'#3A6AF8', purple=cvRoot('--cat9')||'#8951F0',\n        green=cvRoot('--pos')||'#148338', pink=cvRoot('--cat12')||'#E73CAE',\n        orange=cvRoot('--cat7')||'#FB923C', brown=cvRoot('--cat14')||'#92400E',\n        charcoal=cvRoot('--charcoal')||'#3F4650';",
+        "to": "var blue=cvRoot('--ramp-step-blue')||'#3A6AF8', purple=cvRoot('--ramp-step-purple')||'#8951F0',\n        green=cvRoot('--ramp-step-green')||'#148338', pink=cvRoot('--ramp-step-pink')||'#E73CAE',\n        orange=cvRoot('--ramp-step-orange')||'#FB923C', brown=cvRoot('--ramp-step-brown')||'#92400E',\n        charcoal=cvRoot('--ramp-step-charcoal')||'#3F4650';",
+        "where": "rampPalette() hue reads (engine lines 3569-3572) -> dedicated ramp variables so the categorical priority-order injection cannot garble the ramp's hue identity; the ramp binds the created $chart-ramp/hue-* tokens"
+      },
+      {
         "from": "E('feDropShadow',{dx:0,dy:3,stdDeviation:5,'flood-color':'#000','flood-opacity':'0.16'},f);",
         "to": "E('feDropShadow',{dx:0,dy:4,stdDeviation:6,'flood-color':'#000','flood-opacity':'0.10196078431372549'},f);",
-        "where": "shadowFilter (engine line 9135) -> shadow-md (shadow-md-y 4, shadow-md-blur 12 => stdDeviation 6) + $prim-shadow-md-color #0000001A"
+        "where": "shadowFilter (engine line 3621) -> shadow-md role (shadow-md-y 4, shadow-md-blur 12 => stdDeviation 6) + $prim-shadow-md-color #0000001A (v001 recipe carried forward)"
       },
       {
         "from": "E('stop',{offset:'0%','stop-color':color,'stop-opacity':'0.32'},g);",
         "to": "E('stop',{offset:'0%','stop-color':color,'stop-opacity':'0.3215686274509804'},g);",
-        "where": "fadeFill top stop (engine line 9186) -> $chart-series-fade/color-NN-top alpha 0x52"
+        "where": "fadeFill top stop (engine line 3681) -> $chart-ramp-fade/step-NN-top alpha 0x52 (hex-representable; v001 convention)"
       },
       {
         "from": "E('stop',{offset:'100%','stop-color':color,'stop-opacity':'0.02'},g);",
         "to": "E('stop',{offset:'100%','stop-color':color,'stop-opacity':'0.0196078431372549'},g);",
-        "where": "fadeFill floor stop (engine line 9187) -> $chart-series-fade/color-NN-floor alpha 0x05"
+        "where": "fadeFill floor stop (engine line 3682) -> $chart-ramp-fade/step-NN-floor alpha 0x05 (v001 convention)"
+      },
+      {
+        "from": ".ts-nav{display:none;position:absolute;z-index:7;top:44%;transform:translateY(-50%);width:32px;height:32px;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:var(--surface-1);border:1px solid var(--border-strong);box-shadow:0 2px 8px rgba(0,0,0,.18);color:var(--accent);cursor:pointer;}",
+        "to": ".ts-nav{display:none;position:absolute;z-index:7;top:44%;transform:translateY(-50%);width:32px;height:32px;align-items:center;justify-content:center;padding:0;border-radius:var(--radius-pill);background:var(--surface-1);border:1px solid var(--border-strong);box-shadow:0 4px 12px rgba(0,0,0,0.10196078431372549);color:var(--accent);cursor:pointer;}",
+        "where": ".ts-nav caret pill shadow (CSS line 2589; the identical .bc-nav rule is another component's, untouched) -> shadow-md role: $shadow-md-y 4 / $shadow-md-blur 12 / $prim-shadow-md-color #0000001A"
       }
     ],
-    "fontSwap": "None required at the CSS layer: the prototype is already Heebo-native (--font-ui Heebo-first, SVG text hardcodes 'Heebo, sans-serif'). Serving mechanics: Google Fonts blocked at capture; Heebo served via injected @font-face from pencil/designs/fonts/Heebo-VariableFont_wght.ttf — the same file this .pen's fonts block references.",
-    "notes": "Identity injections (13 of 27) are recorded because the injection IS the reconciliation record even when Bill's value already equals the token value. Dark :root block left untouched — dark is uncontracted (design-rules rule 25) and arrives later as a token swap; every token bound here carries its dark value in the library/local definitions."
+    "fontSwap": "None required at the CSS layer: the prototype is already Heebo-native (--font-ui Heebo-first) and serif-native (--font-serif Noto Serif-first, the v4.13 section title). Serving mechanics at capture: Google Fonts blocked; Heebo + Noto Serif served via injected @font-face from pencil/designs/fonts/Heebo-VariableFont_wght.ttf and NotoSerif-VariableFont_wdth,wght.ttf — the same files this .pen's fonts block references.",
+    "notes": "Identity injections are recorded because the injection IS the reconciliation record even when Bill's value already equals the token value. Dark :root block left untouched — dark is uncontracted (design-rules rule 32) and arrives later as a token swap; every token bound here carries its dark value in the library/local definitions. The seven --ramp-step-* variables are NEW injected variables (not overwrites): rampPalette()'s hue reads are redirected to them by a recorded find-replace so the categorical priority-order injection cannot garble the ramp's hue identity. Dispatch fact flagged stale: the dispatch declared \"(none - first capture)\" for the prior normalization recipe, but the v001 capture artifact (GC-004-time-series.capture.json, replaced by this file) carried a recipe that seeded this one — extended for the v002 surface (ramp palette, red scrubber, serif title, carets/thumb, native squish)."
   },
   "tokenJudgmentCalls": [
     {
-      "surface": "series color assignment (all plots, swatches, card rows, scrub dots)",
-      "prototypeValue": "blue-first categorical order --cat1..15 (#3B82F6 first; Bill's comment: \"Every swatch is drawn from v2.0 (Hemlock)'s 15-colour set; the ORDER is blue-first\")",
+      "surface": "categorical series color assignment (daily/balance/rate plots, swatches, card rows, scrub dots, marker lines)",
+      "prototypeValue": "blue-first categorical order --cat1..15 (#3B82F6 first)",
       "boundToken": "$chart-categorical/color-01..15 in priority order",
-      "rationale": "Chart-series roles bind by SERIES ORDER to the palette's priority order (hemlock rule: \"Always assign in priority order\"), never by hue-matching. Series 1 turns purple #8951F0; slots 02/03/05/15 coincide with Bill's values. Marker colors ride the same cycle (next unused slots), preserving the never-repeats-a-line rule.",
+      "rationale": "v001 judgment carried forward verbatim: chart-series roles bind by SERIES ORDER to the palette's priority order (hemlock rule: \"Always assign in priority order\"), never by hue-matching. Daily/rate series 1 renders color-01 purple #8951F0; balance markers take the next unused slots color-02/color-03 preserving the never-repeats-a-line rule.",
       "newTokenCreated": false,
       "newToken": null
+    },
+    {
+      "surface": "RAMP palette (the v4.13 default dataset): seven hues at 100%/60% alpha, in hue order",
+      "prototypeValue": "rampPalette() reads --accent #3A6AF8, --cat9 #8951F0, --pos #148338, --cat12 #E73CAE, --cat7 #FB923C, --cat14 #92400E, --charcoal #3F4650; steps 2n are rgba(hue, 0.6)",
+      "boundToken": "$chart-ramp/hue-01..07 + $chart-ramp/step-02 (created locally)",
+      "rationale": "Hemlock owns no hue-ramp chart palette (categorical + sequential-blue only), and mapping ramp steps onto categorical priority order would either garble the ramp's hue identity (Bill's --cat9/--cat12/--cat7/--cat14 indexes collide with the priority-order injection) or erase the alphas-ARE-the-palette structure. Created the ramp as a first-class token family (light from the rendered values, dark from the prototype's dark :root), redirected rampPalette's reads to dedicated variables (recorded find-replace), and recorded the whole family as ONE design gap. design-rules rule 34 already routes the ramp pen-coverage question to the designer under the GC-005 token-ratification trail.",
+      "newTokenCreated": true,
+      "newToken": "chart-ramp/hue-01-blue..hue-07-charcoal, chart-ramp/step-02"
+    },
+    {
+      "surface": "scrubber line + ball (the v4.12m red handle)",
+      "prototypeValue": "--neg #C82320 (dark --neg #F87171)",
+      "boundToken": "$chart-scrubber (created)",
+      "rationale": "The scrubber is not an error surface — binding sem-*-error because it is the same red would be hue-matching, the exact failure the Iron Law names. Created a purpose-named chart token (light #C82320 = prim-red-600 value, dark #F87171 = prim-red-350 value, both from the prototype's own light/dark --neg pair). The error box keeps sem-borders-error / sem-text-error (role-true, value-identical).",
+      "newTokenCreated": true,
+      "newToken": "chart-scrubber"
     },
     {
       "surface": "gridlines (--grid #C8CAC9)",
       "prototypeValue": "#C8CAC9",
       "boundToken": "$sem-borders-muted",
-      "rationale": "Gridlines sit back as muted separators; no Hemlock chart-gridline role exists, and sem-borders-muted (#D5D3D0) is the named muted-border role. Value lightens slightly — token-true.",
+      "rationale": "v001 call carried: gridlines sit back as muted separators; sem-borders-muted (#D5D3D0) is the named muted-border role. Value lightens slightly — token-true.",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "axis baseline + tick stems + tick text + scrub line (--axis #6E7270, one coupled variable)",
+      "surface": "axis baseline + tick stems + tick text (--axis #6E7270, one coupled variable)",
       "prototypeValue": "#6E7270",
       "boundToken": "$sem-text-meta",
-      "rationale": "Hemlock chart rules name sem-text-meta for axis labels; the prototype couples baseline/stems/scrub-line to the same variable, so the coupled surfaces bind the same role (#5E5954). If the designer wants a dedicated axis-line role, that is a remap ruling.",
+      "rationale": "v001 call carried: Hemlock chart rules name sem-text-meta for axis labels; the prototype couples baseline/stems to the same variable, so the coupled surfaces bind the same role (#5E5954). A dedicated axis-line role would be a designer remap ruling.",
       "newTokenCreated": false,
       "newToken": null
     },
@@ -288,15 +375,39 @@
       "surface": "reference line + its label (--orange #EA580C default)",
       "prototypeValue": "#EA580C",
       "boundToken": "$chart-threshold",
-      "rationale": "Hemlock explicitly owns threshold/reference lines via chart-threshold (-> sem-background-action #3A6AF8). Role-first: the line turns blue. Deliberate, highly visible divergence from Bill's orange.",
+      "rationale": "v001 call carried: Hemlock explicitly owns threshold/reference lines via chart-threshold (-> sem-background-action #3A6AF8). Role-first: the line turns blue. Deliberate, highly visible divergence from Bill's orange. Renders in daily-ref-preset, scrub-right-edge, percent-two-series.",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "info-card drop shadow (feDropShadow dy 3, stdDeviation 5, black 16%)",
-      "prototypeValue": "0 3px 10px rgba(0,0,0,0.16)",
+      "surface": "caret pill ring + (invisible) overlay scroll thumb (--border-strong #D5D3D0, coupled via --tk-border-strong alias)",
+      "prototypeValue": "#D5D3D0",
+      "boundToken": "$sem-borders-strong (ring); no thumb bind — the thumb is opacity-0 in every contracted frame",
+      "rationale": "The caret ring is an emphasized control border -> sem-borders-strong (#C0BAB2, a visible value change — token-true). Hemlock also owns sem-scrollbarThumb for the thumb role, but the thumb renders faded-out (ts-sbhide) in the only frame that carries it, so no thumb paint exists to bind; the land stage should bind sem-scrollbarThumb for the thumb when it shows (recorded here so the reconciliation is mechanical).",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "caret chevron (accent chevron on the scroll caret buttons)",
+      "prototypeValue": "currentColor <- --accent #3A6AF8",
+      "boundToken": "$sem-icons-action",
+      "rationale": "An interactive icon on a button -> the named interactive-icon role (light #3A6AF8 identical; dark diverges sem-icons-action #7094FB vs prototype dark --accent #5A82F9 — role-first, recorded).",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "caret pill shadow (CSS box-shadow 0 2px 8px rgba(0,0,0,.18)) and info-card feDropShadow (0 3 5 black 16%)",
+      "prototypeValue": "0 2px 8px rgba(0,0,0,.18) / dy 3 stdDeviation 5 opacity .16",
       "boundToken": "shadow-md role: $shadow-md-y 4 / $shadow-md-blur 12 / $y:prim-shadow-md-color #0000001A",
-      "rationale": "The floating info card is a card/tooltip; shadow-md is its named elevation. Rethemed in normalization (findReplaces) and bound in the .pen effect. NAMING DRIFT FLAGGED: skill docs name the color token shadow-md-color (no prefix, \"semantics by nature\"); the live library carries it as prim-shadow-md-color (themed #0000001A/#0000005C). Bound the live name; the doc/canvas naming divergence is a designer-visible report item, not improvised around.",
+      "rationale": "Floating controls/cards over content -> shadow-md is the named elevation (v001 precedent for the card; the caret pill joins it). Rethemed in normalization (findReplaces) and bound as the pen effect. NAMING DRIFT RE-FLAGGED (v001 flag stands): skill docs name the color token shadow-md-color (no prefix); the live library carries prim-shadow-md-color. Bound the live name.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "section title (v4.13, serif upper-left heading)",
+      "prototypeValue": "--font-serif Noto Serif 18px/400 --ink",
+      "boundToken": "$font-secondary + $text-size-md (18) + $sem-text-header",
+      "rationale": "The design system's serif heading face and the exact 18px scale step exist as tokens — clean role binds, no gap.",
       "newTokenCreated": false,
       "newToken": null
     },
@@ -304,44 +415,68 @@
       "surface": "tile toggle hover background (--surface-2, unrendered in contracted states)",
       "prototypeValue": "#F8F7F6",
       "boundToken": "$sem-background-hover",
-      "rationale": "Button hover surface role (gray-50), not the taupe rowHover (rows, not buttons). Injection recorded for the normalization table; no frame renders it (hover uncontracted).",
+      "rationale": "v001 call carried: button hover surface role (gray-50), not the taupe rowHover. Injection recorded for the normalization table; no frame renders it.",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "component composition (SVG-drawn info card, hand-rolled legend rows, Show/Hide tiles)",
-      "prototypeValue": "engine-drawn card with width formula 60+chars*6.4 and viewBox-aware scale clamp; flex legend; pill-button tiles",
+      "surface": "component composition (SVG-drawn info card, hand-rolled legend rows, Show/Hide tiles, caret buttons)",
+      "prototypeValue": "engine-drawn card with width formula 60+chars*6.4 and viewBox-aware scale clamp; flex legend; pill-button tiles; 32px caret pills",
       "boundToken": "(none — frames carry prototype geometry with token paint)",
-      "rationale": "Hemlock has ChartTooltip / ChartLegend / InteractiveLegend, but they are different designs that cannot reproduce the executable spec's geometry (card scale-compensation clamp, edge push-back, tile pill semantics). Under the two-oracle split the .pen is the pixel oracle OF THIS PROTOTYPE; composing library components would fail every pixel compare. Divergence is designer-visible here, not silently resolved.",
+      "rationale": "v001 call carried: Hemlock has ChartTooltip / ChartLegend / InteractiveLegend, but they are different designs that cannot reproduce the executable spec's geometry. Under the two-oracle split the .pen is the pixel oracle OF THIS PROTOTYPE; composing library components would fail every pixel compare. Divergence is designer-visible here, not silently resolved.",
       "newTokenCreated": false,
       "newToken": null
     },
     {
       "surface": "gradient area fills (line color fading 32%->2%, one gradient per fill)",
-      "prototypeValue": "runtime SVG linearGradient stops: series color at stop-opacity 0.32 / 0.02",
-      "boundToken": "$chart-series-fade/color-01..03-top/-floor (created companions)",
-      "rationale": "Pen gradient stops bind color+position only (alpha rides the hex), so the fade RULE is materialized as token pairs — light derived from the light palette value, dark from the dark value. Alphas pinned to hex-representable 0x52/0x05 (82/255, 5/255) and the normalized prototype carries the same exact alphas (findReplaces), so a base-token swap mechanically re-derives the fades.",
+      "prototypeValue": "runtime SVG linearGradient stops: series color at stop-opacity 0.32 / 0.02 (x 0.6 for the ramp's alpha steps)",
+      "boundToken": "$chart-ramp-fade/step-01..03-top/-floor + $chart-series-fade/color-01..02-top/-floor (created companions)",
+      "rationale": "v001 mechanism carried: pen gradient stops bind color+position only (alpha rides the hex), so the fade RULE is materialized as token pairs, alphas pinned hex-representable (0x52/0x05; the 60%-alpha ramp step composes to 0x31/0x03) with the normalized prototype carrying the same exact alphas (findReplaces) — a base-token swap mechanically re-derives the fades.",
       "newTokenCreated": true,
-      "newToken": "chart-series-fade/color-01..03-top, chart-series-fade/color-01..03-floor"
+      "newToken": "chart-ramp-fade/step-01..03-top/-floor, chart-series-fade/color-01..02-top/-floor"
     }
   ],
   "designGaps": [
     {
       "dimension": "chart-palette",
-      "token": "$chart-series-fade/color-01-top",
-      "prototypeValue": "series 1 area fill top stop: line color @ 32% opacity",
-      "lightValue": "#8951F052",
-      "darkValue": "#B198F052",
+      "token": "$chart-ramp/hue-01-blue .. $chart-ramp/hue-07-charcoal + $chart-ramp/step-02 (one family, one ruling)",
+      "prototypeValue": "the v4.13 fourteen-step hue ramp: seven hues in hue order (blue #3A6AF8, purple #8951F0, green #148338, pink #E73CAE, orange #FB923C, brown #92400E, charcoal #3F4650), each at 100% then 60% alpha — the alphas ARE the palette. Hemlock has no hue-ramp chart palette.",
+      "lightValue": "hue-01 #3A6AF8, hue-02 #8951F0, hue-03 #148338, hue-04 #E73CAE, hue-05 #FB923C, hue-06 #92400E, hue-07 #3F4650; step-02 #3A6AF899",
+      "darkValue": "hue-01 #5A82F9, hue-02 #B198F0, hue-03 #4ADE80, hue-04 #F485BE, hue-05 #F0985A, hue-06 #CE7E5B, hue-07 #9AA6B8; step-02 #5A82F999 (from the prototype dark :root)",
       "appliesTo": [
         "default",
-        "scrub-right-edge",
-        "multi-series-legend",
+        "section-title",
+        "line-straight",
+        "legend-upper-right",
         "legend-hidden",
         "tiles",
         "series-hidden",
-        "markers-auto-axes",
-        "percent-two-series",
-        "narrow-scroll",
+        "narrow-squish",
+        "narrow-scroll-carets",
+        "static-print",
+        "(hue-03..07 defined locally, unbound — contracted states render ramp steps 1-3 only)"
+      ],
+      "designerQuestion": "Adopt the hue-ramp as a first-class chart palette in the design language (chart-ramp family beside chart-categorical/chart-sequential), or remap the ramp datasets onto an existing palette? design-rules rule 34 already routes this to the designer under the GC-005 token-ratification trail.",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-ramp-fade/step-01-top",
+      "prototypeValue": "ramp series 1 area fill top stop: line color @ 32%",
+      "lightValue": "#3A6AF852",
+      "darkValue": "#5A82F952",
+      "appliesTo": [
+        "default",
+        "section-title",
+        "legend-upper-right",
+        "legend-hidden",
+        "tiles",
+        "series-hidden",
+        "narrow-squish",
+        "narrow-scroll-carets",
         "static-print"
       ],
       "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
@@ -352,8 +487,116 @@
     },
     {
       "dimension": "chart-palette",
+      "token": "$chart-ramp-fade/step-01-floor",
+      "prototypeValue": "ramp series 1 area fill floor stop: line color @ 2%",
+      "lightValue": "#3A6AF805",
+      "darkValue": "#5A82F905",
+      "appliesTo": [
+        "same frames as step-01-top"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-ramp-fade/step-02-top",
+      "prototypeValue": "ramp series 2 area fill top stop (0.6 alpha step x 0.32)",
+      "lightValue": "#3A6AF831",
+      "darkValue": "#5A82F931",
+      "appliesTo": [
+        "default",
+        "section-title",
+        "legend-upper-right",
+        "legend-hidden",
+        "tiles",
+        "narrow-squish",
+        "narrow-scroll-carets",
+        "static-print"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-ramp-fade/step-02-floor",
+      "prototypeValue": "ramp series 2 area fill floor stop (0.6 x 0.02)",
+      "lightValue": "#3A6AF803",
+      "darkValue": "#5A82F903",
+      "appliesTo": [
+        "same frames as step-02-top"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-ramp-fade/step-03-top",
+      "prototypeValue": "ramp series 3 area fill top stop",
+      "lightValue": "#8951F052",
+      "darkValue": "#B198F052",
+      "appliesTo": [
+        "default",
+        "section-title",
+        "legend-upper-right",
+        "legend-hidden",
+        "tiles",
+        "series-hidden",
+        "narrow-squish",
+        "narrow-scroll-carets",
+        "static-print"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-ramp-fade/step-03-floor",
+      "prototypeValue": "ramp series 3 area fill floor stop",
+      "lightValue": "#8951F005",
+      "darkValue": "#B198F005",
+      "appliesTo": [
+        "same frames as step-03-top"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-series-fade/color-01-top",
+      "prototypeValue": "categorical series 1 area fill top stop (v001 gap recurs)",
+      "lightValue": "#8951F052",
+      "darkValue": "#B198F052",
+      "appliesTo": [
+        "daily-ref-preset",
+        "scrub-right-edge",
+        "markers-auto-axes",
+        "percent-two-series"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "chart-palette",
       "token": "$chart-series-fade/color-01-floor",
-      "prototypeValue": "series 1 area fill floor stop: line color @ 2% opacity",
+      "prototypeValue": "categorical series 1 area fill floor stop",
       "lightValue": "#8951F005",
       "darkValue": "#B198F005",
       "appliesTo": [
@@ -368,15 +611,11 @@
     {
       "dimension": "chart-palette",
       "token": "$chart-series-fade/color-02-top",
-      "prototypeValue": "series 2 area fill top stop",
+      "prototypeValue": "categorical series 2 area fill top stop",
       "lightValue": "#06B6D452",
       "darkValue": "#5FD3E652",
       "appliesTo": [
-        "multi-series-legend",
-        "legend-hidden",
-        "tiles",
-        "percent-two-series",
-        "narrow-scroll"
+        "percent-two-series"
       ],
       "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
       "reconciliation": {
@@ -387,11 +626,11 @@
     {
       "dimension": "chart-palette",
       "token": "$chart-series-fade/color-02-floor",
-      "prototypeValue": "series 2 area fill floor stop",
+      "prototypeValue": "categorical series 2 area fill floor stop",
       "lightValue": "#06B6D405",
       "darkValue": "#5FD3E605",
       "appliesTo": [
-        "same frames as color-02-top"
+        "percent-two-series"
       ],
       "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
       "reconciliation": {
@@ -400,34 +639,26 @@
       }
     },
     {
-      "dimension": "chart-palette",
-      "token": "$chart-series-fade/color-03-top",
-      "prototypeValue": "series 3 area fill top stop",
-      "lightValue": "#312E8152",
-      "darkValue": "#8480D952",
+      "dimension": "color",
+      "token": "$chart-scrubber",
+      "prototypeValue": "the v4.12m scrubber handle red: solid/dashed line + ball, deliberately red so the movable thing reads against the series colors. NEW role vs v001 (the v001 scrub line was --axis). No Hemlock role owns a chart scrubber/handle.",
+      "lightValue": "#C82320",
+      "darkValue": "#F87171 (prototype dark --neg = prim-red-350, matching sem-borders-error dark)",
       "appliesTo": [
-        "multi-series-legend",
+        "default",
+        "section-title",
+        "line-straight",
+        "legend-upper-right",
         "legend-hidden",
         "tiles",
         "series-hidden",
-        "narrow-scroll"
+        "daily-ref-preset",
+        "scrub-right-edge",
+        "narrow-squish",
+        "narrow-scroll-carets",
+        "static-print"
       ],
-      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
-      "reconciliation": {
-        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
-        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
-      }
-    },
-    {
-      "dimension": "chart-palette",
-      "token": "$chart-series-fade/color-03-floor",
-      "prototypeValue": "series 3 area fill floor stop",
-      "lightValue": "#312E8105",
-      "darkValue": "#8480D905",
-      "appliesTo": [
-        "same frames as color-03-top"
-      ],
-      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "designerQuestion": "Adopt a chart-scrubber role into the design language, or name an existing role for chart handles?",
       "reconciliation": {
         "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
         "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
@@ -436,9 +667,9 @@
     {
       "dimension": "typography",
       "token": "$text-size-caption",
-      "prototypeValue": "13px (tile labels, ref-line label, card title/values at nominal scale) — GC-001 recorded the same 13px gap; recurs here",
+      "prototypeValue": "13px chart micro-copy (tile labels, ref label, card title/values at nominal scale) — GC-001/GC-004v001 gap recurs",
       "lightValue": "13",
-      "darkValue": "13 (single-mode number, Typography desktop+mobile)",
+      "darkValue": "13 (single-mode number)",
       "appliesTo": [
         "tiles/series-hidden tile labels (HTML, bound to the local token)",
         "SVG 13px surfaces carried as viewBox-scaled numerics"
@@ -452,12 +683,13 @@
     {
       "dimension": "typography",
       "token": "$text-size-annotation (proposed; not locally created — SVG-scaled surfaces carry numerics)",
-      "prototypeValue": "12.5px SVG micro-copy: marker labels (600), card series-label rows (400)",
+      "prototypeValue": "12.5px SVG micro-copy: y-tick labels (v4.12r), marker labels (600), card label rows (400)",
       "lightValue": "12.5",
       "darkValue": "12.5",
       "appliesTo": [
+        "all chart frames (y-ticks)",
         "markers-auto-axes marker labels",
-        "card label rows in all card-bearing frames"
+        "card label rows in card-bearing frames"
       ],
       "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
       "reconciliation": {
@@ -468,7 +700,7 @@
     {
       "dimension": "typography",
       "token": "$line-height-solid",
-      "prototypeValue": "line-height 1.0 on chart micro-copy (SVG text has no leading; HTML chart text measured at solid boxes) — GC-001 gap recurs",
+      "prototypeValue": "line-height 1.0 on chart micro-copy (SVG text has no leading) — GC-001 gap recurs",
       "lightValue": "1",
       "darkValue": "1 (single-mode number)",
       "appliesTo": [
@@ -502,9 +734,7 @@
       "lightValue": "14 / 26 (bound positionally — frames use absolute layout from measured boxes)",
       "darkValue": "same",
       "appliesTo": [
-        "multi-series-legend",
-        "percent-two-series",
-        "narrow-scroll"
+        "legend-upper-right"
       ],
       "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
       "reconciliation": {
@@ -563,7 +793,7 @@
     {
       "dimension": "non-token",
       "token": null,
-      "prototypeValue": "A hidden series' tile swatch dims via node opacity 0.35 while its fill stays the enabled series token; the hidden label switches to the muted text token. Hemlock expresses disabled states via dedicated color tokens instead of opacity. Testable: the second tile's swatch node carries opacity 0.35 in series-hidden.",
+      "prototypeValue": "A hidden series' tile swatch dims via node opacity 0.35 while its fill stays the enabled series token; the hidden label switches to the muted text token. Hemlock expresses disabled states via dedicated color tokens instead of opacity. Testable: the second tile's swatch node carries opacity 0.35 in series-hidden. (v001 gap recurs.)",
       "lightValue": "0.35 (opacity on the swatch node)",
       "darkValue": "0.35",
       "appliesTo": [
@@ -574,27 +804,52 @@
         "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
         "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
       }
+    },
+    {
+      "dimension": "non-token",
+      "token": null,
+      "prototypeValue": "The MOBILE-TIER scrubber affordance: at main-narrow the scrubber draws wider and DASHED (3px, dash 6 5, ball r=5 vs desktop solid 1.5px/r=4) so a finger finds it. A tier-dependent stroke-weight/dash idiom has no design-system convention. Testable: narrow frames carry the 3px dash-6-5 scrubber; desktop frames the solid 1.5px.",
+      "lightValue": "dashed 3px / 6 5 / ball r5 (narrow); solid 1.5px / ball r4 (desktop)",
+      "darkValue": "same geometry both modes",
+      "appliesTo": [
+        "narrow-squish",
+        "narrow-scroll-carets"
+      ],
+      "designerQuestion": "Adopt the tier-dependent scrubber weight as the chart-handle convention, or spec a single-weight handle?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
     }
   ],
   "fontSubstitutions": [
     {
       "prototypeFont": "Heebo (already the token font; prototype loads it from Google Fonts with a local-stack fallback)",
       "boundFont": "Heebo ($font-primary), served from pencil/designs/fonts/Heebo-VariableFont_wght.ttf",
-      "scope": "all text — no family substitution required; only the serving source is pinned to the repo TTF"
+      "scope": "all UI/chart text — no family substitution required; only the serving source is pinned to the repo TTF"
+    },
+    {
+      "prototypeFont": "Noto Serif (--font-serif; prototype loads it from Google Fonts)",
+      "boundFont": "Noto Serif ($font-secondary), served from pencil/designs/fonts/NotoSerif-VariableFont_wdth,wght.ttf",
+      "scope": "the v4.13 section title only (the sole serif inside the component root) — no family substitution required"
     }
   ],
   "prototypeDefectsSeen": [
     {
-      "flag": "FLAG-D1 (already recorded, design-rules.md section 2)",
+      "flag": "FLAG-D1v2 (already recorded, design-rules.md section 2)",
       "note": "Tile toggle flips BOTH accessible name AND aria-pressed. Not pixel-visible; frames carry the rendered truth (Hide/Show verbs)."
     },
     {
-      "flag": "NEW: preset info-card scale is computed before the legend reflows the svg",
-      "note": "The engine computes the card's scale clamp k from the svg's rendered width AT render time, but the legend is appended AFTER the scrubber preset renders, shrinking the svg. In legend-bearing states the preset card renders at effective scale k*s = 0.8795 (below the 0.89 floor the clamp intends) instead of 1.0. Captured as rendered (multi-series-legend / legend-hidden / tiles / series-hidden frames carry it); geometry probe asserts the 194.4x104 vb card at the effective scale. A pointer-driven re-render (post-legend) would use the settled width — only the PRESET render has the stale k. Never fixed in frames."
+      "flag": "NEW: states.json prose vs rendered truth — single-series datasets DO render a legend",
+      "note": "The daily-ref-preset description says \"Single series so no legend (rule 14)\", but the demo panel's dataset controls carry key:\"ll\" and the builder maps that to an EXPLICIT cfg.legend=true (source ~4283: else { cfg.legend=true; ... }), which overrides the engine's single-series default. Rendered truth: daily-ref-preset, scrub-right-edge and markers-auto-axes each carry a one-item lower-left legend (Revenue / Account balance). Per the contract's own preamble (\"the RENDERED prototype wins\"), the frames capture the legend; the engine-level rule 16 (single-series renders no key BY DEFAULT, i.e. legend unset) remains true and contracted as behavior. Flagged, not fixed — the oracle owner may want to correct the three state descriptions."
     },
     {
-      "flag": "NEW: dark-mode info-card colors bypass the token layer",
-      "note": "Engine hardcodes tipBg #17263F / tipBorder #2E4368 for dark mode (line 9073) instead of reading tokens. Dark is uncontracted (rule 25) — no frame impact; flagged for the future dark-theme swap."
+      "flag": "NOTE: v001's stale-card-scale defect does not reproduce in v4.13",
+      "note": "v001 flagged the preset info-card scale computed before the legend reflows the svg (effective k*s=0.8795). In v4.13 the default lower-left legend lives INSIDE the plot column and does not change the svg width, and legend-upper-right re-renders at the measured width (v4.12p native squish) — every contracted card renders at k=1 (desktop) / clamped scale (narrow), verified in extraction."
+    },
+    {
+      "flag": "NOTE (carried v001): dark-mode info-card colors bypass the token layer",
+      "note": "Engine hardcodes tipBg #17263F / tipBorder #2E4368 for dark mode (tokens() line ~3559) instead of reading tokens. Dark is uncontracted (rule 32) — no frame impact; flagged for the future dark-theme swap."
     }
   ],
   "verdict": "captured"
