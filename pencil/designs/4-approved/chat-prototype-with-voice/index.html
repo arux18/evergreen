@@ -175,8 +175,8 @@
       .chip-zone {
         position: absolute;
         left: 62px;   /* 42 + 20 */
-        top: 391px;   /* 42 + 349 */
-        width: 320px;
+        top: 389px;   /* measured: baked chip top is 395; 389 + (54-42)/2 = 395 */
+        width: 321px; /* center at 222.5 to match the baked chip */
         height: 54px;
         background: var(--panel-bg);
         display: flex;
@@ -189,10 +189,12 @@
         background: var(--panel-bg);
         border: 1px solid var(--panel-border);
         border-radius: 24px;
-        padding: 12px 16px;
+        /* exactly 42px tall like the baked chip: fixed height,
+           horizontal padding only, text vertically centered */
+        padding: 0 16px;
         cursor: pointer;
         overflow: hidden;
-        min-height: 42px;
+        height: 42px;
         width: max-content;
         max-width: 100%;
         display: flex;
@@ -237,9 +239,9 @@
       .typed-line {
         position: absolute;
         left: 74px;   /* 42 + 32 */
-        top: 773px;   /* 42 + 731 */
+        top: 775px;   /* 42 + 733, matches the baked input text */
         width: 296px;
-        height: 44px;
+        height: 42px;
         background: #ffffff;
         display: none;
         font-size: 14px;
