@@ -251,13 +251,13 @@
 
       /* ============ recording screen: live waveform + timer ============ */
 
-      /* Covers the baked dot/timer/waveform (panel-relative y ~726..760). */
+      /* Covers the baked dot/timer/waveform (panel-relative y ~730..762). */
       .rec-zone {
         position: absolute;
         left: 68px;   /* 42 + 26 */
-        top: 770px;   /* 42 + 728 */
+        top: 771px;   /* 42 + 729 */
         width: 306px;
-        height: 36px;
+        height: 37px;
         background: #ffffff;
         display: flex;
         align-items: center;
@@ -302,13 +302,15 @@
 
       /* ============ transcribing screen: bouncing dots ============ */
 
-      /* Covers the three baked dots (panel-relative (32,741..746) 5x5, 13px pitch). */
+      /* Covers the baked dots AND the "Transcribing..." label so the
+         animated dots can't clip the label's first letter. Dots baked at
+         overlay (74,783) 5x5 pitch 13; label at (113,775) Heebo 14/21. */
       .trans-zone {
         position: absolute;
         left: 70px;   /* 42 + 28 */
-        top: 777px;   /* 42 + 735 */
-        width: 46px;
-        height: 18px;
+        top: 775px;   /* 42 + 733 */
+        width: 140px;
+        height: 22px;
         background: #ffffff;
         display: flex;
         align-items: center;
@@ -329,6 +331,14 @@
       }
       .trans-dots span:nth-child(2) { animation-delay: 0.15s; }
       .trans-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+      .trans-label {
+        margin-left: 8px;
+        font-size: 14px;
+        line-height: 21px;
+        color: var(--text-placeholder);
+        white-space: nowrap;
+      }
 
       @keyframes dot-bounce {
         0%, 60%, 100% { transform: translateY(0); opacity: 0.55; }
@@ -456,6 +466,7 @@
           <section class="screen" data-state="transcribing">
             <div class="trans-zone">
               <div class="trans-dots"><span></span><span></span><span></span></div>
+              <div class="trans-label">Transcribing...</div>
             </div>
           </section>
 
