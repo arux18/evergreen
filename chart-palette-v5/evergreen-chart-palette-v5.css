@@ -1,0 +1,78 @@
+/* ============================================================================
+   EVERGREEN CATEGORICAL CHART PALETTE v5 — 30 colours, six families.
+   Drops into Component Template v4.13 in place of the --cat1..--cat15 block,
+   both themes. NO JAVASCRIPT OR CSS CHANGES ARE REQUIRED — CMAP, rampPalette()
+   and the Timeline all read numbered --cat slots and keep doing so.
+
+   NO TRUE GREEN. The rope opens at hue 186 (aqua), not in the 140-165 band,
+   so nothing in the categorical set competes with --pos #148338 for "gain".
+   Red and green for gains and losses are untouched.
+
+   THE ROPE      one continuous hue traverse: aqua -> teal -> cyan -> blue ->
+                 violet -> purple -> plum -> magenta -> rose -> coral -> amber.
+                 Twenty cool, ten warm, warm strictly at the tail.
+   THE FAMILIES  that rope cut into six named fives, each ALSO a light -> deep
+                 ordinal ramp that can drive a sequential chart on its own.
+   THE ORDER     --cat1..--cat30 is the assignment order, not rope order. The
+                 opening six take one colour from each family at its LIGHTEST
+                 steps; the opening twelve add a second from each, still light.
+                 Deeper steps start at --cat13, so every chart anyone actually
+                 builds stays in the pale tier.
+   ENGINE SLOTS  --cat1 (Sankey blue / Timeline / mono bars), --cat7 (ramp
+                 orange), --cat9 (ramp purple), --cat12 (ramp pink) and --cat14
+                 (ramp brown) are held to the right hue family so the untouched
+                 renderers still produce a sensible spread.
+   LABELS ON A FILL  fills are pale in BOTH themes, so a label sitting on one
+                 must be DARK ink. White on these measures about 1.3:1. See the
+                 one CSS line noted in the handoff for the treemap.
+   ============================================================================ */
+  :root{
+    /* categorical FILLS — for donut slices, bars, areas, treemap tiles */
+    --cat1:#89B6F9; --cat2:#FAA38E; --cat3:#B985DE; --cat4:#93DDD4; --cat5:#E37BA8;
+    --cat6:#79CEEB; --cat7:#F0986A; --cat8:#93DAED; --cat9:#B997EA; --cat10:#74D5D1;
+    --cat11:#80A6F4; --cat12:#E48DBF; --cat13:#BAA9F5; --cat14:#E2903F; --cat15:#7B96F1;
+    --cat16:#FEB0AF; --cat17:#3AA7E9; --cat18:#51CCD0; --cat19:#4DB5EA; --cat20:#FEBECA;
+    --cat21:#BDBBFC; --cat22:#19B6CC; --cat23:#E7C3F3; --cat24:#E59FD4; --cat25:#A6D4FD;
+    --cat26:#20C2CF; --cat27:#C0C8FD; --cat28:#E6B1E5; --cat29:#95C5FB; --cat30:#61C2EA;
+
+    /* categorical MARKS — the deep companion of each fill. Line strokes, dots,
+       small marks, and any swatch that sits beside text. Optional: nothing in
+       v4.13 reads these yet, they are here for when a chart needs a thin mark. */
+    --cat1-deep:#3372CC; --cat2-deep:#C65238; --cat3-deep:#7F43A6; --cat4-deep:#13988E; --cat5-deep:#A6356C;
+    --cat6-deep:#1089A9; --cat7-deep:#B3510B; --cat8-deep:#1395AF; --cat9-deep:#7F52B7; --cat10-deep:#118F8C;
+    --cat11-deep:#3A64C3; --cat12-deep:#AC4284; --cat13-deep:#7D60C7; --cat14-deep:#965609; --cat15-deep:#4056BA;
+    --cat16-deep:#D0595E; --cat17-deep:#0A6899; --cat18-deep:#0F8589; --cat19-deep:#0C739E; --cat20-deep:#D76180;
+    --cat21-deep:#7B6FD6; --cat22-deep:#0C7280; --cat23-deep:#B36DC8; --cat24-deep:#AF509C; --cat25-deep:#1E8DDB;
+    --cat26-deep:#0E7C85; --cat27-deep:#777FE4; --cat28-deep:#B15EB2; --cat29-deep:#2A7FD4; --cat30-deep:#0E7EA3;
+
+    /* the six families as ordinal ramps, light -> deep (also optional) */
+    --teal-1:#93DDD4; --teal-2:#74D5D1; --teal-3:#51CCD0; --teal-4:#20C2CF; --teal-5:#19B6CC;
+    --cyan-1:#93DAED; --cyan-2:#79CEEB; --cyan-3:#61C2EA; --cyan-4:#4DB5EA; --cyan-5:#3AA7E9;
+    --azure-1:#A6D4FD; --azure-2:#95C5FB; --azure-3:#89B6F9; --azure-4:#80A6F4; --azure-5:#7B96F1;
+    --iris-1:#C0C8FD; --iris-2:#BDBBFC; --iris-3:#BAA9F5; --iris-4:#B997EA; --iris-5:#B985DE;
+    --plum-1:#E7C3F3; --plum-2:#E6B1E5; --plum-3:#E59FD4; --plum-4:#E48DBF; --plum-5:#E37BA8;
+    --ember-1:#FEBECA; --ember-2:#FEB0AF; --ember-3:#FAA38E; --ember-4:#F0986A; --ember-5:#E2903F;
+  }
+
+  html[data-theme="dark"]{
+    --cat1:#86B3F5; --cat2:#F8A18D; --cat3:#B682DB; --cat4:#90DAD1; --cat5:#E27BA7;
+    --cat6:#76CBE8; --cat7:#F0996B; --cat8:#90D7EA; --cat9:#B695E7; --cat10:#71D2CE;
+    --cat11:#7EA3F2; --cat12:#E28BBD; --cat13:#B7A6F2; --cat14:#E59342; --cat15:#7993EE;
+    --cat16:#FBADAC; --cat17:#3AA8EA; --cat18:#4FCACE; --cat19:#4BB4E8; --cat20:#FCBCC8;
+    --cat21:#BBB8F9; --cat22:#1ABAD0; --cat23:#E4C0EF; --cat24:#E39CD1; --cat25:#A4D1FA;
+    --cat26:#21C2CF; --cat27:#C0C8FE; --cat28:#E3AEE2; --cat29:#93C2F8; --cat30:#5EC0E8;
+
+    --cat1-deep:#72AAFD; --cat2-deep:#FD937A; --cat3-deep:#B17ED5; --cat4-deep:#2DDDCE; --cat5-deep:#DC76A2;
+    --cat6-deep:#2ECAF5; --cat7-deep:#F1905C; --cat8-deep:#34D8FA; --cat9-deep:#B38DE9; --cat10-deep:#1FD2CE;
+    --cat11-deep:#759EF4; --cat12-deep:#E283BA; --cat13-deep:#B49DFC; --cat14-deep:#DE8E3E; --cat15-deep:#758FE8;
+    --cat16-deep:#FD8E8F; --cat17-deep:#37A3E3; --cat18-deep:#1DC7CC; --cat19-deep:#31AFE9; --cat20-deep:#FD8FA8;
+    --cat21-deep:#A59EFC; --cat22-deep:#19B4CA; --cat23-deep:#E9A8FD; --cat24-deep:#E890D3; --cat25-deep:#5EB5FD;
+    --cat26-deep:#1BBDCA; --cat27-deep:#96A0FD; --cat28-deep:#ED9FEC; --cat29-deep:#69B0FD; --cat30-deep:#2DBCEF;
+
+    --teal-1:#90DAD1; --teal-2:#71D2CE; --teal-3:#4FCACE; --teal-4:#21C2CF; --teal-5:#1ABAD0;
+    --cyan-1:#90D7EA; --cyan-2:#76CBE8; --cyan-3:#5EC0E8; --cyan-4:#4BB4E8; --cyan-5:#3AA8EA;
+    --azure-1:#A4D1FA; --azure-2:#93C2F8; --azure-3:#86B3F5; --azure-4:#7EA3F2; --azure-5:#7993EE;
+    --iris-1:#C0C8FE; --iris-2:#BBB8F9; --iris-3:#B7A6F2; --iris-4:#B695E7; --iris-5:#B682DB;
+    --plum-1:#E4C0EF; --plum-2:#E3AEE2; --plum-3:#E39CD1; --plum-4:#E28BBD; --plum-5:#E27BA7;
+    --ember-1:#FCBCC8; --ember-2:#FBADAC; --ember-3:#F8A18D; --ember-4:#F0996B; --ember-5:#E59342;
+  }
