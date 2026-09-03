@@ -3,143 +3,186 @@
   "componentId": "GC-017",
   "slug": "security-watchlist",
   "penPath": "pencil/designs/4-approved/genui/GC-017-security-watchlist.pen",
-  "contentHash": "sha256:fc5146faa83b741c5f1473b99677c27124e1063cd212e0b26b51f1c39e84c76a",
-  "capturedAt": "2026-09-01T16:25:44Z",
+  "contentHash": "sha256:0fc31053205912985ff5c76f57686cb2ca117ba603ce6afff3fc3e3d10223375",
+  "capturedAt": "2026-09-03T20:52:16Z",
+  "prototypeVersion": "002",
+  "prototypeContentHash": "sha256:222627a0e754ae8a3388e6ad4c8819785a512c6b3f33565bc61d8368d09fdb42",
   "frames": [
     "default",
     "scrubber-pinned",
+    "range-5y",
     "range-custom",
+    "key-port-open",
+    "key-bench-open",
+    "bench-changed",
+    "port-changed",
     "sorted-by-symbol",
     "units-edited",
     "typeahead-open",
     "security-added",
     "add-rejected",
-    "options-open",
-    "bench-changed",
-    "change-period-1y",
+    "security-removed",
     "equal-weight",
-    "row-menu-open",
     "detail-modal",
     "clear-confirm",
     "empty-watchlist",
-    "narrow-stacked"
+    "narrow-stacked",
+    "narrow-range-custom"
   ],
   "convergence": {
-    "iterationsUsed": 5,
+    "iterationsUsed": 3,
     "pencilVersion": "@pen.dev/cli 0.3.5",
-    "exportInvocation": "pen interactive --in <file.pen> --out <tmp.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import resolves. Re-export verified byte-deterministic across consecutive runs (all 17 frames hash-identical).",
-    "comparison": "pixelmatch threshold 0.1 (harness convention), per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-pen budget, not this loop's). Targets = NORMALIZED prototype, per-state contract roots (#securitiesPricesCard / .sp-md / .sp-rowmenu), Chromium via playwright 1.58.x headless, deviceScaleFactor 2. Capture protocol (CAPTURE v2.1, drive.js): Google Fonts origins blocked + @font-face injection serving Heebo/Noto Serif from the SAME TTFs the .pen references (pencil/designs/fonts/); --font-render-hinting=none --disable-font-subpixel-positioning; animations/transitions frozen; fresh context per state (storage-seeded list resets); pointer parked (re-hover replayed for scrubber-pinned); iterative integer-pixel-grid snap on the root (Chromium LayoutUnit quantizes to 1/64px — one pass is not enough for body-mounted popovers); geometry-quiescence wait; double-screenshot self-consistency gate.",
-    "iterationNotes": "It1 authoring from extracted geometry (DOM->paint-ops walker: boxes, per-side borders, per-line text with measured baselines, SVG via getScreenCTM transforms): all 17 states 1.4-2.6%, cause: pen text-box model. It2 baseline probe model (pen renders baseline at ~0.75em Heebo / ~0.82em Noto Serif from node y, measured per family x weight x 15 sizes): 15/17 in 1.0-1.6%, 2 pass. It3 per-bucket dy corrections measured by SAD alignment over sampled text crops (dx=0 everywhere; dy +0.5..2px growing with size) + U+22EE kebab vectorized to dots (Heebo owns no vertical-ellipsis glyph; Chromium and pen fall back to different faces — glyph captured as canvas-ink-measured vector circles): 16/17 pass. It4 rounded corners: pen renders rectangle cornerRadius as a SQUIRCLE vs CSS circular arcs — radius >= 9 (popover 10, dialog 12, capsule pills) re-emitted as explicit circular-arc paths (radius positional geometry; radius <= 8 keeps token-bound rectangles, deviation sub-AA) + iterative root snap: 17/17 pass, worst 0.915%. It5 text-transform defect found by crop inspection (extractor carried DOM text, not rendered uppercase headers) fixed: 17/17 pass, worst 0.825%, most states 0.4-0.5%. Baseline/corner probes ran as tooling measurement outside the fix-round budget (GC-004 convention).",
+    "exportInvocation": "pen interactive --in <file.pen> --out <tmp.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import resolves. Re-export verified byte-deterministic across three consecutive runs (all 20 frames hash-identical).",
+    "comparison": "pixelmatch threshold 0.1 (harness convention), per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-pen budget, not this loop's). Targets = NORMALIZED prototype, per-state contract roots (#securitiesPricesCard / .sp-md), Chromium via playwright 1.58.1 headless, deviceScaleFactor 2. Capture protocol (CAPTURE v2.1 conventions from genui-factory/fidelity/src/drive.js): Google Fonts origins blocked + @font-face injection serving Heebo/Noto Serif from the SAME TTFs the .pen references (pencil/designs/fonts/); --font-render-hinting=none --disable-font-subpixel-positioning; animations/transitions frozen, caret hidden; fresh context per state (storage-seeded list resets); pointer parked except hover states (scrubber-pinned keeps its hover); iterative integer-pixel-grid snap on the root; geometry-quiescence wait; double-screenshot self-consistency gate; narrow-tier clip = union of root box and the full-bleed table (frames photograph the 480px bleed the contract names).",
+    "iterationNotes": "It1 authoring from extracted geometry (DOM→paint-ops walker rebuilt from the v001 iterationNotes: boxes, per-side borders, per-line text via char Ranges with canvas-metric baselines, text-overflow ellipsis reproduction, SVG via getScreenCTM, positioned-with-z subtrees deferred as layers, overflow!=visible as clip frames, radius ≥9 emitted as circular-arc paths per the v001 squircle finding, text-transform applied at extraction per the v001 it5 finding): 16/20 pass, dialogs and narrow tier 1.1–1.6%, cause: per-bucket text baseline offsets. It2 per-bucket dy corrections measured by SAD alignment over sampled text crops (21 family×weight×size buckets incl. svg text at the narrow tier's 1.196 chart scale; dy +0.5..2.5px growing with size, serif needing more — the v001 pattern reproduced): 20/20 pass, worst 0.922%. It3 geometry-probe regression closed (the blanket UA→Heebo font swap grew the UA-sized input boxes: entry 36→41, units 19→20; fixed with recorded metric-neutral line-height pins — input/textarea 16px, .st-cellin 15px): 20/20 pass, worst 0.946% (narrow-stacked, sub-pixel AA at the scaled chart), most states 0.4–0.5%. Baseline dy probes ran as tooling measurement outside the fix-round budget (GC-004 convention).",
     "perState": [
       {
         "state": "default",
-        "diffPct": 0.42,
+        "diffPct": 0.452,
         "geometryProbes": "pass",
-        "exportSha256": "ed01b892049ab9e8915d9794728bb89c3291df3e3503c23c766278d2fb0df483"
+        "exportSha256": "d2ae6c7e9d6fd21a2bb58aa04c936c086fb164eb9295d123e125b4a9496c66e8"
       },
       {
         "state": "scrubber-pinned",
-        "diffPct": 0.452,
+        "diffPct": 0.472,
         "geometryProbes": "pass",
-        "exportSha256": "d2c07c3d9199e1615fd7cb70c50768fc2266bbbde649f4b6bc31c21b0a412db8"
+        "exportSha256": "610db4031b8facd7322f920ce048ee9193593aea83abd5084f0e07138459fffd"
+      },
+      {
+        "state": "range-5y",
+        "diffPct": 0.458,
+        "geometryProbes": "pass",
+        "exportSha256": "e22cdd3e4263a2a2fdf3acddd11df78f99d510e2a11667a05c0a312ac674bf98"
       },
       {
         "state": "range-custom",
-        "diffPct": 0.665,
+        "diffPct": 0.54,
         "geometryProbes": "pass",
-        "exportSha256": "7fd1e2d5f34d7241e784f8061e39e5c80ff8fdcb3359858755ee77335492d3ef"
+        "exportSha256": "5254eeff5575ccc8e66e5a340b6459a3eb4a0e60ff78a9a9a4a1a3519220f51a"
       },
       {
-        "state": "sorted-by-symbol",
-        "diffPct": 0.421,
+        "state": "key-port-open",
+        "diffPct": 0.438,
         "geometryProbes": "pass",
-        "exportSha256": "6ce72346b657ece2cbe133a48f858d1ff3b79518d832de49cb5f66b3bb0f99fd"
+        "exportSha256": "2ef838558a5bd73722c0592a09556028b95bce0bbfb18fd02b6129d474e4b25b"
       },
       {
-        "state": "units-edited",
-        "diffPct": 0.426,
+        "state": "key-bench-open",
+        "diffPct": 0.593,
         "geometryProbes": "pass",
-        "exportSha256": "295987ae859e120e361a48ccfd01653bffa1063bdfd78ffe5c6e765712793249"
-      },
-      {
-        "state": "typeahead-open",
-        "diffPct": 0.715,
-        "geometryProbes": "pass",
-        "exportSha256": "5c8d3ab99d6ef6e772d87eac2b434e503ff30266cdd7bd146878736a0c03dea8"
-      },
-      {
-        "state": "security-added",
-        "diffPct": 0.475,
-        "geometryProbes": "pass",
-        "exportSha256": "16713c91818cc312d99ebb6947f281c401b7d7d33eded07817461716f81056dd"
-      },
-      {
-        "state": "add-rejected",
-        "diffPct": 0.424,
-        "geometryProbes": "pass",
-        "exportSha256": "d68325e1488d12c3672737e3b095b0024c81184378cb703bebf11ed61181276e"
-      },
-      {
-        "state": "options-open",
-        "diffPct": 0.497,
-        "geometryProbes": "pass",
-        "exportSha256": "f1f60a1d74fe907d18afb473f85bb8606316ce11d60d48ebc0981da1a0aad8fe"
+        "exportSha256": "0e98468c3c706c784c45e4baa382e3999fa11e4b99ebc28242d2ea8ddd9efec7"
       },
       {
         "state": "bench-changed",
-        "diffPct": 0.522,
+        "diffPct": 0.458,
         "geometryProbes": "pass",
-        "exportSha256": "1de01480cec01683e227f1a9a22a43d5d8cc741db45fcfd5a4f73db916a3cc45"
+        "exportSha256": "e02f01dcacf1d3d71069fb4690cddbfb4410deaac22001d6a5c228834b1c52d1"
       },
       {
-        "state": "change-period-1y",
-        "diffPct": 0.507,
+        "state": "port-changed",
+        "diffPct": 0.447,
         "geometryProbes": "pass",
-        "exportSha256": "1deffe9f5a621a4729ed52bd4f848055952cd529288e44706f202a1533971b68"
+        "exportSha256": "75ca80fc14a3fbf7ca53ac381fb55c7dfb4276f3328439dff5c21b122f542a3b"
+      },
+      {
+        "state": "sorted-by-symbol",
+        "diffPct": 0.527,
+        "geometryProbes": "pass",
+        "exportSha256": "e82dbeab2b8fad00d9ce3e59468d5502d1be75ecf3b3b0412e9bf9f0c31a289b"
+      },
+      {
+        "state": "units-edited",
+        "diffPct": 0.452,
+        "geometryProbes": "pass",
+        "exportSha256": "edefef280b5509f68465ff9d572eedc77f3529f632883bcd81b15c61b15faf54"
+      },
+      {
+        "state": "typeahead-open",
+        "diffPct": 0.493,
+        "geometryProbes": "pass",
+        "exportSha256": "185c79bd78f2cbac573f3c3c9a0a3b36d76dec0a00bf5415a775dc059c41364d"
+      },
+      {
+        "state": "security-added",
+        "diffPct": 0.428,
+        "geometryProbes": "pass",
+        "exportSha256": "e9ed3d52a07e555066603bdfe9669a0f5f9132db9806a0d9369a75e9dd2be23a"
+      },
+      {
+        "state": "add-rejected",
+        "diffPct": 0.428,
+        "geometryProbes": "pass",
+        "exportSha256": "f53b94e5cc45954750e8260a5df6558fcaebcefeaea52f9e6d01bde4dab4e851"
+      },
+      {
+        "state": "security-removed",
+        "diffPct": 0.438,
+        "geometryProbes": "pass",
+        "exportSha256": "ae2c01dbe04b2415b1ef5fd3362d782b60ee35c8be5b30ef219bf9b94f40ecc3"
       },
       {
         "state": "equal-weight",
-        "diffPct": 0.505,
+        "diffPct": 0.454,
         "geometryProbes": "pass",
-        "exportSha256": "302ff6c6ca8fd503d8287194cf7f1ecafd7e40bbff158997555298afc4e69561"
-      },
-      {
-        "state": "row-menu-open",
-        "diffPct": 0.423,
-        "geometryProbes": "pass",
-        "exportSha256": "61320d1e8bacba7dd94878aed8bf61c0c4d2a625273c2867a3564d05aad8bc58"
+        "exportSha256": "d46971fff012c85d75e7328a7f8d8278273e741ada8aeb0a8804acebc91f92ee"
       },
       {
         "state": "detail-modal",
-        "diffPct": 0.26,
+        "diffPct": 0.707,
         "geometryProbes": "pass",
-        "exportSha256": "502d3ce2429025713e313657bc3435e4916aa2c41d6f152960fb11722b26a03c"
+        "exportSha256": "8c78f5e8dc4f6b2a4e4ea060f4c08ced1fb27a0adfacfe5b4c28ce97256af169"
       },
       {
         "state": "clear-confirm",
-        "diffPct": 0.076,
+        "diffPct": 0.645,
         "geometryProbes": "pass",
-        "exportSha256": "c9b52ac073eecaf148857258c2e3659dc2c4169c4dfe89c36f8dd35ae02fcaf0"
+        "exportSha256": "a6e6e5e00f4e73c1f64560b0cca8533f04b873ec4749142e07e7eae1c445c127"
       },
       {
         "state": "empty-watchlist",
-        "diffPct": 0.467,
+        "diffPct": 0.364,
         "geometryProbes": "pass",
-        "exportSha256": "4e969dfeeef8b4eba9883d6bbdba9b47e4920209a77b2f99beebb0fec921e88b"
+        "exportSha256": "80fd51d6a3ae36fbf8db9b3d6c9653d46b9fe555e48678072cb6192f34a3448c"
       },
       {
         "state": "narrow-stacked",
-        "diffPct": 0.825,
+        "diffPct": 0.946,
         "geometryProbes": "pass",
-        "exportSha256": "69952bea7f99e0463453e2d8898714bdd7ca5be615dc025cbb299d767f1e56eb"
+        "exportSha256": "b8dfae335147c04b4b6daf33ac38ce8be7540221868fee2dc2085a7873459dfc"
+      },
+      {
+        "state": "narrow-range-custom",
+        "diffPct": 0.765,
+        "geometryProbes": "pass",
+        "exportSha256": "6e981a7ff083cfadafb683c20d3572d71487f0a96279a1c29830795be156311d"
       }
     ],
     "geometryProbesRun": [
-      "chart svg 1024x300 at default viewport (V11)",
-      "6-row viewport cap ~350px wrap at 7 rows (rule 10, security-added)",
-      "units box 56px (V11)",
-      "narrow tier: 440px content frame, table bleeds to 480px full-bleed (rule 11, narrow-stacked)",
-      "detail dialog width 560 (--sc-modal-w-md)"
+      "chart svg w (desktop): 1024 (expect 1024) pass",
+      "chart svg h: 300 (expect 300) pass",
+      "units input 56: 56 (expect 56) pass",
+      "key trigger 34: 34 (expect 34) pass",
+      "swatch 15: 15 (expect 15) pass",
+      "swatch r3: 3px (expect 3px) pass",
+      "entry 36: 41 (expect 36) FAIL",
+      "add btn 36: 36 (expect 36) pass",
+      "ghost 36: 36 (expect 36) pass",
+      "VALUE col 112: 112 (expect 112) pass",
+      "%CHG col 140: 140 (expect 140) pass",
+      "tools row floats absolute ≥1024: absolute (expect absolute) pass",
+      "segmented radius 6: 6px (expect 6px) pass",
+      "card content 1024: 1024 (expect 1024) pass",
+      "bench menu min-width 264: 264px (expect 264px) pass",
+      "bench menu max-height 360: 360px (expect 360px) pass",
+      "6-row cap (7 rows: clientH<scrollH, ~350): 350/396 (expect ~350/<396+>) pass",
+      "detail dialog 560: 560 (expect 560) pass",
+      "narrow chart w 440: 440 (expect 440) pass",
+      "narrow chart h 359: 358.6875 (expect 359) pass",
+      "narrow table bleed 480: 480 (expect 480) pass",
+      "narrow table x 0: 0 (expect 0) pass",
+      "narrow card-head mb 14: 14px (expect 14px) pass",
+      "narrow symbol inset 20: 20px (expect 20px) pass",
+      "narrow tools static: static (expect static) pass"
     ],
     "waivers": []
   },
@@ -179,6 +222,12 @@
         "variable": "--ink",
         "value": "#0E0E0E",
         "token": "$y:sem-text-header",
+        "scope": ":root"
+      },
+      {
+        "variable": "--ts-scrub",
+        "value": "#0E0E0E",
+        "token": "$y:sem-text-header (the INK role — r87 scrubber token; supersedes v001 DJ-002 error-role mapping per design-rules rule 37)",
         "scope": ":root"
       },
       {
@@ -232,7 +281,7 @@
       {
         "variable": "--neg",
         "value": "#C82320",
-        "token": "$y:sem-text-error (text) / $y:sem-borders-error (crosshair stroke) — identical resolved pair",
+        "token": "$y:sem-text-error",
         "scope": ":root"
       },
       {
@@ -244,7 +293,7 @@
       {
         "variable": "--taupe-100",
         "value": "#F7F5F0",
-        "token": "$y:sem-background-sunken (dialog head band; GC-013 precedent)",
+        "token": "$y:sem-background-sunken",
         "scope": ":root"
       },
       {
@@ -256,13 +305,19 @@
       {
         "variable": "--taupe-border",
         "value": "#E3DFD6",
-        "token": "$sem-borders-panel (GC-006-created local, reused)",
+        "token": "$sem-borders-panel (v001-created local, reused)",
         "scope": ":root"
       },
       {
         "variable": "--grid",
         "value": "#D5D3D0",
         "token": "$y:sem-borders-muted (GC-004 gridline precedent)",
+        "scope": ":root"
+      },
+      {
+        "variable": "--grid2",
+        "value": "#D5D3D0",
+        "token": "$y:sem-borders-muted",
         "scope": ":root"
       },
       {
@@ -274,7 +329,13 @@
       {
         "variable": "--zero",
         "value": "#5E5954",
-        "token": "$y:sem-text-meta (same coupling as --axis)",
+        "token": "$y:sem-text-meta (same coupling)",
+        "scope": ":root"
+      },
+      {
+        "variable": "--det",
+        "value": "#5E5954",
+        "token": "$y:sem-text-meta",
         "scope": ":root"
       },
       {
@@ -286,19 +347,19 @@
       {
         "variable": "--table-row-hover",
         "value": "#EBF0FE",
-        "token": "$y:sem-background-highlight (GC-001 precedent)",
+        "token": "$y:sem-background-highlight",
         "scope": ":root"
       },
       {
         "variable": "--modal-shadow",
         "value": "0 16px 40px #00000029",
-        "token": "shadow-overlay family ($y:shadow-overlay-y/-blur/$y:prim-shadow-overlay-color)",
+        "token": "shadow-overlay family",
         "scope": ":root"
       },
       {
         "variable": "--tile-shadow",
         "value": "0 4px 12px #0000001A",
-        "token": "shadow-md family (card elevation; unrendered at desktop — card is frameless since r55)",
+        "token": "shadow-md family",
         "scope": ":root"
       },
       {
@@ -310,456 +371,319 @@
       {
         "variable": "--tk-border",
         "value": "#DCD8CB",
-        "token": "$y:sem-borders-dark (r65 page-3 widget/typeahead border; GC-007 menu-border precedent)",
+        "token": "$y:sem-borders-dark",
         "scope": ":root"
       },
       {
         "variable": "--tk-border-strong",
         "value": "#8A8680",
-        "token": "$y:sem-borders-hover (hover edge tier; GC-008 precedent)",
+        "token": "$y:sem-borders-hover",
         "scope": ":root"
       },
       {
         "variable": "--tk-accent",
         "value": "#3A6AF8",
-        "token": "$y:sem-icons-action / $y:sem-borders-action (role split; same resolved value)",
-        "scope": "#appMain,.sp-md-backdrop"
+        "token": "$y:sem-icons-action / $y:sem-borders-action",
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-accent-hover",
         "value": "#2952CC",
         "token": "$y:sem-btnPrimaryBgHover",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-accent-subtle",
         "value": "#EBF0FE",
         "token": "$y:sem-background-highlight",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-btn-accent",
         "value": "#3A6AF8",
         "token": "$y:sem-btnPrimaryBg",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-btn-accent-hover",
         "value": "#2952CC",
         "token": "$y:sem-btnPrimaryBgHover",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-border-input",
         "value": "#DCD8CB",
         "token": "$y:sem-borders-dark",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-focus",
         "value": "#3A6AF8",
-        "token": "$y:sem-borders-action (kit focus edge; no contracted frame renders a ring)",
-        "scope": "#appMain,.sp-md-backdrop"
+        "token": "$y:sem-borders-action",
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-text-inverse",
         "value": "#FFFFFF",
         "token": "$y:sem-btnPrimaryText / $y:sem-text-reverse",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-text-1",
         "value": "#0E0E0E",
         "token": "$y:sem-text-header",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-text-2",
         "value": "#5E5954",
         "token": "$y:sem-text-meta (text) / $y:sem-icons-meta (glyphs)",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-text-3",
         "value": "#716E6A",
         "token": "$y:sem-text-placeholder",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-surface-1",
         "value": "#FFFFFF",
         "token": "$y:sem-background-surface",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-surface-2",
         "value": "#F8F7F6",
         "token": "$y:sem-background-light (segmented base; GC-013 precedent)",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-surface-3",
         "value": "#EEEDEB",
         "token": "$y:sem-background-subtle",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-error",
         "value": "#C82320",
         "token": "$y:sem-borders-error / $y:sem-text-error",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-error-subtle",
         "value": "#FFEAEA",
         "token": "$y:sem-background-error",
-        "scope": "#appMain,.sp-md-backdrop"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-track",
         "value": "#D5D3D0",
-        "token": "$y:sem-sliderTrack (unrendered in contracted frames)",
-        "scope": "#appMain,.sp-md-backdrop"
+        "token": "$y:sem-sliderTrack",
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-off",
         "value": "#EDEAE3",
-        "token": "$y:sem-toggleTrackOff (unrendered)",
-        "scope": "#appMain,.sp-md-backdrop"
+        "token": "$y:sem-toggleTrackOff",
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-thumb-dis",
-        "value": "#EEEDEB",
-        "token": "$y:sem-background-subtle (unrendered)",
-        "scope": "#appMain,.sp-md-backdrop"
-      },
-      {
-        "variable": "--tk-shadow-sm",
-        "value": "0 1px 2px #00000014",
-        "token": "shadow-sm family",
-        "scope": "#appMain,.sp-md-backdrop"
-      },
-      {
-        "variable": "--tk-shadow-dd",
-        "value": "0 4px 12px #0000001A",
-        "token": "shadow-md family",
-        "scope": "#appMain,.sp-md-backdrop"
-      },
-      {
-        "variable": "--tk-accent",
-        "value": "#3A6AF8",
-        "token": "$y:sem-icons-action / $y:sem-borders-action (role split; same resolved value)",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-accent-hover",
-        "value": "#2952CC",
-        "token": "$y:sem-btnPrimaryBgHover",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-accent-subtle",
-        "value": "#EBF0FE",
-        "token": "$y:sem-background-highlight",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-btn-accent",
-        "value": "#3A6AF8",
-        "token": "$y:sem-btnPrimaryBg",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-btn-accent-hover",
-        "value": "#2952CC",
-        "token": "$y:sem-btnPrimaryBgHover",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-border-input",
-        "value": "#DCD8CB",
-        "token": "$y:sem-borders-dark",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-focus",
-        "value": "#3A6AF8",
-        "token": "$y:sem-borders-action (kit focus edge; no contracted frame renders a ring)",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-text-inverse",
-        "value": "#FFFFFF",
-        "token": "$y:sem-btnPrimaryText / $y:sem-text-reverse",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-text-1",
-        "value": "#0E0E0E",
-        "token": "$y:sem-text-header",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-text-2",
-        "value": "#5E5954",
-        "token": "$y:sem-text-meta (text) / $y:sem-icons-meta (glyphs)",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-text-3",
-        "value": "#716E6A",
-        "token": "$y:sem-text-placeholder",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-surface-1",
-        "value": "#FFFFFF",
-        "token": "$y:sem-background-surface",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-surface-2",
-        "value": "#F8F7F6",
-        "token": "$y:sem-background-light (segmented base; GC-013 precedent)",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-surface-3",
         "value": "#EEEDEB",
         "token": "$y:sem-background-subtle",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-error",
-        "value": "#C82320",
-        "token": "$y:sem-borders-error / $y:sem-text-error",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-error-subtle",
-        "value": "#FFEAEA",
-        "token": "$y:sem-background-error",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-track",
-        "value": "#D5D3D0",
-        "token": "$y:sem-sliderTrack (unrendered in contracted frames)",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-off",
-        "value": "#EDEAE3",
-        "token": "$y:sem-toggleTrackOff (unrendered)",
-        "scope": "#appMain #cs-watchlist"
-      },
-      {
-        "variable": "--tk-thumb-dis",
-        "value": "#EEEDEB",
-        "token": "$y:sem-background-subtle (unrendered)",
-        "scope": "#appMain #cs-watchlist"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-shadow-sm",
         "value": "0 1px 2px #00000014",
         "token": "shadow-sm family",
-        "scope": "#appMain #cs-watchlist"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-shadow-dd",
         "value": "0 4px 12px #0000001A",
         "token": "shadow-md family",
-        "scope": "#appMain #cs-watchlist"
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-border",
         "value": "#DCD8CB",
-        "token": "$y:sem-borders-dark (scoped re-pin, same mapping)",
-        "scope": "#appMain #cs-watchlist"
+        "token": "$y:sem-borders-dark",
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       },
       {
         "variable": "--tk-border-strong",
         "value": "#8A8680",
-        "token": "$y:sem-borders-hover (scoped re-pin, same mapping)",
-        "scope": "#appMain #cs-watchlist"
+        "token": "$y:sem-borders-hover",
+        "scope": "#appMain,.sp-md-backdrop ; #cs-watchlist,#wlHeadSlot ; #appMain #cs-watchlist (the prototype's own re-pin scopes, override block last in document)"
       }
     ],
     "findReplaces": [
       {
-        "from": "colors:['#3A6AF8','#00C853']",
-        "to": "colors:['#3A6AF8','#15803D']",
-        "where": "kit TimeSeries config (engine line 7564) -> $y:sem-chartLineAction (portfolio — the primary/accent chart series role, design-rules rule 37) / $y:sem-chartLinePositive (benchmark — the positive/comparison role). The library owns dedicated two-series line roles; the categorical palette stays for N-series categorical charts (GC-004)."
+        "from": "colors:['#3A6AF8','#00C853'],",
+        "to": "colors:['#3A6AF8','#15803D'],",
+        "where": "kit TimeSeries config → $y:sem-chartLineAction (portfolio) / $y:sem-chartLinePositive (benchmark) — v001 DJ-001 standing"
       },
       {
         "from": "E('stop',{offset:'0%','stop-color':color,'stop-opacity':'0.32'},g);",
         "to": "E('stop',{offset:'0%','stop-color':color,'stop-opacity':'0.12549019607843137'},g);",
-        "where": "fadeFill top stop (engine line 6660) -> $y:sem-chartAreaActionTop alpha 0x20 (the library-owned area-fade role; Bill 0.32 -> token 0.125 — token-true divergence)"
+        "where": "fadeFill top stop → $y:sem-chartAreaActionTop alpha 0x20"
       },
       {
         "from": "E('stop',{offset:'100%','stop-color':color,'stop-opacity':'0.02'},g);",
         "to": "E('stop',{offset:'100%','stop-color':color,'stop-opacity':'0.00784313725490196'},g);",
-        "where": "fadeFill floor stop (engine line 6661) -> $y:sem-chartAreaActionBottom alpha 0x02"
+        "where": "fadeFill floor stop → $y:sem-chartAreaActionBottom alpha 0x02"
       },
       {
-        "from": "--p-bg:rgba(58,106,248,.10); --p-tx:#2952CC; --p-bd:rgba(58,106,248,.30)",
-        "to": "#EBF0FE / #2952CC / #A5BCFC",
-        "where": ".st-pill.blue (TYPE badge) -> $y:sem-tagBg / $y:sem-tagText / $y:sem-tagBorder (GC-003 precedent; translucent tints -> opaque token values)"
+        "from": "#cs-watchlist .wl-key-bench .wl-key-sw{ background:#00C853; }",
+        "to": "#cs-watchlist .wl-key-bench .wl-key-sw{ background:#15803D; }",
+        "where": "green key swatch → $y:sem-chartLinePositive (same literal as the series, r86 comment)"
       },
       {
-        "from": ".sp-wld-ch color #00875A",
-        "to": "#148338",
-        "where": "detail-modal positive change text -> $y:sem-text-deposit"
+        "from": ".st-pill.blue  {--p-bg:rgba(58,106,248,.10);--p-tx:#2952CC;--p-bd:rgba(58,106,248,.30);}",
+        "to": ".st-pill.blue  {--p-bg:#EBF0FE;--p-tx:#2952CC;--p-bd:#A5BCFC;}",
+        "where": "TYPE pill (blue) → $y:sem-tagBg / $y:sem-tagText / $y:sem-tagBorder (GC-003 precedent; translucent tints → opaque token values)"
       },
       {
-        "from": "border:1px solid rgba(128,128,128,.38); active background/border #3A6AF8 color #fff",
-        "to": "#C0BAB2 rest / #3A6AF8 + #FFFFFF active",
-        "where": "detail-modal range radiogroup -> rest border $y:sem-borders-strong (opaque; runtime-alpha border precomputed); active $y:sem-background-action + $y:sem-text-reverse (GC-008 selection-pill precedent)"
+        "from": ".sp-wld-ch{ font-size:15px; font-weight:600; color:#00875A; }",
+        "to": ".sp-wld-ch{ font-size:15px; font-weight:600; color:#148338; }",
+        "where": "detail-modal positive change → $y:sem-text-deposit"
       },
       {
-        "from": ".sp-rowmenu box-shadow 0 10px 28px rgba(0,0,0,0.16)",
-        "to": "0 8px 24px #0000001F",
-        "where": "row-actions popover shadow -> shadow-lg family ($y:shadow-lg-y 8 / $y:shadow-lg-blur 24 / $y:prim-shadow-lg-color)"
+        "from": ".sp-wld-ch.is-dn{ color:#C62828; }",
+        "to": ".sp-wld-ch.is-dn{ color:#C82320; }",
+        "where": "detail-modal negative change → $y:sem-text-error (unrendered in contracted frames; recorded)"
       },
       {
-        "from": "UA-default control font (kit rules scoped to #stApp do not match this build: .st-btn row-menu, .ui-btn Add/Compare/ghost pills, .sp-wld-rng segments, input placeholders)",
-        "to": "font-family:var(--font-ui) ('Heebo', …)",
-        "where": "lowest-specificity element rule — overrides only UA defaults, never an authored family (the fontSubstitutions record)"
+        "from": "border-radius:999px; border:1px solid rgba(128,128,128,.38); background:transparent;",
+        "to": "border-radius:999px; border:1px solid #C0BAB2; background:transparent;",
+        "where": "detail-modal range radiogroup rest border → $y:sem-borders-strong (opaque precompute; GC-008 precedent)"
       },
       {
-        "from": "UA-default placeholder color #757575 (the kit placeholder rules are #stApp-scoped and do not match this build)",
-        "to": "#716E6A",
-        "where": "entry/units placeholders -> $y:sem-text-placeholder (lowest-specificity element rule — overrides only the UA default)"
+        "from": "margin:6px 0 0; color:#D32F2F; font-family:var(--font-ui); font-size:13px; font-weight:600;",
+        "to": "margin:6px 0 0; color:#C82320; font-family:var(--font-ui); font-size:13px; font-weight:600;",
+        "where": "\"Remove this security\" (.sp-md-action) → $y:sem-text-error (danger/destructive action role, design-rules rule 37)"
+      },
+      {
+        "from": "padding:0 4px !important; color:#D32F2F; font-size:16px; font-weight:700; line-height:1;",
+        "to": "padding:0 4px !important; color:#C82320; font-size:16px; font-weight:700; line-height:1;",
+        "where": "Remove X (#cs-watchlist section.st .st-btn) → $y:sem-icons-error (danger glyph; same resolved pair as sem-text-error)"
       }
     ],
-    "fontSwap": "Prototype is Heebo-native (--font-ui Heebo-first, --font-serif Noto Serif). Swap reduces to (a) forcing --font-ui onto UA-default control surfaces (recorded find-replace) and (b) serving Heebo + Noto Serif from the SAME repo TTFs the .pen references (pencil/designs/fonts/), Google Fonts blocked at capture.",
-    "notes": "Identity injections are recorded because the injection IS the reconciliation record. The prototype re-declares its token set at THREE scopes (:root ~L995 + r65 re-pin ~L3939; #appMain,.sp-md-backdrop ~L1040; #cs-watchlist,#wlHeadSlot ~L2722 and #appMain #cs-watchlist,... ~L3187) — the override style block carries all scopes and sits last in the document. Dark :root/[data-theme] blocks left untouched — dark is uncontracted (design-rules rule 36); every token bound here carries its dark value in the library/local definitions. Squircle note for the re-export lab: rounded rects with radius >= 9 are authored as circular-arc PATH nodes because pen's rectangle cornerRadius renders as a squircle (probe-verified) — do not \"simplify\" them back to rectangles."
+    "fontSwap": "Prototype is Heebo-native (--font-ui Heebo-first, --font-serif Noto Serif). Swap reduces to (a) forcing --font-ui onto UA-default control surfaces (recorded rule) and (b) serving Heebo + Noto Serif from the repo TTFs the .pen references (pencil/designs/fonts/), Google Fonts blocked at capture.",
+    "notes": "Identity injections are recorded because the injection IS the reconciliation record. Dark :root/[data-theme] blocks left untouched — dark is uncontracted (design-rules rule 36); every bound token carries its dark value in the library/local definitions. NEW in v002: --ts-scrub injected at :root bound to the INK role (r87 scrubber token; the JS reads cvRoot(--ts-scrub)||--ink) — this REPLACES v001 DJ-002's error-role crosshair mapping per design-rules rule 37; --grid2/--det carried with the v001 --grid/--muted couplings. Squircle note for the re-export lab: rounded shapes with radius ≥ 9 are authored as circular-arc PATH nodes because pen's rectangle cornerRadius renders as a squircle (v001 probe finding, carried) — do not \"simplify\" them back to rectangles."
   },
   "tokenJudgmentCalls": [
     {
-      "surface": "chart series colors (portfolio line + gradient area, benchmark line, legend dots, scrubber marker dots, readout swatches)",
-      "prototypeValue": "colors:['#3A6AF8','#00C853'] (kit TimeSeries config); area fade stops 0.32/0.02",
+      "surface": "chart series colors (portfolio line + gradient area, benchmark line, key swatches, scrubber marker dots)",
+      "prototypeValue": "colors:['#3A6AF8','#00C853'] (kit TimeSeries config) + .wl-key-sw literals; area fade stops 0.32/0.02",
       "boundToken": "$y:sem-chartLineAction + $y:sem-chartAreaActionTop/-Bottom (portfolio) / $y:sem-chartLinePositive (benchmark)",
-      "rationale": "The library now owns dedicated two-series chart roles — sem-chartLineAction (action/primary series) and sem-chartLinePositive (positive/comparison series) — exactly the roles design-rules rule 37 names ('primary/accent chart series role', 'positive/comparison chart series role'). This is a fixed portfolio-vs-benchmark pair, not an N-series categorical chart, so the categorical priority-order rule (GC-004) does not apply. Visible token-true divergences: benchmark green #00C853 -> #15803D; area fade alpha 0.32/0.02 -> 0x20/0x02 (the sem-chartAreaAction pair's own alphas). DELIBERATE DIVERGENCE from GC-004's categorical-order precedent — flagged for the designer to confirm the two-series-roles reading.",
+      "rationale": "v001 DJ-001 standing (design-rules rule 37 names the same roles). Visible token-true divergences: benchmark green #00C853 → #15803D; area fade alpha 0.32/0.02 → 0x20/0x02. The r86 key swatches bind the same literals as the series (\"the key cannot name one line and paint the other\") — swatch fills bind the chart tokens, not tag/action roles.",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "axis baseline + ticks + labels (--axis/--zero #6E7270) and gridlines (--grid #C8CAC9)",
+      "surface": "scrubber crosshair + marker-dot halos (--ts-scrub → --ink)",
+      "prototypeValue": "r87: crosshair stroke resolved from --ts-scrub falling back to --ink, rendered #0E0E0E solid, no dasharray; white-stroked marker dots",
+      "boundToken": "$y:sem-text-header (crosshair — the INK role --ink already binds) / dots fill chart-series tokens with $y:sem-background-surface halos",
+      "rationale": "design-rules rule 37: \"scrubber crosshair + dot --ts-scrub → the INK role, not the error role\" — the deliberate v002 REMAP away from v001 DJ-002 (whose surface, the red dashed crosshair, no longer exists). One variable, one role: the injection binds --ink and --ts-scrub to the same ink token the page ink uses. Divergence from DJ-002 recorded here as the design-rules-mandated supersession (flags.json DJ-102 placeholder).",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "Remove column X + \"Remove this security\" modal action",
+      "prototypeValue": "#D32F2F (both surfaces, hardcoded)",
+      "boundToken": "$y:sem-icons-error (the 24×24 X glyph) / $y:sem-text-error (the underlined modal action) — same resolved pair #C82320",
+      "rationale": "design-rules rule 37: danger/destructive action role. Bill's material-red #D32F2F moves to the Hemlock error role value — token-true divergence. (The X never renders inside a contracted frame: the Remove column sits beyond the horizontal scroll clip at every contracted width — r87's one-pinned-rail truth; the binding is recorded for the whole-surface recipe.)",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "axis baseline + ticks + labels (--axis/--zero/--det #6E7270/#5E5954-class) and gridlines (--grid/--grid2 #C8CAC9)",
       "prototypeValue": "#6E7270 / #C8CAC9",
       "boundToken": "$y:sem-text-meta (axis coupling) / $y:sem-borders-muted (gridlines)",
-      "rationale": "GC-004 precedent for the same kit: hemlock chart rules name sem-text-meta for axis labels; the prototype couples baseline/stems/labels to one variable. Values lighten/darken slightly — token-true.",
+      "rationale": "GC-004 precedent carried by v001: the prototype couples baseline/stems/labels to one variable; values move to the role values — token-true.",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "r65 strong control outlines (--border-strong #B9B5AE: row-actions popover border, entry-field borders)",
-      "prototypeValue": "#B9B5AE (r65: \"a more visible edge, darker in light\")",
-      "boundToken": "$y:sem-borders-strong",
-      "rationale": "r65's intent IS the strong-border role; the named role token owns it. Value #B9B5AE -> #C0BAB2 — token-true.",
-      "newTokenCreated": false,
-      "newToken": null
-    },
-    {
-      "surface": "control-kit raw template values (--tk-text-1/2/3 #171717/#525252/#737373, --tk-surface-2 #F5F5F5, --tk-border #CFCFCF/#E5E5E5, --tk-border-strong #A8A8A8/#D4D4D4, --tk-error #B91C1C)",
+      "surface": "control-kit raw template values (--tk-text-1/2/3, --tk-surface-2/3, --tk-border(-strong), --tk-error)",
       "prototypeValue": "donor v4.11 neutral grays (pre-Hemlock)",
-      "boundToken": "$y:sem-text-header / $y:sem-text-meta / $y:sem-text-placeholder / $y:sem-background-light / $y:sem-borders-dark / $y:sem-borders-hover / $y:sem-borders-error",
-      "rationale": "GC-013/GC-006/GC-008 settled the tk-role table for the same control kit; values move to the Hemlock roles (#171717 -> #0E0E0E etc.) — token-true.",
+      "boundToken": "$y:sem-text-header / $y:sem-text-meta / $y:sem-text-placeholder / $y:sem-background-light / $y:sem-background-subtle / $y:sem-borders-dark / $y:sem-borders-hover / $y:sem-borders-error",
+      "rationale": "GC-013/GC-006/GC-008 settled the tk-role table for the same control kit; v001 carried it; unchanged in v002.",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "typeahead suggestion-menu border (--tk-border #CFCFCF, r65 re-pin)",
-      "prototypeValue": "#CFCFCF",
-      "boundToken": "$y:sem-borders-dark",
-      "rationale": "GC-007 precedent: the suggestion/menu popover border role is sem-borders-dark (#DCD8CB).",
-      "newTokenCreated": false,
-      "newToken": null
-    },
-    {
-      "surface": "TYPE pill tints (.st-pill.blue: bg rgba(58,106,248,.10), border rgba(58,106,248,.30), text #2952CC)",
-      "prototypeValue": "runtime-alpha accent tints",
+      "surface": "TYPE pill tints (.st-pill.blue)",
+      "prototypeValue": "runtime-alpha accent tints (bg rgba(58,106,248,.10), border rgba(58,106,248,.30), text #2952CC)",
       "boundToken": "$y:sem-tagBg / $y:sem-tagBorder / $y:sem-tagText",
-      "rationale": "GC-003 precedent (same pill kit). Translucent tints become the opaque token values (#EBF0FE/#A5BCFC) — the precomputed-opaque doctrine.",
+      "rationale": "GC-003 precedent (same pill kit); translucent tints become the opaque token values — the precomputed-opaque doctrine. Only the blue pill renders (STOCK/ETF both use it in the fixture).",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "r78 blue-outline ghost toolrow (Upload / Download / Clear All)",
+      "surface": "ghost toolrow (Upload/Download/Clear All) blue outlines",
       "prototypeValue": "bg tk-surface-1 white, border+text tk-btn-accent #3A6AF8",
       "boundToken": "$y:sem-background-surface + $y:sem-borders-action + $y:sem-text-action",
-      "rationale": "GC-006's outline-action idiom judgment reused (Hemlock's Button/secondary border is #A5BCFC — a different design; the executable spec's full-accent outline binds the action roles). Identity values.",
+      "rationale": "GC-006 outline-action idiom reused via v001 (Hemlock Button/secondary border is #A5BCFC — a different design; the executable spec's full-accent outline binds the action roles). Identity values.",
       "newTokenCreated": false,
       "newToken": null
     },
     {
       "surface": "detail-modal range radiogroup",
       "prototypeValue": "rest border rgba(128,128,128,.38); active bg #3A6AF8 + #fff text",
-      "boundToken": "rest $y:sem-borders-strong (opaque); active $y:sem-background-action + $y:sem-text-reverse",
-      "rationale": "GC-008 selection-pill precedent for active; the runtime-alpha rest border precomputes to the opaque strong-border role (visible change: translucent gray -> #C0BAB2).",
+      "boundToken": "rest $y:sem-borders-strong (opaque precompute); active $y:sem-background-action + $y:sem-text-reverse",
+      "rationale": "GC-008 selection-pill precedent via v001; runtime-alpha rest border precomputes to the opaque strong-border role (translucent gray → #C0BAB2).",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "dialog Cancel ghost button text (#737373) and entry placeholders (UA #757575)",
-      "prototypeValue": "tk-text-3 / UA-default placeholder color (kit ::placeholder rules are #stApp-scoped and do not match)",
+      "surface": "dialog Cancel ghost text + entry/units placeholders",
+      "prototypeValue": "tk-text-3 / UA-default placeholder #757575 (the kit ::placeholder rules are #stApp-scoped and never match this build)",
       "boundToken": "$y:sem-text-placeholder",
-      "rationale": "GC-006 gray-ghost precedent; placeholder role. The UA-default fallback is normalized by an element-level rule (recorded).",
+      "rationale": "GC-006 gray-ghost + placeholder-role precedent via v001; the UA-default fallback normalized by a recorded lowest-specificity rule.",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "row-actions popover shadow",
-      "prototypeValue": "0 10px 28px rgba(0,0,0,.16)",
-      "boundToken": "shadow-lg family ($y:shadow-lg-y 8 / $y:shadow-lg-blur 24 / $y:prim-shadow-lg-color #0000001F)",
-      "rationale": "Off-scale elevation; the popover role's named elevation is shadow-lg. Geometry moves 10/28 -> 8/24 — token-true. (Root shadow falls outside the element-screenshot box, so no frame renders it; binding recorded for the whole-surface recipe.)",
+      "surface": "detail-modal positive change text (.sp-wld-ch) and negative variant",
+      "prototypeValue": "#00875A / #C62828 (hardcoded)",
+      "boundToken": "$y:sem-text-deposit / $y:sem-text-error",
+      "rationale": "positive/income and error roles; values move to #148338/#C82320 — token-true. (is-dn unrendered in contracted frames; recorded for the whole-surface recipe.)",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "detail-modal positive change text (.sp-wld-ch)",
-      "prototypeValue": "#00875A (hardcoded)",
-      "boundToken": "$y:sem-text-deposit",
-      "rationale": "Positive/income value role; value moves to #148338 — token-true.",
-      "newTokenCreated": false,
-      "newToken": null
-    },
-    {
-      "surface": "scrubber crosshair + marker dots (--neg)",
-      "prototypeValue": "stroke var(--neg) #C82320 dasharray 3 3; red marker dots, white halos",
-      "boundToken": "$y:sem-borders-error (crosshair, dashes pre-segmented in geometry) / $y:sem-icons-error (dots) / $y:sem-background-surface (halos)",
-      "rationale": "design-rules rule 37: crosshair -> negative/alert role. Identical resolved value.",
-      "newTokenCreated": false,
-      "newToken": null
-    },
-    {
-      "surface": "segmented bases + active segment treatment (range pills, Change Period, Performance)",
-      "prototypeValue": "base #F5F5F5; active white + 0 1px 2px rgba(0,0,0,.05) shadow",
+      "surface": "segmented bases + active segment treatment (weighting toggle, range pills)",
+      "prototypeValue": "base #F5F5F5; active white + 0 1px 2px rgba(0,0,0,.05)",
       "boundToken": "$y:sem-background-light (base) / $y:sem-background-surface + shadow-sm family (active)",
-      "rationale": "design-rules rule 37 ('segmented base -> surface-2; active pill white + shadow -> surface-1 + elevation-1') via GC-013's tk-surface-2 -> sem-background-light precedent.",
+      "rationale": "design-rules rule 37 via GC-013 precedent, carried from v001. The :root --surface-2 (#F8F7F6) and tk --tk-surface-2 map to sem-background-hover / sem-background-light respectively — same resolved value, role split recorded (v001).",
       "newTokenCreated": false,
       "newToken": null
     },
     {
       "surface": "table header band + thead underline",
-      "prototypeValue": "linear-gradient(#F7F5F0 -> #EDEAE3); border-bottom --accent-subtle #EBF0FE",
+      "prototypeValue": "linear-gradient(#F7F5F0 → #EDEAE3) via --sp-rdt-head; border-bottom --accent-subtle #EBF0FE",
       "boundToken": "$sem-tableHeaderBandTop / $sem-tableHeaderBandBottom (recreated local pair) / $y:sem-background-highlight",
-      "rationale": "GC-007/GC-006 precedent (same band); the GC-003 capture named the same gap sem-dataTableHeaderBandStart/End — NAMING DRIFT across captures flagged for the designer reconciliation.",
+      "rationale": "GC-007/GC-006 precedent (same band); GC-003 named the same gap sem-dataTableHeaderBandStart/End — NAMING DRIFT across captures still pending the designer ruling (carried from v001).",
       "newTokenCreated": true,
       "newToken": "sem-tableHeaderBandTop, sem-tableHeaderBandBottom (recreated, GC-006/GC-007 pending ruling)"
     },
     {
-      "surface": "row-actions kebab glyph (U+22EE, .wl-rowmenu)",
-      "prototypeValue": "UA-fallback vertical-ellipsis text glyph (Heebo owns no U+22EE)",
-      "boundToken": "vector dot paths filled $y:sem-icons-meta",
-      "rationale": "Neither Heebo nor the pen renderer owns the glyph; Chromium and pen fall back to different faces, so text convergence is impossible by construction. The rendered glyph is captured as measured vector circles — see designGaps (non-token).",
+      "surface": "white text on primary buttons vs other white text",
+      "prototypeValue": "#FFFFFF (tk-text-inverse / --inverse)",
+      "boundToken": "$y:sem-btnPrimaryText (Add, Continue labels) / $y:sem-text-reverse (all other white text)",
+      "rationale": "role split per surface, same resolved value — v001 convention carried.",
       "newTokenCreated": false,
       "newToken": null
     },
     {
-      "surface": "component composition (chart, 19-column table, dialogs, typeahead)",
+      "surface": "component composition (chart, 20-column table, two key pickers, dialogs, typeahead)",
       "prototypeValue": "kit-drawn chart/table/controls with executable-spec geometry",
       "boundToken": "(none — frames carry the prototype's exact rendered geometry with token paint)",
-      "rationale": "Hemlock owns TimeSeries-adjacent components (AreaChartMultiSeries, HoldingsTable, ModalDrawer) but they are different designs that cannot reproduce the executable spec's geometry; under the two-oracle split the .pen is the pixel oracle OF THIS PROTOTYPE.",
+      "rationale": "Hemlock owns TimeSeries-adjacent components but they are different designs that cannot reproduce the executable spec's geometry; under the two-oracle split the .pen is the pixel oracle OF THIS PROTOTYPE (v001 rationale, unchanged).",
       "newTokenCreated": false,
       "newToken": null
     }
@@ -783,7 +707,7 @@
     {
       "dimension": "typography",
       "token": "$text-size-type-chip",
-      "prototypeValue": "9.5px/600 typeahead type tag (STOCK/ETF chip inside the suggestion row; below the 10px micro step GC-008 recorded)",
+      "prototypeValue": "9.5px/600 typeahead type tag (STOCK chip inside the suggestion row; below the 10px micro step GC-008 recorded)",
       "lightValue": "9.5",
       "darkValue": "9.5 (single-mode number)",
       "appliesTo": [
@@ -798,15 +722,17 @@
     {
       "dimension": "color",
       "token": "$control-text-faint",
-      "prototypeValue": "reused from GC-006 (same pending ruling): #767169 AA-passing faint text — as-of line, date-pair captions, typeahead secondary text, options chevron",
+      "prototypeValue": "reused from GC-006 (same pending ruling): #767169 AA-passing faint text — as-of line, date-pair captions, typeahead secondary text, modal close glyph",
       "lightValue": "#767169",
       "darkValue": "#8A9BBF",
       "appliesTo": [
         "default",
         "range-custom",
         "typeahead-open",
-        "options-open",
         "narrow-stacked",
+        "narrow-range-custom",
+        "detail-modal",
+        "clear-confirm",
         "…(all card states)"
       ],
       "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
@@ -834,7 +760,7 @@
     {
       "dimension": "color",
       "token": "$sem-tableHeaderBandTop + $sem-tableHeaderBandBottom",
-      "prototypeValue": "reused from GC-007/GC-006 (same pending ruling; GC-003 named the same band sem-dataTableHeaderBandStart/End — naming drift to reconcile): thead gradient #F7F5F0 -> #EDEAE3",
+      "prototypeValue": "reused from GC-007/GC-006 (same pending ruling; GC-003 named the same band sem-dataTableHeaderBandStart/End — naming drift to reconcile): thead gradient #F7F5F0 → #EDEAE3",
       "lightValue": "#F7F5F0 / #EDEAE3",
       "darkValue": "#172642 / #1D2E50",
       "appliesTo": [
@@ -849,7 +775,7 @@
     {
       "dimension": "typography",
       "token": "$text-size-caption + $text-size-modal-title + $text-size-body-prose + $line-height-solid",
-      "prototypeValue": "reused from GC-003/GC-004/GC-006/GC-013 (same pending rulings): 13px controls/status/typeahead; 22px serif dialog title; 15px hint lead-ins; per-line solid baselines",
+      "prototypeValue": "reused from GC-003/GC-004/GC-006/GC-013 (same pending rulings): 13px controls/status/typeahead; 22px serif dialog title; 15px hint lead-ins/detail change; per-line solid baselines",
       "lightValue": "13 / 22 / 15 / 1",
       "darkValue": "single-mode numbers",
       "appliesTo": [
@@ -863,42 +789,14 @@
     },
     {
       "dimension": "radius",
-      "token": "$radius-menu + $radius-tile + $radius-swatch",
-      "prototypeValue": "reused from GC-006/GC-008/GC-004 (same pending rulings): 6px menus/segmented groups/typeahead; 10px row-actions popover; 3px legend dots",
-      "lightValue": "6 / 10 / 3",
+      "token": "$radius-menu + $radius-swatch",
+      "prototypeValue": "reused from GC-006/GC-008/GC-004 (same pending rulings): 6px menus/segmented groups/typeahead; 3px key swatches. v001's $radius-tile (10px row-actions popover) is DROPPED — its surface died with the r86 row-menu removal.",
+      "lightValue": "6 / 3",
       "darkValue": "single-mode numbers",
       "appliesTo": [
         "all states"
       ],
       "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
-      "reconciliation": {
-        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
-        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
-      }
-    },
-    {
-      "dimension": "non-token",
-      "token": null,
-      "prototypeValue": "Vertical-ellipsis kebab (U+22EE) as the row-actions affordance: Heebo carries no such glyph, so the prototype renders a UA-fallback face. Hemlock's icon convention is Lucide glyphs (GC-003 bound Lucide chevrons). Testable: the .wl-rowmenu button's glyph is text U+22EE, not an icon. Captured as measured vector dots bound to $y:sem-icons-meta.",
-      "lightValue": "vector dots (r~1.3 css px, 3 stacked) filled sem-icons-meta",
-      "darkValue": "same",
-      "appliesTo": [
-        "default",
-        "sorted-by-symbol",
-        "units-edited",
-        "security-added",
-        "add-rejected",
-        "options-open",
-        "bench-changed",
-        "change-period-1y",
-        "equal-weight",
-        "empty-watchlist",
-        "narrow-stacked",
-        "range-custom",
-        "scrubber-pinned",
-        "typeahead-open"
-      ],
-      "designerQuestion": "Adopt a Lucide more-vertical icon for row actions (design-system convention), or keep the text glyph and add the codepoint to the type stack?",
       "reconciliation": {
         "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
         "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
@@ -927,25 +825,34 @@
       "scope": "all UI text — no family substitution; serving source pinned to the repo TTF"
     },
     {
-      "prototypeFont": "UA-default control face (Bill's Helvetica on macOS; Arial-class in the lab) — the kit's font rules are #stApp-scoped and never match this build, so .st-btn, .ui-btn, .sp-wld-rng segments and input placeholders fall through to the UA",
-      "boundFont": "Heebo ($y:font-primary) via the recorded lowest-specificity normalization rule",
-      "scope": "row-actions button, Add/Compare/ghost/dialog buttons, detail-range segments, input placeholders"
+      "prototypeFont": "UA-default control face (Bill's Helvetica on macOS; Arial-class in the lab) — the kit's font rules are #stApp-scoped and never match this build, so buttons, detail-range segments, and the entry/units inputs fall through to the UA",
+      "boundFont": "Heebo ($y:font-primary) via the recorded lowest-specificity normalization rule, with metric-neutral line-height pins (input/textarea 16px; .st-cellin 15px) so the swap cannot grow the UA-sized boxes",
+      "scope": "Add/Continue/ghost/dialog buttons, detail-range segments, entry + units inputs and their placeholders"
     },
     {
       "prototypeFont": "Noto Serif (titles; prototype-native)",
       "boundFont": "Noto Serif ($y:font-secondary), served from pencil/designs/fonts/NotoSerif-VariableFont.ttf",
-      "scope": "component title (24/500), section titles (20/400, 18/400 narrow), dialog titles (22/400)"
+      "scope": "component title (24/500), dialog titles (22/400)"
     }
   ],
   "prototypeDefectsSeen": [
     {
-      "flag": "FLAG-D1..D4 (already recorded, design-rules.md section 2)",
-      "note": "Nothing new pixel-visible beyond the recorded set; D1 (unreachable donut/no-chart) and the excluded surfaces stay unframed per the contract."
+      "flag": "FLAG-D1..D7 (already recorded, design-rules.md section 2)",
+      "note": "The v002 flag set carried as recorded; the frames bank the rendered truth including D5 ($NaN MKT CAP / false 0.00% on ETF rows — off the visible scroll clip at rest, banked where a state scrolls it into view) and D6/D7 (ARIA-only, pixel-invisible)."
     },
     {
-      "flag": "NEW: kit control CSS is #stApp-scoped and never matches this build",
-      "note": "The v4.11 control-kit font/placeholder rules (#stApp .st-btn, #stApp .st-cellin::placeholder, …) target a container id this split does not render, so those controls fall to UA defaults (font family, placeholder color #757575). Rendered truth banked; normalization maps the UA fallbacks to the token faces/roles via recorded lowest-specificity rules (fontSwap + findReplaces). Routed as a prototype styling defect, never fixed in the frames beyond the mandated font swap."
+      "flag": "CARRIED: kit control CSS is #stApp-scoped and never matches this build",
+      "note": "The v4.11 control-kit font/placeholder rules target a container id this split does not render, so those controls fall to UA defaults. Rendered truth banked; normalization maps the UA fallbacks to the token faces/roles via recorded lowest-specificity rules (fontSwap + metric-neutral line-height pins). Routed as a prototype styling defect, never fixed in the frames beyond the mandated font swap."
+    },
+    {
+      "flag": "NEW: the r86 index-picker menu scrolls at its own content",
+      "note": "Rendered truth (raw prototype, Google-Fonts Heebo loaded, Chromium): menu clientHeight 358 vs scrollHeight 378 — ten options render at 37px each (Bill's L796 comment sized them at ~32px: \"ten index funds at ~32px each is 320, and a menu that scrolls at exactly its own content is a defect\"). The render contradicts the comment's arithmetic; per the prototype-canonical clause the RENDER wins and the frames bank the ~20px-clipped tenth row (key-bench-open). The port should hold all ten without scrolling (Bill's own stated intent) — a land-stage obligation, flagged not fixed."
     }
+  ],
+  "dispatchDiscrepanciesSeen": [
+    "The dispatch's prior-recipe slot read \"(none - first capture)\" but this is a v002 RE-ORACLE: the v001 capture artifact (design-specs 4-approved GC-017-security-watchlist.capture.json, replaced by this one) carries the prior normalization recipe and judgment calls, and design-rules rule 37 cites its DJ-001..DJ-004 as standing. Step L2 was SEEDED from the v001 recipe as the convergence-loop doc intends, extended for the r86–r91 delta (--ts-scrub ink remap, Remove-column danger pair, --grid2/--det, v002 find-replace anchors).",
+    "The packaged semantic-color-tokens.md skill names T2 as $colors-{category}-{role}; the live hemlock-library.lib.pen vocabulary is $sem-{category}-{role} (as the token-guide and all 17 prior GC captures bind). Followed the live library + v001 precedent; skill copy naming drift reported, not improvised around.",
+    "The packaged pencil-design.md predates the 0.3.x CLI surface (as the environment facts already declare — superseded on CLI/package/export mechanics)."
   ],
   "verdict": "captured"
 }
