@@ -426,6 +426,8 @@
                 <span class="chip-stack" id="chipStack"></span>
               </button>
             </div>
+            <button class="hotspot" data-action="type" title="Tap input to type"
+              style="left:62px; top:763px; width:320px; height:54px; border-radius:12px;"></button>
             <button class="hotspot" data-action="voice" title="Start voice input"
               style="left:294px; top:820px; width:34px; height:34px;"></button>
             <button class="hotspot" data-action="restart" title="Close panel (restarts demo)"
@@ -569,6 +571,7 @@
         const hs = e.target.closest(".hotspot");
         if (!hs) return;
         const action = hs.dataset.action;
+        if (action === "type") { typedLine.classList.remove("visible"); go("promptSelected"); }
         if (action === "voice") go("recording");
         if (action === "stop-recording") go("transcribing");
         if (action === "send-first") go("conversation");
