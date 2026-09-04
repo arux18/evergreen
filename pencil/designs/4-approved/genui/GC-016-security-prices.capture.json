@@ -3,10 +3,10 @@
  "componentId": "GC-016",
  "slug": "security-prices",
  "penPath": "pencil/designs/4-approved/genui/GC-016-security-prices.pen",
- "contentHash": "sha256:1811e919f784c596932fd98d01faf4e137af0ea082d29af4debc8447d2ad9237",
- "capturedAt": "2026-09-04T08:07:23Z",
+ "contentHash": "sha256:27851c55cdcb2ed3515d33378b2b925ce0ad85110580c10249de6f34284247fc",
+ "capturedAt": "2026-09-04T08:54:40Z",
  "prototypeVersion": "002",
- "prototypeContentHash": "sha256:2af7acfd0304aac9d03596f2e0193789adf1ee547425897f0a6b6b168625f187",
+ "prototypeContentHash": "sha256:cb3e8d8db22120a6bebb9c6aa46c9a6f3cb8f115846a0c62e424dff94e35245f",
  "frames": [
   "prices-default",
   "prices-range-1y",
@@ -41,7 +41,7 @@
   "iterationsUsed": 1,
   "pencilVersion": "@pen.dev/cli 0.3.5",
   "comparison": "pixelmatch threshold 0.1, pen interactive Export scale 2 (default) vs Playwright deviceScaleFactor-2 captures of the NORMALIZED prototype clipped at the rounded capture-root rect. Chromium 140.0.7339.16 headless-shell (playwright 1.55.0) launched with --disable-lcd-text --force-color-profile=srgb --font-render-hinting=none (grayscale AA aligned to the pen rasterizer, per the v001 round-6 finding). Protocol: reducedMotion:reduce, animation/transition freeze CSS, document.fonts.ready, states.json step drive, 2500ms deferred-timer settle, pointer parked at 0,0, EMPTY localStorage per state (fresh context). PROTOCOL DELTA vs v001: NO snap transform on the capture root - Chrome pixel-snaps box decorations at layout position BEFORE applying transforms, so a fractional-root snap transform shifts painted borders 0.5px into the targets (measured on the body-mounted dialogs); instead the clip is the ROUNDED root rect, extraction coordinates are relative to that rounded origin, and the .pen reproduces Chrome box-decoration rounding (round-half-up to CSS integers on HTML-derived rects; text and svg stay at painted fractional positions).",
-  "determinism": "double-export verified at the committed path: all 28 frame exports byte-identical across two pen interactive sessions at @pen.dev/cli 0.3.5. The 26 carried frames additionally export byte-identical to the FE-2152 lock round exportSha256 values (author-machine reproduction verified 2026-09-04).",
+  "determinism": "double-export verified at the committed path: all 28 frame exports byte-identical across two pen interactive sessions at @pen.dev/cli 0.3.5. The 27 carried frames additionally export byte-identical to the locked exportSha256 values of the FE-2162 amendment round (author-machine reproduction verified 2026-09-04); secdata-sorted is the re-authored frame (new exportSha256 in perState).",
   "authoringMethod": "frames generated from measured DOM geometry of the normalized prototype (v001 method): per-state Playwright walk emitting CSS-painting-order scenes (rects / word-level text runs / svg shapes in CSS-px space via getScreenCTM), token-bound by role at assembly; per-(family,size,weight,lineHeight) text-baseline calibration measured with the SAME glyph-top pixel estimator in both rasterizers (53 combos); Chrome-specific behaviors reproduced: box-decoration pixel snapping, text-overflow ellipsis character truncation, CSS-triangle carets, ::before/::after materialization (KPI top bar, sticky-cell cover, pick indicators), UA list markers (measured disc geometry), UA range-slider synthesis from the r92 .sf-range rules (the -webkit-slider-* pseudos are not resolvable via getComputedStyle), rotated text via rigid CTM mapping, z-index stacking-context hoisting, overflow clipping.",
   "iterationHistory": [
    {
@@ -67,6 +67,10 @@
    {
     "round": "FE-2162 amendment r1 (2026-09-04)",
     "result": "28/28 <= 1.0% (worst 0.799% carried, new frames 0.341%/0.154%) - two amendment frames authored from measured DOM of the normalized ORACLE STANDALONE; 26 carried frames re-verified, reproduce locked diffPct values exactly"
+   },
+   {
+    "round": "FE-2152 D7 amendment r1 (2026-09-04, scoped re-capture)",
+    "result": "28/28 <= 1.0% (worst 0.799% carried; secdata-sorted re-authored at 0.207% vs 0.209% locked) - the secdata-sorted frame re-authored against the Amendment-3 ORACLE STANDALONE (sha256:cb3e8d8d..., hash-verified; numeric sort per owner ruling on flags D7, option b). The amended DOM differs from the locked frame ONLY in the order of the first three body rows (TR[1M]/Volatility/TR[1Y] replacing TR[1Y]/TR[1M]/Volatility); band geometry measured IDENTICAL on the normalized standalone (row pitch 45.297, snapped bands 181/226/271), so the re-authoring is an exact band permutation of the locked frame’s own token-bound nodes (84 nodes: 54 rects, 30 text runs). 27 carried frames re-verified against fresh normalized-standalone targets: reproduce locked diffPct values exactly AND export byte-identical to the locked exportSha256 values."
    }
   ],
   "perState": [
@@ -210,9 +214,9 @@
    },
    {
     "state": "secdata-sorted",
-    "diffPct": 0.209,
+    "diffPct": 0.207,
     "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "54d222437bba9bbf9ba1ce84fcba6e8725d5472762de2fe54dd7aa825f3aba13"
+    "exportSha256": "3def3001a6a454a3fbddff11716970617ad762b135adb2c07c0a6a92b5afaa35"
    },
    {
     "state": "secdata-download-modal",
@@ -241,11 +245,19 @@
   ],
   "waivers": [],
   "amendmentRound": {
-   "wo": "FE-2162",
-   "basis": "Extension capture: the FE-2152 v002 lock (26 frames, captured 2026-09-03 against Bill's source r95 sha256:6a762cc6...) predates the FE-2162 amendment, which repointed the oracle to the byte-identical-carve ORACLE STANDALONE (sha256:2af7acfd..., hash-verified on disk before authoring) and added states comparison-loss-making-pe + secdata-loss-making-pe (28 total). The 26 pre-existing frames are carried VERBATIM (contract: 26/26 states render byte-identically between source and standalone) and re-verified honestly in this round: fresh normalization of the STANDALONE per the recorded recipe, fresh Playwright targets for all 28 states, full 28-state compare - the 26 carried frames reproduce their locked diffPct values exactly. The 2 new frames were authored with the same measured-DOM method, calibrated against the sibling frames (comparison-default / secdata-default): node-template validation reproduced the sibling regions 185/193 + 73/73 + bubbles 10/10 + input words 7/7 before authoring the new states. Converged in 1 honest iteration (0.341% / 0.154%).",
-   "authoringDelta": "Filler truth-layering: the sibling frames paint the td/th ::after fillers as full-height plain surface; the rendered truth shows the row bottom border and the header band gradient + borders-light hairline continuing under the fillers (sub-pixelmatch-threshold in the carried frames, sampled and verified in the targets). The two NEW frames paint the fillers as surface body + border strip (td) and band gradient + hairline strip (th) - same tokens, closer to the rendered truth (secdata-loss-making-pe lands at 0.154% vs the sibling's 0.238%). The carried frames are NOT retouched - they are the locked lock.",
-   "seriesColorNote": "Per token rule 3 / the recorded series-order judgment call: the amendment set is 'NVDA, RIVN', so NVDA is series index 0 and its bubble/label bind chart color-01 roles (fill #8951F01F / stroke #8951F02E / label #553295 = the r74 0.62 dark shade, all verified against the measured normalized rendering) - NOT the color-03 NVDA rides in the default 7-symbol set. RIVN draws NO bubble (rule 48 not-applicable branch); the omission is the state's contract."
-  }
+   "wo": "FE-2152",
+   "basis": "Scoped re-capture at the SAME prototypeVersion 002: the FE-2162-amendment lock (28 frames, prototypeContentHash sha256:2af7acfd...) predates FE-2152 Amendment 3 (owner ruling 2026-09-04 ~08:20Z on flags.json D7, option b - numeric sort), which patched the ORACLE STANDALONE in place (selSortNum comparator) and re-pinned prototype.contentHash to sha256:cb3e8d8d... . Per the contract, 27/28 states render identically before/after the patch; only secdata-sorted changes (the ascending body order). This round: fresh normalization of the cb3e8d8d standalone per the recorded recipe, fresh Playwright targets for all 28 states (Chromium headless-shell 140.0.7339.16 / playwright 1.55.0, recorded protocol), secdata-sorted re-authored as an exact band permutation of the locked frame’s own nodes (row order verified against measured DOM of the normalized standalone), full 28-state compare converged in 1 honest iteration.",
+   "authoringDelta": "secdata-sorted only: the first three body-row bands permute (TR[1Y]->band 3, TR[1M]->band 1, Volatility->band 2) with all intra-band geometry, tokens, and text content carried verbatim from the locked frame. No other frame touched; the GC-017 scoped-re-capture precedent (48ae6e2) is the promotion shape.",
+   "seriesColorNote": "unchanged from the FE-2162 round (NVDA rides color-01 in the amendment set; RIVN draws no bubble)."
+  },
+  "priorAmendmentRounds": [
+   {
+    "wo": "FE-2162",
+    "basis": "Extension capture: the FE-2152 v002 lock (26 frames, captured 2026-09-03 against Bill's source r95 sha256:6a762cc6...) predates the FE-2162 amendment, which repointed the oracle to the byte-identical-carve ORACLE STANDALONE (sha256:2af7acfd..., hash-verified on disk before authoring) and added states comparison-loss-making-pe + secdata-loss-making-pe (28 total). The 26 pre-existing frames are carried VERBATIM (contract: 26/26 states render byte-identically between source and standalone) and re-verified honestly in this round: fresh normalization of the STANDALONE per the recorded recipe, fresh Playwright targets for all 28 states, full 28-state compare - the 26 carried frames reproduce their locked diffPct values exactly. The 2 new frames were authored with the same measured-DOM method, calibrated against the sibling frames (comparison-default / secdata-default): node-template validation reproduced the sibling regions 185/193 + 73/73 + bubbles 10/10 + input words 7/7 before authoring the new states. Converged in 1 honest iteration (0.341% / 0.154%).",
+    "authoringDelta": "Filler truth-layering: the sibling frames paint the td/th ::after fillers as full-height plain surface; the rendered truth shows the row bottom border and the header band gradient + borders-light hairline continuing under the fillers (sub-pixelmatch-threshold in the carried frames, sampled and verified in the targets). The two NEW frames paint the fillers as surface body + border strip (td) and band gradient + hairline strip (th) - same tokens, closer to the rendered truth (secdata-loss-making-pe lands at 0.154% vs the sibling's 0.238%). The carried frames are NOT retouched - they are the locked lock.",
+    "seriesColorNote": "Per token rule 3 / the recorded series-order judgment call: the amendment set is 'NVDA, RIVN', so NVDA is series index 0 and its bubble/label bind chart color-01 roles (fill #8951F01F / stroke #8951F02E / label #553295 = the r74 0.62 dark shade, all verified against the measured normalized rendering) - NOT the color-03 NVDA rides in the default 7-symbol set. RIVN draws NO bubble (rule 48 not-applicable branch); the omission is the state's contract."
+   }
+  ]
  },
  "normalizationRecipe": {
   "cssVariableInjections": [
@@ -1418,8 +1430,8 @@
    "note": "The static LTM scrubber badge is banked as rendered in prices-scrubber-keyboard, per the carried flag."
   },
   {
-   "flag": "D7 (flags.json, already recorded)",
-   "note": "The lexicographic first-click sort order is banked as rendered in secdata-sorted, per the flag."
+   "flag": "D7 (flags.json, resolved by owner ruling 2026-09-04, option b - FE-2152 Amendment 3)",
+   "note": "The pre-ruling lexicographic first-click sort order was banked in the FE-2162-round secdata-sorted frame; this scoped re-capture re-authors that frame against the Amendment-3 oracle standalone, banking the ruled NUMERIC ascending order (+5.24% < 15.33% < +39.78%, then the non-numeric block in display order - probe picks-table-sorted-order). The display-string order must never return."
   },
   {
    "flag": "DC-3 (new at v002, cosmetic)",
