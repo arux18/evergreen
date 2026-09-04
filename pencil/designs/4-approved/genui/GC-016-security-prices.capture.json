@@ -3,10 +3,10 @@
  "componentId": "GC-016",
  "slug": "security-prices",
  "penPath": "pencil/designs/4-approved/genui/GC-016-security-prices.pen",
- "contentHash": "sha256:33ec20c62adbcc98a2dae3d7f2627dd2a44c64f674df4059e6449483c4590edc",
- "capturedAt": "2026-09-03T21:51:38Z",
+ "contentHash": "sha256:1811e919f784c596932fd98d01faf4e137af0ea082d29af4debc8447d2ad9237",
+ "capturedAt": "2026-09-04T08:07:23Z",
  "prototypeVersion": "002",
- "prototypeContentHash": "sha256:6a762cc6367217e8d2984388b5a77e68cf39be36d157aa88f0c0d914853e315d",
+ "prototypeContentHash": "sha256:2af7acfd0304aac9d03596f2e0193789adf1ee547425897f0a6b6b168625f187",
  "frames": [
   "prices-default",
   "prices-range-1y",
@@ -33,13 +33,15 @@
   "secdata-item-added",
   "secdata-sorted",
   "secdata-download-modal",
-  "prices-narrow"
+  "prices-narrow",
+  "comparison-loss-making-pe",
+  "secdata-loss-making-pe"
  ],
  "convergence": {
-  "iterationsUsed": 5,
+  "iterationsUsed": 1,
   "pencilVersion": "@pen.dev/cli 0.3.5",
   "comparison": "pixelmatch threshold 0.1, pen interactive Export scale 2 (default) vs Playwright deviceScaleFactor-2 captures of the NORMALIZED prototype clipped at the rounded capture-root rect. Chromium 140.0.7339.16 headless-shell (playwright 1.55.0) launched with --disable-lcd-text --force-color-profile=srgb --font-render-hinting=none (grayscale AA aligned to the pen rasterizer, per the v001 round-6 finding). Protocol: reducedMotion:reduce, animation/transition freeze CSS, document.fonts.ready, states.json step drive, 2500ms deferred-timer settle, pointer parked at 0,0, EMPTY localStorage per state (fresh context). PROTOCOL DELTA vs v001: NO snap transform on the capture root - Chrome pixel-snaps box decorations at layout position BEFORE applying transforms, so a fractional-root snap transform shifts painted borders 0.5px into the targets (measured on the body-mounted dialogs); instead the clip is the ROUNDED root rect, extraction coordinates are relative to that rounded origin, and the .pen reproduces Chrome box-decoration rounding (round-half-up to CSS integers on HTML-derived rects; text and svg stay at painted fractional positions).",
-  "determinism": "double-export verified at the committed path: all 26 frame exports byte-identical across two pen interactive sessions at @pen.dev/cli 0.3.5, and byte-identical to the convergence-run exports from the authoring workdir.",
+  "determinism": "double-export verified at the committed path: all 28 frame exports byte-identical across two pen interactive sessions at @pen.dev/cli 0.3.5. The 26 carried frames additionally export byte-identical to the FE-2152 lock round exportSha256 values (author-machine reproduction verified 2026-09-04).",
   "authoringMethod": "frames generated from measured DOM geometry of the normalized prototype (v001 method): per-state Playwright walk emitting CSS-painting-order scenes (rects / word-level text runs / svg shapes in CSS-px space via getScreenCTM), token-bound by role at assembly; per-(family,size,weight,lineHeight) text-baseline calibration measured with the SAME glyph-top pixel estimator in both rasterizers (53 combos); Chrome-specific behaviors reproduced: box-decoration pixel snapping, text-overflow ellipsis character truncation, CSS-triangle carets, ::before/::after materialization (KPI top bar, sticky-cell cover, pick indicators), UA list markers (measured disc geometry), UA range-slider synthesis from the r92 .sf-range rules (the -webkit-slider-* pseudos are not resolvable via getComputedStyle), rotated text via rigid CTM mapping, z-index stacking-context hoisting, overflow clipping.",
   "iterationHistory": [
    {
@@ -61,6 +63,10 @@
    {
     "round": 5,
     "result": "26/26 <= 1.0% (worst 0.799%) - capture-protocol correction (transform-free rounded-clip roots; measurement side - the snap transform had been shifting Chrome box paint inside the TARGETS of the dialog states), r92 date-slider synthesis (track+thumb; the -webkit-slider-* pseudo styles resolve empty via getComputedStyle so the slider had been silently missing), rotated y-axis title (effective font scale under rotation), sub-threshold caret shape-integrity fix verified by a confirmation re-compare (26/26 before and after; no threshold chasing)"
+   },
+   {
+    "round": "FE-2162 amendment r1 (2026-09-04)",
+    "result": "28/28 <= 1.0% (worst 0.799% carried, new frames 0.341%/0.154%) - two amendment frames authored from measured DOM of the normalized ORACLE STANDALONE; 26 carried frames re-verified, reproduce locked diffPct values exactly"
    }
   ],
   "perState": [
@@ -219,9 +225,27 @@
     "diffPct": 0.799,
     "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
     "exportSha256": "b1d0e8432c3c1da055e7f8526791078d202ebff575073717695f6d71e2449449"
+   },
+   {
+    "state": "comparison-loss-making-pe",
+    "diffPct": 0.341,
+    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "348b73509284458e11524f706faf606b0175993895cb70dedf2dab3978bc88ec"
+   },
+   {
+    "state": "secdata-loss-making-pe",
+    "diffPct": 0.154,
+    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "1b9f1e1bbf1c967db58dd48afeb4c271a70f1cb46badaa08b1c118fd99bd2ee6"
    }
   ],
-  "waivers": []
+  "waivers": [],
+  "amendmentRound": {
+   "wo": "FE-2162",
+   "basis": "Extension capture: the FE-2152 v002 lock (26 frames, captured 2026-09-03 against Bill's source r95 sha256:6a762cc6...) predates the FE-2162 amendment, which repointed the oracle to the byte-identical-carve ORACLE STANDALONE (sha256:2af7acfd..., hash-verified on disk before authoring) and added states comparison-loss-making-pe + secdata-loss-making-pe (28 total). The 26 pre-existing frames are carried VERBATIM (contract: 26/26 states render byte-identically between source and standalone) and re-verified honestly in this round: fresh normalization of the STANDALONE per the recorded recipe, fresh Playwright targets for all 28 states, full 28-state compare - the 26 carried frames reproduce their locked diffPct values exactly. The 2 new frames were authored with the same measured-DOM method, calibrated against the sibling frames (comparison-default / secdata-default): node-template validation reproduced the sibling regions 185/193 + 73/73 + bubbles 10/10 + input words 7/7 before authoring the new states. Converged in 1 honest iteration (0.341% / 0.154%).",
+   "authoringDelta": "Filler truth-layering: the sibling frames paint the td/th ::after fillers as full-height plain surface; the rendered truth shows the row bottom border and the header band gradient + borders-light hairline continuing under the fillers (sub-pixelmatch-threshold in the carried frames, sampled and verified in the targets). The two NEW frames paint the fillers as surface body + border strip (td) and band gradient + hairline strip (th) - same tokens, closer to the rendered truth (secdata-loss-making-pe lands at 0.154% vs the sibling's 0.238%). The carried frames are NOT retouched - they are the locked lock.",
+   "seriesColorNote": "Per token rule 3 / the recorded series-order judgment call: the amendment set is 'NVDA, RIVN', so NVDA is series index 0 and its bubble/label bind chart color-01 roles (fill #8951F01F / stroke #8951F02E / label #553295 = the r74 0.62 dark shade, all verified against the measured normalized rendering) - NOT the color-03 NVDA rides in the default 7-symbol set. RIVN draws NO bubble (rule 48 not-applicable branch); the omission is the state's contract."
+  }
  },
  "normalizationRecipe": {
   "cssVariableInjections": [
