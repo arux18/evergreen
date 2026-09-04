@@ -3,8 +3,8 @@
  "componentId": "GC-016",
  "slug": "security-prices",
  "penPath": "pencil/designs/4-approved/genui/GC-016-security-prices.pen",
- "contentHash": "sha256:27851c55cdcb2ed3515d33378b2b925ce0ad85110580c10249de6f34284247fc",
- "capturedAt": "2026-09-04T08:54:40Z",
+ "contentHash": "sha256:d6858197bc85bf9a371ca3de8e671e132acfbedcd7c54a005a7980dd6e34c641",
+ "capturedAt": "2026-09-04T09:18:59Z",
  "prototypeVersion": "002",
  "prototypeContentHash": "sha256:cb3e8d8db22120a6bebb9c6aa46c9a6f3cb8f115846a0c62e424dff94e35245f",
  "frames": [
@@ -40,9 +40,9 @@
  "convergence": {
   "iterationsUsed": 1,
   "pencilVersion": "@pen.dev/cli 0.3.5",
-  "comparison": "pixelmatch threshold 0.1, pen interactive Export scale 2 (default) vs Playwright deviceScaleFactor-2 captures of the NORMALIZED prototype clipped at the rounded capture-root rect. Chromium 140.0.7339.16 headless-shell (playwright 1.55.0) launched with --disable-lcd-text --force-color-profile=srgb --font-render-hinting=none (grayscale AA aligned to the pen rasterizer, per the v001 round-6 finding). Protocol: reducedMotion:reduce, animation/transition freeze CSS, document.fonts.ready, states.json step drive, 2500ms deferred-timer settle, pointer parked at 0,0, EMPTY localStorage per state (fresh context). PROTOCOL DELTA vs v001: NO snap transform on the capture root - Chrome pixel-snaps box decorations at layout position BEFORE applying transforms, so a fractional-root snap transform shifts painted borders 0.5px into the targets (measured on the body-mounted dialogs); instead the clip is the ROUNDED root rect, extraction coordinates are relative to that rounded origin, and the .pen reproduces Chrome box-decoration rounding (round-half-up to CSS integers on HTML-derived rects; text and svg stay at painted fractional positions).",
-  "determinism": "double-export verified at the committed path: all 28 frame exports byte-identical across two pen interactive sessions at @pen.dev/cli 0.3.5. The 27 carried frames additionally export byte-identical to the locked exportSha256 values of the FE-2162 amendment round (author-machine reproduction verified 2026-09-04); secdata-sorted is the re-authored frame (new exportSha256 in perState).",
-  "authoringMethod": "frames generated from measured DOM geometry of the normalized prototype (v001 method): per-state Playwright walk emitting CSS-painting-order scenes (rects / word-level text runs / svg shapes in CSS-px space via getScreenCTM), token-bound by role at assembly; per-(family,size,weight,lineHeight) text-baseline calibration measured with the SAME glyph-top pixel estimator in both rasterizers (53 combos); Chrome-specific behaviors reproduced: box-decoration pixel snapping, text-overflow ellipsis character truncation, CSS-triangle carets, ::before/::after materialization (KPI top bar, sticky-cell cover, pick indicators), UA list markers (measured disc geometry), UA range-slider synthesis from the r92 .sf-range rules (the -webkit-slider-* pseudos are not resolvable via getComputedStyle), rotated text via rigid CTM mapping, z-index stacking-context hoisting, overflow clipping.",
+  "comparison": "pixelmatch threshold 0.1, pen interactive Export scale 2 (default) vs Playwright deviceScaleFactor-2 captures of the NORMALIZED prototype clipped at the rounded capture-root rect. Chromium 140.0.7339.16 headless-shell (playwright 1.55.0) launched with --disable-lcd-text --force-color-profile=srgb --font-render-hinting=none (grayscale AA aligned to the pen rasterizer, per the v001 round-6 finding). Protocol: reducedMotion:reduce, animation/transition freeze CSS, document.fonts.ready, states.json step drive, 2500ms deferred-timer settle, pointer parked at 0,0, EMPTY localStorage per state (fresh context). PROTOCOL DELTA vs v001: NO snap transform on the capture root - Chrome pixel-snaps box decorations at layout position BEFORE applying transforms, so a fractional-root snap transform shifts painted borders 0.5px into the targets (measured on the body-mounted dialogs); instead the clip is the ROUNDED root rect, extraction coordinates are relative to that rounded origin, and the .pen reproduces Chrome box-decoration rounding (round-half-up to CSS integers on HTML-derived rects; text and svg stay at painted fractional positions). PROTOCOL DELTA for prices-datepicker-years ONLY (owner ruling FE-2152 comment 548f912a, 2026-09-04 08:55Z): waitMs >= 1000 after BOTH the .tkdd-trigger click and the .ui-dp-head .m click; a pre-bank text probe asserts the year grid is rendered (.ui-dp-ygrid present, 24 cells 2003-2026, 2016-2026 present and enabled, 2003-2015 disabled per r88/r89) BEFORE the frame banks and again after the 2500ms settle - a miss REFUSES the bank, never a duplicate; PARK EXEMPTION - the pointer stays on the month-head span (.m, no hover styling) instead of parking at 0,0, because .ui-dp-pop rebuilds the DAY grid on pointerleave (mouse) - parking is what silently reverted the grid and banked the prior duplicate (GC-017 scrubber-pin precedent). All other 27 states run the recorded protocol unchanged.",
+  "determinism": "double-export verified at the committed path: all 28 frame exports byte-identical across two pen interactive sessions at @pen.dev/cli 0.3.5 (Linux; Chromium targets 140.0.7339.16/playwright 1.55.0). The 27 carried frames export byte-identical to the locked exportSha256 values of the FE-2152 D7 round AND reproduce their locked diffPct values exactly against fresh normalized-standalone targets; prices-datepicker-years is the re-authored frame (new exportSha256 in perState; the prior lock's value for this frame was byte-identical to prices-datepicker-open - the duplicate this round retires).",
+  "authoringMethod": "frames generated from measured DOM geometry of the normalized prototype (v001 method): per-state Playwright walk emitting CSS-painting-order scenes (rects / word-level text runs / svg shapes in CSS-px space via getScreenCTM), token-bound by role at assembly; per-(family,size,weight,lineHeight) text-baseline calibration measured with the SAME glyph-top pixel estimator in both rasterizers (53 combos); Chrome-specific behaviors reproduced: box-decoration pixel snapping, text-overflow ellipsis character truncation, CSS-triangle carets, ::before/::after materialization (KPI top bar, sticky-cell cover, pick indicators), UA list markers (measured disc geometry), UA range-slider synthesis from the r92 .sf-range rules (the -webkit-slider-* pseudos are not resolvable via getComputedStyle), rotated text via rigid CTM mapping, z-index stacking-context hoisting, overflow clipping. This round: prices-datepicker-years re-authored as a popover-interior delta on its own carried scene - children 0-212 (card, chart, custom row, popover panel + head 'April 2021' + nav buttons) carried verbatim from the frame's locked nodes (content-identical to prices-datepicker-open by construction of the duplicate); the day grid (weekday header + 42 day cells + selected-day rect) replaced by the measured year grid: 24 text runs (4x6 grid, 2px gap, day-grid-height container) + the 2021 selected-year rect, positions from measured DOM of the normalized standalone (round-half-up box snapping on the rect; text at painted fractional positions via the carried per-combo baseline deltas: Heebo 13px lh1 w400/w600 dy=+3.0, dx=0, re-derived empirically from the frame's own day-grid nodes and constant across all 49 day-grid samples).",
   "iterationHistory": [
    {
     "round": 1,
@@ -71,6 +71,10 @@
    {
     "round": "FE-2152 D7 amendment r1 (2026-09-04, scoped re-capture)",
     "result": "28/28 <= 1.0% (worst 0.799% carried; secdata-sorted re-authored at 0.207% vs 0.209% locked) - the secdata-sorted frame re-authored against the Amendment-3 ORACLE STANDALONE (sha256:cb3e8d8d..., hash-verified; numeric sort per owner ruling on flags D7, option b). The amended DOM differs from the locked frame ONLY in the order of the first three body rows (TR[1M]/Volatility/TR[1Y] replacing TR[1Y]/TR[1M]/Volatility); band geometry measured IDENTICAL on the normalized standalone (row pitch 45.297, snapped bands 181/226/271), so the re-authoring is an exact band permutation of the locked frame’s own token-bound nodes (84 nodes: 54 rects, 30 text runs). 27 carried frames re-verified against fresh normalized-standalone targets: reproduce locked diffPct values exactly AND export byte-identical to the locked exportSha256 values."
+   },
+   {
+    "round": "FE-2152 datepicker-years recipe amendment r1 (2026-09-04, scoped re-capture)",
+    "result": "28/28 <= 1.0% (worst 0.799% carried; prices-datepicker-years re-authored at 0.482% vs the fresh year-grid target) - the prior lock had banked prices-datepicker-years as a BYTE-DUPLICATE of prices-datepicker-open (identical exportSha256 a62c536f..., identical 0.506% diff vs the DAY-GRID target): the 300ms recipe waits plus the pointer park at 0,0 let .ui-dp-pop's pointerleave handler rebuild the day grid before the shot, so the year grid never rendered in the banked target. This round applies the owner-ruled recipe (>=1000ms waits, pre-bank year-grid probe with refuse-on-miss, park exemption on the month-head span), re-renders all 28 targets fresh, re-authors ONLY the years frame (24 year cells 2003-2026: 2003-2015 disabled at node opacity .3 per the recorded dim idiom, 2021 selected on $y:sem-btnPrimaryBg / $y:sem-text-reverse, enabled years $y:sem-text-header), and re-verifies the 27 carried frames: byte-identical exports to the locked hashes, locked diffPct values reproduced exactly. Converged in 1 honest iteration."
    }
   ],
   "perState": [
@@ -106,9 +110,9 @@
    },
    {
     "state": "prices-datepicker-years",
-    "diffPct": 0.506,
+    "diffPct": 0.482,
     "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "a62c536f8f0a365d4a38381d281e09c55d9182eac8006b25980de42a2b026033"
+    "exportSha256": "febad8860d870495f98eb4130029685ef6f426ef5e388f9cc14bad524405ad8d"
    },
    {
     "state": "prices-series-hidden",
@@ -244,20 +248,26 @@
    }
   ],
   "waivers": [],
-  "amendmentRound": {
-   "wo": "FE-2152",
-   "basis": "Scoped re-capture at the SAME prototypeVersion 002: the FE-2162-amendment lock (28 frames, prototypeContentHash sha256:2af7acfd...) predates FE-2152 Amendment 3 (owner ruling 2026-09-04 ~08:20Z on flags.json D7, option b - numeric sort), which patched the ORACLE STANDALONE in place (selSortNum comparator) and re-pinned prototype.contentHash to sha256:cb3e8d8d... . Per the contract, 27/28 states render identically before/after the patch; only secdata-sorted changes (the ascending body order). This round: fresh normalization of the cb3e8d8d standalone per the recorded recipe, fresh Playwright targets for all 28 states (Chromium headless-shell 140.0.7339.16 / playwright 1.55.0, recorded protocol), secdata-sorted re-authored as an exact band permutation of the locked frame’s own nodes (row order verified against measured DOM of the normalized standalone), full 28-state compare converged in 1 honest iteration.",
-   "authoringDelta": "secdata-sorted only: the first three body-row bands permute (TR[1Y]->band 3, TR[1M]->band 1, Volatility->band 2) with all intra-band geometry, tokens, and text content carried verbatim from the locked frame. No other frame touched; the GC-017 scoped-re-capture precedent (48ae6e2) is the promotion shape.",
-   "seriesColorNote": "unchanged from the FE-2162 round (NVDA rides color-01 in the amendment set; RIVN draws no bubble)."
-  },
   "priorAmendmentRounds": [
+   {
+    "wo": "FE-2152",
+    "basis": "Scoped re-capture at the SAME prototypeVersion 002: the FE-2162-amendment lock (28 frames, prototypeContentHash sha256:2af7acfd...) predates FE-2152 Amendment 3 (owner ruling 2026-09-04 ~08:20Z on flags.json D7, option b - numeric sort), which patched the ORACLE STANDALONE in place (selSortNum comparator) and re-pinned prototype.contentHash to sha256:cb3e8d8d... . Per the contract, 27/28 states render identically before/after the patch; only secdata-sorted changes (the ascending body order). This round: fresh normalization of the cb3e8d8d standalone per the recorded recipe, fresh Playwright targets for all 28 states (Chromium headless-shell 140.0.7339.16 / playwright 1.55.0, recorded protocol), secdata-sorted re-authored as an exact band permutation of the locked frame’s own nodes (row order verified against measured DOM of the normalized standalone), full 28-state compare converged in 1 honest iteration.",
+    "authoringDelta": "secdata-sorted only: the first three body-row bands permute (TR[1Y]->band 3, TR[1M]->band 1, Volatility->band 2) with all intra-band geometry, tokens, and text content carried verbatim from the locked frame. No other frame touched; the GC-017 scoped-re-capture precedent (48ae6e2) is the promotion shape.",
+    "seriesColorNote": "unchanged from the FE-2162 round (NVDA rides color-01 in the amendment set; RIVN draws no bubble)."
+   },
    {
     "wo": "FE-2162",
     "basis": "Extension capture: the FE-2152 v002 lock (26 frames, captured 2026-09-03 against Bill's source r95 sha256:6a762cc6...) predates the FE-2162 amendment, which repointed the oracle to the byte-identical-carve ORACLE STANDALONE (sha256:2af7acfd..., hash-verified on disk before authoring) and added states comparison-loss-making-pe + secdata-loss-making-pe (28 total). The 26 pre-existing frames are carried VERBATIM (contract: 26/26 states render byte-identically between source and standalone) and re-verified honestly in this round: fresh normalization of the STANDALONE per the recorded recipe, fresh Playwright targets for all 28 states, full 28-state compare - the 26 carried frames reproduce their locked diffPct values exactly. The 2 new frames were authored with the same measured-DOM method, calibrated against the sibling frames (comparison-default / secdata-default): node-template validation reproduced the sibling regions 185/193 + 73/73 + bubbles 10/10 + input words 7/7 before authoring the new states. Converged in 1 honest iteration (0.341% / 0.154%).",
     "authoringDelta": "Filler truth-layering: the sibling frames paint the td/th ::after fillers as full-height plain surface; the rendered truth shows the row bottom border and the header band gradient + borders-light hairline continuing under the fillers (sub-pixelmatch-threshold in the carried frames, sampled and verified in the targets). The two NEW frames paint the fillers as surface body + border strip (td) and band gradient + hairline strip (th) - same tokens, closer to the rendered truth (secdata-loss-making-pe lands at 0.154% vs the sibling's 0.238%). The carried frames are NOT retouched - they are the locked lock.",
     "seriesColorNote": "Per token rule 3 / the recorded series-order judgment call: the amendment set is 'NVDA, RIVN', so NVDA is series index 0 and its bubble/label bind chart color-01 roles (fill #8951F01F / stroke #8951F02E / label #553295 = the r74 0.62 dark shade, all verified against the measured normalized rendering) - NOT the color-03 NVDA rides in the default 7-symbol set. RIVN draws NO bubble (rule 48 not-applicable branch); the omission is the state's contract."
    }
-  ]
+  ],
+  "amendmentRound": {
+   "wo": "FE-2152",
+   "basis": "Scoped re-capture at the SAME prototypeVersion 002 and SAME prototype.contentHash sha256:cb3e8d8d... (no oracle change): owner ruling FE-2152 comment 548f912a (2026-09-04 08:55Z) amended the prices-datepicker-years capture recipe after the prior lock banked that frame as a byte-duplicate of prices-datepicker-open (the year grid reverts to the day grid on pointerleave of .ui-dp-pop; the recorded pointer-park destroyed it before the shot). Ruled recipe: waitMs >= 1000 after both the trigger click and the month-header click, plus a pre-bank text probe that the year grid is rendered (2016-2026 present, pre-2016 disabled per r88/r89) - a miss must refuse, not bank a duplicate. All other 27 frames unchanged. This round: fresh normalization per the recorded recipe, fresh Playwright targets for all 28 states (probe PASS: 24 cells 2003-2026, bounds exact), prices-datepicker-years re-authored from measured DOM, full 28-state compare converged in 1 honest iteration.",
+   "authoringDelta": "prices-datepicker-years only: children 0-212 carried verbatim; the 50 day-grid nodes replaced by 25 year-grid nodes (24 texts + 1 selected-year rect). Bindings reuse the frame's own established roles: enabled years $y:sem-text-header 13px w400, disabled years (2003-2015) same token at node opacity .3 (the r89 greyed treatment; the recorded muted/dim node-opacity idiom - designGaps non-token entry extended), 2021 selected $y:sem-btnPrimaryBg rect ($radius-menu) + $y:sem-text-reverse w600 - the exact selected-day idiom of the carried datepicker-open frame. No new tokens; no other frame touched.",
+   "labExecutionConstraints": "The lab re-render of this state MUST: (1) keep waitMs >= 1000 after the .tkdd-trigger click AND after the .ui-dp-head .m click; (2) assert the year-grid probe (.ui-dp-ygrid, 24 cells 2003-2026, 2003-2015 disabled, 2016-2026 enabled) before AND after the settle, refusing on a miss; (3) NOT park the pointer at 0,0 for this state - leave it on the month-head span (.m, hover-styling-free); .ui-dp-pop rebuilds the day grid on mouse pointerleave and .ui-dp-ygrid additionally rebuilds on its own pointerleave, so any pointer excursion outside the popover (or across the year grid) reverts the surface."
+  }
  },
  "normalizationRecipe": {
   "cssVariableInjections": [
@@ -1358,12 +1368,13 @@
   {
    "dimension": "non-token",
    "token": null,
-   "prototypeValue": "Muted/dim treatments ride node opacity, not color variants: KPI top bar opacity .95; muted KPI swatch keeps its series token under the ink wash (GC-004 hidden-swatch precedent)",
+   "prototypeValue": "Muted/dim treatments ride node opacity, not color variants: KPI top bar opacity .95; muted KPI swatch keeps its series token under the ink wash (GC-004 hidden-swatch precedent); .ui-dp-year:disabled rides the same idiom (opacity .3 on the year-cell text, the r89 greyed out-of-bounds treatment)",
    "lightValue": "opacity 0.95 (node property on token-bound fills)",
    "darkValue": "same",
    "appliesTo": [
     "prices-* (KPI top bars)",
-    "prices-series-hidden/all-hidden (swatches)"
+    "prices-series-hidden/all-hidden (swatches)",
+    "prices-datepicker-years (disabled year cells 2003-2015)"
    ],
    "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
    "reconciliation": {
