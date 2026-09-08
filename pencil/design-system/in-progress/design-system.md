@@ -554,23 +554,25 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 
 #### Categorical (15 series, priority-ordered)
 
-| Token | Value | Priority |
-|---|---|---|
-| `chart-categorical/color-01` | `#8951F0` | 1st |
-| `chart-categorical/color-02` | `#06B6D4` | 2nd |
-| `chart-categorical/color-03` | `#312E81` | 3rd |
-| `chart-categorical/color-04` | `#3B82F6` | 4th |
-| `chart-categorical/color-05` | `#0F766E` | 5th |
-| `chart-categorical/color-06` | `#38BDF8` | 6th |
-| `chart-categorical/color-07` | `#2DD4BF` | 7th |
-| `chart-categorical/color-08` | `#A78BFA` | 8th |
-| `chart-categorical/color-09` | `#C026D3` | 9th |
-| `chart-categorical/color-10` | `#E73CAE` | 10th |
-| `chart-categorical/color-11` | `#E879A8` | 11th |
-| `chart-categorical/color-12` | `#92400E` | 12th |
-| `chart-categorical/color-13` | `#FB923C` | 13th |
-| `chart-categorical/color-14` | `#CA8A04` | 14th |
-| `chart-categorical/color-15` | `#FACC15` | 15th |
+Source: `chart-palette-v5/evergreen-chart-palette-v5.css` (Evergreen Categorical Chart Palette v5). Five of the six v5 families (Azure, Teal, Iris, Plum, Ember — Cyan intentionally omitted), three steps each, in sequence order. No true green, so nothing competes with the gain/loss colors. Fills are pale in both themes — labels sitting on a fill must be dark ink.
+
+| Token | Light | Dark | Family | v5 slot | Priority |
+|---|---|---|---|---|---|
+| `chart-categorical/color-01` | `#7B96F1` | `#7993EE` | Azure | `--cat15` | 1st |
+| `chart-categorical/color-02` | `#89B6F9` | `#86B3F5` | Azure | `--cat1` | 2nd |
+| `chart-categorical/color-03` | `#95C5FB` | `#93C2F8` | Azure | `--cat29` | 3rd |
+| `chart-categorical/color-04` | `#74D5D1` | `#71D2CE` | Teal | `--cat10` | 4th |
+| `chart-categorical/color-05` | `#51CCD0` | `#4FCACE` | Teal | `--cat18` | 5th |
+| `chart-categorical/color-06` | `#19B6CC` | `#1ABAD0` | Teal | `--cat22` | 6th |
+| `chart-categorical/color-07` | `#B985DE` | `#B682DB` | Iris | `--cat3` | 7th |
+| `chart-categorical/color-08` | `#BAA9F5` | `#B7A6F2` | Iris | `--cat13` | 8th |
+| `chart-categorical/color-09` | `#BDBBFC` | `#BBB8F9` | Iris | `--cat21` | 9th |
+| `chart-categorical/color-10` | `#E6B1E5` | `#E3AEE2` | Plum | `--cat28` | 10th |
+| `chart-categorical/color-11` | `#E59FD4` | `#E39CD1` | Plum | `--cat24` | 11th |
+| `chart-categorical/color-12` | `#E37BA8` | `#E27BA7` | Plum | `--cat5` | 12th |
+| `chart-categorical/color-13` | `#E2903F` | `#E59342` | Ember | `--cat14` | 13th |
+| `chart-categorical/color-14` | `#FAA38E` | `#F8A18D` | Ember | `--cat2` | 14th |
+| `chart-categorical/color-15` | `#FEB0AF` | `#FBADAC` | Ember | `--cat16` | 15th |
 
 Always assign in priority order.
 
