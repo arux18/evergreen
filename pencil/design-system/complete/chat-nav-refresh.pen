@@ -82090,10 +82090,6 @@
                       "strokeAlignment": "inner",
                       "layout": "vertical",
                       "gap": 16,
-                      "padding": [
-                        0,
-                        24
-                      ],
                       "children": [
                         {
                           "type": "frame",
@@ -82826,7 +82822,7 @@
                           "ref": "MzoZn",
                           "name": "navShowFab",
                           "layoutPosition": "absolute",
-                          "x": -34,
+                          "x": -58,
                           "y": 0,
                           "descendants": {
                             "KSlnN": {
@@ -82855,10 +82851,6 @@
                       "strokeAlignment": "inner",
                       "layout": "vertical",
                       "gap": 16,
-                      "padding": [
-                        0,
-                        24
-                      ],
                       "children": [
                         {
                           "type": "frame",
@@ -83326,10 +83318,6 @@
                       "strokeAlignment": "inner",
                       "layout": "vertical",
                       "gap": 16,
-                      "padding": [
-                        0,
-                        24
-                      ],
                       "children": [
                         {
                           "type": "frame",
@@ -83924,7 +83912,7 @@
                       "ref": "MzoZn",
                       "name": "chatShowFab",
                       "layoutPosition": "absolute",
-                      "x": 1025,
+                      "x": 1048,
                       "y": 0,
                       "descendants": {
                         "KSlnN": {
@@ -85728,6 +85716,1897 @@
       "width": 340,
       "height": 0,
       "content": "Color tokens & dark mode\n\nSpecify roles, not hex. Every color binds a Hemlock token (imported under the g: alias), so dark mode is a theme switch on Hemlock’s 🎨 Colors axis rather than a redesign.\n\nPrimitives are fixed paint: $g:prim-blue-600 is always #3A6AF8, $g:prim-taupe-100 is always #F7F5F0. Never bind primitives on components — bind the semantic role.\n\nSemantic tokens carry the light/dark pair — $g:sem-chatBg, $g:sem-chatSendBg, $g:sem-navToggle*. Flip 🎨 Colors to Dark and every bound color remaps; components are never duplicated for dark.\n\nAccent shifts in dark (per Hemlock): primary prim-blue-600 → prim-blue-500, hover prim-blue-700 → prim-blue-400, disabled send prim-blue-200 → prim-blue-800.\n\nThe FAB rule already covers dark: the fill is the surface underneath, always opaque — never rgba.\n\nThis file defines no local tokens: everything comes from hemlock-library.lib.pen."
+    },
+    {
+      "type": "frame",
+      "id": "d6wd0f",
+      "x": 3950,
+      "y": 5826,
+      "name": "mainPanel - max width of view area: 1024px; 40px gutter",
+      "clip": true,
+      "fill": "#FFFFFF",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#2D292612",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 20
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "oO1X5",
+          "name": "contentColumn",
+          "height": 1876,
+          "fill": "#FFFFFF00",
+          "layout": "vertical",
+          "gap": 64,
+          "padding": [
+            "$g:spacing-md",
+            40,
+            48,
+            40
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "z2EFJR",
+              "name": "Canvases+Dividers",
+              "width": 1024,
+              "layout": "vertical",
+              "gap": 56,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "xnXN6",
+                  "name": "canvas",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF00",
+                  "stroke": "#E8E6E0",
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "FiQTx",
+                      "name": "canvasHeader",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "EFDms",
+                          "name": "header",
+                          "fill": "#0e0e0e",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Monthly Planning",
+                          "fontFamily": "Noto Serif",
+                          "fontSize": 20,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "BQ19G",
+                          "name": "subheader",
+                          "fill": "#403D3A",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "This is sample text that introduces the canvas content. This is sample text that introduces the canvas content.",
+                          "fontFamily": "Noto Serif",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "y2H4s",
+                      "name": "canvasGenUIComponent",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "iUv6a",
+                          "name": "summaryRow",
+                          "width": "fill_container",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "rwmlX",
+                              "name": "onTrack",
+                              "fill": "#2D2926",
+                              "content": "On track for",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "VTbpf",
+                              "name": "amount",
+                              "fill": "#2D2926",
+                              "content": "$16.8M",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "PiLIS",
+                              "name": "atAge",
+                              "fill": "#2D2926",
+                              "content": "at age 65",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "stuUw",
+                          "name": "chartGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "YV5nh",
+                              "name": "chartArea",
+                              "clip": true,
+                              "width": "fill_container",
+                              "padding": [
+                                20,
+                                0
+                              ],
+                              "alignItems": "end",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "a0vJ5",
+                                  "name": "c1",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "IFGj6",
+                                      "name": "amt1",
+                                      "fill": "#15803D",
+                                      "content": "$2.4M",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 12,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "dVJ1a",
+                                      "name": "bar1",
+                                      "width": 100,
+                                      "height": 44,
+                                      "fill": "#15803D",
+                                      "cornerRadius": 6
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "Y2ied6",
+                                  "name": "c2",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "tPMHH",
+                                      "name": "amt2",
+                                      "fill": "#0F766E",
+                                      "content": "$3.8M",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 12,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "jhHfj",
+                                      "name": "bar2",
+                                      "width": 100,
+                                      "height": 72,
+                                      "fill": "#0F766E",
+                                      "cornerRadius": 6
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "O7Idy",
+                                  "name": "c3",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "Ko4T2",
+                                      "name": "amt3",
+                                      "fill": "#B91C1C",
+                                      "content": "$7.2M",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 12,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "tidae",
+                                      "name": "bar3",
+                                      "width": 100,
+                                      "height": 110,
+                                      "fill": "#B91C1C",
+                                      "cornerRadius": 6
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "mhnvZ",
+                                  "name": "c4",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "reLug",
+                                      "name": "amt4",
+                                      "fill": "#3A6AF8",
+                                      "content": "$12.5M",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 12,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "EPKYu",
+                                      "name": "bar4",
+                                      "width": 100,
+                                      "height": 154,
+                                      "fill": "#3A6AF8",
+                                      "cornerRadius": 6
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "Fia0L",
+                                  "name": "c5",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "WtYMM",
+                                      "name": "amt5",
+                                      "fill": "#06B6D4",
+                                      "content": "$16.8M",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 12,
+                                      "fontWeight": "700"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "j5Sk45",
+                                      "name": "bar5",
+                                      "width": 100,
+                                      "height": 200,
+                                      "fill": "#06B6D4",
+                                      "cornerRadius": 6
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "C7Rmpm",
+                              "name": "ageRow",
+                              "width": "fill_container",
+                              "padding": [
+                                20,
+                                0
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "BdqwQ",
+                                  "name": "age1",
+                                  "fill": "#8A8680",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Now",
+                                  "textAlign": "center",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "GhiFb",
+                                  "name": "age2",
+                                  "fill": "#8A8680",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "40",
+                                  "textAlign": "center",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "jO8CR",
+                                  "name": "age3",
+                                  "fill": "#8A8680",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "50",
+                                  "textAlign": "center",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "WHUB5",
+                                  "name": "age4",
+                                  "fill": "#8A8680",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "60",
+                                  "textAlign": "center",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "mpADz",
+                                  "name": "age5",
+                                  "fill": "#8A8680",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "65",
+                                  "textAlign": "center",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "kLUTk",
+                          "name": "divider",
+                          "width": "fill_container",
+                          "height": 1,
+                          "fill": "#E8E6E0"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "oyofk",
+                          "name": "metricsGrid",
+                          "width": "fill_container",
+                          "gap": 24,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "g2uS3",
+                              "name": "metricCol1",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "WKj93",
+                                  "name": "lbl1",
+                                  "fill": "#8A8680",
+                                  "content": "Current Net Worth",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "i8Sl2",
+                                  "name": "val1",
+                                  "fill": "#2D2926",
+                                  "content": "$2.4M",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "CEXoh",
+                              "name": "metricCol2",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "lLzuC",
+                                  "name": "lbl2",
+                                  "fill": "#8A8680",
+                                  "content": "Monthly Savings",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "CP6ay",
+                                  "name": "val2",
+                                  "fill": "#2D2926",
+                                  "content": "$8,200",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "zDRST",
+                              "name": "metricCol3",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "h4aSXg",
+                                  "name": "lbl3",
+                                  "fill": "#8A8680",
+                                  "content": "Savings Rate",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "RShfJ",
+                                  "name": "val3",
+                                  "fill": "#15803D",
+                                  "content": "24%",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "t0pkcp",
+                              "name": "metricCol4",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Ota01",
+                                  "name": "lbl4",
+                                  "fill": "#8A8680",
+                                  "content": "Target Age",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "PKkUl",
+                                  "name": "val4",
+                                  "fill": "#2D2926",
+                                  "content": "65",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "kJPG1",
+                          "name": "divider2",
+                          "width": "fill_container",
+                          "height": 1,
+                          "fill": "#E8E6E0"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "AjRHy",
+                          "name": "milestones",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "HQlR4",
+                              "name": "msTitle",
+                              "fill": "#2D2926",
+                              "content": "Upcoming Milestones",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "BDKIb",
+                              "name": "milestone1",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "n8Qifk",
+                                  "name": "iconBg",
+                                  "width": 32,
+                                  "height": 32,
+                                  "fill": "#EBF0FE",
+                                  "cornerRadius": 8,
+                                  "layout": "vertical",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon",
+                                      "id": "MNTPp",
+                                      "name": "ms1ic",
+                                      "width": 16,
+                                      "height": 16,
+                                      "icon": "target",
+                                      "library": "lucide",
+                                      "fill": "#3A6AF8"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "QeLRb",
+                                  "name": "info",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "IbKRr",
+                                      "name": "ms1name",
+                                      "fill": "#2D2926",
+                                      "content": "$5M milestone",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "SWjru",
+                                      "name": "ms1sub",
+                                      "fill": "#8A8680",
+                                      "content": "Projected at age 47 · 9 years away",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 11,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "LGq5Z",
+                                  "name": "ms1val",
+                                  "fill": "#3A6AF8",
+                                  "content": "47%",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "CZL7p",
+                              "name": "milestone2",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "bCgiK",
+                                  "name": "iconBg",
+                                  "width": 32,
+                                  "height": 32,
+                                  "fill": "#F0FDF4",
+                                  "cornerRadius": 8,
+                                  "layout": "vertical",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon",
+                                      "id": "OO5Mt",
+                                      "name": "ms2ic",
+                                      "width": 16,
+                                      "height": 16,
+                                      "icon": "trending-up",
+                                      "library": "lucide",
+                                      "fill": "#15803D"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "yiTfj",
+                                  "name": "info",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "c4Mhy6",
+                                      "name": "ms2name",
+                                      "fill": "#2D2926",
+                                      "content": "$10M milestone",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "gIa9h",
+                                      "name": "ms2sub",
+                                      "fill": "#8A8680",
+                                      "content": "Projected at age 57 · 19 years away",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 11,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "D42FkB",
+                                  "name": "ms2val",
+                                  "fill": "#15803D",
+                                  "content": "22%",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "uPQBi",
+                              "name": "milestone3",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "b1YHz",
+                                  "name": "iconBg",
+                                  "width": 32,
+                                  "height": 32,
+                                  "fill": "#FEF2F2",
+                                  "cornerRadius": 8,
+                                  "layout": "vertical",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon",
+                                      "id": "r3USCS",
+                                      "name": "ms3ic",
+                                      "width": 16,
+                                      "height": 16,
+                                      "icon": "flag",
+                                      "library": "lucide",
+                                      "fill": "#B91C1C"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "s9pu9",
+                                  "name": "info",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "IsepS",
+                                      "name": "ms3name",
+                                      "fill": "#2D2926",
+                                      "content": "Retirement target",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "HM8Bs",
+                                      "name": "ms3sub",
+                                      "fill": "#8A8680",
+                                      "content": "$16.8M at age 65 · 27 years away",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 11,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "O67Ih",
+                                  "name": "ms3val",
+                                  "fill": "#B91C1C",
+                                  "content": "14%",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "w9L6ns",
+                      "type": "ref",
+                      "ref": "MzoZn",
+                      "name": "navShowFab",
+                      "layoutPosition": "absolute",
+                      "x": -37,
+                      "y": 0,
+                      "descendants": {
+                        "KSlnN": {
+                          "icon": "panel-left"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "l7y9jT",
+                  "name": "divider",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$g:sem-navDivider",
+                  "cornerRadius": 99999
+                },
+                {
+                  "type": "frame",
+                  "id": "uzPeM",
+                  "name": "canvas",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF00",
+                  "stroke": "#E8E6E0",
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "LKhAm",
+                      "name": "canvasHeader",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Q1jJx",
+                          "name": "header",
+                          "fill": "#0e0e0e",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Asset Allocation",
+                          "fontFamily": "Noto Serif",
+                          "fontSize": 20,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "v34Xae",
+                          "name": "subheader",
+                          "fill": "#403D3A",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "This is sample text that introduces the canvas content. This is sample text that introduces the canvas content.",
+                          "fontFamily": "Noto Serif",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KH1NG",
+                      "name": "canvasGenUIComponent",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "zcWMf",
+                          "name": "summaryRow",
+                          "width": "fill_container",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "WfC47",
+                              "name": "onTrack",
+                              "fill": "#2D2926",
+                              "content": "On track for",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "VEKqH",
+                              "name": "amount",
+                              "fill": "#2D2926",
+                              "content": "$16.8M",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "obiqX",
+                              "name": "atAge",
+                              "fill": "#2D2926",
+                              "content": "at age 65",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "xWfqp",
+                          "name": "chartGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 16,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "hb09E",
+                              "name": "donutArea",
+                              "width": 180,
+                              "height": 180,
+                              "layout": "none",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "x1p57y",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "seg-investments",
+                                  "innerRadius": 0.6,
+                                  "sweepAngle": -144,
+                                  "fill": "#0F766E",
+                                  "width": 180,
+                                  "height": 180
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "KhJg9",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "seg-savings",
+                                  "innerRadius": 0.6,
+                                  "startAngle": -144,
+                                  "sweepAngle": -90,
+                                  "fill": "#06B6D4",
+                                  "width": 180,
+                                  "height": 180
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "qZhvt",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "seg-expenses",
+                                  "innerRadius": 0.6,
+                                  "startAngle": -234,
+                                  "sweepAngle": -72,
+                                  "fill": "#15803D",
+                                  "width": 180,
+                                  "height": 180
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "AN3ZX",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "seg-other",
+                                  "innerRadius": 0.6,
+                                  "startAngle": -306,
+                                  "sweepAngle": -54,
+                                  "fill": "#3A6AF8",
+                                  "width": 180,
+                                  "height": 180
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "Y7EMi",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "centerLabel",
+                                  "width": 180,
+                                  "height": 180,
+                                  "layout": "vertical",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "r0DiTc",
+                                      "name": "totalAmt",
+                                      "fill": "#0E0E0E",
+                                      "content": "$16.8M",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 22,
+                                      "fontWeight": "700"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "K1X36",
+                                      "name": "totalLabel",
+                                      "fill": "#6C6C70",
+                                      "content": "Total",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 12,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Qxk66",
+                              "name": "legend",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "justifyContent": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "Ne1GU",
+                                  "name": "li1",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "MOqbh",
+                                      "name": "dot1",
+                                      "fill": "#0F766E",
+                                      "width": 8,
+                                      "height": 8
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "N1Umo",
+                                      "name": "txt1",
+                                      "fill": "#535356",
+                                      "content": "Investments",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 10,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "fLldN",
+                                  "name": "li2",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "jefVN",
+                                      "name": "dot2",
+                                      "fill": "#06B6D4",
+                                      "width": 8,
+                                      "height": 8
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "uYwGb",
+                                      "name": "txt2",
+                                      "fill": "#535356",
+                                      "content": "Savings",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 10,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "O24lWb",
+                                  "name": "li3",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "V3aZ1P",
+                                      "name": "dot3",
+                                      "fill": "#15803D",
+                                      "width": 8,
+                                      "height": 8
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "dhFWl",
+                                      "name": "txt3",
+                                      "fill": "#535356",
+                                      "content": "Expenses",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 10,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "H0u5pZ",
+                                  "name": "li4",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "oYlCQ",
+                                      "name": "dot4",
+                                      "fill": "#3A6AF8",
+                                      "width": 8,
+                                      "height": 8
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "jrslg",
+                                      "name": "txt4",
+                                      "fill": "#535356",
+                                      "content": "Other",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 10,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "y6cgd",
+                          "name": "divider",
+                          "width": "fill_container",
+                          "height": 1,
+                          "fill": "#E8E6E0"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "D3rYEW",
+                          "name": "metricsGrid",
+                          "width": "fill_container",
+                          "gap": 24,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "F8tS0",
+                              "name": "metricCol1",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "KcxEl",
+                                  "name": "lbl1",
+                                  "fill": "#8A8680",
+                                  "content": "Current Net Worth",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "WXFn1",
+                                  "name": "val1",
+                                  "fill": "#2D2926",
+                                  "content": "$2.4M",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "b2t8k",
+                              "name": "metricCol2",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "vgE6A",
+                                  "name": "lbl2",
+                                  "fill": "#8A8680",
+                                  "content": "Monthly Savings",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "HBJVm",
+                                  "name": "val2",
+                                  "fill": "#2D2926",
+                                  "content": "$8,200",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "aznjK",
+                              "name": "metricCol3",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "vy4CO",
+                                  "name": "lbl3",
+                                  "fill": "#8A8680",
+                                  "content": "Savings Rate",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "waPV8",
+                                  "name": "val3",
+                                  "fill": "#15803D",
+                                  "content": "24%",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "I0DOeV",
+                              "name": "metricCol4",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "N49Fgp",
+                                  "name": "lbl4",
+                                  "fill": "#8A8680",
+                                  "content": "Target Age",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "pRh2F",
+                                  "name": "val4",
+                                  "fill": "#2D2926",
+                                  "content": "65",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wPS4Q",
+                  "name": "divider",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$g:sem-navDivider",
+                  "cornerRadius": 99999
+                },
+                {
+                  "type": "frame",
+                  "id": "bFGAm",
+                  "name": "canvas",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF00",
+                  "stroke": "#E8E6E0",
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "EK7jO",
+                      "name": "canvasHeader",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gcHRu",
+                          "name": "header",
+                          "fill": "#0e0e0e",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Portfolio Contributions",
+                          "fontFamily": "Noto Serif",
+                          "fontSize": 20,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "o4j7Kr",
+                          "name": "subheader",
+                          "fill": "#403D3A",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "This is sample text that introduces the canvas content. This is sample text that introduces the canvas content.",
+                          "fontFamily": "Noto Serif",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "l5H2e",
+                      "name": "canvasGenUIComponent",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "huFXN",
+                          "name": "summaryRow",
+                          "width": "fill_container",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "eIJZ4",
+                              "name": "onTrack",
+                              "fill": "#2D2926",
+                              "content": "On track for",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "FCNpA",
+                              "name": "amount",
+                              "fill": "#2D2926",
+                              "content": "$16.8M",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "hWyMJ",
+                              "name": "atAge",
+                              "fill": "#2D2926",
+                              "content": "at age 65",
+                              "fontFamily": "Heebo",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "oDUaQ",
+                          "name": "chartGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "OqHat",
+                              "name": "plotArea",
+                              "clip": true,
+                              "width": "fill_container",
+                              "height": 220,
+                              "layout": "none",
+                              "children": [
+                                {
+                                  "type": "line",
+                                  "id": "sBnV3",
+                                  "x": 30,
+                                  "y": 55,
+                                  "name": "grid1",
+                                  "width": 974,
+                                  "height": 0,
+                                  "stroke": "#E8E8EA",
+                                  "strokeWidth": 1
+                                },
+                                {
+                                  "type": "line",
+                                  "id": "ZwR8Y",
+                                  "x": 30,
+                                  "y": 110,
+                                  "name": "grid2",
+                                  "width": 974,
+                                  "height": 0,
+                                  "stroke": "#E8E8EA",
+                                  "strokeWidth": 1
+                                },
+                                {
+                                  "type": "line",
+                                  "id": "Uav6j",
+                                  "x": 30,
+                                  "y": 165,
+                                  "name": "grid3",
+                                  "width": 974,
+                                  "height": 0,
+                                  "stroke": "#E8E8EA",
+                                  "strokeWidth": 1
+                                },
+                                {
+                                  "type": "path",
+                                  "id": "e2fwNt",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "areaFill",
+                                  "geometry": "M30 180c30-8 50-18 76-25 26-7 42-27 76-40 34-13 40-43 76-60 36-17 57-37 80-43l0 208-308 0z",
+                                  "viewBox": [
+                                    0,
+                                    0,
+                                    342,
+                                    220
+                                  ],
+                                  "fill": {
+                                    "type": "gradient",
+                                    "gradientType": "linear",
+                                    "enabled": true,
+                                    "rotation": 180,
+                                    "size": {
+                                      "height": 1
+                                    },
+                                    "colors": [
+                                      {
+                                        "color": "#06B6D430",
+                                        "position": 0
+                                      },
+                                      {
+                                        "color": "#06B6D405",
+                                        "position": 1
+                                      }
+                                    ]
+                                  },
+                                  "width": 1008,
+                                  "height": 220
+                                },
+                                {
+                                  "type": "path",
+                                  "id": "gRvOu",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "linePortfolio",
+                                  "geometry": "M30 180c30-8 50-18 76-25 26-7 42-27 76-40 34-13 40-43 76-60 36-17 57-37 80-43",
+                                  "viewBox": [
+                                    0,
+                                    0,
+                                    342,
+                                    220
+                                  ],
+                                  "width": 1008,
+                                  "height": 220,
+                                  "stroke": "#06B6D4",
+                                  "strokeWidth": 2.5,
+                                  "strokeLinejoin": "round",
+                                  "strokeLinecap": "round"
+                                },
+                                {
+                                  "type": "path",
+                                  "id": "p0mota",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "lineContributions",
+                                  "geometry": "M30 195c30-3 50-9 76-13 26-4 42-12 76-18 34-6 40-16 76-22 36-6 57-12 80-16",
+                                  "viewBox": [
+                                    0,
+                                    0,
+                                    342,
+                                    220
+                                  ],
+                                  "width": 1008,
+                                  "height": 220,
+                                  "stroke": "#15803D",
+                                  "strokeWidth": 2.5,
+                                  "strokeLinejoin": "round",
+                                  "strokeLinecap": "round"
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "DIpR3",
+                                  "x": 79,
+                                  "y": 177,
+                                  "name": "dot",
+                                  "fill": "#06B6D4",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "nZ7gJ",
+                                  "x": 303,
+                                  "y": 152,
+                                  "name": "dot",
+                                  "fill": "#06B6D4",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "qLonD",
+                                  "x": 527,
+                                  "y": 112,
+                                  "name": "dot",
+                                  "fill": "#06B6D4",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "KEo1W",
+                                  "x": 751,
+                                  "y": 52,
+                                  "name": "dot",
+                                  "fill": "#06B6D4",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "gZzBx",
+                                  "x": 988,
+                                  "y": 9,
+                                  "name": "dot",
+                                  "fill": "#06B6D4",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Uw9Ob",
+                                  "x": 0,
+                                  "y": 47,
+                                  "name": "yax1",
+                                  "fill": "#6C6C70",
+                                  "content": "$15M",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "U3D23I",
+                                  "x": 0,
+                                  "y": 102,
+                                  "name": "yax2",
+                                  "fill": "#6C6C70",
+                                  "content": "$10M",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "yTdPB",
+                                  "x": 4,
+                                  "y": 157,
+                                  "name": "yax3",
+                                  "fill": "#6C6C70",
+                                  "content": "$5M",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 10,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "W3gN3D",
+                              "name": "ageRow",
+                              "width": "fill_container",
+                              "padding": [
+                                0,
+                                20,
+                                0,
+                                0
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "hIHwx",
+                                  "name": "a1",
+                                  "fill": "#6C6C70",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Now",
+                                  "textAlign": "center",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "U99vpX",
+                                  "name": "a2",
+                                  "fill": "#6C6C70",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "40",
+                                  "textAlign": "center",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "cPm5I",
+                                  "name": "a3",
+                                  "fill": "#6C6C70",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "50",
+                                  "textAlign": "center",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "y7ZG3x",
+                                  "name": "a4",
+                                  "fill": "#6C6C70",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "60",
+                                  "textAlign": "center",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "u7GwLo",
+                                  "name": "a5",
+                                  "fill": "#6C6C70",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "65",
+                                  "textAlign": "center",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "DvMmW",
+                              "name": "legend",
+                              "width": "fill_container",
+                              "gap": 16,
+                              "padding": [
+                                4,
+                                0
+                              ],
+                              "justifyContent": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "i8qVBw",
+                                  "name": "li1",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "rectangle",
+                                      "cornerRadius": 2,
+                                      "id": "Gcrho",
+                                      "name": "ld1",
+                                      "fill": "#06B6D4",
+                                      "width": 16,
+                                      "height": 3
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "HUk0T",
+                                      "name": "lt1",
+                                      "fill": "#535356",
+                                      "content": "Portfolio",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 10,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "e342e",
+                                  "name": "li2",
+                                  "gap": 4,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "rectangle",
+                                      "cornerRadius": 2,
+                                      "id": "YWEek",
+                                      "name": "ld2",
+                                      "fill": "#15803D",
+                                      "width": 16,
+                                      "height": 3
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "Z7VgP7",
+                                      "name": "lt2",
+                                      "fill": "#535356",
+                                      "content": "Contributions",
+                                      "fontFamily": "Heebo",
+                                      "fontSize": 10,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "lGM5e",
+                          "name": "divider",
+                          "width": "fill_container",
+                          "height": 1,
+                          "fill": "#E8E6E0"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "IHfOH",
+                          "name": "metricsGrid",
+                          "width": "fill_container",
+                          "gap": 24,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "ZhIjn",
+                              "name": "metricCol1",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "eLeTi",
+                                  "name": "lbl1",
+                                  "fill": "#8A8680",
+                                  "content": "Current Net Worth",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "AirZd",
+                                  "name": "val1",
+                                  "fill": "#2D2926",
+                                  "content": "$2.4M",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Ilj2h",
+                              "name": "metricCol2",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "c5S6j",
+                                  "name": "lbl2",
+                                  "fill": "#8A8680",
+                                  "content": "Monthly Savings",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "AH9pm",
+                                  "name": "val2",
+                                  "fill": "#2D2926",
+                                  "content": "$8,200",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "kiVWv",
+                              "name": "metricCol3",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "CDgq1",
+                                  "name": "lbl3",
+                                  "fill": "#8A8680",
+                                  "content": "Savings Rate",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "NSEft",
+                                  "name": "val3",
+                                  "fill": "#15803D",
+                                  "content": "24%",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "e1NA1J",
+                              "name": "metricCol4",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "D70vU",
+                                  "name": "lbl4",
+                                  "fill": "#8A8680",
+                                  "content": "Target Age",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 11,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "TcZvF",
+                                  "name": "val4",
+                                  "fill": "#2D2926",
+                                  "content": "65",
+                                  "fontFamily": "Heebo",
+                                  "fontSize": 16,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "bc3vQ",
+                  "type": "ref",
+                  "ref": "MzoZn",
+                  "name": "chatShowFab",
+                  "layoutPosition": "absolute",
+                  "x": 1028,
+                  "y": 0,
+                  "descendants": {
+                    "KSlnN": {
+                      "library": "lucide",
+                      "icon": "message-circle"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
