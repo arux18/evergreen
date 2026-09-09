@@ -1,0 +1,231 @@
+{
+ "contract": "design-capture/v1",
+ "componentId": "GC-005",
+ "slug": "bar-chart",
+ "prototypeVersion": "002",
+ "round": "amendment 1 (owner ruling 12, FE-2217 comment 10a397dc-39b1-410b-ad64-bf8b94e4b408): add cool-palette + area-palette frames; re-capture 6 no-palette frames in area",
+ "penPath": null,
+ "$penPathNote": "NO .pen was authored this round - the STOP precedes L4 authoring. The promoted v002 .pen at pencil/designs/4-approved/genui/GC-005-bar-chart.pen (sha256:59e8d94d6d5f233a88ad3dc71876d8e12199ac35ee4d1696f185cd1c42e1911f, byte-verified against the contract's pen-pointer this round) is UNTOUCHED.",
+ "contentHash": null,
+ "capturedAt": "2026-09-09T19:24:21Z",
+ "frames": [],
+ "$framesNote": "Contracted scope was 28 frames (26 locked at v002 + cool-palette + area-palette per amendment 1). None banked.",
+ "convergence": {
+  "iterationsUsed": 0,
+  "$iterationsNote": "Zero honest iterations consumed - the stop is a contract-integrity failure discovered at the pre-loop determinism probe and L3a distinctness analysis, upstream of authoring. The 5-iteration budget is intact for the post-ruling round.",
+  "pencilVersion": "@pen.dev/cli 0.3.5",
+  "perState": [],
+  "waivers": []
+ },
+ "stop": {
+  "kind": "UPSTREAM LIBRARY PALETTE DRIFT -> LOCKED-ORACLE INVALIDATION + TARGET DUPLICATE cool-palette == legend-vertical",
+  "detail": "design-specs commit 9e5e490 (amanda-designer, 2026-09-08, 'Replace chart categorical palette with v5 five-family sequence') replaced the VALUES of chart-categorical/color-01..15 in pencil/design-system/in-progress/hemlock-library.lib.pen AFTER the GC-005 v002 capture locked (2026-09-01). The approved .pen binds those tokens by reference (17 of 26 frames), so its rendered pixels moved with the library while its bytes stayed hash-pinned. Two independent consequences, each a mandatory stop: (1) LOCKED-ORACLE INVALIDATION - a byte-identical re-export of the approved .pen at the pinned pen 0.3.5 no longer reproduces the locked baseline hashes: 17/26 frames mismatch the capture handback's exportSha256 (see determinismProbe; the 9 matching frames bind only local/unchanged tokens, proving this environment otherwise reproduces the lab byte-for-byte - the mismatches are value drift, not platform). The lock's determinism postcondition is broken TODAY, independent of this dispatch. (2) TARGET DUPLICATE - the v5 categorical values are exactly the ruling-12 COOL sequence values in a different order, and cool 1-3 (#7B96F1/#89B6F9/#95C5FB) EQUAL v5 categorical 01-03. The contracted cool-palette state (grouped 4x3 revenue + legend, 3 series) therefore renders pixel-identical to the contracted legend-vertical state (categorical + legend, same data) in the light theme - both as normalized-prototype targets and as .pen frames. states.json declares no pixelIdenticalTo and carries no waiver for this pair; per L3a and the hard rules a duplicate after re-drives is a STOP, never a bank, and waivers are judge-granted only. No authoring decision available to this agent avoids it: binding cool to different paint, pinning old categorical values in local tokens, or changing the state's dataset are all design/contract decisions. ADDITIONALLY the drift contradicts the locked contract text (design-rules.md palette note: 'the chart palette stays the pen-locked categorical palette (FE-1987)' - the FE-1987 paint #8951F0/#06B6D4/#312E81 no longer exists in the library) and the packaged hemlock-design-system.md skill mirror (categorical table now stale). Per the drift law: STOP and report, never improvise around it.",
+  "evidence": {
+   "libraryCommit": "9e5e490 'Replace chart categorical palette with v5 five-family sequence (light + dark)' - Azure/Teal/Iris/Plum/Ember, 3 steps each, Cyan omitted",
+   "categoricalBefore_01_03": [
+    "#8951F0",
+    "#06B6D4",
+    "#312E81"
+   ],
+   "categoricalAfter_01_03": [
+    "#7B96F1",
+    "#89B6F9",
+    "#95C5FB"
+   ],
+   "coolSequence_01_03_ruling12": [
+    "#7B96F1",
+    "#89B6F9",
+    "#95C5FB"
+   ],
+   "coolEqualsV5Categorical": "all 15 cool values == the 15 v5 categorical values, reordered (cool order Azure,Iris,Plum,Teal,Ember vs categorical v5 order Azure,Teal,Iris,Plum,Ember); prefixes 01-03 coincide exactly, which is precisely the 3-series slice both contracted states render",
+   "pixelSample": "approved .pen legend-vertical re-export, bars 1-3 + legend swatch 1 sampled: #7B96F1/#89B6F9/#95C5FB (was #8951F0/#06B6D4/#312E81 at lock)",
+   "blastRadius": "systemic, not GC-005-local: approved .pens binding chart-categorical/* tokens - GC-001-donut-chart (8 tokens), GC-004-time-series (3), GC-005-bar-chart (3), GC-016-security-prices (7); every one of their locked pixel-baseline sets is presumptively stale the same way",
+   "structuralFinding": "the pen-pointer pins only the .pen bytes; the .pen imports hemlock-library.lib.pen LIVE by relative path - the locked pixel oracle depends on an unpinned moving file, the exact dependency class the in-checkout-mirror doctrine exists to prevent. Recommend pinning/mirroring the library (or its resolved token values) per locked epoch."
+  },
+  "rulingOptionsForJudge": [
+   "A) Accept v5 into the contract epoch: oracle agent amends design-rules palette note + DJ-1/GAP-1 lineage, declares the light-theme pixel identity (pixelIdenticalTo or judge waiver) for cool-palette<->legend-vertical OR re-shapes the cool-palette state so cool's distinct order shows (a 4th series distinguishes them: cool4 #B985DE != categorical-04 #74D5D1); then a directed re-capture round re-converges and re-locks all affected frames (17 drifted + 8 amendment frames).",
+   "B) Preserve the FE-1987 pen-locked paint: designer/owner rules the categorical states pin their own token set (new dedicated tokens or a library revert); re-capture accordingly.",
+   "C) Either way, the 17 drifted GC-005 baselines (and GC-001/GC-004/GC-016 equivalents) need re-locking - the current locks fail a fresh lab re-export today."
+  ],
+  "gapLandscapeNote": "GAP-1 (mono 'house blue vs purple slot-1') materially changed: under v5, mono/slot-1 renders azure #7B96F1 - much nearer Bill's house-blue intent than the recorded purple #8951F0. The designer question should be re-posed against v5."
+ },
+ "determinismProbe": {
+  "method": "approved .pen (bytes == pen-pointer hash 59e8d94d...) exported frame-by-frame via pen interactive Export at @pen.dev/cli 0.3.5, linux x64, design-specs pencil/designs/fonts TTFs via fontconfig; sha256 vs the locked capture handback's convergence.perState[].exportSha256",
+  "matches": 9,
+  "of": 26,
+  "matchingFramesBindOnlyUnchangedTokens": true,
+  "rows": [
+   {
+    "state": "default",
+    "lockedExportSha256": "eef16d7b3c1a26aa8f279f8cd13c1f01725a4a6c8bec5e8e2d368371737ba34f",
+    "reExportSha256": "eef16d7b3c1a26aa8f279f8cd13c1f01725a4a6c8bec5e8e2d368371737ba34f",
+    "match": true
+   },
+   {
+    "state": "grouped-categorical",
+    "lockedExportSha256": "e32eaf09f95582ab2a7801ebb4c7323233a16eebf29ecb8689baa6c96c5e8847",
+    "reExportSha256": "07490a00af513d8038576fde65fcce6dd547c768d1e2835bd79e8917509728c2",
+    "match": false
+   },
+   {
+    "state": "mono-grouped",
+    "lockedExportSha256": "c385409c92545065441378e266ae670a23db60a47b963e122ef149bac325ac08",
+    "reExportSha256": "50942ece05b42b78df2f59e8697bf0317ac8119f183855e884f9eba6e8cef63a",
+    "match": false
+   },
+   {
+    "state": "single-categorical",
+    "lockedExportSha256": "80c9020df314afab578fc9c7242c04cf2e81e30667301c27595281185c1e4932",
+    "reExportSha256": "c7db30a5af93167605cb3bd26ad551ae73eac1eb1698acb7bec4b11a8a510c50",
+    "match": false
+   },
+   {
+    "state": "single-ramp-by-item",
+    "lockedExportSha256": "84b5ac58658714ea1018e31a3cb23ab951ff84573cdc7b6351c0060cb2266b32",
+    "reExportSha256": "84b5ac58658714ea1018e31a3cb23ab951ff84573cdc7b6351c0060cb2266b32",
+    "match": true
+   },
+   {
+    "state": "labels-categorical",
+    "lockedExportSha256": "fa2157aee49203c55a48d7e9ed08febdb92e24f8bff1e0736db9760464891bdf",
+    "reExportSha256": "a283c56c95e4d756d961684626f819d3bd3d84ca8de33065c311f9e800680108",
+    "match": false
+   },
+   {
+    "state": "legend-vertical",
+    "lockedExportSha256": "c01b750666762abfdc2b28cf2bbf88eae377a4ba71d4d32a1a3a52cad4fdf15c",
+    "reExportSha256": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2",
+    "match": false
+   },
+   {
+    "state": "horizontal-grouped",
+    "lockedExportSha256": "90dd80a5259a0d97c274793b05ee842214240016685043b9779cc7d53ba79247",
+    "reExportSha256": "53b9fcde6915ab8f64e478320e84265c57a6171041a5fa810c9bb2782580eb9e",
+    "match": false
+   },
+   {
+    "state": "horizontal-single",
+    "lockedExportSha256": "11ad4962070cdcce9ddf938563830c8f264dcc5b050e9ee6e247eda5bce97736",
+    "reExportSha256": "e66762d0c3449cd720fa0f9aa3c3796029d5b8fcf40e98d475c1b374b00b7b77",
+    "match": false
+   },
+   {
+    "state": "horizontal-labels",
+    "lockedExportSha256": "749c7e07bb65bb967d5fe39c3e5a9e1cc204c630cfdfc60d4d216ed2e91b9e04",
+    "reExportSha256": "6ca1a3e7a154c738c33dd1e31833db585f36f71e7e119c009020e98bd5f52feb",
+    "match": false
+   },
+   {
+    "state": "horizontal-ramp",
+    "lockedExportSha256": "ef077113cc6fbdd6ed3c473652f5906ce1e65b4db32554f467a95520d00b3023",
+    "reExportSha256": "ef077113cc6fbdd6ed3c473652f5906ce1e65b4db32554f467a95520d00b3023",
+    "match": true
+   },
+   {
+    "state": "horizontal-legend",
+    "lockedExportSha256": "6e0756f61609146176cefda4ee327f35fad9d474c55479376db4a732ebf9315d",
+    "reExportSha256": "ed28e00246c85dcf5402533ca02747336cdb79ec65dd1b17d1e35bd05e075160",
+    "match": false
+   },
+   {
+    "state": "benchmark-percent-labels",
+    "lockedExportSha256": "7bee0bf572eb2c9aee897e329c9d947aeb80947881de71b87b63164e4504c5a9",
+    "reExportSha256": "7bee0bf572eb2c9aee897e329c9d947aeb80947881de71b87b63164e4504c5a9",
+    "match": true
+   },
+   {
+    "state": "axis-titles-vertical",
+    "lockedExportSha256": "0e4137c8a35718edcf39dd73ea9a727db8ee3e154bb651fa1df7c887ac88879d",
+    "reExportSha256": "04e4a81e7572893b1e9e964f9d5f50eead08ac24663607265430ce8d39c97f15",
+    "match": false
+   },
+   {
+    "state": "axis-titles-horizontal",
+    "lockedExportSha256": "febfcc6d14cc161cf9516d9b4f4d6d8caa2ea2ce37b949ac668fda474df927a3",
+    "reExportSha256": "ae26ecfa55d66b4729c65f2808f9c7dcf5cd8b2e373bd00322e8eb6ed1f86659",
+    "match": false
+   },
+   {
+    "state": "section-title",
+    "lockedExportSha256": "2b93cc02fa42f6f10fa3799b0b434ba262b70e3715a581949a204f5bf7d4fa90",
+    "reExportSha256": "b638b6ca4aac0fb15bde6f99bb9cae418bed339a93fdf095bd46047f88aa2704",
+    "match": false
+   },
+   {
+    "state": "negative-mixed-labels",
+    "lockedExportSha256": "f50891f54632b6ba97b094f91d8970e30368643741e6351d86472bcccfd0b78d",
+    "reExportSha256": "ab73dec1c282bd7298bcf0cb0a5b16094984716595af23f8085db743adee51f0",
+    "match": false
+   },
+   {
+    "state": "negative-horizontal-labels",
+    "lockedExportSha256": "70a98800633b8a9f50595279161e563e565db5788d822fc7b12b1f13212c47cc",
+    "reExportSha256": "78234125a63070cd51970e84a31ee505b16cba28c0821d2586c15d68d7019265",
+    "match": false
+   },
+   {
+    "state": "truncated-labels-tooltip",
+    "lockedExportSha256": "2da3d96499739e2e689350d28d21a50fc9330b65fe6f0b45b132df80b0a0b3f7",
+    "reExportSha256": "bcbad934866eb357857313c56ba396704b0256e1846bbc7681c6c4da22a392da",
+    "match": false
+   },
+   {
+    "state": "hover-info-box",
+    "lockedExportSha256": "296fdc1311064596f6da7f2663e10da43c56b98d3336ea6346a7a288b209ea9a",
+    "reExportSha256": "296fdc1311064596f6da7f2663e10da43c56b98d3336ea6346a7a288b209ea9a",
+    "match": true
+   },
+   {
+    "state": "horizontal-hover-info-box",
+    "lockedExportSha256": "a02fb386b70f6b9fe376fa94f92d463392e8cdae208b0ff39e1eee001902fa63",
+    "reExportSha256": "d14105ab00538453bb6f79f74bd80b8eeb11254bce7c7becdc7c14294372c26d",
+    "match": false
+   },
+   {
+    "state": "narrow-scroll",
+    "lockedExportSha256": "a8439adec1fc9846e56ef821dc245b9fea9f2c7e1a5b23538bb8db46ac471e51",
+    "reExportSha256": "a8439adec1fc9846e56ef821dc245b9fea9f2c7e1a5b23538bb8db46ac471e51",
+    "match": true
+   },
+   {
+    "state": "narrow-scrolled-end",
+    "lockedExportSha256": "c56f1490831435210ad0c2b0661205db6642be63e8b129c5a3ce07717afcf52f",
+    "reExportSha256": "c56f1490831435210ad0c2b0661205db6642be63e8b129c5a3ce07717afcf52f",
+    "match": true
+   },
+   {
+    "state": "squish-narrow",
+    "lockedExportSha256": "eb5e7eaf7d09a07af1cbeb4b55091e5471a3177d67a455ed06049a6c996108f5",
+    "reExportSha256": "8ec106d929e0af8c4eafed2809c15233848a3afd288bbc1afbd2db05c08fe5f8",
+    "match": false
+   },
+   {
+    "state": "config-error",
+    "lockedExportSha256": "7a0e1d423e2e5e2e11b805f95bd290b76fd79c39f020f591d43d54c1d0fa0c6e",
+    "reExportSha256": "7a0e1d423e2e5e2e11b805f95bd290b76fd79c39f020f591d43d54c1d0fa0c6e",
+    "match": true
+   },
+   {
+    "state": "static-print",
+    "lockedExportSha256": "eef16d7b3c1a26aa8f279f8cd13c1f01725a4a6c8bec5e8e2d368371737ba34f",
+    "reExportSha256": "eef16d7b3c1a26aa8f279f8cd13c1f01725a4a6c8bec5e8e2d368371737ba34f",
+    "match": true
+   }
+  ]
+ },
+ "normalizationRecipe": {
+  "$note": "Not executed this round - the stop precedes L2/L3. The v002 recipe in the locked capture handback remains the seed for the post-ruling round; its --cat1..3 injections must be re-derived from whichever palette the ruling pins.",
+  "cssVariableInjections": [],
+  "findReplaces": [],
+  "fontSwap": "n/a (not executed; prototype already targets Heebo / Noto Serif)"
+ },
+ "tokenJudgmentCalls": [],
+ "designGaps": [],
+ "fontSubstitutions": [],
+ "prototypeDefectsSeen": [],
+ "staleDispatchFacts": [
+  "The dispatch template injected '(none - first capture; derive the mapping table yourself)' - FALSE: a locked v002 capture exists (pen-pointer.json, capture handback sha256:59e8d94d... with full normalizationRecipe); this round is amendment 1's re-capture, per states.json amendments[0].",
+  "The packaged skill mirror genui-factory/prompts/skills/hemlock-design-system.md (v2.1.0, 2026-08-20) is stale on the Chart Palettes section: chart-categorical/color-01..15 values were replaced by commit 9e5e490 (2026-09-08)."
+ ],
+ "verdict": "stopped"
+}
