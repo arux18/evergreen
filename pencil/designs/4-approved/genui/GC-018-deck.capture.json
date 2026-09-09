@@ -1,0 +1,1223 @@
+{
+ "contract": "design-capture/v1",
+ "componentId": "GC-018",
+ "slug": "deck",
+ "penPath": "pencil/designs/4-approved/genui/GC-018-deck.pen",
+ "contentHash": "1f67883feba663075eb553a0d9aeed04d650abaee903123f67181f79a86b2f83",
+ "capturedAt": "2026-09-09T17:12:03.804Z",
+ "prototypeVersion": "001",
+ "prototypeContentHash": "sha256:204c2fe5617f0e850b0c640d6588c4a714eb4618e16e4be5238e46d4a05112fe",
+ "frames": [
+  "deck-default",
+  "title-image-bleed",
+  "title-video-thumb",
+  "toc-linked",
+  "section-divider",
+  "body-two-column",
+  "image-framed",
+  "image-full-bleed",
+  "bullets-check-detail",
+  "split-bleed",
+  "split-framed",
+  "quote-pull",
+  "stats-row",
+  "closing-fineprint",
+  "contents-menu-open",
+  "page-excluded-menu",
+  "toc-ref-excluded",
+  "progress-circles-on",
+  "letter-portrait-cover",
+  "letter-portrait-stats",
+  "custom-aspect-4x3",
+  "expanded-view-open",
+  "video-modal-open",
+  "pdf-exporting",
+  "config-error",
+  "keyboard-expand-chip"
+ ],
+ "convergence": {
+  "iterationsUsed": 4,
+  "pencilVersion": "@pen.dev/cli 0.3.5",
+  "exportInvocation": "pen interactive --in <file.pen> --out <tmp.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import (../../../design-system/in-progress/hemlock-library.lib.pen), the fonts (../../fonts/) and the ./GC-018-deck-assets/ image fills resolve. Re-export verified byte-deterministic across consecutive runs (all 26 frames hash-identical, all 26 distinct).",
+  "comparison": "pixelmatch threshold 0.1 (harness convention), per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-pen budget, not this loop's). Targets = NORMALIZED prototype, per-state contract roots (#dkA / .dk-lb / .dk-vm .sc-modal), Chromium via playwright 1.49 headless, deviceScaleFactor 2, viewport 1280x1400 (contract storyViewport). Protocol: Google Fonts origins blocked + @font-face injection serving Heebo/Noto Serif from the SAME repo TTFs the .pen references (pencil/designs/fonts/); --font-render-hinting=none --disable-font-subpixel-positioning --disable-lcd-text; transitions/animations frozen, caret hidden; fresh context per state; pointer parked at 0,0 after steps (no GC-018 state is a hover state); videos paused at frame 0 (the modal WebM autoplays natively — the contract banks paused + controls visible); INTEGER-CSS-PIXEL root snap before capture (Playwright element screenshots clip at integer CSS px — a fractional root origin shifts every target by one device px; snap verified round 3); double-screenshot self-consistency gate; L3a settle >=1000ms + textProbes + cross-state PNG distinctness before every bank.",
+  "iterationNotes": [
+   "R1 (16/26): geometry+type converged at first export — failures were photograph resampling (pen scaler vs Chromium), the modal root shadow inflating export bounds, missing UA list markers (config-error), and a systematic 1-device-px target shift.",
+   "R2 (17/26): photographs re-banked as Chromium-rendered region rasters (element-region screenshots with scrim/caption/play/footer overlays suppressed — GC-015 assets precedent); video well banked as paused-frame raster; root frame exports shadow-free; ::marker synthesis added.",
+   "R3 (26/26): root cause of the residual shift found — Playwright element screenshots clip at INTEGER CSS pixels; contract roots snapped to that grid in both target and transcription flows; frame dims ceil to integer CSS.",
+   "R4 (26/26, final): stroke-only paths dropped inline transparent fills (Iron-Law hygiene); active progress dot re-bound from sem-btnPrimaryBg to the carousel active-dot role ($sem-carouselDotActive, GC-015 precedent). Worst state 0.452% (body-two-column); median 0.2%."
+  ],
+  "perState": [
+   {
+    "state": "deck-default",
+    "diffPct": 0.146,
+    "geometryProbes": "pass",
+    "exportSha256": "1f1e339ae7b6039cc7795c5ffb96961f717a45c9fed5ebc4767fbb2f70996418",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "title-image-bleed",
+    "diffPct": 0.219,
+    "geometryProbes": "pass",
+    "exportSha256": "3747992a6916e4201e00045603a321c21f58f200afbdb04c46a7836277266511",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "title-video-thumb",
+    "diffPct": 0.216,
+    "geometryProbes": "pass",
+    "exportSha256": "d514fe8c46b61993788682d684b4a98a4d4b5eb4e37afa242d81fe203e15a999",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "toc-linked",
+    "diffPct": 0.083,
+    "geometryProbes": "pass",
+    "exportSha256": "5f45c51bf4da60a0b1a8afabe252588c36b7ec301bd43d7f1164bd81e2d22652",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "section-divider",
+    "diffPct": 0.122,
+    "geometryProbes": "pass",
+    "exportSha256": "1bd611dc4ba7027d162b5935acfa1898c5d78b3da3517735f3649b06c4cb94fb",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "body-two-column",
+    "diffPct": 0.452,
+    "geometryProbes": "pass",
+    "exportSha256": "46182999f1f087b2f6f3c7673abcb71bf0b9571e37e27a27eed1e7bef4b90666",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "image-framed",
+    "diffPct": 0.187,
+    "geometryProbes": "pass",
+    "exportSha256": "a11e643271d85fc7cc2ab0488ff7da30dce430aab6072d3090119de881a9c11e",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "image-full-bleed",
+    "diffPct": 0.255,
+    "geometryProbes": "pass",
+    "exportSha256": "4c00856df3545f26f8d1a6386d1f81ad64c76b3ba15c7be13ace7c7b19fb7342",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "bullets-check-detail",
+    "diffPct": 0.417,
+    "geometryProbes": "pass",
+    "exportSha256": "508da277a50fd117a32426998a6ee0d8d52260cfe84c75227ab9d952892d1568",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "split-bleed",
+    "diffPct": 0.381,
+    "geometryProbes": "pass",
+    "exportSha256": "cbc1a4ac9249fc28395200ef72b30d67896429f4d4282b348acf1dea1dc68ca5",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "split-framed",
+    "diffPct": 0.317,
+    "geometryProbes": "pass",
+    "exportSha256": "43b36a72c9cc12d4554b08743d237c089d9c47e9880d7cfd6f146835d5fd7909",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "quote-pull",
+    "diffPct": 0.152,
+    "geometryProbes": "pass",
+    "exportSha256": "d83d28acca8967f3d48e643d46c62f0ce8576027bea855706f9f0f322b4b6a69",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "stats-row",
+    "diffPct": 0.176,
+    "geometryProbes": "pass",
+    "exportSha256": "c4976ca48f60909a35f1c491174ea07bd3f6a8df54e8327dfb33320b02bd1797",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "closing-fineprint",
+    "diffPct": 0.203,
+    "geometryProbes": "pass",
+    "exportSha256": "43f69123a345cf91696ec43e2a8166f7f0cb9753e61f3b08815cf9ee21f68725",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "contents-menu-open",
+    "diffPct": 0.27,
+    "geometryProbes": "pass",
+    "exportSha256": "9988748d46f70a90e2f81f2e0bc8611ba2794bd932f56facb044df5febc18deb",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "page-excluded-menu",
+    "diffPct": 0.265,
+    "geometryProbes": "pass",
+    "exportSha256": "e846920e1511ea6ae8c890641fec7417f643e2efa7f5261ae99cb4de27585476",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "toc-ref-excluded",
+    "diffPct": 0.136,
+    "geometryProbes": "pass",
+    "exportSha256": "101514dad2c16ec3b473a3b0efaab2233262bbd0eaf59e5de6e56d2bbf0dba5a",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "progress-circles-on",
+    "diffPct": 0.133,
+    "geometryProbes": "pass",
+    "exportSha256": "18210338cedc76a829f35866ceb8f642b6a4c77392e4eababfdeeba2e099df51",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "letter-portrait-cover",
+    "diffPct": 0.065,
+    "geometryProbes": "pass",
+    "exportSha256": "6b71100991140dc2a6268c6f72aab3ca8304776e1510b2e131d01ededf6cb917",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "letter-portrait-stats",
+    "diffPct": 0.101,
+    "geometryProbes": "pass",
+    "exportSha256": "8c0a313fecd368adbdbb3bb2157c30dcb3360ab8f9d600f42295e95a18129efe",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "custom-aspect-4x3",
+    "diffPct": 0.028,
+    "geometryProbes": "pass",
+    "exportSha256": "64ce82184961da928d4d1f215eb1912b5cedb9bf27c5cffdca6d81b413153ab3",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "expanded-view-open",
+    "diffPct": 0.005,
+    "geometryProbes": "pass",
+    "exportSha256": "310ae6011d44a03f10544ee9721ee2e7b9530523ace7963895a29659552aeeff",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "video-modal-open",
+    "diffPct": 0.343,
+    "geometryProbes": "pass",
+    "exportSha256": "10850cdcaa05763de016036ddd19d12cb3f7294d2fbcc9ae3364b8af3fdfdc0a",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "pdf-exporting",
+    "diffPct": 0.146,
+    "geometryProbes": "pass",
+    "exportSha256": "0e5bd2dae5bffa975a18dbc195d66858f89ca8774a3ca083c552bf6fb37f26a8",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "config-error",
+    "diffPct": 0.058,
+    "geometryProbes": "pass",
+    "exportSha256": "77c2a91775a5b59ed24d83bbbb92d3cd27b009d9392a8d64916e74dde2ad35ab",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "keyboard-expand-chip",
+    "diffPct": 0.174,
+    "geometryProbes": "pass",
+    "exportSha256": "f594b77e3bf04d1c56113a45594b58523fc07c5256b1580c71d165d74aeb4cc0",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   }
+  ],
+  "geometryProbesRun": "contract-named vectors verified against the extracted scenes (the direct geometry source of the frames): V2 auto-sizing (600x337.5 / 500x647.05 / 704x528, radius 2), V1/V2 canvas scales (.46875 / .612745 / .666667), V3 caret rail (40x40 at left 604/504, top 174.75/329.52), 68px peek gap, menu min-width 230 + radius 6, V6 expanded fit (holder 1280x720 at y340, canvas scale 1.0), modal 640 + 16:9 well, V11 split media columns (563.2 / 491.2 design px), stats hairline split (landscape LEFT / portrait TOP) — all pass.",
+  "waivers": []
+ },
+ "normalizationRecipe": {
+  "cssVariableInjections": [
+   {
+    "variable": "--tk-text-1",
+    "value": "#0E0E0E",
+    "token": "$y:sem-text-header"
+   },
+   {
+    "variable": "--tk-text-2",
+    "value": "#5E5954",
+    "token": "$y:sem-text-meta"
+   },
+   {
+    "variable": "--tk-text-3",
+    "value": "#716E6A",
+    "token": "$y:sem-text-placeholder (GC-013 kit-tertiary precedent)"
+   },
+   {
+    "variable": "--tk-surface-2",
+    "value": "#F8F7F6",
+    "token": "$y:sem-background-hover (hover-only; never renders in a frozen frame)"
+   },
+   {
+    "variable": "--tk-surface-3",
+    "value": "#EEEDEB",
+    "token": "$y:sem-background-subtle (furniture-only)"
+   },
+   {
+    "variable": "--tk-border",
+    "value": "#EEEDEB",
+    "token": "$y:sem-borders-light"
+   },
+   {
+    "variable": "--tk-border-strong",
+    "value": "#C0BAB2",
+    "token": "$y:sem-borders-strong (hover/furniture-only)"
+   },
+   {
+    "variable": "--tk-error",
+    "value": "#C82320",
+    "token": "$y:sem-borders-error (box border) / $y:sem-text-error (box text)"
+   },
+   {
+    "variable": "--tk-error-subtle",
+    "value": "#FFEAEA",
+    "token": "$y:sem-background-error"
+   },
+   {
+    "variable": "--tk-btn-accent-hover",
+    "value": "#2952CC",
+    "token": "$y:sem-btnPrimaryBgHover (O1 transposition normalized — see prototypeDefectsSeen)"
+   },
+   {
+    "variable": "--tk-shadow-sm",
+    "value": "0 1px 2px rgba(0,0,0,0.08)",
+    "token": "$y:shadow-sm-y/-blur + $y:prim-shadow-sm-color (furniture-only)"
+   },
+   {
+    "variable": "--tk-shadow-dd",
+    "value": "0 4px 12px rgba(0,0,0,0.10)",
+    "token": "$y:shadow-md-y/-blur + $y:prim-shadow-md-color (contents-menu drop shadow)"
+   }
+  ],
+  "identityInjections": "every other :root chrome variable maps to a role whose light value equals Bill's value verbatim (--surface-1/--page-bg→sem-background-surface, --border→sem-borders-light, --border-strong→sem-borders-muted, --ink→sem-text-header, --muted→sem-text-meta, --faint→$control-text-faint, --accent→sem-text-action/sem-icons-action, --accent-subtle→sem-background-highlight, --taupe-100→sem-background-sunken, --taupe-200/pressed→sem-background-rowPressed, --taupe-border→$sem-borders-panel, --pos→sem-text-deposit, --neg→sem-text-error, --text-body→sem-text-body, --tk-border-input→sem-borders-dark, --modal-shadow→shadow-overlay trio (exact 16/40 @ 16%), --backdrop→sem-background-scrim (exact #2D292657)) — injection is a value no-op, recorded here so the mapping is total. --dkp-* page-canvas literals and hardcoded page/media values keep Bill's values BY DESIGN (design-rules 3): the sem-deckPage*/sem-deckMedia* tokens carry them verbatim. --tk-track/-off/-thumb-dis are demo-panel furniture outside every contract root — unmapped.",
+  "findReplaces": [],
+  "fontSwap": "none — the prototype is Heebo/Noto Serif native (no Helvetica); the capture protocol pins SERVING to the repo TTFs (Google Fonts blocked, @font-face injected from pencil/designs/fonts/), which is also what the .pen fonts block references"
+ },
+ "tokenJudgmentCalls": [
+  {
+   "surface": "blue-outline pill buttons (.ui-btn.dk-obtn: Show Pages / Contents / Download)",
+   "prototypeValue": "bg #FFFFFF, text+1px border var(--tk-btn-accent) #3A6AF8",
+   "boundToken": "$y:sem-background-surface (face) / $y:sem-text-action (label) / $y:sem-borders-action (outline)",
+   "rationale": "the GC-006/GC-016 outline-action idiom (full-accent 1px outline buttons; Hemlock's btnSecondary border-300 is the standing divergence question those captures ledgered). Dark inversion (white-on-#3A6AF8, AA-measured per CSS comments 804-807) is uncontracted at v001 — recorded for the dark re-oracle.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "contents menu + video dialog card surfaces",
+   "prototypeValue": "--tk-surface-1 / --surface-1 #FFFFFF",
+   "boundToken": "$y:sem-background-elevated",
+   "rationale": "overlay surfaces take the elevated role (white in light; navy-600 in dark, distinct from the navy-700 base surface) — menus/dialog cards must lift off dark surfaces. Head band --taupe-100 → $y:sem-background-sunken (GC-017 precedent).",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "progress circles",
+   "prototypeValue": "inactive dot --border-strong #D5D3D0; active dot --accent #3A6AF8",
+   "boundToken": "$y:sem-paginationDot (inactive — exact role+value) / $sem-carouselDotActive (active — reused GC-015 local)",
+   "rationale": "the deck circles are carousel progress dots. Hemlock owns sem-paginationDot (#D5D3D0 exact) for the inactive face; the ACTIVE face is where the vocabulary splits: sem-paginationDotActive resolves #403D3A (ink) while Bill and the GC-015 carousel precedent both use the accent. Bound the GC-015 role; the pagination-vs-carousel active-dot question is routed to the designer via the reused gap.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "carousel carets (.dk-caret chevrons, slide rail)",
+   "prototypeValue": "--accent #3A6AF8 (light); #FFFFFF dark override",
+   "boundToken": "$y:sem-icons-action",
+   "rationale": "interactive icon role. Bill's dark caret is WHITE, not the token's blue-400 — an authored dark decision the uncontracted-dark re-oracle must reconcile; recorded here so it is not lost.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "keyboard expand chip (.dk-expandbtn:focus-visible)",
+   "prototypeValue": "bg --tk-btn-accent #3A6AF8, label #FFFFFF, outline 2px #FFFFFF offset -4",
+   "boundToken": "$y:sem-btnPrimaryBg / $y:sem-btnPrimaryText / $y:sem-borders-focus-inverted (ring)",
+   "rationale": "a filled primary-action chip; the white ring on a colored face is exactly the focus-inverted border role.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "config-error box",
+   "prototypeValue": "--tk-error #B91C1C border+text on --tk-error-subtle #FEE2E2, radius 8",
+   "boundToken": "$y:sem-borders-error + $y:sem-text-error on $y:sem-background-error, $y:radius-2xs",
+   "rationale": "error roles; token-true divergences #B91C1C→#C82320 and #FEE2E2→#FFEAEA (the kit's material-red set moves to Hemlock's).",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "menu row text / ordinals / checks",
+   "prototypeValue": "--tk-text-1 #171717 rows; --tk-accent #3A6AF8 ordinals+checks",
+   "boundToken": "$y:sem-text-header (rows — token-true #171717→#0E0E0E) / $y:sem-text-action (ordinals) / $y:sem-icons-action (check glyphs)",
+   "rationale": "kit text-1 is the header-ink role (GC-013 precedent); tabular ordinals are action text; the check is an interactive icon.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "page float shadow / menu shadow / modal shadow",
+   "prototypeValue": "0 0 22px rgba(45,41,38,.2) / --tk-shadow-dd 0 4 12 @.12 / --modal-shadow 0 16 40 @.16",
+   "boundToken": "$sem-deckPageShadow (NEW — outside the ramp: zero offset, diffuse) / shadow-md trio (token-true .12→.10) / shadow-overlay trio (exact)",
+   "rationale": "the elevation ramp owns the menu and modal; the page float shadow has no ramp role (no y-offset, warm tint, dark value is the template's glow blue) — created, gap-recorded.",
+   "newTokenCreated": true,
+   "newToken": "$sem-deckPageShadow"
+  },
+  {
+   "surface": "photograph regions (cafe/booth/trees artwork, poster tile, split/full-bleed media)",
+   "prototypeValue": "embedded JPEG data URIs, object-fit cover crops",
+   "boundToken": "(raster image fills — ./GC-018-deck-assets/m-*.png)",
+   "rationale": "photographs are not tokenizable (skill-sanctioned raster exception). Each occurrence is banked as the Chromium-rendered crop (element-region screenshot with scrim/caption/play/footer overlays suppressed) so the pen blit is scaler-neutral — the GC-015 assets precedent. Scrims, captions, play marks and chips REMAIN vector, token-bound, composited above the rasters.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "video dialog media well",
+   "prototypeValue": "autoplaying 5s WebM (no poster attr) + native Chromium controls",
+   "boundToken": "(paused-frame raster ./GC-018-deck-assets/m-video-modal-open-*.png over $sem-deckVideoLetterbox)",
+   "rationale": "playing pixels are frame-nondeterministic per the contract; the banked composition is the player PAUSED at frame 0 with controls visible (exactly what the land story must mount). Native controls are shadow-DOM chrome — raster is the only faithful representation.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "video modal root frame shadow",
+   "prototypeValue": "--modal-shadow on .sc-modal",
+   "boundToken": "(omitted on the exported frame)",
+   "rationale": "the contract-root screenshot cannot contain its own outside shadow; a frame-level effect inflates the export canvas and breaks the pixel join. Role recorded in the recipe (shadow-overlay trio).",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "toc dotted leader lines",
+   "prototypeValue": "border-bottom 1px dotted var(--dkp-hairline), scaled to 0.47px",
+   "boundToken": "$sem-deckPageHairline at node opacity 0.5",
+   "rationale": "pen has no dash/dot stroke; at sub-pixel scale the dotted line rasterizes as a soft gray run — a solid hairline at half opacity is perceptually equivalent (verified within the per-state budget).",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "config-error UA list markers",
+   "prototypeValue": "UA ::marker disc bullets",
+   "boundToken": "synthesized • text runs, same fill role as the list text ($y:sem-text-error)",
+   "rationale": "markers are not DOM; synthesized at the Blink outside-marker gap (~0.575em) aligned to the first text line.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "page-canvas typography (all templates)",
+   "prototypeValue": "design-canvas sizes (52/44 title, 30/26 h2, 120/96 ghost, 64/54 stat …) rendered at displayScale (.46875/.612745/.666667/1.0)",
+   "boundToken": "literal rendered sizes (designSize x scale) on the text nodes; families bound $y:font-primary/$y:font-secondary; line placement via $line-height-solid + measured line boxes",
+   "rationale": "the design-canvas law scales page type visually; tokens cannot express the scale transform. The unscaled design ramp is recorded as a typography design gap for the designer; chrome text (unscaled) binds scale tokens ($y:text-size-sm/-xs/-2xs).",
+   "newTokenCreated": false,
+   "newToken": null
+  }
+ ],
+ "designGaps": [
+  {
+   "dimension": "color",
+   "token": "$sem-deckPageBg",
+   "prototypeValue": "--dkp-bg #FFFFFF — the page paper (also .dk-pagebox/.dk-lb-holder/.dk-lb-cell hardcoded #FFFFFF)",
+   "lightValue": "#FFFFFF",
+   "darkValue": "#FFFFFF (theme-independent BY DESIGN — design-rules 3: “a page is a document: it stays white in dark mode, like a PDF viewer”)",
+   "appliesTo": [
+    "deck-default",
+    "title-image-bleed",
+    "title-video-thumb",
+    "toc-linked",
+    "section-divider",
+    "body-two-column",
+    "image-framed",
+    "image-full-bleed",
+    "bullets-check-detail",
+    "split-bleed",
+    "split-framed",
+    "quote-pull",
+    "stats-row",
+    "closing-fineprint",
+    "contents-menu-open",
+    "page-excluded-menu",
+    "toc-ref-excluded",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "letter-portrait-stats",
+    "custom-aspect-4x3",
+    "expanded-view-open",
+    "pdf-exporting",
+    "keyboard-expand-chip"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckPageInk",
+   "prototypeValue": "--dkp-ink #0E0E0E (page titles, headings)",
+   "lightValue": "#0E0E0E",
+   "darkValue": "#0E0E0E (theme-independent)",
+   "appliesTo": [
+    "deck-default",
+    "title-image-bleed",
+    "title-video-thumb",
+    "toc-linked",
+    "section-divider",
+    "body-two-column",
+    "image-framed",
+    "image-full-bleed",
+    "bullets-check-detail",
+    "split-bleed",
+    "split-framed",
+    "quote-pull",
+    "stats-row",
+    "closing-fineprint",
+    "contents-menu-open",
+    "page-excluded-menu",
+    "toc-ref-excluded",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "letter-portrait-stats",
+    "custom-aspect-4x3",
+    "expanded-view-open",
+    "pdf-exporting",
+    "keyboard-expand-chip"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckPageBody",
+   "prototypeValue": "--dkp-body #403D3A (page body copy)",
+   "lightValue": "#403D3A",
+   "darkValue": "#403D3A (theme-independent)",
+   "appliesTo": [
+    "deck-default",
+    "title-image-bleed",
+    "title-video-thumb",
+    "toc-linked",
+    "section-divider",
+    "body-two-column",
+    "image-framed",
+    "image-full-bleed",
+    "bullets-check-detail",
+    "split-bleed",
+    "split-framed",
+    "quote-pull",
+    "stats-row",
+    "closing-fineprint",
+    "contents-menu-open",
+    "page-excluded-menu",
+    "toc-ref-excluded",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "letter-portrait-stats",
+    "custom-aspect-4x3",
+    "expanded-view-open",
+    "pdf-exporting",
+    "keyboard-expand-chip"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckPageMuted",
+   "prototypeValue": "--dkp-muted #5E5954 (subtitles, labels, captions)",
+   "lightValue": "#5E5954",
+   "darkValue": "#5E5954 (theme-independent)",
+   "appliesTo": [
+    "deck-default",
+    "title-image-bleed",
+    "title-video-thumb",
+    "toc-linked",
+    "section-divider",
+    "body-two-column",
+    "image-framed",
+    "image-full-bleed",
+    "bullets-check-detail",
+    "split-bleed",
+    "split-framed",
+    "quote-pull",
+    "stats-row",
+    "closing-fineprint",
+    "contents-menu-open",
+    "page-excluded-menu",
+    "toc-ref-excluded",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "letter-portrait-stats",
+    "custom-aspect-4x3",
+    "expanded-view-open",
+    "pdf-exporting",
+    "keyboard-expand-chip"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckPageFaint",
+   "prototypeValue": "--dkp-faint #767169 (footers, fineprint, credits)",
+   "lightValue": "#767169",
+   "darkValue": "#767169 (theme-independent)",
+   "appliesTo": [
+    "deck-default",
+    "title-image-bleed",
+    "title-video-thumb",
+    "toc-linked",
+    "section-divider",
+    "body-two-column",
+    "image-framed",
+    "image-full-bleed",
+    "bullets-check-detail",
+    "split-bleed",
+    "split-framed",
+    "quote-pull",
+    "stats-row",
+    "closing-fineprint",
+    "contents-menu-open",
+    "page-excluded-menu",
+    "toc-ref-excluded",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "letter-portrait-stats",
+    "custom-aspect-4x3",
+    "expanded-view-open",
+    "pdf-exporting",
+    "keyboard-expand-chip"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckPageAccent",
+   "prototypeValue": "--dkp-accent #3A6AF8 (eyebrows, kickers, toc ordinals, stats figures, check marks, quote mark)",
+   "lightValue": "#3A6AF8",
+   "darkValue": "#3A6AF8 (theme-independent)",
+   "appliesTo": [
+    "deck-default",
+    "title-image-bleed",
+    "title-video-thumb",
+    "toc-linked",
+    "section-divider",
+    "body-two-column",
+    "image-framed",
+    "image-full-bleed",
+    "bullets-check-detail",
+    "split-bleed",
+    "split-framed",
+    "quote-pull",
+    "stats-row",
+    "closing-fineprint",
+    "contents-menu-open",
+    "page-excluded-menu",
+    "toc-ref-excluded",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "letter-portrait-stats",
+    "custom-aspect-4x3",
+    "expanded-view-open",
+    "pdf-exporting",
+    "keyboard-expand-chip"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckPageAccentSoft",
+   "prototypeValue": "--dkp-accent-soft rgba(58,106,248,.2) (section ghost numeral wash)",
+   "lightValue": "#3A6AF833",
+   "darkValue": "#3A6AF833 (theme-independent)",
+   "appliesTo": [
+    "section-divider"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckPageFrameBorder",
+   "prototypeValue": "--dkp-taupe-border #E3DFD6 (framed-image border)",
+   "lightValue": "#E3DFD6",
+   "darkValue": "#E3DFD6 (theme-independent)",
+   "appliesTo": [
+    "image-framed"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckPageHairline",
+   "prototypeValue": "--dkp-hairline #D5D3D0 (meta/section/fineprint hairlines, stat rules, toc leaders)",
+   "lightValue": "#D5D3D0",
+   "darkValue": "#D5D3D0 (theme-independent)",
+   "appliesTo": [
+    "deck-default",
+    "title-image-bleed",
+    "title-video-thumb",
+    "toc-linked",
+    "section-divider",
+    "body-two-column",
+    "image-framed",
+    "image-full-bleed",
+    "bullets-check-detail",
+    "split-bleed",
+    "split-framed",
+    "quote-pull",
+    "stats-row",
+    "closing-fineprint",
+    "contents-menu-open",
+    "page-excluded-menu",
+    "toc-ref-excluded",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "letter-portrait-stats",
+    "custom-aspect-4x3",
+    "expanded-view-open",
+    "pdf-exporting",
+    "keyboard-expand-chip"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "shadow",
+   "token": "$sem-deckPageShadow",
+   "prototypeValue": "--dk-page-shadow 0 0 22px rgba(45,41,38,.20) light / 0 0 26px rgba(120,150,255,.34) dark — diffuse zero-offset page float, outside the shadow ramp (which is y-offset black)",
+   "lightValue": "#2D292633 (blur 22)",
+   "darkValue": "#7896FF57 (blur 26 — Bill's authored glow-blue)",
+   "appliesTo": [
+    "deck-default",
+    "title-image-bleed",
+    "title-video-thumb",
+    "toc-linked",
+    "section-divider",
+    "body-two-column",
+    "image-framed",
+    "image-full-bleed",
+    "bullets-check-detail",
+    "split-bleed",
+    "split-framed",
+    "quote-pull",
+    "stats-row",
+    "closing-fineprint",
+    "contents-menu-open",
+    "page-excluded-menu",
+    "toc-ref-excluded",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "letter-portrait-stats",
+    "custom-aspect-4x3",
+    "expanded-view-open",
+    "pdf-exporting",
+    "keyboard-expand-chip"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckExpandSurround",
+   "prototypeValue": ".dk-lb background #808080 — “medium-gray surround (both themes)”, CSS line 831",
+   "lightValue": "#808080",
+   "darkValue": "#808080 (single-value by the prototype's own declaration)",
+   "appliesTo": [
+    "expanded-view-open"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckExpandControl",
+   "prototypeValue": ".dk-lb-btn color #EDEDEA (expanded-view carets + X on the gray surround)",
+   "lightValue": "#EDEDEA",
+   "darkValue": "#EDEDEA (no dark override exists in the prototype)",
+   "appliesTo": [
+    "expanded-view-open"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckVideoLetterbox",
+   "prototypeValue": ".dk-vm-media background #0B0F16 (video well letterbox backstop)",
+   "lightValue": "#0B0F16",
+   "darkValue": "#0B0F16 (media-adjacent, theme-independent)",
+   "appliesTo": [
+    "video-modal-open"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckPosterBackstop",
+   "prototypeValue": ".dkp-vmedia.has-poster backstop #1a1714",
+   "lightValue": "#1A1714",
+   "darkValue": "#1A1714 (behind photography — must not theme)",
+   "appliesTo": [
+    "title-video-thumb"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckMediaInk",
+   "prototypeValue": "#fff type/marks over photography (captions, play triangle, chip text)",
+   "lightValue": "#FFFFFF",
+   "darkValue": "#FFFFFF (over media — must not theme)",
+   "appliesTo": [
+    "title-video-thumb",
+    "image-full-bleed"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckMediaInkSoft",
+   "prototypeValue": ".dkp-vcap .e rgba(255,255,255,.92)",
+   "lightValue": "#FFFFFFEB",
+   "darkValue": "#FFFFFFEB (over media)",
+   "appliesTo": [
+    "title-video-thumb"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckMediaChipBg",
+   "prototypeValue": ".dkp-vdur background rgba(8,7,6,.5)",
+   "lightValue": "#08070680",
+   "darkValue": "#08070680 (over media)",
+   "appliesTo": [
+    "title-video-thumb"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckMediaPlayScrim",
+   "prototypeValue": "play-mark disc fill rgba(8,7,6,.35)",
+   "lightValue": "#08070659",
+   "darkValue": "#08070659 (over media)",
+   "appliesTo": [
+    "title-video-thumb"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckMediaPlayRing",
+   "prototypeValue": "play-mark ring stroke rgba(255,255,255,.9)",
+   "lightValue": "#FFFFFFE6",
+   "darkValue": "#FFFFFFE6 (over media)",
+   "appliesTo": [
+    "title-video-thumb"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckMediaFadeStrong",
+   "prototypeValue": "poster left-fade strong stop rgba(8,7,6,.45)",
+   "lightValue": "#08070673",
+   "darkValue": "#08070673 (over media; GC-015's sem-mediaFade* values differ — deck-scoped set created)",
+   "appliesTo": [
+    "title-video-thumb"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckMediaFadeMid",
+   "prototypeValue": "poster left-fade mid stop rgba(8,7,6,.2) at 22%",
+   "lightValue": "#08070633",
+   "darkValue": "#08070633 (over media)",
+   "appliesTo": [
+    "title-video-thumb"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckMediaFadeClear",
+   "prototypeValue": "fade terminator rgba(8,7,6,0)",
+   "lightValue": "#08070600",
+   "darkValue": "#08070600 (over media)",
+   "appliesTo": [
+    "title-video-thumb",
+    "image-full-bleed"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-deckMediaFootFade",
+   "prototypeValue": "full-bleed caption foot scrim rgba(8,7,6,.62)",
+   "lightValue": "#0807069E",
+   "darkValue": "#0807069E (over media)",
+   "appliesTo": [
+    "image-full-bleed"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": null,
+   "prototypeValue": "THE DECK PAGE TYPE RAMP (design-canvas px, rendered at displayScale — not bindable as size tokens; see tokenJudgmentCalls): title 52 (portrait 44)/1.12 serif-500; subtitle 22 (20)/1.45; eyebrow 20/600 caps .1em; kicker 17/600 caps .09em; h2 30 (26)/1.2 serif-500 with the 50px first-child drop; body 19/1.6 (2-col 48px gap); logo 13/600 caps .14em; meta/byline 13/1.4; ghost numeral 120 (96)/700 -.02em; section title 40 (34)/1.15 serif; section sub 18/1.5; toc num 13/600, label 19/1.35, page 14; bullet text 19.5/1.5, detail 15.5/1.5; framed caption 14 + credit 11; overlay caption 15 + credit 11; quote 32 (28)/1.4 serif behind a 110px serif mark; attribution 15/600 + role 13; stats value 64 (54)/300 tabular -.01em, label 14.5/600 caps .07em, note 17/1.5, source 11/1.5; closing title 40/1.15 serif, lines 18/1.7, fineprint 10.5/1.55; footer 11/1",
+   "lightValue": "design px as listed (bound as scaled literals per frame)",
+   "darkValue": "same (page canvas is theme-independent)",
+   "appliesTo": [
+    "deck-default",
+    "title-image-bleed",
+    "title-video-thumb",
+    "toc-linked",
+    "section-divider",
+    "body-two-column",
+    "image-framed",
+    "image-full-bleed",
+    "bullets-check-detail",
+    "split-bleed",
+    "split-framed",
+    "quote-pull",
+    "stats-row",
+    "closing-fineprint",
+    "contents-menu-open",
+    "page-excluded-menu",
+    "toc-ref-excluded",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "letter-portrait-stats",
+    "custom-aspect-4x3",
+    "expanded-view-open",
+    "pdf-exporting",
+    "keyboard-expand-chip"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "non-token",
+   "token": null,
+   "prototypeValue": "PAGE-AS-DOCUMENT THEME INDEPENDENCE (design-rules 3): every page-internal color is a deliberate literal that must NOT ride the theme — the sem-deckPage*/sem-deckMedia* family above encodes this as same-value-both-modes tokens. Designer question: adopt a “document surface” token family into the design language, or rule that deck pages theme after all?",
+   "lightValue": "page canvas colors identical in light and dark",
+   "darkValue": "identical (that IS the divergence)",
+   "appliesTo": [
+    "deck-default",
+    "title-image-bleed",
+    "title-video-thumb",
+    "toc-linked",
+    "section-divider",
+    "body-two-column",
+    "image-framed",
+    "image-full-bleed",
+    "bullets-check-detail",
+    "split-bleed",
+    "split-framed",
+    "quote-pull",
+    "stats-row",
+    "closing-fineprint",
+    "contents-menu-open",
+    "page-excluded-menu",
+    "toc-ref-excluded",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "letter-portrait-stats",
+    "custom-aspect-4x3",
+    "expanded-view-open",
+    "pdf-exporting",
+    "keyboard-expand-chip"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "non-token",
+   "token": null,
+   "prototypeValue": "PROPORTIONAL MEDIA CAPTION LAW (V8): poster captions size in container-query units (eyebrow 3.8cqw/600 caps .14em over 5.4cqw/700 lh 1.16, inset 5.5cqw) so one caption reads proportionally at any slot size — no Hemlock convention for container-proportional type exists; frames bank the resolved sizes at the 46% landscape thumb (19.86/28.22px)",
+   "lightValue": "cqw-proportional (testable: caption px = cqw x tileWidth/100)",
+   "darkValue": "n/a",
+   "appliesTo": [
+    "title-video-thumb"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "non-token",
+   "token": null,
+   "prototypeValue": "OUTLINE-ACTION BUTTON IDIOM (reused GC-006/GC-016 standing gap): secondary buttons draw a full-accent 1px outline + accent label on a white face, vs Hemlock btnSecondary's blue-300 border; dark inverts to white-on-blue at an AA-remeasured #3A6AF8 (CSS 804-807, uncontracted at v001)",
+   "lightValue": "border #3A6AF8 (bound $y:sem-borders-action)",
+   "darkValue": "white outline on #3A6AF8 face (dark re-oracle)",
+   "appliesTo": [
+    "deck-default",
+    "progress-circles-on",
+    "letter-portrait-cover",
+    "pdf-exporting",
+    "contents-menu-open"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "non-token",
+   "token": null,
+   "prototypeValue": "ACTIVE PROGRESS DOT ROLE SPLIT: Hemlock sem-paginationDotActive = ink #403D3A; the deck (and the GC-015 carousel precedent) paints the active dot in the accent — bound $sem-carouselDotActive; designer to rule pagination-vs-carousel active-dot convention",
+   "lightValue": "active dot #3A6AF8",
+   "darkValue": "#5A82F9 (GC-015 pair)",
+   "appliesTo": [
+    "progress-circles-on"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  }
+ ],
+ "fontSubstitutions": [
+  {
+   "prototypeFont": "Heebo (prototype-native; Google Fonts with local-stack fallback)",
+   "boundFont": "Heebo ($y:font-primary), served from pencil/designs/fonts/Heebo-VariableFont_wght.ttf",
+   "scope": "all UI/body text — no family substitution; serving source pinned to the repo TTF"
+  },
+  {
+   "prototypeFont": "Noto Serif (prototype-native display face)",
+   "boundFont": "Noto Serif ($y:font-secondary), served from pencil/designs/fonts/NotoSerif-VariableFont.ttf",
+   "scope": "page titles, h2s, section/closing titles, quotes, video-dialog title"
+  }
+ ],
+ "prototypeDefectsSeen": [
+  "O1 (NEW, capture-observed): --tk-btn-accent-hover:#295CCC (line 657) is a one-character transposition of the template's #2952CC (--accent-hover, same file, line 655, and the template value every prior GC prototype carries). Hover-only — no contracted frame renders it; normalization injects the token value #2952CC. Flag for the next prototype rev.",
+  "F1 (already ledgered, flags.json D1): video poster tile opens a dialog without aria-haspopup — banked as rendered; no capture impact.",
+  "F2 (already ledgered, flags.json F2, INTENT-VS-IMPLEMENTATION): the deck layer's 720px video-dialog widening is dead CSS; the house 640px wins by source order. Frames bank the rendered 640 (probe video-modal-shell agrees)."
+ ],
+ "verdict": "captured"
+}
