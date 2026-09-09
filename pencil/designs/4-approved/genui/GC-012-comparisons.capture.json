@@ -4,72 +4,353 @@
   "slug": "comparisons",
   "prototypeVersion": "001",
   "penPath": "pencil/designs/4-approved/genui/GC-012-comparisons.pen",
-  "contentHash": "sha256:3c4e998abce9d9fd49642f647a44f7340cd4e25ebcfe17be9dd744fc329dd195",
-  "capturedAt": "2026-09-01T15:05Z",
+  "contentHash": "sha256:973c42479360714f6846ef87d42659bede6c19e54a9d6273c68100d0c692cd1d",
+  "capturedAt": "2026-09-09T19:20Z",
   "frames": [
     "default",
     "columns-hidden",
     "narrow-scrolled",
-    "config-error"
+    "config-error",
+    "arialabel-named",
+    "config-error-key-charset"
   ],
   "convergence": {
     "iterationsUsed": 5,
     "pencilVersion": "@pen.dev/cli 0.3.5",
     "pencilVersionNote": "Authored on the pinned 0.3.5 exactly (dispatch finding 9); the file imports hemlock-library.lib.pen and the fonts via relative URIs, so re-export MUST run with the .pen at its committed lane path on >=0.3.5.",
-    "exportInvocation": "pen interactive --in <file.pen> --out <scratch.pen>; execute({ input: 'Export([\"default\",\"columns-hidden\",\"narrow-scrolled\",\"config-error\"], \"png\", \"<dir>\")' }) - default scale 2. Re-export verified byte-deterministic across three consecutive runs (12/12 sha256-identical).",
+    "exportInvocation": "pen interactive --in <file.pen> --out <scratch.pen>; execute({ input: 'Export([\"default\",\"columns-hidden\",\"narrow-scrolled\",\"config-error\",\"arialabel-named\",\"config-error-key-charset\"], \"png\", \"<dir>\")' }) - default scale 2. Re-export verified byte-deterministic across three consecutive runs (12/12 sha256-identical).",
     "comparison": "pixelmatch threshold 0.1, per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story budget, not this loop's). Targets = NORMALIZED v001 prototype, per-state roots/steps/viewports from states.json, headless Chromium 151.0.7922.34 (playwright 1.62.1), deviceScaleFactor 2, fonts.googleapis/gstatic blocked with Heebo + Noto Serif served from pencil/designs/fonts TTFs (the same files the .pen references) over CORS-enabled localhost. Element capture uses an INTERIOR clip (ceil origin / floor size). Every state self-consistency-gated: three FULL RELOADS (steps re-driven) byte-identical, 12/12. ENVIRONMENT-FACT CORRECTION (supersedes the GC-003 v002 Linux flag list for capture targets): --disable-font-subpixel-positioning AND --font-render-hinting=none both change text LAYOUT on Linux (glyph advances), shifting intrinsic column widths off the oracle's banked vectors (probed: topic 116.08 with either flag vs the contract's 117.6 without). Targets rendered with only --disable-lcd-text --force-color-profile=srgb --disable-partial-raster --disable-skia-runtime-opts --num-raster-threads=1 --disable-gpu; byte-determinism re-verified without the two dropped flags.",
     "iterationNotes": "Six compare rounds ran; two were tooling-defect re-runs that consumed no budget (a Range/probe DOM bug that corrupted the config-error line split, and a re-run after a mis-composed adjustment file). The five honest rounds: (1) initial extraction-driven authoring (paint-ordered draw list from computed styles; per-line text via Range rects + zero-size inline-block baseline probe; two-rect border model; wrap as clip frame; sticky cells layered above scrolled content; calibrated pen baseline model A(family,size,weight,lineHeight) from an 'H' ink-bottom probe export): 2/4 within budget, config-error 6.4% (wrapped-line baseline defect). (2) word-level x pinning (pen advances drift vs Chromium along long runs) + per-class ink-delta shift refinement measured export-vs-target: 2/4, config-error 2.3%. (3) per-state-class shift refinement + device-aligned per-instance checkbox raster crops + per-CHARACTER x pinning for weight-500 runs (pen's 500-instance advances measure wider than Chromium's): 3/4 pass, config-error 2.1%. (4) root-cause fix: Chromium SNAPS each rendered text baseline to integer css px (config-error layout pitch 20.297px but rendered ink pitch 21px) while pen renders continuously (probed: pen ink moves 0.5 device px per 0.25 css offset, x and y) - baselines rounded before conversion, per-state residuals re-derived cleanly (config-error text 183/183 chars at (0,0)): 3/4, config-error 1.5% with ALL residual in the border rows. (5) Chromium pixel-snaps the error panel's border box so the snapped top/bottom border rows fall OUTSIDE the interior clip (measured: interior rows 0 and 129 pure wash); ring re-modeled 1 css px beyond the clip vertically: 4/4 converged, worst 0.382%, best 0.003%. Residual is cross-rasterizer text AA.",
     "perState": [
-      { "state": "default", "diffPct": 0.374, "geometryProbes": "pass", "exportSha256": "c4cbd72c5cb45840a9f9ad746ff3bedf1435a286185d77a0ffe65cd9256c8ae1" },
-      { "state": "columns-hidden", "diffPct": 0.228, "geometryProbes": "pass", "exportSha256": "e950a84816cf057a70ed39aca2860b0837d98592dedebe2e1b289d5b0d05fc33" },
-      { "state": "narrow-scrolled", "diffPct": 0.382, "geometryProbes": "pass", "exportSha256": "f2d5ec4f71037a23b37947f6f9910b4c73658f05fd89ef430f4db432bf9176af" },
-      { "state": "config-error", "diffPct": 0.003, "geometryProbes": "pass", "exportSha256": "b37648eba4459ace1b29cc5346ad556ce88dd49eabafa27c368c58c432a815b3" }
+      {
+        "state": "default",
+        "diffPct": 0.374,
+        "geometryProbes": "pass",
+        "exportSha256": "c4cbd72c5cb45840a9f9ad746ff3bedf1435a286185d77a0ffe65cd9256c8ae1"
+      },
+      {
+        "state": "columns-hidden",
+        "diffPct": 0.228,
+        "geometryProbes": "pass",
+        "exportSha256": "e950a84816cf057a70ed39aca2860b0837d98592dedebe2e1b289d5b0d05fc33"
+      },
+      {
+        "state": "narrow-scrolled",
+        "diffPct": 0.382,
+        "geometryProbes": "pass",
+        "exportSha256": "f2d5ec4f71037a23b37947f6f9910b4c73658f05fd89ef430f4db432bf9176af"
+      },
+      {
+        "state": "config-error",
+        "diffPct": 0.003,
+        "geometryProbes": "pass",
+        "exportSha256": "b37648eba4459ace1b29cc5346ad556ce88dd49eabafa27c368c58c432a815b3"
+      },
+      {
+        "state": "arialabel-named",
+        "diffPct": 0.374,
+        "geometryProbes": "pass",
+        "exportSha256": "c4cbd72c5cb45840a9f9ad746ff3bedf1435a286185d77a0ffe65cd9256c8ae1",
+        "preBank": {
+          "settledMs": 1000,
+          "textProbes": "pass",
+          "distinct": false,
+          "attempts": 1,
+          "pixelIdenticalTo": [
+            "default"
+          ],
+          "allowedBy": "states.json arialabel-named description (aria-label is non-visual, so the pixels are a twin of default banked under this id per the frames-1:1 law) + design-rules 22; export sha equals default by construction - the aria.yml truth is the state's point",
+          "textProbesNote": "genui-states/v1 declares no textProbes[]; equivalent live-DOM assertion ran: table aria-label === 'Compare account options' verbatim, 3/3 reloads"
+        }
+      },
+      {
+        "state": "config-error-key-charset",
+        "diffPct": 0.002,
+        "geometryProbes": "pass",
+        "exportSha256": "2a9d8dc44b08c5bbb157b8a5653c99ecb82340aef20319b6a8415a4f5a164088",
+        "preBank": {
+          "settledMs": 1000,
+          "textProbes": "pass",
+          "distinct": true,
+          "attempts": 1,
+          "textProbesNote": "genui-states/v1 declares no textProbes[]; equivalent live-DOM assertion ran: panel textContent === the full contracted rejection message ('Configuration error in this comparison block: cols[1].key \"option b!\" contains characters outside [A-Za-z0-9_-] - keys drive the data-col selector and the show/hide checkbox value, so every key must match ^[A-Za-z0-9_-]{1,64}$.') verbatim, 3/3 reloads; data-config-error=1 and the role=alert summary verified live"
+        }
+      }
     ],
-    "geometryProbesDetail": "Design-rules section 4 vectors asserted on the normalized render the frames carry verbatim - EXACT matches to the banked contract numbers once the two layout-changing Chromium flags were dropped: G1 block 1024x306.73 = checks 19.5 + margin 20 + table 267.2; G1a topic 117.6, options 151.1 at offsets 117.6/268.7/419.7/570.8/721.9/872.9, table 1024 = wrap (no scroll; wrap carries no tabindex/role at this width - conditional a11y verified absent); G2 D/E/F hidden (display:none), table stays 1024, topic 211, A/B/C 271 at 211/482/753, FLAG-D1 banked (visible last cell border-right 0px none); G3 block 440x344.23, checks two rows 57px, table 949 = topic 109 + 6x140, scrollLeft 200, sticky rail 0px drift, wrap tabindex=0/role=region/aria-label present, overlay thumb settled at opacity 0 + pointer-events none; T1 error text rendered EXACTLY as banked (three problems, one panel; the injected block stamped data-config-error=1, table left unbuilt, role=alert summary raised). Header filler ::after inert (0px) in all states. G4 (toggle arithmetic at narrow) is a land-stage unit-test vector, not a frame. Frame ids = state ids 1:1 verbatim, states.json order.",
-    "waivers": []
+    "geometryProbesDetail": "Design-rules section 4 vectors asserted on the normalized render the frames carry verbatim - EXACT matches to the banked contract numbers once the two layout-changing Chromium flags were dropped: G1 block 1024x306.73 = checks 19.5 + margin 20 + table 267.2; G1a topic 117.6, options 151.1 at offsets 117.6/268.7/419.7/570.8/721.9/872.9, table 1024 = wrap (no scroll; wrap carries no tabindex/role at this width - conditional a11y verified absent); G2 D/E/F hidden (display:none), table stays 1024, topic 211, A/B/C 271 at 211/482/753, FLAG-D1 banked (visible last cell border-right 0px none); G3 block 440x344.23, checks two rows 57px, table 949 = topic 109 + 6x140, scrollLeft 200, sticky rail 0px drift, wrap tabindex=0/role=region/aria-label present, overlay thumb settled at opacity 0 + pointer-events none; T1 error text rendered EXACTLY as banked (three problems, one panel; the injected block stamped data-config-error=1, table left unbuilt, role=alert summary raised). Header filler ::after inert (0px) in all states. G4 (toggle arithmetic at narrow) is a land-stage unit-test vector, not a frame. Frame ids = state ids 1:1 verbatim, states.json order. RULING-13 ROUND (2026-09-09): arialabel-named is a node-for-node copy of the converged default frame (same G1/G1a geometry; the drive step is attribute-only, target byte-identical to default's across 3 reloads); config-error-key-charset panel verified on the normalized render: outer 1024x66.59 (the contract's 1024x66.6), border 1px solid all sides, radius 8px, font 14px, padding 12px/14px, data-config-error=1 on the block, role=alert summary raised to the pane top with the same text - the error-box-key-charset probe set. Two lines (134+64 non-space chars), same rendered-ink line pitch as config-error (tops 11.328/31.625 -> pen y 12/33).",
+    "waivers": [],
+    "recapture": {
+      "round": "2026-09-09 ruling-13 amendment",
+      "iterationsUsed": 1,
+      "notes": "One honest iteration: the environment reproduced the v001 convergence basis exactly (fresh normalized targets vs the locked exports re-measured 0.374% default / 0.003% config-error - the recorded numbers), so the carried authoring model (per-non-space-character text nodes, x = round(char x), rendered-ink line pitch 12/33, ring modeled 1 css px beyond the interior clip vertically) converged both new frames on the first export. Targets: normalized v001 prototype, same recipe/flags/fonts as v001 (Chromium 151.0.7922.34, playwright 1.62.1, dsf 2, fonts.google* blocked, design-specs TTFs served over CORS localhost). L3a pre-bank per state: >=1000ms settle, live-DOM text probes (exact panel text; exact table aria-label), 3 full-reload byte-identical targets each (12/12 incl. the two validation states)."
+    }
   },
   "normalizationRecipe": {
     "$note": "Identity injections (variable already equals the bound token's light value - Bill's palette IS the Hemlock palette on this surface) change no bytes and are recorded here: --surface-1/#FFFFFF->sem-background-surface, --border/#EEEDEB->sem-borders-light, --ink/#0E0E0E->sem-text-header, --muted/#5E5954->sem-text-meta, --text-body/#403D3A->sem-text-body, --taupe-100/#F7F5F0->sem-dataTableHeaderBandStart (local), --taupe-200/#EDEAE3->sem-dataTableHeaderBandEnd (local), --accent-subtle/#EBF0FE->sem-borders-action-faint (local), --accent/#3A6AF8->sem-borders-action|sem-text-action (in-root consumer is only the non-frame focus ring, judgment call below).",
     "cssVariableInjections": [
-      { "variable": "--tk-error", "value": "#C82320", "token": "$sem-text-error / $sem-borders-error" },
-      { "variable": "--tk-error-subtle", "value": "#FFEAEA", "token": "$sem-background-error" },
-      { "variable": "--table-row-hover", "value": "#F7F5F0", "token": "$sem-background-rowHover" },
-      { "variable": "--table-row-pressed", "value": "#EDEAE3", "token": "$sem-background-rowPressed" }
+      {
+        "variable": "--tk-error",
+        "value": "#C82320",
+        "token": "$sem-text-error / $sem-borders-error"
+      },
+      {
+        "variable": "--tk-error-subtle",
+        "value": "#FFEAEA",
+        "token": "$sem-background-error"
+      },
+      {
+        "variable": "--table-row-hover",
+        "value": "#F7F5F0",
+        "token": "$sem-background-rowHover"
+      },
+      {
+        "variable": "--table-row-pressed",
+        "value": "#EDEAE3",
+        "token": "$sem-background-rowPressed"
+      }
     ],
     "findReplaces": [
-      { "from": ".t2-sbar{...background:var(--tk-border-strong);", "to": ".t2-sbar{...background:#B5B1AB;", "where": "overlay scroll thumb -> $sem-scrollbarThumb; renders at opacity 0 in the contracted narrow-scrolled frame (latent binding). Targeted rule-level replace because --tk-border-strong also feeds kernel controls outside every contracted root." }
+      {
+        "from": ".t2-sbar{...background:var(--tk-border-strong);",
+        "to": ".t2-sbar{...background:#B5B1AB;",
+        "where": "overlay scroll thumb -> $sem-scrollbarThumb; renders at opacity 0 in the contracted narrow-scrolled frame (latent binding). Targeted rule-level replace because --tk-border-strong also feeds kernel controls outside every contracted root."
+      }
     ],
     "fontSwap": "None needed - the prototype is Heebo NATIVE (--font-ui). Determinism half only: the render blocks fonts.googleapis.com/fonts.gstatic.com and serves Heebo + Noto Serif from pencil/designs/fonts TTFs (the exact files the .pen references) via a CORS-enabled local route. Probe-verified the design-specs variable TTF is metric-identical to Google's served Heebo v28."
   },
   "tokenJudgmentCalls": [
-    { "surface": "header band gradient (thead th, taupe-100 -> taupe-200)", "prototypeValue": "#F7F5F0 -> #EDEAE3", "boundToken": "$sem-dataTableHeaderBandStart / $sem-dataTableHeaderBandEnd (created, GC-003 v002 naming carried)", "rationale": "No Hemlock role owns the table-header band; same gap GC-003 recorded. NOTE: this component's dark gradient is #22314F -> #172642 (standalone line 1220, the Compare table's own dark scheme) - the REVERSE stop order of GC-003's data-table values; the local tokens carry THIS prototype's dark truth.", "newTokenCreated": true, "newToken": "$sem-dataTableHeaderBandStart, $sem-dataTableHeaderBandEnd" },
-    { "surface": "header band bottom hairline (--accent-subtle underline)", "prototypeValue": "#EBF0FE", "boundToken": "$sem-borders-action-faint (created locally; GC-003 v002 name + dark value carried)", "rationale": "borders-action-subtle is blue-300 - no accent-faint border role exists. Dark #1A2A55 = dark rgba(58,106,248,.18) precomputed opaque over #131C31 (same math as GC-003).", "newTokenCreated": true, "newToken": "$sem-borders-action-faint" },
-    { "surface": "row hairlines + v4.12m side rails + bottom rule (--border)", "prototypeValue": "#EEEDEB", "boundToken": "$sem-borders-light", "rationale": "The default-border role owns Bill's exact value (gray-100). Role-first, value identity.", "newTokenCreated": false, "newToken": null },
-    { "surface": "option-column header type (--muted caps)", "prototypeValue": "#5E5954", "boundToken": "$sem-text-meta", "rationale": "Muted caps column labels are meta text; the meta role owns the value (gray-600). Carried from GC-003 v002.", "newTokenCreated": false, "newToken": null },
-    { "surface": "topic header + row-label rail + checkbox label ink (--ink)", "prototypeValue": "#0E0E0E", "boundToken": "$sem-text-header", "rationale": "Header/primary-text role owns gray-900; the rail is header-of-row semantics (th[scope=row]). GC-003 recipe carried.", "newTokenCreated": false, "newToken": null },
-    { "surface": "data cell type (--text-body) / surfaces incl. opaque sticky-rail fills (--surface-1)", "prototypeValue": "#403D3A / #FFFFFF", "boundToken": "$sem-text-body / $sem-background-surface", "rationale": "Exact role identities. The rail's opaque surface fill (design-rules 6 sticky-opacity requirement) binds the same surface role the cells show.", "newTokenCreated": false, "newToken": null },
-    { "surface": "row hover / pressed tints - NOT rendered in any contracted frame (design-rules 8)", "prototypeValue": "#EBF0FE / #C8D6FD (Bill's shared table-row-state blues, --seq1/--seq2)", "boundToken": "$sem-background-rowHover / $sem-background-rowPressed", "rationale": "The rowHover/rowPressed roles exist by name (taupe values). Bound role-first for the land stage; the blue-vs-taupe divergence stays designer-visible via this record. Same call GC-003 v001/v002 made for the same shared roles.", "newTokenCreated": false, "newToken": null },
-    { "surface": "wrap :focus-visible ring - NOT a frame (design-rules 12: draws outside the root's border box)", "prototypeValue": "3px solid #3A6AF8 (--accent) at +2px offset", "boundToken": "$sem-borders-focus", "rationale": "Hemlock's a11y contract names sem-borders-focus as THE focus ring (near-black in light). Deliberate divergence from the prototype's blue ring, carried from GC-003's identical call; ring geometry (3px, +2px offset) is a design-rule requirement on the land story.", "newTokenCreated": false, "newToken": null },
-    { "surface": "overlay scroll thumb (.t2-sbar)", "prototypeValue": "#D4D4D4 (--tk-border-strong)", "boundToken": "$sem-scrollbarThumb", "rationale": "The thumb role exists as a named token (gray-300 #B5B1AB). The thumb renders at opacity 0 in the contracted narrow-scrolled frame (settled rest-fade truth), so the binding is latent; geometry stays probed at opacity 0.", "newTokenCreated": false, "newToken": null },
-    { "surface": "config-error panel (text, wash, ring)", "prototypeValue": "#B91C1C on #FEE2E2, border #B91C1C (Tailwind reds, --tk-error/--tk-error-subtle)", "boundToken": "$sem-text-error / $sem-background-error / $sem-borders-error", "rationale": "The error status roles own the fail-loudly surface; Hemlock's red ramp (#C82320 / #FFEAEA) replaces the Tailwind values. 1px ring + 8px radius + 12px/14px padding geometry unchanged. Carried from GC-003.", "newTokenCreated": false, "newToken": null },
-    { "surface": "native checkboxes (the strip's UA-rendered controls, design-rules 3)", "prototypeValue": "Chromium UA checkbox chrome, 13px box, no accent-color override in light", "boundToken": "(raster assets - GC-012-comparisons-assets/cb-on-*.png / cb-off-*.png)", "rationale": "Native UA control chrome is browser paint, not tokenizable (the Iron Law's raster allowance). Eight device-aligned crops from the normalized render (deduped by content hash; alignment eliminates resampling phase error). The land story renders its own control - whether the served word takes the Hemlock Checkbox instead of native chrome is a land-stage/designer surface, visible via the non-token gap below.", "newTokenCreated": false, "newToken": null },
-    { "surface": "checkbox strip labels (13px/500)", "prototypeValue": "13px (--fs-13)", "boundToken": "$text-size-caption (created locally, 13 - same gap GC-001 and GC-003 recorded)", "rationale": "The type scale has xs=12/sm=14; 13px has no step. Local number token carried under the same name as prior captures.", "newTokenCreated": true, "newToken": "$text-size-caption" }
+    {
+      "surface": "header band gradient (thead th, taupe-100 -> taupe-200)",
+      "prototypeValue": "#F7F5F0 -> #EDEAE3",
+      "boundToken": "$sem-dataTableHeaderBandStart / $sem-dataTableHeaderBandEnd (created, GC-003 v002 naming carried)",
+      "rationale": "No Hemlock role owns the table-header band; same gap GC-003 recorded. NOTE: this component's dark gradient is #22314F -> #172642 (standalone line 1220, the Compare table's own dark scheme) - the REVERSE stop order of GC-003's data-table values; the local tokens carry THIS prototype's dark truth.",
+      "newTokenCreated": true,
+      "newToken": "$sem-dataTableHeaderBandStart, $sem-dataTableHeaderBandEnd"
+    },
+    {
+      "surface": "header band bottom hairline (--accent-subtle underline)",
+      "prototypeValue": "#EBF0FE",
+      "boundToken": "$sem-borders-action-faint (created locally; GC-003 v002 name + dark value carried)",
+      "rationale": "borders-action-subtle is blue-300 - no accent-faint border role exists. Dark #1A2A55 = dark rgba(58,106,248,.18) precomputed opaque over #131C31 (same math as GC-003).",
+      "newTokenCreated": true,
+      "newToken": "$sem-borders-action-faint"
+    },
+    {
+      "surface": "row hairlines + v4.12m side rails + bottom rule (--border)",
+      "prototypeValue": "#EEEDEB",
+      "boundToken": "$sem-borders-light",
+      "rationale": "The default-border role owns Bill's exact value (gray-100). Role-first, value identity.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "option-column header type (--muted caps)",
+      "prototypeValue": "#5E5954",
+      "boundToken": "$sem-text-meta",
+      "rationale": "Muted caps column labels are meta text; the meta role owns the value (gray-600). Carried from GC-003 v002.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "topic header + row-label rail + checkbox label ink (--ink)",
+      "prototypeValue": "#0E0E0E",
+      "boundToken": "$sem-text-header",
+      "rationale": "Header/primary-text role owns gray-900; the rail is header-of-row semantics (th[scope=row]). GC-003 recipe carried.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "data cell type (--text-body) / surfaces incl. opaque sticky-rail fills (--surface-1)",
+      "prototypeValue": "#403D3A / #FFFFFF",
+      "boundToken": "$sem-text-body / $sem-background-surface",
+      "rationale": "Exact role identities. The rail's opaque surface fill (design-rules 6 sticky-opacity requirement) binds the same surface role the cells show.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "row hover / pressed tints - NOT rendered in any contracted frame (design-rules 8)",
+      "prototypeValue": "#EBF0FE / #C8D6FD (Bill's shared table-row-state blues, --seq1/--seq2)",
+      "boundToken": "$sem-background-rowHover / $sem-background-rowPressed",
+      "rationale": "The rowHover/rowPressed roles exist by name (taupe values). Bound role-first for the land stage; the blue-vs-taupe divergence stays designer-visible via this record. Same call GC-003 v001/v002 made for the same shared roles.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "wrap :focus-visible ring - NOT a frame (design-rules 12: draws outside the root's border box)",
+      "prototypeValue": "3px solid #3A6AF8 (--accent) at +2px offset",
+      "boundToken": "$sem-borders-focus",
+      "rationale": "Hemlock's a11y contract names sem-borders-focus as THE focus ring (near-black in light). Deliberate divergence from the prototype's blue ring, carried from GC-003's identical call; ring geometry (3px, +2px offset) is a design-rule requirement on the land story.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "overlay scroll thumb (.t2-sbar)",
+      "prototypeValue": "#D4D4D4 (--tk-border-strong)",
+      "boundToken": "$sem-scrollbarThumb",
+      "rationale": "The thumb role exists as a named token (gray-300 #B5B1AB). The thumb renders at opacity 0 in the contracted narrow-scrolled frame (settled rest-fade truth), so the binding is latent; geometry stays probed at opacity 0.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "config-error panel (text, wash, ring)",
+      "prototypeValue": "#B91C1C on #FEE2E2, border #B91C1C (Tailwind reds, --tk-error/--tk-error-subtle)",
+      "boundToken": "$sem-text-error / $sem-background-error / $sem-borders-error",
+      "rationale": "The error status roles own the fail-loudly surface; Hemlock's red ramp (#C82320 / #FFEAEA) replaces the Tailwind values. 1px ring + 8px radius + 12px/14px padding geometry unchanged. Carried from GC-003.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "native checkboxes (the strip's UA-rendered controls, design-rules 3)",
+      "prototypeValue": "Chromium UA checkbox chrome, 13px box, no accent-color override in light",
+      "boundToken": "(raster assets - GC-012-comparisons-assets/cb-on-*.png / cb-off-*.png)",
+      "rationale": "Native UA control chrome is browser paint, not tokenizable (the Iron Law's raster allowance). Eight device-aligned crops from the normalized render (deduped by content hash; alignment eliminates resampling phase error). The land story renders its own control - whether the served word takes the Hemlock Checkbox instead of native chrome is a land-stage/designer surface, visible via the non-token gap below.",
+      "newTokenCreated": false,
+      "newToken": null
+    },
+    {
+      "surface": "checkbox strip labels (13px/500)",
+      "prototypeValue": "13px (--fs-13)",
+      "boundToken": "$text-size-caption (created locally, 13 - same gap GC-001 and GC-003 recorded)",
+      "rationale": "The type scale has xs=12/sm=14; 13px has no step. Local number token carried under the same name as prior captures.",
+      "newTokenCreated": true,
+      "newToken": "$text-size-caption"
+    }
   ],
   "designGaps": [
-    { "dimension": "color", "token": "$sem-dataTableHeaderBandStart", "prototypeValue": "#F7F5F0 (--taupe-100, thead band gradient top stop; gradient RESTORED per the 2026-08-25 decision, standalone line 992)", "lightValue": "#F7F5F0", "darkValue": "#22314F (this prototype's dark Compare-table gradient top stop, line 1220 - NOTE: reverse stop order vs GC-003's data-table dark values; per-component dark truth recorded)", "appliesTo": ["default", "columns-hidden", "narrow-scrolled"], "designerQuestion": "Adopt into the design language, or change the component to match the existing system?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "color", "token": "$sem-dataTableHeaderBandEnd", "prototypeValue": "#EDEAE3 (--taupe-200, thead band gradient bottom stop)", "lightValue": "#EDEAE3", "darkValue": "#172642", "appliesTo": ["default", "columns-hidden", "narrow-scrolled"], "designerQuestion": "Adopt into the design language, or change the component to match the existing system?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "color", "token": "$sem-borders-action-faint", "prototypeValue": "#EBF0FE (--accent-subtle as the thead bottom border)", "lightValue": "#EBF0FE", "darkValue": "#1A2A55 (prototype dark rgba(58,106,248,.18) precomputed opaque over #131C31)", "appliesTo": ["default", "columns-hidden", "narrow-scrolled"], "designerQuestion": "Adopt an accent-faint BORDER role (borders-action-subtle is blue-300), or change the component to an existing border role?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": "$text-size-caption", "prototypeValue": "13px (checkbox strip labels, --fs-13 at weight 500)", "lightValue": "13", "darkValue": "13 (single-mode number)", "appliesTo": ["default", "columns-hidden", "narrow-scrolled"], "designerQuestion": "Adopt a 13px step (same gap GC-001 and GC-003 recorded), or change the component to xs=12/sm=14?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "typography", "token": null, "prototypeValue": "Header caps tracking: 12px UPPERCASE labels at letter-spacing .05em (0.6px, design-rules 4). No letter-spacing tokens exist in Hemlock. Testable: header-cell computed letter-spacing = 0.6px. Header weight 600 vs the type scale's bold=700 table-header convention (same gap GC-003 recorded). Line-heights 1.43 (cells/headers), 1.45 (error panel), 1.5 (strip labels) vs the scale's per-size ratios.", "lightValue": "bound numerically per text node (letterSpacing px, weight, lineHeight ratio)", "darkValue": "same (geometry, not themed)", "appliesTo": ["all frames"], "designerQuestion": "Adopt tracking/weight/line-height steps for the table family, or change the component to the scale's conventions?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "spacing", "token": null, "prototypeValue": "Strip rhythm off the spacing scale, bound positionally: 18px checkbox gaps (scale has 16/24), 7px control-to-text gap (scale has 4/8), 20px strip-to-table margin (scale has 16/24) - design-rules 2. Cell padding 12px/16px = spacing-xs/sm (on scale).", "lightValue": "positional (frames carry absolute geometry from the rendered prototype)", "darkValue": "same", "appliesTo": ["default", "columns-hidden", "narrow-scrolled"], "designerQuestion": "Adopt control-strip spacing steps (18/7/20), or change the component to the existing scale?", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)", "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR" } },
-    { "dimension": "non-token", "token": null, "prototypeValue": "The strip's controls are NATIVE UA checkboxes by authored intent (design-rules 3: no custom chrome, appearance auto, no accent-color in light; UA 13px box) - Hemlock ships a Checkbox component with its own 20px chrome. Testable: the prototype renders <input type=checkbox> with no custom chrome elements.", "lightValue": "rasterized UA chrome (8 device-aligned crops in GC-012-comparisons-assets/)", "darkValue": "dark checkbox accent is measured off the native control upstream (design-rules 19; dark not contracted)", "appliesTo": ["default", "columns-hidden", "narrow-scrolled"], "designerQuestion": "Should the served ComparisonTable keep native checkbox chrome (Bill's authored intent) or compose the Hemlock Checkbox (20px, custom chrome)?", "reconciliation": { "ifAdopted": "document the native-control convention in the design system; this .pen already banks the UA chrome - no component change", "ifRemapped": "designer rules Hemlock Checkbox; a re-oracle at the same prototype version re-banks the strip with the library control (judge-authorized) + the component change rides the same PR" } }
+    {
+      "dimension": "color",
+      "token": "$sem-dataTableHeaderBandStart",
+      "prototypeValue": "#F7F5F0 (--taupe-100, thead band gradient top stop; gradient RESTORED per the 2026-08-25 decision, standalone line 992)",
+      "lightValue": "#F7F5F0",
+      "darkValue": "#22314F (this prototype's dark Compare-table gradient top stop, line 1220 - NOTE: reverse stop order vs GC-003's data-table dark values; per-component dark truth recorded)",
+      "appliesTo": [
+        "default",
+        "columns-hidden",
+        "narrow-scrolled"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "color",
+      "token": "$sem-dataTableHeaderBandEnd",
+      "prototypeValue": "#EDEAE3 (--taupe-200, thead band gradient bottom stop)",
+      "lightValue": "#EDEAE3",
+      "darkValue": "#172642",
+      "appliesTo": [
+        "default",
+        "columns-hidden",
+        "narrow-scrolled"
+      ],
+      "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "color",
+      "token": "$sem-borders-action-faint",
+      "prototypeValue": "#EBF0FE (--accent-subtle as the thead bottom border)",
+      "lightValue": "#EBF0FE",
+      "darkValue": "#1A2A55 (prototype dark rgba(58,106,248,.18) precomputed opaque over #131C31)",
+      "appliesTo": [
+        "default",
+        "columns-hidden",
+        "narrow-scrolled"
+      ],
+      "designerQuestion": "Adopt an accent-faint BORDER role (borders-action-subtle is blue-300), or change the component to an existing border role?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": "$text-size-caption",
+      "prototypeValue": "13px (checkbox strip labels, --fs-13 at weight 500)",
+      "lightValue": "13",
+      "darkValue": "13 (single-mode number)",
+      "appliesTo": [
+        "default",
+        "columns-hidden",
+        "narrow-scrolled"
+      ],
+      "designerQuestion": "Adopt a 13px step (same gap GC-001 and GC-003 recorded), or change the component to xs=12/sm=14?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "typography",
+      "token": null,
+      "prototypeValue": "Header caps tracking: 12px UPPERCASE labels at letter-spacing .05em (0.6px, design-rules 4). No letter-spacing tokens exist in Hemlock. Testable: header-cell computed letter-spacing = 0.6px. Header weight 600 vs the type scale's bold=700 table-header convention (same gap GC-003 recorded). Line-heights 1.43 (cells/headers), 1.45 (error panel), 1.5 (strip labels) vs the scale's per-size ratios.",
+      "lightValue": "bound numerically per text node (letterSpacing px, weight, lineHeight ratio)",
+      "darkValue": "same (geometry, not themed)",
+      "appliesTo": [
+        "all frames"
+      ],
+      "designerQuestion": "Adopt tracking/weight/line-height steps for the table family, or change the component to the scale's conventions?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "spacing",
+      "token": null,
+      "prototypeValue": "Strip rhythm off the spacing scale, bound positionally: 18px checkbox gaps (scale has 16/24), 7px control-to-text gap (scale has 4/8), 20px strip-to-table margin (scale has 16/24) - design-rules 2. Cell padding 12px/16px = spacing-xs/sm (on scale).",
+      "lightValue": "positional (frames carry absolute geometry from the rendered prototype)",
+      "darkValue": "same",
+      "appliesTo": [
+        "default",
+        "columns-hidden",
+        "narrow-scrolled"
+      ],
+      "designerQuestion": "Adopt control-strip spacing steps (18/7/20), or change the component to the existing scale?",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+      }
+    },
+    {
+      "dimension": "non-token",
+      "token": null,
+      "prototypeValue": "The strip's controls are NATIVE UA checkboxes by authored intent (design-rules 3: no custom chrome, appearance auto, no accent-color in light; UA 13px box) - Hemlock ships a Checkbox component with its own 20px chrome. Testable: the prototype renders <input type=checkbox> with no custom chrome elements.",
+      "lightValue": "rasterized UA chrome (8 device-aligned crops in GC-012-comparisons-assets/)",
+      "darkValue": "dark checkbox accent is measured off the native control upstream (design-rules 19; dark not contracted)",
+      "appliesTo": [
+        "default",
+        "columns-hidden",
+        "narrow-scrolled"
+      ],
+      "designerQuestion": "Should the served ComparisonTable keep native checkbox chrome (Bill's authored intent) or compose the Hemlock Checkbox (20px, custom chrome)?",
+      "reconciliation": {
+        "ifAdopted": "document the native-control convention in the design system; this .pen already banks the UA chrome - no component change",
+        "ifRemapped": "designer rules Hemlock Checkbox; a re-oracle at the same prototype version re-banks the strip with the library control (judge-authorized) + the component change rides the same PR"
+      }
+    }
   ],
   "fontSubstitutions": [
-    { "prototypeFont": "Heebo (native)", "boundFont": "Heebo ($font-primary)", "scope": "all text - identity (the prototype is Heebo-native; no Helvetica anywhere on this surface)" }
+    {
+      "prototypeFont": "Heebo (native)",
+      "boundFont": "Heebo ($font-primary)",
+      "scope": "all text - identity (the prototype is Heebo-native; no Helvetica anywhere on this surface)"
+    }
   ],
   "prototypeDefectsSeen": [
-    { "flag": "FLAG-D1 (already recorded, design-rules.md section 2 / flags.json D1)", "note": "Confirmed while capturing columns-hidden: with D/E/F hidden the right side rail and 8px bottom-right radius VANISH (visible last cells carry border-right 0px none; the :last-child rules keep pointing at the hidden F cells). The frame banks the rendered rail-less right edge; nobody should 'fix' the rail until the flag is ruled." },
-    { "flag": "(observation O1, carried)", "note": "Bracketed placeholder copy ([Attribute 1], [A's value], [Best for]) banked as rendered; the model supplies real copy through props." }
+    {
+      "flag": "FLAG-D1 (already recorded, design-rules.md section 2 / flags.json D1)",
+      "note": "Confirmed while capturing columns-hidden: with D/E/F hidden the right side rail and 8px bottom-right radius VANISH (visible last cells carry border-right 0px none; the :last-child rules keep pointing at the hidden F cells). The frame banks the rendered rail-less right edge; nobody should 'fix' the rail until the flag is ruled."
+    },
+    {
+      "flag": "(observation O1, carried)",
+      "note": "Bracketed placeholder copy ([Attribute 1], [A's value], [Best for]) banked as rendered; the model supplies real copy through props."
+    }
   ],
   "environmentFactFlags": [
     "SUPERSEDE (capture targets, Linux): GC-003 v002's determinism flag list includes --disable-font-subpixel-positioning and --font-render-hinting=none - BOTH change Chromium text LAYOUT (glyph advances), shifting intrinsic column widths off the oracle's banked vectors (topic 116.08 with either flag vs the contract's 117.6 without). GC-012 targets rendered without them; byte-determinism re-verified across three full reloads per state (12/12).",
@@ -77,5 +358,11 @@
     "NEW: pen 0.3.5 weight-500 Heebo advances measure wider than Chromium's - word-level x pinning is not enough for 500-weight runs; pin per character.",
     "VERIFIED: design-specs Heebo-VariableFont_wght.ttf is metric-identical to Google-served Heebo v28 (canvas measureText probe, weights 400/500/600)."
   ],
-  "verdict": "captured"
+  "verdict": "captured",
+  "amendment": {
+    "rulingCommentId": "e69d208b-f74b-483f-8f09-52fe807654df",
+    "scope": "ariaLabel,cols-key-charset",
+    "at": "2026-09-09T18:52:00Z",
+    "note": "Scoped ruling-13 re-capture (FE-2220) at the SAME prototype v001 (contentHash re-verified sha256:6e01fd1e... exact): the two states amended into states.json 2026-09-09 get their pended .pen frames. The four v001-locked frames are byte-untouched: their pen 0.3.5 exports remain sha256-identical to the perState hashes below (verified 3/3 runs this round). Original v001 capture 2026-09-01 (prior contentHash sha256:3c4e998abce9d9fd49642f647a44f7340cd4e25ebcfe17be9dd744fc329dd195); GC-016/FE-2152 scoped-re-capture precedent followed."
+  }
 }
