@@ -1,0 +1,61 @@
+{
+ "contract": "design-capture/v1",
+ "componentId": "GC-005",
+ "slug": "bar-chart",
+ "prototypeVersion": "002",
+ "round": "amendment 1 RE-DISPATCH (2026-09-09T19:29Z) - dispatched 4 minutes after the prior round's STOP landed (design-specs commit 5e487f2, 19:25:29Z). This round independently RE-VERIFIED both stop conditions against the live artifacts: UNCHANGED. Same stop, re-confirmed; no authoring performed.",
+ "penPath": null,
+ "$penPathNote": "NO .pen was authored this round - the STOP precedes L4 authoring. The promoted v002 .pen at pencil/designs/4-approved/genui/GC-005-bar-chart.pen is UNTOUCHED and byte-verified this round: sha256 59e8d94d6d5f233a88ad3dc71876d8e12199ac35ee4d1696f185cd1c42e1911f == the contract's pen-pointer hash.",
+ "contentHash": null,
+ "capturedAt": "2026-09-09T19:47:00Z",
+ "frames": [],
+ "$framesNote": "Contracted scope is 28 frames (26 locked at v002 + cool-palette + area-palette per amendment 1, ruling 12 / FE-2217 comment 10a397dc). None banked.",
+ "convergence": {
+  "iterationsUsed": 0,
+  "$iterationsNote": "Zero honest iterations consumed - the stop is a contract-integrity failure upstream of authoring. The 5-iteration budget is intact for the post-ruling round.",
+  "pencilVersion": "@pen.dev/cli 0.3.5 (pinned by dispatch; not installed this round - the stop precedes any export)",
+  "perState": [],
+  "waivers": []
+ },
+ "stop": {
+  "kind": "UPSTREAM LIBRARY PALETTE DRIFT -> LOCKED-ORACLE INVALIDATION + TARGET DUPLICATE cool-palette == legend-vertical (RE-CONFIRMED; prior stop 5e487f2 unruled)",
+  "priorStop": "design-specs commit 5e487f2 (2026-09-09T19:25:29Z), same stop kind, full determinism probe in that commit's version of this file (git history)",
+  "detail": "Nothing has changed since the prior round's stop. design-specs HEAD is still the merge containing the stop (1357601, 19:25:46Z) - commit 9e5e490 (v5 five-family categorical palette replacement, 2026-09-08) is NOT reverted; specialized-components' latest GC-005 contract commit is still bc94be9c (ruling-12 amendment, 19:05:35Z - BEFORE the prior stop); states.json still declares no pixelIdenticalTo on cool-palette or legend-vertical and waivers is empty; no post-stop ruling exists anywhere in the contract set. Both stop conditions therefore stand: (1) LOCKED-ORACLE INVALIDATION - the approved .pen (bytes re-verified == pen-pointer hash this round) binds chart-categorical/color-01..03 by reference (181 references grepped in the .pen), and the live library resolves those tokens to the v5 values #7B96F1/#89B6F9/#95C5FB, not the FE-1987 paint #8951F0/#06B6D4/#312E81 the locked capture's normalizationRecipe recorded and the locked design-rules text still pins ('the chart palette stays the pen-locked categorical palette (FE-1987)', design-rules.md lines 25-26 and 425). The prior round's determinism probe measured 17/26 locked baseline hashes unreproducible; its inputs (.pen bytes, library values, pinned CLI 0.3.5) are byte-identical today, so that result stands without re-execution. (2) TARGET DUPLICATE - re-derived from the contracts this round: legend-vertical drives palette:'categorical' and cool-palette drives cfg.colors verbatim ['#7B96F1','#89B6F9','#95C5FB',...], with IDENTICAL categories/series/values/height/maxWidth/legend:true in states.json; under the live library, categorical color-01..03 resolve to exactly those three values, so the two states render pixel-identical in light theme with only 3 series drawn - both as normalized targets and as .pen frames. No pixelIdenticalTo, no waiver; per L3a a duplicate is a STOP, never a bank, and waivers are judge-granted only. No authoring decision available to this agent avoids both stops simultaneously: injecting the FE-1987 values into normalization makes the .pen frames (token-bound, rendering v5) structurally unable to converge to the targets; injecting the v5 values resolves the loop but banks the duplicate AND unilaterally accepts v5 into an epoch whose locked contract text pins FE-1987. A partial capture (area-palette + the six area re-capture frames only) is NOT severable: the .pen is one document with one contentHash lock, and any re-promotion re-locks all 28 frame baselines - the accept-v5-vs-preserve-FE-1987 decision is exactly what the ruling must settle first.",
+  "evidence": {
+   "verifiedThisRound": [
+    "approved .pen sha256 59e8d94d6d5f233a88ad3dc71876d8e12199ac35ee4d1696f185cd1c42e1911f == pen-pointer.json penContentHash (bytes unchanged since lock)",
+    "hemlock-library.lib.pen (design-specs develop HEAD 1357601) resolves chart-categorical/color-01..03 to #7B96F1/#89B6F9/#95C5FB and color-04/05 to #74D5D1/#51CCD0 (v5 five-family palette; 9e5e490 in effect, unreverted)",
+    "approved .pen references chart-categorical/color-01..03 181 times (token-bound by reference, so its rendered pixels track the library)",
+    "states.json cool-palette cfg.colors[0..2] == ['#7B96F1','#89B6F9','#95C5FB'] == live categorical color-01..03; data/layout/legend identical to legend-vertical verbatim",
+    "states.json: 28 states, amendments[0] = ruling 12 (10a397dc), waivers [], no pixelIdenticalTo on either state of the duplicate pair",
+    "NEW FINDING: rule 36 names the design-system tokens --color-chart-cool-NN / --color-chart-area-N as the resolution surface, but hemlock-library.lib.pen contains ZERO chart-cool / chart-area tokens - the cool/area families were never minted in the library. On its own this is a create-locally design gap (never-stop doctrine), recorded here so the ruling can mint them library-side in the same pass if it chooses; it is NOT the stop.",
+    "flags.json A-1 present (engine palette fall-through + grammar-patch hygiene), consistent with the amendment's drive-via-cfg.colors design"
+   ],
+   "carriedFromPriorProbe": "the 17/26 locked-baseline hash mismatch table (prior round's determinismProbe, commit 5e487f2) - inputs verified byte-identical this round, so carried as verified-by-unchanged-inputs, not re-executed",
+   "libraryCommit": "9e5e490 'Replace chart categorical palette with v5 five-family sequence (light + dark)' - Azure/Teal/Iris/Plum/Ember, 3 steps each",
+   "blastRadius": "unchanged from prior stop: GC-001 (8 chart-categorical tokens), GC-004 (3), GC-005 (3), GC-016 (7) - every locked pixel-baseline set binding these tokens is presumptively stale"
+  },
+  "rulingOptionsForJudge": [
+   "A) Accept v5 into the contract epoch: amend design-rules palette note + lineage; declare the light-theme pixel identity (pixelIdenticalTo or judge waiver) for cool-palette<->legend-vertical OR re-shape cool-palette so cool's distinct order shows (a 4th series distinguishes them: cool4 #B985DE != categorical-04 #74D5D1); optionally mint the chart-cool/chart-area token families in hemlock-library (rule 36 names them; the library carries neither); then a directed re-capture round re-converges and re-locks all affected frames (17 drifted + 8 amendment frames).",
+   "B) Preserve the FE-1987 pen-locked paint: designer/owner rules the categorical states pin their own token set (new dedicated tokens or a library revert); re-capture accordingly.",
+   "C) Either way, the 17 drifted GC-005 baselines (and the GC-001/GC-004/GC-016 equivalents) need re-locking - the current locks fail a fresh lab re-export today."
+  ]
+ },
+ "normalizationRecipe": {
+  "$note": "Not executed this round - the stop precedes L2/L3. The v002 recipe in the locked capture handback remains the seed for the post-ruling round; its --cat1..3 injections must be re-derived from whichever palette the ruling pins.",
+  "cssVariableInjections": [],
+  "findReplaces": [],
+  "fontSwap": "n/a (not executed; prototype already targets Heebo / Noto Serif)"
+ },
+ "tokenJudgmentCalls": [],
+ "designGaps": [],
+ "fontSubstitutions": [],
+ "prototypeDefectsSeen": [],
+ "staleDispatchFacts": [
+  "The dispatch template injected '(none - first capture; derive the mapping table yourself)' - FALSE for the SECOND consecutive dispatch: a locked v002 capture exists (pen-pointer.json; capture handback sha256:59e8d94d...) and this is amendment 1's re-capture round. The dispatcher should inject the v002 normalizationRecipe as the L2 seed and the amendment scope.",
+  "The dispatcher appears not to have registered the prior round's STOP (5e487f2, landed 4 minutes before this dispatch) - this round was dispatched into the identical unruled stop. Recommend the dispatcher gate re-dispatch on a ruling landing in the contract set (a new amendments[] entry / pixelIdenticalTo / waiver / library change).",
+  "The packaged skill mirror genui-factory/prompts/skills/hemlock-design-system.md (v2.1.0, 2026-08-20) remains stale on the Chart Palettes section: chart-categorical/color-01..15 values were replaced by commit 9e5e490 (2026-09-08).",
+  "Environment-facts gap: the injected facts do not mention the 9e5e490 palette replacement or its systemic blast radius (GC-001/GC-004/GC-005/GC-016 locked baselines) - promote this to the facts block so downstream capture agents inherit it."
+ ],
+ "verdict": "stopped"
+}
