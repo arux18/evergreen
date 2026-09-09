@@ -3,10 +3,10 @@
  "componentId": "GC-016",
  "slug": "security-prices",
  "penPath": "pencil/designs/4-approved/genui/GC-016-security-prices.pen",
- "contentHash": "sha256:d6858197bc85bf9a371ca3de8e671e132acfbedcd7c54a005a7980dd6e34c641",
- "capturedAt": "2026-09-04T09:18:59Z",
- "prototypeVersion": "002",
- "prototypeContentHash": "sha256:cb3e8d8db22120a6bebb9c6aa46c9a6f3cb8f115846a0c62e424dff94e35245f",
+ "contentHash": "sha256:a06b13c6c7d37c4692697564359d1df25565fd9e104ede5552c11f863200575b",
+ "capturedAt": "2026-09-09T17:01:37Z",
+ "prototypeVersion": "003",
+ "prototypeContentHash": "sha256:5678b4a1e2be80fdda9734260da36902e12e69baa937a250dce82cd99cb901d2",
  "frames": [
   "prices-default",
   "prices-range-1y",
@@ -27,10 +27,12 @@
   "comparison-default",
   "comparison-slider-mid",
   "comparison-axis-changed",
+  "comparison-explainer-open",
   "secdata-default",
   "secdata-items-dialog",
   "secdata-row-deeplink",
   "secdata-item-added",
+  "secdata-revenue-growth-row",
   "secdata-sorted",
   "secdata-download-modal",
   "prices-narrow",
@@ -38,236 +40,388 @@
   "secdata-loss-making-pe"
  ],
  "convergence": {
-  "iterationsUsed": 1,
+  "iterationsUsed": 3,
   "pencilVersion": "@pen.dev/cli 0.3.5",
-  "comparison": "pixelmatch threshold 0.1, pen interactive Export scale 2 (default) vs Playwright deviceScaleFactor-2 captures of the NORMALIZED prototype clipped at the rounded capture-root rect. Chromium 140.0.7339.16 headless-shell (playwright 1.55.0) launched with --disable-lcd-text --force-color-profile=srgb --font-render-hinting=none (grayscale AA aligned to the pen rasterizer, per the v001 round-6 finding). Protocol: reducedMotion:reduce, animation/transition freeze CSS, document.fonts.ready, states.json step drive, 2500ms deferred-timer settle, pointer parked at 0,0, EMPTY localStorage per state (fresh context). PROTOCOL DELTA vs v001: NO snap transform on the capture root - Chrome pixel-snaps box decorations at layout position BEFORE applying transforms, so a fractional-root snap transform shifts painted borders 0.5px into the targets (measured on the body-mounted dialogs); instead the clip is the ROUNDED root rect, extraction coordinates are relative to that rounded origin, and the .pen reproduces Chrome box-decoration rounding (round-half-up to CSS integers on HTML-derived rects; text and svg stay at painted fractional positions). PROTOCOL DELTA for prices-datepicker-years ONLY (owner ruling FE-2152 comment 548f912a, 2026-09-04 08:55Z): waitMs >= 1000 after BOTH the .tkdd-trigger click and the .ui-dp-head .m click; a pre-bank text probe asserts the year grid is rendered (.ui-dp-ygrid present, 24 cells 2003-2026, 2016-2026 present and enabled, 2003-2015 disabled per r88/r89) BEFORE the frame banks and again after the 2500ms settle - a miss REFUSES the bank, never a duplicate; PARK EXEMPTION - the pointer stays on the month-head span (.m, no hover styling) instead of parking at 0,0, because .ui-dp-pop rebuilds the DAY grid on pointerleave (mouse) - parking is what silently reverted the grid and banked the prior duplicate (GC-017 scrubber-pin precedent). All other 27 states run the recorded protocol unchanged.",
-  "determinism": "double-export verified at the committed path: all 28 frame exports byte-identical across two pen interactive sessions at @pen.dev/cli 0.3.5 (Linux; Chromium targets 140.0.7339.16/playwright 1.55.0). The 27 carried frames export byte-identical to the locked exportSha256 values of the FE-2152 D7 round AND reproduce their locked diffPct values exactly against fresh normalized-standalone targets; prices-datepicker-years is the re-authored frame (new exportSha256 in perState; the prior lock's value for this frame was byte-identical to prices-datepicker-open - the duplicate this round retires).",
-  "authoringMethod": "frames generated from measured DOM geometry of the normalized prototype (v001 method): per-state Playwright walk emitting CSS-painting-order scenes (rects / word-level text runs / svg shapes in CSS-px space via getScreenCTM), token-bound by role at assembly; per-(family,size,weight,lineHeight) text-baseline calibration measured with the SAME glyph-top pixel estimator in both rasterizers (53 combos); Chrome-specific behaviors reproduced: box-decoration pixel snapping, text-overflow ellipsis character truncation, CSS-triangle carets, ::before/::after materialization (KPI top bar, sticky-cell cover, pick indicators), UA list markers (measured disc geometry), UA range-slider synthesis from the r92 .sf-range rules (the -webkit-slider-* pseudos are not resolvable via getComputedStyle), rotated text via rigid CTM mapping, z-index stacking-context hoisting, overflow clipping. This round: prices-datepicker-years re-authored as a popover-interior delta on its own carried scene - children 0-212 (card, chart, custom row, popover panel + head 'April 2021' + nav buttons) carried verbatim from the frame's locked nodes (content-identical to prices-datepicker-open by construction of the duplicate); the day grid (weekday header + 42 day cells + selected-day rect) replaced by the measured year grid: 24 text runs (4x6 grid, 2px gap, day-grid-height container) + the 2021 selected-year rect, positions from measured DOM of the normalized standalone (round-half-up box snapping on the rect; text at painted fractional positions via the carried per-combo baseline deltas: Heebo 13px lh1 w400/w600 dy=+3.0, dx=0, re-derived empirically from the frame's own day-grid nodes and constant across all 49 day-grid samples).",
+  "comparison": "pixelmatch threshold 0.1, pen interactive Export scale 2 (default) vs Playwright deviceScaleFactor-2 captures of the NORMALIZED v003 standalone clipped at the rounded capture-root rect. Chromium 140.0.7339.16 headless-shell (playwright 1.55.0) launched with --disable-lcd-text --force-color-profile=srgb --font-render-hinting=none. Protocol carried from the v002 lock: reducedMotion:reduce, animation/transition freeze CSS, document.fonts.ready, states.json step drive, pointer parked at 0,0 (pointer-engaged states keep the pointer - prices-datepicker-years stays on .ui-dp-head .m per the v002-amend2 recipe), EMPTY localStorage per state (fresh context), transform-free rounded-clip roots. L3a ORDERING (ENG-4784, this round): >=1000ms settle after the last interaction step, then the state textProbes read on the live DOM (a miss re-drives, 3-attempt cap), then the 2500ms deferred-timer settle, then the shot with a two-consecutive-shots byte-identity gate; prices-datepicker-years additionally asserts the owner-ruled year-grid probe (24 cells 2003-2026, 2003-2015 disabled) before AND after the settle. Probes read BEFORE the deferred settle because the r86 deeplink highlight is a 1800ms timed class: behavior truth at probe time, post-timer rest state in the pixel frame (the v002 locked truth - the wash is not in the v002 frame either). Per-target sha256 distinctness enforced across all 30 states (no pixelIdenticalTo declared; none needed).",
+  "determinism": "double-export verified at the committed path: all 30 frame exports byte-identical across two pen interactive sessions at @pen.dev/cli 0.3.5 (Linux; sharp-encoded PNG; per-frame sha256 in perState). Full-set target re-render also byte-reproducible (identical target sha256 across independent runs). CROSS-MACHINE CAVEAT RESOLVED THIS ROUND: an initial export of the v002 lock differed from the locked exportSha256 values ONLY because the hemlock chart-categorical palette moved under the role bindings (design-specs commit 9e5e490, palette v5) - rasterization itself reproduced the v002 lock byte-for-byte in every non-series region. The lab re-export MUST resolve the hemlock library at or after commit 9e5e490.",
+  "authoringMethod": "Re-oracle at prototype v003 seeded from the v002 lock (the recorded normalization recipe + the 28 locked frames as the authoring base). Document-level: the five derived chart-palette local-token families (chart-series-label = series RGB x 0.62, chart-bubble-fill +1F, chart-bubble-stroke +2E, chart-series-fade +52/+05; light AND dark) recomputed from the CURRENT library palette (v5, commit 9e5e490) by the recorded v002 derivation rules. Carried frames spliced per the r98 furniture relocations, every position from measured DOM of the normalized v003 standalone: prices pages (14 frames) - foot as-of words deleted, nav pill cluster translated into the foot controls row, head stamp emitted ($control-text-faint / $y:text-size-xs), sp-page-foot removed, frames resized; secdata pages (3) - ditto plus the actions cluster re-anchored (the hidden .sp-sd-foot row deleted); comparison pages (4) - per-cluster measured deltas (dates +15.5 / slider +11.5 / plot +12 incl. geometry-string translation of svg paths / facades +11.75 / entry hint -37.59 / entry -40.75), the r92 under-grid hint deleted, the single r98 foot rebuilt (nav-first, right-aligned stamp), the How button added ($y:sem-btnPrimaryBg pill + $y:sem-btnPrimaryText 14/600 words); prices-narrow - nav wrap-first foot + segment cluster +10.5; items dialogs (3) - interior rebuilt from measured DOM (r97 sel_list_intro sub-line, r96 Performance badge 11, retired spSecPerf:3 menu item absent), head chrome carried verbatim. NEW frames authored from measured DOM: secdata-revenue-growth-row (Company Financials expanded, spSecFin:1 .is-on.is-added, item-added chrome idioms) and comparison-explainer-open (title / red na line / intro / THE CHART / THE TEN CHARACTERISTICS with 10 UA-disc-marker list items - marker idiom carried from the v002 crypto-notes: 4x4 rounded rect, x = liTextStart - 15). Text emission rule (re-calibrated this round, 14 combos, two-rasterizer glyph-top scan): pen text at lineHeight 1, y = wordRangeTop + (rangeH - fontSize)/2, x = fractional DOM word x; the 14px combos carry a +0.5 correction (measured o=4 vs rule 3.5). textTransform applied at emission (uppercase captions).",
   "iterationHistory": [
    {
     "round": 1,
-    "result": "6/26 <= 1.0% (rest 1.04-2.19%) - initial authoring from measured scenes; same-round export-mechanics correction (frame clip:true - pen Export includes effect ink outside the frame box; infra, target sizes matched thereafter)"
+    "result": "3/28 carried frames <= 1.0% (the three r98-untouched dialogs: detail modal, crypto detail modal, download modal) after the palette-derived local-token recompute; the other 25 fail on r98 furniture relocations (dim mismatches) - the expected re-oracle baseline"
    },
    {
     "round": 2,
-    "result": "7/26 (worst 2.15%) - evidence fixes: CSS-triangle carets materialized as paths, text-overflow ellipsis truncation, z-index>0 stacking-context hoist to root paint order (popovers/tooltips/sticky cells), tight bbox for gradient-filled paths (the detail-chart fade had normalized to the full-frame bbox)"
+    "result": "29/30 <= 1.0% - all r98 splices applied from measured DOM (pages, secdata actions re-anchor, comparison per-cluster deltas + How button + foot rebuild, items-dialog interiors, narrow reflow) + both NEW frames authored; comparison-explainer-open at 1.203% (systematic 0.5px vertical text offset on the 14px body runs)"
    },
    {
     "round": 3,
-    "result": "21/26 (worst 1.36%) - Chrome box-decoration pixel snapping (round-half-up to CSS integers) applied to HTML-derived rects; isolated from the KPI top-bar 0.5px band evidence"
-   },
-   {
-    "round": 4,
-    "result": "25/26 (worst 1.27%) - baseline calibration v2 (same-pixel-estimator browser-vs-pen, rangeTop-anchored; the tight line-height combos were systematically 0.5-1px off), border-only pseudo materialization + color(srgb) parsing (pick indicators), UA list markers, rotated-chevron rigid mapping"
-   },
-   {
-    "round": 5,
-    "result": "26/26 <= 1.0% (worst 0.799%) - capture-protocol correction (transform-free rounded-clip roots; measurement side - the snap transform had been shifting Chrome box paint inside the TARGETS of the dialog states), r92 date-slider synthesis (track+thumb; the -webkit-slider-* pseudo styles resolve empty via getComputedStyle so the slider had been silently missing), rotated y-axis title (effective font scale under rotation), sub-threshold caret shape-integrity fix verified by a confirmation re-compare (26/26 before and after; no threshold chasing)"
-   },
-   {
-    "round": "FE-2162 amendment r1 (2026-09-04)",
-    "result": "28/28 <= 1.0% (worst 0.799% carried, new frames 0.341%/0.154%) - two amendment frames authored from measured DOM of the normalized ORACLE STANDALONE; 26 carried frames re-verified, reproduce locked diffPct values exactly"
-   },
-   {
-    "round": "FE-2152 D7 amendment r1 (2026-09-04, scoped re-capture)",
-    "result": "28/28 <= 1.0% (worst 0.799% carried; secdata-sorted re-authored at 0.207% vs 0.209% locked) - the secdata-sorted frame re-authored against the Amendment-3 ORACLE STANDALONE (sha256:cb3e8d8d..., hash-verified; numeric sort per owner ruling on flags D7, option b). The amended DOM differs from the locked frame ONLY in the order of the first three body rows (TR[1M]/Volatility/TR[1Y] replacing TR[1Y]/TR[1M]/Volatility); band geometry measured IDENTICAL on the normalized standalone (row pitch 45.297, snapped bands 181/226/271), so the re-authoring is an exact band permutation of the locked frame’s own token-bound nodes (84 nodes: 54 rects, 30 text runs). 27 carried frames re-verified against fresh normalized-standalone targets: reproduce locked diffPct values exactly AND export byte-identical to the locked exportSha256 values."
-   },
-   {
-    "round": "FE-2152 datepicker-years recipe amendment r1 (2026-09-04, scoped re-capture)",
-    "result": "28/28 <= 1.0% (worst 0.799% carried; prices-datepicker-years re-authored at 0.482% vs the fresh year-grid target) - the prior lock had banked prices-datepicker-years as a BYTE-DUPLICATE of prices-datepicker-open (identical exportSha256 a62c536f..., identical 0.506% diff vs the DAY-GRID target): the 300ms recipe waits plus the pointer park at 0,0 let .ui-dp-pop's pointerleave handler rebuild the day grid before the shot, so the year grid never rendered in the banked target. This round applies the owner-ruled recipe (>=1000ms waits, pre-bank year-grid probe with refuse-on-miss, park exemption on the month-head span), re-renders all 28 targets fresh, re-authors ONLY the years frame (24 year cells 2003-2026: 2003-2015 disabled at node opacity .3 per the recorded dim idiom, 2021 selected on $y:sem-btnPrimaryBg / $y:sem-text-reverse, enabled years $y:sem-text-header), and re-verifies the 27 carried frames: byte-identical exports to the locked hashes, locked diffPct values reproduced exactly. Converged in 1 honest iteration."
+    "result": "30/30 <= 1.0% (worst prices-narrow 0.83%) - the 14px baseline correction (+0.5, matching the round-recalibrated o=4) applied to the explainer body text; full-set re-render + re-export confirmation: 30/30 reproduced, double-export byte-identical, zero duplicate export hashes, zero duplicate node ids (one carried-chrome id collision found and re-ided before promotion)"
    }
   ],
   "perState": [
    {
     "state": "prices-default",
-    "diffPct": 0.529,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "0e125b136ce3ef6172fcb936c4766a2c79a3d87abc6b38172aa7972cb49b0431"
+    "diffPct": 0.526,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "8e8a2a12479df69c510efacbb1b35f39ed1d7b94a12e82b6fd986c19ddc6b03e",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-range-1y",
-    "diffPct": 0.61,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "ffb23d7c06b3e9be5737768bfabb52703f2bf4795ee719365547e9617baf69e8"
+    "diffPct": 0.615,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "01735820aa337a3840bc6036146bc22c154af15e5c20f04cf56e9c675d334604",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-mode-return",
-    "diffPct": 0.482,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "2c56e814feb7a311fbe65b05ed98d3a27d689c3eb30467d7b41bc0e3610796ef"
+    "diffPct": 0.478,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "96fa85fea7adc217530867be52284de0e29f7a5d005245cb3f8a4edf6d814af4",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-range-custom",
-    "diffPct": 0.502,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "35c1dc907eb9717aeb6cfc922c6036cf62564537222e9391a637fc6920775f12"
+    "diffPct": 0.494,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "9702906627973b828bd4d93c869e67e37efc979f498f0722ed592a727f434817",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-datepicker-open",
-    "diffPct": 0.506,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "a62c536f8f0a365d4a38381d281e09c55d9182eac8006b25980de42a2b026033"
+    "diffPct": 0.498,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "3a837fd6ac95a463d0c9199a511d839380a5983753433166c2e362c35c684f6b",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-datepicker-years",
-    "diffPct": 0.482,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "febad8860d870495f98eb4130029685ef6f426ef5e388f9cc14bad524405ad8d"
+    "diffPct": 0.473,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "7c17f7e06013c9a2b383668d79ace0e98c5bf5e0ffe152277b8696e348c0d444",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-series-hidden",
-    "diffPct": 0.504,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "62629b8525add127ba011f678c2c29ad98cba03e609f579e455df9ddefb4f507"
+    "diffPct": 0.505,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "fac62de5b7c8c75119b6ee95706cc137d1bfdad05c8e50db0478ec5b7e38184a",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-all-hidden",
-    "diffPct": 0.392,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "af369708b195652f5c15c8177e6ce3f3990c30e4e3e54fc0a3e32ecab80f8925"
+    "diffPct": 0.401,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "3f182c41e9edae892d438624c69b46542d484defcad3afae7ff2c561533682ad",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-typeahead-open",
-    "diffPct": 0.524,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "bc6e1bdb02acb6a96dbae740741a4009429e506704c476802683bf72cb3aaf34"
+    "diffPct": 0.52,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "0b2f01d3421dce63ce97a0d8019f8e6e5913506fc84695c8b1852d60773a2e30",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-typeahead-nomatch",
-    "diffPct": 0.57,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "53eeedb98f2132445e91ef271c7f5d23b667e785226814f041cd527f5bd1b2bb"
+    "diffPct": 0.569,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "4bbe0470baa0db34e74d335710c9a89b67f709f0da15e957cd8b53cd89a60eee",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-updated-set",
-    "diffPct": 0.445,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "5dbd0251b3c10d70d60200fa04277f8b529d0e0da59a2212b61c0dc22a29383f"
+    "diffPct": 0.453,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "b618eacd8c950e252b831996d43a3c30809076122ea721ea739ed5c7dc39985f",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-crypto-set",
-    "diffPct": 0.612,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "7a008b92562df4af08f6bdf3f408d6e80da517afb0a8819cfce762e44c2c8a07"
+    "diffPct": 0.632,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "947ae97490a496d23800b53dbdd082b8f3be244d98382e3481350ce816cf7016",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-scrubber-keyboard",
-    "diffPct": 0.563,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "d7232a9527e5ca16f3dd14058c7e955998b03d2bcee0600b03b6beccf5a20018"
+    "diffPct": 0.561,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "217d435040c8120b441ac3ab06da443120c9d2755dc6044266a490e94d5f752e",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-detail-modal",
-    "diffPct": 0.267,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "a7256fa8919d849ddd06a6ece893d0478756621b92225074c8dbc76d703660fd"
+    "diffPct": 0.221,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "94a866a88f5a8525690468e68002b7e060ecf46d7fdd768f772abc50c3c2d20b",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-detail-modal-crypto",
-    "diffPct": 0.497,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "b5615a96e08f9cc5bf21ca402ba77426cd3b84a53f05986bed7708bcf1b33504"
+    "diffPct": 0.465,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "318a4602f2bdc2c846fbc087c63e2998e99958d0f99467c12681cf2dea7baa24",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "page-picker-open",
-    "diffPct": 0.523,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "e38d8a547a7a76563f598b75f1cd79e09d21df95c8b9e5aa86b7880971e2542a"
+    "diffPct": 0.52,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "77f4ce182095a1ceb376402ab1998a5bfc2b83d462838ddc5107b595d61fd8f2",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "comparison-default",
-    "diffPct": 0.349,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "b54df6aa9149bf67a1b75db635ff567c3c7addd19da77514eaa8c192b623ae9d"
+    "diffPct": 0.503,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "c6a865dd79873132aca4ac013c9c1362718e1e38bba04f3914864538d751fc39",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "comparison-slider-mid",
-    "diffPct": 0.352,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "5b81c72c3af00dc279efd7c22b6f214670f1639cf5e7bffa358ee4e1e5297009"
+    "diffPct": 0.51,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "bfd79629ec917a6db20b8c5794ec09312580d0bb6bec88f2c76b39b61e37d6bd",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "comparison-axis-changed",
-    "diffPct": 0.361,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "d392d24acc83bf2c4ee03e4eaf0973c1cab73e84adb2e3b987ee9edf4bd561f7"
+    "diffPct": 0.52,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "4421cfc869c96e2618c051d14f6af7bf8c79f628602e33980f6b52e4926958e2",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "comparison-explainer-open",
+    "diffPct": 0.727,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "5474721553d4c12ff1b4b73bf1848daad16b36a8466e0d6488b7cc7cdc1df5ee",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "secdata-default",
-    "diffPct": 0.238,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "71cabfbf01df1c23130bd5b736ffb5bb92214895b4c0303b28b202adfc8b2f4e"
+    "diffPct": 0.325,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "11c578ac82908a78646aa2983e72f00e0dc011a7ccabfe7400dc886d1c494e5e",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "secdata-items-dialog",
-    "diffPct": 0.244,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "239d806cf16d77f0bfd6d2ac15dc935fbb9d35cd2788c53a3a4fd3f8527c1483"
+    "diffPct": 0.516,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "29ee1b1ee8118f429e36e4c3324431f4815b1ac76d93549316e8ece3b7e14c13",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "secdata-row-deeplink",
-    "diffPct": 0.274,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "9523ced1b87ad51f277c55df9745b22db5dfcdd4afdec289aa6abd89c9dba623"
+    "diffPct": 0.693,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "eaace7a0fbdc1ec88985c72c06d95e5acca0f32f85b87db61bc73af7f6de30fa",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "secdata-item-added",
-    "diffPct": 0.273,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "8b08fd12d01429e0d6abc551e6d40a85816713b925c0617f3c5cf469b0eb1565"
+    "diffPct": 0.692,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "b76871c8b17a8edfc1ece470cad68819fad9afef07c8ba5daa6da3bd5c2a3f3c",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "secdata-revenue-growth-row",
+    "diffPct": 0.53,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "fb8fd71ff2300d5b9defb92e35b43807b48c0a6a7a74bc243058ff299e39956a",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "secdata-sorted",
-    "diffPct": 0.207,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "3def3001a6a454a3fbddff11716970617ad762b135adb2c07c0a6a92b5afaa35"
+    "diffPct": 0.271,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "57581459ed23986db730196cf29fa45e8ab9fd471b337783803752a6305dac66",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "secdata-download-modal",
     "diffPct": 0.393,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "36e43e76e3ea2a29adc4953703a2edf30c97a9b6208c2a83f8e5f9264610dd85"
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "36e43e76e3ea2a29adc4953703a2edf30c97a9b6208c2a83f8e5f9264610dd85",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "prices-narrow",
-    "diffPct": 0.799,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "b1d0e8432c3c1da055e7f8526791078d202ebff575073717695f6d71e2449449"
+    "diffPct": 0.83,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "dcd6704aeaf1c44b7c84ec04252c83aa19f1f5b4f32d0069a0e9bdaa59158ddc",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "n/a",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "comparison-loss-making-pe",
-    "diffPct": 0.341,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "348b73509284458e11524f706faf606b0175993895cb70dedf2dab3978bc88ec"
+    "diffPct": 0.5,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "5556cc29f53588c9fe87bcd9c322392d133d1f5f405810edb4e90904c997d921",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    },
    {
     "state": "secdata-loss-making-pe",
-    "diffPct": 0.154,
-    "geometryProbes": "pass (frames generated from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
-    "exportSha256": "1b9f1e1bbf1c967db58dd48afeb4c271a70f1cb46badaa08b1c118fd99bd2ee6"
+    "diffPct": 0.234,
+    "geometryProbes": "pass (carried frames spliced / new frames authored from measured DOM geometry of the normalized prototype; residual deltas are AA/rasterization phase, not geometry)",
+    "exportSha256": "e3d8188f4f6bc2aca27df1e052b7324fa808c73c3c1e9018903043651f548f44",
+    "preBank": {
+     "settledMs": 3500,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    }
   ],
-  "waivers": [],
-  "priorAmendmentRounds": [
-   {
-    "wo": "FE-2152",
-    "basis": "Scoped re-capture at the SAME prototypeVersion 002: the FE-2162-amendment lock (28 frames, prototypeContentHash sha256:2af7acfd...) predates FE-2152 Amendment 3 (owner ruling 2026-09-04 ~08:20Z on flags.json D7, option b - numeric sort), which patched the ORACLE STANDALONE in place (selSortNum comparator) and re-pinned prototype.contentHash to sha256:cb3e8d8d... . Per the contract, 27/28 states render identically before/after the patch; only secdata-sorted changes (the ascending body order). This round: fresh normalization of the cb3e8d8d standalone per the recorded recipe, fresh Playwright targets for all 28 states (Chromium headless-shell 140.0.7339.16 / playwright 1.55.0, recorded protocol), secdata-sorted re-authored as an exact band permutation of the locked frame’s own nodes (row order verified against measured DOM of the normalized standalone), full 28-state compare converged in 1 honest iteration.",
-    "authoringDelta": "secdata-sorted only: the first three body-row bands permute (TR[1Y]->band 3, TR[1M]->band 1, Volatility->band 2) with all intra-band geometry, tokens, and text content carried verbatim from the locked frame. No other frame touched; the GC-017 scoped-re-capture precedent (48ae6e2) is the promotion shape.",
-    "seriesColorNote": "unchanged from the FE-2162 round (NVDA rides color-01 in the amendment set; RIVN draws no bubble)."
-   },
-   {
-    "wo": "FE-2162",
-    "basis": "Extension capture: the FE-2152 v002 lock (26 frames, captured 2026-09-03 against Bill's source r95 sha256:6a762cc6...) predates the FE-2162 amendment, which repointed the oracle to the byte-identical-carve ORACLE STANDALONE (sha256:2af7acfd..., hash-verified on disk before authoring) and added states comparison-loss-making-pe + secdata-loss-making-pe (28 total). The 26 pre-existing frames are carried VERBATIM (contract: 26/26 states render byte-identically between source and standalone) and re-verified honestly in this round: fresh normalization of the STANDALONE per the recorded recipe, fresh Playwright targets for all 28 states, full 28-state compare - the 26 carried frames reproduce their locked diffPct values exactly. The 2 new frames were authored with the same measured-DOM method, calibrated against the sibling frames (comparison-default / secdata-default): node-template validation reproduced the sibling regions 185/193 + 73/73 + bubbles 10/10 + input words 7/7 before authoring the new states. Converged in 1 honest iteration (0.341% / 0.154%).",
-    "authoringDelta": "Filler truth-layering: the sibling frames paint the td/th ::after fillers as full-height plain surface; the rendered truth shows the row bottom border and the header band gradient + borders-light hairline continuing under the fillers (sub-pixelmatch-threshold in the carried frames, sampled and verified in the targets). The two NEW frames paint the fillers as surface body + border strip (td) and band gradient + hairline strip (th) - same tokens, closer to the rendered truth (secdata-loss-making-pe lands at 0.154% vs the sibling's 0.238%). The carried frames are NOT retouched - they are the locked lock.",
-    "seriesColorNote": "Per token rule 3 / the recorded series-order judgment call: the amendment set is 'NVDA, RIVN', so NVDA is series index 0 and its bubble/label bind chart color-01 roles (fill #8951F01F / stroke #8951F02E / label #553295 = the r74 0.62 dark shade, all verified against the measured normalized rendering) - NOT the color-03 NVDA rides in the default 7-symbol set. RIVN draws NO bubble (rule 48 not-applicable branch); the omission is the state's contract."
-   }
-  ],
-  "amendmentRound": {
-   "wo": "FE-2152",
-   "basis": "Scoped re-capture at the SAME prototypeVersion 002 and SAME prototype.contentHash sha256:cb3e8d8d... (no oracle change): owner ruling FE-2152 comment 548f912a (2026-09-04 08:55Z) amended the prices-datepicker-years capture recipe after the prior lock banked that frame as a byte-duplicate of prices-datepicker-open (the year grid reverts to the day grid on pointerleave of .ui-dp-pop; the recorded pointer-park destroyed it before the shot). Ruled recipe: waitMs >= 1000 after both the trigger click and the month-header click, plus a pre-bank text probe that the year grid is rendered (2016-2026 present, pre-2016 disabled per r88/r89) - a miss must refuse, not bank a duplicate. All other 27 frames unchanged. This round: fresh normalization per the recorded recipe, fresh Playwright targets for all 28 states (probe PASS: 24 cells 2003-2026, bounds exact), prices-datepicker-years re-authored from measured DOM, full 28-state compare converged in 1 honest iteration.",
-   "authoringDelta": "prices-datepicker-years only: children 0-212 carried verbatim; the 50 day-grid nodes replaced by 25 year-grid nodes (24 texts + 1 selected-year rect). Bindings reuse the frame's own established roles: enabled years $y:sem-text-header 13px w400, disabled years (2003-2015) same token at node opacity .3 (the r89 greyed treatment; the recorded muted/dim node-opacity idiom - designGaps non-token entry extended), 2021 selected $y:sem-btnPrimaryBg rect ($radius-menu) + $y:sem-text-reverse w600 - the exact selected-day idiom of the carried datepicker-open frame. No new tokens; no other frame touched.",
-   "labExecutionConstraints": "The lab re-render of this state MUST: (1) keep waitMs >= 1000 after the .tkdd-trigger click AND after the .ui-dp-head .m click; (2) assert the year-grid probe (.ui-dp-ygrid, 24 cells 2003-2026, 2003-2015 disabled, 2016-2026 enabled) before AND after the settle, refusing on a miss; (3) NOT park the pointer at 0,0 for this state - leave it on the month-head span (.m, hover-styling-free); .ui-dp-pop rebuilds the day grid on mouse pointerleave and .ui-dp-ygrid additionally rebuilds on its own pointerleave, so any pointer excursion outside the popover (or across the year grid) reverts the surface."
-  }
+  "waivers": []
  },
  "normalizationRecipe": {
   "cssVariableInjections": [
@@ -590,70 +744,70 @@
     "scope": ":root",
     "variable": "--cat-1",
     "from": "#8B5CF6",
-    "value": "#8951F0",
+    "value": "#7B96F1",
     "token": "chart-categorical/color-01"
    },
    {
     "scope": ":root",
     "variable": "--cat-2",
     "from": "#EA580C",
-    "value": "#06B6D4",
+    "value": "#89B6F9",
     "token": "chart-categorical/color-02"
    },
    {
     "scope": ":root",
     "variable": "--cat-3",
     "from": "#16A34A",
-    "value": "#312E81",
+    "value": "#95C5FB",
     "token": "chart-categorical/color-03"
    },
    {
     "scope": ":root",
     "variable": "--cat-4",
     "from": "#2563EB",
-    "value": "#3B82F6",
+    "value": "#74D5D1",
     "token": "chart-categorical/color-04"
    },
    {
     "scope": ":root",
     "variable": "--cat-5",
     "from": "#E11D48",
-    "value": "#0F766E",
+    "value": "#51CCD0",
     "token": "chart-categorical/color-05"
    },
    {
     "scope": ":root",
     "variable": "--cat-6",
     "from": "#CA8A04",
-    "value": "#38BDF8",
+    "value": "#19B6CC",
     "token": "chart-categorical/color-06"
    },
    {
     "scope": ":root",
     "variable": "--cat-7",
     "from": "#0891B2",
-    "value": "#2DD4BF",
+    "value": "#B985DE",
     "token": "chart-categorical/color-07"
    },
    {
     "scope": ":root",
     "variable": "--cat-8",
     "from": "#C026D3",
-    "value": "#A78BFA",
+    "value": "#BAA9F5",
     "token": "chart-categorical/color-08"
    },
    {
     "scope": ":root",
     "variable": "--cat-9",
     "from": "#4D7C0F",
-    "value": "#C026D3",
+    "value": "#BDBBFC",
     "token": "chart-categorical/color-09"
    },
    {
     "scope": ":root",
     "variable": "--cat-10",
     "from": "#78716C",
-    "value": "#E73CAE",
+    "value": "#E6B1E5",
     "token": "chart-categorical/color-10"
    },
    {
@@ -903,7 +1057,7 @@
   ],
   "uaChromeInjections": [],
   "fontSwap": "No family substitution required - the prototype already leads with Heebo (--font-ui) and Noto Serif (--font-serif). Serving source pinned: the Google Fonts stylesheet links are replaced by @font-face rules for the SAME repo TTFs the .pen embeds (pencil/designs/fonts/). Plus: .btn-primary, .segmented button, input, textarea, select gain font-family var(--font-ui) !important - these controls set no font-family and render UA Arial (prototype defect DC-2, carried from v001).",
-  "notes": "REPLAY MECHANICS: the injected <style> block must land at the LAST </body> occurrence (the prototype embeds an earlier </body> inside a JS string; v001 finding, still true at r95). The v001 UA-chrome dialog-button injections are RETIRED - the custom-axis dialog they patched was deleted at r82/P1-8; no UA-chrome button surface renders in the v002 contracted states. Range-slider synthesis (capture-side, not a prototype edit): the r92 .sf-range rules - track 3px accent pill full width, thumb 22px accent circle with 2px surface ring and 0 1px 3px rgba(15,23,42,.35) shadow - are drawn from the stylesheet because Chrome cannot resolve -webkit-slider-* pseudo styles through getComputedStyle. UA list markers (crypto-notes bullets): disc d=round(fontSize/3), right edge 11px before the li text start, top = baseline - d - 2 (measured against the rendered target). Unrendered-in-contracted-states variables injected for kit coherence but never measured: --seq*, --pos-mid, --pos-soft/--neg-soft, --accent-fill, --crosshair-stroke (legacy), --taupe-hover (hover-only), --panel-shadow/--tile-shadow (unrendered at r95 in contracted states), --hairline, --orange, --charcoal, --gauge-*, --cat1..15 (undashed template set), --hero-*, --accent-2/3/4, --sc-modal-* (kernel constants)."
+  "notes": "REPLAY MECHANICS: the injected <style> block must land at the LAST </body> occurrence (the prototype embeds an earlier </body> inside a JS string; v001 finding, still true at r95). The v001 UA-chrome dialog-button injections are RETIRED - the custom-axis dialog they patched was deleted at r82/P1-8; no UA-chrome button surface renders in the v002 contracted states. Range-slider synthesis (capture-side, not a prototype edit): the r92 .sf-range rules - track 3px accent pill full width, thumb 22px accent circle with 2px surface ring and 0 1px 3px rgba(15,23,42,.35) shadow - are drawn from the stylesheet because Chrome cannot resolve -webkit-slider-* pseudo styles through getComputedStyle. UA list markers (crypto-notes bullets): disc d=round(fontSize/3), right edge 11px before the li text start, top = baseline - d - 2 (measured against the rendered target). Unrendered-in-contracted-states variables injected for kit coherence but never measured: --seq*, --pos-mid, --pos-soft/--neg-soft, --accent-fill, --crosshair-stroke (legacy), --taupe-hover (hover-only), --panel-shadow/--tile-shadow (unrendered at r95 in contracted states), --hairline, --orange, --charcoal, --gauge-*, --cat1..15 (undashed template set), --hero-*, --accent-2/3/4, --sc-modal-* (kernel constants). V003 DELTAS: the ten --cat-N injected values re-resolved against the CURRENT hemlock library (chart-categorical palette v5, design-specs commit 9e5e490 - the library moved under the role bindings after the v002 lock; every other recipe value re-verified unchanged against the current library). The color:#6A707E findReplace now covers FOUR occurrences (the r98 card-head stamp .sp-head-asof hardcodes the same literal the v002 round unified to $control-text-faint - design-rules rule 53 anticipated exactly this). All 85 cssVariableInjections re-verified present in the r98 :root blocks with unchanged from-values; the three findReplace targets re-verified present."
  },
  "tokenJudgmentCalls": [
   {
@@ -1023,6 +1177,46 @@
    "prototypeValue": "var(--tk-btn-accent)/#3A6AF8 fills, accent borders, accent link text",
    "boundToken": "$y:sem-btnPrimaryBg (fills) / $y:sem-borders-action (outlines) / $y:sem-text-action (link text) / $y:sem-icons-action (icon strokes)",
    "rationale": "Accent surfaces bound per role category, not per hue (v001 precedent).",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "chart palette re-derivation at v003 (series lines, KPI swatches/top bars, edge pills, bubbles, fades, labels)",
+   "prototypeValue": "unchanged prototype --cat-1..10; the HEMLOCK side moved (palette v5, commit 9e5e490)",
+   "boundToken": "$y:chart-categorical/color-01..10 by series order (unchanged bindings); the five derived local families recomputed from the v5 values by the recorded v002 rules (label x0.62, fill +1F, stroke +2E, fade +52/+05, dark from dark)",
+   "rationale": "Role bindings absorb the library move by design (the two-oracle split working as intended); only the LOCAL derived values needed recomputation. The lab re-export must resolve the library at or after 9e5e490.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "r98 card-head as-of stamp (#spHeadAsOf, Prices + Security Data)",
+   "prototypeValue": "hardcoded color:#6A707E, font 12px/1.5 Heebo",
+   "boundToken": "$control-text-faint (via the recorded findReplace) at $y:text-size-xs",
+   "rationale": "The same cool-gray literal the v002 round unified to the faint-stamp role (DJ-008 recurring, per design-rules rule 53); 12px binds the existing library size role - no new token.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "r97 explainer button (card head, Comparison-only)",
+   "prototypeValue": "filled accent pill: background var(--accent), color #fff, border var(--accent), radius 999, font 600 14px/1",
+   "boundToken": "$y:sem-btnPrimaryBg (fill) / $y:sem-btnPrimaryText (label) at $y:text-size-sm w600",
+   "rationale": "Primary-button role category, same accent roles as the Add-or-Remove pill (v002 precedent); the 1px same-color border is paint-identical to the fill and not separately materialized.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "r97 explainer dialog copy (na line / intro + body / section titles / metric list)",
+   "prototypeValue": "var(--neg-strong) 12px na line; --text-primary 14px body; 11px uppercase section titles in --text-tertiary; 13px --text-secondary list with bold leads",
+   "boundToken": "$y:sem-text-error at $y:text-size-xs / $y:sem-text-header at $y:text-size-sm / $control-text-faint at $y:text-size-2xs / $y:sem-text-meta at $text-size-control-sm (w700 leads); UA disc markers $y:sem-text-meta (the v002 crypto-notes idiom)",
+   "rationale": "Error-ladder, ink-ladder and faint-caption roles per the recorded table; 11px and 12px bind existing library size roles (text-size-2xs / text-size-xs) - no new tokens.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "r97 Data-items dialog sub-line (sel_list_intro)",
+   "prototypeValue": ".sp-md-sub font-size 13px color var(--text-tertiary)",
+   "boundToken": "$control-text-faint at $text-size-control-sm",
+   "rationale": "Same faint-caption role as the v002 dialog subs.",
    "newTokenCreated": false,
    "newToken": null
   }
@@ -1433,20 +1627,20 @@
  ],
  "prototypeDefectsSeen": [
   {
-   "flag": "DC-2 (carried from v001, still present at r95)",
+   "flag": "DC-2 (carried from v001/v002, still present at r98)",
    "note": ".btn-primary (Update pills) and .segmented button (range/display segments) set no font-family and render UA Arial instead of Heebo. Font swap recorded in normalization; land stage inherits the token face."
   },
   {
-   "flag": "D1 (flags.json, already recorded)",
-   "note": "The static LTM scrubber badge is banked as rendered in prices-scrubber-keyboard, per the carried flag."
+   "flag": "D1 (flags.json, carried)",
+   "note": "The static LTM scrubber badge is banked as rendered in prices-scrubber-keyboard, per the carried owner-accepted flag."
   },
   {
-   "flag": "D7 (flags.json, resolved by owner ruling 2026-09-04, option b - FE-2152 Amendment 3)",
-   "note": "The pre-ruling lexicographic first-click sort order was banked in the FE-2162-round secdata-sorted frame; this scoped re-capture re-authors that frame against the Amendment-3 oracle standalone, banking the ruled NUMERIC ascending order (+5.24% < 15.33% < +39.78%, then the non-numeric block in display order - probe picks-table-sorted-order). The display-string order must never return."
+   "flag": "DC-3 (carried from v002, cosmetic)",
+   "note": "The typeahead no-match/empty message still renders in Noto Serif 13px while sibling control surfaces are Heebo. Banked as rendered in prices-typeahead-nomatch."
   },
   {
-   "flag": "DC-3 (new at v002, cosmetic)",
-   "note": "The typeahead no-match/empty message (.typeahead-empty) renders in Noto Serif 13px while every sibling control surface is Heebo - likely an inherited serif from the kit rather than a deliberate choice. Banked as rendered in prices-typeahead-nomatch; designer may want the UI face."
+   "flag": "D6 (flags.json, carried - r98 update)",
+   "note": "The hidden #asOf / #sdAsOf / .sp-sd-foot slots behind the r98 stamp relocation are inert markup (toggle-not-delete); their absence from the frames is pen-frame truth per the contract."
   }
  ],
  "verdict": "captured"
