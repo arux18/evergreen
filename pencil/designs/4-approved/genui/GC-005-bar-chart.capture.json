@@ -4,12 +4,10 @@
  "slug": "bar-chart",
  "prototypeVersion": "002",
  "prototypeContentHash": "sha256:06a9e497c21714806d84393d809946f76048bd44a379b5f3da0110bd92a746cc",
- "round": "amendment 1, EIGHTH dispatch (2026-09-10T08:10Z; workspace base 70d1569762052ed030338434b371288bd1e21c4a, pulled at intake; design-specs HEAD af96f80 - the round-7 converged candidate in the review lane). THIS ROUND IS A FULL INDEPENDENT RE-MEASUREMENT on a fifth machine: prototype bytes re-hashed equal to the pin; fresh L1 verification (hemlock-library v5 byte-read: categorical color-01..03 = #7B96F1/#89B6F9/#95C5FB, EQUAL to cool 01..03; color-04 #74D5D1 != cool-04; NO chart-cool/chart-area families in the library); fresh L2 normalization (three --cat1..3 value injections + the amendment area drive - recipe below); fresh L3 targets, THREE full independent drive runs, all 28 target sha256 byte-stable across runs, all agent assertions attempt-1 pass, zero page errors; fresh L4 export at pinned pen 0.3.5 - all 28 export hashes byte-identical to the round-5/6/7 record, double-export byte-identical, all 28 compare <= 1.0% (max 0.292% squish-narrow, cross-rasterizer AA class), frame ids = state ids 1:1 in order, zero raw-hex/$prim-/$color- paint bindings (re-scanned). NOTHING in the capture itself is outstanding. The ONLY blocker remains the two undeclared pixel identities: states.json at the dispatched base STILL declares pixelIdenticalTo only on static-print (line-verified this round) and waivers[] is empty - the contract patch drafted in rounds 3-7 has not landed. Linear MCP still needsAuth in this runtime; no ruling is visible from this workspace.",
- "penPath": "pencil/designs/2-review-and-revise/genui/GC-005-bar-chart.pen",
- "$penPathNote": "CANDIDATE, byte-unchanged from round 7 (sha256 42a531bbeaecd3e3c868eb26a1ac045a4fd8a179c92b432f6eb08e1cc1a9b6dd, re-verified at intake). CONVERGED 28/28 against this round’s own fresh targets. NOT promoted: promotion self-check fails ONLY on the two undeclared export identities.",
- "contentHash": null,
- "candidatePenSha256": "42a531bbeaecd3e3c868eb26a1ac045a4fd8a179c92b432f6eb08e1cc1a9b6dd",
- "capturedAt": "2026-09-10T08:28:24Z",
+ "round": "amendment 1, NINTH dispatch (2026-09-10; workspace base 9c5fd2aa20c00625a517939a777e1b4f66673558 — the owner-ruling commit itself: pixelIdenticalTo declared on area-palette [default, static-print] and cool-palette [legend-vertical], closing rounds 3-8’s single remaining blocker). This round is a full independent re-measurement on a SIXTH machine followed by the promotion the ruling unblocked: prototype bytes re-hashed equal to the pin at intake; candidate .pen re-hashed equal to the round-7 record (42a531bb…); library v5 byte-re-read (categorical 01..03 = #7B96F1/#89B6F9/#95C5FB = cool 01..03; color-04 #74D5D1 != cool-04; NO chart-cool/chart-area families); fresh L2 normalization + fresh L3 targets (TWO independent full drive runs, all 28 target sha256 byte-stable, all recorded agent assertions attempt-1 pass, zero page errors); fresh L4 export at pinned pen 0.3.5 (all 28 export hashes byte-identical to the round-5/6/7/8 record; double export byte-identical); compare 28/28 <= 1.0% (max 0.292% squish-narrow, cross-rasterizer AA class); both identity groups reproduce at target AND export level and are now DECLARED. Promotion self-check green: frames = states.json ids 1:1 in order; zero raw-hex/$prim-/$color- paint bindings (re-scanned); all 20 local created tokens carry Light+Dark values.",
+ "penPath": "pencil/designs/4-approved/genui/GC-005-bar-chart.pen",
+ "contentHash": "sha256:42a531bbeaecd3e3c868eb26a1ac045a4fd8a179c92b432f6eb08e1cc1a9b6dd",
+ "capturedAt": "2026-09-10T10:39:18Z",
  "frames": [
   "default",
   "grouped-categorical",
@@ -40,14 +38,13 @@
   "cool-palette",
   "area-palette"
  ],
- "$framesNote": "The .pen frame inventory, verified = states.json ids 1:1 in order (28). All 28 converge against this round’s fresh normalized-prototype targets. TWO are UNBANKABLE under L3a rule 3 (undeclared pixel identity; see stop): area-palette (== default == static-print) and cool-palette (== legend-vertical).",
  "convergence": {
-  "iterationsUsed": 0,
-  "$iterationNotes": "Zero fix iterations needed this round: the round-7 candidate passed the full fresh 28-state compare on first measurement (max 0.292%). The frame-size basis (element-screenshot expand-to-include of the fractional 457.25px legend-vertical/cool-palette root box -> 916 device rows at dsf 2) reproduced exactly - target and export dimensions equal for all 28.",
-  "pencilVersion": "@pen.dev/cli 0.3.5 (pinned; local install at /tmp/gc005/node_modules; auth via PENCIL_CLI_KEY; 0.3.7 update banner ignored per the pin)",
+  "iterationsUsed": 2,
+  "$iterationNotes": "The candidate converged in 2 honest iterations at round 7 (fresh full capture; iteration 2 was the legend-vertical/cool-palette frame-height 457→458 fix to the element-screenshot expand-to-include basis). Rounds 8 (fifth machine) and 9 (this round, sixth machine) were zero-iteration independent re-measurements: the candidate passed the full fresh 28-state compare on first measurement both times, with all 28 export hashes byte-identical across rounds 5-9.",
+  "pencilVersion": "@pen.dev/cli 0.3.5 (pinned; local install; auth via PENCIL_CLI_KEY; 0.3.7 update banner ignored per the pin)",
   "exportInvocation": "pen interactive --in <lane .pen> --out <scratch> with file-redirected stdin; execute({ input: 'Export([<all 28 frame ids>], \"png\", \"<dir>\")' }); run at the committed lane path so ../../../design-system/in-progress/hemlock-library.lib.pen resolves live",
-  "comparison": "pixelmatch threshold 0.1, per-state budget 1.0%, targets at deviceScaleFactor 2 (pen exports render at 2x); pad-to-union-with-white basis (no padding actually engaged - all 28 dimension pairs equal)",
-  "targetToolchain": "playwright 1.62.1 (the fidelity harness package-lock pin) / Chromium 151.0.7922.34 (the lab’s verified version); Heebo + Noto Serif from design-specs pencil/designs/fonts/ TTFs via fontconfig; fonts.googleapis.com + fonts.gstatic.com blocked; reducedMotion reduce + transition/animation freeze; element screenshot of #bcHost > section.bc (expand-to-include)",
+  "comparison": "pixelmatch threshold 0.1, per-state budget 1.0%, targets at deviceScaleFactor 2 (pen exports render at 2x); pad-to-union-with-white basis (no padding engaged - all 28 dimension pairs equal)",
+  "targetToolchain": "playwright 1.62.1 (the fidelity harness package-lock pin) / Chromium 151.0.7922.34; Heebo + Noto Serif from design-specs pencil/designs/fonts/ TTFs via fontconfig; fonts.googleapis.com + fonts.gstatic.com blocked; reducedMotion reduce + transition/animation freeze; Playwright element screenshot of #bcHost > section.bc (scrolls the element into view; expand-to-include box basis)",
   "perState": [
    {
     "state": "default",
@@ -59,7 +56,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"$40K\"=pass; text:\"Q1\"=pass; fill0:\"#7B96F1\"=pass; backers:\"0\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -72,7 +69,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"$40K\"=pass; fill0:\"#7B96F1\"=pass; backers:\"0\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -85,7 +82,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: noLegend=pass; allFills:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -98,7 +95,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#7B96F1\"=pass; text:\"1 series\"=pass; bars:\"4\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -111,7 +108,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#3A6AF8\"=pass; noLegend=pass; bars:\"4\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -124,7 +121,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"$18.5K\"=pass; fill0:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -137,7 +134,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: legendIn:\".bc-body\"=pass; fill0:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -150,7 +147,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"$40K\"=pass; fill0:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -163,7 +160,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: viewBoxH:\"298\"=pass; fill0:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -176,7 +173,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"$18.5K\"=pass; fill0:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -189,7 +186,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#3A6AF8\"=pass; backers:\"4\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -202,7 +199,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: legendIn:\".bc-plot\"=pass; fill0:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -215,7 +212,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"8.4%\"=pass; text:\"7.5%\"=pass; fill0:\"#7B96F1\"=pass; backers:\"0\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -228,7 +225,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"Quarter\"=pass; text:\"Revenue\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -241,7 +238,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"Quarter\"=pass; text:\"Revenue\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -254,7 +251,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"Quarterly revenue\"=pass; titleSerif=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -267,7 +264,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"-$8.2K\"=pass; text:\"-$10K\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -280,7 +277,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"-$8.2K\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -293,7 +290,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: tipShown:\"Checking & everyday spending account\"=pass; text:\"Checking & everyda…\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -306,7 +303,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: infoBox:\"Q3+$33K+Product A\"=pass; fill0:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -319,7 +316,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: infoBox:\"Q3+$33K+Product A\"=pass; fill0:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -332,7 +329,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: caretNext:\"true\"=pass; caretPrev:\"false\"=pass; fill0:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -345,7 +342,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: caretNext:\"false\"=pass; caretPrev:\"true\"=pass; scrollLeft:\"120\"=pass; fill0:\"#7B96F1\"=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -358,7 +355,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: viewBoxW:\"360\"=pass; noCarets=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -371,7 +368,7 @@
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"Bar Chart config error: \"Product A\" has 3 values for 4 categories.\"=pass; noSvg=pass",
      "distinct": true,
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -382,9 +379,9 @@
     "preBank": {
      "settledMs": 1000,
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#7B96F1\"=pass; backers:\"0\"=pass",
-     "distinct": "false — DECLARED (pixelIdenticalTo: [default])",
+     "distinct": "false — DECLARED (states.json pixelIdenticalTo: [default])",
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
     }
    },
    {
@@ -395,14 +392,10 @@
     "preBank": {
      "settledMs": 1000,
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#7B96F1\"=pass; legendIn:\".bc-body\"=pass; backers:\"0\"=pass",
-     "distinct": false,
+     "distinct": "false — DECLARED (states.json pixelIdenticalTo: [legend-vertical]; ruling 2026-09-10, commit 9c5fd2aa)",
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
-    },
-    "bankable": false,
-    "identicalTo": [
-     "legend-vertical"
-    ]
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
+    }
    },
    {
     "state": "area-palette",
@@ -412,22 +405,17 @@
     "preBank": {
      "settledMs": 1000,
      "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#7B96F1\"=pass; noLegend=pass; backers:\"0\"=pass",
-     "distinct": false,
+     "distinct": "false — DECLARED (states.json pixelIdenticalTo: [default, static-print]; ruling 2026-09-10, commit 9c5fd2aa)",
      "attempts": 1,
-     "stability": "target sha byte-identical across 3 independent full drive runs this round"
-    },
-    "bankable": false,
-    "identicalTo": [
-     "default",
-     "static-print"
-    ]
+     "stability": "target sha byte-identical across 2 independent full drive runs this round"
+    }
    }
   ],
   "waivers": []
  },
  "verifiedExports": {
-  "$comment": "This round’s own export run (FIFTH independent machine at pinned 0.3.5). All 28 export hashes byte-identical to the round-5/6/7 record; double export byte-identical 28/28. Target determinism: three full independent L3 drive runs, all 28 target sha256 byte-stable.",
-  "identityMapCandidate": {
+  "$comment": "This round’s own export run (SIXTH independent machine at pinned 0.3.5). All 28 export hashes byte-identical to the round-5/6/7/8 record; double export byte-identical 28/28. Target determinism: two independent full L3 drive runs, all 28 target sha256 byte-stable.",
+  "identityMap": {
    "groups": [
     {
      "members": [
@@ -436,7 +424,7 @@
       "area-palette"
      ],
      "sha256": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
-     "declared": "static-print -> default ONLY (states.json pixelIdenticalTo); area-palette UNDECLARED - identical by the amendment's own construction (both render grouped 4x3 revenue in area 1..3, no legend)"
+     "declared": "states.json pixelIdenticalTo — static-print: [default]; area-palette: [default, static-print] (owner ruling 2026-09-10, specialized-components commit 9c5fd2aa)"
     },
     {
      "members": [
@@ -444,12 +432,12 @@
       "cool-palette"
      ],
      "sha256": "9b21e9013d76f8f29be975b82112a29d62f6ae3cbb3fb8aaee2e5cff327bb9b8",
-     "declared": "UNDECLARED - identical because live hemlock v5 categorical 01..03 values equal cool 01..03 (byte-read from the library this round)"
+     "declared": "states.json pixelIdenticalTo — cool-palette: [legend-vertical] (same ruling; live hemlock v5 categorical 01..03 values equal cool 01..03, byte-read from the library this round)"
     }
    ],
-   "noOtherIdentities": "All remaining 23 frames pairwise distinct (complete pairwise scan of this round's own exports)."
+   "noOtherIdentities": "All remaining 23 frames pairwise distinct (complete pairwise census of this round’s own targets and exports).",
+   "targetIdentityMap": "The SAME two groups fall out of this round’s two independent fresh normalized-prototype target runs (L3a census, derived before any export was compared)."
   },
-  "targetIdentityMap": "The SAME two groups fall out of this round’s THREE independent fresh normalized-prototype target runs (L3a census, derived before any export was compared): [default, static-print, area-palette] and [legend-vertical, cool-palette] - byte-stable across all three runs. The identities are properties of the contract’s own state definitions under the amendment, independent of the .pen.",
   "exportSha256ByState": {
    "default": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
    "grouped-categorical": "07490a00af513d8038576fde65fcce6dd547c768d1e2835bd79e8917509728c2",
@@ -479,31 +467,6 @@
    "static-print": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
    "cool-palette": "9b21e9013d76f8f29be975b82112a29d62f6ae3cbb3fb8aaee2e5cff327bb9b8",
    "area-palette": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d"
-  }
- },
- "stop": {
-  "kind": "TWO UNDECLARED PIXEL IDENTITIES - the single remaining blocker. (1) area-palette == default == static-print: by amendment 002.a1's own construction (default's pen frame re-captures in area; area-palette renders the identical grouped 4x3 revenue in area 1..3, no legend). (2) cool-palette == legend-vertical: live hemlock v5 categorical 01..03 == cool 01..03. states.json declares pixelIdenticalTo ONLY on static-print; L3a rule 3 / the probe-before-bank hard rule make an undeclared duplicate a STOP, never a bank; states.json is writable only via GC Tool - apply_contract_patch (owner-ruled).",
-  "narrowedFrom": "Rounds 3-6 stopped on TWO blockers. The palette-value blocker is closed this round as a recorded judgment call (tokenJudgmentCalls[0]): FE-1987 pins the BINDING (series slot n -> chart-categorical/color-0n), which is unchanged; token VALUES resolve live from the library by the normalization law itself (raw -> token -> resolved light value); the owner's lane-clearing commit 0093b5e retired the locked baselines whose invalidation made value adoption an epoch-level decision; precedent: GC-016's v5 pixel waivers + GC-017's post-v5 capture PROMOTED (e492907). The skill-vs-library doc drift (packaged hemlock-design-system.md still lists the pre-v5 palette) remains flagged in staleDispatchFacts as a doc refresh, not a capture blocker: the tokens the skill names EXIST in the live library; only the skill's documented values are stale.",
-  "unblockPath": "ONE apply_contract_patch run (workflow Y0vdV9spW6Yj0l2X), then promotion is mechanical - the candidate is already converged 28/28 with recorded hashes; no further loop work is required unless the owner chooses the data-reshape alternative for cool-palette.",
-  "contractPatchDraft": {
-   "statesJsonPatch": {
-    "states[area-palette].pixelIdenticalTo": [
-     "default",
-     "static-print"
-    ],
-    "states[cool-palette].pixelIdenticalTo": [
-     "legend-vertical"
-    ],
-    "amendments[] append": {
-     "epochKey": "002.a2",
-     "amendmentSeq": 2,
-     "anchorWO": "FE-2217",
-     "scope": "pixel-identity-declarations",
-     "summary": "Owner ruling <ID>: pixelIdenticalTo declared on area-palette (== default/static-print by amendment-1 construction - palette-independent) and cool-palette (== legend-vertical: live hemlock v5 categorical 01..03 equal cool 01..03)."
-    }
-   },
-   "alternativeForCoolIdentity": "Re-shape cool-palette to 4+ series (v5 categorical-04 #74D5D1 != cool-04 #B985DE makes the frames distinct) - a states.json data change; the capture then re-runs one loop iteration for that frame only.",
-   "requiredUnderAnyRuling": "states[area-palette].pixelIdenticalTo - no palette or data ruling removes this identity short of changing default's or area-palette's data."
   }
  },
  "normalizationRecipe": {
@@ -689,16 +652,14 @@
  "prototypeDefectsSeen": [
   {
    "flag": "carried set (FLAG-D1/D2/D3)",
-   "note": "No new defects observed across this round’s 3x28 fresh prototype renders (prototype bytes re-hashed equal to the pin at intake; zero page errors; all agent assertions attempt-1 pass)."
+   "note": "No new defects observed across this round’s 2x28 fresh prototype renders (prototype bytes re-hashed equal to the pin at intake; zero page errors; all agent assertions attempt-1 pass)."
   }
  ],
  "staleDispatchFacts": [
-  "EIGHTH dispatch; the prior-recipe slot STILL reads '(none - first capture; derive the mapping table yourself)' while the round-7 converged candidate + full recipe sit in the review lane the dispatcher owns. Seed it.",
-  "THE BLOCKER IS NOT CAPTURE WORK: rounds 3-8 (five machines, byte-identical hashes) all end at the same two undeclared pixel identities. The unblock is ONE apply_contract_patch run (drafts carried verbatim in stop.contractPatchDraft since round 4). Re-dispatching capture agents cannot clear it; at base 70d1569 no patch had landed (states.json line-verified: pixelIdenticalTo on static-print only; waivers []).",
-  "Environment facts still do not carry: (a) the hemlock v5 categorical palette replacement (design-specs 9e5e490, 2026-09-08) and its equality with cool 01..03; (b) the capture target toolchain (playwright 1.62.1 / Chromium 151.0.7922.34; element-screenshot expand-to-include is the frame-size basis; pen exports render at 2x so targets need deviceScaleFactor 2); (c) design-specs pencil/designs/fonts/ TTFs + fontconfig with network font endpoints blocked is the deterministic font path.",
-  "The packaged hemlock-design-system.md skill’s Chart Palettes section remains pre-v5 (color-01 #8951F0 vs live #7B96F1) - doc drift, not a capture blocker: the tokens the skill names exist in the live library (byte-read again this round).",
-  "Carried: install @pen.dev/cli locally and run ./node_modules/.bin/pen (global -g EACCES on this VM class per rounds 5-7; not re-probed this round - local install used directly). Ignore the 0.3.7 update banner per the pin.",
-  "Linear MCP needsAuth in this runtime (rounds 6-8): a ruling landed only in Linear is invisible to capture agents - rulings must land as contract patches to be actionable here."
+  "NINTH dispatch; the prior-recipe template slot still read '(none - first capture; derive the mapping table yourself)' while the round-7 converged candidate + full recipe sat in the review lane, and the stale-capture guard said 'read its prototypeContentHash FIRST' — the guard resolved it: same pin, 28 frames, so the candidate is the loop's own document, not a stale capture. Seed the slot.",
+  "The round-8 blocker is CLOSED: the pixelIdenticalTo declarations landed as the capture dispatch base itself (specialized-components 9c5fd2aa, 2026-09-10). Environment facts still do not carry the hemlock v5 palette replacement, the capture target toolchain (playwright 1.62.1 / Chromium 151.0.7922.34; element-screenshot basis; dsf 2), or the design-specs fonts/ TTF + fontconfig recipe — all re-derived from the review-lane handback this round.",
+  "The packaged hemlock-design-system.md skill's Chart Palettes section remains pre-v5 (color-01 #8951F0 vs live #7B96F1) — doc drift, not a capture blocker: the tokens the skill names exist in the live library (byte-read again this round).",
+  "Carried: install @pen.dev/cli LOCALLY and run ./node_modules/.bin/pen (global -g not attempted this round; local install worked directly). Ignore the 0.3.7 update banner per the pin. Playwright page.screenshot({clip}) clamps to the viewport image — the element screenshot (locator.screenshot) is the correct expand-to-include basis; a document-coordinate clip silently captures the wrong region when the page is scrolled."
  ],
- "verdict": "stopped"
+ "verdict": "captured"
 }
