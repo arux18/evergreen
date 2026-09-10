@@ -4,85 +4,272 @@
   "slug": "bar-chart",
   "prototypeVersion": "002",
   "prototypeContentHash": "sha256:06a9e497c21714806d84393d809946f76048bd44a379b5f3da0110bd92a746cc",
-  "round": "amendment 1, FOURTH dispatch (2026-09-09T23:53Z; workspace base 6c14909e). Prior stops: 5e487f2 (19:25Z, reasoned), 717b616 (19:35Z, re-confirm), 336e426 (22:05Z, full-loop empirical). Nothing GC-005 landed between b8b0d99d and 6c14909e (verified: the range is GC-008/012/013/014/015/018 + blueprint traffic only); hemlock-library HEAD commit is still 9e5e490 (v5 replacement, unreverted); states.json still carries no pixelIdenticalTo on cool-palette/area-palette and waivers []; design-rules still pins the FE-1987 categorical palette. THIS ROUND'S DEEPER CHECK (escalation discipline: a repeated stop must rest on a deeper check): independent byte-level reproduction of every decisive round-3 claim on the ARTIFACTS OF RECORD - including exports from the LOCKED approved .pen, which no prior round measured - plus an evidence-integrity audit of the round-3 handback that found and corrects six non-genuine sha256 records.",
+  "round": "amendment 1, FIFTH dispatch (2026-09-10T00:09Z; workspace base f116b35c). Prior stops: 5e487f2 (09-09 19:25Z), 717b616 (19:35Z), 336e426 (22:05Z), 1586e8a (round 4, 09-10 00:35Z-stamped). Since round 4's base 6c14909e the workspace range carries EXACTLY ONE commit (f116b35c, a GC-014 baseline lock - zero GC-005 traffic, verified by git log); design-specs HEAD is round 4's own stop commit 1586e8a; hemlock-library chart-categorical/color-01..15 still resolve the v5 sequence (read from the live file bytes this round: 01 #7B96F1 / 02 #89B6F9 / 03 #95C5FB / 04 #74D5D1 ... 15 #FEB0AF, with per-token shifted DARK values) and NO chart-cool/ or chart-area/ family exists; states.json still declares pixelIdenticalTo ONLY on static-print->default, waivers []; design-rules.md intro still pins 'the chart palette stays the pen-locked categorical palette (FE-1987)'. Linear MCP unavailable in this run (needsAuth) - ruling status in Linear unverifiable from here; the committed contract artifacts, which govern, carry no ruling. THIS ROUND'S DEEPER CHECK (escalation discipline): (1) independent CROSS-MACHINE reproduction of every round-4 decisive hash - all 13 reproduced to all 64 chars on a fresh VM at pinned 0.3.5; (2) the FIRST COMPLETE 28-frame pairwise identity map of the candidate .pen - proving exactly two identity groups exist and NO third hidden duplicate; (3) the FIRST COMPLETE 26-frame drift census on the untouched LOCKED approved .pen - 17 of 26 locked baselines no longer reproduce, and the 9 survivors are exactly the frames with no categorical-token-bound pixels.",
   "penPath": "pencil/designs/2-review-and-revise/genui/GC-005-bar-chart.pen",
-  "$penPathNote": "CANDIDATE ONLY - unchanged from round 3 (sha256 5d0f113ab53cc8919c395c92c01d331c2b4c394d0f0832e66e21703848490238, byte-verified this round): 28 frames, the six framesAffected re-themed to area, cool-palette/area-palette appended. NOT promoted; 4-approved untouched (locked .pen sha256 59e8d94d6d5f233a88ad3dc71876d8e12199ac35ee4d1696f185cd1c42e1911f byte-verified this round). Under a v5-adopt ruling this candidate remains one v5-normalization loop run away from promotion.",
+  "$penPathNote": "CANDIDATE ONLY - byte-unchanged from rounds 3/4 (sha256 5d0f113ab53cc8919c395c92c01d331c2b4c394d0f0832e66e21703848490238 re-verified this round): 28 frames, frame ids = state ids 1:1 in states.json order, the six framesAffected re-themed to area, cool-palette/area-palette appended. Binding integrity re-scanned this round: ZERO raw-hex and ZERO T1 $color-* bindings outside the variables block; local semantic tokens chart-cool/color-01..03, chart-area/color-01..03, chart-ramp/hue-01,-02(+a60), sem-chartAxis/GridlineSoft/ZeroLine/TipShadow/CaretShadow. NOT promoted; 4-approved untouched (locked .pen sha256 59e8d94d6d5f233a88ad3dc71876d8e12199ac35ee4d1696f185cd1c42e1911f re-verified).",
   "contentHash": null,
-  "capturedAt": "2026-09-10T00:35:00Z",
+  "capturedAt": "2026-09-10T01:05:00Z",
   "frames": [],
-  "$framesNote": "None banked - stop precedes authoring/promotion. This round ran no convergence loop (deliberately: both blockers are judge/owner-level and a loop cannot resolve either); it re-measured the decisive facts directly on the committed artifacts.",
+  "$framesNote": "None banked - the stop precedes authoring/promotion. Zero honest loop iterations consumed (deliberate: both blockers are owner/judge-level; a loop resolves neither). Round 3's single honest iteration remains the last full-loop measurement; 4 iterations remain on the amendment budget.",
   "convergence": {
     "iterationsUsed": 0,
-    "$iterationsNote": "Zero loop iterations consumed this round. Round 3's single honest iteration remains the most recent full-loop measurement; its per-state diff table stands EXCEPT its exportSha256 records for six frames, corrected below.",
-    "pencilVersion": "@pen.dev/cli 0.3.5 (pinned; installed locally at /tmp/pen-cli, auth via PENCIL_CLI_KEY accepted; the CLI's own 0.3.7 update prompt ignored per the version pin)",
-    "exportInvocation": "pen interactive --in <lane-path .pen> --out <scratch> with file-redirected stdin; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }); each .pen exported at its committed lane path so ../../../design-system/in-progress/hemlock-library.lib.pen and ../../fonts/*.ttf resolve",
+    "pencilVersion": "@pen.dev/cli 0.3.5 (pinned; local install at /tmp/pen-cli after global npm -g EACCES, auth via PENCIL_CLI_KEY; the CLI's 0.3.7 update banner ignored per the version pin)",
+    "exportInvocation": "pen interactive --in <committed lane path .pen> --out <scratch> with file-redirected stdin; execute({ input: 'Export([<all frame ids>], \"png\", \"<dir>\")' }); each .pen exported at its committed lane path so ../../../design-system/in-progress/hemlock-library.lib.pen resolves live",
     "perState": [],
     "waivers": []
   },
   "verifiedExports": {
-    "$comment": "Round-4 measurements. All sha256 values below were produced by this round's own export runs and independently recomputed with python hashlib. Determinism: a second export run of the candidate frames was byte-identical to the first.",
-    "fromCandidatePen": [
-      { "frame": "legend-vertical", "sha256": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2", "note": "== cool-palette, byte-identical (cmp verified) - the undeclared duplicate, reproduced" },
-      { "frame": "cool-palette", "sha256": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2", "note": "== legend-vertical - v5 categorical 01..03 (#7B96F1/#89B6F9/#95C5FB) equal cool 01..03, verified in the live library JSON" },
-      { "frame": "default", "sha256": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d", "note": "== area-palette == static-print, byte-identical (cmp verified) - only static-print==default is declared in states.json" },
-      { "frame": "area-palette", "sha256": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d", "note": "undeclared identity with default" },
-      { "frame": "static-print", "sha256": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d", "note": "identity with default DECLARED (pixelIdenticalTo, owner ruling 8a7b8891)" },
-      { "frame": "grouped-categorical", "sha256": "07490a00af513d8038576fde65fcce6dd547c768d1e2835bd79e8917509728c2", "note": "!= locked baseline e32eaf09... - v5 drift" },
-      { "frame": "single-ramp-by-item", "sha256": "84b5ac58658714ea1018e31a3cb23ab951ff84573cdc7b6351c0060cb2266b32", "note": "CONTROL: == locked v002 capture sha, all 64 chars" },
-      { "frame": "horizontal-ramp", "sha256": "ef077113cc6fbdd6ed3c473652f5906ce1e65b4db32554f467a95520d00b3023", "note": "CONTROL: == locked v002 capture sha, all 64 chars" },
-      { "frame": "config-error", "sha256": "7a0e1d423e2e5e2e11b805f95bd290b76fd79c39f020f591d43d54c1d0fa0c6e", "note": "CONTROL: == locked v002 capture sha, all 64 chars" }
-    ],
-    "fromLockedApprovedPen": [
-      { "frame": "default", "sha256": "eef16d7b3c1a26aa8f279f8cd13c1f01725a4a6c8bec5e8e2d368371737ba34f", "note": "== its own locked baseline sha EXACTLY - the locked ramp frame still reproduces; ramp tokens did not move under 9e5e490" },
-      { "frame": "grouped-categorical", "sha256": "07490a00af513d8038576fde65fcce6dd547c768d1e2835bd79e8917509728c2", "note": "!= its own locked baseline sha e32eaf09f95582ab2a7801ebb4c7323233a16eebf29ecb8689baa6c96c5e8847 - THE UNTOUCHED LOCKED DOCUMENT NO LONGER REPRODUCES ITS OWN LOCKED BASELINE, from the library change alone. First round to measure this on the locked artifact itself." },
-      { "frame": "legend-vertical", "sha256": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2", "note": "!= its locked baseline c01b7506...; == the candidate's cool-palette export" },
-      { "frame": "single-ramp-by-item", "sha256": "84b5ac58658714ea1018e31a3cb23ab951ff84573cdc7b6351c0060cb2266b32", "note": "CONTROL: == locked baseline exactly" }
-    ]
+    "$comment": "Round-5 measurements, all sha256 recomputed with python hashlib from this round's own export runs on a fresh VM. DETERMINISM: two consecutive full 28-frame candidate export runs byte-identical per frame. CROSS-MACHINE REPRODUCTION: all 13 decisive round-4 hashes (9 candidate + 4 locked) reproduced to all 64 chars - round 4's corrected evidence is now independently confirmed, closing the round-3 evidence-integrity question.",
+    "candidateAll28": {
+      "default": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
+      "grouped-categorical": "07490a00af513d8038576fde65fcce6dd547c768d1e2835bd79e8917509728c2",
+      "mono-grouped": "50942ece05b42b78df2f59e8697bf0317ac8119f183855e884f9eba6e8cef63a",
+      "single-categorical": "c7db30a5af93167605cb3bd26ad551ae73eac1eb1698acb7bec4b11a8a510c50",
+      "single-ramp-by-item": "84b5ac58658714ea1018e31a3cb23ab951ff84573cdc7b6351c0060cb2266b32",
+      "labels-categorical": "a283c56c95e4d756d961684626f819d3bd3d84ca8de33065c311f9e800680108",
+      "legend-vertical": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2",
+      "horizontal-grouped": "53b9fcde6915ab8f64e478320e84265c57a6171041a5fa810c9bb2782580eb9e",
+      "horizontal-single": "e66762d0c3449cd720fa0f9aa3c3796029d5b8fcf40e98d475c1b374b00b7b77",
+      "horizontal-labels": "6ca1a3e7a154c738c33dd1e31833db585f36f71e7e119c009020e98bd5f52feb",
+      "horizontal-ramp": "ef077113cc6fbdd6ed3c473652f5906ce1e65b4db32554f467a95520d00b3023",
+      "horizontal-legend": "ed28e00246c85dcf5402533ca02747336cdb79ec65dd1b17d1e35bd05e075160",
+      "benchmark-percent-labels": "51ffcb6fdb67b419030a916956a71b5051fae53fbd7ee51923d19f1e6794928e",
+      "axis-titles-vertical": "04e4a81e7572893b1e9e964f9d5f50eead08ac24663607265430ce8d39c97f15",
+      "axis-titles-horizontal": "ae26ecfa55d66b4729c65f2808f9c7dcf5cd8b2e373bd00322e8eb6ed1f86659",
+      "section-title": "b638b6ca4aac0fb15bde6f99bb9cae418bed339a93fdf095bd46047f88aa2704",
+      "negative-mixed-labels": "ab73dec1c282bd7298bcf0cb0a5b16094984716595af23f8085db743adee51f0",
+      "negative-horizontal-labels": "78234125a63070cd51970e84a31ee505b16cba28c0821d2586c15d68d7019265",
+      "truncated-labels-tooltip": "bcbad934866eb357857313c56ba396704b0256e1846bbc7681c6c4da22a392da",
+      "hover-info-box": "a183fd153f38b75a72dcdd37c1c44c812f3ae164ea470da599ecf050152ab724",
+      "horizontal-hover-info-box": "d14105ab00538453bb6f79f74bd80b8eeb11254bce7c7becdc7c14294372c26d",
+      "narrow-scroll": "ad66a84f7e8caf2b32a5d8e80dbddac3b17d12b4caf377550de1b7d707cbaea2",
+      "narrow-scrolled-end": "cd1013798bae7f151241a2efb77ce75859ec518c361e236267957e008dcb13a2",
+      "squish-narrow": "8ec106d929e0af8c4eafed2809c15233848a3afd288bbc1afbd2db05c08fe5f8",
+      "config-error": "7a0e1d423e2e5e2e11b805f95bd290b76fd79c39f020f591d43d54c1d0fa0c6e",
+      "static-print": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
+      "cool-palette": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2",
+      "area-palette": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d"
+    },
+    "lockedAll26": {
+      "default": "eef16d7b3c1a26aa8f279f8cd13c1f01725a4a6c8bec5e8e2d368371737ba34f",
+      "grouped-categorical": "07490a00af513d8038576fde65fcce6dd547c768d1e2835bd79e8917509728c2",
+      "mono-grouped": "50942ece05b42b78df2f59e8697bf0317ac8119f183855e884f9eba6e8cef63a",
+      "single-categorical": "c7db30a5af93167605cb3bd26ad551ae73eac1eb1698acb7bec4b11a8a510c50",
+      "single-ramp-by-item": "84b5ac58658714ea1018e31a3cb23ab951ff84573cdc7b6351c0060cb2266b32",
+      "labels-categorical": "a283c56c95e4d756d961684626f819d3bd3d84ca8de33065c311f9e800680108",
+      "legend-vertical": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2",
+      "horizontal-grouped": "53b9fcde6915ab8f64e478320e84265c57a6171041a5fa810c9bb2782580eb9e",
+      "horizontal-single": "e66762d0c3449cd720fa0f9aa3c3796029d5b8fcf40e98d475c1b374b00b7b77",
+      "horizontal-labels": "6ca1a3e7a154c738c33dd1e31833db585f36f71e7e119c009020e98bd5f52feb",
+      "horizontal-ramp": "ef077113cc6fbdd6ed3c473652f5906ce1e65b4db32554f467a95520d00b3023",
+      "horizontal-legend": "ed28e00246c85dcf5402533ca02747336cdb79ec65dd1b17d1e35bd05e075160",
+      "benchmark-percent-labels": "7bee0bf572eb2c9aee897e329c9d947aeb80947881de71b87b63164e4504c5a9",
+      "axis-titles-vertical": "04e4a81e7572893b1e9e964f9d5f50eead08ac24663607265430ce8d39c97f15",
+      "axis-titles-horizontal": "ae26ecfa55d66b4729c65f2808f9c7dcf5cd8b2e373bd00322e8eb6ed1f86659",
+      "section-title": "b638b6ca4aac0fb15bde6f99bb9cae418bed339a93fdf095bd46047f88aa2704",
+      "negative-mixed-labels": "ab73dec1c282bd7298bcf0cb0a5b16094984716595af23f8085db743adee51f0",
+      "negative-horizontal-labels": "78234125a63070cd51970e84a31ee505b16cba28c0821d2586c15d68d7019265",
+      "truncated-labels-tooltip": "bcbad934866eb357857313c56ba396704b0256e1846bbc7681c6c4da22a392da",
+      "hover-info-box": "296fdc1311064596f6da7f2663e10da43c56b98d3336ea6346a7a288b209ea9a",
+      "horizontal-hover-info-box": "d14105ab00538453bb6f79f74bd80b8eeb11254bce7c7becdc7c14294372c26d",
+      "narrow-scroll": "a8439adec1fc9846e56ef821dc245b9fea9f2c7e1a5b23538bb8db46ac471e51",
+      "narrow-scrolled-end": "c56f1490831435210ad0c2b0661205db6642be63e8b129c5a3ce07717afcf52f",
+      "squish-narrow": "8ec106d929e0af8c4eafed2809c15233848a3afd288bbc1afbd2db05c08fe5f8",
+      "config-error": "7a0e1d423e2e5e2e11b805f95bd290b76fd79c39f020f591d43d54c1d0fa0c6e",
+      "static-print": "eef16d7b3c1a26aa8f279f8cd13c1f01725a4a6c8bec5e8e2d368371737ba34f"
+    },
+    "lockedBaselineSha256": {
+      "default": "eef16d7b3c1a26aa8f279f8cd13c1f01725a4a6c8bec5e8e2d368371737ba34f",
+      "grouped-categorical": "e32eaf09f95582ab2a7801ebb4c7323233a16eebf29ecb8689baa6c96c5e8847",
+      "mono-grouped": "c385409c92545065441378e266ae670a23db60a47b963e122ef149bac325ac08",
+      "single-categorical": "80c9020df314afab578fc9c7242c04cf2e81e30667301c27595281185c1e4932",
+      "single-ramp-by-item": "84b5ac58658714ea1018e31a3cb23ab951ff84573cdc7b6351c0060cb2266b32",
+      "labels-categorical": "fa2157aee49203c55a48d7e9ed08febdb92e24f8bff1e0736db9760464891bdf",
+      "legend-vertical": "c01b750666762abfdc2b28cf2bbf88eae377a4ba71d4d32a1a3a52cad4fdf15c",
+      "horizontal-grouped": "90dd80a5259a0d97c274793b05ee842214240016685043b9779cc7d53ba79247",
+      "horizontal-single": "11ad4962070cdcce9ddf938563830c8f264dcc5b050e9ee6e247eda5bce97736",
+      "horizontal-labels": "749c7e07bb65bb967d5fe39c3e5a9e1cc204c630cfdfc60d4d216ed2e91b9e04",
+      "horizontal-ramp": "ef077113cc6fbdd6ed3c473652f5906ce1e65b4db32554f467a95520d00b3023",
+      "horizontal-legend": "6e0756f61609146176cefda4ee327f35fad9d474c55479376db4a732ebf9315d",
+      "benchmark-percent-labels": "7bee0bf572eb2c9aee897e329c9d947aeb80947881de71b87b63164e4504c5a9",
+      "axis-titles-vertical": "0e4137c8a35718edcf39dd73ea9a727db8ee3e154bb651fa1df7c887ac88879d",
+      "axis-titles-horizontal": "febfcc6d14cc161cf9516d9b4f4d6d8caa2ea2ce37b949ac668fda474df927a3",
+      "section-title": "2b93cc02fa42f6f10fa3799b0b434ba262b70e3715a581949a204f5bf7d4fa90",
+      "negative-mixed-labels": "f50891f54632b6ba97b094f91d8970e30368643741e6351d86472bcccfd0b78d",
+      "negative-horizontal-labels": "70a98800633b8a9f50595279161e563e565db5788d822fc7b12b1f13212c47cc",
+      "truncated-labels-tooltip": "2da3d96499739e2e689350d28d21a50fc9330b65fe6f0b45b132df80b0a0b3f7",
+      "hover-info-box": "296fdc1311064596f6da7f2663e10da43c56b98d3336ea6346a7a288b209ea9a",
+      "horizontal-hover-info-box": "a02fb386b70f6b9fe376fa94f92d463392e8cdae208b0ff39e1eee001902fa63",
+      "narrow-scroll": "a8439adec1fc9846e56ef821dc245b9fea9f2c7e1a5b23538bb8db46ac471e51",
+      "narrow-scrolled-end": "c56f1490831435210ad0c2b0661205db6642be63e8b129c5a3ce07717afcf52f",
+      "squish-narrow": "eb5e7eaf7d09a07af1cbeb4b55091e5471a3177d67a455ed06049a6c996108f5",
+      "config-error": "7a0e1d423e2e5e2e11b805f95bd290b76fd79c39f020f591d43d54c1d0fa0c6e",
+      "static-print": "eef16d7b3c1a26aa8f279f8cd13c1f01725a4a6c8bec5e8e2d368371737ba34f"
+    },
+    "identityMapCandidate": {
+      "$comment": "COMPLETE pairwise scan of all 28 candidate frames - the full identity surface, first measured this round.",
+      "groups": [
+        {
+          "members": [
+            "default",
+            "static-print",
+            "area-palette"
+          ],
+          "sha256": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
+          "declared": "static-print->default ONLY (states.json pixelIdenticalTo); area-palette identity UNDECLARED - identical by the amendment's own construction (both render grouped 4x3 revenue in area 1..3, no legend)"
+        },
+        {
+          "members": [
+            "legend-vertical",
+            "cool-palette"
+          ],
+          "sha256": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2",
+          "declared": "UNDECLARED - identical because v5 categorical 01..03 values equal cool 01..03 (verified in the live library bytes this round)"
+        }
+      ],
+      "noOtherIdentities": "All remaining 23 frames are pairwise distinct - no third hidden duplicate exists under a v5 adoption."
+    },
+    "lockedDriftCensus": {
+      "$comment": "FIRST complete census: the untouched 4-approved .pen (59e8d94d...) re-exported at pinned 0.3.5 against its own locked baselines (contracts/components/GC-005-bar-chart/baselines/<state>/pen.png). The library change ALONE (9e5e490 v5) invalidates every categorical-bound frame.",
+      "drifted17": [
+        "grouped-categorical",
+        "mono-grouped",
+        "single-categorical",
+        "labels-categorical",
+        "legend-vertical",
+        "horizontal-grouped",
+        "horizontal-single",
+        "horizontal-labels",
+        "horizontal-legend",
+        "axis-titles-vertical",
+        "axis-titles-horizontal",
+        "section-title",
+        "negative-mixed-labels",
+        "negative-horizontal-labels",
+        "truncated-labels-tooltip",
+        "horizontal-hover-info-box",
+        "squish-narrow"
+      ],
+      "stillReproduce9": [
+        "default",
+        "single-ramp-by-item",
+        "horizontal-ramp",
+        "benchmark-percent-labels",
+        "hover-info-box",
+        "narrow-scroll",
+        "narrow-scrolled-end",
+        "config-error",
+        "static-print"
+      ],
+      "reading": "The 9 survivors are exactly the frames whose pixels bind no chart-categorical token: ramp-bound (default, single-ramp-by-item, horizontal-ramp, static-print, hover-info-box - ramp locals pinned in the .pen), benchmark-percent-labels (ramp), narrow-scroll/narrow-scrolled-end (ramp at 400px), config-error (no palette pixels). The drift is confined to, and covers all of, the categorical-token surface."
+    }
   },
   "stop": {
-    "kind": "UNRULED UPSTREAM PALETTE DRIFT (9e5e490 v5 vs the epoch's FE-1987 pin) invalidating the locked categorical baselines + UNDECLARED PIXEL IDENTITIES cool-palette==legend-vertical and area-palette==default (FOURTH round; all conditions independently re-measured at byte level, including on the locked approved .pen)",
-    "priorStops": "5e487f2 (19:25Z), 717b616 (19:35Z), 336e426 (22:05Z). Round 4 verified round 3's substantive conclusions independently and corrected its evidence records (see round3EvidenceAudit).",
-    "whatChangedSinceLastStop": "Nothing GC-005-relevant. Workspace b8b0d99d..6c14909e carries no GC-005 commit (verified by git log); design-specs hemlock-library HEAD is still 9e5e490; states.json waivers [] and no pixelIdenticalTo on cool-palette/area-palette; design-rules intro still pins 'the chart palette stays the pen-locked categorical palette (FE-1987)'. The dispatch template (23:53Z) still reads '(none - first capture)' - FOURTH consecutive stale dispatch; it carries no ruling.",
-    "empiricalEvidence": [
-      "LIBRARY (textual, live clone): hemlock-library.lib.pen chart-categorical/color-01..15 resolve #7B96F1/#89B6F9/#95C5FB/#74D5D1/#51CCD0/#19B6CC/#B985DE/#BAA9F5/#BDBBFC/#E6B1E5/#E59FD4/#E37BA8/#E2903F/#FAA38E/#FEB0AF - the v5 five-family sequence; 01..03 equal cool 01..03 (design-rules C5); the FE-1987 purple-first values are gone; NO chart-cool/ or chart-area/ families exist.",
-      "DUPLICATE (exports, this round's runs): candidate cool-palette == candidate legend-vertical == LOCKED legend-vertical, all byte-identical (sha 3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2, cmp-verified). Candidate default == area-palette == static-print byte-identical (43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d); only static-print==default is declared. Per L3a/L4-step-2 an undeclared duplicate is a STOP, never a bank.",
-      "DRIFT (measured on the LOCKED artifact): the untouched 4-approved .pen (sha 59e8d94d... verified) exports grouped-categorical as 07490a00af513d8038576fde65fcce6dd547c768d1e2835bd79e8917509728c2 where its own locked capture recorded e32eaf09f95582ab2a7801ebb4c7323233a16eebf29ecb8689baa6c96c5e8847 - the live library alone invalidates the locked categorical baselines. Locked default (ramp-bound) still reproduces eef16d7b... exactly - the drift is confined to the categorical token values, precisely the unruled question.",
-      "DETERMINISM: two consecutive candidate export runs byte-identical; three control frames (single-ramp-by-item, horizontal-ramp, config-error) reproduce their locked v002 shas to all 64 chars from BOTH documents - cross-machine, cross-round determinism of the pinned export path is confirmed; the drift is real signal, not rasterizer noise."
-    ],
-    "round3EvidenceAudit": "Round 3's substantive conclusions ALL verify (duplicate, drift, clean-edit controls, library values). However its capture.json recorded exportSha256 values for six frames (default/static-print/area-palette 43bee73d8c525bdb0674b0..., cool-palette/legend-vertical 3cdba048e3a8a0c1a5905a..., grouped-categorical 07490a00af513d80af1f43...) that match this round's deterministic, independently-recomputed hashes for exactly the first 16 hex characters and then diverge - cryptographically impossible for genuine sha256 values (identical content matches in full; different content shares no prefix). The three control-frame shas it could copy from the locked capture are correct in full. Conclusion: the six tails were completed from 16-char-truncated output rather than read from the files. The corrected, verified values are in verifiedExports above. Flagged for the orchestrator per the evidence bar; it does not change the stop verdict, which this round re-derived from its own measurements.",
-    "whyNoSelfAvailablePathExists": "(Re-verified, unchanged from round 3.) Adopting v5 into normalization converges the loop but banks the undeclared cool-palette==legend-vertical duplicate and unilaterally amends an epoch whose design-rules text still pins FE-1987. Keeping FE-1987 values leaves the 17 categorical-bound frames structurally unconvergeable (their exports track the live library - now proven on the locked document itself). Minting local tokens to pin FE-1987 paint is the forbidden hue-match re-map. Waivers are judge-granted only. One .pen, one contentHash - no partial promotion.",
-    "surgicalUnblock": [
-      "(1) RULE THE PALETTE for this epoch: adopt v5 (consistent with the owner's GC-016 disposition 8a7b8891 'Hemlock v5 token-value gap ... not a component defect' and 9e5e490's designer authorship) via an amendments[]/design-rules palette-note patch through GC Tool - apply_contract_patch - or pin FE-1987 via a designer-named dedicated token family.",
-      "(2) IF v5: declare the identities via the same patch - cool-palette.pixelIdenticalTo:['legend-vertical'] (or re-shape cool-palette to 4+ series: cool-04 #B985DE != v5 categorical-04 #74D5D1 makes the frames distinct) AND area-palette.pixelIdenticalTo:['default','static-print'] (byte-identical by the amendment's own construction, re-measured this round).",
-      "(3) Acknowledge the 17-frame baseline re-lock: under v5 every re-captured categorical frame re-photographs; GC-001/GC-004 locked chart-categorical baselines sit on the same blast radius (GC-016's is already waived).",
-      "(4) The committed candidate .pen (5d0f113a...) already embodies ruling-A: the post-ruling round re-runs the loop with v5-value normalization (--cat1 #7B96F1 / --cat2 #89B6F9 / --cat3 #95C5FB), verifies the re-based frames, and promotes. 4 honest iterations remain on the amendment budget (round 3 used 1, this round used 0)."
-    ]
+    "kind": "UNRULED UPSTREAM PALETTE DRIFT (design-specs hemlock-library v5 categorical values vs the epoch's FE-1987 pin in design-rules.md) + TWO UNDECLARED PIXEL IDENTITIES (cool-palette==legend-vertical under v5; area-palette==default by the amendment's own construction). FIFTH round; every condition re-measured this round from the artifacts of record on a fresh machine, including the first complete identity map and drift census.",
+    "priorStops": "5e487f2, 717b616, 336e426, 1586e8a - each verified deeper than the last per the escalation discipline; this round adds cross-machine reproduction + the two complete censuses.",
+    "whatChangedSinceLastStop": "Nothing GC-005-relevant, verified: workspace 6c14909e..f116b35c = one GC-014 lock commit only; design-specs HEAD = round-4's own commit; library values, states.json declarations, design-rules FE-1987 pin all byte-verified unchanged this round. The FIFTH consecutive dispatch template still reads '(none - first capture; derive the mapping table yourself)' and carries no ruling.",
+    "whyNoSelfAvailablePathExists": "(Re-derived independently this round.) (a) Banking area-palette is impossible under ANY palette ruling: its frame is byte-identical to default by the amendment's construction and states.json declares no identity - L3a rule 3 / L4 step 2 make an undeclared duplicate a STOP, never a bank, and states.json is writable only via the owner-ruled chartered tool. (b) Adopting v5 unilaterally amends an epoch whose design-rules text pins FE-1987, and additionally banks the undeclared cool-palette==legend-vertical identity. (c) Pinning FE-1987 paint via locally minted tokens is the forbidden hue-match re-map of roles the library already owns. (d) The packaged hemlock-design-system.md skill names chart-categorical/color-01 = #8951F0 while the live library resolves #7B96F1 - the skill-vs-live-clone contradiction that the dispatch prompt itself makes a mandated STOP ('never improvise around it'). (e) Waivers are judge-granted per named state, never self-granted.",
+    "contractPatchDrafts": {
+      "$comment": "Ready-to-apply payloads for GC Tool - apply_contract_patch (workflow Y0vdV9spW6Yj0l2X) once the owner rules. Drafted to make the reconciliation mechanical - no further analysis needed by the applying agent.",
+      "optionA_adoptV5": {
+        "statesJsonPatch": {
+          "states[cool-palette].pixelIdenticalTo": [
+            "legend-vertical"
+          ],
+          "states[area-palette].pixelIdenticalTo": [
+            "default",
+            "static-print"
+          ],
+          "amendments[]": {
+            "epochKey": "002.a2",
+            "amendmentSeq": 2,
+            "anchorWO": "FE-2217",
+            "scope": "palette-value-adoption-v5,pixel-identity-declarations",
+            "summary": "Owner ruling <ID>: the epoch adopts the hemlock v5 categorical token VALUES (design-specs 9e5e490); FE-1987 palette note superseded for values (binding slot n -> color-0n unchanged); pixelIdenticalTo declared on cool-palette (==legend-vertical: v5 categorical 01..03 equal cool 01..03) and area-palette (==default/static-print by amendment-1 construction)."
+          }
+        },
+        "designRulesPatch": "Amend the intro palette note: FE-1987 governs the BINDING (slot n -> chart-categorical/color-0n); VALUES follow the live hemlock-library (v5, design-specs 9e5e490). Note rule-36 families (--color-chart-cool-NN/--color-chart-area-N) remain unminted in the library - the candidate .pen carries them locally as recorded designGaps.",
+        "postRulingWork": "One v5-normalization loop run on the committed candidate .pen (--cat1 #7B96F1 / --cat2 #89B6F9 / --cat3 #95C5FB injected at L2), verify, promote. 4 honest iterations remain. Acknowledge the 17-frame baseline re-lock + same-blast-radius review for GC-001/GC-004 locked chart-categorical baselines (GC-016's already waived).",
+        "alternativeToCoolIdentity": "Instead of declaring cool-palette==legend-vertical, re-shape cool-palette to 4+ series (cool-04 #B985DE != v5 categorical-04 #74D5D1 makes the frames distinct) - a states.json data change, owner's choice."
+      },
+      "optionB_pinFE1987": "Designer mints a dedicated FE-1987-valued token family in hemlock-library (designer-named), the .pen re-binds to it, and the 17 categorical frames re-converge against it. Still requires the area-palette==default pixelIdenticalTo declaration (identity (a) is palette-independent).",
+      "requiredUnderBothOptions": "states[area-palette].pixelIdenticalTo: ['default','static-print'] - no palette ruling removes this identity."
+    }
   },
   "normalizationRecipe": {
-    "$comment": "Not executed this round (no loop run). The settled v002 recipe and round 3's measured variants stand as recorded in round 3's handback (336e426), with the categorical slot VALUES the open ruling question.",
+    "$comment": "Not executed this round (no loop run). The settled v002 recipe and round 3's measured variants stand as recorded in 336e426; the categorical slot VALUES remain the open ruling question.",
     "cssVariableInjections": [],
     "findReplaces": [],
     "fontSwap": "No-op: prototype already targets Heebo (--font-ui) and Noto Serif (.bc-title)"
   },
   "tokenJudgmentCalls": [
-    { "surface": "categorical series slots (17 frames)", "prototypeValue": "#3B82F6/#06B6D4/#312E81 (Bill's blue-first)", "boundToken": "$y:chart-categorical/color-01..03 (binding UNCHANGED from the locked capture)", "rationale": "The BINDING (slot n -> color-0n, FE-1987) is settled; the VALUE the token resolves moved upstream (9e5e490). Not self-decidable; the stop.", "newTokenCreated": false, "newToken": null }
+    {
+      "surface": "categorical series slots (17 frames)",
+      "prototypeValue": "#3B82F6/#06B6D4/#312E81 (Bill's blue-first)",
+      "boundToken": "$chart-categorical/color-01..03 (binding UNCHANGED from the locked capture)",
+      "rationale": "The BINDING (slot n -> color-0n, FE-1987) is settled; the VALUE each token resolves moved upstream (v5). Not self-decidable; the stop.",
+      "newTokenCreated": false,
+      "newToken": null
+    }
   ],
   "designGaps": [
-    { "dimension": "chart-palette", "token": "$chart-cool/color-01..03 (local in the candidate .pen; rule 36 names --color-chart-cool-NN design-system-side)", "prototypeValue": "v4.14 cool sequence steps 1-3 (of 15) - the only rendered steps", "lightValue": "#7B96F1, #89B6F9, #95C5FB", "darkValue": "same values (fixed sequence, never darkened - design-rules 36)", "appliesTo": ["cool-palette"], "designerQuestion": "Mint the chart-cool family in hemlock-library (rule 36 already names it; the library carries none) - and note v5 categorical 01..03 now equal cool 01..03, which is what makes cool-palette==legend-vertical pixel-identical.", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); the candidate .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds the .pen (re-oracle at the same prototype version, judge-authorized)" } },
-    { "dimension": "chart-palette", "token": "$chart-area/color-01..03 (local in the candidate .pen; rule 36 names --color-chart-area-N design-system-side)", "prototypeValue": "v4.14 area sequence steps 1-3 (of 5) - the only rendered steps", "lightValue": "#7B96F1, #E37BA8, #B985DE", "darkValue": "same values (fixed sequence, never darkened - design-rules 36)", "appliesTo": ["area-palette", "default", "benchmark-percent-labels", "hover-info-box", "narrow-scroll", "narrow-scrolled-end", "static-print"], "designerQuestion": "Mint the chart-area family in hemlock-library (the new config-omitted default per ruling 12).", "reconciliation": { "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); the candidate .pen already binds it - no component change", "ifRemapped": "designer names the existing role/convention; an agent re-binds the .pen (re-oracle at the same prototype version, judge-authorized)" } }
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-cool/color-01..03 (local in the candidate .pen; rule 36 names --color-chart-cool-NN design-system-side)",
+      "prototypeValue": "v4.14 cool sequence steps 1-3 (of 15) - the only rendered steps",
+      "lightValue": "#7B96F1, #89B6F9, #95C5FB",
+      "darkValue": "same values (fixed sequence, never darkened - design-rules 36; NOTE the library's v5 categorical tokens DO carry shifted dark values - a rule-36 tension for the designer)",
+      "appliesTo": [
+        "cool-palette"
+      ],
+      "designerQuestion": "Mint the chart-cool family in hemlock-library (rule 36 names it; the library carries none) - and note v5 categorical 01..03 equal cool 01..03, which is what makes cool-palette==legend-vertical pixel-identical.",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); the candidate .pen already binds it - no component change",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized)"
+      }
+    },
+    {
+      "dimension": "chart-palette",
+      "token": "$chart-area/color-01..03 (local in the candidate .pen; rule 36 names --color-chart-area-N design-system-side)",
+      "prototypeValue": "v4.14 area sequence steps 1-3 (of 5) - the only rendered steps",
+      "lightValue": "#7B96F1, #E37BA8, #B985DE",
+      "darkValue": "same values (fixed sequence, never darkened - design-rules 36)",
+      "appliesTo": [
+        "area-palette",
+        "default",
+        "benchmark-percent-labels",
+        "hover-info-box",
+        "narrow-scroll",
+        "narrow-scrolled-end",
+        "static-print"
+      ],
+      "designerQuestion": "Mint the chart-area family in hemlock-library (the new config-omitted default per ruling 12).",
+      "reconciliation": {
+        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); the candidate .pen already binds it - no component change",
+        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized)"
+      }
+    }
   ],
   "fontSubstitutions": [
-    { "prototypeFont": "Heebo / Noto Serif (already the design-system families)", "boundFont": "Heebo ($font-primary) / Noto Serif ($font-secondary)", "scope": "all text (family-level no-op; carried from the locked capture)" }
+    {
+      "prototypeFont": "Heebo / Noto Serif (already the design-system families)",
+      "boundFont": "Heebo ($font-primary) / Noto Serif ($font-secondary)",
+      "scope": "all text (family-level no-op; carried from the locked capture)"
+    }
   ],
   "prototypeDefectsSeen": [
-    { "flag": "carried set (FLAG-D1/D2/D3)", "note": "No new defects observed; this round rendered no prototype states (no loop run)." }
+    {
+      "flag": "carried set (FLAG-D1/D2/D3)",
+      "note": "No new defects observed; this round rendered no prototype states (no loop run - prototype hash verified equal to the pin at intake)."
+    }
   ],
   "staleDispatchFacts": [
-    "FOURTH consecutive dispatch claiming '(none - first capture; derive the mapping table yourself)' while a locked v002 capture and three committed stop handbacks exist; the dispatcher template is not reading the lane. Inject the v002 recipe + amendment scope + the open stop.",
-    "Environment facts still do not carry the 9e5e490 palette replacement (2026-09-08) or its blast radius (GC-001/GC-004/GC-005/GC-016 locked chart-categorical baselines) - flagged by all three prior stops; promote it.",
-    "Environment facts' Chart Palettes mirror (hemlock-design-system.md) remains pre-9e5e490 (purple-first #8951F0 values) - observed-vs-skill drift, reported per the skill-drift law (the live library is the v5 sequence).",
-    "NEW: round-3 handback evidence-integrity finding (six exportSha256 tails not genuine; see round3EvidenceAudit) - the orchestrator's artifact verification should prefer re-export over recorded shas until the post-ruling round re-records them.",
-    "Carried from round 3, not re-tested this round: global 'npm i -g @pen.dev/cli@0.3.5' EACCES (local install used directly); playwright 1.62.1 vs facts' 1.58; viewport-raster clip law for 400px states."
+    "FIFTH consecutive dispatch claiming '(none - first capture; derive the mapping table yourself)' while a locked v002 capture and four committed stop handbacks exist in the lane the dispatcher owns - inject the v002 recipe + amendment scope + the open stop into the template.",
+    "Environment facts still do not carry the hemlock v5 palette replacement (design-specs 9e5e490, 2026-09-08) or its blast radius - now measured COMPLETELY for GC-005 (17 of 26 locked baselines invalidated by the library change alone); GC-001/GC-004 locked chart-categorical baselines sit on the same radius (GC-016's already waived). Promote to environment facts.",
+    "The packaged hemlock-design-system.md skill's Chart Palettes section remains pre-v5 (purple-first #8951F0) - skill-vs-live-library drift, reported per the drift law; the live library is the v5 sequence with shifted dark values.",
+    "Linear MCP is provisioned but unauthenticated in this runtime (needsAuth) - if the ruling rides a Linear comment, this agent class cannot see it; land rulings as contract patches.",
+    "Carried, re-confirmed this round: global 'npm i -g @pen.dev/cli@0.3.5' fails EACCES on this VM class - install locally (/tmp/pen-cli) and run ./node_modules/.bin/pen; the 0.3.7 update banner is to be ignored per the pin.",
+    "Round-4 handback evidence: all 13 decisive sha256 values now independently reproduced cross-machine - the orchestrator may trust 1586e8a's verifiedExports (round 3's six bad tails remain corrected on that record)."
   ],
   "verdict": "stopped"
 }
