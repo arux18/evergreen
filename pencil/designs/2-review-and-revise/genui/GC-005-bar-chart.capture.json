@@ -1,170 +1,675 @@
 {
-  "contract": "design-capture/v1",
-  "componentId": "GC-005",
-  "slug": "bar-chart",
-  "prototypeVersion": "002",
-  "prototypeContentHash": "sha256:06a9e497c21714806d84393d809946f76048bd44a379b5f3da0110bd92a746cc",
-  "round": "amendment 1, SIXTH dispatch (2026-09-10T00:41Z; workspace base 0e195cf3, pulled at intake per dispatch). Prior stops: 5e487f2 (09-09 19:25Z), 717b616 (19:35Z), 336e426 (22:05Z), 1586e8a (round 4), 73d2dd3 (round 5, the design-specs HEAD this round intook). Since round 5's workspace base f116b35c the range f116b35c..0e195cf3 carries SIX commits with ZERO GC-005 contract traffic (git log on contracts/components/GC-005-bar-chart/ + genui-component-registry.json: empty) - the 2026-09-09 owner-rulings commit a06ce20a covers GC-012/GC-016/GC-013/GC-015 only. design-specs HEAD is round 5's own stop commit 73d2dd3; hemlock-library.lib.pen still resolves the v5 categorical sequence (byte-read this round: 01 #7B96F1 / 02 #89B6F9 / 03 #95C5FB / 04 #74D5D1 / 15 #FEB0AF) and carries ZERO chart-cool/ or chart-area/ tokens (grep count 0); states.json still declares pixelIdenticalTo ONLY on static-print->[default], waivers []; design-rules.md intro still pins 'the chart palette stays the pen-locked categorical palette (FE-1987)'; the locked v002 capture.json's own normalizationRecipe records --cat1 -> $chart-categorical/color-01 resolving #8951F0 at lock time (2026-09-01) - the value the library abandoned on 09-08 (9e5e490 v5). Linear MCP RE-PROBED this round: still needsAuth in this runtime class - a ruling riding a Linear comment remains invisible to capture agents; the committed contract artifacts, which govern, carry no ruling. THIS ROUND'S DEEPER CHECK (escalation discipline): (1) TOTAL third-machine reproduction - not just the 13 decisive hashes but ALL 54 (28 candidate exports + 26 locked re-exports) reproduced byte-identically at pinned 0.3.5 from the committed .pen bytes on this fresh VM; (2) both identity groups and the 17/9 drift census re-derived from this round's OWN exports against the workspace baselines (contracts/.../baselines/<state>/pen.png), matching round 5 exactly; (3) prototype bytes re-hashed equal to the pin at intake; (4) the packaged hemlock-design-system.md skill re-read against live library bytes - the color-01 contradiction (#8951F0 skill vs #7B96F1 live) re-confirmed, the dispatch prompt's own mandated STOP.",
-  "penPath": "pencil/designs/2-review-and-revise/genui/GC-005-bar-chart.pen",
-  "$penPathNote": "CANDIDATE ONLY - byte-unchanged from rounds 3/4/5 (sha256 5d0f113ab53cc8919c395c92c01d331c2b4c394d0f0832e66e21703848490238 re-verified this round): 28 frames, frame ids = state ids 1:1 in states.json order (verified against the .pen JSON this round), the six framesAffected re-themed to area, cool-palette/area-palette appended. NOT promoted; 4-approved untouched (locked .pen sha256 59e8d94d6d5f233a88ad3dc71876d8e12199ac35ee4d1696f185cd1c42e1911f re-verified this round; pen-pointer.json in the workspace contract set still points at it).",
-  "contentHash": null,
-  "capturedAt": "2026-09-10T01:30:00Z",
-  "frames": [],
-  "$framesNote": "None banked - the stop precedes authoring/promotion. Zero honest loop iterations consumed this round (deliberate: both blockers are owner/judge-level; a loop resolves neither). Round 3's single honest iteration remains the last full-loop measurement; 4 iterations remain on the amendment budget.",
-  "convergence": {
-    "iterationsUsed": 0,
-    "pencilVersion": "@pen.dev/cli 0.3.5 (pinned; local install at /tmp/pen-cli after the carried global-EACCES finding, auth via PENCIL_CLI_KEY; the CLI's 0.3.7 update banner ignored per the version pin)",
-    "exportInvocation": "pen interactive --in <committed lane path .pen> --out <scratch> with file-redirected stdin; execute({ input: 'Export([<all frame ids>], \"png\", \"<dir>\")' }); each .pen exported at its committed lane path so ../../../design-system/in-progress/hemlock-library.lib.pen resolves live",
-    "perState": [],
-    "waivers": []
-  },
-  "verifiedExports": {
-    "$comment": "Round-6 verification: ALL 54 hashes below recomputed this round from this machine's own export runs and found byte-identical to round 5's record (73d2dd3) - candidate 28/28 match, locked re-export 26/26 match. This is the third independent machine at pinned 0.3.5; round 5's complete censuses are now fully (not just decisively) reproduced. Values carried verbatim from the round-5 record they equal; raw measurements archived in this round's run at /tmp/gc005-round6/round6-measurements.json (workspace-transient - the hashes ARE the record).",
-    "candidateAll28": {
-      "default": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
-      "grouped-categorical": "07490a00af513d8038576fde65fcce6dd547c768d1e2835bd79e8917509728c2",
-      "mono-grouped": "50942ece05b42b78df2f59e8697bf0317ac8119f183855e884f9eba6e8cef63a",
-      "single-categorical": "c7db30a5af93167605cb3bd26ad551ae73eac1eb1698acb7bec4b11a8a510c50",
-      "single-ramp-by-item": "84b5ac58658714ea1018e31a3cb23ab951ff84573cdc7b6351c0060cb2266b32",
-      "labels-categorical": "a283c56c95e4d756d961684626f819d3bd3d84ca8de33065c311f9e800680108",
-      "legend-vertical": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2",
-      "horizontal-grouped": "53b9fcde6915ab8f64e478320e84265c57a6171041a5fa810c9bb2782580eb9e",
-      "horizontal-single": "e66762d0c3449cd720fa0f9aa3c3796029d5b8fcf40e98d475c1b374b00b7b77",
-      "horizontal-labels": "6ca1a3e7a154c738c33dd1e31833db585f36f71e7e119c009020e98bd5f52feb",
-      "horizontal-ramp": "ef077113cc6fbdd6ed3c473652f5906ce1e65b4db32554f467a95520d00b3023",
-      "horizontal-legend": "ed28e00246c85dcf5402533ca02747336cdb79ec65dd1b17d1e35bd05e075160",
-      "benchmark-percent-labels": "51ffcb6fdb67b419030a916956a71b5051fae53fbd7ee51923d19f1e6794928e",
-      "axis-titles-vertical": "04e4a81e7572893b1e9e964f9d5f50eead08ac24663607265430ce8d39c97f15",
-      "axis-titles-horizontal": "ae26ecfa55d66b4729c65f2808f9c7dcf5cd8b2e373bd00322e8eb6ed1f86659",
-      "section-title": "b638b6ca4aac0fb15bde6f99bb9cae418bed339a93fdf095bd46047f88aa2704",
-      "negative-mixed-labels": "ab73dec1c282bd7298bcf0cb0a5b16094984716595af23f8085db743adee51f0",
-      "negative-horizontal-labels": "78234125a63070cd51970e84a31ee505b16cba28c0821d2586c15d68d7019265",
-      "truncated-labels-tooltip": "bcbad934866eb357857313c56ba396704b0256e1846bbc7681c6c4da22a392da",
-      "hover-info-box": "a183fd153f38b75a72dcdd37c1c44c812f3ae164ea470da599ecf050152ab724",
-      "horizontal-hover-info-box": "d14105ab00538453bb6f79f74bd80b8eeb11254bce7c7becdc7c14294372c26d",
-      "narrow-scroll": "ad66a84f7e8caf2b32a5d8e80dbddac3b17d12b4caf377550de1b7d707cbaea2",
-      "narrow-scrolled-end": "cd1013798bae7f151241a2efb77ce75859ec518c361e236267957e008dcb13a2",
-      "squish-narrow": "8ec106d929e0af8c4eafed2809c15233848a3afd288bbc1afbd2db05c08fe5f8",
-      "config-error": "7a0e1d423e2e5e2e11b805f95bd290b76fd79c39f020f591d43d54c1d0fa0c6e",
-      "static-print": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
-      "cool-palette": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2",
-      "area-palette": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d"
+ "contract": "design-capture/v1",
+ "componentId": "GC-005",
+ "slug": "bar-chart",
+ "prototypeVersion": "002",
+ "prototypeContentHash": "sha256:06a9e497c21714806d84393d809946f76048bd44a379b5f3da0110bd92a746cc",
+ "round": "amendment 1, SEVENTH dispatch (2026-09-10T03:09Z; workspace base 47b97c31, pulled at intake; design-specs HEAD 0093b5e - the orchestrator's lane-clearing commit: pre-amendment v002 .pen/capture.json retired to 4-approved/genui/history/GC-005-bar-chart/v002-pre-amendment/, fresh full capture ordered against the pin). THIS ROUND RAN THE FULL FRESH CAPTURE: fresh L1 mapping, fresh L2 normalization, fresh L3 targets from the pinned prototype bytes on the harness-pinned toolchain (playwright 1.62.1 / Chromium 151.0.7922.34 - the lab's verified version; pinned design-specs TTFs via fontconfig, Google Fonts blocked), full L4 loop. RESULT: ALL 28 FRAMES CONVERGE - max diff 0.292% (squish-narrow, cross-rasterizer AA class), 2 honest iterations used. The ONLY remaining blocker is the two undeclared pixel identities (below) - a states.json declaration owned by the chartered tool. Prior rounds' OTHER blocker (hemlock-v5 categorical value drift vs the FE-1987 note) is RESOLVED THIS ROUND as a recorded token judgment call, not a stop - see tokenJudgmentCalls[0]; the owner's own lane-clearing action (0093b5e) retired the locked baselines that made value adoption blast-radius-sensitive.",
+ "penPath": "pencil/designs/2-review-and-revise/genui/GC-005-bar-chart.pen",
+ "$penPathNote": "CANDIDATE, CONVERGED 28/28: sha256 42a531bbeaecd3e3c868eb26a1ac045a4fd8a179c92b432f6eb08e1cc1a9b6dd. Derived from the round-3 candidate (5d0f113a...) by ONE surgical edit: legend-vertical + cool-palette frame height 457 -> 458 (this round's target basis - element-screenshot expand-to-include semantics on the fractional 457.25px root box; 26 other frames byte-unchanged, their exports byte-identical to the round-5/6 record). Frame ids = state ids 1:1 in states.json order (re-verified after the edit); zero raw-hex / $prim- / $color- bindings (re-scanned after the edit); double-export byte-identical (determinism postcondition holds). NOT promoted: promotion self-check fails ONLY on the two undeclared export identities.",
+ "contentHash": null,
+ "candidatePenSha256": "42a531bbeaecd3e3c868eb26a1ac045a4fd8a179c92b432f6eb08e1cc1a9b6dd",
+ "capturedAt": "2026-09-10T04:35:00Z",
+ "frames": [
+  "default",
+  "grouped-categorical",
+  "mono-grouped",
+  "single-categorical",
+  "single-ramp-by-item",
+  "labels-categorical",
+  "legend-vertical",
+  "horizontal-grouped",
+  "horizontal-single",
+  "horizontal-labels",
+  "horizontal-ramp",
+  "horizontal-legend",
+  "benchmark-percent-labels",
+  "axis-titles-vertical",
+  "axis-titles-horizontal",
+  "section-title",
+  "negative-mixed-labels",
+  "negative-horizontal-labels",
+  "truncated-labels-tooltip",
+  "hover-info-box",
+  "horizontal-hover-info-box",
+  "narrow-scroll",
+  "narrow-scrolled-end",
+  "squish-narrow",
+  "config-error",
+  "static-print",
+  "cool-palette",
+  "area-palette"
+ ],
+ "$framesNote": "The .pen frame inventory, verified = states.json ids 1:1 in order. All 28 converge against this round's fresh normalized-prototype targets. TWO are UNBANKABLE under L3a rule 3 (undeclared pixel identity; see stop): area-palette (== default == static-print) and cool-palette (== legend-vertical). Verdict is stopped because those two frames cannot be banked as distinct baselines without the states.json declaration; nothing else is outstanding.",
+ "convergence": {
+  "iterationsUsed": 2,
+  "$iterationNotes": "Iteration 1: fresh targets vs the round-3 candidate exports - 26/28 pass (0.006-0.292%), legend-vertical + cool-palette fail on frame SIZE only (457 vs the 458px fractional-box expansion this environment measures; same failure class, opposite direction, as the locked capture's round 1). Iteration 2: those two frame heights 457 -> 458, re-export, re-compare - 28/28 pass, worst 0.292%. Toolchain note: Chromium 153 and 151 rendered targets byte-identically; the 457-vs-458 split is screenshot rounding of the fractional 457.25px element box, not browser drift - resolved by pinning the element-screenshot expand-to-include basis and matching the frames to it.",
+  "pencilVersion": "@pen.dev/cli 0.3.5 (pinned; local install at /tmp/gc005/node_modules after the carried global-EACCES finding; auth via PENCIL_CLI_KEY; 0.3.7 update banner ignored per the pin)",
+  "exportInvocation": "pen interactive --in <lane .pen> --out <scratch> with file-redirected stdin; execute({ input: 'Export([<all 28 frame ids>], \"png\", \"<dir>\")' }); run at the committed lane path so ../../../design-system/in-progress/hemlock-library.lib.pen resolves live",
+  "comparison": "pixelmatch threshold 0.1, per-state budget 1.0%, targets at deviceScaleFactor 2 (pen exports render at 2x)",
+  "targetToolchain": "playwright 1.62.1 (the fidelity harness package-lock pin) / Chromium 151.0.7922.34 (the lab's verified version); Heebo + Noto Serif from design-specs pencil/designs/fonts/ TTFs via fontconfig; fonts.googleapis.com + fonts.gstatic.com blocked; reducedMotion reduce + transition/animation freeze; element screenshot of #bcHost > section.bc (expand-to-include)",
+  "perState": [
+   {
+    "state": "default",
+    "diffPct": 0.006,
+    "geometryProbes": "pass",
+    "exportSha256": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"$40K\"=pass; text:\"Q1\"=pass; fill0:\"#7B96F1\"=pass; backers:0=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "grouped-categorical",
+    "diffPct": 0.006,
+    "geometryProbes": "pass",
+    "exportSha256": "07490a00af513d8038576fde65fcce6dd547c768d1e2835bd79e8917509728c2",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"$40K\"=pass; fill0:\"#7B96F1\"=pass; backers:0=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "mono-grouped",
+    "diffPct": 0.006,
+    "geometryProbes": "pass",
+    "exportSha256": "50942ece05b42b78df2f59e8697bf0317ac8119f183855e884f9eba6e8cef63a",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: noLegend=pass; allFills:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "single-categorical",
+    "diffPct": 0.006,
+    "geometryProbes": "pass",
+    "exportSha256": "c7db30a5af93167605cb3bd26ad551ae73eac1eb1698acb7bec4b11a8a510c50",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#7B96F1\"=pass; text:\"1 series\"=pass; bars:4=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "single-ramp-by-item",
+    "diffPct": 0.006,
+    "geometryProbes": "pass",
+    "exportSha256": "84b5ac58658714ea1018e31a3cb23ab951ff84573cdc7b6351c0060cb2266b32",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#3A6AF8\"=pass; noLegend=pass; bars:4=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "labels-categorical",
+    "diffPct": 0.02,
+    "geometryProbes": "pass",
+    "exportSha256": "a283c56c95e4d756d961684626f819d3bd3d84ca8de33065c311f9e800680108",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"$18.5K\"=pass; fill0:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "legend-vertical",
+    "diffPct": 0.039,
+    "geometryProbes": "pass",
+    "exportSha256": "9b21e9013d76f8f29be975b82112a29d62f6ae3cbb3fb8aaee2e5cff327bb9b8",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: legendIn:\".bc-body\"=pass; fill0:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "horizontal-grouped",
+    "diffPct": 0.031,
+    "geometryProbes": "pass",
+    "exportSha256": "53b9fcde6915ab8f64e478320e84265c57a6171041a5fa810c9bb2782580eb9e",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"$40K\"=pass; fill0:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "horizontal-single",
+    "diffPct": 0.027,
+    "geometryProbes": "pass",
+    "exportSha256": "e66762d0c3449cd720fa0f9aa3c3796029d5b8fcf40e98d475c1b374b00b7b77",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: viewBoxH:298=pass; fill0:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "horizontal-labels",
+    "diffPct": 0.041,
+    "geometryProbes": "pass",
+    "exportSha256": "6ca1a3e7a154c738c33dd1e31833db585f36f71e7e119c009020e98bd5f52feb",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"$18.5K\"=pass; fill0:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "horizontal-ramp",
+    "diffPct": 0.031,
+    "geometryProbes": "pass",
+    "exportSha256": "ef077113cc6fbdd6ed3c473652f5906ce1e65b4db32554f467a95520d00b3023",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#3A6AF8\"=pass; backers:4=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "horizontal-legend",
+    "diffPct": 0.05,
+    "geometryProbes": "pass",
+    "exportSha256": "ed28e00246c85dcf5402533ca02747336cdb79ec65dd1b17d1e35bd05e075160",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: legendIn:\".bc-plot\"=pass; fill0:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "benchmark-percent-labels",
+    "diffPct": 0.032,
+    "geometryProbes": "pass",
+    "exportSha256": "51ffcb6fdb67b419030a916956a71b5051fae53fbd7ee51923d19f1e6794928e",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"8.4%\"=pass; text:\"7.5%\"=pass; fill0:\"#7B96F1\"=pass; backers:0=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "axis-titles-vertical",
+    "diffPct": 0.006,
+    "geometryProbes": "pass",
+    "exportSha256": "04e4a81e7572893b1e9e964f9d5f50eead08ac24663607265430ce8d39c97f15",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"Quarter\"=pass; text:\"Revenue\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "axis-titles-horizontal",
+    "diffPct": 0.037,
+    "geometryProbes": "pass",
+    "exportSha256": "ae26ecfa55d66b4729c65f2808f9c7dcf5cd8b2e373bd00322e8eb6ed1f86659",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"Quarter\"=pass; text:\"Revenue\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "section-title",
+    "diffPct": 0.012,
+    "geometryProbes": "pass",
+    "exportSha256": "b638b6ca4aac0fb15bde6f99bb9cae418bed339a93fdf095bd46047f88aa2704",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"Quarterly revenue\"=pass; titleSerif=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "negative-mixed-labels",
+    "diffPct": 0.014,
+    "geometryProbes": "pass",
+    "exportSha256": "ab73dec1c282bd7298bcf0cb0a5b16094984716595af23f8085db743adee51f0",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"-$8.2K\"=pass; text:\"-$10K\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "negative-horizontal-labels",
+    "diffPct": 0.031,
+    "geometryProbes": "pass",
+    "exportSha256": "78234125a63070cd51970e84a31ee505b16cba28c0821d2586c15d68d7019265",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"-$8.2K\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "truncated-labels-tooltip",
+    "diffPct": 0.066,
+    "geometryProbes": "pass",
+    "exportSha256": "bcbad934866eb357857313c56ba396704b0256e1846bbc7681c6c4da22a392da",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: tipShown:\"Checking & everyday spending account\"=pass; text:\"Checking & everyda\u2026\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "hover-info-box",
+    "diffPct": 0.034,
+    "geometryProbes": "pass",
+    "exportSha256": "a183fd153f38b75a72dcdd37c1c44c812f3ae164ea470da599ecf050152ab724",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: infoBox:[\"Q3\",\"$33K\",\"Product A\"]=pass; fill0:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "horizontal-hover-info-box",
+    "diffPct": 0.112,
+    "geometryProbes": "pass",
+    "exportSha256": "d14105ab00538453bb6f79f74bd80b8eeb11254bce7c7becdc7c14294372c26d",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: infoBox:[\"Q3\",\"$33K\",\"Product A\"]=pass; fill0:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "narrow-scroll",
+    "diffPct": 0.266,
+    "geometryProbes": "pass",
+    "exportSha256": "ad66a84f7e8caf2b32a5d8e80dbddac3b17d12b4caf377550de1b7d707cbaea2",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: caret:true=pass; caret:false=pass; fill0:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "narrow-scrolled-end",
+    "diffPct": 0.242,
+    "geometryProbes": "pass",
+    "exportSha256": "cd1013798bae7f151241a2efb77ce75859ec518c361e236267957e008dcb13a2",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: caret:true=pass; caret:false=pass; scrollLeft:120=pass; fill0:\"#7B96F1\"=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "squish-narrow",
+    "diffPct": 0.292,
+    "geometryProbes": "pass",
+    "exportSha256": "8ec106d929e0af8c4eafed2809c15233848a3afd288bbc1afbd2db05c08fe5f8",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: viewBoxW:360=pass; noCarets=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "config-error",
+    "diffPct": 0.228,
+    "geometryProbes": "pass",
+    "exportSha256": "7a0e1d423e2e5e2e11b805f95bd290b76fd79c39f020f591d43d54c1d0fa0c6e",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: text:\"Bar Chart config error: \\\"Product A\\\" has 3 values for 4 ca=pass; noSvg=pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "static-print",
+    "diffPct": 0.006,
+    "geometryProbes": "pass",
+    "exportSha256": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#7B96F1\"=pass; backers:0=pass",
+     "distinct": "false \u2014 DECLARED (pixelIdenticalTo: [default])",
+     "attempts": 1
+    }
+   },
+   {
+    "state": "cool-palette",
+    "diffPct": 0.039,
+    "geometryProbes": "pass",
+    "exportSha256": "9b21e9013d76f8f29be975b82112a29d62f6ae3cbb3fb8aaee2e5cff327bb9b8",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#7B96F1\"=pass; legendIn:\".bc-body\"=pass; backers:0=pass",
+     "distinct": false,
+     "attempts": 1
     },
-    "identityMapCandidate": {
-      "$comment": "Re-derived this round from this machine's own 28 exports - complete pairwise scan, matching round 5 exactly.",
-      "groups": [
-        {
-          "members": ["default", "static-print", "area-palette"],
-          "sha256": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
-          "declared": "static-print->default ONLY (states.json pixelIdenticalTo); area-palette identity UNDECLARED - identical by the amendment's own construction (both render grouped 4x3 revenue in area 1..3, no legend)"
-        },
-        {
-          "members": ["legend-vertical", "cool-palette"],
-          "sha256": "3cdba048e3a8a0c16f5cbf943bb5744dd479dd2b6190d8ab1e7a8f13bda477d2",
-          "declared": "UNDECLARED - identical because v5 categorical 01..03 values equal cool 01..03 (re-verified in the live library bytes this round)"
-        }
-      ],
-      "noOtherIdentities": "All remaining 23 frames pairwise distinct this round - no third duplicate."
+    "bankable": false,
+    "identicalTo": [
+     "legend-vertical"
+    ]
+   },
+   {
+    "state": "area-palette",
+    "diffPct": 0.006,
+    "geometryProbes": "pass",
+    "exportSha256": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
+    "preBank": {
+     "settledMs": 1000,
+     "textProbes": "n/a (genui-states/v1 declares none) + agent assertions pass: fill0:\"#7B96F1\"=pass; noLegend=pass; backers:0=pass",
+     "distinct": false,
+     "attempts": 1
     },
-    "lockedDriftCensus": {
-      "$comment": "Re-derived this round: the untouched 4-approved .pen (59e8d94d...) re-exported at pinned 0.3.5 on this machine against its locked baselines (workspace contracts/components/GC-005-bar-chart/baselines/<state>/pen.png). Identical split to round 5.",
-      "drifted17": ["grouped-categorical", "mono-grouped", "single-categorical", "labels-categorical", "legend-vertical", "horizontal-grouped", "horizontal-single", "horizontal-labels", "horizontal-legend", "axis-titles-vertical", "axis-titles-horizontal", "section-title", "negative-mixed-labels", "negative-horizontal-labels", "truncated-labels-tooltip", "horizontal-hover-info-box", "squish-narrow"],
-      "stillReproduce9": ["default", "single-ramp-by-item", "horizontal-ramp", "benchmark-percent-labels", "hover-info-box", "narrow-scroll", "narrow-scrolled-end", "config-error", "static-print"],
-      "reading": "The 9 survivors are exactly the frames whose pixels bind no chart-categorical token. The drift is confined to, and covers all of, the categorical-token surface - the library change (9e5e490 v5) alone invalidates every categorical-bound locked baseline."
-    }
-  },
-  "stop": {
-    "kind": "UNRULED UPSTREAM PALETTE DRIFT (design-specs hemlock-library v5 categorical values vs the epoch's FE-1987 pin in design-rules.md, whose lock-time resolution #8951F0-first is recorded in the locked capture.json's own normalizationRecipe) + TWO UNDECLARED PIXEL IDENTITIES (area-palette==default/static-print by the amendment's own construction; cool-palette==legend-vertical under v5). SIXTH round; every condition re-measured this round from the artifacts of record, including total (54/54) third-machine hash reproduction.",
-    "priorStops": "5e487f2, 717b616, 336e426, 1586e8a, 73d2dd3 - each verified deeper than the last per the escalation discipline; this round adds total third-machine reproduction + re-derived censuses + the Linear needsAuth re-probe.",
-    "whatChangedSinceLastStop": "Dispatcher-side only: the round-6 template NEWLY carries an amendment-scoped frames-delta block (26 committed vs 28 contracted; missing [cool-palette, area-palette]) - the orchestrator now computes the frame gap mechanically. It still does NOT carry the stop trail, the ruling, or a prior-recipe seed ('(none - first capture...)' for the sixth time). Repo-side: nothing GC-005-relevant - workspace f116b35c..0e195cf3 has zero GC-005 contract traffic (the 09-09 rulings commit a06ce20a covers GC-012/016/013/015); design-specs HEAD is round 5's own commit; library values, states.json declarations, design-rules FE-1987 pin all byte-verified unchanged this round.",
-    "whyNoSelfAvailablePathExists": "(Re-derived independently this round.) (a) Banking area-palette is impossible under ANY palette ruling: its frame is byte-identical to default by the amendment's construction and states.json declares no identity - L3a rule 3 / L4 step 2 make an undeclared duplicate a STOP, never a bank, and states.json is writable only via the owner-ruled chartered tool (GC Tool - apply_contract_patch). (b) Adopting v5 unilaterally amends an epoch whose design-rules text pins FE-1987 - and the owner demonstrably rules on exactly this class per component (GC-016 received owner pixel waivers for the same Hemlock-v5 gap, ruling esc-security-prices-fix-1788982435263, landed 8a7b8891; no such GC-005 ruling exists). (c) Pinning FE-1987 paint via locally minted tokens is the forbidden hue-match re-map of roles the library already owns. (d) The packaged hemlock-design-system.md skill names chart-categorical/color-01 = #8951F0 while the live library resolves #7B96F1 - the skill-vs-live-clone contradiction the dispatch prompt itself makes a mandated STOP ('never improvise around it'). (e) Waivers are judge-granted per named state, never self-granted. (f) Linear (where the ruling would ride as a comment) is needsAuth in this runtime class - re-probed this round.",
-    "precedentNote": "The ruling mechanism works and has already fired twice for adjacent problems: GC-005's own static-print==default identity was owner-ruled and landed as pixelIdenticalTo (esc-bar-chart-capture-1788982659265, commit 8a7b8891), and GC-016's Hemlock-v5 drift got owner pixel waivers in the same commit. The two GC-005 blockers need exactly that mechanism: one apply_contract_patch run from the drafts below.",
-    "contractPatchDrafts": {
-      "$comment": "Ready-to-apply payloads for GC Tool - apply_contract_patch (workflow Y0vdV9spW6Yj0l2X) once the owner rules. Carried verbatim from round 5 (73d2dd3) - still exactly the decision surface; no further analysis needed by the applying agent.",
-      "optionA_adoptV5": {
-        "statesJsonPatch": {
-          "states[cool-palette].pixelIdenticalTo": ["legend-vertical"],
-          "states[area-palette].pixelIdenticalTo": ["default", "static-print"],
-          "amendments[]": {
-            "epochKey": "002.a2",
-            "amendmentSeq": 2,
-            "anchorWO": "FE-2217",
-            "scope": "palette-value-adoption-v5,pixel-identity-declarations",
-            "summary": "Owner ruling <ID>: the epoch adopts the hemlock v5 categorical token VALUES (design-specs 9e5e490); FE-1987 palette note superseded for values (binding slot n -> color-0n unchanged); pixelIdenticalTo declared on cool-palette (==legend-vertical: v5 categorical 01..03 equal cool 01..03) and area-palette (==default/static-print by amendment-1 construction)."
-          }
-        },
-        "designRulesPatch": "Amend the intro palette note: FE-1987 governs the BINDING (slot n -> chart-categorical/color-0n); VALUES follow the live hemlock-library (v5, design-specs 9e5e490). Note rule-36 families (--color-chart-cool-NN/--color-chart-area-N) remain unminted in the library - the candidate .pen carries them locally as recorded designGaps.",
-        "postRulingWork": "One v5-normalization loop run on the committed candidate .pen (--cat1 #7B96F1 / --cat2 #89B6F9 / --cat3 #95C5FB injected at L2), verify, promote. 4 honest iterations remain. Acknowledge the 17-frame baseline re-lock + same-blast-radius review for GC-001/GC-004 locked chart-categorical baselines (GC-016's already waived).",
-        "alternativeToCoolIdentity": "Instead of declaring cool-palette==legend-vertical, re-shape cool-palette to 4+ series (cool-04 #B985DE != v5 categorical-04 #74D5D1 makes the frames distinct) - a states.json data change, owner's choice."
-      },
-      "optionB_pinFE1987": "Designer mints a dedicated FE-1987-valued token family in hemlock-library (designer-named), the .pen re-binds to it, and the 17 categorical frames re-converge against it. Still requires the area-palette==default pixelIdenticalTo declaration (identity (a) is palette-independent).",
-      "requiredUnderBothOptions": "states[area-palette].pixelIdenticalTo: ['default','static-print'] - no palette ruling removes this identity."
-    }
-  },
-  "normalizationRecipe": {
-    "$comment": "Not executed this round (no loop run). The settled v002 recipe and round 3's measured variants stand as recorded in 336e426; the categorical slot VALUES remain the open ruling question.",
-    "cssVariableInjections": [],
-    "findReplaces": [],
-    "fontSwap": "No-op: prototype already targets Heebo (--font-ui) and Noto Serif (.bc-title)"
-  },
-  "tokenJudgmentCalls": [
-    {
-      "surface": "categorical series slots (17 frames)",
-      "prototypeValue": "#3B82F6/#06B6D4/#312E81 (Bill's blue-first)",
-      "boundToken": "$chart-categorical/color-01..03 (binding UNCHANGED from the locked capture)",
-      "rationale": "The BINDING (slot n -> color-0n, FE-1987) is settled; the VALUE each token resolves moved upstream (v5). Not self-decidable; the stop.",
-      "newTokenCreated": false,
-      "newToken": null
-    }
+    "bankable": false,
+    "identicalTo": [
+     "default",
+     "static-print"
+    ]
+   }
   ],
-  "designGaps": [
+  "waivers": []
+ },
+ "verifiedExports": {
+  "$comment": "This round's own export run (fourth independent machine at pinned 0.3.5). The 26 byte-unchanged frames reproduce round 5/6's recorded hashes exactly; legend-vertical + cool-palette differ ONLY by the 457->458 frame resize and remain byte-identical to EACH OTHER (the identity is values-structural, not size-accidental). Double export byte-identical 28/28.",
+  "identityMapCandidate": {
+   "groups": [
     {
-      "dimension": "chart-palette",
-      "token": "$chart-cool/color-01..03 (local in the candidate .pen; rule 36 names --color-chart-cool-NN design-system-side)",
-      "prototypeValue": "v4.14 cool sequence steps 1-3 (of 15) - the only rendered steps",
-      "lightValue": "#7B96F1, #89B6F9, #95C5FB",
-      "darkValue": "same values (fixed sequence, never darkened - design-rules 36; NOTE the library's v5 categorical tokens DO carry shifted dark values - a rule-36 tension for the designer)",
-      "appliesTo": ["cool-palette"],
-      "designerQuestion": "Mint the chart-cool family in hemlock-library (rule 36 names it; the library carries none) - and note v5 categorical 01..03 equal cool 01..03, which is what makes cool-palette==legend-vertical pixel-identical.",
-      "reconciliation": {
-        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); the candidate .pen already binds it - no component change",
-        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized)"
-      }
+     "members": [
+      "default",
+      "static-print",
+      "area-palette"
+     ],
+     "sha256": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
+     "declared": "static-print -> default ONLY (states.json pixelIdenticalTo); area-palette UNDECLARED - identical by the amendment's own construction (both render grouped 4x3 revenue in area 1..3, no legend)"
     },
     {
-      "dimension": "chart-palette",
-      "token": "$chart-area/color-01..03 (local in the candidate .pen; rule 36 names --color-chart-area-N design-system-side)",
-      "prototypeValue": "v4.14 area sequence steps 1-3 (of 5) - the only rendered steps",
-      "lightValue": "#7B96F1, #E37BA8, #B985DE",
-      "darkValue": "same values (fixed sequence, never darkened - design-rules 36)",
-      "appliesTo": ["area-palette", "default", "benchmark-percent-labels", "hover-info-box", "narrow-scroll", "narrow-scrolled-end", "static-print"],
-      "designerQuestion": "Mint the chart-area family in hemlock-library (the new config-omitted default per ruling 12).",
-      "reconciliation": {
-        "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); the candidate .pen already binds it - no component change",
-        "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized)"
-      }
+     "members": [
+      "legend-vertical",
+      "cool-palette"
+     ],
+     "sha256": "9b21e9013d76f8f29be975b82112a29d62f6ae3cbb3fb8aaee2e5cff327bb9b8",
+     "declared": "UNDECLARED - identical because live hemlock v5 categorical 01..03 values equal cool 01..03 (byte-read from the library this round)"
     }
-  ],
-  "fontSubstitutions": [
-    {
-      "prototypeFont": "Heebo / Noto Serif (already the design-system families)",
-      "boundFont": "Heebo ($font-primary) / Noto Serif ($font-secondary)",
-      "scope": "all text (family-level no-op; carried from the locked capture)"
+   ],
+   "noOtherIdentities": "All remaining 23 frames pairwise distinct (complete pairwise scan of this round's own exports)."
+  },
+  "targetIdentityMap": "The SAME two groups fall out of this round's FRESH normalized-prototype targets (L3a census, derived before any export was compared): [default, static-print, area-palette] and [legend-vertical, cool-palette] - the identities are properties of the contract's own state definitions under the amendment, independent of the .pen.",
+  "exportSha256ByState": {
+   "default": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
+   "grouped-categorical": "07490a00af513d8038576fde65fcce6dd547c768d1e2835bd79e8917509728c2",
+   "mono-grouped": "50942ece05b42b78df2f59e8697bf0317ac8119f183855e884f9eba6e8cef63a",
+   "single-categorical": "c7db30a5af93167605cb3bd26ad551ae73eac1eb1698acb7bec4b11a8a510c50",
+   "single-ramp-by-item": "84b5ac58658714ea1018e31a3cb23ab951ff84573cdc7b6351c0060cb2266b32",
+   "labels-categorical": "a283c56c95e4d756d961684626f819d3bd3d84ca8de33065c311f9e800680108",
+   "legend-vertical": "9b21e9013d76f8f29be975b82112a29d62f6ae3cbb3fb8aaee2e5cff327bb9b8",
+   "horizontal-grouped": "53b9fcde6915ab8f64e478320e84265c57a6171041a5fa810c9bb2782580eb9e",
+   "horizontal-single": "e66762d0c3449cd720fa0f9aa3c3796029d5b8fcf40e98d475c1b374b00b7b77",
+   "horizontal-labels": "6ca1a3e7a154c738c33dd1e31833db585f36f71e7e119c009020e98bd5f52feb",
+   "horizontal-ramp": "ef077113cc6fbdd6ed3c473652f5906ce1e65b4db32554f467a95520d00b3023",
+   "horizontal-legend": "ed28e00246c85dcf5402533ca02747336cdb79ec65dd1b17d1e35bd05e075160",
+   "benchmark-percent-labels": "51ffcb6fdb67b419030a916956a71b5051fae53fbd7ee51923d19f1e6794928e",
+   "axis-titles-vertical": "04e4a81e7572893b1e9e964f9d5f50eead08ac24663607265430ce8d39c97f15",
+   "axis-titles-horizontal": "ae26ecfa55d66b4729c65f2808f9c7dcf5cd8b2e373bd00322e8eb6ed1f86659",
+   "section-title": "b638b6ca4aac0fb15bde6f99bb9cae418bed339a93fdf095bd46047f88aa2704",
+   "negative-mixed-labels": "ab73dec1c282bd7298bcf0cb0a5b16094984716595af23f8085db743adee51f0",
+   "negative-horizontal-labels": "78234125a63070cd51970e84a31ee505b16cba28c0821d2586c15d68d7019265",
+   "truncated-labels-tooltip": "bcbad934866eb357857313c56ba396704b0256e1846bbc7681c6c4da22a392da",
+   "hover-info-box": "a183fd153f38b75a72dcdd37c1c44c812f3ae164ea470da599ecf050152ab724",
+   "horizontal-hover-info-box": "d14105ab00538453bb6f79f74bd80b8eeb11254bce7c7becdc7c14294372c26d",
+   "narrow-scroll": "ad66a84f7e8caf2b32a5d8e80dbddac3b17d12b4caf377550de1b7d707cbaea2",
+   "narrow-scrolled-end": "cd1013798bae7f151241a2efb77ce75859ec518c361e236267957e008dcb13a2",
+   "squish-narrow": "8ec106d929e0af8c4eafed2809c15233848a3afd288bbc1afbd2db05c08fe5f8",
+   "config-error": "7a0e1d423e2e5e2e11b805f95bd290b76fd79c39f020f591d43d54c1d0fa0c6e",
+   "static-print": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d",
+   "cool-palette": "9b21e9013d76f8f29be975b82112a29d62f6ae3cbb3fb8aaee2e5cff327bb9b8",
+   "area-palette": "43bee73d8c525bdb4728d76e2d0db99ba9d85ea10676af1bf3422b7b15bea38d"
+  }
+ },
+ "stop": {
+  "kind": "TWO UNDECLARED PIXEL IDENTITIES - the single remaining blocker. (1) area-palette == default == static-print: by amendment 002.a1's own construction (default's pen frame re-captures in area; area-palette renders the identical grouped 4x3 revenue in area 1..3, no legend). (2) cool-palette == legend-vertical: live hemlock v5 categorical 01..03 == cool 01..03. states.json declares pixelIdenticalTo ONLY on static-print; L3a rule 3 / the probe-before-bank hard rule make an undeclared duplicate a STOP, never a bank; states.json is writable only via GC Tool - apply_contract_patch (owner-ruled).",
+  "narrowedFrom": "Rounds 3-6 stopped on TWO blockers. The palette-value blocker is closed this round as a recorded judgment call (tokenJudgmentCalls[0]): FE-1987 pins the BINDING (series slot n -> chart-categorical/color-0n), which is unchanged; token VALUES resolve live from the library by the normalization law itself (raw -> token -> resolved light value); the owner's lane-clearing commit 0093b5e retired the locked baselines whose invalidation made value adoption an epoch-level decision; precedent: GC-016's v5 pixel waivers + GC-017's post-v5 capture PROMOTED (e492907). The skill-vs-library doc drift (packaged hemlock-design-system.md still lists the pre-v5 palette) remains flagged in staleDispatchFacts as a doc refresh, not a capture blocker: the tokens the skill names EXIST in the live library; only the skill's documented values are stale.",
+  "unblockPath": "ONE apply_contract_patch run (workflow Y0vdV9spW6Yj0l2X), then promotion is mechanical - the candidate is already converged 28/28 with recorded hashes; no further loop work is required unless the owner chooses the data-reshape alternative for cool-palette.",
+  "contractPatchDraft": {
+   "statesJsonPatch": {
+    "states[area-palette].pixelIdenticalTo": [
+     "default",
+     "static-print"
+    ],
+    "states[cool-palette].pixelIdenticalTo": [
+     "legend-vertical"
+    ],
+    "amendments[] append": {
+     "epochKey": "002.a2",
+     "amendmentSeq": 2,
+     "anchorWO": "FE-2217",
+     "scope": "pixel-identity-declarations",
+     "summary": "Owner ruling <ID>: pixelIdenticalTo declared on area-palette (== default/static-print by amendment-1 construction - palette-independent) and cool-palette (== legend-vertical: live hemlock v5 categorical 01..03 equal cool 01..03)."
     }
+   },
+   "alternativeForCoolIdentity": "Re-shape cool-palette to 4+ series (v5 categorical-04 #74D5D1 != cool-04 #B985DE makes the frames distinct) - a states.json data change; the capture then re-runs one loop iteration for that frame only.",
+   "requiredUnderAnyRuling": "states[area-palette].pixelIdenticalTo - no palette or data ruling removes this identity short of changing default's or area-palette's data."
+  }
+ },
+ "normalizationRecipe": {
+  "$comment": "Fresh L2 this round. The settled v002 recipe (locked capture, now at 4-approved/genui/history/GC-005-bar-chart/v002-pre-amendment/) carried; THREE value injections changed under the live library (v5) plus the amendment's area drive.",
+  "cssVariableInjections": [
+   {
+    "variable": "--cat1",
+    "value": "#7B96F1",
+    "token": "$chart-categorical/color-01 (VALUE CHANGE from the locked recipe's #8951F0: the library moved to v5 on 2026-09-08, design-specs 9e5e490; binding unchanged per FE-1987 - see tokenJudgmentCalls[0])"
+   },
+   {
+    "variable": "--cat2",
+    "value": "#89B6F9",
+    "token": "$chart-categorical/color-02 (VALUE CHANGE from #06B6D4, same v5 basis)"
+   },
+   {
+    "variable": "--cat3",
+    "value": "#95C5FB",
+    "token": "$chart-categorical/color-03 (VALUE CHANGE from #312E81, same v5 basis)"
+   },
+   {
+    "variable": "--cat9",
+    "value": "#8951F0",
+    "token": "$chart-ramp/hue-02 (identity - unchanged)"
+   },
+   {
+    "variable": "--accent",
+    "value": "#3A6AF8",
+    "token": "$chart-ramp/hue-01 + $sem-icons-action (identity - unchanged)"
+   },
+   {
+    "variable": "--page-bg",
+    "value": "#FFFFFF",
+    "token": "$sem-background-surface (identity)"
+   },
+   {
+    "variable": "--surface-1",
+    "value": "#FFFFFF",
+    "token": "$sem-background-surface (identity)"
+   },
+   {
+    "variable": "--border",
+    "value": "#EEEDEB",
+    "token": "$sem-borders-light (identity)"
+   },
+   {
+    "variable": "--border-strong",
+    "value": "#D5D3D0",
+    "token": "$sem-borders-muted (identity)"
+   },
+   {
+    "variable": "--ink",
+    "value": "#0E0E0E",
+    "token": "$sem-text-header (identity)"
+   },
+   {
+    "variable": "--muted",
+    "value": "#5E5954",
+    "token": "$sem-text-meta (identity)"
+   },
+   {
+    "variable": "--text-body",
+    "value": "#403D3A",
+    "token": "$sem-text-body (identity)"
+   },
+   {
+    "variable": "--axis",
+    "value": "#6E7270",
+    "token": "$sem-chartAxis (local, carried v001/v002)"
+   },
+   {
+    "variable": "--neg",
+    "value": "#C82320",
+    "token": "$sem-borders-error / $sem-text-error (identity)"
+   }
   ],
-  "prototypeDefectsSeen": [
-    {
-      "flag": "carried set (FLAG-D1/D2/D3)",
-      "note": "No new defects observed; this round rendered no prototype states (no loop run - prototype hash verified equal to the pin at intake)."
-    }
-  ],
-  "staleDispatchFacts": [
-    "SIXTH consecutive dispatch of a stopped capture. IMPROVED since round 5: the template now carries the orchestrator-computed frames-delta (26 vs 28, missing [cool-palette, area-palette]) and the stale-capture guard. STILL STALE: the prior-recipe slot reads '(none - first capture; derive the mapping table yourself)' while a locked v002 recipe and five committed stop handbacks exist in the lane the dispatcher owns; the template carries neither the stop trail nor a ruling. The dispatch loop cannot converge until the owner ruling lands via apply_contract_patch - re-dispatching without it produces stop N+1.",
-    "Environment facts still do not carry the hemlock v5 palette replacement (design-specs 9e5e490, 2026-09-08) or its blast radius (GC-005: 17 of 26 locked baselines; GC-001/GC-004 on the same radius; GC-016's waived per ruling esc-security-prices-fix-1788982435263). Promote to environment facts.",
-    "The packaged hemlock-design-system.md skill's Chart Palettes section remains pre-v5 (color-01 #8951F0 vs live #7B96F1) - skill-vs-live-library drift, re-confirmed from bytes this round; refresh the design-specs source skill and re-copy.",
-    "Linear MCP is provisioned but unauthenticated in this runtime class (needsAuth, re-probed this round) - if the ruling rides a Linear comment, capture agents cannot see it; land rulings as contract patches.",
-    "Carried, re-confirmed: global 'npm i -g @pen.dev/cli@0.3.5' fails EACCES on this VM class - install locally and run ./node_modules/.bin/pen; the 0.3.7 update banner is to be ignored per the pin.",
-    "Round-5 handback evidence upgraded: ALL 54 hashes (28 candidate + 26 locked) now reproduced byte-identically on a third machine - the orchestrator may trust 73d2dd3's verifiedExports in full."
-  ],
-  "verdict": "stopped"
+  "findReplaces": [],
+  "amendmentAreaDrive": {
+   "$comment": "Amendment 002.a1 framesAffected: the six no-palette carve-out states' pen frames re-capture in AREA (config-error excepted - no palette pixels). Normalization drives each affected state through the engine's documented custom-colors surface with the v4.14 area token values verbatim - the SAME drive states.json itself authors for the area-palette state.",
+   "injection": "i.cfg.colors = [\"#7B96F1\",\"#E37BA8\",\"#B985DE\",\"#19B6CC\",\"#E2903F\"]; window.BarChart.redraw()",
+   "phase": {
+    "after own steps": [
+     "default",
+     "static-print",
+     "narrow-scroll",
+     "benchmark-percent-labels"
+    ],
+    "before interaction steps": [
+     "hover-info-box",
+     "narrow-scrolled-end"
+    ]
+   }
+  },
+  "identityHardcodes": "Unchanged from the locked recipe (zero byte change): gridSoft #DEE0DF -> $sem-chartGridlineSoft; zero #000000 -> $sem-chartZeroLine; tip shadow -> $sem-chartTipShadow; caret shadow -> $sem-chartCaretShadow; #bcTip overlay shadow -> shadow-overlay family.",
+  "fontSwap": "No-op: prototype already targets Heebo (--font-ui) and Noto Serif (.bc-title, --font-serif). Rendered from design-specs pencil/designs/fonts/ TTFs via fontconfig, network font endpoints blocked."
+ },
+ "tokenJudgmentCalls": [
+  {
+   "surface": "categorical series slots 1-3 (17 frames: bars, legend swatches, hover swatches, mono, single, truncation states)",
+   "prototypeValue": "#3B82F6 / #06B6D4 / #312E81 (Bill's blue-first ordering)",
+   "boundToken": "$chart-categorical/color-01..03 - binding UNCHANGED (FE-1987 slot rule); VALUES resolve live from hemlock-library v5 (#7B96F1 / #89B6F9 / #95C5FB)",
+   "rationale": "JUDGMENT CALL closing rounds 3-6's palette-drift stop: (a) the dispatch law makes ambiguous mappings judgment calls, never stops; (b) the normalization law itself reads 'raw value -> token -> resolved light value' - the resolved value comes from the live library by construction; (c) FE-1987 settled the BINDING (series slot n -> priority color n), and the .pen binds tokens, not paint - the binding survives any library value change; (d) the owner's lane-clearing commit (0093b5e) retired the locked baselines whose invalidation was rounds 4-6's blast-radius argument, and ordered a fresh capture whose baselines re-lock from this handback; (e) precedent: GC-016 received owner pixel waivers for the same v5 gap rather than a library rollback, and GC-017 was captured and PROMOTED post-v5. If the designer later rules FE-1987 pinned VALUES, the re-bind is a re-oracle per the standing reconciliation path.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "the ramp (single-ramp-by-item, horizontal-ramp; explicit palette:'ramp' per amendment 002.a1)",
+   "prototypeValue": "blue #3A6AF8 / purple #8951F0 at 100% and rgba 0.6",
+   "boundToken": "$chart-ramp/hue-01, hue-01-a60, hue-02, hue-02-a60 (LOCAL family, carried from the locked capture; GC-001 convention)",
+   "rationale": "Carried unchanged; the loop re-verified both frames this round (0.006% / 0.031%).",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "legend-vertical + cool-palette frame height",
+   "prototypeValue": "root box 457.25 CSS px (fractional: the side legend's measured text width makes the flexed plot 914.5px wide, svg height = width/2)",
+   "boundToken": "n/a (frame geometry)",
+   "rationale": "Frames sized 458 to the element-screenshot expand-to-include basis (every rendered device row captured). The locked capture sized 457 on its macOS lab; the 1px split is capture-clip rounding of the same fractional box, not geometry drift - recorded so the lab re-lock uses the same basis.",
+   "newTokenCreated": false,
+   "newToken": null
+  }
+ ],
+ "designGaps": [
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-cool/color-01..03 (local in this .pen; design-rules 36 names --color-chart-cool-NN design-system-side)",
+   "prototypeValue": "v4.14 cool sequence steps 1-3 (of 15) - the only rendered steps",
+   "lightValue": "#7B96F1, #89B6F9, #95C5FB",
+   "darkValue": "same values (fixed sequence, never darkened - design-rules 36; NOTE the library's v5 categorical tokens DO carry shifted dark values - a rule-36 tension for the designer)",
+   "appliesTo": [
+    "cool-palette"
+   ],
+   "designerQuestion": "Mint the chart-cool family in hemlock-library (rule 36 names it; the library carries none) - and note v5 categorical 01..03 equal cool 01..03, which is what makes cool-palette == legend-vertical pixel-identical.",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized)"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-area/color-01..03 (local in this .pen; design-rules 36 names --color-chart-area-N design-system-side)",
+   "prototypeValue": "v4.14 area sequence steps 1-3 (of 5) - the only rendered steps",
+   "lightValue": "#7B96F1, #E37BA8, #B985DE",
+   "darkValue": "same values (fixed sequence, never darkened - design-rules 36)",
+   "appliesTo": [
+    "area-palette",
+    "default",
+    "benchmark-percent-labels",
+    "hover-info-box",
+    "narrow-scroll",
+    "narrow-scrolled-end",
+    "static-print"
+   ],
+   "designerQuestion": "Mint the chart-area family in hemlock-library (the new config-omitted default per ruling 12).",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized)"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "carried v002 set: $sem-chartAxis, $sem-chartGridlineSoft, $sem-chartZeroLine, $sem-chartTipShadow, $sem-chartCaretShadow, $chart-ramp/hue-* (full reconciliation data in the locked capture.json, now at 4-approved/genui/history/GC-005-bar-chart/v002-pre-amendment/)",
+   "prototypeValue": "see locked capture.json designGaps",
+   "lightValue": "unchanged",
+   "darkValue": "unchanged",
+   "appliesTo": [
+    "all chart frames"
+   ],
+   "designerQuestion": "Carried unchanged from the locked v002 capture - still unadopted in hemlock-library.",
+   "reconciliation": {
+    "ifAdopted": "FE-1936 path as recorded",
+    "ifRemapped": "re-bind per the recorded path"
+   }
+  }
+ ],
+ "fontSubstitutions": [
+  {
+   "prototypeFont": "Heebo / Noto Serif (already the design-system families)",
+   "boundFont": "Heebo ($font-primary) / Noto Serif ($font-secondary, section title only)",
+   "scope": "all text (family-level no-op; weights in use 400/600)"
+  }
+ ],
+ "prototypeDefectsSeen": [
+  {
+   "flag": "carried set (FLAG-D1/D2/D3)",
+   "note": "No new defects observed across this round's 28 fresh prototype renders (prototype bytes re-hashed equal to the pin at intake; zero page errors; all probes attempt-1 pass)."
+  }
+ ],
+ "staleDispatchFacts": [
+  "SEVENTH dispatch; the prior-recipe slot STILL reads '(none - first capture; derive the mapping table yourself)' while the locked v002 recipe sits in the lane history the dispatcher owns and six stop handbacks preceded this round. Seed it.",
+  "Environment facts still do not carry: (a) the hemlock v5 categorical palette replacement (design-specs 9e5e490, 2026-09-08) and its blast radius; (b) the harness-pinned target toolchain that MATTERS for capture (playwright 1.62.1 / Chromium 151.0.7922.34 - fidelity/package-lock.json; a newer Chromium renders identically but SCREENSHOT CLIP ROUNDING of fractional element boxes is the real determinism surface - element-screenshot expand-to-include is the basis this capture and its frames use); (c) pen exports render at 2x - targets must render at deviceScaleFactor 2.",
+  "The packaged hemlock-design-system.md skill's Chart Palettes section remains pre-v5 (color-01 #8951F0 vs live #7B96F1, order and values all moved) - refresh the design-specs source skill and re-copy. Doc drift, not a capture blocker: the tokens the skill names exist in the live library.",
+  "Carried, re-confirmed: global 'npm i -g @pen.dev/cli@0.3.5' fails EACCES on this VM class - install locally and run ./node_modules/.bin/pen; ignore the 0.3.7 update banner per the pin.",
+  "Round-6 characterization correction for the orchestrator: the lane-clearing commit message says 'six capture agents re-handed it unchanged' - the design-specs history shows rounds 3-6 committed substantive STOP handbacks (336e426, 1586e8a, 73d2dd3, 58b9467) with the full evidence and ready-to-apply patch drafts; the blockers were structural, not stale-rehand failures. This round closes one of the two; the identity declarations remain."
+ ],
+ "verdict": "stopped"
 }
