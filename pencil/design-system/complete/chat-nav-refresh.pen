@@ -10604,6 +10604,7 @@
                   "type": "frame",
                   "id": "AyiLZ",
                   "name": "Nav / Panel",
+                  "reusable": true,
                   "clip": true,
                   "width": 240,
                   "height": 884,
@@ -10698,105 +10699,6 @@
                           "layout": "vertical",
                           "gap": 12,
                           "children": [
-                            {
-                              "type": "group",
-                              "id": "6Wlhd",
-                              "name": "Non-Plaid Linked CTA",
-                              "enabled": false,
-                              "children": [
-                                {
-                                  "id": "tl1Gd",
-                                  "type": "ref",
-                                  "ref": "AphRE",
-                                  "name": "navCTA",
-                                  "width": "fill_container(200)",
-                                  "x": 0,
-                                  "y": 0
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "XxJEm",
-                                  "x": 0,
-                                  "y": 60,
-                                  "name": "security",
-                                  "width": "fill_container(200)",
-                                  "layout": "vertical",
-                                  "gap": 6,
-                                  "children": [
-                                    {
-                                      "type": "frame",
-                                      "id": "dLWoh",
-                                      "name": "secureRow",
-                                      "width": "fill_container",
-                                      "gap": 8,
-                                      "padding": [
-                                        0,
-                                        2
-                                      ],
-                                      "justifyContent": "center",
-                                      "alignItems": "center",
-                                      "children": [
-                                        {
-                                          "type": "icon",
-                                          "id": "ogI1o",
-                                          "width": 16,
-                                          "height": 16,
-                                          "icon": "lock",
-                                          "library": "lucide",
-                                          "fill": "$g:sem-navTextPrimary"
-                                        },
-                                        {
-                                          "type": "text",
-                                          "id": "qYwS4",
-                                          "fill": "$g:sem-navTextPrimary",
-                                          "content": "Secure. Private. Protected.",
-                                          "fontFamily": "$g:font-primary",
-                                          "fontSize": "$g:text-size-sm",
-                                          "fontWeight": "600"
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "type": "frame",
-                                      "id": "bcUeJ",
-                                      "name": "secureDescription",
-                                      "width": "fill_container",
-                                      "layout": "vertical",
-                                      "padding": [
-                                        0,
-                                        2
-                                      ],
-                                      "children": [
-                                        {
-                                          "type": "text",
-                                          "id": "dmh84",
-                                          "name": "secureBody",
-                                          "fill": "$g:sem-navTextSecondary",
-                                          "textGrowth": "fixed-width",
-                                          "width": "fill_container",
-                                          "content": "Your data is encrypted, read-only, and never sold.",
-                                          "lineHeight": "$g:line-height-lg",
-                                          "textAlign": "center",
-                                          "fontFamily": "$g:font-primary",
-                                          "fontSize": "$g:text-size-xs",
-                                          "fontWeight": "normal"
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "8p0Vi",
-                                  "x": 0,
-                                  "y": 134,
-                                  "name": "Nav / Divider",
-                                  "width": "fill_container(200)",
-                                  "height": 1,
-                                  "fill": "$g:sem-navDivider"
-                                }
-                              ]
-                            },
                             {
                               "type": "frame",
                               "id": "flrLj",
@@ -11096,8 +10998,7 @@
                       "width": 240,
                       "height": 36
                     }
-                  ],
-                  "reusable": true
+                  ]
                 },
                 {
                   "type": "text",
@@ -11106,7 +11007,7 @@
                   "fill": "$g:sem-text-subtle",
                   "textGrowth": "fixed-width",
                   "width": 240,
-                  "content": "Nav / Panel (component)\n240×884 · radius 12 · pad 24v/20h · clip\nfill sem-navBg · stroke sem-navBorder · shadow sem-navShadow (blur 28 · spread 2 · y 2)\nNon-Plaid Linked CTA block off by default · enabled per instance in the Examples below",
+                  "content": "Nav / Panel (component)\n240×884 · radius 12 · pad 24v/20h · clip\nfill sem-navBg · stroke sem-navBorder · shadow sem-navShadow (blur 28 · spread 2 · y 2)",
                   "fontFamily": "$g:font-primary",
                   "fontSize": "$g:text-size-2xs",
                   "fontWeight": "500"
@@ -31746,17 +31647,501 @@
                       ]
                     },
                     {
+                      "type": "frame",
                       "id": "Tfm15",
-                      "type": "ref",
-                      "ref": "AyiLZ",
                       "name": "Nav / Panel",
+                      "clip": true,
                       "width": 240,
                       "height": "fill_container",
-                      "descendants": {
-                        "6Wlhd": {
-                          "enabled": true
+                      "fill": "$g:sem-navBg",
+                      "cornerRadius": 12,
+                      "stroke": "$g:sem-navBorder",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "$g:sem-navShadow",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 28,
+                        "spread": 2
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        24,
+                        20
+                      ],
+                      "justifyContent": "space_between",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "AZYAw",
+                          "name": "navTop",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "layout": "vertical",
+                          "gap": 32,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "EmC8F",
+                              "name": "logoRow",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "aHqeZ",
+                                  "name": "Nav / Logo",
+                                  "alignItems": "end",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "AbWwP",
+                                      "name": "logoMain",
+                                      "fill": "$g:sem-navTextPrimary",
+                                      "content": "evergreen",
+                                      "fontFamily": "Manrope",
+                                      "fontSize": "$g:text-size-lg",
+                                      "fontWeight": "normal",
+                                      "letterSpacing": -0.3
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "ltmNZ",
+                                      "name": "logoSuffix",
+                                      "fill": "$g:sem-navTextPrimary",
+                                      "textGrowth": "fixed-width-height",
+                                      "width": "fit_content(24)",
+                                      "height": "fit_content(25)",
+                                      "content": ".ai",
+                                      "textAlignVertical": "middle",
+                                      "fontFamily": "Spectral",
+                                      "fontSize": "$g:text-size-xl",
+                                      "fontWeight": "300",
+                                      "fontStyle": "italic"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "6lyBj",
+                                  "type": "ref",
+                                  "ref": "k7cW7",
+                                  "name": "navToggle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "oG4Og",
+                              "name": "navSection",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 12,
+                              "children": [
+                                {
+                                  "type": "group",
+                                  "id": "uv6Q4",
+                                  "name": "Non-Plaid Linked CTA",
+                                  "children": [
+                                    {
+                                      "id": "ellW9",
+                                      "type": "ref",
+                                      "ref": "AphRE",
+                                      "name": "navCTA",
+                                      "width": "fill_container(200)",
+                                      "x": 0,
+                                      "y": 0
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "JLjDR",
+                                      "x": 0,
+                                      "y": 60,
+                                      "name": "security",
+                                      "width": "fill_container(200)",
+                                      "layout": "vertical",
+                                      "gap": 6,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "2haGL",
+                                          "name": "secureRow",
+                                          "width": "fill_container",
+                                          "gap": 8,
+                                          "padding": [
+                                            0,
+                                            2
+                                          ],
+                                          "justifyContent": "center",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "icon",
+                                              "id": "mZsv7",
+                                              "width": 16,
+                                              "height": 16,
+                                              "icon": "lock",
+                                              "library": "lucide",
+                                              "fill": "$g:sem-navTextPrimary"
+                                            },
+                                            {
+                                              "type": "text",
+                                              "id": "imHyE",
+                                              "fill": "$g:sem-navTextPrimary",
+                                              "content": "Secure. Private. Protected.",
+                                              "fontFamily": "$g:font-primary",
+                                              "fontSize": "$g:text-size-sm",
+                                              "fontWeight": "600"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "frame",
+                                          "id": "GO6MR",
+                                          "name": "secureDescription",
+                                          "width": "fill_container",
+                                          "layout": "vertical",
+                                          "padding": [
+                                            0,
+                                            2
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "TGujZ",
+                                              "name": "secureBody",
+                                              "fill": "$g:sem-navTextSecondary",
+                                              "textGrowth": "fixed-width",
+                                              "width": "fill_container",
+                                              "content": "Your data is encrypted, read-only, and never sold.",
+                                              "lineHeight": "$g:line-height-lg",
+                                              "textAlign": "center",
+                                              "fontFamily": "$g:font-primary",
+                                              "fontSize": "$g:text-size-xs",
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "QOyet",
+                                      "x": 0,
+                                      "y": 134,
+                                      "name": "Nav / Divider",
+                                      "width": "fill_container(200)",
+                                      "height": 1,
+                                      "fill": "$g:sem-navDivider"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "RP23y",
+                                  "name": "sectionNetWorth",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "hxh70",
+                                      "name": "Nav / Section Header",
+                                      "width": "fill_container",
+                                      "gap": 6,
+                                      "padding": [
+                                        12,
+                                        10,
+                                        4,
+                                        6
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "dvYhb",
+                                          "name": "chevron",
+                                          "width": 12,
+                                          "height": 12,
+                                          "icon": "chevron-down",
+                                          "library": "lucide",
+                                          "fill": "$g:sem-navIcon"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "L0Czk",
+                                          "name": "sectionLabel",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "YOUR MONEY",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": "$g:text-size-2xs",
+                                          "fontWeight": "600",
+                                          "letterSpacing": 1.2
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "hA3gN",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "dUBfw",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Dashboard",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "d5MbT",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "r2GxT",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Accounts",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "IpyXJ",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "xSOJR",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Activity",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "602ta",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "Vt2li",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Investments",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "8Bqc1",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "OrKZU",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Home & Property",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "DTQWv",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "v4juK",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Lifetime Planning",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ghO74",
+                          "name": "Nav / User Area",
+                          "width": "fill_container",
+                          "fill": "$g:sem-navBg",
+                          "stroke": "$g:sem-navDivider",
+                          "strokeWidth": {
+                            "top": 0.5
+                          },
+                          "strokeAlignment": "inner",
+                          "strokeLinejoin": "round",
+                          "gap": 10,
+                          "padding": [
+                            16,
+                            0,
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "MIgms",
+                              "name": "userInfo",
+                              "width": "fill_container",
+                              "gap": 1,
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "3W55n",
+                                  "name": "userName",
+                                  "fill": "$g:sem-navTextSecondary",
+                                  "content": "Sylvia Peterson",
+                                  "fontFamily": "$g:font-primary",
+                                  "fontSize": "$g:text-size-xs",
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "R5PSS",
+                                  "name": "navActions",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "id": "3Ar8o",
+                                      "type": "ref",
+                                      "ref": "UlIt8",
+                                      "name": "navThemeToggle",
+                                      "width": 16,
+                                      "height": 16
+                                    },
+                                    {
+                                      "id": "tVUpe",
+                                      "type": "ref",
+                                      "ref": "lXtY4",
+                                      "name": "navSettings",
+                                      "width": 16,
+                                      "height": 16
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "YZoyT",
+                          "layoutPosition": "absolute",
+                          "x": 0,
+                          "y": 772,
+                          "name": "Nav / Fade Gradient",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 180,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "$g:sem-navFadeTransparent",
+                                "position": 0
+                              },
+                              {
+                                "color": "$g:sem-navBg",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "width": 240,
+                          "height": 36
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "frame",
@@ -35407,30 +35792,515 @@
                       "height": 778
                     },
                     {
+                      "type": "frame",
                       "id": "x1yF6",
-                      "type": "ref",
-                      "ref": "AyiLZ",
                       "name": "Nav / Panel",
-                      "layoutPosition": "absolute",
-                      "x": 153,
-                      "y": 0,
+                      "clip": true,
                       "width": 240,
                       "height": "fill_container(778)",
+                      "fill": "$g:sem-navBg",
                       "cornerRadius": [
                         12,
                         0,
                         0,
                         12
                       ],
-                      "descendants": {
-                        "aQXuc/o9FKm": {
-                          "library": "lucide",
-                          "icon": "arrow-right-to-line"
+                      "stroke": "$g:sem-navBorder",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "$g:sem-navShadow",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
                         },
-                        "6Wlhd": {
-                          "enabled": true
+                        "blur": 28,
+                        "spread": 2
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        24,
+                        20
+                      ],
+                      "justifyContent": "space_between",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "qMDrn",
+                          "name": "navTop",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "layout": "vertical",
+                          "gap": 32,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "9h81G",
+                              "name": "logoRow",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "HLzgP",
+                                  "name": "Nav / Logo",
+                                  "alignItems": "end",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "0E8ap",
+                                      "name": "logoMain",
+                                      "fill": "$g:sem-navTextPrimary",
+                                      "content": "evergreen",
+                                      "fontFamily": "Manrope",
+                                      "fontSize": "$g:text-size-lg",
+                                      "fontWeight": "normal",
+                                      "letterSpacing": -0.3
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "eoltg",
+                                      "name": "logoSuffix",
+                                      "fill": "$g:sem-navTextPrimary",
+                                      "textGrowth": "fixed-width-height",
+                                      "width": "fit_content(24)",
+                                      "height": "fit_content(25)",
+                                      "content": ".ai",
+                                      "textAlignVertical": "middle",
+                                      "fontFamily": "Spectral",
+                                      "fontSize": "$g:text-size-xl",
+                                      "fontWeight": "300",
+                                      "fontStyle": "italic"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "4rct5",
+                                  "type": "ref",
+                                  "ref": "k7cW7",
+                                  "name": "navToggle",
+                                  "descendants": {
+                                    "o9FKm": {
+                                      "library": "lucide",
+                                      "icon": "arrow-right-to-line"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "TmYDE",
+                              "name": "navSection",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 12,
+                              "children": [
+                                {
+                                  "type": "group",
+                                  "id": "YkRHJ",
+                                  "name": "Non-Plaid Linked CTA",
+                                  "children": [
+                                    {
+                                      "id": "wQavB",
+                                      "type": "ref",
+                                      "ref": "AphRE",
+                                      "name": "navCTA",
+                                      "width": "fill_container(200)",
+                                      "x": 0,
+                                      "y": 0
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "NjKQP",
+                                      "x": 0,
+                                      "y": 60,
+                                      "name": "security",
+                                      "width": "fill_container(200)",
+                                      "layout": "vertical",
+                                      "gap": 6,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "9Yckj",
+                                          "name": "secureRow",
+                                          "width": "fill_container",
+                                          "gap": 8,
+                                          "padding": [
+                                            0,
+                                            2
+                                          ],
+                                          "justifyContent": "center",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "icon",
+                                              "id": "aMLBe",
+                                              "width": 16,
+                                              "height": 16,
+                                              "icon": "lock",
+                                              "library": "lucide",
+                                              "fill": "$g:sem-navTextPrimary"
+                                            },
+                                            {
+                                              "type": "text",
+                                              "id": "PDEH5",
+                                              "fill": "$g:sem-navTextPrimary",
+                                              "content": "Secure. Private. Protected.",
+                                              "fontFamily": "$g:font-primary",
+                                              "fontSize": "$g:text-size-sm",
+                                              "fontWeight": "600"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "frame",
+                                          "id": "KvGAE",
+                                          "name": "secureDescription",
+                                          "width": "fill_container",
+                                          "layout": "vertical",
+                                          "padding": [
+                                            0,
+                                            2
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "782QJ",
+                                              "name": "secureBody",
+                                              "fill": "$g:sem-navTextSecondary",
+                                              "textGrowth": "fixed-width",
+                                              "width": "fill_container",
+                                              "content": "Your data is encrypted, read-only, and never sold.",
+                                              "lineHeight": "$g:line-height-lg",
+                                              "textAlign": "center",
+                                              "fontFamily": "$g:font-primary",
+                                              "fontSize": "$g:text-size-xs",
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "tcxwd",
+                                      "x": 0,
+                                      "y": 134,
+                                      "name": "Nav / Divider",
+                                      "width": "fill_container(200)",
+                                      "height": 1,
+                                      "fill": "$g:sem-navDivider"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "bcgnd",
+                                  "name": "sectionNetWorth",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "pz72q",
+                                      "name": "Nav / Section Header",
+                                      "width": "fill_container",
+                                      "gap": 6,
+                                      "padding": [
+                                        12,
+                                        10,
+                                        4,
+                                        6
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "CqjGN",
+                                          "name": "chevron",
+                                          "width": 12,
+                                          "height": 12,
+                                          "icon": "chevron-down",
+                                          "library": "lucide",
+                                          "fill": "$g:sem-navIcon"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "0qrft",
+                                          "name": "sectionLabel",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "YOUR MONEY",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": "$g:text-size-2xs",
+                                          "fontWeight": "600",
+                                          "letterSpacing": 1.2
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "a8c6J",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "RVsEI",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Dashboard",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "4GXLg",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "JvlxB",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Accounts",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "QiYVI",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "nPxf1",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Activity",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "L9O4Y",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "V1IYS",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Investments",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "vRf3C",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "26w04",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Home & Property",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "VmSjj",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "eqZCW",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Lifetime Planning",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "YyINo",
+                          "name": "Nav / User Area",
+                          "width": "fill_container",
+                          "fill": "$g:sem-navBg",
+                          "stroke": "$g:sem-navDivider",
+                          "strokeWidth": {
+                            "top": 0.5
+                          },
+                          "strokeAlignment": "inner",
+                          "strokeLinejoin": "round",
+                          "gap": 10,
+                          "padding": [
+                            16,
+                            0,
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "EMjYi",
+                              "name": "userInfo",
+                              "width": "fill_container",
+                              "gap": 1,
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "PL6yl",
+                                  "name": "userName",
+                                  "fill": "$g:sem-navTextSecondary",
+                                  "content": "Sylvia Peterson",
+                                  "fontFamily": "$g:font-primary",
+                                  "fontSize": "$g:text-size-xs",
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "4AFBV",
+                                  "name": "navActions",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "id": "d59Nh",
+                                      "type": "ref",
+                                      "ref": "UlIt8",
+                                      "name": "navThemeToggle",
+                                      "width": 16,
+                                      "height": 16
+                                    },
+                                    {
+                                      "id": "vHCc9",
+                                      "type": "ref",
+                                      "ref": "lXtY4",
+                                      "name": "navSettings",
+                                      "width": 16,
+                                      "height": 16
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "PGQg4",
+                          "layoutPosition": "absolute",
+                          "x": 0,
+                          "y": 772,
+                          "name": "Nav / Fade Gradient",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 180,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "$g:sem-navFadeTransparent",
+                                "position": 0
+                              },
+                              {
+                                "color": "$g:sem-navBg",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "width": 240,
+                          "height": 36
                         }
-                      }
+                      ],
+                      "layoutPosition": "absolute",
+                      "x": 153,
+                      "y": 0
                     }
                   ]
                 },
@@ -55950,17 +56820,501 @@
                       ]
                     },
                     {
+                      "type": "frame",
                       "id": "aJApC",
-                      "type": "ref",
-                      "ref": "AyiLZ",
                       "name": "Nav / Panel",
+                      "clip": true,
                       "width": 240,
                       "height": "fill_container",
-                      "descendants": {
-                        "6Wlhd": {
-                          "enabled": true
+                      "fill": "$g:sem-navBg",
+                      "cornerRadius": 12,
+                      "stroke": "$g:sem-navBorder",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "$g:sem-navShadow",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 28,
+                        "spread": 2
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        24,
+                        20
+                      ],
+                      "justifyContent": "space_between",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "sDMWi",
+                          "name": "navTop",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "layout": "vertical",
+                          "gap": 32,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "12iYv",
+                              "name": "logoRow",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "Cxfx0",
+                                  "name": "Nav / Logo",
+                                  "alignItems": "end",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "llMnL",
+                                      "name": "logoMain",
+                                      "fill": "$g:sem-navTextPrimary",
+                                      "content": "evergreen",
+                                      "fontFamily": "Manrope",
+                                      "fontSize": "$g:text-size-lg",
+                                      "fontWeight": "normal",
+                                      "letterSpacing": -0.3
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "NAJE1",
+                                      "name": "logoSuffix",
+                                      "fill": "$g:sem-navTextPrimary",
+                                      "textGrowth": "fixed-width-height",
+                                      "width": "fit_content(24)",
+                                      "height": "fit_content(25)",
+                                      "content": ".ai",
+                                      "textAlignVertical": "middle",
+                                      "fontFamily": "Spectral",
+                                      "fontSize": "$g:text-size-xl",
+                                      "fontWeight": "300",
+                                      "fontStyle": "italic"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "LFNL2",
+                                  "type": "ref",
+                                  "ref": "k7cW7",
+                                  "name": "navToggle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "4MbyF",
+                              "name": "navSection",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 12,
+                              "children": [
+                                {
+                                  "type": "group",
+                                  "id": "f1otl",
+                                  "name": "Non-Plaid Linked CTA",
+                                  "children": [
+                                    {
+                                      "id": "AT2P0",
+                                      "type": "ref",
+                                      "ref": "AphRE",
+                                      "name": "navCTA",
+                                      "width": "fill_container(200)",
+                                      "x": 0,
+                                      "y": 0
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "tpzoG",
+                                      "x": 0,
+                                      "y": 60,
+                                      "name": "security",
+                                      "width": "fill_container(200)",
+                                      "layout": "vertical",
+                                      "gap": 6,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "OIHGr",
+                                          "name": "secureRow",
+                                          "width": "fill_container",
+                                          "gap": 8,
+                                          "padding": [
+                                            0,
+                                            2
+                                          ],
+                                          "justifyContent": "center",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "icon",
+                                              "id": "v1gOz",
+                                              "width": 16,
+                                              "height": 16,
+                                              "icon": "lock",
+                                              "library": "lucide",
+                                              "fill": "$g:sem-navTextPrimary"
+                                            },
+                                            {
+                                              "type": "text",
+                                              "id": "fN9Yx",
+                                              "fill": "$g:sem-navTextPrimary",
+                                              "content": "Secure. Private. Protected.",
+                                              "fontFamily": "$g:font-primary",
+                                              "fontSize": "$g:text-size-sm",
+                                              "fontWeight": "600"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "frame",
+                                          "id": "lRdZR",
+                                          "name": "secureDescription",
+                                          "width": "fill_container",
+                                          "layout": "vertical",
+                                          "padding": [
+                                            0,
+                                            2
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "ILtFx",
+                                              "name": "secureBody",
+                                              "fill": "$g:sem-navTextSecondary",
+                                              "textGrowth": "fixed-width",
+                                              "width": "fill_container",
+                                              "content": "Your data is encrypted, read-only, and never sold.",
+                                              "lineHeight": "$g:line-height-lg",
+                                              "textAlign": "center",
+                                              "fontFamily": "$g:font-primary",
+                                              "fontSize": "$g:text-size-xs",
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "htUET",
+                                      "x": 0,
+                                      "y": 134,
+                                      "name": "Nav / Divider",
+                                      "width": "fill_container(200)",
+                                      "height": 1,
+                                      "fill": "$g:sem-navDivider"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "6M7q3",
+                                  "name": "sectionNetWorth",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "yq2Td",
+                                      "name": "Nav / Section Header",
+                                      "width": "fill_container",
+                                      "gap": 6,
+                                      "padding": [
+                                        12,
+                                        10,
+                                        4,
+                                        6
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "zm4Ik",
+                                          "name": "chevron",
+                                          "width": 12,
+                                          "height": 12,
+                                          "icon": "chevron-down",
+                                          "library": "lucide",
+                                          "fill": "$g:sem-navIcon"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "uAuUK",
+                                          "name": "sectionLabel",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "YOUR MONEY",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": "$g:text-size-2xs",
+                                          "fontWeight": "600",
+                                          "letterSpacing": 1.2
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "0iQD9",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "E5eUF",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Dashboard",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "OMKFL",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "JQ6N2",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Accounts",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "QLgxa",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "tyltZ",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Activity",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "l7vZk",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "3uWut",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Investments",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "pMtmY",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "7BBTC",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Home & Property",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "D3yKe",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "MY7vx",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Lifetime Planning",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "XnX1l",
+                          "name": "Nav / User Area",
+                          "width": "fill_container",
+                          "fill": "$g:sem-navBg",
+                          "stroke": "$g:sem-navDivider",
+                          "strokeWidth": {
+                            "top": 0.5
+                          },
+                          "strokeAlignment": "inner",
+                          "strokeLinejoin": "round",
+                          "gap": 10,
+                          "padding": [
+                            16,
+                            0,
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "E9ktr",
+                              "name": "userInfo",
+                              "width": "fill_container",
+                              "gap": 1,
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "fpchZ",
+                                  "name": "userName",
+                                  "fill": "$g:sem-navTextSecondary",
+                                  "content": "Sylvia Peterson",
+                                  "fontFamily": "$g:font-primary",
+                                  "fontSize": "$g:text-size-xs",
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "6tyIy",
+                                  "name": "navActions",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "id": "vbLKj",
+                                      "type": "ref",
+                                      "ref": "UlIt8",
+                                      "name": "navThemeToggle",
+                                      "width": 16,
+                                      "height": 16
+                                    },
+                                    {
+                                      "id": "XK7yB",
+                                      "type": "ref",
+                                      "ref": "lXtY4",
+                                      "name": "navSettings",
+                                      "width": 16,
+                                      "height": 16
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "qDt0H",
+                          "layoutPosition": "absolute",
+                          "x": 0,
+                          "y": 772,
+                          "name": "Nav / Fade Gradient",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 180,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "$g:sem-navFadeTransparent",
+                                "position": 0
+                              },
+                              {
+                                "color": "$g:sem-navBg",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "width": 240,
+                          "height": 36
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "frame",
@@ -59617,30 +60971,515 @@
                       "height": 778
                     },
                     {
+                      "type": "frame",
                       "id": "dj2ma",
-                      "type": "ref",
-                      "ref": "AyiLZ",
                       "name": "Nav / Panel",
-                      "layoutPosition": "absolute",
-                      "x": 153,
-                      "y": 0,
+                      "clip": true,
                       "width": 240,
                       "height": "fill_container(778)",
+                      "fill": "$g:sem-navBg",
                       "cornerRadius": [
                         12,
                         0,
                         0,
                         12
                       ],
-                      "descendants": {
-                        "aQXuc/o9FKm": {
-                          "library": "lucide",
-                          "icon": "arrow-right-to-line"
+                      "stroke": "$g:sem-navBorder",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "$g:sem-navShadow",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
                         },
-                        "6Wlhd": {
-                          "enabled": true
+                        "blur": 28,
+                        "spread": 2
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        24,
+                        20
+                      ],
+                      "justifyContent": "space_between",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "8LNuy",
+                          "name": "navTop",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": "fill_container",
+                          "layout": "vertical",
+                          "gap": 32,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "f64DP",
+                              "name": "logoRow",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "gLXDR",
+                                  "name": "Nav / Logo",
+                                  "alignItems": "end",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "6W7Fg",
+                                      "name": "logoMain",
+                                      "fill": "$g:sem-navTextPrimary",
+                                      "content": "evergreen",
+                                      "fontFamily": "Manrope",
+                                      "fontSize": "$g:text-size-lg",
+                                      "fontWeight": "normal",
+                                      "letterSpacing": -0.3
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "elQNr",
+                                      "name": "logoSuffix",
+                                      "fill": "$g:sem-navTextPrimary",
+                                      "textGrowth": "fixed-width-height",
+                                      "width": "fit_content(24)",
+                                      "height": "fit_content(25)",
+                                      "content": ".ai",
+                                      "textAlignVertical": "middle",
+                                      "fontFamily": "Spectral",
+                                      "fontSize": "$g:text-size-xl",
+                                      "fontWeight": "300",
+                                      "fontStyle": "italic"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "RdEQ2",
+                                  "type": "ref",
+                                  "ref": "k7cW7",
+                                  "name": "navToggle",
+                                  "descendants": {
+                                    "o9FKm": {
+                                      "library": "lucide",
+                                      "icon": "arrow-right-to-line"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "dVmFQ",
+                              "name": "navSection",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 12,
+                              "children": [
+                                {
+                                  "type": "group",
+                                  "id": "Ic2bB",
+                                  "name": "Non-Plaid Linked CTA",
+                                  "children": [
+                                    {
+                                      "id": "QZKJ6",
+                                      "type": "ref",
+                                      "ref": "AphRE",
+                                      "name": "navCTA",
+                                      "width": "fill_container(200)",
+                                      "x": 0,
+                                      "y": 0
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "X0B6M",
+                                      "x": 0,
+                                      "y": 60,
+                                      "name": "security",
+                                      "width": "fill_container(200)",
+                                      "layout": "vertical",
+                                      "gap": 6,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "fjG5k",
+                                          "name": "secureRow",
+                                          "width": "fill_container",
+                                          "gap": 8,
+                                          "padding": [
+                                            0,
+                                            2
+                                          ],
+                                          "justifyContent": "center",
+                                          "alignItems": "center",
+                                          "children": [
+                                            {
+                                              "type": "icon",
+                                              "id": "r8JJb",
+                                              "width": 16,
+                                              "height": 16,
+                                              "icon": "lock",
+                                              "library": "lucide",
+                                              "fill": "$g:sem-navTextPrimary"
+                                            },
+                                            {
+                                              "type": "text",
+                                              "id": "b5Wx9",
+                                              "fill": "$g:sem-navTextPrimary",
+                                              "content": "Secure. Private. Protected.",
+                                              "fontFamily": "$g:font-primary",
+                                              "fontSize": "$g:text-size-sm",
+                                              "fontWeight": "600"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "frame",
+                                          "id": "Rt95n",
+                                          "name": "secureDescription",
+                                          "width": "fill_container",
+                                          "layout": "vertical",
+                                          "padding": [
+                                            0,
+                                            2
+                                          ],
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "id": "cmg0P",
+                                              "name": "secureBody",
+                                              "fill": "$g:sem-navTextSecondary",
+                                              "textGrowth": "fixed-width",
+                                              "width": "fill_container",
+                                              "content": "Your data is encrypted, read-only, and never sold.",
+                                              "lineHeight": "$g:line-height-lg",
+                                              "textAlign": "center",
+                                              "fontFamily": "$g:font-primary",
+                                              "fontSize": "$g:text-size-xs",
+                                              "fontWeight": "normal"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "v0dTm",
+                                      "x": 0,
+                                      "y": 134,
+                                      "name": "Nav / Divider",
+                                      "width": "fill_container(200)",
+                                      "height": 1,
+                                      "fill": "$g:sem-navDivider"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "8G6cC",
+                                  "name": "sectionNetWorth",
+                                  "width": "fill_container",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "QaRQt",
+                                      "name": "Nav / Section Header",
+                                      "width": "fill_container",
+                                      "gap": 6,
+                                      "padding": [
+                                        12,
+                                        10,
+                                        4,
+                                        6
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "ctdsT",
+                                          "name": "chevron",
+                                          "width": 12,
+                                          "height": 12,
+                                          "icon": "chevron-down",
+                                          "library": "lucide",
+                                          "fill": "$g:sem-navIcon"
+                                        },
+                                        {
+                                          "type": "text",
+                                          "id": "AOw2q",
+                                          "name": "sectionLabel",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "YOUR MONEY",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": "$g:text-size-2xs",
+                                          "fontWeight": "600",
+                                          "letterSpacing": 1.2
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "wnmT4",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "u4CnA",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Dashboard",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "d0y1z",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "YvESH",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Accounts",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "vOqWS",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "m3qdc",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Activity",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "YLGtT",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "1VolE",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Investments",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "lzYAK",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "2sP2D",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Home & Property",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "QucQQ",
+                                      "name": "Nav Item / Default",
+                                      "width": "fill_container",
+                                      "cornerRadius": 4,
+                                      "padding": [
+                                        7,
+                                        10,
+                                        7,
+                                        24
+                                      ],
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "1Y6aK",
+                                          "fill": "$g:sem-navTextSecondary",
+                                          "content": "Lifetime Planning",
+                                          "fontFamily": "$g:font-primary",
+                                          "fontSize": 13,
+                                          "fontWeight": "normal"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "kstyE",
+                          "name": "Nav / User Area",
+                          "width": "fill_container",
+                          "fill": "$g:sem-navBg",
+                          "stroke": "$g:sem-navDivider",
+                          "strokeWidth": {
+                            "top": 0.5
+                          },
+                          "strokeAlignment": "inner",
+                          "strokeLinejoin": "round",
+                          "gap": 10,
+                          "padding": [
+                            16,
+                            0,
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "18svt",
+                              "name": "userInfo",
+                              "width": "fill_container",
+                              "gap": 1,
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "yKyNY",
+                                  "name": "userName",
+                                  "fill": "$g:sem-navTextSecondary",
+                                  "content": "Sylvia Peterson",
+                                  "fontFamily": "$g:font-primary",
+                                  "fontSize": "$g:text-size-xs",
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "kRDN1",
+                                  "name": "navActions",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "id": "EDYFl",
+                                      "type": "ref",
+                                      "ref": "UlIt8",
+                                      "name": "navThemeToggle",
+                                      "width": 16,
+                                      "height": 16
+                                    },
+                                    {
+                                      "id": "dzSFT",
+                                      "type": "ref",
+                                      "ref": "lXtY4",
+                                      "name": "navSettings",
+                                      "width": 16,
+                                      "height": 16
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "m6HxS",
+                          "layoutPosition": "absolute",
+                          "x": 0,
+                          "y": 772,
+                          "name": "Nav / Fade Gradient",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 180,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "$g:sem-navFadeTransparent",
+                                "position": 0
+                              },
+                              {
+                                "color": "$g:sem-navBg",
+                                "position": 1
+                              }
+                            ]
+                          },
+                          "width": 240,
+                          "height": 36
                         }
-                      }
+                      ],
+                      "layoutPosition": "absolute",
+                      "x": 153,
+                      "y": 0
                     }
                   ]
                 },
