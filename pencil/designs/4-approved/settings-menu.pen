@@ -10,7 +10,7 @@
       "clip": true,
       "width": 1440,
       "height": 900,
-      "fill": "#ffffff",
+      "fill": "$y:sem-background-surface",
       "gap": 8,
       "padding": 8,
       "children": [
@@ -32,7 +32,6 @@
           "name": "mainPanel",
           "width": "fill_container",
           "height": "fill_container",
-          "fill": "#FFFFFF00",
           "layout": "vertical",
           "children": [
             {
@@ -42,9 +41,9 @@
               "width": "fill_container",
               "height": "fill_container",
               "layout": "vertical",
-              "gap": "$forms:spacing-md",
+              "gap": "$y:spacing-xl",
               "padding": [
-                "$y:spacing-lg",
+                "$y:spacing-md",
                 "$y:spacing-xl"
               ],
               "children": [
@@ -53,17 +52,18 @@
                   "id": "AG9YG",
                   "name": "greetingArea",
                   "width": "fill_container",
-                  "gap": 2,
+                  "gap": "$y:spacing-4xs",
                   "justifyContent": "space_between",
+                  "alignItems": "end",
                   "children": [
                     {
                       "type": "text",
                       "id": "FJFor",
                       "name": "greeting",
-                      "fill": "#2D2926",
+                      "fill": "$y:sem-text-header",
                       "content": "Settings",
-                      "fontFamily": "Noto Serif",
-                      "fontSize": 20,
+                      "fontFamily": "$y:font-secondary",
+                      "fontSize": "$y:text-size-lg",
                       "fontWeight": "normal"
                     },
                     {
@@ -111,8 +111,8 @@
                   "name": "subtitle",
                   "fill": "$y:sem-text-meta",
                   "content": "Manage your account and preferences.",
-                  "fontFamily": "Heebo",
-                  "fontSize": 14,
+                  "fontFamily": "$y:font-primary",
+                  "fontSize": "$y:text-size-sm",
                   "fontWeight": "normal"
                 },
                 {
@@ -146,10 +146,12 @@
                           "ref": "p:k5Ntnq",
                           "x": 24,
                           "y": 21.5,
+                          "fill": "$y:sem-btnInkBg",
                           "descendants": {
                             "p:yGc18": {
                               "library": "lucide",
-                              "icon": "user"
+                              "icon": "user",
+                              "fill": "$y:sem-btnInkText"
                             }
                           }
                         },
@@ -193,12 +195,13 @@
                           "height": 20,
                           "icon": "chevron-right",
                           "library": "lucide",
-                          "fill": "$y:sem-text-meta"
+                          "fill": "$y:sem-icons-action"
                         }
                       ]
                     },
                     {
                       "type": "frame",
+                      "id": "B6A7Rc",
                       "name": "Accounts",
                       "width": "fill_container",
                       "fill": "$y:sem-background-surface",
@@ -214,18 +217,22 @@
                       "alignItems": "center",
                       "children": [
                         {
+                          "id": "xtZse",
                           "type": "ref",
                           "ref": "p:k5Ntnq",
                           "name": "accountsIcon",
+                          "fill": "$y:sem-btnInkBg",
                           "descendants": {
                             "p:yGc18": {
                               "library": "lucide",
-                              "icon": "wallet"
+                              "icon": "wallet",
+                              "fill": "$y:sem-btnInkText"
                             }
                           }
                         },
                         {
                           "type": "frame",
+                          "id": "QFZtZ",
                           "name": "textGroup",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -233,6 +240,7 @@
                           "children": [
                             {
                               "type": "text",
+                              "id": "r9aBYu",
                               "name": "accountsTitle",
                               "fill": "$y:sem-text-body",
                               "content": "Accounts",
@@ -242,6 +250,7 @@
                             },
                             {
                               "type": "text",
+                              "id": "ZWJRb",
                               "name": "accountsDesc",
                               "fill": "$y:sem-text-meta",
                               "textGrowth": "fixed-width",
@@ -255,12 +264,13 @@
                         },
                         {
                           "type": "icon",
+                          "id": "amoCJ",
                           "name": "accountsChevron",
                           "width": 20,
                           "height": 20,
                           "icon": "chevron-right",
                           "library": "lucide",
-                          "fill": "$y:sem-text-meta"
+                          "fill": "$y:sem-icons-action"
                         }
                       ]
                     },
@@ -287,10 +297,12 @@
                           "ref": "p:k5Ntnq",
                           "x": 24,
                           "y": 21.5,
+                          "fill": "$y:sem-btnInkBg",
                           "descendants": {
                             "p:yGc18": {
                               "library": "lucide",
-                              "icon": "mail"
+                              "icon": "mail",
+                              "fill": "$y:sem-btnInkText"
                             }
                           }
                         },
@@ -334,7 +346,7 @@
                           "height": 20,
                           "icon": "chevron-right",
                           "library": "lucide",
-                          "fill": "$y:sem-text-meta"
+                          "fill": "$y:sem-icons-action"
                         }
                       ]
                     }
@@ -362,7 +374,7 @@
       "clip": true,
       "width": 390,
       "height": 844,
-      "fill": "#FFFFFF",
+      "fill": "$y:sem-background-surface",
       "layout": "vertical",
       "children": [
         {
@@ -435,15 +447,15 @@
           "name": "contentArea",
           "width": "fill_container",
           "layout": "vertical",
-          "gap": 24,
-          "padding": 16,
+          "gap": "$y:spacing-md",
+          "padding": "$y:spacing-sm",
           "children": [
             {
               "type": "frame",
               "id": "cJ5qr",
               "name": "greetingArea",
               "width": "fill_container",
-              "gap": "$O:spacing-3xs",
+              "gap": "$y:spacing-3xs",
               "justifyContent": "space_between",
               "alignItems": "center",
               "children": [
@@ -451,10 +463,10 @@
                   "type": "text",
                   "id": "Zayjy",
                   "name": "greeting",
-                  "fill": "#2d2926",
+                  "fill": "$y:sem-text-header",
                   "content": "Settings",
-                  "fontFamily": "Noto Serif",
-                  "fontSize": 20,
+                  "fontFamily": "$y:font-secondary",
+                  "fontSize": "$y:text-size-lg",
                   "fontWeight": "normal"
                 },
                 {
@@ -513,7 +525,7 @@
               "width": "fill_container",
               "height": "fill_container",
               "layout": "vertical",
-              "gap": "$forms:spacing-md",
+              "gap": "$y:spacing-md",
               "children": [
                 {
                   "type": "text",
@@ -521,13 +533,13 @@
                   "name": "subtitle",
                   "fill": "$y:sem-text-meta",
                   "content": "Manage your account and preferences.",
-                  "fontFamily": "Heebo",
-                  "fontSize": 14,
+                  "fontFamily": "$y:font-primary",
+                  "fontSize": "$y:text-size-sm",
                   "fontWeight": "normal"
                 },
                 {
                   "type": "frame",
-                  "id": "bejCF",
+                  "id": "PoOTt",
                   "name": "settingsMenu",
                   "width": "fill_container",
                   "layout": "vertical",
@@ -535,7 +547,7 @@
                   "children": [
                     {
                       "type": "frame",
-                      "id": "ujO10",
+                      "id": "wQgQJ",
                       "name": "Profile",
                       "width": "fill_container",
                       "fill": "$y:sem-background-surface",
@@ -551,21 +563,23 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "id": "dCu5D",
+                          "id": "s8HluJ",
                           "type": "ref",
                           "ref": "p:k5Ntnq",
                           "x": 24,
                           "y": 31,
+                          "fill": "$y:sem-btnInkBg",
                           "descendants": {
                             "p:yGc18": {
                               "library": "lucide",
-                              "icon": "user"
+                              "icon": "user",
+                              "fill": "$y:sem-btnInkText"
                             }
                           }
                         },
                         {
                           "type": "frame",
-                          "id": "X4W7j",
+                          "id": "TG47x",
                           "name": "textGroup",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -573,7 +587,7 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "ofESL",
+                              "id": "f91bV",
                               "name": "profileTitle",
                               "fill": "$y:sem-text-body",
                               "content": "Profile",
@@ -583,7 +597,7 @@
                             },
                             {
                               "type": "text",
-                              "id": "R9wiS9",
+                              "id": "sGGPj",
                               "name": "profileDesc",
                               "fill": "$y:sem-text-meta",
                               "textGrowth": "fixed-width",
@@ -597,18 +611,19 @@
                         },
                         {
                           "type": "icon",
-                          "id": "fMuPE",
+                          "id": "y6tRWi",
                           "name": "profileChevron",
                           "width": 20,
                           "height": 20,
                           "icon": "chevron-right",
                           "library": "lucide",
-                          "fill": "$y:sem-text-meta"
+                          "fill": "$y:sem-icons-action"
                         }
                       ]
                     },
                     {
                       "type": "frame",
+                      "id": "RYQaV",
                       "name": "Accounts",
                       "width": "fill_container",
                       "fill": "$y:sem-background-surface",
@@ -624,18 +639,22 @@
                       "alignItems": "center",
                       "children": [
                         {
+                          "id": "wspXP",
                           "type": "ref",
                           "ref": "p:k5Ntnq",
                           "name": "accountsIcon",
+                          "fill": "$y:sem-btnInkBg",
                           "descendants": {
                             "p:yGc18": {
                               "library": "lucide",
-                              "icon": "wallet"
+                              "icon": "wallet",
+                              "fill": "$y:sem-btnInkText"
                             }
                           }
                         },
                         {
                           "type": "frame",
+                          "id": "n1Lh5",
                           "name": "textGroup",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -643,6 +662,7 @@
                           "children": [
                             {
                               "type": "text",
+                              "id": "uSS5O",
                               "name": "accountsTitle",
                               "fill": "$y:sem-text-body",
                               "content": "Accounts",
@@ -652,6 +672,7 @@
                             },
                             {
                               "type": "text",
+                              "id": "Wtg6y",
                               "name": "accountsDesc",
                               "fill": "$y:sem-text-meta",
                               "textGrowth": "fixed-width",
@@ -665,18 +686,19 @@
                         },
                         {
                           "type": "icon",
+                          "id": "X3n9ej",
                           "name": "accountsChevron",
                           "width": 20,
                           "height": 20,
                           "icon": "chevron-right",
                           "library": "lucide",
-                          "fill": "$y:sem-text-meta"
+                          "fill": "$y:sem-icons-action"
                         }
                       ]
                     },
                     {
                       "type": "frame",
-                      "id": "i9Y06",
+                      "id": "IHxNW",
                       "name": "Contact Us",
                       "width": "fill_container",
                       "fill": "$y:sem-background-surface",
@@ -692,21 +714,23 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "id": "tjR99",
+                          "id": "xzReu",
                           "type": "ref",
                           "ref": "p:k5Ntnq",
                           "x": 24,
                           "y": 21.5,
+                          "fill": "$y:sem-btnInkBg",
                           "descendants": {
                             "p:yGc18": {
                               "library": "lucide",
-                              "icon": "mail"
+                              "icon": "mail",
+                              "fill": "$y:sem-btnInkText"
                             }
                           }
                         },
                         {
                           "type": "frame",
-                          "id": "FX3zW",
+                          "id": "XHEZH",
                           "name": "textGroup",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -714,7 +738,7 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "S0WZ7",
+                              "id": "f1wSz",
                               "name": "contactTitle",
                               "fill": "$y:sem-text-body",
                               "content": "Contact Us",
@@ -724,7 +748,7 @@
                             },
                             {
                               "type": "text",
-                              "id": "Ey8az",
+                              "id": "X0ulI",
                               "name": "contactDesc",
                               "fill": "$y:sem-text-meta",
                               "textGrowth": "fixed-width",
@@ -738,13 +762,13 @@
                         },
                         {
                           "type": "icon",
-                          "id": "hoHBm",
+                          "id": "KTgJn",
                           "name": "contactChevron",
                           "width": 20,
                           "height": 20,
                           "icon": "chevron-right",
                           "library": "lucide",
-                          "fill": "$y:sem-text-meta"
+                          "fill": "$y:sem-icons-action"
                         }
                       ]
                     }
