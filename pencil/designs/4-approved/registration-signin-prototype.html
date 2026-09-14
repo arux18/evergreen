@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evergreen.ai — Registration &amp; sign-in split prototype</title>
+  <meta name="description" content="Local review prototype for Evergreen.ai registration and sign-in (register/sign-in split, light/dark).">
+  <script>
+    // Apply theme before first paint: ?theme param → sessionStorage.egTheme → system preference.
+    (function () {
+      try {
+        var params = new URLSearchParams(location.search);
+        var param = params.get("theme");
+        var pref = (param === "light" || param === "dark" || param === "system") ? param : null;
+        if (!pref) {
+          try { pref = sessionStorage.getItem("egTheme"); } catch (e) { pref = null; }
+        }
+        var effective = pref;
+        if (effective !== "light" && effective !== "dark") {
+          effective = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = effective;
+      } catch (e) { /* default light via CSS */ }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600&family=Manrope:wght@400&family=Noto+Serif:wght@400;600&family=Spectral:ital,wght@1,300&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Tokens ---------- */
+    :root {
+      color-scheme: light;
+
+      /* Hemlock light theme (sem-* tokens, "O:🎨 Colors: Light") */
+      --bg-page: #F7F5F0;        /* sem-background-main / taupe-100 */
+      --bg-card: #FFFFFF;        /* sem-background-surface / base-white */
+      --bg-elevated: #FFFFFF;    /* sem-background-elevated / base-white */
+      --bg-header: #0E0E0E;      /* gray-900 (header is dark in both themes) */
+      --bg-subtle: #EEEDEB;      /* sem-background-subtle / gray-100 */
+      --text-primary: #0E0E0E;   /* sem-text-header / gray-900 */
+      --text-secondary: #403D3A; /* sem-text-body / gray-700 */
+      --text-tertiary: #716E6A;  /* sem-text-placeholder / gray-500 */
+      --border-card: #DCD8CB;    /* sem-borders-dark / taupe-350 */
+      --border-input: #C0BAB2;   /* sem-borders-strong / gray-250 */
+      --border-input-hover: #8A8680; /* sem-borders-hover / gray-400 */
+      --accent: #3A6AF8;         /* sem-text-action / blue-600 */
+      --accent-hover: #2952CC;   /* sem-btnLinkTextHover / blue-700 */
+      --focus-ring: rgba(58, 106, 248, 0.16);
+      --error-ring: rgba(200, 35, 32, 0.12);
+      --cta-bg: #0E0E0E;         /* sem-btnInkBg / gray-900 */
+      --cta-bg-hover: #2D2926;   /* gray-800 */
+      --cta-text: #FFFFFF;       /* sem-btnInkText / base-white */
+      --btn-secondary-border: #D5D3D0; /* sem-borders-muted / gray-200 */
+      --trust: #295240;
+      --gold: #C9A84C;
+      --error: #C82320;          /* sem-text-error / red-600 */
+      --error-bg: #FFEAEA;       /* sem-background-error / red-50 */
+      --error-border: #FED5D4;   /* sem-borders-error-subtle / red-100 */
+      --success: #10642B;        /* sem-text-success-title / green-600 */
+      --success-bg: #E9FFF0;     /* sem-background-success / green-50 */
+      --success-border: #A9FDC4; /* sem-borders-success / green-100 */
+      --warning: #C85F1A;        /* sem-text-warning-title / orange-600 */
+      --warning-bg: #FFF1E9;     /* sem-background-warning / orange-50 */
+      --warning-border: #FEE4D2; /* sem-borders-warning / orange-100 */
+      --shadow-card: 0 24px 64px rgba(50, 44, 32, 0.08), 0 3px 12px rgba(50, 44, 32, 0.05);
+      --page-glow: rgba(213, 208, 193, 0.26);
+      --chart-grid: #D4CFC4;   /* sem-chartNeutral1 */
+      --chart-area-top: rgba(58, 106, 248, 0.13);  /* sem-chartAreaActionTop */
+      --chart-area-bottom: rgba(58, 106, 248, 0.01); /* sem-chartAreaActionBottom */
+      --header-border: rgba(255, 255, 255, 0.08);
+
+      /* Header chrome (header is dark in both themes) */
+      --header-icon: #F5F4F1;
+      --header-btn-border: rgba(255, 255, 255, 0.18);
+      --header-btn-hover: rgba(255, 255, 255, 0.09);
+
+      /* Review-panel chrome (prototype-only, dark in both themes) */
+      --panel-bg: rgba(14, 14, 14, 0.97);
+      --panel-text: #FFFFFF;
+      --panel-muted: #B5B1AB;
+      --panel-label: #D5D3D0;
+      --panel-border: rgba(255, 255, 255, 0.12);
+      --panel-field-bg: #2D2926;
+      --panel-field-border: #5E5954;
+      --panel-divider: #403D3A;
+      --panel-shadow: 0 18px 60px rgba(0, 0, 0, 0.3);
+      --review-toggle-border: rgba(255, 255, 255, 0.16);
+      --review-toggle-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+
+      --serif: "Noto Serif", Georgia, serif;
+      --sans: "Heebo", system-ui, -apple-system, sans-serif;
+      --radius-sm: 10px;
+      --radius-lg: 24px;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Hemlock dark theme — midnight/navy based (sem-* tokens, "O:🎨 Colors: Dark") */
+    html[data-theme="dark"] {
+      color-scheme: dark;
+
+      --bg-page: #101729;        /* sem-background-main / navy-800 */
+      --bg-card: #131C31;        /* sem-background-surface / navy-700 */
+      --bg-elevated: #18223A;    /* sem-background-elevated / navy-600 */
+      --bg-header: #090E1B;      /* sem-navBg / navy-950 */
+      --bg-subtle: #131C31;      /* navy-700 — recessed against the elevated card */
+      --text-primary: #D8E1F0;   /* sem-text-header / navylight-800 */
+      --text-secondary: #B3C1DB; /* sem-text-body / navylight-600 */
+      --text-tertiary: #697DA0;  /* sem-text-meta / navylight-300 */
+      --border-card: #22314F;    /* sem-borders-dark / navy-300 */
+      --border-input: #33476E;   /* sem-borders-strong / navy-50 */
+      --border-input-hover: #52637F; /* navylight-200 */
+      --accent: #7094FB;         /* sem-btnLinkText / blue-400 */
+      --accent-hover: #A5BCFC;   /* sem-btnLinkTextHover / blue-300 */
+      --focus-ring: rgba(112, 148, 251, 0.35); /* sem-borders-focus #7094FB59 */
+      --error-ring: rgba(248, 113, 113, 0.16);
+      --cta-bg: #D8E1F0;         /* sem-btnInkBg */
+      --cta-bg-hover: #E9EEF7;   /* navylight-900 */
+      --cta-text: #22314F;       /* sem-btnInkText / navy-300 */
+      --btn-secondary-border: #33476E; /* sem-btnSecondaryBorder / navy-50 */
+      --trust: #74D791;          /* green-350-muted */
+      --gold: #D9BC6B;
+      --error: #F87171;          /* sem-text-error / red-350 */
+      --error-bg: #3A1B1E;       /* sem-background-error / reddark-200 */
+      --error-border: #542427;   /* sem-borders-error-subtle / reddark-100 */
+      --success: #4ADE80;        /* sem-text-success-title / green-350 */
+      --success-bg: #12291C;     /* sem-background-success / greendark-300 */
+      --success-border: #245234; /* sem-borders-success / greendark-100 */
+      --warning: #FB924D;        /* sem-text-warning-title / orange-400 */
+      --warning-bg: #33200F;     /* sem-background-warning / orangedark-300 */
+      --warning-border: #5E3A18; /* sem-borders-warning / orangedark-100 */
+      --shadow-card: 0 24px 64px rgba(0, 0, 0, 0.5), 0 3px 12px rgba(0, 0, 0, 0.35);
+      --page-glow: rgba(112, 148, 251, 0.06);
+      --chart-grid: #22314F;   /* sem-chartNeutral1 */
+      --chart-area-top: rgba(112, 148, 251, 0.15); /* sem-chartAreaActionTop */
+      --chart-area-bottom: rgba(112, 148, 251, 0.01); /* sem-chartAreaActionBottom */
+      --header-border: rgba(255, 255, 255, 0.08);
+    }
+
+    /* ---------- Base ---------- */
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--bg-page); }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text-primary);
+      background:
+        radial-gradient(circle at 8% 14%, var(--page-glow), transparent 29rem),
+        var(--bg-page);
+      font: 400 16px/1.5 var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: var(--accent-hover); }
+    [hidden] { display: none !important; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      background: var(--bg-header);
+      border-bottom: 1px solid var(--header-border);
+    }
+
+    .site-header__inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: baseline;
+      color: #FFFFFF;
+      line-height: 1;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .wordmark__main {
+      font-family: "Manrope", var(--sans);
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -0.3px;
+    }
+    .wordmark__suffix {
+      font-family: "Spectral", var(--serif);
+      font-size: 24px;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .theme-toggle {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      color: var(--header-icon);
+      background: transparent;
+      border: 1px solid var(--header-btn-border);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 150ms var(--ease), border-color 150ms var(--ease);
+    }
+    .theme-toggle:hover { background: var(--header-btn-hover); }
+    .theme-toggle svg {
+      width: 19px;
+      height: 19px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .theme-toggle .icon-sun { display: none; }
+    html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+    /* ---------- Page layout ---------- */
+    .page-shell {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 68px 0 56px;
+    }
+    body[data-mode="signin"] .page-shell { padding-top: 64px; }
+
+    /* Default: single centered card (otp / profile / success / redirect, and sign-in email). */
+    .auth-layout {
+      display: grid;
+      grid-template-columns: minmax(380px, 468px);
+      justify-content: center;
+      align-items: start;
+      column-gap: clamp(48px, 8vw, 112px);
+      row-gap: 0;
+    }
+    .story { display: none; }
+
+    body[data-mode="signin"][data-screen="email"] .auth-layout {
+      grid-template-columns: minmax(380px, 460px);
+    }
+
+    /* Register email screen: story left, card right. */
+    body[data-mode="register"][data-screen="email"] .auth-layout {
+      grid-template-columns: minmax(0, 1fr) minmax(380px, 468px);
+      justify-content: stretch;
+      align-items: center;
+      min-height: 540px;
+    }
+    body[data-mode="register"][data-screen="email"] .story {
+      display: block;
+      grid-column: 1;
+      grid-row: 1;
+    }
+    body[data-mode="register"][data-screen="email"] .auth-card {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    /* ---------- Story column (register only) ---------- */
+    .story {
+      max-width: 545px;
+      padding: 12px 0;
+    }
+
+    .story-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 18px;
+      color: var(--text-tertiary);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .story-eyebrow__rule {
+      flex: 0 0 auto;
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 1px;
+    }
+
+    .story-headline {
+      margin: 0 0 30px;
+      font: 600 clamp(29px, 3.3vw, 38px)/1.2 var(--serif);
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .value-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 13px;
+    }
+
+    .value-list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .value-icon {
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      margin-top: 2px;
+      color: var(--trust);
+    }
+    .value-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ---------- Story chart (register only) ---------- */
+    .story-chart {
+      margin-top: 26px;
+    }
+    .story-chart__plot {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+    .chart-grid {
+      stroke: var(--chart-grid);
+      stroke-width: 1;
+      opacity: 0;
+      animation: chart-fade 600ms var(--ease) 900ms forwards;
+    }
+    .chart-area {
+      opacity: 0;
+      animation: chart-fade 900ms var(--ease) 1650ms forwards;
+    }
+    .chart-line {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: chart-draw 1600ms var(--ease) 1050ms forwards;
+    }
+    .chart-dot {
+      fill: var(--accent);
+      stroke: var(--bg-page);
+      stroke-width: 2.5;
+      opacity: 0;
+      animation: chart-fade 400ms var(--ease) 2450ms forwards;
+    }
+    .chart-ping {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: chart-ping 4.2s var(--ease) 3.8s infinite;
+    }
+    .chart-stop-top { stop-color: var(--chart-area-top); }
+    .chart-stop-bottom { stop-color: var(--chart-area-bottom); }
+
+    @keyframes chart-draw { to { stroke-dashoffset: 0; } }
+    @keyframes chart-fade { to { opacity: 1; } }
+    @keyframes chart-ping {
+      0% { opacity: 0; transform: scale(1); }
+      12% { opacity: 0.35; }
+      55% { opacity: 0; transform: scale(3.2); }
+      100% { opacity: 0; transform: scale(3.2); }
+    }
+
+    /* ---------- Story entrance (register/email only) ---------- */
+    .story-eyebrow,
+    .story-headline,
+    .value-list li,
+    .story-chart {
+      animation: story-in 600ms var(--ease) both;
+    }
+    .story-eyebrow { animation-delay: 150ms; }
+    .story-headline { animation-delay: 250ms; }
+    .value-list li:nth-child(1) { animation-delay: 350ms; }
+    .value-list li:nth-child(2) { animation-delay: 450ms; }
+    .value-list li:nth-child(3) { animation-delay: 550ms; }
+    .story-chart { animation-delay: 680ms; }
+
+    @keyframes story-in {
+      from { opacity: 0; transform: translateX(-14px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ---------- Auth card ---------- */
+    .auth-card {
+      width: 100%;
+      min-height: 470px;
+      padding: clamp(28px, 4vw, 44px);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: screen-in 600ms var(--ease) 300ms both;
+    }
+    /* On the register/email split, the left column (RTBs) enters first; the card follows. */
+    body[data-mode="register"][data-screen="email"] .auth-card { animation-delay: 1200ms; }
+    body[data-mode="register"][data-screen="email"] .support--below { animation-delay: 1500ms; }
+
+    .step-kicker {
+      margin: 0 0 12px;
+      color: var(--text-tertiary);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      margin: 0;
+      font: 600 27px/1.25 var(--serif);
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .card-copy {
+      margin: 10px 0 28px;
+      color: var(--text-secondary);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+    .card-copy strong {
+      color: var(--text-primary);
+      font-weight: 500;
+      overflow-wrap: anywhere;
+    }
+
+    .field { margin-top: 24px; }
+    .field-label {
+      display: block;
+      margin: 0 0 8px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .field-input {
+      width: 100%;
+      height: 54px;
+      padding: 0 16px;
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border-input);
+      border-radius: var(--radius-sm);
+      outline: 0;
+      font-size: 16px;
+      transition: border-color 150ms var(--ease), box-shadow 150ms var(--ease);
+    }
+
+    .field-input::placeholder { color: var(--text-tertiary); }
+    .field-input:hover { border-color: var(--border-input-hover); }
+    .field-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--focus-ring);
+    }
+    .field-input[aria-invalid="true"] {
+      border-color: var(--error);
+      box-shadow: 0 0 0 3px var(--error-ring);
+    }
+
+    .field-input--readonly,
+    .field-input--readonly:hover {
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      border-color: var(--border-card);
+      cursor: default;
+    }
+    .field-input--readonly:focus {
+      border-color: var(--border-input-hover);
+      box-shadow: none;
+    }
+
+    .field-error {
+      margin: 8px 0 0;
+      color: var(--error);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .name-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .name-row .field { margin-top: 0; }
+
+    .terms { margin-top: 22px; }
+    .terms-label {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.55;
+      cursor: pointer;
+    }
+    .terms-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin: 1px 0 0;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .terms-label input[type="checkbox"]:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .terms-label input[type="checkbox"][aria-invalid="true"] {
+      outline: 2px solid var(--error);
+      outline-offset: 2px;
+    }
+
+    /* ---------- Buttons ---------- */
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      border: 0;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: transform 120ms var(--ease), background 150ms var(--ease), opacity 150ms var(--ease);
+    }
+
+    .button:focus-visible,
+    .text-button:focus-visible,
+    .theme-toggle:focus-visible,
+    .review-toggle:focus-visible,
+    .review-panel select:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .button:hover:not(:disabled) { transform: translateY(-1px); }
+    .button:active:not(:disabled) { transform: translateY(0); }
+    .button:disabled { cursor: not-allowed; opacity: 0.48; }
+
+    .button--primary {
+      width: 100%;
+      margin-top: 18px;
+      color: var(--cta-text);
+      background: var(--cta-bg);
+    }
+    .button--primary:hover:not(:disabled) { background: var(--cta-bg-hover); }
+
+    .button--secondary {
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--btn-secondary-border);
+    }
+    .button--secondary:hover:not(:disabled) { border-color: var(--border-input-hover); }
+
+    .mode-switch {
+      margin: 18px 0 0;
+      color: var(--text-secondary);
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+    }
+    .mode-switch a { font-weight: 500; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .spinner {
+      width: 17px;
+      height: 17px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: spin 700ms linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---------- Messages ---------- */
+    .message {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0 0;
+      padding: 10px 12px;
+      border: 1px solid;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .message.is-visible { display: flex; }
+    .message__icon {
+      flex: 0 0 18px;
+      width: 18px;
+      height: 18px;
+      display: grid;
+      place-items: center;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .message__body { flex: 1; }
+    .message__body strong { display: block; font-weight: 600; }
+    .message__body > span:not(:empty) { display: block; margin-top: 2px; }
+    .message-action {
+      min-height: 36px;
+      margin-top: 4px;
+      padding: 0;
+    }
+    .message--error { color: var(--error); background: var(--error-bg); border-color: var(--error-border); }
+    .message--warning { color: var(--warning); background: var(--warning-bg); border-color: var(--warning-border); }
+    .message--success { color: var(--success); background: var(--success-bg); border-color: var(--success-border); }
+
+    /* ---------- Card extras ---------- */
+    .security-note {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--text-tertiary);
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.45;
+    }
+    .security-note svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      fill: none;
+      stroke: var(--trust);
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .support {
+      margin: 24px 0 0;
+      color: var(--text-tertiary);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 300;
+    }
+
+    /* Support line lives below the card, out of the action path. */
+    .support--below { margin: 16px 0 0; animation: fade-in 600ms var(--ease) 600ms both; }
+    .support--below a { color: var(--text-tertiary); }
+    .support--below a:hover { color: var(--text-secondary); }
+    body[data-mode="register"][data-screen="email"] .support--below {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    body[data-screen="success"] .support--below,
+    body[data-screen="redirect"] .support--below { display: none; }
+
+    /* ---------- OTP ---------- */
+    .otp-delivery {
+      margin-bottom: 0;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .otp-delivery + #otpForm .otp-group { margin-top: 12px; }
+
+    .text-button {
+      min-height: 44px;
+      padding: 0 4px;
+      color: var(--accent);
+      background: none;
+      border: 0;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .text-button:hover:not(:disabled) { color: var(--accent-hover); }
+    .text-button:disabled { color: var(--text-tertiary); cursor: not-allowed; text-decoration: none; }
+
+    .otp-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 22px 0 0;
+    }
+
+    .otp-digit {
+      min-width: 0;
+      width: 54px;
+      height: 58px;
+      padding: 0;
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border-input);
+      border-radius: var(--radius-sm);
+      outline: 0;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 500;
+      -moz-appearance: textfield;
+      transition: border-color 150ms var(--ease), box-shadow 150ms var(--ease);
+    }
+    .otp-digit::-webkit-inner-spin-button,
+    .otp-digit::-webkit-outer-spin-button { margin: 0; -webkit-appearance: none; }
+    .otp-digit:hover:not(:disabled) { border-color: var(--border-input-hover); }
+    .otp-digit:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--focus-ring);
+    }
+    .otp-digit[aria-invalid="true"] {
+      border-color: var(--error);
+      background: var(--error-bg);
+    }
+
+    .otp-actions {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .resend-status {
+      min-height: 20px;
+      margin: 4px 0 0;
+      color: var(--success);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .resend-status:empty { display: none; }
+
+    .verification-status {
+      min-height: 20px;
+      margin: 8px 0 0;
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .verification-status:empty { display: none; }
+
+    /* ---------- Screens ---------- */
+    .screen { animation: screen-in 600ms var(--ease) 300ms both; }
+    @keyframes screen-in {
+      from { opacity: 0; transform: translateX(14px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .status-screen {
+      min-height: 375px;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .status-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      color: var(--success);
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      font-size: 24px;
+      font-weight: 500;
+    }
+    .status-icon--error {
+      color: var(--error);
+      background: var(--error-bg);
+      border-color: var(--error-border);
+    }
+    .status-title {
+      margin: 0;
+      font: 600 27px/1.25 var(--serif);
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    .status-title:focus { outline: 0; }
+    .status-copy {
+      max-width: 310px;
+      margin: 10px 0 22px;
+      color: var(--text-secondary);
+      font-size: 15px;
+      font-weight: 300;
+    }
+
+    /* ---------- Disclosure ---------- */
+    .disclosure {
+      margin-top: 64px;
+      padding: 28px 0 8px;
+      border-top: 1px solid var(--border-card);
+    }
+
+    .disclosure__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .disclosure p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* Disclosure sits on the page background; --accent-hover keeps link contrast ≥ 4.5:1 there. */
+    .disclosure a { color: var(--accent-hover); }
+    .disclosure a:hover { color: var(--accent-hover); }
+
+    .disclosure__address {
+      margin: 16px auto 0 !important;
+      padding-top: 16px;
+      max-width: 960px;
+      border-top: 1px solid var(--border-card);
+    }
+
+    /* ---------- Review panel (prototype chrome) ---------- */
+    .review-toggle {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      min-height: 42px;
+      padding: 9px 15px;
+      color: var(--panel-text);
+      background: var(--panel-bg);
+      border: 1px solid var(--review-toggle-border);
+      border-radius: 999px;
+      box-shadow: var(--review-toggle-shadow);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .review-panel {
+      position: fixed;
+      right: 18px;
+      bottom: 70px;
+      z-index: 20;
+      width: min(330px, calc(100vw - 36px));
+      max-height: calc(100vh - 100px);
+      overflow: auto;
+      padding: 18px;
+      color: var(--panel-text);
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      box-shadow: var(--panel-shadow);
+    }
+    .review-panel h2 { margin: 0 0 4px; font-size: 15px; font-weight: 600; }
+    .review-panel p { margin: 0 0 14px; color: var(--panel-muted); font-size: 12px; }
+    .review-field { display: grid; gap: 5px; margin-top: 12px; }
+    .review-field label { color: var(--panel-label); font-size: 11px; font-weight: 500; }
+    .review-panel select {
+      width: 100%;
+      min-height: 38px;
+      padding: 7px 10px;
+      color: var(--panel-text);
+      background: var(--panel-field-bg);
+      border: 1px solid var(--panel-field-border);
+      border-radius: 8px;
+      outline: 0;
+      font-size: 12px;
+    }
+    .review-hint {
+      margin-top: 14px !important;
+      padding-top: 12px;
+      border-top: 1px solid var(--panel-divider);
+      line-height: 1.5;
+    }
+    /* Visible flow switcher for shared reviews. */
+    .flow-switch {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 20;
+      display: flex;
+      gap: 4px;
+      padding: 4px;
+      background: #0E0E0E;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    }
+    .flow-switch button {
+      min-height: 34px;
+      padding: 6px 14px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: #B5B1AB;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 150ms var(--ease), color 150ms var(--ease);
+    }
+    .flow-switch button:hover { color: #FFFFFF; }
+    .flow-switch button[aria-pressed="true"] {
+      background: #FFFFFF;
+      color: #0E0E0E;
+    }
+    .flow-switch button:focus-visible { outline: 2px solid #7094FB; outline-offset: 2px; }
+
+    body.is-capture .review-toggle,
+    body.is-capture .flow-switch,
+    body.is-capture .review-panel { display: none !important; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .page-shell,
+      body[data-mode="signin"] .page-shell { padding-top: 44px; }
+      .auth-layout,
+      body[data-mode="signin"][data-screen="email"] .auth-layout,
+      body[data-mode="register"][data-screen="email"] .auth-layout {
+        grid-template-columns: minmax(0, 620px);
+        justify-content: center;
+        align-items: start;
+        gap: 36px;
+        min-height: 0;
+      }
+      /* Story (RTBs) first, card below — read the pitch, then sign up. */
+      body[data-mode="register"][data-screen="email"] .story { grid-column: auto; grid-row: 1; }
+      body[data-mode="register"][data-screen="email"] .auth-card { grid-column: auto; grid-row: 2; }
+      body[data-mode="register"][data-screen="email"] .support--below { grid-column: auto; grid-row: 3; }
+      .story { max-width: 620px; padding: 0; }
+      .story-headline { margin-bottom: 22px; }
+      .auth-card { max-width: 620px; min-height: 0; }
+      .disclosure__grid { grid-template-columns: 1fr; gap: 12px; }
+    }
+
+    @media (max-width: 560px) {
+      .site-header { height: 60px; }
+      .site-header__inner, .page-shell { width: min(100% - 28px, 1120px); }
+      .page-shell,
+      body[data-mode="signin"] .page-shell { padding: 34px 0 40px; }
+      .theme-toggle { width: 38px; height: 38px; }
+      .story { padding: 0; }
+      .value-list { gap: 12px; }
+      .value-list li { grid-template-columns: 22px 1fr; gap: 10px; font-size: 13px; }
+      .story-chart { margin-top: 22px; }
+      .auth-card { padding: 26px 20px; border-radius: 18px; }
+      .card-title, .status-title { font-size: 24px; }
+      .name-row { grid-template-columns: 1fr; gap: 0; }
+      .name-row .field + .field { margin-top: 20px; }
+      .otp-group { gap: 6px; }
+      .otp-digit { width: calc((100% - 30px) / 6); height: 52px; font-size: 20px; }
+      .disclosure { margin-top: 44px; padding-top: 24px; }
+      body[data-screen="otp"] .page-shell { padding-top: 20px; }
+      .review-toggle { top: 9px; right: 62px; bottom: auto; min-height: 40px; }
+      .review-panel {
+        top: 58px;
+        right: 12px;
+        bottom: auto;
+        width: calc(100vw - 24px);
+        max-height: calc(100vh - 70px);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .auth-card { padding-inline: 14px; }
+      .otp-group { gap: 4px; }
+      .otp-digit { width: calc((100% - 20px) / 6); }
+    }
+
+    @media (max-width: 354px) {
+      .otp-group { gap: 1px; }
+      .otp-digit { width: 48px; flex: 0 0 48px; }
+    }
+
+    @media (max-width: 340px) {
+      .site-header__inner,
+      .page-shell { width: calc(100% - 8px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-delay: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body data-mode="register" data-screen="email">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <span class="wordmark" role="img" aria-label="Evergreen.ai"><span class="wordmark__main">evergreen</span><span class="wordmark__suffix">.ai</span></span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"></path>
+        </svg>
+      </button>
+      <span class="sr-only" id="themeStatus" role="status" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="auth-layout">
+      <section class="auth-card" id="authCard" aria-label="Register or sign in">
+        <div class="screen" id="emailScreen">
+          <p class="step-kicker" id="emailKicker">Get started</p>
+          <h1 class="card-title" id="emailTitle">Create your account</h1>
+          <p class="card-copy" id="emailCopy">We&rsquo;ll email you a six-digit code &mdash; no password to remember.</p>
+          <form id="emailForm" novalidate>
+            <div class="field">
+              <label class="field-label" for="email">Email address</label>
+              <input class="field-input" id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com">
+              <div class="message message--error" id="emailMessage" role="alert">
+                <span class="message__icon" aria-hidden="true">!</span>
+                <span class="message__body"><strong id="emailMessageTitle"></strong><span id="emailMessageCopy"></span></span>
+              </div>
+            </div>
+            <button class="button button--primary" id="emailSubmit" type="submit">
+              <span class="button-label">Continue</span>
+            </button>
+            <p class="sr-only" id="emailStatus" role="status" aria-live="polite"></p>
+          </form>
+          <p class="mode-switch"><span id="modeSwitchPrompt">Already have an account?</span> <a href="?mode=signin" id="modeSwitchLink">Sign in</a></p>
+          <div class="security-note" aria-label="Account security">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 5 6v5c0 4.6 2.8 8.2 7 10 4.2-1.8 7-5.4 7-10V6l-7-3Z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <span>Your financial data is encrypted in transit and at rest.</span>
+          </div>
+        </div>
+
+        <div class="screen" id="otpScreen" hidden>
+          <p class="step-kicker">Check your email</p>
+          <h1 class="card-title" id="otpTitle">Enter your code</h1>
+          <p class="card-copy otp-delivery">We sent a six-digit code to <strong id="otpCopyEmail">you@example.com</strong>.</p>
+          <form id="otpForm" novalidate>
+            <div class="otp-group" id="otpGroup" role="group" aria-label="Six-digit verification code">
+              <input class="otp-digit" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" aria-label="Digit 1">
+              <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2">
+              <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+              <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+              <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5">
+              <input class="otp-digit" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6">
+            </div>
+            <div class="message message--error" id="otpMessage" role="alert">
+              <span class="message__icon" aria-hidden="true">!</span>
+              <span class="message__body">
+                <strong id="otpMessageTitle"></strong>
+                <span id="otpMessageCopy"></span>
+                <button class="text-button message-action" id="retryOtp" type="button" hidden>Try again</button>
+              </span>
+            </div>
+            <div class="otp-actions">
+              <button class="text-button" id="editEmail" type="button">Edit email</button>
+              <button class="text-button" id="resendButton" type="button" disabled>Resend code in 1:00</button>
+            </div>
+            <p class="resend-status" id="resendStatus" role="status" aria-live="polite"></p>
+            <p class="verification-status" id="verificationStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="screen" id="profileScreen" hidden>
+          <p class="step-kicker">Last step</p>
+          <h1 class="card-title">Finish signing up</h1>
+          <p class="card-copy">Add your name to complete your account.</p>
+          <form id="profileForm" novalidate>
+            <div class="field">
+              <label class="field-label" for="profileEmail">Email address</label>
+              <input class="field-input field-input--readonly" id="profileEmail" type="email" readonly aria-label="Email address" value="you@example.com" tabindex="-1">
+            </div>
+            <div class="name-row">
+              <div class="field">
+                <label class="field-label" for="firstName">First name</label>
+                <input class="field-input" id="firstName" name="given-name" type="text" autocomplete="given-name">
+                <p class="field-error" id="firstNameError" hidden>Enter your first name.</p>
+              </div>
+              <div class="field">
+                <label class="field-label" for="lastName">Last name</label>
+                <input class="field-input" id="lastName" name="family-name" type="text" autocomplete="family-name">
+                <p class="field-error" id="lastNameError" hidden>Enter your last name.</p>
+              </div>
+            </div>
+            <div class="terms">
+              <label class="terms-label" for="termsCheckbox">
+                <input type="checkbox" id="termsCheckbox">
+                <span>By continuing, I agree to Evergreen's <a href="https://support.eg-dev.ai/hc/en-us/articles/50145665922836" target="_blank" rel="noopener">Terms of Use</a> and <a href="https://support.eg-dev.ai/hc/en-us/articles/50145735618452" target="_blank" rel="noopener">General Privacy Policy</a>, which includes the Biometric Data Policy.</span>
+              </label>
+              <p class="field-error" id="termsError" hidden>Agree to the terms to continue.</p>
+            </div>
+            <div class="message message--error" id="profileMessage" role="alert">
+              <span class="message__icon" aria-hidden="true">!</span>
+              <span class="message__body"><strong>Couldn&rsquo;t finish signing up. Try again.</strong></span>
+            </div>
+            <button class="button button--primary" id="profileSubmit" type="submit">
+              <span class="button-label">Continue</span>
+            </button>
+            <p class="sr-only" id="profileStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="screen status-screen" id="successScreen" role="status" aria-live="polite" hidden>
+          <div class="status-icon" aria-hidden="true">✓</div>
+          <h1 class="status-title" id="successTitle" tabindex="-1">You&rsquo;re signed in</h1>
+          <p class="status-copy" id="successCopy">Taking you to Evergreen.ai.</p>
+        </div>
+
+        <div class="screen status-screen" id="redirectErrorScreen" role="alert" hidden>
+          <div class="status-icon status-icon--error" aria-hidden="true">!</div>
+          <h1 class="status-title">You&rsquo;re signed in</h1>
+          <p class="status-copy">We could not open your destination. Try again or continue to Evergreen.ai.</p>
+          <button class="button button--secondary" id="retryRedirect" type="button">Try returning again</button>
+          <button class="text-button" id="goToEvergreen" type="button">Go to Evergreen.ai</button>
+        </div>
+      </section>
+
+      <p class="support support--below">Questions? <a href="mailto:clientservice@evergreen.ai">Contact Client Service</a>.</p>
+
+      <section class="story" aria-label="Account benefits">
+        <p class="story-eyebrow"><span class="story-eyebrow__rule" aria-hidden="true"></span>Your Evergreen.ai account</p>
+        <h2 class="story-headline">Keep your financial picture in one place.</h2>
+        <ul class="value-list" aria-label="What your Evergreen.ai account keeps">
+          <li><span class="value-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></svg></span><span>Save the details you share and pick up where you left off.</span></li>
+          <li><span class="value-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></svg></span><span>Unlock a personal dashboard built on your financial picture.</span></li>
+          <li><span class="value-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></svg></span><span>Connect through Plaid to see balances and holdings in one view.</span></li>
+        </ul>
+
+        <div class="story-chart" role="img" aria-label="Illustrative portfolio growth chart">
+          <svg class="story-chart__plot" viewBox="0 0 520 160" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="storyChartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop class="chart-stop-top" offset="0"/>
+                <stop class="chart-stop-bottom" offset="1"/>
+              </linearGradient>
+            </defs>
+            <line class="chart-grid" x1="0" y1="30" x2="520" y2="30"/>
+            <line class="chart-grid" x1="0" y1="62" x2="520" y2="62"/>
+            <line class="chart-grid" x1="0" y1="94" x2="520" y2="94"/>
+            <line class="chart-grid" x1="0" y1="126" x2="520" y2="126"/>
+            <path class="chart-area" d="M4 128C24 125 44 119 64 115C84 111 98 118 116 122C134 126 152 109 172 101C192 93 212 103 232 106C252 109 270 90 292 82C314 74 332 85 352 88C372 91 392 68 414 59C436 50 456 44 476 40C492 37 502 37 508 36L508 158L4 158Z" fill="url(#storyChartFill)"/>
+            <path class="chart-line" pathLength="100" d="M4 128C24 125 44 119 64 115C84 111 98 118 116 122C134 126 152 109 172 101C192 93 212 103 232 106C252 109 270 90 292 82C314 74 332 85 352 88C372 91 392 68 414 59C436 50 456 44 476 40C492 37 502 37 508 36"/>
+            <circle class="chart-ping" cx="508" cy="36" r="4.5"/>
+            <circle class="chart-dot" cx="508" cy="36" r="4.5"/>
+          </svg>
+        </div>
+      </section>
+    </div>
+
+    <footer class="disclosure" aria-label="Legal disclosures">
+      <div class="disclosure__grid">
+        <p>Evergreen.ai is a service offered by Evergreen Wealth Advisors, an SEC-registered investment adviser. It provides financial advice based on information you provide and accounts you choose to link, and is self-service: you ask questions, and the platform responds based on the information available at that time. It does not monitor your accounts between sessions, and use of Evergreen.ai does not by itself create an investment advisory relationship with Evergreen Wealth Advisors.</p>
+        <p>Use of Evergreen.ai is not a substitute for advice from a licensed financial professional, attorney, or CPA. Consult a qualified professional before making significant financial decisions. Nothing herein should be construed as an offer, recommendation, or solicitation to buy or sell any security. All investing involves risk, including the possible loss of principal, and past performance does not guarantee future results.</p>
+        <p>By using this website and Evergreen.ai you understand the information being presented is provided for informational purposes only and agree to our <a href="https://support.eg-dev.ai/hc/en-us/articles/50145665922836">Terms of Use</a> and <a href="https://support.eg-dev.ai/hc/en-us/articles/50145735618452">Privacy Policy</a>.</p>
+      </div>
+      <p class="disclosure__address">5540 Centerview Dr Ste 204, PMB 48153 • Raleigh, NC 27606</p>
+    </footer>
+  </main>
+
+  <div class="flow-switch" role="group" aria-label="Prototype flow switcher">
+    <button type="button" id="flowRegister" aria-pressed="true">Registration</button>
+    <button type="button" id="flowSignin" aria-pressed="false">Sign in</button>
+  </div>
+
+  <button class="review-toggle" id="reviewToggle" type="button" aria-expanded="false" aria-controls="reviewPanel">Review states</button>
+  <aside class="review-panel" id="reviewPanel" aria-label="Prototype review controls" hidden>
+    <h2>Prototype controls</h2>
+    <p>Local review only. These controls are not part of the proposed product UI.</p>
+    <div class="review-field">
+      <label for="modeSelect">Mode</label>
+      <select id="modeSelect">
+        <option value="register">Register</option>
+        <option value="signin">Sign in</option>
+      </select>
+    </div>
+    <div class="review-field">
+      <label for="themeSelect">Theme</label>
+      <select id="themeSelect">
+        <option value="system">System</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+    <div class="review-field">
+      <label for="userTypeSelect">User type</label>
+      <select id="userTypeSelect">
+        <option value="auto">Auto (by mode)</option>
+        <option value="new">New</option>
+        <option value="returning">Returning</option>
+      </select>
+    </div>
+    <div class="review-field">
+      <label for="screenSelect">Screen</label>
+      <select id="screenSelect">
+        <option value="email">Email</option>
+        <option value="otp">OTP</option>
+        <option value="profile">Profile</option>
+        <option value="success">Success</option>
+        <option value="redirect">Redirect failure</option>
+      </select>
+    </div>
+    <div class="review-field">
+      <label for="emailStateSelect">Email state</label>
+      <select id="emailStateSelect">
+        <option value="none">Default</option>
+        <option value="empty">Empty address</option>
+        <option value="invalid">Invalid address</option>
+        <option value="send">Code send failed</option>
+        <option value="offline">Offline</option>
+        <option value="timeout">Request timed out</option>
+        <option value="loading">Sending code</option>
+      </select>
+    </div>
+    <div class="review-field">
+      <label for="otpStateSelect">OTP state</label>
+      <select id="otpStateSelect">
+        <option value="none">Default</option>
+        <option value="incomplete">Incomplete code</option>
+        <option value="incorrect">Incorrect code</option>
+        <option value="expired">Expired code</option>
+        <option value="attempts">Too many attempts</option>
+        <option value="resend">Resend failed</option>
+        <option value="offline">Offline</option>
+        <option value="server">Server unavailable</option>
+        <option value="verifying">Verifying</option>
+      </select>
+    </div>
+    <div class="review-field">
+      <label for="profileStateSelect">Profile state</label>
+      <select id="profileStateSelect">
+        <option value="none">Default</option>
+        <option value="first">First name empty</option>
+        <option value="last">Last name empty</option>
+        <option value="terms">Terms unchecked</option>
+        <option value="failed">Submit failed</option>
+        <option value="submitting">Submitting</option>
+      </select>
+    </div>
+    <p class="review-hint">Demo codes: <strong>123456</strong> success, <strong>000000</strong> incorrect, <strong>111111</strong> expired, <strong>999999</strong> too many attempts.</p>
+  </aside>
+
+  <script>
+    /* ---------- Strings (error strings verbatim from base) ---------- */
+    const EMAIL_ERRORS = {
+      empty: ["Enter your email address.", ""],
+      invalid: ["Use a valid email, like you@example.com.", ""],
+      send: ["Couldn’t send the code. Try again.", ""],
+      offline: ["You’re offline. Reconnect and try again.", ""],
+      timeout: ["Request timed out. Try again.", ""]
+    };
+
+    const OTP_ERRORS = {
+      incomplete: ["Enter all six digits.", ""],
+      incorrect: ["That code didn’t work. Try again.", ""],
+      expired: ["Code expired. Resend a new one.", ""],
+      attempts: ["Too many attempts. Try again in a few minutes.", ""],
+      resend: ["Couldn’t resend. Try again shortly.", ""],
+      offline: ["You’re offline. Reconnect and try again.", ""],
+      server: ["Verification unavailable. Try again shortly.", ""]
+    };
+
+    const MODE_COPY = {
+      register: {
+        kicker: "Get started",
+        title: "Create your account",
+        copy: "We\u2019ll email you a six-digit code \u2014 no password to remember.",
+        switchPrompt: "Already have an account?",
+        switchLabel: "Sign in",
+        switchTarget: "signin"
+      },
+      signin: {
+        kicker: "Welcome back",
+        title: "Sign in to Evergreen.ai",
+        copy: "We\u2019ll email you a six-digit code to sign in.",
+        switchPrompt: "New to Evergreen.ai?",
+        switchLabel: "Get started",
+        switchTarget: "register"
+      }
+    };
+
+    /* ---------- Elements ---------- */
+    const screens = {
+      email: document.getElementById("emailScreen"),
+      otp: document.getElementById("otpScreen"),
+      profile: document.getElementById("profileScreen"),
+      success: document.getElementById("successScreen"),
+      redirect: document.getElementById("redirectErrorScreen")
+    };
+    const emailForm = document.getElementById("emailForm");
+    const emailInput = document.getElementById("email");
+    const emailSubmit = document.getElementById("emailSubmit");
+    const emailMessage = document.getElementById("emailMessage");
+    const emailMessageTitle = document.getElementById("emailMessageTitle");
+    const emailMessageCopy = document.getElementById("emailMessageCopy");
+    const emailStatus = document.getElementById("emailStatus");
+    const emailKicker = document.getElementById("emailKicker");
+    const emailTitle = document.getElementById("emailTitle");
+    const modeSwitchPrompt = document.getElementById("modeSwitchPrompt");
+    const modeSwitchLink = document.getElementById("modeSwitchLink");
+    const otpForm = document.getElementById("otpForm");
+    const otpGroup = document.getElementById("otpGroup");
+    const otpDigits = [...document.querySelectorAll(".otp-digit")];
+    const otpMessage = document.getElementById("otpMessage");
+    const otpMessageTitle = document.getElementById("otpMessageTitle");
+    const otpMessageCopy = document.getElementById("otpMessageCopy");
+    const resendButton = document.getElementById("resendButton");
+    const resendStatus = document.getElementById("resendStatus");
+    const verificationStatus = document.getElementById("verificationStatus");
+    const retryOtpButton = document.getElementById("retryOtp");
+    const profileForm = document.getElementById("profileForm");
+    const profileEmail = document.getElementById("profileEmail");
+    const firstNameInput = document.getElementById("firstName");
+    const lastNameInput = document.getElementById("lastName");
+    const firstNameError = document.getElementById("firstNameError");
+    const lastNameError = document.getElementById("lastNameError");
+    const termsCheckbox = document.getElementById("termsCheckbox");
+    const termsError = document.getElementById("termsError");
+    const profileMessage = document.getElementById("profileMessage");
+    const profileSubmit = document.getElementById("profileSubmit");
+    const profileStatus = document.getElementById("profileStatus");
+    const successTitle = document.getElementById("successTitle");
+    const themeToggle = document.getElementById("themeToggle");
+    const themeStatus = document.getElementById("themeStatus");
+    const modeSelect = document.getElementById("modeSelect");
+    const themeSelect = document.getElementById("themeSelect");
+    const userTypeSelect = document.getElementById("userTypeSelect");
+    const screenSelect = document.getElementById("screenSelect");
+    const emailStateSelect = document.getElementById("emailStateSelect");
+    const otpStateSelect = document.getElementById("otpStateSelect");
+    const profileStateSelect = document.getElementById("profileStateSelect");
+
+    /* ---------- State ---------- */
+    const THEME_KEY = "egTheme";
+    const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    let mode = "register";
+    let userType = "auto";
+    let themePref = "system";
+    let resendSeconds = 60;
+    let resendTimer = null;
+    let lockoutSeconds = 0;
+    let lockoutTimer = null;
+    let busy = false;
+    let otpLocked = false;
+    let lastSubmittedCode = "";
+
+    /* ---------- Theme ---------- */
+    function effectiveTheme() {
+      if (themePref === "light" || themePref === "dark") return themePref;
+      return systemThemeQuery.matches ? "dark" : "light";
+    }
+
+    function applyTheme() {
+      const theme = effectiveTheme();
+      document.documentElement.dataset.theme = theme;
+      themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      themeSelect.value = themePref;
+    }
+
+    function setTheme(pref, { persist = true, announce = false } = {}) {
+      themePref = ["light", "dark", "system"].includes(pref) ? pref : "system";
+      if (persist) {
+        try {
+          if (themePref === "system") sessionStorage.removeItem(THEME_KEY);
+          else sessionStorage.setItem(THEME_KEY, themePref);
+        } catch (e) { /* storage unavailable */ }
+      }
+      applyTheme();
+      if (announce) {
+        const theme = effectiveTheme();
+        themeStatus.textContent = themePref === "system"
+          ? `Following system theme (${theme} mode).`
+          : `${theme === "dark" ? "Dark" : "Light"} mode on.`;
+      }
+    }
+
+    themeToggle.addEventListener("click", () => {
+      setTheme(effectiveTheme() === "dark" ? "light" : "dark", { announce: true });
+    });
+
+    const onSystemThemeChange = () => { if (themePref === "system") applyTheme(); };
+    if (systemThemeQuery.addEventListener) systemThemeQuery.addEventListener("change", onSystemThemeChange);
+    else if (systemThemeQuery.addListener) systemThemeQuery.addListener(onSystemThemeChange);
+
+    /* ---------- Mode + user type ---------- */
+    function setMode(value, { updateUrl = true } = {}) {
+      mode = value === "signin" ? "signin" : "register";
+      document.body.dataset.mode = mode;
+      const copy = MODE_COPY[mode];
+      emailKicker.textContent = copy.kicker;
+      emailTitle.textContent = copy.title;
+      document.getElementById("emailCopy").textContent = copy.copy;
+      modeSwitchPrompt.textContent = copy.switchPrompt;
+      modeSwitchLink.textContent = copy.switchLabel;
+      modeSwitchLink.setAttribute("href", `?mode=${copy.switchTarget}`);
+      modeSelect.value = mode;
+      document.getElementById("flowRegister").setAttribute("aria-pressed", String(mode === "register"));
+      document.getElementById("flowSignin").setAttribute("aria-pressed", String(mode === "signin"));
+      if (updateUrl && window.history && history.replaceState) {
+        try {
+          const url = new URL(location.href);
+          url.searchParams.set("mode", mode);
+          history.replaceState(null, "", url);
+        } catch (e) { /* file:// edge cases */ }
+      }
+    }
+
+    function isNewUser() {
+      if (userType === "new") return true;
+      if (userType === "returning") return false;
+      return mode === "register";
+    }
+
+    function updateSuccessCopy() {
+      successTitle.textContent = isNewUser() ? "You’re all set" : "You’re signed in";
+    }
+
+    modeSwitchLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      // Swapping mode in place preserves the theme and the typed email value.
+      setMode(mode === "register" ? "signin" : "register");
+      emailInput.focus();
+    });
+
+    // Floating flow switcher (review chrome): switch mode and restart at the email step.
+    [["flowRegister", "register"], ["flowSignin", "signin"]].forEach(([id, target]) => {
+      document.getElementById(id).addEventListener("click", () => {
+        if (mode === target && document.body.dataset.screen === "email") return;
+        setMode(target);
+        showScreen("email", false);
+      });
+    });
+
+    /* ---------- Shared helpers (from base) ---------- */
+    function setButtonBusy(button, isBusy, label) {
+      const labelNode = button.querySelector(".button-label");
+      button.disabled = isBusy;
+      if (isBusy) {
+        button.dataset.label = labelNode.textContent;
+        labelNode.textContent = label;
+        if (!button.querySelector(".spinner")) {
+          const spinner = document.createElement("span");
+          spinner.className = "spinner";
+          spinner.setAttribute("aria-hidden", "true");
+          button.prepend(spinner);
+        }
+      } else {
+        button.querySelector(".spinner")?.remove();
+        if (button.dataset.label) labelNode.textContent = button.dataset.label;
+      }
+    }
+
+    function setEmailBusy(isBusy) {
+      setButtonBusy(emailSubmit, isBusy, "Sending code");
+      emailForm.toggleAttribute("aria-busy", isBusy);
+      emailStatus.textContent = isBusy ? "Sending code…" : "";
+    }
+
+    function showScreen(name, focus = true) {
+      if (!screens[name]) name = "email";
+      if (name === "profile") {
+        if (!emailInput.value) emailInput.value = "you@example.com";
+        profileEmail.value = emailInput.value.trim();
+      }
+      if (name === "success") updateSuccessCopy();
+      Object.entries(screens).forEach(([key, node]) => { node.hidden = key !== name; });
+      document.body.dataset.screen = name;
+      screenSelect.value = name;
+      if (!focus) return;
+      requestAnimationFrame(() => {
+        if (name === "email") emailInput.focus();
+        if (name === "otp") otpDigits[0].focus();
+        if (name === "profile") firstNameInput.focus();
+        if (name === "success") successTitle.focus();
+        if (name === "redirect") document.getElementById("retryRedirect").focus();
+      });
+    }
+
+    /* ---------- OTP mechanics (from base) ---------- */
+    function setOtpLocked(isLocked) {
+      otpLocked = isLocked;
+      otpDigits.forEach((digit) => { digit.disabled = isLocked; });
+      syncResendAvailability();
+    }
+
+    function syncResendAvailability() {
+      resendButton.disabled = otpLocked || resendSeconds > 0;
+      if (resendSeconds <= 0) resendButton.textContent = "Resend code";
+    }
+
+    function clearLockout() {
+      if (lockoutTimer) clearInterval(lockoutTimer);
+      lockoutTimer = null;
+      lockoutSeconds = 0;
+    }
+
+    function startLockout(seconds = 180) {
+      clearLockout();
+      lockoutSeconds = seconds;
+      setOtpLocked(true);
+      const updateLockoutStatus = () => {
+        const minutes = Math.floor(lockoutSeconds / 60);
+        const secondsRemaining = String(lockoutSeconds % 60).padStart(2, "0");
+        verificationStatus.textContent = `Try again in ${minutes}:${secondsRemaining}.`;
+      };
+      updateLockoutStatus();
+      lockoutTimer = setInterval(() => {
+        lockoutSeconds -= 1;
+        if (lockoutSeconds > 0) {
+          updateLockoutStatus();
+          return;
+        }
+        clearLockout();
+        setOtpLocked(false);
+        clearOtpError();
+        otpDigits.forEach((digit) => { digit.value = ""; });
+        lastSubmittedCode = "";
+        verificationStatus.textContent = "You can try again.";
+        otpDigits[0].focus();
+      }, 1000);
+    }
+
+    function clearEmailError() {
+      emailInput.removeAttribute("aria-invalid");
+      emailInput.removeAttribute("aria-describedby");
+      emailMessage.classList.remove("is-visible");
+      emailMessageTitle.textContent = "";
+      emailMessageCopy.textContent = "";
+    }
+
+    function showEmailError(type, focus = true) {
+      clearEmailError();
+      if (!EMAIL_ERRORS[type]) return;
+      const [title, copy] = EMAIL_ERRORS[type];
+      emailMessageTitle.textContent = title;
+      emailMessageCopy.textContent = copy;
+      emailMessage.classList.add("is-visible");
+      emailInput.setAttribute("aria-invalid", "true");
+      emailInput.setAttribute("aria-describedby", "emailMessage");
+      if (focus) emailInput.focus();
+    }
+
+    function clearOtpError() {
+      otpGroup.removeAttribute("aria-describedby");
+      otpMessage.classList.remove("is-visible", "message--warning");
+      otpMessage.classList.add("message--error");
+      otpMessage.removeAttribute("tabindex");
+      otpMessageTitle.textContent = "";
+      otpMessageCopy.textContent = "";
+      retryOtpButton.hidden = true;
+      otpDigits.forEach((digit) => digit.removeAttribute("aria-invalid"));
+    }
+
+    function showOtpError(type, focus = true) {
+      busy = false;
+      otpForm.removeAttribute("aria-busy");
+      verificationStatus.textContent = "";
+      clearOtpError();
+      if (!OTP_ERRORS[type]) return;
+      let [title, copy] = OTP_ERRORS[type];
+      if (type === "incorrect") {
+        title = resendButton.disabled
+          ? "That code didn’t work. Try again."
+          : "That code didn’t work. Try again or resend.";
+        copy = "";
+      }
+      if (type === "expired") {
+        if (resendTimer) clearInterval(resendTimer);
+        resendSeconds = 0;
+        resendButton.disabled = false;
+        resendButton.textContent = "Resend code";
+      }
+      const isTransient = type === "offline" || type === "server";
+      retryOtpButton.hidden = !isTransient;
+      if (type === "attempts") startLockout();
+      else setOtpLocked(false);
+      otpMessageTitle.textContent = title;
+      otpMessageCopy.textContent = copy;
+      otpMessage.classList.add("is-visible");
+      otpGroup.setAttribute("aria-describedby", "otpMessage");
+      if (type === "expired" || type === "attempts") {
+        otpMessage.classList.remove("message--error");
+        otpMessage.classList.add("message--warning");
+      }
+      if (type === "incomplete" || type === "incorrect") {
+        otpDigits.forEach((digit) => digit.setAttribute("aria-invalid", "true"));
+      }
+      if (focus && isTransient) retryOtpButton.focus();
+      else if (focus && !otpLocked) otpDigits[0].focus();
+      if (focus && otpLocked) {
+        otpMessage.tabIndex = -1;
+        otpMessage.focus();
+      }
+    }
+
+    function validEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+    }
+
+    function otpValue() {
+      return otpDigits.map((digit) => digit.value).join("");
+    }
+
+    function setOtpEmail(value) {
+      const email = value.trim() || "you@example.com";
+      document.getElementById("otpCopyEmail").textContent = email;
+    }
+
+    function clearOtp() {
+      otpDigits.forEach((digit) => { digit.value = ""; });
+      lastSubmittedCode = "";
+      clearOtpError();
+      clearLockout();
+      setOtpLocked(false);
+      resendStatus.textContent = "";
+      verificationStatus.textContent = "";
+      otpForm.removeAttribute("aria-busy");
+    }
+
+    function startResendTimer() {
+      if (resendTimer) clearInterval(resendTimer);
+      clearLockout();
+      setOtpLocked(false);
+      resendSeconds = 60;
+      updateResend();
+      resendTimer = setInterval(() => {
+        resendSeconds -= 1;
+        updateResend();
+        if (resendSeconds <= 0) {
+          clearInterval(resendTimer);
+          resendTimer = null;
+          resendStatus.textContent = "You can request a new code.";
+        }
+      }, 1000);
+    }
+
+    function updateResend() {
+      resendSeconds = Math.max(0, resendSeconds);
+      const minutes = Math.floor(resendSeconds / 60);
+      const seconds = String(resendSeconds % 60).padStart(2, "0");
+      if (resendSeconds > 0) resendButton.textContent = `Resend code in ${minutes}:${seconds}`;
+      syncResendAvailability();
+    }
+
+    function openOtp() {
+      setOtpEmail(emailInput.value);
+      clearOtp();
+      setOtpLocked(false);
+      showScreen("otp");
+      startResendTimer();
+    }
+
+    function verifyCode(allowRepeat = false) {
+      if (busy) return;
+      verificationStatus.textContent = "";
+      otpForm.removeAttribute("aria-busy");
+      const code = otpValue();
+      if (code.length !== 6) {
+        showOtpError("incomplete");
+        return;
+      }
+      if (!allowRepeat && code === lastSubmittedCode) return;
+      lastSubmittedCode = code;
+      if (code === "000000") {
+        otpDigits.forEach((digit) => { digit.value = ""; });
+        lastSubmittedCode = "";
+        return showOtpError("incorrect");
+      }
+      if (code === "111111") {
+        otpDigits.forEach((digit) => { digit.value = ""; });
+        lastSubmittedCode = "";
+        return showOtpError("expired");
+      }
+      if (code === "999999") return showOtpError("attempts");
+      busy = true;
+      clearOtpError();
+      setOtpLocked(true);
+      verificationStatus.textContent = "Verifying code…";
+      otpForm.setAttribute("aria-busy", "true");
+      setTimeout(() => {
+        busy = false;
+        verificationStatus.textContent = "";
+        otpForm.removeAttribute("aria-busy");
+        // Shared logic: new users finish their profile; returning users are done.
+        showScreen(isNewUser() ? "profile" : "success");
+      }, 700);
+    }
+
+    /* ---------- Profile screen ---------- */
+    function setFieldError(control, errorNode, show) {
+      errorNode.hidden = !show;
+      if (show) {
+        control.setAttribute("aria-invalid", "true");
+        control.setAttribute("aria-describedby", errorNode.id);
+      } else {
+        control.removeAttribute("aria-invalid");
+        control.removeAttribute("aria-describedby");
+      }
+    }
+
+    function showProfileMessage(show) {
+      profileMessage.classList.toggle("is-visible", show);
+    }
+
+    function clearProfileErrors() {
+      setFieldError(firstNameInput, firstNameError, false);
+      setFieldError(lastNameInput, lastNameError, false);
+      setFieldError(termsCheckbox, termsError, false);
+      showProfileMessage(false);
+    }
+
+    function setProfileBusy(isBusy) {
+      setButtonBusy(profileSubmit, isBusy, "Finishing up");
+      profileForm.toggleAttribute("aria-busy", isBusy);
+      profileStatus.textContent = isBusy ? "Finishing up…" : "";
+    }
+
+    function resetProfileState() {
+      busy = false;
+      setProfileBusy(false);
+      clearProfileErrors();
+    }
+
+    profileForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (busy) return;
+      clearProfileErrors();
+      let firstInvalid = null;
+      if (!firstNameInput.value.trim()) {
+        setFieldError(firstNameInput, firstNameError, true);
+        firstInvalid = firstInvalid || firstNameInput;
+      }
+      if (!lastNameInput.value.trim()) {
+        setFieldError(lastNameInput, lastNameError, true);
+        firstInvalid = firstInvalid || lastNameInput;
+      }
+      if (!termsCheckbox.checked) {
+        setFieldError(termsCheckbox, termsError, true);
+        firstInvalid = firstInvalid || termsCheckbox;
+      }
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+      busy = true;
+      setProfileBusy(true);
+      setTimeout(() => {
+        busy = false;
+        setProfileBusy(false);
+        showScreen("success");
+      }, 700);
+    });
+
+    firstNameInput.addEventListener("input", () => {
+      setFieldError(firstNameInput, firstNameError, false);
+      showProfileMessage(false);
+    });
+    lastNameInput.addEventListener("input", () => {
+      setFieldError(lastNameInput, lastNameError, false);
+      showProfileMessage(false);
+    });
+    termsCheckbox.addEventListener("change", () => {
+      setFieldError(termsCheckbox, termsError, false);
+      showProfileMessage(false);
+    });
+
+    /* ---------- Email + OTP events (from base) ---------- */
+    emailForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (busy) return;
+      const value = emailInput.value.trim();
+      if (!value) return showEmailError("empty");
+      if (!validEmail(value)) return showEmailError("invalid");
+      clearEmailError();
+      busy = true;
+      setEmailBusy(true);
+      setTimeout(() => {
+        busy = false;
+        setEmailBusy(false);
+        openOtp();
+      }, 650);
+    });
+
+    emailInput.addEventListener("input", clearEmailError);
+    document.getElementById("editEmail").addEventListener("click", () => showScreen("email"));
+
+    otpForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      verifyCode();
+    });
+
+    retryOtpButton.addEventListener("click", () => {
+      clearOtpError();
+      verifyCode(true);
+    });
+
+    otpDigits.forEach((digit, index) => {
+      digit.addEventListener("beforeinput", () => {
+        digit.dataset.wasEmpty = String(!digit.value);
+      });
+      digit.addEventListener("input", (event) => {
+        const value = event.target.value.replace(/\D/g, "");
+        if (value.length > 1) {
+          const values = value.slice(0, 6);
+          otpDigits.forEach((input, valueIndex) => { input.value = values[valueIndex] || ""; });
+          clearOtpError();
+          if (values.length === 6) verifyCode();
+          else otpDigits[Math.min(values.length, 5)].focus();
+          return;
+        }
+        event.target.value = value.slice(-1);
+        clearOtpError();
+        if (value && index < otpDigits.length - 1) otpDigits[index + 1].focus();
+        const completedCode = value && event.target.dataset.wasEmpty !== "false";
+        if (completedCode && otpValue().length === 6) verifyCode();
+      });
+      digit.addEventListener("keydown", (event) => {
+        if (event.key === "Backspace" && !digit.value && index > 0) otpDigits[index - 1].focus();
+        if (event.key === "ArrowLeft" && index > 0) otpDigits[index - 1].focus();
+        if (event.key === "ArrowRight" && index < otpDigits.length - 1) otpDigits[index + 1].focus();
+      });
+      digit.addEventListener("focus", () => digit.select());
+      digit.addEventListener("paste", (event) => {
+        event.preventDefault();
+        const pasted = event.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6);
+        otpDigits.forEach((input) => { input.value = ""; });
+        pasted.split("").forEach((value, pasteIndex) => { otpDigits[pasteIndex].value = value; });
+        clearOtpError();
+        if (pasted.length === 6) verifyCode();
+        else otpDigits[Math.min(pasted.length, 5)].focus();
+      });
+    });
+
+    resendButton.addEventListener("click", () => {
+      if (resendButton.disabled) return;
+      clearOtp();
+      startResendTimer();
+      resendStatus.textContent = `We sent a new code to ${document.getElementById("otpCopyEmail").textContent}. The previous code no longer works.`;
+      otpDigits[0].focus();
+    });
+
+    document.getElementById("retryRedirect").addEventListener("click", () => showScreen("success"));
+    document.getElementById("goToEvergreen").addEventListener("click", () => showScreen("success"));
+
+    /* ---------- Review panel ---------- */
+    document.getElementById("reviewToggle").addEventListener("click", (event) => {
+      const panel = document.getElementById("reviewPanel");
+      const open = event.currentTarget.getAttribute("aria-expanded") === "true";
+      event.currentTarget.setAttribute("aria-expanded", String(!open));
+      panel.hidden = open;
+    });
+
+    modeSelect.addEventListener("change", (event) => setMode(event.target.value));
+
+    themeSelect.addEventListener("change", (event) => setTheme(event.target.value, { announce: true }));
+
+    userTypeSelect.addEventListener("change", (event) => {
+      userType = ["new", "returning"].includes(event.target.value) ? event.target.value : "auto";
+      updateSuccessCopy();
+    });
+
+    screenSelect.addEventListener("change", (event) => {
+      const value = event.target.value;
+      if (value === "otp" && !emailInput.value) emailInput.value = "you@example.com";
+      if (value === "otp") setOtpEmail(emailInput.value);
+      if (value === "profile") resetProfileState();
+      showScreen(value);
+      if (value === "otp") startResendTimer();
+    });
+
+    emailStateSelect.addEventListener("change", (event) => {
+      showScreen("email", false);
+      setEmailBusy(false);
+      clearEmailError();
+      if (event.target.value === "loading") {
+        setEmailBusy(true);
+        return;
+      }
+      if (event.target.value === "empty") emailInput.value = "";
+      if (event.target.value === "invalid") emailInput.value = "name@";
+      if (EMAIL_ERRORS[event.target.value]) showEmailError(event.target.value, false);
+    });
+
+    otpStateSelect.addEventListener("change", (event) => {
+      if (!emailInput.value) emailInput.value = "you@example.com";
+      setOtpEmail(emailInput.value);
+      showScreen("otp", false);
+      busy = false;
+      setOtpLocked(false);
+      clearLockout();
+      clearOtpError();
+      verificationStatus.textContent = "";
+      otpForm.removeAttribute("aria-busy");
+      if (event.target.value === "verifying") {
+        otpDigits.forEach((digit, index) => { digit.value = String(index + 1); });
+        setOtpLocked(true);
+        verificationStatus.textContent = "Verifying code…";
+        otpForm.setAttribute("aria-busy", "true");
+        return;
+      }
+      if (event.target.value === "incomplete") {
+        otpDigits.forEach((digit, index) => { digit.value = index < 3 ? String(index + 1) : ""; });
+      }
+      if (event.target.value === "offline" || event.target.value === "server") {
+        otpDigits.forEach((digit, index) => { digit.value = String(index + 1); });
+      }
+      if (event.target.value === "expired") otpDigits.forEach((digit) => { digit.value = ""; });
+      if (OTP_ERRORS[event.target.value]) showOtpError(event.target.value, false);
+    });
+
+    profileStateSelect.addEventListener("change", (event) => {
+      showScreen("profile", false);
+      resetProfileState();
+      const fill = (first, last, terms) => {
+        firstNameInput.value = first;
+        lastNameInput.value = last;
+        termsCheckbox.checked = terms;
+      };
+      switch (event.target.value) {
+        case "first":
+          fill("", "Rivera", true);
+          setFieldError(firstNameInput, firstNameError, true);
+          break;
+        case "last":
+          fill("Alex", "", true);
+          setFieldError(lastNameInput, lastNameError, true);
+          break;
+        case "terms":
+          fill("Alex", "Rivera", false);
+          setFieldError(termsCheckbox, termsError, true);
+          break;
+        case "failed":
+          fill("Alex", "Rivera", true);
+          showProfileMessage(true);
+          break;
+        case "submitting":
+          fill("Alex", "Rivera", true);
+          busy = true;
+          setProfileBusy(true);
+          break;
+        default:
+          fill("", "", false);
+      }
+    });
+
+    /* ---------- Boot from query params ---------- */
+    const params = new URLSearchParams(location.search);
+    if (params.get("capture") === "1") document.body.classList.add("is-capture");
+
+    // Theme pref: param → sessionStorage → system (mirrors the pre-paint script).
+    (function initThemePref() {
+      const param = params.get("theme");
+      if (param === "light" || param === "dark" || param === "system") {
+        themePref = param;
+      } else {
+        let stored = null;
+        try { stored = sessionStorage.getItem(THEME_KEY); } catch (e) { stored = null; }
+        themePref = (stored === "light" || stored === "dark") ? stored : "system";
+      }
+      applyTheme();
+    })();
+
+    setMode(params.get("mode") === "signin" ? "signin" : "register", { updateUrl: false });
+
+    userType = ["new", "returning"].includes(params.get("usertype")) ? params.get("usertype") : "auto";
+    userTypeSelect.value = userType;
+
+    if (params.get("email")) emailInput.value = params.get("email");
+
+    const stepParam = ["email", "otp", "profile", "success", "redirect"].includes(params.get("step")) ? params.get("step") : "email";
+    if (stepParam === "otp" && !emailInput.value) emailInput.value = "you@example.com";
+    if (stepParam === "otp") setOtpEmail(emailInput.value);
+    showScreen(stepParam, false);
+    if (stepParam === "otp") startResendTimer();
+  </script>
+</body>
+</html>
