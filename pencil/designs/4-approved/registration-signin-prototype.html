@@ -355,8 +355,10 @@
       stroke-width: 2.5;
       stroke-linecap: round;
       stroke-linejoin: round;
-      stroke-dasharray: 100;
-      stroke-dashoffset: 100;
+      /* dasharray/offset exceed pathLength so both endpoints sit strictly inside the
+         gap — a dash boundary exactly on an endpoint renders a stray round-cap dot. */
+      stroke-dasharray: 120;
+      stroke-dashoffset: 125;
       animation: chart-draw 1600ms var(--ease) 2100ms forwards;
     }
     .chart-dot {
