@@ -1,0 +1,20 @@
+---
+description: When the user attaches a screenshot and refers to an element as "this"/"that"/"it" without naming it, enumerate ALL visible elements and confirm the target before editing
+alwaysApply: true
+---
+
+# Confirm the Target Before Editing from a Screenshot
+
+When the user attaches a screenshot and refers to something as "this", "that", or "it" without an unambiguous element name, **never redesign based on a guess**.
+
+## Rule
+
+1. **Inventory first.** List every visible element in the screenshot — including small ones: helper notes, badges, icons, captions, fine print, pills, toggles. Do not anchor on the largest or most prominent element.
+2. **Confirm the target.** If the referent is not 100% unambiguous, ask which element they mean — presenting the full inventory, not just the prominent candidates. One clarifying question is cheaper than one wrong redesign.
+3. **Only then edit.**
+
+## Why
+
+Learned 2026-09-14: the user attached a mobile screenshot and asked to "create a different design for this that doesn't block in the content." The agent guessed the floating prototype pills (wrong), then the header band (wrong). The actual target was the small boxed security note ("Your financial data is encrypted…") inside the card — an element the agent never considered because it wasn't prominent. Two wrong redesigns preceded the one-line fix.
+
+A screenshot that feels obvious to the user is ambiguous to the agent: the user sees their intent, the agent sees pixels. Enumerate the pixels; confirm the intent.
