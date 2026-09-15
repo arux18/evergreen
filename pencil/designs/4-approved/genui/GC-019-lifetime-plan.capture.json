@@ -1,0 +1,1472 @@
+{
+ "contract": "design-capture/v1",
+ "componentId": "GC-019",
+ "slug": "lifetime-plan",
+ "penPath": "pencil/designs/4-approved/genui/GC-019-lifetime-plan.pen",
+ "contentHash": "3797d7e445ddc2043c5bebfbcf3d2ac0540cbc8e05d14b22afbe93d7ce185910",
+ "capturedAt": "2026-09-15T19:33:23.121Z",
+ "prototypeVersion": "002",
+ "prototypeContentHash": "sha256:4c00256f7ba8c4775f00d8396938180d3428a763963ed3b8168fdd697a34f03b",
+ "frames": [
+  "plan-default",
+  "save-tooltip-shown",
+  "slider-save-offered",
+  "slider-saved",
+  "spend-reset-offer",
+  "slider-override-note",
+  "scrub-age-60",
+  "help-tooltip-open",
+  "explainer-open",
+  "gauge-explainer-open",
+  "wizard-family",
+  "wizard-family-spouse-added",
+  "wizard-income-detail",
+  "wizard-ss-estimate",
+  "wizard-assumptions",
+  "wizard-expense-added",
+  "wizard-review"
+ ],
+ "convergence": {
+  "iterationsUsed": 3,
+  "pencilVersion": "@pen.dev/cli 0.3.5",
+  "exportInvocation": "pen interactive --in <file.pen> --out <file.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import (../../../design-system/in-progress/hemlock-library.lib.pen) and the fonts (../../fonts/) resolve. Re-export verified byte-deterministic across consecutive runs (all 17 frames hash-identical across consecutive runs, all 17 pairwise distinct).",
+  "comparison": "pixelmatch threshold 0.1, per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-pen budget, not this loop’s). Targets = NORMALIZED v002 prototype (sha256 of the pinned raw bytes verified before retheme), per-state contract roots, Chromium via playwright 1.62.1 (Chrome Headless Shell 151.0.7922.34), deviceScaleFactor 2, viewport 1280x1400. Protocol carried from v001: non-local origins denied + @font-face injection serving Heebo/Noto Serif (+italic) from the SAME design-specs TTFs the .pen references; --font-render-hinting=none --disable-font-subpixel-positioning --disable-lcd-text; transitions/animations frozen, caret hidden; fresh context per state; pointer parked at the farthest corner EXCEPT scrub-age-60 (pointer owns the state) and help-tooltip-open (bubble hides on pointerout); INTEGER-CSS-PIXEL clip of the contract root (round() convention — see R1 note), self-consistency gate (two consecutive shots byte-equal); scene extraction in the SAME session as the banked target (v001 interview-jitter law).",
+  "iterationNotes": [
+   "R1 (9/15 carried states <= 1.0% against fresh v002 targets): the 15 v001 frames were exported at pen 0.3.5 and measured against newly banked v002 normalized targets — engine-identical renders reproduced v001 convergence numbers on 9 states; the 6 fractional-root modal states failed at 2-3.5% on a half-pixel registration shift. Diagnosis: clip-origin convention — v001 banked integer clips under round(), this run first used floor()/ceil().",
+   "R2 (17/17 <= 0.81%): targets re-banked under the round() clip convention (carried-state diffs collapsed to 0.04-0.52%); the two NEW frames (save-tooltip-shown, slider-override-note) generated from same-session scene extraction using the v001 conventions (per-signature text-y calibration table refitted and exact: 13 signatures, one dy each; per-box integer-css-px snapping; baked dashes; gauge annulus construction with the validated startAngle=-(150+sweep) law and conic-stop parse) — both passed first measurement (0.771% / 0.637%). Six carried modal frame heights aligned to the v002 integer clips (1 css px).",
+   "R3 (17/17 <= 0.807%, final): content-fidelity fix — the Your-Age cell’s input VALUE (\"50\") is not a DOM text node and was missing from the two generated frames (inside pixel budget but a text-content miss); synthesized per the v001 node convention. Worst state 0.807% (explainer-open, the v001 figure), median 0.30%."
+  ],
+  "perState": [
+   {
+    "state": "plan-default",
+    "diffPct": 0.351,
+    "geometryProbes": "pass",
+    "exportSha256": "5a0685b282f42fd104d81dab705b710066cfdfddd967b535101e22c21f53949f",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "save-tooltip-shown",
+    "diffPct": 0.766,
+    "geometryProbes": "pass",
+    "exportSha256": "7db6846de37ae48ffafa160fb5366dfeefaec42d8a49de15dbd6eeb94578e22d",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "slider-save-offered",
+    "diffPct": 0.324,
+    "geometryProbes": "pass",
+    "exportSha256": "81a7685a27ea3637174fbe1b4eeaecb8379f1d580a21bd8f55225c8fc355616c",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "slider-saved",
+    "diffPct": 0.269,
+    "geometryProbes": "pass",
+    "exportSha256": "26de973896525c77aab81a281834a322692c06b53a973a420e617f8a0caacff5",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "spend-reset-offer",
+    "diffPct": 0.328,
+    "geometryProbes": "pass",
+    "exportSha256": "b0bc00a350f9d0fc46644bec095f583be98baac0b2c08b0014f6e6d7e1408ab7",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "slider-override-note",
+    "diffPct": 0.632,
+    "geometryProbes": "pass",
+    "exportSha256": "4a8b7a6c4dbff764ce42dda71b10a211fddf452ec2a1d428ef98df9879c6f371",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "scrub-age-60",
+    "diffPct": 0.347,
+    "geometryProbes": "pass",
+    "exportSha256": "c8cece5c8338c6ffa392a6c83aa8f932aeb6c5434fa7ec6abb3b6454766ff180",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "help-tooltip-open",
+    "diffPct": 0.46,
+    "geometryProbes": "pass",
+    "exportSha256": "58eabda91516386f40f43736026258e717769b5b0aa5ae7cacf430aefe013f00",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "explainer-open",
+    "diffPct": 0.807,
+    "geometryProbes": "pass",
+    "exportSha256": "c71766ec6d0f03f1b29770fcad8b3f19f7e6f2efbd14b836fa48754fc847f195",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "gauge-explainer-open",
+    "diffPct": 0.196,
+    "geometryProbes": "pass",
+    "exportSha256": "a15deef93654c89aab16f0c3b106187aea567da34535e656e8437f542688958e",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "wizard-family",
+    "diffPct": 0.11,
+    "geometryProbes": "pass",
+    "exportSha256": "e27040d42953be6cb09dfbafda5220cb0eb15e8521ca9536b3f79a7dd6b3a0c2",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "wizard-family-spouse-added",
+    "diffPct": 0.23,
+    "geometryProbes": "pass",
+    "exportSha256": "0650522efa02d1b9e765d330f6f48571b5748cb8ce34daa865f71b96d0b0f9f9",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "wizard-income-detail",
+    "diffPct": 0.374,
+    "geometryProbes": "pass",
+    "exportSha256": "584eeee1ba123a881476e61781ccdb51f397a55f2b36f1fdbdee4e8976934b3d",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "wizard-ss-estimate",
+    "diffPct": 0.201,
+    "geometryProbes": "pass",
+    "exportSha256": "40a09833a31b1a780fe55904aa1b19baf68fcc0e427ad31e29f595303150fbe3",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "wizard-assumptions",
+    "diffPct": 0.152,
+    "geometryProbes": "pass",
+    "exportSha256": "cddcd151bf5e9fcd908e3e6d5bf3beb58085d5b93d4331cb158a21a411e80208",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "wizard-expense-added",
+    "diffPct": 0.139,
+    "geometryProbes": "pass",
+    "exportSha256": "8fac00cb868a55762ffdf0bacfb0c78f065c12100fef22ef6cfe97fb3fec797b",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   },
+   {
+    "state": "wizard-review",
+    "diffPct": 0.042,
+    "geometryProbes": "pass",
+    "exportSha256": "a291ef4a984cbde805a6959fed24c9db44af95f3e9488b91353ed3f5d67f9583",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
+   }
+  ],
+  "geometryProbesRun": "contract-named vectors verified against the emitted frames: THE MARKER LAW — retire marker x=286.72 (save-tooltip-shown, retire 64) / 307.2 + longevity 819.2 (slider-override-note) / carried v001 vectors intact (307.2/204.8/819.2); gauge band annulus innerRadius 0.8039, sweep 115.2deg = 48% and 143.52deg = raw 59.8% under the rounded 60% read, startAngle -(150+sweep); THE LOG-SLIDER LAW — retire fill 68.5714% (64 of 40..75) and income fill 61.30% (position 613 after PageUp); scrub panel 180px radius-2xs; tooltip 300px max-width, radius 10, exactly 8px below the Save and centred on it (rule 18); frame dims = integer contract-root clips, 17/17. All pass (selfcheck.mjs).",
+  "waivers": []
+ },
+ "normalizationRecipe": {
+  "cssVariableInjections": [
+   {
+    "variable": "--surface-1",
+    "value": "#FFFFFF",
+    "token": "$y:sem-background-surface"
+   },
+   {
+    "variable": "--surface-2",
+    "value": "#F8F7F6",
+    "token": "$y:sem-background-hover (furniture/hover-only)"
+   },
+   {
+    "variable": "--nest",
+    "value": "#F8F7F6",
+    "token": "$y:sem-background-hover (furniture)"
+   },
+   {
+    "variable": "--border",
+    "value": "#EEEDEB",
+    "token": "$y:sem-borders-light"
+   },
+   {
+    "variable": "--border-strong",
+    "value": "#D5D3D0",
+    "token": "$y:sem-borders-muted (GC-018 identity precedent (value-preserving) over GC-004 borders-strong)"
+   },
+   {
+    "variable": "--ink",
+    "value": "#0E0E0E",
+    "token": "$y:sem-text-header"
+   },
+   {
+    "variable": "--muted",
+    "value": "#5E5954",
+    "token": "$y:sem-text-meta"
+   },
+   {
+    "variable": "--faint",
+    "value": "#767169",
+    "token": "$control-text-faint (local reuse (GC-006/013/014/016))"
+   },
+   {
+    "variable": "--inverse",
+    "value": "#FFFFFF",
+    "token": "$y:sem-text-reverse"
+   },
+   {
+    "variable": "--accent",
+    "value": "#3A6AF8",
+    "token": "$y:sem-text-action / $y:sem-icons-action / $y:sem-background-action (by surface); chart median+longevity = $chart-ramp/hue-01-blue (GC-004 family)"
+   },
+   {
+    "variable": "--accent-hover",
+    "value": "#2952CC",
+    "token": "$y:sem-btnPrimaryBgHover (hover-only, never renders frozen)"
+   },
+   {
+    "variable": "--accent-subtle",
+    "value": "#EBF0FE",
+    "token": "$y:sem-background-highlight"
+   },
+   {
+    "variable": "--calc-bg",
+    "value": "#F7F5F0",
+    "token": "$y:sem-background-sunken"
+   },
+   {
+    "variable": "--taupe-100",
+    "value": "#F7F5F0",
+    "token": "$y:sem-background-sunken"
+   },
+   {
+    "variable": "--taupe-pressed",
+    "value": "#EDEAE3",
+    "token": "$y:sem-background-rowPressed (furniture)"
+   },
+   {
+    "variable": "--taupe-border",
+    "value": "#E3DFD6",
+    "token": "$sem-borders-panel (local reuse (GC-014/016) — modal head-band rule)"
+   },
+   {
+    "variable": "--pos",
+    "value": "#148338",
+    "token": "$y:sem-text-deposit (text) / $chart-ramp/hue-03-green (retire marker, GC-004 family)"
+   },
+   {
+    "variable": "--neg",
+    "value": "#C82320",
+    "token": "$y:sem-text-error (text) / $chart-scrubber (scrub line+grip, GC-004 reuse)"
+   },
+   {
+    "variable": "--warn",
+    "value": "#C85F1A",
+    "token": "$y:sem-icons-warning-strong (furniture)"
+   },
+   {
+    "variable": "--page-bg",
+    "value": "#FFFFFF",
+    "token": "$y:sem-background-surface"
+   },
+   {
+    "variable": "--grid",
+    "value": "#EEEDEB",
+    "token": "$y:sem-borders-light (CHANGED from #EEEFEE — furniture in contracted states)"
+   },
+   {
+    "variable": "--grid2",
+    "value": "#D5D3D0",
+    "token": "$y:sem-borders-muted (gridlines, dividers) / $y:sem-sliderTrack (slider unfilled track — same light value; GC-002 precedent) (CHANGED from #D8D9D8)"
+   },
+   {
+    "variable": "--axis",
+    "value": "#5E5954",
+    "token": "$y:sem-text-meta (CHANGED from #B6B9B7 per GC-004; tick lines only (Cash Flow page, unreachable))"
+   },
+   {
+    "variable": "--zero",
+    "value": "#0E0E0E",
+    "token": "$y:sem-icons-full (CHANGED from #000000 — chart zero axis line)"
+   },
+   {
+    "variable": "--det",
+    "value": "#5E5954",
+    "token": "$y:sem-text-meta"
+   },
+   {
+    "variable": "--orange",
+    "value": "#EA580C",
+    "token": "$sem-text-warning-value (local reuse (GC-002))"
+   },
+   {
+    "variable": "--accent-fill",
+    "value": "rgba(58,106,248,0.15)",
+    "token": "$chart-ramp-fade/band (NEW gap token: 20-80 band wash, hue-01-blue @ 15%)"
+   },
+   {
+    "variable": "--cat1",
+    "value": "#8951F0",
+    "token": "$y:chart-categorical/color-01 (furniture — fan chart is single-series (median reads --accent); GC-004 injection)"
+   },
+   {
+    "variable": "--cat2",
+    "value": "#06B6D4",
+    "token": "$y:chart-categorical/color-02 (furniture)"
+   },
+   {
+    "variable": "--cat3",
+    "value": "#312E81",
+    "token": "$y:chart-categorical/color-03 (furniture)"
+   },
+   {
+    "variable": "--cat4",
+    "value": "#3B82F6",
+    "token": "$y:chart-categorical/color-04 (furniture)"
+   },
+   {
+    "variable": "--cat5",
+    "value": "#0F766E",
+    "token": "$y:chart-categorical/color-05 (furniture)"
+   },
+   {
+    "variable": "--cat6",
+    "value": "#38BDF8",
+    "token": "$y:chart-categorical/color-06 (furniture)"
+   },
+   {
+    "variable": "--cat7",
+    "value": "#2DD4BF",
+    "token": "$y:chart-categorical/color-07 (furniture)"
+   },
+   {
+    "variable": "--lp-orange",
+    "value": "#F97316",
+    "token": "$sem-lpSaveBg (NEW gap token (dark #FF8A2B from prototype dark block))"
+   },
+   {
+    "variable": "--lp-orange-strong",
+    "value": "#E1620B",
+    "token": "$sem-lpSaveBorder (NEW gap token (dark #F0761A))"
+   },
+   {
+    "variable": "--lp-orange-soft",
+    "value": "#FFE7CC",
+    "token": "$sem-lpSaveSoft (NEW gap token; changed-value outline (furniture in frozen frames))"
+   },
+   {
+    "variable": "--gauge-track",
+    "value": "#E8E7E4",
+    "token": "$sem-gaugeTrack (local reuse (GC-002))"
+   },
+   {
+    "variable": "--gauge-blue",
+    "value": "#3D8BFF",
+    "token": "$sem-gaugeBandDefaultBright (NEW gap token, GC-002 family naming (dark #7FAEFF))"
+   },
+   {
+    "variable": "--gauge-orange-bright",
+    "value": "#FF7A00",
+    "token": "$sem-gaugeBandWarningBright (local reuse (GC-002))"
+   },
+   {
+    "variable": "--gauge-green-bright",
+    "value": "#17C455",
+    "token": "$sem-gaugeBandSuccessBright (local reuse (GC-002))"
+   },
+   {
+    "variable": "--ink-muted",
+    "value": "#8A8680",
+    "token": "$y:sem-text-subtle (DEFINED (prototype leaves it undefined; fallback #8A857D) — dimmed interview labels)"
+   },
+   {
+    "variable": "--backdrop",
+    "value": "rgba(45,41,38,0.34)",
+    "token": "$y:sem-background-scrim (exact #2D292657 (GC-018))"
+   },
+   {
+    "variable": "--modal-shadow",
+    "value": "0 16px 40px rgba(0,0,0,0.16)",
+    "token": "$y:shadow-overlay-y/-blur/-color (exact match)"
+   },
+   {
+    "variable": "--tile-shadow",
+    "value": "0 4px 12px rgba(0,0,0,0.10)",
+    "token": "$y:shadow-md trio (card carries shadow:none at desktop — furniture)"
+   },
+   {
+    "variable": "--tk-text-1 (#appMain scope)",
+    "value": "#0E0E0E",
+    "token": "$y:sem-text-header (CHANGED from #171717)"
+   },
+   {
+    "variable": "--tk-text-2 (#appMain scope)",
+    "value": "#5E5954",
+    "token": "$y:sem-text-meta (CHANGED from #525252)"
+   },
+   {
+    "variable": "--tk-text-3 (#appMain scope)",
+    "value": "#716E6A",
+    "token": "$y:sem-text-placeholder (CHANGED from #737373 (GC-013 kit-tertiary precedent))"
+   },
+   {
+    "variable": "--tk-surface-1 (#appMain scope)",
+    "value": "#FFFFFF",
+    "token": "$y:sem-background-surface"
+   },
+   {
+    "variable": "--tk-surface-2 (#appMain scope)",
+    "value": "#F8F7F6",
+    "token": "$y:sem-background-hover (hover-only; CHANGED from #F5F5F5)"
+   },
+   {
+    "variable": "--tk-surface-3 (#appMain scope)",
+    "value": "#EEEDEB",
+    "token": "$y:sem-background-subtle (furniture; CHANGED from #EBEBEB)"
+   },
+   {
+    "variable": "--tk-border (#appMain scope)",
+    "value": "#EEEDEB",
+    "token": "$y:sem-borders-light (CHANGED from #E5E5E5 — tkdd trigger border renders in wizard-ss-estimate / wizard-expense-added)"
+   },
+   {
+    "variable": "--tk-border-strong (#appMain scope)",
+    "value": "#C0BAB2",
+    "token": "$y:sem-borders-strong (hover-only; CHANGED from #D4D4D4)"
+   },
+   {
+    "variable": "--tk-error (#appMain scope)",
+    "value": "#C82320",
+    "token": "$y:sem-borders-error / $y:sem-text-error (furniture)"
+   },
+   {
+    "variable": "--tk-error-subtle (#appMain scope)",
+    "value": "#FFEAEA",
+    "token": "$y:sem-background-error (furniture)"
+   },
+   {
+    "variable": "--tk-track (#appMain scope)",
+    "value": "#D5D3D0",
+    "token": "$y:sem-sliderTrack (CHANGED from #D8D9D8 (GC-002 precedent))"
+   },
+   {
+    "variable": "--tk-off (#appMain scope)",
+    "value": "#B5B1AB",
+    "token": "$y:sem-borders-disabled (furniture; CHANGED from #B6B9B7)"
+   },
+   {
+    "variable": "--tk-thumb-dis (#appMain scope)",
+    "value": "#EEEDEB",
+    "token": "$y:sem-background-subtle (furniture; CHANGED from #EEEFEE)"
+   }
+  ],
+  "findReplaces": [
+   {
+    "from": "background:#fff;color:#222;border:1px solid #d8d9d8;",
+    "to": "background:#fff;color:#263343;border:1px solid #d8dde5;",
+    "where": "#lprsRow .lprs-btn (Reset to 80% pill) — unified onto the neutral-pill role trio ($sem-lpNeutralInk/$sem-lpNeutralBorder) Bill uses twice elsewhere"
+   },
+   {
+    "from": "border-top:1px solid #d8d9d8;grid-column:1/-1",
+    "to": "border-top:1px solid #D5D3D0;grid-column:1/-1",
+    "where": ".astra-person-rule (spouse divider) — $y:sem-borders-muted"
+   },
+   {
+    "from": "stroke=\"#e2e6ed\"",
+    "to": "stroke=\"#E8E7E4\"",
+    "where": "astraAnimateExample() example-gauge track — one gauge-track role, $sem-gaugeTrack"
+   }
+  ],
+  "fontSwap": "none required — the prototype already ships Heebo + Noto Serif (design-rules rule 15); normalization/compare served both renderers the SAME design-specs TTFs (pencil/designs/fonts/)",
+  "$comment": "v002 re-oracle: the v001 recipe reproduced verbatim (same 10 variable families, same 3 find-replaces) and re-verified by the loop against the 14.9.1 prototype; v002 adds NO new variable injections — the tooltip/override surfaces ride the existing --lp-orange* / --surface-1 variables. Injections asserted unique against the pinned bytes (normalize-edits.json)."
+ },
+ "tokenJudgmentCalls": [
+  {
+   "surface": "chart gridlines + row dividers + slider unfilled track (--grid2 / --tk-track / hardcoded #d8d9d8)",
+   "prototypeValue": "#D8D9D8",
+   "boundToken": "$y:sem-borders-muted (gridlines, dividers) / $y:sem-sliderTrack (track)",
+   "rationale": "value-adjacent role tokens (#D5D3D0); GC-002 ruled the same track mapping, GC-004 the same grid mapping (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "chart zero-axis line (--zero)",
+   "prototypeValue": "#000000",
+   "boundToken": "$y:sem-icons-full",
+   "rationale": "the zero line THEMES in Bill's own dark block (var(--ink)) so it is not a base-black constant; icons-full is the full-ink chrome role (#0E0E0E, imperceptible delta) (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "axis tick color (--axis, unrendered in contracted states)",
+   "prototypeValue": "#B6B9B7",
+   "boundToken": "$y:sem-text-meta",
+   "rationale": "GC-004 injection precedent; furniture-only here (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "template-kit dropdown colors (#appMain-scoped --tk-*: trigger border, label ink, placeholder)",
+   "prototypeValue": "#E5E5E5 / #171717 / #737373",
+   "boundToken": "$y:sem-borders-light / $y:sem-text-header / $y:sem-text-placeholder",
+   "rationale": "GC-013/GC-018 kit precedent — the kit aliases the component palette; roles, not hues (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "dimmed interview labels (var(--ink-muted, #8A857D) — the var is never defined; the fallback governs)",
+   "prototypeValue": "#8A857D",
+   "boundToken": "$y:sem-text-subtle",
+   "rationale": "defined --ink-muted:#8A8680 in normalization; sub-JND delta onto the subtle-text role (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "fan-chart median line + 20-80 band",
+   "prototypeValue": "#3A6AF8 / rgba(58,106,248,.15) (--accent / --accent-fill)",
+   "boundToken": "$chart-ramp/hue-01-blue (GC-004 family) + $chart-ramp-fade/band (new)",
+   "rationale": "single-series projection chart: Bill's blue-led series-1 is the SAME divergence GC-004 ruled into the chart-ramp hue family; NOT chart-categorical/color-01 (purple), which would repaint the design intent (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": true,
+   "newToken": "$chart-ramp-fade/band"
+  },
+  {
+   "surface": "chart reference markers: Retire (green) / Longevity (blue), dashed lines + labels",
+   "prototypeValue": "#148338 / #3A6AF8",
+   "boundToken": "$chart-ramp/hue-03-green / $y:chart-threshold",
+   "rationale": "threshold/reference-line role for the blue horizon marker; the green retire marker reuses the GC-004 ramp green (same pair as sem-text-deposit); dashes baked into geometry (pen has no dash property — GC-004 precedent) (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "chart scrubber (dashed line + grip)",
+   "prototypeValue": "#C82320 (--neg)",
+   "boundToken": "$chart-scrubber",
+   "rationale": "GC-004 created exactly this role for the same surface; reused verbatim (#C82320/#F87171) (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "Reset-to-80% pill (#lprsRow .lprs-btn: color:#222, border #d8d9d8)",
+   "prototypeValue": "#222222 / #D8D9D8",
+   "boundToken": "$sem-lpNeutralInk / $sem-lpNeutralBorder",
+   "rationale": "Bill uses the #263343/#D8DDE5 neutral trio twice (Reset Sliders pill, help bubble); the third neutral pill diverges only by sloppiness — unified onto one role pair via find-replace, recorded (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": true,
+   "newToken": "$sem-lpNeutralInk / $sem-lpNeutralBorder"
+  },
+  {
+   "surface": "example-gauge track (hardcoded stroke #e2e6ed in astraAnimateExample)",
+   "prototypeValue": "#E2E6ED",
+   "boundToken": "$sem-gaugeTrack",
+   "rationale": "one gauge-track role, one token (GC-002 value #E8E7E4); normalized by find-replace (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "slider thumb (16px accent core, 2px white edge) + focus ring 0 0 0 3px accent-subtle",
+   "prototypeValue": "#3A6AF8 / #FFFFFF / #EBF0FE",
+   "boundToken": "$y:sem-sliderAccent + $sem-sliderThumbEdge (GC-014 reuse) + $y:sem-background-highlight (ring)",
+   "rationale": "slider roles own the surface; the white edge is deliberately white in both themes (GC-014 rule 19) (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "modal/scrub-panel drop shadow + card tile shadow + backdrop scrim",
+   "prototypeValue": "0 16px 40px rgba(0,0,0,.16) / 0 4px 12px rgba(0,0,0,.10) / rgba(45,41,38,.34)",
+   "boundToken": "$y:shadow-overlay trio ($y:prim-shadow-overlay-color) / $y:shadow-md trio / $y:sem-background-scrim",
+   "rationale": "exact value matches to the Hemlock elevation scale and scrim (GC-018 identity precedent) (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "modal frame background composite (rounded-corner cutouts show the page under the scrim)",
+   "prototypeValue": "scrim over white page",
+   "boundToken": "frame fill stack [$y:sem-background-surface, $y:sem-background-scrim]",
+   "rationale": "token-true two-layer composite reproduces the corner pixels; the modal's own shadow-overlay effect paints the corner shadow curl (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "gauge band dim/eased conic stops (alpha profile of the ring tail)",
+   "prototypeValue": "rgba(61,139,255,.3) hold + ease to 1 (55%); rgba(255,122,0,.757)/.808 (17%/15%)",
+   "boundToken": "$sem-lpGaugeDimDefault30 / $sem-lpGaugeDimWarning76 / $sem-lpGaugeDimWarning81 (alpha carried in the token value; pen gradient stops cannot alpha-modulate a variable)",
+   "rationale": "the alpha profile is lpgDraw's rendering law (HOLD 20deg / EASE 60deg / floor scaled by band length), not a palette choice; start-cap dim circles ride node opacity (GC-016 dim-via-opacity precedent) (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": true,
+   "newToken": "$sem-lpGaugeDimDefault30 / $sem-lpGaugeDimWarning76 / $sem-lpGaugeDimWarning81"
+  },
+  {
+   "surface": "gauge halo (radial white fade behind the ring, over the chart)",
+   "prototypeValue": "radial-gradient white .5 -> transparent, clip-path inset bottom",
+   "boundToken": "$sem-lpGaugeHalo -> $sem-lpGaugeHaloClear radial gradient stops",
+   "rationale": "surface-at-50% role pair (dark values chosen as the dark surface #131C31 at the same alphas) — a raw white would not theme (v001 call, carried at the v002 re-oracle.)",
+   "newTokenCreated": true,
+   "newToken": "$sem-lpGaugeHalo / $sem-lpGaugeHaloClear"
+  },
+  {
+   "surface": "first-Save tooltip (#lp3Tip): border + ink (save-tooltip-shown)",
+   "prototypeValue": "border 1.5px #F97316 (--lp-orange; Chromium renders the 1.5px border at 1px), ink #E1620B (--lp-orange-strong), bg --surface-1",
+   "boundToken": "$sem-lpSaveBg (border) + $sem-lpSaveBorder (ink) + $y:sem-background-surface (fill)",
+   "rationale": "The tooltip wears the SAME lpSave orange family as the Save pill it describes — base orange on the outline, strong orange on the ink. The v001 token names carry their primary Save-pill surfaces (Bg/Border); binding them here keeps ONE designer question for one orange family rather than minting parallel tip tokens. Recorded because the name-vs-surface mismatch (a Bg token on a border) must read honestly in reconciliation.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "first-Save tooltip drop shadow",
+   "prototypeValue": "0 6px 18px rgba(0,0,0,.10)",
+   "boundToken": "$sem-lpTipShadow (created: light #0000001A, dark #00000099 per the lifted-shadow convention)",
+   "rationale": "Off the Hemlock elevation scale (md is 4/12; the help bubble already carries its own 4/18@13.3% gap token) — a third bespoke soft shadow, recorded as its own gap.",
+   "newTokenCreated": true,
+   "newToken": "sem-lpTipShadow"
+  },
+  {
+   "surface": "slider override note (.lp3-ovr) ink (slider-override-note)",
+   "prototypeValue": "#E1620B italic 12px (--lp-orange-strong as TEXT)",
+   "boundToken": "$sem-lpSaveBorder",
+   "rationale": "Value- and role-family-exact: the strong lp-orange is the ink Bill uses for save-adjacent warnings; the existing family token carries it (same reconciliation trail). Italic is the synthetic-oblique Heebo idiom (non-token gap, extended).",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "override-state gauge band sweep (slider-override-note)",
+   "prototypeValue": "conic sweep 143.52deg under the rounded 60% read (engine pSuccess 59.8%: the gauge rounds the READ to whole percent but sweeps the raw fraction — lpgDraw)",
+   "boundToken": "$sem-gaugeBandDefaultBright + $sem-lpGaugeDimDefault30 (blue band, floor-alpha .3)",
+   "rationale": "The band is banked at the RENDERED 143.52deg, not a back-derived 144 — the read and the sweep legitimately disagree by design.",
+   "newTokenCreated": false,
+   "newToken": null
+  },
+  {
+   "surface": "tooltip copy type (13px/500) + wrapped-line capture",
+   "prototypeValue": "13px/500, max-width 300, two rendered lines",
+   "boundToken": "$text-size-control-sm + $line-height-solid per measured line",
+   "rationale": "The 13px step rides the existing control-sm gap token (GC-006 family); lines banked per measured baseline like all capture type.",
+   "newTokenCreated": false,
+   "newToken": null
+  }
+ ],
+ "designGaps": [
+  {
+   "dimension": "color",
+   "token": "$sem-lpSaveBg",
+   "prototypeValue": "#F97316 (--lp-orange: the touched-slider Save pill + interview per-question Save)",
+   "lightValue": "#F97316",
+   "darkValue": "#FF8A2B",
+   "appliesTo": [
+    "slider-save-offered",
+    "spend-reset-offer",
+    "wizard-income-detail",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-lpSaveBorder",
+   "prototypeValue": "#E1620B (--lp-orange-strong: Save pill border)",
+   "lightValue": "#E1620B",
+   "darkValue": "#F0761A",
+   "appliesTo": [
+    "slider-save-offered",
+    "spend-reset-offer",
+    "wizard-income-detail",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-lpSaveSoft",
+   "prototypeValue": "#FFE7CC (--lp-orange-soft: changed-value outline — hover/transition furniture, bound for completeness)",
+   "lightValue": "#FFE7CC",
+   "darkValue": "#FF8C2D52",
+   "appliesTo": [],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-lpSaveNote",
+   "prototypeValue": "#B65D10 (hardcoded .astra-slider-note/.lpz-savenote text — Bill darkened the lp-orange for AA on white; dark value chosen from Bill's own dark orange set #FF9A3D)",
+   "lightValue": "#B65D10",
+   "darkValue": "#FF9A3D",
+   "appliesTo": [
+    "slider-save-offered",
+    "spend-reset-offer",
+    "wizard-income-detail",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-lpNeutralInk",
+   "prototypeValue": "#263343 (neutral pill/tooltip ink: Reset Sliders, Reset to 80% (unified from #222), help bubble text — blue-slate, outside the warm-gray text ramp)",
+   "lightValue": "#263343",
+   "darkValue": "#EAF0FF",
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-lpNeutralBorder",
+   "prototypeValue": "#D8DDE5 (neutral pill/tooltip border, unified from #d8d9d8 on the lprs pill)",
+   "lightValue": "#D8DDE5",
+   "darkValue": "#33476E",
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-gaugeBandDefaultBright",
+   "prototypeValue": "#3D8BFF (--gauge-blue: the 40-60 band blue — GC-002 family naming; GC-002's own default band was the older #4A78FF)",
+   "lightValue": "#3D8BFF",
+   "darkValue": "#7FAEFF",
+   "appliesTo": [
+    "plan-default",
+    "slider-saved",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-gaugeTrack (reused from GC-002)",
+   "prototypeValue": "#E8E7E4 (--gauge-track; also normalized onto the example-gauge track)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "gauge-explainer-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$sem-gaugeBandWarningBright (reused from GC-002)",
+   "prototypeValue": "#FF7A00 (--gauge-orange-bright: p<=25 band)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$sem-gaugeBandSuccessBright (reused from GC-002)",
+   "prototypeValue": "#17C455 (--gauge-green-bright: p>=80 band — uncontracted pixels at this lock, bound for the dark pair record)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-lpGaugeDimDefault30",
+   "prototypeValue": "rgba(61,139,255,.3) (ring tail hold + start cap dim)",
+   "lightValue": "#3D8BFF4D",
+   "darkValue": "#7FAEFF4D",
+   "appliesTo": [
+    "plan-default",
+    "slider-saved",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-lpGaugeDimWarning76",
+   "prototypeValue": "rgba(255,122,0,.757) (17% band tail floor)",
+   "lightValue": "#FF7A00C1",
+   "darkValue": "#FF9A3DC1",
+   "appliesTo": [
+    "slider-save-offered",
+    "slider-saved"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-lpGaugeDimWarning81",
+   "prototypeValue": "rgba(255,122,0,.808) (15% band tail floor)",
+   "lightValue": "#FF7A00CE",
+   "darkValue": "#FF9A3DCE",
+   "appliesTo": [
+    "spend-reset-offer"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-lpGaugeHalo",
+   "prototypeValue": "rgba(255,255,255,.5) (gauge backdrop halo over the chart; dark value = dark surface at same alpha)",
+   "lightValue": "#FFFFFF80",
+   "darkValue": "#131C3180",
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-lpGaugeHaloClear",
+   "prototypeValue": "transparent halo terminator",
+   "lightValue": "#FFFFFF00",
+   "darkValue": "#131C3100",
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$control-text-faint (reused from GC-006/013/014/016)",
+   "prototypeValue": "#767169 (--faint: legal line, figcaption, modal close glyph)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "explainer-open",
+    "gauge-explainer-open",
+    "wizard-family",
+    "wizard-family-spouse-added",
+    "wizard-income-detail",
+    "wizard-ss-estimate",
+    "wizard-assumptions",
+    "wizard-expense-added",
+    "wizard-review"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-borders-panel (reused from GC-014/016)",
+   "prototypeValue": "#E3DFD6 (--taupe-border: modal head-band rule)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "explainer-open",
+    "gauge-explainer-open",
+    "wizard-family",
+    "wizard-family-spouse-added",
+    "wizard-income-detail",
+    "wizard-ss-estimate",
+    "wizard-assumptions",
+    "wizard-expense-added",
+    "wizard-review"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-text-warning-value (reused from GC-002)",
+   "prototypeValue": "#EA580C (--orange — readout-orange role; furniture in the contracted states)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$chart-scrubber (reused from GC-004)",
+   "prototypeValue": "#C82320 (--neg on the scrub line + grip)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-ramp/hue-01-blue + $chart-ramp/hue-03-green (reused from GC-004)",
+   "prototypeValue": "#3A6AF8 median / #148338 retire marker (Bill's blue-led series palette vs Hemlock purple-led categorical — GC-004's one-family ruling)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "chart-palette",
+   "token": "$chart-ramp-fade/band",
+   "prototypeValue": "rgba(58,106,248,.15) (--accent-fill: the 20-80 band wash; dark from Bill's rgba(90,134,255,.20) mapped onto the Hemlock dark hue)",
+   "lightValue": "#3A6AF826",
+   "darkValue": "#5A82F933",
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "explainer-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "color",
+   "token": "$sem-sliderThumbEdge (reused from GC-014)",
+   "prototypeValue": "2px #FFFFFF slider-thumb edge, white in BOTH themes by rule",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "shadow",
+   "token": "$sem-lpGripShadow",
+   "prototypeValue": "0 1px 3px rgba(0,0,0,.35) (scrub grip — stronger than shadow-sm by design, visibility on red)",
+   "lightValue": "#00000059",
+   "darkValue": "#000000B3",
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "shadow",
+   "token": "$sem-lpThumbShadow",
+   "prototypeValue": "0 1px 3px rgba(0,0,0,.25) (slider thumbs; GC-016 recorded its own thumb-shadow variant at .35)",
+   "lightValue": "#00000040",
+   "darkValue": "#000000B3",
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "shadow",
+   "token": "$sem-lpBubbleShadow",
+   "prototypeValue": "0 4px 18px rgba(0,0,0,.133) (help bubble — off the elevation scale: md is 4/12@10%)",
+   "lightValue": "#00000022",
+   "darkValue": "#00000099",
+   "appliesTo": [
+    "help-tooltip-open"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": "$text-size-gauge-read",
+   "prototypeValue": "31px gauge read (31/700 tabular) — between 2xl(30) and 3xl(36)",
+   "lightValue": "31",
+   "darkValue": "31 (single-mode number)",
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": "$text-size-example-gauge",
+   "prototypeValue": "35px example-gauge percent (svg)",
+   "lightValue": "35",
+   "darkValue": "35 (single-mode number)",
+   "appliesTo": [
+    "gauge-explainer-open"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": "$text-size-annotation (reused from GC-004)",
+   "prototypeValue": "12.5px gauge metric-name link + chip-scale copy",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open",
+    "save-tooltip-shown",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": "$text-size-control-sm (reused from GC-006/013/014/016)",
+   "prototypeValue": "13px control/label text (also the rendered 13.3px svg-scaled variants carry literal sizes)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "explainer-open",
+    "gauge-explainer-open",
+    "wizard-family",
+    "wizard-family-spouse-added",
+    "wizard-income-detail",
+    "wizard-ss-estimate",
+    "wizard-assumptions",
+    "wizard-expense-added",
+    "wizard-review"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": "$text-size-body-prose (reused from GC-006/013/016)",
+   "prototypeValue": "15px prose (explainer body, slider note, how-link)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "plan-default",
+    "explainer-open",
+    "gauge-explainer-open",
+    "wizard-family",
+    "wizard-income-detail"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": "$text-size-modal-title (reused from GC-003/006/013/016)",
+   "prototypeValue": "22px serif card/modal titles (card title 22/500 — weight 500 is also off the Hemlock 300/400/600/700 ramp; weights are per-node strings in pen, recorded here as the same designer question)",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "plan-default",
+    "explainer-open",
+    "gauge-explainer-open",
+    "wizard-family",
+    "wizard-review"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "typography",
+   "token": "$line-height-solid (reused from GC-001 on)",
+   "prototypeValue": "per-line capture anchors every rendered line at its measured position; CSS line-heights are positional",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "plan-default"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "radius",
+   "token": "$radius-menu (reused from GC-006/013/016)",
+   "prototypeValue": "6px modal-close / tkdd-trigger radius",
+   "lightValue": null,
+   "darkValue": null,
+   "appliesTo": [
+    "explainer-open",
+    "gauge-explainer-open",
+    "wizard-family",
+    "wizard-ss-estimate",
+    "wizard-expense-added"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "non-token",
+   "token": null,
+   "prototypeValue": "Heebo italic (savenote/slider-note idiom: font:italic ... var(--font-ui)) — Heebo ships no italic face; both renderers synthesize the oblique. Testable: the .lpz-savenote/.astra-slider-note runs render slanted in wizard-income-detail within the per-state budget. v002 extends the same idiom to the 12px .lp3-ovr override note (slider-override-note).",
+   "lightValue": "fontStyle italic on $y:font-primary text nodes",
+   "darkValue": "same binding",
+   "appliesTo": [
+    "wizard-income-detail",
+    "slider-save-offered",
+    "spend-reset-offer",
+    "slider-override-note"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "document synthetic-oblique Heebo as the note idiom in the design system",
+    "ifRemapped": "designer names a real face/style; an agent re-binds this .pen (re-oracle, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "non-token",
+   "token": null,
+   "prototypeValue": "CSS dashed borders (the scrub line 2px dashed) and svg stroke-dasharray markers have no pen dash property — dash patterns are baked into path geometry (marker 4/3 svg units; Chromium border-dash measured [3w, 2w]).",
+   "lightValue": "geometry-baked dashes",
+   "darkValue": "same geometry",
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "n/a — rendering mechanics, not a palette decision",
+    "ifRemapped": "n/a"
+   }
+  },
+  {
+   "dimension": "non-token",
+   "token": null,
+   "prototypeValue": "The gauge ring is a conic-gradient annulus (mask 82..102px of a 204-box) with value-keyed eased tail; expressed as a pen arc-ellipse (innerRadius 0.8039) with an angular-gradient fill whose stops carry the eased alphas, plus tangent-aligned cap discs.",
+   "lightValue": "angular gradient on arc ellipse",
+   "darkValue": "same construction, dark token values",
+   "appliesTo": [
+    "plan-default",
+    "slider-save-offered",
+    "slider-saved",
+    "spend-reset-offer",
+    "scrub-age-60",
+    "help-tooltip-open"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "n/a — construction mechanics",
+    "ifRemapped": "n/a"
+   }
+  },
+  {
+   "dimension": "shadow",
+   "token": "$sem-lpTipShadow",
+   "prototypeValue": "0 6px 18px rgba(0,0,0,.10) (the first-Save tooltip #lp3Tip — off the elevation scale: md is 4/12@10%, the bubble 4/18@13.3%; a third bespoke soft shadow in the same family)",
+   "lightValue": "#0000001A",
+   "darkValue": "#00000099",
+   "appliesTo": [
+    "save-tooltip-shown"
+   ],
+   "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  },
+  {
+   "dimension": "radius",
+   "token": null,
+   "prototypeValue": "10px corner radius (Bill's --radius-md): the first-Save tooltip (#lp3Tip, framed in save-tooltip-shown) plus the uncontracted .lpz-row / .lp3-short surfaces — between Hemlock 2xs (8) and xs (12); bound as a literal number in the frames, same class as GC-014's $radius-menu 6px question",
+   "lightValue": "10 (positional)",
+   "darkValue": "10 (single-mode number)",
+   "appliesTo": [
+    "save-tooltip-shown"
+   ],
+   "designerQuestion": "Adopt a 10px radius step between 2xs (8) and xs (12), or change the tooltip to one of those?",
+   "reconciliation": {
+    "ifAdopted": "promote the token into hemlock-library.lib.pen + design-system sync (FE-1936 path); this .pen already binds it - no component change (non-token gaps: document in the design system)",
+    "ifRemapped": "designer names the existing role/convention; an agent re-binds this .pen (re-oracle at the same prototype version, judge-authorized) + the component change rides the same PR"
+   }
+  }
+ ],
+ "fontSubstitutions": [
+  {
+   "prototypeFont": "Heebo / Noto Serif (the prototype already ships the design-system faces — rule 15)",
+   "boundFont": "$y:font-primary (Heebo) / $y:font-secondary (Noto Serif)",
+   "scope": "no substitution required; capture served both renderers the same design-specs TTFs"
+  }
+ ],
+ "prototypeDefectsSeen": [
+  "F1/F2/F3 RESOLVED at v002 (flags.json): the first-Save tooltip and override note now RENDER (banked as the two new states); click-to-type verified working (uncontracted pixel state by scope).",
+  "F7 (NEW, 14.9.1): after tooltip dismissal the anchor Save retains a dangling aria-describedby=\"lp3Tip\" to the removed node — flagged, never fixed, no pixel impact, no aria-describedby probe authored anywhere (design-rules §2).",
+  "var(--ink-muted) is consumed (.lpz-f-dim/.lpz-cat) but never defined — the #8A857D fallback governs; normalization defines it onto sem-text-subtle (carried v001 finding).",
+  "Bill's three neutral pills still disagree among themselves (#263343+#d8dde5 twice vs #222+#d8d9d8 on the Reset-to-80% pill) and the example-gauge track (#e2e6ed) disagrees with --gauge-track (#E8E7E4) — normalized onto one role each, recorded in findReplaces (carried v001 finding).",
+  "The interview modal layout jitters sub-pixel between page loads (async engine re-render timing) — scene and target captured in one session (carried v001 finding).",
+  "Chromium renders the tooltip’s declared 1.5px border at a computed 1px (border-width integer snapping) — the frames bank the rendered 1px."
+ ],
+ "verdict": "captured"
+}
