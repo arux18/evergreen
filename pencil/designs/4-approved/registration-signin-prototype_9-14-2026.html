@@ -1139,7 +1139,7 @@
             <div class="terms">
               <label class="terms-label" for="termsCheckbox">
                 <input type="checkbox" id="termsCheckbox">
-                <span>By continuing, I agree to Evergreen's <a href="https://support.eg-dev.ai/hc/en-us/articles/50145665922836" target="_blank" rel="noopener">Terms of Use</a> and <a href="https://support.eg-dev.ai/hc/en-us/articles/50145735618452" target="_blank" rel="noopener">General Privacy Policy</a>, which includes the Biometric Data Policy.</span>
+                <span>By continuing, I acknowledge receipt of Evergreen's <a href="#" data-pending-link title="Link coming soon">Form CRS</a> and agree to Evergreen's <a href="https://support.eg-dev.ai/hc/en-us/articles/50145665922836" target="_blank" rel="noopener">Terms of Use</a> and <a href="https://support.eg-dev.ai/hc/en-us/articles/50145735618452" target="_blank" rel="noopener">General Privacy Policy</a>.</span>
               </label>
               <p class="field-error" id="termsError" hidden>Agree to the terms to continue.</p>
             </div>
@@ -1814,6 +1814,11 @@
     termsCheckbox.addEventListener("change", () => {
       setFieldError(termsCheckbox, termsError, false);
       showProfileMessage(false);
+    });
+
+    /* Form CRS link URL is not yet stood up (Legal to supply); stays styled/focusable without navigating. */
+    document.querySelectorAll("[data-pending-link]").forEach((link) => {
+      link.addEventListener("click", (event) => event.preventDefault());
     });
 
     /* ---------- Email + OTP events (from base) ---------- */
