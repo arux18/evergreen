@@ -3,8 +3,8 @@
  "componentId": "GC-019",
  "slug": "lifetime-plan",
  "penPath": "pencil/designs/4-approved/genui/GC-019-lifetime-plan.pen",
- "contentHash": "3797d7e445ddc2043c5bebfbcf3d2ac0540cbc8e05d14b22afbe93d7ce185910",
- "capturedAt": "2026-09-15T19:33:23.121Z",
+ "contentHash": "a642e49a9f091b5175e01940c1c70cac898171f1569002ac8fb2416edb8f6f1a",
+ "capturedAt": "2026-09-17T18:47:15.053Z",
  "prototypeVersion": "002",
  "prototypeContentHash": "sha256:4c00256f7ba8c4775f00d8396938180d3428a763963ed3b8168fdd697a34f03b",
  "frames": [
@@ -24,17 +24,20 @@
   "wizard-ss-estimate",
   "wizard-assumptions",
   "wizard-expense-added",
-  "wizard-review"
+  "wizard-review",
+  "wizard-assumptions-edit-open"
  ],
  "convergence": {
-  "iterationsUsed": 3,
+  "iterationsUsed": 1,
   "pencilVersion": "@pen.dev/cli 0.3.5",
-  "exportInvocation": "pen interactive --in <file.pen> --out <file.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import (../../../design-system/in-progress/hemlock-library.lib.pen) and the fonts (../../fonts/) resolve. Re-export verified byte-deterministic across consecutive runs (all 17 frames hash-identical across consecutive runs, all 17 pairwise distinct).",
-  "comparison": "pixelmatch threshold 0.1, per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-pen budget, not this loop’s). Targets = NORMALIZED v002 prototype (sha256 of the pinned raw bytes verified before retheme), per-state contract roots, Chromium via playwright 1.62.1 (Chrome Headless Shell 151.0.7922.34), deviceScaleFactor 2, viewport 1280x1400. Protocol carried from v001: non-local origins denied + @font-face injection serving Heebo/Noto Serif (+italic) from the SAME design-specs TTFs the .pen references; --font-render-hinting=none --disable-font-subpixel-positioning --disable-lcd-text; transitions/animations frozen, caret hidden; fresh context per state; pointer parked at the farthest corner EXCEPT scrub-age-60 (pointer owns the state) and help-tooltip-open (bubble hides on pointerout); INTEGER-CSS-PIXEL clip of the contract root (round() convention — see R1 note), self-consistency gate (two consecutive shots byte-equal); scene extraction in the SAME session as the banked target (v001 interview-jitter law).",
+  "exportInvocation": "pen interactive --in <file.pen> --out <file.pen>; execute({ input: 'Export([\"<frameId>\", ...], \"png\", \"<dir>\")' }) — default scale 2; the .pen MUST sit at its committed lane path so the relative library import (../../../design-system/in-progress/hemlock-library.lib.pen) and the fonts (../../fonts/) resolve. Re-export verified byte-deterministic across consecutive runs (all 18 frames hash-identical across consecutive runs, all 18 pairwise distinct).",
+  "comparison": "pixelmatch threshold 0.1, per-state budget 1.0% (dispatch default; states.json pixelThreshold 0.03 is the Gate-1 story-vs-pen budget, not this loop’s). Targets = NORMALIZED v002 prototype (sha256 of the pinned raw bytes verified before retheme), per-state contract roots, Chromium via playwright 1.62.1 (Chrome Headless Shell 151.0.7922.34), deviceScaleFactor 2, viewport 1280x1400. Protocol carried from v001: non-local origins denied + @font-face injection serving Heebo/Noto Serif (+italic) from the SAME design-specs TTFs the .pen references; --font-render-hinting=none --disable-font-subpixel-positioning --disable-lcd-text; transitions/animations frozen, caret hidden; fresh context per state; pointer parked at the farthest corner EXCEPT scrub-age-60 (pointer owns the state) and help-tooltip-open (bubble hides on pointerout); INTEGER-CSS-PIXEL clip of the contract root (round() convention — see R1 note), self-consistency gate (two consecutive shots byte-equal); scene extraction in the SAME session as the banked target (v001 interview-jitter law). 002.a2 amendment round: the same protocol reproduced end-to-end on a fresh workbench (playwright 1.62.1 / Chrome Headless Shell 151.0.7922.34 / pen 0.3.5); calibration check — the freshly normalized prototype re-rendered the carried wizard-assumptions target and reproduced its recorded 0.152% against the untouched frame export exactly before the new target was banked.",
   "iterationNotes": [
-   "R1 (9/15 carried states <= 1.0% against fresh v002 targets): the 15 v001 frames were exported at pen 0.3.5 and measured against newly banked v002 normalized targets — engine-identical renders reproduced v001 convergence numbers on 9 states; the 6 fractional-root modal states failed at 2-3.5% on a half-pixel registration shift. Diagnosis: clip-origin convention — v001 banked integer clips under round(), this run first used floor()/ceil().",
-   "R2 (17/17 <= 0.81%): targets re-banked under the round() clip convention (carried-state diffs collapsed to 0.04-0.52%); the two NEW frames (save-tooltip-shown, slider-override-note) generated from same-session scene extraction using the v001 conventions (per-signature text-y calibration table refitted and exact: 13 signatures, one dy each; per-box integer-css-px snapping; baked dashes; gauge annulus construction with the validated startAngle=-(150+sweep) law and conic-stop parse) — both passed first measurement (0.771% / 0.637%). Six carried modal frame heights aligned to the v002 integer clips (1 css px).",
-   "R3 (17/17 <= 0.807%, final): content-fidelity fix — the Your-Age cell’s input VALUE (\"50\") is not a DOM text node and was missing from the two generated frames (inside pixel budget but a text-content miss); synthesized per the v001 node convention. Worst state 0.807% (explainer-open, the v001 figure), median 0.30%."
+   "[002 full capture] R1 (9/15 carried states <= 1.0% against fresh v002 targets): the 15 v001 frames were exported at pen 0.3.5 and measured against newly banked v002 normalized targets — engine-identical renders reproduced v001 convergence numbers on 9 states; the 6 fractional-root modal states failed at 2-3.5% on a half-pixel registration shift. Diagnosis: clip-origin convention — v001 banked integer clips under round(), this run first used floor()/ceil().",
+   "[002 full capture] R2 (17/17 <= 0.81%): targets re-banked under the round() clip convention (carried-state diffs collapsed to 0.04-0.52%); the two NEW frames (save-tooltip-shown, slider-override-note) generated from same-session scene extraction using the v001 conventions (per-signature text-y calibration table refitted and exact: 13 signatures, one dy each; per-box integer-css-px snapping; baked dashes; gauge annulus construction with the validated startAngle=-(150+sweep) law and conic-stop parse) — both passed first measurement (0.771% / 0.637%). Six carried modal frame heights aligned to the v002 integer clips (1 css px).",
+   "[002 full capture] R3 (17/17 <= 0.807%, final): content-fidelity fix — the Your-Age cell’s input VALUE (\"50\") is not a DOM text node and was missing from the two generated frames (inside pixel budget but a text-content miss); synthesized per the v001 node convention. Worst state 0.807% (explainer-open, the v001 figure), median 0.30%.",
+   "[002.a2 R1 (final): 18/18 <= 1.0%] Amendment-scoped capture (FE-2370, frames-delta +1). The 17 carried frames are byte-untouched (re-export byte-identical to every recorded exportSha256 before AND after the edit). wizard-assumptions-edit-open authored by duplicating the converged wizard-assumptions frame and applying the measured local diff — target-vs-target locality proof: above-row region 0.002% (57 px, all in the modal top-right rounded-corner cutout where the under-scrim page shifted 3 viewport px), below-row region 0.000% under a +6 css-px shift. Frame edit: heights +6 (modal 1222->1228, body 1066->1072), row content +3 (row 41->47), below-row nodes +6, foot +6; the value span swapped for the focused tkdd-trigger construction (the converged wizard-ss-estimate idiom: sem-background-surface fill, $radius-menu, 1px inner stroke, 170px label clip, sem-text-meta chevron) with stroke $y:sem-borders-action (prim-blue-600 light / prim-blue-500 dark — value-exact to the rendered #3A6AF8 focus border) and the ellipsized face string banked as painted (\"Taxable, then tax-deferre…\"). First measurement 0.240% (border pixel-exact on straight runs — sampled; residual = corner-arc/glyph/chevron AA). The F8 pencil (painted despite [hidden], design-rules A31) is banked rendered, shifted +3 with the row.",
+   "[002.a2 tooling finding] pen 0.3.5 interactive save() re-normalization is RENDER-LOSSY on this document: a no-op load+save() rewrote node content and 8 of 17 carried frame exports (the 1024-wide chart/gauge states) stopped matching their recorded hashes. The committed bytes are therefore the surgical canonical-JSON edit of the previously committed pen-written file (which pen 0.3.5 loads and exports byte-deterministically — verified 18/18 across consecutive runs); never round-trip this .pen through save()."
   ],
   "perState": [
    {
@@ -240,9 +243,21 @@
      "distinct": true,
      "attempts": 1
     }
+   },
+   {
+    "state": "wizard-assumptions-edit-open",
+    "diffPct": 0.24,
+    "geometryProbes": "pass",
+    "exportSha256": "b1005a677950ca930ca7ceceabdf5e0907d68abd917de2503956c018687c8f42",
+    "preBank": {
+     "settledMs": 1100,
+     "textProbes": "pass",
+     "distinct": true,
+     "attempts": 1
+    }
    }
   ],
-  "geometryProbesRun": "contract-named vectors verified against the emitted frames: THE MARKER LAW — retire marker x=286.72 (save-tooltip-shown, retire 64) / 307.2 + longevity 819.2 (slider-override-note) / carried v001 vectors intact (307.2/204.8/819.2); gauge band annulus innerRadius 0.8039, sweep 115.2deg = 48% and 143.52deg = raw 59.8% under the rounded 60% read, startAngle -(150+sweep); THE LOG-SLIDER LAW — retire fill 68.5714% (64 of 40..75) and income fill 61.30% (position 613 after PageUp); scrub panel 180px radius-2xs; tooltip 300px max-width, radius 10, exactly 8px below the Save and centred on it (rule 18); frame dims = integer contract-root clips, 17/17. All pass (selfcheck.mjs).",
+  "geometryProbesRun": "contract-named vectors verified against the emitted frames: THE MARKER LAW — retire marker x=286.72 (save-tooltip-shown, retire 64) / 307.2 + longevity 819.2 (slider-override-note) / carried v001 vectors intact (307.2/204.8/819.2); gauge band annulus innerRadius 0.8039, sweep 115.2deg = 48% and 143.52deg = raw 59.8% under the rounded 60% read, startAngle -(150+sweep); THE LOG-SLIDER LAW — retire fill 68.5714% (64 of 40..75) and income fill 61.30% (position 613 after PageUp); scrub panel 180px radius-2xs; tooltip 300px max-width, radius 10, exactly 8px below the Save and centred on it (rule 18); frame dims = integer contract-root clips, 17/17. All pass (selfcheck.mjs). 002.a2 (V29/V30, verified against the banked target and the emitted frame): edit-box swap geometry — .lpz-rv-sel box 220x36 at frame (511,877) replacing the value span (zero .lpz-rv-v in the row; the face text appears exactly once), trigger 36px tall radius $radius-menu=6 with the 1px accent focus border pixel-exact in the export (sampled straight-run pixels byte-equal to the target), 14px ($y:text-size-sm) face type, row class lpz-rv editing (the step's only editing row, live-DOM verified), row 41->47 and below-row +6 both exact; select semantics live-DOM verified at bank time: #lpz_withdrawal_order value taxable_first, aria-label 'Withdrawal order', 3 options (Taxable, then tax-deferred, then Roth / Tax-deferred first / Pro rata across accounts), focus on the visible trigger (document.activeElement), gauge 55% and no #lp3Tip behind the modal. All pass.",
   "waivers": []
  },
  "normalizationRecipe": {
@@ -718,6 +733,14 @@
    "rationale": "The 13px step rides the existing control-sm gap token (GC-006 family); lines banked per measured baseline like all capture type.",
    "newTokenCreated": false,
    "newToken": null
+  },
+  {
+   "surface": "focused tkdd-trigger border (wizard-assumptions-edit-open edit box — tg.focus() paints the trigger border in accent)",
+   "prototypeValue": "#3A6AF8 (1px, the focused dropdown trigger; unfocused triggers carry --tk-border)",
+   "boundToken": "$y:sem-borders-action",
+   "rationale": "The focused control border is the action-border role — the same binding (and the same painted value, prim-blue-600) the row's astra-help ring already carries in every wizard frame; no focus-specific border token exists in Hemlock and the value is role- and value-exact, so no gap token is minted. Recorded because a focus-state surface bound to the generic action-border role is a judgment, not a mechanical read.",
+   "newTokenCreated": false,
+   "newToken": null
   }
  ],
  "designGaps": [
@@ -1018,7 +1041,8 @@
     "wizard-ss-estimate",
     "wizard-assumptions",
     "wizard-expense-added",
-    "wizard-review"
+    "wizard-review",
+    "wizard-assumptions-edit-open"
    ],
    "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
    "reconciliation": {
@@ -1041,7 +1065,8 @@
     "wizard-ss-estimate",
     "wizard-assumptions",
     "wizard-expense-added",
-    "wizard-review"
+    "wizard-review",
+    "wizard-assumptions-edit-open"
    ],
    "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
    "reconciliation": {
@@ -1284,7 +1309,8 @@
     "wizard-ss-estimate",
     "wizard-assumptions",
     "wizard-expense-added",
-    "wizard-review"
+    "wizard-review",
+    "wizard-assumptions-edit-open"
    ],
    "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
    "reconciliation": {
@@ -1356,7 +1382,8 @@
     "gauge-explainer-open",
     "wizard-family",
     "wizard-ss-estimate",
-    "wizard-expense-added"
+    "wizard-expense-added",
+    "wizard-assumptions-edit-open"
    ],
    "designerQuestion": "Adopt into the design language, or change the component to match the existing system?",
    "reconciliation": {
@@ -1466,7 +1493,23 @@
   "var(--ink-muted) is consumed (.lpz-f-dim/.lpz-cat) but never defined — the #8A857D fallback governs; normalization defines it onto sem-text-subtle (carried v001 finding).",
   "Bill's three neutral pills still disagree among themselves (#263343+#d8dde5 twice vs #222+#d8d9d8 on the Reset-to-80% pill) and the example-gauge track (#e2e6ed) disagrees with --gauge-track (#E8E7E4) — normalized onto one role each, recorded in findReplaces (carried v001 finding).",
   "The interview modal layout jitters sub-pixel between page loads (async engine re-render timing) — scene and target captured in one session (carried v001 finding).",
-  "Chromium renders the tooltip’s declared 1.5px border at a computed 1px (border-width integer snapping) — the frames bank the rendered 1px."
+  "Chromium renders the tooltip’s declared 1.5px border at a computed 1px (border-width integer snapping) — the frames bank the rendered 1px.",
+  "F8 (14.9.1, flagged at the 002.a2 oracle amendment — design-rules A31): in edit mode lpzEditRow sets pb0.hidden=true but .lpz-edit{display:inline-flex} overrides the UA [hidden] rule, so the pencil REMAINS PAINTED (28x28) beside the edit box. Banked rendered in wizard-assumptions-edit-open per the flag; no probe pins the pencil, so the ruled land fix (hide it) passes Gate-1 unchanged."
  ],
- "verdict": "captured"
+ "verdict": "captured",
+ "amendment": {
+  "epochKey": "002.a2",
+  "anchorWO": "FE-2370",
+  "rulingCommentId": "41658051-6964-4aa8-a79c-757d750ac31f",
+  "captureAgent": "bc-dd73305c-5bd9-48a4-9230-736a712d2339",
+  "framesDelta": {
+   "added": [
+    "wizard-assumptions-edit-open"
+   ],
+   "removed": []
+  },
+  "carriedFramesByteVerified": "17/17 re-exports byte-identical to the 002.a1-recorded exportSha256 at pen 0.3.5",
+  "priorPenContentHash": "sha256:3797d7e445ddc2043c5bebfbcf3d2ac0540cbc8e05d14b22afbe93d7ce185910",
+  "priorCapturedAt": "2026-09-15T19:33:23.121Z"
+ }
 }
