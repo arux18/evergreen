@@ -1,5 +1,5 @@
 {
-  "version": "2.17",
+  "version": "2.18",
   "children": [
     {
       "type": "frame",
@@ -358,6 +358,445 @@
         },
         {
           "id": "l8wEd0",
+          "type": "ref",
+          "ref": "Od5wM",
+          "name": "chat",
+          "height": "fill_container"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "skjrB",
+      "x": 21551,
+      "y": 3931,
+      "name": "Settings",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$y:sem-background-surface",
+      "gap": 8,
+      "padding": 8,
+      "children": [
+        {
+          "id": "X9iFr",
+          "type": "ref",
+          "ref": "B9zmaU",
+          "name": "navPanel",
+          "height": "fill_container",
+          "descendants": {
+            "VgGCp": {
+              "y": 848
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "zLTEH",
+          "name": "mainPanel",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "NAyb6",
+              "name": "contentColumn",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": "$y:spacing-xl",
+              "padding": [
+                "$y:spacing-md",
+                "$y:spacing-xl"
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "cAxo9",
+                  "name": "greetingArea",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-4xs",
+                  "justifyContent": "space_between",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "M27ubs",
+                      "name": "greeting",
+                      "fill": "$y:sem-text-header",
+                      "content": "Settings",
+                      "fontFamily": "$y:font-secondary",
+                      "fontSize": "$y:text-size-lg",
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "OZB4X",
+                      "x": 20,
+                      "y": 20,
+                      "name": "logo",
+                      "enabled": false,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "q2tZv",
+                          "name": "logoMain",
+                          "fill": "$nav.text.primary",
+                          "content": "evergreen",
+                          "fontFamily": "Manrope",
+                          "fontSize": 20,
+                          "fontWeight": "normal",
+                          "letterSpacing": -0.3
+                        },
+                        {
+                          "type": "text",
+                          "id": "hieMi",
+                          "name": "logoSuffix",
+                          "fill": "$nav.text.primary",
+                          "textGrowth": "fixed-width-height",
+                          "width": "fit_content(24)",
+                          "height": "fit_content(25)",
+                          "content": ".ai",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Spectral",
+                          "fontSize": 24,
+                          "fontWeight": "300",
+                          "fontStyle": "italic"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "DYqAj",
+                  "name": "subtitle",
+                  "fill": "$y:sem-text-meta",
+                  "content": "Manage your account and preferences.",
+                  "fontFamily": "$y:font-primary",
+                  "fontSize": "$y:text-size-sm",
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "itiUA",
+                  "name": "settingsMenu",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$y:spacing-xs",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "r5ujvo",
+                      "name": "Profile",
+                      "width": "fill_container",
+                      "fill": "$y:sem-background-surface",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": "$y:spacing-sm",
+                      "padding": [
+                        20,
+                        "$y:spacing-md"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "j1dy5A",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "x": 24,
+                          "y": 21.5,
+                          "fill": "$y:sem-btnInkBg",
+                          "descendants": {
+                            "p:yGc18": {
+                              "library": "lucide",
+                              "icon": "user",
+                              "fill": "$y:sem-btnInkText"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RVD2m",
+                          "name": "textGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": "$y:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ARy4T",
+                              "name": "profileTitle",
+                              "fill": "$y:sem-text-body",
+                              "content": "Profile",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ZpbWg",
+                              "name": "profileDesc",
+                              "fill": "$y:sem-text-meta",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Manage your personal information and preferences.",
+                              "fontFamily": "Heebo",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "tBbuV",
+                          "name": "profileChevron",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$y:sem-icons-action"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "n8LQoF",
+                      "name": "Accounts",
+                      "width": "fill_container",
+                      "fill": "$y:sem-background-surface",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": "$y:spacing-sm",
+                      "padding": [
+                        20,
+                        "$y:spacing-md"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "BkjwB",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "name": "accountsIcon",
+                          "fill": "$y:sem-btnInkBg",
+                          "descendants": {
+                            "p:yGc18": {
+                              "library": "lucide",
+                              "icon": "wallet",
+                              "fill": "$y:sem-btnInkText"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "GuGXf",
+                          "name": "textGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": "$y:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "lQ7y7",
+                              "name": "accountsTitle",
+                              "fill": "$y:sem-text-body",
+                              "content": "Accounts",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "e4oUD",
+                              "name": "accountsDesc",
+                              "fill": "$y:sem-text-meta",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Manage your linked accounts and institutions.",
+                              "fontFamily": "Heebo",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "f0f37t",
+                          "name": "accountsChevron",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$y:sem-icons-action"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "B3JMjR",
+                      "name": "Accounts",
+                      "width": "fill_container",
+                      "fill": "$y:sem-background-surface",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": "$y:spacing-sm",
+                      "padding": [
+                        20,
+                        "$y:spacing-md"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "F8yPP",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "name": "accountsIcon",
+                          "fill": "$y:sem-btnInkBg",
+                          "descendants": {
+                            "p:yGc18": {
+                              "library": "lucide",
+                              "icon": "key-round",
+                              "fill": "$y:sem-btnInkText"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "TZI9e",
+                          "name": "textGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": "$y:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "kyFs6",
+                              "name": "accountsTitle",
+                              "fill": "$y:sem-text-body",
+                              "content": "Passkeys",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "CSCbW",
+                              "name": "accountsDesc",
+                              "fill": "$y:sem-text-meta",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Manage your passkeys.",
+                              "fontFamily": "Heebo",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "T0XjpM",
+                          "name": "accountsChevron",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$y:sem-icons-action"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "vqwCl",
+                      "name": "Contact Us",
+                      "width": "fill_container",
+                      "fill": "$y:sem-background-surface",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": "$y:spacing-sm",
+                      "padding": [
+                        20,
+                        "$y:spacing-md"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "AgHe5",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "x": 24,
+                          "y": 21.5,
+                          "fill": "$y:sem-btnInkBg",
+                          "descendants": {
+                            "p:yGc18": {
+                              "library": "lucide",
+                              "icon": "mail",
+                              "fill": "$y:sem-btnInkText"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "CZacb",
+                          "name": "textGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": "$y:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "chMr2",
+                              "name": "contactTitle",
+                              "fill": "$y:sem-text-body",
+                              "content": "Contact Us",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "c3oKN3",
+                              "name": "contactDesc",
+                              "fill": "$y:sem-text-meta",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Get in touch with our support team.",
+                              "fontFamily": "Heebo",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "P0py6",
+                          "name": "contactChevron",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$y:sem-icons-action"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rI0lB",
           "type": "ref",
           "ref": "Od5wM",
           "name": "chat",
@@ -763,6 +1202,496 @@
                         {
                           "type": "icon",
                           "id": "KTgJn",
+                          "name": "contactChevron",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$y:sem-icons-action"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "J8g5GP",
+      "x": 23045,
+      "y": 3931,
+      "name": "Mobile - Settings",
+      "clip": true,
+      "width": 390,
+      "height": 844,
+      "fill": "$y:sem-background-surface",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "NAL8J",
+          "name": "statusBar",
+          "width": "fill_container",
+          "height": 54,
+          "padding": [
+            16,
+            20
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "PAMnA",
+              "name": "time",
+              "fill": "#0E0E0E",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "pH8oV",
+              "name": "statusIcons",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "zlWdb",
+                  "name": "signal",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "signal",
+                  "library": "lucide",
+                  "fill": "#0E0E0E"
+                },
+                {
+                  "type": "icon",
+                  "id": "gmjJM",
+                  "name": "wifi",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "wifi",
+                  "library": "lucide",
+                  "fill": "#0E0E0E"
+                },
+                {
+                  "type": "icon",
+                  "id": "yp8fc",
+                  "name": "battery",
+                  "width": 22,
+                  "height": 16,
+                  "icon": "battery-full",
+                  "library": "lucide",
+                  "fill": "#0E0E0E"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "x68TT",
+          "name": "contentArea",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": "$y:spacing-md",
+          "padding": "$y:spacing-sm",
+          "children": [
+            {
+              "type": "frame",
+              "id": "a3kp6",
+              "name": "greetingArea",
+              "width": "fill_container",
+              "gap": "$y:spacing-3xs",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HkuVX",
+                  "name": "greeting",
+                  "fill": "$y:sem-text-header",
+                  "content": "Settings",
+                  "fontFamily": "$y:font-secondary",
+                  "fontSize": "$y:text-size-lg",
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "g634XB",
+                  "x": 613,
+                  "y": 0,
+                  "name": "logo",
+                  "enabled": false,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uQyau",
+                      "name": "logoMain",
+                      "fill": "$nav.text.primary",
+                      "content": "evergreen",
+                      "fontFamily": "Manrope",
+                      "fontSize": 20,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "oReO1",
+                      "name": "logoSuffix",
+                      "fill": "$nav.text.primary",
+                      "textGrowth": "fixed-width-height",
+                      "width": "fit_content(24)",
+                      "height": "fit_content(25)",
+                      "content": ".ai",
+                      "textAlignVertical": "middle",
+                      "fontFamily": "Spectral",
+                      "fontSize": 24,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "flJ3u",
+                  "name": "chatIcon",
+                  "width": 22,
+                  "height": 22,
+                  "icon": "x",
+                  "library": "lucide",
+                  "fill": "$y:sem-icons-meta"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "X7VhL",
+              "name": "contentColumn",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": "$y:spacing-md",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "k5AkOy",
+                  "name": "subtitle",
+                  "fill": "$y:sem-text-meta",
+                  "content": "Manage your account and preferences.",
+                  "fontFamily": "$y:font-primary",
+                  "fontSize": "$y:text-size-sm",
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "Icd2t",
+                  "name": "settingsMenu",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$y:spacing-xs",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "u10L3s",
+                      "name": "Profile",
+                      "width": "fill_container",
+                      "fill": "$y:sem-background-surface",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": "$y:spacing-sm",
+                      "padding": [
+                        20,
+                        "$y:spacing-md"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "Ss028",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "x": 24,
+                          "y": 31,
+                          "fill": "$y:sem-btnInkBg",
+                          "descendants": {
+                            "p:yGc18": {
+                              "library": "lucide",
+                              "icon": "user",
+                              "fill": "$y:sem-btnInkText"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "xbgGw",
+                          "name": "textGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": "$y:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "d0iSQv",
+                              "name": "profileTitle",
+                              "fill": "$y:sem-text-body",
+                              "content": "Profile",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "E7jUC5",
+                              "name": "profileDesc",
+                              "fill": "$y:sem-text-meta",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Manage your personal information and preferences.",
+                              "fontFamily": "Heebo",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "BCA9l",
+                          "name": "profileChevron",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$y:sem-icons-action"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "q1uRS",
+                      "name": "Accounts",
+                      "width": "fill_container",
+                      "fill": "$y:sem-background-surface",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": "$y:spacing-sm",
+                      "padding": [
+                        20,
+                        "$y:spacing-md"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "Rndut",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "name": "accountsIcon",
+                          "fill": "$y:sem-btnInkBg",
+                          "descendants": {
+                            "p:yGc18": {
+                              "library": "lucide",
+                              "icon": "wallet",
+                              "fill": "$y:sem-btnInkText"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "vcVOb",
+                          "name": "textGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": "$y:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "t5OMki",
+                              "name": "accountsTitle",
+                              "fill": "$y:sem-text-body",
+                              "content": "Accounts",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "aLiXM",
+                              "name": "accountsDesc",
+                              "fill": "$y:sem-text-meta",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Manage your linked accounts and institutions.",
+                              "fontFamily": "Heebo",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "QOIPw",
+                          "name": "accountsChevron",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$y:sem-icons-action"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "W71uXn",
+                      "name": "Accounts",
+                      "width": "fill_container",
+                      "fill": "$y:sem-background-surface",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": "$y:spacing-sm",
+                      "padding": [
+                        20,
+                        "$y:spacing-md"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "m2GXfm",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "name": "accountsIcon",
+                          "fill": "$y:sem-btnInkBg",
+                          "descendants": {
+                            "p:yGc18": {
+                              "library": "lucide",
+                              "icon": "key-round",
+                              "fill": "$y:sem-btnInkText"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "qO03Y",
+                          "name": "textGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": "$y:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "soQTC",
+                              "name": "accountsTitle",
+                              "fill": "$y:sem-text-body",
+                              "content": "Passkeys",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "s3LDH",
+                              "name": "accountsDesc",
+                              "fill": "$y:sem-text-meta",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Manage your passkeys.",
+                              "fontFamily": "Heebo",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "PzkqR",
+                          "name": "accountsChevron",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "$y:sem-icons-action"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hqgjl",
+                      "name": "Contact Us",
+                      "width": "fill_container",
+                      "fill": "$y:sem-background-surface",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-borders-light",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "gap": "$y:spacing-sm",
+                      "padding": [
+                        20,
+                        "$y:spacing-md"
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "aupgC",
+                          "type": "ref",
+                          "ref": "p:k5Ntnq",
+                          "x": 24,
+                          "y": 21.5,
+                          "fill": "$y:sem-btnInkBg",
+                          "descendants": {
+                            "p:yGc18": {
+                              "library": "lucide",
+                              "icon": "mail",
+                              "fill": "$y:sem-btnInkText"
+                            }
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "piHuz",
+                          "name": "textGroup",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": "$y:spacing-3xs",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ygcSB",
+                              "name": "contactTitle",
+                              "fill": "$y:sem-text-body",
+                              "content": "Contact Us",
+                              "fontFamily": "Heebo",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "RutXw",
+                              "name": "contactDesc",
+                              "fill": "$y:sem-text-meta",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Get in touch with our support team.",
+                              "fontFamily": "Heebo",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "f2qvx2",
                           "name": "contactChevron",
                           "width": 20,
                           "height": 20,
@@ -1499,6 +2428,24 @@
           "height": 36
         }
       ]
+    },
+    {
+      "type": "note",
+      "id": "f5oHkC",
+      "x": 21219.066970479318,
+      "y": 2621.0038714807306,
+      "width": 250,
+      "height": 219,
+      "content": "Current design without item Passkeys"
+    },
+    {
+      "type": "note",
+      "id": "VpmpF",
+      "x": 21219,
+      "y": 3931,
+      "width": 250,
+      "height": 219,
+      "content": "Next step. Page with item Passkeys"
     }
   ],
   "themes": {
