@@ -611,25 +611,25 @@ Composite shadows (geometry is theme-invariant; only the color resolves differen
 
 ## 13. Chart Colors
 
-Categorical palette (unchanged values, but use these token names):
+Categorical palette v5 (`chart-categorical/color-01`…`15`). Light values below; dark overrides are in §16. Assign in this order.
 
 ```css
 :root {
-  --chart-cat-01: #8951F0;
-  --chart-cat-02: #06B6D4;
-  --chart-cat-03: #312E81;
-  --chart-cat-04: #3B82F6;
-  --chart-cat-05: #0F766E;
-  --chart-cat-06: #38BDF8;
-  --chart-cat-07: #2DD4BF;
-  --chart-cat-08: #A78BFA;
-  --chart-cat-09: #C026D3;
-  --chart-cat-10: #E73CAE;
-  --chart-cat-11: #E879A8;
-  --chart-cat-12: #92400E;
-  --chart-cat-13: #FB923C;
-  --chart-cat-14: #CA8A04;
-  --chart-cat-15: #FACC15;
+  --chart-cat-01: #7B96F1; /* chart-categorical/color-01 */
+  --chart-cat-02: #89B6F9;
+  --chart-cat-03: #95C5FB;
+  --chart-cat-04: #74D5D1;
+  --chart-cat-05: #51CCD0;
+  --chart-cat-06: #19B6CC;
+  --chart-cat-07: #B985DE;
+  --chart-cat-08: #BAA9F5;
+  --chart-cat-09: #BDBBFC;
+  --chart-cat-10: #E6B1E5;
+  --chart-cat-11: #E59FD4;
+  --chart-cat-12: #E37BA8;
+  --chart-cat-13: #E2903F;
+  --chart-cat-14: #FAA38E;
+  --chart-cat-15: #FEB0AF;
 }
 ```
 
@@ -1092,22 +1092,22 @@ Copy-paste this as your root variables (light theme defaults):
   --z-toast: 600;
   --z-tooltip: 700;
 
-  /* Chart Categorical */
-  --chart-cat-01: #8951F0;
-  --chart-cat-02: #06B6D4;
-  --chart-cat-03: #312E81;
-  --chart-cat-04: #3B82F6;
-  --chart-cat-05: #0F766E;
-  --chart-cat-06: #38BDF8;
-  --chart-cat-07: #2DD4BF;
-  --chart-cat-08: #A78BFA;
-  --chart-cat-09: #C026D3;
-  --chart-cat-10: #E73CAE;
-  --chart-cat-11: #E879A8;
-  --chart-cat-12: #92400E;
-  --chart-cat-13: #FB923C;
-  --chart-cat-14: #CA8A04;
-  --chart-cat-15: #FACC15;
+  /* Chart Categorical — palette v5, chart-categorical/color-01..15 */
+  --chart-cat-01: #7B96F1;
+  --chart-cat-02: #89B6F9;
+  --chart-cat-03: #95C5FB;
+  --chart-cat-04: #74D5D1;
+  --chart-cat-05: #51CCD0;
+  --chart-cat-06: #19B6CC;
+  --chart-cat-07: #B985DE;
+  --chart-cat-08: #BAA9F5;
+  --chart-cat-09: #BDBBFC;
+  --chart-cat-10: #E6B1E5;
+  --chart-cat-11: #E59FD4;
+  --chart-cat-12: #E37BA8;
+  --chart-cat-13: #E2903F;
+  --chart-cat-14: #FAA38E;
+  --chart-cat-15: #FEB0AF;
 }
 ```
 
@@ -1312,6 +1312,23 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-toggleLoadingTrack: var(--prim-navy-600);
   --sem-toggleTrackOff: var(--prim-navy-500);
   --sem-toggleTrackOn: var(--prim-blue-900);
+
+  /* Chart categorical — palette v5 dark (chart-categorical/color-01..15) */
+  --chart-cat-01: #7993EE;
+  --chart-cat-02: #86B3F5;
+  --chart-cat-03: #93C2F8;
+  --chart-cat-04: #71D2CE;
+  --chart-cat-05: #4FCACE;
+  --chart-cat-06: #1ABAD0;
+  --chart-cat-07: #B682DB;
+  --chart-cat-08: #B7A6F2;
+  --chart-cat-09: #BBB8F9;
+  --chart-cat-10: #E3AEE2;
+  --chart-cat-11: #E39CD1;
+  --chart-cat-12: #E27BA7;
+  --chart-cat-13: #E59342;
+  --chart-cat-14: #F8A18D;
+  --chart-cat-15: #FBADAC;
 
   /* Themed shadow colors — lifted black so elevation reads on navy */
   --shadow-sm-color: #00000080;
