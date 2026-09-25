@@ -261,7 +261,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 | `sem-background-info-strong` | `$prim-sky-100` → `#aedcfe` | `$prim-skydark-100` → `#16304A` | Background info strong |
 | `sem-background-light` | `$prim-gray-50` → `#F8F7F6` | `$prim-navy-600` → `#18223A` | Subtle section bg |
 | `sem-background-main` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-800` → `#101729` | Page canvas, nav/chat bg |
-| `sem-background-muted` | `$prim-gray-200` → `#D5D3D0` | `$prim-navy-500` → `#172642` | Background muted |
+| `sem-background-muted` | `$prim-gray-200` → `#D5D3D0` | `$prim-navy-50` → `#33476E` | Background muted |
 | `sem-background-rowHover` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-500` → `#172642` | Background row hover |
 | `sem-background-rowPressed` | `$prim-taupe-200` → `#EDEAE3` | `$prim-navy-400` → `#202C4E` | Background row pressed |
 | `sem-background-subtle` | `$prim-gray-100` → `#EEEDEB` | `$prim-navy-600` → `#18223A` | Background subtle |

@@ -1130,7 +1130,7 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-background-info-strong: var(--prim-skydark-100);
   --sem-background-light: var(--prim-navy-600);
   --sem-background-main: var(--prim-navy-800);
-  --sem-background-muted: var(--prim-navy-500);
+  --sem-background-muted: var(--prim-navy-50);
   --sem-background-rowHover: var(--prim-navy-500);
   --sem-background-rowPressed: var(--prim-navy-400);
   --sem-background-subtle: var(--prim-navy-600);
