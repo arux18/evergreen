@@ -103,9 +103,9 @@ See §2.8 for why `--border`/`--border-strong` carry different Hemlock roles per
 
 | Template var | **Dark (new)** | Nearest Hemlock | was (v2.0) |
 |---|---|---|---|
-| `--accent-2` (teal) | **`#84E6CC`** | `sem-chart-cat-7` dark | `#2FD4C4` |
-| `--accent-3` (purple — KPI overlines) | **`#B198F0`** | `sem-chart-cat-1` dark | `#9A86FF` |
-| `--accent-4` (gold) | **`#D9A02E`** | `sem-chart-cat-14` dark | `#E3B972` |
+| `--accent-2` (teal) | **`#84E6CC`** | nearest v5: `sem-chart-cat-4` dark (`#71D2CE`) | `#2FD4C4` |
+| `--accent-3` (purple — KPI overlines) | **`#B198F0`** | nearest v5: `sem-chart-cat-7` dark (`#B682DB`) | `#9A86FF` |
+| `--accent-4` (gold) | **`#D9A02E`** | nearest v5: `sem-chart-cat-13` dark (`#E59342`) | `#E3B972` |
 
 ### Status & semantic accents
 
@@ -253,14 +253,14 @@ For components that draw their own buttons rather than the `--tk-*` widgets. Lig
 
 | Token | Light | Dark | Token | Light | Dark |
 |---|---|---|---|---|---|
-| cat-1 | `#8951F0` | `#B198F0` | cat-9 | `#C026D3` | `#DB74E6` |
-| cat-2 | `#06B6D4` | `#5FD3E6` | cat-10 | `#E73CAE` | `#F485BE` |
-| cat-3 | `#312E81` | `#8480D9` | cat-11 | `#E879A8` | `#E89FB0` |
-| cat-4 | `#3B82F6` | `#7AA0F5` | cat-12 | `#92400E` | `#CE7E5B` |
-| cat-5 | `#0F766E` | `#4FC0A6` | cat-13 | `#FB923C` | `#F0985A` |
-| cat-6 | `#38BDF8` | `#84D2F7` | cat-14 | `#CA8A04` | `#D9A02E` |
-| cat-7 | `#2DD4BF` | `#84E6CC` | cat-15 | `#FACC15` | `#F3DE6F` |
-| cat-8 | `#A78BFA` | `#C7BAF7` | | | |
+| cat-1 | `#7B96F1` | `#7993EE` | cat-9 | `#BDBBFC` | `#BBB8F9` |
+| cat-2 | `#89B6F9` | `#86B3F5` | cat-10 | `#E6B1E5` | `#E3AEE2` |
+| cat-3 | `#95C5FB` | `#93C2F8` | cat-11 | `#E59FD4` | `#E39CD1` |
+| cat-4 | `#74D5D1` | `#71D2CE` | cat-12 | `#E37BA8` | `#E27BA7` |
+| cat-5 | `#51CCD0` | `#4FCACE` | cat-13 | `#E2903F` | `#E59342` |
+| cat-6 | `#19B6CC` | `#1ABAD0` | cat-14 | `#FAA38E` | `#F8A18D` |
+| cat-7 | `#B985DE` | `#B682DB` | cat-15 | `#FEB0AF` | `#FBADAC` |
+| cat-8 | `#BAA9F5` | `#B7A6F2` | | | |
 
 ### Sequential ramp (`sem-chart-seq-*`) — blue palette, depth reversed in dark
 
@@ -432,8 +432,8 @@ html[data-theme="dark"]{
   --cons-bg:#3A1B1E;   --cons-border:#542427;   /* sem-background-error / sem-borders-error-subtle */
   --info-bg:#10263C;   --info-border:#16304A;   /* sem-background-info / sem-borders-info */
   /* charts */
-  --cat1:#B198F0; --cat2:#5FD3E6; --cat3:#8480D9; --cat4:#7AA0F5;
-  --cat5:#4FC0A6; --cat6:#84D2F7; --cat7:#84E6CC;                  /* sem-chart-cat-1..7 */
+  --cat1:#7993EE; --cat2:#86B3F5; --cat3:#93C2F8; --cat4:#71D2CE;
+  --cat5:#4FCACE; --cat6:#1ABAD0; --cat7:#B682DB;                  /* sem-chart-cat-1..7 (palette v5) */
   --seq1:#163196; --seq2:#2952CC; --seq3:#3A6AF8; --seq4:#5A82F9;  /* sem-chart-seq — ramp self-inverts in dark */
   --seq5:#7094FB; --seq6:#A5BCFC; --seq7:#C8D6FD;
   /* NO table-var overrides here: --table-head-bg/-ink, --table-total-bg and the row-state vars ride
@@ -533,8 +533,8 @@ Complete `sem-*` set from `hemlock-library.lib.pen`, resolved to hex, for future
 
 | Token | Dark ref | Dark | (Light) |
 |---|---|---|---|
-| sem-background-main | prim-navy-800 | `#101729` | `#F7F5F0` |
-| sem-background-surface | prim-navy-700 | `#131C31` | `#FFFFFF` |
+| sem-background-main | prim-navy-800 | `#101729` | `#FFFFFF` |
+| sem-background-surface | prim-navy-700 | `#131C31` | `#F7F5F0` |
 | sem-background-elevated | prim-navy-600 | `#18223A` | `#FFFFFF` |
 | sem-background-light | prim-navy-600 | `#18223A` | `#F8F7F6` |
 | sem-background-subtle | prim-navy-600 | `#18223A` | `#EEEDEB` |

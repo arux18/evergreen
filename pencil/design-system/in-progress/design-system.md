@@ -260,7 +260,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 | `sem-background-info` | `$prim-sky-50` → `#ebf6ff` | `$prim-skydark-200` → `#10263C` | Background info |
 | `sem-background-info-strong` | `$prim-sky-100` → `#aedcfe` | `$prim-skydark-100` → `#16304A` | Background info strong |
 | `sem-background-light` | `$prim-gray-50` → `#F8F7F6` | `$prim-navy-600` → `#18223A` | Subtle section bg |
-| `sem-background-main` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-800` → `#101729` | Page canvas, nav/chat bg |
+| `sem-background-main` | `$prim-base-white` → `#FFFFFF` | `$prim-navy-800` → `#101729` | App shell / page canvas |
 | `sem-background-muted` | `$prim-gray-200` → `#D5D3D0` | `$prim-navy-50` → `#33476E` | Background muted |
 | `sem-background-rowHover` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-500` → `#172642` | Background row hover |
 | `sem-background-rowPressed` | `$prim-taupe-200` → `#EDEAE3` | `$prim-navy-400` → `#202C4E` | Background row pressed |
@@ -270,7 +270,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 | `sem-background-success-soft` | `$prim-green-100` → `#a9fdc4` | `$prim-greendark-200` → `#1A3A26` | Background success soft |
 | `sem-background-success-strong` | `$prim-green-200` → `#68fc97` | `$prim-greendark-100` → `#245234` | Background success strong |
 | `sem-background-sunken` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-900` → `#0C1222` | Background sunken |
-| `sem-background-surface` | `$prim-base-white` → `#ffffff` | `$prim-navy-700` → `#131C31` | Main surface / card bg |
+| `sem-background-surface` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-700` → `#131C31` | Main surface / card bg |
 | `sem-background-warning` | `$prim-orange-50` → `#fff1e9` | `$prim-orangedark-300` → `#33200F` | Background warning |
 | `sem-background-warning-strong` | `$prim-orange-200` → `#fdc9a6` | `$prim-orangedark-100` → `#5E3A18` | Background warning strong |
 
@@ -500,7 +500,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 | `sem-chatDivider` | `$prim-taupe-250` → `#E8E6E0` | `$prim-navy-700` → `#131C31` | Message divider |
 | `sem-chatIcon` | `$prim-gray-600` → `#5E5954` | `$prim-blue-300` → `#A5BCFC` | Chat header icons |
 | `sem-chatPlaceholder` | `$prim-gray-350` → `#A8A49E` | `$prim-navylight-200` → `#52637F` | Input placeholder |
-| `sem-chatShadow` | `#2D292628` | `#9BB3FC24` | Input field shadow |
+| `sem-chatShadow` | none (`#00000000`) | `#9BB3FC24` | Chat panel glow (dark-only) |
 | `sem-chatTextPrimary` | `$prim-gray-800` → `#2D2926` | `$prim-blue-100` → `#EBF0FE` | Primary chat text |
 | `sem-chatTextSecondary` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-600` → `#B3C1DB` | Secondary chat text |
 
@@ -508,7 +508,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 
 | Token | Light | Dark | Usage |
 |---|---|---|---|
-| `sem-chatInputBg` | `$sem-background-surface` → `#ffffff` | `$prim-navy-950` → `#090E1B` | Input field bg |
+| `sem-chatInputBg` | `$sem-background-main` → `#FFFFFF` | `$prim-navy-950` → `#090E1B` | Input field bg |
 | `sem-chatInputBorder` | `$prim-taupe-250` → `#E8E6E0` | `$prim-navy-500` → `#172642` | Input border |
 | `sem-chatInputBorderActive` | `$prim-gray-250` → `#C0BAB2` | `$prim-navy-50` → `#33476E` | Input border (focused) |
 | `sem-chatInputBorderRecording` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` | Input border while recording |

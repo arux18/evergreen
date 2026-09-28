@@ -225,8 +225,8 @@ Every semantic token is now a **light/dark pair**. Light values below are the `:
 
 | Old token | New token | Light | Dark |
 |-----------|-----------|-------|------|
-| `--surface-primary` / `#FFFFFF` | `--sem-background-surface` | `#ffffff` | `#131C31` |
-| `--surface-secondary` / `#F5F5F5` | `--sem-background-main` | `#F7F5F0` | `#101729` |
+| `--surface-primary` / `#FFFFFF` | `--sem-background-surface` | `#F7F5F0` | `#131C31` |
+| `--surface-secondary` / `#F5F5F5` | `--sem-background-main` | `#FFFFFF` | `#101729` |
 | `--surface-tertiary` / `#EBEBEB` | `--sem-background-light` | `#F8F7F6` | `#18223A` |
 
 ### Text
@@ -823,7 +823,7 @@ Copy-paste this as your root variables (light theme defaults):
   --sem-background-info: var(--prim-sky-50);
   --sem-background-info-strong: var(--prim-sky-100);
   --sem-background-light: var(--prim-gray-50);
-  --sem-background-main: var(--prim-taupe-100);
+  --sem-background-main: var(--prim-base-white);
   --sem-background-muted: var(--prim-gray-200);
   --sem-background-rowHover: var(--prim-taupe-100);
   --sem-background-rowPressed: var(--prim-taupe-200);
@@ -833,7 +833,7 @@ Copy-paste this as your root variables (light theme defaults):
   --sem-background-success-soft: var(--prim-green-100);
   --sem-background-success-strong: var(--prim-green-200);
   --sem-background-sunken: var(--prim-taupe-100);
-  --sem-background-surface: var(--prim-base-white);
+  --sem-background-surface: var(--prim-taupe-100);
   --sem-background-warning: var(--prim-orange-50);
   --sem-background-warning-strong: var(--prim-orange-200);
   --sem-borders-action: var(--prim-blue-600);
@@ -930,7 +930,7 @@ Copy-paste this as your root variables (light theme defaults):
   --sem-chatClosePressedIcon: var(--prim-blue-700);
   --sem-chatDivider: var(--prim-taupe-250);
   --sem-chatIcon: var(--prim-gray-600);
-  --sem-chatInputBg: var(--sem-background-surface);
+  --sem-chatInputBg: var(--sem-background-main);
   --sem-chatInputBorder: var(--prim-taupe-250);
   --sem-chatInputBorderActive: var(--prim-gray-250);
   --sem-chatInputBorderRecording: var(--prim-blue-600);
