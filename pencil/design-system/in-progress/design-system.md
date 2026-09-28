@@ -252,7 +252,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 |---|---|---|---|
 | `sem-background-action` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` | Background action |
 | `sem-background-disabled` | `$prim-gray-50` → `#F8F7F6` | `$prim-navy-700` → `#131C31` | Background disabled |
-| `sem-background-elevated` | `$prim-base-white` → `#ffffff` | `$prim-navy-600` → `#18223A` | Background elevated |
+| `sem-background-elevated` | `$prim-base-white` → `#ffffff` | `$prim-navy-600` → `#18223A` | Cards, chart containers, controls, popups, bottom sheets, dialogs, tooltips |
 | `sem-background-error` | `$prim-red-50` → `#ffeaea` | `$prim-reddark-200` → `#3A1B1E` | Background error |
 | `sem-background-error-strong` | `$prim-red-200` → `#fdaba9` | `$prim-reddark-100` → `#542427` | Background error strong |
 | `sem-background-highlight` | `$prim-blue-100` → `#ebf0fe` | `$prim-skydark-100` → `#16304A` | Background highlight |
@@ -270,7 +270,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 | `sem-background-success-soft` | `$prim-green-100` → `#a9fdc4` | `$prim-greendark-200` → `#1A3A26` | Background success soft |
 | `sem-background-success-strong` | `$prim-green-200` → `#68fc97` | `$prim-greendark-100` → `#245234` | Background success strong |
 | `sem-background-sunken` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-900` → `#0C1222` | Background sunken |
-| `sem-background-surface` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-700` → `#131C31` | Main surface / card bg |
+| `sem-background-surface` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-700` → `#131C31` | Main surface |
 | `sem-background-warning` | `$prim-orange-50` → `#fff1e9` | `$prim-orangedark-300` → `#33200F` | Background warning |
 | `sem-background-warning-strong` | `$prim-orange-200` → `#fdc9a6` | `$prim-orangedark-100` → `#5E3A18` | Background warning strong |
 
@@ -1348,9 +1348,9 @@ Sub-variants with icons: `/icon-left`, `/icon-right`
 
 ### Chart design rules
 
-- **Background:** always `$sem-background-surface` (white in light, `$prim-navy-700` in dark). Never gray or tinted.
+- **Background:** always `$sem-background-elevated` (white in light, `$prim-navy-600` in dark). Never gray or tinted.
 - **Axis labels:** `xs` size (12px), `$sem-text-meta`
-- **Tooltip:** `$sem-background-surface` bg, `shadow-md`, max 240px
+- **Tooltip:** `$sem-background-elevated` bg, `shadow-md`, max 240px
 - **Legend:** bottom placement default, click-to-toggle via `InteractiveLegend`
 - **Threshold lines:** Goal = dashed, Benchmark = dotted, Limit = solid
 - **Chart text scaling:** NEVER scale text with chart. Use fixed pixel sizes.
