@@ -7,7 +7,7 @@ Everything here is canonical and current. Three files:
 - this README — the non-CSS behaviors below.
 
 ## Implementation notes
-1. **Theme flip**: everything keys off html[data-theme="dark"]. Light and dark are themed independently — never derive one from the other. **Default theme is DARK** (business-confirmed 2026-09-28, recorded in FE-1894): with no stored preference, the pre-paint inline script sets data-theme="dark". Keep the default a one-line config change.
+1. **Theme flip**: everything keys off html[data-theme="dark"]. Light and dark are themed independently — never derive one from the other. **Default theme is DARK** (business-confirmed 2026-09-22, recorded in FE-1894): with no stored preference, the pre-paint inline script sets data-theme="dark". Keep the default a one-line config change.
 2. **Chat close button scroll border**: 1px borders-strong fades in (200ms) only while chat content scrolls beneath (scrollTop > 4). Drive via a data-scrolled attribute set by a scroll listener + CSS attribute rule — not framework state (avoids re-render races with chat autoscroll; autoscroll fires only on new message / typing start).
 3. **Disabled states**: opacity dim on outline + icon — 45% in dark, 38% in light. chatVoiceBgDisabled = transparent (the voice button is an outline button; no fill in any state except active).
 4. **Alpha survives only for**: drawer scrim, modal overlay, focus ring rgba(112,148,251,0.35), chat panel glow (sem-chatShadow — DARK-ONLY; light mode is explicitly none), chatVoicePulse #7094FB28, and the shadow-*-color tokens (dark: black @ 50/60/70/85% — lifted Aug 21 so elevation stays visible on navy; light: 8/10/12/16%). Every other state fill is an opaque navy step.
