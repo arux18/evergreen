@@ -2,7 +2,8 @@
 
 > **Purpose:** Apply these changes to any HTML/CSS that references the old Evergreen design system tokens. Token names use the current Hemlock nomenclature (`--prim-*` primitives, `--sem-*` semantics) and every semantic token now has a **navy dark theme** value (see §16).
 > **Source of truth:** `hemlock-library.lib.pen`
-> **Date:** 2026-08-20
+> **Date:** 2026-08-20 (token values synced 2026-09-28)
+> **Engineering values:** `dark-mode-handoff/hemlock.light.css` and `hemlock.dark.css` are the complete, generated token files. If anything here disagrees with them, the CSS files win. See `dark-mode-handoff/README-DEV.md` for the required light-mode change and surface roles.
 
 ---
 
@@ -541,7 +542,7 @@ Composite shadows (geometry is theme-invariant; only the color resolves differen
 ```css
 .nav-panel {
   background: var(--sem-navBg);                /* #F7F5F0 · dark #090E1B */
-  border-right: 1px solid var(--sem-navBorder); /* #DCD8CB · dark transparent */
+  border-right: 1px solid var(--sem-navBorder); /* #DCD8CB · dark #33476E */
 }
 .nav-item {
   color: var(--sem-navTextPrimary);            /* #2D2926 · dark #D8E1F0 */
@@ -615,21 +616,21 @@ Categorical palette v5 (`chart-categorical/color-01`…`15`). Light values below
 
 ```css
 :root {
-  --chart-cat-01: #7B96F1; /* chart-categorical/color-01 */
-  --chart-cat-02: #89B6F9;
-  --chart-cat-03: #95C5FB;
-  --chart-cat-04: #74D5D1;
-  --chart-cat-05: #51CCD0;
-  --chart-cat-06: #19B6CC;
-  --chart-cat-07: #B985DE;
-  --chart-cat-08: #BAA9F5;
-  --chart-cat-09: #BDBBFC;
-  --chart-cat-10: #E6B1E5;
-  --chart-cat-11: #E59FD4;
-  --chart-cat-12: #E37BA8;
-  --chart-cat-13: #E2903F;
-  --chart-cat-14: #FAA38E;
-  --chart-cat-15: #FEB0AF;
+  --chart-categorical-color-01: #7B96F1; /* chart-categorical/color-01 */
+  --chart-categorical-color-02: #89B6F9;
+  --chart-categorical-color-03: #95C5FB;
+  --chart-categorical-color-04: #74D5D1;
+  --chart-categorical-color-05: #51CCD0;
+  --chart-categorical-color-06: #19B6CC;
+  --chart-categorical-color-07: #B985DE;
+  --chart-categorical-color-08: #BAA9F5;
+  --chart-categorical-color-09: #BDBBFC;
+  --chart-categorical-color-10: #E6B1E5;
+  --chart-categorical-color-11: #E59FD4;
+  --chart-categorical-color-12: #E37BA8;
+  --chart-categorical-color-13: #E2903F;
+  --chart-categorical-color-14: #FAA38E;
+  --chart-categorical-color-15: #FEB0AF;
 }
 ```
 
@@ -987,7 +988,7 @@ Copy-paste this as your root variables (light theme defaults):
   --sem-navSettingsIcon: var(--prim-blue-600);
   --sem-navSettingsPressedBg: var(--prim-blue-200);
   --sem-navSettingsPressedIcon: var(--prim-blue-700);
-  --sem-navShadow: #2D292628;
+  --sem-navShadow: var(--sem-chatShadow);       /* none in light, same as chat (Sep 28) */
   --sem-navTextDisabled: var(--prim-gray-300);
   --sem-navTextPrimary: var(--prim-gray-800);
   --sem-navTextSecondary: var(--prim-gray-600);
@@ -1093,21 +1094,21 @@ Copy-paste this as your root variables (light theme defaults):
   --z-tooltip: 700;
 
   /* Chart Categorical — palette v5, chart-categorical/color-01..15 */
-  --chart-cat-01: #7B96F1;
-  --chart-cat-02: #89B6F9;
-  --chart-cat-03: #95C5FB;
-  --chart-cat-04: #74D5D1;
-  --chart-cat-05: #51CCD0;
-  --chart-cat-06: #19B6CC;
-  --chart-cat-07: #B985DE;
-  --chart-cat-08: #BAA9F5;
-  --chart-cat-09: #BDBBFC;
-  --chart-cat-10: #E6B1E5;
-  --chart-cat-11: #E59FD4;
-  --chart-cat-12: #E37BA8;
-  --chart-cat-13: #E2903F;
-  --chart-cat-14: #FAA38E;
-  --chart-cat-15: #FEB0AF;
+  --chart-categorical-color-01: #7B96F1;
+  --chart-categorical-color-02: #89B6F9;
+  --chart-categorical-color-03: #95C5FB;
+  --chart-categorical-color-04: #74D5D1;
+  --chart-categorical-color-05: #51CCD0;
+  --chart-categorical-color-06: #19B6CC;
+  --chart-categorical-color-07: #B985DE;
+  --chart-categorical-color-08: #BAA9F5;
+  --chart-categorical-color-09: #BDBBFC;
+  --chart-categorical-color-10: #E6B1E5;
+  --chart-categorical-color-11: #E59FD4;
+  --chart-categorical-color-12: #E37BA8;
+  --chart-categorical-color-13: #E2903F;
+  --chart-categorical-color-14: #FAA38E;
+  --chart-categorical-color-15: #FEB0AF;
 }
 ```
 
@@ -1257,7 +1258,7 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-icons-warning-strong: var(--prim-orange-500-muted);
   --sem-navActiveBg: var(--prim-navy-600);
   --sem-navBg: var(--prim-navy-950);
-  --sem-navBorder: #00000000;
+  --sem-navBorder: var(--prim-navy-50);         /* same as chat border (Sep 28) */
   --sem-navDivider: var(--prim-navy-300);
   --sem-navHoverBg: var(--prim-navy-600);
   --sem-navHoverText: var(--prim-navylight-800);
@@ -1267,7 +1268,7 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-navSettingsIcon: var(--prim-blue-400);
   --sem-navSettingsPressedBg: var(--prim-navy-400);
   --sem-navSettingsPressedIcon: var(--prim-blue-300);
-  --sem-navShadow: var(--shadow-sm-color);      /* visible in dark (Aug 21) — was flat */
+  --sem-navShadow: var(--sem-chatShadow);       /* same blue glow as chat (Sep 28) */
   --sem-navTextDisabled: var(--prim-navylight-100);
   --sem-navTextPrimary: var(--prim-navylight-800);
   --sem-navTextSecondary: var(--prim-navylight-500);
@@ -1314,21 +1315,21 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-toggleTrackOn: var(--prim-blue-900);
 
   /* Chart categorical — palette v5 dark (chart-categorical/color-01..15) */
-  --chart-cat-01: #7993EE;
-  --chart-cat-02: #86B3F5;
-  --chart-cat-03: #93C2F8;
-  --chart-cat-04: #71D2CE;
-  --chart-cat-05: #4FCACE;
-  --chart-cat-06: #1ABAD0;
-  --chart-cat-07: #B682DB;
-  --chart-cat-08: #B7A6F2;
-  --chart-cat-09: #BBB8F9;
-  --chart-cat-10: #E3AEE2;
-  --chart-cat-11: #E39CD1;
-  --chart-cat-12: #E27BA7;
-  --chart-cat-13: #E59342;
-  --chart-cat-14: #F8A18D;
-  --chart-cat-15: #FBADAC;
+  --chart-categorical-color-01: #7993EE;
+  --chart-categorical-color-02: #86B3F5;
+  --chart-categorical-color-03: #93C2F8;
+  --chart-categorical-color-04: #71D2CE;
+  --chart-categorical-color-05: #4FCACE;
+  --chart-categorical-color-06: #1ABAD0;
+  --chart-categorical-color-07: #B682DB;
+  --chart-categorical-color-08: #B7A6F2;
+  --chart-categorical-color-09: #BBB8F9;
+  --chart-categorical-color-10: #E3AEE2;
+  --chart-categorical-color-11: #E39CD1;
+  --chart-categorical-color-12: #E27BA7;
+  --chart-categorical-color-13: #E59342;
+  --chart-categorical-color-14: #F8A18D;
+  --chart-categorical-color-15: #FBADAC;
 
   /* Themed shadow colors — lifted black so elevation reads on navy */
   --shadow-sm-color: #00000080;

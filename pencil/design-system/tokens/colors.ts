@@ -11,7 +11,7 @@
  *
  * Naming (Aug 2026 restructure): T1 primitives = --prim-* (static paint, same in
  * both themes). Semantic dark values and the full T2/T3 semantic set live in
- * pencil/design-system/dark-mode-handoff/ (hemlock.dark.css + navy-dark.tokens.json).
+ * pencil/design-system/in-progress/dark-mode-handoff/ (hemlock.light.css, hemlock.dark.css, hemlock.tokens.json).
  * The semantic shortcuts below carry the canonical LIGHT values.
  */
 export const colors = {

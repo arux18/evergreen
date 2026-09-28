@@ -458,13 +458,13 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 |---|---|---|---|
 | `sem-navActiveBg` | `$prim-taupe-350` → `#DCD8CB` | `$prim-navy-600` → `#18223A` | Active item bg |
 | `sem-navBg` | `$prim-taupe-100` → `#F7F5F0` | `$prim-navy-950` → `#090E1B` | Nav panel bg |
-| `sem-navBorder` | `$prim-taupe-350` → `#DCD8CB` | `#00000000` | Nav border |
+| `sem-navBorder` | `$prim-taupe-350` → `#DCD8CB` | `$prim-navy-50` → `#33476E` | Nav border (matches chat border in dark) |
 | `sem-navDivider` | `$prim-taupe-250` → `#E8E6E0` | `$prim-navy-300` → `#22314F` | Nav section divider |
 | `sem-navHoverBg` | `$prim-taupe-200` → `#EDEAE3` | `$prim-navy-600` → `#18223A` | Item hover bg |
 | `sem-navHoverText` | `$prim-gray-800` → `#2D2926` | `$prim-navylight-800` → `#D8E1F0` | Item hover text |
 | `sem-navIcon` | `$prim-gray-400` → `#8A8680` | `$prim-navylight-500` → `#9DAFCD` | Nav icons |
 | `sem-navPressedBg` | `$prim-taupe-300` → `#E3DFD6` | `$prim-navy-400` → `#202C4E` | Pressed item bg |
-| `sem-navShadow` | `#2D292628` | `#00000000` | Nav panel shadow |
+| `sem-navShadow` | `$sem-chatShadow` → none | `$sem-chatShadow` → `#9BB3FC24` | Nav panel shadow — always the same as the chat panel (none in light, blue glow in dark) |
 | `sem-navTextDisabled` | `$prim-gray-300` → `#B5B1AB` | `$prim-navylight-100` → `#3A485F` | Disabled nav text |
 | `sem-navTextPrimary` | `$prim-gray-800` → `#2D2926` | `$prim-navylight-800` → `#D8E1F0` | Primary nav text |
 | `sem-navTextSecondary` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-500` → `#9DAFCD` | Secondary nav text |
@@ -870,7 +870,7 @@ Gaps: 8px min between adjacent interactive elements; 12px+ between destructive a
 ### Layout tokens
 
 - Nav background: `$sem-navBg` (light `$prim-taupe-100` / dark `$prim-navy-950`)
-- Nav border: `$sem-navBorder` (light `$prim-taupe-350` / dark transparent — dark nav is borderless)
+- Nav border: `$sem-navBorder` (light `$prim-taupe-350` / dark `$prim-navy-50`, same as the chat border)
 - Chat background: `$sem-chatBg` (light `$prim-taupe-100` / dark `$prim-navy-950`)
 - Chat border: `$sem-chatBorder` (light `$prim-taupe-350` / dark `$prim-navy-50`)
 - Main surface: `$sem-background-surface` (light `$prim-base-white` / dark `$prim-navy-700`)

@@ -20,7 +20,7 @@ Regenerate primitive RGB lines in `colors.css`: `node scripts/sync-tokens-from-h
 | | |
 |--|--|
 | **Updated (2026-08-21)** | All var refs moved `--color-*` → `--prim-*`; added navy / navylight / *-dark / *-muted / half-step ramps; semantic shortcuts realigned to canon light values (primary button is **blue**, not charcoal; chat send = blue-600; chat shadow is dark-only = `transparent` in light; chatVoice pulse = blue-600 @ 16%). |
-| **Dark values** | Not in this file — the dark theme ships via `pencil/design-system/dark-mode-handoff/hemlock.dark.css` (`html[data-theme="dark"]` overrides) and `navy-dark.tokens.json`. |
+| **Dark values** | Not in this file — the themes ship via `pencil/design-system/in-progress/dark-mode-handoff/`: `hemlock.light.css` (`:root`), `hemlock.dark.css` (`html[data-theme="dark"]` overrides), and `hemlock.tokens.json` (both themes). |
 | **Removed** | `text`: `header-success`, `header-error`, `body-error`, `body-success`. `icons`: `feature-dark`, `feature-white`. Entire `clay`, `violet`, `olive` scales. |
 | **Added (earlier)** | `nav` (bg, text, icon, states, shadow). `chat` (bg, border, divider, text, input, chips, shadow). `chatVoice` (active, waveform, timer, pulse). |
 | **Updated (earlier)** | `text.disabled` → gray-300. Link/button text: blue-600 / blue-700 / blue-800. `btnLinkTextActive` renamed **`btnLinkTextPressed`**. |

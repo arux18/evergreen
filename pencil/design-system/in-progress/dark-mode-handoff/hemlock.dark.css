@@ -13,40 +13,135 @@
    navy + navy-border groups) are REMOVED from the pen file.
    Aug 21: shadow colors renamed prim-shadow-*-color → shadow-*-color
    (semantics, not paint) and dark shadow alphas lifted to
-   50/60/70/85% so elevation reads on navy; sem-navShadow is now
-   visible in dark (was flat).
+   50/60/70/85% so elevation reads on navy; the nav panel shares
+   the chat panel glow and border in dark (Amanda, Sep 28).
+   ============================================================
+   Sep 28: regenerated from hemlock-library.lib.pen so every token and
+   name matches the library 1:1 (50 tokens were missing). Chart tokens
+   use the library names with "/" replaced by "-" (CSS custom property
+   names can't contain "/"): chart-categorical/color-01 ->
+   --chart-categorical-color-01. Design-only tokens (sem-iosChrome*,
+   sem-dotGrid) are excluded. Light values: hemlock.light.css.
    ============================================================ */
 
 html[data-theme="dark"] {
 
-  /* ---- PRIMITIVES (shared paint, pen steps) ---- */
-  --prim-base-black: #000000; --prim-base-white: #FFFFFF;
-  --prim-gray-50: #F8F7F6; --prim-gray-100: #EEEDEB; --prim-gray-200: #D5D3D0; --prim-gray-250: #C0BAB2; --prim-gray-300: #B5B1AB; --prim-gray-350: #A8A49E; --prim-gray-400: #8A8680; --prim-gray-500: #716E6A; --prim-gray-600: #5E5954; --prim-gray-700: #403D3A; --prim-gray-800: #2D2926; --prim-gray-900: #0E0E0E;
-  --prim-taupe-100: #F7F5F0; --prim-taupe-200: #EDEAE3; --prim-taupe-250: #E8E6E0; --prim-taupe-300: #E3DFD6; --prim-taupe-350: #DCD8CB; --prim-taupe-400: #BCB49E; --prim-taupe-500: #9D937B; --prim-taupe-600: #877F68; --prim-taupe-700: #6C6451; --prim-taupe-800: #4B4435; --prim-taupe-900: #322C20;
-  --prim-blue-100: #EBF0FE; --prim-blue-200: #C8D6FD; --prim-blue-300: #A5BCFC; --prim-blue-400: #7094FB; --prim-blue-500: #5A82F9; --prim-blue-600: #3A6AF8; --prim-blue-700: #2952CC; --prim-blue-800: #163196; --prim-blue-900: #031E64;
-  --prim-sky-50: #EBF6FF; --prim-sky-100: #AEDCFE; --prim-sky-200: #72C2FE; --prim-sky-250: #38BDF8; --prim-sky-300: #35A8FD; --prim-sky-300-muted: #5CA8E7; --prim-sky-400: #2E90DA; --prim-sky-500: #2679B6; --prim-sky-600: #1F6193; --prim-sky-700: #174A6F; --prim-sky-800: #10324C; --prim-sky-900: #081B28;
-  --prim-green-50: #E9FFF0; --prim-green-100: #A9FDC4; --prim-green-200: #68FC97; --prim-green-300: #27FB6B; --prim-green-350: #4ADE80; --prim-green-350-muted: #74D791; --prim-green-400: #1EBF51; --prim-green-500: #148338; --prim-green-600: #10642B; --prim-green-700: #0B461E; --prim-green-800: #062811; --prim-green-900: #020A04;
-  --prim-orange-50: #FFF1E9; --prim-orange-100: #FEE4D2; --prim-orange-200: #FDC9A6; --prim-orange-300: #FCAD79; --prim-orange-400: #FB924D; --prim-orange-400-muted: #EA9C62; --prim-orange-500: #FA7720; --prim-orange-500-muted: #E68550; --prim-orange-600: #C85F1A; --prim-orange-700: #964713; --prim-orange-800: #64300D; --prim-orange-900: #321806;
-  --prim-red-50: #FFEAEA; --prim-red-100: #FED5D4; --prim-red-200: #FDABA9; --prim-red-250: #FCA5A5; --prim-red-300: #FC807E; --prim-red-350: #F87171; --prim-red-350-muted: #E5807E; --prim-red-400: #FB5653; --prim-red-400-muted: #E56D66; --prim-red-500: #FA2C28; --prim-red-600: #C82320; --prim-red-700: #961A18; --prim-red-800: #641210; --prim-red-900: #320908;
-  /* navy — OUR numeric ramp (50 lightest → 950 darkest); replaces pen navy + navy-border */
-  --prim-navy-50: #33476E;   /* pen: navy-border-600 */
-  --prim-navy-100: #2E4066;  /* pen: navy-border-500 */
-  --prim-navy-200: #2A3A5C;  /* pen: navy-border-400 */
-  --prim-navy-300: #22314F;  /* pen: navy-border-300 + navy-elevated */
-  --prim-navy-400: #202C4E;  /* pressed fill */
-  --prim-navy-500: #172642;  /* pen: navy-hover */
-  --prim-navy-600: #18223A;  /* pen: navy-raised + border-200 */
-  --prim-navy-700: #131C31;  /* surface — O12 resolved: pen navy-surface #1C2943 removed from pen */
-  --prim-navy-800: #101729;  /* pen: navy-825 */
-  --prim-navy-900: #0C1222;  /* pen: navy-chat */
-  --prim-navy-950: #090E1B;  /* pen: navy-app */
-  --prim-navylight-100: #3A485F; --prim-navylight-200: #52637F; --prim-navylight-300: #697DA0; --prim-navylight-400: #889CBF; --prim-navylight-500: #9DAFCD; --prim-navylight-600: #B3C1DB; --prim-navylight-700: #C8D4E9; --prim-navylight-800: #D8E1F0; --prim-navylight-900: #E9EEF7;
-  /* darktints — flattened tint fills for status surfaces */
-  --prim-skydark-100: #16304A; --prim-skydark-200: #10263C;
-  --prim-greendark-100: #245234; --prim-greendark-200: #1A3A26; --prim-greendark-300: #12291C;
-  --prim-orangedark-100: #5E3A18; --prim-orangedark-200: #472C13; --prim-orangedark-300: #33200F;
-  --prim-reddark-100: #542427; --prim-reddark-200: #3A1B1E; --prim-reddark-300: #2C1518;
-  --shadow-sm-color: #00000080; --shadow-md-color: #00000099; --shadow-lg-color: #000000B3; --shadow-overlay-color: #000000D9; /* dark: black @ 50/60/70/85% (light: 8/10/12/16%) — lifted Aug 21 so elevation stays visible on navy; renamed off prim- (shadow colors are semantic, not paint) */
+  /* ---- PRIMITIVES ---- */
+  --prim-base-black: #000000;
+  --prim-base-white: #FFFFFF;
+  --prim-gray-50: #F8F7F6;
+  --prim-gray-100: #EEEDEB;
+  --prim-gray-200: #D5D3D0;
+  --prim-gray-250: #C0BAB2;
+  --prim-gray-300: #B5B1AB;
+  --prim-gray-350: #A8A49E;
+  --prim-gray-400: #8A8680;
+  --prim-gray-500: #716E6A;
+  --prim-gray-600: #5E5954;
+  --prim-gray-700: #403D3A;
+  --prim-gray-800: #2D2926;
+  --prim-gray-900: #0E0E0E;
+  --prim-taupe-100: #F7F5F0;
+  --prim-taupe-200: #EDEAE3;
+  --prim-taupe-250: #E8E6E0;
+  --prim-taupe-300: #E3DFD6;
+  --prim-taupe-350: #DCD8CB;
+  --prim-taupe-400: #BCB49E;
+  --prim-taupe-500: #9D937B;
+  --prim-taupe-600: #877F68;
+  --prim-taupe-700: #6C6451;
+  --prim-taupe-800: #4B4435;
+  --prim-taupe-900: #322C20;
+  --prim-blue-100: #EBF0FE;
+  --prim-blue-200: #C8D6FD;
+  --prim-blue-300: #A5BCFC;
+  --prim-blue-400: #7094FB;
+  --prim-blue-500: #5A82F9;
+  --prim-blue-600: #3A6AF8;
+  --prim-blue-700: #2952CC;
+  --prim-blue-800: #163196;
+  --prim-blue-900: #031E64;
+  --prim-sky-50: #EBF6FF;
+  --prim-sky-100: #AEDCFE;
+  --prim-sky-200: #72C2FE;
+  --prim-sky-250: #38BDF8;
+  --prim-sky-300: #35A8FD;
+  --prim-sky-300-muted: #5CA8E7;
+  --prim-sky-400: #2E90DA;
+  --prim-sky-500: #2679B6;
+  --prim-sky-600: #1F6193;
+  --prim-sky-700: #174A6F;
+  --prim-sky-800: #10324C;
+  --prim-sky-900: #081B28;
+  --prim-green-50: #E9FFF0;
+  --prim-green-100: #A9FDC4;
+  --prim-green-200: #68FC97;
+  --prim-green-300: #27FB6B;
+  --prim-green-350: #4ADE80;
+  --prim-green-350-muted: #74D791;
+  --prim-green-400: #1EBF51;
+  --prim-green-500: #148338;
+  --prim-green-600: #10642B;
+  --prim-green-700: #0B461E;
+  --prim-green-800: #062811;
+  --prim-green-900: #020A04;
+  --prim-orange-50: #FFF1E9;
+  --prim-orange-100: #FEE4D2;
+  --prim-orange-200: #FDC9A6;
+  --prim-orange-300: #FCAD79;
+  --prim-orange-400: #FB924D;
+  --prim-orange-400-muted: #EA9C62;
+  --prim-orange-500: #FA7720;
+  --prim-orange-500-muted: #E68550;
+  --prim-orange-600: #C85F1A;
+  --prim-orange-700: #964713;
+  --prim-orange-800: #64300D;
+  --prim-orange-900: #321806;
+  --prim-red-50: #FFEAEA;
+  --prim-red-100: #FED5D4;
+  --prim-red-200: #FDABA9;
+  --prim-red-250: #FCA5A5;
+  --prim-red-300: #FC807E;
+  --prim-red-350: #F87171;
+  --prim-red-350-muted: #E5807E;
+  --prim-red-400: #FB5653;
+  --prim-red-400-muted: #E56D66;
+  --prim-red-500: #FA2C28;
+  --prim-red-600: #C82320;
+  --prim-red-700: #961A18;
+  --prim-red-800: #641210;
+  --prim-red-900: #320908;
+  --prim-navy-50: #33476E;                                    /* pen: navy-border-600 */
+  --prim-navy-100: #2E4066;                                   /* pen: navy-border-500 */
+  --prim-navy-200: #2A3A5C;                                   /* pen: navy-border-400 */
+  --prim-navy-300: #22314F;                                   /* pen: navy-border-300 + navy-elevated */
+  --prim-navy-400: #202C4E;                                   /* pressed fill */
+  --prim-navy-500: #172642;                                   /* pen: navy-hover */
+  --prim-navy-600: #18223A;                                   /* pen: navy-raised + border-200 */
+  --prim-navy-700: #131C31;                                   /* surface — O12 resolved: pen navy-surface #1C2943 removed from pen */
+  --prim-navy-800: #101729;                                   /* pen: navy-825 */
+  --prim-navy-900: #0C1222;                                   /* pen: navy-chat */
+  --prim-navy-950: #090E1B;                                   /* pen: navy-app */
+  --prim-navylight-100: #3A485F;
+  --prim-navylight-200: #52637F;
+  --prim-navylight-300: #697DA0;
+  --prim-navylight-400: #889CBF;
+  --prim-navylight-500: #9DAFCD;
+  --prim-navylight-600: #B3C1DB;
+  --prim-navylight-700: #C8D4E9;
+  --prim-navylight-800: #D8E1F0;
+  --prim-navylight-900: #E9EEF7;
+  --prim-skydark-100: #16304A;
+  --prim-skydark-200: #10263C;
+  --prim-greendark-100: #245234;
+  --prim-greendark-200: #1A3A26;
+  --prim-greendark-300: #12291C;
+  --prim-orangedark-100: #5E3A18;
+  --prim-orangedark-200: #472C13;
+  --prim-orangedark-300: #33200F;
+  --prim-reddark-100: #542427;
+  --prim-reddark-200: #3A1B1E;
+  --prim-reddark-300: #2C1518;
 
   /* ---- SYSTEM: background ---- */
   --sem-background-light: var(--prim-navy-600);
@@ -61,7 +156,7 @@ html[data-theme="dark"] {
   --sem-background-sunken: var(--prim-navy-900);
   --sem-background-subtle: var(--prim-navy-600);
   --sem-background-muted: var(--prim-navy-50);
-  --sem-background-action: var(--prim-blue-500);  /* = send bg (pen, Aug 20) */
+  --sem-background-action: var(--prim-blue-500);              /* = send bg (pen, Aug 20) */
   --sem-background-highlight: var(--prim-skydark-100);
   --sem-background-info: var(--prim-skydark-200);
   --sem-background-info-strong: var(--prim-skydark-100);
@@ -72,18 +167,20 @@ html[data-theme="dark"] {
   --sem-background-warning: var(--prim-orangedark-300);
   --sem-background-warning-strong: var(--prim-orangedark-100);
   --sem-background-error-strong: var(--prim-reddark-100);
+  --sem-background-scrim: #000000A3;
+  --sem-scrim: #00000073;
 
   /* ---- SYSTEM: borders ---- */
   --sem-borders-light: var(--prim-navy-700);
   --sem-borders-dark: var(--prim-navy-300);
-  --sem-borders-focus: rgba(112, 148, 251, 0.35);  /* dark focus is a blue ring (light: gray-900) */
+  --sem-borders-focus: #7094FB59;                             /* focus ring, alpha kept: rgba(112,148,251,0.35) */
   --sem-borders-focus-inverted: var(--prim-gray-900);
   --sem-borders-error: var(--prim-red-350);
   --sem-borders-disabled: var(--prim-navy-200);
   --sem-borders-hover: var(--prim-navy-50);
   --sem-borders-error-strong: var(--prim-red-250);
-  --sem-borders-action: var(--prim-blue-500);          /* O11 */
-  --sem-borders-action-subtle: var(--prim-navy-50);    /* PRO-2662 toggle border */
+  --sem-borders-action: var(--prim-blue-500);                 /* O11 */
+  --sem-borders-action-subtle: var(--prim-navy-50);           /* PRO-2662 toggle border */
   --sem-borders-muted: var(--prim-navy-200);
   --sem-borders-info: var(--prim-skydark-100);
   --sem-borders-success: var(--prim-greendark-100);
@@ -128,16 +225,16 @@ html[data-theme="dark"] {
   --sem-icons-reverse: var(--prim-gray-900);
   --sem-icons-subtle: var(--prim-navylight-200);
 
-  /* ---- BUTTONS (pen families: Primary / PrimaryInverted / Secondary(outline) / SecondaryInverted / Destruction / Link) ---- */
+  /* ---- BUTTONS ---- */
   --sem-btnPrimaryBg: var(--prim-blue-500);
   --sem-btnPrimaryBgHover: var(--prim-blue-400);
   --sem-btnPrimaryBgActive: var(--prim-blue-600);
   --sem-btnPrimaryBgDisabled: var(--prim-blue-800);
   --sem-btnPrimaryText: var(--prim-base-black);
-  --sem-btnPrimaryTextHover: var(--prim-navy-950); /* pen says navy-app — deleted step; navy-950 is its successor */
+  --sem-btnPrimaryTextHover: var(--prim-navy-950);            /* pen says navy-app — deleted step; navy-950 is its successor */
   --sem-btnPrimaryTextActive: var(--prim-base-black);
   --sem-btnPrimaryTextDisabled: var(--prim-blue-500);
-  --sem-btnPrimaryInvertedBg: var(--prim-navy-700);          /* the filled surface+border variant (styling upload's "Secondary") */
+  --sem-btnPrimaryInvertedBg: var(--prim-navy-700);           /* the filled surface+border variant (styling upload's "Secondary") */
   --sem-btnPrimaryInvertedBgHover: var(--prim-navy-500);
   --sem-btnPrimaryInvertedBgActive: var(--prim-navy-400);
   --sem-btnPrimaryInvertedBgDisabled: var(--prim-navy-700);
@@ -146,15 +243,15 @@ html[data-theme="dark"] {
   --sem-btnPrimaryInvertedTextActive: var(--prim-blue-300);
   --sem-btnPrimaryInvertedTextDisabled: var(--prim-navylight-100);
   --sem-btnPrimaryInvertedBorder: var(--prim-navy-50);
-  --sem-btnPrimaryInvertedBorderHover: var(--prim-blue-500); /* O11 */
+  --sem-btnPrimaryInvertedBorderHover: var(--prim-blue-500);  /* O11 */
   --sem-btnPrimaryInvertedBorderActive: var(--prim-navy-50);
   --sem-btnPrimaryInvertedBorderDisabled: var(--prim-navy-300);
-  --sem-btnSecondaryBg: transparent;                          /* outline variant — Navy Evergreen.ai Prototype (v4)'s outline buttons map here */
+  --sem-btnSecondaryBg: #00000000;                            /* outline variant — Navy Evergreen.ai Prototype (v4)'s outline buttons map here */
   --sem-btnSecondaryBgHover: var(--prim-navy-500);
   --sem-btnSecondaryBgActive: var(--prim-navy-400);
-  --sem-btnSecondaryBgDisabled: transparent;
+  --sem-btnSecondaryBgDisabled: #00000000;
   --sem-btnSecondaryBorder: var(--prim-navy-50);
-  --sem-btnSecondaryBorderHover: var(--prim-blue-500);       /* O11 */
+  --sem-btnSecondaryBorderHover: var(--prim-blue-500);        /* O11 */
   --sem-btnSecondaryBorderActive: var(--prim-navy-50);
   --sem-btnSecondaryBorderPressed: var(--prim-blue-500);
   --sem-btnSecondaryBorderDisabled: var(--prim-navy-300);
@@ -162,20 +259,19 @@ html[data-theme="dark"] {
   --sem-btnSecondaryTextHover: var(--prim-blue-300);
   --sem-btnSecondaryTextActive: var(--prim-blue-300);
   --sem-btnSecondaryTextDisabled: var(--prim-navylight-100);
-  /* SecondaryInverted — white-alpha, built for dark fills: identical both modes */
-  --sem-btnSecondaryInvertedBg: transparent;
+  --sem-btnSecondaryInvertedBg: #00000000;
   --sem-btnSecondaryInvertedBgHover: #FFFFFF1A;
   --sem-btnSecondaryInvertedBgActive: #FFFFFF1A;
-  --sem-btnSecondaryInvertedBgDisabled: transparent;
+  --sem-btnSecondaryInvertedBgDisabled: #00000000;
   --sem-btnSecondaryInvertedBorder: var(--prim-gray-200);
   --sem-btnSecondaryInvertedBorderHover: var(--prim-base-white);
-  --sem-btnSecondaryInvertedBorderActive: transparent;
+  --sem-btnSecondaryInvertedBorderActive: #00000000;
   --sem-btnSecondaryInvertedBorderDisabled: var(--prim-gray-300);
   --sem-btnSecondaryInvertedText: var(--prim-base-white);
   --sem-btnSecondaryInvertedTextHover: var(--prim-base-white);
   --sem-btnSecondaryInvertedTextActive: var(--prim-gray-200);
   --sem-btnSecondaryInvertedTextDisabled: var(--prim-gray-300);
-  --sem-btnDestructionBg: var(--prim-red-600);               /* reds are paint */
+  --sem-btnDestructionBg: var(--prim-red-600);                /* reds are paint */
   --sem-btnDestructionBgHover: var(--prim-red-500);
   --sem-btnDestructionBgActive: var(--prim-red-700);
   --sem-btnDestructionBgDisabled: var(--prim-navy-300);
@@ -183,16 +279,18 @@ html[data-theme="dark"] {
   --sem-btnDestructionTextHover: var(--prim-base-white);
   --sem-btnDestructionTextActive: var(--prim-base-white);
   --sem-btnDestructionTextDisabled: var(--prim-navylight-100);
-  --sem-btnLinkText: var(--prim-blue-400);                   /* O11: WCAG 6.2:1 on bg-main */
+  --sem-btnLinkText: var(--prim-blue-400);                    /* O11: WCAG 6.2:1 on bg-main */
   --sem-btnLinkTextHover: var(--prim-blue-300);
   --sem-btnLinkTextPressed: var(--prim-blue-500);
   --sem-btnLinkTextActive: var(--prim-blue-500);
   --sem-btnLinkTextDisabled: var(--prim-navylight-100);
-  --sem-btnLinkBg: transparent;
+  --sem-btnLinkBg: #00000000;
   --sem-btnLinkBgHover: var(--prim-navy-500);
   --sem-btnLinkBgActive: var(--prim-navy-400);
-  --sem-btnLinkBgDisabled: transparent;
+  --sem-btnLinkBgDisabled: #00000000;
   --sem-btnLinkBorderPressed: var(--prim-blue-500);
+  --sem-btnInkBg: #D8E1F0;
+  --sem-btnInkText: #22314F;
 
   /* ---- NAV ---- */
   --sem-navBg: var(--prim-navy-950);
@@ -202,11 +300,11 @@ html[data-theme="dark"] {
   --sem-navIcon: var(--prim-navylight-500);
   --sem-navDivider: var(--prim-navy-300);
   --sem-navActiveBg: var(--prim-navy-600);
-  --sem-navBorder: transparent;
+  --sem-navBorder: var(--prim-navy-50);                       /* same as chat border in dark (Amanda, Sep 28) */
   --sem-navHoverBg: var(--prim-navy-600);
   --sem-navPressedBg: var(--prim-navy-400);
   --sem-navHoverText: var(--prim-navylight-800);
-  --sem-navShadow: var(--shadow-sm-color);                  /* visible in dark (Aug 21) — was flat/transparent; chat keeps its blue glow */
+  --sem-navShadow: var(--sem-chatShadow);                     /* same blue glow as the chat panel in dark (Amanda, Sep 28) */
   --sem-navToggleBg: var(--prim-navy-600);
   --sem-navToggleBorder: var(--prim-navy-50);
   --sem-navToggleIcon: var(--prim-blue-400);
@@ -215,20 +313,25 @@ html[data-theme="dark"] {
   --sem-navTogglePressedBg: var(--prim-navy-400);
   --sem-navTogglePressedBorder: var(--prim-navy-50);
   --sem-navTogglePressedIcon: var(--prim-blue-300);
+  --sem-navFadeTransparent: #090E1B00;
+  --sem-navSettingsHoverBg: var(--prim-navy-500);
+  --sem-navSettingsIcon: var(--prim-blue-400);
+  --sem-navSettingsPressedBg: var(--prim-navy-400);
+  --sem-navSettingsPressedIcon: var(--prim-blue-300);
 
   /* ---- CHAT ---- */
-  --sem-chatBg: var(--prim-navy-950);                        /* v3 chat panel — confirmed */
+  --sem-chatBg: var(--prim-navy-950);                         /* v3 chat panel — confirmed */
   --sem-chatBorder: var(--prim-navy-50);
   --sem-chatDivider: var(--prim-navy-700);
   --sem-chatTextPrimary: var(--prim-blue-100);
   --sem-chatTextSecondary: var(--prim-navylight-600);
   --sem-chatPlaceholder: var(--prim-navylight-200);
-  --sem-chatInputBg: var(--prim-navy-950);                   /* light chains to background-main */
+  --sem-chatInputBg: var(--prim-navy-950);                    /* light chains to background-main (white); dark navy-950 */
   --sem-chatSendBg: var(--sem-btnPrimaryBg);
   --sem-chatBubbleUser: var(--prim-navy-600);
   --sem-chatChipHover: var(--prim-navy-500);
   --sem-chatChipPressed: var(--prim-navy-400);
-  --sem-chatShadow: 0 0 32px rgba(155, 179, 252, 0.14), 0 0 10px rgba(155, 179, 252, 0.10); /* glow, alpha kept */
+  --sem-chatShadow: #9BB3FC24;                                /* chat and nav panel glow, dark only (light = none). Render as box-shadow: 0 2px 28px 0 #9BB3FC24 (matches chat-nav-refresh.pen) */
   --sem-chatIcon: var(--prim-blue-300);
   --sem-chatInputBorder: var(--prim-navy-500);
   --sem-chatInputBorderActive: var(--prim-navy-50);
@@ -240,13 +343,30 @@ html[data-theme="dark"] {
   --sem-chatClosePressedBg: var(--prim-navy-400);
   --sem-chatVoiceActiveBg: var(--sem-btnPrimaryBg);
   --sem-chatVoiceActiveIcon: var(--sem-btnPrimaryText);
-  --sem-chatVoiceWaveform: var(--prim-blue-400);             /* same hex both modes */
+  --sem-chatVoiceWaveform: var(--prim-blue-400);              /* same hex both modes */
   --sem-chatVoiceTimer: var(--prim-navylight-500);
   --sem-chatVoicePulse: #7094FB28;                            /* alpha kept */
-  --sem-chatVoiceBgDisabled: transparent;                     /* RESOLVED: outline, no fill — 45% dim; light's chain to btnPrimaryBgDisabled implies a fill, flag to Eugene */
+  --sem-chatVoiceBgDisabled: #00000000;                       /* RESOLVED: outline, no fill — 45% dim; light's chain to btnPrimaryBgDisabled implies a fill, flag to Eugene */
   --sem-chatVoiceCancelIcon: var(--prim-navylight-400);
+  --sem-chatBubbleAi: #FFFFFF00;
+  --sem-chatBubbleUserBorder: #00000000;
+  --sem-chatChipBg: var(--prim-navy-600);
+  --sem-chatCloseBorder: var(--prim-navy-50);
+  --sem-chatCloseIcon: var(--prim-blue-400);
+  --sem-chatClosePressedIcon: var(--prim-blue-300);
+  --sem-chatInputBorderRecording: var(--prim-blue-500);
+  --sem-chatRecordingDot: var(--prim-blue-500);
+  --sem-chatStopBg: var(--sem-btnPrimaryBg);
+  --sem-chatStopBgHover: var(--sem-btnPrimaryBgHover);
+  --sem-chatStopBgPressed: var(--sem-btnPrimaryBgActive);
+  --sem-chatStopIcon: var(--sem-btnPrimaryText);
+  --sem-chatVoiceBorder: var(--prim-navy-50);
+  --sem-chatVoiceHoverBg: var(--prim-navy-500);
+  --sem-chatVoiceIcon: var(--prim-blue-400);
+  --sem-chatVoicePressedBg: var(--prim-navy-400);
+  --sem-chatVoicePressedIcon: var(--prim-blue-300);
 
-  /* ---- COMPONENT: toggle / tag / slider / pagination / misc ---- */
+  /* ---- COMPONENT: toggle / tag / slider / pagination / card / misc ---- */
   --sem-toggleKnob: var(--prim-base-white);
   --sem-toggleKnobOn: var(--prim-blue-400);
   --sem-toggleTrackOff: var(--prim-navy-500);
@@ -262,15 +382,52 @@ html[data-theme="dark"] {
   --sem-dragHandle: var(--prim-navylight-600);
   --sem-scrollbarThumb: var(--prim-navy-300);
   --sem-progressFill: var(--sem-btnPrimaryBgActive);
+  --sem-avatarBg: #22314F;
+  --sem-cardShadow: #00000000;
+  --sem-pillBg: #D8E1F0;
+  --sem-tagBorder: var(--prim-navy-50);
 
   /* ---- CHARTS ---- */
-  /* Categorical palette v5 — pen tokens chart-categorical/color-01..15, same slot order.
-     Light pairs live in navy-dark.tokens.json (chart.categorical). Opaque fills, both themes. */
-  --sem-chart-cat-1: #7993EE;  --sem-chart-cat-2: #86B3F5;  --sem-chart-cat-3: #93C2F8;
-  --sem-chart-cat-4: #71D2CE;  --sem-chart-cat-5: #4FCACE;  --sem-chart-cat-6: #1ABAD0;
-  --sem-chart-cat-7: #B682DB;  --sem-chart-cat-8: #B7A6F2;  --sem-chart-cat-9: #BBB8F9;
-  --sem-chart-cat-10: #E3AEE2; --sem-chart-cat-11: #E39CD1; --sem-chart-cat-12: #E27BA7;
-  --sem-chart-cat-13: #E59342; --sem-chart-cat-14: #F8A18D; --sem-chart-cat-15: #FBADAC;
-  --sem-chart-threshold: var(--sem-background-action);  /* was orange-400; Amanda Aug 20 */
-  --sem-chart-seq-100: var(--prim-blue-800); /* old #1F3F99 snapped — no blue step */ --sem-chart-seq-200: var(--prim-blue-700); --sem-chart-seq-300: var(--prim-blue-600); --sem-chart-seq-400: var(--prim-blue-500); --sem-chart-seq-500: var(--prim-blue-400); --sem-chart-seq-600: var(--prim-blue-300); --sem-chart-seq-700: var(--prim-blue-200);
+  --chart-categorical-color-01: #7993EE;
+  --chart-categorical-color-02: #86B3F5;
+  --chart-categorical-color-03: #93C2F8;
+  --chart-categorical-color-04: #71D2CE;
+  --chart-categorical-color-05: #4FCACE;
+  --chart-categorical-color-06: #1ABAD0;
+  --chart-categorical-color-07: #B682DB;
+  --chart-categorical-color-08: #B7A6F2;
+  --chart-categorical-color-09: #BBB8F9;
+  --chart-categorical-color-10: #E3AEE2;
+  --chart-categorical-color-11: #E39CD1;
+  --chart-categorical-color-12: #E27BA7;
+  --chart-categorical-color-13: #E59342;
+  --chart-categorical-color-14: #F8A18D;
+  --chart-categorical-color-15: #FBADAC;
+  --chart-threshold: var(--sem-background-action);            /* was orange-400; Amanda Aug 20 */
+  --chart-sequential-seq-100: var(--prim-blue-800);
+  --chart-sequential-seq-200: var(--prim-blue-700);
+  --chart-sequential-seq-300: var(--prim-blue-600);
+  --chart-sequential-seq-400: var(--prim-blue-500);
+  --chart-sequential-seq-500: var(--prim-blue-400);
+  --chart-sequential-seq-600: var(--prim-blue-300);
+  --chart-sequential-seq-700: var(--prim-blue-200);
+  --sem-chartAccent: #4FC0A6;
+  --sem-chartAccentBright: #2DD4BF;
+  --sem-chartAreaActionBottom: #7094FB03;
+  --sem-chartAreaActionTop: #7094FB26;
+  --sem-chartAreaPositiveBottom: #4ADE8003;
+  --sem-chartAreaPositiveTop: #4ADE8026;
+  --sem-chartLineAction: #7094FB;
+  --sem-chartLinePositive: #4ADE80;
+  --sem-chartNeutral1: #22314F;
+  --sem-chartNeutral2: #2A3A5C;
+  --sem-chartNeutral3: #33476E;
+  --sem-chartNeutral4: #3A485F;
+
+  /* ---- SHADOWS ---- */
+  --shadow-sm-color: #00000080;
+  --shadow-md-color: #00000099;
+  --shadow-lg-color: #000000B3;
+  --shadow-overlay-color: #000000D9;
+
 }
