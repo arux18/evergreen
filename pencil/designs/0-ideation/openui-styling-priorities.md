@@ -10,7 +10,7 @@ Priority list for customized Hemlock styling of the OpenUI component libraries (
 
 **Epic priority order (2026-08-20, per design):** high-priority items are ① **all BarChart variants** (locked, ready now), ② **all Table variants** (`openui-data-display.lib.pen` — after charts), ③ **headers/text** (`openui-content.lib.pen` — after charts). HeatmapChart ships in the same Sept 1 work order at **low priority**. **OPEN reminder — Q16:** heatmap text contrast per theme is deferred; remind design before locking heatmap text colors.
 
-Audit basis: all 8 OpenUI lib files, cross-referenced against `hemlock-library.lib.pen` (351 components, 1,044 tokens), the vendor catalog (`@openuidev/react-ui` `genui-lib` source, 2026-08-13), and the approved screens that import OpenUI (`login.pen`, `contact-us.pen`, `settings-menu.pen`, `View-Presentation-Ideation.pen`).
+Audit basis: all 8 OpenUI lib files, cross-referenced against `hemlock-library.lib.pen` (351 components, 1,044 tokens), the vendor catalog (`@openuidev/react-ui` `genui-lib` source, 2026-08-13), and the approved screens that import OpenUI (`login.pen`, `settings-contact-us.pen`, `settings-menu.pen`, `View-Presentation-Ideation.pen`).
 
 ## Shown-palette decisions (2026-08-13)
 
