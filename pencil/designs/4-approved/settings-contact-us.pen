@@ -1,5 +1,5 @@
 {
-  "version": "2.18",
+  "version": "2.20",
   "children": [
     {
       "type": "frame",
@@ -10,9 +10,9 @@
       "clip": true,
       "width": 1440,
       "height": 900,
-      "fill": "#ffffff",
-      "gap": 8,
-      "padding": 8,
+      "fill": "$y:sem-background-main",
+      "gap": "$y:spacing-2xs",
+      "padding": "$y:spacing-2xs",
       "children": [
         {
           "type": "frame",
@@ -21,25 +21,24 @@
           "clip": true,
           "width": 240,
           "height": "fill_container",
-          "fill": "$nav.bg",
-          "cornerRadius": 12,
-          "stroke": "$nav.border",
+          "fill": "$y:sem-navBg",
+          "cornerRadius": "$y:radius-xs",
+          "stroke": "$y:sem-navBorder",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "$nav.shadow",
+            "color": "$y:sem-navShadow",
             "offset": {
               "x": 0,
               "y": 2
             },
-            "blur": 28,
-            "spread": 2
+            "blur": 28
           },
           "layout": "vertical",
           "padding": [
-            24,
+            "$y:spacing-md",
             20
           ],
           "justifyContent": "space_between",
@@ -52,7 +51,7 @@
               "width": "fill_container",
               "height": "fill_container",
               "layout": "vertical",
-              "gap": 32,
+              "gap": "$y:spacing-lg",
               "children": [
                 {
                   "type": "frame",
@@ -72,10 +71,10 @@
                           "type": "text",
                           "id": "N1AvyL",
                           "name": "logoMain",
-                          "fill": "$nav.text.primary",
+                          "fill": "$y:sem-navTextPrimary",
                           "content": "evergreen",
                           "fontFamily": "Manrope",
-                          "fontSize": 20,
+                          "fontSize": "$y:text-size-lg",
                           "fontWeight": "normal",
                           "letterSpacing": -0.3
                         },
@@ -83,14 +82,14 @@
                           "type": "text",
                           "id": "Dz9SX",
                           "name": "logoSuffix",
-                          "fill": "$nav.text.primary",
+                          "fill": "$y:sem-navTextPrimary",
                           "textGrowth": "fixed-width-height",
                           "width": "fit_content(24)",
                           "height": "fit_content(25)",
                           "content": ".ai",
                           "textAlignVertical": "middle",
                           "fontFamily": "Spectral",
-                          "fontSize": 24,
+                          "fontSize": "$y:text-size-xl",
                           "fontWeight": "300",
                           "fontStyle": "italic"
                         }
@@ -102,7 +101,7 @@
                       "name": "Nav / Toggle Button",
                       "width": 28,
                       "height": 28,
-                      "cornerRadius": 6,
+                      "cornerRadius": "$y:radius-2xs",
                       "layout": "vertical",
                       "justifyContent": "center",
                       "alignItems": "center",
@@ -115,7 +114,7 @@
                           "height": 16,
                           "icon": "panel-left",
                           "library": "lucide",
-                          "fill": "$nav.text.secondary"
+                          "fill": "$y:sem-navToggleIcon"
                         }
                       ]
                     }
@@ -127,7 +126,7 @@
                   "name": "navSection",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": "$y:spacing-xs",
                   "children": [
                     {
                       "type": "frame",
@@ -135,12 +134,12 @@
                       "name": "dashActive",
                       "width": "fill_container",
                       "fill": "#FFFFFF00",
-                      "cornerRadius": 4,
+                      "cornerRadius": "$y:radius-3xs",
                       "padding": [
                         7,
                         10,
                         7,
-                        24
+                        "$y:spacing-md"
                       ],
                       "justifyContent": "space_between",
                       "alignItems": "center",
@@ -148,9 +147,9 @@
                         {
                           "type": "text",
                           "id": "R6dMv2",
-                          "fill": "$nav.text.secondary",
+                          "fill": "$y:sem-navTextSecondary",
                           "content": "Dashboard",
-                          "fontFamily": "Heebo",
+                          "fontFamily": "$y:font-primary",
                           "fontSize": 13,
                           "fontWeight": "normal"
                         }
@@ -162,7 +161,7 @@
                       "name": "Nav / Divider",
                       "width": "fill_container",
                       "height": 1,
-                      "fill": "$nav.divider"
+                      "fill": "$y:sem-navDivider"
                     },
                     {
                       "type": "frame",
@@ -170,7 +169,7 @@
                       "name": "sectionNetWorth",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 2,
+                      "gap": "$y:spacing-4xs",
                       "children": [
                         {
                           "type": "frame",
@@ -179,9 +178,9 @@
                           "width": "fill_container",
                           "gap": 6,
                           "padding": [
-                            12,
+                            "$y:spacing-xs",
                             10,
-                            4,
+                            "$y:spacing-3xs",
                             6
                           ],
                           "alignItems": "center",
@@ -194,16 +193,16 @@
                               "height": 12,
                               "icon": "chevron-down",
                               "library": "lucide",
-                              "fill": "$nav.icon"
+                              "fill": "$y:sem-navIcon"
                             },
                             {
                               "type": "text",
                               "id": "adkpT",
                               "name": "sectionLabel",
-                              "fill": "$nav.text.secondary",
+                              "fill": "$y:sem-navTextSecondary",
                               "content": "NET WORTH",
-                              "fontFamily": "Heebo",
-                              "fontSize": 11,
+                              "fontFamily": "$y:font-primary",
+                              "fontSize": "$y:text-size-2xs",
                               "fontWeight": "600",
                               "letterSpacing": 1.2
                             }
@@ -214,21 +213,21 @@
                           "id": "EKkxt",
                           "name": "Nav Item / Default",
                           "width": "fill_container",
-                          "cornerRadius": 4,
+                          "cornerRadius": "$y:radius-3xs",
                           "padding": [
                             7,
                             10,
                             7,
-                            24
+                            "$y:spacing-md"
                           ],
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "text",
                               "id": "ZqGHM",
-                              "fill": "$nav.text.secondary",
+                              "fill": "$y:sem-navTextSecondary",
                               "content": "Accounts",
-                              "fontFamily": "Heebo",
+                              "fontFamily": "$y:font-primary",
                               "fontSize": 13,
                               "fontWeight": "normal"
                             }
@@ -239,21 +238,21 @@
                           "id": "BEruW",
                           "name": "Nav Item / Default",
                           "width": "fill_container",
-                          "cornerRadius": 4,
+                          "cornerRadius": "$y:radius-3xs",
                           "padding": [
                             7,
                             10,
                             7,
-                            24
+                            "$y:spacing-md"
                           ],
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "text",
                               "id": "Y7hFyU",
-                              "fill": "$nav.text.secondary",
+                              "fill": "$y:sem-navTextSecondary",
                               "content": "Activity",
-                              "fontFamily": "Heebo",
+                              "fontFamily": "$y:font-primary",
                               "fontSize": 13,
                               "fontWeight": "normal"
                             }
@@ -264,21 +263,21 @@
                           "id": "h2MNQ",
                           "name": "Nav Item / Default",
                           "width": "fill_container",
-                          "cornerRadius": 4,
+                          "cornerRadius": "$y:radius-3xs",
                           "padding": [
                             7,
                             10,
                             7,
-                            24
+                            "$y:spacing-md"
                           ],
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "text",
                               "id": "fZ5bf",
-                              "fill": "$nav.text.secondary",
+                              "fill": "$y:sem-navTextSecondary",
                               "content": "Investments",
-                              "fontFamily": "Heebo",
+                              "fontFamily": "$y:font-primary",
                               "fontSize": 13,
                               "fontWeight": "normal"
                             }
@@ -292,7 +291,7 @@
                       "name": "sectionPlanning",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 2,
+                      "gap": "$y:spacing-4xs",
                       "children": [
                         {
                           "type": "frame",
@@ -301,9 +300,9 @@
                           "width": "fill_container",
                           "gap": 6,
                           "padding": [
-                            12,
+                            "$y:spacing-xs",
                             10,
-                            4,
+                            "$y:spacing-3xs",
                             6
                           ],
                           "alignItems": "center",
@@ -316,16 +315,16 @@
                               "height": 12,
                               "icon": "chevron-down",
                               "library": "lucide",
-                              "fill": "$nav.icon"
+                              "fill": "$y:sem-navIcon"
                             },
                             {
                               "type": "text",
                               "id": "wxa52",
                               "name": "sectionLabel",
-                              "fill": "$nav.text.secondary",
+                              "fill": "$y:sem-navTextSecondary",
                               "content": "PLANNING",
-                              "fontFamily": "Heebo",
-                              "fontSize": 11,
+                              "fontFamily": "$y:font-primary",
+                              "fontSize": "$y:text-size-2xs",
                               "fontWeight": "600",
                               "letterSpacing": 1.2
                             }
@@ -336,21 +335,21 @@
                           "id": "m3SmDG",
                           "name": "ltpDefault",
                           "width": "fill_container",
-                          "cornerRadius": 4,
+                          "cornerRadius": "$y:radius-3xs",
                           "padding": [
                             7,
                             10,
                             7,
-                            24
+                            "$y:spacing-md"
                           ],
                           "alignItems": "center",
                           "children": [
                             {
                               "type": "text",
                               "id": "B1pPCS",
-                              "fill": "$nav.text.secondary",
+                              "fill": "$y:sem-navTextSecondary",
                               "content": "Lifetime Planning",
-                              "fontFamily": "Heebo",
+                              "fontFamily": "$y:font-primary",
                               "fontSize": 13,
                               "fontWeight": "normal"
                             }
@@ -367,8 +366,8 @@
               "id": "R2QozK",
               "name": "Nav / User Area",
               "width": "fill_container",
-              "fill": "$nav.bg",
-              "stroke": "$nav.divider",
+              "fill": "$y:sem-navBg",
+              "stroke": "$y:sem-navDivider",
               "strokeWidth": {
                 "top": 0.5
               },
@@ -377,9 +376,9 @@
               "layout": "vertical",
               "gap": 10,
               "padding": [
-                16,
+                "$y:spacing-sm",
                 10,
-                4,
+                "$y:spacing-3xs",
                 10
               ],
               "alignItems": "center",
@@ -397,10 +396,10 @@
                       "type": "text",
                       "id": "QA4zf",
                       "name": "userName",
-                      "fill": "$nav.text.secondary",
+                      "fill": "$y:sem-navTextSecondary",
                       "content": "Sylvia Peterson",
-                      "fontFamily": "Heebo",
-                      "fontSize": 12,
+                      "fontFamily": "$y:font-primary",
+                      "fontSize": "$y:text-size-xs",
                       "fontWeight": "500"
                     },
                     {
@@ -410,8 +409,8 @@
                       "x": 156,
                       "y": -3,
                       "name": "settingsActive",
-                      "fill": "$nav.active.bg",
-                      "cornerRadius": 4,
+                      "fill": "$y:sem-navActiveBg",
+                      "cornerRadius": "$y:radius-3xs",
                       "padding": "$y:spacing-3xs",
                       "justifyContent": "center",
                       "alignItems": "center",
@@ -424,7 +423,7 @@
                           "height": 16,
                           "icon": "settings",
                           "library": "lucide",
-                          "fill": "$nav.text.primary"
+                          "fill": "$y:sem-navTextPrimary"
                         }
                       ]
                     }
@@ -446,16 +445,16 @@
                       "height": 16,
                       "icon": "log-out",
                       "library": "lucide",
-                      "fill": "$nav.text.secondary"
+                      "fill": "$y:sem-navTextSecondary"
                     },
                     {
                       "type": "text",
                       "id": "xNy0J",
                       "name": "userName",
-                      "fill": "$nav.text.secondary",
+                      "fill": "$y:sem-navTextSecondary",
                       "content": "Sign Out",
-                      "fontFamily": "Heebo",
-                      "fontSize": 12,
+                      "fontFamily": "$y:font-primary",
+                      "fontSize": "$y:text-size-xs",
                       "fontWeight": "500"
                     }
                   ]
@@ -479,11 +478,11 @@
                 },
                 "colors": [
                   {
-                    "color": "#F7F5F000",
+                    "color": "$y:sem-navFadeTransparent",
                     "position": 0
                   },
                   {
-                    "color": "$nav.bg",
+                    "color": "$y:sem-navBg",
                     "position": 1
                   }
                 ]
@@ -507,12 +506,10 @@
               "id": "jEdVa",
               "name": "headerRow",
               "width": "fill_container",
-              "gap": 8,
+              "gap": "$y:spacing-2xs",
               "padding": [
-                20,
-                40,
-                8,
-                40
+                "$y:spacing-2xs",
+                "$y:spacing-xl"
               ],
               "children": [
                 {
@@ -524,7 +521,7 @@
                   "enabled": false,
                   "width": 28,
                   "height": 28,
-                  "cornerRadius": 6,
+                  "cornerRadius": "$y:radius-2xs",
                   "layout": "vertical",
                   "justifyContent": "center",
                   "alignItems": "center",
@@ -537,7 +534,7 @@
                       "height": 16,
                       "icon": "arrow-left",
                       "library": "lucide",
-                      "fill": "#5E5954"
+                      "fill": "$y:sem-navToggleIcon"
                     }
                   ]
                 },
@@ -546,17 +543,17 @@
                   "id": "TApoV",
                   "name": "greetingArea",
                   "width": "fill_container",
-                  "gap": 2,
+                  "gap": "$y:spacing-4xs",
                   "justifyContent": "space_between",
                   "children": [
                     {
                       "type": "text",
                       "id": "JQc6R",
                       "name": "greeting",
-                      "fill": "#2D2926",
+                      "fill": "$y:sem-text-header",
                       "content": "Settings | Contact Us",
-                      "fontFamily": "Noto Serif",
-                      "fontSize": 20,
+                      "fontFamily": "$y:font-secondary",
+                      "fontSize": "$y:text-size-lg",
                       "fontWeight": "normal"
                     },
                     {
@@ -572,10 +569,10 @@
                           "type": "text",
                           "id": "K23EW",
                           "name": "logoMain",
-                          "fill": "$nav.text.primary",
+                          "fill": "$y:sem-text-strong",
                           "content": "evergreen",
                           "fontFamily": "Manrope",
-                          "fontSize": 20,
+                          "fontSize": "$y:text-size-lg",
                           "fontWeight": "normal",
                           "letterSpacing": -0.3
                         },
@@ -583,14 +580,14 @@
                           "type": "text",
                           "id": "myVsz",
                           "name": "logoSuffix",
-                          "fill": "$nav.text.primary",
+                          "fill": "$y:sem-text-strong",
                           "textGrowth": "fixed-width-height",
                           "width": "fit_content(24)",
                           "height": "fit_content(25)",
                           "content": ".ai",
                           "textAlignVertical": "middle",
                           "fontFamily": "Spectral",
-                          "fontSize": 24,
+                          "fontSize": "$y:text-size-xl",
                           "fontWeight": "300",
                           "fontStyle": "italic"
                         }
@@ -605,12 +602,12 @@
                   "y": 0,
                   "name": "pill",
                   "enabled": false,
-                  "fill": "#2D2926",
-                  "cornerRadius": 9999,
-                  "stroke": "#2D2926",
+                  "fill": "$y:sem-pillBg",
+                  "cornerRadius": "$y:radius-full",
+                  "stroke": "$y:sem-pillBg",
                   "strokeWidth": 1,
                   "strokeAlignment": "inner",
-                  "gap": 8,
+                  "gap": "$y:spacing-2xs",
                   "padding": [
                     7,
                     14
@@ -621,10 +618,10 @@
                       "type": "text",
                       "id": "w7hma",
                       "name": "pillText",
-                      "fill": "#FFFFFF",
+                      "fill": "$y:sem-text-reverse",
                       "content": "Customize",
-                      "fontFamily": "Heebo",
-                      "fontSize": 12,
+                      "fontFamily": "$y:font-primary",
+                      "fontSize": "$y:text-size-xs",
                       "fontWeight": "500"
                     }
                   ]
@@ -638,7 +635,7 @@
                   "enabled": false,
                   "width": 28,
                   "height": 28,
-                  "cornerRadius": 6,
+                  "cornerRadius": "$y:radius-2xs",
                   "layout": "vertical",
                   "justifyContent": "center",
                   "alignItems": "center",
@@ -651,7 +648,7 @@
                       "height": 16,
                       "icon": "message-circle",
                       "library": "lucide",
-                      "fill": "#5E5954"
+                      "fill": "$y:sem-navToggleIcon"
                     }
                   ]
                 }
@@ -665,10 +662,7 @@
               "height": "fill_container",
               "layout": "vertical",
               "gap": "$y:spacing-xl",
-              "padding": [
-                "$y:spacing-lg",
-                "$y:spacing-xl"
-              ],
+              "padding": "$y:spacing-xl",
               "children": [
                 {
                   "type": "frame",
@@ -679,17 +673,26 @@
                   "gap": "$y:spacing-sm",
                   "children": [
                     {
+                      "type": "frame",
                       "id": "aqCw5",
-                      "type": "ref",
-                      "ref": "p:tcLh01",
-                      "x": 0,
-                      "y": 0,
+                      "name": "TextContent / large-heavy",
                       "width": "fill_container",
-                      "descendants": {
-                        "p:tcLhTx": {
-                          "content": "Get General Support"
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ANdOk",
+                          "name": "Content",
+                          "fill": "$y:sem-text-header",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Get General Support",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-lg",
+                          "fontWeight": "600"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "frame",
@@ -729,33 +732,50 @@
                   "name": "Client Service section",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": "$y:spacing-xs",
                   "children": [
                     {
+                      "type": "frame",
                       "id": "K621a2",
-                      "type": "ref",
-                      "ref": "p:tcLh01",
-                      "x": 0,
-                      "y": 0,
+                      "name": "TextContent / large-heavy",
                       "width": "fill_container",
-                      "descendants": {
-                        "p:tcLhTx": {
-                          "content": "Talk to Client Service"
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "I9Jyp",
+                          "name": "Content",
+                          "fill": "$y:sem-text-header",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Talk to Client Service",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-lg",
+                          "fontWeight": "600"
                         }
-                      }
+                      ]
                     },
                     {
+                      "type": "frame",
                       "id": "j2rlnS",
-                      "type": "ref",
-                      "ref": "p:tcMd01",
-                      "x": 0,
-                      "y": 40,
+                      "name": "TextContent / medium",
                       "width": "fill_container",
-                      "descendants": {
-                        "p:tcMdTx": {
-                          "content": "For any other questions or to share feedback, our Client Service team is available via email at clientservice@evergreenwealth.com."
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "hFXFz",
+                          "name": "Content",
+                          "fill": "$y:sem-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "For any other questions or to share feedback, our Client Service team is available via email at clientservice@evergreenwealth.com.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-base"
                         }
-                      }
+                      ]
                     }
                   ]
                 }
@@ -770,21 +790,20 @@
           "clip": true,
           "width": 360,
           "height": "fill_container",
-          "fill": "#f7f5f0ff",
-          "cornerRadius": 12,
-          "stroke": "#DCD8CB",
+          "fill": "$y:sem-chatBg",
+          "cornerRadius": "$y:radius-xs",
+          "stroke": "$y:sem-chatBorder",
           "strokeWidth": 1,
           "strokeAlignment": "inner",
           "effect": {
             "type": "shadow",
             "shadowType": "outer",
-            "color": "#2D292628",
+            "color": "$y:sem-chatShadow",
             "offset": {
               "x": 0,
               "y": 2
             },
-            "blur": 28,
-            "spread": 2
+            "blur": 28
           },
           "layout": "vertical",
           "justifyContent": "space_between",
@@ -795,14 +814,14 @@
               "name": "h2",
               "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
               "width": "fill_container",
-              "stroke": "$chat.divider",
+              "stroke": "$y:sem-chatDivider",
               "strokeWidth": {
                 "bottom": 0.5
               },
               "strokeAlignment": "inner",
               "strokeLinejoin": "round",
               "padding": [
-                16,
+                "$y:spacing-sm",
                 20
               ],
               "justifyContent": "space_between",
@@ -812,7 +831,7 @@
                   "type": "frame",
                   "id": "nmZF2",
                   "name": "left",
-                  "gap": 4,
+                  "gap": "$y:spacing-3xs",
                   "alignItems": "center",
                   "children": [
                     {
@@ -822,7 +841,7 @@
                       "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
                       "width": 28,
                       "height": 28,
-                      "cornerRadius": 6,
+                      "cornerRadius": "$y:radius-2xs",
                       "layout": "vertical",
                       "justifyContent": "center",
                       "alignItems": "center",
@@ -835,7 +854,7 @@
                           "height": 16,
                           "icon": "arrow-right-to-line",
                           "library": "lucide",
-                          "fill": "$chat.icon"
+                          "fill": "$y:sem-chatCloseIcon"
                         }
                       ]
                     },
@@ -843,10 +862,10 @@
                       "type": "text",
                       "id": "w8Hpv0",
                       "name": "chatTitle",
-                      "fill": "$chat.text.primary",
+                      "fill": "$y:sem-chatTextPrimary",
                       "content": "Chat",
-                      "fontFamily": "Noto Serif",
-                      "fontSize": 16,
+                      "fontFamily": "$y:font-secondary",
+                      "fontSize": "$y:text-size-base",
                       "fontWeight": "normal"
                     }
                   ]
@@ -857,17 +876,17 @@
                   "name": "btn",
                   "fill": {
                     "type": "color",
-                    "color": "$Q:colors-btnPrimaryInvertedBg",
+                    "color": "#ffffff",
                     "enabled": false
                   },
-                  "cornerRadius": "$Q:radius-full",
-                  "stroke": "$Q:colors-borders-dark",
+                  "cornerRadius": "$y:radius-full",
+                  "stroke": "$y:sem-btnSecondaryBorder",
                   "strokeWidth": 1,
                   "strokeAlignment": "inner",
-                  "gap": "$Q:spacing-2xs",
+                  "gap": "$y:spacing-2xs",
                   "padding": [
                     6,
-                    12
+                    "$y:spacing-xs"
                   ],
                   "justifyContent": "center",
                   "alignItems": "center",
@@ -876,14 +895,13 @@
                       "type": "text",
                       "id": "FVZEK",
                       "name": "Label",
-                      "fill": "$Q:colors-btnPrimaryInvertedText",
+                      "fill": "$y:sem-btnSecondaryText",
                       "content": "Show View",
                       "lineHeight": 1.5,
                       "textAlign": "center",
-                      "fontFamily": "$Q:typo-primary-base-font-family",
-                      "fontSize": 12,
-                      "fontWeight": "500",
-                      "letterSpacing": "$Q:typo-primary-base-letter-spacing"
+                      "fontFamily": "$y:font-primary",
+                      "fontSize": "$y:text-size-xs",
+                      "fontWeight": "500"
                     }
                   ]
                 }
@@ -899,7 +917,7 @@
               "layout": "vertical",
               "gap": 14,
               "padding": [
-                16,
+                "$y:spacing-sm",
                 20
               ],
               "justifyContent": "end",
@@ -914,7 +932,7 @@
                     0,
                     0,
                     0,
-                    "$Q:spacing-lg"
+                    "$y:spacing-lg"
                   ],
                   "justifyContent": "end",
                   "children": [
@@ -923,26 +941,26 @@
                       "id": "BmIda",
                       "name": "bubble",
                       "width": "fill_container",
-                      "fill": "$chat.bubble.user.bg",
-                      "cornerRadius": "$chat.bubble.radius",
-                      "stroke": "$chat.bubble.user.border",
+                      "fill": "$y:sem-chatBubbleUser",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-chatBubbleUserBorder",
                       "strokeWidth": 1,
                       "strokeAlignment": "inner",
                       "padding": [
-                        12,
-                        16
+                        "$y:spacing-xs",
+                        "$y:spacing-sm"
                       ],
                       "children": [
                         {
                           "type": "text",
                           "id": "CsMSq",
                           "name": "text",
-                          "fill": "$chat.text.secondary",
+                          "fill": "$y:sem-chatTextSecondary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
                           "content": "How am I tracking against my savings goal?",
-                          "fontFamily": "Heebo",
-                          "fontSize": 14,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-sm",
                           "fontWeight": "normal"
                         }
                       ]
@@ -961,18 +979,18 @@
                       "id": "cSFAM",
                       "name": "bubble",
                       "width": "fill_container",
-                      "fill": "$chat.bubble.ai.bg",
+                      "fill": "$y:sem-chatBubbleAi",
                       "children": [
                         {
                           "type": "text",
                           "id": "Fj4SG",
                           "name": "text",
-                          "fill": "$chat.text.primary",
+                          "fill": "$y:sem-chatTextPrimary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
                           "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early.",
-                          "fontFamily": "Heebo",
-                          "fontSize": 14,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-sm",
                           "fontWeight": "normal"
                         }
                       ]
@@ -989,7 +1007,7 @@
                     0,
                     0,
                     0,
-                    "$Q:spacing-lg"
+                    "$y:spacing-lg"
                   ],
                   "justifyContent": "end",
                   "children": [
@@ -997,24 +1015,24 @@
                       "type": "frame",
                       "id": "hDhZN",
                       "name": "bubble",
-                      "fill": "$chat.bubble.user.bg",
-                      "cornerRadius": "$chat.bubble.radius",
-                      "stroke": "$chat.bubble.user.border",
+                      "fill": "$y:sem-chatBubbleUser",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-chatBubbleUserBorder",
                       "strokeWidth": 1,
                       "strokeAlignment": "inner",
                       "padding": [
-                        12,
-                        16
+                        "$y:spacing-xs",
+                        "$y:spacing-sm"
                       ],
                       "children": [
                         {
                           "type": "text",
                           "id": "DXQ55",
                           "name": "text",
-                          "fill": "$chat.text.secondary",
+                          "fill": "$y:sem-chatTextSecondary",
                           "content": "Anything unusual in my spending?",
-                          "fontFamily": "Heebo",
-                          "fontSize": 14,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-sm",
                           "fontWeight": "normal"
                         }
                       ]
@@ -1033,18 +1051,18 @@
                       "id": "U8QCa",
                       "name": "bubble",
                       "width": "fill_container",
-                      "fill": "$chat.bubble.ai.bg",
+                      "fill": "$y:sem-chatBubbleAi",
                       "children": [
                         {
                           "type": "text",
                           "id": "pi1F5",
                           "name": "text",
-                          "fill": "$chat.text.primary",
+                          "fill": "$y:sem-chatTextPrimary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
                           "content": "Groceries are up 18% vs. your 3 month average, driven by a few larger Whole Foods runs. Everything else is within normal ranges.",
-                          "fontFamily": "Heebo",
-                          "fontSize": 14,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-sm",
                           "fontWeight": "normal"
                         }
                       ]
@@ -1061,7 +1079,7 @@
               "width": "fill_container",
               "stroke": {
                 "type": "color",
-                "color": "#E8E6E0",
+                "color": "$y:sem-chatDivider",
                 "enabled": false
               },
               "strokeWidth": {
@@ -1070,9 +1088,9 @@
               "strokeAlignment": "inner",
               "strokeLinejoin": "round",
               "layout": "vertical",
-              "gap": 12,
+              "gap": "$y:spacing-xs",
               "padding": [
-                12,
+                "$y:spacing-xs",
                 20,
                 20,
                 20
@@ -1083,25 +1101,25 @@
                   "id": "B6PmJg",
                   "name": "inputField",
                   "width": "fill_container",
-                  "fill": "$chat.input.bg",
-                  "cornerRadius": "$chat.input.radius",
-                  "stroke": "$chat.input.border.active",
+                  "fill": "$y:sem-chatInputBg",
+                  "cornerRadius": "$y:radius-xs",
+                  "stroke": "$y:sem-chatInputBorderActive",
                   "strokeWidth": 1.5,
                   "strokeAlignment": "inner",
                   "layout": "vertical",
-                  "gap": 24,
-                  "padding": 12,
+                  "gap": "$y:spacing-md",
+                  "padding": "$y:spacing-xs",
                   "children": [
                     {
                       "type": "text",
                       "id": "G5xmi",
                       "name": "text",
-                      "fill": "$chat.text.secondary",
+                      "fill": "$y:sem-chatTextSecondary",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "What do my holdings look like this month?",
-                      "fontFamily": "Heebo",
-                      "fontSize": 14,
+                      "fontFamily": "$y:font-primary",
+                      "fontSize": "$y:text-size-sm",
                       "fontWeight": "normal"
                     },
                     {
@@ -1109,7 +1127,7 @@
                       "id": "sMkIA",
                       "name": "rowButtons",
                       "width": "fill_container",
-                      "gap": 8,
+                      "gap": "$y:spacing-2xs",
                       "justifyContent": "end",
                       "children": [
                         {
@@ -1120,8 +1138,8 @@
                           "width": 34,
                           "height": 34,
                           "fill": "#00000000",
-                          "cornerRadius": 9999,
-                          "stroke": "$chat.chip.border",
+                          "cornerRadius": "$y:radius-full",
+                          "stroke": "$y:sem-chatVoiceBorder",
                           "strokeWidth": 1,
                           "strokeAlignment": "inner",
                           "layout": "vertical",
@@ -1136,7 +1154,7 @@
                               "height": 16,
                               "icon": "mic",
                               "library": "lucide",
-                              "fill": "$chat.icon"
+                              "fill": "$y:sem-chatVoiceIcon"
                             }
                           ]
                         },
@@ -1147,8 +1165,8 @@
                           "context": "Primary send button for submitting chat messages. 34×34 pill, dark fill ($chat.send.bg) with white arrow-up icon. Place at the right end of the input field button row. States: default, hover, pressed, disabled.",
                           "width": 34,
                           "height": 34,
-                          "fill": "$chat.send.bg",
-                          "cornerRadius": 9999,
+                          "fill": "$y:sem-chatSendBg",
+                          "cornerRadius": "$y:radius-full",
                           "layout": "vertical",
                           "justifyContent": "center",
                           "alignItems": "center",
@@ -1161,7 +1179,1202 @@
                               "height": 20,
                               "icon": "arrow-up",
                               "library": "lucide",
-                              "fill": "$chat.send.icon"
+                              "fill": "$y:sem-chatSendIcon"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "v5rtY",
+      "x": 19816,
+      "y": 17708,
+      "name": "Settings - Contact Us",
+      "theme": {
+        "y:🎨 Colors": "Dark"
+      },
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$y:sem-background-main",
+      "gap": "$y:spacing-2xs",
+      "padding": "$y:spacing-2xs",
+      "children": [
+        {
+          "type": "frame",
+          "id": "ytei2",
+          "name": "navPanel",
+          "clip": true,
+          "width": 240,
+          "height": "fill_container",
+          "fill": "$y:sem-navBg",
+          "cornerRadius": "$y:radius-xs",
+          "stroke": "$y:sem-navBorder",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "$y:sem-navShadow",
+            "offset": {
+              "x": 0,
+              "y": 2
+            },
+            "blur": 28
+          },
+          "layout": "vertical",
+          "padding": [
+            "$y:spacing-md",
+            20
+          ],
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "oYalc",
+              "name": "navTop",
+              "clip": true,
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": "$y:spacing-lg",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HRiDd",
+                  "name": "logoRow",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "f6xrq",
+                      "name": "Nav / Logo",
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "A9EQb6",
+                          "name": "logoMain",
+                          "fill": "$y:sem-navTextPrimary",
+                          "content": "evergreen",
+                          "fontFamily": "Manrope",
+                          "fontSize": "$y:text-size-lg",
+                          "fontWeight": "normal",
+                          "letterSpacing": -0.3
+                        },
+                        {
+                          "type": "text",
+                          "id": "NFtnU",
+                          "name": "logoSuffix",
+                          "fill": "$y:sem-navTextPrimary",
+                          "textGrowth": "fixed-width-height",
+                          "width": "fit_content(24)",
+                          "height": "fit_content(25)",
+                          "content": ".ai",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Spectral",
+                          "fontSize": "$y:text-size-xl",
+                          "fontWeight": "300",
+                          "fontStyle": "italic"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "O9qgX",
+                      "name": "Nav / Toggle Button",
+                      "width": 28,
+                      "height": 28,
+                      "cornerRadius": "$y:radius-2xs",
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "o9bgSy",
+                          "name": "toggleIcon",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "panel-left",
+                          "library": "lucide",
+                          "fill": "$y:sem-navToggleIcon"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "k4ozos",
+                  "name": "navSection",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$y:spacing-xs",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "WpnCb",
+                      "name": "dashActive",
+                      "width": "fill_container",
+                      "fill": "#FFFFFF00",
+                      "cornerRadius": "$y:radius-3xs",
+                      "padding": [
+                        7,
+                        10,
+                        7,
+                        "$y:spacing-md"
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "rCV2E",
+                          "fill": "$y:sem-navTextSecondary",
+                          "content": "Dashboard",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wuJEn",
+                      "name": "Nav / Divider",
+                      "width": "fill_container",
+                      "height": 1,
+                      "fill": "$y:sem-navDivider"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "K7kXT",
+                      "name": "sectionNetWorth",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "s3cDy8",
+                          "name": "Nav / Section Header",
+                          "width": "fill_container",
+                          "gap": 6,
+                          "padding": [
+                            "$y:spacing-xs",
+                            10,
+                            "$y:spacing-3xs",
+                            6
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "z1A2M",
+                              "name": "chevron",
+                              "width": 12,
+                              "height": 12,
+                              "icon": "chevron-down",
+                              "library": "lucide",
+                              "fill": "$y:sem-navIcon"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ryfD4",
+                              "name": "sectionLabel",
+                              "fill": "$y:sem-navTextSecondary",
+                              "content": "NET WORTH",
+                              "fontFamily": "$y:font-primary",
+                              "fontSize": "$y:text-size-2xs",
+                              "fontWeight": "600",
+                              "letterSpacing": 1.2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "iXdIJ",
+                          "name": "Nav Item / Default",
+                          "width": "fill_container",
+                          "cornerRadius": "$y:radius-3xs",
+                          "padding": [
+                            7,
+                            10,
+                            7,
+                            "$y:spacing-md"
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "qhcwB",
+                              "fill": "$y:sem-navTextSecondary",
+                              "content": "Accounts",
+                              "fontFamily": "$y:font-primary",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "o2eDEm",
+                          "name": "Nav Item / Default",
+                          "width": "fill_container",
+                          "cornerRadius": "$y:radius-3xs",
+                          "padding": [
+                            7,
+                            10,
+                            7,
+                            "$y:spacing-md"
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "dyMfL",
+                              "fill": "$y:sem-navTextSecondary",
+                              "content": "Activity",
+                              "fontFamily": "$y:font-primary",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ncPy8",
+                          "name": "Nav Item / Default",
+                          "width": "fill_container",
+                          "cornerRadius": "$y:radius-3xs",
+                          "padding": [
+                            7,
+                            10,
+                            7,
+                            "$y:spacing-md"
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "xPt0Y",
+                              "fill": "$y:sem-navTextSecondary",
+                              "content": "Investments",
+                              "fontFamily": "$y:font-primary",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "e9R1n",
+                      "name": "sectionPlanning",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": "$y:spacing-4xs",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "XBGNU",
+                          "name": "Nav / Section Header",
+                          "width": "fill_container",
+                          "gap": 6,
+                          "padding": [
+                            "$y:spacing-xs",
+                            10,
+                            "$y:spacing-3xs",
+                            6
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "E2nFkk",
+                              "name": "chevron",
+                              "width": 12,
+                              "height": 12,
+                              "icon": "chevron-down",
+                              "library": "lucide",
+                              "fill": "$y:sem-navIcon"
+                            },
+                            {
+                              "type": "text",
+                              "id": "s0yS36",
+                              "name": "sectionLabel",
+                              "fill": "$y:sem-navTextSecondary",
+                              "content": "PLANNING",
+                              "fontFamily": "$y:font-primary",
+                              "fontSize": "$y:text-size-2xs",
+                              "fontWeight": "600",
+                              "letterSpacing": 1.2
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ONFff",
+                          "name": "ltpDefault",
+                          "width": "fill_container",
+                          "cornerRadius": "$y:radius-3xs",
+                          "padding": [
+                            7,
+                            10,
+                            7,
+                            "$y:spacing-md"
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "F7PsI5",
+                              "fill": "$y:sem-navTextSecondary",
+                              "content": "Lifetime Planning",
+                              "fontFamily": "$y:font-primary",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "W57pso",
+              "name": "Nav / User Area",
+              "width": "fill_container",
+              "fill": "$y:sem-navBg",
+              "stroke": "$y:sem-navDivider",
+              "strokeWidth": {
+                "top": 0.5
+              },
+              "strokeAlignment": "inner",
+              "strokeLinejoin": "round",
+              "layout": "vertical",
+              "gap": 10,
+              "padding": [
+                "$y:spacing-sm",
+                10,
+                "$y:spacing-3xs",
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "XlBzR",
+                  "name": "userInfo",
+                  "width": "fill_container",
+                  "gap": 1,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "FQcWM",
+                      "name": "userName",
+                      "fill": "$y:sem-navTextSecondary",
+                      "content": "Sylvia Peterson",
+                      "fontFamily": "$y:font-primary",
+                      "fontSize": "$y:text-size-xs",
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "i4nHy",
+                      "layoutPosition": "absolute",
+                      "x": 156,
+                      "y": -3,
+                      "name": "settingsActive",
+                      "fill": "$y:sem-navActiveBg",
+                      "cornerRadius": "$y:radius-3xs",
+                      "padding": "$y:spacing-3xs",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "G0Bfst",
+                          "name": "settingsIcon",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "settings",
+                          "library": "lucide",
+                          "fill": "$y:sem-navTextPrimary"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Z8wi9",
+                  "name": "userInfo",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-2xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "HAEVB",
+                      "name": "settingsIcon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "log-out",
+                      "library": "lucide",
+                      "fill": "$y:sem-navTextSecondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ABRGf",
+                      "name": "userName",
+                      "fill": "$y:sem-navTextSecondary",
+                      "content": "Sign Out",
+                      "fontFamily": "$y:font-primary",
+                      "fontSize": "$y:text-size-xs",
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "zQqgS",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 752,
+              "name": "Nav / Fade Gradient",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "$y:sem-navFadeTransparent",
+                    "position": 0
+                  },
+                  {
+                    "color": "$y:sem-navBg",
+                    "position": 1
+                  }
+                ]
+              },
+              "width": 240,
+              "height": 36
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "spRbx",
+          "name": "mainPanel",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "#FFFFFF00",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "hPSxo",
+              "name": "headerRow",
+              "width": "fill_container",
+              "gap": "$y:spacing-2xs",
+              "padding": [
+                "$y:spacing-2xs",
+                "$y:spacing-xl"
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "YOGjh",
+                  "x": 40,
+                  "y": 20,
+                  "name": "leftToggleBtn",
+                  "enabled": false,
+                  "width": 28,
+                  "height": 28,
+                  "cornerRadius": "$y:radius-2xs",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "ZVEqm",
+                      "name": "leftIcon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "arrow-left",
+                      "library": "lucide",
+                      "fill": "$y:sem-navToggleIcon"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Q1JCaJ",
+                  "name": "greetingArea",
+                  "width": "fill_container",
+                  "gap": "$y:spacing-4xs",
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "OL6ze",
+                      "name": "greeting",
+                      "fill": "$y:sem-text-header",
+                      "content": "Settings | Contact Us",
+                      "fontFamily": "$y:font-secondary",
+                      "fontSize": "$y:text-size-lg",
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AziLi",
+                      "x": 20,
+                      "y": 20,
+                      "name": "logo",
+                      "enabled": false,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "H3ck5",
+                          "name": "logoMain",
+                          "fill": "$y:sem-text-strong",
+                          "content": "evergreen",
+                          "fontFamily": "Manrope",
+                          "fontSize": "$y:text-size-lg",
+                          "fontWeight": "normal",
+                          "letterSpacing": -0.3
+                        },
+                        {
+                          "type": "text",
+                          "id": "clo72",
+                          "name": "logoSuffix",
+                          "fill": "$y:sem-text-strong",
+                          "textGrowth": "fixed-width-height",
+                          "width": "fit_content(24)",
+                          "height": "fit_content(25)",
+                          "content": ".ai",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Spectral",
+                          "fontSize": "$y:text-size-xl",
+                          "fontWeight": "300",
+                          "fontStyle": "italic"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Fr10z",
+                  "x": 0,
+                  "y": 0,
+                  "name": "pill",
+                  "enabled": false,
+                  "fill": "$y:sem-pillBg",
+                  "cornerRadius": "$y:radius-full",
+                  "stroke": "$y:sem-pillBg",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": "$y:spacing-2xs",
+                  "padding": [
+                    7,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "skJRd",
+                      "name": "pillText",
+                      "fill": "$y:sem-text-reverse",
+                      "content": "Customize",
+                      "fontFamily": "$y:font-primary",
+                      "fontSize": "$y:text-size-xs",
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Aa17y",
+                  "x": 0,
+                  "y": 0,
+                  "name": "rightToggleBtn",
+                  "enabled": false,
+                  "width": 28,
+                  "height": 28,
+                  "cornerRadius": "$y:radius-2xs",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "k2DM3s",
+                      "name": "rightIcon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "message-circle",
+                      "library": "lucide",
+                      "fill": "$y:sem-navToggleIcon"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "A8joA",
+              "name": "contentColumn",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": "$y:spacing-xl",
+              "padding": "$y:spacing-xl",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "xefrn",
+                  "name": "General Support",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$y:spacing-sm",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Nno26",
+                      "name": "TextContent / large-heavy",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "miroe",
+                          "name": "Content",
+                          "fill": "$y:sem-text-header",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Get General Support",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-lg",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zO4wE",
+                      "name": "Buttons",
+                      "gap": "$y:spacing-sm",
+                      "children": [
+                        {
+                          "id": "zHB5l",
+                          "type": "ref",
+                          "ref": "y:z7pWh",
+                          "name": "Legal Button",
+                          "descendants": {
+                            "y:fEcTR": {
+                              "content": "Legal"
+                            }
+                          }
+                        },
+                        {
+                          "id": "ZVGo3",
+                          "type": "ref",
+                          "ref": "y:z7pWh",
+                          "name": "Privacy Button",
+                          "descendants": {
+                            "y:fEcTR": {
+                              "content": "Privacy"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "F8i2qv",
+                  "name": "Client Service section",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$y:spacing-xs",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "j42ZX",
+                      "name": "TextContent / large-heavy",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "nK5BU",
+                          "name": "Content",
+                          "fill": "$y:sem-text-header",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Talk to Client Service",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-lg",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Osq1Y",
+                      "name": "TextContent / medium",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Nzadp",
+                          "name": "Content",
+                          "fill": "$y:sem-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "For any other questions or to share feedback, our Client Service team is available via email at clientservice@evergreenwealth.com.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-base"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "e2XO0",
+          "name": "chat",
+          "clip": true,
+          "width": 360,
+          "height": "fill_container",
+          "fill": "$y:sem-chatBg",
+          "cornerRadius": "$y:radius-xs",
+          "stroke": "$y:sem-chatBorder",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "$y:sem-chatShadow",
+            "offset": {
+              "x": 0,
+              "y": 2
+            },
+            "blur": 28
+          },
+          "layout": "vertical",
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "rSSyo",
+              "name": "h2",
+              "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
+              "width": "fill_container",
+              "stroke": "$y:sem-chatDivider",
+              "strokeWidth": {
+                "bottom": 0.5
+              },
+              "strokeAlignment": "inner",
+              "strokeLinejoin": "round",
+              "padding": [
+                "$y:spacing-sm",
+                20
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "mBZ2t",
+                  "name": "left",
+                  "gap": "$y:spacing-3xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "n1j4r",
+                      "name": "Chat / Close Button / Default",
+                      "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
+                      "width": 28,
+                      "height": 28,
+                      "cornerRadius": "$y:radius-2xs",
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "vSrRt",
+                          "name": "icon",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "arrow-right-to-line",
+                          "library": "lucide",
+                          "fill": "$y:sem-chatCloseIcon"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "LivVO",
+                      "name": "chatTitle",
+                      "fill": "$y:sem-chatTextPrimary",
+                      "content": "Chat",
+                      "fontFamily": "$y:font-secondary",
+                      "fontSize": "$y:text-size-base",
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Eq7Mq",
+                  "name": "btn",
+                  "fill": {
+                    "type": "color",
+                    "color": "#ffffff",
+                    "enabled": false
+                  },
+                  "cornerRadius": "$y:radius-full",
+                  "stroke": "$y:sem-btnSecondaryBorder",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": "$y:spacing-2xs",
+                  "padding": [
+                    6,
+                    "$y:spacing-xs"
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "D84dz",
+                      "name": "Label",
+                      "fill": "$y:sem-btnSecondaryText",
+                      "content": "Show View",
+                      "lineHeight": 1.5,
+                      "textAlign": "center",
+                      "fontFamily": "$y:font-primary",
+                      "fontSize": "$y:text-size-xs",
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cwVng",
+              "name": "chatMessages",
+              "clip": true,
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "padding": [
+                "$y:spacing-sm",
+                20
+              ],
+              "justifyContent": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "i11qB",
+                  "name": "m2_1",
+                  "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
+                  "width": "fill_container",
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    "$y:spacing-lg"
+                  ],
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "a4bAS",
+                      "name": "bubble",
+                      "width": "fill_container",
+                      "fill": "$y:sem-chatBubbleUser",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-chatBubbleUserBorder",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "padding": [
+                        "$y:spacing-xs",
+                        "$y:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n1KVLv",
+                          "name": "text",
+                          "fill": "$y:sem-chatTextSecondary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "How am I tracking against my savings goal?",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-sm",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ldHzN",
+                  "name": "m2_2",
+                  "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
+                  "width": "fill_container",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fV5yS",
+                      "name": "bubble",
+                      "width": "fill_container",
+                      "fill": "$y:sem-chatBubbleAi",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "m4HKKG",
+                          "name": "text",
+                          "fill": "$y:sem-chatTextPrimary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early.",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-sm",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lF0kj",
+                  "name": "m2_3",
+                  "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
+                  "width": "fill_container",
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    "$y:spacing-lg"
+                  ],
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "hp2EK",
+                      "name": "bubble",
+                      "fill": "$y:sem-chatBubbleUser",
+                      "cornerRadius": "$y:radius-xs",
+                      "stroke": "$y:sem-chatBubbleUserBorder",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "padding": [
+                        "$y:spacing-xs",
+                        "$y:spacing-sm"
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "VglxJ",
+                          "name": "text",
+                          "fill": "$y:sem-chatTextSecondary",
+                          "content": "Anything unusual in my spending?",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-sm",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "b6U8Iy",
+                  "name": "m2_4",
+                  "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
+                  "width": "fill_container",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "u5tR2",
+                      "name": "bubble",
+                      "width": "fill_container",
+                      "fill": "$y:sem-chatBubbleAi",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "NCvbB",
+                          "name": "text",
+                          "fill": "$y:sem-chatTextPrimary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Groceries are up 18% vs. your 3 month average, driven by a few larger Whole Foods runs. Everything else is within normal ranges.",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-sm",
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RTyKc",
+              "name": "inp2",
+              "context": "Input Field / Typing — Shown when the user has entered text. Border thickens to 1.5px $chat.input.border.active. Send button becomes enabled. Text displays in $chat.text.secondary.",
+              "width": "fill_container",
+              "stroke": {
+                "type": "color",
+                "color": "$y:sem-chatDivider",
+                "enabled": false
+              },
+              "strokeWidth": {
+                "top": 0.5
+              },
+              "strokeAlignment": "inner",
+              "strokeLinejoin": "round",
+              "layout": "vertical",
+              "gap": "$y:spacing-xs",
+              "padding": [
+                "$y:spacing-xs",
+                20,
+                20,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Y3GHRa",
+                  "name": "inputField",
+                  "width": "fill_container",
+                  "fill": "$y:sem-chatInputBg",
+                  "cornerRadius": "$y:radius-xs",
+                  "stroke": "$y:sem-chatInputBorderActive",
+                  "strokeWidth": 1.5,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": "$y:spacing-md",
+                  "padding": "$y:spacing-xs",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "AA6Nt",
+                      "name": "text",
+                      "fill": "$y:sem-chatTextSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "What do my holdings look like this month?",
+                      "fontFamily": "$y:font-primary",
+                      "fontSize": "$y:text-size-sm",
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "TDl3L",
+                      "name": "rowButtons",
+                      "width": "fill_container",
+                      "gap": "$y:spacing-2xs",
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "bQuCI",
+                          "name": "Chat / Voice Button / Default",
+                          "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
+                          "width": 34,
+                          "height": 34,
+                          "fill": "#00000000",
+                          "cornerRadius": "$y:radius-full",
+                          "stroke": "$y:sem-chatVoiceBorder",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "layout": "vertical",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "d7bAbK",
+                              "name": "icon",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "mic",
+                              "library": "lucide",
+                              "fill": "$y:sem-chatVoiceIcon"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "FpVgL",
+                          "name": "Chat / Send Button / Default",
+                          "context": "Primary send button for submitting chat messages. 34×34 pill, dark fill ($chat.send.bg) with white arrow-up icon. Place at the right end of the input field button row. States: default, hover, pressed, disabled.",
+                          "width": 34,
+                          "height": 34,
+                          "fill": "$y:sem-chatSendBg",
+                          "cornerRadius": "$y:radius-full",
+                          "layout": "vertical",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "ty57G",
+                              "name": "sendIcon",
+                              "width": 20,
+                              "height": 20,
+                              "icon": "arrow-up",
+                              "library": "lucide",
+                              "fill": "$y:sem-chatSendIcon"
                             }
                           ]
                         }
@@ -1184,7 +2397,7 @@
       "clip": true,
       "width": 390,
       "height": 844,
-      "fill": "#FFFFFF",
+      "fill": "$y:sem-background-main",
       "layout": "vertical",
       "children": [
         {
@@ -1194,7 +2407,7 @@
           "width": "fill_container",
           "height": 54,
           "padding": [
-            16,
+            "$y:spacing-sm",
             20
           ],
           "justifyContent": "space_between",
@@ -1204,10 +2417,10 @@
               "type": "text",
               "id": "phz8P",
               "name": "time",
-              "fill": "#0E0E0E",
+              "fill": "$y:sem-text-header",
               "content": "9:41",
-              "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontFamily": "$y:font-primary",
+              "fontSize": "$y:text-size-base",
               "fontWeight": "600"
             },
             {
@@ -1225,7 +2438,7 @@
                   "height": 16,
                   "icon": "signal",
                   "library": "lucide",
-                  "fill": "#0E0E0E"
+                  "fill": "$y:sem-text-header"
                 },
                 {
                   "type": "icon",
@@ -1235,7 +2448,7 @@
                   "height": 16,
                   "icon": "wifi",
                   "library": "lucide",
-                  "fill": "#0E0E0E"
+                  "fill": "$y:sem-text-header"
                 },
                 {
                   "type": "icon",
@@ -1245,7 +2458,7 @@
                   "height": 16,
                   "icon": "battery-full",
                   "library": "lucide",
-                  "fill": "#0E0E0E"
+                  "fill": "$y:sem-text-header"
                 }
               ]
             }
@@ -1257,10 +2470,10 @@
           "name": "mobileHeader",
           "width": "fill_container",
           "height": 48,
-          "gap": 12,
+          "gap": "$y:spacing-xs",
           "padding": [
             0,
-            16
+            "$y:spacing-sm"
           ],
           "alignItems": "center",
           "children": [
@@ -1272,24 +2485,24 @@
               "height": 22,
               "icon": "panel-left",
               "library": "lucide",
-              "fill": "$y:prim-gray-700"
+              "fill": "$y:sem-navToggleIcon"
             },
             {
               "type": "frame",
               "id": "H20ZTs",
               "name": "greetingArea",
               "width": "fill_container",
-              "gap": "$O:spacing-3xs",
+              "gap": "$y:spacing-3xs",
               "alignItems": "center",
               "children": [
                 {
                   "type": "text",
                   "id": "Fczwc",
                   "name": "greeting",
-                  "fill": "#2d2926",
+                  "fill": "$y:sem-text-header",
                   "content": "Settings | Contact Us",
-                  "fontFamily": "Noto Serif",
-                  "fontSize": 20,
+                  "fontFamily": "$y:font-secondary",
+                  "fontSize": "$y:text-size-lg",
                   "fontWeight": "normal"
                 },
                 {
@@ -1305,10 +2518,10 @@
                       "type": "text",
                       "id": "qt7JP",
                       "name": "logoMain",
-                      "fill": "$nav.text.primary",
+                      "fill": "$y:sem-text-strong",
                       "content": "evergreen",
                       "fontFamily": "Manrope",
-                      "fontSize": 20,
+                      "fontSize": "$y:text-size-lg",
                       "fontWeight": "normal",
                       "letterSpacing": -0.3
                     },
@@ -1316,14 +2529,14 @@
                       "type": "text",
                       "id": "fqudT",
                       "name": "logoSuffix",
-                      "fill": "$nav.text.primary",
+                      "fill": "$y:sem-text-strong",
                       "textGrowth": "fixed-width-height",
                       "width": "fit_content(24)",
                       "height": "fit_content(25)",
                       "content": ".ai",
                       "textAlignVertical": "middle",
                       "fontFamily": "Spectral",
-                      "fontSize": 24,
+                      "fontSize": "$y:text-size-xl",
                       "fontWeight": "normal",
                       "fontStyle": "italic"
                     }
@@ -1339,7 +2552,7 @@
               "height": 22,
               "icon": "message-circle",
               "library": "lucide",
-              "fill": "$y:prim-gray-700"
+              "fill": "$y:sem-navToggleIcon"
             }
           ]
         },
@@ -1350,8 +2563,11 @@
           "width": "fill_container",
           "height": "fit_content(1020)",
           "layout": "vertical",
-          "gap": 24,
-          "padding": 16,
+          "gap": "$y:spacing-md",
+          "padding": [
+            "$y:spacing-xl",
+            "$y:spacing-sm"
+          ],
           "children": [
             {
               "type": "frame",
@@ -1371,17 +2587,26 @@
                   "gap": "$y:spacing-sm",
                   "children": [
                     {
+                      "type": "frame",
                       "id": "o8Ijkb",
-                      "type": "ref",
-                      "ref": "p:tcLh01",
-                      "x": 0,
-                      "y": 0,
+                      "name": "TextContent / large-heavy",
                       "width": "fill_container",
-                      "descendants": {
-                        "p:tcLhTx": {
-                          "content": "Get General Support"
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "bM03r",
+                          "name": "Content",
+                          "fill": "$y:sem-text-header",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Get General Support",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-lg",
+                          "fontWeight": "600"
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "frame",
@@ -1421,33 +2646,364 @@
                   "name": "Client Service section",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 12,
+                  "gap": "$y:spacing-xs",
                   "children": [
                     {
+                      "type": "frame",
                       "id": "U3n6ra",
-                      "type": "ref",
-                      "ref": "p:tcLh01",
-                      "x": 0,
-                      "y": 0,
+                      "name": "TextContent / large-heavy",
                       "width": "fill_container",
-                      "descendants": {
-                        "p:tcLhTx": {
-                          "content": "Talk to Client Service"
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "CO9ob",
+                          "name": "Content",
+                          "fill": "$y:sem-text-header",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Talk to Client Service",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-lg",
+                          "fontWeight": "600"
                         }
-                      }
+                      ]
                     },
                     {
+                      "type": "frame",
                       "id": "vnDxq",
-                      "type": "ref",
-                      "ref": "p:tcMd01",
-                      "x": 0,
-                      "y": 40,
+                      "name": "TextContent / medium",
                       "width": "fill_container",
-                      "descendants": {
-                        "p:tcMdTx": {
-                          "content": "For any other questions or to share feedback, our Client Service team is available via email at clientservice@evergreenwealth.com."
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ni2ar",
+                          "name": "Content",
+                          "fill": "$y:sem-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "For any other questions or to share feedback, our Client Service team is available via email at clientservice@evergreenwealth.com.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-base"
                         }
-                      }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "NMx7p",
+      "x": 21283,
+      "y": 17708,
+      "name": "Mobile - Settings - Contact Us",
+      "theme": {
+        "y:🎨 Colors": "Dark"
+      },
+      "clip": true,
+      "width": 390,
+      "height": 844,
+      "fill": "$y:sem-background-main",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "W7KEC",
+          "name": "statusBar",
+          "width": "fill_container",
+          "height": 54,
+          "padding": [
+            "$y:spacing-sm",
+            20
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "xhWjB",
+              "name": "time",
+              "fill": "$y:sem-text-header",
+              "content": "9:41",
+              "fontFamily": "$y:font-primary",
+              "fontSize": "$y:text-size-base",
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "i5ZAuj",
+              "name": "statusIcons",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "o9glq",
+                  "name": "signal",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "signal",
+                  "library": "lucide",
+                  "fill": "$y:sem-text-header"
+                },
+                {
+                  "type": "icon",
+                  "id": "xaZX3",
+                  "name": "wifi",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "wifi",
+                  "library": "lucide",
+                  "fill": "$y:sem-text-header"
+                },
+                {
+                  "type": "icon",
+                  "id": "Zu6VK",
+                  "name": "battery",
+                  "width": 22,
+                  "height": 16,
+                  "icon": "battery-full",
+                  "library": "lucide",
+                  "fill": "$y:sem-text-header"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ntGFU",
+          "name": "mobileHeader",
+          "width": "fill_container",
+          "height": 48,
+          "gap": "$y:spacing-xs",
+          "padding": [
+            0,
+            "$y:spacing-sm"
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "WN21n",
+              "name": "menuIcon",
+              "width": 22,
+              "height": 22,
+              "icon": "panel-left",
+              "library": "lucide",
+              "fill": "$y:sem-navToggleIcon"
+            },
+            {
+              "type": "frame",
+              "id": "aMFsJ",
+              "name": "greetingArea",
+              "width": "fill_container",
+              "gap": "$y:spacing-3xs",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "F1p7Z",
+                  "name": "greeting",
+                  "fill": "$y:sem-text-header",
+                  "content": "Settings | Contact Us",
+                  "fontFamily": "$y:font-secondary",
+                  "fontSize": "$y:text-size-lg",
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "iBeV4",
+                  "x": 613,
+                  "y": 0,
+                  "name": "logo",
+                  "enabled": false,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mMFVE",
+                      "name": "logoMain",
+                      "fill": "$y:sem-text-strong",
+                      "content": "evergreen",
+                      "fontFamily": "Manrope",
+                      "fontSize": "$y:text-size-lg",
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "daq8v",
+                      "name": "logoSuffix",
+                      "fill": "$y:sem-text-strong",
+                      "textGrowth": "fixed-width-height",
+                      "width": "fit_content(24)",
+                      "height": "fit_content(25)",
+                      "content": ".ai",
+                      "textAlignVertical": "middle",
+                      "fontFamily": "Spectral",
+                      "fontSize": "$y:text-size-xl",
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "icon",
+              "id": "pniV2",
+              "name": "chatIcon",
+              "width": 22,
+              "height": 22,
+              "icon": "message-circle",
+              "library": "lucide",
+              "fill": "$y:sem-navToggleIcon"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wENLS",
+          "name": "contentArea",
+          "width": "fill_container",
+          "height": "fit_content(1020)",
+          "layout": "vertical",
+          "gap": "$y:spacing-md",
+          "padding": [
+            "$y:spacing-xl",
+            "$y:spacing-sm"
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "PI7QD",
+              "name": "contentColumn",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": "$y:spacing-lg",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "i4AIrV",
+                  "name": "General Support",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$y:spacing-sm",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "hh33b",
+                      "name": "TextContent / large-heavy",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "NgNjR",
+                          "name": "Content",
+                          "fill": "$y:sem-text-header",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Get General Support",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-lg",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "e7rQ8",
+                      "name": "Buttons",
+                      "gap": "$y:spacing-sm",
+                      "children": [
+                        {
+                          "id": "YVKOS",
+                          "type": "ref",
+                          "ref": "y:z7pWh",
+                          "name": "Legal Button",
+                          "descendants": {
+                            "y:fEcTR": {
+                              "content": "Legal"
+                            }
+                          }
+                        },
+                        {
+                          "id": "gTZiP",
+                          "type": "ref",
+                          "ref": "y:z7pWh",
+                          "name": "Privacy Button",
+                          "descendants": {
+                            "y:fEcTR": {
+                              "content": "Privacy"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "j2CJ8",
+                  "name": "Client Service section",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": "$y:spacing-xs",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "o2tI9",
+                      "name": "TextContent / large-heavy",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fURfq",
+                          "name": "Content",
+                          "fill": "$y:sem-text-header",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Talk to Client Service",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-lg",
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SBUS4",
+                      "name": "TextContent / medium",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "S9dHCj",
+                          "name": "Content",
+                          "fill": "$y:sem-text-body",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "For any other questions or to share feedback, our Client Service team is available via email at clientservice@evergreenwealth.com.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-base"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -1459,1613 +3015,12 @@
     }
   ],
   "themes": {
-    "G:mode": [
-      "light",
-      "dark"
+    "0": [
+      "Default"
     ]
   },
-  "variables": {
-    "G:surface.primary": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:base.canvas",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:gray.50",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:base.canvas": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#FFFFFF",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#0E0E0E",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:gray.50": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#F7F7F8",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#0e0e0e",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:border.primary": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:gray.100",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:gray.300",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:gray.100": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#E8E8EA",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#1a1a1a",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:gray.300": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#AEAEB2",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#535356",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:accent.default": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:blue.600",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:blue.500",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:blue.600": {
-      "type": "color",
-      "value": "#3A6AF8"
-    },
-    "G:blue.500": {
-      "type": "color",
-      "value": "#7094FB"
-    },
-    "G:text.primary": {
-      "type": "color",
-      "value": "$G:gray.900"
-    },
-    "G:gray.900": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#0E0E0E",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#F7F7F8",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:font.primary": {
-      "type": "string",
-      "value": "Heebo"
-    },
-    "G:accent.subtle": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:blue.100",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:blue.800",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:blue.100": {
-      "type": "color",
-      "value": "#EBF0FE"
-    },
-    "G:blue.800": {
-      "type": "color",
-      "value": "#1E3A8A"
-    },
-    "G:radius.md": {
-      "type": "number",
-      "value": 6
-    },
-    "G:text.secondary": {
-      "type": "color",
-      "value": "$G:gray.600"
-    },
-    "G:gray.600": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#535356",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#AEAEB2",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:radius.full": {
-      "type": "number",
-      "value": 9999
-    },
-    "G:text.tertiary": {
-      "type": "color",
-      "value": "$G:gray.500"
-    },
-    "G:gray.500": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#6C6C70",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#8e8e93",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:font.size.sm": {
-      "type": "number",
-      "value": 12
-    },
-    "G:data.positive": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:green.700",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:green.400",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:green.700": {
-      "type": "color",
-      "value": "#15803D"
-    },
-    "G:green.400": {
-      "type": "color",
-      "value": "#4ADE80"
-    },
-    "G:data.negative": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:red.700",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:red.400",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:red.700": {
-      "type": "color",
-      "value": "#B91C1C"
-    },
-    "G:red.400": {
-      "type": "color",
-      "value": "#F87171"
-    },
-    "G:chart.cat.2": {
-      "type": "color",
-      "value": "#06B6D4"
-    },
-    "G:fin.expense-bg": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:red.50",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:red.900",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:red.50": {
-      "type": "color",
-      "value": "#FEF2F2"
-    },
-    "G:red.900": {
-      "type": "color",
-      "value": "#450A0A"
-    },
-    "G:fin.expense": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:red.700",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:red.400",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:font.size.md": {
-      "type": "number",
-      "value": 14
-    },
-    "G:font.size.xs": {
-      "type": "number",
-      "value": 10
-    },
-    "G:fin.income-bg": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:green.50",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:green.900",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:green.50": {
-      "type": "color",
-      "value": "#F0FDF4"
-    },
-    "G:green.900": {
-      "type": "color",
-      "value": "#052E16"
-    },
-    "G:fin.income": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:green.700",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:green.400",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:text.on-accent": {
-      "type": "color",
-      "value": "$G:white"
-    },
-    "G:white": {
-      "type": "color",
-      "value": "#FFFFFF"
-    },
-    "G:accent.hover": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:blue.700",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:blue.400",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:blue.700": {
-      "type": "color",
-      "value": "#295CCC"
-    },
-    "G:blue.400": {
-      "type": "color",
-      "value": "#9BB3FC"
-    },
-    "nav.active.bg": {
-      "type": "color",
-      "value": "#DCD8CB"
-    },
-    "nav.bg": {
-      "type": "color",
-      "value": "#F7F5F0"
-    },
-    "nav.border": {
-      "type": "color",
-      "value": "#DCD8CB"
-    },
-    "nav.divider": {
-      "type": "color",
-      "value": "#E8E6E0"
-    },
-    "nav.font": {
-      "type": "string",
-      "value": "Heebo"
-    },
-    "nav.icon": {
-      "type": "color",
-      "value": "#8A8680"
-    },
-    "nav.logo.accent.font": {
-      "type": "string",
-      "value": "Spectral"
-    },
-    "nav.logo.font": {
-      "type": "string",
-      "value": "Manrope"
-    },
-    "nav.shadow": {
-      "type": "color",
-      "value": "#2D292628"
-    },
-    "nav.text.disabled": {
-      "type": "color",
-      "value": "#B5B1AB"
-    },
-    "nav.text.primary": {
-      "type": "color",
-      "value": "#2D2926"
-    },
-    "nav.text.secondary": {
-      "type": "color",
-      "value": "#5E5954"
-    },
-    "nav.hover.bg": {
-      "type": "color",
-      "value": "#EDEAE3"
-    },
-    "nav.hover.text": {
-      "type": "color",
-      "value": "#2D2926"
-    },
-    "nav.pressed.bg": {
-      "type": "color",
-      "value": "#E3DFD6"
-    },
-    "nav.group.gap": {
-      "type": "number",
-      "value": 12
-    },
-    "nav.header.font.size": {
-      "type": "number",
-      "value": 11
-    },
-    "nav.item.font.size": {
-      "type": "number",
-      "value": 13
-    },
-    "nav.item.radius": {
-      "type": "number",
-      "value": 4
-    },
-    "nav.padding.h": {
-      "type": "number",
-      "value": 24
-    },
-    "nav.padding.v": {
-      "type": "number",
-      "value": 20
-    },
-    "nav.radius": {
-      "type": "number",
-      "value": 12
-    },
-    "nav.section.gap": {
-      "type": "number",
-      "value": 2
-    },
-    "nav.width": {
-      "type": "number",
-      "value": 240
-    },
-    "chat.bg": {
-      "type": "color",
-      "value": "$nav.bg"
-    },
-    "chat.border": {
-      "type": "color",
-      "value": "$nav.border"
-    },
-    "chat.bubble.ai.bg": {
-      "type": "color",
-      "value": "#FFFFFF00"
-    },
-    "chat.bubble.user.bg": {
-      "type": "color",
-      "value": "$nav.bg"
-    },
-    "chat.bubble.user.border": {
-      "type": "color",
-      "value": "$nav.border"
-    },
-    "chat.chip.bg": {
-      "type": "color",
-      "value": "$nav.bg"
-    },
-    "chat.chip.border": {
-      "type": "color",
-      "value": "$nav.border"
-    },
-    "chat.divider": {
-      "type": "color",
-      "value": "$nav.divider"
-    },
-    "chat.icon": {
-      "type": "color",
-      "value": "$nav.text.secondary"
-    },
-    "chat.input.bg": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#ffffff",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#ffffff",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "chat.input.border": {
-      "type": "color",
-      "value": "#E8E6E0"
-    },
-    "chat.send.bg": {
-      "type": "color",
-      "value": "#3C3C3C"
-    },
-    "chat.send.icon": {
-      "type": "color",
-      "value": "#FFFFFF"
-    },
-    "chat.shadow": {
-      "type": "color",
-      "value": "$nav.shadow"
-    },
-    "chat.text.placeholder": {
-      "type": "color",
-      "value": "#A8A49E"
-    },
-    "chat.text.primary": {
-      "type": "color",
-      "value": "$nav.text.primary"
-    },
-    "chat.text.secondary": {
-      "type": "color",
-      "value": "$nav.text.secondary"
-    },
-    "chat.advisor.size": {
-      "type": "number",
-      "value": 12
-    },
-    "chat.attachment.size": {
-      "type": "number",
-      "value": 11
-    },
-    "chat.bubble.padding.h": {
-      "type": "number",
-      "value": 16
-    },
-    "chat.bubble.padding.v": {
-      "type": "number",
-      "value": 12
-    },
-    "chat.bubble.radius": {
-      "type": "number",
-      "value": 12
-    },
-    "chat.chip.radius": {
-      "type": "number",
-      "value": 24
-    },
-    "chat.chip.size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 14,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 14,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "chat.greeting.font": {
-      "type": "string",
-      "value": "Noto Serif"
-    },
-    "chat.greeting.size": {
-      "type": "number",
-      "value": 20
-    },
-    "chat.header.padding.h": {
-      "type": "number",
-      "value": 20
-    },
-    "chat.header.padding.v": {
-      "type": "number",
-      "value": 16
-    },
-    "chat.input.padding": {
-      "type": "number",
-      "value": 12
-    },
-    "chat.input.radius": {
-      "type": "number",
-      "value": 12
-    },
-    "chat.msg.font": {
-      "type": "string",
-      "value": "Heebo"
-    },
-    "chat.msg.gap": {
-      "type": "number",
-      "value": 14
-    },
-    "chat.msg.padding.h": {
-      "type": "number",
-      "value": 20
-    },
-    "chat.msg.padding.v": {
-      "type": "number",
-      "value": 16
-    },
-    "chat.msg.size": {
-      "type": "number",
-      "value": 14
-    },
-    "chat.radius": {
-      "type": "number",
-      "value": 12
-    },
-    "chat.send.size": {
-      "type": "number",
-      "value": 34
-    },
-    "chat.title.font": {
-      "type": "string",
-      "value": "Noto Serif"
-    },
-    "chat.title.size": {
-      "type": "number",
-      "value": 16
-    },
-    "chat.width": {
-      "type": "number",
-      "value": 360
-    },
-    "chat.send.bg.disabled": {
-      "type": "color",
-      "value": "#D4D1CA"
-    },
-    "chat.input.border.active": {
-      "type": "color",
-      "value": "#C0BAB2"
-    },
-    "chat.chip.hover.bg": {
-      "type": "color",
-      "value": "$nav.hover.bg"
-    },
-    "chat.chip.pressed.bg": {
-      "type": "color",
-      "value": "$nav.pressed.bg"
-    },
-    "chat.voice.active.bg": {
-      "type": "color",
-      "value": "#3A6AF8"
-    },
-    "chat.voice.active.icon": {
-      "type": "color",
-      "value": "#FFFFFF"
-    },
-    "chat.voice.cancel.icon": {
-      "type": "color",
-      "value": "#8A8680"
-    },
-    "chat.voice.pulse": {
-      "type": "color",
-      "value": "#3A6AF828"
-    },
-    "chat.voice.timer": {
-      "type": "color",
-      "value": "#5E5954"
-    },
-    "chat.voice.waveform": {
-      "type": "color",
-      "value": "#7094FB"
-    },
-    "chat.close.hover.bg": {
-      "type": "color",
-      "value": "#EDEAE3"
-    },
-    "chat.close.pressed.bg": {
-      "type": "color",
-      "value": "#E3DFD6"
-    },
-    "chat.send.bg.hover": {
-      "type": "color",
-      "value": "#4F4F4F"
-    },
-    "chat.send.bg.pressed": {
-      "type": "color",
-      "value": "#2A2A2A"
-    },
-    "G:surface.secondary": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:gray.50",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:gray.100",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:surface.tertiary": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:gray.100",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:gray.200",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:gray.200": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#D1D1D6",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#3a3a3c",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:radius.lg": {
-      "type": "number",
-      "value": 8
-    },
-    "G:chart.cat.5": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#0F766E",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#14B8A6",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:font.secondary": {
-      "type": "string",
-      "value": "Cormorant Garamond"
-    },
-    "G:font.size.lg": {
-      "type": "number",
-      "value": 16
-    },
-    "G:status.success": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:green.700",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:green.400",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:data.neutral": {
-      "type": "color",
-      "value": "$G:gray.600"
-    },
-    "G:surface.inverse": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:gray.900",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:gray.900",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:text.inverse": {
-      "type": "color",
-      "value": [
-        {
-          "value": "$G:white",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "$G:gray.50",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "G:radius.sm": {
-      "type": "number",
-      "value": 4
-    },
-    "G.blue.100": {
-      "type": "color",
-      "value": "#ebf0fe"
-    },
-    "G.blue.200": {
-      "type": "color",
-      "value": "#c8d6fd"
-    },
-    "G.blue.300": {
-      "type": "color",
-      "value": "#a5bcfc"
-    },
-    "G.blue.400": {
-      "type": "color",
-      "value": "#7094fb"
-    },
-    "G.blue.500": {
-      "type": "color",
-      "value": "#5a82f9"
-    },
-    "G.blue.600": {
-      "type": "color",
-      "value": "#3a6af8"
-    },
-    "G.blue.700": {
-      "type": "color",
-      "value": "#2952cc"
-    },
-    "G.blue.800": {
-      "type": "color",
-      "value": "#163196"
-    },
-    "G.blue.900": {
-      "type": "color",
-      "value": "#031e64"
-    },
-    "Q:colors-btnPrimaryInvertedBg": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#ffffff",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#18223A",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "Q:color-gray-50": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#F8F7F6",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#F8F7F6",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "Q:colors-borders-dark": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#DCD8CB",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#22314F",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "Q:color-gray-200": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#D5D3D0",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#D5D3D0",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "Q:radius-full": {
-      "type": "number",
-      "value": [
-        {
-          "value": 9999,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 9999,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "Q:spacing-2xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 8,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 8,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "Q:colors-btnPrimaryInvertedText": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#3a6af8",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#9BB3FC",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "Q:color-gray-700": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#403D3A",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#403D3A",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "Q:typo-primary-base-letter-spacing": {
-      "type": "number",
-      "value": [
-        {
-          "value": 0,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 0,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "Q:typo-primary-base-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "Q:spacing-lg": {
-      "type": "number",
-      "value": [
-        {
-          "value": 32,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 32,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "typo-primary-sm-font-size": {
-      "type": "number",
-      "value": 12
-    },
-    "typo-primary-sm-regular-font-size": {
-      "type": "number",
-      "value": 12
-    },
-    "typo-primary-sm-semibold-font-size": {
-      "type": "number",
-      "value": 12
-    },
-    "typo-primary-sm-bold-font-size": {
-      "type": "number",
-      "value": 12
-    },
-    "typo-primary-sm-light-font-size": {
-      "type": "number",
-      "value": 12
-    },
-    "typo-primary-sm-regular-link-font-size": {
-      "type": "number",
-      "value": 12
-    },
-    "typo-primary-sm-semibold-link-font-size": {
-      "type": "number",
-      "value": 12
-    },
-    "typo-primary-base-font-size": {
-      "type": "number",
-      "value": 14
-    },
-    "typo-primary-base-regular-font-size": {
-      "type": "number",
-      "value": 14
-    },
-    "typo-primary-base-semibold-font-size": {
-      "type": "number",
-      "value": 14
-    },
-    "typo-primary-base-bold-font-size": {
-      "type": "number",
-      "value": 14
-    },
-    "typo-primary-base-light-font-size": {
-      "type": "number",
-      "value": 14
-    },
-    "typo-primary-base-regular-link-font-size": {
-      "type": "number",
-      "value": 14
-    },
-    "typo-primary-base-semibold-link-font-size": {
-      "type": "number",
-      "value": 14
-    },
-    "typo-primary-md-font-size": {
-      "type": "number",
-      "value": 16
-    },
-    "typo-primary-md-regular-font-size": {
-      "type": "number",
-      "value": 16
-    },
-    "typo-primary-md-semibold-font-size": {
-      "type": "number",
-      "value": 16
-    },
-    "typo-primary-md-bold-font-size": {
-      "type": "number",
-      "value": 16
-    },
-    "typo-primary-md-light-font-size": {
-      "type": "number",
-      "value": 16
-    },
-    "typo-primary-md-regular-link-font-size": {
-      "type": "number",
-      "value": 16
-    },
-    "typo-primary-md-semibold-link-font-size": {
-      "type": "number",
-      "value": 16
-    },
-    "typo-primary-lg-font-size": {
-      "type": "number",
-      "value": 18
-    },
-    "typo-primary-lg-regular-font-size": {
-      "type": "number",
-      "value": 18
-    },
-    "typo-primary-lg-semibold-font-size": {
-      "type": "number",
-      "value": 18
-    },
-    "typo-primary-lg-bold-font-size": {
-      "type": "number",
-      "value": 18
-    },
-    "typo-primary-lg-light-font-size": {
-      "type": "number",
-      "value": 18
-    },
-    "typo-primary-lg-regular-link-font-size": {
-      "type": "number",
-      "value": 18
-    },
-    "typo-primary-lg-semibold-link-font-size": {
-      "type": "number",
-      "value": 18
-    },
-    "O:spacing-3xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 4,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 4,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:colors-background-surface": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#ffffff",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#131C31",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:colors-borders-light": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#EEEDEB",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#131E34",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:radius-sm": {
-      "type": "number",
-      "value": [
-        {
-          "value": 16,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 16,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:spacing-xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 12,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 12,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:spacing-md": {
-      "type": "number",
-      "value": [
-        {
-          "value": 24,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 24,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:colors-text-header": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#0e0e0e",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#D8E1F0",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:typo-primary-base-semibold-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 16,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 16,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:typo-primary-base-semibold-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:colors-text-meta": {
-      "type": "color",
-      "value": [
-        {
-          "value": "#5E5954",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "#697DA0",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:typo-primary-sm-regular-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 14,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 14,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:typo-primary-sm-regular-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:spacing-2xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 8,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 8,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:radius-full": {
-      "type": "number",
-      "value": [
-        {
-          "value": 9999,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 9999,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:spacing-sm": {
-      "type": "number",
-      "value": [
-        {
-          "value": 16,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 16,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:typo-primary-sm-semibold-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 14,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 14,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "e:typo-primary-sm-semibold-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "O:spacing-2xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 8,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 8,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "k:btn.ghost.bg": {
-      "type": "color",
-      "value": "#FFFFFF00"
-    },
-    "k:radius.full": {
-      "type": "number",
-      "value": 999
-    },
-    "k:icon": {
-      "type": "color",
-      "value": "#8A8680"
-    },
-    "8:spacing-xs": {
-      "type": "number",
-      "value": [
-        {
-          "value": 12,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 12,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "k:text.primary": {
-      "type": "color",
-      "value": "#2D2926"
-    },
-    "k:typo-primary-sm-semibold-font-size": {
-      "type": "number",
-      "value": [
-        {
-          "value": 14,
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": 14,
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    },
-    "k:typo-primary-sm-semibold-font-family": {
-      "type": "string",
-      "value": [
-        {
-          "value": "Heebo",
-          "theme": {
-            "G:mode": "light"
-          }
-        },
-        {
-          "value": "Heebo",
-          "theme": {
-            "G:mode": "dark"
-          }
-        }
-      ]
-    }
-  },
   "imports": {
-    "y": "../../design-system/in-progress/hemlock-library.lib.pen",
-    "forms": "../0-ideation/openui-forms.lib.pen",
-    "actions": "../0-ideation/openui-actions.lib.pen",
-    "p": "../0-ideation/openui-content.lib.pen"
+    "y": "../../design-system/in-progress/hemlock-library.lib.pen"
   },
   "fileToken": "8f262a33-34e3-4547-86a5-d15819333a84",
   "fonts": [
