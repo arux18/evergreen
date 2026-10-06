@@ -236,7 +236,7 @@ Every semantic token is now a **light/dark pair**. Light values below are the `:
 |-----------|-----------|-------|------|
 | `--text-primary` / `#171717` | `--sem-text-header` | `#0e0e0e` | `#D8E1F0` |
 | — | `--sem-text-body` | `#403D3A` | `#B3C1DB` |
-| `--text-secondary` / `#525252` | `--sem-text-meta` | `#5E5954` | `#697DA0` |
+| `--text-secondary` / `#525252` | `--sem-text-meta` | `#5E5954` | `#9DAFCD` |
 | `--text-tertiary` / `#737373` | `--sem-text-placeholder` | `#716E6A` | `#52637F` |
 | `--text-accent` / `#3A6AF8` | `--sem-text-action` | `#3a6af8` | `#5A82F9` |
 | `--text-inverse` / `#FFFFFF` | `--sem-text-reverse` | `#ffffff` | `#0E0E0E` |
@@ -248,7 +248,7 @@ Every semantic token is now a **light/dark pair**. Light values below are the `:
 
 | Old token | New token | Light | Dark |
 |-----------|-----------|-------|------|
-| `--border-primary` / `#E5E5E5` | `--sem-borders-light` | `#EEEDEB` | `#131C31` |
+| `--border-primary` / `#E5E5E5` | `--sem-borders-light` | `#EEEDEB` | `#202C4E` |
 | `--border-secondary` / `#D4D4D4` | `--sem-borders-dark` | `#DCD8CB` | `#22314F` |
 | `--border-focus` / `#3A6AF8` | `--sem-borders-focus` | `#0e0e0e` | `#7094FB59` |
 | — | `--sem-borders-error` | `#c82320` | `#F87171` |
@@ -260,7 +260,7 @@ Every semantic token is now a **light/dark pair**. Light values below are the `:
 | Old token | New token | Light | Dark |
 |-----------|-----------|-------|------|
 | — | `--sem-icons-full` | `#0e0e0e` | `#B3C1DB` |
-| — | `--sem-icons-meta` | `#5E5954` | `#697DA0` |
+| — | `--sem-icons-meta` | `#5E5954` | `#9DAFCD` |
 | — | `--sem-icons-muted` | `#B5B1AB` | `#3A485F` |
 | — | `--sem-icons-action` | `#3a6af8` | `#7094FB` |
 | — | `--sem-icons-error` | `#c82320` | `#F87171` |
@@ -1146,7 +1146,7 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-borders-action: var(--prim-blue-500);
   --sem-borders-action-subtle: var(--prim-navy-50);
   --sem-borders-dark: var(--prim-navy-300);
-  --sem-borders-disabled: var(--prim-navy-200);
+  --sem-borders-disabled: var(--prim-navylight-100);
   --sem-borders-error: var(--prim-red-350);
   --sem-borders-error-strong: var(--prim-red-250);
   --sem-borders-error-subtle: var(--prim-reddark-100);
@@ -1154,7 +1154,7 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-borders-focus-inverted: var(--prim-gray-900);
   --sem-borders-hover: var(--prim-navy-50);
   --sem-borders-info: var(--prim-skydark-100);
-  --sem-borders-light: var(--prim-navy-700);
+  --sem-borders-light: var(--prim-navy-400);
   --sem-borders-muted: var(--prim-navy-200);
   --sem-borders-strong: var(--prim-navy-50);
   --sem-borders-success: var(--prim-greendark-100);
@@ -1249,7 +1249,7 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-icons-full: var(--prim-navylight-600);
   --sem-icons-info: var(--prim-sky-250);
   --sem-icons-info-strong: var(--prim-sky-300);
-  --sem-icons-meta: var(--prim-navylight-300);
+  --sem-icons-meta: var(--prim-navylight-500);
   --sem-icons-muted: var(--prim-navylight-100);
   --sem-icons-reverse: var(--prim-gray-900);
   --sem-icons-subtle: var(--prim-navylight-200);
@@ -1300,7 +1300,7 @@ The navy dark theme. Apply by setting `data-theme="dark"` on `<html>` or `<body>
   --sem-text-error-title: var(--prim-red-350);
   --sem-text-header: var(--prim-navylight-800);
   --sem-text-info-title: var(--prim-sky-250);
-  --sem-text-meta: var(--prim-navylight-300);
+  --sem-text-meta: var(--prim-navylight-500);
   --sem-text-placeholder: var(--prim-navylight-200);
   --sem-text-reverse: var(--prim-gray-900);
   --sem-text-strong: var(--prim-navylight-800);

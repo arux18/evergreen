@@ -281,7 +281,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 | `sem-borders-action` | `$prim-blue-600` → `#3a6af8` | `$prim-blue-500` → `#5A82F9` | Borders action |
 | `sem-borders-action-subtle` | `$prim-blue-300` → `#a5bcfc` | `$prim-navy-50` → `#33476E` | Borders action subtle |
 | `sem-borders-dark` | `$prim-taupe-350` → `#DCD8CB` | `$prim-navy-300` → `#22314F` | Emphasized borders |
-| `sem-borders-disabled` | `$prim-gray-300` → `#B5B1AB` | `$prim-navy-200` → `#2A3A5C` | Borders disabled |
+| `sem-borders-disabled` | `$prim-gray-300` → `#B5B1AB` | `$prim-navylight-100` → `#3A485F` | Borders disabled |
 | `sem-borders-error` | `$prim-red-600` → `#c82320` | `$prim-red-350` → `#F87171` | Error state borders |
 | `sem-borders-error-strong` | `$prim-red-700` → `#961a18` | `$prim-red-250` → `#FCA5A5` | Borders error strong |
 | `sem-borders-error-subtle` | `$prim-red-100` → `#fed5d4` | `$prim-reddark-100` → `#542427` | Borders error subtle |
@@ -289,7 +289,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 | `sem-borders-focus-inverted` | `$prim-base-white` → `#ffffff` | `$prim-gray-900` → `#0E0E0E` | Focus ring on dark bg |
 | `sem-borders-hover` | `$prim-gray-400` → `#8A8680` | `$prim-navy-50` → `#33476E` | Borders hover |
 | `sem-borders-info` | `$prim-sky-100` → `#aedcfe` | `$prim-skydark-100` → `#16304A` | Borders info |
-| `sem-borders-light` | `$prim-gray-100` → `#EEEDEB` | `$prim-navy-700` → `#131C31` | Default borders |
+| `sem-borders-light` | `$prim-gray-100` → `#EEEDEB` | `$prim-navy-400` → `#202C4E` | Default borders |
 | `sem-borders-muted` | `$prim-gray-200` → `#D5D3D0` | `$prim-navy-200` → `#2A3A5C` | Borders muted |
 | `sem-borders-strong` | `$prim-gray-250` → `#C0BAB2` | `$prim-navy-50` → `#33476E` | Borders strong |
 | `sem-borders-success` | `$prim-green-100` → `#a9fdc4` | `$prim-greendark-100` → `#245234` | Borders success |
@@ -309,7 +309,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 | `sem-text-error-title` | `$prim-red-600` → `#c82320` | `$prim-red-350` → `#F87171` | Text error title |
 | `sem-text-header` | `$prim-gray-900` → `#0e0e0e` | `$prim-navylight-800` → `#D8E1F0` | Headings, primary |
 | `sem-text-info-title` | `$prim-sky-600` → `#1f6193` | `$prim-sky-250` → `#38BDF8` | Text info title |
-| `sem-text-meta` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-300` → `#697DA0` | Secondary / helper |
+| `sem-text-meta` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-500` → `#9DAFCD` | Secondary / helper |
 | `sem-text-placeholder` | `$prim-gray-500` → `#716E6A` | `$prim-navylight-200` → `#52637F` | Placeholder text |
 | `sem-text-reverse` | `$prim-base-white` → `#ffffff` | `$prim-gray-900` → `#0E0E0E` | Text on inverse surfaces |
 | `sem-text-strong` | `$prim-gray-800` → `#2D2926` | `$prim-navylight-800` → `#D8E1F0` | Text strong |
@@ -329,7 +329,7 @@ Every table below shows the **Light** and **Dark** bindings. Cells show the prim
 | `sem-icons-full` | `$prim-gray-900` → `#0e0e0e` | `$prim-navylight-600` → `#B3C1DB` | Primary icons |
 | `sem-icons-info` | `$prim-sky-300` → `#35a8fd` | `$prim-sky-250` → `#38BDF8` | Icons info |
 | `sem-icons-info-strong` | `$prim-sky-400` → `#2e90da` | `$prim-sky-300` → `#35A8FD` | Icons info strong |
-| `sem-icons-meta` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-300` → `#697DA0` | Secondary icons |
+| `sem-icons-meta` | `$prim-gray-600` → `#5E5954` | `$prim-navylight-500` → `#9DAFCD` | Secondary icons |
 | `sem-icons-muted` | `$prim-gray-300` → `#B5B1AB` | `$prim-navylight-100` → `#3A485F` | Disabled icons |
 | `sem-icons-reverse` | `$prim-base-white` → `#ffffff` | `$prim-gray-900` → `#0E0E0E` | Icons on inverse bg |
 | `sem-icons-subtle` | `$prim-gray-400` → `#8A8680` | `$prim-navylight-200` → `#52637F` | Icons subtle |

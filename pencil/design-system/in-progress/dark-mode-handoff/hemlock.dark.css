@@ -22,6 +22,14 @@
    names can't contain "/"): chart-categorical/color-01 ->
    --chart-categorical-color-01. Design-only tokens (sem-iosChrome*,
    sem-dotGrid) are excluded. Light values: hemlock.light.css.
+   ============================================================
+   Oct 6: six dark values retuned (light unchanged) —
+     sem-borders-light     navy-700 -> navy-400
+     sem-text-meta         navylight-300 -> navylight-500
+     sem-icons-meta        navylight-300 -> navylight-500
+     sem-borders-disabled  navy-200 -> navylight-100 (= sem-text-disabled)
+     sem-scrim             #00000073 -> #00000052 (black 32%)
+     sem-background-scrim  #000000A3 -> #00000052 (black 32%)
    ============================================================ */
 
 html[data-theme="dark"] {
@@ -167,16 +175,16 @@ html[data-theme="dark"] {
   --sem-background-warning: var(--prim-orangedark-300);
   --sem-background-warning-strong: var(--prim-orangedark-100);
   --sem-background-error-strong: var(--prim-reddark-100);
-  --sem-background-scrim: #000000A3;
-  --sem-scrim: #00000073;
+  --sem-background-scrim: #00000052;
+  --sem-scrim: #00000052;
 
   /* ---- SYSTEM: borders ---- */
-  --sem-borders-light: var(--prim-navy-700);
+  --sem-borders-light: var(--prim-navy-400);
   --sem-borders-dark: var(--prim-navy-300);
   --sem-borders-focus: #7094FB59;                             /* focus ring, alpha kept: rgba(112,148,251,0.35) */
   --sem-borders-focus-inverted: var(--prim-gray-900);
   --sem-borders-error: var(--prim-red-350);
-  --sem-borders-disabled: var(--prim-navy-200);
+  --sem-borders-disabled: var(--prim-navylight-100);
   --sem-borders-hover: var(--prim-navy-50);
   --sem-borders-error-strong: var(--prim-red-250);
   --sem-borders-action: var(--prim-blue-500);                 /* O11 */
@@ -200,7 +208,7 @@ html[data-theme="dark"] {
   --sem-text-error-body-strong: var(--prim-red-250);
   --sem-text-header: var(--prim-navylight-800);
   --sem-text-body: var(--prim-navylight-600);
-  --sem-text-meta: var(--prim-navylight-300);
+  --sem-text-meta: var(--prim-navylight-500);
   --sem-text-placeholder: var(--prim-navylight-200);
   --sem-text-error: var(--prim-red-350);
   --sem-text-action: var(--prim-blue-500);
@@ -221,7 +229,7 @@ html[data-theme="dark"] {
   --sem-icons-full: var(--prim-navylight-600);
   --sem-icons-error: var(--prim-red-350);
   --sem-icons-action: var(--prim-blue-400);
-  --sem-icons-meta: var(--prim-navylight-300);
+  --sem-icons-meta: var(--prim-navylight-500);
   --sem-icons-reverse: var(--prim-gray-900);
   --sem-icons-subtle: var(--prim-navylight-200);
 
