@@ -810,16 +810,18 @@ def before_after():
     label(
         draw,
         (margin, 50),
-        "Not applied to Hemlock yet. Pencil icons stay on sem-icons-meta today (navylight-300) because that one is not decided.",
+        "Applied to Hemlock Oct 6. Light mode is unchanged. The disabled border is shown on board 12.",
         QUIET,
         12,
         400,
     )
     cols = [
         ("Before", NAVY700, NL300, NL300, NAVY_50, 0x73,
-         ["sem-borders-light  navy-700", "sem-text-meta  navylight-300", "Manage Accounts on sem-text-meta", "sem-scrim  black 45%"]),
+         ["sem-borders-light  navy-700", "sem-text-meta + sem-icons-meta  navylight-300", "sem-borders-disabled  navy-200",
+          "sem-scrim  black 45%  ·  sem-background-scrim  black 64%", "Manage Accounts on sem-text-meta"]),
         ("After", NAVY400, NL500, BLUE_400, NAVY_50, 0x52,
-         ["sem-borders-light  navy-400", "sem-text-meta  navylight-500", "Manage Accounts on sem-btnSecondaryText + Border", "sem-scrim  black 32%"]),
+         ["sem-borders-light  navy-400", "sem-text-meta + sem-icons-meta  navylight-500", "sem-borders-disabled  navylight-100",
+          "sem-scrim + sem-background-scrim  black 32%", "Manage Accounts on sem-btnSecondaryText + Border"]),
     ]
     for i, (title, rule, meta, btn_text, btn_border, alpha, notes) in enumerate(cols):
         x = margin + i * (col_w + gap)
@@ -829,6 +831,7 @@ def before_after():
         label(draw, (x, y), title, INK, 16, 600)
         for n, t in enumerate(notes):
             label(draw, (x, y + 24 + n * 16), t, QUIET, 12, 400)
+        y += 28
         rows_block(draw, x, y + 100, col_w, rule, NL300)
         accounts_block(draw, x, y + 350, col_w, meta, btn_text, btn_border)
         page = draw_page(PAGE, NAVY_950, HEADER, BODY, meta, BLUE, BLACK, NAVY_50)
@@ -928,4 +931,4 @@ def disabled_border():
 
 
 if __name__ == "__main__":
-    disabled_border()
+    before_after()
