@@ -838,5 +838,94 @@ def before_after():
     save(im, "10-before-after.png")
 
 
+def hemlock_resolver():
+    import json
+
+    lib = json.load(open("/Users/amanda/Evergreen-Cursor-Folder/design-specs/pencil/design-system/in-progress/hemlock-library.lib.pen"))
+    variables = lib["variables"]
+
+    def pick(v, theme):
+        val = v["value"]
+        if isinstance(val, list):
+            for e in val:
+                if e.get("theme", {}).get("🎨 Colors") == theme:
+                    return e["value"]
+        return val
+
+    def resolve(name, theme):
+        x = pick(variables[name], theme)
+        while isinstance(x, str) and x.startswith("$"):
+            x = pick(variables[x[1:]], theme)
+        h = x.lstrip("#")
+        return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4)) + (255,)
+
+    return resolve
+
+
+def input_field(draw, x, y, w, title, title_color, value, value_color, fill, border):
+    label(draw, (x, y), title, title_color, 12, 500)
+    rrect(draw, (x, y + 20, x + w, y + 60), 8, border)
+    rrect(draw, (x + 1, y + 21, x + w - 1, y + 59), 7, fill)
+    label(draw, (x + 14, y + 40), value, value_color, 14, 400, anchor="lm")
+
+
+def disabled_border():
+    r = hemlock_resolver()
+    navy = {
+        "navy-200": NAVY200,
+        "navy-300": (0x22, 0x31, 0x4F, 255),
+        "navy-400": NAVY400,
+        "navy-700": SURFACE,
+        "navylight-100": DISABLED,
+    }
+    cols = [
+        ("Light  ·  reference", "Light", None, "prim-gray-300  #B5B1AB  ·  border = disabled text", False),
+        ("Dark today  ·  navy-200", "Dark", "navy-200", "#2A3A5C  ·  border differs from disabled text", False),
+        ("Dark  ·  navylight-100", "Dark", "navylight-100", "#3A485F  ·  border = disabled text", True),
+    ]
+    margin, col_w, gap = 28, 300, 20
+    width = margin * 2 + col_w * len(cols) + gap * (len(cols) - 1)
+    height = 600
+    im, draw = new_canvas(width, height)
+    label(draw, (margin, 22), "sem-borders-disabled = sem-text-disabled", INK, 20, 600)
+    label(
+        draw,
+        (margin, 50),
+        "Enabled input, disabled input, then the row hairline and muted rule for comparison. Every color is an existing Hemlock primitive.",
+        QUIET,
+        12,
+        400,
+    )
+    for i, (title, theme, key, spec, mark) in enumerate(cols):
+        x = margin + i * (col_w + gap)
+        y = 96
+        if mark:
+            rect(draw, (x, y - 10, x + 36, y - 6), (0x3A, 0x6A, 0xF8, 255))
+        label(draw, (x, y), title, INK, 14, 600)
+        label(draw, (x, y + 20), spec, QUIET, 11, 400)
+        card_y = y + 48
+        page = r("sem-background-main", theme)
+        rrect(draw, (x, card_y, x + col_w, card_y + 420), 12, page)
+        inner_x, inner_w = x + 20, col_w - 40
+        disabled_border_color = r("sem-borders-disabled", "Light") if key is None else navy[key]
+        meta = r("sem-text-meta", theme) if theme == "Light" else NL500
+        input_field(draw, inner_x, card_y + 24, inner_w, "Email", meta,
+                    "amanda@evergreen.ai", r("sem-text-body", theme),
+                    r("sem-background-surface", theme), r("sem-borders-dark", theme))
+        input_field(draw, inner_x, card_y + 112, inner_w, "Phone (locked)", r("sem-text-disabled", theme),
+                    "(555) 010-2234", r("sem-text-disabled", theme),
+                    r("sem-background-disabled", theme), disabled_border_color)
+        hair = r("sem-borders-light", theme) if theme == "Light" else NAVY400
+        muted = r("sem-borders-muted", theme)
+        ry = card_y + 222
+        for name, color in (("Row hairline (sem-borders-light)", hair), ("Muted rule (sem-borders-muted)", muted)):
+            label(draw, (inner_x, ry), name, r("sem-text-body", theme), 12, 500)
+            hairline(draw, inner_x, ry + 26, inner_w, color)
+            ry += 64
+        label(draw, (inner_x, card_y + 380), "Disabled border", r("sem-text-body", theme), 12, 500)
+        hairline(draw, inner_x, card_y + 404, inner_w, disabled_border_color)
+    save(im, "12-disabled-border-matches-text.png")
+
+
 if __name__ == "__main__":
-    before_after()
+    disabled_border()
