@@ -404,26 +404,28 @@
                     },
                     {
                       "type": "frame",
-                      "id": "LN5hP",
-                      "layoutPosition": "absolute",
-                      "x": 156,
-                      "y": -3,
-                      "name": "settingsActive",
-                      "fill": "$y:sem-navActiveBg",
-                      "cornerRadius": "$y:radius-3xs",
-                      "padding": "$y:spacing-3xs",
-                      "justifyContent": "center",
+                      "id": "Q4LEU",
+                      "name": "navActions",
+                      "gap": "$y:spacing-xs",
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon",
-                          "id": "jepIo",
-                          "name": "settingsIcon",
-                          "width": 16,
-                          "height": 16,
-                          "icon": "settings",
-                          "library": "lucide",
-                          "fill": "$y:sem-navTextPrimary"
+                          "id": "uOzDi",
+                          "type": "ref",
+                          "ref": "ECR0y",
+                          "name": "navThemeToggle"
+                        },
+                        {
+                          "id": "iaNnT",
+                          "type": "ref",
+                          "ref": "zpwE1",
+                          "name": "navSettings / Active",
+                          "fill": "$y:sem-navSettingsPressedBg",
+                          "descendants": {
+                            "EbYnq": {
+                              "fill": "$y:sem-navSettingsPressedIcon"
+                            }
+                          }
                         }
                       ]
                     }
@@ -432,7 +434,7 @@
                 {
                   "type": "frame",
                   "id": "N9eCx",
-                  "name": "userInfo",
+                  "name": "signOutRow",
                   "width": "fill_container",
                   "gap": "$y:spacing-2xs",
                   "alignItems": "center",
@@ -440,7 +442,7 @@
                     {
                       "type": "icon",
                       "id": "zxeNr",
-                      "name": "settingsIcon",
+                      "name": "signOutIcon",
                       "width": 16,
                       "height": 16,
                       "icon": "log-out",
@@ -450,7 +452,7 @@
                     {
                       "type": "text",
                       "id": "xNy0J",
-                      "name": "userName",
+                      "name": "signOutLabel",
                       "fill": "$y:sem-navTextSecondary",
                       "content": "Sign Out",
                       "fontFamily": "$y:font-primary",
@@ -1599,26 +1601,28 @@
                     },
                     {
                       "type": "frame",
-                      "id": "i4nHy",
-                      "layoutPosition": "absolute",
-                      "x": 156,
-                      "y": -3,
-                      "name": "settingsActive",
-                      "fill": "$y:sem-navActiveBg",
-                      "cornerRadius": "$y:radius-3xs",
-                      "padding": "$y:spacing-3xs",
-                      "justifyContent": "center",
+                      "id": "uLMuE",
+                      "name": "navActions",
+                      "gap": "$y:spacing-xs",
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon",
-                          "id": "G0Bfst",
-                          "name": "settingsIcon",
-                          "width": 16,
-                          "height": 16,
-                          "icon": "settings",
-                          "library": "lucide",
-                          "fill": "$y:sem-navTextPrimary"
+                          "id": "PhufN",
+                          "type": "ref",
+                          "ref": "ECR0y",
+                          "name": "navThemeToggle"
+                        },
+                        {
+                          "id": "fM8bm",
+                          "type": "ref",
+                          "ref": "zpwE1",
+                          "name": "navSettings / Active",
+                          "fill": "$y:sem-navSettingsPressedBg",
+                          "descendants": {
+                            "EbYnq": {
+                              "fill": "$y:sem-navSettingsPressedIcon"
+                            }
+                          }
                         }
                       ]
                     }
@@ -1627,7 +1631,7 @@
                 {
                   "type": "frame",
                   "id": "Z8wi9",
-                  "name": "userInfo",
+                  "name": "signOutRow",
                   "width": "fill_container",
                   "gap": "$y:spacing-2xs",
                   "alignItems": "center",
@@ -1635,7 +1639,7 @@
                     {
                       "type": "icon",
                       "id": "HAEVB",
-                      "name": "settingsIcon",
+                      "name": "signOutIcon",
                       "width": 16,
                       "height": 16,
                       "icon": "log-out",
@@ -1645,7 +1649,7 @@
                     {
                       "type": "text",
                       "id": "ABRGf",
-                      "name": "userName",
+                      "name": "signOutLabel",
                       "fill": "$y:sem-navTextSecondary",
                       "content": "Sign Out",
                       "fontFamily": "$y:font-primary",
@@ -3012,12 +3016,83 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "ECR0y",
+      "x": 19816,
+      "y": 16485,
+      "name": "Theme Toggle Button / Default",
+      "reusable": true,
+      "width": 28,
+      "height": 28,
+      "cornerRadius": "$y:radius-2xs",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "pjSpQ",
+          "name": "themeToggleIcon",
+          "width": 16,
+          "height": 16,
+          "icon": "$nav-themeToggleIcon",
+          "library": "lucide",
+          "fill": "$y:sem-navSettingsIcon"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "zpwE1",
+      "x": 19860,
+      "y": 16485,
+      "name": "Settings Button / Default",
+      "reusable": true,
+      "width": 28,
+      "height": 28,
+      "cornerRadius": "$y:radius-2xs",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "EbYnq",
+          "name": "settingsIcon",
+          "width": 16,
+          "height": 16,
+          "icon": "settings",
+          "library": "lucide",
+          "fill": "$y:sem-navSettingsIcon"
+        }
+      ]
     }
   ],
   "themes": {
     "0": [
       "Default"
     ]
+  },
+  "variables": {
+    "nav-themeToggleIcon": {
+      "type": "string",
+      "value": [
+        {
+          "value": "moon",
+          "theme": {
+            "y:🎨 Colors": "Light"
+          }
+        },
+        {
+          "value": "sun",
+          "theme": {
+            "y:🎨 Colors": "Dark"
+          }
+        }
+      ]
+    }
   },
   "imports": {
     "y": "../../design-system/in-progress/hemlock-library.lib.pen"
