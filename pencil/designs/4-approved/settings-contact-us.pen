@@ -1,5 +1,5 @@
 {
-  "version": "2.20",
+  "version": "2.21",
   "children": [
     {
       "type": "frame",
@@ -15,484 +15,23 @@
       "padding": "$y:spacing-2xs",
       "children": [
         {
-          "type": "frame",
-          "id": "u8Ro3o",
+          "id": "Pv7wr",
+          "type": "ref",
+          "ref": "QgxsI",
           "name": "navPanel",
-          "clip": true,
-          "width": 240,
           "height": "fill_container",
-          "fill": "$y:sem-navBg",
-          "cornerRadius": "$y:radius-xs",
-          "stroke": "$y:sem-navBorder",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "effect": {
-            "type": "shadow",
-            "shadowType": "outer",
-            "color": "$y:sem-navShadow",
-            "offset": {
-              "x": 0,
-              "y": 2
+          "descendants": {
+            "lGkuS": {
+              "name": "navSettings / Active",
+              "fill": "$y:sem-navSettingsPressedBg"
             },
-            "blur": 28
-          },
-          "layout": "vertical",
-          "padding": [
-            "$y:spacing-md",
-            20
-          ],
-          "justifyContent": "space_between",
-          "children": [
-            {
-              "type": "frame",
-              "id": "z2gKf",
-              "name": "navTop",
-              "clip": true,
-              "width": "fill_container",
-              "height": "fill_container",
-              "layout": "vertical",
-              "gap": "$y:spacing-lg",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "NtlnJ",
-                  "name": "logoRow",
-                  "width": "fill_container",
-                  "justifyContent": "space_between",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "wTm7L",
-                      "name": "Nav / Logo",
-                      "alignItems": "end",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "N1AvyL",
-                          "name": "logoMain",
-                          "fill": "$y:sem-navTextPrimary",
-                          "content": "evergreen",
-                          "fontFamily": "Manrope",
-                          "fontSize": "$y:text-size-lg",
-                          "fontWeight": "normal",
-                          "letterSpacing": -0.3
-                        },
-                        {
-                          "type": "text",
-                          "id": "Dz9SX",
-                          "name": "logoSuffix",
-                          "fill": "$y:sem-navTextPrimary",
-                          "textGrowth": "fixed-width-height",
-                          "width": "fit_content(24)",
-                          "height": "fit_content(25)",
-                          "content": ".ai",
-                          "textAlignVertical": "middle",
-                          "fontFamily": "Spectral",
-                          "fontSize": "$y:text-size-xl",
-                          "fontWeight": "300",
-                          "fontStyle": "italic"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "Z9PVo",
-                      "name": "Nav / Toggle Button",
-                      "width": 28,
-                      "height": 28,
-                      "cornerRadius": "$y:radius-2xs",
-                      "layout": "vertical",
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "j3OBw",
-                          "name": "toggleIcon",
-                          "width": 16,
-                          "height": 16,
-                          "icon": "panel-left",
-                          "library": "lucide",
-                          "fill": "$y:sem-navToggleIcon"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "f6MVdU",
-                  "name": "navSection",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": "$y:spacing-xs",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "H0apZ",
-                      "name": "dashActive",
-                      "width": "fill_container",
-                      "fill": "#FFFFFF00",
-                      "cornerRadius": "$y:radius-3xs",
-                      "padding": [
-                        7,
-                        10,
-                        7,
-                        "$y:spacing-md"
-                      ],
-                      "justifyContent": "space_between",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "R6dMv2",
-                          "fill": "$y:sem-navTextSecondary",
-                          "content": "Dashboard",
-                          "fontFamily": "$y:font-primary",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "y51de",
-                      "name": "Nav / Divider",
-                      "width": "fill_container",
-                      "height": 1,
-                      "fill": "$y:sem-navDivider"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "cZqCL",
-                      "name": "sectionNetWorth",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": "$y:spacing-4xs",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "bgsxz",
-                          "name": "Nav / Section Header",
-                          "width": "fill_container",
-                          "gap": 6,
-                          "padding": [
-                            "$y:spacing-xs",
-                            10,
-                            "$y:spacing-3xs",
-                            6
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "E7iv85",
-                              "name": "chevron",
-                              "width": 12,
-                              "height": 12,
-                              "icon": "chevron-down",
-                              "library": "lucide",
-                              "fill": "$y:sem-navIcon"
-                            },
-                            {
-                              "type": "text",
-                              "id": "adkpT",
-                              "name": "sectionLabel",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "NET WORTH",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": "$y:text-size-2xs",
-                              "fontWeight": "600",
-                              "letterSpacing": 1.2
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "EKkxt",
-                          "name": "Nav Item / Default",
-                          "width": "fill_container",
-                          "cornerRadius": "$y:radius-3xs",
-                          "padding": [
-                            7,
-                            10,
-                            7,
-                            "$y:spacing-md"
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "ZqGHM",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "Accounts",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": 13,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "BEruW",
-                          "name": "Nav Item / Default",
-                          "width": "fill_container",
-                          "cornerRadius": "$y:radius-3xs",
-                          "padding": [
-                            7,
-                            10,
-                            7,
-                            "$y:spacing-md"
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "Y7hFyU",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "Activity",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": 13,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "h2MNQ",
-                          "name": "Nav Item / Default",
-                          "width": "fill_container",
-                          "cornerRadius": "$y:radius-3xs",
-                          "padding": [
-                            7,
-                            10,
-                            7,
-                            "$y:spacing-md"
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "fZ5bf",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "Investments",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": 13,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "Doy4W",
-                      "name": "sectionPlanning",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": "$y:spacing-4xs",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "U8sPg",
-                          "name": "Nav / Section Header",
-                          "width": "fill_container",
-                          "gap": 6,
-                          "padding": [
-                            "$y:spacing-xs",
-                            10,
-                            "$y:spacing-3xs",
-                            6
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "dOBPD",
-                              "name": "chevron",
-                              "width": 12,
-                              "height": 12,
-                              "icon": "chevron-down",
-                              "library": "lucide",
-                              "fill": "$y:sem-navIcon"
-                            },
-                            {
-                              "type": "text",
-                              "id": "wxa52",
-                              "name": "sectionLabel",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "PLANNING",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": "$y:text-size-2xs",
-                              "fontWeight": "600",
-                              "letterSpacing": 1.2
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "m3SmDG",
-                          "name": "ltpDefault",
-                          "width": "fill_container",
-                          "cornerRadius": "$y:radius-3xs",
-                          "padding": [
-                            7,
-                            10,
-                            7,
-                            "$y:spacing-md"
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "B1pPCS",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "Lifetime Planning",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": 13,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+            "lGkuS/EbYnq": {
+              "fill": "$y:sem-navSettingsPressedIcon"
             },
-            {
-              "type": "frame",
-              "id": "R2QozK",
-              "name": "Nav / User Area",
-              "width": "fill_container",
-              "fill": "$y:sem-navBg",
-              "stroke": "$y:sem-navDivider",
-              "strokeWidth": {
-                "top": 0.5
-              },
-              "strokeAlignment": "inner",
-              "strokeLinejoin": "round",
-              "layout": "vertical",
-              "gap": 10,
-              "padding": [
-                "$y:spacing-sm",
-                10,
-                "$y:spacing-3xs",
-                10
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "c17NgH",
-                  "name": "userInfo",
-                  "width": "fill_container",
-                  "gap": 1,
-                  "justifyContent": "space_between",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "QA4zf",
-                      "name": "userName",
-                      "fill": "$y:sem-navTextSecondary",
-                      "content": "Sylvia Peterson",
-                      "fontFamily": "$y:font-primary",
-                      "fontSize": "$y:text-size-xs",
-                      "fontWeight": "500"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "Q4LEU",
-                      "name": "navActions",
-                      "gap": "$y:spacing-xs",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "id": "uOzDi",
-                          "type": "ref",
-                          "ref": "ECR0y",
-                          "name": "navThemeToggle"
-                        },
-                        {
-                          "id": "iaNnT",
-                          "type": "ref",
-                          "ref": "zpwE1",
-                          "name": "navSettings / Active",
-                          "fill": "$y:sem-navSettingsPressedBg",
-                          "descendants": {
-                            "EbYnq": {
-                              "fill": "$y:sem-navSettingsPressedIcon"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "N9eCx",
-                  "name": "signOutRow",
-                  "width": "fill_container",
-                  "gap": "$y:spacing-2xs",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "zxeNr",
-                      "name": "signOutIcon",
-                      "width": 16,
-                      "height": 16,
-                      "icon": "log-out",
-                      "library": "lucide",
-                      "fill": "$y:sem-navTextSecondary"
-                    },
-                    {
-                      "type": "text",
-                      "id": "xNy0J",
-                      "name": "signOutLabel",
-                      "fill": "$y:sem-navTextSecondary",
-                      "content": "Sign Out",
-                      "fontFamily": "$y:font-primary",
-                      "fontSize": "$y:text-size-xs",
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "rectangle",
-              "id": "laDjZ",
-              "layoutPosition": "absolute",
-              "x": 0,
-              "y": 752,
-              "name": "Nav / Fade Gradient",
-              "fill": {
-                "type": "gradient",
-                "gradientType": "linear",
-                "enabled": true,
-                "rotation": 180,
-                "size": {
-                  "height": 1
-                },
-                "colors": [
-                  {
-                    "color": "$y:sem-navFadeTransparent",
-                    "position": 0
-                  },
-                  {
-                    "color": "$y:sem-navBg",
-                    "position": 1
-                  }
-                ]
-              },
-              "width": 240,
-              "height": 36
+            "Oer0y": {
+              "y": 848
             }
-          ]
+          }
         },
         {
           "type": "frame",
@@ -505,49 +44,36 @@
           "children": [
             {
               "type": "frame",
-              "id": "jEdVa",
-              "name": "headerRow",
+              "id": "bGpeK",
+              "name": "contentColumn",
               "width": "fill_container",
-              "gap": "$y:spacing-2xs",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": "$y:spacing-xl",
               "padding": [
-                "$y:spacing-2xs",
+                "$y:spacing-md",
                 "$y:spacing-xl"
               ],
               "children": [
                 {
                   "type": "frame",
-                  "id": "KqXLX",
-                  "x": 40,
-                  "y": 20,
-                  "name": "leftToggleBtn",
-                  "enabled": false,
-                  "width": 28,
-                  "height": 28,
-                  "cornerRadius": "$y:radius-2xs",
-                  "layout": "vertical",
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "u1xGxV",
-                      "name": "leftIcon",
-                      "width": 16,
-                      "height": 16,
-                      "icon": "arrow-left",
-                      "library": "lucide",
-                      "fill": "$y:sem-navToggleIcon"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
                   "id": "TApoV",
                   "name": "greetingArea",
                   "width": "fill_container",
-                  "gap": "$y:spacing-4xs",
-                  "justifyContent": "space_between",
+                  "gap": "$y:spacing-2xs",
+                  "alignItems": "center",
                   "children": [
+                    {
+                      "id": "Jt6cX",
+                      "type": "ref",
+                      "ref": "y:KjC1v",
+                      "name": "backButton",
+                      "descendants": {
+                        "y:VAYxi": {
+                          "icon": "chevron-left"
+                        }
+                      }
+                    },
                     {
                       "type": "text",
                       "id": "JQc6R",
@@ -597,75 +123,6 @@
                     }
                   ]
                 },
-                {
-                  "type": "frame",
-                  "id": "ZGCv7",
-                  "x": 0,
-                  "y": 0,
-                  "name": "pill",
-                  "enabled": false,
-                  "fill": "$y:sem-pillBg",
-                  "cornerRadius": "$y:radius-full",
-                  "stroke": "$y:sem-pillBg",
-                  "strokeWidth": 1,
-                  "strokeAlignment": "inner",
-                  "gap": "$y:spacing-2xs",
-                  "padding": [
-                    7,
-                    14
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "w7hma",
-                      "name": "pillText",
-                      "fill": "$y:sem-text-reverse",
-                      "content": "Customize",
-                      "fontFamily": "$y:font-primary",
-                      "fontSize": "$y:text-size-xs",
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "F5L5am",
-                  "x": 0,
-                  "y": 0,
-                  "name": "rightToggleBtn",
-                  "enabled": false,
-                  "width": 28,
-                  "height": 28,
-                  "cornerRadius": "$y:radius-2xs",
-                  "layout": "vertical",
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "dqOLa",
-                      "name": "rightIcon",
-                      "width": 16,
-                      "height": 16,
-                      "icon": "message-circle",
-                      "library": "lucide",
-                      "fill": "$y:sem-navToggleIcon"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "bGpeK",
-              "name": "contentColumn",
-              "width": "fill_container",
-              "height": "fill_container",
-              "layout": "vertical",
-              "gap": "$y:spacing-xl",
-              "padding": "$y:spacing-xl",
-              "children": [
                 {
                   "type": "frame",
                   "id": "fD44B",
@@ -772,10 +229,22 @@
                           "fill": "$y:sem-text-body",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "For any other questions or to share feedback, our Client Service team is available via email at clientservice@evergreenwealth.com.",
+                          "content": "For any other questions or to share feedback, our Client Service team is available via email at",
                           "lineHeight": 1.5,
                           "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-base"
+                          "fontSize": "$y:text-size-base",
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "bLghQ",
+                          "name": "Email Link",
+                          "fill": "$y:sem-text-action",
+                          "content": "clientservice@evergreen.ai",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-base",
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -786,412 +255,11 @@
           ]
         },
         {
-          "type": "frame",
-          "id": "XyyPu",
+          "id": "I78Fa8",
+          "type": "ref",
+          "ref": "aFLcB",
           "name": "chat",
-          "clip": true,
-          "width": 360,
-          "height": "fill_container",
-          "fill": "$y:sem-chatBg",
-          "cornerRadius": "$y:radius-xs",
-          "stroke": "$y:sem-chatBorder",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "effect": {
-            "type": "shadow",
-            "shadowType": "outer",
-            "color": "$y:sem-chatShadow",
-            "offset": {
-              "x": 0,
-              "y": 2
-            },
-            "blur": 28
-          },
-          "layout": "vertical",
-          "justifyContent": "space_between",
-          "children": [
-            {
-              "type": "frame",
-              "id": "eANz6",
-              "name": "h2",
-              "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
-              "width": "fill_container",
-              "stroke": "$y:sem-chatDivider",
-              "strokeWidth": {
-                "bottom": 0.5
-              },
-              "strokeAlignment": "inner",
-              "strokeLinejoin": "round",
-              "padding": [
-                "$y:spacing-sm",
-                20
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "nmZF2",
-                  "name": "left",
-                  "gap": "$y:spacing-3xs",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "XfctD",
-                      "name": "Chat / Close Button / Default",
-                      "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
-                      "width": 28,
-                      "height": 28,
-                      "cornerRadius": "$y:radius-2xs",
-                      "layout": "vertical",
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "R3o8j",
-                          "name": "icon",
-                          "width": 16,
-                          "height": 16,
-                          "icon": "arrow-right-to-line",
-                          "library": "lucide",
-                          "fill": "$y:sem-chatCloseIcon"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "w8Hpv0",
-                      "name": "chatTitle",
-                      "fill": "$y:sem-chatTextPrimary",
-                      "content": "Chat",
-                      "fontFamily": "$y:font-secondary",
-                      "fontSize": "$y:text-size-base",
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "Zdmhp",
-                  "name": "btn",
-                  "fill": {
-                    "type": "color",
-                    "color": "#ffffff",
-                    "enabled": false
-                  },
-                  "cornerRadius": "$y:radius-full",
-                  "stroke": "$y:sem-btnSecondaryBorder",
-                  "strokeWidth": 1,
-                  "strokeAlignment": "inner",
-                  "gap": "$y:spacing-2xs",
-                  "padding": [
-                    6,
-                    "$y:spacing-xs"
-                  ],
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "FVZEK",
-                      "name": "Label",
-                      "fill": "$y:sem-btnSecondaryText",
-                      "content": "Show View",
-                      "lineHeight": 1.5,
-                      "textAlign": "center",
-                      "fontFamily": "$y:font-primary",
-                      "fontSize": "$y:text-size-xs",
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "NznS7",
-              "name": "chatMessages",
-              "clip": true,
-              "width": "fill_container",
-              "height": "fill_container",
-              "layout": "vertical",
-              "gap": 14,
-              "padding": [
-                "$y:spacing-sm",
-                20
-              ],
-              "justifyContent": "end",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "y7Icaq",
-                  "name": "m2_1",
-                  "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
-                  "width": "fill_container",
-                  "padding": [
-                    0,
-                    0,
-                    0,
-                    "$y:spacing-lg"
-                  ],
-                  "justifyContent": "end",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "BmIda",
-                      "name": "bubble",
-                      "width": "fill_container",
-                      "fill": "$y:sem-chatBubbleUser",
-                      "cornerRadius": "$y:radius-xs",
-                      "stroke": "$y:sem-chatBubbleUserBorder",
-                      "strokeWidth": 1,
-                      "strokeAlignment": "inner",
-                      "padding": [
-                        "$y:spacing-xs",
-                        "$y:spacing-sm"
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "CsMSq",
-                          "name": "text",
-                          "fill": "$y:sem-chatTextSecondary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "How am I tracking against my savings goal?",
-                          "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-sm",
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "H5S4up",
-                  "name": "m2_2",
-                  "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
-                  "width": "fill_container",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "cSFAM",
-                      "name": "bubble",
-                      "width": "fill_container",
-                      "fill": "$y:sem-chatBubbleAi",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "Fj4SG",
-                          "name": "text",
-                          "fill": "$y:sem-chatTextPrimary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early.",
-                          "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-sm",
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "h25uF",
-                  "name": "m2_3",
-                  "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
-                  "width": "fill_container",
-                  "padding": [
-                    0,
-                    0,
-                    0,
-                    "$y:spacing-lg"
-                  ],
-                  "justifyContent": "end",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "hDhZN",
-                      "name": "bubble",
-                      "fill": "$y:sem-chatBubbleUser",
-                      "cornerRadius": "$y:radius-xs",
-                      "stroke": "$y:sem-chatBubbleUserBorder",
-                      "strokeWidth": 1,
-                      "strokeAlignment": "inner",
-                      "padding": [
-                        "$y:spacing-xs",
-                        "$y:spacing-sm"
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "DXQ55",
-                          "name": "text",
-                          "fill": "$y:sem-chatTextSecondary",
-                          "content": "Anything unusual in my spending?",
-                          "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-sm",
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "o9TaSL",
-                  "name": "m2_4",
-                  "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
-                  "width": "fill_container",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "U8QCa",
-                      "name": "bubble",
-                      "width": "fill_container",
-                      "fill": "$y:sem-chatBubbleAi",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "pi1F5",
-                          "name": "text",
-                          "fill": "$y:sem-chatTextPrimary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "Groceries are up 18% vs. your 3 month average, driven by a few larger Whole Foods runs. Everything else is within normal ranges.",
-                          "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-sm",
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "v2Uqj",
-              "name": "inp2",
-              "context": "Input Field / Typing — Shown when the user has entered text. Border thickens to 1.5px $chat.input.border.active. Send button becomes enabled. Text displays in $chat.text.secondary.",
-              "width": "fill_container",
-              "stroke": {
-                "type": "color",
-                "color": "$y:sem-chatDivider",
-                "enabled": false
-              },
-              "strokeWidth": {
-                "top": 0.5
-              },
-              "strokeAlignment": "inner",
-              "strokeLinejoin": "round",
-              "layout": "vertical",
-              "gap": "$y:spacing-xs",
-              "padding": [
-                "$y:spacing-xs",
-                20,
-                20,
-                20
-              ],
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "B6PmJg",
-                  "name": "inputField",
-                  "width": "fill_container",
-                  "fill": "$y:sem-chatInputBg",
-                  "cornerRadius": "$y:radius-xs",
-                  "stroke": "$y:sem-chatInputBorderActive",
-                  "strokeWidth": 1.5,
-                  "strokeAlignment": "inner",
-                  "layout": "vertical",
-                  "gap": "$y:spacing-md",
-                  "padding": "$y:spacing-xs",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "G5xmi",
-                      "name": "text",
-                      "fill": "$y:sem-chatTextSecondary",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "What do my holdings look like this month?",
-                      "fontFamily": "$y:font-primary",
-                      "fontSize": "$y:text-size-sm",
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "sMkIA",
-                      "name": "rowButtons",
-                      "width": "fill_container",
-                      "gap": "$y:spacing-2xs",
-                      "justifyContent": "end",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "Zafv2",
-                          "name": "Chat / Voice Button / Default",
-                          "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
-                          "width": 34,
-                          "height": 34,
-                          "fill": "#00000000",
-                          "cornerRadius": "$y:radius-full",
-                          "stroke": "$y:sem-chatVoiceBorder",
-                          "strokeWidth": 1,
-                          "strokeAlignment": "inner",
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "WUZwt",
-                              "name": "icon",
-                              "width": 16,
-                              "height": 16,
-                              "icon": "mic",
-                              "library": "lucide",
-                              "fill": "$y:sem-chatVoiceIcon"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "j7God",
-                          "name": "Chat / Send Button / Default",
-                          "context": "Primary send button for submitting chat messages. 34×34 pill, dark fill ($chat.send.bg) with white arrow-up icon. Place at the right end of the input field button row. States: default, hover, pressed, disabled.",
-                          "width": 34,
-                          "height": 34,
-                          "fill": "$y:sem-chatSendBg",
-                          "cornerRadius": "$y:radius-full",
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "zgp51",
-                              "name": "sendIcon",
-                              "width": 20,
-                              "height": 20,
-                              "icon": "arrow-up",
-                              "library": "lucide",
-                              "fill": "$y:sem-chatSendIcon"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+          "height": "fill_container"
         }
       ]
     },
@@ -1212,484 +280,23 @@
       "padding": "$y:spacing-2xs",
       "children": [
         {
-          "type": "frame",
-          "id": "ytei2",
+          "id": "dxGHU",
+          "type": "ref",
+          "ref": "QgxsI",
           "name": "navPanel",
-          "clip": true,
-          "width": 240,
           "height": "fill_container",
-          "fill": "$y:sem-navBg",
-          "cornerRadius": "$y:radius-xs",
-          "stroke": "$y:sem-navBorder",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "effect": {
-            "type": "shadow",
-            "shadowType": "outer",
-            "color": "$y:sem-navShadow",
-            "offset": {
-              "x": 0,
-              "y": 2
+          "descendants": {
+            "lGkuS": {
+              "name": "navSettings / Active",
+              "fill": "$y:sem-navSettingsPressedBg"
             },
-            "blur": 28
-          },
-          "layout": "vertical",
-          "padding": [
-            "$y:spacing-md",
-            20
-          ],
-          "justifyContent": "space_between",
-          "children": [
-            {
-              "type": "frame",
-              "id": "oYalc",
-              "name": "navTop",
-              "clip": true,
-              "width": "fill_container",
-              "height": "fill_container",
-              "layout": "vertical",
-              "gap": "$y:spacing-lg",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "HRiDd",
-                  "name": "logoRow",
-                  "width": "fill_container",
-                  "justifyContent": "space_between",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "f6xrq",
-                      "name": "Nav / Logo",
-                      "alignItems": "end",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "A9EQb6",
-                          "name": "logoMain",
-                          "fill": "$y:sem-navTextPrimary",
-                          "content": "evergreen",
-                          "fontFamily": "Manrope",
-                          "fontSize": "$y:text-size-lg",
-                          "fontWeight": "normal",
-                          "letterSpacing": -0.3
-                        },
-                        {
-                          "type": "text",
-                          "id": "NFtnU",
-                          "name": "logoSuffix",
-                          "fill": "$y:sem-navTextPrimary",
-                          "textGrowth": "fixed-width-height",
-                          "width": "fit_content(24)",
-                          "height": "fit_content(25)",
-                          "content": ".ai",
-                          "textAlignVertical": "middle",
-                          "fontFamily": "Spectral",
-                          "fontSize": "$y:text-size-xl",
-                          "fontWeight": "300",
-                          "fontStyle": "italic"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "O9qgX",
-                      "name": "Nav / Toggle Button",
-                      "width": 28,
-                      "height": 28,
-                      "cornerRadius": "$y:radius-2xs",
-                      "layout": "vertical",
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "o9bgSy",
-                          "name": "toggleIcon",
-                          "width": 16,
-                          "height": 16,
-                          "icon": "panel-left",
-                          "library": "lucide",
-                          "fill": "$y:sem-navToggleIcon"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "k4ozos",
-                  "name": "navSection",
-                  "width": "fill_container",
-                  "layout": "vertical",
-                  "gap": "$y:spacing-xs",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "WpnCb",
-                      "name": "dashActive",
-                      "width": "fill_container",
-                      "fill": "#FFFFFF00",
-                      "cornerRadius": "$y:radius-3xs",
-                      "padding": [
-                        7,
-                        10,
-                        7,
-                        "$y:spacing-md"
-                      ],
-                      "justifyContent": "space_between",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "rCV2E",
-                          "fill": "$y:sem-navTextSecondary",
-                          "content": "Dashboard",
-                          "fontFamily": "$y:font-primary",
-                          "fontSize": 13,
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "wuJEn",
-                      "name": "Nav / Divider",
-                      "width": "fill_container",
-                      "height": 1,
-                      "fill": "$y:sem-navDivider"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "K7kXT",
-                      "name": "sectionNetWorth",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": "$y:spacing-4xs",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "s3cDy8",
-                          "name": "Nav / Section Header",
-                          "width": "fill_container",
-                          "gap": 6,
-                          "padding": [
-                            "$y:spacing-xs",
-                            10,
-                            "$y:spacing-3xs",
-                            6
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "z1A2M",
-                              "name": "chevron",
-                              "width": 12,
-                              "height": 12,
-                              "icon": "chevron-down",
-                              "library": "lucide",
-                              "fill": "$y:sem-navIcon"
-                            },
-                            {
-                              "type": "text",
-                              "id": "ryfD4",
-                              "name": "sectionLabel",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "NET WORTH",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": "$y:text-size-2xs",
-                              "fontWeight": "600",
-                              "letterSpacing": 1.2
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "iXdIJ",
-                          "name": "Nav Item / Default",
-                          "width": "fill_container",
-                          "cornerRadius": "$y:radius-3xs",
-                          "padding": [
-                            7,
-                            10,
-                            7,
-                            "$y:spacing-md"
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "qhcwB",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "Accounts",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": 13,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "o2eDEm",
-                          "name": "Nav Item / Default",
-                          "width": "fill_container",
-                          "cornerRadius": "$y:radius-3xs",
-                          "padding": [
-                            7,
-                            10,
-                            7,
-                            "$y:spacing-md"
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "dyMfL",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "Activity",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": 13,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "ncPy8",
-                          "name": "Nav Item / Default",
-                          "width": "fill_container",
-                          "cornerRadius": "$y:radius-3xs",
-                          "padding": [
-                            7,
-                            10,
-                            7,
-                            "$y:spacing-md"
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "xPt0Y",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "Investments",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": 13,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "e9R1n",
-                      "name": "sectionPlanning",
-                      "width": "fill_container",
-                      "layout": "vertical",
-                      "gap": "$y:spacing-4xs",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "XBGNU",
-                          "name": "Nav / Section Header",
-                          "width": "fill_container",
-                          "gap": 6,
-                          "padding": [
-                            "$y:spacing-xs",
-                            10,
-                            "$y:spacing-3xs",
-                            6
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "E2nFkk",
-                              "name": "chevron",
-                              "width": 12,
-                              "height": 12,
-                              "icon": "chevron-down",
-                              "library": "lucide",
-                              "fill": "$y:sem-navIcon"
-                            },
-                            {
-                              "type": "text",
-                              "id": "s0yS36",
-                              "name": "sectionLabel",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "PLANNING",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": "$y:text-size-2xs",
-                              "fontWeight": "600",
-                              "letterSpacing": 1.2
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "ONFff",
-                          "name": "ltpDefault",
-                          "width": "fill_container",
-                          "cornerRadius": "$y:radius-3xs",
-                          "padding": [
-                            7,
-                            10,
-                            7,
-                            "$y:spacing-md"
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "F7PsI5",
-                              "fill": "$y:sem-navTextSecondary",
-                              "content": "Lifetime Planning",
-                              "fontFamily": "$y:font-primary",
-                              "fontSize": 13,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+            "lGkuS/EbYnq": {
+              "fill": "$y:sem-navSettingsPressedIcon"
             },
-            {
-              "type": "frame",
-              "id": "W57pso",
-              "name": "Nav / User Area",
-              "width": "fill_container",
-              "fill": "$y:sem-navBg",
-              "stroke": "$y:sem-navDivider",
-              "strokeWidth": {
-                "top": 0.5
-              },
-              "strokeAlignment": "inner",
-              "strokeLinejoin": "round",
-              "layout": "vertical",
-              "gap": 10,
-              "padding": [
-                "$y:spacing-sm",
-                10,
-                "$y:spacing-3xs",
-                10
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "XlBzR",
-                  "name": "userInfo",
-                  "width": "fill_container",
-                  "gap": 1,
-                  "justifyContent": "space_between",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "FQcWM",
-                      "name": "userName",
-                      "fill": "$y:sem-navTextSecondary",
-                      "content": "Sylvia Peterson",
-                      "fontFamily": "$y:font-primary",
-                      "fontSize": "$y:text-size-xs",
-                      "fontWeight": "500"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "uLMuE",
-                      "name": "navActions",
-                      "gap": "$y:spacing-xs",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "id": "PhufN",
-                          "type": "ref",
-                          "ref": "ECR0y",
-                          "name": "navThemeToggle"
-                        },
-                        {
-                          "id": "fM8bm",
-                          "type": "ref",
-                          "ref": "zpwE1",
-                          "name": "navSettings / Active",
-                          "fill": "$y:sem-navSettingsPressedBg",
-                          "descendants": {
-                            "EbYnq": {
-                              "fill": "$y:sem-navSettingsPressedIcon"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "Z8wi9",
-                  "name": "signOutRow",
-                  "width": "fill_container",
-                  "gap": "$y:spacing-2xs",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "HAEVB",
-                      "name": "signOutIcon",
-                      "width": 16,
-                      "height": 16,
-                      "icon": "log-out",
-                      "library": "lucide",
-                      "fill": "$y:sem-navTextSecondary"
-                    },
-                    {
-                      "type": "text",
-                      "id": "ABRGf",
-                      "name": "signOutLabel",
-                      "fill": "$y:sem-navTextSecondary",
-                      "content": "Sign Out",
-                      "fontFamily": "$y:font-primary",
-                      "fontSize": "$y:text-size-xs",
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "rectangle",
-              "id": "zQqgS",
-              "layoutPosition": "absolute",
-              "x": 0,
-              "y": 752,
-              "name": "Nav / Fade Gradient",
-              "fill": {
-                "type": "gradient",
-                "gradientType": "linear",
-                "enabled": true,
-                "rotation": 180,
-                "size": {
-                  "height": 1
-                },
-                "colors": [
-                  {
-                    "color": "$y:sem-navFadeTransparent",
-                    "position": 0
-                  },
-                  {
-                    "color": "$y:sem-navBg",
-                    "position": 1
-                  }
-                ]
-              },
-              "width": 240,
-              "height": 36
+            "Oer0y": {
+              "y": 848
             }
-          ]
+          }
         },
         {
           "type": "frame",
@@ -1702,49 +309,36 @@
           "children": [
             {
               "type": "frame",
-              "id": "hPSxo",
-              "name": "headerRow",
+              "id": "A8joA",
+              "name": "contentColumn",
               "width": "fill_container",
-              "gap": "$y:spacing-2xs",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": "$y:spacing-xl",
               "padding": [
-                "$y:spacing-2xs",
+                "$y:spacing-md",
                 "$y:spacing-xl"
               ],
               "children": [
                 {
                   "type": "frame",
-                  "id": "YOGjh",
-                  "x": 40,
-                  "y": 20,
-                  "name": "leftToggleBtn",
-                  "enabled": false,
-                  "width": 28,
-                  "height": 28,
-                  "cornerRadius": "$y:radius-2xs",
-                  "layout": "vertical",
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "ZVEqm",
-                      "name": "leftIcon",
-                      "width": 16,
-                      "height": 16,
-                      "icon": "arrow-left",
-                      "library": "lucide",
-                      "fill": "$y:sem-navToggleIcon"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
                   "id": "Q1JCaJ",
                   "name": "greetingArea",
                   "width": "fill_container",
-                  "gap": "$y:spacing-4xs",
-                  "justifyContent": "space_between",
+                  "gap": "$y:spacing-2xs",
+                  "alignItems": "center",
                   "children": [
+                    {
+                      "id": "tmJ6M",
+                      "type": "ref",
+                      "ref": "y:KjC1v",
+                      "name": "backButton",
+                      "descendants": {
+                        "y:VAYxi": {
+                          "icon": "chevron-left"
+                        }
+                      }
+                    },
                     {
                       "type": "text",
                       "id": "OL6ze",
@@ -1794,75 +388,6 @@
                     }
                   ]
                 },
-                {
-                  "type": "frame",
-                  "id": "Fr10z",
-                  "x": 0,
-                  "y": 0,
-                  "name": "pill",
-                  "enabled": false,
-                  "fill": "$y:sem-pillBg",
-                  "cornerRadius": "$y:radius-full",
-                  "stroke": "$y:sem-pillBg",
-                  "strokeWidth": 1,
-                  "strokeAlignment": "inner",
-                  "gap": "$y:spacing-2xs",
-                  "padding": [
-                    7,
-                    14
-                  ],
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "skJRd",
-                      "name": "pillText",
-                      "fill": "$y:sem-text-reverse",
-                      "content": "Customize",
-                      "fontFamily": "$y:font-primary",
-                      "fontSize": "$y:text-size-xs",
-                      "fontWeight": "500"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "Aa17y",
-                  "x": 0,
-                  "y": 0,
-                  "name": "rightToggleBtn",
-                  "enabled": false,
-                  "width": 28,
-                  "height": 28,
-                  "cornerRadius": "$y:radius-2xs",
-                  "layout": "vertical",
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "k2DM3s",
-                      "name": "rightIcon",
-                      "width": 16,
-                      "height": 16,
-                      "icon": "message-circle",
-                      "library": "lucide",
-                      "fill": "$y:sem-navToggleIcon"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "A8joA",
-              "name": "contentColumn",
-              "width": "fill_container",
-              "height": "fill_container",
-              "layout": "vertical",
-              "gap": "$y:spacing-xl",
-              "padding": "$y:spacing-xl",
-              "children": [
                 {
                   "type": "frame",
                   "id": "xefrn",
@@ -1969,10 +494,22 @@
                           "fill": "$y:sem-text-body",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "For any other questions or to share feedback, our Client Service team is available via email at clientservice@evergreenwealth.com.",
+                          "content": "For any other questions or to share feedback, our Client Service team is available via email at",
                           "lineHeight": 1.5,
                           "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-base"
+                          "fontSize": "$y:text-size-base",
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "bTCr6",
+                          "name": "Email Link",
+                          "fill": "$y:sem-text-action",
+                          "content": "clientservice@evergreen.ai",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-base",
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -1983,412 +520,11 @@
           ]
         },
         {
-          "type": "frame",
-          "id": "e2XO0",
+          "id": "WvJiH",
+          "type": "ref",
+          "ref": "aFLcB",
           "name": "chat",
-          "clip": true,
-          "width": 360,
-          "height": "fill_container",
-          "fill": "$y:sem-chatBg",
-          "cornerRadius": "$y:radius-xs",
-          "stroke": "$y:sem-chatBorder",
-          "strokeWidth": 1,
-          "strokeAlignment": "inner",
-          "effect": {
-            "type": "shadow",
-            "shadowType": "outer",
-            "color": "$y:sem-chatShadow",
-            "offset": {
-              "x": 0,
-              "y": 2
-            },
-            "blur": 28
-          },
-          "layout": "vertical",
-          "justifyContent": "space_between",
-          "children": [
-            {
-              "type": "frame",
-              "id": "rSSyo",
-              "name": "h2",
-              "context": "Chat panel header. Full-width bar at the top of the chat panel. Contains the chat title (Noto Serif 16px) and the close button. Always present inside the Panel component regardless of content state. Padding: 16v/20h, bottom border 0.5px $chat.divider.",
-              "width": "fill_container",
-              "stroke": "$y:sem-chatDivider",
-              "strokeWidth": {
-                "bottom": 0.5
-              },
-              "strokeAlignment": "inner",
-              "strokeLinejoin": "round",
-              "padding": [
-                "$y:spacing-sm",
-                20
-              ],
-              "justifyContent": "space_between",
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "mBZ2t",
-                  "name": "left",
-                  "gap": "$y:spacing-3xs",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "n1j4r",
-                      "name": "Chat / Close Button / Default",
-                      "context": "Close button for the chat panel. 28×28, r6, transparent background. Use in the chat header to dismiss the panel. States: default, hover, pressed.",
-                      "width": 28,
-                      "height": 28,
-                      "cornerRadius": "$y:radius-2xs",
-                      "layout": "vertical",
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "vSrRt",
-                          "name": "icon",
-                          "width": 16,
-                          "height": 16,
-                          "icon": "arrow-right-to-line",
-                          "library": "lucide",
-                          "fill": "$y:sem-chatCloseIcon"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "id": "LivVO",
-                      "name": "chatTitle",
-                      "fill": "$y:sem-chatTextPrimary",
-                      "content": "Chat",
-                      "fontFamily": "$y:font-secondary",
-                      "fontSize": "$y:text-size-base",
-                      "fontWeight": "normal"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "Eq7Mq",
-                  "name": "btn",
-                  "fill": {
-                    "type": "color",
-                    "color": "#ffffff",
-                    "enabled": false
-                  },
-                  "cornerRadius": "$y:radius-full",
-                  "stroke": "$y:sem-btnSecondaryBorder",
-                  "strokeWidth": 1,
-                  "strokeAlignment": "inner",
-                  "gap": "$y:spacing-2xs",
-                  "padding": [
-                    6,
-                    "$y:spacing-xs"
-                  ],
-                  "justifyContent": "center",
-                  "alignItems": "center",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "D84dz",
-                      "name": "Label",
-                      "fill": "$y:sem-btnSecondaryText",
-                      "content": "Show View",
-                      "lineHeight": 1.5,
-                      "textAlign": "center",
-                      "fontFamily": "$y:font-primary",
-                      "fontSize": "$y:text-size-xs",
-                      "fontWeight": "500"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "cwVng",
-              "name": "chatMessages",
-              "clip": true,
-              "width": "fill_container",
-              "height": "fill_container",
-              "layout": "vertical",
-              "gap": 14,
-              "padding": [
-                "$y:spacing-sm",
-                20
-              ],
-              "justifyContent": "end",
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "i11qB",
-                  "name": "m2_1",
-                  "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
-                  "width": "fill_container",
-                  "padding": [
-                    0,
-                    0,
-                    0,
-                    "$y:spacing-lg"
-                  ],
-                  "justifyContent": "end",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "a4bAS",
-                      "name": "bubble",
-                      "width": "fill_container",
-                      "fill": "$y:sem-chatBubbleUser",
-                      "cornerRadius": "$y:radius-xs",
-                      "stroke": "$y:sem-chatBubbleUserBorder",
-                      "strokeWidth": 1,
-                      "strokeAlignment": "inner",
-                      "padding": [
-                        "$y:spacing-xs",
-                        "$y:spacing-sm"
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "n1KVLv",
-                          "name": "text",
-                          "fill": "$y:sem-chatTextSecondary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "How am I tracking against my savings goal?",
-                          "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-sm",
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "ldHzN",
-                  "name": "m2_2",
-                  "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
-                  "width": "fill_container",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "fV5yS",
-                      "name": "bubble",
-                      "width": "fill_container",
-                      "fill": "$y:sem-chatBubbleAi",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "m4HKKG",
-                          "name": "text",
-                          "fill": "$y:sem-chatTextPrimary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "You're saving 33.5% of income this month, 2.1 points above your 3-month average and well ahead of your 30% target. At this pace you'll hit your year-end goal six weeks early.",
-                          "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-sm",
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "lF0kj",
-                  "name": "m2_3",
-                  "context": "Message / User — Right-aligned bubble for messages sent by the user. Background: $chat.bubble.user.bg with border $chat.bubble.user.border. Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary.",
-                  "width": "fill_container",
-                  "padding": [
-                    0,
-                    0,
-                    0,
-                    "$y:spacing-lg"
-                  ],
-                  "justifyContent": "end",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "hp2EK",
-                      "name": "bubble",
-                      "fill": "$y:sem-chatBubbleUser",
-                      "cornerRadius": "$y:radius-xs",
-                      "stroke": "$y:sem-chatBubbleUserBorder",
-                      "strokeWidth": 1,
-                      "strokeAlignment": "inner",
-                      "padding": [
-                        "$y:spacing-xs",
-                        "$y:spacing-sm"
-                      ],
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "VglxJ",
-                          "name": "text",
-                          "fill": "$y:sem-chatTextSecondary",
-                          "content": "Anything unusual in my spending?",
-                          "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-sm",
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
-                  "id": "b6U8Iy",
-                  "name": "m2_4",
-                  "context": "Message / AI — Left-aligned bubble for responses from Evergreen AI. Transparent background ($chat.bubble.ai.bg). Padding: 12v/16h. Radius: $chat.bubble.radius. Font: Geist 14px $chat.text.primary. May contain markdown-formatted content.",
-                  "width": "fill_container",
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "u5tR2",
-                      "name": "bubble",
-                      "width": "fill_container",
-                      "fill": "$y:sem-chatBubbleAi",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "NCvbB",
-                          "name": "text",
-                          "fill": "$y:sem-chatTextPrimary",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "Groceries are up 18% vs. your 3 month average, driven by a few larger Whole Foods runs. Everything else is within normal ranges.",
-                          "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-sm",
-                          "fontWeight": "normal"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "RTyKc",
-              "name": "inp2",
-              "context": "Input Field / Typing — Shown when the user has entered text. Border thickens to 1.5px $chat.input.border.active. Send button becomes enabled. Text displays in $chat.text.secondary.",
-              "width": "fill_container",
-              "stroke": {
-                "type": "color",
-                "color": "$y:sem-chatDivider",
-                "enabled": false
-              },
-              "strokeWidth": {
-                "top": 0.5
-              },
-              "strokeAlignment": "inner",
-              "strokeLinejoin": "round",
-              "layout": "vertical",
-              "gap": "$y:spacing-xs",
-              "padding": [
-                "$y:spacing-xs",
-                20,
-                20,
-                20
-              ],
-              "children": [
-                {
-                  "type": "frame",
-                  "id": "Y3GHRa",
-                  "name": "inputField",
-                  "width": "fill_container",
-                  "fill": "$y:sem-chatInputBg",
-                  "cornerRadius": "$y:radius-xs",
-                  "stroke": "$y:sem-chatInputBorderActive",
-                  "strokeWidth": 1.5,
-                  "strokeAlignment": "inner",
-                  "layout": "vertical",
-                  "gap": "$y:spacing-md",
-                  "padding": "$y:spacing-xs",
-                  "children": [
-                    {
-                      "type": "text",
-                      "id": "AA6Nt",
-                      "name": "text",
-                      "fill": "$y:sem-chatTextSecondary",
-                      "textGrowth": "fixed-width",
-                      "width": "fill_container",
-                      "content": "What do my holdings look like this month?",
-                      "fontFamily": "$y:font-primary",
-                      "fontSize": "$y:text-size-sm",
-                      "fontWeight": "normal"
-                    },
-                    {
-                      "type": "frame",
-                      "id": "TDl3L",
-                      "name": "rowButtons",
-                      "width": "fill_container",
-                      "gap": "$y:spacing-2xs",
-                      "justifyContent": "end",
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "bQuCI",
-                          "name": "Chat / Voice Button / Default",
-                          "context": "Voice input button (default state). 34×34 pill, transparent background with border. Tapping starts speech-to-text recording via Cartesia. Place in input field secondary buttons area. States: default, hover, pressed, active (recording).",
-                          "width": 34,
-                          "height": 34,
-                          "fill": "#00000000",
-                          "cornerRadius": "$y:radius-full",
-                          "stroke": "$y:sem-chatVoiceBorder",
-                          "strokeWidth": 1,
-                          "strokeAlignment": "inner",
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "d7bAbK",
-                              "name": "icon",
-                              "width": 16,
-                              "height": 16,
-                              "icon": "mic",
-                              "library": "lucide",
-                              "fill": "$y:sem-chatVoiceIcon"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "FpVgL",
-                          "name": "Chat / Send Button / Default",
-                          "context": "Primary send button for submitting chat messages. 34×34 pill, dark fill ($chat.send.bg) with white arrow-up icon. Place at the right end of the input field button row. States: default, hover, pressed, disabled.",
-                          "width": 34,
-                          "height": 34,
-                          "fill": "$y:sem-chatSendBg",
-                          "cornerRadius": "$y:radius-full",
-                          "layout": "vertical",
-                          "justifyContent": "center",
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "icon",
-                              "id": "ty57G",
-                              "name": "sendIcon",
-                              "width": 20,
-                              "height": 20,
-                              "icon": "arrow-up",
-                              "library": "lucide",
-                              "fill": "$y:sem-chatSendIcon"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+          "height": "fill_container"
         }
       ]
     },
@@ -2470,35 +606,32 @@
         },
         {
           "type": "frame",
-          "id": "a6awOW",
-          "name": "mobileHeader",
+          "id": "yKj19",
+          "name": "contentArea",
           "width": "fill_container",
-          "height": 48,
-          "gap": "$y:spacing-xs",
-          "padding": [
-            0,
-            "$y:spacing-sm"
-          ],
-          "alignItems": "center",
+          "layout": "vertical",
+          "gap": "$y:spacing-xl",
+          "padding": "$y:spacing-sm",
           "children": [
-            {
-              "type": "icon",
-              "id": "YOXva",
-              "name": "menuIcon",
-              "width": 22,
-              "height": 22,
-              "icon": "panel-left",
-              "library": "lucide",
-              "fill": "$y:sem-navToggleIcon"
-            },
             {
               "type": "frame",
               "id": "H20ZTs",
               "name": "greetingArea",
               "width": "fill_container",
-              "gap": "$y:spacing-3xs",
+              "gap": "$y:spacing-2xs",
               "alignItems": "center",
               "children": [
+                {
+                  "id": "Or8hR",
+                  "type": "ref",
+                  "ref": "y:KjC1v",
+                  "name": "backButton",
+                  "descendants": {
+                    "y:VAYxi": {
+                      "icon": "chevron-left"
+                    }
+                  }
+                },
                 {
                   "type": "text",
                   "id": "Fczwc",
@@ -2549,36 +682,10 @@
               ]
             },
             {
-              "type": "icon",
-              "id": "t3r3to",
-              "name": "chatIcon",
-              "width": 22,
-              "height": 22,
-              "icon": "message-circle",
-              "library": "lucide",
-              "fill": "$y:sem-navToggleIcon"
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "yKj19",
-          "name": "contentArea",
-          "width": "fill_container",
-          "height": "fit_content(1020)",
-          "layout": "vertical",
-          "gap": "$y:spacing-md",
-          "padding": [
-            "$y:spacing-xl",
-            "$y:spacing-sm"
-          ],
-          "children": [
-            {
               "type": "frame",
               "id": "daXSc",
               "name": "contentColumn",
               "width": "fill_container",
-              "height": "fill_container",
               "layout": "vertical",
               "gap": "$y:spacing-lg",
               "children": [
@@ -2688,16 +795,37 @@
                           "fill": "$y:sem-text-body",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "For any other questions or to share feedback, our Client Service team is available via email at clientservice@evergreenwealth.com.",
+                          "content": "For any other questions or to share feedback, our Client Service team is available via email at",
                           "lineHeight": 1.5,
                           "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-base"
+                          "fontSize": "$y:text-size-base",
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "foAgS",
+                          "name": "Email Link",
+                          "fill": "$y:sem-text-action",
+                          "content": "clientservice@evergreen.ai",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-base",
+                          "fontWeight": "normal"
                         }
                       ]
                     }
                   ]
                 }
               ]
+            },
+            {
+              "id": "g3AJW",
+              "type": "ref",
+              "ref": "L0ARf",
+              "name": "FAB Group",
+              "layoutPosition": "absolute",
+              "x": 340,
+              "y": 16
             }
           ]
         }
@@ -2784,35 +912,32 @@
         },
         {
           "type": "frame",
-          "id": "ntGFU",
-          "name": "mobileHeader",
+          "id": "wENLS",
+          "name": "contentArea",
           "width": "fill_container",
-          "height": 48,
-          "gap": "$y:spacing-xs",
-          "padding": [
-            0,
-            "$y:spacing-sm"
-          ],
-          "alignItems": "center",
+          "layout": "vertical",
+          "gap": "$y:spacing-xl",
+          "padding": "$y:spacing-sm",
           "children": [
-            {
-              "type": "icon",
-              "id": "WN21n",
-              "name": "menuIcon",
-              "width": 22,
-              "height": 22,
-              "icon": "panel-left",
-              "library": "lucide",
-              "fill": "$y:sem-navToggleIcon"
-            },
             {
               "type": "frame",
               "id": "aMFsJ",
               "name": "greetingArea",
               "width": "fill_container",
-              "gap": "$y:spacing-3xs",
+              "gap": "$y:spacing-2xs",
               "alignItems": "center",
               "children": [
+                {
+                  "id": "kNFH5",
+                  "type": "ref",
+                  "ref": "y:KjC1v",
+                  "name": "backButton",
+                  "descendants": {
+                    "y:VAYxi": {
+                      "icon": "chevron-left"
+                    }
+                  }
+                },
                 {
                   "type": "text",
                   "id": "F1p7Z",
@@ -2863,36 +988,10 @@
               ]
             },
             {
-              "type": "icon",
-              "id": "pniV2",
-              "name": "chatIcon",
-              "width": 22,
-              "height": 22,
-              "icon": "message-circle",
-              "library": "lucide",
-              "fill": "$y:sem-navToggleIcon"
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "wENLS",
-          "name": "contentArea",
-          "width": "fill_container",
-          "height": "fit_content(1020)",
-          "layout": "vertical",
-          "gap": "$y:spacing-md",
-          "padding": [
-            "$y:spacing-xl",
-            "$y:spacing-sm"
-          ],
-          "children": [
-            {
               "type": "frame",
               "id": "PI7QD",
               "name": "contentColumn",
               "width": "fill_container",
-              "height": "fill_container",
               "layout": "vertical",
               "gap": "$y:spacing-lg",
               "children": [
@@ -3002,16 +1101,37 @@
                           "fill": "$y:sem-text-body",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "For any other questions or to share feedback, our Client Service team is available via email at clientservice@evergreenwealth.com.",
+                          "content": "For any other questions or to share feedback, our Client Service team is available via email at",
                           "lineHeight": 1.5,
                           "fontFamily": "$y:font-primary",
-                          "fontSize": "$y:text-size-base"
+                          "fontSize": "$y:text-size-base",
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "kUm4x",
+                          "name": "Email Link",
+                          "fill": "$y:sem-text-action",
+                          "content": "clientservice@evergreen.ai",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-base",
+                          "fontWeight": "normal"
                         }
                       ]
                     }
                   ]
                 }
               ]
+            },
+            {
+              "id": "v2qU9S",
+              "type": "ref",
+              "ref": "L0ARf",
+              "name": "FAB Group",
+              "layoutPosition": "absolute",
+              "x": 340,
+              "y": 16
             }
           ]
         }
@@ -3066,6 +1186,792 @@
           "icon": "settings",
           "library": "lucide",
           "fill": "$y:sem-navSettingsIcon"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "I2QPE",
+      "x": 19816,
+      "y": 15705,
+      "name": "Nav / Panel Toggle Button / Default",
+      "reusable": true,
+      "width": 28,
+      "height": 28,
+      "cornerRadius": 6,
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "VtZQ6",
+          "name": "toggleIcon",
+          "width": 16,
+          "height": 16,
+          "icon": "arrow-left-to-line",
+          "library": "lucide",
+          "fill": "$y:sem-navToggleIcon"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "QgxsI",
+      "x": 19876,
+      "y": 15705,
+      "name": "Nav / Panel",
+      "reusable": true,
+      "clip": true,
+      "width": 240,
+      "height": 808,
+      "fill": "$y:sem-navBg",
+      "cornerRadius": 12,
+      "stroke": "$y:sem-navBorder",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "$y:sem-navShadow",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 28
+      },
+      "layout": "vertical",
+      "padding": [
+        24,
+        20
+      ],
+      "justifyContent": "space_between",
+      "children": [
+        {
+          "type": "frame",
+          "id": "RwClT",
+          "name": "navTop",
+          "clip": true,
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "children": [
+            {
+              "type": "frame",
+              "id": "ZeQlh",
+              "name": "logoRow",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "UjBka",
+                  "name": "Nav / Logo",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lPU7j",
+                      "name": "logoMain",
+                      "fill": "$y:sem-navTextPrimary",
+                      "content": "evergreen",
+                      "fontFamily": "Manrope",
+                      "fontSize": "$y:text-size-lg",
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.3
+                    },
+                    {
+                      "type": "text",
+                      "id": "d1GPk",
+                      "name": "logoSuffix",
+                      "fill": "$y:sem-navTextPrimary",
+                      "textGrowth": "fixed-width-height",
+                      "width": 24,
+                      "height": 25,
+                      "content": ".ai",
+                      "textAlignVertical": "middle",
+                      "fontFamily": "Spectral",
+                      "fontSize": "$y:text-size-xl",
+                      "fontWeight": "300",
+                      "fontStyle": "italic"
+                    }
+                  ]
+                },
+                {
+                  "id": "F44IF",
+                  "type": "ref",
+                  "ref": "I2QPE",
+                  "name": "navToggle"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "V9lFI7",
+              "name": "navSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "txOe3",
+                  "name": "sectionNetWorth",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "DOvXN",
+                      "name": "Nav / Section Header",
+                      "width": "fill_container",
+                      "gap": 6,
+                      "padding": [
+                        12,
+                        10,
+                        4,
+                        6
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "cW2Dn",
+                          "name": "chevron",
+                          "width": 12,
+                          "height": 12,
+                          "icon": "chevron-down",
+                          "library": "lucide",
+                          "fill": "$y:sem-navIcon"
+                        },
+                        {
+                          "type": "text",
+                          "id": "AnoUq",
+                          "name": "sectionLabel",
+                          "fill": "$y:sem-navTextSecondary",
+                          "content": "YOUR MONEY",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": "$y:text-size-2xs",
+                          "fontWeight": "600",
+                          "letterSpacing": 1.2
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "A4YjH",
+                      "name": "Nav Item / Default",
+                      "width": "fill_container",
+                      "cornerRadius": 4,
+                      "padding": [
+                        7,
+                        10,
+                        7,
+                        24
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "C7NKjF",
+                          "name": "Dashboard",
+                          "fill": "$y:sem-navTextSecondary",
+                          "content": "Dashboard",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "q4jeV",
+                      "name": "Nav Item / Default",
+                      "width": "fill_container",
+                      "cornerRadius": 4,
+                      "padding": [
+                        7,
+                        10,
+                        7,
+                        24
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "yabR4",
+                          "name": "Accounts",
+                          "fill": "$y:sem-navTextSecondary",
+                          "content": "Accounts",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CSx9y",
+                      "name": "Nav Item / Default",
+                      "width": "fill_container",
+                      "cornerRadius": 4,
+                      "padding": [
+                        7,
+                        10,
+                        7,
+                        24
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Z4BHAG",
+                          "name": "Activity",
+                          "fill": "$y:sem-navTextSecondary",
+                          "content": "Activity",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "VyKh8",
+                      "name": "Nav Item / Default",
+                      "width": "fill_container",
+                      "cornerRadius": 4,
+                      "padding": [
+                        7,
+                        10,
+                        7,
+                        24
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Oc3IX",
+                          "name": "Investments",
+                          "fill": "$y:sem-navTextSecondary",
+                          "content": "Investments",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Y0frF",
+                      "name": "Nav Item / Default",
+                      "width": "fill_container",
+                      "cornerRadius": 4,
+                      "padding": [
+                        7,
+                        10,
+                        7,
+                        24
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "YULYK",
+                          "name": "Security Prices",
+                          "fill": "$y:sem-navTextSecondary",
+                          "content": "Security Prices",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "H7Xb8",
+                      "name": "Nav Item / Default",
+                      "width": "fill_container",
+                      "cornerRadius": 4,
+                      "padding": [
+                        7,
+                        10,
+                        7,
+                        24
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "WkBuK",
+                          "name": "Watchlist",
+                          "fill": "$y:sem-navTextSecondary",
+                          "content": "Watchlist",
+                          "fontFamily": "$y:font-primary",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OggI3",
+          "name": "Nav / User Area",
+          "width": "fill_container",
+          "fill": "$y:sem-navBg",
+          "stroke": "$y:sem-navDivider",
+          "strokeWidth": {
+            "top": 0.5
+          },
+          "strokeAlignment": "inner",
+          "strokeLinejoin": "round",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": [
+            "$y:spacing-sm",
+            10,
+            "$y:spacing-3xs",
+            10
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "TgMci",
+              "name": "userInfo",
+              "width": "fill_container",
+              "gap": 1,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SYgIm",
+                  "name": "userName",
+                  "fill": "$y:sem-navTextSecondary",
+                  "content": "Sylvia Peterson",
+                  "fontFamily": "$y:font-primary",
+                  "fontSize": "$y:text-size-xs",
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "OEdfk",
+                  "name": "navActions",
+                  "gap": "$y:spacing-xs",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "RP3QT",
+                      "type": "ref",
+                      "ref": "ECR0y",
+                      "name": "navThemeToggle",
+                      "width": 28,
+                      "height": 28
+                    },
+                    {
+                      "id": "lGkuS",
+                      "type": "ref",
+                      "ref": "zpwE1",
+                      "name": "navSettings",
+                      "width": 28,
+                      "height": 28
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vxLZr",
+              "name": "signOutRow",
+              "width": "fill_container",
+              "gap": "$y:spacing-2xs",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Ianig",
+                  "name": "signOutIcon",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "log-out",
+                  "library": "lucide",
+                  "fill": "$y:sem-navTextSecondary"
+                },
+                {
+                  "type": "text",
+                  "id": "DiJxf",
+                  "name": "signOutLabel",
+                  "fill": "$y:sem-navTextSecondary",
+                  "content": "Sign Out",
+                  "fontFamily": "$y:font-primary",
+                  "fontSize": "$y:text-size-xs",
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "Oer0y",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 772,
+          "name": "Nav / Fade Gradient",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "$y:sem-navFadeTransparent",
+                "position": 0
+              },
+              {
+                "color": "$y:sem-navBg",
+                "position": 1
+              }
+            ]
+          },
+          "width": 240,
+          "height": 36
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "LflxI",
+      "x": 20156,
+      "y": 15705,
+      "name": "Chat / Input Field / Empty",
+      "context": "Input Field / Empty — Shown when no text has been entered. Contains placeholder text and the button row (voice, send disabled). Outer padding: 12t/20r/20b/20l. Inner field: $y:sem-chatInputBg, border $y:sem-chatInputBorder, radius $y:radius-xs.",
+      "reusable": true,
+      "width": 360,
+      "layout": "vertical",
+      "gap": 12,
+      "padding": [
+        12,
+        20,
+        20,
+        20
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "q6SYBI",
+          "name": "inputField",
+          "width": "fill_container",
+          "fill": "$y:sem-chatInputBg",
+          "cornerRadius": "$y:radius-xs",
+          "stroke": "$y:sem-chatInputBorder",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "dPWZB",
+              "name": "placeholder",
+              "fill": "$y:sem-chatPlaceholder",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Ask me any financial question...",
+              "fontFamily": "Heebo",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "zU5Dm",
+              "name": "rowButtons",
+              "width": "fill_container",
+              "gap": 8,
+              "justifyContent": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "W97gG",
+                  "name": "Chat / Voice Button / Default",
+                  "width": 34,
+                  "height": 34,
+                  "cornerRadius": 9999,
+                  "stroke": "$y:sem-chatVoiceBorder",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "t8g4V",
+                      "name": "icon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "mic",
+                      "library": "lucide",
+                      "fill": "$y:sem-chatVoiceIcon"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "a9Ole9",
+                  "name": "Chat / Send Button / Disabled",
+                  "width": 34,
+                  "height": 34,
+                  "fill": "$y:sem-chatSendBgDisabled",
+                  "cornerRadius": 9999,
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "IpRLg",
+                      "name": "sendIcon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "arrow-up",
+                      "library": "lucide",
+                      "fill": "$y:sem-chatSendIcon"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "T47P1",
+      "x": 20556,
+      "y": 15705,
+      "name": "Chat / Close Button / Default",
+      "reusable": true,
+      "fill": "$y:sem-chatBg",
+      "cornerRadius": 9999,
+      "stroke": {
+        "type": "color",
+        "color": "$y:sem-chatCloseBorder",
+        "enabled": false
+      },
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "layout": "vertical",
+      "padding": 8,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "Eguhq",
+          "name": "icon",
+          "width": 16,
+          "height": 16,
+          "icon": "arrow-right-to-line",
+          "library": "lucide",
+          "fill": "$y:sem-chatCloseIcon"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "aFLcB",
+      "x": 20616,
+      "y": 15705,
+      "name": "Chat / Panel / Empty",
+      "reusable": true,
+      "clip": true,
+      "width": 360,
+      "height": 640,
+      "fill": "$y:sem-chatBg",
+      "cornerRadius": "$y:radius-xs",
+      "stroke": "$y:sem-chatBorder",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#2D292628",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 28
+      },
+      "layout": "vertical",
+      "justifyContent": "space_between",
+      "children": [
+        {
+          "type": "frame",
+          "id": "ldveT",
+          "name": "chatMessages",
+          "clip": true,
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            16,
+            20
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "PlMuz",
+              "name": "greeting",
+              "fill": "$y:sem-chatTextPrimary",
+              "content": "Ask me any financial question...",
+              "fontFamily": "Noto Serif",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "TjzvL",
+              "name": "Chips",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Q7Cl0L",
+                  "name": "chip1",
+                  "fill": "$y:sem-chatBg",
+                  "cornerRadius": "$y:radius-md",
+                  "stroke": "$y:sem-navBorder",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "padding": [
+                    12,
+                    16
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "oDEQF",
+                      "name": "label",
+                      "fill": "$y:sem-chatTextSecondary",
+                      "content": "What's a donor-advised fund?",
+                      "lineHeight": 1.25,
+                      "textAlign": "center",
+                      "fontFamily": "Heebo",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "XKuVH",
+          "type": "ref",
+          "ref": "LflxI",
+          "name": "inp1",
+          "width": "fill_container"
+        },
+        {
+          "id": "fX7sV",
+          "type": "ref",
+          "ref": "T47P1",
+          "name": "fabClose",
+          "layoutPosition": "absolute",
+          "x": 312,
+          "y": 16
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "h9AH0",
+      "x": 21016,
+      "y": 15705,
+      "name": "Chat / Nav Toggle Button / Default",
+      "context": "Floating panel toggle button. 34x34 circle, surface fill, toggle border, panel-right icon. Floats at panel edge. Tap to show/hide the side view.",
+      "reusable": true,
+      "width": 34,
+      "height": 34,
+      "fill": "$y:sem-background-main",
+      "cornerRadius": "$y:radius-full",
+      "stroke": "$y:sem-navToggleBorder",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "pSD4i",
+          "name": "icon",
+          "width": 16,
+          "height": 16,
+          "icon": "panel-right",
+          "library": "lucide",
+          "fill": "$y:sem-navToggleIcon"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "id": "L0ARf",
+      "x": 21076,
+      "y": 15705,
+      "name": "FAB Group",
+      "reusable": true,
+      "children": [
+        {
+          "id": "oZTwS",
+          "type": "ref",
+          "ref": "h9AH0",
+          "name": "navPanelToggle",
+          "x": 0,
+          "y": 0,
+          "descendants": {
+            "pSD4i": {
+              "icon": "panel-left"
+            }
+          }
+        },
+        {
+          "id": "w4MoO",
+          "type": "ref",
+          "ref": "h9AH0",
+          "name": "chatPanelToggle",
+          "x": 0,
+          "y": 46,
+          "descendants": {
+            "pSD4i": {
+              "icon": "message-circle"
+            }
+          }
         }
       ]
     }
