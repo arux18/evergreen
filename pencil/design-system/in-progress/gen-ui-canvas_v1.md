@@ -1,16 +1,16 @@
-# Gen-UI Canvas — Design Spec `[IN PROGRESS]`
+# Gen-UI Canvas v1 — Design Spec `[IN PROGRESS]`
 
-The canonical spec for AI-generated canvases in the mainPanel: one canvas per answered question, shown in a feed, each one saveable. The visual source of truth is `gen-ui-canvas.pen`; this file and that canvas must stay in sync.
+The canonical spec for AI-generated canvases in the mainPanel: one canvas per answered question, shown in a feed, each one saveable. The visual source of truth is `gen-ui-canvas_v1.pen`; this file and that canvas must stay in sync.
 
 | | |
 |---|---|
-| Canvas file | `pencil/design-system/in-progress/gen-ui-canvas.pen` |
+| Canvas file | `pencil/design-system/in-progress/gen-ui-canvas_v1.pen` |
 | Built on | `hemlock-library.lib.pen` (imported as `g`), shell rules from `../complete/chat-nav-refresh.pen` |
 | Exploration record | `pencil/designs/0-ideation/New-Library-Editorial-Inspired-Q4.pen` (not a source of truth) |
 | Hemlock check | `node scripts/check-hemlock-deps.mjs` (see §12) |
 | Default theme | **Dark.** Light is supported through tokens but is not the default. |
 
-`gen-ui-canvas.pen` is a regular `.pen`, not a `.lib.pen`: Pencil can't import a library into another library. When Hemlock can host it, the components here move into Hemlock unchanged.
+`gen-ui-canvas_v1.pen` is a regular `.pen`, not a `.lib.pen`: Pencil can't import a library into another library. When Hemlock can host it, the components here move into Hemlock unchanged.
 
 ---
 
@@ -28,13 +28,13 @@ The canonical spec for AI-generated canvases in the mainPanel: one canvas per an
 
 | Frame | ID | What it is |
 |---|---|---|
-| Canvas Design Library | `KNbgW` | Sections 01–07: type, component tokens, spacing, shell, templates, blocks, chat ↔ canvas |
+| Canvas Design Library | `KNbgW` | Sections 01–07: type roles, not in Hemlock, canvas widths, shell, templates, blocks, chat ↔ canvas |
 | View - D - Canvas Feed | `mqkxi` | 1440 desktop, nav + chat open, two canvases (one saved), toast |
 | View - D - Saved Canvases | `Jo1xS` | Saved page: title, filter, sort, 2-column tile grid, chat closed to FAB |
 | View - D - Saved Canvas (Opened) | `rJLpC` | A saved canvas opened from Saved, with the Snapshot Bar |
 | View - L - Canvas Feed (theme check) | `Ic0Xr` | Light copy of the feed, only to prove every color flips |
 
-Context notes sit under the Saved views (feed behavior, saving, snapshot vs live, chat ↔ canvas, nav proposal, tokens).
+The file reads top to bottom: 00 Start here (file map and naming key), 01 Library (every component board), 02–06 flows (a desktop row, a mobile row and a notes row each), and 07 Archive (superseded work). Each section's spec notes and sticky notes sit in its notes row.
 
 ---
 
@@ -57,7 +57,7 @@ Masters are `Type / <Role>` components. Sizes and line heights are Hemlock token
 
 | Role | Font | Size | Weight | Line height | Color | Notes |
 |---|---|---|---|---|---|---|
-| Eyebrow | font-ui | `text-size-2xs` | 600 | `line-height-2xs` | `sem-text-action` | Uppercase, letter-spacing +1 |
+| Eyebrow | font-ui | `text-size-2xs` | 600 | `line-height-2xs` | `sem-text-meta` | Uppercase, letter-spacing +1 |
 | Title | font-secondary | `text-size-2xl` | 400 | `line-height-2xl` | `sem-text-header` | Canvas headline, one per canvas |
 | Deck | font-secondary | `text-size-lg` | 300 | `line-height-lg` | `sem-text-body` | Max width 680 |
 | Meta | font-ui | `text-size-xs` | 400 | `line-height-xs` | `sem-text-meta` | Asked time, question, scope |
@@ -80,7 +80,7 @@ Letter-spacing on uppercase labels (+1) has no Hemlock token yet. Proposal: add 
 
 ## 5 · Component tokens
 
-Every value comes from Hemlock, so the spec names tokens, not values. Look the values up in Hemlock. The board's **02 Component Tokens** section (`w7Te6`) lists every component part by part, text included, with the tokens each part binds. §4 and §7 carry the same bindings. This section covers the chart color rule and everything that doesn't come from Hemlock.
+Every value comes from Hemlock, so the spec names tokens, not values. Look the values up in Hemlock. Each component carries its own bindings in the `.pen`, and §4 and §7 list them. The library's **02 Not in Hemlock** section (`w7Te6`) lists only the gaps. This section covers the chart color rule and everything that doesn't come from Hemlock.
 
 ### Chart colors
 
@@ -94,7 +94,7 @@ Every value comes from Hemlock, so the spec names tokens, not values. Look the v
 
 ### Off Hemlock
 
-Values in this file that aren't Hemlock tokens, or that don't match Hemlock's own components and rules. This is the same list as the board's Off Hemlock column. **Hardcoded** means the number is on Hemlock's scale but typed in instead of bound to the token, so binding it changes nothing visually. **Off-scale** means no Hemlock token has that value.
+Values in this file that aren't Hemlock tokens, or that don't match Hemlock's own components and rules. The library's 02 Not in Hemlock section has the short version. **Hardcoded** means the number is on Hemlock's scale but typed in instead of bound to the token, so binding it changes nothing visually. **Off-scale** means no Hemlock token has that value.
 
 | Component | Off Hemlock |
 |---|---|
@@ -129,7 +129,7 @@ Values in this file that aren't Hemlock tokens, or that don't match Hemlock's ow
 | Canvas / Note Input | Uses the chat panel's input tokens (`sem-chatInputBg`, `sem-chatInputBorder`) inside a canvas. Hemlock's Textarea uses `sem-background-surface`, `sem-borders-dark`, `radius-3xs`, and `font-primary` at `text-size-base`. |
 | Canvas / Saved Note | Gap 4 is hardcoded. |
 | Chat / Canvas Link | Padding `[10, 12, 10, 10]`: 10 is off-scale, and 12 plus gaps 12, 4, and 2 are hardcoded. The kicker has +1 letter-spacing. The Hover go icon uses a text token (`sem-chatTextPrimary`); the other states use `sem-chatIcon`. |
-| Views: nav and chat copied from chat-nav-refresh.pen | The nav logo uses Manrope and Spectral. There are literal sizes 13 (nav items) and 14 (chat text), +1.2 tracking on nav section labels, radii 4 and 6, and off-scale paddings like `[7, 10, 7, 24]`. Nav and chat shadows have a literal y 2 and blur 28, prompt chips use line height 1.25, and some strokes are 0.5. Fix these in chat-nav-refresh.pen. In this file, `contentColumn` padding 40 / 48 is hardcoded (`spacing-xl` / `spacing-2xl`). |
+| Views: nav and chat copied from chat-nav-refresh.pen | The nav logo uses Manrope and Spectral. There are literal sizes 13 (nav items) and 14 (chat text; this file now binds chat text to `text-size-base`, §7.5), +1.2 tracking on nav section labels, radii 4 and 6, and off-scale paddings like `[7, 10, 7, 24]`. Nav and chat shadows have a literal y 2 and blur 28, prompt chips use line height 1.25, and some strokes are 0.5. Fix these in chat-nav-refresh.pen. In this file, `contentColumn` padding 40 / 48 is hardcoded (`spacing-xl` / `spacing-2xl`). |
 
 **Contrast status (Hemlock as of Sep 28):** `sem-text-meta` is under AA for small text in dark: 4.28:1 on `sem-background-main`, 4.07:1 on `sem-background-surface`, 3.79:1 on `sem-background-elevated`. The fix is happening in Hemlock. Every meta role here binds the token, so the new value flows through. Re-run §12 after the update.
 
@@ -152,12 +152,26 @@ Nav and chat are pinned to the viewport; only the mainPanel scrolls.
 ### Canvas anatomy
 
 ```
-Canvas / Canvas            vertical, gap spacing-md, no fill, no border
+Canvas / Canvas            vertical, gap spacing-lg, no fill, no border
 ├─ Canvas / Header         Top Row (Eyebrow · Save, share, more) / Title / Deck / Meta Row
 ├─ Canvas / Rule / Strong  2px sem-borders-strong, once, directly under the header
-├─ Slot / Modules          vertical, gap spacing-md; templates separated by Canvas / Hairline
+├─ Slot / Modules          vertical, gap spacing-lg; templates separated by Canvas / Hairline
 └─ Canvas / Footer         1px sem-borders-muted top rule · Footnote · Helpful? 👍 👎
 ```
+
+**Vertical rhythm inside a canvas** (loosened 2026-10-09; each value moved up one step):
+
+| Between | Gap |
+|---|---|
+| Header, rule, modules, footer (`Canvas / Canvas`) | `spacing-lg` |
+| Modules and hairlines (`Slot / Modules`) | `spacing-lg` |
+| Blocks stacked inside any template slot | `spacing-md` |
+| Text sections (`Slot / Content` in text-led modules) | `spacing-xl` |
+| A section's H2 and its blocks | `spacing-md` |
+| Paragraph / With Heading: H3 → Body | `spacing-xs` |
+| List items (`Slot / Items`) | `spacing-xs`; `spacing-md` when items have leads |
+
+The header stack (`spacing-sm`) and horizontal gutters (below) are unchanged.
 
 Header actions: `Canvas / Save Button` (Hemlock `Button/sm/outline/icon-left`), then Hemlock `Button/sm/text/icon-only` for share and more. Every button is a Hemlock pill (`radius-full`).
 
@@ -180,7 +194,7 @@ Each slot lists its recommended blocks in the `.pen` (`slot` property), e.g. the
 
 ## 7 · Components
 
-Names match the components in `gen-ui-canvas.pen`.
+Names match the components in `gen-ui-canvas_v1.pen`.
 
 ### 7.1 Canvas shell
 
@@ -244,11 +258,24 @@ Exception: `DonutChart` takes no overrides. Hemlock builds it as a Card instance
 
 **`Chat / Canvas Link`** — Default, Hover, In View, Saved. 320 wide inside the 360 chat panel. Fill `sem-chatBg` (Hover `sem-chatChipHover`), border `sem-chatBorder` (In View `sem-borders-action`), radius `radius-xs`, padding `[10, 12, 10, 10]`, gap 12. Thumb 36×36 `sem-chatChipBg` with the canvas type icon (layout-dashboard report, list-checks plan, book-open explainer) in `sem-chatIcon`. Kicker (font-ui 2xs, 600, +1, `sem-chatTextSecondary`): REPORT / PLAN / EXPLAINER; Saved adds the bookmark-check icon (`sem-icons-action`) and "· SAVED". Title: font-ui `text-size-sm`, `sem-chatTextPrimary`. Go icon arrow-left (`sem-chatIcon`; In View `sem-icons-action`).
 
-**Reply pattern** — AI text → Canvas Link → Prompt Chips. Chips only under the latest AI reply; stack vertically, gap 8, hug their label.
+**Reply pattern** — AI text → Canvas Link (or Canvas Chip) → Prompt Chips. Chips only under the latest AI reply.
+
+**Chat text and spacing** (2026-10-09; applies to every chat surface, desktop panel and phone):
+
+| Part | Spec |
+|---|---|
+| Message text (question bubbles, AI replies) and input text | `text-size-base` / `line-height-base` (Body). Chat text is body text. 16px also keeps iOS Safari from zooming the input on focus. |
+| Turn | A `Turn` frame: the question, then an `AI response` frame. |
+| Question → AI response | `spacing-lg` |
+| Inside an AI response (text → link or chip → prompt chips) | `spacing-md`; paragraphs `spacing-xs` |
+| Between turns | `spacing-2xl`. On phones, `spacing-4xl` after a turn whose answer is an inline canvas. |
+| AI text → inline canvas (phones) | `spacing-2xl` |
+| Question bubble padding | `[spacing-sm, spacing-md]` |
+| Prompt chips | Match chat-nav-refresh.pen (M852E, N4zCC, F1IhIS): Hemlock `Button/sm/outline` with only the label content overridden (Hemlock's Heebo 14 medium, no `font-ui`). `chipRow`s 8 apart, chips 8 apart, no top padding, greedy wrap, max 3, cleared on a new turn. |
 
 **`Feed / New Canvas Pill`** — Hemlock `Button/sm/secondary/icon-right`, "New canvas" + arrow-down, `shadow-md-*`.
 
-Chat atoms (messages, chips, input, close FAB) belong to chat-nav-refresh.pen. The views copy them; edit them there.
+Chat atoms (messages, chips, input, close FAB) come from chat-nav-refresh.pen. As of 2026-10-09 this file is ahead of it: message and input text is `text-size-base`, and chat spacing follows the table above. chat-nav-refresh.pen still has 14px chat text and 14/16 message gaps (see §10).
 
 ---
 
@@ -386,23 +413,24 @@ Rules for the model:
 | Off-Hemlock values | §5 lists them. Hardcoded values can be bound to their tokens with no visual change. Off-scale values and the rebuilt components (Entity Chip, Note Input, Tip, Legend Item) need a design call. |
 | Toggle buttons in Hemlock | Save's Saved state shows `Button/sm/outline/icon-left/pressed` at rest. Hemlock's Button needs a `pressed` prop (or `[aria-pressed="true"]` styles) to render it in code. |
 | Hemlock housekeeping | `colDate` (instance of `TableHeaderCell/sorted-desc`) has a stale override pointing at a node that no longer exists (`V5Ss9`). Harmless here; worth cleaning in Hemlock. |
+| Chat spec vs chat-nav-refresh.pen | Chat text `text-size-base` and the turn spacing (§7.5) were applied file-wide here on 2026-10-09. chat-nav-refresh.pen, the source of the chat atoms, hasn't been updated yet. |
 
 ---
 
 ## 11 · When Hemlock changes
 
 1. Update `hemlock-library.lib.pen`.
-2. Reopen `gen-ui-canvas.pen` in Pencil so it picks up the new library, and save it.
+2. Reopen `gen-ui-canvas_v1.pen` in Pencil so it picks up the new library, and save it.
 3. Run the check (§12). Fix every BREAKING finding; review every REVIEW finding and the contrast table.
 4. When the result is accepted, rewrite the baseline with `--write-baseline` and commit it with the Hemlock change.
 
 ## 12 · Hemlock dependency check
 
 ```
-node scripts/check-hemlock-deps.mjs                       # gen-ui-canvas.pen by default
+node scripts/check-hemlock-deps.mjs                       # gen-ui-canvas_v1.pen by default
 node scripts/check-hemlock-deps.mjs path/to/file.pen      # any file that imports Hemlock
 node scripts/check-hemlock-deps.mjs --write-baseline      # record the accepted Hemlock values
 node scripts/check-hemlock-deps.mjs --json --strict       # CI-style: exit 1 on BREAKING
 ```
 
-It reports tokens and components that no longer exist, instance overrides whose target node moved, token values that changed since `gen-ui-canvas.hemlock-baseline.json`, and WCAG contrast for the text roles the canvases use, in both themes.
+It reports tokens and components that no longer exist, instance overrides whose target node moved, token values that changed since `gen-ui-canvas_v1.hemlock-baseline.json`, and WCAG contrast for the text roles the canvases use, in both themes.
