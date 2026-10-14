@@ -4,6 +4,8 @@
 **Status:** ✅ **MIGRATION EXECUTED** (2026-08-20) — `chat-nav-refresh.pen` now consumes `hemlock-library.lib.pen` exclusively; `chat-ui.lib.pen` has been unlinked. See "Resolution" at the end of this document. This map is retained as the audit record of how every source token was mapped.
 
 > **Post-migration note (2026-08-21):** the `prim-shadow-*-color` targets referenced below were renamed to `shadow-*-color` (shadow colors are semantics, not paint) and their dark alphas were lifted from 28/36/45/64% to 50/60/70/85%. The mapping logic is unaffected.
+
+> **Post-migration note (2026-10-14):** `font-primary` now resolves to **Gothic A1** (was Heebo), on both the desktop and mobile typography modes. Rows below that show Heebo as the target value record the state at migration time; the `font-primary` mapping itself is unaffected. Numbers use `font-primary` too — there is no separate mono font.
 **Hemlock target:** `pencil/design-system/in-progress/hemlock-library.lib.pen` (439 variables — 21 semantic tokens were minted during execution, see Resolution)
 **Sources:**
 - `pencil/design-system/complete/chat-ui.lib.pen` — 47 local tokens
@@ -1581,7 +1583,7 @@ The migration this map was drafted for has been **completed**:
 ### Gap dispositions
 
 - **12px radius** (`chat.radius`, `chat.bubble.radius`, `chat.input.radius`) → `radius-xs` (12px) — the final Hemlock radius scale includes it. 24px chip radius → `radius-md`.
-- **Fonts** (`font.primary`, `font-family-*`) → `font-primary` (Heebo) / `font-secondary` (Noto Serif).
+- **Fonts** (`font.primary`, `font-family-*`) → `font-primary` (Gothic A1 since 2026-10-14; Heebo at migration time) / `font-secondary` (Noto Serif).
 - **Granular typography** (`typo-*-font-weight`, `typo-*-letter-spacing`) → intentionally **not tokenized**. Hemlock exposes `text-size-*` and `line-height-*`; weights and letter-spacing are set per text style in the design. The old `g:typo-*` imports were removed with the migration.
 - **AI bubble transparent bg** (`chat.bubble.ai.bg`) → `sem-chatBubbleAi` (transparent in both modes), minted so the role stays explicit for gen-UI/front-end implementers.
 - **Legacy alias namespaces** (`y:`, `Q:`, `G:`, `e:`, `k:`, `O:`, `p:`) → all removed; nothing binds to them anymore.

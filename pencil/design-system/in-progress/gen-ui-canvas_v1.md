@@ -44,7 +44,7 @@ All tokens come from Hemlock. This file defines two local tokens:
 
 | Token | Value | Why |
 |---|---|---|
-| `font-ui` | `Gothic A1` | Exploration stand-in for `$g:font-primary` (Heebo). To ship with Heebo, point `font-ui` at `$g:font-primary`. Hemlock instances inside canvases override their text to `font-ui` for the same reason. |
+| `font-ui` | `Gothic A1` | Started as an exploration stand-in for `$g:font-primary` (then Heebo). Hemlock `font-primary` is Gothic A1 since 2026-10-14, so `font-ui` can point at `$g:font-primary`. Hemlock instances inside canvases override their text to `font-ui` for the same reason. |
 | `nav-themeToggleIcon` | `moon` (Light) / `sun` (Dark) | Mirrors the same token in chat-nav-refresh.pen for the copied nav. |
 
 Editorial type uses `$g:font-secondary` (Noto Serif).
@@ -98,7 +98,7 @@ Values in this file that aren't Hemlock tokens, or that don't match Hemlock's ow
 
 | Component | Off Hemlock |
 |---|---|
-| Every component | `font-ui` is local: Gothic A1 in place of `font-primary` (Heebo). It's also overridden onto every Hemlock instance in a canvas. |
+| Every component | `font-ui` is local: Gothic A1, matching `font-primary` (Gothic A1 since 2026-10-14). It's also overridden onto every Hemlock instance in a canvas. |
 | Type / Eyebrow, Type / Label, Table / Header Row, Chat / Canvas Link kicker | +1 letter-spacing. Hemlock sets tracking to 0. Its caps labels (KpiCard, TableHeaderCell) are `text-size-xs`, 600, no tracking. |
 | Type / Deck, Type / Pull Quote | Weight 300. Hemlock keeps light for large display text. |
 | Canvas / Hairline | `sem-borders-muted`. Hemlock's Separator uses `sem-borders-light`. This one is deliberate, because `sem-borders-light` barely shows on dark. |
@@ -271,7 +271,7 @@ Exception: `DonutChart` takes no overrides. Hemlock builds it as a Card instance
 | Between turns | `spacing-2xl`. On phones, `spacing-4xl` after a turn whose answer is an inline canvas. |
 | AI text → inline canvas (phones) | `spacing-2xl` |
 | Question bubble padding | `[spacing-sm, spacing-md]` |
-| Prompt chips | Match chat-nav-refresh.pen (M852E, N4zCC, F1IhIS): Hemlock `Button/sm/outline` with only the label content overridden (Hemlock's Heebo 14 medium, no `font-ui`). `chipRow`s 8 apart, chips 8 apart, no top padding, greedy wrap, max 3, cleared on a new turn. |
+| Prompt chips | Match chat-nav-refresh.pen (M852E, N4zCC, F1IhIS): Hemlock `Button/sm/outline` with only the label content overridden (Hemlock's `font-primary` 14 medium, no `font-ui`). `chipRow`s 8 apart, chips 8 apart, no top padding, greedy wrap, max 3, cleared on a new turn. |
 
 **`Feed / New Canvas Pill`** — Hemlock `Button/sm/secondary/icon-right`, "New canvas" + arrow-down, `shadow-md-*`.
 
@@ -406,7 +406,7 @@ Rules for the model:
 | Nav: CANVASES section with Feed and Saved | Proposal. Belongs in chat-nav-refresh.pen; needs sign-off. |
 | Nav active item token | chat-nav-refresh binds `sem-borders-dark`; this file uses `sem-navActiveBg`, the matching role. |
 | `sem-text-meta` in dark | Under AA (§5). Fix in progress in Hemlock. |
-| UI font | Gothic A1 via `font-ui` (exploration). Production default is Heebo. |
+| UI font | Gothic A1 via `font-ui`. Production `font-primary` is also Gothic A1 (since 2026-10-14). |
 | Caps letter-spacing token | Proposal: `letter-spacing-caps` in Hemlock. |
 | Text on `sem-background-highlight` | `sem-text-action` (3.85 dark / 4.01 light) and `sem-text-meta` (3.24 dark) fail AA on it, so this file keeps links and meta off highlight surfaces. `sem-text-deposit` measures 4.25:1 on it in light (Row Highlight net values). Needs a Hemlock pairing decision. |
 | Saved snapshot retention | Open: how long snapshots are kept, and whether Refresh replaces them by default. |

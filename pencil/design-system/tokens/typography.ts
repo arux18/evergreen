@@ -1,5 +1,5 @@
 export const fontFamily = {
-  open: ['Heebo', 'sans-serif'],
+  open: ['Gothic A1', 'sans-serif'],
   noto: ['"Noto Serif"', 'serif'],
 }
 

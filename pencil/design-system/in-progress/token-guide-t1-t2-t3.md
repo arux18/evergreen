@@ -107,4 +107,4 @@ Self-test with one question: **"If a third theme lands tomorrow (high-contrast, 
 
 ---
 
-*Note: colors aren't the only theme dimension. Typography carries its own `desktop`/`mobile` modes (`text-size-*`, `line-height-*`, `font-primary` = Heebo, `font-secondary` = Noto Serif). Spacing/radius and effects/motion are single-mode (`Default`).*
+*Note: colors aren't the only theme dimension. Typography carries its own `desktop`/`mobile` modes (`text-size-*`, `line-height-*`, `font-primary` = Gothic A1, `font-secondary` = Noto Serif). Spacing/radius and effects/motion are single-mode (`Default`).*

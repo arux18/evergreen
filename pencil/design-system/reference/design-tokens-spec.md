@@ -6,7 +6,7 @@
 >
 > **Scope:** Monte Carlo simulations, stock option calculators, retirement planners, portfolio dashboards, tax planning tools, and any data-rich financial interface.
 >
-> **Modes:** Light + Dark. **Fonts:** Heebo (UI + numbers), Noto Serif (headings). **Palette:** Warm/cool categorical, green-tinted grays, Blue accent (#3A6AF8).
+> **Modes:** Light + Dark. **Fonts:** Gothic A1 (UI + numbers), Noto Serif (headings). **Palette:** Warm/cool categorical, green-tinted grays, Blue accent (#3A6AF8).
 
 ---
 
@@ -150,7 +150,7 @@
 
 | Token                  | Value            | Usage                          |
 | ---------------------- | ---------------- | ------------------------------ |
-| `font.family.primary`  | `Heebo`              | Primary UI font — body copy, numbers, labels (sans-serif, Google Fonts) |
+| `font.family.primary`  | `Gothic A1`              | Primary UI font — body copy, numbers, labels (sans-serif, Google Fonts) |
 | `font.family.secondary`| `Noto Serif` | Headings, editorial content (serif, Google Fonts)                       |
 
 #### Font Sizes
@@ -174,12 +174,12 @@
 
 > **Breakpoint**: Mobile sizes apply below `breakpoint.md` (768px). Desktop sizes apply at and above `breakpoint.md`.
 
-#### Font Weights (Heebo)
+#### Font Weights (Gothic A1)
 
-| Token                    | Heebo Style  | CSS Numeric | Usage                          |
+| Token                    | Gothic A1 Style  | CSS Numeric | Usage                          |
 | ------------------------ | ------------ | ----------- | ------------------------------ |
-| `font.weight.light`      | `Light`      | `300`       | Decorative, large display text (Heebo only) |
-| `font.weight.regular`    | `Regular`    | `400`       | Body, labels (Heebo only)      |
+| `font.weight.light`      | `Light`      | `300`       | Decorative, large display text (Gothic A1 only) |
+| `font.weight.regular`    | `Regular`    | `400`       | Body, labels (Gothic A1 only)      |
 | `font.weight.medium`     | `Medium`     | `500`       | Form labels, axis titles, toggles |
 | `font.weight.semibold`   | `SemiBold`   | `600`       | Subtitles, emphasis, all Noto Serif headings |
 | `font.weight.bold`       | `Bold`       | `700`       | Section headers, table headers |
@@ -1556,9 +1556,9 @@
 
 ## 5. Content Typography
 
-> **Font key:** `primary` = Heebo, `secondary` = Noto Serif
+> **Font key:** `primary` = Gothic A1, `secondary` = Noto Serif
 >
-> Heebo is used for all body copy and numbers. Use `font-variant-numeric: tabular-nums` when numbers are stacked vertically and need to appear aligned (table columns, calculation breakdowns, tooltip value lists).
+> Gothic A1 is used for all body copy and numbers. Use `font-variant-numeric: tabular-nums` when numbers are stacked vertically and need to appear aligned (table columns, calculation breakdowns, tooltip value lists).
 >
 > **Noto Serif weight guidance:** Noto Serif is legible down to `font-weight: 400` (regular). Use `600` (semibold) as the default for headings and display text. `400` (regular) is acceptable for body-length serif passages or lighter display treatments. Avoid `300` (light) at small sizes.
 
@@ -1740,7 +1740,7 @@ Layouts with two or more columns remain side-by-side until `breakpoint.sm` (390p
 
 > **Sign convention:** Positive values use `+` prefix and `data.positive` color. Negative values use `−` (minus sign, not hyphen) and `data.negative` color. Zero uses no prefix and `data.neutral` color.
 
-> **Font:** All numeric values use `font.family.primary` (Heebo). In stacked/tabular contexts (table columns, tooltip value lists, calculation breakdowns), add `font-variant-numeric: tabular-nums` for vertical alignment.
+> **Font:** All numeric values use `font.family.primary` (Gothic A1). In stacked/tabular contexts (table columns, tooltip value lists, calculation breakdowns), add `font-variant-numeric: tabular-nums` for vertical alignment.
 
 ### Date & Time Formatting
 
@@ -1759,7 +1759,7 @@ Layouts with two or more columns remain side-by-side until `breakpoint.sm` (390p
 
 > **Zoom-level rules:** When a chart axis spans > 10 years, use annual labels. 2–10 years → quarterly or `MMM 'YY`. < 2 years → monthly or daily. < 1 month → daily or intraday. Tooltip always shows the full format regardless of axis density.
 
-> **Font:** Date labels on chart axes use `font.family.primary` (Heebo). Use `font-variant-numeric: tabular-nums` when dates appear in a stacked/tabular context requiring vertical alignment.
+> **Font:** Date labels on chart axes use `font.family.primary` (Gothic A1). Use `font-variant-numeric: tabular-nums` when dates appear in a stacked/tabular context requiring vertical alignment.
 
 ---
 
@@ -1810,11 +1810,11 @@ ctx.scale(dpr, dpr);
 
 | Token                    | Canvas Font String                                        |
 | ------------------------ | --------------------------------------------------------- |
-| `font.family.primary`   | `'400 14px "Heebo", -apple-system, sans-serif'`           |
+| `font.family.primary`   | `'400 14px "Gothic A1", -apple-system, sans-serif'`           |
 | `font.family.secondary` | `'600 18px "Noto Serif", Georgia, serif'`         |
-| Axis labels              | `'400 11px "Heebo", -apple-system, sans-serif'`           |
-| Chart title              | `'600 16px "Heebo", -apple-system, sans-serif'`           |
-| Tooltip value (stacked)  | `'600 13px "Heebo", -apple-system, sans-serif'`           |
+| Axis labels              | `'400 11px "Gothic A1", -apple-system, sans-serif'`           |
+| Chart title              | `'600 16px "Gothic A1", -apple-system, sans-serif'`           |
+| Tooltip value (stacked)  | `'600 13px "Gothic A1", -apple-system, sans-serif'`           |
 
 ### Color with Opacity (Canvas)
 

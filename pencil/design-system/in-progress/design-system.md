@@ -670,7 +670,7 @@ In dark mode, elevation leans on lightened surfaces, and shadows get **stronger*
 
 | Token | Value | Usage |
 |---|---|---|
-| `font-primary` | Heebo | UI font — body, numbers, labels, all UI text |
+| `font-primary` | Gothic A1 | UI font — body, numbers, labels, all UI text |
 | `font-secondary` | Noto Serif | Headings, editorial content |
 
 Font families are themed on the `🆎 Typography` axis (`desktop` / `mobile`) — currently identical in both modes.
@@ -709,7 +709,7 @@ Type sizes and line heights are separate token families: `text-size-{step}` (px)
 
 The `.pen` file exposes typography as three flat token families:
 
-- `font-primary` / `font-secondary` — family names (`Heebo`, `Noto Serif`)
+- `font-primary` / `font-secondary` — family names (`Gothic A1`, `Noto Serif`)
 - `text-size-{2xs…8xl}` — font size in px (e.g. `text-size-sm` → `14`)
 - `line-height-{2xs…8xl}` — unitless ratio (e.g. `line-height-sm` → `1.4286`, so 14px × 1.4286 = 20px)
 
@@ -717,7 +717,7 @@ Weights are applied per text style in the design, not tokenized.
 
 ### Typography Rules
 
-1. **Heebo for all UI and numbers.** Noto Serif for headings/editorial only.
+1. **Gothic A1 for all UI and numbers.** Noto Serif for headings/editorial only.
 2. **Tabular-nums** (`font-variant-numeric: tabular-nums`) on all right-aligned numeric columns.
 3. **Line height:** follows the scale (e.g., base = 24px for 16px text).
 4. **Financial values** minimum `sm` (14px) — never smaller.

@@ -12,13 +12,13 @@
 | Old | New | CSS |
 |-----|-----|-----|
 | `Cormorant Garamond` | `Noto Serif` | `font-family: 'Noto Serif', serif;` |
-| `Inter` (if used anywhere) | `Heebo` | `font-family: 'Heebo', sans-serif;` |
+| `Inter` (if used anywhere) | `Gothic A1` | `font-family: 'Gothic A1', sans-serif;` |
 
-**Rule:** Heebo is the only sans-serif. Noto Serif is the only serif. No other fonts.
+**Rule:** Gothic A1 is the only sans-serif. Noto Serif is the only serif. No other fonts.
 
 ```css
 :root {
-  --font-primary: 'Heebo', sans-serif;
+  --font-primary: 'Gothic A1', sans-serif;
   --font-secondary: 'Noto Serif', serif;
 }
 ```
@@ -639,7 +639,7 @@ Categorical palette v5 (`chart-categorical/color-01`…`15`). Light values below
 ## 14. Quick Checklist for Applying Changes
 
 - [ ] Replace all `Cormorant Garamond` → `Noto Serif`
-- [ ] Replace all `Inter` → `Heebo`
+- [ ] Replace all `Inter` → `Gothic A1`
 - [ ] Rename all custom properties: `--color-*` → `--prim-*`, `--colors-*` → `--sem-*`
 - [ ] Update gray hex values (green-tint → warm neutrals)
 - [ ] Add taupe ramp variables
@@ -666,7 +666,7 @@ Copy-paste this as your root variables (light theme defaults):
 ```css
 :root {
   /* Fonts */
-  --font-primary: 'Heebo', sans-serif;
+  --font-primary: 'Gothic A1', sans-serif;
   --font-secondary: 'Noto Serif', serif;
 
   /* Primitives (static in both themes) */
