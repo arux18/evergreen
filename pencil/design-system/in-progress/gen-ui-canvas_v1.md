@@ -239,7 +239,7 @@ Blocks fill template slots. None carry card chrome.
 |---|---|---|
 | Numbers | `Canvas / Stat` (Default, Positive, Negative), `Canvas / Fact`, `Canvas / Ranked Row` | Stat = Label + Stat Value + Hemlock DataValueIndicator (Default/Negative) or Body Small. Ranked Row = rank, name + meta, value, Hemlock Tag. |
 | Tables | `Canvas / Table` (Header Row, Row, Row Highlight, Total Row) | Numeric columns right-aligned, tabular numerals. Row Highlight fills `sem-background-highlight`; secondary text on it uses `sem-text-body`, not meta. Total Row has a `sem-borders-strong` top rule. |
-| Charts | `Canvas / Chart Frame`, `Canvas / Legend Item` (Line, Swatch), `Canvas / Chart Annotation`, `Canvas / Value Label`, `Canvas / Before-After Bar`, `Canvas / Target Bar` | Chart Frame = header (Label wraps; legend hugs, gap spacing-md) + plot slot + axis + caption. The plot slot takes Hemlock charts in their `/no-card` variants. Gridlines `sem-borders-dark`, baseline `sem-borders-strong`. |
+| Charts | `Canvas / Chart Frame`, `Canvas / Legend Item` (Line, Swatch), `Canvas / Chart Annotation`, `Canvas / Value Label`, `Canvas / Before-After Bar`, `Canvas / Target Bar`, `Canvas / Horizontal Bar Chart` (Stacked, Ranked; Default, Hover) | Chart Frame = header (Label wraps; legend hugs, gap spacing-md) + plot slot + axis + caption. The plot slot takes Hemlock charts in their `/no-card` variants. Gridlines `sem-borders-dark`, baseline `sem-borders-strong`. Stacked bar labels follow the sizing rule below. |
 | Editorial | `Canvas / Pull Quote`, `Canvas / Takeaway`, `Canvas / Tip` | Takeaway = number + lead + Body Small. Tip sits on `sem-background-highlight` with a lightbulb in `sem-icons-action`; its label uses `sem-text-header`. |
 | Links | `Canvas / Text Link` (Default, External) | `sem-text-action`, arrow-right / arrow-up-right |
 | Media | `Canvas / Icon Tile`, `Canvas / Media Slot` (Icon, Illustration), Hemlock `ImageBlock/caption-credit` | Three image kinds: charts and data graphics (Chart Frame), editorial photos (ImageBlock), illustrations and icons (Media Slot) |
@@ -247,6 +247,24 @@ Blocks fill template slots. None carry card chrome.
 | Plan controls | `Canvas / Plan Mode Toggle`, `Canvas / Plan Check Item`, `Canvas / Stepper`, `Canvas / Line Item`, `Canvas / Entity Chip` | Plan Mode wraps Hemlock ToggleSwitch, outlined with `sem-borders-muted`. Stepper: label column wraps; − and + are Hemlock `Button/sm/outline/icon-only`, gap spacing-2xs. |
 | Plan steps | `Canvas / Progress`, `Canvas / Plan Step` (Done, Active, Upcoming), `Canvas / Timeline Item` (Active, Upcoming) | Steps use Hemlock Checkbox and Tag. The Active step is marked by a 2px `sem-borders-action` left rule, no fill, so its links stay on `sem-background-main`. Progress has one segment per step. |
 | Notes | `Canvas / Note Input`, `Canvas / Saved Note` | Private notes on a plan |
+
+**Bar value labels** (`Canvas / Horizontal Bar Chart`, stacked). Every segment has a Value label (`$g:font-primary`, 600, `prim-base-black` on the pale categorical fills). Size it to its segment:
+
+| When the label… | Size | Segment left padding |
+|---|---|---|
+| fits at 12px | `text-size-xs` / `line-height-xs` | `spacing-2xs` (8) |
+| fits only at 11px | `text-size-2xs` / `line-height-2xs` | `spacing-3xs` (4) |
+| doesn't fit at 11px | Value off; the value stays in the hover tooltip | — |
+
+"Fits" means padding + label width + 2px clear before the segment's edge. In code, measure the rendered label and recheck when the chart resizes. In Pencil, use these widths as a guide:
+
+| Label | Needs at 12px | Needs at 11px |
+|---|---|---|
+| One digit (7%) | 30 | 22 |
+| Two digits (15%) | 36 | 28 |
+| 100% | 44 | 34 |
+
+Hemlock has no size below `text-size-2xs`, so labels never go smaller than 11px. Hover keeps the hovered segment solid and dims the rest to 30%.
 
 ### 7.4 Hemlock components used inside canvases
 
