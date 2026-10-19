@@ -1,0 +1,16 @@
+---
+description: Keep gen-ui-canvas_v2.md in sync with gen-ui-canvas_v2.pen
+alwaysApply: true
+---
+
+# Gen-UI canvas v2: keep the spec in sync
+
+`pencil/design-system/in-progress/gen-ui-canvas_v2.md` is the spec for `gen-ui-canvas_v2.pen`. Whenever the .pen changes, by you or anyone else, update the spec in the same commit:
+
+1. Make sure the .pen is saved in Pencil.
+2. Run `node scripts/sync-gen-ui-spec.mjs`. It regenerates `gen-ui-canvas_v2.components.md` and lists what the spec has to catch up on (CHANGED, STALE, MISSING).
+3. Update `gen-ui-canvas_v2.md` for everything listed. Write rules, behavior and decisions there; values stay in the .pen, and the generated reference picks them up. Never edit `gen-ui-canvas_v2.components.md` by hand.
+4. Run `node scripts/sync-gen-ui-spec.mjs --write-baseline`.
+5. Commit the .pen, the spec, the reference and `gen-ui-canvas_v2.spec-baseline.json` together.
+
+Tell the user about anything new under "STALE IN THE FILE'S NOTES" or in the reference's "Not bound to Hemlock" table instead of fixing it silently.
